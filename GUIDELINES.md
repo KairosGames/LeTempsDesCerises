@@ -75,3 +75,12 @@ Identifiant de tache Jira lié à la tâche
 #### Nom court
 
 probablement le même que celui du ticket jira
+
+## Code
+
+- utiliser le gdscript comme language de programation
+
+```gdscript
+func _private_function() -> void:
+	pass
+```
