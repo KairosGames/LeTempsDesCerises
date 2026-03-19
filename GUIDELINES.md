@@ -56,10 +56,22 @@
 
 ### Branch Naming
 
-⏳ PREFIX-JIRA_ID-NAME
+⏳ PREFIX-JIRA_ID-NOM_COURT
+
+- pas d'espaces
+- \- entre les composants
+- snake_case pour les composants
 
 #### Prefix
 
-- \[F] Feature: ajoute ou modifier quelque chose (ex: création du character, amélioration des mouvements de caméra)
-- \[M] Maintenance: ne change rien au jeu mais garde le projet en bonne santé (ex: tri de fichier, renommage)
-- \[B] Bug Fix: Corrige un bug (ex: corrige crash du jeu sur linux, ajout d'une texture manquante)
+- F Feature: ajoute ou modifier quelque chose (ex: création du character, amélioration des mouvements de caméra)
+- M Maintenance: ne change rien au jeu mais garde le projet en bonne santé (ex: tri de fichier, renommage)
+- B Bug Fix: Corrige un bug (ex: corrige crash du jeu sur linux, ajout d'une texture manquante)
+
+#### Jira ID
+
+Identifiant de tache Jira lié à la tâche
+
+#### Nom court
+
+probablement le même que celui du ticket jira
