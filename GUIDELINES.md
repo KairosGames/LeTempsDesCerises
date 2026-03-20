@@ -1,5 +1,7 @@
 # Guidelines
 
+> Version 1.0.0
+
 > En ayant lu ce titre vous avez déjà accepté de respecter ces conventions et avez accepté les sanctions qui résultent du non-respect de celles-ci.
 
 ## Structure du Projet
