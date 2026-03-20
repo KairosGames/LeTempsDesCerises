@@ -20,9 +20,9 @@
   - sources _assets bruts_
     - fonts
     - images
-      - icons _symboles, souvent 2d et vectoriel (ex: settings.svg, xbox_south_button.svg, ...)_
-      - textures _décoratif, souvent 3d et matriciel (ex: brick_albedo.png, brick_normal.png, brick_ao.png, ...)_
-    - meshes _mailiages en .obj ou .gtlf_
+      - icons _symboles, souvent 2d et vectoriel (ex: settings.svg, xbox_south_button.svg, …)_
+      - textures _décoratif, souvent 3d et matriciel (ex: brick_albedo.png, brick_normal.png, brick_ao.png, …)_
+    - meshes _maillages en .obj ou .gtlf_
     - sounds
       - banks _pour les banque de son générées (e.g fmod, wwise)_
 - sources _fichier source des assets (ex: .blend, .psd, wwise project)_
@@ -32,8 +32,8 @@
 
 ---
 
-- images doivent être vectorial .svg dès que c'est possible
-- images matriciel doivent avoir une résultion qui soit puissance de 2 (512, 1024, 2048, 4096)
+- images doivent être vectorial .svg dès que c’est possible
+- images matriciel doivent avoir une résolution qui soit puissance de 2 (512, 1024, 2048, 4096)
 - ne pas inclure de .blend directement dans le projet Godot, les exporter en gltf
 
 ## Godot
@@ -51,9 +51,9 @@
 
 ### References dans Godot
 
-- ne pas référencer par chemin: "res://"
-- toujours utiliser les identifiants uniques "uid://"
-- si vous ne connaissez pas la différence, contacter imédiatement votre développeur le plus proche
+- ne pas référencer par chemin: “res://”
+- toujours utiliser les identifiants uniques “uid://”
+- si vous ne connaissez pas la différence, contacter immédiatement votre développeur le plus proche
 
 ### Code
 
@@ -103,9 +103,9 @@ class Stat: #
 
 ---
 
-> ⚠️🔥 ne jamais renomer un fichier pour changer la case (ex: Fichier.txt -> fichier.txt) 🔥⚠️
+> ⚠️🔥 ne jamais renommer un fichier pour changer la case (ex: Fichier.txt -> fichier.txt) 🔥⚠️
 
-> quand git stocke quelque chose c'est pour toujours donc choisez judicieusement ce que vous importez
+> quand git stocke quelque chose c’est pour toujours donc choisissez judicieusement ce que vous importez
 
 ### Large File Storage
 
@@ -117,14 +117,14 @@ Doivent être stocké en LFS:
 - \*.png
 - \*.bnk
 
-> cette liste peut être mené à grandir avec le temps
+> cette liste peut être amenée à grandir avec le temps
 
 ### Branches Principales
 
-- main _branche parfaite sans erreur ni avertissement et toujours prête créée à partir des version stable de dev_
+- main _branche parfaite sans erreur ni avertissement et toujours prête créée à partir des versions stables de dev_
 - dev _branche de travail principale où tout est fusionné et source de toute nouvelle branche_
 - sandbox _basée sur dev elle contient des outils spécifique aux branches de test_
-- sandbox/name _chaque membre de l'équipe peut créer sa propre branche comme bac à sable pour les tests rebasé sur sandbox_
+- sandbox/name _chaque membre de l’équipe peut créer sa propre branche comme bac à sable pour les tests rebasé sur sandbox_
 - f/\* _branche de feature basée sur dev_
 - m/\* _branche de maintenance basée sur dev_
 - b/\* _branche de bugfix basée sur dev_
@@ -135,21 +135,21 @@ Pour que le travail des différents membres soit ajouté à la branche principal
 
 - il doit se trouver dans un branche de feature, maintenance, ou bugfix
 - doit demander à être merge (Pull Request).
-- la PR sera validée par un des dev et pourra faire l'objet d'une demande de modification avant de pouvoir être mergé.
+- la PR sera validée par un des dev et pourra faire l’objet d’une demande de modification avant de pouvoir être mergé.
 
-### Nomenclature des Banches
+### Nomenclature des Branches
 
 prefix/short-and-descriptive_name
 
 - english only
-- '/' entre les composants
-- kebab-case pour les composants (pas d'espaces)
+- ‘/’ entre les composants
+- kebab-case pour les composants (pas d’espaces)
 
 #### Prefixes
 
-- 'f' pour Feature: ajoute ou modifier quelque chose (ex: création du character, amélioration des mouvements de caméra)
-- 'm' pour Maintenance: ne change rien au jeu mais garde le projet en bonne santé (ex: tri de fichier, renommage)
-- 'b' pour Bug Fix: Corrige un bug (ex: corrige crash du jeu sur linux, ajout d'une texture manquante)
+- ‘f’ pour Feature: ajoute ou modifier quelque chose (ex: création du character, amélioration des mouvements de caméra)
+- ‘m’ pour Maintenance: ne change rien au jeu mais garde le projet en bonne santé (ex: tri de fichier, renommage)
+- ‘b’ pour Bug Fix: Corrige un bug (ex: corrige crash du jeu sur linux, ajout d’une texture manquante)
 
 #### Exemples
 
