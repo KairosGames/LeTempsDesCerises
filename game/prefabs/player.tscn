@@ -1,17 +1,43 @@
 [gd_scene format=3 uid="uid://beucpa8otln0h"]
 
-[ext_resource type="Script" uid="uid://by6gviwr1wgbw" path="res://scripts/mouse_inputs.gd" id="1_72ieh"]
+[ext_resource type="Script" uid="uid://ba17vol5l3xw" path="res://scripts/player.gd" id="1_4dohe"]
+[ext_resource type="Script" uid="uid://by6gviwr1wgbw" path="res://scripts/player_inputs.gd" id="1_72ieh"]
+[ext_resource type="Texture2D" uid="uid://llhmhoeoh4hx" path="res://sources/images/textures/aim.svg" id="2_r66lb"]
+
+[sub_resource type="Curve" id="Curve_r66lb"]
+_data = [Vector2(0, 0), 0.0, 2.3602383, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fp3wc"]
 
 [node name="Player" type="CharacterBody3D" unique_id=1368497348]
+script = ExtResource("1_4dohe")
 
-[node name="MouseInputs" type="Node" parent="." unique_id=1232327639]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=39530336]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=1952164863]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("2_r66lb")
+expand_mode = 1
+
+[node name="PlayerInputs" type="Node" parent="." unique_id=1232327639]
+unique_name_in_owner = true
 script = ExtResource("1_72ieh")
+gpad_aiming_curve = SubResource("Curve_r66lb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=76721954]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_fp3wc")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=619415518]
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1785335874]
+unique_name_in_owner = true
+
+[node name="PlayerCamera" type="Camera3D" parent="CameraPivot" unique_id=619415518]
+unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.5, 0)
