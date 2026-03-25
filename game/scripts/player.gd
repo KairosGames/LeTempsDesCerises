@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody3D
 
-@onready var mouse_inputs: PlayerInputs = %PlayerInputs
+@onready var player_inputs: PlayerInputs = %PlayerInputs
 @onready var camera_pivot: Node3D = %CameraPivot
 @onready var player_camera: Camera3D = %PlayerCamera
 
@@ -37,5 +37,7 @@ func _process(delta: float) -> void:
 
 
 func process_view(delta: float) -> void:
-	rotation.y -=  mouse_inputs.get_view_input().x * delta
-	camera_pivot.rotation.x += mouse_inputs.get_view_input().y * delta
+	var inpt: PlayerInputs = player_inputs
+	var inversion = -1 if player_inputs.is_inverted else 1
+	rotation.y -=  inpt.get_view_input().x * delta * inpt.h_sensi_multiplier
+	camera_pivot.rotation.x += inpt.get_view_input().y * delta * inpt.v_sensi_multiplier * inversion
