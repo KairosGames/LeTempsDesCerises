@@ -1,17 +1,28 @@
 class_name PlayerInputs extends Node
 
-@export_category("Settings")
-@export_range(1.0, 20.0, 0.1) var mouse_sensi_default: float = 7.0
-@export_range(1.0, 20.0, 0.1) var mouse_sensi_aiming: float = 7.0
-@export_range(1.0, 20.0, 0.1) var gpad_sensi_default: float = 7.0
-@export_range(1.0, 20.0, 0.1) var gpad_sensi_aiming: float = 7.0
-@export var gpad_aiming_curve: Curve
+@export_category("Exposed Settings")
 @export var is_inverted: bool = false
+@export_range(1.0, 20.0, 0.1) var sensi_default: float = 8.0
+@export_range(1.0, 20.0, 0.1) var sensi_aiming: float = 4.0
+@export_range(0.1, 2.0, 0.1) var h_sensi_multiplier: float = 1.0
+@export_range(0.1, 2.0, 0.1) var v_sensi_multiplier: float = 1.0
+@export_range(0.05, 0.8, 0.01) var l_jstick_threshold: float = 0.1
+@export_range(0.05, 0.8, 0.01) var r_jstick_threshold: float = 0.1
+
+@export_category("Gamepad Settings")
+@export var gpad_aim_max_speed: float = 5.0
+@export var gpad_speed_aiming_curve: Curve
 @export var is_acceleration_on: bool = true
+@export var gpad_aim_acc_speed: float = 10.0
+@export_range(0.8, 1.0, 0.01) var acc_threshold: float = 0.95
+@export var gpad_aim_time_before_acc: float = 0.2
+@export var gpad_aim_acc_speed_time: float = 0.3
+@export var gpad_acc_aiming_curve: Curve
+
 
 var aim_vec_gamepad: Vector2 = Vector2.ZERO
 var aim_vec_mouse: Vector2 = Vector2.ZERO
-var gpad_aim_elapsed: float = 0.0
+var gpad_aim_timers: Vector2 = Vector2.ZERO
 var is_aiming: bool = false
 var is_gamepad: bool = false
 
@@ -26,7 +37,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton or (event is InputEventJoypadMotion and abs(event.axis_value) > 0.1):
 		is_gamepad = true
 	if event is InputEventMouseMotion:
-		aim_vec_mouse = event.relative * (mouse_sensi_aiming if is_aiming else mouse_sensi_default) / 100.0
+		aim_vec_mouse = event.relative * (sensi_aiming if is_aiming else sensi_default) / 10.0
 	if event is InputEventKey and event.is_pressed() and event.keycode == KEY_ESCAPE:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE
 
@@ -36,14 +47,34 @@ func _process(delta: float) -> void:
 	aim_vec_mouse = Vector2.ZERO
 
 
-func capture_inputs(delta) -> void:
-	var aim_vec: Vector2 = Input.get_vector("aim_left","aim_right","aim_top","aim_down", 0.1)
-	if aim_vec.length() >= 0.95: gpad_aim_elapsed += delta * 4.0
-	if aim_vec.length() <= 0.1: gpad_aim_elapsed = 0.0
-	if gpad_aim_elapsed >= 1.0: gpad_aim_elapsed = 1.0
-	var ratio: float = 10 - (9.0 * gpad_aiming_curve.sample(gpad_aim_elapsed))
-	aim_vec_gamepad = Input.get_vector("aim_left","aim_right","aim_top","aim_down", 0.1) * (gpad_sensi_aiming if is_aiming else gpad_sensi_default) / ratio
-
-
 func get_view_input() -> Vector2:
 	return aim_vec_gamepad if is_gamepad else aim_vec_mouse
+
+
+func capture_inputs(delta: float) -> void:
+	capture_gpad_aim(delta)
+
+
+func capture_gpad_aim(delta: float) -> void:
+	var aim_vec: Vector2 = Input.get_vector("aim_left","aim_right","aim_top","aim_down", 0.1)
+	var speed_to_add: float = 0.0
+	if is_acceleration_on:
+		set_gpad_aim_timers(aim_vec, delta)
+		if gpad_aim_timers.x >= gpad_aim_time_before_acc:
+			var ratio: float = inverse_lerp(0.0, gpad_aim_acc_speed_time, gpad_aim_timers.y)
+			speed_to_add = (gpad_aim_acc_speed - gpad_aim_max_speed) * ratio
+	var speed: float = (gpad_speed_aiming_curve.sample(aim_vec.length()) * gpad_aim_max_speed) + speed_to_add
+	var sensi: float = sensi_aiming if is_aiming else sensi_default
+	aim_vec_gamepad = aim_vec * (speed / 10.0) * sensi
+
+
+func set_gpad_aim_timers(aim_vec: Vector2, delta: float):
+	if aim_vec.length() >= acc_threshold: gpad_aim_timers.x += delta
+	else :
+		gpad_aim_timers = Vector2.ZERO
+		return
+	if gpad_aim_timers.x >= gpad_aim_time_before_acc :
+		gpad_aim_timers.x = gpad_aim_time_before_acc
+		gpad_aim_timers.y += delta
+		if gpad_aim_timers.y >= gpad_aim_acc_speed_time : gpad_aim_timers.y = gpad_aim_acc_speed_time
+	
