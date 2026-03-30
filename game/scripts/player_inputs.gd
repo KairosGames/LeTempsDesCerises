@@ -9,14 +9,17 @@ class_name PlayerInputs extends Node
 @export_range(0.05, 0.8, 0.01) var l_jstick_threshold: float = 0.2
 @export_range(0.05, 0.8, 0.01) var r_jstick_threshold: float = 0.2
 
+@export_category("Mouse Settings")
+@export var mouse_aim_reducer: float = 0.035
+
 @export_category("Gamepad Settings")
 @export_range(0.05, 0.8, 0.01) var gpad_detect_threshold: float = 0.2
 
 @export_category("Gamepad Aim Settings")
-@export var gpad_aim_max_speed: float = 5.0
+@export var gpad_aim_max_speed: float = 25.0
 @export var gpad_speed_aiming_curve: Curve
 @export var is_aim_acc_on: bool = true
-@export var gpad_aim_acc_speed: float = 10.0
+@export var gpad_aim_acc_speed: float = 50.0
 @export_range(0.8, 1.0, 0.01) var acc_threshold: float = 0.95
 @export var gpad_aim_time_before_acc: float = 0.2
 @export var gpad_aim_acc_speed_time: float = 0.3
@@ -39,7 +42,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton or (event is InputEventJoypadMotion and abs(event.axis_value) > gpad_detect_threshold):
 		is_gamepad = true
 	if event is InputEventMouseMotion:
-		aim_vec_mouse = event.relative * (sensi_aiming if is_aiming else sensi_default) * 0.1
+		aim_vec_mouse = event.relative * (sensi_aiming if is_aiming else sensi_default) * mouse_aim_reducer
 	if event is InputEventKey and event.is_pressed() and event.keycode == KEY_ESCAPE:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE
 
@@ -64,15 +67,15 @@ func capture_gpad_aim(delta: float) -> void:
 			speed_to_add = (gpad_aim_acc_speed - gpad_aim_max_speed) * ratio
 	var speed: float = (gpad_speed_aiming_curve.sample(aim_vec.length()) * gpad_aim_max_speed) + speed_to_add
 	var sensi: float = sensi_aiming if is_aiming else sensi_default
-	aim_vec_gamepad = aim_vec * speed * sensi * 0.1
+	aim_vec_gamepad = aim_vec * speed * sensi * delta
 
 
 func set_gpad_aim_timers(aim_vec: Vector2, delta: float):
 	if aim_vec.length() >= acc_threshold: gpad_aim_timers.x += delta
-	else :
+	else:
 		gpad_aim_timers = Vector2.ZERO
 		return
-	if gpad_aim_timers.x >= gpad_aim_time_before_acc :
+	if gpad_aim_timers.x >= gpad_aim_time_before_acc:
 		gpad_aim_timers.x = gpad_aim_time_before_acc
 		gpad_aim_timers.y += delta
 		if gpad_aim_timers.y >= gpad_aim_acc_speed_time : gpad_aim_timers.y = gpad_aim_acc_speed_time
