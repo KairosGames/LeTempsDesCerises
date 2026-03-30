@@ -50,15 +50,15 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	process_view(delta)
+	process_view()
 	process_movement(delta)
 
 
-func process_view(delta: float) -> void:
+func process_view() -> void:
 	var input: PlayerInputs = player_inputs
 	var inversion = -1 if player_inputs.is_inverted else 1
-	rotation.y -=  input.get_view_input().x * delta * input.h_sensi_multiplier
-	camera_pivot.rotation.x += input.get_view_input().y * delta * input.v_sensi_multiplier * inversion
+	rotation_degrees.y -=  input.get_view_input().x * input.h_sensi_multiplier
+	camera_pivot.rotation_degrees.x += input.get_view_input().y * input.v_sensi_multiplier * inversion
 	camera_pivot.rotation_degrees.x = clampf(camera_pivot.rotation_degrees.x, v_clamp_deg.x, v_clamp_deg.y)
 
 
