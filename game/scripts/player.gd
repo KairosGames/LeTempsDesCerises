@@ -63,6 +63,19 @@ func process_view() -> void:
 
 
 func process_movement(delta: float) -> void:
+	apply_plane_movement(delta)
+	
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+	
+	move_and_slide()
+
+
+func apply_plane_movement(delta: float):
 	var mov_vec: Vector2 = player_inputs.move_vec
 	var ref_speed = get_applied_speed()
 	
@@ -77,34 +90,22 @@ func process_movement(delta: float) -> void:
 	if speed.x != 0.0 : last_vel.x = velocity.x
 	if speed.z != 0.0 : last_vel.z = velocity.z
 	
-	if dir.x:
-		velocity.x = move_toward(velocity.x, speed.x, abs(speed.x) * delta * acc_time_ratio)
-		if sign(speed.x) != 0 and sign(velocity.x) != sign(speed.x):
+	if is_movement_smooth:
+		if dir.x:
 			velocity.x = move_toward(velocity.x, speed.x, abs(speed.x) * delta * acc_time_ratio)
-	else:
-		velocity.x = move_toward(velocity.x, 0.0, abs(last_vel.x) * delta * brake_time_ratio)
-	
-	if dir.z:
-		velocity.z = move_toward(velocity.z, speed.z, abs(speed.z) * delta * acc_time_ratio)
-		if sign(speed.z) != 0 and sign(velocity.z) != sign(speed.z):
+			if sign(speed.x) != 0 and sign(velocity.x) != sign(speed.x):
+				velocity.x = move_toward(velocity.x, speed.x, abs(speed.x) * delta * acc_time_ratio)
+		else:
+			velocity.x = move_toward(velocity.x, 0.0, abs(last_vel.x) * delta * brake_time_ratio)
+		
+		if dir.z:
 			velocity.z = move_toward(velocity.z, speed.z, abs(speed.z) * delta * acc_time_ratio)
+			if sign(speed.z) != 0 and sign(velocity.z) != sign(speed.z):
+				velocity.z = move_toward(velocity.z, speed.z, abs(speed.z) * delta * acc_time_ratio)
+		else:
+			velocity.z = move_toward(velocity.z, 0.0, abs(last_vel.z) * delta * brake_time_ratio)
 	else:
-		velocity.z = move_toward(velocity.z, 0.0, abs(last_vel.z) * delta * brake_time_ratio)
-	
-	var dxs: float = 0.0 if velocity.x == 0.0 else (1.0 if velocity.x > 0.0 else -1.0)
-	var dzs: float = 0.0 if velocity.z == 0.0 else (1.0 if velocity.z > 0.0 else -1.0)
-	
-	var ipt_dirx: float = 0.0 if mov_vec.x == 0.0 else (1.0 if mov_vec.x > 0.0 else -1.0)
-	var ipt_dirz: float = 0.0 if mov_vec.y == 0.0 else (1.0 if mov_vec.y > 0.0 else -1.0)
-	
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-	move_and_slide()
+		pass
 
 
 func get_applied_speed() -> float:
