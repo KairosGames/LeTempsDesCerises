@@ -77,15 +77,18 @@ func process_movement(delta: float) -> void:
 	if speed.x != 0.0 : last_vel.x = velocity.x
 	if speed.z != 0.0 : last_vel.z = velocity.z
 	
-	if dir:
+	if dir.x:
 		velocity.x = move_toward(velocity.x, speed.x, abs(speed.x) * delta * acc_time_ratio)
-		velocity.z = move_toward(velocity.z, speed.z, abs(speed.z) * delta * acc_time_ratio)
 		if sign(speed.x) != 0 and sign(velocity.x) != sign(speed.x):
 			velocity.x = move_toward(velocity.x, speed.x, abs(speed.x) * delta * acc_time_ratio)
+	else:
+		velocity.x = move_toward(velocity.x, 0.0, abs(last_vel.x) * delta * brake_time_ratio)
+	
+	if dir.z:
+		velocity.z = move_toward(velocity.z, speed.z, abs(speed.z) * delta * acc_time_ratio)
 		if sign(speed.z) != 0 and sign(velocity.z) != sign(speed.z):
 			velocity.z = move_toward(velocity.z, speed.z, abs(speed.z) * delta * acc_time_ratio)
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, abs(last_vel.x) * delta * brake_time_ratio)
 		velocity.z = move_toward(velocity.z, 0.0, abs(last_vel.z) * delta * brake_time_ratio)
 	
 	var dxs: float = 0.0 if velocity.x == 0.0 else (1.0 if velocity.x > 0.0 else -1.0)
