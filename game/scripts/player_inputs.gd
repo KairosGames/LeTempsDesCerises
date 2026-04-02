@@ -3,14 +3,14 @@ class_name PlayerInputs extends Node
 @export_category("Exposed Settings")
 @export var is_inverted: bool = false
 @export_range(1.0, 20.0, 0.1) var sensi_default: float = 7.0
-@export_range(1.0, 20.0, 0.1) var sensi_aiming: float = 4.0
+@export_range(1.0, 20.0, 0.1) var sensi_aiming: float = 7.0
 @export_range(0.1, 2.0, 0.1) var h_sensi_multiplier: float = 1.0
 @export_range(0.1, 2.0, 0.1) var v_sensi_multiplier: float = 1.0
 @export_range(0.05, 0.8, 0.01) var l_jstick_threshold: float = 0.2
 @export_range(0.05, 0.8, 0.01) var r_jstick_threshold: float = 0.2
 
 @export_category("Mouse Settings")
-@export var mouse_aim_reducer: float = 0.035
+@export var mouse_aim_reducer: float = 0.0175
 
 @export_category("Gamepad Settings")
 @export_range(0.05, 0.8, 0.01) var gpad_detect_threshold: float = 0.2
