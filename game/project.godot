@@ -15,6 +15,10 @@ config/version="0.1.0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://bft3a0yxj3of0"
 
+[autoload]
+
+WwiseRuntimeManager="*res://addons/Wwise/runtime/wwise_runtime_manager.gd"
+
 [display]
 
 window/size/viewport_width=1920
@@ -27,3 +31,8 @@ window/size/viewport_height=1080
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+
+[wwise]
+
+common_user_settings/root_output_path="res://sounds/banks"
+project_settings/windows_platform_info="res://Wwise/resources/Windows.tres"
