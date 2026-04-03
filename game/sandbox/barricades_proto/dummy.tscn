@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dei4ifl4vg6pb"]
+
+[ext_resource type="Script" uid="uid://65hx5n84rivi" path="res://scripts/dummy.gd" id="1_w3ipt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_owqhk"]
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3ipt"]
+resource_local_to_scene = true
+albedo_color = Color(0.28627452, 0.65882355, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cf8o5"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_w3ipt")
+height = 1.8
+
+[node name="Dummy" type="Node3D" unique_id=1554602810]
+script = ExtResource("1_w3ipt")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1037432913]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=568119958]
+shape = SubResource("CapsuleShape3D_owqhk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=29021728]
+mesh = SubResource("CapsuleMesh_cf8o5")
