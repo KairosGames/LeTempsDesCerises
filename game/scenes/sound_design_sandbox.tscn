@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://d08cfuyp3y4nh"]
+
+[ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="1_xu5xm"]
+[ext_resource type="Script" uid="uid://tntha6dbwiuy" path="res://sounds/scripts/akevent_shoot.gd" id="2_oksnn"]
+[ext_resource type="WwiseEvent" uid="uid://cqdf7u10ggy7x" path="res://Wwise/resources/Event/{42733E42-B5F5-44F1-98EB-A729172BF973}.tres" id="2_s8o8u"]
+[ext_resource type="PackedScene" uid="uid://dq5j1ws245iav" path="res://scenes/first_gym.tscn" id="2_y0i5v"]
+[ext_resource type="WwiseBank" uid="uid://yrjkf33a41hu" path="res://Wwise/resources/SoundBank/{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}.tres" id="4_s8o8u"]
+[ext_resource type="WwiseAuxBus" uid="uid://5rf3bkxshgg5" path="res://Wwise/resources/Aux Bus/{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}.tres" id="5_8ipeh"]
+[ext_resource type="WwiseBank" uid="uid://crxnj0v3wpc0k" path="res://Wwise/resources/SoundBank/{49827AFC-1442-4066-AF70-C2B0B3B40C86}.tres" id="6_ekd4w"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s8o8u"]
+radius = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s8o8u"]
+size = Vector3(30, 30, 43.546387)
+
+[node name="SoundDesignSandbox" type="Node3D" unique_id=348257552]
+
+[node name="Player" parent="." unique_id=1368497348 instance=ExtResource("1_xu5xm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.530138, 0.10000384, 6.200084)
+
+[node name="AkListener3D" type="AkListener3D" parent="Player" unique_id=894631789]
+script = ExtResource("2_oksnn")
+
+[node name="Area3D" type="Area3D" parent="Player/AkListener3D" unique_id=1104768396]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/AkListener3D/Area3D" unique_id=1128507008]
+shape = SubResource("SphereShape3D_s8o8u")
+
+[node name="AkEvent3D" type="AkEvent3D" parent="Player" unique_id=73810531]
+event = ExtResource("2_s8o8u")
+trigger_on = 2
+
+[node name="FirstGym" parent="." unique_id=875032816 instance=ExtResource("2_y0i5v")]
+
+[node name="AkBank" type="AkBank" parent="." unique_id=1339667316]
+bank = ExtResource("4_s8o8u")
+load_on = 1
+
+[node name="AkBank2" type="AkBank" parent="." unique_id=703618222]
+bank = ExtResource("6_ekd4w")
+load_on = 1
+
+[node name="AkRoom" type="AkRoom" parent="." unique_id=2083901287]
+aux_bus = ExtResource("5_8ipeh")
+associated_geometry = NodePath("AkGeometry")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AkRoom" unique_id=1004402383]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -16.424595, 0, 2.7863612)
+shape = SubResource("BoxShape3D_s8o8u")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="AkGeometry" type="AkGeometry" parent="AkRoom" unique_id=356261322]
