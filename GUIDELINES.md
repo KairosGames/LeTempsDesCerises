@@ -1,8 +1,11 @@
 # Guidelines
 
-> Version 1.0.0
+> Version 1.1.0
 
 > En ayant lu ce titre vous avez déjà accepté de respecter ces conventions et avez accepté les sanctions qui résultent du non-respect de celles-ci.
+
+> ⚠️ Si vous ne comprenez pas ou n'êtes pas d'accord avec ces lignes directrices, contactez immédiatement votre développeur le plus proche !
+
 
 ## Structure du Projet
 
@@ -11,15 +14,15 @@
 - game/app _contient le projet principal (ex: Godot game)_
   - addons _librairies tiers_
   - editor _outils editeur_
-  - materials
-    - shaders
+  - materials _contient les materials partagés_
+    - shaders _contient les shaders partagés_
   - prefabs
     - _ex: entities_
     - _ex: ui_
     - _ex: geometry_
   - scenes _scènes principales du projet (ex: main.tscn, boot.tscn, world.tscn)_
-  - scripts
-  - sources _assets bruts_
+  - scripts _contient les scripts partagés_
+  - sources _assets bruts partagés_
     - fonts
     - images
       - icons _symboles, souvent 2d et vectoriel (ex: settings.svg, xbox_south_button.svg, …)_
@@ -29,6 +32,10 @@
       - banks _pour les banque de son générées (e.g fmod, wwise)_
 - sources _fichier source des assets (ex: .blend, .psd, wwise project)_
 - wiki _documentation_
+
+> Les resources doivent être stockés au plus proche de leur lieu d'utilisation dans l'arborescence de fichier et ne remonter dans l'arborescence que pour être communes à plusieurs scènes. 
+
+> ⚠️ les resources peuvent et doivent si nécessaire être stockées dans les scènes.
 
 ## Format des Assets
 
@@ -55,7 +62,6 @@
 
 - ne pas référencer par chemin: “res://”
 - toujours utiliser les identifiants uniques “uid://”
-- si vous ne connaissez pas la différence, contacter immédiatement votre développeur le plus proche
 
 ### Code
 
