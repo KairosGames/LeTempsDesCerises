@@ -10,6 +10,7 @@ class_name Player extends CharacterBody3D
 
 @export_category("Exposed settings")
 @export var is_aim_locked: bool = true
+@export var is_run_lock: bool = true
 @export var is_position_switcher_locked: bool = true
 @export var is_aim_smooth: bool = true
 @export var is_movement_smooth: bool = true
@@ -21,10 +22,11 @@ class_name Player extends CharacterBody3D
 @export var aiming_fov: float = 50.0
 
 @export_category("States settings")
-@export var can_crouch: bool = true
-@export var can_lyingd: bool = true
 @export var can_run_crouched: bool = true
 @export var can_run_lyied_d: bool = true
+@export var standing_height: float = 1.6
+@export var crouch_height: float = 1.1
+@export var lyingd_height: float = 0.35
 
 @export_category("Movement speed settings")
 @export var standing_speed: float = 5.0
@@ -48,7 +50,6 @@ var is_lyied_d: bool = false
 
 var aim_vel: Vector3 = Vector3.ZERO
 var aim_target: Vector3 = Vector3.ZERO
-var last_plane_vel: Vector3
 var acc_time_ratio: float
 var brake_time_ratio: float
 
@@ -62,11 +63,125 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	process_view(delta)
 	process_movement(delta)
-	handle_aim(delta)
+	capture_states()
+	handle_states(delta)
+	process_view(delta)
 	handle_shoot(delta)
 
+
+func process_movement(delta: float) -> void:
+	apply_plane_movement(delta)
+	
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	# Handle jump.
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+	
+	move_and_slide()
+
+
+func apply_plane_movement(delta: float) -> void:
+	var mov_vec: Vector2 = player_inputs.move_vec
+	var ref_speed = get_applied_speed()
+	
+	var f_speed: float = ref_speed * abs(mov_vec.y)
+	if mov_vec.y < 0 : f_speed *= back_speed_ratio
+	var s_speed: float = abs(mov_vec.x) * ref_speed * side_speed_ratio
+	var applied_speed: float = sqrt(f_speed * f_speed + s_speed * s_speed)
+	
+	if is_movement_smooth:
+		var lcl_vel: Vector3 = global_transform.basis.inverse() * velocity
+		var lcl_dir: Vector3 = Vector3(mov_vec.x, 0.0, mov_vec.y).normalized()
+		var lcl_target_speed: Vector3 = Vector3(lcl_dir.x * applied_speed, 0.0, lcl_dir.z * applied_speed)
+		var x_brake_step: float = ref_speed * side_speed_ratio * delta * brake_time_ratio
+		var z_brake_step: float = ref_speed * delta * brake_time_ratio
+
+		if lcl_dir.x:
+			lcl_vel.x = move_toward(lcl_vel.x, lcl_target_speed.x, abs(lcl_target_speed.x) * delta * acc_time_ratio)
+			if sign(lcl_target_speed.x) and sign(lcl_vel.x) != sign(lcl_target_speed.x):
+				lcl_vel.x = move_toward(lcl_vel.x, lcl_target_speed.x, abs(lcl_target_speed.x) * delta * acc_time_ratio)
+		else:
+			lcl_vel.x = move_toward(lcl_vel.x, 0.0, x_brake_step)
+		
+		if lcl_dir.z:
+			lcl_vel.z = move_toward(lcl_vel.z, lcl_target_speed.z, abs(lcl_target_speed.z) * delta * acc_time_ratio)
+			if sign(lcl_target_speed.z) and sign(lcl_vel.z) != sign(lcl_target_speed.z):
+				lcl_vel.z = move_toward(lcl_vel.z, lcl_target_speed.z, abs(lcl_target_speed.z) * delta * acc_time_ratio)
+		else:
+			lcl_vel.z = move_toward(lcl_vel.z, 0.0, z_brake_step)
+		
+		velocity = global_transform.basis * lcl_vel
+	else:
+		var dir: Vector3 = (transform.basis * Vector3(mov_vec.x, 0, mov_vec.y).normalized())
+		var speed: Vector3 = Vector3(dir.x * applied_speed, 0.0, dir.z * applied_speed)
+		velocity = Vector3(speed.x, velocity.y, speed.z) if dir else Vector3(0.0, velocity.y, 0.0)
+
+
+func get_applied_speed() -> float:
+	if is_crouched:
+		return crouch_speed
+	elif is_lyied_d:
+		return lying_d_speed
+	elif not is_grounded:
+		return air_up_speed
+	else:
+		return standing_speed
+
+
+func capture_states() -> void:
+	capture_aim_state()
+	capture_position_state()
+
+
+func capture_aim_state() -> void:
+	if is_aim_locked:
+		if Input.is_action_just_pressed("aim"): is_aiming = !is_aiming
+	else:
+		is_aiming = Input.is_action_just_pressed("aim")
+	player_inputs.is_aiming = is_aiming
+
+
+func capture_position_state() -> void:
+	if Input.is_action_just_pressed("crouch"):
+		if not is_grounded: return
+		if is_lyied_d: is_lyied_d = false
+		if is_running: is_running = false
+		is_crouched = !is_crouched
+	
+	if Input.is_action_just_pressed("lying_down"):
+		if not is_grounded: return
+		if is_lyied_d: is_crouched = true
+		if is_running: is_running = false
+		is_lyied_d = !is_lyied_d
+		
+	if Input.is_action_just_pressed("run"):
+		if not is_grounded: return
+		if is_crouched: is_crouched = false
+		if is_lyied_d: is_lyied_d = false
+		is_running = !is_running
+
+
+func handle_states(delta: float) -> void:
+	handle_aim_state(delta)
+	handle_position_state(delta)
+
+
+func handle_aim_state(delta: float) -> void:
+	var target_pos: Vector3 = aim_pos.position if is_aiming else default_weapon_pos.position
+	var target_fov: float = aiming_fov if is_aiming else default_fov
+	weapon_container.position = weapon_container.position.lerp(target_pos, 0.15)
+	player_camera.fov = lerp(player_camera.fov, target_fov, 0.05)
+	#var a = -10.0 if is_aiming else 0.0
+	#player_camera.rotation_degrees.z = lerp_angle(player_camera.rotation_degrees.z, a, 0.1)
+
+
+func handle_position_state(delta: float) -> void:
+	if not is_crouched and not is_lyied_d: camera_pivot.position.y = 1.6
+	if is_crouched : camera_pivot.position.y = 1.1
+	if is_lyied_d: camera_pivot.position.y = 0.35
 
 func process_view(delta: float) -> void:
 	var input: PlayerInputs = player_inputs
@@ -103,85 +218,6 @@ func smooth_damp(current: float, target: float, current_velocity: float, smooth_
 	var new_velocity: float = (current_velocity - omega * temp) * expo
 	var output: float = target + (change + temp) * expo
 	return { "value": output, "velocity": new_velocity }
-
-
-func process_movement(delta: float) -> void:
-	apply_plane_movement(delta)
-	
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-	move_and_slide()
-
-
-func apply_plane_movement(delta: float) -> void:
-	var mov_vec: Vector2 = player_inputs.move_vec
-	var ref_speed = get_applied_speed()
-	
-	var f_speed: float = ref_speed * abs(mov_vec.y)
-	if mov_vec.y < 0 : f_speed *= back_speed_ratio
-	var s_speed: float = abs(mov_vec.x) * ref_speed * side_speed_ratio
-	var applied_speed: float = sqrt(f_speed * f_speed + s_speed * s_speed)
-	
-	if is_movement_smooth:
-		var lcl_vel: Vector3 = global_transform.basis.inverse() * velocity
-		var lcl_dir: Vector3 = Vector3(mov_vec.x, 0.0, mov_vec.y).normalized()
-		var lcl_target_speed: Vector3 = Vector3(lcl_dir.x * applied_speed, 0.0, lcl_dir.z * applied_speed)
-		if lcl_target_speed.x: last_plane_vel.x = lcl_vel.x
-		if lcl_target_speed.z: last_plane_vel.z = lcl_vel.z
-		
-		if lcl_dir.x:
-			lcl_vel.x = move_toward(lcl_vel.x, lcl_target_speed.x, abs(lcl_target_speed.x) * delta * acc_time_ratio)
-			if sign(lcl_target_speed.x) and sign(lcl_vel.x) != sign(lcl_target_speed.x):
-				lcl_vel.x = move_toward(lcl_vel.x, lcl_target_speed.x, abs(lcl_target_speed.x) * delta * acc_time_ratio)
-		else:
-			lcl_vel.x = move_toward(lcl_vel.x, 0.0, abs(last_plane_vel.x) * delta * brake_time_ratio)
-		
-		if lcl_dir.z:
-			lcl_vel.z = move_toward(lcl_vel.z, lcl_target_speed.z, abs(lcl_target_speed.z) * delta * acc_time_ratio)
-			if sign(lcl_target_speed.z) and sign(lcl_vel.z) != sign(lcl_target_speed.z):
-				lcl_vel.z = move_toward(lcl_vel.z, lcl_target_speed.z, abs(lcl_target_speed.z) * delta * acc_time_ratio)
-		else:
-			lcl_vel.z = move_toward(lcl_vel.z, 0.0, abs(last_plane_vel.z) * delta * brake_time_ratio)
-		
-		velocity = global_transform.basis * lcl_vel
-	else:
-		var dir: Vector3 = (transform.basis * Vector3(mov_vec.x, 0, mov_vec.y).normalized())
-		var speed: Vector3 = Vector3(dir.x * applied_speed, 0.0, dir.z * applied_speed)
-		velocity = Vector3(speed.x, velocity.y, speed.z) if dir else Vector3(0.0, velocity.y, 0.0)
-
-
-func get_applied_speed() -> float:
-	if is_crouched:
-		return crouch_speed
-	elif is_lyied_d:
-		return lying_d_speed
-	elif not is_grounded:
-		return air_up_speed
-	else:
-		return standing_speed
-
-
-func handle_aim(delta: float) -> void:
-	capture_aim_state()
-	var target_pos: Vector3 = aim_pos.position if is_aiming else default_weapon_pos.position
-	var target_fov: float = aiming_fov if is_aiming else default_fov
-	weapon_container.position = weapon_container.position.lerp(target_pos, 0.15)
-	player_camera.fov = lerp(player_camera.fov, target_fov, 0.05)
-	#var a = -10.0 if is_aiming else 0.0
-	#player_camera.rotation_degrees.z = lerp_angle(player_camera.rotation_degrees.z, a, 0.1)
-
-
-func capture_aim_state() -> void:
-	if is_aim_locked:
-		if Input.is_action_just_pressed("aim"): is_aiming = !is_aiming
-	else:
-		is_aiming = Input.is_action_just_pressed("aim")
-	player_inputs.is_aiming = is_aiming
 
 
 func handle_shoot(delta: float) -> void:
