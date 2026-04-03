@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{96E4295F-8863-4251-9883-8697799D4058}" SchemaVersion="133">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{96E4295F-8863-4251-9883-8697799D4058}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{96E4295F-8863-4251-9883-8697799D4058}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Player" ID="{7B0A9415-14AE-4E7B-8899-C0FD357F6959}" ShortID="860806700">
+					<ChildrenList>
+						<Event Name="Player_Shoot" ID="{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}">
+							<ChildrenList>
+								<Action Name="" ID="{EDE24413-AD02-4D03-BE3C-E6BCF78AB722}" ShortID="804408190">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerCrack_Oneshot" ID="{D9D474F4-91F3-48CC-AE2C-7F9A03CF6129}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{D977A9E7-CF33-46F5-9FAF-F9A0C212AF90}" ShortID="954143357">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{5FBC319D-C008-4154-8C2C-738AA4173B8A}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Player_Reload" ID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}">
+							<ChildrenList>
+								<Action Name="" ID="{1CC1AD89-3C14-41DE-8A0B-30AC7340D5AB}" ShortID="604875797">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Player_Reload_Oneshot" ID="{E9FDFEC8-A3E8-44FB-A1F6-94A74981BCFA}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Amb_Cannons" ID="{42733E42-B5F5-44F1-98EB-A729172BF973}">
+							<ChildrenList>
+								<Action Name="" ID="{6AE5ACCD-44AC-4F68-9A6C-61722BEF355E}" ShortID="360158429">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Cannons_Heavy" ID="{AFA4CAE5-B7DA-4996-BD00-7E1362AC1F4E}" WorkUnitID="{C021C757-01C4-4039-B7FC-F2B868336782}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{44B9A6FB-E5C3-4D49-9028-3BE09B5C5F4A}" ShortID="655955233">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Cannons_Light" ID="{BE8593A3-2955-490C-943A-F1D753BDF488}" WorkUnitID="{C021C757-01C4-4039-B7FC-F2B868336782}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

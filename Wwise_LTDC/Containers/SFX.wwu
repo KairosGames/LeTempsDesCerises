@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}" SchemaVersion="133">
+	<Containers>
+		<WorkUnit Name="SFX" ID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="10"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<PropertyContainer Name="Characters" ID="{9F56B063-CAF4-40DB-B12A-118D8AC7B044}" ShortID="214376114">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<PropertyContainer Name="Player" ID="{BA5EE073-0BF3-4F39-9FA2-758F3B1D7E16}" ShortID="101383223">
+							<PropertyList>
+								<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+								<Property Name="UserAuxSendVolume0" Type="Real64">
+									<ValueList>
+										<Value>-18</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
+								<Reference Name="UserAuxSend0">
+									<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<PropertyContainer Name="Chassepot" ID="{2C7E86A7-AE31-4B62-932A-3CE2293EFE73}" ShortID="711613522">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="LTDC_SFX_Player_GunShot_LayerCrack_Oneshot" ID="{D9D474F4-91F3-48CC-AE2C-7F9A03CF6129}" ShortID="516835742">
+											<PropertyList>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerCrack_Oneshot" ID="{A1E62118-B1C2-4320-B59D-CB3ED7EEBA20}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerCrack_Oneshot.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="632494295"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="Player_Aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
+														<StateGroupInfo Name="" ID="{44C3841E-D10D-4C46-B021-874C2F151AC3}" ShortID="372319134"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="False" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+														<CustomState Name="" ID="{73BBDDC1-5736-45CB-869B-1ACE060EA65A}" ShortID="867201476">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-3"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{3F4E19DC-A92B-410B-A80A-BE5560C10551}"/>
+														<CustomState Name="" ID="{D9837B74-4A36-4E80-B94A-830A4299EC26}" ShortID="327398068"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="True" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+														<CustomState Name="" ID="{2B2552EB-12EA-4662-997E-B2FFE26069FA}" ShortID="503758153">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="3"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<EffectSlot Name="" ID="{2B2B7FDE-60AD-4DA5-ADCA-572122E447B6}" ShortID="84687301">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom>
+																	<Effect Name="Parametric EQ (Custom)" ID="{B4DFA687-744B-4E3F-8A04-9DF39B1C80C8}" ShortID="641257012" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																		<PropertyList>
+																			<Property Name="FilterTypeBand1" Type="int32" Value="6"/>
+																			<Property Name="GainBand1" Type="Real32" Value="3"/>
+																			<Property Name="OnOffBand2" Type="bool" Value="False"/>
+																			<Property Name="QFactorBand1" Type="Real32" Value="3"/>
+																		</PropertyList>
+																		<StateInfo>
+																			<StatePropertyList>
+																				<Property Name="GainBand1"/>
+																			</StatePropertyList>
+																			<StateGroupList>
+																				<StateGroupInfo>
+																					<StateGroupRef Name="Player_Aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
+																					<StateGroupInfo Name="" ID="{8BB0CB49-AC78-4A23-887E-F784DFC59C52}" ShortID="812061401"/>
+																				</StateGroupInfo>
+																			</StateGroupList>
+																			<CustomStateList>
+																				<CustomState>
+																					<StateRef Name="False" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+																					<CustomState Name="" ID="{E3A4C08D-4855-48A8-8000-388D8AD74BF7}" ShortID="109217824">
+																						<PropertyList>
+																							<Property Name="GainBand1" Type="Real32" Value="-3"/>
+																						</PropertyList>
+																					</CustomState>
+																				</CustomState>
+																				<CustomState>
+																					<StateRef Name="None" ID="{3F4E19DC-A92B-410B-A80A-BE5560C10551}"/>
+																					<CustomState Name="" ID="{51518154-7D96-4A9E-8ED2-7EAC794DA4C3}" ShortID="199465047"/>
+																				</CustomState>
+																				<CustomState>
+																					<StateRef Name="True" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+																					<CustomState Name="" ID="{7CBECCBF-EBDC-4877-9C56-C7A2694BF853}" ShortID="301587781"/>
+																				</CustomState>
+																			</CustomStateList>
+																		</StateInfo>
+																	</Effect>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+														<StateInfo>
+															<CustomStateList>
+																<CustomState>
+																	<StateRef Name="False" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+																	<CustomState Name="" ID="{80524F48-174A-4F69-8D0D-B42C5056DE30}" ShortID="434035938"/>
+																</CustomState>
+																<CustomState>
+																	<StateRef Name="None" ID="{3F4E19DC-A92B-410B-A80A-BE5560C10551}"/>
+																	<CustomState Name="" ID="{A5D56625-9BF9-46CA-BB51-C6DC648D0E8F}" ShortID="1008905367"/>
+																</CustomState>
+																<CustomState>
+																	<StateRef Name="True" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+																	<CustomState Name="" ID="{75F50C18-1F28-4B9E-9D53-38B3669A4EF4}" ShortID="86444508"/>
+																</CustomState>
+															</CustomStateList>
+														</StateInfo>
+													</EffectSlot>
+												</ObjectList>
+											</ObjectLists>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerCrack_Oneshot" ID="{A1E62118-B1C2-4320-B59D-CB3ED7EEBA20}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Player_Reload_Oneshot" ID="{E9FDFEC8-A3E8-44FB-A1F6-94A74981BCFA}" ShortID="600803265">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Player_Reload_Oneshot" ID="{987318DC-D910-403E-940B-692DA5CB1EE9}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\LTDC_SFX_Player_Reload_Oneshot.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="605834236"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Player_Reload_Oneshot" ID="{987318DC-D910-403E-940B-692DA5CB1EE9}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{5FBC319D-C008-4154-8C2C-738AA4173B8A}" ShortID="4250792">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>0.075</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{869C5124-E9C2-49FF-9357-4424E580906B}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Oneshot.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="247688113"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{869C5124-E9C2-49FF-9357-4424E580906B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</PropertyContainer>
+							</ChildrenList>
+							<PositioningInfo>
+								<Panner Name="" ID="{087146D1-5D25-4948-979C-BB39A0B9F49D}"/>
+							</PositioningInfo>
+						</PropertyContainer>
+						<PropertyContainer Name="NPC" ID="{CB1330C3-3823-4AB6-82D7-F9575070B11F}" ShortID="420998186">
+							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX_NPC" ID="{C50F8E9D-E1E1-4B38-A0FA-27AA94AFC147}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
+							</ReferenceList>
+						</PropertyContainer>
+					</ChildrenList>
+				</PropertyContainer>
+			</ChildrenList>
+		</WorkUnit>
+	</Containers>
+</WwiseDocument>

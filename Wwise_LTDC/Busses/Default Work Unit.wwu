@@ -9,6 +9,111 @@
 							<ObjectRef Name="System" ID="{4D4AD273-68C1-440A-B66A-544BF2C11596}" WorkUnitID="{D735F844-887C-4A98-9F58-CBDB3795BB8B}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="SFX" ID="{8FE46C9B-4641-43D1-B739-F2D46260CC7F}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Bus Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}"/>
+								<Bus Name="SFX_NPC" ID="{C50F8E9D-E1E1-4B38-A0FA-27AA94AFC147}"/>
+							</ChildrenList>
+						</Bus>
+						<Bus Name="AMB" ID="{3C49B583-C63B-4CCB-A1B9-D71E082D055E}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="4"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="UI" ID="{D7CABC36-B31D-4789-A7B2-46175473A0AA}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="19"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="VX" ID="{E8C3D5DB-24D6-472C-93CA-D6BB12427941}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="11"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Bus Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}"/>
+								<Bus Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}"/>
+							</ChildrenList>
+						</Bus>
+						<AuxBus Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}">
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{C018B161-ACC3-41BB-A001-DD14346D966A}" ShortID="705874818">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom CreatedFrom="{7B15BCFE-88CF-43F0-9ABE-9B70D7526277}">
+													<Effect Name="City_Streets (Custom)" ID="{70831763-CD31-4785-B5F3-FC37FE270729}" ShortID="586941969" PluginName="iZotope Hybrid Reverb" CompanyID="259" PluginID="2" PluginType="3">
+														<PropertyList>
+															<Property Name="DecayHighRatio" Type="Real32" Value="1.5"/>
+															<Property Name="DecayLowFrequency" Type="Real32" Value="800"/>
+															<Property Name="DecayLowRatio" Type="Real32" Value="0.25"/>
+															<Property Name="DecayMidRatio" Type="Real32" Value="0.75"/>
+															<Property Name="DecayTime" Type="Real32" Value="2"/>
+															<Property Name="EarlyGain" Type="Real32" Value="-12"/>
+														</PropertyList>
+														<ChildrenList>
+															<PluginMediaSource Name="City Streets" ID="{6DABD4E4-8EB3-4086-8073-7DD586ECCD22}">
+																<ParentPluginID>135219</ParentPluginID>
+																<PropertyList>
+																	<Property Name="DataFileName" Type="string" Value="City Streets.wav"/>
+																</PropertyList>
+																<MediaIDList>
+																	<MediaID ID="8078194"/>
+																</MediaIDList>
+															</PluginMediaSource>
+														</ChildrenList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<AuxBus Name="Crossroad_Reverb" ID="{E0D81FD7-70C7-423D-A407-E22F8798C01C}">
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{F4AD4A36-05AE-4386-9531-E85EBC162CF9}" ShortID="117752600">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom CreatedFrom="{C0BCFD9D-288E-4551-A9AA-651BD535AFE7}">
+													<Effect Name="City_Center (Custom)" ID="{0CED8B58-229C-4808-884B-315BA8D32323}" ShortID="550680016" PluginName="iZotope Hybrid Reverb" CompanyID="259" PluginID="2" PluginType="3">
+														<PropertyList>
+															<Property Name="DecayHighFrequency" Type="Real32" Value="8000"/>
+															<Property Name="DecayHighRatio" Type="Real32" Value="0.8789631"/>
+															<Property Name="DecayLowFrequency" Type="Real32" Value="800"/>
+															<Property Name="DecayLowRatio" Type="Real32" Value="0.487843"/>
+															<Property Name="DecayMidRatio" Type="Real32" Value="0.88"/>
+															<Property Name="DecayTime" Type="Real32" Value="1"/>
+															<Property Name="EarlyGain" Type="Real32" Value="-12"/>
+														</PropertyList>
+														<ChildrenList>
+															<PluginMediaSource Name="City Center" ID="{393E78FF-C58D-48AC-ACCA-F6F510B8C558}">
+																<ParentPluginID>135219</ParentPluginID>
+																<PropertyList>
+																	<Property Name="DataFileName" Type="string" Value="City Center.wav"/>
+																</PropertyList>
+																<MediaIDList>
+																	<MediaID ID="379374117"/>
+																</MediaIDList>
+															</PluginMediaSource>
+														</ChildrenList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+					</ChildrenList>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>
