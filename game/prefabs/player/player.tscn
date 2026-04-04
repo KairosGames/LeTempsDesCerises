@@ -16,7 +16,7 @@ albedo_color = Color(0.5330367, 0.5330367, 0.5330367, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_r66lb"]
 material = SubResource("StandardMaterial3D_r66lb")
-size = Vector3(0.1, 0.1, 1.7)
+size = Vector3(0.1, 0.1, 1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1txc5"]
 albedo_color = Color(0.011087579, 0.011087578, 0.01108758, 1)
@@ -38,6 +38,14 @@ albedo_color = Color(0.04755766, 0.047557645, 0.047557645, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_g2jcq"]
 material = SubResource("StandardMaterial3D_g2jcq")
 size = Vector3(0.04, 0.03, 0.005)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wv1mm"]
+albedo_color = Color(0.07762883, 0.07762881, 0.07762881, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_binfn"]
+material = SubResource("StandardMaterial3D_wv1mm")
+radius = 0.05
+height = 0.01
 
 [node name="Player" type="CharacterBody3D" unique_id=1368497348]
 floor_max_angle = 0.5235988
@@ -73,14 +81,17 @@ shape = SubResource("CapsuleShape3D_fp3wc")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
-[node name="PlayerCamera" type="Camera3D" parent="CameraPivot" unique_id=619415518]
+[node name="CameraBase" type="Node3D" parent="CameraPivot" unique_id=36626819]
+unique_name_in_owner = true
+
+[node name="PlayerCamera" type="Camera3D" parent="CameraPivot/CameraBase" unique_id=619415518]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 near = 0.01
 
 [node name="DefaultWeaponPos" type="Marker3D" parent="CameraPivot" unique_id=675375272]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.3, 0.2)
 
 [node name="AimPos" type="Marker3D" parent="CameraPivot" unique_id=971970464]
 unique_name_in_owner = true
@@ -88,13 +99,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07, 0)
 
 [node name="WeaponContainer" type="Node3D" parent="CameraPivot" unique_id=1925293918]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.3, 0.2)
 
 [node name="Weapon" type="Node3D" parent="CameraPivot/WeaponContainer" unique_id=1348503296]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.95)
 
 [node name="Base" type="MeshInstance3D" parent="CameraPivot/WeaponContainer/Weapon" unique_id=743249631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.107789636)
 mesh = SubResource("BoxMesh_r66lb")
 
 [node name="FrontSight" type="MeshInstance3D" parent="CameraPivot/WeaponContainer/Weapon" unique_id=485469517]
@@ -120,3 +131,7 @@ mesh = SubResource("BoxMesh_ht1c8")
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="CameraPivot/WeaponContainer/Weapon/RearSight" unique_id=1301150542]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04459071, 0)
 mesh = SubResource("BoxMesh_g2jcq")
+
+[node name="NearCircle" type="MeshInstance3D" parent="CameraPivot/WeaponContainer/Weapon" unique_id=721717754]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.017079473, -0.8463017)
+mesh = SubResource("SphereMesh_binfn")

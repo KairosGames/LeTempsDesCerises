@@ -2,6 +2,7 @@ class_name Player extends CharacterBody3D
 
 @onready var player_inputs: PlayerInputs = %PlayerInputs
 @onready var camera_pivot: Node3D = %CameraPivot
+@onready var camera_base: Node3D = %CameraBase
 @onready var player_camera: Camera3D = %PlayerCamera
 @onready var weapon_container: Node3D = %WeaponContainer
 @onready var default_weapon_pos: Marker3D = %DefaultWeaponPos
@@ -18,8 +19,13 @@ class_name Player extends CharacterBody3D
 @export_category("View settings")
 @export var v_clamp_deg: Vector2 = Vector2(-70.0, 70.0)
 @export_range(0.01, 1.0, 0.01) var aiming_reducer_ratio: float = 0.5
+
+@export_category("Aim settings")
 @export var default_fov: float = 75.0
-@export var aiming_fov: float = 50.0
+@export var aiming_fov: float = 60.0
+@export var aiming_time: float = 0.4
+@export var is_aiming_rot_active: bool = true
+@export var aiming_rot: float = 2.0
 
 @export_category("States settings")
 @export var can_run_crouched: bool = true
@@ -47,6 +53,12 @@ var is_aiming: bool = false
 var is_running: bool = false
 var is_crouched:bool = false
 var is_lyied_d: bool = false
+
+var wpn_x_aim_twn: Tween
+var wpn_y_aim_twn: Tween
+var wpn_z_aim_twn: Tween
+var fov_aim_twn: Tween
+var cam_rot_aim_twn: Tween
 
 var aim_vel: Vector3 = Vector3.ZERO
 var aim_target: Vector3 = Vector3.ZERO
@@ -137,11 +149,14 @@ func capture_states() -> void:
 
 
 func capture_aim_state() -> void:
+	var flag: bool = is_aiming
 	if is_aim_locked:
 		if Input.is_action_just_pressed("aim"): is_aiming = !is_aiming
 	else:
-		is_aiming = Input.is_action_just_pressed("aim")
+		is_aiming = Input.is_action_pressed("aim")
 	player_inputs.is_aiming = is_aiming
+	if flag != is_aiming :
+		switch_aim_state()
 
 
 func capture_position_state() -> void:
@@ -165,23 +180,43 @@ func capture_position_state() -> void:
 
 
 func handle_states(delta: float) -> void:
-	handle_aim_state(delta)
+	#handle_aim_state()
 	handle_position_state(delta)
 
 
-func handle_aim_state(delta: float) -> void:
+func switch_aim_state() -> void:
 	var target_pos: Vector3 = aim_pos.position if is_aiming else default_weapon_pos.position
 	var target_fov: float = aiming_fov if is_aiming else default_fov
-	weapon_container.position = weapon_container.position.lerp(target_pos, 0.15)
-	player_camera.fov = lerp(player_camera.fov, target_fov, 0.05)
-	#var a = -10.0 if is_aiming else 0.0
-	#player_camera.rotation_degrees.z = lerp_angle(player_camera.rotation_degrees.z, a, 0.1)
+	var taget_rot: float = aiming_rot if is_aiming else 0.0
+	var ratio = inverse_lerp(default_weapon_pos.position.x, aim_pos.position.x, weapon_container.position.x)
+	var time = aiming_time * ((1 - ratio) if is_aiming else ratio)
+	var ea1: Tween.EaseType = Tween.EASE_OUT if is_aiming else Tween.EASE_IN
+	var ea2: Tween.EaseType = Tween.EASE_IN if is_aiming else Tween.EASE_OUT
+	
+	if wpn_x_aim_twn:
+		wpn_x_aim_twn.kill()
+		if wpn_y_aim_twn: wpn_y_aim_twn.kill()
+		if wpn_z_aim_twn: wpn_z_aim_twn.kill()
+		if fov_aim_twn: fov_aim_twn.kill()
+		if cam_rot_aim_twn: cam_rot_aim_twn.kill()
+	wpn_x_aim_twn = create_tween()
+	wpn_y_aim_twn = create_tween()
+	wpn_z_aim_twn = create_tween()
+	fov_aim_twn = create_tween()
+	cam_rot_aim_twn = create_tween()
+	wpn_x_aim_twn.tween_property(weapon_container, "position:x", target_pos.x, time).set_trans(Tween.TRANS_SINE).set_ease(ea1)
+	wpn_y_aim_twn.tween_property(weapon_container, "position:y", target_pos.y, time).set_trans(Tween.TRANS_SINE).set_ease(ea1)
+	wpn_z_aim_twn.tween_property(weapon_container, "position:z", target_pos.z, time).set_trans(Tween.TRANS_QUINT).set_ease(ea2)
+	fov_aim_twn.tween_property(player_camera, "fov", target_fov, time).set_trans(Tween.TRANS_SINE).set_ease(ea2)
+	if is_aiming_rot_active:
+		cam_rot_aim_twn.tween_property(camera_base, "rotation_degrees:z", taget_rot, time).set_trans(Tween.TRANS_QUINT).set_ease(ea2)
 
 
 func handle_position_state(delta: float) -> void:
 	if not is_crouched and not is_lyied_d: camera_pivot.position.y = 1.6
 	if is_crouched : camera_pivot.position.y = 1.1
 	if is_lyied_d: camera_pivot.position.y = 0.35
+
 
 func process_view(delta: float) -> void:
 	var input: PlayerInputs = player_inputs
