@@ -19,11 +19,17 @@
 					<ChildrenList>
 						<PropertyContainer Name="Player" ID="{BA5EE073-0BF3-4F39-9FA2-758F3B1D7E16}" ShortID="101383223">
 							<PropertyList>
+								<Property Name="GameAuxSendDSF" Type="Real64">
+									<ValueList>
+										<Value>-20</Value>
+									</ValueList>
+								</Property>
 								<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+								<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
 								<Property Name="OverrideOutput" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 								<Property Name="UserAuxSendVolume0" Type="Real64">
 									<ValueList>
 										<Value>-18</Value>
@@ -40,6 +46,11 @@
 							</ReferenceList>
 							<ChildrenList>
 								<PropertyContainer Name="Chassepot" ID="{2C7E86A7-AE31-4B62-932A-3CE2293EFE73}" ShortID="711613522">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -47,11 +58,26 @@
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="LTDC_SFX_Player_GunShot_LayerCrack_Oneshot" ID="{D9D474F4-91F3-48CC-AE2C-7F9A03CF6129}" ShortID="516835742">
 											<PropertyList>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
 												<Property Name="OverrideEffect" Type="bool" Value="True"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -73,13 +99,13 @@
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
-														<StateGroupRef Name="Player_Aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
+														<StateGroupRef Name="player_aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
 														<StateGroupInfo Name="" ID="{44C3841E-D10D-4C46-B021-874C2F151AC3}" ShortID="372319134"/>
 													</StateGroupInfo>
 												</StateGroupList>
 												<CustomStateList>
 													<CustomState>
-														<StateRef Name="False" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+														<StateRef Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
 														<CustomState Name="" ID="{73BBDDC1-5736-45CB-869B-1ACE060EA65A}" ShortID="867201476">
 															<PropertyList>
 																<Property Name="Volume" Type="Real64" Value="-3"/>
@@ -91,7 +117,7 @@
 														<CustomState Name="" ID="{D9837B74-4A36-4E80-B94A-830A4299EC26}" ShortID="327398068"/>
 													</CustomState>
 													<CustomState>
-														<StateRef Name="True" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+														<StateRef Name="true" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
 														<CustomState Name="" ID="{2B2552EB-12EA-4662-997E-B2FFE26069FA}" ShortID="503758153">
 															<PropertyList>
 																<Property Name="Volume" Type="Real64" Value="3"/>
@@ -119,13 +145,13 @@
 																			</StatePropertyList>
 																			<StateGroupList>
 																				<StateGroupInfo>
-																					<StateGroupRef Name="Player_Aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
+																					<StateGroupRef Name="player_aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
 																					<StateGroupInfo Name="" ID="{8BB0CB49-AC78-4A23-887E-F784DFC59C52}" ShortID="812061401"/>
 																				</StateGroupInfo>
 																			</StateGroupList>
 																			<CustomStateList>
 																				<CustomState>
-																					<StateRef Name="False" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+																					<StateRef Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
 																					<CustomState Name="" ID="{E3A4C08D-4855-48A8-8000-388D8AD74BF7}" ShortID="109217824">
 																						<PropertyList>
 																							<Property Name="GainBand1" Type="Real32" Value="-3"/>
@@ -137,7 +163,7 @@
 																					<CustomState Name="" ID="{51518154-7D96-4A9E-8ED2-7EAC794DA4C3}" ShortID="199465047"/>
 																				</CustomState>
 																				<CustomState>
-																					<StateRef Name="True" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+																					<StateRef Name="true" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
 																					<CustomState Name="" ID="{7CBECCBF-EBDC-4877-9C56-C7A2694BF853}" ShortID="301587781"/>
 																				</CustomState>
 																			</CustomStateList>
@@ -149,7 +175,7 @@
 														<StateInfo>
 															<CustomStateList>
 																<CustomState>
-																	<StateRef Name="False" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+																	<StateRef Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
 																	<CustomState Name="" ID="{80524F48-174A-4F69-8D0D-B42C5056DE30}" ShortID="434035938"/>
 																</CustomState>
 																<CustomState>
@@ -157,7 +183,7 @@
 																	<CustomState Name="" ID="{A5D56625-9BF9-46CA-BB51-C6DC648D0E8F}" ShortID="1008905367"/>
 																</CustomState>
 																<CustomState>
-																	<StateRef Name="True" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+																	<StateRef Name="true" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
 																	<CustomState Name="" ID="{75F50C18-1F28-4B9E-9D53-38B3669A4EF4}" ShortID="86444508"/>
 																</CustomState>
 															</CustomStateList>
@@ -170,7 +196,112 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_Player_Reload_Oneshot" ID="{E9FDFEC8-A3E8-44FB-A1F6-94A74981BCFA}" ShortID="600803265">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<Custom>
+														<Attenuation Name="Attenuation (Custom)" ID="{9071D778-A625-4BDB-AD1C-21BFB97183D7}" ShortID="212666304">
+															<PropertyList>
+																<Property Name="RadiusMax" Type="Real64" Value="10"/>
+															</PropertyList>
+															<CurveUsageInfoList>
+																<VolumeDryUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																		<Curve Name="VolumeDry" ID="{04FF5885-B4B2-4EEC-9C3C-976468CBF20F}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="3"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>0</YPos>
+																					<Flags>5</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>10</XPos>
+																					<YPos>-200</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</VolumeDryUsage>
+																<VolumeWetGameUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetGameUsage>
+																<VolumeWetUserUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetUserUsage>
+																<LowPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</LowPassFilterUsage>
+																<HighPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</HighPassFilterUsage>
+																<DualShelfUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</DualShelfUsage>
+																<SpreadUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</SpreadUsage>
+																<FocusUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</FocusUsage>
+																<ObstructionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionVolumeUsage>
+																<ObstructionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionLPFUsage>
+																<ObstructionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionHPFUsage>
+																<ObstructionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionDSFUsage>
+																<OcclusionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionVolumeUsage>
+																<OcclusionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionLPFUsage>
+																<OcclusionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionHPFUsage>
+																<OcclusionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionDSFUsage>
+																<DiffractionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionVolumeUsage>
+																<DiffractionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionLPFUsage>
+																<DiffractionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionHPFUsage>
+																<DiffractionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionDSFUsage>
+																<TransmissionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionVolumeUsage>
+																<TransmissionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionLPFUsage>
+																<TransmissionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionHPFUsage>
+																<TransmissionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionDSFUsage>
+															</CurveUsageInfoList>
+														</Attenuation>
+													</Custom>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 												</Reference>
@@ -193,9 +324,37 @@
 										</Sound>
 										<Sound Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{5FBC319D-C008-4154-8C2C-738AA4173B8A}" ShortID="4250792">
 											<PropertyList>
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
-														<Value>0.075</Value>
+														<Value>0.1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>1000</Value>
+													</ValueList>
+													<ModifierList>
+														<ModifierInfo>
+															<Modifier Name="" ID="{4558BF4D-1A2F-48B1-B2B4-E56CD82557E7}">
+																<PropertyList>
+																	<Property Name="Enabled" Type="bool" Value="True"/>
+																	<Property Name="Max" Type="Real64" Value="200"/>
+																	<Property Name="Min" Type="Real64" Value="-200"/>
+																</PropertyList>
+															</Modifier>
+														</ModifierInfo>
+													</ModifierList>
+												</Property>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -219,13 +378,13 @@
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
-														<StateGroupRef Name="Player_Aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
+														<StateGroupRef Name="player_aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
 														<StateGroupInfo Name="" ID="{D2B26F99-229E-4E76-8DE9-21077D35E9DB}" ShortID="849000322"/>
 													</StateGroupInfo>
 												</StateGroupList>
 												<CustomStateList>
 													<CustomState>
-														<StateRef Name="False" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+														<StateRef Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
 														<CustomState Name="" ID="{3C2E1845-89D4-4083-9CA7-17B87717A8F7}" ShortID="975043494"/>
 													</CustomState>
 													<CustomState>
@@ -233,7 +392,7 @@
 														<CustomState Name="" ID="{BFC31552-2EDF-4B86-9BAA-961B77787059}" ShortID="421823786"/>
 													</CustomState>
 													<CustomState>
-														<StateRef Name="True" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+														<StateRef Name="true" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
 														<CustomState Name="" ID="{C4215E79-A99B-4AE4-A641-D87E90CB4293}" ShortID="469130697"/>
 													</CustomState>
 												</CustomStateList>

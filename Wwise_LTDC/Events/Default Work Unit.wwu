@@ -6,6 +6,13 @@
 				<Folder Name="Player" ID="{7B0A9415-14AE-4E7B-8899-C0FD357F6959}" ShortID="860806700">
 					<ChildrenList>
 						<Event Name="Player_Shoot" ID="{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}">
+							<PropertyList>
+								<Property Name="CooldownTime" Type="Real32">
+									<ValueList>
+										<Value>4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{EDE24413-AD02-4D03-BE3C-E6BCF78AB722}" ShortID="804408190">
 									<ReferenceList>
@@ -18,6 +25,17 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{5FBC319D-C008-4154-8C2C-738AA4173B8A}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{0757853D-5F30-46D7-99DA-CEF3FC21010E}" ShortID="919968281">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Reload" ID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}" WorkUnitID="{96E4295F-8863-4251-9883-8697799D4058}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -49,6 +67,13 @@
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Cannons_Light" ID="{BE8593A3-2955-490C-943A-F1D753BDF488}" WorkUnitID="{C021C757-01C4-4039-B7FC-F2B868336782}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{5A9BC714-E2B9-44B1-8C1B-4CF4C10755EC}" ShortID="869058987">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LTDC_AMB_Street_WindBirds_Loop" ID="{34497A7D-ABE1-409E-92D5-E3B8A7BC49D6}" WorkUnitID="{C021C757-01C4-4039-B7FC-F2B868336782}"/>
 								</Reference>
 							</ReferenceList>
 						</Action>

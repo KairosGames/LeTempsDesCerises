@@ -161,16 +161,19 @@ guid = "{46D92596-0E19-4482-83A1-FAABFE94F255}"
 id = 1728828729
 
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_i5cxa"]
+path = "\\Busses\\Default Work Unit\\Main Audio Bus\\VX"
 children = [SubResource("WwiseTreeObject_o7sea"), SubResource("WwiseTreeObject_lrto0")]
+type = 2
 name = "VX"
+guid = "{E8C3D5DB-24D6-472C-93CA-D6BB12427941}"
 id = 1534528563
 
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_ptp8y"]
-path = "\\Busses\\Default Work Unit\\Main Audio Bus\\UI"
-type = 2
-name = "UI"
-guid = "{D7CABC36-B31D-4789-A7B2-46175473A0AA}"
-id = 1551306167
+path = "\\Busses\\Default Work Unit\\Main Audio Bus\\Crossroad_Reverb"
+type = 1
+name = "Crossroad_Reverb"
+guid = "{E0D81FD7-70C7-423D-A407-E22F8798C01C}"
+id = 1865335600
 
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_26l8v"]
 path = "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb"
@@ -187,18 +190,15 @@ guid = "{3C49B583-C63B-4CCB-A1B9-D71E082D055E}"
 id = 1117531639
 
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_viedb"]
-path = "\\Busses\\Default Work Unit\\Main Audio Bus\\Crossroad_Reverb"
-type = 1
-name = "Crossroad_Reverb"
-guid = "{E0D81FD7-70C7-423D-A407-E22F8798C01C}"
-id = 1865335600
+path = "\\Busses\\Default Work Unit\\Main Audio Bus\\UI"
+type = 2
+name = "UI"
+guid = "{D7CABC36-B31D-4789-A7B2-46175473A0AA}"
+id = 1551306167
 
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_bq6kk"]
-path = "\\Busses\\Default Work Unit\\Main Audio Bus"
 children = [SubResource("WwiseTreeObject_tnib1"), SubResource("WwiseTreeObject_i5cxa"), SubResource("WwiseTreeObject_ptp8y"), SubResource("WwiseTreeObject_26l8v"), SubResource("WwiseTreeObject_hir8t"), SubResource("WwiseTreeObject_viedb")]
-type = 2
 name = "Main Audio Bus"
-guid = "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
 id = 2246998526
 
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_hssb3"]
@@ -216,8 +216,8 @@ guid = "{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}"
 id = 1650679582
 
 [sub_resource type="WwiseTreeObjectEvent" id="WwiseTreeObjectEvent_5ppdk"]
-max_duration = 1.5450625
-min_duration = 1.5450625
+max_duration = 1.0260813
+min_duration = 0.8350313
 path = "\\Events\\Default Work Unit\\Player\\Player_Shoot"
 type = 3
 name = "Player_Shoot"
@@ -230,7 +230,6 @@ name = "Player"
 id = 1069431850
 
 [sub_resource type="WwiseTreeObjectEvent" id="WwiseTreeObjectEvent_63ewg"]
-max_attenuation = 100.0
 max_duration = 0.0
 min_duration = 0.0
 path = "\\Events\\Default Work Unit\\Amb_Cannons"
@@ -264,31 +263,31 @@ name = "Default Work Unit"
 id = 125608783
 
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_q407k"]
-path = "\\States\\Default Work Unit\\Player_Aim\\False"
-type = 8
-name = "False"
-guid = "{52DF5189-E217-4078-800D-004BD7764C75}"
-id = 2452206122
-
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_o561g"]
-path = "\\States\\Default Work Unit\\Player_Aim\\None"
+path = "\\States\\Default Work Unit\\player_aim\\None"
 type = 8
 name = "None"
 guid = "{3F4E19DC-A92B-410B-A80A-BE5560C10551}"
 id = 748895195
 
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_dipfp"]
-path = "\\States\\Default Work Unit\\Player_Aim\\True"
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_o561g"]
+path = "\\States\\Default Work Unit\\player_aim\\false"
 type = 8
-name = "True"
+name = "false"
+guid = "{52DF5189-E217-4078-800D-004BD7764C75}"
+id = 2452206122
+
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_dipfp"]
+path = "\\States\\Default Work Unit\\player_aim\\true"
+type = 8
+name = "true"
 guid = "{70CC75B8-1662-466B-9357-884CFAE6C01A}"
 id = 3053630529
 
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_orwwv"]
-path = "\\States\\Default Work Unit\\Player_Aim"
+path = "\\States\\Default Work Unit\\player_aim"
 children = [SubResource("WwiseTreeObject_q407k"), SubResource("WwiseTreeObject_o561g"), SubResource("WwiseTreeObject_dipfp")]
 type = 9
-name = "Player_Aim"
+name = "player_aim"
 guid = "{7362EAF4-693E-48B0-8152-B407DED80E5E}"
 id = 1608601952
 

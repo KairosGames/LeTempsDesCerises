@@ -10,19 +10,11 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{29683EA1-CEC7-66A0-8CB0-3B478C56B981}",
+    "Hash": "{1E97409C-19AE-356E-FA63-DDD4850D6F39}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
     "Media": [
-     {
-      "Id": "8078194",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "OtherBank",
-      "ShortName": "City Streets.wav",
-      "CachePath": "AD/{AD83EB99-56C0-D728-CE45-19A091673058}.wem"
-     },
      {
       "Id": "379374117",
       "Language": "SFX",
@@ -30,10 +22,31 @@
       "Location": "OtherBank",
       "ShortName": "City Center.wav",
       "CachePath": "2E/{2EDDDD61-30F2-CE38-83CC-42EE7CBC8969}.wem"
+     },
+     {
+      "Id": "703094020",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "OtherBank",
+      "ShortName": "Rock Wall.wav",
+      "CachePath": "FF/{FFAA9843-0356-6C4B-E965-6A2FC4BFF06B}.wem"
      }
     ],
     "Plugins": {
      "Custom": [
+      {
+       "Id": "533053550",
+       "Name": "Rock_Wall (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb\\[Effect Slot [0]: (iZotope Hybrid Reverb)]\\Rock_Wall (Custom)",
+       "GUID": "{2CCC9090-E691-4889-BA69-7113F96FF00C}",
+       "LibName": "iZotope Hybrid Reverb",
+       "LibId": "135219",
+       "MediaRefs": [
+        {
+         "Id": "703094020"
+        }
+       ]
+      },
       {
        "Id": "550680016",
        "Name": "City_Center (Custom)",
@@ -44,19 +57,6 @@
        "MediaRefs": [
         {
          "Id": "379374117"
-        }
-       ]
-      },
-      {
-       "Id": "586941969",
-       "Name": "City_Streets (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb\\[Effect Slot [0]: (iZotope Hybrid Reverb)]\\City_Streets (Custom)",
-       "GUID": "{70831763-CD31-4785-B5F3-FC37FE270729}",
-       "LibName": "iZotope Hybrid Reverb",
-       "LibId": "135219",
-       "MediaRefs": [
-        {
-         "Id": "8078194"
         }
        ]
       }
@@ -166,7 +166,7 @@
       "PluginRefs": {
        "Custom": [
         {
-         "Id": "586941969"
+         "Id": "533053550"
         }
        ]
       }
@@ -189,26 +189,26 @@
     "StateGroups": [
      {
       "Id": "1608601952",
-      "Name": "Player_Aim",
-      "ObjectPath": "\\States\\Default Work Unit\\Player_Aim",
+      "Name": "player_aim",
+      "ObjectPath": "\\States\\Default Work Unit\\player_aim",
       "GUID": "{7362EAF4-693E-48B0-8152-B407DED80E5E}",
       "States": [
        {
         "Id": "748895195",
         "Name": "None",
-        "ObjectPath": "\\States\\Default Work Unit\\Player_Aim\\None",
+        "ObjectPath": "\\States\\Default Work Unit\\player_aim\\None",
         "GUID": "{3F4E19DC-A92B-410B-A80A-BE5560C10551}"
        },
        {
         "Id": "2452206122",
-        "Name": "False",
-        "ObjectPath": "\\States\\Default Work Unit\\Player_Aim\\False",
+        "Name": "false",
+        "ObjectPath": "\\States\\Default Work Unit\\player_aim\\false",
         "GUID": "{52DF5189-E217-4078-800D-004BD7764C75}"
        },
        {
         "Id": "3053630529",
-        "Name": "True",
-        "ObjectPath": "\\States\\Default Work Unit\\Player_Aim\\True",
+        "Name": "true",
+        "ObjectPath": "\\States\\Default Work Unit\\player_aim\\true",
         "GUID": "{70CC75B8-1662-466B-9357-884CFAE6C01A}"
        }
       ]
@@ -735,6 +735,6 @@
     ]
    }
   ],
-  "FileHash": "{BBC8FCCA-C477-6FDC-4C8A-66B3219A4820}"
+  "FileHash": "{3210912B-4FA9-DC33-1BA1-921C9699B384}"
  }
 }

@@ -10,19 +10,11 @@
     "Type": "User",
     "GUID": "{49827AFC-1442-4066-AF70-C2B0B3B40C86}",
     "Language": "SFX",
-    "Hash": "{AA91A924-7DBD-E8AA-DBF1-54D8F41E7E97}",
+    "Hash": "{0183D05B-0526-CF96-A7BC-4EA161C8A806}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Player",
     "ShortName": "Sb_Player",
     "Path": "Sb_Player.bnk",
     "Media": [
-     {
-      "Id": "8078194",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "City Streets.wav",
-      "CachePath": "AD/{AD83EB99-56C0-D728-CE45-19A091673058}.wem"
-     },
      {
       "Id": "247688113",
       "Language": "SFX",
@@ -54,10 +46,31 @@
       "Location": "Memory",
       "ShortName": "Chassepot\\LTDC_SFX_Player_GunShot_LayerCrack_Oneshot.wav",
       "CachePath": "2A/{2AF17E6E-3CBB-D02D-C41D-9385458F3624}.wem"
+     },
+     {
+      "Id": "703094020",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Rock Wall.wav",
+      "CachePath": "FF/{FFAA9843-0356-6C4B-E965-6A2FC4BFF06B}.wem"
      }
     ],
     "Plugins": {
      "Custom": [
+      {
+       "Id": "533053550",
+       "Name": "Rock_Wall (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb\\[Effect Slot [0]: (iZotope Hybrid Reverb)]\\Rock_Wall (Custom)",
+       "GUID": "{2CCC9090-E691-4889-BA69-7113F96FF00C}",
+       "LibName": "iZotope Hybrid Reverb",
+       "LibId": "135219",
+       "MediaRefs": [
+        {
+         "Id": "703094020"
+        }
+       ]
+      },
       {
        "Id": "550680016",
        "Name": "City_Center (Custom)",
@@ -68,19 +81,6 @@
        "MediaRefs": [
         {
          "Id": "379374117"
-        }
-       ]
-      },
-      {
-       "Id": "586941969",
-       "Name": "City_Streets (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb\\[Effect Slot [0]: (iZotope Hybrid Reverb)]\\City_Streets (Custom)",
-       "GUID": "{70831763-CD31-4785-B5F3-FC37FE270729}",
-       "LibName": "iZotope Hybrid Reverb",
-       "LibId": "135219",
-       "MediaRefs": [
-        {
-         "Id": "8078194"
         }
        ]
       },
@@ -115,8 +115,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Player\\Player_Shoot",
       "GUID": "{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}",
       "DurationType": "OneShot",
-      "DurationMin": "1.5450625",
-      "DurationMax": "1.5450625",
+      "DurationMin": "0.8350313",
+      "DurationMax": "1.0260813",
       "MediaRefs": [
        {
         "Id": "247688113"
@@ -131,7 +131,15 @@
          "Id": "641257012"
         }
        ]
-      }
+      },
+      "ActionPostEvent": [
+       {
+        "Id": "1650679582",
+        "Name": "Player_Reload",
+        "ObjectPath": "\\Events\\Default Work Unit\\Player\\Player_Reload",
+        "GUID": "{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}"
+       }
+      ]
      }
     ],
     "Busses": [
@@ -164,7 +172,7 @@
       "PluginRefs": {
        "Custom": [
         {
-         "Id": "586941969"
+         "Id": "533053550"
         }
        ]
       }
@@ -172,6 +180,6 @@
     ]
    }
   ],
-  "FileHash": "{250FE757-D33B-DE43-BB5F-502203908650}"
+  "FileHash": "{12081124-FFF6-1F8F-853C-E6C5E194CFEE}"
  }
 }
