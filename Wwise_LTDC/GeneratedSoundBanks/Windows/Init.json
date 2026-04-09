@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{1E97409C-19AE-356E-FA63-DDD4850D6F39}",
+    "Hash": "{3A343296-02AF-F281-53C9-4C08A8DA8F06}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -24,29 +24,16 @@
       "CachePath": "2E/{2EDDDD61-30F2-CE38-83CC-42EE7CBC8969}.wem"
      },
      {
-      "Id": "703094020",
+      "Id": "702837950",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "OtherBank",
-      "ShortName": "Rock Wall.wav",
-      "CachePath": "FF/{FFAA9843-0356-6C4B-E965-6A2FC4BFF06B}.wem"
+      "ShortName": "AudioEase\\Altiverb - Outdoor and More\\Outdoor\\Alley\\AE_NarrowShortAlley.wav",
+      "CachePath": "62/{62A92FA2-7BCC-608F-FFAD-2338D370CB86}.wem"
      }
     ],
     "Plugins": {
      "Custom": [
-      {
-       "Id": "533053550",
-       "Name": "Rock_Wall (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb\\[Effect Slot [0]: (iZotope Hybrid Reverb)]\\Rock_Wall (Custom)",
-       "GUID": "{2CCC9090-E691-4889-BA69-7113F96FF00C}",
-       "LibName": "iZotope Hybrid Reverb",
-       "LibId": "135219",
-       "MediaRefs": [
-        {
-         "Id": "703094020"
-        }
-       ]
-      },
       {
        "Id": "550680016",
        "Name": "City_Center (Custom)",
@@ -59,9 +46,56 @@
          "Id": "379374117"
         }
        ]
+      },
+      {
+       "Id": "677203020",
+       "Name": "Pitch Shifter (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send\\[Effect Slot [0]: (Pitch Shifter)]\\Pitch Shifter (Custom)",
+       "GUID": "{E1388689-6B51-40C1-B6CC-61D3D1660DA2}",
+       "LibName": "Wwise Pitch Shifter",
+       "LibId": "8912899"
+      },
+      {
+       "Id": "695506173",
+       "Name": "Reflect (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect\\[Effect Slot [0]: (Reflect)]\\Reflect (Custom)",
+       "GUID": "{C4B726EC-1419-424F-ADF7-FACE67C11922}",
+       "LibName": "Wwise Reflect",
+       "LibId": "11206659"
+      },
+      {
+       "Id": "1012444785",
+       "Name": "High_Pass_60Hz (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb\\[Effect Slot [1]: (Parametric EQ)]\\High_Pass_60Hz (Custom)",
+       "GUID": "{0A41C22E-12E9-4E35-B138-1CD4852233C0}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      }
+     ],
+     "ShareSets": [
+      {
+       "Id": "2420937077",
+       "Name": "NarrowShortAlley",
+       "ObjectPath": "\\Effects\\Factory Altiverb - Outdoor and More\\Altiverb - Outdoor and More\\Outdoor Alley\\NarrowShortAlley",
+       "GUID": "{5F21B86B-F430-44FF-A9BF-37B1DEF8105B}",
+       "LibName": "Wwise Convolution Reverb",
+       "LibId": "8323075",
+       "MediaRefs": [
+        {
+         "Id": "702837950"
+        }
+       ]
       }
      ],
      "AudioDevices": [
+      {
+       "Id": "2012559111",
+       "Name": "Motion",
+       "ObjectPath": "\\Devices\\Default Work Unit\\Motion",
+       "GUID": "{882328E3-4BF4-4402-9C6C-32775CE7D72E}",
+       "LibName": "Motion",
+       "LibId": "33226759"
+      },
       {
        "Id": "2317455096",
        "Name": "No_Output",
@@ -110,6 +144,12 @@
       "Color": "4"
      },
      {
+      "Id": "1156359885",
+      "Name": "Wwise_Motion",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion",
+      "GUID": "{01B95841-D9A2-4051-9C07-3EF7EF52C3B7}"
+     },
+     {
       "Id": "1277101407",
       "Name": "VX_NPC",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC",
@@ -146,6 +186,32 @@
     ],
     "AuxBusses": [
      {
+      "Id": "214837138",
+      "Name": "Wwise_Motion_Send",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send",
+      "GUID": "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "677203020"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "243379636",
+      "Name": "Reflect",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+      "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "695506173"
+        }
+       ]
+      }
+     },
+     {
       "Id": "1865335600",
       "Name": "Crossroad_Reverb",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Crossroad_Reverb",
@@ -166,7 +232,12 @@
       "PluginRefs": {
        "Custom": [
         {
-         "Id": "533053550"
+         "Id": "1012444785"
+        }
+       ],
+       "ShareSets": [
+        {
+         "Id": "2420937077"
         }
        ]
       }
@@ -187,6 +258,20 @@
      }
     ],
     "StateGroups": [
+     {
+      "Id": "314259375",
+      "Name": "player_breath",
+      "ObjectPath": "\\States\\Default Work Unit\\player_breath",
+      "GUID": "{5E643EBD-D3D2-483F-B8F0-D5985C137861}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\player_breath\\None",
+        "GUID": "{FDC1DACA-2D38-4965-BFB2-0B7C8BA08DD2}"
+       }
+      ]
+     },
      {
       "Id": "1608601952",
       "Name": "player_aim",
@@ -735,6 +820,6 @@
     ]
    }
   ],
-  "FileHash": "{3210912B-4FA9-DC33-1BA1-921C9699B384}"
+  "FileHash": "{1FC21848-B8ED-EA1B-B3B4-4E1A43982712}"
  }
 }

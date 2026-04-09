@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{49827AFC-1442-4066-AF70-C2B0B3B40C86}",
     "Language": "SFX",
-    "Hash": "{0183D05B-0526-CF96-A7BC-4EA161C8A806}",
+    "Hash": "{3D17AF66-CB43-E743-C5CC-58D58B78C6F8}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Player",
     "ShortName": "Sb_Player",
     "Path": "Sb_Player.bnk",
@@ -48,29 +48,16 @@
       "CachePath": "2A/{2AF17E6E-3CBB-D02D-C41D-9385458F3624}.wem"
      },
      {
-      "Id": "703094020",
+      "Id": "702837950",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "Rock Wall.wav",
-      "CachePath": "FF/{FFAA9843-0356-6C4B-E965-6A2FC4BFF06B}.wem"
+      "ShortName": "AudioEase\\Altiverb - Outdoor and More\\Outdoor\\Alley\\AE_NarrowShortAlley.wav",
+      "CachePath": "62/{62A92FA2-7BCC-608F-FFAD-2338D370CB86}.wem"
      }
     ],
     "Plugins": {
      "Custom": [
-      {
-       "Id": "533053550",
-       "Name": "Rock_Wall (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb\\[Effect Slot [0]: (iZotope Hybrid Reverb)]\\Rock_Wall (Custom)",
-       "GUID": "{2CCC9090-E691-4889-BA69-7113F96FF00C}",
-       "LibName": "iZotope Hybrid Reverb",
-       "LibId": "135219",
-       "MediaRefs": [
-        {
-         "Id": "703094020"
-        }
-       ]
-      },
       {
        "Id": "550680016",
        "Name": "City_Center (Custom)",
@@ -91,6 +78,37 @@
        "GUID": "{B4DFA687-744B-4E3F-8A04-9DF39B1C80C8}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
+      },
+      {
+       "Id": "695506173",
+       "Name": "Reflect (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect\\[Effect Slot [0]: (Reflect)]\\Reflect (Custom)",
+       "GUID": "{C4B726EC-1419-424F-ADF7-FACE67C11922}",
+       "LibName": "Wwise Reflect",
+       "LibId": "11206659"
+      },
+      {
+       "Id": "1012444785",
+       "Name": "High_Pass_60Hz (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb\\[Effect Slot [1]: (Parametric EQ)]\\High_Pass_60Hz (Custom)",
+       "GUID": "{0A41C22E-12E9-4E35-B138-1CD4852233C0}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      }
+     ],
+     "ShareSets": [
+      {
+       "Id": "2420937077",
+       "Name": "NarrowShortAlley",
+       "ObjectPath": "\\Effects\\Factory Altiverb - Outdoor and More\\Altiverb - Outdoor and More\\Outdoor Alley\\NarrowShortAlley",
+       "GUID": "{5F21B86B-F430-44FF-A9BF-37B1DEF8105B}",
+       "LibName": "Wwise Convolution Reverb",
+       "LibId": "8323075",
+       "MediaRefs": [
+        {
+         "Id": "702837950"
+        }
+       ]
       }
      ]
     },
@@ -106,6 +124,14 @@
       "MediaRefs": [
        {
         "Id": "605834236"
+       }
+      ],
+      "AuxBusRefs": [
+       {
+        "Id": "214837138",
+        "Name": "Wwise_Motion_Send",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send",
+        "GUID": "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"
        }
       ]
      },
@@ -132,6 +158,20 @@
         }
        ]
       },
+      "AuxBusRefs": [
+       {
+        "Id": "214837138",
+        "Name": "Wwise_Motion_Send",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send",
+        "GUID": "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"
+       },
+       {
+        "Id": "243379636",
+        "Name": "Reflect",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+        "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
+       }
+      ],
       "ActionPostEvent": [
        {
         "Id": "1650679582",
@@ -144,6 +184,62 @@
     ],
     "Busses": [
      {
+      "Id": "161171466",
+      "Name": "SFX_NPC",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_NPC",
+      "GUID": "{C50F8E9D-E1E1-4B38-A0FA-27AA94AFC147}",
+      "Color": "10"
+     },
+     {
+      "Id": "217780010",
+      "Name": "SFX_Player",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Player",
+      "GUID": "{1565B943-2767-465E-81AB-61E687ABF67E}",
+      "Color": "10"
+     },
+     {
+      "Id": "393239870",
+      "Name": "SFX",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX",
+      "GUID": "{8FE46C9B-4641-43D1-B739-F2D46260CC7F}",
+      "Color": "10"
+     },
+     {
+      "Id": "1117531639",
+      "Name": "AMB",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\AMB",
+      "GUID": "{3C49B583-C63B-4CCB-A1B9-D71E082D055E}",
+      "Color": "4"
+     },
+     {
+      "Id": "1277101407",
+      "Name": "VX_NPC",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC",
+      "GUID": "{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}",
+      "Color": "11"
+     },
+     {
+      "Id": "1534528563",
+      "Name": "VX",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX",
+      "GUID": "{E8C3D5DB-24D6-472C-93CA-D6BB12427941}",
+      "Color": "11"
+     },
+     {
+      "Id": "1551306167",
+      "Name": "UI",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\UI",
+      "GUID": "{D7CABC36-B31D-4789-A7B2-46175473A0AA}",
+      "Color": "19"
+     },
+     {
+      "Id": "1728828729",
+      "Name": "VX_Player",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_Player",
+      "GUID": "{46D92596-0E19-4482-83A1-FAABFE94F255}",
+      "Color": "11"
+     },
+     {
       "Id": "2246998526",
       "Name": "Main Audio Bus",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus",
@@ -151,6 +247,19 @@
      }
     ],
     "AuxBusses": [
+     {
+      "Id": "243379636",
+      "Name": "Reflect",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+      "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "695506173"
+        }
+       ]
+      }
+     },
      {
       "Id": "1865335600",
       "Name": "Crossroad_Reverb",
@@ -172,7 +281,12 @@
       "PluginRefs": {
        "Custom": [
         {
-         "Id": "533053550"
+         "Id": "1012444785"
+        }
+       ],
+       "ShareSets": [
+        {
+         "Id": "2420937077"
         }
        ]
       }
@@ -180,6 +294,6 @@
     ]
    }
   ],
-  "FileHash": "{12081124-FFF6-1F8F-853C-E6C5E194CFEE}"
+  "FileHash": "{B679568A-9E66-4127-16E6-AA9D0B97DC55}"
  }
 }

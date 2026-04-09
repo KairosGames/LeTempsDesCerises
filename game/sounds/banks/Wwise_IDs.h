@@ -32,6 +32,16 @@ namespace AK
             } // namespace STATE
         } // namespace PLAYER_AIM
 
+        namespace PLAYER_BREATH
+        {
+            static const AkUniqueID GROUP = 314259375U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace PLAYER_BREATH
+
     } // namespace STATES
 
     namespace SWITCHES
@@ -84,16 +94,20 @@ namespace AK
         static const AkUniqueID VX = 1534528563U;
         static const AkUniqueID VX_NPC = 1277101407U;
         static const AkUniqueID VX_PLAYER = 1728828729U;
+        static const AkUniqueID WWISE_MOTION = 1156359885U;
     } // namespace BUSSES
 
     namespace AUX_BUSSES
     {
         static const AkUniqueID CROSSROAD_REVERB = 1865335600U;
+        static const AkUniqueID REFLECT = 243379636U;
         static const AkUniqueID STREET_REVERB = 2635253023U;
+        static const AkUniqueID WWISE_MOTION_SEND = 214837138U;
     } // namespace AUX_BUSSES
 
     namespace AUDIO_DEVICES
     {
+        static const AkUniqueID MOTION = 2012559111U;
         static const AkUniqueID NO_OUTPUT = 2317455096U;
         static const AkUniqueID SYSTEM = 3859886410U;
     } // namespace AUDIO_DEVICES

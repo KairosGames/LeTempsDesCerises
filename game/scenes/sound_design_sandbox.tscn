@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dw7fv1qq3ewxa" path="res://sandbox/barricades_proto/barricade_part_2.tscn" id="13_p0yv6"]
 [ext_resource type="PackedScene" uid="uid://dei4ifl4vg6pb" path="res://sandbox/barricades_proto/dummy.tscn" id="14_uyvsv"]
 [ext_resource type="WwiseEvent" uid="uid://bcnom4oj1p3mj" path="res://Wwise/resources/Event/{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}.tres" id="15_pc7os"]
+[ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="16_54uho"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s8o8u"]
 radius = 0.1
@@ -34,6 +35,23 @@ background_mode = 2
 sky = SubResource("Sky_rwgxs")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_owqhk"]
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54uho"]
+resource_local_to_scene = true
+albedo_color = Color(0.28627452, 0.65882355, 1, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_arrrh"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_54uho")
+height = 1.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_arrrh"]
+size = Vector3(25, 20, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_54uho"]
 
 [node name="SoundDesignSandbox" type="Node3D" unique_id=348257552]
 
@@ -442,5 +460,122 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.455877, 1.0000002, 1.83528
 
 [node name="Allies" type="Node3D" parent="FirstGym" unique_id=1348615623]
 
-[node name="Dummy9" parent="FirstGym/Allies" unique_id=1602948448 instance=ExtResource("14_uyvsv")]
+[node name="Dummy9" type="Node3D" parent="FirstGym/Allies" unique_id=1602948448]
 transform = Transform3D(0.9443936, 0, -0.3288172, 0, 1, 0, 0.3288172, 0, 0.9443936, -5.3088255, 1, 4.293766)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="FirstGym/Allies/Dummy9" unique_id=1037432913]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FirstGym/Allies/Dummy9/CharacterBody3D" unique_id=568119958]
+shape = SubResource("CapsuleShape3D_owqhk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FirstGym/Allies/Dummy9/CharacterBody3D" unique_id=29021728]
+mesh = SubResource("CapsuleMesh_arrrh")
+metadata/Surface = "C'est un copain"
+
+[node name="Ak_Level_Geometry" type="Node3D" parent="." unique_id=1815432334]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ak_Level_Geometry" unique_id=1302935224]
+transform = Transform3D(0.8195823, 0, 0.5729615, 0, 1, 0, -0.5729615, 0, 0.8195823, -9.112681, 10.139205, 14.778163)
+mesh = SubResource("BoxMesh_arrrh")
+
+[node name="AkGeometry" type="AkGeometry" parent="Ak_Level_Geometry/MeshInstance3D" unique_id=901255707]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("16_54uho")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Ak_Level_Geometry" unique_id=1111391599]
+transform = Transform3D(4.084686, 0, -0.0011131581, 0, 1, 0, 0.0045626247, 0, 0.99655384, -59.5279, 10.139205, -7.445269)
+mesh = SubResource("BoxMesh_arrrh")
+
+[node name="AkGeometry" type="AkGeometry" parent="Ak_Level_Geometry/MeshInstance3D2" unique_id=543899470]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("16_54uho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ak_Level_Geometry/MeshInstance3D2" unique_id=2053355409]
+mesh = SubResource("BoxMesh_54uho")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Ak_Level_Geometry" unique_id=1995331903]
+transform = Transform3D(0.14807144, 0, -0.79558617, 0, 1, 0, 0.19572873, 0, 0.6018717, 16.532019, 10.113784, -22.46981)
+mesh = SubResource("BoxMesh_arrrh")
+
+[node name="AkGeometry" type="AkGeometry" parent="Ak_Level_Geometry/MeshInstance3D3" unique_id=1526330840]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("16_54uho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ak_Level_Geometry/MeshInstance3D3" unique_id=1233039277]
+mesh = SubResource("BoxMesh_54uho")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Ak_Level_Geometry" unique_id=992432477]
+transform = Transform3D(0.14807144, 0, -0.79558617, 0, 1, 0, 0.19572873, 0, 0.6018717, 27.16054, 10.113786, -8.67778)
+mesh = SubResource("BoxMesh_arrrh")
+
+[node name="AkGeometry" type="AkGeometry" parent="Ak_Level_Geometry/MeshInstance3D4" unique_id=826062560]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("16_54uho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ak_Level_Geometry/MeshInstance3D4" unique_id=32614452]
+mesh = SubResource("BoxMesh_54uho")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Ak_Level_Geometry" unique_id=350851311]
+transform = Transform3D(4.084686, 0, -0.0011131581, 0, 1, 0, 0.0045626247, 0, 0.99655384, 52.07823, 10.139209, 7.434622)
+mesh = SubResource("BoxMesh_arrrh")
+
+[node name="AkGeometry" type="AkGeometry" parent="Ak_Level_Geometry/MeshInstance3D5" unique_id=1814623631]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("16_54uho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ak_Level_Geometry/MeshInstance3D5" unique_id=691100384]
+mesh = SubResource("BoxMesh_54uho")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Ak_Level_Geometry" unique_id=905711071]
+transform = Transform3D(1.8147278, 0, 0.89280343, 0, 1, 0, -3.6594326, 0, 0.4427449, 15.098579, 10.139205, -53.836437)
+mesh = SubResource("BoxMesh_arrrh")
+metadata/Surface = "Vass il est beau"
+
+[node name="AkGeometry" type="AkGeometry" parent="Ak_Level_Geometry/MeshInstance3D6" unique_id=2110668480]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("16_54uho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ak_Level_Geometry/MeshInstance3D6" unique_id=1046584936]
+mesh = SubResource("BoxMesh_54uho")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Ak_Level_Geometry" unique_id=2109164837]
+transform = Transform3D(4.084686, 0, -0.0011131581, 0, 1, 0, 0.0045626247, 0, 0.99655384, -84.94371, 10.139205, 7.239513)
+mesh = SubResource("BoxMesh_arrrh")
+
+[node name="AkGeometry" type="AkGeometry" parent="Ak_Level_Geometry/MeshInstance3D7" unique_id=1615741128]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("16_54uho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ak_Level_Geometry/MeshInstance3D7" unique_id=25852157]
+mesh = SubResource("BoxMesh_54uho")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Ak_Level_Geometry" unique_id=1045589067]
+transform = Transform3D(3.3231297, 0, 0.5794807, 0, 1, 0, -2.3751817, 0, 0.81075454, -75.59802, 10.139205, 44.201813)
+mesh = SubResource("BoxMesh_arrrh")
+
+[node name="AkGeometry" type="AkGeometry" parent="Ak_Level_Geometry/MeshInstance3D8" unique_id=1006496099]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("16_54uho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ak_Level_Geometry/MeshInstance3D8" unique_id=1831452989]
+mesh = SubResource("BoxMesh_54uho")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Ak_Level_Geometry" unique_id=1888755551]
+transform = Transform3D(3.3231297, 0, 0.5794807, 0, 1, 0, -2.3751817, 0, 0.81075454, -86.443794, 10.139201, 70.26227)
+mesh = SubResource("BoxMesh_arrrh")
+
+[node name="AkGeometry" type="AkGeometry" parent="Ak_Level_Geometry/MeshInstance3D9" unique_id=1274532366]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("16_54uho")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ak_Level_Geometry/MeshInstance3D9" unique_id=1261751647]
+mesh = SubResource("BoxMesh_54uho")
