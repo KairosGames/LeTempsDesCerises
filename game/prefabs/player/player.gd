@@ -22,6 +22,7 @@ class_name Player extends CharacterBody3D
 
 @export_category("View settings")
 @export var v_clamp_deg: Vector2 = Vector2(-70.0, 70.0)
+@export var v_clamp_lyingd: Vector2 = Vector2(-45.0, 45.0)
 @export_range(0.01, 1.0, 0.01) var aiming_reducer_ratio: float = 0.5
 
 @export_category("Aim settings")
@@ -32,9 +33,6 @@ class_name Player extends CharacterBody3D
 @export var aiming_rot: float = 1.0
 
 @export_category("States settings")
-@export var can_fast_down: bool = true
-@export var can_run_crouched: bool = true
-@export var can_run_lyied_d: bool = true
 @export var standing_height: float = 1.6
 @export var crouch_height: float = 1.1
 @export var lyingd_height: float = 0.35
@@ -147,12 +145,21 @@ func switch_aim_state() -> void:
 
 func capture_position_state() -> void:
 	var input_dir: Vector2 = player_inputs.move_vec
+	if input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length:
+		is_running = false
 	
 	if Input.is_action_just_pressed("crouch"):
 		if not is_grounded: return
-		if is_lyied_d: is_lyied_d = false
-		if is_running: is_running = false
-		is_crouched = !is_crouched
+		if is_lyied_d: lyingd_to_crouch()
+		if is_crouched: crouch_to_up()
+		if not is_crouched and not is_lyied_d:
+			if is_running: is_running = false
+			crouch_to_up(true)
+		is_changing_state = true
+		
+		#if is_lyied_d: is_lyied_d = false
+		#if is_running: is_running = false
+		#is_crouched = !is_crouched
 	
 	if Input.is_action_just_pressed("lying_down"):
 		if not is_grounded: return
@@ -161,19 +168,36 @@ func capture_position_state() -> void:
 		is_lyied_d = !is_lyied_d
 		
 	if Input.is_action_just_pressed("run"):
-		if not is_grounded: return
+		if not is_grounded or player_inputs.move_vec.length() < gpad_mini_run_length: return
 		if is_crouched: is_crouched = false
 		if is_lyied_d: is_lyied_d = false
 		if is_aiming: is_aiming = false
 		is_running = !is_running
 	
-	if input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length:
-		is_running = false
-		pass
+	if Input.is_action_just_pressed("jump"):
+		is_crouched = false
+		is_lyied_d = false
+
+
+func crouch_to_up(inverse: bool = false):
+	camera_pivot.position.y = crouch_height if inverse else standing_height
+	is_crouched = inverse
+	is_changing_state = false
+
+
+func lyingd_to_crouch(inverse: bool = false):
+	camera_pivot.position.y = lyingd_height if inverse else crouch_height
+	is_crouched = not inverse
+	is_lyied_d = inverse
+
+
+func lyingd_to_up(inverse: bool = false, ask_run: bool = false):
+	pass
 
 
 func handle_states(delta: float) -> void:
-	handle_position_state(delta)
+	#handle_position_state(delta)
+	pass
 
 
 func handle_position_state(delta: float) -> void:
@@ -189,6 +213,8 @@ func process_movement(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		if is_aiming or is_crouched or is_lyied_d:
+			return
 		velocity.y = JUMP_VELOCITY
 	
 	move_and_slide()
@@ -251,7 +277,8 @@ func process_view(delta: float) -> void:
 	var reducer = aiming_reducer_ratio if is_aiming else 1.0
 	aim_target.y -= input.get_view_input().x * input.h_sensi_multiplier * reducer
 	aim_target.x += input.get_view_input().y * input.v_sensi_multiplier * inversion * reducer
-	aim_target.x = clampf(aim_target.x, v_clamp_deg.x, v_clamp_deg.y)
+	var clamp_applied: Vector2 = v_clamp_lyingd if is_lyied_d else v_clamp_deg
+	aim_target.x = clampf(aim_target.x, clamp_applied.x, clamp_applied.y)
 	
 	if is_aim_smooth:
 		var result_y: Dictionary = smooth_damp_angle(rotation_degrees.y, aim_target.y, aim_vel.y, aim_smooth_strength, delta)
