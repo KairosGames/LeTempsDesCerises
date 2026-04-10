@@ -1,5 +1,11 @@
 [gd_scene format=3 uid="uid://n8jqgeouvopc"]
 
+[ext_resource type="Script" uid="uid://tmhcwvx3b3u6" path="res://sandbox/ai/agent.gd" id="1_3m1mu"]
+[ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_nvy3a"]
+[ext_resource type="Script" uid="uid://1h6aoya61b6d" path="res://sandbox/ai/Navigation.gd" id="2_24g36"]
+[ext_resource type="Script" uid="uid://dme5f24l0edsf" path="res://addons/beehave/blackboard.gd" id="2_tpga6"]
+[ext_resource type="PackedScene" uid="uid://3y1qt50xdawu" path="res://sandbox/ai/behaviours/versaillais.tscn" id="7_ixvr7"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_otrs2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_6sqh6"]
@@ -11,7 +17,9 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_nvy3a")
 size = Vector3(1, 0.25, 0.5)
 
-[node name="Agent" type="CharacterBody3D" unique_id=1349390169]
+[node name="Agent" type="CharacterBody3D" unique_id=1349390169 node_paths=PackedStringArray("navigation")]
+script = ExtResource("1_3m1mu")
+navigation = NodePath("Navigation")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1662563447]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -24,3 +32,21 @@ mesh = SubResource("CapsuleMesh_6sqh6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1405939811]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.25)
 mesh = SubResource("BoxMesh_tpga6")
+
+[node name="Navigation" type="NavigationAgent3D" parent="." unique_id=514776903]
+script = ExtResource("2_24g36")
+movement_speed = 0.5
+metadata/_custom_type_script = "uid://1h6aoya61b6d"
+
+[node name="Blackboard" type="Node" parent="." unique_id=350175424]
+script = ExtResource("2_tpga6")
+metadata/_custom_type_script = "uid://dme5f24l0edsf"
+
+[node name="BeehaveTree" type="Node" parent="." unique_id=1197668891 node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_nvy3a")
+blackboard = NodePath("@Node@81981")
+custom_monitor = true
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
+
+[node name="Versaillais" parent="BeehaveTree" unique_id=546313229 instance=ExtResource("7_ixvr7")]
