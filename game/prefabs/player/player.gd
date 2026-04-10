@@ -2,10 +2,11 @@ class_name Player extends CharacterBody3D
 
 @onready var player_inputs: PlayerInputs = %PlayerInputs
 @onready var camera_pivot: Node3D = %CameraPivot
-@onready var camera_base: Node3D = %CameraBase
+@onready var wpn_cam_base: Node3D = %WeaponCameraBase
 @onready var player_camera: Camera3D = %PlayerCamera
 @onready var weapon_container: Node3D = %WeaponContainer
-@onready var default_weapon_pos: Marker3D = %DefaultWeaponPos
+@onready var right_weapon_pos: Marker3D = %RightWeaponPos
+@onready var left_weapon_pos: Marker3D = %LeftWeaponPos
 @onready var aim_pos: Marker3D = %AimPos
 @onready var weapon_ray_cast: RayCast3D = %WeaponRayCast
 
@@ -16,6 +17,9 @@ class_name Player extends CharacterBody3D
 @export var is_aim_smooth: bool = true
 @export var is_movement_smooth: bool = true
 
+@export_category("Character settings")
+@export var is_right_handed: bool = true
+
 @export_category("View settings")
 @export var v_clamp_deg: Vector2 = Vector2(-70.0, 70.0)
 @export_range(0.01, 1.0, 0.01) var aiming_reducer_ratio: float = 0.5
@@ -24,15 +28,17 @@ class_name Player extends CharacterBody3D
 @export var default_fov: float = 75.0
 @export var aiming_fov: float = 60.0
 @export var aiming_time: float = 0.4
-@export var is_aiming_rot_active: bool = true
-@export var aiming_rot: float = 2.0
+@export var is_aiming_rot_active: bool = false
+@export var aiming_rot: float = 1.0
 
 @export_category("States settings")
+@export var can_fast_down: bool = true
 @export var can_run_crouched: bool = true
 @export var can_run_lyied_d: bool = true
 @export var standing_height: float = 1.6
 @export var crouch_height: float = 1.1
 @export var lyingd_height: float = 0.35
+@export_range(0.2, 1.0, 0.01) var gpad_mini_run_length: float = 0.5
 
 @export_category("Movement speed settings")
 @export var standing_speed: float = 5.0
@@ -42,17 +48,26 @@ class_name Player extends CharacterBody3D
 @export_range(1.0, 3.0, 0.01) var run_speed_ratio: float = 1.5
 @export_range(0.0, 1.0, 0.01) var side_speed_ratio: float = 0.75
 @export_range(0.0, 1.0, 0.01) var back_speed_ratio: float = 0.6
+@export_range(0.0, 1.0, 0.01) var aiming_speed_ratio: float = 0.6
 
 @export_category("Smoothness settings")
 @export_range(0.01, 0.5, 0.01) var acc_time: float = 0.1
 @export_range(0.01, 0.5, 0.01) var brake_time: float = 0.1
 @export_range(0.01, 1.0, 0.001) var aim_smooth_strength: float = 0.05
 
+@export_category("Tweens")
+@export var aim_x_trans: Tween.TransitionType = Tween.TRANS_SINE
+@export var aim_y_trans: Tween.TransitionType = Tween.TRANS_QUINT
+@export var aim_z_trans: Tween.TransitionType = Tween.TRANS_QUINT
+@export var aim_fov_trans: Tween.TransitionType = Tween.TRANS_SINE
+@export var aim_rot_trans: Tween.TransitionType = Tween.TRANS_QUINT
+
 var is_grounded: bool = true
 var is_aiming: bool = false
 var is_running: bool = false
 var is_crouched:bool = false
 var is_lyied_d: bool = false
+var is_changing_state: bool = false
 
 var wpn_x_aim_twn: Tween
 var wpn_y_aim_twn: Tween
@@ -69,17 +84,102 @@ const JUMP_VELOCITY = 4.5
 
 
 func _ready() -> void:
+	weapon_container.position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
 	aim_target = Vector3(camera_pivot.rotation_degrees.x, rotation_degrees.y, 0.0)
 	acc_time_ratio = (1 / acc_time)
 	brake_time_ratio = (1 / brake_time)
 
 
 func _process(delta: float) -> void:
-	process_movement(delta)
 	capture_states()
 	handle_states(delta)
+	process_movement(delta)
 	process_view(delta)
 	handle_shoot(delta)
+
+
+func capture_states() -> void:
+	capture_aim_state()
+	capture_position_state()
+
+
+func capture_aim_state() -> void:
+	var flag: bool = is_aiming
+	if is_aim_locked:
+		if Input.is_action_just_pressed("aim"): is_aiming = !is_aiming
+	else:
+		is_aiming = Input.is_action_pressed("aim")
+	if Input.is_action_just_pressed("run") and is_aiming:
+		is_aiming = false 
+	player_inputs.is_aiming = is_aiming
+	if flag != is_aiming :
+		switch_aim_state()
+
+
+func switch_aim_state() -> void:
+	var default_pos: Vector3 = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
+	var target_pos: Vector3 = aim_pos.position if is_aiming else default_pos
+	var target_fov: float = aiming_fov if is_aiming else default_fov
+	var taget_rot: float = (aiming_rot if is_right_handed else aiming_rot * -1.0) if is_aiming else 0.0
+	var ratio = inverse_lerp(default_pos.x, aim_pos.position.x, weapon_container.position.x)
+	var time = aiming_time * ((1 - ratio) if is_aiming else ratio)
+	var in_first: Tween.EaseType = Tween.EASE_IN if is_aiming else Tween.EASE_OUT
+	var out_first: Tween.EaseType = Tween.EASE_OUT if is_aiming else Tween.EASE_IN
+	
+	if wpn_x_aim_twn:
+		wpn_x_aim_twn.kill()
+		if wpn_y_aim_twn: wpn_y_aim_twn.kill()
+		if wpn_z_aim_twn: wpn_z_aim_twn.kill()
+		if fov_aim_twn: fov_aim_twn.kill()
+		if cam_rot_aim_twn: cam_rot_aim_twn.kill()
+	wpn_x_aim_twn = create_tween()
+	wpn_y_aim_twn = create_tween()
+	wpn_z_aim_twn = create_tween()
+	fov_aim_twn = create_tween()
+	wpn_x_aim_twn.tween_property(weapon_container, "position:x", target_pos.x, time).set_trans(Tween.TRANS_SINE).set_ease(out_first)
+	wpn_y_aim_twn.tween_property(weapon_container, "position:y", target_pos.y, time).set_trans(Tween.TRANS_QUINT).set_ease(out_first)
+	wpn_z_aim_twn.tween_property(weapon_container, "position:z", target_pos.z, time).set_trans(Tween.TRANS_QUINT).set_ease(in_first)
+	fov_aim_twn.tween_property(player_camera, "fov", target_fov, time).set_trans(Tween.TRANS_SINE).set_ease(in_first)
+	if is_aiming_rot_active:
+		cam_rot_aim_twn = create_tween()
+		cam_rot_aim_twn.tween_property(wpn_cam_base, "rotation_degrees:z", taget_rot, time).set_trans(Tween.TRANS_QUINT).set_ease(in_first)
+
+
+func capture_position_state() -> void:
+	var input_dir: Vector2 = player_inputs.move_vec
+	
+	if Input.is_action_just_pressed("crouch"):
+		if not is_grounded: return
+		if is_lyied_d: is_lyied_d = false
+		if is_running: is_running = false
+		is_crouched = !is_crouched
+	
+	if Input.is_action_just_pressed("lying_down"):
+		if not is_grounded: return
+		if is_lyied_d: is_crouched = true
+		if is_running: is_running = false
+		is_lyied_d = !is_lyied_d
+		
+	if Input.is_action_just_pressed("run"):
+		if not is_grounded: return
+		if is_crouched: is_crouched = false
+		if is_lyied_d: is_lyied_d = false
+		if is_aiming: is_aiming = false
+		is_running = !is_running
+	
+	if input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length:
+		is_running = false
+		pass
+
+
+func handle_states(delta: float) -> void:
+	handle_position_state(delta)
+
+
+func handle_position_state(delta: float) -> void:
+	if not is_crouched and not is_lyied_d: camera_pivot.position.y = 1.6
+	if is_crouched : camera_pivot.position.y = 1.1
+	if is_lyied_d: camera_pivot.position.y = 0.35
 
 
 func process_movement(delta: float) -> void:
@@ -87,8 +187,7 @@ func process_movement(delta: float) -> void:
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
-	# Handle jump.
+	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
@@ -97,12 +196,15 @@ func process_movement(delta: float) -> void:
 
 func apply_plane_movement(delta: float) -> void:
 	var mov_vec: Vector2 = player_inputs.move_vec
-	var ref_speed = get_applied_speed()
+	var ref_speed = get_used_speed()
+	var run_f: float = run_speed_ratio if is_running else 1.0
+	var aim_f: float = aiming_speed_ratio if is_aiming else 1.0
 	
 	var f_speed: float = ref_speed * abs(mov_vec.y)
 	if mov_vec.y < 0 : f_speed *= back_speed_ratio
 	var s_speed: float = abs(mov_vec.x) * ref_speed * side_speed_ratio
-	var applied_speed: float = sqrt(f_speed * f_speed + s_speed * s_speed)
+	var dir_speed: float = sqrt(f_speed * f_speed + s_speed * s_speed)
+	var applied_speed: float = dir_speed * run_f * aim_f
 	
 	if is_movement_smooth:
 		var lcl_vel: Vector3 = global_transform.basis.inverse() * velocity
@@ -132,7 +234,7 @@ func apply_plane_movement(delta: float) -> void:
 		velocity = Vector3(speed.x, velocity.y, speed.z) if dir else Vector3(0.0, velocity.y, 0.0)
 
 
-func get_applied_speed() -> float:
+func get_used_speed() -> float:
 	if is_crouched:
 		return crouch_speed
 	elif is_lyied_d:
@@ -141,81 +243,6 @@ func get_applied_speed() -> float:
 		return air_up_speed
 	else:
 		return standing_speed
-
-
-func capture_states() -> void:
-	capture_aim_state()
-	capture_position_state()
-
-
-func capture_aim_state() -> void:
-	var flag: bool = is_aiming
-	if is_aim_locked:
-		if Input.is_action_just_pressed("aim"): is_aiming = !is_aiming
-	else:
-		is_aiming = Input.is_action_pressed("aim")
-	player_inputs.is_aiming = is_aiming
-	if flag != is_aiming :
-		switch_aim_state()
-
-
-func capture_position_state() -> void:
-	if Input.is_action_just_pressed("crouch"):
-		if not is_grounded: return
-		if is_lyied_d: is_lyied_d = false
-		if is_running: is_running = false
-		is_crouched = !is_crouched
-	
-	if Input.is_action_just_pressed("lying_down"):
-		if not is_grounded: return
-		if is_lyied_d: is_crouched = true
-		if is_running: is_running = false
-		is_lyied_d = !is_lyied_d
-		
-	if Input.is_action_just_pressed("run"):
-		if not is_grounded: return
-		if is_crouched: is_crouched = false
-		if is_lyied_d: is_lyied_d = false
-		is_running = !is_running
-
-
-func handle_states(delta: float) -> void:
-	#handle_aim_state()
-	handle_position_state(delta)
-
-
-func switch_aim_state() -> void:
-	var target_pos: Vector3 = aim_pos.position if is_aiming else default_weapon_pos.position
-	var target_fov: float = aiming_fov if is_aiming else default_fov
-	var taget_rot: float = aiming_rot if is_aiming else 0.0
-	var ratio = inverse_lerp(default_weapon_pos.position.x, aim_pos.position.x, weapon_container.position.x)
-	var time = aiming_time * ((1 - ratio) if is_aiming else ratio)
-	var ea1: Tween.EaseType = Tween.EASE_OUT if is_aiming else Tween.EASE_IN
-	var ea2: Tween.EaseType = Tween.EASE_IN if is_aiming else Tween.EASE_OUT
-	
-	if wpn_x_aim_twn:
-		wpn_x_aim_twn.kill()
-		if wpn_y_aim_twn: wpn_y_aim_twn.kill()
-		if wpn_z_aim_twn: wpn_z_aim_twn.kill()
-		if fov_aim_twn: fov_aim_twn.kill()
-		if cam_rot_aim_twn: cam_rot_aim_twn.kill()
-	wpn_x_aim_twn = create_tween()
-	wpn_y_aim_twn = create_tween()
-	wpn_z_aim_twn = create_tween()
-	fov_aim_twn = create_tween()
-	cam_rot_aim_twn = create_tween()
-	wpn_x_aim_twn.tween_property(weapon_container, "position:x", target_pos.x, time).set_trans(Tween.TRANS_SINE).set_ease(ea1)
-	wpn_y_aim_twn.tween_property(weapon_container, "position:y", target_pos.y, time).set_trans(Tween.TRANS_SINE).set_ease(ea1)
-	wpn_z_aim_twn.tween_property(weapon_container, "position:z", target_pos.z, time).set_trans(Tween.TRANS_QUINT).set_ease(ea2)
-	fov_aim_twn.tween_property(player_camera, "fov", target_fov, time).set_trans(Tween.TRANS_SINE).set_ease(ea2)
-	if is_aiming_rot_active:
-		cam_rot_aim_twn.tween_property(camera_base, "rotation_degrees:z", taget_rot, time).set_trans(Tween.TRANS_QUINT).set_ease(ea2)
-
-
-func handle_position_state(delta: float) -> void:
-	if not is_crouched and not is_lyied_d: camera_pivot.position.y = 1.6
-	if is_crouched : camera_pivot.position.y = 1.1
-	if is_lyied_d: camera_pivot.position.y = 0.35
 
 
 func process_view(delta: float) -> void:
