@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://dhj8g57pk5bi0"]
+
+[ext_resource type="Shader" uid="uid://0dait1bdwtvh" path="res://sandbox/ai/checkerboard.gdshader" id="1_v1doc"]
+[ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_v1doc"]
+[ext_resource type="Script" uid="uid://gaw24skh2pml" path="res://sandbox/ai/flag.gd" id="4_76nee"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_76nee"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_ec114"]
+sky_material = SubResource("ProceduralSkyMaterial_76nee")
+
+[sub_resource type="Environment" id="Environment_voip0"]
+background_mode = 2
+sky = SubResource("Sky_ec114")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_76nee"]
+vertices = PackedVector3Array(-24.5, 0.5, 0, -2.5, 0.5, 0, -2.5, 0.5, -2.25, 0, 0.5, -2.5, 0, 0.5, -24.5, -24.5, 0.5, -24.5, 2.5, 0.5, -2.5, 2.75, 0.5, -0.75, 24.5, 0.5, -1, 24.5, 0.5, -24.5, -1.5, 2.5, -1.5, -1.5, 2.5, 1.5, 1.5, 2.5, 1.5, 1.5, 2.5, -1.5, -1.25, 0.5, -1.25, -1.25, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.25, 2.75, 0.5, 0.75, 24.5, 0.5, 1, -1, 0.5, 24.5, -0.75, 0.5, 2.75, -2.5, 0.5, 2.5, -24.5, 0.5, 24.5, 2.75, 0.5, 2.25, 2.25, 0.5, 2.75, 0.75, 0.5, 2.75, 1, 0.5, 24.5, 24.5, 0.5, 24.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 5, 2), PackedInt32Array(2, 5, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 4), PackedInt32Array(6, 3, 4), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(7, 8, 18), PackedInt32Array(18, 8, 19), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(22, 23, 0), PackedInt32Array(0, 1, 22), PackedInt32Array(24, 18, 19), PackedInt32Array(27, 26, 25), PackedInt32Array(24, 19, 25), PackedInt32Array(25, 19, 28), PackedInt32Array(25, 28, 27), PackedInt32Array(21, 26, 20), PackedInt32Array(20, 26, 27)]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76nee"]
+render_priority = 0
+shader = ExtResource("1_v1doc")
+shader_parameter/color1 = Color(1, 1, 1, 1)
+shader_parameter/color2 = Color(0, 0, 0, 1)
+shader_parameter/size = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_u5472"]
+material = SubResource("ShaderMaterial_76nee")
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0f5d2"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_76nee"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec114"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_voip0"]
+material = SubResource("StandardMaterial3D_ec114")
+size = Vector3(1, 1, 0.1)
+
+[node name="Sandbox" type="Node3D" unique_id=1549290385]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1644679522]
+environment = SubResource("Environment_voip0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1852345176]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Geometry" type="NavigationRegion3D" parent="." unique_id=1023186182]
+navigation_mesh = SubResource("NavigationMesh_76nee")
+
+[node name="Ground" type="StaticBody3D" parent="Geometry" unique_id=656051242]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Geometry/Ground" unique_id=909999813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_u5472")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Geometry/Ground" unique_id=229375197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_0f5d2")
+
+[node name="Player" parent="." unique_id=1368497348 instance=ExtResource("3_v1doc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -11)
+
+[node name="Flag" type="Marker3D" parent="." unique_id=1098850246]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20.191309)
+script = ExtResource("4_76nee")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Flag" unique_id=1604012704]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_76nee")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Flag" unique_id=1071157253]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.54121137, 1.4993091, 0)
+mesh = SubResource("PrismMesh_voip0")
