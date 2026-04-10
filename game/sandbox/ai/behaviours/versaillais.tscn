@@ -1,15 +1,13 @@
 [gd_scene format=3 uid="uid://3y1qt50xdawu"]
 
 [ext_resource type="Script" uid="uid://cw22yurt5l74k" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="1_vxwaj"]
-[ext_resource type="Script" uid="uid://dfvnt62bk2jix" path="res://sandbox/ai/behaviours/push_canon.gd" id="2_pou1f"]
-[ext_resource type="PackedScene" uid="uid://8pmeh8dylggu" path="res://sandbox/ai/behaviours/reach_then_fight.tscn" id="3_vxwaj"]
+[ext_resource type="PackedScene" uid="uid://dg2ftlf3g1ljm" path="res://sandbox/ai/behaviours/manage_canon.tscn" id="2_vxwaj"]
+[ext_resource type="PackedScene" uid="uid://dep6q57oica3e" path="res://sandbox/ai/behaviours/fighting.tscn" id="3_vxwaj"]
 
 [node name="Versaillais" type="Node" unique_id=451543637]
 script = ExtResource("1_vxwaj")
 metadata/_custom_type_script = "uid://cw22yurt5l74k"
 
-[node name="PushCanon" type="Node" parent="." unique_id=1232281037]
-script = ExtResource("2_pou1f")
-metadata/_custom_type_script = "uid://dfvnt62bk2jix"
+[node name="ManageCanon" parent="." unique_id=1905830619 instance=ExtResource("2_vxwaj")]
 
-[node name="ReachThenFight" parent="." unique_id=218405293 instance=ExtResource("3_vxwaj")]
+[node name="Fighting" parent="." unique_id=1112314994 instance=ExtResource("3_vxwaj")]

@@ -17,9 +17,8 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_nvy3a")
 size = Vector3(1, 0.25, 0.5)
 
-[node name="Agent" type="CharacterBody3D" unique_id=1349390169 node_paths=PackedStringArray("navigation")]
+[node name="Agent" type="CharacterBody3D" unique_id=1349390169]
 script = ExtResource("1_3m1mu")
-navigation = NodePath("Navigation")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1662563447]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -44,7 +43,7 @@ metadata/_custom_type_script = "uid://dme5f24l0edsf"
 
 [node name="BeehaveTree" type="Node" parent="." unique_id=1197668891 node_paths=PackedStringArray("blackboard", "actor")]
 script = ExtResource("1_nvy3a")
-blackboard = NodePath("@Node@81981")
+blackboard = NodePath("../Blackboard")
 custom_monitor = true
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
