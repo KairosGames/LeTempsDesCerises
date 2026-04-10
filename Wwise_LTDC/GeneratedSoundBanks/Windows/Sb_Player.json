@@ -10,11 +10,19 @@
     "Type": "User",
     "GUID": "{49827AFC-1442-4066-AF70-C2B0B3B40C86}",
     "Language": "SFX",
-    "Hash": "{3D17AF66-CB43-E743-C5CC-58D58B78C6F8}",
+    "Hash": "{54EB3069-D4DF-83C0-58AD-6AC125B6A955}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Player",
     "ShortName": "Sb_Player",
     "Path": "Sb_Player.bnk",
     "Media": [
+     {
+      "Id": "170408866",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Chassepot\\Bullet_Impact\\SFX_Bullet_Impact\\LTDC_SFX_Bullet_Hit_LayerCore_Oneshot.wav",
+      "CachePath": "57/{570E2F20-98B9-58E1-C8DD-828739270A22}.wem"
+     },
      {
       "Id": "247688113",
       "Language": "SFX",
@@ -59,6 +67,14 @@
     "Plugins": {
      "Custom": [
       {
+       "Id": "80258421",
+       "Name": "Meter (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\[Effect Slot [1]: (Meter)]\\Meter (Custom)",
+       "GUID": "{8908185C-5E26-46E0-AFC3-C890C86B4246}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      },
+      {
        "Id": "550680016",
        "Name": "City_Center (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Crossroad_Reverb\\[Effect Slot [0]: (iZotope Hybrid Reverb)]\\City_Center (Custom)",
@@ -70,6 +86,14 @@
          "Id": "379374117"
         }
        ]
+      },
+      {
+       "Id": "628580303",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{BDA9F735-5FF7-4B01-9BF3-FEB8CAF76ED7}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
       },
       {
        "Id": "641257012",
@@ -113,6 +137,39 @@
      ]
     },
     "Events": [
+     {
+      "Id": "384143791",
+      "Name": "Bullet_Hit",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Bullet_Hit",
+      "GUID": "{13B273F2-57C8-4A62-9A0E-5479116C3DB7}",
+      "MaxAttenuation": "100",
+      "DurationType": "OneShot",
+      "DurationMin": "0.8039617",
+      "DurationMax": "0.8039617",
+      "MediaRefs": [
+       {
+        "Id": "170408866"
+       }
+      ],
+      "AuxBusRefs": [
+       {
+        "Id": "243379636",
+        "Name": "Reflect",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+        "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
+       }
+      ]
+     },
+     {
+      "Id": "3687575925",
+      "Name": "Deafening_Recover",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Deafening_Recover",
+      "GUID": "{466AAC6A-68B8-4005-A1D9-6E44A18E8793}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
+     },
      {
       "Id": "1650679582",
       "Name": "Player_Reload",
@@ -178,6 +235,12 @@
         "Name": "Player_Reload",
         "ObjectPath": "\\Events\\Default Work Unit\\Player\\Player_Reload",
         "GUID": "{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}"
+       },
+       {
+        "Id": "3687575925",
+        "Name": "Deafening_Recover",
+        "ObjectPath": "\\Events\\Default Work Unit\\Player\\Deafening_Recover",
+        "GUID": "{466AAC6A-68B8-4005-A1D9-6E44A18E8793}"
        }
       ]
      }
@@ -243,7 +306,17 @@
       "Id": "2246998526",
       "Name": "Main Audio Bus",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus",
-      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "80258421"
+        },
+        {
+         "Id": "628580303"
+        }
+       ]
+      }
      }
     ],
     "AuxBusses": [
@@ -291,9 +364,17 @@
        ]
       }
      }
+    ],
+    "GameParameters": [
+     {
+      "Id": "711096812",
+      "Name": "Deafening",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Deafening",
+      "GUID": "{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}"
+     }
     ]
    }
   ],
-  "FileHash": "{B679568A-9E66-4127-16E6-AA9D0B97DC55}"
+  "FileHash": "{ADCF58A4-C49D-0638-B447-7C3E0F582DB1}"
  }
 }

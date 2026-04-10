@@ -137,7 +137,6 @@
 									</ValueList>
 								</Property>
 							</PropertyList>
-							<ReferenceList/>
 							<ObjectLists>
 								<ObjectList Name="Effects">
 									<EffectSlot Name="" ID="{D8BC7AB5-6DB8-415E-910B-F66EFE69BA51}" ShortID="571375785">
@@ -362,6 +361,70 @@
 							</ObjectLists>
 						</AuxBus>
 					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Effects">
+							<EffectSlot Name="" ID="{D7D84C38-4929-45B1-8060-D999B2E9656E}" ShortID="120455340">
+								<ReferenceList>
+									<Reference Name="Effect">
+										<Custom>
+											<Effect Name="Parametric EQ (Custom)" ID="{BDA9F735-5FF7-4B01-9BF3-FEB8CAF76ED7}" ShortID="628580303" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+												<PropertyList>
+													<Property Name="FilterTypeBand3" Type="int32" Value="0"/>
+													<Property Name="FrequencyBand3" Type="Real32" Value="20000"/>
+													<Property Name="OnOffBand3" Type="bool" Value="True"/>
+													<Property Name="RolloffRateBand3" Type="int32" Value="24"/>
+												</PropertyList>
+												<ObjectLists>
+													<ObjectList Name="RTPC">
+														<RTPC Name="" ID="{AB042688-190F-4102-8A9B-F6F18EB50AAE}" ShortID="641468390">
+															<PropertyList>
+																<Property Name="PropertyName" Type="string" Value="FrequencyBand3"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																</Reference>
+																<Reference Name="Curve">
+																	<Custom>
+																		<Curve Name="" ID="{74031C07-37B9-4553-9D4D-9B5AB47ACE48}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="5"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>20000</YPos>
+																					<Flags>5</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>100</XPos>
+																					<YPos>20</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</Custom>
+																</Reference>
+															</ReferenceList>
+														</RTPC>
+													</ObjectList>
+												</ObjectLists>
+											</Effect>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</EffectSlot>
+							<EffectSlot Name="" ID="{71AC8EEB-7BEF-474D-9673-C3E3F941381B}" ShortID="867054729">
+								<ReferenceList>
+									<Reference Name="Effect">
+										<Custom>
+											<Effect Name="Meter (Custom)" ID="{8908185C-5E26-46E0-AFC3-C890C86B4246}" ShortID="80258421" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3"/>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</EffectSlot>
+						</ObjectList>
+					</ObjectLists>
 				</Bus>
 				<Bus Name="Wwise_Motion" ID="{01B95841-D9A2-4051-9C07-3EF7EF52C3B7}">
 					<ReferenceList>
@@ -398,6 +461,41 @@
 							</ObjectLists>
 						</AuxBus>
 					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<RTPC Name="" ID="{FFF76E6A-A85E-403F-B9EE-4663566F8B9D}" ShortID="468394138">
+								<PropertyList>
+									<Property Name="PropertyName" Type="string" Value="BusVolume"/>
+								</PropertyList>
+								<ReferenceList>
+									<Reference Name="ControlInput">
+										<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+									</Reference>
+									<Reference Name="Curve">
+										<Custom>
+											<Curve Name="" ID="{A82F96C7-A4AB-42D0-B428-C735E8A7FE10}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-6</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>12</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</RTPC>
+						</ObjectList>
+					</ObjectLists>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

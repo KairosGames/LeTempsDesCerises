@@ -39,6 +39,31 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
+								<Action Name="" ID="{3BF36D4F-E6DB-48A1-9452-7A61A03E4672}" ShortID="153425534">
+									<PropertyList>
+										<Property Name="AbsoluteOrRelative" Type="int16" Value="1"/>
+										<Property Name="ActionType" Type="int16" Value="38"/>
+										<Property Name="Delay" Type="Real64" Value="0.1"/>
+										<Property Name="GameParameterValue" Type="Real64" Value="10"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{35B09AA6-485C-447D-BD96-BCBEBE4FB62D}" ShortID="881748335">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="4"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening_Recover" ID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" WorkUnitID="{96E4295F-8863-4251-9883-8697799D4058}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Player_Reload" ID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}">
@@ -47,6 +72,40 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="LTDC_SFX_Player_Reload_Oneshot" ID="{E9FDFEC8-A3E8-44FB-A1F6-94A74981BCFA}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Deafening_Recover" ID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}">
+							<PropertyList>
+								<Property Name="InstanceLimit" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{D204D785-02FE-4D40-9F82-FFBD6B156A75}" ShortID="16817253">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="39"/>
+										<Property Name="FadeTime" Type="Real64" Value="10"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Bullet_Hit" ID="{13B273F2-57C8-4A62-9A0E-5479116C3DB7}">
+							<ChildrenList>
+								<Action Name="" ID="{AA161D02-E0D4-4BD4-8E42-417B78FAE655}" ShortID="591970666">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Bullet_Hit_LayerCore_Oneshot" ID="{172213FC-8D86-47A8-8D13-C26D17DBBD7E}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

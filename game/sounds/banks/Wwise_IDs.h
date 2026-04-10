@@ -14,6 +14,8 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID AMB_CANNONS = 3265814676U;
+        static const AkUniqueID BULLET_HIT = 384143791U;
+        static const AkUniqueID DEAFENING_RECOVER = 3687575925U;
         static const AkUniqueID PLAYER_RELOAD = 1650679582U;
         static const AkUniqueID PLAYER_SHOOT = 4004702906U;
     } // namespace EVENTS
@@ -68,11 +70,25 @@ namespace AK
             } // namespace SWITCH
         } // namespace CHARACTER_TYPE
 
+        namespace SURFACE
+        {
+            static const AkUniqueID GROUP = 1834394558U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID BRICK = 504532776U;
+                static const AkUniqueID GLASS = 2449969375U;
+                static const AkUniqueID METAL = 2473969246U;
+                static const AkUniqueID WOOD = 2058049674U;
+            } // namespace SWITCH
+        } // namespace SURFACE
+
     } // namespace SWITCHES
 
     namespace GAME_PARAMETERS
     {
         static const AkUniqueID CANNONS_PROBABILITY = 2576556105U;
+        static const AkUniqueID DEAFENING = 711096812U;
         static const AkUniqueID POETIC_LEVEL = 3680281974U;
     } // namespace GAME_PARAMETERS
 
