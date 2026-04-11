@@ -42,6 +42,30 @@ size = Vector3(50, 1, 50)
 [sub_resource type="BoxShape3D" id="BoxShape3D_0f5d2"]
 size = Vector3(50, 1, 50)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ma2d"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fwun3"]
+material = SubResource("StandardMaterial3D_1ma2d")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fwun3"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_pt8rx"]
+material = SubResource("StandardMaterial3D_fwun3")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ml6f"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_m0dtw"]
+material = SubResource("StandardMaterial3D_8ml6f")
+radius = 0.25
+height = 0.5
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_1ma2d"]
 radius = 30.0
 
@@ -147,10 +171,28 @@ transform = Transform3D(0.9258731, -0.37732992, 0.019522727, 0.34570774, 0.86686
 transform = Transform3D(0.9258731, -0.37732992, 0.019522727, 0.34570774, 0.8668652, 0.3592091, -0.1524639, -0.32583287, 0.93305296, 15.445805, -1.3439797, -1.1709089)
 
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("3_v1doc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2220054, 0, -19.006115)
+transform = Transform3D(0.072298214, 0, -0.99738306, 0, 1, 0, 0.99738306, 0, 0.072298214, -0.027999163, 0, 21.742552)
 
-[node name="Agent" parent="." unique_id=1349390169 instance=ExtResource("4_ec114")]
+[node name="AgentR" parent="." unique_id=1349390169 instance=ExtResource("4_ec114")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.822758, 4.7683716e-07, 21.425152)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="AgentR" unique_id=2143664057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0781083, 0)
+mesh = SubResource("SphereMesh_fwun3")
+
+[node name="AgentG" parent="." unique_id=1494106370 instance=ExtResource("4_ec114")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.822758, 4.7683716e-07, 23.490547)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="AgentG" unique_id=1175747708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0781083, 0)
+mesh = SubResource("SphereMesh_pt8rx")
+
+[node name="AgentB" parent="." unique_id=1325826217 instance=ExtResource("4_ec114")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.492592, 4.7683716e-07, 23.490547)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="AgentB" unique_id=54133617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0781083, 0)
+mesh = SubResource("SphereMesh_m0dtw")
 
 [node name="Barricade" parent="." unique_id=1923619645 instance=ExtResource("4_76nee")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97321844, -8.934011)
@@ -167,7 +209,7 @@ curve = SubResource("Curve3D_voip0")
 debug_custom_color = Color(1, 0, 0, 1)
 
 [node name="PathFollow3D" type="PathFollow3D" parent="CanonPath" unique_id=1156070938]
-transform = Transform3D(-4.3711125e-08, 0, -0.999994, 0, 1, 0, 0.999994, 0, -4.3711125e-08, -15.170823, 0, 12.263466)
+transform = Transform3D(-4.37111e-08, 0, -0.99999344, 0, 1, 0, 0.99999344, 0, -4.37111e-08, -15.170823, 0, 12.263466)
 
 [node name="Canon" parent="CanonPath/PathFollow3D" unique_id=1624713896 instance=ExtResource("6_voip0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3556671)
