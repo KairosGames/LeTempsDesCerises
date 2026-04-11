@@ -1,5 +1,6 @@
 @tool
 class_name IsCovered extends ConditionLeaf
 
-func tick(_actor: Node, _blackboard: Blackboard) -> int:
-	return SUCCESS
+func tick(actor: Node, _blackboard: Blackboard) -> int:
+	var agent: Agent = actor
+	return SUCCESS if agent.is_covered else FAILURE

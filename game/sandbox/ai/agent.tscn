@@ -33,8 +33,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.25)
 mesh = SubResource("BoxMesh_tpga6")
 
 [node name="Navigation" type="NavigationAgent3D" parent="." unique_id=514776903]
+avoidance_enabled = true
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 1, 1)
 script = ExtResource("2_24g36")
-movement_speed = 0.5
 metadata/_custom_type_script = "uid://1h6aoya61b6d"
 
 [node name="Blackboard" type="Node" parent="." unique_id=350175424]

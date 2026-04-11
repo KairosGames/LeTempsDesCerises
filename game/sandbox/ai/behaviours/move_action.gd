@@ -16,11 +16,17 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	
 	if agent.navigation.is_navigation_finished():
 		if agent.navigation.is_target_reached():
-			return SUCCESS
+			return has_succeeded(actor, blackboard)
 		else:
+			on_failed(actor, blackboard)
 			return FAILURE
 	else:
-		return RUNNING
+		return is_running(actor, blackboard)
+		
 
 func interrupt(actor: Node, _blackboard: Blackboard) -> void:
 	actor.navigation.stop()
+
+func has_succeeded(_actor: Node, _blackboard: Blackboard) -> int: return SUCCESS
+func on_failed(_actor: Node, _blackboard: Blackboard) -> void: return
+func is_running(_actor: Node, _blackboard: Blackboard) -> int: return RUNNING
