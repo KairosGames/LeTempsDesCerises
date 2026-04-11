@@ -1,5 +1,5 @@
 @tool
 class_name IsCovered extends ConditionLeaf
 
-func tick(actor: Node, blackboard: Blackboard) -> int:
+func tick(_actor: Node, _blackboard: Blackboard) -> int:
 	return SUCCESS
