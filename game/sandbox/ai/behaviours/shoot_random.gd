@@ -15,6 +15,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		var elasped_timed: float = (Time.get_ticks_msec() - shoot_start_time) / 1000.0
 		if elasped_timed > duration:
 			is_shooting = false
+			(actor as Agent).animation.play("random_shoot")
 			(actor as Agent).is_weapon_loaded = false
 			return SUCCESS
 		else: 

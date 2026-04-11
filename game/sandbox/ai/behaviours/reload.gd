@@ -8,7 +8,7 @@ const duration: float = 4
 
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	if not is_reloading:
-		# TODO play reload animation
+		(actor as Agent).animation.play("reload")
 		is_reloading = true
 		reloading_start_time = Time.get_ticks_msec()
 		return RUNNING

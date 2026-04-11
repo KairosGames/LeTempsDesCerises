@@ -1,17 +1,15 @@
 class_name Agent extends CharacterBody3D
 
 @onready var navigation: Navigation = $Navigation
+@onready var animation: AnimationPlayer = $AnimationPlayer
 
-var is_weapon_loaded: bool = false:
-	set(value):
-		if is_weapon_loaded and not value: 
-			print("Shoot")
-			print_stack()
-		if not is_weapon_loaded and value:
-			print("Reloaded")
-			print_stack()
-		is_weapon_loaded = value
+signal shoot
+signal reload_start
+signal reload_end
+signal move_start
+signal move_end
 
+var is_weapon_loaded: bool = false
 
 var cover: Cover = null
 

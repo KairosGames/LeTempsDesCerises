@@ -21,7 +21,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		var elasped_timed: float = (Time.get_ticks_msec() - shoot_start_time) / 1000.0
 		if elasped_timed > duration:
 			is_shooting = false
-			print("Shoot at '%s'"%target.name) # TODO shoot animation, remove health
+			(actor as Agent).animation.play("shoot")
 			(actor as Agent).is_weapon_loaded = false
 			return SUCCESS
 		else: 
