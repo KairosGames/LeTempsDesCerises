@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d28tbnqpob3um"]
+
+[ext_resource type="PackedScene" uid="uid://n8jqgeouvopc" path="res://sandbox/ai/agent.tscn" id="1_145la"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_145la"]
+albedo_color = Color(0, 0.7019608, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_f4ypf"]
+material = SubResource("StandardMaterial3D_145la")
+radius = 0.25
+height = 0.5
+
+[node name="Versaillais" unique_id=1349390169 instance=ExtResource("1_145la")]
+
+[node name="Hat" parent="." index="6" unique_id=209391601]
+mesh = SubResource("SphereMesh_f4ypf")

@@ -106,6 +106,14 @@ _data = {
 &"shoot": SubResource("Animation_3m1mu")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ma2d"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1xyfn"]
+material = SubResource("StandardMaterial3D_1ma2d")
+radius = 0.25
+height = 0.5
+
 [node name="Agent" type="CharacterBody3D" unique_id=1349390169]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -149,3 +157,7 @@ actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
 [node name="Versaillais" parent="BeehaveTree" unique_id=546313229 instance=ExtResource("7_ixvr7")]
+
+[node name="Hat" type="MeshInstance3D" parent="." unique_id=209391601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0781083, 0)
+mesh = SubResource("SphereMesh_1xyfn")

@@ -11,7 +11,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	var target: Node3D = blackboard.get_value("target", null)
 	if not target: return FAILURE
 	
-	agent.look_at(target.global_position)
+	agent.aim_to(target.global_position)
 	
 	if not is_shooting:
 		is_shooting = true
