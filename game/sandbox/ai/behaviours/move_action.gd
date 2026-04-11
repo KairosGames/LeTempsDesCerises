@@ -12,6 +12,9 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	var destination: Vector3 = get_destination(actor, blackboard)
 	
 	if agent.navigation.target_position.distance_squared_to(destination) > MIN_DISTANCE:
+		if agent.cover: 
+			CoverManager.release(agent.cover)
+			agent.cover = null
 		agent.navigation.move_to(get_destination(actor, blackboard), get_stop_distance())
 	
 	if agent.navigation.is_navigation_finished():

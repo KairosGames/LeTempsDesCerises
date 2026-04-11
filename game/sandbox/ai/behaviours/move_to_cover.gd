@@ -11,7 +11,7 @@ func has_succeeded(actor: Node, blackboard: Blackboard) -> int:
 	var cover: Cover = blackboard.get_value("cover")
 	if CoverManager.try_take_cover(cover):
 		var agent: Agent = actor
-		agent.is_covered = true
+		agent.cover = cover
 		return SUCCESS
 	else: 
 		return FAILURE
