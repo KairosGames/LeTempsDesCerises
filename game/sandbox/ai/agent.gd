@@ -18,6 +18,3 @@ var cover: Cover = null
 var team: Team = Team.VERSALLAIS
 
 enum Team { VERSALLAIS = -1, NONE = 0, COMMUNARD = 1 }
-
-func _ready() -> void:
-	$BeehaveTree.name = name
