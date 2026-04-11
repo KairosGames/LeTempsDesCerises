@@ -33,7 +33,7 @@ func find_closer_cover(agent_position: Vector3) -> Cover:
 	
 	if _covers.size() == 1: return _covers.keys()[0]
 	
-	var cover_distances: Array[CoverDistance] = _covers.keys().map(
+	var cover_distances:= _covers.keys().map(
 		func(c) -> CoverDistance: 
 			var cover_distance: CoverDistance = CoverDistance.new()
 			cover_distance.cover = c
