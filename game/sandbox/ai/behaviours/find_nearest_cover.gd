@@ -1,4 +1,11 @@
-class_name FindCloserCover extends ActionLeaf
+@tool
+class_name FindNearestCover extends ActionLeaf
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
-	return SUCCESS
+	var agent: Agent = actor
+	var nearest_cover: Cover = CoverManager.find_nearest_cover(agent.global_position)
+	if nearest_cover:
+		blackboard.set_value("cover", nearest_cover)
+		return SUCCESS
+	else:
+		return FAILURE

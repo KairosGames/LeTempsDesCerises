@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://dhj8g57pk5bi0"]
 
 [ext_resource type="Shader" uid="uid://0dait1bdwtvh" path="res://sandbox/ai/checkerboard.gdshader" id="1_v1doc"]
+[ext_resource type="PackedScene" uid="uid://diay4as6f3uoj" path="res://sandbox/ai/wall.tscn" id="2_ec114"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_v1doc"]
 [ext_resource type="PackedScene" uid="uid://yrcffpgog2ra" path="res://sandbox/ai/barricade.tscn" id="4_76nee"]
 [ext_resource type="PackedScene" uid="uid://n8jqgeouvopc" path="res://sandbox/ai/agent.tscn" id="4_ec114"]
+[ext_resource type="PackedScene" uid="uid://chfbdpud1npmp" path="res://sandbox/ai/canon.tscn" id="6_voip0"]
+[ext_resource type="Script" uid="uid://bj5l1k74x56vv" path="res://sandbox/ai/cover_manager.gd" id="7_1ma2d"]
+[ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://sandbox/ai/cover.gd" id="8_fwun3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_76nee"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -19,8 +23,10 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_76nee"]
-vertices = PackedVector3Array(-24.5, 0.5, 0, -2.5, 0.5, 0, -2.5, 0.5, -2.25, 0, 0.5, -2.5, 0, 0.5, -24.5, -24.5, 0.5, -24.5, 2.5, 0.5, -2.5, 2.75, 0.5, -0.75, 24.5, 0.5, -1, 24.5, 0.5, -24.5, -1.5, 2.5, -1.5, -1.5, 2.5, 1.5, 1.5, 2.5, 1.5, 1.5, 2.5, -1.5, -1.25, 0.5, -1.25, -1.25, 0.5, 1.5, 1.5, 0.5, 1.5, 1.5, 0.5, -1.25, 2.75, 0.5, 0.75, 24.5, 0.5, 1, -1, 0.5, 24.5, -0.75, 0.5, 2.75, -2.5, 0.5, 2.5, -24.5, 0.5, 24.5, 2.75, 0.5, 2.25, 2.25, 0.5, 2.75, 0.75, 0.5, 2.75, 1, 0.5, 24.5, 24.5, 0.5, 24.5)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 2), PackedInt32Array(0, 5, 2), PackedInt32Array(2, 5, 4), PackedInt32Array(7, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(9, 6, 4), PackedInt32Array(6, 3, 4), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11), PackedInt32Array(17, 16, 14), PackedInt32Array(14, 16, 15), PackedInt32Array(7, 8, 18), PackedInt32Array(18, 8, 19), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(22, 23, 0), PackedInt32Array(0, 1, 22), PackedInt32Array(24, 18, 19), PackedInt32Array(27, 26, 25), PackedInt32Array(24, 19, 25), PackedInt32Array(25, 19, 28), PackedInt32Array(25, 28, 27), PackedInt32Array(21, 26, 20), PackedInt32Array(20, 26, 27)]
+vertices = PackedVector3Array(-24.728012, 0.067902565, -24.5, -24.728012, 0.067902565, -10.5, 24.521988, 0.067902565, -10.5, 24.521988, 0.067902565, -24.5, -12.978012, 0.067902565, 20.25, -15.228012, 0.067902565, 20.5, -15.228012, 0.067902565, 24.5, 24.521988, 0.067902565, 24.5, -24.728012, 0.067902565, -7, -24.728012, 0.067902565, 15.25, -13.228012, 0.067902565, 15.25, 24.521988, 0.067902565, -7, -24.728012, 3.2179027, 16.25, -24.728012, 3.2179027, 19.5, -13.978012, 3.2179027, 19.5, -13.978012, 3.2179027, 16.25, -24.478012, 0.067902565, 16.5, -24.478012, 0.067902565, 19.25, -21.978012, 0.067902565, 19.25, -21.978012, 0.067902565, 16.5, -20.478012, 0.067902565, 16.5, -20.478012, 0.067902565, 19.25, -18.228012, 0.067902565, 19.25, -18.228012, 0.067902565, 16.5, -16.728012, 0.067902565, 16.5, -16.728012, 0.067902565, 19.25, -14.228012, 0.067902565, 19.25, -14.228012, 0.067902565, 16.5, -24.728012, 0.067902565, 20.5, -24.728012, 0.067902565, 24.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(7, 10, 11), PackedInt32Array(11, 10, 8), PackedInt32Array(10, 7, 4), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(23, 22, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(27, 26, 24), PackedInt32Array(24, 26, 25), PackedInt32Array(29, 28, 6), PackedInt32Array(6, 28, 5)]
+cell_height = 0.05
+agent_max_slope = 30.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_76nee"]
 render_priority = 0
@@ -35,6 +41,13 @@ size = Vector3(50, 1, 50)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0f5d2"]
 size = Vector3(50, 1, 50)
+
+[sub_resource type="Curve3D" id="Curve3D_voip0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 11.71, 0, 0, -15.170823, 0, 12.263466, 0, 0, 2.81, 0, 0, 0, -2.722751, 0, -8.606731),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Sandbox" type="Node3D" unique_id=1549290385]
 
@@ -58,11 +71,125 @@ mesh = SubResource("BoxMesh_u5472")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_0f5d2")
 
+[node name="Wall2" parent="Geometry" unique_id=611951933 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, -9.412021, -1.453671, -8.780541)
+
+[node name="Wall13" parent="Geometry" unique_id=693794544 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, -6.704908, -1.453671, -8.780541)
+
+[node name="Wall17" parent="Geometry" unique_id=491908506 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, -3.0152512, -1.453671, -8.780541)
+
+[node name="Wall18" parent="Geometry" unique_id=1487310805 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 3.0365899, -1.453671, -8.780541)
+
+[node name="Wall19" parent="Geometry" unique_id=1340980266 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0.12288427, -1.453671, -8.780541)
+
+[node name="Wall7" parent="Geometry" unique_id=1720959527 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 23.522633, -1.453671, -8.780541)
+
+[node name="Wall8" parent="Geometry" unique_id=704869882 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 20.677338, -1.453671, -8.780541)
+
+[node name="Wall9" parent="Geometry" unique_id=2039908962 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 17.256432, -1.453671, -8.780541)
+
+[node name="Wall10" parent="Geometry" unique_id=545733974 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 14.013395, -1.453671, -8.780541)
+
+[node name="Wall11" parent="Geometry" unique_id=1793342746 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 10.234883, -1.453671, -8.780541)
+
+[node name="Wall12" parent="Geometry" unique_id=507308130 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 6.6821117, -1.453671, -8.780541)
+
+[node name="Wall3" parent="Geometry" unique_id=1150070971 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, -13.015915, -1.453671, -8.780541)
+
+[node name="Wall4" parent="Geometry" unique_id=920234091 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, -16.77177, -1.453671, -8.780541)
+
+[node name="Wall5" parent="Geometry" unique_id=281496102 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, -20.242474, -1.453671, -8.780541)
+
+[node name="Wall6" parent="Geometry" unique_id=1141141521 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, -23.228012, -1.453671, -8.780541)
+
+[node name="Wall14" parent="Geometry" unique_id=1320477706 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -23.228012, 1.14537, 17.86808)
+
+[node name="Wall15" parent="Geometry" unique_id=484942217 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -19.29874, 1.14537, 17.86808)
+
+[node name="Wall16" parent="Geometry" unique_id=35311098 instance=ExtResource("2_ec114")]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -15.665966, 1.14537, 17.86808)
+
+[node name="Wall20" parent="Geometry" unique_id=987402461 instance=ExtResource("2_ec114")]
+transform = Transform3D(0.9258731, -0.37732992, 0.019522727, 0.34570774, 0.8668652, 0.3592091, -0.1524639, -0.32583287, 0.93305296, -14.657962, -1.3439797, 1.139472)
+
+[node name="Wall21" parent="Geometry" unique_id=1955756215 instance=ExtResource("2_ec114")]
+transform = Transform3D(0.9258731, -0.37732992, 0.019522727, 0.34570774, 0.8668652, 0.3592091, -0.1524639, -0.32583287, 0.93305296, -7.7232, -1.3439797, 11.006048)
+
+[node name="Wall22" parent="Geometry" unique_id=1135934677 instance=ExtResource("2_ec114")]
+transform = Transform3D(0.9258731, -0.37732992, 0.019522727, 0.34570774, 0.8668652, 0.3592091, -0.1524639, -0.32583287, 0.93305296, 7.743561, -1.3439797, 8.993499)
+
+[node name="Wall23" parent="Geometry" unique_id=964868368 instance=ExtResource("2_ec114")]
+transform = Transform3D(0.9258731, -0.37732992, 0.019522727, 0.34570774, 0.8668652, 0.3592091, -0.1524639, -0.32583287, 0.93305296, 16.959389, -1.3439797, 12.5746565)
+
+[node name="Wall24" parent="Geometry" unique_id=815542134 instance=ExtResource("2_ec114")]
+transform = Transform3D(0.9258731, -0.37732992, 0.019522727, 0.34570774, 0.8668652, 0.3592091, -0.1524639, -0.32583287, 0.93305296, 16.959389, -1.3439797, 12.5746565)
+
+[node name="Wall25" parent="Geometry" unique_id=1951563862 instance=ExtResource("2_ec114")]
+transform = Transform3D(0.9258731, -0.37732992, 0.019522727, 0.34570774, 0.8668652, 0.3592091, -0.1524639, -0.32583287, 0.93305296, 15.445805, -1.3439797, -1.1709089)
+
+[node name="Wall26" parent="Geometry" unique_id=1843811466 instance=ExtResource("2_ec114")]
+transform = Transform3D(0.9258731, -0.37732992, 0.019522727, 0.34570774, 0.8668652, 0.3592091, -0.1524639, -0.32583287, 0.93305296, 15.445805, -1.3439797, -1.1709089)
+
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("3_v1doc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2220054, 0, -19.006115)
 
 [node name="Agent" parent="." unique_id=1349390169 instance=ExtResource("4_ec114")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.93579197, 4.7683716e-07, 10.235152)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.822758, 4.7683716e-07, 21.425152)
 
 [node name="Barricade" parent="." unique_id=1923619645 instance=ExtResource("4_76nee")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.085035)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97321844, -8.934011)
+
+[node name="CanonPath" type="Path3D" parent="." unique_id=1997518648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6488554, 0, 10.570492)
+curve = SubResource("Curve3D_voip0")
+debug_custom_color = Color(1, 0, 0, 1)
+
+[node name="PathFollow3D" type="PathFollow3D" parent="CanonPath" unique_id=1156070938]
+transform = Transform3D(-4.3711125e-08, 0, -0.999994, 0, 1, 0, 0.999994, 0, -4.3711125e-08, -15.170823, 0, 12.263466)
+
+[node name="Canon" parent="CanonPath/PathFollow3D" unique_id=1624713896 instance=ExtResource("6_voip0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3556671)
+
+[node name="CoverManager" type="Node" parent="." unique_id=1084077841 groups=["Covers"]]
+script = ExtResource("7_1ma2d")
+
+[node name="Cover" type="Marker3D" parent="." unique_id=330185962]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.729594, 0, 13.269162)
+script = ExtResource("8_fwun3")
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover2" type="Marker3D" parent="." unique_id=1908699807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7529955, 0, 3.5358524)
+script = ExtResource("8_fwun3")
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover3" type="Marker3D" parent="." unique_id=2095348945]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.881548, 0, 11.026734)
+script = ExtResource("8_fwun3")
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover4" type="Marker3D" parent="." unique_id=983127164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.453945, 0, 14.951392)
+script = ExtResource("8_fwun3")
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover5" type="Marker3D" parent="." unique_id=1143519827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.480953, 0, 0.9901514)
+script = ExtResource("8_fwun3")
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
