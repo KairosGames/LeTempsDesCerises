@@ -23,6 +23,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 			is_shooting = false
 			(actor as Agent).animation.play("shoot")
 			(actor as Agent).is_weapon_loaded = false
+			target.queue_free()
 			return SUCCESS
 		else: 
 			return RUNNING
