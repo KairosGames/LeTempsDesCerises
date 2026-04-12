@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d1qotbnwtmkrg"]
 
 [ext_resource type="WwiseEvent" uid="uid://blppyctmbormw" path="res://Wwise/resources/Event/{13B273F2-57C8-4A62-9A0E-5479116C3DB7}.tres" id="1_awtam"]
+[ext_resource type="Script" uid="uid://brqkpsxjvjuua" path="res://sounds/scripts/bullet_hit.gd" id="1_l6lbi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q662s"]
 albedo_color = Color(1, 0, 1, 1)
@@ -13,6 +14,7 @@ radius = 0.09751394
 
 [node name="bulett_hit" type="Node3D" unique_id=549965140]
 top_level = true
+script = ExtResource("1_l6lbi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=245411994]
 mesh = SubResource("SphereMesh_awtam")
@@ -22,5 +24,7 @@ event = ExtResource("1_awtam")
 trigger_on = 2
 is_environment_aware = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AkEvent3D" unique_id=2006682863]
+[node name="Area3D" type="Area3D" parent="AkEvent3D" unique_id=686429636]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AkEvent3D/Area3D" unique_id=2006682863]
 shape = SubResource("SphereShape3D_q662s")
