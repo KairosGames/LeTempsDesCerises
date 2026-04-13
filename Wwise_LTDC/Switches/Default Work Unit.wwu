@@ -23,6 +23,36 @@
 						<Switch Name="Brick" ID="{34CF5667-9CE6-468C-9F75-33E0A6DECE94}"/>
 					</ChildrenList>
 				</SwitchGroup>
+				<SwitchGroup Name="Player_Position" ID="{420F1300-E64B-4CA6-9F56-D5AAC8CB10BC}">
+					<PropertyList>
+						<Property Name="UseGameParameter" Type="bool" Value="True"/>
+					</PropertyList>
+					<ChildrenList>
+						<Switch Name="up" ID="{6ED7AC77-E0A0-4562-B15A-68E109245BA3}"/>
+						<Switch Name="crouch" ID="{9CA6C40A-4F89-47F3-8D65-3B6B7CD4A1B4}"/>
+						<Switch Name="prone" ID="{55E48646-668F-4D5A-AFAF-0D6A3642CFDD}"/>
+					</ChildrenList>
+					<SwitchOnRTPC>
+						<GameParameterRef Name="Player_Position" ID="{7797433B-9024-4066-9F96-1380C3B89EA1}"/>
+						<Curve Name="" ID="{A54E9999-0D9A-4CA4-9270-A7BB4344E1DE}">
+							<PropertyList>
+								<Property Name="Flags" Type="int32" Value="65537"/>
+							</PropertyList>
+							<PointList>
+								<Point>
+									<XPos>0</XPos>
+									<YPos>0</YPos>
+									<Flags>5</Flags>
+								</Point>
+								<Point>
+									<XPos>100</XPos>
+									<YPos>0</YPos>
+									<Flags>37</Flags>
+								</Point>
+							</PointList>
+						</Curve>
+					</SwitchOnRTPC>
+				</SwitchGroup>
 			</ChildrenList>
 		</WorkUnit>
 	</Switches>

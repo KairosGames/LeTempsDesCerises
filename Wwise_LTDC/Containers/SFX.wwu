@@ -2572,6 +2572,444 @@
 										</SwitchContainer>
 									</ChildrenList>
 								</PropertyContainer>
+								<BlendContainer Name="Steps" ID="{49ACEF8C-03E3-4971-BE5A-BCFD57DA4395}" ShortID="540993635">
+									<PropertyList>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SwitchContainer Name="Surface" ID="{FDC0E553-5814-4128-889B-B46731C882FB}" ShortID="13390626">
+											<PropertyList>
+												<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="SwitchGroupOrStateGroup">
+													<ObjectRef Name="Surface" ID="{5CA4360B-D253-4948-8173-23B1C55917B4}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="Brick" ID="{1A90D8A4-6CF5-41F5-B4C7-60F218FE8B45}" ShortID="772185063">
+													<PropertyList>
+														<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+														<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+														<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+														<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+														<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.2"/>
+														<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+														<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01" ID="{9C576E88-0B1C-4C13-A747-C2F7BDA5B1B2}" ShortID="1064302531">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01" ID="{861F36DD-CD4A-4B3E-9608-1E207646C631}">
+																	<Language>SFX</Language>
+																	<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="780702883"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01" ID="{861F36DD-CD4A-4B3E-9608-1E207646C631}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02" ID="{EDFAB49F-E2A3-4976-92C2-5B8320611802}" ShortID="688601572">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02" ID="{041EA5BE-FB3F-4577-83C6-9A725C4E9258}">
+																	<Language>SFX</Language>
+																	<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1024503505"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02" ID="{041EA5BE-FB3F-4577-83C6-9A725C4E9258}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03" ID="{5935759E-0AF3-48A2-AB7D-5D3A52FCDB26}" ShortID="384961227">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03" ID="{AE980B88-ACA8-4C07-A607-E79081866D60}">
+																	<Language>SFX</Language>
+																	<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="235351759"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03" ID="{AE980B88-ACA8-4C07-A607-E79081866D60}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04" ID="{CEFBE602-5FA5-416B-BF8E-0072217C02AC}" ShortID="971385086">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04" ID="{BB099696-85F6-40B4-B5E0-D9EC9C5A7550}">
+																	<Language>SFX</Language>
+																	<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="812421663"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04" ID="{BB099696-85F6-40B4-B5E0-D9EC9C5A7550}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05" ID="{0F220F3D-C5EB-4E90-9E68-9B16CA210429}" ShortID="791637855">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05" ID="{7EE91327-DD7E-4C72-AFD3-9804580BF480}">
+																	<Language>SFX</Language>
+																	<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="177445382"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05" ID="{7EE91327-DD7E-4C72-AFD3-9804580BF480}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06" ID="{4E240981-80AC-4496-894D-E6205DBFC464}" ShortID="450330798">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06" ID="{CD00F1D3-FB86-41F6-9D1B-6ADC87F2EB1D}">
+																	<Language>SFX</Language>
+																	<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="460395499"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06" ID="{CD00F1D3-FB86-41F6-9D1B-6ADC87F2EB1D}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+													<PositioningInfo>
+														<Panner Name="" ID="{71C5E0DF-BB84-4603-841F-222B442015C9}"/>
+													</PositioningInfo>
+													<StateInfo>
+														<StateGroupList>
+															<StateGroupInfo>
+																<StateGroupRef Name="player_position" ID="{02DC436E-58FA-4CBB-9770-4451633B92C8}"/>
+																<StateGroupInfo Name="" ID="{E31B824E-5160-440E-AEE9-4B683B340F2A}" ShortID="1013238360"/>
+															</StateGroupInfo>
+														</StateGroupList>
+														<CustomStateList>
+															<CustomState>
+																<StateRef Name="none" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
+																<CustomState Name="" ID="{4929A273-98E4-45E8-AD68-481F75E82D4F}" ShortID="154516242"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="prone" ID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
+																<CustomState Name="" ID="{D5236FAB-08BA-455D-8F49-18D365248CA1}" ShortID="176764720">
+																	<PropertyList>
+																		<Property Name="Lowpass" Type="int16" Value="50"/>
+																		<Property Name="Volume" Type="Real64" Value="-20"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="crouch" ID="{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"/>
+																<CustomState Name="" ID="{A82B8B2F-021F-4538-954A-7913C17D6B44}" ShortID="931181290">
+																	<PropertyList>
+																		<Property Name="Lowpass" Type="int16" Value="25"/>
+																		<Property Name="Volume" Type="Real64" Value="-6"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+														</CustomStateList>
+													</StateInfo>
+												</RandomSequenceContainer>
+											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{46CED10F-3A6C-451A-B6F1-15FFA128B429}"/>
+											</PositioningInfo>
+											<GroupingInfo>
+												<GroupingBehaviorList>
+													<GroupingBehavior>
+														<ItemRef Name="Brick" ID="{1A90D8A4-6CF5-41F5-B4C7-60F218FE8B45}"/>
+													</GroupingBehavior>
+												</GroupingBehaviorList>
+												<GroupingList>
+													<Grouping>
+														<SwitchRef Name="Brick" ID="{34CF5667-9CE6-468C-9F75-33E0A6DECE94}"/>
+														<ItemList>
+															<ItemRef Name="Brick" ID="{1A90D8A4-6CF5-41F5-B4C7-60F218FE8B45}"/>
+														</ItemList>
+													</Grouping>
+												</GroupingList>
+											</GroupingInfo>
+										</SwitchContainer>
+										<RandomSequenceContainer Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}" ShortID="541593734">
+											<PropertyList>
+												<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.05"/>
+												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LTDC_SFX_Player_Steps_LayerCloth_Random_2" ID="{9CD33DF2-9366-4849-8838-76381B4E8E9B}" ShortID="211917996">
+													<PropertyList>
+														<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+														<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerCloth_Random_2" ID="{CEC82D1D-C132-4E25-A491-437D21B34650}">
+															<Language>SFX</Language>
+															<AudioFile>SFX_Player_Steps\LTDC_SFX_Player_Steps_LayerCloth_Random_2.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="806477048"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<PositioningInfo>
+														<Panner Name="" ID="{B52F3914-C1A5-4BCE-A2E4-465E16DE663F}"/>
+													</PositioningInfo>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Steps_LayerCloth_Random_2" ID="{CEC82D1D-C132-4E25-A491-437D21B34650}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Steps_LayerCloth_Random_3" ID="{1BE978AC-F4EA-4801-865A-E827841FCA3C}" ShortID="14781405">
+													<PropertyList>
+														<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+														<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerCloth_Random_3" ID="{AB4EAC4B-6916-499B-A876-100F8A0A6549}">
+															<Language>SFX</Language>
+															<AudioFile>SFX_Player_Steps\LTDC_SFX_Player_Steps_LayerCloth_Random_3.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="440430333"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<PositioningInfo>
+														<Panner Name="" ID="{F7E1183F-A6B7-40A7-89D6-E0D8E897F02A}"/>
+													</PositioningInfo>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Steps_LayerCloth_Random_3" ID="{AB4EAC4B-6916-499B-A876-100F8A0A6549}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Steps_LayerCloth_Random_1" ID="{75319BDE-E88F-494C-8118-A6476E10E2EA}" ShortID="826218938">
+													<PropertyList>
+														<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+														<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerCloth_Random_1" ID="{E454E73A-7388-4490-9CEC-582ED5F4BCBD}">
+															<Language>SFX</Language>
+															<AudioFile>SFX_Player_Steps\LTDC_SFX_Player_Steps_LayerCloth_Random_1.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="753793935"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<PositioningInfo>
+														<Panner Name="" ID="{BA886201-3AEE-4B46-ACAF-EA35CDC353A2}"/>
+													</PositioningInfo>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Steps_LayerCloth_Random_1" ID="{E454E73A-7388-4490-9CEC-582ED5F4BCBD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Steps_LayerCloth_Random_4" ID="{893470D1-E0FE-4A1C-BF92-22448B49D852}" ShortID="824786185">
+													<PropertyList>
+														<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+														<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerCloth_Random_4" ID="{FF0675EC-2CCB-4AD3-B0D7-2497B7F4317F}">
+															<Language>SFX</Language>
+															<AudioFile>SFX_Player_Steps\LTDC_SFX_Player_Steps_LayerCloth_Random_4.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="900789959"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<PositioningInfo>
+														<Panner Name="" ID="{886FCFFB-BE7F-4C92-B0C0-E85A64349B4A}"/>
+													</PositioningInfo>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Steps_LayerCloth_Random_4" ID="{FF0675EC-2CCB-4AD3-B0D7-2497B7F4317F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{9ACC7AA7-EBA4-4BED-88FC-63A2578B91D6}"/>
+											</PositioningInfo>
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="player_position" ID="{02DC436E-58FA-4CBB-9770-4451633B92C8}"/>
+														<StateGroupInfo Name="" ID="{B114D99A-4476-4E91-8ACA-D8B352199A93}" ShortID="303637234"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="none" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
+														<CustomState Name="" ID="{CA077622-FCAC-44EE-AD2F-2370BAD8DEEB}" ShortID="333072845"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="prone" ID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
+														<CustomState Name="" ID="{61A4FD9F-65B3-4EE3-8178-C236D9C78F50}" ShortID="675772897">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="50"/>
+																<Property Name="Volume" Type="Real64" Value="-20"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="crouch" ID="{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"/>
+														<CustomState Name="" ID="{E596E5DA-A750-4925-9ACA-0CC00745E0F4}" ShortID="444610628">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="25"/>
+																<Property Name="Volume" Type="Real64" Value="-6"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<BlendTrackList>
+										<BlendTrack Name="New Blend Track" ID="{34160D4B-968D-48B1-92A4-FC267C8240C7}" ShortID="1067439987">
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}"/>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+										<BlendTrack Name="New Blend Track_01" ID="{D03504D3-37EB-4E99-8781-C89BDB230799}" ShortID="745889144">
+											<BlendTrackAssocList>
+												<BlendTrackAssoc>
+													<ItemRef Name="Surface" ID="{FDC0E553-5814-4128-889B-B46731C882FB}"/>
+												</BlendTrackAssoc>
+											</BlendTrackAssocList>
+										</BlendTrack>
+									</BlendTrackList>
+								</BlendContainer>
 							</ChildrenList>
 							<PositioningInfo>
 								<Panner Name="" ID="{087146D1-5D25-4948-979C-BB39A0B9F49D}"/>

@@ -10,19 +10,11 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{2FB0F280-6636-C100-B7D3-A0E20DEC91F0}",
+    "Hash": "{B4A10673-57E3-C33A-E6F3-AC3CFAD28A94}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
     "Media": [
-     {
-      "Id": "8078194",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "OtherBank",
-      "ShortName": "City Streets.wav",
-      "CachePath": "5E/{5E7736DD-276E-B9E8-852A-8DA990ABDEF1}.wem"
-     },
      {
       "Id": "379374117",
       "Language": "SFX",
@@ -30,10 +22,26 @@
       "Location": "OtherBank",
       "ShortName": "City Center.wav",
       "CachePath": "DB/{DBBEA420-9BA9-F316-0F5A-982BACB6E279}.wem"
+     },
+     {
+      "Id": "702837950",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "OtherBank",
+      "ShortName": "AudioEase\\Altiverb - Outdoor and More\\Outdoor\\Alley\\AE_NarrowShortAlley.wav",
+      "CachePath": "5A/{5AC5E397-32DD-2C1B-0DD0-4F8C187836DD}.wem"
      }
     ],
     "Plugins": {
      "Custom": [
+      {
+       "Id": "80258421",
+       "Name": "Meter (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\[Effect Slot [1]: (Meter)]\\Meter (Custom)",
+       "GUID": "{8908185C-5E26-46E0-AFC3-C890C86B4246}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      },
       {
        "Id": "550680016",
        "Name": "City_Center (Custom)",
@@ -48,20 +56,62 @@
        ]
       },
       {
-       "Id": "586941969",
-       "Name": "City_Streets (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb\\[Effect Slot [0]: (iZotope Hybrid Reverb)]\\City_Streets (Custom)",
-       "GUID": "{70831763-CD31-4785-B5F3-FC37FE270729}",
-       "LibName": "iZotope Hybrid Reverb",
-       "LibId": "135219",
+       "Id": "628580303",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{BDA9F735-5FF7-4B01-9BF3-FEB8CAF76ED7}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
+      {
+       "Id": "677203020",
+       "Name": "Pitch Shifter (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send\\[Effect Slot [0]: (Pitch Shifter)]\\Pitch Shifter (Custom)",
+       "GUID": "{E1388689-6B51-40C1-B6CC-61D3D1660DA2}",
+       "LibName": "Wwise Pitch Shifter",
+       "LibId": "8912899"
+      },
+      {
+       "Id": "695506173",
+       "Name": "Reflect (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect\\[Effect Slot [0]: (Reflect)]\\Reflect (Custom)",
+       "GUID": "{C4B726EC-1419-424F-ADF7-FACE67C11922}",
+       "LibName": "Wwise Reflect",
+       "LibId": "11206659"
+      },
+      {
+       "Id": "1012444785",
+       "Name": "High_Pass_60Hz (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb\\[Effect Slot [1]: (Parametric EQ)]\\High_Pass_60Hz (Custom)",
+       "GUID": "{0A41C22E-12E9-4E35-B138-1CD4852233C0}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      }
+     ],
+     "ShareSets": [
+      {
+       "Id": "2420937077",
+       "Name": "NarrowShortAlley",
+       "ObjectPath": "\\Effects\\Factory Altiverb - Outdoor and More\\Altiverb - Outdoor and More\\Outdoor Alley\\NarrowShortAlley",
+       "GUID": "{5F21B86B-F430-44FF-A9BF-37B1DEF8105B}",
+       "LibName": "Wwise Convolution Reverb",
+       "LibId": "8323075",
        "MediaRefs": [
         {
-         "Id": "8078194"
+         "Id": "702837950"
         }
        ]
       }
      ],
      "AudioDevices": [
+      {
+       "Id": "2012559111",
+       "Name": "Motion",
+       "ObjectPath": "\\Devices\\Default Work Unit\\Motion",
+       "GUID": "{882328E3-4BF4-4402-9C6C-32775CE7D72E}",
+       "LibName": "Motion",
+       "LibId": "33226759"
+      },
       {
        "Id": "2317455096",
        "Name": "No_Output",
@@ -110,6 +160,12 @@
       "Color": "4"
      },
      {
+      "Id": "1156359885",
+      "Name": "Wwise_Motion",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion",
+      "GUID": "{01B95841-D9A2-4051-9C07-3EF7EF52C3B7}"
+     },
+     {
       "Id": "1277101407",
       "Name": "VX_NPC",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC",
@@ -141,10 +197,46 @@
       "Id": "2246998526",
       "Name": "Main Audio Bus",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus",
-      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
+      "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "80258421"
+        },
+        {
+         "Id": "628580303"
+        }
+       ]
+      }
      }
     ],
     "AuxBusses": [
+     {
+      "Id": "214837138",
+      "Name": "Wwise_Motion_Send",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send",
+      "GUID": "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "677203020"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "243379636",
+      "Name": "Reflect",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+      "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "695506173"
+        }
+       ]
+      }
+     },
      {
       "Id": "1865335600",
       "Name": "Crossroad_Reverb",
@@ -166,13 +258,24 @@
       "PluginRefs": {
        "Custom": [
         {
-         "Id": "586941969"
+         "Id": "1012444785"
+        }
+       ],
+       "ShareSets": [
+        {
+         "Id": "2420937077"
         }
        ]
       }
      }
     ],
     "GameParameters": [
+     {
+      "Id": "711096812",
+      "Name": "Deafening",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Deafening",
+      "GUID": "{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}"
+     },
      {
       "Id": "2576556105",
       "Name": "Cannons_Probability",
@@ -188,28 +291,68 @@
     ],
     "StateGroups": [
      {
+      "Id": "314259375",
+      "Name": "player_breath",
+      "ObjectPath": "\\States\\Default Work Unit\\player_breath",
+      "GUID": "{5E643EBD-D3D2-483F-B8F0-D5985C137861}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\player_breath\\None",
+        "GUID": "{FDC1DACA-2D38-4965-BFB2-0B7C8BA08DD2}"
+       }
+      ]
+     },
+     {
       "Id": "1608601952",
-      "Name": "Player_Aim",
-      "ObjectPath": "\\States\\Default Work Unit\\Player_Aim",
+      "Name": "player_aim",
+      "ObjectPath": "\\States\\Default Work Unit\\player_aim",
       "GUID": "{7362EAF4-693E-48B0-8152-B407DED80E5E}",
       "States": [
        {
         "Id": "748895195",
         "Name": "None",
-        "ObjectPath": "\\States\\Default Work Unit\\Player_Aim\\None",
+        "ObjectPath": "\\States\\Default Work Unit\\player_aim\\None",
         "GUID": "{3F4E19DC-A92B-410B-A80A-BE5560C10551}"
        },
        {
         "Id": "2452206122",
-        "Name": "False",
-        "ObjectPath": "\\States\\Default Work Unit\\Player_Aim\\False",
+        "Name": "false",
+        "ObjectPath": "\\States\\Default Work Unit\\player_aim\\false",
         "GUID": "{52DF5189-E217-4078-800D-004BD7764C75}"
        },
        {
         "Id": "3053630529",
-        "Name": "True",
-        "ObjectPath": "\\States\\Default Work Unit\\Player_Aim\\True",
+        "Name": "true",
+        "ObjectPath": "\\States\\Default Work Unit\\player_aim\\true",
         "GUID": "{70CC75B8-1662-466B-9357-884CFAE6C01A}"
+       }
+      ]
+     },
+     {
+      "Id": "2221031936",
+      "Name": "player_position",
+      "ObjectPath": "\\States\\Default Work Unit\\player_position",
+      "GUID": "{02DC436E-58FA-4CBB-9770-4451633B92C8}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "none",
+        "ObjectPath": "\\States\\Default Work Unit\\player_position\\none",
+        "GUID": "{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"
+       },
+       {
+        "Id": "1270007533",
+        "Name": "prone",
+        "ObjectPath": "\\States\\Default Work Unit\\player_position\\prone",
+        "GUID": "{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"
+       },
+       {
+        "Id": "2655407367",
+        "Name": "crouch",
+        "ObjectPath": "\\States\\Default Work Unit\\player_position\\crouch",
+        "GUID": "{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"
        }
       ]
      }
@@ -232,6 +375,38 @@
         "Name": "Type1",
         "ObjectPath": "\\Switches\\Default Work Unit\\Character_Type\\Type1",
         "GUID": "{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"
+       }
+      ]
+     },
+     {
+      "Id": "1834394558",
+      "Name": "Surface",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Surface",
+      "GUID": "{5CA4360B-D253-4948-8173-23B1C55917B4}",
+      "Switches": [
+       {
+        "Id": "504532776",
+        "Name": "Brick",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Surface\\Brick",
+        "GUID": "{34CF5667-9CE6-468C-9F75-33E0A6DECE94}"
+       },
+       {
+        "Id": "2058049674",
+        "Name": "Wood",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Surface\\Wood",
+        "GUID": "{E8104F6D-BDF8-4F90-B2D8-FD4FD5E199B0}"
+       },
+       {
+        "Id": "2449969375",
+        "Name": "Glass",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Surface\\Glass",
+        "GUID": "{53CBF12D-5C3E-4C3B-BF6C-041E9F923E06}"
+       },
+       {
+        "Id": "2473969246",
+        "Name": "Metal",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Surface\\Metal",
+        "GUID": "{00F5A187-15DF-42FD-91F4-E9687F923AA3}"
        }
       ]
      },
@@ -735,6 +910,6 @@
     ]
    }
   ],
-  "FileHash": "{D0490813-F9B6-E636-623A-F5FD729D7120}"
+  "FileHash": "{A8FB8BAA-FB1E-D785-488B-CBFE5ADA7DB5}"
  }
 }

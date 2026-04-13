@@ -8,6 +8,7 @@
 [ext_resource type="WwiseBank" uid="uid://yrjkf33a41hu" path="res://Wwise/resources/SoundBank/{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}.tres" id="4_s8o8u"]
 [ext_resource type="WwiseAuxBus" uid="uid://5rf3bkxshgg5" path="res://Wwise/resources/Aux Bus/{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}.tres" id="5_8ipeh"]
 [ext_resource type="WwiseBank" uid="uid://crxnj0v3wpc0k" path="res://Wwise/resources/SoundBank/{49827AFC-1442-4066-AF70-C2B0B3B40C86}.tres" id="6_ekd4w"]
+[ext_resource type="WwiseEvent" uid="uid://cbshjlsmvlw3r" path="res://Wwise/resources/Event/{219EF9C5-BD01-44F6-8054-19E1EA4E63C0}.tres" id="7_dym0f"]
 [ext_resource type="Material" uid="uid://tbba7mt7d3t6" path="res://sandbox/barricades_proto/materials/prototype_material_light_cross.tres" id="8_v07pq"]
 [ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="9_pc7os"]
 [ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="10_54uho"]
@@ -15,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://fbp2ofes0q52" path="res://sandbox/barricades_proto/barricade_part_1.tscn" id="12_dym0f"]
 [ext_resource type="PackedScene" uid="uid://dw7fv1qq3ewxa" path="res://sandbox/barricades_proto/barricade_part_2.tscn" id="13_p0yv6"]
 [ext_resource type="PackedScene" uid="uid://dei4ifl4vg6pb" path="res://sandbox/barricades_proto/dummy.tscn" id="14_uyvsv"]
-[ext_resource type="WwiseEvent" uid="uid://bcnom4oj1p3mj" path="res://Wwise/resources/Event/{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}.tres" id="15_pc7os"]
 [ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="16_54uho"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s8o8u"]
@@ -104,10 +104,11 @@ height = 1.8
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("1_xu5xm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.530138, 0.10000384, 6.200084)
 
-[node name="wwise_player" type="Node3D" parent="Player" unique_id=1959979742 node_paths=PackedStringArray("player", "shoot")]
+[node name="wwise_player" type="Node3D" parent="Player" unique_id=1959979742 node_paths=PackedStringArray("player", "shoot", "steps")]
 script = ExtResource("2_pc7os")
 player = NodePath("..")
 shoot = NodePath("Shoot")
+steps = NodePath("Steps")
 bullet_prefab = ExtResource("3_arrrh")
 
 [node name="AkListener3D" type="AkListener3D" parent="Player/wwise_player" unique_id=894631789]
@@ -118,14 +119,15 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/wwise_player/AkListener3D/Area3D" unique_id=1128507008]
 shape = SubResource("SphereShape3D_s8o8u")
 
-[node name="AkEvent3D" type="AkEvent3D" parent="Player/wwise_player" unique_id=73810531]
+[node name="Cannons" type="AkEvent3D" parent="Player/wwise_player" unique_id=73810531]
 event = ExtResource("2_s8o8u")
 trigger_on = 2
+stop_on = 3
 is_environment_aware = true
 
-[node name="Area3D" type="Area3D" parent="Player/wwise_player/AkEvent3D" unique_id=357595495]
+[node name="Area3D" type="Area3D" parent="Player/wwise_player/Cannons" unique_id=357595495]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/wwise_player/AkEvent3D/Area3D" unique_id=1460460357]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/wwise_player/Cannons/Area3D" unique_id=1460460357]
 shape = SubResource("SphereShape3D_s8o8u")
 
 [node name="Shoot" type="AkEvent3D" parent="Player/wwise_player" unique_id=1895187417]
@@ -137,13 +139,14 @@ is_environment_aware = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player/wwise_player/Shoot/Area3D" unique_id=239836975]
 shape = SubResource("SphereShape3D_s8o8u")
 
-[node name="Reload" type="AkEvent3D" parent="Player/wwise_player" unique_id=167642312]
-event = ExtResource("15_pc7os")
+[node name="Steps" type="AkEvent3D" parent="Player/wwise_player" unique_id=1254273927]
+event = ExtResource("7_dym0f")
+stop_on = 3
 is_environment_aware = true
 
-[node name="Area3D" type="Area3D" parent="Player/wwise_player/Reload" unique_id=784085865]
+[node name="Area3D" type="Area3D" parent="Player/wwise_player/Steps" unique_id=1439524533]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/wwise_player/Reload/Area3D" unique_id=604624559]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/wwise_player/Steps/Area3D" unique_id=884360147]
 shape = SubResource("SphereShape3D_s8o8u")
 
 [node name="AkBank" type="AkBank" parent="." unique_id=1339667316]

@@ -18,6 +18,7 @@ namespace AK
         static const AkUniqueID DEAFENING_RECOVER = 3687575925U;
         static const AkUniqueID PLAYER_RELOAD = 1650679582U;
         static const AkUniqueID PLAYER_SHOOT = 4004702906U;
+        static const AkUniqueID PLAYER_STEPS = 4272057794U;
     } // namespace EVENTS
 
     namespace STATES
@@ -43,6 +44,18 @@ namespace AK
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace PLAYER_BREATH
+
+        namespace PLAYER_POSITION
+        {
+            static const AkUniqueID GROUP = 2221031936U;
+
+            namespace STATE
+            {
+                static const AkUniqueID CROUCH = 2655407367U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID PRONE = 1270007533U;
+            } // namespace STATE
+        } // namespace PLAYER_POSITION
 
     } // namespace STATES
 

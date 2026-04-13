@@ -1,33 +1,88 @@
 Event	ID	Name			Wwise Object Path	Notes
+	384143791	Bullet_Hit			\Default Work Unit\Player\Bullet_Hit	
 	1650679582	Player_Reload			\Default Work Unit\Player\Player_Reload	
+	3687575925	Deafening_Recover			\Default Work Unit\Player\Deafening_Recover	
 	4004702906	Player_Shoot			\Default Work Unit\Player\Player_Shoot	
+	4272057794	Player_Steps			\Default Work Unit\Player\Player_Steps	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1834394558	Surface			\Default Work Unit\Surface	
+
+Switch	ID	Name	Switch Group			Notes
+	504532776	Brick	Surface			
+	2058049674	Wood	Surface			
+	2449969375	Glass	Surface			
+	2473969246	Metal	Surface			
 
 State Group	ID	Name			Wwise Object Path	Notes
-	1608601952	Player_Aim			\Default Work Unit\Player_Aim	
+	1608601952	player_aim			\Default Work Unit\player_aim	
+	2221031936	player_position			\Default Work Unit\player_position	
 
 State	ID	Name	State Group			Notes
-	748895195	None	Player_Aim			
-	2452206122	False	Player_Aim			
-	3053630529	True	Player_Aim			
+	748895195	None	player_aim			
+	2452206122	false	player_aim			
+	3053630529	true	player_aim			
+	748895195	none	player_position			
+	1270007533	prone	player_position			
+	2655407367	crouch	player_position			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	711096812	Deafening			\Default Work Unit\Deafening	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	161171466	SFX_NPC			\Default Work Unit\Main Audio Bus\SFX\SFX_NPC	
+	217780010	SFX_Player			\Default Work Unit\Main Audio Bus\SFX\SFX_Player	
+	393239870	SFX			\Default Work Unit\Main Audio Bus\SFX	
+	1117531639	AMB			\Default Work Unit\Main Audio Bus\AMB	
+	1277101407	VX_NPC			\Default Work Unit\Main Audio Bus\VX\VX_NPC	
+	1534528563	VX			\Default Work Unit\Main Audio Bus\VX	
+	1551306167	UI			\Default Work Unit\Main Audio Bus\UI	
+	1728828729	VX_Player			\Default Work Unit\Main Audio Bus\VX\VX_Player	
 	2246998526	Main Audio Bus			\Default Work Unit\Main Audio Bus	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
+	243379636	Reflect			\Default Work Unit\Main Audio Bus\Reflect	
 	1865335600	Crossroad_Reverb			\Default Work Unit\Main Audio Bus\Crossroad_Reverb	
 	2635253023	Street_Reverb			\Default Work Unit\Main Audio Bus\Street_Reverb	
 
 Effect plug-ins	ID	Name	Type				Notes
+	80258421	Meter (Custom)	Wwise Meter			
 	550680016	City_Center (Custom)	iZotope Hybrid Reverb			
-	586941969	City_Streets (Custom)	iZotope Hybrid Reverb			
+	628580303	Parametric EQ (Custom)	Wwise Parametric EQ			
 	641257012	Parametric EQ (Custom)	Wwise Parametric EQ			
+	695506173	Reflect (Custom)	Wwise Reflect			
+	1012444785	High_Pass_60Hz (Custom)	Wwise Parametric EQ			
+	2420937077	NarrowShortAlley	Wwise Convolution Reverb			Impulse response created by AudioEase. © 2011 AudioEase.  All rights reserved.
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	24042832	LTDC_SFX_Bullet_Hit_LayerBrick_Random_1	.cache\62\{6299DD30-823C-734E-EBF3-9EBBE32C8E68}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Brick\LTDC_SFX_Bullet_Hit_LayerBrick_Random_1		134818
+	170408866	LTDC_SFX_Bullet_Hit_LayerCore_Oneshot	.cache\94\{9430CF08-34B9-AAE3-B349-2AC9E8BA650D}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\LTDC_SFX_Bullet_Hit_LayerCore_Oneshot		77276
+	177445382	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05	.cache\36\{3678CBCC-5A06-AC1F-A9CB-CB745485697A}.wem		\Containers\SFX\Characters\Player\Steps\Surface\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05		41272
+	220576500	LTDC_SFX_Bullet_Hit_LayerWood_Random_2	.cache\79\{79B84039-3762-9631-5D7A-9AD885D3D110}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Wood\LTDC_SFX_Bullet_Hit_LayerWood_Random_2		32314
+	235351759	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03	.cache\4E\{4E8C621F-7B9D-75CE-29EC-3A7446E1686A}.wem		\Containers\SFX\Characters\Player\Steps\Surface\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03		30472
+	244128652	LTDC_SFX_Bullet_Hit_LayerWood_Random_3	.cache\64\{647D5698-D6CA-DA76-5A5E-94FA233E1630}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Wood\LTDC_SFX_Bullet_Hit_LayerWood_Random_3		44370
 	247688113	LTDC_SFX_Player_GunShot_LayerTail_Oneshot	.cache\34\{34D6F026-FA41-B432-757D-BC580D2D3A2E}.wem		\Containers\SFX\Characters\Player\Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Oneshot		141222
-	605834236	LTDC_SFX_Player_Reload_Oneshot	.cache\BE\{BE79A452-08B6-9045-1C48-1D0C920A2BF1}.wem		\Containers\SFX\Characters\Player\Chassepot\LTDC_SFX_Player_Reload_Oneshot		287494
+	301802129	LTDC_SFX_Bullet_Hit_LayerBrick_Random_3	.cache\4B\{4B9A2C4B-7A38-62D7-81C8-281B2800D554}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Brick\LTDC_SFX_Bullet_Hit_LayerBrick_Random_3		113558
+	345847656	LTDC_SFX_Bullet_Hit_LayerWood_Random_1	.cache\D9\{D97BE36B-BD73-64B1-F8E2-3FD7BDEED646}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Wood\LTDC_SFX_Bullet_Hit_LayerWood_Random_1		35168
+	375366214	LTDC_SFX_Bullet_Hit_LayerGlass_Random_2	.cache\1E\{1EAAEDB9-1031-9E09-98C4-E9FDAB574191}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Glass\LTDC_SFX_Bullet_Hit_LayerGlass_Random_2		109052
+	395081999	LTDC_SFX_Bullet_Hit_LayerBrick_Random_2	.cache\98\{98B14C25-D22C-5CFF-3F46-EEC99CD52418}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Brick\LTDC_SFX_Bullet_Hit_LayerBrick_Random_2		126378
+	440430333	LTDC_SFX_Player_Steps_LayerCloth_Random_3	.cache\35\{3522D2B2-E5CC-706B-6ADC-76B1005BB7B9}.wem		\Containers\SFX\Characters\Player\Steps\Cloth\LTDC_SFX_Player_Steps_LayerCloth_Random_3		44270
+	460395499	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06	.cache\81\{81994C76-F50C-594E-E96E-E22051D06802}.wem		\Containers\SFX\Characters\Player\Steps\Surface\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06		26832
+	568077254	LTDC_SFX_Bullet_Hit_LayerGlass_Random_1	.cache\1B\{1BA2140A-AB59-931E-D545-F23D3206D1BC}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Glass\LTDC_SFX_Bullet_Hit_LayerGlass_Random_1		145000
+	605834236	LTDC_SFX_Player_Reload_Oneshot	.cache\67\{67668B48-13DE-D7BC-A99B-B13C73F423D7}.wem		\Containers\SFX\Characters\Player\Chassepot\LTDC_SFX_Player_Reload_Oneshot		287494
 	632494295	LTDC_SFX_Player_GunShot_LayerCrack_Oneshot	.cache\38\{3864E1A4-CDEB-B312-1F5A-60BC00494C5C}.wem		\Containers\SFX\Characters\Player\Chassepot\LTDC_SFX_Player_GunShot_LayerCrack_Oneshot		47516
+	732266218	LTDC_SFX_Bullet_Hit_LayerGlass_Random_3	.cache\0F\{0FD61C03-AAFA-4721-A402-B8A613EFB1BA}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Glass\LTDC_SFX_Bullet_Hit_LayerGlass_Random_3		129248
+	749417595	LTDC_SFX_Bullet_Hit_LayerMetal_Random_3	.cache\2E\{2EAA45CA-99C0-4153-6FD1-F96CD39C7B24}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Metal\LTDC_SFX_Bullet_Hit_LayerMetal_Random_3		59764
+	753793935	LTDC_SFX_Player_Steps_LayerCloth_Random_1	.cache\E1\{E1A18216-0FAF-AB74-C6E7-96B641FDF439}.wem		\Containers\SFX\Characters\Player\Steps\Cloth\LTDC_SFX_Player_Steps_LayerCloth_Random_1		43336
+	780702883	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01	.cache\92\{92C31FD9-A04D-58EA-FC60-E5E3BB0F75D8}.wem		\Containers\SFX\Characters\Player\Steps\Surface\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01		35540
+	806477048	LTDC_SFX_Player_Steps_LayerCloth_Random_2	.cache\15\{1514B57E-CF69-BBDB-72B0-DC4D261BB234}.wem		\Containers\SFX\Characters\Player\Steps\Cloth\LTDC_SFX_Player_Steps_LayerCloth_Random_2		49066
+	812421663	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04	.cache\9C\{9CF70DF8-9E9A-AB3F-4B86-650EADA1E071}.wem		\Containers\SFX\Characters\Player\Steps\Surface\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04		33460
+	842328612	LTDC_SFX_Bullet_Hit_LayerMetal_Random_1	.cache\54\{54960216-10CC-0CF7-BBE9-214C9629075B}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Metal\LTDC_SFX_Bullet_Hit_LayerMetal_Random_1		32632
+	900789959	LTDC_SFX_Player_Steps_LayerCloth_Random_4	.cache\31\{317E55D7-681A-BE27-37D6-61F318AA1501}.wem		\Containers\SFX\Characters\Player\Steps\Cloth\LTDC_SFX_Player_Steps_LayerCloth_Random_4		42684
+	917246979	LTDC_SFX_Bullet_Hit_LayerMetal_Random_2	.cache\29\{29329D0C-B5B0-BA13-BB68-B2148999D93E}.wem		\Containers\SFX\Characters\Player\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Metal\LTDC_SFX_Bullet_Hit_LayerMetal_Random_2		46872
+	1024503505	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02	.cache\D2\{D29AE3EF-E9E2-0343-A075-7C4443DC6426}.wem		\Containers\SFX\Characters\Player\Steps\Surface\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02		24968
 
 Plug-in Media	ID	Name	Source file	Type	Wwise Object Path	Notes	Data Size
-	8078194	City_Streets (Custom)	.cache\5E\{5E7736DD-276E-B9E8-852A-8DA990ABDEF1}.wem	iZotope Hybrid Reverb (Custom)	\Busses\Default Work Unit\Main Audio Bus\Street_Reverb\[Effect Slot [0]: (iZotope Hybrid Reverb)]\City_Streets (Custom)		100468
 	379374117	City_Center (Custom)	.cache\DB\{DBBEA420-9BA9-F316-0F5A-982BACB6E279}.wem	iZotope Hybrid Reverb (Custom)	\Busses\Default Work Unit\Main Audio Bus\Crossroad_Reverb\[Effect Slot [0]: (iZotope Hybrid Reverb)]\City_Center (Custom)		135508
+	702837950	NarrowShortAlley	.cache\5A\{5AC5E397-32DD-2C1B-0DD0-4F8C187836DD}.wem	Wwise Convolution Reverb (Shared)	\Effects\Factory Altiverb - Outdoor and More\Altiverb - Outdoor and More\Outdoor Alley\NarrowShortAlley	Impulse response created by AudioEase. © 2011 AudioEase.  All rights reserved.	148080
 
