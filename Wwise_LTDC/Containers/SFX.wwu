@@ -354,7 +354,7 @@
 												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
-														<Value>0.1</Value>
+														<Value>0.12</Value>
 													</ValueList>
 												</Property>
 												<Property Name="MakeUpGain" Type="Real64">
@@ -388,7 +388,7 @@
 												</Property>
 												<Property Name="ReflectionsVolume" Type="Real64">
 													<ValueList>
-														<Value>-6</Value>
+														<Value>-3</Value>
 													</ValueList>
 												</Property>
 												<Property Name="UseMaxSoundPerInstance" Type="bool">
@@ -2584,9 +2584,18 @@
 								</PropertyContainer>
 								<BlendContainer Name="Steps" ID="{49ACEF8C-03E3-4971-BE5A-BCFD57DA4395}" ShortID="540993635">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="MakeUpGain" Type="Real64">
 											<ValueList>
 												<Value>-16</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="ReflectionsVolume" Type="Real64">
+											<ValueList>
+												<Value>-20</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -2596,6 +2605,9 @@
 										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="ReflectionsAuxSend">
+											<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -2623,7 +2635,13 @@
 														<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 														<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 														<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-														<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.4"/>
+														<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.4">
+															<ModifierList>
+																<ModifierInfo>
+																	<Modifier Name="" ID="{2FD24E67-BB46-4D96-BFE5-FB0A2428B28A}"/>
+																</ModifierInfo>
+															</ModifierList>
+														</Property>
 														<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 														<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 														<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
@@ -2774,38 +2792,57 @@
 														<Panner Name="" ID="{71C5E0DF-BB84-4603-841F-222B442015C9}"/>
 													</PositioningInfo>
 													<StateInfo>
+														<StatePropertyList>
+															<Property Name="PlayMechanismSpecialTransitionsValue"/>
+															<Property Name="Volume"/>
+														</StatePropertyList>
 														<StateGroupList>
 															<StateGroupInfo>
 																<StateGroupRef Name="player_stance" ID="{02DC436E-58FA-4CBB-9770-4451633B92C8}"/>
-																<StateGroupInfo Name="" ID="{E31B824E-5160-440E-AEE9-4B683B340F2A}" ShortID="1013238360"/>
+																<StateGroupInfo Name="" ID="{9603D356-EA3B-4139-A267-BB3CC9A0636E}" ShortID="623085035"/>
 															</StateGroupInfo>
 														</StateGroupList>
 														<CustomStateList>
 															<CustomState>
 																<StateRef Name="up" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
-																<CustomState Name="" ID="{4929A273-98E4-45E8-AD68-481F75E82D4F}" ShortID="154516242"/>
+																<CustomState Name="" ID="{47066A01-EB62-47CD-B14B-C9991E106468}" ShortID="1011176256">
+																	<PropertyList>
+																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+																	</PropertyList>
+																</CustomState>
 															</CustomState>
 															<CustomState>
 																<StateRef Name="prone" ID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
-																<CustomState Name="" ID="{D5236FAB-08BA-455D-8F49-18D365248CA1}" ShortID="176764720">
+																<CustomState Name="" ID="{C5A9D2F0-61CA-42E8-B8BE-67980164AEC4}" ShortID="244495116">
 																	<PropertyList>
-																		<Property Name="Lowpass" Type="int16" Value="50"/>
-																		<Property Name="Volume" Type="Real64" Value="-20"/>
+																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
 																	</PropertyList>
 																</CustomState>
 															</CustomState>
 															<CustomState>
 																<StateRef Name="crouch" ID="{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"/>
-																<CustomState Name="" ID="{A82B8B2F-021F-4538-954A-7913C17D6B44}" ShortID="931181290">
+																<CustomState Name="" ID="{FA712503-E398-4ACE-8638-430717B3281F}" ShortID="336305708">
 																	<PropertyList>
-																		<Property Name="Lowpass" Type="int16" Value="50"/>
-																		<Property Name="Volume" Type="Real64" Value="-6"/>
+																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.25"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="sprint" ID="{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"/>
+																<CustomState Name="" ID="{15D47C0B-11A2-4533-AEB1-F7F62AADD238}" ShortID="687095712">
+																	<PropertyList>
+																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="-0.25"/>
+																		<Property Name="Volume" Type="Real64" Value="3"/>
 																	</PropertyList>
 																</CustomState>
 															</CustomState>
 															<CustomState>
 																<StateRef Name="None" ID="{1DDBDC63-7073-4B7E-A290-B582E49C0F09}"/>
-																<CustomState Name="" ID="{576BF740-5F86-4D8C-929A-BAE09BEFCF98}" ShortID="250086762"/>
+																<CustomState Name="" ID="{6D46EC11-FCAB-4244-BC7F-209CF734F1A7}" ShortID="968975635">
+																	<PropertyList>
+																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+																	</PropertyList>
+																</CustomState>
 															</CustomState>
 														</CustomStateList>
 													</StateInfo>
@@ -2814,6 +2851,46 @@
 											<PositioningInfo>
 												<Panner Name="" ID="{46CED10F-3A6C-451A-B6F1-15FFA128B429}"/>
 											</PositioningInfo>
+											<StateInfo>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="player_stance" ID="{02DC436E-58FA-4CBB-9770-4451633B92C8}"/>
+														<StateGroupInfo Name="" ID="{2C516827-D5B9-4544-8395-9ADEC1892DAB}" ShortID="583749652"/>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="up" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
+														<CustomState Name="" ID="{DD75C6FF-A957-46A9-8154-F188A4D739ED}" ShortID="667417868"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="prone" ID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
+														<CustomState Name="" ID="{4EC7AE3E-BFF0-4ABB-A881-8B645BA6E5BD}" ShortID="7985991">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="50"/>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="crouch" ID="{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"/>
+														<CustomState Name="" ID="{F5A3B3BB-5784-413D-BD3F-657CC3C4C95E}" ShortID="824899896">
+															<PropertyList>
+																<Property Name="Lowpass" Type="int16" Value="50"/>
+																<Property Name="Volume" Type="Real64" Value="-6"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="sprint" ID="{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"/>
+														<CustomState Name="" ID="{11031D67-C782-406F-826E-5D89445D3B0B}" ShortID="976223783"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{1DDBDC63-7073-4B7E-A290-B582E49C0F09}"/>
+														<CustomState Name="" ID="{1086E0A5-7B62-43F6-8B7F-3ADC6B9312A1}" ShortID="232783972"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
 											<GroupingInfo>
 												<GroupingBehaviorList>
 													<GroupingBehavior>
@@ -2996,6 +3073,14 @@
 												<Panner Name="" ID="{9ACC7AA7-EBA4-4BED-88FC-63A2578B91D6}"/>
 											</PositioningInfo>
 											<StateInfo>
+												<StatePropertyList>
+													<Property Name="Highpass"/>
+													<Property Name="Lowpass"/>
+													<Property Name="MakeUpGain"/>
+													<Property Name="Pitch"/>
+													<Property Name="PlayMechanismSpecialTransitionsValue"/>
+													<Property Name="Volume"/>
+												</StatePropertyList>
 												<StateGroupList>
 													<StateGroupInfo>
 														<StateGroupRef Name="player_stance" ID="{02DC436E-58FA-4CBB-9770-4451633B92C8}"/>
@@ -3005,14 +3090,18 @@
 												<CustomStateList>
 													<CustomState>
 														<StateRef Name="up" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
-														<CustomState Name="" ID="{CA077622-FCAC-44EE-AD2F-2370BAD8DEEB}" ShortID="333072845"/>
+														<CustomState Name="" ID="{CA077622-FCAC-44EE-AD2F-2370BAD8DEEB}" ShortID="333072845">
+															<PropertyList>
+																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+															</PropertyList>
+														</CustomState>
 													</CustomState>
 													<CustomState>
 														<StateRef Name="prone" ID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
 														<CustomState Name="" ID="{61A4FD9F-65B3-4EE3-8178-C236D9C78F50}" ShortID="675772897">
 															<PropertyList>
-																<Property Name="Lowpass" Type="int16" Value="50"/>
-																<Property Name="Volume" Type="Real64" Value="-20"/>
+																<Property Name="Lowpass" Type="int16" Value="25"/>
+																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="-0.1"/>
 															</PropertyList>
 														</CustomState>
 													</CustomState>
@@ -3021,13 +3110,26 @@
 														<CustomState Name="" ID="{E596E5DA-A750-4925-9ACA-0CC00745E0F4}" ShortID="444610628">
 															<PropertyList>
 																<Property Name="Lowpass" Type="int16" Value="25"/>
+																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.25"/>
 																<Property Name="Volume" Type="Real64" Value="-6"/>
 															</PropertyList>
 														</CustomState>
 													</CustomState>
 													<CustomState>
+														<StateRef Name="sprint" ID="{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"/>
+														<CustomState Name="" ID="{543E3D22-54A3-4D70-B2F0-69CABF2347E6}" ShortID="488625879">
+															<PropertyList>
+																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="-0.25"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
 														<StateRef Name="None" ID="{1DDBDC63-7073-4B7E-A290-B582E49C0F09}"/>
-														<CustomState Name="" ID="{316E67A5-E492-46E6-A685-2D3295BC7173}" ShortID="316940657"/>
+														<CustomState Name="" ID="{316E67A5-E492-46E6-A685-2D3295BC7173}" ShortID="316940657">
+															<PropertyList>
+																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+															</PropertyList>
+														</CustomState>
 													</CustomState>
 												</CustomStateList>
 											</StateInfo>
@@ -3355,6 +3457,10 @@
 														<Property Name="Volume" Type="Real64" Value="-6"/>
 													</PropertyList>
 												</CustomState>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="sprint" ID="{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"/>
+												<CustomState Name="" ID="{6A6A61AA-6759-4118-B01C-9564A089FD1A}" ShortID="362133407"/>
 											</CustomState>
 											<CustomState>
 												<StateRef Name="None" ID="{1DDBDC63-7073-4B7E-A290-B582E49C0F09}"/>

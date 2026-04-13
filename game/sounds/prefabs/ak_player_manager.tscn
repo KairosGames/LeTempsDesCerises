@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://bgg5b13i7sqme"]
+
+[ext_resource type="Script" uid="uid://tntha6dbwiuy" path="res://sounds/scripts/wwise_player.gd" id="1_sdg1b"]
+[ext_resource type="PackedScene" uid="uid://d1qotbnwtmkrg" path="res://sounds/prefabs/bulett_hit.tscn" id="2_g1o18"]
+[ext_resource type="WwiseEvent" uid="uid://cqdf7u10ggy7x" path="res://Wwise/resources/Event/{42733E42-B5F5-44F1-98EB-A729172BF973}.tres" id="3_cgjv3"]
+[ext_resource type="WwiseEvent" uid="uid://c5c8l3wra46yq" path="res://Wwise/resources/Event/{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}.tres" id="4_dpj62"]
+[ext_resource type="WwiseEvent" uid="uid://cbshjlsmvlw3r" path="res://Wwise/resources/Event/{219EF9C5-BD01-44F6-8054-19E1EA4E63C0}.tres" id="5_usst2"]
+[ext_resource type="WwiseEvent" uid="uid://dt4vw8aqjpjhu" path="res://Wwise/resources/Event/{4522F8E8-2547-4E53-85E8-2F1D0788D631}.tres" id="6_a4l4r"]
+[ext_resource type="WwiseEvent" uid="uid://dawyxy14v2mkj" path="res://Wwise/resources/Event/{0DEF7495-B440-4E74-9C4B-9073F849D823}.tres" id="7_cerox"]
+[ext_resource type="WwiseEvent" uid="uid://co2j27iintfpx" path="res://Wwise/resources/Event/{FE60E622-47E0-4B0A-8224-00824D1DFFA5}.tres" id="8_hpeom"]
+[ext_resource type="WwiseEvent" uid="uid://b6s21jrtjah4e" path="res://Wwise/resources/Event/{6896C878-A293-4133-9E1F-3A23F80B8F43}.tres" id="9_vws2r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s8o8u"]
+radius = 0.1
+
+[node name="ak_player_manager" type="Node3D" unique_id=1168469569 node_paths=PackedStringArray("shoot", "steps", "up", "crouch", "prone", "sprint")]
+script = ExtResource("1_sdg1b")
+shoot = NodePath("Shoot")
+steps = NodePath("Steps")
+up = NodePath("Up")
+crouch = NodePath("Crouch")
+prone = NodePath("Prone")
+sprint = NodePath("Sprint")
+bullet_prefab = ExtResource("2_g1o18")
+
+[node name="AkListener3D" type="AkListener3D" parent="." unique_id=1427046769]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="AkListener3D" unique_id=1524320620]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AkListener3D/Area3D" unique_id=713021184]
+shape = SubResource("SphereShape3D_s8o8u")
+
+[node name="Static_Amb" type="AkEvent3D" parent="." unique_id=888906152]
+event = ExtResource("3_cgjv3")
+trigger_on = 2
+stop_on = 3
+is_environment_aware = true
+
+[node name="Area3D" type="Area3D" parent="Static_Amb" unique_id=1030394334]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Static_Amb/Area3D" unique_id=554989523]
+shape = SubResource("SphereShape3D_s8o8u")
+
+[node name="Shoot" type="AkEvent3D" parent="." unique_id=1420564779]
+event = ExtResource("4_dpj62")
+is_environment_aware = true
+
+[node name="Area3D" type="Area3D" parent="Shoot" unique_id=2104082479]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shoot/Area3D" unique_id=1313135746]
+shape = SubResource("SphereShape3D_s8o8u")
+
+[node name="Steps" type="AkEvent3D" parent="." unique_id=1947331271]
+event = ExtResource("5_usst2")
+stop_on = 3
+stop_fade_time = 1
+is_environment_aware = true
+
+[node name="Area3D" type="Area3D" parent="Steps" unique_id=50241986]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Steps/Area3D" unique_id=171601985]
+shape = SubResource("SphereShape3D_s8o8u")
+
+[node name="Up" type="AkEvent3D" parent="." unique_id=583936304]
+event = ExtResource("6_a4l4r")
+stop_on = 3
+stop_fade_time = 1
+is_environment_aware = true
+
+[node name="Area3D" type="Area3D" parent="Up" unique_id=1439989531]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Up/Area3D" unique_id=1794949408]
+shape = SubResource("SphereShape3D_s8o8u")
+
+[node name="Crouch" type="AkEvent3D" parent="." unique_id=2029677780]
+event = ExtResource("7_cerox")
+stop_on = 3
+stop_fade_time = 1
+is_environment_aware = true
+
+[node name="Area3D" type="Area3D" parent="Crouch" unique_id=1313047586]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crouch/Area3D" unique_id=601310423]
+shape = SubResource("SphereShape3D_s8o8u")
+
+[node name="Prone" type="AkEvent3D" parent="." unique_id=1871551563]
+event = ExtResource("8_hpeom")
+stop_on = 3
+stop_fade_time = 1
+is_environment_aware = true
+
+[node name="Area3D" type="Area3D" parent="Prone" unique_id=509581758]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Prone/Area3D" unique_id=228402943]
+shape = SubResource("SphereShape3D_s8o8u")
+
+[node name="Sprint" type="AkEvent3D" parent="." unique_id=1006754015]
+event = ExtResource("9_vws2r")
+stop_on = 3
+stop_fade_time = 1
+is_environment_aware = true
+
+[node name="Area3D" type="Area3D" parent="Sprint" unique_id=1615795233]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprint/Area3D" unique_id=1700008872]
+shape = SubResource("SphereShape3D_s8o8u")
