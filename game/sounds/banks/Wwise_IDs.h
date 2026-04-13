@@ -16,9 +16,15 @@ namespace AK
         static const AkUniqueID AMB_CANNONS = 3265814676U;
         static const AkUniqueID BULLET_HIT = 384143791U;
         static const AkUniqueID DEAFENING_RECOVER = 3687575925U;
+        static const AkUniqueID ENEMY_SHOOT = 1050776119U;
+        static const AkUniqueID ENEMY_STEPS = 3114531655U;
+        static const AkUniqueID PLAYER_CROUCH = 3055475155U;
+        static const AkUniqueID PLAYER_PRONE = 1806823001U;
         static const AkUniqueID PLAYER_RELOAD = 1650679582U;
         static const AkUniqueID PLAYER_SHOOT = 4004702906U;
+        static const AkUniqueID PLAYER_SPRINT = 2500953213U;
         static const AkUniqueID PLAYER_STEPS = 4272057794U;
+        static const AkUniqueID PLAYER_UP = 4024398754U;
     } // namespace EVENTS
 
     namespace STATES
@@ -56,6 +62,7 @@ namespace AK
                 static const AkUniqueID CROUCH = 2655407367U;
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID PRONE = 1270007533U;
+                static const AkUniqueID SPRINT = 1296465089U;
                 static const AkUniqueID UP = 1551306158U;
             } // namespace STATE
         } // namespace PLAYER_STANCE

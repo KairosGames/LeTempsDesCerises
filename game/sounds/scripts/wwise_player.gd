@@ -5,6 +5,14 @@ var is_walking := false
 @export var player : Player
 @export var shoot : AkEvent3D
 @export var steps : AkEvent3D
+
+@export_category("Stances")
+@export var up : AkEvent3D
+@export var crouch : AkEvent3D
+@export var prone : AkEvent3D
+@export var sprint : AkEvent3D
+
+@export_category("Prefabs")
 @export var bullet_prefab : PackedScene
 
 func _ready() -> void:
@@ -34,12 +42,19 @@ func _unhandled_input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("crouch"):
 		if !player.is_crouched:
-			Wwise.set_state("player_stance", "crouch")
+			crouch.post_event()
 		else:
-			Wwise.set_state("player_stance", "up")
+			up.post_event()
+	if Input.is_action_just_pressed("lying_down"):
+		if !player.is_lyingd:
+			prone.post_event()
+		else:
+			up.post_event()
+	if Input.is_action_just_pressed("run"):
+		sprint.post_event()
 
 func _process(delta: float) -> void:
-	if player.is_on_floor() and player.velocity.x + player.velocity.z != 0 and !is_walking:
+	if player.is_on_floor() and player.velocity.x + player.velocity.z != float(0) and !is_walking:
 		steps.post_event()
 		is_walking = true
 	elif is_walking and player.velocity.x + player.velocity.z == 0 or !player.is_on_floor():

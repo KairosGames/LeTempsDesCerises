@@ -1,14 +1,10 @@
 [gd_scene format=4 uid="uid://d08cfuyp3y4nh"]
 
-[ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player.tscn" id="1_xu5xm"]
-[ext_resource type="Script" uid="uid://tntha6dbwiuy" path="res://sounds/scripts/wwise_player.gd" id="2_pc7os"]
-[ext_resource type="WwiseEvent" uid="uid://cqdf7u10ggy7x" path="res://Wwise/resources/Event/{42733E42-B5F5-44F1-98EB-A729172BF973}.tres" id="2_s8o8u"]
-[ext_resource type="PackedScene" uid="uid://d1qotbnwtmkrg" path="res://sounds/prefabs/bulett_hit.tscn" id="3_arrrh"]
-[ext_resource type="WwiseEvent" uid="uid://c5c8l3wra46yq" path="res://Wwise/resources/Event/{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}.tres" id="4_bt81e"]
+[ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="1_xu5xm"]
+[ext_resource type="PackedScene" uid="uid://bgg5b13i7sqme" path="res://sounds/prefabs/ak_player_manager.tscn" id="2_mwbm5"]
 [ext_resource type="WwiseBank" uid="uid://yrjkf33a41hu" path="res://Wwise/resources/SoundBank/{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}.tres" id="4_s8o8u"]
 [ext_resource type="WwiseAuxBus" uid="uid://5rf3bkxshgg5" path="res://Wwise/resources/Aux Bus/{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}.tres" id="5_8ipeh"]
 [ext_resource type="WwiseBank" uid="uid://crxnj0v3wpc0k" path="res://Wwise/resources/SoundBank/{49827AFC-1442-4066-AF70-C2B0B3B40C86}.tres" id="6_ekd4w"]
-[ext_resource type="WwiseEvent" uid="uid://cbshjlsmvlw3r" path="res://Wwise/resources/Event/{219EF9C5-BD01-44F6-8054-19E1EA4E63C0}.tres" id="7_dym0f"]
 [ext_resource type="Material" uid="uid://tbba7mt7d3t6" path="res://sandbox/barricades_proto/materials/prototype_material_light_cross.tres" id="8_v07pq"]
 [ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="9_pc7os"]
 [ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="10_54uho"]
@@ -17,9 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://dw7fv1qq3ewxa" path="res://sandbox/barricades_proto/barricade_part_2.tscn" id="13_p0yv6"]
 [ext_resource type="PackedScene" uid="uid://dei4ifl4vg6pb" path="res://sandbox/barricades_proto/dummy.tscn" id="14_uyvsv"]
 [ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="16_54uho"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_s8o8u"]
-radius = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8o8u"]
 size = Vector3(30, 30, 43.546387)
@@ -104,51 +97,8 @@ height = 1.8
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("1_xu5xm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.530138, 0.10000384, 6.200084)
 
-[node name="wwise_player" type="Node3D" parent="Player" unique_id=1959979742 node_paths=PackedStringArray("player", "shoot", "steps")]
-script = ExtResource("2_pc7os")
+[node name="wwise_player" parent="Player" unique_id=1168469569 node_paths=PackedStringArray("player") instance=ExtResource("2_mwbm5")]
 player = NodePath("..")
-shoot = NodePath("Shoot")
-steps = NodePath("Steps")
-bullet_prefab = ExtResource("3_arrrh")
-
-[node name="AkListener3D" type="AkListener3D" parent="Player/wwise_player" unique_id=894631789]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-
-[node name="Area3D" type="Area3D" parent="Player/wwise_player/AkListener3D" unique_id=1104768396]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/wwise_player/AkListener3D/Area3D" unique_id=1128507008]
-shape = SubResource("SphereShape3D_s8o8u")
-
-[node name="Cannons" type="AkEvent3D" parent="Player/wwise_player" unique_id=73810531]
-event = ExtResource("2_s8o8u")
-trigger_on = 2
-stop_on = 3
-is_environment_aware = true
-
-[node name="Area3D" type="Area3D" parent="Player/wwise_player/Cannons" unique_id=357595495]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/wwise_player/Cannons/Area3D" unique_id=1460460357]
-shape = SubResource("SphereShape3D_s8o8u")
-
-[node name="Shoot" type="AkEvent3D" parent="Player/wwise_player" unique_id=1895187417]
-event = ExtResource("4_bt81e")
-is_environment_aware = true
-
-[node name="Area3D" type="Area3D" parent="Player/wwise_player/Shoot" unique_id=1801850084]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/wwise_player/Shoot/Area3D" unique_id=239836975]
-shape = SubResource("SphereShape3D_s8o8u")
-
-[node name="Steps" type="AkEvent3D" parent="Player/wwise_player" unique_id=1254273927]
-event = ExtResource("7_dym0f")
-stop_on = 3
-stop_fade_time = 1
-is_environment_aware = true
-
-[node name="Area3D" type="Area3D" parent="Player/wwise_player/Steps" unique_id=1439524533]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/wwise_player/Steps/Area3D" unique_id=884360147]
-shape = SubResource("SphereShape3D_s8o8u")
 
 [node name="AkBank" type="AkBank" parent="." unique_id=1339667316]
 bank = ExtResource("4_s8o8u")
