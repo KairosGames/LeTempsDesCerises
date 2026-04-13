@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://n8jqgeouvopc"]
+
+[ext_resource type="Script" uid="uid://tmhcwvx3b3u6" path="res://prefabs/ai/agents/agent.gd" id="1_3m1mu"]
+[ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_nvy3a"]
+[ext_resource type="Script" uid="uid://1h6aoya61b6d" path="res://prefabs/ai/navigation.gd" id="2_24g36"]
+[ext_resource type="Script" uid="uid://dme5f24l0edsf" path="res://addons/beehave/blackboard.gd" id="2_tpga6"]
+[ext_resource type="PackedScene" uid="uid://3y1qt50xdawu" path="res://prefabs/ai/behaviours/versaillais.tscn" id="7_ixvr7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_otrs2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6sqh6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvy3a"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tpga6"]
+material = SubResource("StandardMaterial3D_nvy3a")
+size = Vector3(1, 0.25, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xyfn"]
+albedo_color = Color(1, 0.4627451, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1xyfn"]
+material = SubResource("StandardMaterial3D_1xyfn")
+size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="Animation" id="Animation_1xyfn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Gun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ixvr7"]
+resource_name = "random_shoot"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 12.566371, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tkg8o"]
+resource_name = "reload"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Gun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.40000004, 0.7666667, 1.1333333, 1.5, 1.9000001, 2.1333334, 2.4, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.766217, 0, 0), Vector3(-0.57944924, 0, 0), Vector3(-0.766217, 0, 0), Vector3(-0.57944924, 0, 0), Vector3(-0.766217, 0, 0), Vector3(-0.57944924, 0, 0), Vector3(-0.766217, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3m1mu"]
+resource_name = "shoot"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body/Gun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.16718508, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tkg8o"]
+_data = {
+&"RESET": SubResource("Animation_1xyfn"),
+&"random_shoot": SubResource("Animation_ixvr7"),
+&"reload": SubResource("Animation_tkg8o"),
+&"shoot": SubResource("Animation_3m1mu")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ma2d"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1xyfn"]
+material = SubResource("StandardMaterial3D_1ma2d")
+radius = 0.25
+height = 0.5
+
+[node name="Agent" type="CharacterBody3D" unique_id=1349390169]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+script = ExtResource("1_3m1mu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1662563447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_otrs2")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1096738211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_6sqh6")
+
+[node name="Eye" type="MeshInstance3D" parent="Body" unique_id=1405939811]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.25)
+mesh = SubResource("BoxMesh_tpga6")
+
+[node name="Gun" type="MeshInstance3D" parent="Body" unique_id=1599514021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4543075, 0.16268647, -0.516238)
+mesh = SubResource("BoxMesh_1xyfn")
+
+[node name="Navigation" type="NavigationAgent3D" parent="." unique_id=514776903]
+avoidance_enabled = true
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 1, 1)
+script = ExtResource("2_24g36")
+metadata/_custom_type_script = "uid://1h6aoya61b6d"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=308424994]
+libraries/ = SubResource("AnimationLibrary_tkg8o")
+
+[node name="Blackboard" type="Node" parent="." unique_id=350175424]
+script = ExtResource("2_tpga6")
+metadata/_custom_type_script = "uid://dme5f24l0edsf"
+
+[node name="BeehaveTree" type="Node" parent="." unique_id=1197668891 node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("1_nvy3a")
+blackboard = NodePath("../Blackboard")
+custom_monitor = true
+actor = NodePath("..")
+metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
+
+[node name="Versaillais" parent="BeehaveTree" unique_id=546313229 instance=ExtResource("7_ixvr7")]
+
+[node name="Hat" type="MeshInstance3D" parent="." unique_id=209391601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0781083, 0)
+mesh = SubResource("SphereMesh_1xyfn")

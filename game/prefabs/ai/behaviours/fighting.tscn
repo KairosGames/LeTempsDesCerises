@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dep6q57oica3e"]
+
+[ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_x0bws"]
+[ext_resource type="PackedScene" uid="uid://dlnl45376ygqx" path="res://prefabs/ai/behaviours/get_to_fight_area.tscn" id="2_43ccd"]
+[ext_resource type="PackedScene" uid="uid://detjnvcenglo7" path="res://prefabs/ai/behaviours/load_weapon.tscn" id="3_lb3wh"]
+[ext_resource type="PackedScene" uid="uid://u7vhym1nppbj" path="res://prefabs/ai/behaviours/offensive.tscn" id="4_qnfed"]
+
+[node name="Fighting" type="Node" unique_id=1112314994]
+script = ExtResource("1_x0bws")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="GetToFightArea" parent="." unique_id=4368137 instance=ExtResource("2_43ccd")]
+
+[node name="LoadWeapon" parent="." unique_id=1666196900 instance=ExtResource("3_lb3wh")]
+
+[node name="Offensive" parent="." unique_id=1920128803 instance=ExtResource("4_qnfed")]

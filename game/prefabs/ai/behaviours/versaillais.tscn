@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://3y1qt50xdawu"]
+
+[ext_resource type="Script" uid="uid://cw22yurt5l74k" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="1_vxwaj"]
+[ext_resource type="PackedScene" uid="uid://dg2ftlf3g1ljm" path="res://prefabs/ai/behaviours/manage_canon.tscn" id="2_vxwaj"]
+[ext_resource type="PackedScene" uid="uid://dep6q57oica3e" path="res://prefabs/ai/behaviours/fighting.tscn" id="3_vxwaj"]
+
+[node name="Versaillais" type="Node" unique_id=451543637]
+script = ExtResource("1_vxwaj")
+metadata/_custom_type_script = "uid://cw22yurt5l74k"
+
+[node name="ManageCanon" parent="." unique_id=1905830619 instance=ExtResource("2_vxwaj")]
+
+[node name="Fighting" parent="." unique_id=1112314994 instance=ExtResource("3_vxwaj")]

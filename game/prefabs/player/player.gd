@@ -55,7 +55,6 @@ var brake_time_ratio: float
 
 const JUMP_VELOCITY = 4.5
 
-
 func _ready() -> void:
 	aim_target = Vector3(camera_pivot.rotation_degrees.x, rotation_degrees.y, 0.0)
 	acc_time_ratio = (1 / acc_time)
@@ -184,6 +183,7 @@ func handle_position_state(delta: float) -> void:
 	if is_lyied_d: camera_pivot.position.y = 0.35
 
 func process_view(delta: float) -> void:
+	if not is_mouse_locked(): return
 	var input: PlayerInputs = player_inputs
 	var inversion = -1 if player_inputs.is_inverted else 1
 	var reducer = aiming_reducer_ratio if is_aiming else 1.0
@@ -232,3 +232,5 @@ func handle_shoot(delta: float) -> void:
 		print("Ally touched !")
 		return
 	print("Enemy touched !")
+
+func is_mouse_locked() -> bool: return Input.mouse_mode == Input.MouseMode.MOUSE_MODE_CAPTURED

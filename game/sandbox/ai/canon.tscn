@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://chfbdpud1npmp"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ec114"]
+top_radius = 0.25
+bottom_radius = 0.25
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cpm1f"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_voip0"]
+height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dbxgu"]
+radius = 0.8774414
+
+[node name="Canon" type="AnimatableBody3D" unique_id=1624713896]
+
+[node name="Canon" type="MeshInstance3D" parent="." unique_id=802938420]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.69042647, 0)
+mesh = SubResource("CylinderMesh_ec114")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1296318771]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0.62456596, 0.35496044)
+mesh = SubResource("CylinderMesh_cpm1f")
+
+[node name="LeftWheel" type="MeshInstance3D" parent="MeshInstance3D" unique_id=2097726913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9604645e-08, -0.83192044, 0)
+mesh = SubResource("CylinderMesh_voip0")
+
+[node name="RightWheel" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1137554664]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.832, 0)
+mesh = SubResource("CylinderMesh_voip0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=160949786]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.65852153, 0)
+shape = SubResource("CylinderShape3D_dbxgu")

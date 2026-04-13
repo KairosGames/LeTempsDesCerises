@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dlnl45376ygqx"]
+
+[ext_resource type="Script" uid="uid://8hn4kne15ac5" path="res://addons/beehave/nodes/composites/selector.gd" id="1_v8pqn"]
+[ext_resource type="Script" uid="uid://w8i52e12hrjr" path="res://prefabs/ai/behaviours/is_in_fight_area.gd" id="2_ptbto"]
+[ext_resource type="Script" uid="uid://blllcvc4u1qnm" path="res://prefabs/ai/behaviours/move_to_fight_area.gd" id="3_b7l2a"]
+
+[node name="GetToFightArea" type="Node" unique_id=4368137]
+script = ExtResource("1_v8pqn")
+metadata/_custom_type_script = "uid://8hn4kne15ac5"
+
+[node name="IsInFightArea" type="Node" parent="." unique_id=1112046402]
+script = ExtResource("2_ptbto")
+metadata/_custom_type_script = "uid://w8i52e12hrjr"
+
+[node name="MoveToFightArea" type="Node" parent="." unique_id=123006350]
+script = ExtResource("3_b7l2a")
+metadata/_custom_type_script = "uid://blllcvc4u1qnm"

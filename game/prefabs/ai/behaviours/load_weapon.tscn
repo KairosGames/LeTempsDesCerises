@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://detjnvcenglo7"]
+
+[ext_resource type="Script" uid="uid://8hn4kne15ac5" path="res://addons/beehave/nodes/composites/selector.gd" id="1_hd7uj"]
+[ext_resource type="Script" uid="uid://57xh8fn2vkbo" path="res://prefabs/ai/behaviours/is_weapon_loaded.gd" id="2_38kpd"]
+[ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="3_rxf8u"]
+[ext_resource type="PackedScene" uid="uid://xsvd5a71mta6" path="res://prefabs/ai/behaviours/getting_covered.tscn" id="4_ioima"]
+[ext_resource type="Script" uid="uid://cvdvij20sdtj5" path="res://prefabs/ai/behaviours/reload.gd" id="5_gkgmw"]
+
+[node name="LoadWeapon" type="Node" unique_id=1666196900]
+script = ExtResource("1_hd7uj")
+metadata/_custom_type_script = "uid://8hn4kne15ac5"
+
+[node name="IsWeaponLoaded" type="Node" parent="." unique_id=1459819174]
+script = ExtResource("2_38kpd")
+metadata/_custom_type_script = "uid://57xh8fn2vkbo"
+
+[node name="CoverThenReload" type="Node" parent="." unique_id=679852795]
+script = ExtResource("3_rxf8u")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="GettingCovered" parent="CoverThenReload" unique_id=2080377411 instance=ExtResource("4_ioima")]
+
+[node name="Reload" type="Node" parent="CoverThenReload" unique_id=55058443]
+script = ExtResource("5_gkgmw")
+metadata/_custom_type_script = "uid://cvdvij20sdtj5"
+
+[node name="Reload" type="Node" parent="." unique_id=1630386082]
+script = ExtResource("5_gkgmw")
+metadata/_custom_type_script = "uid://cvdvij20sdtj5"
