@@ -27,4 +27,6 @@ func aim_to(target: Vector3) -> void:
 	look_at(target)
 
 func _enter_tree() -> void: all.append(self)
-func _exit_tree() -> void: all.erase(self)
+func _exit_tree() -> void: 
+	if cover: CoverManager.release(cover)
+	all.erase(self)
