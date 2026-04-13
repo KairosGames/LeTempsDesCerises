@@ -1,6 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{96E4295F-8863-4251-9883-8697799D4058}" SchemaVersion="133">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{96E4295F-8863-4251-9883-8697799D4058}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{96E4295F-8863-4251-9883-8697799D4058}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Player" ID="{7B0A9415-14AE-4E7B-8899-C0FD357F6959}" ShortID="860806700">
+					<ChildrenList>
+						<Event Name="Player_Shoot" ID="{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}">
+							<PropertyList>
+								<Property Name="CooldownTime" Type="Real32">
+									<ValueList>
+										<Value>4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{EDE24413-AD02-4D03-BE3C-E6BCF78AB722}" ShortID="804408190">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerCrack_Oneshot" ID="{D9D474F4-91F3-48CC-AE2C-7F9A03CF6129}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{D977A9E7-CF33-46F5-9FAF-F9A0C212AF90}" ShortID="954143357">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{5FBC319D-C008-4154-8C2C-738AA4173B8A}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{0757853D-5F30-46D7-99DA-CEF3FC21010E}" ShortID="919968281">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Reload" ID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}" WorkUnitID="{96E4295F-8863-4251-9883-8697799D4058}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3BF36D4F-E6DB-48A1-9452-7A61A03E4672}" ShortID="153425534">
+									<PropertyList>
+										<Property Name="AbsoluteOrRelative" Type="int16" Value="1"/>
+										<Property Name="ActionType" Type="int16" Value="38"/>
+										<Property Name="Delay" Type="Real64" Value="0.1"/>
+										<Property Name="GameParameterValue" Type="Real64" Value="10"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{35B09AA6-485C-447D-BD96-BCBEBE4FB62D}" ShortID="881748335">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="4"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening_Recover" ID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" WorkUnitID="{96E4295F-8863-4251-9883-8697799D4058}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Player_Reload" ID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}">
+							<ChildrenList>
+								<Action Name="" ID="{1CC1AD89-3C14-41DE-8A0B-30AC7340D5AB}" ShortID="604875797">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Player_Reload_Oneshot" ID="{E9FDFEC8-A3E8-44FB-A1F6-94A74981BCFA}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Deafening_Recover" ID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}">
+							<PropertyList>
+								<Property Name="InstanceLimit" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{D204D785-02FE-4D40-9F82-FFBD6B156A75}" ShortID="16817253">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="39"/>
+										<Property Name="FadeTime" Type="Real64" Value="10"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Bullet_Hit" ID="{13B273F2-57C8-4A62-9A0E-5479116C3DB7}">
+							<ChildrenList>
+								<Action Name="" ID="{AA161D02-E0D4-4BD4-8E42-417B78FAE655}" ShortID="591970666">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Bullet_Hit_LayerCore_Oneshot" ID="{172213FC-8D86-47A8-8D13-C26D17DBBD7E}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{E834A555-99DA-4EE8-93EA-727DA890610F}" ShortID="239462344">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Bullet_Hit_Surface" ID="{3C87D3B7-C3EF-410F-82C4-EB90989F8BEC}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Player_Steps" ID="{219EF9C5-BD01-44F6-8054-19E1EA4E63C0}">
+							<PropertyList>
+								<Property Name="InstanceLimit" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{8BA1AC88-53A1-42A2-A0AE-6036A49118B5}" ShortID="155857833">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{0F59390D-CB44-4A6A-A70C-1999E86D9EE8}" ShortID="980016736">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Brick" ID="{1A90D8A4-6CF5-41F5-B4C7-60F218FE8B45}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Event Name="Amb_Cannons" ID="{42733E42-B5F5-44F1-98EB-A729172BF973}">
+					<ChildrenList>
+						<Action Name="" ID="{6AE5ACCD-44AC-4F68-9A6C-61722BEF355E}" ShortID="360158429">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cannons_Heavy" ID="{AFA4CAE5-B7DA-4996-BD00-7E1362AC1F4E}" WorkUnitID="{C021C757-01C4-4039-B7FC-F2B868336782}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{44B9A6FB-E5C3-4D49-9028-3BE09B5C5F4A}" ShortID="655955233">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cannons_Light" ID="{BE8593A3-2955-490C-943A-F1D753BDF488}" WorkUnitID="{C021C757-01C4-4039-B7FC-F2B868336782}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{5A9BC714-E2B9-44B1-8C1B-4CF4C10755EC}" ShortID="869058987">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LTDC_AMB_Street_WindBirds_Loop" ID="{34497A7D-ABE1-409E-92D5-E3B8A7BC49D6}" WorkUnitID="{C021C757-01C4-4039-B7FC-F2B868336782}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

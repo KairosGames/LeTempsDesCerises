@@ -9,6 +9,494 @@
 							<ObjectRef Name="System" ID="{4D4AD273-68C1-440A-B66A-544BF2C11596}" WorkUnitID="{D735F844-887C-4A98-9F58-CBDB3795BB8B}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="SFX" ID="{8FE46C9B-4641-43D1-B739-F2D46260CC7F}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Bus Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}"/>
+								<Bus Name="SFX_NPC" ID="{C50F8E9D-E1E1-4B38-A0FA-27AA94AFC147}"/>
+							</ChildrenList>
+						</Bus>
+						<Bus Name="AMB" ID="{3C49B583-C63B-4CCB-A1B9-D71E082D055E}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="4"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="UI" ID="{D7CABC36-B31D-4789-A7B2-46175473A0AA}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="19"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+						</Bus>
+						<Bus Name="VX" ID="{E8C3D5DB-24D6-472C-93CA-D6BB12427941}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="11"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<Bus Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}"/>
+								<Bus Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}"/>
+							</ChildrenList>
+						</Bus>
+						<AuxBus Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}">
+							<PropertyList>
+								<Property Name="BusChannelConfig" Type="int32">
+									<ValueList>
+										<Value>3584</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{E2533DD8-E75A-4127-A1D5-49625539DB30}" ShortID="402079656">
+										<ReferenceList>
+											<Reference Name="Effect" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+												<ObjectRef Name="NarrowShortAlley" ID="{5F21B86B-F430-44FF-A9BF-37B1DEF8105B}" WorkUnitID="{C0E78DAA-768A-438F-8F7B-3701395185C3}"/>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+									<EffectSlot Name="" ID="{6A5D1A84-C343-4C39-AE31-970060A8500C}" ShortID="491123992">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom CreatedFrom="{F9627628-0B10-4272-BC30-D4C20423CB38}">
+													<Effect Name="High_Pass_60Hz (Custom)" ID="{0A41C22E-12E9-4E35-B138-1CD4852233C0}" ShortID="1012444785" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+														<PropertyList>
+															<Property Name="FilterTypeBand1" Type="int32" Value="1"/>
+															<Property Name="FrequencyBand1" Type="Real32" Value="421.4068"/>
+															<Property Name="OnOffBand2" Type="bool" Value="False"/>
+														</PropertyList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<AuxBus Name="Crossroad_Reverb" ID="{E0D81FD7-70C7-423D-A407-E22F8798C01C}">
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{F4AD4A36-05AE-4386-9531-E85EBC162CF9}" ShortID="117752600">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom CreatedFrom="{C0BCFD9D-288E-4551-A9AA-651BD535AFE7}">
+													<Effect Name="City_Center (Custom)" ID="{0CED8B58-229C-4808-884B-315BA8D32323}" ShortID="550680016" PluginName="iZotope Hybrid Reverb" CompanyID="259" PluginID="2" PluginType="3">
+														<PropertyList>
+															<Property Name="DecayHighFrequency" Type="Real32" Value="8000"/>
+															<Property Name="DecayHighRatio" Type="Real32" Value="0.8789631"/>
+															<Property Name="DecayLowFrequency" Type="Real32" Value="800"/>
+															<Property Name="DecayLowRatio" Type="Real32" Value="0.487843"/>
+															<Property Name="DecayMidRatio" Type="Real32" Value="0.88"/>
+															<Property Name="DecayTime" Type="Real32" Value="1"/>
+															<Property Name="EarlyGain" Type="Real32" Value="-12"/>
+														</PropertyList>
+														<ChildrenList>
+															<PluginMediaSource Name="City Center" ID="{393E78FF-C58D-48AC-ACCA-F6F510B8C558}">
+																<ParentPluginID>135219</ParentPluginID>
+																<PropertyList>
+																	<Property Name="DataFileName" Type="string" Value="City Center.wav"/>
+																</PropertyList>
+																<MediaIDList>
+																	<MediaID ID="379374117"/>
+																</MediaIDList>
+															</PluginMediaSource>
+														</ChildrenList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<AuxBus Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}">
+							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-12</Value>
+									</ValueList>
+								</Property>
+								<Property Name="GameAuxSendVolume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+								<Property Name="UserAuxSendHPF0" Type="int16">
+									<ValueList>
+										<Value>20</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UserAuxSendVolume0" Type="Real64">
+									<ValueList>
+										<Value>-12</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{D8BC7AB5-6DB8-415E-910B-F66EFE69BA51}" ShortID="571375785">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom CreatedFrom="{37779A87-4754-4420-8175-3236FA46AA12}">
+													<Effect Name="Reflect (Custom)" ID="{C4B726EC-1419-424F-ADF7-FACE67C11922}" ShortID="695506173" PluginName="Wwise Reflect" CompanyID="0" PluginID="171" PluginType="3">
+														<PropertyList>
+															<Property Name="CurveUsageMask" Type="Uint32" Value="511"/>
+															<Property Name="ParamFilterCutoff" Type="Real32" Value="1"/>
+															<Property Name="PitchThreshold" Type="Real32" Value="2400"/>
+														</PropertyList>
+														<PluginData>
+	<ReflectData>
+		<CurveList Version="4">
+			<CurveInfo Name="Diffraction Attenuation">
+				<Curve Name="Diffraction Attenuation">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="3"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>0</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>20</XPos>
+							<YPos>0</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>100</XPos>
+							<YPos>-3</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+			<CurveInfo Name="Diffraction DSF">
+				<Curve Name="Diffraction DSF">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="3"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>0</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>100</XPos>
+							<YPos>0</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+			<CurveInfo Name="Diffraction HPF">
+				<Curve Name="Diffraction HPF">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="5"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>20</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>100</XPos>
+							<YPos>20</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+			<CurveInfo Name="Diffraction LPF">
+				<Curve Name="Diffraction LPF">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="5"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>20000</YPos>
+							<Flags>5</Flags>
+							<SegmentShape>Log3</SegmentShape>
+						</Point>
+						<Point>
+							<XPos>8.33333333333333</XPos>
+							<YPos>1000</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>100</XPos>
+							<YPos>100</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+			<CurveInfo Name="Distance Attenuation (Image Source vs. Listener)">
+				<Curve Name="Distance Attenuation (Image Source vs. Listener)">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="3"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>0</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>150</XPos>
+							<YPos>-6</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>300</XPos>
+							<YPos>-12</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>600</XPos>
+							<YPos>-18</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>1000</XPos>
+							<YPos>-200</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+			<CurveInfo Name="Distance DSF">
+				<Curve Name="Distance DSF">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="3"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>0</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>1000</XPos>
+							<YPos>0</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+			<CurveInfo Name="Distance High-pass Filter (Image Source vs. Listener)">
+				<Curve Name="Distance High-pass Filter (Image Source vs. Listener)">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="5"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>20</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>1000</XPos>
+							<YPos>20</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+			<CurveInfo Name="Distance Low-pass Filter (Image Source vs. Listener)">
+				<Curve Name="Distance Low-pass Filter (Image Source vs. Listener)">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="5"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>20000</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>1000</XPos>
+							<YPos>20</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+			<CurveInfo Name="Distance Spread (Image Source vs. Listener)">
+				<Curve Name="Distance Spread (Image Source vs. Listener)">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="1"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>0</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>1000</XPos>
+							<YPos>0</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+		</CurveList>
+	</ReflectData>
+</PluginData>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Effects">
+							<EffectSlot Name="" ID="{D7D84C38-4929-45B1-8060-D999B2E9656E}" ShortID="120455340">
+								<ReferenceList>
+									<Reference Name="Effect">
+										<Custom>
+											<Effect Name="Parametric EQ (Custom)" ID="{BDA9F735-5FF7-4B01-9BF3-FEB8CAF76ED7}" ShortID="628580303" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+												<PropertyList>
+													<Property Name="FilterTypeBand3" Type="int32" Value="0"/>
+													<Property Name="FrequencyBand3" Type="Real32" Value="20000"/>
+													<Property Name="OnOffBand3" Type="bool" Value="True"/>
+													<Property Name="RolloffRateBand3" Type="int32" Value="24"/>
+												</PropertyList>
+												<ObjectLists>
+													<ObjectList Name="RTPC">
+														<RTPC Name="" ID="{AB042688-190F-4102-8A9B-F6F18EB50AAE}" ShortID="641468390">
+															<PropertyList>
+																<Property Name="PropertyName" Type="string" Value="FrequencyBand3"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																</Reference>
+																<Reference Name="Curve">
+																	<Custom>
+																		<Curve Name="" ID="{74031C07-37B9-4553-9D4D-9B5AB47ACE48}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="5"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>20000</YPos>
+																					<Flags>5</Flags>
+																					<SegmentShape>Exp1</SegmentShape>
+																				</Point>
+																				<Point>
+																					<XPos>100</XPos>
+																					<YPos>200</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</Custom>
+																</Reference>
+															</ReferenceList>
+														</RTPC>
+													</ObjectList>
+												</ObjectLists>
+											</Effect>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</EffectSlot>
+							<EffectSlot Name="" ID="{71AC8EEB-7BEF-474D-9673-C3E3F941381B}" ShortID="867054729">
+								<ReferenceList>
+									<Reference Name="Effect">
+										<Custom>
+											<Effect Name="Meter (Custom)" ID="{8908185C-5E26-46E0-AFC3-C890C86B4246}" ShortID="80258421" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3"/>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</EffectSlot>
+						</ObjectList>
+					</ObjectLists>
+				</Bus>
+				<Bus Name="Wwise_Motion" ID="{01B95841-D9A2-4051-9C07-3EF7EF52C3B7}">
+					<ReferenceList>
+						<Reference Name="AudioDevice" PluginName="Motion" CompanyID="0" PluginID="507" PluginType="7">
+							<ObjectRef Name="Motion" ID="{882328E3-4BF4-4402-9C6C-32775CE7D72E}" WorkUnitID="{D735F844-887C-4A98-9F58-CBDB3795BB8B}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AuxBus Name="Wwise_Motion_Send" ID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}">
+							<PropertyList>
+								<Property Name="BusChannelConfig" Type="int32">
+									<ValueList>
+										<Value>6304004</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{AB7301ED-C3B7-470D-A51C-55297924A172}" ShortID="1047402910">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom>
+													<Effect Name="Pitch Shifter (Custom)" ID="{E1388689-6B51-40C1-B6CC-61D3D1660DA2}" ShortID="677203020" PluginName="Wwise Pitch Shifter" CompanyID="0" PluginID="136" PluginType="3">
+														<PropertyList>
+															<Property Name="DelayTime" Type="Real32" Value="10"/>
+															<Property Name="Pitch" Type="Real32" Value="-1200"/>
+														</PropertyList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<RTPC Name="" ID="{FFF76E6A-A85E-403F-B9EE-4663566F8B9D}" ShortID="468394138">
+								<PropertyList>
+									<Property Name="PropertyName" Type="string" Value="BusVolume"/>
+								</PropertyList>
+								<ReferenceList>
+									<Reference Name="ControlInput">
+										<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+									</Reference>
+									<Reference Name="Curve">
+										<Custom>
+											<Curve Name="" ID="{A82F96C7-A4AB-42D0-B428-C735E8A7FE10}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-6</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>12</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</RTPC>
+						</ObjectList>
+					</ObjectLists>
 				</Bus>
 			</ChildrenList>
 		</WorkUnit>

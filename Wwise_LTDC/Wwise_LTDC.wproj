@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="Project" SchemaVersion="133" WwiseVersion="v2025.1.6" WwiseBuild="9117">
+<WwiseDocument Type="Project" SchemaVersion="133" WwiseVersion="v2025.1.5" WwiseBuild="9095">
 	<ProjectInfo>
 		<Project Name="Wwise_LTDC" ID="{0A92684B-8E96-4311-BDFE-A19E2FB48311}">
 			<Platforms>
+				<Platform Name="Mac" ReferencePlatform="Mac" ID="{2107D3D9-1915-4ADE-91A0-4BD09B1FA0EE}"/>
 				<Platform Name="Windows" ReferencePlatform="Windows" ID="{C690FA51-1F60-4EA1-88F5-8003B86BE8DD}"/>
 			</Platforms>
 			<LanguageList>
@@ -12,15 +13,22 @@
 				<Language Name="SFX" ID="{ECA2D5B4-7C78-43B2-98AD-C55CF624245D}"/>
 			</LanguageList>
 			<PropertyList>
-				<Property Name="AutoSoundBankEnabled" Type="bool" Value="True"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
+						<Value Platform="Mac"></Value>
 						<Value Platform="Windows"></Value>
 					</ValueList>
 				</Property>
 				<Property Name="ExternalSourcesOutputPath" Type="string">
 					<ValueList>
+						<Value Platform="Mac">GeneratedSoundBanks\Mac</Value>
 						<Value Platform="Windows">GeneratedSoundBanks\Windows</Value>
+					</ValueList>
+				</Property>
+				<Property Name="GlobalVoiceInstancesLimit" Type="int16">
+					<ValueList>
+						<Value Platform="Mac">256</Value>
+						<Value Platform="Windows">256</Value>
 					</ValueList>
 				</Property>
 				<Property Name="LicenseKey" Type="string" Value="PHByb2plY3QgaWQ9IjUzNTgiIG1hc2s9Ik1QTVQxMzk0IiBlbmM9IjAiPjxsaWNlbnNlIGlkPSIxIiBuYW1lPSJXd2lzZSIgdHlwZT0iMyIgcGxhdGZvcm1zPSIyLDMsNCwxMCwxMywxNCIgZXhwaXJlcz0iMjAyNi0xMC0wMSIgIC8+PGxpY2Vuc2UgaWQ9IjIyIiBuYW1lPSJMZXZlbCBBIExpY2Vuc2UiIHR5cGU9IjMiIHBsYXRmb3Jtcz0iMiwzLDQsMTAsMTMsMTQiIGV4cGlyZXM9IjIwMjYtMTAtMDEiICAvPjxsaWNlbnNlIGlkPSIyMSIgbmFtZT0iTWFpbnRlbmFuY2UiIHR5cGU9IjMiIHBsYXRmb3Jtcz0iMiwzLDQsMTAsMTMsMTQiIGV4cGlyZXM9IjIwMjYtMTAtMDEiICAvPjxsaWNlbnNlIGlkPSIyNSIgbmFtZT0iQWxsIFd3aXNlIFBsdWctSW5zIiB0eXBlPSIzIiAgZXhwaXJlcz0iMjAyNi0xMC0wMSIgIC8+PGxpY2Vuc2UgaWQ9IjYiIG5hbWU9Ild3aXNlIENvbnZvbHV0aW9uIFJldmVyYiIgdHlwZT0iMyIgcGxhdGZvcm1zPSIyLDMsNCwxMCwxNCIgZXhwaXJlcz0iMjAyNi0xMC0wMSIgIC8+PHBsdWdpbiBpZD0iODMyMzA3NSIgbmFtZT0iV3dpc2UgQ29udm9sdXRpb24gUmV2ZXJiIiBsaWNlbnNlPSI2IiAvPjwvcHJvamVjdD4=|X86mTpQ5pDnbhHAUjWCxr0yrqxzxquGjcc9XHC9OFUaQ7p5W/93/iBQZBg6kPV2axEUgMxtdL+yIw1iLJ5PxKFiGSiY75W01enKBydQ+x/NMrwrNSzfkBdY0cQP3zQJFZfjH1h7ePhifi8o/lxtmSGGvJKfNMs7fN9wj1qnMEICBYJJxOGcWIQERNqs1a39AhIZxzcJBshnpsQDLFYkFqyRKA4hoIoyIQAsAp/3ytwHiFz8pwVorwl65ot5ADP+j/ZkVw424JaeeGJh7Mwqi/e3Hg4u+S3+NgXbe9LV4GcLRmACoN3bYM3iNfI3MHv4uaoGGh22+QqNUdyvFNVjpDw=="/>
@@ -28,30 +36,42 @@
 				<Property Name="SoundBankHeaderFilePath" Type="string" Value="..\game\sounds\banks"/>
 				<Property Name="SoundBankPaths" Type="string">
 					<ValueList>
+						<Value Platform="Mac">GeneratedSoundBanks\Mac\</Value>
 						<Value Platform="Windows">GeneratedSoundBanks\Windows\</Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPostGenerateCustomCmdDescription" Type="string">
 					<ValueList>
+						<Value Platform="Mac"></Value>
 						<Value Platform="Windows"></Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPostGenerateCustomCmdLines" Type="string">
 					<ValueList>
+						<Value Platform="Mac"></Value>
 						<Value Platform="Windows"></Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPreGenerateCustomCmdDescription" Type="string">
 					<ValueList>
+						<Value Platform="Mac"></Value>
 						<Value Platform="Windows"></Value>
 					</ValueList>
 				</Property>
 				<Property Name="SoundBankPreGenerateCustomCmdLines" Type="string">
 					<ValueList>
+						<Value Platform="Mac"></Value>
 						<Value Platform="Windows"></Value>
 					</ValueList>
 				</Property>
 				<Property Name="SourceControlGeneratedFiles" Type="bool" Value="True"/>
+				<Property Name="UseActionNameForEvent" Type="bool" Value="False"/>
+				<Property Name="VolumeThreshold" Type="Real64">
+					<ValueList>
+						<Value Platform="Mac">-80</Value>
+						<Value Platform="Windows">-80</Value>
+					</ValueList>
+				</Property>
 				<Property Name="WwiseVersionWhenCreated" Type="string" Value="Branch=wwise_v2025.1.6|Build=9117|VersionName=v2025.1.6|Config=Release"/>
 			</PropertyList>
 			<MiscSettings>
@@ -10337,6 +10357,195 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
+				<SharedPropertyList ClassName="Wwise Convolution Reverb" PluginType="3" CompanyID="0" PluginID="127">
+					<PropertyList>
+						<Property Name="AlgoTypeSelect" Type="int32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="CenterLevel" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="ChannelConfigOverride" Type="int64">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Color" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DryLevel" Type="Real32">
+							<ValueList>
+								<Value>-96.3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="FrontLevel" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="FrontRearDelay" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="FullPrecisionMedia" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+						<Property Name="HardwareAcceleration" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRChannelSelect" Type="int32">
+							<ValueList>
+								<Value>4</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRConvolutionSmooth" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRConvolutionSmoothMax" Type="Real32">
+							<ValueList>
+								<Value>100</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRConvolutionStart" Type="Real64">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRConvolutionStop" Type="Real64">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRConvolutionThreshold" Type="Real32">
+							<ValueList>
+								<Value>-75</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRGraphicEQAutomate" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRLPFAutomate" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRLPFSlope" Type="int32">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRLRMix" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRLevel" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRLevelAutomate" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="IRStretch" Type="Real32">
+							<ValueList>
+								<Value>100</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Inclusion" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="InputCenterLevel" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="InputLFELevel" Type="Real32">
+							<ValueList>
+								<Value>-96.3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="InputStereoWidth" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="InputThreshold" Type="Real32">
+							<ValueList>
+								<Value>-60</Value>
+							</ValueList>
+						</Property>
+						<Property Name="LFELevel" Type="Real32">
+							<ValueList>
+								<Value>-96.3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OverrideColor" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+						<Property Name="PreDelay" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="RearLevel" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="SoundEngineBlockSize" Type="int32">
+							<ValueList>
+								<Value>1024</Value>
+							</ValueList>
+						</Property>
+						<Property Name="SoundEngineSampleRateDefault" Type="int32">
+							<ValueList>
+								<Value>48000</Value>
+							</ValueList>
+						</Property>
+						<Property Name="SoundEngineSampleRateMac" Type="int32">
+							<ValueList>
+								<Value>48000</Value>
+							</ValueList>
+						</Property>
+						<Property Name="SoundEngineSampleRateiOS" Type="int32">
+							<ValueList>
+								<Value>48000</Value>
+							</ValueList>
+						</Property>
+						<Property Name="StereoWidth" Type="Real32">
+							<ValueList>
+								<Value>180</Value>
+							</ValueList>
+						</Property>
+						<Property Name="WetLevel" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+				</SharedPropertyList>
 				<SharedPropertyList ClassName="Wwise Meter" PluginType="3" CompanyID="0" PluginID="129">
 					<PropertyList>
 						<Property Name="ApplyDownstreamVolume" Type="bool">
@@ -12526,6 +12735,153 @@
 						<Property Name="Color" Type="int16">
 							<ValueList>
 								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OverrideColor" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+				</SharedPropertyList>
+				<SharedPropertyList ClassName="Motion Source" PluginType="2" CompanyID="0" PluginID="409">
+					<PropertyList>
+						<Property Name="Channel1" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Channel2" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Channel3" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Channel4" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="ChannelConfig" Type="int16">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Color" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DriverA" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DriverB" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DriverC" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DriverD" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DriverE" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DriverF" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DriverG" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="DriverH" Type="Real32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="High1" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="High2" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="LeftTrigger" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Low1" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Low2" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OverrideColor" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+						<Property Name="RightTrigger" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+				</SharedPropertyList>
+				<SharedPropertyList ClassName="Haptic Clip Player" PluginType="2" CompanyID="0" PluginID="410">
+					<PropertyList>
+						<Property Name="Color" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OverrideColor" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+				</SharedPropertyList>
+				<SharedPropertyList ClassName="Motion" PluginType="7" CompanyID="0" PluginID="507">
+					<PropertyList>
+						<Property Name="BypassEffect" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Color" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Inclusion" Type="bool">
+							<ValueList>
+								<Value>True</Value>
 							</ValueList>
 						</Property>
 						<Property Name="OverrideColor" Type="bool">

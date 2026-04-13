@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}" SchemaVersion="133">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="player_aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}">
+					<PropertyList>
+						<Property Name="DefaultTransitionTime" Type="Real64" Value="0"/>
+					</PropertyList>
+					<ChildrenList>
+						<State Name="None" ID="{3F4E19DC-A92B-410B-A80A-BE5560C10551}"/>
+						<State Name="true" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+						<State Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+					</ChildrenList>
+				</StateGroup>
+				<StateGroup Name="player_breath" ID="{5E643EBD-D3D2-483F-B8F0-D5985C137861}">
+					<ChildrenList>
+						<State Name="None" ID="{FDC1DACA-2D38-4965-BFB2-0B7C8BA08DD2}"/>
+						<State Name="calm" ID="{1A08D4AD-3BFC-498C-89E9-90C6C5D68726}"/>
+						<State Name="anxious" ID="{68E47680-1106-48AB-8CD1-994A7346C657}"/>
+					</ChildrenList>
+				</StateGroup>
+				<StateGroup Name="player_position" ID="{02DC436E-58FA-4CBB-9770-4451633B92C8}">
+					<ChildrenList>
+						<State Name="none" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
+						<State Name="crouch" ID="{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"/>
+						<State Name="prone" ID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>

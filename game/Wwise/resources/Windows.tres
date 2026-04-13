@@ -1,5 +1,30 @@
 [gd_resource type="WwisePlatformInfo" format=3 uid="uid://becvs7eg2hhlr"]
 
+[sub_resource type="WwisePluginInfo" id="WwisePluginInfo_my2qb"]
+plugin_name = "Wwise Reflect"
+plugin_id = 11206659
+dll_name = "AkReflect"
+static_lib_name = "AkReflectFX"
+
+[sub_resource type="WwisePluginInfo" id="WwisePluginInfo_ja2b7"]
+plugin_name = "Motion"
+plugin_id = 33226759
+dll_name = "AkMotion"
+static_lib_name = "AkMotionSink"
+
+[sub_resource type="WwisePluginInfo" id="WwisePluginInfo_ciys6"]
+plugin_name = "Wwise Convolution Reverb"
+plugin_id = 8323075
+dll_name = "AkConvolutionReverb"
+static_lib_name = "AkConvolutionReverbFX"
+
+[sub_resource type="WwisePluginInfo" id="WwisePluginInfo_6nych"]
+plugin_name = "iZotope Hybrid Reverb"
+plugin_id = 135219
+dll_name = "iZotope"
+static_lib_name = "iZHybridReverbFX"
+
 [resource]
 platform_name = "Windows"
 platform_path = "../../../Wwise_LTDC/GeneratedSoundBanks/Windows"
+plugin_info = Array[WwisePluginInfo]([SubResource("WwisePluginInfo_my2qb"), SubResource("WwisePluginInfo_ja2b7"), SubResource("WwisePluginInfo_ciys6"), SubResource("WwisePluginInfo_6nych")])
