@@ -60,6 +60,7 @@ gpad_aim_time_before_acc = 0.15
 gpad_aim_acc_speed_time = 0.15
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=39530336]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -104,37 +105,41 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07000005, 0)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, -0.30000007, 0.2)
 
-[node name="Weapon" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer" unique_id=1348503296]
+[node name="WeaponRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer" unique_id=269191037]
+unique_name_in_owner = true
+
+[node name="Weapon" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot" unique_id=1348503296]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.95)
 
-[node name="Base" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/Weapon" unique_id=743249631]
+[node name="Base" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/Weapon" unique_id=743249631]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.107789636)
 mesh = SubResource("BoxMesh_r66lb")
 
-[node name="FrontSight" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/Weapon" unique_id=485469517]
+[node name="FrontSight" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/Weapon" unique_id=485469517]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.059999943, 0.639)
 mesh = SubResource("BoxMesh_1txc5")
 
-[node name="WeaponRayCast" type="RayCast3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/Weapon/FrontSight" unique_id=1123149694]
+[node name="WeaponRayCast" type="RayCast3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/Weapon/FrontSight" unique_id=1123149694]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04677081, 0.016367912)
 target_position = Vector3(0, 0, 300)
 
-[node name="RearSight" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/Weapon" unique_id=463848320]
+[node name="RearSight" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/Weapon" unique_id=463848320]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.100000024)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/Weapon/RearSight" unique_id=510486941]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/Weapon/RearSight" unique_id=510486941]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030000001, 0.06500006, 0)
 mesh = SubResource("BoxMesh_ht1c8")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/Weapon/RearSight" unique_id=1975371698]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/Weapon/RearSight" unique_id=1975371698]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030000001, 0.06500006, 0)
 mesh = SubResource("BoxMesh_ht1c8")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/Weapon/RearSight" unique_id=1301150542]
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/Weapon/RearSight" unique_id=1301150542]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04459071, 0)
 mesh = SubResource("BoxMesh_g2jcq")
 
-[node name="NearCircle" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/Weapon" unique_id=721717754]
+[node name="NearCircle" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/Weapon" unique_id=721717754]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.017079473, -0.8463017)
+visible = false
 mesh = SubResource("SphereMesh_binfn")
