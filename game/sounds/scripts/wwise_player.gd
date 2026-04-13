@@ -1,6 +1,5 @@
 extends Node3D
 
-var aiming := false
 var is_walking := false
 
 @export var player : Player
@@ -32,11 +31,17 @@ func _unhandled_input(_event: InputEvent) -> void:
 			if i.has_meta("Surface"):
 				print(i.get_meta("Surface"))
 				#Wwise.set_switch("bullet_material",i.get_meta("Surface"), self)
+	
+	if Input.is_action_just_pressed("crouch"):
+		if !player.is_crouched:
+			Wwise.set_state("player_stance", "crouch")
+		else:
+			Wwise.set_state("player_stance", "up")
 
 func _process(delta: float) -> void:
-	if player.is_on_floor() and player.velocity.x + player.velocity.z != 0:
+	if player.is_on_floor() and player.velocity.x + player.velocity.z != 0 and !is_walking:
 		steps.post_event()
 		is_walking = true
-	elif is_walking:
+	elif is_walking and player.velocity.x + player.velocity.z == 0 or !player.is_on_floor():
 		steps.stop_event()
 		is_walking = false

@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://d08cfuyp3y4nh"]
 
-[ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player.tscn" id="1_xu5xm"]
+[ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="1_xu5xm"]
 [ext_resource type="Script" uid="uid://tntha6dbwiuy" path="res://sounds/scripts/wwise_player.gd" id="2_pc7os"]
 [ext_resource type="WwiseEvent" uid="uid://cqdf7u10ggy7x" path="res://Wwise/resources/Event/{42733E42-B5F5-44F1-98EB-A729172BF973}.tres" id="2_s8o8u"]
 [ext_resource type="PackedScene" uid="uid://d1qotbnwtmkrg" path="res://sounds/prefabs/bulett_hit.tscn" id="3_arrrh"]
@@ -142,7 +142,6 @@ shape = SubResource("SphereShape3D_s8o8u")
 [node name="Steps" type="AkEvent3D" parent="Player/wwise_player" unique_id=1254273927]
 event = ExtResource("7_dym0f")
 stop_on = 3
-stop_fade_time = 1
 is_environment_aware = true
 
 [node name="Area3D" type="Area3D" parent="Player/wwise_player/Steps" unique_id=1439524533]
