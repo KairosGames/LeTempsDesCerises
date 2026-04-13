@@ -84,6 +84,11 @@
 												<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 												<Property Name="OverrideEffect" Type="bool" Value="True"/>
 												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+												<Property Name="Pitch" Type="int32">
+													<ValueList>
+														<Value>500</Value>
+													</ValueList>
+												</Property>
 												<Property Name="ReflectionsVolume" Type="Real64">
 													<ValueList>
 														<Value>-12</Value>
@@ -116,6 +121,10 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerCrack_Oneshot" ID="{A1E62118-B1C2-4320-B59D-CB3ED7EEBA20}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.04079"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerCrack_Oneshot.wav</AudioFile>
 													<MediaIDList>
@@ -354,7 +363,7 @@
 												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
-														<Value>0.075</Value>
+														<Value>0.1</Value>
 													</ValueList>
 												</Property>
 												<Property Name="MakeUpGain" Type="Real64">
@@ -372,7 +381,7 @@
 												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
-														<Value>500</Value>
+														<Value>200</Value>
 													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
@@ -418,6 +427,9 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{869C5124-E9C2-49FF-9357-4424E580906B}">
+													<PropertyList>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Oneshot.wav</AudioFile>
 													<MediaIDList>
