@@ -15,12 +15,14 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		if agent.cover:
 			CoverManager.release(agent.cover)
 			agent.cover = null
-
+		
+		agent.move_start.emit()
 		on_start(actor, blackboard)
 
 		agent.navigation.move_to(get_destination(actor, blackboard), get_stop_distance())
 
 	if agent.navigation.is_navigation_finished():
+		agent.move_end.emit()
 		if agent.navigation.is_target_reached():
 			return has_succeeded(actor, blackboard)
 		else:

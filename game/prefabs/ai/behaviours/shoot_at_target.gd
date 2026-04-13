@@ -24,6 +24,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 			is_shooting = false
 			agent.aim_to(target.global_position)
 			(actor as Agent).animation.play("shoot")
+			(actor as Agent).shoot.emit()
 			(actor as Agent).is_weapon_loaded = false
 			if will_touch:
 				target.queue_free()

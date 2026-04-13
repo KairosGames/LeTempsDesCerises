@@ -8,8 +8,8 @@ static var all: Array[Agent]
 
 @warning_ignore_start("unused_signal")
 signal shoot
-signal reload_start
-signal reload_end
+#signal reload_start
+#signal reload_end
 signal move_start
 signal move_end
 @warning_ignore_restore("unused_signal")

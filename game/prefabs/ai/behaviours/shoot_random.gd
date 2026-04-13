@@ -17,6 +17,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		if elasped_timed > duration:
 			is_shooting = false
 			(actor as Agent).is_weapon_loaded = false
+			(actor as Agent).shoot.emit()
 			return SUCCESS
 		else: 
 			return RUNNING
