@@ -41,21 +41,24 @@ namespace AK
 
             namespace STATE
             {
+                static const AkUniqueID ANXIOUS = 3823044812U;
+                static const AkUniqueID CALM = 3753286132U;
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace PLAYER_BREATH
 
-        namespace PLAYER_POSITION
+        namespace PLAYER_STANCE
         {
-            static const AkUniqueID GROUP = 2221031936U;
+            static const AkUniqueID GROUP = 1343755517U;
 
             namespace STATE
             {
                 static const AkUniqueID CROUCH = 2655407367U;
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID PRONE = 1270007533U;
+                static const AkUniqueID UP = 1551306158U;
             } // namespace STATE
-        } // namespace PLAYER_POSITION
+        } // namespace PLAYER_STANCE
 
     } // namespace STATES
 
@@ -83,6 +86,18 @@ namespace AK
             } // namespace SWITCH
         } // namespace CHARACTER_TYPE
 
+        namespace PLAYER_POSITION
+        {
+            static const AkUniqueID GROUP = 2221031936U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID CROUCH = 2655407367U;
+                static const AkUniqueID PRONE = 1270007533U;
+                static const AkUniqueID UP = 1551306158U;
+            } // namespace SWITCH
+        } // namespace PLAYER_POSITION
+
         namespace SURFACE
         {
             static const AkUniqueID GROUP = 1834394558U;
@@ -102,6 +117,7 @@ namespace AK
     {
         static const AkUniqueID CANNONS_PROBABILITY = 2576556105U;
         static const AkUniqueID DEAFENING = 711096812U;
+        static const AkUniqueID PLAYER_POSITION = 2221031936U;
         static const AkUniqueID POETIC_LEVEL = 3680281974U;
     } // namespace GAME_PARAMETERS
 
@@ -109,6 +125,7 @@ namespace AK
     {
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID SB_AMB = 925885567U;
+        static const AkUniqueID SB_ENEMY = 3827176343U;
         static const AkUniqueID SB_PLAYER = 2103316850U;
     } // namespace BANKS
 
