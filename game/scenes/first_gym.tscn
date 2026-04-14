@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d28tbnqpob3um" path="res://prefabs/ai/agents/versaillais.tscn" id="10_qf655"]
 [ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="11_g8jv5"]
 [ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://scripts/game_manager.gd" id="11_imnog"]
-[ext_resource type="PackedScene" uid="uid://yrcffpgog2ra" path="res://prefabs/ai/barricade.tscn" id="12_g8jv5"]
+[ext_resource type="Script" uid="uid://b2kcx2i47o8oe" path="res://prefabs/ai/fight_area.gd" id="13_g8jv5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s20kv"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -612,6 +612,8 @@ transform = Transform3D(0.1022891, 0, -0.99475473, 0, 1, 0, 0.99475473, 0, 0.102
 script = ExtResource("11_imnog")
 metadata/_custom_type_script = "uid://bho08aptyf7f"
 
-[node name="Barricade" parent="." unique_id=1923619645 instance=ExtResource("12_g8jv5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.669223, 1.243081, -1.6221316)
-visible = false
+[node name="FightArea" type="Marker3D" parent="." unique_id=819182093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.824482, 1.5631053, 0.52256274)
+script = ExtResource("13_g8jv5")
+size = 80.0
+metadata/_custom_type_script = "uid://b2kcx2i47o8oe"
