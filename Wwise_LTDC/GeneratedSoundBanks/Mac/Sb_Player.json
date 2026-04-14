@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{49827AFC-1442-4066-AF70-C2B0B3B40C86}",
     "Language": "SFX",
-    "Hash": "{F0167ED1-537C-9496-FA59-113A5FB417AF}",
+    "Hash": "{A6CCB5B4-1494-E5DB-19C0-1367C30A047D}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Player",
     "ShortName": "Sb_Player",
     "Path": "Sb_Player.bnk",
@@ -141,7 +141,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Chassepot\\LTDC_SFX_Player_Reload_Oneshot.wav",
-      "CachePath": "67/{67668B48-13DE-D7BC-A99B-B13C73F423D7}.wem"
+      "CachePath": "81/{81A5E7A8-2826-8E0C-E171-5114167056D0}.wem"
      },
      {
       "Id": "632494295",
@@ -149,7 +149,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Chassepot\\LTDC_SFX_Player_GunShot_LayerCrack_Oneshot.wav",
-      "CachePath": "38/{3864E1A4-CDEB-B312-1F5A-60BC00494C5C}.wem"
+      "CachePath": "64/{64CE7303-C813-BE82-DE9F-0B0D53A74D59}.wem"
      },
      {
       "Id": "702837950",
@@ -432,13 +432,89 @@
       "DurationMax": "0"
      },
      {
+      "Id": "3055475155",
+      "Name": "Player_Crouch",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Stance\\Player_Crouch",
+      "GUID": "{0DEF7495-B440-4E74-9C4B-9073F849D823}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "440430333"
+       },
+       {
+        "Id": "753793935"
+       },
+       {
+        "Id": "806477048"
+       },
+       {
+        "Id": "900789959"
+       }
+      ],
+      "AuxBusRefs": [
+       {
+        "Id": "243379636",
+        "Name": "Reflect",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+        "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "1343755517",
+        "Id": "2655407367",
+        "Name": "crouch",
+        "ObjectPath": "\\States\\Default Work Unit\\player_stance\\crouch",
+        "GUID": "{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"
+       }
+      ]
+     },
+     {
+      "Id": "1806823001",
+      "Name": "Player_Prone",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Stance\\Player_Prone",
+      "GUID": "{FE60E622-47E0-4B0A-8224-00824D1DFFA5}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "440430333"
+       },
+       {
+        "Id": "753793935"
+       },
+       {
+        "Id": "806477048"
+       },
+       {
+        "Id": "900789959"
+       }
+      ],
+      "AuxBusRefs": [
+       {
+        "Id": "243379636",
+        "Name": "Reflect",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+        "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "1343755517",
+        "Id": "1270007533",
+        "Name": "prone",
+        "ObjectPath": "\\States\\Default Work Unit\\player_stance\\prone",
+        "GUID": "{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"
+       }
+      ]
+     },
+     {
       "Id": "1650679582",
       "Name": "Player_Reload",
       "ObjectPath": "\\Events\\Default Work Unit\\Player\\Player_Reload",
       "GUID": "{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}",
       "DurationType": "OneShot",
-      "DurationMin": "2.993729",
-      "DurationMax": "2.993729",
+      "DurationMin": "6",
+      "DurationMax": "6",
       "MediaRefs": [
        {
         "Id": "605834236"
@@ -459,8 +535,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Player\\Player_Shoot",
       "GUID": "{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}",
       "DurationType": "OneShot",
-      "DurationMin": "1.081149",
-      "DurationMax": "1.3361703",
+      "DurationMin": "1.2667894",
+      "DurationMax": "1.5700625",
       "MediaRefs": [
        {
         "Id": "247688113"
@@ -506,6 +582,25 @@
       ]
      },
      {
+      "Id": "2500953213",
+      "Name": "Player_Sprint",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Stance\\Player_Sprint",
+      "GUID": "{6896C878-A293-4133-9E1F-3A23F80B8F43}",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "1343755517",
+        "Id": "1296465089",
+        "Name": "sprint",
+        "ObjectPath": "\\States\\Default Work Unit\\player_stance\\sprint",
+        "GUID": "{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"
+       }
+      ]
+     },
+     {
       "Id": "4272057794",
       "Name": "Player_Steps",
       "ObjectPath": "\\Events\\Default Work Unit\\Player\\Player_Steps",
@@ -541,6 +636,52 @@
        },
        {
         "Id": "1024503505"
+       }
+      ],
+      "AuxBusRefs": [
+       {
+        "Id": "243379636",
+        "Name": "Reflect",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+        "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
+       }
+      ]
+     },
+     {
+      "Id": "4024398754",
+      "Name": "Player_Up",
+      "ObjectPath": "\\Events\\Default Work Unit\\Player\\Stance\\Player_Up",
+      "GUID": "{4522F8E8-2547-4E53-85E8-2F1D0788D631}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "440430333"
+       },
+       {
+        "Id": "753793935"
+       },
+       {
+        "Id": "806477048"
+       },
+       {
+        "Id": "900789959"
+       }
+      ],
+      "AuxBusRefs": [
+       {
+        "Id": "243379636",
+        "Name": "Reflect",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+        "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
+       }
+      ],
+      "ActionSetState": [
+       {
+        "GroupId": "1343755517",
+        "Id": "1551306158",
+        "Name": "up",
+        "ObjectPath": "\\States\\Default Work Unit\\player_stance\\up",
+        "GUID": "{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"
        }
       ]
      }
@@ -673,6 +814,46 @@
       "GUID": "{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}"
      }
     ],
+    "StateGroups": [
+     {
+      "Id": "1343755517",
+      "Name": "player_stance",
+      "ObjectPath": "\\States\\Default Work Unit\\player_stance",
+      "GUID": "{02DC436E-58FA-4CBB-9770-4451633B92C8}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\player_stance\\None",
+        "GUID": "{1DDBDC63-7073-4B7E-A290-B582E49C0F09}"
+       },
+       {
+        "Id": "1270007533",
+        "Name": "prone",
+        "ObjectPath": "\\States\\Default Work Unit\\player_stance\\prone",
+        "GUID": "{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"
+       },
+       {
+        "Id": "1296465089",
+        "Name": "sprint",
+        "ObjectPath": "\\States\\Default Work Unit\\player_stance\\sprint",
+        "GUID": "{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"
+       },
+       {
+        "Id": "1551306158",
+        "Name": "up",
+        "ObjectPath": "\\States\\Default Work Unit\\player_stance\\up",
+        "GUID": "{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"
+       },
+       {
+        "Id": "2655407367",
+        "Name": "crouch",
+        "ObjectPath": "\\States\\Default Work Unit\\player_stance\\crouch",
+        "GUID": "{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"
+       }
+      ]
+     }
+    ],
     "SwitchGroups": [
      {
       "Id": "1834394558",
@@ -709,6 +890,6 @@
     ]
    }
   ],
-  "FileHash": "{354A9382-7340-C7C4-12DA-3D9096B576B1}"
+  "FileHash": "{23925260-1BE2-1BF6-8430-C652C63624D5}"
  }
 }
