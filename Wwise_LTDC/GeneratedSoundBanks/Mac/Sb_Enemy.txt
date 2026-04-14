@@ -1,6 +1,16 @@
 Event	ID	Name			Wwise Object Path	Notes
 	1050776119	Enemy_Shoot			\Default Work Unit\Enemy\Enemy_Shoot	
 	3114531655	Enemy_Steps			\Default Work Unit\Enemy\Enemy_Steps	
+	3787232089	Enemy_Bullet_Miss			\Default Work Unit\Enemy\Enemy_Bullet_Miss	
+
+Switch Group	ID	Name			Wwise Object Path	Notes
+	1834394558	Surface			\Default Work Unit\Surface	
+
+Switch	ID	Name	Switch Group			Notes
+	504532776	Brick	Surface			
+	2058049674	Wood	Surface			
+	2449969375	Glass	Surface			
+	2473969246	Metal	Surface			
 
 State Group	ID	Name			Wwise Object Path	Notes
 	1343755517	player_stance			\Default Work Unit\player_stance	
@@ -9,6 +19,7 @@ State Group	ID	Name			Wwise Object Path	Notes
 State	ID	Name	State Group			Notes
 	748895195	None	player_stance			
 	1270007533	prone	player_stance			
+	1296465089	sprint	player_stance			
 	1551306158	up	player_stance			
 	2655407367	crouch	player_stance			
 	748895195	None	player_aim			
@@ -16,11 +27,23 @@ State	ID	Name	State Group			Notes
 	3053630529	true	player_aim			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	24042832	LTDC_SFX_Bullet_Hit_LayerBrick_Random_1	.cache\62\{6299DD30-823C-734E-EBF3-9EBBE32C8E68}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Brick\LTDC_SFX_Bullet_Hit_LayerBrick_Random_1		134818
 	177445382	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05	.cache\36\{3678CBCC-5A06-AC1F-A9CB-CB745485697A}.wem		\Containers\SFX\Characters\NPC\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05		41272
+	220576500	LTDC_SFX_Bullet_Hit_LayerWood_Random_2	.cache\79\{79B84039-3762-9631-5D7A-9AD885D3D110}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Wood\LTDC_SFX_Bullet_Hit_LayerWood_Random_2		32314
 	235351759	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03	.cache\4E\{4E8C621F-7B9D-75CE-29EC-3A7446E1686A}.wem		\Containers\SFX\Characters\NPC\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03		30472
+	244128652	LTDC_SFX_Bullet_Hit_LayerWood_Random_3	.cache\64\{647D5698-D6CA-DA76-5A5E-94FA233E1630}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Wood\LTDC_SFX_Bullet_Hit_LayerWood_Random_3		44370
 	247688113	LTDC_SFX_Player_GunShot_LayerTail_Oneshot	.cache\34\{34D6F026-FA41-B432-757D-BC580D2D3A2E}.wem		\Containers\SFX\Characters\NPC\LTDC_SFX_Player_GunShot_LayerTail_Oneshot		141222
+	301802129	LTDC_SFX_Bullet_Hit_LayerBrick_Random_3	.cache\4B\{4B9A2C4B-7A38-62D7-81C8-281B2800D554}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Brick\LTDC_SFX_Bullet_Hit_LayerBrick_Random_3		113558
+	345847656	LTDC_SFX_Bullet_Hit_LayerWood_Random_1	.cache\D9\{D97BE36B-BD73-64B1-F8E2-3FD7BDEED646}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Wood\LTDC_SFX_Bullet_Hit_LayerWood_Random_1		35168
+	375366214	LTDC_SFX_Bullet_Hit_LayerGlass_Random_2	.cache\1E\{1EAAEDB9-1031-9E09-98C4-E9FDAB574191}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Glass\LTDC_SFX_Bullet_Hit_LayerGlass_Random_2		109052
+	395081999	LTDC_SFX_Bullet_Hit_LayerBrick_Random_2	.cache\98\{98B14C25-D22C-5CFF-3F46-EEC99CD52418}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Brick\LTDC_SFX_Bullet_Hit_LayerBrick_Random_2		126378
 	460395499	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06	.cache\81\{81994C76-F50C-594E-E96E-E22051D06802}.wem		\Containers\SFX\Characters\NPC\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06		26832
+	568077254	LTDC_SFX_Bullet_Hit_LayerGlass_Random_1	.cache\1B\{1BA2140A-AB59-931E-D545-F23D3206D1BC}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Glass\LTDC_SFX_Bullet_Hit_LayerGlass_Random_1		145000
+	732266218	LTDC_SFX_Bullet_Hit_LayerGlass_Random_3	.cache\0F\{0FD61C03-AAFA-4721-A402-B8A613EFB1BA}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Glass\LTDC_SFX_Bullet_Hit_LayerGlass_Random_3		129248
+	749417595	LTDC_SFX_Bullet_Hit_LayerMetal_Random_3	.cache\2E\{2EAA45CA-99C0-4153-6FD1-F96CD39C7B24}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Metal\LTDC_SFX_Bullet_Hit_LayerMetal_Random_3		59764
 	780702883	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01	.cache\92\{92C31FD9-A04D-58EA-FC60-E5E3BB0F75D8}.wem		\Containers\SFX\Characters\NPC\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01		35540
 	812421663	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04	.cache\9C\{9CF70DF8-9E9A-AB3F-4B86-650EADA1E071}.wem		\Containers\SFX\Characters\NPC\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04		33460
+	842328612	LTDC_SFX_Bullet_Hit_LayerMetal_Random_1	.cache\54\{54960216-10CC-0CF7-BBE9-214C9629075B}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Metal\LTDC_SFX_Bullet_Hit_LayerMetal_Random_1		32632
+	917246979	LTDC_SFX_Bullet_Hit_LayerMetal_Random_2	.cache\29\{29329D0C-B5B0-BA13-BB68-B2148999D93E}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Metal\LTDC_SFX_Bullet_Hit_LayerMetal_Random_2		46872
 	1024503505	LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02	.cache\D2\{D29AE3EF-E9E2-0343-A075-7C4443DC6426}.wem		\Containers\SFX\Characters\NPC\Brick\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02		24968
 
