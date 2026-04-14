@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_nvy3a"]
 [ext_resource type="Script" uid="uid://1h6aoya61b6d" path="res://prefabs/ai/navigation.gd" id="2_24g36"]
 [ext_resource type="Script" uid="uid://dme5f24l0edsf" path="res://addons/beehave/blackboard.gd" id="2_tpga6"]
+[ext_resource type="Script" uid="uid://dcojdhvj8qcw0" path="res://addons/beehave/nodes/composites/sequence_reactive.gd" id="5_f5m6n"]
+[ext_resource type="Script" uid="uid://1nss82y33gkp" path="res://prefabs/ai/behaviours/conditions/is_alive.gd" id="6_f5m6n"]
 [ext_resource type="PackedScene" uid="uid://3y1qt50xdawu" path="res://prefabs/ai/behaviours/versaillais.tscn" id="7_ixvr7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_otrs2"]
@@ -23,6 +25,14 @@ albedo_color = Color(1, 0.4627451, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_1xyfn"]
 material = SubResource("StandardMaterial3D_1xyfn")
 size = Vector3(0.2, 0.2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ma2d"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1xyfn"]
+material = SubResource("StandardMaterial3D_1ma2d")
+radius = 0.25
+height = 0.5
 
 [sub_resource type="Animation" id="Animation_1xyfn"]
 length = 0.001
@@ -49,6 +59,45 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qofmx"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5707964, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1, 0), Vector3(0, 0.5, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ixvr7"]
@@ -101,18 +150,11 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tkg8o"]
 _data = {
 &"RESET": SubResource("Animation_1xyfn"),
+&"die": SubResource("Animation_qofmx"),
 &"random_shoot": SubResource("Animation_ixvr7"),
 &"reload": SubResource("Animation_tkg8o"),
 &"shoot": SubResource("Animation_3m1mu")
 }
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ma2d"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_1xyfn"]
-material = SubResource("StandardMaterial3D_1ma2d")
-radius = 0.25
-height = 0.5
 
 [node name="Agent" type="CharacterBody3D" unique_id=1349390169]
 axis_lock_angular_x = true
@@ -135,6 +177,10 @@ mesh = SubResource("BoxMesh_tpga6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4543075, 0.16268647, -0.516238)
 mesh = SubResource("BoxMesh_1xyfn")
 
+[node name="Hat" type="MeshInstance3D" parent="Body" unique_id=209391601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0781083, 0)
+mesh = SubResource("SphereMesh_1xyfn")
+
 [node name="Navigation" type="NavigationAgent3D" parent="." unique_id=514776903]
 avoidance_enabled = true
 debug_enabled = true
@@ -156,8 +202,12 @@ custom_monitor = true
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
-[node name="Versaillais" parent="BeehaveTree" unique_id=546313229 instance=ExtResource("7_ixvr7")]
+[node name="BeAlive" type="Node" parent="BeehaveTree" unique_id=1853354031]
+script = ExtResource("5_f5m6n")
+metadata/_custom_type_script = "uid://dcojdhvj8qcw0"
 
-[node name="Hat" type="MeshInstance3D" parent="." unique_id=209391601]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0781083, 0)
-mesh = SubResource("SphereMesh_1xyfn")
+[node name="IsAlive" type="Node" parent="BeehaveTree/BeAlive" unique_id=2082601198]
+script = ExtResource("6_f5m6n")
+metadata/_custom_type_script = "uid://1nss82y33gkp"
+
+[node name="Versaillais" parent="BeehaveTree/BeAlive" unique_id=546313229 instance=ExtResource("7_ixvr7")]
