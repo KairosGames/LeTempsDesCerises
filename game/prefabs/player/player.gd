@@ -35,12 +35,8 @@ class_name Player extends CharacterBody3D
 @export var ads_z_rot: float = 1.0
 
 @export_category("Aim sway settings")
-#@export var aim_sway_x_len: float = 0.003#0.012
-#@export var aim_sway_y_len: float = 0.004#0.016
-
 @export var aim_sway_pitch_len: float = 0.6
 @export var aim_sway_yaw_len: float = 0.7
-
 @export var aim_sway_x_freq: float = 0.85
 @export var aim_sway_y_freq: float = 1.0
 @export var aim_noise_len: float = 0.003
@@ -336,13 +332,6 @@ func smooth_damp(current: float, target: float, current_velocity: float, smooth_
 
 func handle_weapon_movement() -> void:
 	var t: float = Time.get_ticks_msec() / 1000.0
-	
-	#var base_x: float = sin(t * aim_sway_x_freq) * aim_sway_x_len
-	#var base_y: float = cos(t * aim_sway_y_freq) * aim_sway_y_len
-	#var n_x := aim_noise_x.get_noise_1d(t * aim_noise_freq) * aim_noise_len
-	#var n_y := aim_noise_y.get_noise_1d(t * aim_noise_freq) * aim_noise_len
-	#weapon_root.position = Vector3(base_x + n_x, base_y + n_y, weapon_root.position.z)
-
 	var yaw := sin(t * aim_sway_x_freq) * aim_sway_yaw_len
 	yaw += aim_noise_x.get_noise_1d(t * aim_noise_freq) * aim_noise_len
 	var pitch := cos(t * aim_sway_y_freq) * aim_sway_pitch_len
