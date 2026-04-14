@@ -15,7 +15,7 @@ signal move_end
 @warning_ignore_restore("unused_signal")
 
 var is_weapon_loaded: bool = true
-
+var is_alive: bool = true
 var cover: Cover = null
 
 @export var team: Team = Team.VERSALLAIS
@@ -30,8 +30,11 @@ func _ready() -> void:
 	all.append(self)
 
 func die() -> void:
+	if not is_alive: return
+	is_alive = false
 	if cover: CoverManager.release(cover)
 	all.erase(self)
 	animation.play("die")
+	navigation.stop()
 	await animation.animation_finished
 	queue_free()

@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://bb0t2ovl7wifo" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_nvy3a"]
 [ext_resource type="Script" uid="uid://1h6aoya61b6d" path="res://prefabs/ai/navigation.gd" id="2_24g36"]
 [ext_resource type="Script" uid="uid://dme5f24l0edsf" path="res://addons/beehave/blackboard.gd" id="2_tpga6"]
+[ext_resource type="Script" uid="uid://dcojdhvj8qcw0" path="res://addons/beehave/nodes/composites/sequence_reactive.gd" id="5_f5m6n"]
+[ext_resource type="Script" uid="uid://1nss82y33gkp" path="res://prefabs/ai/behaviours/is_alive.gd" id="6_f5m6n"]
 [ext_resource type="PackedScene" uid="uid://3y1qt50xdawu" path="res://prefabs/ai/behaviours/versaillais.tscn" id="7_ixvr7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_otrs2"]
@@ -200,4 +202,12 @@ custom_monitor = true
 actor = NodePath("..")
 metadata/_custom_type_script = "uid://bb0t2ovl7wifo"
 
-[node name="Versaillais" parent="BeehaveTree" unique_id=546313229 instance=ExtResource("7_ixvr7")]
+[node name="BeAlive" type="Node" parent="BeehaveTree" unique_id=1853354031]
+script = ExtResource("5_f5m6n")
+metadata/_custom_type_script = "uid://dcojdhvj8qcw0"
+
+[node name="IsAlive" type="Node" parent="BeehaveTree/BeAlive" unique_id=2082601198]
+script = ExtResource("6_f5m6n")
+metadata/_custom_type_script = "uid://1nss82y33gkp"
+
+[node name="Versaillais" parent="BeehaveTree/BeAlive" unique_id=546313229 instance=ExtResource("7_ixvr7")]
