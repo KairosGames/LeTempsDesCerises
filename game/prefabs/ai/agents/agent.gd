@@ -26,7 +26,12 @@ func aim_to(target: Vector3) -> void:
 	target.y = global_position.y
 	look_at(target)
 
-func _enter_tree() -> void: all.append(self)
-func _exit_tree() -> void: 
+func _ready() -> void:
+	all.append(self)
+
+func die() -> void:
 	if cover: CoverManager.release(cover)
 	all.erase(self)
+	animation.play("die")
+	await animation.animation_finished
+	queue_free()

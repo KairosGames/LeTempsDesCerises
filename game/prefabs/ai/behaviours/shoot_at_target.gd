@@ -10,7 +10,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var target: Node3D = blackboard.get_value("target", null)
 	if not target: return FAILURE
-	
+
 	if not is_shooting:
 		is_shooting = true
 		shoot_start_time = Time.get_ticks_msec()
@@ -26,9 +26,9 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 			(actor as Agent).animation.play("shoot")
 			(actor as Agent).is_weapon_loaded = false
 			if will_touch:
-				target.queue_free()
+				target.die()
 			return SUCCESS
-		else: 
+		else:
 			return RUNNING
 
 func interrupt(_actor: Node, _blackboard: Blackboard) -> void:
