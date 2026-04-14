@@ -1,11 +1,6 @@
 [gd_scene format=3 uid="uid://yrcffpgog2ra"]
 
-[sub_resource type="GDScript" id="GDScript_l26p4"]
-script/source = "extends Marker3D
-
-func _ready() -> void:
-	GameManager.active_barricade = self
-"
+[ext_resource type="Script" uid="uid://b2kcx2i47o8oe" path="res://prefabs/ai/fight_area.gd" id="1_bf1dl"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_l26p4"]
 top_radius = 0.1
@@ -19,7 +14,7 @@ material = SubResource("StandardMaterial3D_ec114")
 size = Vector3(1, 1, 0.1)
 
 [node name="Barricade" type="Marker3D" unique_id=1923619645]
-script = SubResource("GDScript_l26p4")
+script = ExtResource("1_bf1dl")
 
 [node name="Pole" type="MeshInstance3D" parent="." unique_id=1200639860]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
