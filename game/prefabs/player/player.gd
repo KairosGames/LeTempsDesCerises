@@ -34,17 +34,16 @@ class_name Player extends CharacterBody3D
 @export var is_ads_rot_active: bool = false
 @export var ads_z_rot: float = 1.0
 
-@export_category("Aim sway settings")
-#@export var aim_sway_x_len: float = 0.003#0.012
-#@export var aim_sway_y_len: float = 0.004#0.016
+@export_category("ADS sway settings")
+@export var ads_sway_pitch_len: float = 0.6
+@export var ads_sway_yaw_len: float = 0.7
+@export var ads_sway_x_freq: float = 0.85
+@export var ads_sway_y_freq: float = 1.0
+@export var ads_sway_noise_len: float = 0.003
+@export var ads_sway_noise_freq: float = 0.7
 
-@export var aim_sway_pitch_len: float = 0.6
-@export var aim_sway_yaw_len: float = 0.7
-
-@export var aim_sway_x_freq: float = 0.85
-@export var aim_sway_y_freq: float = 1.0
-@export var aim_noise_len: float = 0.003
-@export var aim_noise_freq: float = 0.7
+@export_category("Shoot settings")
+@export var reload_time: float = 7.0
 
 @export_category("States settings")
 @export var state_switch_time: float = 0.2
@@ -68,6 +67,13 @@ class_name Player extends CharacterBody3D
 @export_range(0.01, 0.5, 0.01) var brake_time: float = 0.1
 @export_range(0.01, 1.0, 0.001) var aim_smooth_strength: float = 0.05
 
+var aim_noise_x: FastNoiseLite = FastNoiseLite.new()
+var aim_noise_y: FastNoiseLite = FastNoiseLite.new()
+var aim_vel: Vector3 = Vector3.ZERO
+var aim_target: Vector3 = Vector3.ZERO
+var acc_time_ratio: float
+var brake_time_ratio: float
+
 var is_grounded: bool = true
 var is_aiming: bool = false
 var is_running: bool = false
@@ -75,6 +81,8 @@ var is_crouched:bool = false
 var is_lyingd: bool = false
 var is_changing_state: bool = false
 var stop_run: bool = false
+var can_shoot: bool = true
+var is_reloading: bool = false
 
 var wpn_x_aim_twn: Tween
 var wpn_y_aim_twn: Tween
@@ -83,15 +91,8 @@ var fov_aim_twn: Tween
 var cam_rot_aim_twn: Tween
 var state_twn: Tween
 
-var aim_vel: Vector3 = Vector3.ZERO
-var aim_target: Vector3 = Vector3.ZERO
-var acc_time_ratio: float
-var brake_time_ratio: float
-
-var aim_noise_x: FastNoiseLite = FastNoiseLite.new()
-var aim_noise_y: FastNoiseLite = FastNoiseLite.new()
-
 const JUMP_VELOCITY = 4.5
+
 
 func _ready() -> void:
 	weapon_container.position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
@@ -117,6 +118,7 @@ func capture_states() -> void:
 
 
 func capture_aim_state() -> void:
+	if is_reloading: return
 	var flag: bool = is_aiming
 	if is_aim_locked:
 		if Input.is_action_just_pressed("aim"):
@@ -317,6 +319,10 @@ func process_view(delta: float) -> void:
 		camera_pivot.rotation_degrees.x = aim_target.x
 
 
+func is_mouse_locked() -> bool:
+	return Input.mouse_mode == Input.MouseMode.MOUSE_MODE_CAPTURED
+
+
 func smooth_damp_angle(current: float, target: float, current_velocity: float, smooth_strength: float, delta: float) -> Dictionary:
 	target = current + wrapf(target - current, -180.0, 180.0)
 	return smooth_damp(current, target, current_velocity, smooth_strength, delta)
@@ -336,32 +342,47 @@ func smooth_damp(current: float, target: float, current_velocity: float, smooth_
 
 func handle_weapon_movement() -> void:
 	var t: float = Time.get_ticks_msec() / 1000.0
-	
-	#var base_x: float = sin(t * aim_sway_x_freq) * aim_sway_x_len
-	#var base_y: float = cos(t * aim_sway_y_freq) * aim_sway_y_len
-	#var n_x := aim_noise_x.get_noise_1d(t * aim_noise_freq) * aim_noise_len
-	#var n_y := aim_noise_y.get_noise_1d(t * aim_noise_freq) * aim_noise_len
-	#weapon_root.position = Vector3(base_x + n_x, base_y + n_y, weapon_root.position.z)
-
-	var yaw := sin(t * aim_sway_x_freq) * aim_sway_yaw_len
-	yaw += aim_noise_x.get_noise_1d(t * aim_noise_freq) * aim_noise_len
-	var pitch := cos(t * aim_sway_y_freq) * aim_sway_pitch_len
-	pitch += aim_noise_y.get_noise_1d(t * aim_noise_freq) * aim_noise_len
+	var yaw := sin(t * ads_sway_x_freq) * ads_sway_yaw_len
+	yaw += aim_noise_x.get_noise_1d(t * ads_sway_noise_freq) * ads_sway_noise_len
+	var pitch := cos(t * ads_sway_y_freq) * ads_sway_pitch_len
+	pitch += aim_noise_y.get_noise_1d(t * ads_sway_noise_freq) * ads_sway_noise_len
 	weapon_root.rotation_degrees.x = pitch
 	weapon_root.rotation_degrees.y = yaw
 
 
 func handle_shoot() -> void:
-	if not Input.is_action_just_pressed("shoot"):
+	if not Input.is_action_just_pressed("shoot") or not can_shoot:
 		return
+	can_shoot = false
+	handle_shoot_cast()
+	reload()
+
+
+func handle_shoot_cast() -> void:
 	var obj: Object = weapon_ray_cast.get_collider()
-	if not obj or obj is not ShootTarget:
+	if not obj or obj is not Agent:
 		print("MISS !")
 		return
-	var target: ShootTarget = obj as ShootTarget
-	if target.is_ally:
-		print("Ally touched !")
+	var target: Agent = obj as Agent
+	target.die()
+	if target.team == Agent.Team.COMMUNARD:
+		print("Communard touched !")
 		return
-	print("Enemy touched !")
+	print("Versallais touched !")
 
-func is_mouse_locked() -> bool: return Input.mouse_mode == Input.MouseMode.MOUSE_MODE_CAPTURED
+
+func reload() -> void:
+	is_reloading = true
+	if is_aiming:
+		is_aiming = false
+		switch_aim_state()
+	await get_tree().create_timer(time_to_ads).timeout
+	var t: Tween = create_tween()
+	await t.tween_property(weapon_container, "rotation_degrees:x", 25.0, 0.8
+					).set_trans(Tween.TRANS_QUART).set_ease(Tween.EaseType.EASE_OUT).finished
+	await get_tree().create_timer(reload_time - ((time_to_ads * 2) + 0.8)).timeout
+	t = create_tween()
+	await t.tween_property(weapon_container, "rotation_degrees:x", 0.0, time_to_ads
+					).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EaseType.EASE_IN).finished
+	is_reloading = false
+	can_shoot = true

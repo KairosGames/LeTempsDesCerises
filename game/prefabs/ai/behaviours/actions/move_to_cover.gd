@@ -7,7 +7,7 @@ func get_stop_distance() -> float:
 func get_destination(_actor: Node, blackboard: Blackboard) -> Vector3:
 	return blackboard.get_value("cover").global_position
 
-func on_start(actor: Node, blackboard: Blackboard) -> int:
+func on_start(_actor: Node, blackboard: Blackboard) -> int:
 	var cover: Cover = blackboard.get_value("cover")
 	if not cover or not CoverManager.try_take_cover(cover):
 		return FAILURE
