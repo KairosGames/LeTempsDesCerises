@@ -41,7 +41,7 @@ func find_closer_cover(agent: Agent) -> Cover:
 	if not available_covers.size(): return null
 	if available_covers.size() == 1: return available_covers[0]
 	
-	var barricade_position: Vector3 = GameManager.active_barricade.global_position
+	var barricade_position: Vector3 = GameManager.active_fight_area.global_position
 	
 	var covers_distances_to_barricade: Array = available_covers.map(
 		func(cover) -> CoverDistance: 
