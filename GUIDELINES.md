@@ -6,7 +6,6 @@
 
 > ⚠️ Si vous ne comprenez pas ou n'êtes pas d'accord avec ces lignes directrices, contactez immédiatement votre développeur le plus proche !
 
-
 ## Structure du Projet
 
 ---
@@ -33,7 +32,7 @@
 - sources _fichier source des assets (ex: .blend, .psd, wwise project)_
 - wiki _documentation_
 
-> Les resources doivent être stockés au plus proche de leur lieu d'utilisation dans l'arborescence de fichier et ne remonter dans l'arborescence que pour être communes à plusieurs scènes. 
+> Les resources doivent être stockés au plus proche de leur lieu d'utilisation dans l'arborescence de fichier et ne remonter dans l'arborescence que pour être communes à plusieurs scènes.
 
 > ⚠️ les resources peuvent et doivent si nécessaire être stockées dans les scènes.
 
@@ -131,8 +130,6 @@ Doivent être stocké en LFS:
 
 - main _branche parfaite sans erreur ni avertissement et toujours prête créée à partir des versions stables de dev_
 - dev _branche de travail principale où tout est fusionné et source de toute nouvelle branche_
-- sandbox _basée sur dev elle contient des outils spécifique aux branches de test_
-- sandbox/name _chaque membre de l’équipe peut créer sa propre branche comme bac à sable pour les tests rebasé sur sandbox_
 - f/\* _branche de feature basée sur dev_
 - m/\* _branche de maintenance basée sur dev_
 - b/\* _branche de bugfix basée sur dev_
