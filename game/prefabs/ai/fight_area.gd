@@ -29,7 +29,7 @@ func update_debug() -> void:
 	if not _gizmo_handler and should_debug:
 		_gizmo_handler = MeshInstance3D.new()
 		_gizmo_handler.mesh = _gizmo
-		add_child(_gizmo_handler, false, Node.INTERNAL_MODE_FRONT)
+		add_child(_gizmo_handler, false, Node.INTERNAL_MODE_BACK)
 	if _gizmo_handler and not should_debug:
 		_gizmo_handler.queue_free()
 		_gizmo_handler = null
@@ -40,6 +40,7 @@ func create_gizmo() -> SphereMesh:
 	material.albedo_color = Color(Color.RED, 0.2)
 	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	material.cull_mode = BaseMaterial3D.CULL_DISABLED
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	var mesh: SphereMesh = SphereMesh.new()
 	mesh.radius = size / 2.0
 	mesh.height = size
