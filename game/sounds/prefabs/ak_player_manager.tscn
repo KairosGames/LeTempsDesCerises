@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bgg5b13i7sqme"]
 
 [ext_resource type="PackedScene" uid="uid://d1qotbnwtmkrg" path="res://sounds/prefabs/bulett_hit.tscn" id="2_g1o18"]
+[ext_resource type="PackedScene" uid="uid://bq47sux5pblj4" path="res://sounds/prefabs/bank_loader.tscn" id="2_sdg1b"]
 [ext_resource type="WwiseEvent" uid="uid://cqdf7u10ggy7x" path="res://Wwise/resources/Event/{42733E42-B5F5-44F1-98EB-A729172BF973}.tres" id="3_cgjv3"]
 [ext_resource type="WwiseEvent" uid="uid://c5c8l3wra46yq" path="res://Wwise/resources/Event/{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}.tres" id="4_dpj62"]
 [ext_resource type="WwiseEvent" uid="uid://cbshjlsmvlw3r" path="res://Wwise/resources/Event/{219EF9C5-BD01-44F6-8054-19E1EA4E63C0}.tres" id="5_usst2"]
@@ -86,6 +87,8 @@ crouch = NodePath("Crouch")
 prone = NodePath("Prone")
 sprint = NodePath("Sprint")
 bullet_prefab = ExtResource("2_g1o18")
+
+[node name="Bank_Loader" parent="." unique_id=404085232 instance=ExtResource("2_sdg1b")]
 
 [node name="AkListener3D" type="AkListener3D" parent="." unique_id=1427046769]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
