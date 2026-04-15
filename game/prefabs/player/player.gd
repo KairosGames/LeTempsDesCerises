@@ -256,7 +256,8 @@ func apply_plane_movement(delta: float) -> void:
 	var applied_speed: float = dir_speed * run_f * aim_f
 	
 	if not is_grounded:
-		velocity += dir * ref_speed * delta
+		var max: float = standing_speed * (run_speed_ratio if is_running else 1.0)
+		if velocity.length() < max: velocity += dir * ref_speed * delta
 		return
 	
 	if is_movement_smooth:
