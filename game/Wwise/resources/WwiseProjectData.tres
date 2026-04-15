@@ -135,63 +135,61 @@ name = "Default Work Unit"
 id = 125608783
 
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_5n8hf"]
+path = "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send"
+type = 1
+name = "Wwise_Motion_Send"
+guid = "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"
+id = 214837138
+
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_tnib1"]
+children = [SubResource("WwiseTreeObject_5n8hf")]
+name = "Wwise_Motion"
+id = 1156359885
+
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_o7sea"]
 path = "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_NPC"
 type = 2
 name = "SFX_NPC"
 guid = "{C50F8E9D-E1E1-4B38-A0FA-27AA94AFC147}"
 id = 161171466
 
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_tnib1"]
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_lrto0"]
 path = "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Player"
 type = 2
 name = "SFX_Player"
 guid = "{1565B943-2767-465E-81AB-61E687ABF67E}"
 id = 217780010
 
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_o7sea"]
-children = [SubResource("WwiseTreeObject_5n8hf"), SubResource("WwiseTreeObject_tnib1")]
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_i5cxa"]
+children = [SubResource("WwiseTreeObject_o7sea"), SubResource("WwiseTreeObject_lrto0")]
 name = "SFX"
 id = 393239870
 
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_lrto0"]
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_ptp8y"]
 path = "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC"
 type = 2
 name = "VX_NPC"
 guid = "{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}"
 id = 1277101407
 
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_i5cxa"]
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_26l8v"]
 path = "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_Player"
 type = 2
 name = "VX_Player"
 guid = "{46D92596-0E19-4482-83A1-FAABFE94F255}"
 id = 1728828729
 
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_ptp8y"]
-children = [SubResource("WwiseTreeObject_lrto0"), SubResource("WwiseTreeObject_i5cxa")]
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_hir8t"]
+children = [SubResource("WwiseTreeObject_ptp8y"), SubResource("WwiseTreeObject_26l8v")]
 name = "VX"
 id = 1534528563
 
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_26l8v"]
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_viedb"]
 path = "\\Busses\\Default Work Unit\\Main Audio Bus\\AMB"
 type = 2
 name = "AMB"
 guid = "{3C49B583-C63B-4CCB-A1B9-D71E082D055E}"
 id = 1117531639
-
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_hir8t"]
-path = "\\Busses\\Default Work Unit\\Main Audio Bus\\UI"
-type = 2
-name = "UI"
-guid = "{D7CABC36-B31D-4789-A7B2-46175473A0AA}"
-id = 1551306167
-
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_viedb"]
-path = "\\Busses\\Default Work Unit\\Main Audio Bus\\Crossroad_Reverb"
-type = 1
-name = "Crossroad_Reverb"
-guid = "{E0D81FD7-70C7-423D-A407-E22F8798C01C}"
-id = 1865335600
 
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_bq6kk"]
 path = "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect"
@@ -201,37 +199,36 @@ guid = "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
 id = 243379636
 
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_hssb3"]
+path = "\\Busses\\Default Work Unit\\Main Audio Bus\\UI"
+type = 2
+name = "UI"
+guid = "{D7CABC36-B31D-4789-A7B2-46175473A0AA}"
+id = 1551306167
+
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_0g3k4"]
+path = "\\Busses\\Default Work Unit\\Main Audio Bus\\Crossroad_Reverb"
+type = 1
+name = "Crossroad_Reverb"
+guid = "{E0D81FD7-70C7-423D-A407-E22F8798C01C}"
+id = 1865335600
+
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_5ppdk"]
 path = "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb"
 type = 1
 name = "Street_Reverb"
 guid = "{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"
 id = 2635253023
 
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_0g3k4"]
+[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_l65hi"]
 path = "\\Busses\\Default Work Unit\\Main Audio Bus"
-children = [SubResource("WwiseTreeObject_o7sea"), SubResource("WwiseTreeObject_ptp8y"), SubResource("WwiseTreeObject_26l8v"), SubResource("WwiseTreeObject_hir8t"), SubResource("WwiseTreeObject_viedb"), SubResource("WwiseTreeObject_bq6kk"), SubResource("WwiseTreeObject_hssb3")]
+children = [SubResource("WwiseTreeObject_i5cxa"), SubResource("WwiseTreeObject_hir8t"), SubResource("WwiseTreeObject_viedb"), SubResource("WwiseTreeObject_bq6kk"), SubResource("WwiseTreeObject_hssb3"), SubResource("WwiseTreeObject_0g3k4"), SubResource("WwiseTreeObject_5ppdk")]
 type = 2
 name = "Main Audio Bus"
 guid = "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"
 id = 2246998526
 
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_5ppdk"]
-path = "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send"
-type = 1
-name = "Wwise_Motion_Send"
-guid = "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"
-id = 214837138
-
-[sub_resource type="WwiseTreeObject" id="WwiseTreeObject_l65hi"]
-path = "\\Busses\\Default Work Unit\\Wwise_Motion"
-children = [SubResource("WwiseTreeObject_5ppdk")]
-type = 2
-name = "Wwise_Motion"
-guid = "{01B95841-D9A2-4051-9C07-3EF7EF52C3B7}"
-id = 1156359885
-
 [sub_resource type="WwiseTreeObject" id="WwiseTreeObject_63ewg"]
-children = [SubResource("WwiseTreeObject_0g3k4"), SubResource("WwiseTreeObject_l65hi")]
+children = [SubResource("WwiseTreeObject_tnib1"), SubResource("WwiseTreeObject_l65hi")]
 name = "Default Work Unit"
 id = 125608783
 
