@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c823tk0eeuuqw"]
+
+[ext_resource type="PackedScene" uid="uid://fbp2ofes0q52" path="res://sandbox/barricades_proto/barricade_part_1.tscn" id="1_kknj1"]
+[ext_resource type="PackedScene" uid="uid://dw7fv1qq3ewxa" path="res://sandbox/barricades_proto/barricade_part_2.tscn" id="2_k1m7s"]
+[ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="3_bg5dw"]
+
+[node name="Barricade2" type="CSGCombiner3D" unique_id=895826306]
+
+[node name="BarricadePart1" parent="." unique_id=64765192 instance=ExtResource("1_kknj1")]
+transform = Transform3D(-0.9646956, 0, 0.26336798, 0, 1, 0, -0.26336798, 0, -0.9646956, -36.87431, -4.7683716e-07, 5.9919147)
+
+[node name="BarricadePart2" parent="." unique_id=224436059 instance=ExtResource("2_k1m7s")]
+transform = Transform3D(1, 0, 0, 0, 0.9601816, -0.27937657, 0, 0.27937657, 0.9601816, -37.92382, 0.0454998, -2.171192)
+
+[node name="BarricadePart3" parent="." unique_id=530332014 instance=ExtResource("2_k1m7s")]
+transform = Transform3D(-0.9688646, 0.06917113, 0.2377323, 0, 0.9601817, -0.27937663, -0.24759102, -0.27067813, -0.9302861, -37.501255, 0.0454998, -4.839473)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=207290998]
+transform = Transform3D(0.97458124, -0.22272831, -0.024152111, 0.20687321, 0.9360644, -0.28458175, 0.08599233, 0.2723516, 0.9583475, -38.00167, 1.964613, 1.2509248)
+operation = 2
+size = Vector3(2.602234, 1.2368164, 1.7137451)
+material = ExtResource("3_bg5dw")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1721041326]
+transform = Transform3D(0.62232333, 0, 0.78276014, 0, 0.99999994, 0, -0.7827601, 0, 0.6223234, -34.115837, 0.6479335, 2.4077404)
+operation = 2
+size = Vector3(2.602234, 1.2368164, 2.517517)
+material = ExtResource("3_bg5dw")
