@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody3D
 
-@onready var player_inputs: PlayerInputs = %PlayerInputs
+@onready var p_inputs: PlayerInputs = %PlayerInputs
 @onready var camera_pivot: Node3D = %CameraPivot
 @onready var wpn_cam_base: Node3D = %WeaponCameraBase
 @onready var player_camera: Camera3D = %PlayerCamera
@@ -113,6 +113,7 @@ func _process(delta: float) -> void:
 
 func capture_states() -> void:
 	is_grounded = is_on_floor()
+	if not p_inputs.is_mouse_locked(): return
 	capture_aim_state()
 	capture_position_state()
 
@@ -129,7 +130,7 @@ func capture_aim_state() -> void:
 		if is_aiming: is_running = false
 	if ((Input.is_action_just_pressed("run") and not stop_run) or Input.is_action_just_pressed("jump")) and is_aiming:
 		is_aiming = false
-	player_inputs.is_aiming = is_aiming
+	p_inputs.is_aiming = is_aiming
 	if flag != is_aiming :
 		switch_aim_state()
 
@@ -163,7 +164,7 @@ func switch_aim_state() -> void:
 
 
 func capture_position_state() -> void:
-	var input_dir: Vector2 = player_inputs.move_vec
+	var input_dir: Vector2 = p_inputs.move_vec
 	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
 	if stop_run: is_running = false
 	
@@ -243,7 +244,7 @@ func process_movement(delta: float) -> void:
 
 
 func apply_plane_movement(delta: float) -> void:
-	var mov_vec: Vector2 = player_inputs.move_vec
+	var mov_vec: Vector2 = p_inputs.move_vec
 	var dir: Vector3 = (transform.basis * Vector3(mov_vec.x, 0, mov_vec.y).normalized())
 	var ref_speed = get_used_speed()
 	var run_f: float = run_speed_ratio if is_running else 1.0
@@ -299,12 +300,11 @@ func get_used_speed() -> float:
 
 
 func process_view(delta: float) -> void:
-	if not is_mouse_locked(): return
-	var input: PlayerInputs = player_inputs
-	var inversion: float = -1 if player_inputs.is_inverted else 1
+	if not p_inputs.is_mouse_locked(): return
+	var inversion: float = -1 if p_inputs.is_inverted else 1
 	var reducer: float = (ads_speed_view_reducer if is_aiming else 1.0) * (lyingd_speed_view_reducer if is_lyingd else 1.0)
-	aim_target.y -= input.get_view_input().x * input.h_sensi_multiplier * reducer
-	aim_target.x += input.get_view_input().y * input.v_sensi_multiplier * inversion * reducer
+	aim_target.y -= p_inputs.get_view_input().x * p_inputs.h_sensi_multiplier * reducer
+	aim_target.x += p_inputs.get_view_input().y * p_inputs.v_sensi_multiplier * inversion * reducer
 	var clamp_applied: Vector2 = v_clamp_lyingd if is_lyingd else v_clamp_deg
 	aim_target.x = clampf(aim_target.x, clamp_applied.x, clamp_applied.y)
 	
@@ -318,10 +318,6 @@ func process_view(delta: float) -> void:
 	else:
 		rotation_degrees.y = aim_target.y
 		camera_pivot.rotation_degrees.x = aim_target.x
-
-
-func is_mouse_locked() -> bool:
-	return Input.mouse_mode == Input.MouseMode.MOUSE_MODE_CAPTURED
 
 
 func smooth_damp_angle(current: float, target: float, current_velocity: float, smooth_strength: float, delta: float) -> Dictionary:
@@ -352,7 +348,7 @@ func handle_weapon_movement() -> void:
 
 
 func handle_shoot() -> void:
-	if not Input.is_action_just_pressed("shoot") or not can_shoot:
+	if not Input.is_action_just_pressed("shoot") or not can_shoot or not p_inputs.is_mouse_locked():
 		return
 	can_shoot = false
 	handle_shoot_cast()
@@ -361,15 +357,20 @@ func handle_shoot() -> void:
 
 func handle_shoot_cast() -> void:
 	var obj: Object = weapon_ray_cast.get_collider()
-	if not obj or obj is not Agent:
+	if not obj or (obj is not Agent and obj is not ShootTarget):
 		print("MISS !")
 		return
-	var target: Agent = obj as Agent
-	target.die()
-	if target.team == Agent.Team.COMMUNARD:
-		print("Communard touched !")
-		return
-	print("Versallais touched !")
+	if obj is Agent:
+		obj.die()
+		if obj.team == Agent.Team.COMMUNARD:
+			print("Communard touched !")
+			return
+		print("Versaillais touched !")
+	elif obj is ShootTarget:
+		if obj.is_ally:
+			print("Communard touched !")
+			return
+		print("Versaillais touched !")
 
 
 func reload() -> void:
