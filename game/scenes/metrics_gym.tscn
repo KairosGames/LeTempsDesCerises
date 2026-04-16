@@ -1,0 +1,423 @@
+[gd_scene format=3 uid="uid://bxksbn6wxlfgp"]
+
+[ext_resource type="Material" uid="uid://tbba7mt7d3t6" path="res://sandbox/barricades_proto/materials/prototype_material_light_cross.tres" id="1_vwxys"]
+[ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="2_s11fe"]
+[ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_s11fe"]
+[ext_resource type="PackedScene" uid="uid://dei4ifl4vg6pb" path="res://sandbox/barricades_proto/dummy.tscn" id="4_vri5e"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s11fe"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_rwgxs"]
+sky_material = SubResource("ProceduralSkyMaterial_s11fe")
+
+[sub_resource type="Environment" id="Environment_vri5e"]
+background_mode = 2
+sky = SubResource("Sky_rwgxs")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vri5e"]
+size = Vector2(200, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_s11fe"]
+data = PackedVector3Array(100, 0, 25, -100, 0, 25, 100, 0, -25, -100, 0, 25, -100, 0, -25, 100, 0, -25)
+
+[node name="Metrics_gym" type="Node3D" unique_id=920621458]
+
+[node name="Environment" type="Node3D" parent="." unique_id=972818146]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=485836053]
+environment = SubResource("Environment_vri5e")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=2105069012]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment" unique_id=18051225]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/StaticBody3D" unique_id=1485895120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
+mesh = SubResource("PlaneMesh_vri5e")
+surface_material_override/0 = ExtResource("1_vwxys")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/StaticBody3D" unique_id=2014459661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_s11fe")
+
+[node name="Block" type="Node3D" parent="Environment" unique_id=1439838107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block" unique_id=378148051]
+use_collision = true
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block" unique_id=651502100]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1"
+
+[node name="Block2" type="Node3D" parent="Environment" unique_id=1369109770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block2" unique_id=2128372974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+use_collision = true
+size = Vector3(2, 1, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block2" unique_id=1284138488]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1 x2"
+
+[node name="Block3" type="Node3D" parent="Environment" unique_id=1080373933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 4.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block3" unique_id=440001635]
+use_collision = true
+size = Vector3(1, 0.8, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block3" unique_id=2128675618]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "0.8"
+
+[node name="Block4" type="Node3D" parent="Environment" unique_id=1019690960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 5.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block4" unique_id=25302003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+use_collision = true
+size = Vector3(2, 0.8, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block4" unique_id=1682709466]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "0.8 x2"
+
+[node name="Block11" type="Node3D" parent="Environment" unique_id=1413243774]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 2.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block11" unique_id=1622414853]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+use_collision = true
+size = Vector3(1, 0.9, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block11" unique_id=1970138436]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "0.9
+"
+
+[node name="Block12" type="Node3D" parent="Environment" unique_id=119757397]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 3.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block12" unique_id=545565965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.05, 0)
+use_collision = true
+size = Vector3(2, 0.9, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block12" unique_id=458376768]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "0.9 x2"
+
+[node name="Block5" type="Node3D" parent="Environment" unique_id=858047419]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.4840393)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block5" unique_id=1235748627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+use_collision = true
+size = Vector3(1, 1.1, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block5" unique_id=1621201255]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.1"
+
+[node name="Block6" type="Node3D" parent="Environment" unique_id=115305013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.4840393)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block6" unique_id=1843168465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.05, 0)
+use_collision = true
+size = Vector3(2, 1.1, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block6" unique_id=1754571777]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.1 x2"
+
+[node name="Block13" type="Node3D" parent="Environment" unique_id=2146880292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block13" unique_id=767394979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+use_collision = true
+size = Vector3(1, 1.2, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block13" unique_id=1469779074]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.2"
+
+[node name="Block14" type="Node3D" parent="Environment" unique_id=1143790343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block14" unique_id=302941124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.1, 0)
+use_collision = true
+size = Vector3(2, 1.2, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block14" unique_id=1557811729]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.2 x2"
+
+[node name="Block15" type="Node3D" parent="Environment" unique_id=2081712467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block15" unique_id=1671480674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+use_collision = true
+size = Vector3(1, 1.3, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block15" unique_id=1438061619]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.3"
+
+[node name="Block16" type="Node3D" parent="Environment" unique_id=1508519196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block16" unique_id=481411622]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.15, 0)
+use_collision = true
+size = Vector3(2, 1.3, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block16" unique_id=864244451]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.3 x2"
+
+[node name="Block17" type="Node3D" parent="Environment" unique_id=386294685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -6.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block17" unique_id=1624228618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+use_collision = true
+size = Vector3(1, 1.4, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block17" unique_id=406930515]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.4"
+
+[node name="Block18" type="Node3D" parent="Environment" unique_id=1386754579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -7.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block18" unique_id=1222894461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 0)
+use_collision = true
+size = Vector3(2, 1.4, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block18" unique_id=987738634]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.4 x2"
+
+[node name="Block7" type="Node3D" parent="Environment" unique_id=812709643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -8.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block7" unique_id=720963986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+use_collision = true
+size = Vector3(1, 1.5, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block7" unique_id=399302090]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.5"
+
+[node name="Block8" type="Node3D" parent="Environment" unique_id=413320114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -9.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block8" unique_id=1015832161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.25, 0)
+use_collision = true
+size = Vector3(2, 1.5, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block8" unique_id=289180133]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.5 x2"
+
+[node name="Block9" type="Node3D" parent="Environment" unique_id=1721582513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block9" unique_id=104057114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+use_collision = true
+size = Vector3(1, 1.6, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block9" unique_id=634339005]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.6"
+
+[node name="Block10" type="Node3D" parent="Environment" unique_id=389662314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -11.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block10" unique_id=1035636630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.3, 0)
+use_collision = true
+size = Vector3(2, 1.6, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block10" unique_id=2045679177]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.6 x2"
+
+[node name="Block19" type="Node3D" parent="Environment" unique_id=1406790011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -12.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block19" unique_id=978599447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+use_collision = true
+size = Vector3(1, 1.7, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block19" unique_id=1821073472]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.7"
+
+[node name="Block20" type="Node3D" parent="Environment" unique_id=2044937777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -13.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block20" unique_id=1598188897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.35, 0)
+use_collision = true
+size = Vector3(2, 1.7, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block20" unique_id=2008805659]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.7 x2"
+
+[node name="Block21" type="Node3D" parent="Environment" unique_id=759506313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -14.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block21" unique_id=903569515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+use_collision = true
+size = Vector3(1, 1.8, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block21" unique_id=991915366]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.8"
+
+[node name="Block22" type="Node3D" parent="Environment" unique_id=7433673]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -15.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block22" unique_id=1828924824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.4, 0)
+use_collision = true
+size = Vector3(2, 1.8, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block22" unique_id=804534989]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.8 x2"
+
+[node name="Block23" type="Node3D" parent="Environment" unique_id=1282198440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -16.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block23" unique_id=1723595431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+use_collision = true
+size = Vector3(1, 1.9, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block23" unique_id=1221289737]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.9"
+
+[node name="Block24" type="Node3D" parent="Environment" unique_id=414584489]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -17.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Block24" unique_id=1730795847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.45, 0)
+use_collision = true
+size = Vector3(2, 1.9, 1)
+material = ExtResource("2_s11fe")
+
+[node name="Label3D" type="Label3D" parent="Environment/Block24" unique_id=422706912]
+transform = Transform3D(0.037916943, 0, -0.99928087, 0, 1, 0, 0.99928087, 0, 0.037916943, -0.51, 0, 0)
+text = "1.9 x2"
+
+[node name="Player" parent="Environment" unique_id=1368497348 instance=ExtResource("3_s11fe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.101, 0.5, 0)
+
+[node name="Dummy" parent="Environment" unique_id=1554602810 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0.9, 6.676)
+
+[node name="Dummy2" parent="Environment" unique_id=1931392422 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0.9, -9.554096)
+
+[node name="Dummy20" parent="Environment" unique_id=47932848 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0.9, -19.556915)
+
+[node name="Dummy21" parent="Environment" unique_id=24774088 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0.9, -32.619507)
+
+[node name="Dummy3" parent="Environment" unique_id=1093527668 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0.9, 0.30653954)
+
+[node name="Dummy4" parent="Environment" unique_id=744590637 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 0.9, 15.411623)
+
+[node name="Dummy5" parent="Environment" unique_id=1081357335 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.9, 8.202)
+
+[node name="Dummy6" parent="Environment" unique_id=2124045075 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.9, 3.6704407)
+
+[node name="Dummy7" parent="Environment" unique_id=419085895 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.9, -3.742365)
+
+[node name="Dummy8" parent="Environment" unique_id=1643155764 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.9, -12.8821335)
+
+[node name="Dummy18" parent="Environment" unique_id=1813887738 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.9, -22.872442)
+
+[node name="Dummy19" parent="Environment" unique_id=1661513919 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0.9, -32.768982)
+
+[node name="Dummy9" parent="Environment" unique_id=1286707112 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.9, 2.986)
+
+[node name="Dummy10" parent="Environment" unique_id=1986760317 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.9, -5.051223)
+
+[node name="Dummy14" parent="Environment" unique_id=1846613755 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.9, -13.583394)
+
+[node name="Dummy15" parent="Environment" unique_id=1410352272 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.9, -20.822178)
+
+[node name="Dummy16" parent="Environment" unique_id=1199072547 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.9, -29.590261)
+
+[node name="Dummy11" parent="Environment" unique_id=624490883 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.9, 11.78066)
+
+[node name="Dummy12" parent="Environment" unique_id=1557597981 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.952999, 0.9, -0.086205125)
+
+[node name="Dummy13" parent="Environment" unique_id=1376626665 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.952999, 0.9, -8.220122)
+
+[node name="Dummy17" parent="Environment" unique_id=1003716352 instance=ExtResource("4_vri5e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.952999, 0.9, -17.461548)
