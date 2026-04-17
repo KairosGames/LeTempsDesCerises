@@ -5,17 +5,19 @@ class_name MoveAction extends ActionLeaf
 @abstract func get_destination(actor: Node, blackboard: Blackboard) -> Vector3
 @abstract func get_stop_distance() -> float
 
-const MIN_DISTANCE: float = pow(0.5, 2)
+const MIN_DISTANCE: float = pow(0.1, 2)
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var destination: Vector3 = get_destination(actor, blackboard)
 
+	# handle moving target
 	if agent.navigation.target_position.distance_squared_to(destination) > MIN_DISTANCE:
+		
+		# FIXME fix start move logic elsewhere
 		if agent.cover:
 			CoverManager.release(agent.cover)
 			agent.cover = null
-		
 		agent.move_start.emit()
 		on_start(actor, blackboard)
 
