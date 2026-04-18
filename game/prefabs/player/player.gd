@@ -24,23 +24,27 @@ class_name Player extends CharacterBody3D
 @export_category("View settings")
 @export var v_clamp_deg: Vector2 = Vector2(-70.0, 70.0)
 @export var v_clamp_lyingd: Vector2 = Vector2(-45.0, 45.0)
-@export_range(0.01, 1.0, 0.01) var ads_speed_view_reducer: float = 0.4
-@export_range(0.1, 1.0, 0.01) var lyingd_speed_view_reducer: float = 0.3
+@export_range(0.01, 1.0, 0.01) var ads_speed_view_reduc: float = 0.4
+@export_range(0.1, 1.0, 0.01) var lyingd_speed_view_reduc: float = 0.3
 
 @export_category("ADS settings")
 @export var default_fov: float = 75.0
-@export var ads_fov: float = 60.0
+@export var ads_fov: float = 65.0
+@export var perfect_fov: float = 59.0
 @export var time_to_ads: float = 0.4
 @export var is_ads_rot_active: bool = false
 @export var ads_z_rot: float = 1.0
 
 @export_category("ADS sway settings")
-@export var ads_sway_pitch_len: float = 0.6
-@export var ads_sway_yaw_len: float = 0.7
-@export var ads_sway_x_freq: float = 0.85
-@export var ads_sway_y_freq: float = 1.0
-@export var ads_sway_noise_len: float = 0.003
-@export var ads_sway_noise_freq: float = 0.7
+@export var ads_sway_pitch_len: float = 1.35
+@export var ads_sway_yaw_len: float = 1.0
+@export var ads_crouch_sway_reduc: float = 0.6
+@export var ads_lyingd_sway_reduc: float = 0.2
+@export var ads_sway_x_freq: float = 1.0
+@export var ads_sway_y_freq: float = 0.85
+@export var ads_noise_len: float = 1.25
+@export var ads_noise_freq: float = 2.5
+@export var ads_sway_evolution_curve: Curve
 
 @export_category("Shoot settings")
 @export var reload_time: float = 7.0
@@ -60,7 +64,7 @@ class_name Player extends CharacterBody3D
 @export_range(1.0, 3.0, 0.01) var run_speed_ratio: float = 1.5
 @export_range(0.0, 1.0, 0.01) var side_speed_ratio: float = 0.75
 @export_range(0.0, 1.0, 0.01) var back_speed_ratio: float = 0.6
-@export_range(0.0, 1.0, 0.01) var aiming_speed_ratio: float = 0.6
+@export_range(0.0, 1.0, 0.01) var aiming_speed_ratio: float = 0.3
 
 @export_category("Smoothness settings")
 @export_range(0.01, 0.5, 0.01) var acc_time: float = 0.1
@@ -71,8 +75,14 @@ var aim_noise_x: FastNoiseLite = FastNoiseLite.new()
 var aim_noise_y: FastNoiseLite = FastNoiseLite.new()
 var aim_vel: Vector3 = Vector3.ZERO
 var aim_target: Vector3 = Vector3.ZERO
+var curr_ads_sway_len: Vector2
+#var curr_ads_sway_freq: Vector2
+var curr_ads_noise_len: float
+#var curr_ads_noise_freq: float
 var acc_time_ratio: float
 var brake_time_ratio: float
+var sway_timer: float
+var ads_timer: float
 
 var is_grounded: bool = true
 var is_aiming: bool = false
@@ -101,13 +111,15 @@ func _ready() -> void:
 	brake_time_ratio = (1 / brake_time)
 	aim_noise_x.seed = randi()
 	aim_noise_x.seed = randi()
+	curr_ads_sway_len = Vector2(ads_sway_pitch_len, ads_sway_yaw_len)
+	curr_ads_noise_len = ads_noise_len
 
 
 func _process(delta: float) -> void:
 	capture_states()
 	process_movement(delta)
 	process_view(delta)
-	handle_weapon_movement()
+	handle_weapon_movement(delta)
 	handle_shoot()
 
 
@@ -302,7 +314,7 @@ func get_used_speed() -> float:
 func process_view(delta: float) -> void:
 	if not p_inputs.is_mouse_locked(): return
 	var inversion: float = -1 if p_inputs.is_inverted else 1
-	var reducer: float = (ads_speed_view_reducer if is_aiming else 1.0) * (lyingd_speed_view_reducer if is_lyingd else 1.0)
+	var reducer: float = (ads_speed_view_reduc if is_aiming else 1.0) * (lyingd_speed_view_reduc if is_lyingd else 1.0)
 	aim_target.y -= p_inputs.get_view_input().x * p_inputs.h_sensi_multiplier * reducer
 	aim_target.x += p_inputs.get_view_input().y * p_inputs.v_sensi_multiplier * inversion * reducer
 	var clamp_applied: Vector2 = v_clamp_lyingd if is_lyingd else v_clamp_deg
@@ -337,12 +349,37 @@ func smooth_damp(current: float, target: float, current_velocity: float, smooth_
 	return { "value": output, "velocity": new_velocity }
 
 
-func handle_weapon_movement() -> void:
-	var t: float = Time.get_ticks_msec() / 1000.0
-	var yaw := sin(t * ads_sway_x_freq) * ads_sway_yaw_len
-	yaw += aim_noise_x.get_noise_1d(t * ads_sway_noise_freq) * ads_sway_noise_len
-	var pitch := cos(t * ads_sway_y_freq) * ads_sway_pitch_len
-	pitch += aim_noise_y.get_noise_1d(t * ads_sway_noise_freq) * ads_sway_noise_len
+func handle_weapon_movement(delta: float) -> void:
+	set_ads_sway_len_by_state()
+	set_ads_sway_freq(delta)
+	apply_ads_sway()
+
+
+func set_ads_sway_len_by_state() -> void:
+	var reducer: float = ads_lyingd_sway_reduc if is_lyingd else (ads_crouch_sway_reduc if is_crouched else 1.0)
+	var sway_target: Vector2 = Vector2(ads_sway_pitch_len, ads_sway_yaw_len) * reducer
+	var noise_target: float = ads_noise_len * reducer
+	curr_ads_sway_len.x = move_toward(curr_ads_sway_len.x, sway_target.x, 0.005)
+	curr_ads_sway_len.y = move_toward(curr_ads_sway_len.y, sway_target.y, 0.005)
+	curr_ads_noise_len = move_toward(curr_ads_noise_len, noise_target, 0.005)
+
+
+func set_ads_sway_freq(delta: float):
+	ads_timer += delta
+	if not is_aiming: ads_timer = 0.0
+	var freq_reduc: float = ads_sway_evolution_curve.sample(ads_timer)
+	sway_timer += delta * freq_reduc
+	if ads_timer >= time_to_ads:
+		var fov_diff: float = ads_fov - perfect_fov
+		var fov_target: float = ads_fov - (fov_diff * (1 - freq_reduc))
+		player_camera.fov = lerp(player_camera.fov, fov_target, 0.1)
+
+
+func apply_ads_sway():
+	var pitch: float = cos(sway_timer * ads_sway_x_freq) * curr_ads_sway_len.x
+	pitch += aim_noise_y.get_noise_1d(sway_timer * ads_noise_freq) * curr_ads_noise_len
+	var yaw: float = sin(sway_timer * ads_sway_y_freq) * curr_ads_sway_len.y
+	yaw += aim_noise_x.get_noise_1d(sway_timer * ads_noise_freq) * curr_ads_noise_len
 	weapon_root.rotation_degrees.x = pitch
 	weapon_root.rotation_degrees.y = yaw
 

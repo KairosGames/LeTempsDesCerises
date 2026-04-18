@@ -5,6 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://llhmhoeoh4hx" path="res://sandbox/textures_proto/aim.svg" id="2_r66lb"]
 [ext_resource type="PackedScene" uid="uid://b56vcde62m1gw" path="res://sandbox/chassepot_proto/sk_chassepot.tscn" id="4_klv5p"]
 
+[sub_resource type="Curve" id="Curve_binfn"]
+_limits = [0.0, 1.0, 0.0, 10.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(0.8, 1), 0.0, -0.0342188, 0, 0, Vector2(2.8, 0.15), 0.0, -0.011246034, 0, 0, Vector2(4.8, 0.15), 0.0, 0.0, 0, 0, Vector2(5.8, 0.99), 0.0, 0.0, 0, 0]
+point_count = 5
+
 [sub_resource type="Curve" id="Curve_r66lb"]
 _data = [Vector2(0, 0.12810194), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.450614, 0.0, 0, 0]
 point_count = 2
@@ -12,46 +17,11 @@ point_count = 2
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fp3wc"]
 height = 1.8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r66lb"]
-albedo_color = Color(0.5330367, 0.5330367, 0.5330367, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_r66lb"]
-material = SubResource("StandardMaterial3D_r66lb")
-size = Vector3(0.1, 0.1, 1.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1txc5"]
-albedo_color = Color(0.011087579, 0.011087578, 0.01108758, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_1txc5"]
-material = SubResource("StandardMaterial3D_1txc5")
-size = Vector3(0.005, 0.02, 0.005)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ht1c8"]
-albedo_color = Color(0.0253638, 0.0253638, 0.025363795, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ht1c8"]
-material = SubResource("StandardMaterial3D_ht1c8")
-size = Vector3(0.04, 0.03, 0.005)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2jcq"]
-albedo_color = Color(0.04755766, 0.047557645, 0.047557645, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_g2jcq"]
-material = SubResource("StandardMaterial3D_g2jcq")
-size = Vector3(0.04, 0.03, 0.005)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wv1mm"]
-albedo_color = Color(0.07762883, 0.07762881, 0.07762881, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_binfn"]
-material = SubResource("StandardMaterial3D_wv1mm")
-radius = 0.05
-height = 0.01
-
 [node name="Player" type="CharacterBody3D" unique_id=1368497348]
 floor_max_angle = 0.5235988
 script = ExtResource("1_4dohe")
 v_clamp_deg = Vector2(-80, 80)
+ads_sway_evolution_curve = SubResource("Curve_binfn")
 
 [node name="PlayerInputs" type="Node" parent="." unique_id=1232327639]
 unique_name_in_owner = true
@@ -111,7 +81,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.027, -0.1)
 
 [node name="Weapon" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot" unique_id=2061743200]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02699995, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027, 0.1)
 
 [node name="sk_chassepot" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/Weapon" unique_id=1025414177 instance=ExtResource("4_klv5p")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -126,35 +96,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029152155, 0.14946882)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013229132, 0.8648107)
 target_position = Vector3(0, 0, 300)
-
-[node name="WeaponProto" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot" unique_id=1348503296]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.9499999)
-visible = false
-
-[node name="Base" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/WeaponProto" unique_id=743249631]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.107789636)
-mesh = SubResource("BoxMesh_r66lb")
-
-[node name="FrontSight" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/WeaponProto" unique_id=485469517]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.059999943, 0.639)
-mesh = SubResource("BoxMesh_1txc5")
-
-[node name="RearSight" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/WeaponProto" unique_id=463848320]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.100000024)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/WeaponProto/RearSight" unique_id=510486941]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.030000001, 0.06500006, 0)
-mesh = SubResource("BoxMesh_ht1c8")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/WeaponProto/RearSight" unique_id=1975371698]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030000001, 0.06500006, 0)
-mesh = SubResource("BoxMesh_ht1c8")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/WeaponProto/RearSight" unique_id=1301150542]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04459071, 0)
-mesh = SubResource("BoxMesh_g2jcq")
-
-[node name="NearCircle" type="MeshInstance3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/WeaponRoot/WeaponProto" unique_id=721717754]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0.017079473, -0.8463017)
-visible = false
-mesh = SubResource("SphereMesh_binfn")
