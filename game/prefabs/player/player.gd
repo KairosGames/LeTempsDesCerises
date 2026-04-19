@@ -76,9 +76,7 @@ var aim_noise_y: FastNoiseLite = FastNoiseLite.new()
 var aim_vel: Vector3 = Vector3.ZERO
 var aim_target: Vector3 = Vector3.ZERO
 var curr_ads_sway_len: Vector2
-#var curr_ads_sway_freq: Vector2
 var curr_ads_noise_len: float
-#var curr_ads_noise_freq: float
 var acc_time_ratio: float
 var brake_time_ratio: float
 var sway_timer: float
@@ -110,7 +108,7 @@ func _ready() -> void:
 	acc_time_ratio = (1 / acc_time)
 	brake_time_ratio = (1 / brake_time)
 	aim_noise_x.seed = randi()
-	aim_noise_x.seed = randi()
+	aim_noise_y.seed = randi()
 	curr_ads_sway_len = Vector2(ads_sway_pitch_len, ads_sway_yaw_len)
 	curr_ads_noise_len = ads_noise_len
 
@@ -140,7 +138,7 @@ func capture_aim_state() -> void:
 	else:
 		is_aiming = Input.is_action_pressed("aim")
 		if is_aiming: is_running = false
-	if ((Input.is_action_just_pressed("run") and not stop_run) or Input.is_action_just_pressed("jump")) and is_aiming:
+	if ((Input.is_action_just_pressed("run") and not stop_run) or not is_grounded) and is_aiming:
 		is_aiming = false
 	p_inputs.is_aiming = is_aiming
 	if flag != is_aiming :
@@ -180,7 +178,12 @@ func capture_position_state() -> void:
 	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
 	if stop_run: is_running = false
 	
-	if not is_grounded or is_changing_state: return
+	if not is_grounded: return
+	
+	if Input.is_action_just_pressed("reload"):
+		pass
+	
+	if is_changing_state: return
 	
 	if Input.is_action_just_pressed("crouch"):
 		if is_crouched: crouch_to_up()
@@ -195,12 +198,12 @@ func capture_position_state() -> void:
 	if Input.is_action_just_pressed("run") and not stop_run:
 		if is_crouched: crouch_to_up(false, true)
 		elif is_lyingd: lyingd_to_up(false, true)
-		else: is_running = true
+		else: if not is_reloading: is_running = !is_running
 	
 	if Input.is_action_just_pressed("jump"):
 		if is_crouched: crouch_to_up()
 		elif is_lyingd: lyingd_to_up()
-		else: jump()
+		else: if not is_reloading: jump()
 
 
 func crouch_to_up(inverse: bool = false, ask_run: bool = false):
@@ -412,6 +415,7 @@ func handle_shoot_cast() -> void:
 
 func reload() -> void:
 	is_reloading = true
+	is_running = false
 	if is_aiming:
 		is_aiming = false
 		switch_aim_state()
