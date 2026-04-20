@@ -13,7 +13,7 @@ class_name Player extends CharacterBody3D
 
 @export_category("Exposed settings")
 @export var is_aim_locked: bool = true
-@export var is_run_lock: bool = true
+@export var is_run_locked: bool = false
 @export var is_position_switcher_locked: bool = true
 @export var is_aim_smooth: bool = true
 @export var is_movement_smooth: bool = true
@@ -23,9 +23,9 @@ class_name Player extends CharacterBody3D
 
 @export_category("View settings")
 @export var v_clamp_deg: Vector2 = Vector2(-70.0, 70.0)
-@export var v_clamp_lyingd: Vector2 = Vector2(-45.0, 45.0)
+@export var v_clamp_prone: Vector2 = Vector2(-45.0, 45.0)
 @export_range(0.01, 1.0, 0.01) var ads_speed_view_reduc: float = 0.4
-@export_range(0.1, 1.0, 0.01) var lyingd_speed_view_reduc: float = 0.3
+@export_range(0.1, 1.0, 0.01) var prone_speed_view_reduc: float = 0.3
 
 @export_category("ADS settings")
 @export var default_fov: float = 75.0
@@ -39,7 +39,7 @@ class_name Player extends CharacterBody3D
 @export var ads_sway_pitch_len: float = 1.35
 @export var ads_sway_yaw_len: float = 1.0
 @export var ads_crouch_sway_reduc: float = 0.6
-@export var ads_lyingd_sway_reduc: float = 0.2
+@export var ads_prone_sway_reduc: float = 0.2
 @export var ads_sway_x_freq: float = 1.0
 @export var ads_sway_y_freq: float = 0.85
 @export var ads_noise_len: float = 1.25
@@ -53,15 +53,15 @@ class_name Player extends CharacterBody3D
 @export var state_switch_time: float = 0.2
 @export var standing_height: float = 1.6
 @export var crouch_height: float = 1.1
-@export var lyingd_height: float = 0.35
+@export var prone_height: float = 0.35
 @export_range(0.2, 1.0, 0.01) var gpad_mini_run_length: float = 0.5
 
 @export_category("Movement speed settings")
-@export var standing_speed: float = 5.0
-@export var crouch_speed: float = 3.0
-@export var lying_d_speed: float = 1.0
+@export var standing_speed: float = 4.0
+@export var crouch_speed: float = 2.5
+@export var prone_speed: float = 1.0
 @export_range(0.0, 1.0, 0.01) var air_up_speed: float = 1.0
-@export_range(1.0, 3.0, 0.01) var run_speed_ratio: float = 1.5
+@export_range(1.0, 3.0, 0.01) var run_speed_ratio: float = 2.0
 @export_range(0.0, 1.0, 0.01) var side_speed_ratio: float = 0.75
 @export_range(0.0, 1.0, 0.01) var back_speed_ratio: float = 0.6
 @export_range(0.0, 1.0, 0.01) var aiming_speed_ratio: float = 0.3
@@ -82,11 +82,14 @@ var brake_time_ratio: float
 var sway_timer: float
 var ads_timer: float
 
+var input_lag: float = 0.08
+var input_lag_timer: float = 0.0
+
 var is_grounded: bool = true
 var is_aiming: bool = false
 var is_running: bool = false
 var is_crouched:bool = false
-var is_lyingd: bool = false
+var is_prone: bool = false
 var is_changing_state: bool = false
 var stop_run: bool = false
 var can_shoot: bool = true
@@ -124,24 +127,43 @@ func _process(delta: float) -> void:
 func capture_states() -> void:
 	is_grounded = is_on_floor()
 	if not p_inputs.is_mouse_locked(): return
+	calculate_stop_run()
 	capture_aim_state()
+	capture_run_state()
 	capture_position_state()
+
+
+func calculate_stop_run() -> void:
+	var input_dir: Vector2 = p_inputs.move_vec
+	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
 
 
 func capture_aim_state() -> void:
 	if is_reloading: return
-	var flag: bool = is_aiming
-	if is_aim_locked:
-		if Input.is_action_just_pressed("aim"):
-			is_aiming = !is_aiming
-			is_running = false
+	
+	var was_aiming: bool = is_aiming
+	var run_has_priority: bool = not is_aim_locked and not is_run_locked and Input.is_action_pressed("run") and not stop_run and is_grounded
+	
+	if run_has_priority:
+		is_aiming = false
 	else:
-		is_aiming = Input.is_action_pressed("aim")
-		if is_aiming: is_running = false
+		if is_aim_locked:
+			if Input.is_action_just_pressed("aim"):
+				if is_run_locked:
+					is_aiming = !is_aiming
+					if is_aiming: is_running = false
+				else:
+					if not is_running: is_aiming = !is_aiming
+		else:
+			is_aiming = Input.is_action_pressed("aim")
+			if is_aiming: is_running = false
+	
 	if ((Input.is_action_just_pressed("run") and not stop_run) or not is_grounded) and is_aiming:
 		is_aiming = false
+	
 	p_inputs.is_aiming = is_aiming
-	if flag != is_aiming :
+	
+	if was_aiming != is_aiming :
 		switch_aim_state()
 
 
@@ -173,11 +195,39 @@ func switch_aim_state() -> void:
 		cam_rot_aim_twn.tween_property(wpn_cam_base, "rotation_degrees:z", taget_rot, time).set_trans(Tween.TRANS_QUINT).set_ease(in_first)
 
 
-func capture_position_state() -> void:
-	var input_dir: Vector2 = p_inputs.move_vec
-	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
+func capture_run_state() -> void:
 	if stop_run: is_running = false
 	
+	if is_run_locked:
+		if is_aim_locked:
+			if Input.is_action_just_pressed("run") and not stop_run:
+				go_for_run()
+				if is_aiming:
+					is_aiming = false
+					switch_aim_state()
+		else:
+			if Input.is_action_just_pressed("run") and not stop_run and not is_aiming:
+				go_for_run()
+				if is_aiming:
+					is_aiming = false
+					switch_aim_state()
+	else:
+		if Input.is_action_pressed("run") and not stop_run : go_for_run()
+		if not Input.is_action_pressed("run"): is_running = false
+		if is_running: is_aiming = false
+	
+	if ((Input.is_action_just_pressed("aim")) or not is_grounded) and is_running:
+		is_running = false
+
+
+func go_for_run() -> void:
+	if is_changing_state: return
+	if is_crouched: crouch_to_up(false, true)
+	elif is_prone: prone_to_up(false, true)
+	else: if not is_reloading: is_running = !is_running if is_run_locked else true
+
+
+func capture_position_state() -> void:
 	if not is_grounded: return
 	
 	if Input.is_action_just_pressed("reload"):
@@ -187,22 +237,17 @@ func capture_position_state() -> void:
 	
 	if Input.is_action_just_pressed("crouch"):
 		if is_crouched: crouch_to_up()
-		elif is_lyingd: lyingd_to_crouch()
+		elif is_prone: prone_to_crouch()
 		else: crouch_to_up(true)
 	
-	if Input.is_action_just_pressed("lying_down"):
-		if is_crouched: lyingd_to_crouch(true)
-		elif is_lyingd: lyingd_to_up()
-		else: lyingd_to_up(true)
-	
-	if Input.is_action_just_pressed("run") and not stop_run:
-		if is_crouched: crouch_to_up(false, true)
-		elif is_lyingd: lyingd_to_up(false, true)
-		else: if not is_reloading: is_running = !is_running
+	if Input.is_action_just_pressed("prone"):
+		if is_crouched: prone_to_crouch(true)
+		elif is_prone: prone_to_up()
+		else: prone_to_up(true)
 	
 	if Input.is_action_just_pressed("jump"):
 		if is_crouched: crouch_to_up()
-		elif is_lyingd: lyingd_to_up()
+		elif is_prone: prone_to_up()
 		else: if not is_reloading: jump()
 
 
@@ -218,27 +263,27 @@ func crouch_to_up(inverse: bool = false, ask_run: bool = false):
 	is_changing_state = false
 
 
-func lyingd_to_crouch(inverse: bool = false):
+func prone_to_crouch(inverse: bool = false):
 	is_changing_state = true
 	is_crouched = not inverse
-	is_lyingd = inverse
-	var target: float = lyingd_height if inverse else crouch_height
+	is_prone = inverse
+	var target: float = prone_height if inverse else crouch_height
 	state_twn = create_tween()
 	state_twn.tween_property(camera_pivot, "position:y", target, state_switch_time)
 	await state_twn.finished
 	is_changing_state = false
 
 
-func lyingd_to_up(inverse: bool = false, ask_run: bool = false):
+func prone_to_up(inverse: bool = false, ask_run: bool = false):
 	is_changing_state = true
 	is_crouched = true
 	if inverse: is_running = false
-	var target: float = lyingd_height if inverse else standing_height
+	var target: float = prone_height if inverse else standing_height
 	state_twn = create_tween()
 	state_twn.tween_property(camera_pivot, "position:y", crouch_height, state_switch_time)
 	await state_twn.finished
 	await get_tree().create_timer(0.1).timeout
-	is_lyingd = inverse
+	is_prone = inverse
 	is_crouched = false
 	if ask_run: is_running = true
 	state_twn = create_tween()
@@ -272,8 +317,8 @@ func apply_plane_movement(delta: float) -> void:
 	var applied_speed: float = dir_speed * run_f * aim_f
 	
 	if not is_grounded:
-		var max: float = standing_speed * (run_speed_ratio if is_running else 1.0)
-		if velocity.length() < max: velocity += dir * ref_speed * delta
+		var lcl_max: float = standing_speed * (run_speed_ratio if is_running else 1.0)
+		if velocity.length() < lcl_max: velocity += dir * ref_speed * delta
 		return
 	
 	if is_movement_smooth:
@@ -308,8 +353,8 @@ func get_used_speed() -> float:
 		return air_up_speed
 	elif is_crouched:
 		return crouch_speed
-	elif is_lyingd:
-		return lying_d_speed
+	elif is_prone:
+		return prone_speed
 	else:
 		return standing_speed
 
@@ -317,10 +362,10 @@ func get_used_speed() -> float:
 func process_view(delta: float) -> void:
 	if not p_inputs.is_mouse_locked(): return
 	var inversion: float = -1 if p_inputs.is_inverted else 1
-	var reducer: float = (ads_speed_view_reduc if is_aiming else 1.0) * (lyingd_speed_view_reduc if is_lyingd else 1.0)
+	var reducer: float = (ads_speed_view_reduc if is_aiming else 1.0) * (prone_speed_view_reduc if is_prone else 1.0)
 	aim_target.y -= p_inputs.get_view_input().x * p_inputs.h_sensi_multiplier * reducer
 	aim_target.x += p_inputs.get_view_input().y * p_inputs.v_sensi_multiplier * inversion * reducer
-	var clamp_applied: Vector2 = v_clamp_lyingd if is_lyingd else v_clamp_deg
+	var clamp_applied: Vector2 = v_clamp_prone if is_prone else v_clamp_deg
 	aim_target.x = clampf(aim_target.x, clamp_applied.x, clamp_applied.y)
 	
 	if is_aim_smooth:
@@ -359,7 +404,7 @@ func handle_weapon_movement(delta: float) -> void:
 
 
 func set_ads_sway_len_by_state() -> void:
-	var reducer: float = ads_lyingd_sway_reduc if is_lyingd else (ads_crouch_sway_reduc if is_crouched else 1.0)
+	var reducer: float = ads_prone_sway_reduc if is_prone else (ads_crouch_sway_reduc if is_crouched else 1.0)
 	var sway_target: Vector2 = Vector2(ads_sway_pitch_len, ads_sway_yaw_len) * reducer
 	var noise_target: float = ads_noise_len * reducer
 	curr_ads_sway_len.x = move_toward(curr_ads_sway_len.x, sway_target.x, 0.005)
@@ -390,9 +435,9 @@ func apply_ads_sway():
 func handle_shoot() -> void:
 	if not Input.is_action_just_pressed("shoot") or not can_shoot or not p_inputs.is_mouse_locked():
 		return
-	can_shoot = false
+	#can_shoot = false
 	handle_shoot_cast()
-	reload()
+	#reload()
 
 
 func handle_shoot_cast() -> void:
