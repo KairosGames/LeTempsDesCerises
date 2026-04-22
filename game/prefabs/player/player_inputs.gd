@@ -53,7 +53,11 @@ func _process(delta: float) -> void:
 
 
 func capture_inputs(delta: float) -> void:
-	if not is_mouse_locked(): return
+	if not is_mouse_locked():
+		aim_vec_gamepad = Vector2.ZERO
+		aim_vec_mouse = Vector2.ZERO
+		move_vec = Vector2.ZERO
+		return
 	capture_gpad_aim(delta)
 	capture_movement()
 

@@ -125,46 +125,47 @@ func _process(delta: float) -> void:
 
 
 func capture_states() -> void:
-	is_grounded = is_on_floor()
+	set_context()
 	if not p_inputs.is_mouse_locked(): return
-	calculate_stop_run()
 	capture_aim_state()
 	capture_run_state()
 	capture_position_state()
 
 
-func calculate_stop_run() -> void:
+func set_context() -> void:
+	is_grounded = is_on_floor()
 	var input_dir: Vector2 = p_inputs.move_vec
 	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
 
 
 func capture_aim_state() -> void:
-	if is_reloading: return
-	
 	var was_aiming: bool = is_aiming
-	var run_has_priority: bool = not is_aim_locked and not is_run_locked and Input.is_action_pressed("run") and not stop_run and is_grounded
 	
-	if run_has_priority:
-		is_aiming = false
-	else:
-		if is_aim_locked:
-			if Input.is_action_just_pressed("aim"):
-				if is_run_locked:
-					is_aiming = !is_aiming
-					if is_aiming: is_running = false
-				else:
-					if not is_running: is_aiming = !is_aiming
-		else:
-			is_aiming = Input.is_action_pressed("aim")
-			if is_aiming: is_running = false
-	
-	if ((Input.is_action_just_pressed("run") and not stop_run) or not is_grounded) and is_aiming:
-		is_aiming = false
+	if can_aim():
+		if is_aim_locked: handle_toggle_aim()
+		else : handle_hold_aim()
+	else : is_aiming = false
 	
 	p_inputs.is_aiming = is_aiming
-	
 	if was_aiming != is_aiming :
 		switch_aim_state()
+
+
+func can_aim() -> bool:
+	if is_reloading: return false
+	if not is_grounded: return false
+	if Input.is_action_pressed("run") and not stop_run: 
+		if not (not is_aim_locked and is_run_locked): return false
+	return true
+
+
+func handle_toggle_aim() -> void:
+	if Input.is_action_just_pressed("aim"):
+		is_aiming = !is_aiming
+
+
+func handle_hold_aim() -> void:
+	is_aiming = Input.is_action_pressed("aim")
 
 
 func switch_aim_state() -> void:
@@ -196,35 +197,35 @@ func switch_aim_state() -> void:
 
 
 func capture_run_state() -> void:
-	if stop_run: is_running = false
-	
-	if is_run_locked:
-		if is_aim_locked:
-			if Input.is_action_just_pressed("run") and not stop_run:
-				go_for_run()
-				if is_aiming:
-					is_aiming = false
-					switch_aim_state()
-		else:
-			if Input.is_action_just_pressed("run") and not stop_run and not is_aiming:
-				go_for_run()
-				if is_aiming:
-					is_aiming = false
-					switch_aim_state()
-	else:
-		if Input.is_action_pressed("run") and not stop_run : go_for_run()
-		if not Input.is_action_pressed("run"): is_running = false
-		if is_running: is_aiming = false
-	
-	if ((Input.is_action_just_pressed("aim")) or not is_grounded) and is_running:
-		is_running = false
+	if can_run():
+		if is_run_locked: handle_toggle_run()
+		else: handle_hold_run()
+	else: is_running = false
+
+
+func can_run() -> bool:
+	if is_reloading: return false
+	if not is_grounded: return false
+	if stop_run: return false
+	if is_run_locked and Input.is_action_pressed("aim"): return false
+	return true
+
+
+func handle_toggle_run() -> void:
+	if Input.is_action_just_pressed("run"):
+		go_for_run()
+
+
+func handle_hold_run() -> void:
+	if Input.is_action_pressed("run"): go_for_run()
+	else: is_running = false
 
 
 func go_for_run() -> void:
 	if is_changing_state: return
 	if is_crouched: crouch_to_up(false, true)
 	elif is_prone: prone_to_up(false, true)
-	else: if not is_reloading: is_running = !is_running if is_run_locked else true
+	else: is_running = !is_running if is_run_locked else true
 
 
 func capture_position_state() -> void:
@@ -433,11 +434,14 @@ func apply_ads_sway():
 
 
 func handle_shoot() -> void:
-	if not Input.is_action_just_pressed("shoot") or not can_shoot or not p_inputs.is_mouse_locked():
-		return
-	#can_shoot = false
-	handle_shoot_cast()
-	#reload()
+	if not can_use_shoot() : return
+	if Input.is_action_just_pressed("shoot"):
+		#can_shoot = false
+		handle_shoot_cast()
+
+
+func can_use_shoot() -> bool:
+	return can_shoot and p_inputs.is_mouse_locked()
 
 
 func handle_shoot_cast() -> void:
@@ -460,10 +464,6 @@ func handle_shoot_cast() -> void:
 
 func reload() -> void:
 	is_reloading = true
-	is_running = false
-	if is_aiming:
-		is_aiming = false
-		switch_aim_state()
 	await get_tree().create_timer(time_to_ads).timeout
 	var t: Tween = create_tween()
 	await t.tween_property(weapon_container, "rotation_degrees:x", 25.0, 0.8
