@@ -37,3 +37,8 @@ func move_to(global_position: Vector3, desired_distance: float = 0.25) -> void:
 func stop() -> void:
 	target_position = _character.global_position
 	velocity_computed.emit(Vector3.ZERO)
+
+func disable() -> void:
+	avoidance_enabled = false
+	stop()
+	

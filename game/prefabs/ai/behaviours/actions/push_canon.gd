@@ -9,10 +9,9 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	if not is_pushing:
 		if slot.get_child_count(): return FAILURE
 		if agent.global_position.distance_to(slot.global_position) > 2: return FAILURE
-		agent.navigation.stop()
+		agent.navigation.disable()
 		agent.get_parent().remove_child(agent)
 		slot.add_child(agent)
-		agent.transform = Transform3D.IDENTITY
 		agent.collision_mask = 0
 		agent.axis_lock_linear_x = true
 		agent.axis_lock_linear_y = true
@@ -20,7 +19,9 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		agent.axis_lock_angular_x = true
 		agent.axis_lock_angular_y = true
 		agent.axis_lock_angular_z = true
+		agent.transform = Transform3D.IDENTITY
 		is_pushing = true
 		return RUNNING
 	else: 
+		agent.transform = Transform3D.IDENTITY
 		return RUNNING

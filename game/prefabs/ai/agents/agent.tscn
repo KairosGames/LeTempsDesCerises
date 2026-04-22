@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://dme5f24l0edsf" path="res://addons/beehave/blackboard.gd" id="2_tpga6"]
 [ext_resource type="Script" uid="uid://dcojdhvj8qcw0" path="res://addons/beehave/nodes/composites/sequence_reactive.gd" id="5_f5m6n"]
 [ext_resource type="Script" uid="uid://1nss82y33gkp" path="res://prefabs/ai/behaviours/conditions/is_alive.gd" id="6_f5m6n"]
-[ext_resource type="PackedScene" uid="uid://3y1qt50xdawu" path="res://prefabs/ai/behaviours/versaillais.tscn" id="7_ixvr7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_otrs2"]
 
@@ -183,7 +182,6 @@ mesh = SubResource("SphereMesh_1xyfn")
 
 [node name="Navigation" type="NavigationAgent3D" parent="." unique_id=514776903]
 avoidance_enabled = true
-debug_enabled = true
 debug_path_custom_color = Color(1, 0, 1, 1)
 script = ExtResource("2_24g36")
 metadata/_custom_type_script = "uid://1h6aoya61b6d"
@@ -209,5 +207,3 @@ metadata/_custom_type_script = "uid://dcojdhvj8qcw0"
 [node name="IsAlive" type="Node" parent="BeehaveTree/BeAlive" unique_id=2082601198]
 script = ExtResource("6_f5m6n")
 metadata/_custom_type_script = "uid://1nss82y33gkp"
-
-[node name="Versaillais" parent="BeehaveTree/BeAlive" unique_id=546313229 instance=ExtResource("7_ixvr7")]

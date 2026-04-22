@@ -4,7 +4,7 @@ static var singleton: Canon
 
 signal shoot
 
-@export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var speed: float = 3 
+@export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var speed: float = 1
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var shoot_delay: float = 5
 
 @onready var slots: Array[Marker3D] = [$AnimatableBody3D/Slot0, $AnimatableBody3D/Slot1, $AnimatableBody3D/Slot2]
