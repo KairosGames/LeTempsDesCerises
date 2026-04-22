@@ -86,13 +86,14 @@ var input_lag: float = 0.08
 var input_lag_timer: float = 0.0
 
 var is_grounded: bool = true
+var can_shoot: bool = true
 var is_aiming: bool = false
 var is_running: bool = false
 var is_crouched:bool = false
 var is_prone: bool = false
 var is_changing_state: bool = false
 var stop_run: bool = false
-var can_shoot: bool = true
+var is_weapon_loaded: bool = true
 var is_reloading: bool = false
 
 var wpn_x_aim_twn: Tween
@@ -122,6 +123,7 @@ func _process(delta: float) -> void:
 	process_view(delta)
 	handle_weapon_movement(delta)
 	handle_shoot()
+	handle_reload()
 
 
 func capture_states() -> void:
@@ -436,12 +438,12 @@ func apply_ads_sway():
 func handle_shoot() -> void:
 	if not can_use_shoot() : return
 	if Input.is_action_just_pressed("shoot"):
-		#can_shoot = false
+		is_weapon_loaded = false
 		handle_shoot_cast()
 
 
 func can_use_shoot() -> bool:
-	return can_shoot and p_inputs.is_mouse_locked()
+	return can_shoot and is_weapon_loaded and p_inputs.is_mouse_locked()
 
 
 func handle_shoot_cast() -> void:
@@ -462,9 +464,24 @@ func handle_shoot_cast() -> void:
 		print("Versaillais touched !")
 
 
+func handle_reload():
+	capture_begin_reload()
+	capture_reloading_steps()
+
+
+func capture_begin_reload() -> void:
+	if not can_reload(): return
+	if Input.is_action_just_pressed("reload"):
+		reload()
+
+
+func can_reload() -> bool:
+	return not is_reloading and not is_weapon_loaded and p_inputs.is_mouse_locked()
+
+
 func reload() -> void:
 	is_reloading = true
-	await get_tree().create_timer(time_to_ads).timeout
+	if is_aiming: await get_tree().create_timer(time_to_ads).timeout
 	var t: Tween = create_tween()
 	await t.tween_property(weapon_container, "rotation_degrees:x", 25.0, 0.8
 					).set_trans(Tween.TRANS_QUART).set_ease(Tween.EaseType.EASE_OUT).finished
@@ -473,4 +490,8 @@ func reload() -> void:
 	await t.tween_property(weapon_container, "rotation_degrees:x", 0.0, time_to_ads
 					).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EaseType.EASE_IN).finished
 	is_reloading = false
-	can_shoot = true
+	is_weapon_loaded = true
+
+
+func capture_reloading_steps() -> void:
+	if not is_reloading or not p_inputs.is_mouse_locked(): return

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ba17vol5l3xw" path="res://prefabs/player/player.gd" id="1_4dohe"]
 [ext_resource type="Script" uid="uid://by6gviwr1wgbw" path="res://prefabs/player/player_inputs.gd" id="1_72ieh"]
 [ext_resource type="Texture2D" uid="uid://llhmhoeoh4hx" path="res://sandbox/textures_proto/aim.svg" id="2_r66lb"]
+[ext_resource type="Script" uid="uid://c7sm17jepuynp" path="res://prefabs/player/reload_ui.gd" id="3_klv5p"]
 [ext_resource type="PackedScene" uid="uid://b56vcde62m1gw" path="res://sandbox/chassepot_proto/sk_chassepot.tscn" id="4_klv5p"]
 
 [sub_resource type="Curve" id="Curve_binfn"]
@@ -30,6 +31,84 @@ gpad_speed_aiming_curve = SubResource("Curve_r66lb")
 gpad_aim_time_before_acc = 0.15
 gpad_aim_acc_speed_time = 0.15
 
+[node name="ReloadUI" type="Control" parent="." unique_id=604342347]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 902.0
+offset_top = 918.0
+offset_right = 942.0
+offset_bottom = 958.0
+script = ExtResource("3_klv5p")
+
+[node name="ReloadBar1" type="ColorRect" parent="ReloadUI" unique_id=1569676977]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 106.0
+offset_bottom = 14.0
+color = Color(0.8627451, 0.8627451, 0.8627451, 0.41568628)
+
+[node name="ReloadBar2" type="ColorRect" parent="ReloadUI" unique_id=20938280]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 16.0
+offset_bottom = 104.0
+color = Color(0.8627451, 0.8627451, 0.8627451, 0.41568628)
+
+[node name="ReloadStep1" type="ColorRect" parent="ReloadUI" unique_id=294821983]
+layout_mode = 0
+offset_left = 92.0
+offset_top = -1.0
+offset_right = 112.0
+offset_bottom = 19.0
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="ReloadStep2" type="ColorRect" parent="ReloadUI" unique_id=275829933]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 21.0
+offset_bottom = 19.0
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="ReloadStep3" type="ColorRect" parent="ReloadUI" unique_id=484181448]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 90.0
+offset_right = 21.0
+offset_bottom = 110.0
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="ReloadPos1" type="Control" parent="ReloadUI" unique_id=1707861849]
+anchors_preset = 0
+offset_left = 102.0
+offset_top = 9.0
+offset_right = 142.0
+offset_bottom = 49.0
+
+[node name="ReloadPos2" type="Control" parent="ReloadUI" unique_id=203965544]
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 51.0
+offset_bottom = 49.0
+
+[node name="ReloadPos3" type="Control" parent="ReloadUI" unique_id=1524537823]
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 100.0
+offset_right = 51.0
+offset_bottom = 140.0
+
+[node name="ColorRect" type="ColorRect" parent="ReloadUI" unique_id=566231840]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 1.0
+offset_right = 109.0
+offset_bottom = 16.0
+color = Color(0.73978424, 3.6832058e-05, 2.0118654e-05, 1)
+
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=39530336]
 visible = false
 anchors_preset = 15
@@ -38,7 +117,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=1952164863]
+[node name="Crosshairs" type="TextureRect" parent="CenterContainer" unique_id=1952164863]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 texture = ExtResource("2_r66lb")
