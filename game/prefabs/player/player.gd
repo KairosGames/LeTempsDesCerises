@@ -10,6 +10,7 @@ class_name Player extends CharacterBody3D
 @onready var aim_pos: Marker3D = %AimPos
 @onready var weapon_root: Node3D = %WeaponRoot
 @onready var weapon_ray_cast: RayCast3D = %WeaponRayCast
+@onready var reload_ui: ReloadUI = %ReloadUI
 
 @export_category("Exposed settings")
 @export var is_aim_locked: bool = true
@@ -466,32 +467,34 @@ func handle_shoot_cast() -> void:
 
 func handle_reload():
 	capture_begin_reload()
-	capture_reloading_steps()
 
 
 func capture_begin_reload() -> void:
 	if not can_reload(): return
 	if Input.is_action_just_pressed("reload"):
-		reload()
+		enter_reload()
 
 
 func can_reload() -> bool:
 	return not is_reloading and not is_weapon_loaded and p_inputs.is_mouse_locked()
 
 
-func reload() -> void:
+func enter_reload() -> void:
 	is_reloading = true
 	if is_aiming: await get_tree().create_timer(time_to_ads).timeout
 	var t: Tween = create_tween()
-	await t.tween_property(weapon_container, "rotation_degrees:x", 25.0, 0.8
+	await t.tween_property(weapon_container, "rotation_degrees:x", 25.0, 0.5
 					).set_trans(Tween.TRANS_QUART).set_ease(Tween.EaseType.EASE_OUT).finished
-	await get_tree().create_timer(reload_time - ((time_to_ads * 2) + 0.8)).timeout
-	t = create_tween()
-	await t.tween_property(weapon_container, "rotation_degrees:x", 0.0, time_to_ads
+	reload_ui.activation(true)
+	reload_ui.reloaded.connect(on_reloaded, CONNECT_ONE_SHOT)
+
+func on_reloaded() -> void:
+	exit_reload()
+
+
+func exit_reload() -> void:
+	var t: Tween = create_tween()
+	await t.tween_property(weapon_container, "rotation_degrees:x", 0.0, 0.5
 					).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EaseType.EASE_IN).finished
 	is_reloading = false
 	is_weapon_loaded = true
-
-
-func capture_reloading_steps() -> void:
-	if not is_reloading or not p_inputs.is_mouse_locked(): return

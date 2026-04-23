@@ -31,7 +31,9 @@ gpad_speed_aiming_curve = SubResource("Curve_r66lb")
 gpad_aim_time_before_acc = 0.15
 gpad_aim_acc_speed_time = 0.15
 
-[node name="ReloadUI" type="Control" parent="." unique_id=604342347]
+[node name="ReloadUI" type="Control" parent="." unique_id=604342347 node_paths=PackedStringArray("all_pos", "pos_to_rect")]
+unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 902.0
@@ -39,6 +41,18 @@ offset_top = 918.0
 offset_right = 942.0
 offset_bottom = 958.0
 script = ExtResource("3_klv5p")
+all_pos = [NodePath("ReloadPos1"), NodePath("ReloadPos2"), NodePath("ReloadPos3")]
+pos_to_rect = {
+0: NodePath("ReloadStep1"),
+1: NodePath("ReloadStep2"),
+2: NodePath("ReloadStep3")
+}
+steps = Array[Array]([[0, 1], [1, 2], [2, 1], [1, 0]])
+default_color = Color(0, 0, 0, 0.61960787)
+valid_target_color = Color(0, 0.5469833, 0.98331386, 0.63529414)
+default_focus_color = Color(0.7159255, 0.72724795, 0.7299672, 1)
+fail_focus_color = Color(0.5921569, 0, 0, 1)
+sucess_focus_color = Color(0, 0.49019608, 0, 1)
 
 [node name="ReloadBar1" type="ColorRect" parent="ReloadUI" unique_id=1569676977]
 layout_mode = 0
@@ -81,33 +95,37 @@ offset_bottom = 110.0
 color = Color(0, 0, 0, 0.61960787)
 
 [node name="ReloadPos1" type="Control" parent="ReloadUI" unique_id=1707861849]
+unique_name_in_owner = true
 anchors_preset = 0
-offset_left = 102.0
-offset_top = 9.0
-offset_right = 142.0
-offset_bottom = 49.0
+offset_left = 95.0
+offset_top = 1.0
+offset_right = 135.0
+offset_bottom = 41.0
 
 [node name="ReloadPos2" type="Control" parent="ReloadUI" unique_id=203965544]
+unique_name_in_owner = true
 anchors_preset = 0
-offset_left = 11.0
-offset_top = 9.0
-offset_right = 51.0
-offset_bottom = 49.0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 44.0
+offset_bottom = 42.0
 
 [node name="ReloadPos3" type="Control" parent="ReloadUI" unique_id=1524537823]
+unique_name_in_owner = true
 anchors_preset = 0
-offset_left = 11.0
-offset_top = 100.0
-offset_right = 51.0
-offset_bottom = 140.0
+offset_left = 4.0
+offset_top = 93.0
+offset_right = 44.0
+offset_bottom = 133.0
 
-[node name="ColorRect" type="ColorRect" parent="ReloadUI" unique_id=566231840]
+[node name="ReloadFocus" type="ColorRect" parent="ReloadUI" unique_id=566231840]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 94.0
+offset_left = 95.0
 offset_top = 1.0
-offset_right = 109.0
+offset_right = 110.0
 offset_bottom = 16.0
-color = Color(0.73978424, 3.6832058e-05, 2.0118654e-05, 1)
+color = Color(0.7159255, 0.72724795, 0.7299672, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=39530336]
 visible = false
