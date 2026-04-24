@@ -49,9 +49,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 		call_deferred(\"add_child\", hit)
 		if target == null : return
 		for i in target.get_children():
-			if i.has_meta(\"Surface\"):
+			if i.has_meta(\"Surface\") and i.get_class() == \"MeshInstance3D\":
 				print(i.get_meta(\"Surface\"))
-				#Wwise.set_switch(\"bullet_material\",i.get_meta(\"Surface\"), self)
+				Wwise.set_switch(\"bullet_material\",i.get_meta(\"Surface\"), self)
+			#elif i.get_class() == \"MeshInstance3D\":
+				#print(\"Orlane tu as oublié un mat !\")
 	
 	if Input.is_action_just_pressed(\"crouch\"):
 		if !player.is_crouched:
@@ -66,7 +68,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed(\"run\"):
 		sprint.post_event()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player.is_on_floor() and player.velocity.x + player.velocity.z != float(0) and !is_walking:
 		steps.post_event()
 		is_walking = true
@@ -122,6 +124,7 @@ shape = SubResource("SphereShape3D_s8o8u")
 event = ExtResource("5_usst2")
 stop_on = 3
 stop_fade_time = 1
+interpolation_mode = 5
 is_environment_aware = true
 
 [node name="Area3D" type="Area3D" parent="Steps" unique_id=50241986]

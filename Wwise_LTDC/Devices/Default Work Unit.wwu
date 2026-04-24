@@ -3,7 +3,20 @@
 	<Devices>
 		<WorkUnit Name="Default Work Unit" ID="{D735F844-887C-4A98-9F58-CBDB3795BB8B}" PersistMode="Standalone">
 			<ChildrenList>
-				<AudioDevice Name="System" ID="{4D4AD273-68C1-440A-B66A-544BF2C11596}" PluginName="System" CompanyID="0" PluginID="174" PluginType="7"/>
+				<AudioDevice Name="System" ID="{4D4AD273-68C1-440A-B66A-544BF2C11596}" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
+					<PropertyList>
+						<Property Name="Allow3DAudio" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="MinSystemAudioObjectsRequired" Type="Uint16">
+							<ValueList>
+								<Value>128</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+				</AudioDevice>
 				<AudioDevice Name="No_Output" ID="{CB235A63-5FFF-4302-9A9A-663E0A68DE19}" PluginName="No Output" CompanyID="0" PluginID="181" PluginType="7"/>
 				<AudioDevice Name="Motion" ID="{882328E3-4BF4-4402-9C6C-32775CE7D72E}" PluginName="Motion" CompanyID="0" PluginID="507" PluginType="7"/>
 			</ChildrenList>

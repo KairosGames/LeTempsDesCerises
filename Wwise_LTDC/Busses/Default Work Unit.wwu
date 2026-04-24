@@ -76,7 +76,7 @@
 													<Effect Name="High_Pass_60Hz (Custom)" ID="{0A41C22E-12E9-4E35-B138-1CD4852233C0}" ShortID="1012444785" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 														<PropertyList>
 															<Property Name="FilterTypeBand1" Type="int32" Value="1"/>
-															<Property Name="FrequencyBand1" Type="Real32" Value="421.4068"/>
+															<Property Name="FrequencyBand1" Type="Real32" Value="158.5198"/>
 															<Property Name="OnOffBand2" Type="bool" Value="False"/>
 														</PropertyList>
 													</Effect>
@@ -125,11 +125,6 @@
 						</AuxBus>
 						<AuxBus Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}">
 							<PropertyList>
-								<Property Name="BusVolume" Type="Real64">
-									<ValueList>
-										<Value>-12</Value>
-									</ValueList>
-								</Property>
 								<Property Name="GameAuxSendVolume" Type="Real64">
 									<ValueList>
 										<Value>-6</Value>
@@ -156,8 +151,12 @@
 													<Effect Name="Reflect (Custom)" ID="{C4B726EC-1419-424F-ADF7-FACE67C11922}" ShortID="695506173" PluginName="Wwise Reflect" CompanyID="0" PluginID="171" PluginType="3">
 														<PropertyList>
 															<Property Name="CurveUsageMask" Type="Uint32" Value="511"/>
+															<Property Name="DecorrAlgorithmSelect" Type="int32" Value="1"/>
+															<Property Name="DecorrStrength" Type="Real32" Value="25"/>
+															<Property Name="FusingTime" Type="Real32" Value="50"/>
 															<Property Name="ParamFilterCutoff" Type="Real32" Value="1"/>
 															<Property Name="PitchThreshold" Type="Real32" Value="2400"/>
+															<Property Name="Wet" Type="Real32" Value="-3"/>
 														</PropertyList>
 														<PluginData>
 	<ReflectData>
@@ -405,11 +404,93 @@
 																					<XPos>0</XPos>
 																					<YPos>20000</YPos>
 																					<Flags>5</Flags>
-																					<SegmentShape>Exp1</SegmentShape>
+																					<SegmentShape>SCurve</SegmentShape>
 																				</Point>
 																				<Point>
 																					<XPos>100</XPos>
 																					<YPos>200</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</Custom>
+																</Reference>
+															</ReferenceList>
+														</RTPC>
+													</ObjectList>
+												</ObjectLists>
+											</Effect>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</EffectSlot>
+							<EffectSlot Name="" ID="{A3992E59-C9D9-4A90-B2B6-074BC19F0B56}" ShortID="113587842">
+								<ReferenceList>
+									<Reference Name="Effect">
+										<Custom>
+											<Effect Name="Compressor (Custom)" ID="{A26D26DC-6631-4E48-AA7C-BFF94ADEBECE}" ShortID="75143502" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+												<PropertyList>
+													<Property Name="AttackTime" Type="Real32" Value="0.25"/>
+													<Property Name="Ratio" Type="Real32" Value="50"/>
+													<Property Name="ReleaseTime" Type="Real32" Value="2"/>
+												</PropertyList>
+												<ObjectLists>
+													<ObjectList Name="RTPC">
+														<RTPC Name="" ID="{9D5832C7-5BEC-4B37-A932-E5C43353DEBF}" ShortID="840075454">
+															<PropertyList>
+																<Property Name="PropertyName" Type="string" Value="Threshold"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																</Reference>
+																<Reference Name="Curve">
+																	<Custom>
+																		<Curve Name="" ID="{3F45867C-E43C-4B7D-8292-392930559AA8}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="1"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>0</YPos>
+																					<Flags>5</Flags>
+																					<SegmentShape>InvertedSCurve</SegmentShape>
+																				</Point>
+																				<Point>
+																					<XPos>100</XPos>
+																					<YPos>-96.3</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</Custom>
+																</Reference>
+															</ReferenceList>
+														</RTPC>
+														<RTPC Name="" ID="{F25DCCA4-9232-4A2D-BC96-66AB8960AAD0}" ShortID="946671092">
+															<PropertyList>
+																<Property Name="PropertyName" Type="string" Value="OutputGain"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																</Reference>
+																<Reference Name="Curve">
+																	<Custom>
+																		<Curve Name="" ID="{978CE13A-79A7-443D-97AE-4E787D93D7FC}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="3"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>0</YPos>
+																					<Flags>5</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>100</XPos>
+																					<YPos>3</YPos>
 																					<Flags>37</Flags>
 																				</Point>
 																			</PointList>

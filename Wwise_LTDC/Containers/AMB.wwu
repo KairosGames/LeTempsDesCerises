@@ -9,9 +9,15 @@
 			<ChildrenList>
 				<PropertyContainer Name="Cannons" ID="{CD92F808-97F6-40BF-A7EC-21AF86E9A0C1}" ShortID="273216282">
 					<PropertyList>
-						<Property Name="MakeUpGain" Type="Real64">
+						<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
 							<ValueList>
-								<Value>-3</Value>
+								<Value>3</Value>
+							</ValueList>
+						</Property>
+						<Property Name="UseMaxSoundPerInstance" Type="bool">
+							<ValueList>
+								<Value>True</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -59,6 +65,7 @@
 									</ModifierList>
 								</Property>
 								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 								<Property Name="UserAuxSendVolume0" Type="Real64">
 									<ValueList>
 										<Value>-6</Value>
@@ -337,7 +344,7 @@
 											<PointList>
 												<Point>
 													<XPos>0</XPos>
-													<YPos>50</YPos>
+													<YPos>0</YPos>
 													<Flags>12</Flags>
 													<Time>0</Time>
 												</Point>
@@ -382,6 +389,7 @@
 									</ModifierList>
 								</Property>
 								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 								<Property Name="UserAuxSendVolume0" Type="Real64">
 									<ValueList>
 										<Value>-6</Value>
@@ -660,7 +668,7 @@
 											<PointList>
 												<Point>
 													<XPos>0</XPos>
-													<YPos>50</YPos>
+													<YPos>0</YPos>
 													<Flags>12</Flags>
 													<Time>0</Time>
 												</Point>
@@ -704,7 +712,9 @@
 										<Value>True</Value>
 									</ValueList>
 								</Property>
+								<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">

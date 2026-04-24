@@ -317,7 +317,7 @@
 					<ChildrenList>
 						<Event Name="Enemy_Shoot" ID="{3FDD584B-7295-4A08-9570-8775D7B756E9}">
 							<ChildrenList>
-								<Action Name="" ID="{1616C98A-B090-4676-A61C-C2DF04F2E770}" ShortID="1003538149">
+								<Action Name="" ID="{74781B11-DE9A-46CE-B193-19618FAB148F}" ShortID="27331121">
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{37B8C0BF-BD75-44AD-8A16-529DBCA517BF}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
@@ -332,6 +332,31 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Enemy_Bullet_Miss" ID="{25FA0D96-992C-4A2C-9989-DCA998EF30A6}" WorkUnitID="{96E4295F-8863-4251-9883-8697799D4058}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{E3552584-A32A-4975-ADF3-DCDDDDCCC1FC}" ShortID="621184166">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="4"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening_Recover" ID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" WorkUnitID="{96E4295F-8863-4251-9883-8697799D4058}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3368AEA3-8C33-4A0E-AD0E-80230EAA9F8D}" ShortID="130108963">
+									<PropertyList>
+										<Property Name="AbsoluteOrRelative" Type="int16" Value="1"/>
+										<Property Name="ActionType" Type="int16" Value="38"/>
+										<Property Name="Delay" Type="Real64" Value="0.1"/>
+										<Property Name="GameParameterValue" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

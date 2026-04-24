@@ -101,7 +101,7 @@
 												</Property>
 												<Property Name="UserAuxSendVolume0" Type="Real64">
 													<ValueList>
-														<Value>12</Value>
+														<Value>24</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -235,6 +235,8 @@
 											<PropertyList>
 												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+												<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Attenuation">
@@ -378,10 +380,11 @@
 													</ValueList>
 												</Property>
 												<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
 												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
-														<Value>200</Value>
+														<Value>500</Value>
 													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
@@ -407,7 +410,7 @@
 												</Property>
 												<Property Name="UserAuxSendVolume0" Type="Real64">
 													<ValueList>
-														<Value>-6</Value>
+														<Value>-21</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -752,7 +755,7 @@
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 												</Reference>
 												<Reference Name="DefaultSwitchOrState">
-													<ObjectRef Name="Brick" ID="{34CF5667-9CE6-468C-9F75-33E0A6DECE94}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+													<ObjectRef Name="Metal" ID="{00F5A187-15DF-42FD-91F4-E9687F923AA3}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
 												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -2605,9 +2608,16 @@
 										</Property>
 										<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 										<Property Name="ReflectionsVolume" Type="Real64">
 											<ValueList>
 												<Value>-20</Value>
+											</ValueList>
+										</Property>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+										<Property Name="UserAuxSendVolume0" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -2927,6 +2937,7 @@
 														<Value>-6</Value>
 													</ValueList>
 												</Property>
+												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
 														<Value>370</Value>
@@ -2950,6 +2961,11 @@
 												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -2957,6 +2973,9 @@
 												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="Wwise_Motion_Send" ID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -3091,6 +3110,7 @@
 													<Property Name="MakeUpGain"/>
 													<Property Name="Pitch"/>
 													<Property Name="PlayMechanismSpecialTransitionsValue"/>
+													<Property Name="UserAuxSendVolume0"/>
 													<Property Name="Volume"/>
 												</StatePropertyList>
 												<StateGroupList>
@@ -3114,6 +3134,7 @@
 															<PropertyList>
 																<Property Name="Lowpass" Type="int16" Value="25"/>
 																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="-0.1"/>
+																<Property Name="UserAuxSendVolume0" Type="Real64" Value="20"/>
 															</PropertyList>
 														</CustomState>
 													</CustomState>
@@ -3123,6 +3144,7 @@
 															<PropertyList>
 																<Property Name="Lowpass" Type="int16" Value="25"/>
 																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.25"/>
+																<Property Name="UserAuxSendVolume0" Type="Real64" Value="6"/>
 																<Property Name="Volume" Type="Real64" Value="-6"/>
 															</PropertyList>
 														</CustomState>
@@ -3173,21 +3195,8 @@
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
 								<Property Name="EnableDiffraction" Type="bool" Value="True"/>
-								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
-								<Property Name="MaxSoundPerInstance" Type="int16">
-									<ValueList>
-										<Value>5</Value>
-									</ValueList>
-								</Property>
 								<Property Name="OverrideOutput" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-								<Property Name="OverridePriority" Type="bool" Value="True"/>
-								<Property Name="PriorityDistanceFactor" Type="bool" Value="True"/>
-								<Property Name="UseMaxSoundPerInstance" Type="bool">
-									<ValueList>
-										<Value>True</Value>
-									</ValueList>
-								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">
@@ -3302,11 +3311,16 @@
 							<ChildrenList>
 								<RandomSequenceContainer Name="Brick" ID="{697F11E6-7433-465A-BADD-32F47D422237}" ShortID="329568607">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="MakeUpGain" Type="Real64">
 											<ValueList>
 												<Value>-30</Value>
+											</ValueList>
+										</Property>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
 											</ValueList>
 										</Property>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
@@ -3317,11 +3331,15 @@
 										</Property>
 										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.2"/>
+										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.4"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
@@ -3346,10 +3364,15 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01" ID="{3F4A638B-C857-467D-8C77-A59EBD1A3B18}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.0328"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="780702883"/>
+														<MediaID ID="842959201"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -3368,10 +3391,15 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02" ID="{5AAE4BCB-5955-4D1F-8EE7-E222344173DA}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.02983"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1024503505"/>
+														<MediaID ID="708986119"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -3390,10 +3418,15 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03" ID="{CF5110E0-E04D-4C4B-8670-3E2EC3B6641E}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.04787"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="235351759"/>
+														<MediaID ID="271200390"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -3412,10 +3445,15 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04" ID="{62AD292D-08E3-419D-B891-2E4524A26451}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.05351"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="812421663"/>
+														<MediaID ID="817899543"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -3434,10 +3472,15 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05" ID="{EB958F37-514B-4196-A090-82B1BE143A9E}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.08415"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="177445382"/>
+														<MediaID ID="811812976"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -3456,10 +3499,15 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06" ID="{5DD74282-0FCF-4D17-B21D-76BC47F645D3}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.02962"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="460395499"/>
+														<MediaID ID="733828454"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -3535,27 +3583,23 @@
 										</Property>
 										<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
 											<ValueList>
-												<Value>1250</Value>
+												<Value>500</Value>
 											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{001B59D3-B867-4C42-87A5-E9BD0B843D41}">
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="500"/>
-															<Property Name="Min" Type="Real64" Value="-500"/>
+															<Property Name="Max" Type="Real64" Value="1000"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
-										<Property Name="ReflectionsVolume" Type="Real64">
-											<ValueList>
-												<Value>-9</Value>
-											</ValueList>
-										</Property>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 										<Property Name="UseMaxSoundPerInstance" Type="bool">
 											<ValueList>
 												<Value>True</Value>
@@ -3586,10 +3630,15 @@
 									</ReferenceList>
 									<ChildrenList>
 										<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{74E4A9BD-27C1-4BAB-B366-A4BEE91508A3}">
+											<PropertyList>
+												<Property Name="FadeOutDuration" Type="Real64" Value="0.04008"/>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<Language>SFX</Language>
 											<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Oneshot.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="247688113"/>
+												<MediaID ID="34509446"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
@@ -3880,13 +3929,14 @@
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Bullet_Hit_LayerCore_Oneshot" ID="{A0D72420-F8A9-4EB1-AB72-3B62690474E1}">
 													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.00753"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 														<Property Name="TrimBegin" Type="Real64" Value="0.14733"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerCore_Oneshot.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="170408866"/>
+														<MediaID ID="411997608"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -3896,12 +3946,6 @@
 										</Sound>
 										<SwitchContainer Name="Bullet_Hit_Surface" ID="{90A249CC-0D30-4A9C-BEA2-BF119E87CBC7}" ShortID="488876954">
 											<PropertyList>
-												<Property Name="MakeUpGain" Type="Real64">
-													<ValueList>
-														<Value>-6</Value>
-													</ValueList>
-												</Property>
-												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 												<Property Name="ReflectionsVolume" Type="Real64">
 													<ValueList>
 														<Value>-30</Value>
@@ -3923,9 +3967,6 @@
 												</Reference>
 												<Reference Name="SwitchGroupOrStateGroup">
 													<ObjectRef Name="Surface" ID="{5CA4360B-D253-4948-8173-23B1C55917B4}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
-												</Reference>
-												<Reference Name="UserAuxSend0">
-													<ObjectRef Name="Wwise_Motion_Send" ID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -5522,6 +5563,7 @@
 														</Property>
 														<Property Name="OverrideEffect" Type="bool" Value="True"/>
 														<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
+														<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 														<Property Name="ReflectionsVolume" Type="Real64">
 															<ValueList>
 																<Value>-9</Value>
