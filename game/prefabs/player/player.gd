@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody3D
 
 @onready var p_inputs: PlayerInputs = %PlayerInputs
+@onready var reload_ui: ReloadUI = %ReloadUI
 @onready var camera_pivot: Node3D = %CameraPivot
 @onready var wpn_cam_base: Node3D = %WeaponCameraBase
 @onready var player_camera: Camera3D = %PlayerCamera
@@ -8,9 +9,10 @@ class_name Player extends CharacterBody3D
 @onready var right_weapon_pos: Marker3D = %RightWeaponPos
 @onready var left_weapon_pos: Marker3D = %LeftWeaponPos
 @onready var aim_pos: Marker3D = %AimPos
-@onready var weapon_root: Node3D = %WeaponRoot
+@onready var weapon_sway_root: Node3D = %WeaponSwayRoot
+@onready var weapon_lag_root: Node3D = %WeaponLagRoot
+@onready var lag_target: Node3D = %LagTarget
 @onready var weapon_ray_cast: RayCast3D = %WeaponRayCast
-@onready var reload_ui: ReloadUI = %ReloadUI
 
 @export_category("Exposed settings")
 @export var is_aim_locked: bool = true
@@ -36,19 +38,27 @@ class_name Player extends CharacterBody3D
 @export var is_ads_rot_active: bool = false
 @export var ads_z_rot: float = 1.0
 
-@export_category("ADS sway settings")
-@export var ads_sway_pitch_len: float = 1.35
-@export var ads_sway_yaw_len: float = 1.0
-@export var ads_crouch_sway_reduc: float = 0.6
-@export var ads_prone_sway_reduc: float = 0.2
-@export var ads_sway_x_freq: float = 1.0
-@export var ads_sway_y_freq: float = 0.85
-@export var ads_noise_len: float = 1.25
-@export var ads_noise_freq: float = 2.5
-@export var ads_sway_evolution_curve: Curve
+@export_category("Sway settings")
+@export var sway_pitch_len: float = 1.35
+@export var sway_yaw_len: float = 1.0
+@export var crouch_sway_reduc: float = 0.6
+@export var prone_sway_reduc: float = 0.2
+@export var sway_x_freq: float = 1.0
+@export var sway_y_freq: float = 0.85
+@export var sway_noise_len: float = 1.25
+@export var sway_noise_freq: float = 2.5
+@export var ads_concentration_curve: Curve
 
-@export_category("Shoot settings")
-@export var reload_time: float = 7.0
+@export_category("Weapon lag settings")
+@export var max_wp_xz_pos_lag: float = 0.015
+@export var max_wp_y_pos_lag: float = 0.005
+@export var wp_pos_lag_away_speed: float = 5.0
+@export var wp_pos_lag_close_speed: float = 10.0
+@export var ads_wp_pos_lag_reducer: float = 0.15
+@export var max_wp_y_rot_lag_deg: float = 8.0
+@export var max_wp_x_rot_lag_deg: float = 0.5
+@export var wp_rot_lag_away_speed: float = 1.0
+@export var wp_rot_lag_close_speed: float = 20.0
 
 @export_category("States settings")
 @export var state_switch_time: float = 0.2
@@ -72,30 +82,34 @@ class_name Player extends CharacterBody3D
 @export_range(0.01, 0.5, 0.01) var brake_time: float = 0.1
 @export_range(0.01, 1.0, 0.001) var aim_smooth_strength: float = 0.05
 
-var aim_noise_x: FastNoiseLite = FastNoiseLite.new()
-var aim_noise_y: FastNoiseLite = FastNoiseLite.new()
-var aim_vel: Vector3 = Vector3.ZERO
-var aim_target: Vector3 = Vector3.ZERO
-var curr_ads_sway_len: Vector2
-var curr_ads_noise_len: float
-var acc_time_ratio: float
-var brake_time_ratio: float
-var sway_timer: float
-var ads_timer: float
-
-var input_lag: float = 0.08
-var input_lag_timer: float = 0.0
-
 var is_grounded: bool = true
-var can_shoot: bool = true
+var stop_run: bool = false
 var is_aiming: bool = false
 var is_running: bool = false
 var is_crouched:bool = false
 var is_prone: bool = false
 var is_changing_state: bool = false
-var stop_run: bool = false
+
+var can_shoot: bool = true
+var has_weapon: bool = true
 var is_weapon_loaded: bool = true
 var is_reloading: bool = false
+
+var aim_noise_x: FastNoiseLite = FastNoiseLite.new()
+var aim_noise_y: FastNoiseLite = FastNoiseLite.new()
+var curr_sway_len: Vector2
+var curr_sway_noise_len: float
+var sway_timer: float
+var ads_timer: float
+var concentration_sample: float
+
+var applied_pos_lag_speed: float
+var applied_rot_lag_speed: float
+
+var aim_vel: Vector3 = Vector3.ZERO
+var aim_target: Vector3 = Vector3.ZERO
+var acc_time_ratio: float
+var brake_time_ratio: float
 
 var wpn_x_aim_twn: Tween
 var wpn_y_aim_twn: Tween
@@ -108,14 +122,15 @@ const JUMP_VELOCITY = 4.5
 
 
 func _ready() -> void:
+	weapon_sway_root.visible = has_weapon
 	weapon_container.position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
 	aim_target = Vector3(camera_pivot.rotation_degrees.x, rotation_degrees.y, 0.0)
 	acc_time_ratio = (1 / acc_time)
 	brake_time_ratio = (1 / brake_time)
 	aim_noise_x.seed = randi()
 	aim_noise_y.seed = randi()
-	curr_ads_sway_len = Vector2(ads_sway_pitch_len, ads_sway_yaw_len)
-	curr_ads_noise_len = ads_noise_len
+	curr_sway_len = Vector2(sway_pitch_len, sway_yaw_len)
+	curr_sway_noise_len = sway_noise_len
 
 
 func _process(delta: float) -> void:
@@ -155,6 +170,7 @@ func capture_aim_state() -> void:
 
 
 func can_aim() -> bool:
+	if not has_weapon: return false
 	if is_reloading: return false
 	if not is_grounded: return false
 	if Input.is_action_pressed("run") and not stop_run: 
@@ -255,7 +271,7 @@ func capture_position_state() -> void:
 		else: if not is_reloading: jump()
 
 
-func crouch_to_up(inverse: bool = false, ask_run: bool = false):
+func crouch_to_up(inverse: bool = false, ask_run: bool = false) -> void:
 	is_changing_state = true
 	is_crouched = inverse
 	if inverse: is_running = false
@@ -267,7 +283,7 @@ func crouch_to_up(inverse: bool = false, ask_run: bool = false):
 	is_changing_state = false
 
 
-func prone_to_crouch(inverse: bool = false):
+func prone_to_crouch(inverse: bool = false) -> void:
 	is_changing_state = true
 	is_crouched = not inverse
 	is_prone = inverse
@@ -278,7 +294,7 @@ func prone_to_crouch(inverse: bool = false):
 	is_changing_state = false
 
 
-func prone_to_up(inverse: bool = false, ask_run: bool = false):
+func prone_to_up(inverse: bool = false, ask_run: bool = false) -> void:
 	is_changing_state = true
 	is_crouched = true
 	if inverse: is_running = false
@@ -296,7 +312,7 @@ func prone_to_up(inverse: bool = false, ask_run: bool = false):
 	is_changing_state = false
 
 
-func jump():
+func jump() -> void:
 	velocity.y = JUMP_VELOCITY
 
 
@@ -402,38 +418,111 @@ func smooth_damp(current: float, target: float, current_velocity: float, smooth_
 
 
 func handle_weapon_movement(delta: float) -> void:
+	if not has_weapon: return
+	handle_weapon_sway(delta)
+	handle_weapon_lag(delta)
+
+
+func handle_weapon_sway(delta: float) -> void:
 	set_ads_sway_len_by_state()
 	set_ads_sway_freq(delta)
 	apply_ads_sway()
 
 
 func set_ads_sway_len_by_state() -> void:
-	var reducer: float = ads_prone_sway_reduc if is_prone else (ads_crouch_sway_reduc if is_crouched else 1.0)
-	var sway_target: Vector2 = Vector2(ads_sway_pitch_len, ads_sway_yaw_len) * reducer
-	var noise_target: float = ads_noise_len * reducer
-	curr_ads_sway_len.x = move_toward(curr_ads_sway_len.x, sway_target.x, 0.005)
-	curr_ads_sway_len.y = move_toward(curr_ads_sway_len.y, sway_target.y, 0.005)
-	curr_ads_noise_len = move_toward(curr_ads_noise_len, noise_target, 0.005)
+	var reducer: float = prone_sway_reduc if is_prone else (crouch_sway_reduc if is_crouched else 1.0)
+	var sway_target: Vector2 = Vector2(sway_pitch_len, sway_yaw_len) * reducer
+	var noise_target: float = sway_noise_len * reducer
+	curr_sway_len.x = move_toward(curr_sway_len.x, sway_target.x, 0.005)
+	curr_sway_len.y = move_toward(curr_sway_len.y, sway_target.y, 0.005)
+	curr_sway_noise_len = move_toward(curr_sway_noise_len, noise_target, 0.005)
 
 
-func set_ads_sway_freq(delta: float):
+func set_ads_sway_freq(delta: float) -> void:
 	ads_timer += delta
 	if not is_aiming: ads_timer = 0.0
-	var freq_reduc: float = ads_sway_evolution_curve.sample(ads_timer)
-	sway_timer += delta * freq_reduc
+	concentration_sample = ads_concentration_curve.sample(ads_timer)
+	sway_timer += delta * concentration_sample
 	if ads_timer >= time_to_ads:
 		var fov_diff: float = ads_fov - perfect_fov
-		var fov_target: float = ads_fov - (fov_diff * (1 - freq_reduc))
-		player_camera.fov = lerp(player_camera.fov, fov_target, 0.1)
+		var fov_target: float = ads_fov - (fov_diff * (1 - concentration_sample))
+		player_camera.fov = lerp(player_camera.fov, fov_target, dt_lerp_t(10.0, delta))
 
 
-func apply_ads_sway():
-	var pitch: float = cos(sway_timer * ads_sway_x_freq) * curr_ads_sway_len.x
-	pitch += aim_noise_y.get_noise_1d(sway_timer * ads_noise_freq) * curr_ads_noise_len
-	var yaw: float = sin(sway_timer * ads_sway_y_freq) * curr_ads_sway_len.y
-	yaw += aim_noise_x.get_noise_1d(sway_timer * ads_noise_freq) * curr_ads_noise_len
-	weapon_root.rotation_degrees.x = pitch
-	weapon_root.rotation_degrees.y = yaw
+func dt_lerp_t(speed: float, delta: float) -> float:
+	return 1.0 - exp(-speed * delta)
+
+
+func apply_ads_sway() -> void:
+	var pitch: float = cos(sway_timer * sway_x_freq) * curr_sway_len.x
+	pitch += aim_noise_y.get_noise_1d(sway_timer * sway_noise_freq) * curr_sway_noise_len
+	var yaw: float = sin(sway_timer * sway_y_freq) * curr_sway_len.y
+	yaw += aim_noise_x.get_noise_1d(sway_timer * sway_noise_freq) * curr_sway_noise_len
+	weapon_sway_root.rotation_degrees.x = pitch
+	weapon_sway_root.rotation_degrees.y = yaw
+
+
+func handle_weapon_lag(delta: float) -> void:
+	set_weapon_lag_parameters()
+	apply_weapon_pos_lag(delta)
+	if is_aiming: apply_weapon_rot_lag(delta)
+
+
+func set_weapon_lag_parameters() -> void:
+	var root_pos_dist: float = (weapon_container.global_position - weapon_lag_root.global_position).length()
+	var targ_pos_dist: float = (weapon_container.global_position - lag_target.global_position).length()
+	applied_pos_lag_speed = wp_pos_lag_close_speed if (root_pos_dist > targ_pos_dist) else wp_pos_lag_away_speed
+	var root_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, weapon_lag_root.global_rotation.y))
+	var targ_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, lag_target.global_rotation.y))
+	applied_rot_lag_speed = wp_rot_lag_close_speed if (root_rot_dist > targ_rot_dist) else wp_rot_lag_away_speed
+
+
+func apply_weapon_pos_lag(delta: float) -> void:
+	var f_targ: Vector3 = weapon_container.global_position
+	var dist: Vector3 = lag_target.global_position - f_targ
+	var dist_xz: Vector3 = Vector3(dist.x, 0.0, dist.z)
+	var dist_y: Vector3 = Vector3(0.0, dist.y, 0.0)
+	var max_xz = max_wp_xz_pos_lag * concentration_sample * (ads_wp_pos_lag_reducer if is_aiming else 1.0)
+	var max_y = max_wp_y_pos_lag * concentration_sample
+	
+	if dist_xz.length() >= max_xz:
+		var dir_xz: Vector3 = dist_xz.normalized()
+		var new_xz: Vector3 = f_targ + (dir_xz * max_xz)
+		lag_target.global_position = Vector3(new_xz.x, lag_target.global_position.y, new_xz.z)
+	
+	if dist_y.length() >= max_y:
+		var dir_y: Vector3 = dist_y.normalized()
+		var new_y: Vector3 = f_targ + (dir_y * max_y)
+		lag_target.global_position.y = new_y.y
+	
+	lag_target.global_position = lag_target.global_position.lerp(f_targ, dt_lerp_t(wp_pos_lag_close_speed, delta))
+	var s_targ: Vector3 = weapon_container.to_local(lag_target.global_position)
+	weapon_lag_root.position = weapon_lag_root.position.lerp(s_targ, dt_lerp_t(applied_pos_lag_speed, delta))
+
+
+func apply_weapon_rot_lag(delta: float) -> void:
+	var f_targ: Vector3 = weapon_container.global_rotation
+	var y_diff: float = angle_difference(f_targ.y, lag_target.global_rotation.y)
+	var x_diff: float = angle_difference(f_targ.x, lag_target.global_rotation.x)
+	var max_y: float = max_wp_y_rot_lag_deg * concentration_sample
+	var max_x: float = max_wp_x_rot_lag_deg * concentration_sample
+	
+	if abs(y_diff) >= deg_to_rad(max_y):
+		lag_target.global_rotation.y = f_targ.y + (deg_to_rad(max_y) * sign(y_diff))
+	
+	if abs(x_diff) >= deg_to_rad(max_x):
+		lag_target.global_rotation.x = f_targ.x + (deg_to_rad(max_x) * sign(x_diff))
+	
+	lag_target.global_rotation = lerp_rot(lag_target.global_rotation,f_targ, dt_lerp_t(wp_rot_lag_close_speed, delta))
+	var parent_q: Quaternion = weapon_container.global_basis.get_rotation_quaternion()
+	var target_q: Quaternion = lag_target.global_basis.get_rotation_quaternion()
+	var local_q: Quaternion = parent_q.inverse() * target_q
+	var s_targ: Vector3 = -local_q.get_euler()
+	weapon_lag_root.rotation = lerp_rot(weapon_lag_root.rotation, s_targ, dt_lerp_t(applied_rot_lag_speed, delta))
+
+
+func lerp_rot(a: Vector3, b: Vector3, t: float) -> Vector3:
+	return Vector3( lerp_angle(a.x, b.x, t), lerp_angle(a.y, b.y, t), lerp_angle(a.z, b.z, t))
 
 
 func handle_shoot() -> void:
@@ -444,7 +533,11 @@ func handle_shoot() -> void:
 
 
 func can_use_shoot() -> bool:
-	return can_shoot and is_weapon_loaded and p_inputs.is_mouse_locked()
+	if not p_inputs.is_mouse_locked() : return false
+	if not has_weapon: return false
+	if not is_weapon_loaded: return false
+	if not can_shoot: return false
+	return true
 
 
 func handle_shoot_cast() -> void:
@@ -465,7 +558,7 @@ func handle_shoot_cast() -> void:
 		print("Versaillais touched !")
 
 
-func handle_reload():
+func handle_reload() -> void:
 	capture_begin_reload()
 
 
@@ -476,7 +569,11 @@ func capture_begin_reload() -> void:
 
 
 func can_reload() -> bool:
-	return not is_reloading and not is_weapon_loaded and p_inputs.is_mouse_locked()
+	if not p_inputs.is_mouse_locked() : return false
+	if not has_weapon: return false
+	if is_reloading: return false
+	if is_weapon_loaded: return false
+	return true
 
 
 func enter_reload() -> void:
@@ -487,6 +584,7 @@ func enter_reload() -> void:
 					).set_trans(Tween.TRANS_QUART).set_ease(Tween.EaseType.EASE_OUT).finished
 	reload_ui.activation(true)
 	reload_ui.reloaded.connect(on_reloaded, CONNECT_ONE_SHOT)
+
 
 func on_reloaded() -> void:
 	exit_reload()
