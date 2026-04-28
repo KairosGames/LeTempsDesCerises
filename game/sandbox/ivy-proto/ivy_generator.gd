@@ -1,0 +1,1 @@
+class_name IvyGenerator extends Node3D
