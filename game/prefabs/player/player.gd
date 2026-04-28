@@ -55,10 +55,10 @@ class_name Player extends CharacterBody3D
 @export var wp_pos_lag_away_speed: float = 5.0
 @export var wp_pos_lag_close_speed: float = 10.0
 @export var ads_wp_pos_lag_reducer: float = 0.15
-@export var max_wp_y_rot_lag_deg: float = 8.0
-@export var max_wp_x_rot_lag_deg: float = 0.5
+@export var max_wp_y_rot_lag_deg: float = 20.0
+@export var max_wp_x_rot_lag_deg: float = 0.2
 @export var wp_rot_lag_away_speed: float = 1.0
-@export var wp_rot_lag_close_speed: float = 20.0
+@export var wp_rot_lag_close_speed: float = 12.5
 
 @export_category("States settings")
 @export var state_switch_time: float = 0.2
