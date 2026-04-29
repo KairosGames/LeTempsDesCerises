@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dn6c77ee5a2ta"]
+
+[ext_resource type="Script" uid="uid://ckmnrf6xobwlx" path="res://sandbox/ivy-proto/ivy_renderer.gd" id="1_yi6c3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gw2ef"]
+transparency = 1
+vertex_color_use_as_albedo = true
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_fgrf2"]
+
+[node name="StrandRenderer" type="MeshInstance3D" unique_id=1111237628]
+material_override = SubResource("StandardMaterial3D_gw2ef")
+mesh = SubResource("ImmediateMesh_fgrf2")
+script = ExtResource("1_yi6c3")
+start_thickness = 0.03
+end_thickness = 0.001
+use_global_coords = false
+start_color = Color(0.56660324, 0.25176433, 0, 1)
+end_color = Color(0.56660324, 0.25176433, 0, 1)
+use_start_and_end_color = true
