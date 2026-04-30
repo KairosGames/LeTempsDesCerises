@@ -294,14 +294,17 @@ shadow_mesh = SubResource("ArrayMesh_hs58q")
 [node name="sk_chassepot" type="Node3D" unique_id=1025414177]
 
 [node name="sk_chassepot_body" type="MeshInstance3D" parent="." unique_id=588837796]
+layers = 2
 mesh = SubResource("ArrayMesh_3vkog")
 
 [node name="bagette" type="MeshInstance3D" parent="sk_chassepot_body" unique_id=437964636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.070533e-05, -0.0041818484, -0.78761023)
+layers = 2
 mesh = SubResource("ArrayMesh_bl741")
 
 [node name="barrel_body" type="MeshInstance3D" parent="sk_chassepot_body" unique_id=1009322438]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.070533e-05, 0.014507392, -0.74875873)
+layers = 2
 mesh = SubResource("ArrayMesh_c088x")
 
 [node name="ctrl_barrel" type="Node3D" parent="sk_chassepot_body/barrel_body" unique_id=125741250]
@@ -312,10 +315,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08250946)
 
 [node name="bolt_handle" type="MeshInstance3D" parent="sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle" unique_id=2121048013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0018727435, -0.0004973337)
+layers = 2
 mesh = SubResource("ArrayMesh_aptpu")
 
 [node name="safety_mechanism" type="MeshInstance3D" parent="sk_chassepot_body/barrel_body/ctrl_barrel" unique_id=321110234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0018727435, -0.08300679)
+layers = 2
 mesh = SubResource("ArrayMesh_in1eo")
 
 [node name="ctrl_rear_sight_body" type="Node3D" parent="sk_chassepot_body/barrel_body" unique_id=403407998]
@@ -326,14 +331,17 @@ transform = Transform3D(1, 0, 0, 0, 0.9999541, 0.00957878, 0, -0.00957878, 0.999
 
 [node name="rear_sight" type="MeshInstance3D" parent="sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight" unique_id=58885415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0005652909, -0.001987686)
+layers = 2
 mesh = SubResource("ArrayMesh_jhhqf")
 
 [node name="rear_sight_slider" type="MeshInstance3D" parent="sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight/rear_sight" unique_id=1209452833]
 transform = Transform3D(1, 0, 0, 0, 0.9999541, -0.00957878, 0, 0.00957878, 0.9999541, -8.070482e-05, -0.005100764, 0.053804595)
+layers = 2
 mesh = SubResource("ArrayMesh_ilgqj")
 
 [node name="rear_sight_body" type="MeshInstance3D" parent="sk_chassepot_body/barrel_body/ctrl_rear_sight_body" unique_id=41726384]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005924901, -0.000112473965)
+layers = 2
 mesh = SubResource("ArrayMesh_sjtv8")
 
 [node name="ctrl_weapon_trigger" type="Node3D" parent="sk_chassepot_body" unique_id=1342119738]
@@ -341,4 +349,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0010481124, -0.0365107, 0.
 
 [node name="weapon_trigger" type="MeshInstance3D" parent="sk_chassepot_body/ctrl_weapon_trigger" unique_id=1747753677]
 transform = Transform3D(0.008978161, 0, 0, 0, 0.0043150038, 0, 0, 0, 0.0043150038, 0.0010481124, 0.002362892, -0.031004429)
+layers = 2
 mesh = SubResource("ArrayMesh_t4q2f")

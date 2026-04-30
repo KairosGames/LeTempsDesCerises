@@ -151,7 +151,27 @@ unique_name_in_owner = true
 [node name="PlayerCamera" type="Camera3D" parent="CameraPivot/WeaponCameraBase" unique_id=619415518]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+cull_mask = 1048573
 near = 0.01
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPivot/WeaponCameraBase/PlayerCamera" unique_id=741617742]
+remote_path = NodePath("../WeaponSubViewContainer/WeaponSubViewport/WeaponCamera")
+
+[node name="WeaponSubViewContainer" type="SubViewportContainer" parent="CameraPivot/WeaponCameraBase/PlayerCamera" unique_id=1472858896]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponSubViewport" type="SubViewport" parent="CameraPivot/WeaponCameraBase/PlayerCamera/WeaponSubViewContainer" unique_id=1630650414]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+
+[node name="WeaponCamera" type="Camera3D" parent="CameraPivot/WeaponCameraBase/PlayerCamera/WeaponSubViewContainer/WeaponSubViewport" unique_id=1260547542]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.6, 0)
+cull_mask = 2
+near = 0.001
 
 [node name="RightWeaponPos" type="Marker3D" parent="CameraPivot/WeaponCameraBase" unique_id=675375272]
 unique_name_in_owner = true
