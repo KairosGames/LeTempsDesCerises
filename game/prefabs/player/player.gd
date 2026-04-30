@@ -35,7 +35,7 @@ class_name Player extends CharacterBody3D
 @export var ads_fov: float = 65.0
 @export var perfect_fov: float = 59.0
 @export var time_to_ads: float = 0.4
-@export var is_ads_rot_active: bool = false
+@export var is_ads_rot_active: bool = true
 @export var ads_z_rot: float = 1.0
 
 @export_category("Sway settings")
@@ -54,11 +54,16 @@ class_name Player extends CharacterBody3D
 @export var max_wp_y_pos_lag: float = 0.005
 @export var wp_pos_lag_away_speed: float = 5.0
 @export var wp_pos_lag_close_speed: float = 10.0
-@export var ads_wp_pos_lag_reducer: float = 0.15
-@export var max_wp_y_rot_lag_deg: float = 20.0
+@export var ads_wp_pos_lag_reducer: float = 0.30#0.15
+@export var max_wp_y_rot_lag_deg: float = 15.0#20.0
 @export var max_wp_x_rot_lag_deg: float = 0.2
 @export var wp_rot_lag_away_speed: float = 1.0
 @export var wp_rot_lag_close_speed: float = 12.5
+
+@export_category("Recoil settings")
+@export var recoil_strength: float = 5.0
+@export var recoil_time: float = 0.1
+@export var time_to_return_from_recoil: float = 1.0
 
 @export_category("States settings")
 @export var state_switch_time: float = 0.2
@@ -105,6 +110,7 @@ var concentration_sample: float
 
 var applied_pos_lag_speed: float
 var applied_rot_lag_speed: float
+var recoil_offset: float = 0.0
 
 var aim_vel: Vector3 = Vector3.ZERO
 var aim_target: Vector3 = Vector3.ZERO
@@ -117,6 +123,7 @@ var wpn_z_aim_twn: Tween
 var fov_aim_twn: Tween
 var cam_rot_aim_twn: Tween
 var state_twn: Tween
+var recoil_twn:Tween
 
 const JUMP_VELOCITY = 4.5
 
@@ -137,6 +144,7 @@ func _process(delta: float) -> void:
 	capture_states()
 	process_movement(delta)
 	process_view(delta)
+	handle_camera_effects(delta)
 	handle_weapon_movement(delta)
 	handle_shoot()
 	handle_reload()
@@ -417,6 +425,14 @@ func smooth_damp(current: float, target: float, current_velocity: float, smooth_
 	return { "value": output, "velocity": new_velocity }
 
 
+func handle_camera_effects(delta: float) -> void:
+	handle_shoot_recoil(delta)
+
+
+func handle_shoot_recoil(delta: float) -> void:
+	wpn_cam_base.rotation_degrees.x = -recoil_offset
+
+
 func handle_weapon_movement(delta: float) -> void:
 	if not has_weapon: return
 	handle_weapon_sway(delta)
@@ -439,7 +455,7 @@ func set_ads_sway_len_by_state() -> void:
 
 
 func set_ads_sway_freq(delta: float) -> void:
-	ads_timer += delta
+	ads_timer += 0#delta###########################################################################################FIXME
 	if not is_aiming: ads_timer = 0.0
 	concentration_sample = ads_concentration_curve.sample(ads_timer)
 	sway_timer += delta * concentration_sample
@@ -463,18 +479,21 @@ func apply_ads_sway() -> void:
 
 
 func handle_weapon_lag(delta: float) -> void:
-	set_weapon_lag_parameters()
+	set_weapon_lag_parameters(delta)
 	apply_weapon_pos_lag(delta)
 	if is_aiming: apply_weapon_rot_lag(delta)
 
 
-func set_weapon_lag_parameters() -> void:
+func set_weapon_lag_parameters(delta: float) -> void:
 	var root_pos_dist: float = (weapon_container.global_position - weapon_lag_root.global_position).length()
 	var targ_pos_dist: float = (weapon_container.global_position - lag_target.global_position).length()
-	applied_pos_lag_speed = wp_pos_lag_close_speed if (root_pos_dist > targ_pos_dist) else wp_pos_lag_away_speed
+	var targ_pos_speed: float = wp_pos_lag_close_speed if (root_pos_dist > targ_pos_dist) else wp_pos_lag_away_speed
+	applied_pos_lag_speed = lerp(applied_pos_lag_speed, targ_pos_speed, dt_lerp_t(10.0, delta))
+	
 	var root_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, weapon_lag_root.global_rotation.y))
 	var targ_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, lag_target.global_rotation.y))
-	applied_rot_lag_speed = wp_rot_lag_close_speed if (root_rot_dist > targ_rot_dist) else wp_rot_lag_away_speed
+	var targ_rot_speed: float = wp_rot_lag_close_speed if (root_rot_dist > targ_rot_dist) else wp_rot_lag_away_speed
+	applied_rot_lag_speed = lerp(applied_rot_lag_speed, targ_rot_speed, dt_lerp_t(10.0, delta))
 
 
 func apply_weapon_pos_lag(delta: float) -> void:
@@ -529,6 +548,7 @@ func handle_shoot() -> void:
 	if not can_use_shoot() : return
 	if Input.is_action_just_pressed("shoot"):
 		is_weapon_loaded = false
+		play_shoot_effects()
 		handle_shoot_cast()
 
 
@@ -538,6 +558,18 @@ func can_use_shoot() -> bool:
 	if not is_weapon_loaded: return false
 	if not can_shoot: return false
 	return true
+
+
+func play_shoot_effects() -> void:
+	play_recoil_effect()
+
+
+func play_recoil_effect() -> void:
+	recoil_twn = create_tween()
+	recoil_twn.tween_property(self, "recoil_offset", recoil_strength, recoil_time
+					).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EaseType.EASE_OUT)
+	recoil_twn.tween_property(self, "recoil_offset", 0.0, time_to_return_from_recoil
+					).set_trans(Tween.TRANS_SINE).set_ease(Tween.EaseType.EASE_OUT)
 
 
 func handle_shoot_cast() -> void:
