@@ -27,7 +27,7 @@ class_name Player extends CharacterBody3D
 @export var is_right_handed: bool = true
 
 @export_category("View settings")
-@export var v_clamp_deg: Vector2 = Vector2(-70.0, 70.0)
+@export var v_clamp_deg: Vector2 = Vector2(-70.0, 85.0)
 @export var v_clamp_prone: Vector2 = Vector2(-45.0, 45.0)
 @export_range(0.01, 1.0, 0.01) var ads_speed_view_reduc: float = 0.4
 @export_range(0.1, 1.0, 0.01) var prone_speed_view_reduc: float = 0.3
@@ -52,15 +52,15 @@ class_name Player extends CharacterBody3D
 @export var ads_concentration_curve: Curve
 
 @export_category("Weapon lag settings")
-@export var max_wp_xz_pos_lag: float = 0.015
-@export var max_wp_y_pos_lag: float = 0.005
-@export var wp_pos_lag_away_speed: float = 5.0
-@export var wp_pos_lag_close_speed: float = 10.0
-@export var ads_wp_pos_lag_reducer: float = 0.30
-@export var max_wp_y_rot_lag_deg: float = 15.0
-@export var max_wp_x_rot_lag_deg: float = 0.2
-@export var wp_rot_lag_away_speed: float = 1.0
-@export var wp_rot_lag_close_speed: float = 12.5
+@export var max_wpn_xz_pos_lag: float = 0.015
+@export var max_wpn_y_pos_lag: float = 0.005
+@export var wpn_pos_lag_away_speed: float = 5.0
+@export var wpn_pos_lag_close_speed: float = 10.0
+@export var ads_wpn_pos_lag_reducer: float = 0.30
+@export var max_wpn_y_rot_lag_deg: float = 15.0
+@export var max_wpn_x_rot_lag_deg: float = 0.2
+@export var wpn_rot_lag_away_speed: float = 1.0
+@export var wpn_rot_lag_close_speed: float = 12.5
 
 @export_category("Recoil settings")
 @export var recoil_strength: float = 7.0
@@ -94,6 +94,9 @@ class_name Player extends CharacterBody3D
 @export_range(0.01, 0.5, 0.01) var brake_time: float = 0.1
 @export_range(0.01, 1.0, 0.001) var aim_smooth_strength: float = 0.05
 
+enum Posture {STAND, CROUCH, PRONE}
+var curr_posture: Posture = Posture.STAND
+
 var is_aim_locked: bool
 var is_run_locked: bool
 var was_it_just_prone_gpad: bool
@@ -102,8 +105,6 @@ var is_grounded: bool = true
 var stop_run: bool = false
 var is_aiming: bool = false
 var is_running: bool = false
-var is_crouched:bool = false
-var is_prone: bool = false
 var is_changing_state: bool = false
 
 var can_shoot: bool = true
@@ -272,9 +273,9 @@ func handle_hold_run() -> void:
 
 func go_for_run() -> void:
 	if is_changing_state: return
-	if is_crouched: crouch_to_up(false, true)
-	elif is_prone: prone_to_up(false, true)
-	else: is_running = !is_running if is_run_locked else true
+	if curr_posture == Posture.STAND: is_running = !is_running if is_run_locked else true
+	elif curr_posture == Posture.CROUCH: crouch_to_stand(false, true)
+	elif curr_posture == Posture.PRONE: prone_to_up(false, true)
 
 
 func capture_position_state() -> void:
@@ -282,25 +283,25 @@ func capture_position_state() -> void:
 	
 	if Input.is_action_just_pressed("crouch"):
 		if p_inputs.is_gamepad: return
-		if is_crouched: crouch_to_up()
-		elif is_prone: prone_to_crouch()
-		else: crouch_to_up(true)
+		if curr_posture == Posture.STAND: crouch_to_stand(true)
+		elif curr_posture == Posture.CROUCH: crouch_to_stand()
+		elif curr_posture == Posture.PRONE: prone_to_crouch()
 	
 	if Input.is_action_just_pressed("prone"):
 		if p_inputs.is_gamepad: return
-		if is_crouched: prone_to_crouch(true)
-		elif is_prone: prone_to_up()
-		else: prone_to_up(true)
+		if curr_posture == Posture.STAND: prone_to_up(true)
+		elif curr_posture == Posture.CROUCH: prone_to_crouch(true)
+		elif curr_posture == Posture.PRONE: prone_to_up()
 	
 	if Input.is_action_just_pressed("jump"):
-		if is_crouched: crouch_to_up()
-		elif is_prone: prone_to_up()
-		else: if can_jump(): jump()
+		if curr_posture == Posture.STAND and can_jump(): jump()
+		elif curr_posture == Posture.CROUCH: crouch_to_stand()
+		elif curr_posture == Posture.PRONE: prone_to_up()
 
 
-func crouch_to_up(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
+func crouch_to_stand(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
 	is_changing_state = true
-	is_crouched = inverse
+	curr_posture = Posture.CROUCH if inverse else Posture.STAND
 	if inverse: is_running = false
 	if ask_run: is_running = true
 	var target: float = crouch_height if inverse else standing_height
@@ -312,8 +313,7 @@ func crouch_to_up(inverse: bool = false, ask_run: bool = false, time: float = st
 
 func prone_to_crouch(inverse: bool = false, time: float = state_switch_time) -> void:
 	is_changing_state = true
-	is_crouched = not inverse
-	is_prone = inverse
+	curr_posture = Posture.PRONE if inverse else Posture.CROUCH
 	var target: float = prone_height if inverse else crouch_height
 	state_twn = create_tween()
 	state_twn.tween_property(camera_pivot, "position:y", target, time)
@@ -323,15 +323,14 @@ func prone_to_crouch(inverse: bool = false, time: float = state_switch_time) -> 
 
 func prone_to_up(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
 	is_changing_state = true
-	is_crouched = true
+	curr_posture = Posture.CROUCH
 	if inverse: is_running = false
 	var target: float = prone_height if inverse else standing_height
 	state_twn = create_tween()
 	state_twn.tween_property(camera_pivot, "position:y", crouch_height, time)
 	await state_twn.finished
 	await get_tree().create_timer(0.1).timeout
-	is_prone = inverse
-	is_crouched = false
+	curr_posture = Posture.PRONE if inverse else Posture.STAND
 	if ask_run: is_running = true
 	state_twn = create_tween()
 	state_twn.tween_property(camera_pivot, "position:y", target, state_switch_time)
@@ -340,26 +339,27 @@ func prone_to_up(inverse: bool = false, ask_run: bool = false, time: float = sta
 
 
 func crouch_pressed_from_gpad() -> void:
-	if not is_grounded or is_changing_state or is_crouched:
+	if not is_grounded or is_changing_state or curr_posture == Posture.CROUCH:
 		return
-	if is_prone:
+	if curr_posture == Posture.PRONE:
 		prone_to_crouch()
 		was_it_just_prone_gpad = true
 		await get_tree().create_timer(p_inputs.gpad_hold_time_to_prone + 0.01).timeout
 		was_it_just_prone_gpad = false
-	else: crouch_to_up(true)
+		return
+	crouch_to_stand(true)
 
 
 func crouch_released_from_gpad() -> void:
 	if not is_grounded or is_changing_state: return
-	if is_crouched: crouch_to_up()
+	if curr_posture == Posture.CROUCH: crouch_to_stand()
 
 
 func prone_from_gpad() -> void:
-	if not is_grounded or is_changing_state or not is_crouched:
+	if not is_grounded or is_changing_state or not curr_posture == Posture.CROUCH:
 		return
 	if was_it_just_prone_gpad:
-		crouch_to_up()
+		crouch_to_stand()
 		return
 	prone_to_crouch(true)
 
@@ -429,9 +429,9 @@ func apply_plane_movement(delta: float) -> void:
 func get_used_speed() -> float:
 	if not is_grounded:
 		return air_up_speed
-	elif is_crouched:
+	elif curr_posture == Posture.CROUCH:
 		return crouch_speed
-	elif is_prone:
+	elif curr_posture == Posture.PRONE:
 		return prone_speed
 	else:
 		return standing_speed
@@ -440,10 +440,10 @@ func get_used_speed() -> float:
 func process_view(delta: float) -> void:
 	if not p_inputs.is_mouse_locked(): return
 	var inversion: float = -1 if p_inputs.is_inverted else 1
-	var reducer: float = (ads_speed_view_reduc if is_aiming else 1.0) * (prone_speed_view_reduc if is_prone else 1.0)
+	var reducer: float = (ads_speed_view_reduc if is_aiming else 1.0) * (prone_speed_view_reduc if curr_posture == Posture.PRONE else 1.0)
 	aim_target.y -= p_inputs.get_view_input().x * p_inputs.h_sensi_multiplier * reducer
 	aim_target.x += p_inputs.get_view_input().y * p_inputs.v_sensi_multiplier * inversion * reducer
-	var clamp_applied: Vector2 = v_clamp_prone if is_prone else v_clamp_deg
+	var clamp_applied: Vector2 = v_clamp_prone if curr_posture == Posture.PRONE else v_clamp_deg
 	aim_target.x = clampf(aim_target.x, clamp_applied.x, clamp_applied.y)
 	
 	if is_aim_smooth:
@@ -496,7 +496,7 @@ func handle_weapon_sway(delta: float) -> void:
 
 
 func set_ads_sway_len_by_state() -> void:
-	var reducer: float = prone_sway_reduc if is_prone else (crouch_sway_reduc if is_crouched else 1.0)
+	var reducer: float = prone_sway_reduc if curr_posture == Posture.PRONE else (crouch_sway_reduc if curr_posture == Posture.CROUCH else 1.0)
 	var sway_target: Vector2 = Vector2(sway_pitch_len, sway_yaw_len) * reducer
 	var noise_target: float = sway_noise_len * reducer
 	curr_sway_len.x = move_toward(curr_sway_len.x, sway_target.x, 0.005)
@@ -537,12 +537,12 @@ func handle_weapon_lag(delta: float) -> void:
 func set_weapon_lag_parameters(delta: float) -> void:
 	var root_pos_dist: float = (weapon_container.global_position - weapon_lag_root.global_position).length()
 	var targ_pos_dist: float = (weapon_container.global_position - lag_target.global_position).length()
-	var targ_pos_speed: float = wp_pos_lag_close_speed if (root_pos_dist > targ_pos_dist) else wp_pos_lag_away_speed
+	var targ_pos_speed: float = wpn_pos_lag_close_speed if (root_pos_dist > targ_pos_dist) else wpn_pos_lag_away_speed
 	applied_pos_lag_speed = lerp(applied_pos_lag_speed, targ_pos_speed, dt_lerp_t(10.0, delta))
 	
 	var root_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, weapon_lag_root.global_rotation.y))
 	var targ_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, lag_target.global_rotation.y))
-	var targ_rot_speed: float = wp_rot_lag_close_speed if (root_rot_dist > targ_rot_dist) else wp_rot_lag_away_speed
+	var targ_rot_speed: float = wpn_rot_lag_close_speed if (root_rot_dist > targ_rot_dist) else wpn_rot_lag_away_speed
 	applied_rot_lag_speed = lerp(applied_rot_lag_speed, targ_rot_speed, dt_lerp_t(10.0, delta))
 
 
@@ -551,8 +551,8 @@ func apply_weapon_pos_lag(delta: float) -> void:
 	var dist: Vector3 = lag_target.global_position - f_targ
 	var dist_xz: Vector3 = Vector3(dist.x, 0.0, dist.z)
 	var dist_y: Vector3 = Vector3(0.0, dist.y, 0.0)
-	var max_xz = max_wp_xz_pos_lag * concentration_sample * (ads_wp_pos_lag_reducer if is_aiming else 1.0)
-	var max_y = max_wp_y_pos_lag * concentration_sample
+	var max_xz = max_wpn_xz_pos_lag * concentration_sample * (ads_wpn_pos_lag_reducer if is_aiming else 1.0)
+	var max_y = max_wpn_y_pos_lag * concentration_sample
 	
 	if dist_xz.length() >= max_xz:
 		var dir_xz: Vector3 = dist_xz.normalized()
@@ -564,7 +564,7 @@ func apply_weapon_pos_lag(delta: float) -> void:
 		var new_y: Vector3 = f_targ + (dir_y * max_y)
 		lag_target.global_position.y = new_y.y
 	
-	lag_target.global_position = lag_target.global_position.lerp(f_targ, dt_lerp_t(wp_pos_lag_close_speed, delta))
+	lag_target.global_position = lag_target.global_position.lerp(f_targ, dt_lerp_t(wpn_pos_lag_close_speed, delta))
 	var s_targ: Vector3 = weapon_container.to_local(lag_target.global_position)
 	weapon_lag_root.position = weapon_lag_root.position.lerp(s_targ, dt_lerp_t(applied_pos_lag_speed, delta))
 
@@ -573,8 +573,8 @@ func apply_weapon_rot_lag(delta: float) -> void:
 	var f_targ: Vector3 = weapon_container.global_rotation
 	var y_diff: float = angle_difference(f_targ.y, lag_target.global_rotation.y)
 	var x_diff: float = angle_difference(f_targ.x, lag_target.global_rotation.x)
-	var max_y: float = max_wp_y_rot_lag_deg * concentration_sample
-	var max_x: float = max_wp_x_rot_lag_deg * concentration_sample
+	var max_y: float = max_wpn_y_rot_lag_deg * concentration_sample
+	var max_x: float = max_wpn_x_rot_lag_deg * concentration_sample
 	
 	if abs(y_diff) >= deg_to_rad(max_y):
 		lag_target.global_rotation.y = f_targ.y + (deg_to_rad(max_y) * sign(y_diff))
@@ -582,7 +582,7 @@ func apply_weapon_rot_lag(delta: float) -> void:
 	if abs(x_diff) >= deg_to_rad(max_x):
 		lag_target.global_rotation.x = f_targ.x + (deg_to_rad(max_x) * sign(x_diff))
 	
-	lag_target.global_rotation = lerp_rot(lag_target.global_rotation,f_targ, dt_lerp_t(wp_rot_lag_close_speed, delta))
+	lag_target.global_rotation = lerp_rot(lag_target.global_rotation,f_targ, dt_lerp_t(wpn_rot_lag_close_speed, delta))
 	var parent_q: Quaternion = weapon_container.global_basis.get_rotation_quaternion()
 	var target_q: Quaternion = lag_target.global_basis.get_rotation_quaternion()
 	var local_q: Quaternion = parent_q.inverse() * target_q
@@ -651,7 +651,7 @@ func capture_begin_reload() -> void:
 
 
 func can_reload() -> bool:
-	if not p_inputs.is_mouse_locked() : return false
+	if not p_inputs.is_mouse_locked(): return false
 	if not has_weapon: return false
 	if is_reloading: return false
 	if is_weapon_loaded: return false

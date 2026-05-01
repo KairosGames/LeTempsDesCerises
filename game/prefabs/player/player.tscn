@@ -5,11 +5,8 @@
 [ext_resource type="Curve" uid="uid://cdc2ooeq8og5q" path="res://prefabs/player/concentration_curve.tres" id="2_iylwk"]
 [ext_resource type="Texture2D" uid="uid://llhmhoeoh4hx" path="res://sandbox/textures_proto/aim.svg" id="2_r66lb"]
 [ext_resource type="Script" uid="uid://c7sm17jepuynp" path="res://prefabs/player/reload_ui.gd" id="3_klv5p"]
+[ext_resource type="Curve" uid="uid://chdf25t3wnct4" path="res://prefabs/player/gpad_aiming_speed_curve.tres" id="4_ev8v4"]
 [ext_resource type="PackedScene" uid="uid://b56vcde62m1gw" path="res://sandbox/chassepot_proto/sk_chassepot.tscn" id="4_klv5p"]
-
-[sub_resource type="Curve" id="Curve_r66lb"]
-_data = [Vector2(0, 0.12810194), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.450614, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fp3wc"]
 height = 1.8
@@ -17,15 +14,12 @@ height = 1.8
 [node name="Player" type="CharacterBody3D" unique_id=1368497348]
 floor_max_angle = 0.5235988
 script = ExtResource("1_4dohe")
-v_clamp_deg = Vector2(-80, 80)
 ads_concentration_curve = ExtResource("2_iylwk")
 
 [node name="PlayerInputs" type="Node" parent="." unique_id=1232327639]
 unique_name_in_owner = true
 script = ExtResource("1_72ieh")
-gpad_speed_aiming_curve = SubResource("Curve_r66lb")
-gpad_aim_time_before_acc = 0.15
-gpad_aim_acc_speed_time = 0.15
+gpad_speed_aiming_curve = ExtResource("4_ev8v4")
 
 [node name="ReloadUI" type="Control" parent="." unique_id=604342347 node_paths=PackedStringArray("all_pos", "pos_to_rect")]
 unique_name_in_owner = true
