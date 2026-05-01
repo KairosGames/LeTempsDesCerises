@@ -15,8 +15,10 @@ class_name Player extends CharacterBody3D
 @onready var weapon_ray_cast: RayCast3D = %WeaponRayCast
 
 @export_category("Exposed settings")
-@export var is_aim_locked: bool = true
-@export var is_run_locked: bool = false
+@export var is_aim_locked_km: bool = true
+@export var is_run_locked_km: bool = false
+@export var is_aim_locked_gpad: bool = false
+@export var is_run_locked_gpad: bool = true
 @export var is_position_switcher_locked: bool = true
 @export var is_aim_smooth: bool = true
 @export var is_movement_smooth: bool = true
@@ -82,10 +84,19 @@ class_name Player extends CharacterBody3D
 @export_range(0.0, 1.0, 0.01) var back_speed_ratio: float = 0.6
 @export_range(0.0, 1.0, 0.01) var aiming_speed_ratio: float = 0.3
 
+@export_category("Air settings")
+@export var is_jump_possible: bool = true
+@export var jump_strength = 4.5
+@export var gravity_multiplier = 2.0
+
 @export_category("Smoothness settings")
 @export_range(0.01, 0.5, 0.01) var acc_time: float = 0.1
 @export_range(0.01, 0.5, 0.01) var brake_time: float = 0.1
 @export_range(0.01, 1.0, 0.001) var aim_smooth_strength: float = 0.05
+
+var is_aim_locked: bool
+var is_run_locked: bool
+var was_it_just_prone_gpad: bool
 
 var is_grounded: bool = true
 var stop_run: bool = false
@@ -125,10 +136,11 @@ var cam_rot_aim_twn: Tween
 var state_twn: Tween
 var recoil_twn:Tween
 
-const JUMP_VELOCITY = 4.5
-
 
 func _ready() -> void:
+	p_inputs.gpad_crouch_pressed.connect(crouch_pressed_from_gpad)
+	p_inputs.gpad_crouch_released.connect(crouch_released_from_gpad)
+	p_inputs.gpad_ask_prone.connect(prone_from_gpad)
 	weapon_sway_root.visible = has_weapon
 	weapon_container.position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
 	aim_target = Vector3(camera_pivot.rotation_degrees.x, rotation_degrees.y, 0.0)
@@ -141,6 +153,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	set_input_context()
 	capture_states()
 	process_movement(delta)
 	process_view(delta)
@@ -148,6 +161,15 @@ func _process(delta: float) -> void:
 	handle_weapon_movement(delta)
 	handle_shoot()
 	handle_reload()
+
+
+func set_input_context() -> void:
+	if p_inputs.is_gamepad:
+		is_aim_locked = is_aim_locked_gpad
+		is_run_locked = is_run_locked_gpad
+		return
+	is_aim_locked = is_aim_locked_km
+	is_run_locked = is_run_locked_km
 
 
 func capture_states() -> void:
@@ -200,8 +222,8 @@ func switch_aim_state() -> void:
 	var target_pos: Vector3 = aim_pos.position if is_aiming else default_pos
 	var target_fov: float = ads_fov if is_aiming else default_fov
 	var taget_rot: float = (ads_z_rot if is_right_handed else ads_z_rot * -1.0) if is_aiming else 0.0
-	var ratio = inverse_lerp(default_pos.x, aim_pos.position.x, weapon_container.position.x)
-	var time = time_to_ads * ((1 - ratio) if is_aiming else ratio)
+	var ratio: float = inverse_lerp(default_pos.x, aim_pos.position.x, weapon_container.position.x)
+	var time: float = time_to_ads * ((1 - ratio) if is_aiming else ratio)
 	var in_first: Tween.EaseType = Tween.EASE_IN if is_aiming else Tween.EASE_OUT
 	var out_first: Tween.EaseType = Tween.EASE_OUT if is_aiming else Tween.EASE_IN
 	if wpn_x_aim_twn:
@@ -256,19 +278,16 @@ func go_for_run() -> void:
 
 
 func capture_position_state() -> void:
-	if not is_grounded: return
-	
-	if Input.is_action_just_pressed("reload"):
-		pass
-	
-	if is_changing_state: return
+	if not is_grounded or is_changing_state: return
 	
 	if Input.is_action_just_pressed("crouch"):
+		if p_inputs.is_gamepad: return
 		if is_crouched: crouch_to_up()
 		elif is_prone: prone_to_crouch()
 		else: crouch_to_up(true)
 	
 	if Input.is_action_just_pressed("prone"):
+		if p_inputs.is_gamepad: return
 		if is_crouched: prone_to_crouch(true)
 		elif is_prone: prone_to_up()
 		else: prone_to_up(true)
@@ -276,39 +295,39 @@ func capture_position_state() -> void:
 	if Input.is_action_just_pressed("jump"):
 		if is_crouched: crouch_to_up()
 		elif is_prone: prone_to_up()
-		else: if not is_reloading: jump()
+		else: if can_jump(): jump()
 
 
-func crouch_to_up(inverse: bool = false, ask_run: bool = false) -> void:
+func crouch_to_up(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
 	is_changing_state = true
 	is_crouched = inverse
 	if inverse: is_running = false
 	if ask_run: is_running = true
 	var target: float = crouch_height if inverse else standing_height
 	state_twn = create_tween()
-	state_twn.tween_property(camera_pivot, "position:y", target, state_switch_time)
+	state_twn.tween_property(camera_pivot, "position:y", target, time)
 	await state_twn.finished
 	is_changing_state = false
 
 
-func prone_to_crouch(inverse: bool = false) -> void:
+func prone_to_crouch(inverse: bool = false, time: float = state_switch_time) -> void:
 	is_changing_state = true
 	is_crouched = not inverse
 	is_prone = inverse
 	var target: float = prone_height if inverse else crouch_height
 	state_twn = create_tween()
-	state_twn.tween_property(camera_pivot, "position:y", target, state_switch_time)
+	state_twn.tween_property(camera_pivot, "position:y", target, time)
 	await state_twn.finished
 	is_changing_state = false
 
 
-func prone_to_up(inverse: bool = false, ask_run: bool = false) -> void:
+func prone_to_up(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
 	is_changing_state = true
 	is_crouched = true
 	if inverse: is_running = false
 	var target: float = prone_height if inverse else standing_height
 	state_twn = create_tween()
-	state_twn.tween_property(camera_pivot, "position:y", crouch_height, state_switch_time)
+	state_twn.tween_property(camera_pivot, "position:y", crouch_height, time)
 	await state_twn.finished
 	await get_tree().create_timer(0.1).timeout
 	is_prone = inverse
@@ -320,14 +339,45 @@ func prone_to_up(inverse: bool = false, ask_run: bool = false) -> void:
 	is_changing_state = false
 
 
+func crouch_pressed_from_gpad() -> void:
+	if not is_grounded or is_changing_state or is_crouched:
+		return
+	if is_prone:
+		prone_to_crouch()
+		was_it_just_prone_gpad = true
+		await get_tree().create_timer(p_inputs.gpad_hold_time_to_prone + 0.01).timeout
+		was_it_just_prone_gpad = false
+	else: crouch_to_up(true)
+
+
+func crouch_released_from_gpad() -> void:
+	if not is_grounded or is_changing_state: return
+	if is_crouched: crouch_to_up()
+
+
+func prone_from_gpad() -> void:
+	if not is_grounded or is_changing_state or not is_crouched:
+		return
+	if was_it_just_prone_gpad:
+		crouch_to_up()
+		return
+	prone_to_crouch(true)
+
+
 func jump() -> void:
-	velocity.y = JUMP_VELOCITY
+	velocity.y = jump_strength
+
+
+func can_jump() -> bool:
+	if is_reloading: return false
+	if not is_jump_possible: return false
+	return true
 
 
 func process_movement(delta: float) -> void:
 	apply_plane_movement(delta)
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * gravity_multiplier * delta
 	move_and_slide()
 
 
