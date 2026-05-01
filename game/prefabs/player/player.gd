@@ -54,14 +54,14 @@ class_name Player extends CharacterBody3D
 @export var max_wp_y_pos_lag: float = 0.005
 @export var wp_pos_lag_away_speed: float = 5.0
 @export var wp_pos_lag_close_speed: float = 10.0
-@export var ads_wp_pos_lag_reducer: float = 0.30#0.15
-@export var max_wp_y_rot_lag_deg: float = 15.0#20.0
+@export var ads_wp_pos_lag_reducer: float = 0.30
+@export var max_wp_y_rot_lag_deg: float = 15.0
 @export var max_wp_x_rot_lag_deg: float = 0.2
 @export var wp_rot_lag_away_speed: float = 1.0
 @export var wp_rot_lag_close_speed: float = 12.5
 
 @export_category("Recoil settings")
-@export var recoil_strength: float = 5.0
+@export var recoil_strength: float = 7.0
 @export var recoil_time: float = 0.1
 @export var time_to_return_from_recoil: float = 1.0
 
@@ -144,7 +144,7 @@ func _process(delta: float) -> void:
 	capture_states()
 	process_movement(delta)
 	process_view(delta)
-	handle_camera_effects(delta)
+	handle_camera_effects()
 	handle_weapon_movement(delta)
 	handle_shoot()
 	handle_reload()
@@ -425,11 +425,11 @@ func smooth_damp(current: float, target: float, current_velocity: float, smooth_
 	return { "value": output, "velocity": new_velocity }
 
 
-func handle_camera_effects(delta: float) -> void:
-	handle_shoot_recoil(delta)
+func handle_camera_effects() -> void:
+	handle_shoot_recoil()
 
 
-func handle_shoot_recoil(delta: float) -> void:
+func handle_shoot_recoil() -> void:
 	wpn_cam_base.rotation_degrees.x = -recoil_offset
 
 
@@ -455,7 +455,7 @@ func set_ads_sway_len_by_state() -> void:
 
 
 func set_ads_sway_freq(delta: float) -> void:
-	ads_timer += 0#delta###########################################################################################FIXME
+	ads_timer += delta
 	if not is_aiming: ads_timer = 0.0
 	concentration_sample = ads_concentration_curve.sample(ads_timer)
 	sway_timer += delta * concentration_sample
