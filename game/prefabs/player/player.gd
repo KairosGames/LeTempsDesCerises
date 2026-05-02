@@ -35,10 +35,14 @@ class_name Player extends CharacterBody3D
 @export_range(0.01, 1.0, 0.01) var ads_speed_view_reduc: float = 0.4
 @export_range(0.1, 1.0, 0.01) var prone_speed_view_reduc: float = 0.3
 
-@export_category("ADS settings")
+@export_category("FOV settings")
 @export var default_fov: float = 75.0
 @export var ads_fov: float = 65.0
 @export var perfect_fov: float = 55.0
+@export var run_fov: float = 78.0
+@export var is_run_fov_active: bool = true
+
+@export_category("ADS settings")
 @export var time_to_ads: float = 0.4
 @export var is_ads_rot_active: bool = true
 @export var ads_z_rot: float = 1.0
@@ -176,7 +180,6 @@ func _process(delta: float) -> void:
 	capture_states()
 	capture_jump()
 	process_movement(delta)
-	handle_camera_effects()
 	handle_weapon_movement(delta)
 	handle_shoot()
 	handle_reload()
@@ -185,7 +188,7 @@ func _process(delta: float) -> void:
 
 func late_process(delta: float) -> void:
 	process_view(delta)
-	weapon_camera.fov = player_camera.fov
+	handle_camera_effects(delta)
 
 
 func set_context() -> void:
@@ -523,12 +526,20 @@ func smooth_damp(current: float, target: float, current_velocity: float, smooth_
 	return { "value": output, "velocity": new_velocity }
 
 
-func handle_camera_effects() -> void:
+func handle_camera_effects(delta: float) -> void:
 	handle_shoot_recoil()
+	handle_fov_changes(delta)
 
 
 func handle_shoot_recoil() -> void:
 	wpn_cam_base.rotation_degrees.x = -recoil_offset
+
+
+func handle_fov_changes(delta: float) -> void:
+	var fov_diff: float = run_fov - default_fov
+	if is_running and is_run_fov_active: player_camera.fov = move_toward(player_camera.fov, run_fov, fov_diff * delta * 5.0)
+	elif not is_aiming: player_camera.fov = move_toward(player_camera.fov, default_fov, fov_diff * delta * 5.0)
+	weapon_camera.fov = player_camera.fov
 
 
 func handle_weapon_movement(delta: float) -> void:
