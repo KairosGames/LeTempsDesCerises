@@ -5,6 +5,7 @@ class_name Player extends CharacterBody3D
 @onready var camera_pivot: Node3D = %CameraPivot
 @onready var wpn_cam_base: Node3D = %WeaponCameraBase
 @onready var player_camera: Camera3D = %PlayerCamera
+@onready var weapon_camera: Camera3D = %WeaponCamera
 @onready var weapon_container: Node3D = %WeaponContainer
 @onready var right_weapon_pos: Marker3D = %RightWeaponPos
 @onready var left_weapon_pos: Marker3D = %LeftWeaponPos
@@ -170,11 +171,16 @@ func _process(delta: float) -> void:
 	capture_states()
 	capture_jump()
 	process_movement(delta)
-	process_view(delta)
 	handle_camera_effects()
 	handle_weapon_movement(delta)
 	handle_shoot()
 	handle_reload()
+	late_process(delta)
+
+
+func late_process(delta: float) -> void:
+	process_view(delta)
+	weapon_camera.fov = player_camera.fov
 
 
 func set_input_context() -> void:
