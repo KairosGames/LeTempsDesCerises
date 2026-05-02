@@ -37,7 +37,7 @@ class_name Player extends CharacterBody3D
 @export_category("ADS settings")
 @export var default_fov: float = 75.0
 @export var ads_fov: float = 65.0
-@export var perfect_fov: float = 59.0
+@export var perfect_fov: float = 55.0
 @export var time_to_ads: float = 0.4
 @export var is_ads_rot_active: bool = true
 @export var ads_z_rot: float = 1.0
@@ -647,6 +647,7 @@ func can_use_shoot() -> bool:
 
 
 func play_shoot_effects() -> void:
+	if is_aiming: ads_timer += 10.0
 	play_recoil_effect()
 
 
