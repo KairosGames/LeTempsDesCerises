@@ -142,6 +142,7 @@ var recoil_offset: float = 0.0
 
 var aim_vel: Vector3 = Vector3.ZERO
 var aim_target: Vector3 = Vector3.ZERO
+var local_velocity: Vector3
 var acc_time_ratio: float
 var brake_time_ratio: float
 
@@ -178,8 +179,8 @@ func _process(delta: float) -> void:
 	set_context()
 	set_dynamic_collider()
 	capture_states()
-	capture_jump()
 	process_movement(delta)
+	capture_jump()
 	handle_weapon_movement(delta)
 	handle_shoot()
 	handle_reload()
@@ -197,6 +198,7 @@ func set_context() -> void:
 	var input_dir: Vector2 = p_inputs.move_vec
 	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
 	is_moving_side = abs(input_dir.x) > 0.70
+	local_velocity = global_transform.basis.inverse() * velocity
 
 
 func set_input_context() -> void:
@@ -448,7 +450,7 @@ func apply_plane_movement(delta: float) -> void:
 		return
 	
 	if is_movement_smooth:
-		var lcl_vel: Vector3 = global_transform.basis.inverse() * velocity
+		var lcl_vel: Vector3 = local_velocity
 		var lcl_dir: Vector3 = Vector3(mov_vec.x, 0.0, mov_vec.y).normalized()
 		var lcl_target_speed: Vector3 = Vector3(lcl_dir.x * applied_speed, 0.0, lcl_dir.z * applied_speed)
 		var x_brake_step: float = ref_speed * side_speed_ratio * delta * brake_time_ratio
@@ -658,10 +660,8 @@ func apply_weapon_z_rot_lag(delta: float) -> void:
 	if is_aiming:
 		weapon_lag_root.rotation.z = lerp_angle(weapon_lag_root.rotation.z, 0.0, dt_lerp_t(wpn_pos_lag_away_speed, delta))
 		return
-	var lcl_x_pos: float = weapon_container.to_local(lag_target.global_position).x
+	var ratio_move: float = -local_velocity.x / (stand_speed * side_speed_ratio)
 	var y_rot_diff: float = angle_difference(weapon_container.global_rotation.y, lag_target.global_rotation.y)
-	if not is_moving_side: lcl_x_pos = 0.0
-	var ratio_move: float = clampf((lcl_x_pos * 2.0) / max_wpn_xz_pos_lag, -1.0, 1.0)
 	var ratio_view: float = clampf((y_rot_diff * 2.0) / deg_to_rad(max_wpn_y_rot_lag_deg), -1.0, 1.0)
 	var target_move: float = deg_to_rad(max_wpn_z_rot_lag_from_move_deg) * ratio_move
 	var target_view: float = deg_to_rad(max_wpn_z_rot_lag_from_view_deg) * ratio_view
