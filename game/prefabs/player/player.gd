@@ -56,14 +56,16 @@ class_name Player extends CharacterBody3D
 
 @export_category("Weapon lag settings")
 @export var max_wpn_xz_pos_lag: float = 0.015
-@export var max_wpn_y_pos_lag: float = 0.005
-@export var wpn_pos_lag_away_speed: float = 5.0
-@export var wpn_pos_lag_close_speed: float = 10.0
+@export var max_wpn_y_pos_lag: float = 0.003
+@export var wpn_pos_lag_away_speed: float = 2.5
+@export var wpn_pos_lag_close_speed: float = 5.0
 @export var ads_wpn_pos_lag_reducer: float = 0.30
-@export var max_wpn_y_rot_lag_deg: float = 15.0
 @export var max_wpn_x_rot_lag_deg: float = 0.2
+@export var max_wpn_y_rot_lag_deg: float = 20.0
 @export var wpn_rot_lag_away_speed: float = 1.0
-@export var wpn_rot_lag_close_speed: float = 12.5
+@export var wpn_rot_lag_close_speed: float = 5.0
+@export var max_wpn_z_rot_lag_from_move_deg: float = 20.0
+@export var max_wpn_z_rot_lag_from_view_deg: float = 20.0
 
 @export_category("Recoil settings")
 @export var recoil_strength: float = 7.0
@@ -111,6 +113,7 @@ var is_run_locked: bool
 
 var is_grounded: bool = true
 var stop_run: bool = false
+var is_moving_side: bool = false
 var is_aiming: bool = false
 var is_running: bool = false
 var is_changing_state: bool = false
@@ -128,6 +131,7 @@ var sway_timer: float
 var ads_timer: float
 var concentration_sample: float
 
+var weapon_lag_root_base_pos: Vector3
 var applied_pos_lag_speed: float
 var applied_rot_lag_speed: float
 var recoil_offset: float = 0.0
@@ -159,6 +163,7 @@ func _ready() -> void:
 	aim_noise_y.seed = randi()
 	curr_sway_len = Vector2(sway_pitch_len, sway_yaw_len)
 	curr_sway_noise_len = sway_noise_len
+	weapon_lag_root_base_pos = weapon_lag_root.position
 	high_capsule_shape = high_collider.shape as CapsuleShape3D
 	low_capsule_shape = low_collider.shape as CapsuleShape3D
 	height_above_eyes = high_capsule_shape.height - stand_height
@@ -166,7 +171,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	set_input_context()
+	set_context()
 	set_dynamic_collider()
 	capture_states()
 	capture_jump()
@@ -181,6 +186,14 @@ func _process(delta: float) -> void:
 func late_process(delta: float) -> void:
 	process_view(delta)
 	weapon_camera.fov = player_camera.fov
+
+
+func set_context() -> void:
+	is_grounded = is_on_floor()
+	set_input_context()
+	var input_dir: Vector2 = p_inputs.move_vec
+	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
+	is_moving_side = abs(input_dir.x) > 0.70
 
 
 func set_input_context() -> void:
@@ -202,21 +215,14 @@ func set_dynamic_collider() -> void:
 		high_capsule_shape.radius = min_capsule_radius
 		return
 	var d: float = min_capsule_radius * 2.0
-	low_capsule_shape.height = d + (d - camera_pivot.position.y)
+	low_capsule_shape.height = d + ((d - camera_pivot.position.y) * 2.0)
 
 
 func capture_states() -> void:
-	set_context()
 	if not p_inputs.is_mouse_locked(): return
 	capture_aim_state()
 	capture_run_state()
 	capture_position_state()
-
-
-func set_context() -> void:
-	is_grounded = is_on_floor()
-	var input_dir: Vector2 = p_inputs.move_vec
-	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
 
 
 func capture_aim_state() -> void:
@@ -573,14 +579,15 @@ func apply_ads_sway() -> void:
 func handle_weapon_lag(delta: float) -> void:
 	set_weapon_lag_parameters(delta)
 	apply_weapon_pos_lag(delta)
-	if is_aiming: apply_weapon_rot_lag(delta)
+	apply_weapon_xy_rot_lag(delta)
+	apply_weapon_z_rot_lag(delta)
 
 
 func set_weapon_lag_parameters(delta: float) -> void:
 	var root_pos_dist: float = (weapon_container.global_position - weapon_lag_root.global_position).length()
 	var targ_pos_dist: float = (weapon_container.global_position - lag_target.global_position).length()
 	var targ_pos_speed: float = wpn_pos_lag_close_speed if (root_pos_dist > targ_pos_dist) else wpn_pos_lag_away_speed
-	applied_pos_lag_speed = lerp(applied_pos_lag_speed, targ_pos_speed, dt_lerp_t(10.0, delta))
+	applied_pos_lag_speed = targ_pos_speed * (1.5 if is_aiming else 1.0)
 	
 	var root_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, weapon_lag_root.global_rotation.y))
 	var targ_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, lag_target.global_rotation.y))
@@ -608,28 +615,48 @@ func apply_weapon_pos_lag(delta: float) -> void:
 	
 	lag_target.global_position = lag_target.global_position.lerp(f_targ, dt_lerp_t(wpn_pos_lag_close_speed, delta))
 	var s_targ: Vector3 = weapon_container.to_local(lag_target.global_position)
-	weapon_lag_root.position = weapon_lag_root.position.lerp(s_targ, dt_lerp_t(applied_pos_lag_speed, delta))
+	var targ = weapon_lag_root_base_pos + s_targ
+	weapon_lag_root.position = weapon_lag_root.position.lerp(targ, dt_lerp_t(applied_pos_lag_speed, delta))
 
 
-func apply_weapon_rot_lag(delta: float) -> void:
+func apply_weapon_xy_rot_lag(delta: float) -> void:
 	var f_targ: Vector3 = weapon_container.global_rotation
 	var y_diff: float = angle_difference(f_targ.y, lag_target.global_rotation.y)
 	var x_diff: float = angle_difference(f_targ.x, lag_target.global_rotation.x)
 	var max_y: float = max_wpn_y_rot_lag_deg * concentration_sample
 	var max_x: float = max_wpn_x_rot_lag_deg * concentration_sample
 	
-	if abs(y_diff) >= deg_to_rad(max_y):
-		lag_target.global_rotation.y = f_targ.y + (deg_to_rad(max_y) * sign(y_diff))
-	
-	if abs(x_diff) >= deg_to_rad(max_x):
-		lag_target.global_rotation.x = f_targ.x + (deg_to_rad(max_x) * sign(x_diff))
+	var y_ratio: float = clampf(abs(y_diff) / deg_to_rad(max_y), 0.0, 1.0)
+	var x_ratio := clampf(abs(x_diff) / deg_to_rad(max_x), 0.0, 1.0)
+	y_ratio = pow(y_ratio, 1.2)
+	x_ratio = pow(x_ratio, 1.2)
+	var y_lag: float = deg_to_rad(max_y) * y_ratio * sign(y_diff)
+	var x_lag: float = deg_to_rad(max_x) * x_ratio * sign(x_diff)
+	lag_target.global_rotation.y = f_targ.y + y_lag
+	lag_target.global_rotation.x = f_targ.x + x_lag
 	
 	lag_target.global_rotation = lerp_rot(lag_target.global_rotation,f_targ, dt_lerp_t(wpn_rot_lag_close_speed, delta))
 	var parent_q: Quaternion = weapon_container.global_basis.get_rotation_quaternion()
 	var target_q: Quaternion = lag_target.global_basis.get_rotation_quaternion()
 	var local_q: Quaternion = parent_q.inverse() * target_q
-	var s_targ: Vector3 = -local_q.get_euler()
+	var s_targ: Vector3 = local_q.get_euler()
 	weapon_lag_root.rotation = lerp_rot(weapon_lag_root.rotation, s_targ, dt_lerp_t(applied_rot_lag_speed, delta))
+
+
+func apply_weapon_z_rot_lag(delta: float) -> void:
+	if is_aiming:
+		weapon_lag_root.rotation.z = lerp_angle(weapon_lag_root.rotation.z, 0.0, dt_lerp_t(wpn_pos_lag_away_speed, delta))
+		return
+	var lcl_x_pos: float = weapon_container.to_local(lag_target.global_position).x
+	var y_rot_diff: float = angle_difference(weapon_container.global_rotation.y, lag_target.global_rotation.y)
+	if not is_moving_side: lcl_x_pos = 0.0
+	var ratio_move: float = clampf((lcl_x_pos * 2.0) / max_wpn_xz_pos_lag, -1.0, 1.0)
+	var ratio_view: float = clampf((y_rot_diff * 2.0) / deg_to_rad(max_wpn_y_rot_lag_deg), -1.0, 1.0)
+	var target_move: float = deg_to_rad(max_wpn_z_rot_lag_from_move_deg) * ratio_move
+	var target_view: float = deg_to_rad(max_wpn_z_rot_lag_from_view_deg) * ratio_view
+	var target_z: float = target_move + target_view
+	var targ: float = lerp_angle(weapon_lag_root.rotation.z, target_z, dt_lerp_t(wpn_pos_lag_away_speed, delta))
+	weapon_lag_root.rotation.z =  targ
 
 
 func lerp_rot(a: Vector3, b: Vector3, t: float) -> Vector3:
