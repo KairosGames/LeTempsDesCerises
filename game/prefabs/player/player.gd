@@ -13,6 +13,8 @@ class_name Player extends CharacterBody3D
 @onready var weapon_lag_root: Node3D = %WeaponLagRoot
 @onready var lag_target: Node3D = %LagTarget
 @onready var weapon_ray_cast: RayCast3D = %WeaponRayCast
+@onready var high_collider: CollisionShape3D = %HighDynamicCollider
+@onready var low_collider: CollisionShape3D = %LowDynamicCollider
 
 @export_category("Exposed settings")
 @export var is_aim_locked_km: bool = true
@@ -69,13 +71,13 @@ class_name Player extends CharacterBody3D
 
 @export_category("States settings")
 @export var state_switch_time: float = 0.2
-@export var standing_height: float = 1.6
+@export var stand_height: float = 1.6
 @export var crouch_height: float = 1.1
 @export var prone_height: float = 0.35
 @export_range(0.2, 1.0, 0.01) var gpad_mini_run_length: float = 0.5
 
 @export_category("Movement speed settings")
-@export var standing_speed: float = 4.0
+@export var stand_speed: float = 4.0
 @export var crouch_speed: float = 2.5
 @export var prone_speed: float = 1.0
 @export_range(0.0, 1.0, 0.01) var air_up_speed: float = 1.0
@@ -96,10 +98,15 @@ class_name Player extends CharacterBody3D
 
 enum Posture {STAND, CROUCH, PRONE}
 var curr_posture: Posture = Posture.STAND
+var was_it_just_prone_gpad: bool
+
+var high_capsule_shape: CapsuleShape3D
+var low_capsule_shape: CapsuleShape3D
+var height_above_eyes: float
+var min_capsule_radius: float
 
 var is_aim_locked: bool
 var is_run_locked: bool
-var was_it_just_prone_gpad: bool
 
 var is_grounded: bool = true
 var stop_run: bool = false
@@ -151,11 +158,17 @@ func _ready() -> void:
 	aim_noise_y.seed = randi()
 	curr_sway_len = Vector2(sway_pitch_len, sway_yaw_len)
 	curr_sway_noise_len = sway_noise_len
+	high_capsule_shape = high_collider.shape as CapsuleShape3D
+	low_capsule_shape = low_collider.shape as CapsuleShape3D
+	height_above_eyes = high_capsule_shape.height - stand_height
+	min_capsule_radius = high_capsule_shape.radius
 
 
 func _process(delta: float) -> void:
 	set_input_context()
+	set_dynamic_collider()
 	capture_states()
+	capture_jump()
 	process_movement(delta)
 	process_view(delta)
 	handle_camera_effects()
@@ -171,6 +184,19 @@ func set_input_context() -> void:
 		return
 	is_aim_locked = is_aim_locked_km
 	is_run_locked = is_run_locked_km
+
+
+func set_dynamic_collider() -> void:
+	high_collider.position.y = high_capsule_shape.height / 2.0
+	low_collider.position.z = min_capsule_radius - (low_capsule_shape.height / 2.0)
+	low_collider.disabled = camera_pivot.position.y > min_capsule_radius * 2.0
+	high_collider.disabled = !low_collider.disabled
+	if low_collider.disabled:
+		high_capsule_shape.height = camera_pivot.position.y + height_above_eyes
+		high_capsule_shape.radius = min_capsule_radius
+		return
+	var d: float = min_capsule_radius * 2.0
+	low_capsule_shape.height = d + (d - camera_pivot.position.y)
 
 
 func capture_states() -> void:
@@ -273,9 +299,10 @@ func handle_hold_run() -> void:
 
 func go_for_run() -> void:
 	if is_changing_state: return
-	if curr_posture == Posture.STAND: is_running = !is_running if is_run_locked else true
-	elif curr_posture == Posture.CROUCH: crouch_to_stand(false, true)
-	elif curr_posture == Posture.PRONE: prone_to_up(false, true)
+	match curr_posture:
+		Posture.STAND: is_running = !is_running if is_run_locked else true
+		Posture.CROUCH: crouch_to_stand(false, true)
+		Posture.PRONE: prone_to_up(false, true)
 
 
 func capture_position_state() -> void:
@@ -283,20 +310,17 @@ func capture_position_state() -> void:
 	
 	if Input.is_action_just_pressed("crouch"):
 		if p_inputs.is_gamepad: return
-		if curr_posture == Posture.STAND: crouch_to_stand(true)
-		elif curr_posture == Posture.CROUCH: crouch_to_stand()
-		elif curr_posture == Posture.PRONE: prone_to_crouch()
+		match curr_posture:
+			Posture.STAND:crouch_to_stand(true)
+			Posture.CROUCH: crouch_to_stand()
+			Posture.PRONE: prone_to_crouch()
 	
 	if Input.is_action_just_pressed("prone"):
 		if p_inputs.is_gamepad: return
-		if curr_posture == Posture.STAND: prone_to_up(true)
-		elif curr_posture == Posture.CROUCH: prone_to_crouch(true)
-		elif curr_posture == Posture.PRONE: prone_to_up()
-	
-	if Input.is_action_just_pressed("jump"):
-		if curr_posture == Posture.STAND and can_jump(): jump()
-		elif curr_posture == Posture.CROUCH: crouch_to_stand()
-		elif curr_posture == Posture.PRONE: prone_to_up()
+		match curr_posture:
+			Posture.STAND: prone_to_up(true)
+			Posture.CROUCH: prone_to_crouch(true)
+			Posture.PRONE: prone_to_up()
 
 
 func crouch_to_stand(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
@@ -304,7 +328,7 @@ func crouch_to_stand(inverse: bool = false, ask_run: bool = false, time: float =
 	curr_posture = Posture.CROUCH if inverse else Posture.STAND
 	if inverse: is_running = false
 	if ask_run: is_running = true
-	var target: float = crouch_height if inverse else standing_height
+	var target: float = crouch_height if inverse else stand_height
 	state_twn = create_tween()
 	state_twn.tween_property(camera_pivot, "position:y", target, time)
 	await state_twn.finished
@@ -325,7 +349,7 @@ func prone_to_up(inverse: bool = false, ask_run: bool = false, time: float = sta
 	is_changing_state = true
 	curr_posture = Posture.CROUCH
 	if inverse: is_running = false
-	var target: float = prone_height if inverse else standing_height
+	var target: float = prone_height if inverse else stand_height
 	state_twn = create_tween()
 	state_twn.tween_property(camera_pivot, "position:y", crouch_height, time)
 	await state_twn.finished
@@ -364,14 +388,23 @@ func prone_from_gpad() -> void:
 	prone_to_crouch(true)
 
 
-func jump() -> void:
-	velocity.y = jump_strength
-
+func capture_jump() -> void:
+	if Input.is_action_just_pressed("jump"):
+		match curr_posture:
+			Posture.STAND when can_jump(): jump()
+			Posture.CROUCH: crouch_to_stand()
+			Posture.PRONE: prone_to_up()
 
 func can_jump() -> bool:
-	if is_reloading: return false
 	if not is_jump_possible: return false
+	if not is_grounded: return false
+	if is_reloading: return false
+	if is_changing_state: return false
 	return true
+
+
+func jump() -> void:
+	velocity.y = jump_strength
 
 
 func process_movement(delta: float) -> void:
@@ -395,7 +428,7 @@ func apply_plane_movement(delta: float) -> void:
 	var applied_speed: float = dir_speed * run_f * aim_f
 	
 	if not is_grounded:
-		var lcl_max: float = standing_speed * (run_speed_ratio if is_running else 1.0)
+		var lcl_max: float = stand_speed * (run_speed_ratio if is_running else 1.0)
 		if velocity.length() < lcl_max: velocity += dir * ref_speed * delta
 		return
 	
@@ -429,12 +462,10 @@ func apply_plane_movement(delta: float) -> void:
 func get_used_speed() -> float:
 	if not is_grounded:
 		return air_up_speed
-	elif curr_posture == Posture.CROUCH:
-		return crouch_speed
-	elif curr_posture == Posture.PRONE:
-		return prone_speed
-	else:
-		return standing_speed
+	match curr_posture:
+		Posture.CROUCH: return crouch_speed
+		Posture.PRONE: return prone_speed
+		_: return stand_speed
 
 
 func process_view(delta: float) -> void:
