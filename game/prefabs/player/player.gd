@@ -454,6 +454,11 @@ func apply_plane_movement(delta: float) -> void:
 			lcl_vel.z = move_toward(lcl_vel.z, 0.0, z_brake_step)
 		
 		velocity = global_transform.basis * lcl_vel
+		var plane_vel := Vector3(velocity.x, 0.0, velocity.z)
+		if plane_vel.length() > applied_speed:
+			plane_vel = plane_vel.normalized() * applied_speed
+			velocity.x = plane_vel.x
+			velocity.z = plane_vel.z
 	else:
 		var speed: Vector3 = Vector3(dir.x * applied_speed, 0.0, dir.z * applied_speed)
 		velocity = Vector3(speed.x, velocity.y, speed.z) if dir else Vector3(0.0, velocity.y, 0.0)
@@ -691,7 +696,9 @@ func can_reload() -> bool:
 
 func enter_reload() -> void:
 	is_reloading = true
-	if is_aiming: await get_tree().create_timer(time_to_ads).timeout
+	var default_pos: Vector3 = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
+	var time: float = time_to_ads * inverse_lerp(default_pos.x, aim_pos.position.x, weapon_container.position.x)
+	await get_tree().create_timer(time).timeout
 	var t: Tween = create_tween()
 	await t.tween_property(weapon_container, "rotation_degrees:x", 25.0, 0.5
 					).set_trans(Tween.TRANS_QUART).set_ease(Tween.EaseType.EASE_OUT).finished
