@@ -18,11 +18,11 @@ class_name Player extends CharacterBody3D
 @onready var low_collider: CollisionShape3D = %LowDynamicCollider
 
 @export_category("Exposed settings")
-@export var is_aim_locked_km: bool = true
-@export var is_run_locked_km: bool = false
-@export var is_aim_locked_gpad: bool = false
-@export var is_run_locked_gpad: bool = true
-@export var is_position_switcher_locked: bool = true
+@export var is_aim_toggle_km: bool = true
+@export var is_run_toggle_km: bool = false
+@export var is_aim_toggle_gpad: bool = false
+@export var is_run_toggle_gpad: bool = true
+@export var is_posture_switch_toggle_km: bool = true
 @export var is_aim_smooth: bool = true
 @export var is_movement_smooth: bool = true
 
@@ -112,8 +112,9 @@ var low_capsule_shape: CapsuleShape3D
 var height_above_eyes: float
 var min_capsule_radius: float
 
-var is_aim_locked: bool
-var is_run_locked: bool
+var is_aim_toggle: bool
+var is_run_toggle: bool
+var is_posture_switch_toggle: bool
 
 var is_grounded: bool = true
 var stop_run: bool = false
@@ -121,8 +122,8 @@ var is_moving_side: bool = false
 var is_aiming: bool = false
 var is_running: bool = false
 var is_changing_state: bool = false
-var aim_to_release: bool = false
-var run_to_release: bool = false
+var wait_aim_release: bool = false
+var wait_run_release: bool = false
 
 var can_shoot: bool = true
 var has_weapon: bool = true
@@ -201,17 +202,19 @@ func set_context() -> void:
 	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
 	is_moving_side = abs(input_dir.x) > 0.70
 	local_velocity = global_transform.basis.inverse() * velocity
-	if Input.is_action_just_released("run"): run_to_release = false
-	if Input.is_action_just_released("aim"): aim_to_release = false
+	if Input.is_action_just_released("run"): wait_run_release = false
+	if Input.is_action_just_released("aim"): wait_aim_release = false
 
 
 func set_input_context() -> void:
 	if p_inputs.is_gamepad:
-		is_aim_locked = is_aim_locked_gpad
-		is_run_locked = is_run_locked_gpad
+		is_aim_toggle = is_aim_toggle_gpad
+		is_run_toggle = is_run_toggle_gpad
+		is_posture_switch_toggle = true
 		return
-	is_aim_locked = is_aim_locked_km
-	is_run_locked = is_run_locked_km
+	is_posture_switch_toggle = is_posture_switch_toggle_km
+	is_aim_toggle = is_aim_toggle_km
+	is_run_toggle = is_run_toggle_km
 
 
 func set_dynamic_collider() -> void:
@@ -238,7 +241,7 @@ func capture_aim_state() -> void:
 	var was_aiming: bool = is_aiming
 	
 	if can_aim():
-		if is_aim_locked: handle_toggle_aim()
+		if is_aim_toggle: handle_toggle_aim()
 		else : handle_hold_aim()
 	else : is_aiming = false
 	
@@ -251,30 +254,33 @@ func can_aim() -> bool:
 	if not has_weapon: return false
 	if is_reloading: return false
 	if not is_grounded: return false
-	#if Input.is_action_pressed("run") and not stop_run:
-		#if not is_aim_locked and is_run_locked: return true
-		#elif is_aim_locked and not is_run_locked: return false
-		#elif is_aim_locked and is_run_locked: return false
-		#elif not is_aim_locked and not is_run_locked: return false
 	return true
 
 
 func handle_toggle_aim() -> void:
+	if is_run_toggle:
+		if Input.is_action_just_pressed("aim"):
+			is_aiming = !is_aiming
+			is_running = false
+		elif Input.is_action_just_pressed("run"): is_aiming = false
+		return
+	
 	if Input.is_action_just_pressed("aim"):
 		is_aiming = !is_aiming
-		if not is_run_locked and Input.is_action_pressed("run"):
-			run_to_release = is_aiming
-	if is_running and is_aiming and not run_to_release: is_aiming = false
+		if Input.is_action_pressed("run"): wait_run_release = is_aiming
+	if is_running and is_aiming and not wait_run_release: is_aiming = false
 
 
 func handle_hold_aim() -> void:
-	if Input.is_action_pressed("aim") and not aim_to_release:
-		is_aiming = true
-		#if is_running: run_to_release = true
-	else:
-		is_aiming = false
-		#if not is_run_locked and Input.is_action_pressed("run") and run_to_release:
-			#run_to_release = false
+	if is_run_toggle:
+		is_aiming = Input.is_action_pressed("aim") and not wait_aim_release
+		if is_aiming: is_running = false
+		return
+	
+	is_aiming = Input.is_action_pressed("aim") and not wait_aim_release
+	if is_aiming and is_running: wait_run_release = true
+	elif not is_aiming and Input.is_action_pressed("run"): wait_run_release = false
+
 
 func switch_aim_state() -> void:
 	var default_pos: Vector3 = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
@@ -306,7 +312,7 @@ func switch_aim_state() -> void:
 
 func capture_run_state() -> void:
 	if can_run():
-		if is_run_locked: handle_toggle_run()
+		if is_run_toggle: handle_toggle_run()
 		else: handle_hold_run()
 	else: is_running = false
 
@@ -315,34 +321,38 @@ func can_run() -> bool:
 	if is_reloading: return false
 	if not is_grounded: return false
 	if stop_run: return false
-	if Input.is_action_pressed("aim"):
-		if is_run_locked and is_aim_locked: return false
-		if is_run_locked and not is_aim_locked: return false
-		if not is_run_locked and not is_aim_locked: return true
-		if not is_run_locked and not not is_aim_locked: return true
 	return true
 
 
 func handle_toggle_run() -> void:
+	if is_aim_toggle:
+		if Input.is_action_just_pressed("run"): go_for_run()
+		return
+	
 	if Input.is_action_just_pressed("run"):
 		go_for_run()
-	
-	#if Input.is_action_just_pressed("aim"):
-		#is_aiming = !is_aiming
-		#if not is_run_locked and Input.is_action_pressed("run"):
-			#run_to_release = is_aiming
-	#if is_running and is_aiming and not run_to_release: is_aiming = false
+		if is_aiming: wait_aim_release = true
+		if not is_running and Input.is_action_pressed("aim"): wait_aim_release = false
 
 
 func handle_hold_run() -> void:
-	if Input.is_action_pressed("run") and not run_to_release: go_for_run()
-	else: is_running = false
+	if is_aim_toggle:
+		if Input.is_action_pressed("run") and not wait_run_release: go_for_run()
+		else: is_running = false
+		return
+	
+	if Input.is_action_pressed("run") and not wait_run_release:
+		go_for_run()
+		if is_aiming: wait_aim_release = true
+		return
+	is_running = false
+	if Input.is_action_pressed("aim"): wait_aim_release = false
 
 
 func go_for_run() -> void:
 	if is_changing_state: return
 	match curr_posture:
-		Posture.STAND: is_running = !is_running if is_run_locked else true
+		Posture.STAND: is_running = !is_running if is_run_toggle else true
 		Posture.CROUCH: crouch_to_stand(false, true)
 		Posture.PRONE: prone_to_up(false, true)
 
