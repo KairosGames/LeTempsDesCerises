@@ -121,6 +121,8 @@ var is_moving_side: bool = false
 var is_aiming: bool = false
 var is_running: bool = false
 var is_changing_state: bool = false
+var aim_to_release: bool = false
+var run_to_release: bool = false
 
 var can_shoot: bool = true
 var has_weapon: bool = true
@@ -199,6 +201,8 @@ func set_context() -> void:
 	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
 	is_moving_side = abs(input_dir.x) > 0.70
 	local_velocity = global_transform.basis.inverse() * velocity
+	if Input.is_action_just_released("run"): run_to_release = false
+	if Input.is_action_just_released("aim"): aim_to_release = false
 
 
 func set_input_context() -> void:
@@ -247,19 +251,30 @@ func can_aim() -> bool:
 	if not has_weapon: return false
 	if is_reloading: return false
 	if not is_grounded: return false
-	if Input.is_action_pressed("run") and not stop_run: 
-		if not (not is_aim_locked and is_run_locked): return false
+	#if Input.is_action_pressed("run") and not stop_run:
+		#if not is_aim_locked and is_run_locked: return true
+		#elif is_aim_locked and not is_run_locked: return false
+		#elif is_aim_locked and is_run_locked: return false
+		#elif not is_aim_locked and not is_run_locked: return false
 	return true
 
 
 func handle_toggle_aim() -> void:
 	if Input.is_action_just_pressed("aim"):
 		is_aiming = !is_aiming
+		if not is_run_locked and Input.is_action_pressed("run"):
+			run_to_release = is_aiming
+	if is_running and is_aiming and not run_to_release: is_aiming = false
 
 
 func handle_hold_aim() -> void:
-	is_aiming = Input.is_action_pressed("aim")
-
+	if Input.is_action_pressed("aim") and not aim_to_release:
+		is_aiming = true
+		#if is_running: run_to_release = true
+	else:
+		is_aiming = false
+		#if not is_run_locked and Input.is_action_pressed("run") and run_to_release:
+			#run_to_release = false
 
 func switch_aim_state() -> void:
 	var default_pos: Vector3 = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
@@ -300,17 +315,27 @@ func can_run() -> bool:
 	if is_reloading: return false
 	if not is_grounded: return false
 	if stop_run: return false
-	if is_run_locked and Input.is_action_pressed("aim"): return false
+	if Input.is_action_pressed("aim"):
+		if is_run_locked and is_aim_locked: return false
+		if is_run_locked and not is_aim_locked: return false
+		if not is_run_locked and not is_aim_locked: return true
+		if not is_run_locked and not not is_aim_locked: return true
 	return true
 
 
 func handle_toggle_run() -> void:
 	if Input.is_action_just_pressed("run"):
 		go_for_run()
+	
+	#if Input.is_action_just_pressed("aim"):
+		#is_aiming = !is_aiming
+		#if not is_run_locked and Input.is_action_pressed("run"):
+			#run_to_release = is_aiming
+	#if is_running and is_aiming and not run_to_release: is_aiming = false
 
 
 func handle_hold_run() -> void:
-	if Input.is_action_pressed("run"): go_for_run()
+	if Input.is_action_pressed("run") and not run_to_release: go_for_run()
 	else: is_running = false
 
 
@@ -411,6 +436,7 @@ func capture_jump() -> void:
 			Posture.STAND when can_jump(): jump()
 			Posture.CROUCH: crouch_to_stand()
 			Posture.PRONE: prone_to_up()
+
 
 func can_jump() -> bool:
 	if not is_jump_possible: return false
