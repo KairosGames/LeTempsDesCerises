@@ -68,8 +68,8 @@ class_name Player extends CharacterBody3D
 @export var max_wpn_y_rot_lag_deg: float = 20.0
 @export var wpn_rot_lag_away_speed: float = 1.0
 @export var wpn_rot_lag_close_speed: float = 5.0
-@export var max_wpn_z_rot_lag_from_move_deg: float = 20.0
-@export var max_wpn_z_rot_lag_from_view_deg: float = 20.0
+@export var max_wpn_z_rot_lag_from_move_deg: float = 25.0
+@export var max_wpn_z_rot_lag_from_view_deg: float = 5.0
 
 @export_category("Recoil settings")
 @export var recoil_strength: float = 7.0
