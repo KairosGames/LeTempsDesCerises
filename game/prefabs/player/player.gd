@@ -701,7 +701,7 @@ func apply_weapon_z_rot_lag(delta: float) -> void:
 	var ratio_view: float = clampf((y_rot_diff * 2.0) / deg_to_rad(max_wpn_y_rot_lag_deg), -1.0, 1.0)
 	var target_move: float = deg_to_rad(max_wpn_z_rot_lag_from_move_deg) * ratio_move
 	var target_view: float = deg_to_rad(max_wpn_z_rot_lag_from_view_deg) * ratio_view
-	var target_z: float = target_move + target_view
+	var target_z: float = target_move - target_view
 	var targ: float = lerp_angle(weapon_lag_root.rotation.z, target_z, dt_lerp_t(wpn_pos_lag_away_speed, delta))
 	weapon_lag_root.rotation.z =  targ
 
