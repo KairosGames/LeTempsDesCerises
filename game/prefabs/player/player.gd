@@ -129,6 +129,7 @@ var can_shoot: bool = true
 var has_weapon: bool = true
 var is_weapon_loaded: bool = true
 var is_reloading: bool = false
+var is_alive: bool = true
 
 var aim_noise_x: FastNoiseLite = FastNoiseLite.new()
 var aim_noise_y: FastNoiseLite = FastNoiseLite.new()
@@ -233,6 +234,7 @@ func set_dynamic_collider() -> void:
 
 func capture_states() -> void:
 	if not p_inputs.is_mouse_locked(): return
+	if not is_alive: return
 	capture_aim_state()
 	capture_run_state()
 	capture_position_state()
@@ -721,6 +723,7 @@ func handle_shoot() -> void:
 
 func can_use_shoot() -> bool:
 	if not p_inputs.is_mouse_locked() : return false
+	if not is_alive: return false########################################################################################################TODO
 	if not has_weapon: return false
 	if not is_weapon_loaded: return false
 	if not can_shoot: return false
@@ -798,3 +801,7 @@ func exit_reload() -> void:
 					).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EaseType.EASE_IN).finished
 	is_reloading = false
 	is_weapon_loaded = true
+
+
+func die() -> void:
+	pass
