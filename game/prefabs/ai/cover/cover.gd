@@ -1,9 +1,6 @@
 @tool
 class_name Cover extends Marker3D
 
-# TODO cover signal
-#TODO? @export var inherit_color: bool = false
-
 @export var type: Type = Type.COVER
 @export var next_covers: Array[Cover] = []
 @export var colors: Dictionary[Type, Color] = {
@@ -15,6 +12,7 @@ class_name Cover extends Marker3D
 
 const LINE_SIZE: float = 0.1
 const MOTION_WIDTH: float = 0.1
+const EDITOR_ONLY: bool = true
 enum Type { COVER, TRANSITORY, SPAWNER }
 
 var _color: Color
@@ -25,12 +23,6 @@ var _line_material: StandardMaterial3D = StandardMaterial3D.new()
 var _motion_material: StandardMaterial3D = StandardMaterial3D.new()
 var _point_material: StandardMaterial3D = StandardMaterial3D.new()
 
-func _ready() -> void:
-	#if Engine.is_editor_hint():
-		_init_point()
-		_init_lines()
-		_init_motions()
-
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray
 	if next_covers.has(self): warnings.append("Should not be linked to self")
@@ -38,6 +30,22 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if not colors.has(Type.TRANSITORY): warnings.append("Color for Type.TRANSITORY not defined")
 	if not colors.has(Type.SPAWNER): warnings.append("Color for Type.SPAWNER not defined")
 	return warnings
+
+func _ready() -> void:
+	if is_gizmo_enabled():
+		_init_point()
+		_init_lines()
+		_init_motions()
+
+func _enter_tree() -> void:
+	if not Engine.is_editor_hint():
+		CoverManager.register(self)
+
+func _exit_tree() -> void:
+	if not Engine.is_editor_hint():
+		CoverManager.unregister(self)
+
+func _process(_delta: float) -> void: _update_gizmos()
 
 func _init_lines() -> void:
 	_lines = MultiMeshInstance3D.new()
@@ -96,27 +104,15 @@ func _init_point() -> void:
 
 	add_child(_point, false, Node.INTERNAL_MODE_FRONT)
 
-func _enter_tree() -> void:
-	if not Engine.is_editor_hint():
-		CoverManager.register(self)
-
-func _exit_tree() -> void:
-	if not Engine.is_editor_hint():
-		CoverManager.unregister(self)
-
-func _process(_delta: float) -> void: _update_gizmos()
-
 func _update_gizmos() -> void:
-	#if not Engine.is_editor_hint(): return
-	_update_color()
-	_update_lines()
-	_update_motions()
+	if is_gizmo_enabled():
+		_update_color()
+		_update_lines()
+		_update_motions()
 
 func _update_color() -> void:
 	if _color != colors[type]:
 		_color = colors[type]
-		#_line_material.albedo_color = Color(_color, 0.2)
-		#_motion_material.albedo_color = Color(_color, 0.7)
 		_point_material.albedo_color = Color(_color if enabled else Color.BLACK, 0.9)
 
 func _update_lines() -> void:
@@ -163,3 +159,6 @@ func _update_motions() -> void:
 		motion_transform.origin = motion_position
 		_motions.multimesh.set_instance_color(i, color)
 		_motions.multimesh.set_instance_transform(i, motion_transform)
+
+func is_gizmo_enabled() -> bool:
+	return Engine.is_editor_hint() or not EDITOR_ONLY
