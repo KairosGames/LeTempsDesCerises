@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://scripts/game_manager.gd" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://bfxqdxe6sfsl3" path="res://sandbox/scripts_proto/shoot_target.gd" id="1_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://bka3ud42srojy" path="res://sandbox/textures_proto/dark/texture_04.png" id="2_k0juu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nnsk1"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -19,6 +20,8 @@ glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rwgxs"]
 albedo_color = Color(0.29954743, 0.29954746, 0.29954734, 1)
+albedo_texture = ExtResource("2_k0juu")
+uv1_scale = Vector3(20, 1, 200)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4wyf3"]
 material = SubResource("StandardMaterial3D_rwgxs")
@@ -125,8 +128,9 @@ size = Vector3(0.25, 0.25, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xo05s"]
 size = Vector3(0.25, 0.25, 0.1)
 
-[node name="World" type="Node3D" unique_id=1121832902]
+[node name="World" type="Node3D" unique_id=1121832902 node_paths=PackedStringArray("player")]
 script = ExtResource("1_4wyf3")
+player = NodePath("Player")
 
 [node name="Environment" type="Node3D" parent="." unique_id=532340216]
 

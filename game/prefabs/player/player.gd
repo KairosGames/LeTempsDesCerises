@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody3D
 
+signal on_death
+
 @onready var p_inputs: PlayerInputs = %PlayerInputs
 @onready var reload_ui: ReloadUI = %ReloadUI
 @onready var camera_pivot: Node3D = %CameraPivot
@@ -28,6 +30,7 @@ class_name Player extends CharacterBody3D
 
 @export_category("Character settings")
 @export var is_right_handed: bool = true
+@export var has_weapon: bool = true
 
 @export_category("View settings")
 @export var v_clamp_deg: Vector2 = Vector2(-70.0, 85.0)
@@ -40,6 +43,7 @@ class_name Player extends CharacterBody3D
 @export var ads_fov: float = 65.0
 @export var perfect_fov: float = 55.0
 @export var run_fov: float = 78.0
+@export var weapon_fov_diff: float = 0.0
 @export var is_run_fov_active: bool = true
 
 @export_category("ADS settings")
@@ -126,10 +130,11 @@ var wait_aim_release: bool = false
 var wait_run_release: bool = false
 
 var can_shoot: bool = true
-var has_weapon: bool = true
 var is_weapon_loaded: bool = true
 var is_reloading: bool = false
+var is_reload_interruped: bool = false
 var is_alive: bool = true
+var can_play: bool = true
 
 var aim_noise_x: FastNoiseLite = FastNoiseLite.new()
 var aim_noise_y: FastNoiseLite = FastNoiseLite.new()
@@ -157,6 +162,7 @@ var fov_aim_twn: Tween
 var cam_rot_aim_twn: Tween
 var state_twn: Tween
 var recoil_twn:Tween
+var reload_twn: Tween
 
 var team: Agent.Team = Agent.Team.COMMUNARD
 
@@ -164,8 +170,6 @@ func _ready() -> void:
 	p_inputs.gpad_crouch_pressed.connect(crouch_pressed_from_gpad)
 	p_inputs.gpad_crouch_released.connect(crouch_released_from_gpad)
 	p_inputs.gpad_ask_prone.connect(prone_from_gpad)
-	weapon_sway_root.visible = has_weapon
-	weapon_container.position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
 	aim_target = Vector3(camera_pivot.rotation_degrees.x, rotation_degrees.y, 0.0)
 	acc_time_ratio = (1 / acc_time)
 	brake_time_ratio = (1 / brake_time)
@@ -178,6 +182,21 @@ func _ready() -> void:
 	low_capsule_shape = low_collider.shape as CapsuleShape3D
 	height_above_eyes = high_capsule_shape.height - stand_height
 	min_capsule_radius = high_capsule_shape.radius
+	initiate(global_position, global_rotation)
+
+
+func initiate(pos: Vector3, rot: Vector3, h_weapon: bool = true, posture: Posture = Posture.STAND, right_handed: bool = true) -> void:
+	global_position = pos
+	global_rotation = rot
+	is_right_handed = right_handed
+	curr_posture = posture
+	match posture:
+		Posture.STAND: camera_pivot.position.y = stand_height
+		Posture.CROUCH: camera_pivot.position.y = crouch_height
+		Posture.PRONE: camera_pivot.position.y = prone_height
+	weapon_container.position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
+	has_weapon = h_weapon
+	weapon_sway_root.visible = h_weapon
 
 
 func _process(delta: float) -> void:
@@ -190,6 +209,9 @@ func _process(delta: float) -> void:
 	handle_shoot()
 	handle_reload()
 	late_process(delta)
+	
+	if Input.is_action_just_pressed("TEST"):
+		die()
 
 
 func late_process(delta: float) -> void:
@@ -203,9 +225,10 @@ func set_context() -> void:
 	var input_dir: Vector2 = p_inputs.move_vec
 	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
 	is_moving_side = abs(input_dir.x) > 0.70
-	local_velocity = global_transform.basis.inverse() * velocity
+	local_velocity = global_basis.inverse() * velocity
 	if Input.is_action_just_released("run"): wait_run_release = false
 	if Input.is_action_just_released("aim"): wait_aim_release = false
+	if not is_alive: can_play = false
 
 
 func set_input_context() -> void:
@@ -234,7 +257,7 @@ func set_dynamic_collider() -> void:
 
 func capture_states() -> void:
 	if not p_inputs.is_mouse_locked(): return
-	if not is_alive: return
+	if not can_play: return
 	capture_aim_state()
 	capture_run_state()
 	capture_position_state()
@@ -444,11 +467,18 @@ func prone_from_gpad() -> void:
 
 
 func capture_jump() -> void:
+	if not can_try_jump_action(): return
 	if Input.is_action_just_pressed("jump"):
 		match curr_posture:
 			Posture.STAND when can_jump(): jump()
 			Posture.CROUCH: crouch_to_stand()
 			Posture.PRONE: prone_to_up()
+
+
+func can_try_jump_action() -> bool:
+	if not p_inputs.is_mouse_locked(): return false
+	if not can_play: return false
+	return true
 
 
 func can_jump() -> bool:
@@ -471,6 +501,7 @@ func process_movement(delta: float) -> void:
 
 
 func apply_plane_movement(delta: float) -> void:
+	if not can_play or not p_inputs.is_mouse_locked(): p_inputs.ingore_inputs()
 	var mov_vec: Vector2 = p_inputs.move_vec
 	var dir: Vector3 = (transform.basis * Vector3(mov_vec.x, 0, mov_vec.y).normalized())
 	var ref_speed = get_used_speed()
@@ -531,6 +562,7 @@ func get_used_speed() -> float:
 
 func process_view(delta: float) -> void:
 	if not p_inputs.is_mouse_locked(): return
+	if not can_play: return
 	var inversion: float = -1 if p_inputs.is_inverted else 1
 	var reducer: float = (ads_speed_view_reduc if is_aiming else 1.0) * (prone_speed_view_reduc if curr_posture == Posture.PRONE else 1.0)
 	aim_target.y -= p_inputs.get_view_input().x * p_inputs.h_sensi_multiplier * reducer
@@ -580,7 +612,7 @@ func handle_fov_changes(delta: float) -> void:
 	var fov_diff: float = run_fov - default_fov
 	if is_running and is_run_fov_active: player_camera.fov = move_toward(player_camera.fov, run_fov, fov_diff * delta * 5.0)
 	elif not is_aiming: player_camera.fov = move_toward(player_camera.fov, default_fov, fov_diff * delta * 5.0)
-	weapon_camera.fov = player_camera.fov
+	weapon_camera.fov = player_camera.fov - weapon_fov_diff
 
 
 func handle_weapon_movement(delta: float) -> void:
@@ -723,7 +755,7 @@ func handle_shoot() -> void:
 
 func can_use_shoot() -> bool:
 	if not p_inputs.is_mouse_locked() : return false
-	if not is_alive: return false########################################################################################################TODO
+	if not can_play: return false
 	if not has_weapon: return false
 	if not is_weapon_loaded: return false
 	if not can_shoot: return false
@@ -773,6 +805,7 @@ func capture_begin_reload() -> void:
 
 func can_reload() -> bool:
 	if not p_inputs.is_mouse_locked(): return false
+	if not can_play: return false
 	if not has_weapon: return false
 	if is_reloading: return false
 	if is_weapon_loaded: return false
@@ -781,27 +814,72 @@ func can_reload() -> bool:
 
 func enter_reload() -> void:
 	is_reloading = true
+	reload_ui.reloaded.connect(on_reloaded, CONNECT_ONE_SHOT)
 	var default_pos: Vector3 = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
 	var time: float = time_to_ads * inverse_lerp(default_pos.x, aim_pos.position.x, weapon_container.position.x)
 	await get_tree().create_timer(time).timeout
-	var t: Tween = create_tween()
-	await t.tween_property(weapon_container, "rotation_degrees:x", 25.0, 0.5
+	if is_reload_interruped or not can_play: 
+		is_reload_interruped = false
+		return
+	reload_twn = create_tween()
+	await reload_twn.tween_property(weapon_container, "rotation_degrees:x", 25.0, 0.5
 					).set_trans(Tween.TRANS_QUART).set_ease(Tween.EaseType.EASE_OUT).finished
 	reload_ui.activation(true)
-	reload_ui.reloaded.connect(on_reloaded, CONNECT_ONE_SHOT)
 
 
 func on_reloaded() -> void:
 	exit_reload()
 
 
-func exit_reload() -> void:
-	var t: Tween = create_tween()
-	await t.tween_property(weapon_container, "rotation_degrees:x", 0.0, 0.5
+func exit_reload(is_realoded: bool = true, is_from_die = false) -> void:
+	reload_ui.activation(false)
+	reload_ui.reloaded.disconnect(on_reloaded)
+	is_reload_interruped = not is_realoded
+	if reload_twn: reload_twn.kill()
+	if not is_from_die:
+		reload_twn = create_tween()
+		await reload_twn.tween_property(weapon_container, "rotation_degrees:x", 0.0, 0.5
 					).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EaseType.EASE_IN).finished
 	is_reloading = false
-	is_weapon_loaded = true
+	if not is_weapon_loaded: is_weapon_loaded = is_realoded
+	is_reload_interruped = false
 
 
 func die() -> void:
-	pass
+	is_alive = false
+	if is_reloading: exit_reload(false, true)
+	weapon_sway_root.visible = false
+	on_death.emit()
+	reset_player_controller()
+
+
+func reset_player_controller() -> void:
+	kill_all_tweens()
+	reload_ui.activation(false)
+	curr_posture = Posture.STAND
+	camera_pivot.position.y = stand_height
+	global_rotation = Vector3.ZERO
+	camera_pivot.rotation = Vector3.ZERO
+	weapon_camera.rotation = Vector3.ZERO
+	aim_target = Vector3(camera_pivot.rotation_degrees.x, rotation_degrees.y, 0.0)
+	weapon_container. position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
+	weapon_lag_root.position = Vector3.ZERO
+	lag_target.global_position = weapon_lag_root.global_position
+	player_camera.fov = default_fov
+	weapon_camera.fov = default_fov - weapon_fov_diff
+	recoil_offset = 0.0
+	ads_timer = 0.0
+	sway_timer = 0.0
+	has_weapon = false
+	is_aiming = false
+	is_running = false
+
+
+func kill_all_tweens() -> void:
+	if state_twn: state_twn.kill()
+	if recoil_twn: recoil_twn.kill()
+	if fov_aim_twn: fov_aim_twn.kill()
+	if wpn_x_aim_twn: wpn_x_aim_twn.kill()
+	if wpn_y_aim_twn: wpn_y_aim_twn.kill()
+	if wpn_z_aim_twn: wpn_z_aim_twn.kill()
+	if reload_twn: reload_twn.kill()

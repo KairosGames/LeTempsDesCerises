@@ -5,6 +5,7 @@
 [ext_resource type="Curve" uid="uid://cdc2ooeq8og5q" path="res://prefabs/player/concentration_curve.tres" id="2_iylwk"]
 [ext_resource type="Texture2D" uid="uid://llhmhoeoh4hx" path="res://sandbox/textures_proto/aim.svg" id="2_r66lb"]
 [ext_resource type="Script" uid="uid://c7sm17jepuynp" path="res://prefabs/player/reload_ui.gd" id="3_klv5p"]
+[ext_resource type="Script" uid="uid://dmyuqoer26uyx" path="res://prefabs/player/death_camera.gd" id="3_vhck3"]
 [ext_resource type="Curve" uid="uid://chdf25t3wnct4" path="res://prefabs/player/gpad_aiming_speed_curve.tres" id="4_ev8v4"]
 [ext_resource type="PackedScene" uid="uid://b56vcde62m1gw" path="res://sandbox/chassepot_proto/sk_chassepot.tscn" id="4_klv5p"]
 
@@ -21,15 +22,43 @@ floor_max_angle = 0.5235988
 script = ExtResource("1_4dohe")
 ads_concentration_curve = ExtResource("2_iylwk")
 
+[node name="DeathCamera" type="Camera3D" parent="." unique_id=1339179709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8149467, 0)
+top_level = true
+near = 0.001
+script = ExtResource("3_vhck3")
+
 [node name="PlayerInputs" type="Node" parent="." unique_id=1232327639]
 unique_name_in_owner = true
 script = ExtResource("1_72ieh")
 gpad_speed_aiming_curve = ExtResource("4_ev8v4")
 
-[node name="ReloadUI" type="Control" parent="." unique_id=604342347 node_paths=PackedStringArray("all_pos", "pos_to_rect")]
+[node name="UI" type="Control" parent="." unique_id=889932666]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="UI" unique_id=39530336]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshairs" type="TextureRect" parent="UI/CenterContainer" unique_id=1952164863]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("2_r66lb")
+expand_mode = 1
+
+[node name="ReloadUI" type="Control" parent="UI" unique_id=604342347 node_paths=PackedStringArray("all_pos", "pos_to_rect")]
 unique_name_in_owner = true
 visible = false
-layout_mode = 3
 anchors_preset = 0
 offset_left = 902.0
 offset_top = 918.0
@@ -37,11 +66,7 @@ offset_right = 942.0
 offset_bottom = 958.0
 script = ExtResource("3_klv5p")
 all_pos = [NodePath("ReloadPos1"), NodePath("ReloadPos2"), NodePath("ReloadPos3")]
-pos_to_rect = {
-0: NodePath("ReloadStep1"),
-1: NodePath("ReloadStep2"),
-2: NodePath("ReloadStep3")
-}
+pos_to_rect = [NodePath("ReloadStep1"), NodePath("ReloadStep2"), NodePath("ReloadStep3")]
 steps = Array[Array]([[0, 1], [1, 2], [2, 1], [1, 0]])
 default_color = Color(0, 0, 0, 0.61960787)
 valid_target_color = Color(0, 0.5469833, 0.98331386, 0.63529414)
@@ -49,7 +74,7 @@ default_focus_color = Color(0.7159255, 0.72724795, 0.7299672, 1)
 fail_focus_color = Color(0.5921569, 0, 0, 1)
 sucess_focus_color = Color(0, 0.49019608, 0, 1)
 
-[node name="ReloadBar1" type="ColorRect" parent="ReloadUI" unique_id=1569676977]
+[node name="ReloadBar1" type="ColorRect" parent="UI/ReloadUI" unique_id=1569676977]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 4.0
@@ -57,7 +82,7 @@ offset_right = 106.0
 offset_bottom = 14.0
 color = Color(0.8627451, 0.8627451, 0.8627451, 0.41568628)
 
-[node name="ReloadBar2" type="ColorRect" parent="ReloadUI" unique_id=20938280]
+[node name="ReloadBar2" type="ColorRect" parent="UI/ReloadUI" unique_id=20938280]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 4.0
@@ -65,7 +90,7 @@ offset_right = 16.0
 offset_bottom = 104.0
 color = Color(0.8627451, 0.8627451, 0.8627451, 0.41568628)
 
-[node name="ReloadStep1" type="ColorRect" parent="ReloadUI" unique_id=294821983]
+[node name="ReloadStep1" type="ColorRect" parent="UI/ReloadUI" unique_id=294821983]
 layout_mode = 0
 offset_left = 92.0
 offset_top = -1.0
@@ -73,7 +98,7 @@ offset_right = 112.0
 offset_bottom = 19.0
 color = Color(0, 0, 0, 0.61960787)
 
-[node name="ReloadStep2" type="ColorRect" parent="ReloadUI" unique_id=275829933]
+[node name="ReloadStep2" type="ColorRect" parent="UI/ReloadUI" unique_id=275829933]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -1.0
@@ -81,7 +106,7 @@ offset_right = 21.0
 offset_bottom = 19.0
 color = Color(0, 0, 0, 0.61960787)
 
-[node name="ReloadStep3" type="ColorRect" parent="ReloadUI" unique_id=484181448]
+[node name="ReloadStep3" type="ColorRect" parent="UI/ReloadUI" unique_id=484181448]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 90.0
@@ -89,7 +114,7 @@ offset_right = 21.0
 offset_bottom = 110.0
 color = Color(0, 0, 0, 0.61960787)
 
-[node name="ReloadPos1" type="Control" parent="ReloadUI" unique_id=1707861849]
+[node name="ReloadPos1" type="Control" parent="UI/ReloadUI" unique_id=1707861849]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 95.0
@@ -97,7 +122,7 @@ offset_top = 1.0
 offset_right = 135.0
 offset_bottom = 41.0
 
-[node name="ReloadPos2" type="Control" parent="ReloadUI" unique_id=203965544]
+[node name="ReloadPos2" type="Control" parent="UI/ReloadUI" unique_id=203965544]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 4.0
@@ -105,7 +130,7 @@ offset_top = 2.0
 offset_right = 44.0
 offset_bottom = 42.0
 
-[node name="ReloadPos3" type="Control" parent="ReloadUI" unique_id=1524537823]
+[node name="ReloadPos3" type="Control" parent="UI/ReloadUI" unique_id=1524537823]
 unique_name_in_owner = true
 anchors_preset = 0
 offset_left = 4.0
@@ -113,7 +138,7 @@ offset_top = 93.0
 offset_right = 44.0
 offset_bottom = 133.0
 
-[node name="ReloadFocus" type="ColorRect" parent="ReloadUI" unique_id=566231840]
+[node name="ReloadFocus" type="ColorRect" parent="UI/ReloadUI" unique_id=566231840]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 95.0
@@ -121,20 +146,6 @@ offset_top = 1.0
 offset_right = 110.0
 offset_bottom = 16.0
 color = Color(0.7159255, 0.72724795, 0.7299672, 1)
-
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=39530336]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Crosshairs" type="TextureRect" parent="CenterContainer" unique_id=1952164863]
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-texture = ExtResource("2_r66lb")
-expand_mode = 1
 
 [node name="HighDynamicCollider" type="CollisionShape3D" parent="." unique_id=76721954]
 unique_name_in_owner = true
@@ -157,12 +168,14 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 cull_mask = 1048573
-near = 0.01
+current = true
+near = 0.001
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPivot/WeaponCameraBase/PlayerCamera" unique_id=741617742]
 remote_path = NodePath("../WeaponSubViewContainer/WeaponSubViewport/WeaponCamera")
 
 [node name="WeaponSubViewContainer" type="SubViewportContainer" parent="CameraPivot/WeaponCameraBase/PlayerCamera" unique_id=1472858896]
+z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

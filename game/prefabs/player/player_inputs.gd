@@ -61,9 +61,7 @@ func _process(delta: float) -> void:
 
 func capture_inputs(delta: float) -> void:
 	if not is_mouse_locked():
-		aim_vec_gamepad = Vector2.ZERO
-		aim_vec_mouse = Vector2.ZERO
-		move_vec = Vector2.ZERO
+		ingore_inputs()
 		return
 	capture_gpad_switch_state(delta)
 	capture_movement()
@@ -72,6 +70,12 @@ func capture_inputs(delta: float) -> void:
 
 func is_mouse_locked() -> bool:
 	return Input.mouse_mode == Input.MouseMode.MOUSE_MODE_CAPTURED
+
+
+func ingore_inputs() -> void:
+	aim_vec_gamepad = Vector2.ZERO
+	aim_vec_mouse = Vector2.ZERO
+	move_vec = Vector2.ZERO
 
 
 func capture_gpad_switch_state(delta: float) -> void:
@@ -93,7 +97,7 @@ func capture_gpad_switch_state(delta: float) -> void:
 		is_state_button_to_release = true
 
 
-func set_gpad_aim_timers(aim_vec: Vector2, delta: float):
+func set_gpad_aim_timers(aim_vec: Vector2, delta: float) -> void:
 	if aim_vec.length() >= acc_threshold: gpad_aim_timers.x += delta
 	else:
 		gpad_aim_timers = Vector2.ZERO

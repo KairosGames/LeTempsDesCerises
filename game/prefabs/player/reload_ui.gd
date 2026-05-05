@@ -9,7 +9,7 @@ signal reloaded
 
 @export_category("Configuration settings")
 @export var all_pos: Array[Control]
-@export var pos_to_rect: Dictionary[int, ColorRect]
+@export var pos_to_rect: Array[ColorRect]
 @export var steps: Array[Array]
 
 @export_category("QTE settings")
@@ -61,15 +61,16 @@ func handle_reload_phase(delta: float) -> void:
 		switch_target()
 
 
-func set_step():
+func set_step() -> void:
 	counter = 0
 	target_i = 1
 	curr_targets = steps[step]
 	focus.global_position = all_pos[curr_targets[0]].global_position
 	curr_target = all_pos[curr_targets[1]]
 	valid_target = all_pos[curr_targets[1]]
-	pos_to_rect[curr_targets[0]].color = default_color
-	pos_to_rect[curr_targets[1]].color = valid_target_color
+	for i in range(pos_to_rect.size()):
+		pos_to_rect[i].color = default_color
+		if i == curr_targets[1]: pos_to_rect[i].color = valid_target_color
 
 
 func switch_target() -> void:
@@ -87,7 +88,6 @@ func go_next_step() -> void:
 	step +=1
 	if step >= steps.size():
 		reloaded.emit()
-		activation(false)
 		return
 	set_step()
 
