@@ -1,15 +1,11 @@
 [gd_scene format=3 uid="uid://dhj8g57pk5bi0"]
 
-[ext_resource type="Shader" uid="uid://0dait1bdwtvh" path="res://sandbox/ai/checkerboard.gdshader" id="1_v1doc"]
 [ext_resource type="PackedScene" uid="uid://diay4as6f3uoj" path="res://sandbox/ai/wall.tscn" id="2_ec114"]
 [ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover/cover.gd" id="3_pt8rx"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_v1doc"]
 [ext_resource type="Script" uid="uid://bj5l1k74x56vv" path="res://prefabs/ai/cover/cover_manager.gd" id="7_1ma2d"]
-[ext_resource type="PackedScene" uid="uid://d28tbnqpob3um" path="res://prefabs/ai/agents/versaillais.tscn" id="7_cpm1f"]
-[ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="8_1ma2d"]
 [ext_resource type="Script" uid="uid://b2kcx2i47o8oe" path="res://prefabs/ai/fight_area.gd" id="8_fwun3"]
-[ext_resource type="PackedScene" uid="uid://chfbdpud1npmp" path="res://sandbox/ai/canon.tscn" id="9_fwun3"]
-[ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://scripts/game_manager.gd" id="10_pt8rx"]
+[ext_resource type="Script" uid="uid://dlpem5ct2ufhg" path="res://sandbox/ai/spawn_manager.gd" id="10_pt8rx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_76nee"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -32,15 +28,11 @@ cell_height = 0.05
 agent_radius = 0.3
 agent_max_slope = 30.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_76nee"]
-render_priority = 0
-shader = ExtResource("1_v1doc")
-shader_parameter/color1 = Color(1, 1, 1, 1)
-shader_parameter/color2 = Color(0, 0, 0, 1)
-shader_parameter/size = 1.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cpm1f"]
+albedo_color = Color(0.21230483, 0.21230483, 0.21230483, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_u5472"]
-material = SubResource("ShaderMaterial_76nee")
+material = SubResource("StandardMaterial3D_cpm1f")
 size = Vector3(50, 1, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0f5d2"]
@@ -66,7 +58,6 @@ shadow_enabled = true
 navigation_mesh = SubResource("NavigationMesh_76nee")
 
 [node name="Ground" type="StaticBody3D" parent="Geometry" unique_id=656051242]
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Geometry/Ground" unique_id=909999813]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -184,14 +175,16 @@ next_covers = [NodePath("../Cover2")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover6" type="Marker3D" parent="Geometry/Covers" unique_id=1718118931 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.58708, 0.49999952, 40.56688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.339286, 0.49999952, 41.274895)
 script = ExtResource("3_pt8rx")
+type = 2
 next_covers = [NodePath("../Cover2")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover7" type="Marker3D" parent="Geometry/Covers" unique_id=1952332466 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.547597, 0.49999666, 41.908165)
 script = ExtResource("3_pt8rx")
+type = 2
 next_covers = [NodePath("../Cover3")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
@@ -204,12 +197,14 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 [node name="Cover2A" type="Marker3D" parent="Geometry/Covers" unique_id=426303714 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14371729, 0.5, 24.671278)
 script = ExtResource("3_pt8rx")
+type = 1
 next_covers = [NodePath("../Cover3")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover2B" type="Marker3D" parent="Geometry/Covers" unique_id=1335342873 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2280078, 0.5, 30.693174)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14965427, 0.5, 31.453201)
 script = ExtResource("3_pt8rx")
+type = 1
 next_covers = [NodePath("../Cover3")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
@@ -231,6 +226,8 @@ script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover4")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
+[node name="Spawner" type="Marker3D" parent="Geometry" unique_id=1110648986]
+
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("3_v1doc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.867939, 0, 3.1573315)
 
@@ -238,42 +235,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.867939, 0, 3.1573315)
 script = ExtResource("7_1ma2d")
 
 [node name="Agents" type="Node3D" parent="." unique_id=1254652160]
-
-[node name="Philipe" parent="Agents" unique_id=1349390169 instance=ExtResource("7_cpm1f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.55391, 0, 45.282173)
-
-[node name="Robert" parent="Agents" unique_id=1014845627 instance=ExtResource("7_cpm1f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.145319, 0, 45.282173)
-
-[node name="Nathan" parent="Agents" unique_id=1600546883 instance=ExtResource("7_cpm1f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.706521, 0, 45.282173)
-
-[node name="Enzo" parent="Agents" unique_id=1643373811 instance=ExtResource("7_cpm1f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12722588, 0, 45.282173)
-
-[node name="Leo" parent="Agents" unique_id=404725926 instance=ExtResource("7_cpm1f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1292944, 0, 45.282173)
-
-[node name="Pedro" parent="Agents" unique_id=2102656907 instance=ExtResource("7_cpm1f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.620586, 0, 45.282173)
-
-[node name="Liza" parent="Agents" unique_id=1024479816 instance=ExtResource("8_1ma2d")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -46.25913)
-
-[node name="Lea" parent="Agents" unique_id=406023563 instance=ExtResource("8_1ma2d")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -6.348639, 0, -46.25913)
-
-[node name="Lola" parent="Agents" unique_id=2022437931 instance=ExtResource("8_1ma2d")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -11.81195, 0, -46.25913)
-
-[node name="Caro" parent="Agents" unique_id=45724998 instance=ExtResource("8_1ma2d")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -18.78301, 0, -46.25913)
-
-[node name="Louna" parent="Agents" unique_id=609734237 instance=ExtResource("8_1ma2d")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 5.2575016, 0, -46.25913)
-
-[node name="Romane" parent="Agents" unique_id=260750545 instance=ExtResource("8_1ma2d")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 14.68701, 0, -46.25913)
 
 [node name="FightArea" type="Marker3D" parent="." unique_id=1873903201]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2168617, 0, 0)
@@ -286,10 +247,7 @@ metadata/_custom_type_script = "uid://b2kcx2i47o8oe"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0287628, 1.9073486e-06, 25.92083)
 curve = SubResource("Curve3D_1ma2d")
 
-[node name="Canon" parent="Path" unique_id=1666123749 instance=ExtResource("9_fwun3")]
-transform = Transform3D(0.99999744, 0, 0, 0, 1, 0, 0, 0, 0.99999744, -8.08265, 4.7683716e-07, 15.67968)
-loop = false
-
-[node name="GameManager" type="Node" parent="." unique_id=2067033149]
+[node name="SpawnManager" type="Node" parent="." unique_id=1268294321 node_paths=PackedStringArray("spawners")]
 script = ExtResource("10_pt8rx")
-metadata/_custom_type_script = "uid://bho08aptyf7f"
+spawners = [NodePath("../Geometry/Covers/Cover7"), NodePath("../Geometry/Covers/Cover6")]
+metadata/_custom_type_script = "uid://dlpem5ct2ufhg"
