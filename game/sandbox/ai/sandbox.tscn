@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dhj8g57pk5bi0"]
 
 [ext_resource type="PackedScene" uid="uid://diay4as6f3uoj" path="res://sandbox/ai/wall.tscn" id="2_ec114"]
-[ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover/cover.gd" id="3_pt8rx"]
+[ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="3_pt8rx"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_v1doc"]
-[ext_resource type="Script" uid="uid://bj5l1k74x56vv" path="res://prefabs/ai/cover/cover_manager.gd" id="7_1ma2d"]
+[ext_resource type="PackedScene" uid="uid://chfbdpud1npmp" path="res://sandbox/ai/canon.tscn" id="6_cpm1f"]
 [ext_resource type="Script" uid="uid://b2kcx2i47o8oe" path="res://prefabs/ai/fight_area.gd" id="8_fwun3"]
 [ext_resource type="Script" uid="uid://dlpem5ct2ufhg" path="res://prefabs/ai/spawn_manager.gd" id="10_pt8rx"]
 
@@ -242,9 +242,6 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("3_v1doc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.867939, 0, 3.1573315)
 
-[node name="CoverManager" type="Node" parent="." unique_id=1084077841]
-script = ExtResource("7_1ma2d")
-
 [node name="Agents" type="Node3D" parent="." unique_id=1254652160]
 
 [node name="FightArea" type="Marker3D" parent="." unique_id=1873903201]
@@ -257,6 +254,9 @@ metadata/_custom_type_script = "uid://b2kcx2i47o8oe"
 [node name="Path" type="Path3D" parent="." unique_id=1449059118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0287628, 1.9073486e-06, 25.92083)
 curve = SubResource("Curve3D_1ma2d")
+
+[node name="Canon" parent="Path" unique_id=1666123749 instance=ExtResource("6_cpm1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.08265, 4.7683716e-07, 15.67968)
 
 [node name="SpawnManager" type="Node" parent="." unique_id=1268294321 node_paths=PackedStringArray("spawners")]
 script = ExtResource("10_pt8rx")

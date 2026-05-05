@@ -10,6 +10,8 @@ class_name Cover extends Marker3D
 }
 @export var enabled: bool = true
 
+var holder: Agent = null
+
 const LINE_SIZE: float = 0.1
 const MOTION_WIDTH: float = 0.1
 const EDITOR_ONLY: bool = true
@@ -36,14 +38,6 @@ func _ready() -> void:
 		_init_point()
 		_init_lines()
 		_init_motions()
-
-func _enter_tree() -> void:
-	if not Engine.is_editor_hint():
-		CoverManager.register(self)
-
-func _exit_tree() -> void:
-	if not Engine.is_editor_hint():
-		CoverManager.unregister(self)
 
 func _process(_delta: float) -> void: _update_gizmos()
 

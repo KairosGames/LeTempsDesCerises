@@ -5,39 +5,16 @@ class_name MoveAction extends ActionLeaf
 @abstract func get_destination(actor: Node, blackboard: Blackboard) -> Vector3
 @abstract func get_stop_distance() -> float
 
-const MIN_DISTANCE: float = pow(0.1, 2)
-
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var destination: Vector3 = get_destination(actor, blackboard)
-
-	# handle moving target
-	if agent.navigation.target_position.distance_squared_to(destination) > MIN_DISTANCE:
-		
-		# FIXME fix start move logic elsewhere
-		if agent.cover:
-			CoverManager.release(agent.cover)
-			agent.cover = null
-		agent.move_start.emit()
-		on_start(actor, blackboard)
-
-		agent.navigation.move_to(get_destination(actor, blackboard), get_stop_distance())
-
+	var stop_distance: float = get_stop_distance()
+	if agent.navigation.target_position.distance_to(destination) > stop_distance: # handle moving target
+		agent.navigation.move_to(destination, stop_distance)
 	if agent.navigation.is_navigation_finished():
-		agent.move_end.emit()
-		if agent.navigation.is_target_reached():
-			return has_succeeded(actor, blackboard)
-		else:
-			on_failed(actor, blackboard)
-			return FAILURE
+		return SUCCESS if agent.navigation.is_target_reached() else FAILURE
 	else:
-		return is_running(actor, blackboard)
-
+		return RUNNING
 
 func interrupt(actor: Node, _blackboard: Blackboard) -> void:
 	actor.navigation.stop()
-
-func on_start(_actor: Node, _blackboard: Blackboard) -> int: return SUCCESS
-func has_succeeded(_actor: Node, _blackboard: Blackboard) -> int: return SUCCESS
-func on_failed(_actor: Node, _blackboard: Blackboard) -> void: return
-func is_running(_actor: Node, _blackboard: Blackboard) -> int: return RUNNING

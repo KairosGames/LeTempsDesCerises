@@ -1,24 +1,26 @@
 class_name Agent extends CharacterBody3D
 
-signal died
-
-@onready var navigation: Navigation = $Navigation
-
-@onready var animation: AnimationPlayer = $AnimationPlayer
-
 @warning_ignore_start("unused_signal")
+signal died
 signal shoot
 #signal reload_start
 #signal reload_end
-signal move_start
-signal move_end
 @warning_ignore_restore("unused_signal")
 
-var is_weapon_loaded: bool = true
-var is_alive: bool = true
-var cover: Cover = null
-
 @export var team: Team = Team.VERSALLAIS
+
+@onready var navigation: Navigation = $Navigation
+@onready var animation: AnimationPlayer = $AnimationPlayer
+
+var is_alive: bool = true
+var is_weapon_loaded: bool = true
+var is_covered: bool = false
+var canon_slot: Marker3D = null
+var cover: Cover = null:
+	set(value):
+		if cover: cover.holder = null
+		cover = value
+		if cover: cover.holder = self
 
 enum Team { VERSALLAIS = -1, NONE = 0, COMMUNARD = 1 }
 
@@ -29,9 +31,9 @@ func aim_to(target: Vector3) -> void:
 func die() -> void:
 	if not is_alive: return
 	is_alive = false
-	if cover: CoverManager.release(cover)
-	animation.play("die")
+	cover = null
 	navigation.stop()
+	animation.play("die")
 	await animation.animation_finished
 	died.emit()
 	queue_free()

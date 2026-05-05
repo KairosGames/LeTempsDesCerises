@@ -23,7 +23,7 @@ func _get_configuration_warnings() -> PackedStringArray:
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	for spawner: Cover in spawners:
-		if spawner: 
+		if spawner:
 			_open_list.push_back(spawner)
 
 func _process(_delta: float) -> void:
@@ -33,8 +33,7 @@ func _process(_delta: float) -> void:
 func _process_spawn():
 	if _entity_count < target_entity_count:
 		for spawner: Cover in _open_list:
-			if not spawner.enabled: continue
-			if CoverManager.is_free(spawner) and CoverManager.try_take_cover(spawner):
+			if spawner.enabled and not spawner.holder:
 				_open_list.erase(spawner)
 				_close_list.push_back(spawner)
 				get_tree().create_timer(cooldown).timeout.connect(_restore.bind(spawner))
