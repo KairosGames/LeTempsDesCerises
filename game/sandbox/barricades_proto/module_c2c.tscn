@@ -1,5 +1,8 @@
 [gd_scene format=4 uid="uid://cxvybyhea4hnk"]
 
+[ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="1_do0gn"]
+[ext_resource type="PackedScene" uid="uid://di6tlmoemgufc" path="res://sources/meshes/sm_barrel_stand_c.glb" id="1_hrqk6"]
+
 [sub_resource type="Curve3D" id="Curve3D_h8eh7"]
 _data = {
 "points": PackedVector3Array(-0.12678257, 0.05726278, -0.3272072, 0.12678257, -0.05726278, 0.3272072, -0.1, 1.1, 0, 0.00069344044, 0.05035317, -0.012461305, -0.00069344044, -0.05035317, 0.012461305, 1, 1.1, 0, -0.057336807, -0.035874724, 0.027938366, 0.057336807, 0.035874724, -0.027938366, 2, 0.8, 0, 0, 0, 0, 0, 0, 0, 3, 1.1, -0.1, -0.18887901, -0.22997534, 0.052381516, 0.18887901, 0.22997534, -0.052381516, 4, 1, 0, 0, 0, 0, 0, 0, 0, 4.2, -0.1, 0),
@@ -31,6 +34,7 @@ data = PackedVector3Array(0, 0, 0, 0, 0.99799997, 0.4587, 0, 0, 1.4, 0, 0, 0, 0,
 [node name="Module_S2C" type="Node3D" unique_id=649058329]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=928548258]
+visible = false
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=138130727]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 0.7)
@@ -89,17 +93,14 @@ transform = Transform3D(0.9925483, -0.12185203, 0, 0.12185203, 0.9925483, 0, 0, 
 operation = 2
 size = Vector3(1.7208862, 3.555542, 5)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1137524696]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1.1, 0)
-radius = 0.6
-height = 1.0
-sides = 16
-
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=819571706]
-visible = false
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1681201411]
 mesh = SubResource("ArrayMesh_y4xx0")
+surface_material_override/0 = ExtResource("1_do0gn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=383178858]
 shape = SubResource("ConcavePolygonShape3D_hrqk6")
+
+[node name="sm_barrel_stand_c2" parent="." unique_id=1202595659 instance=ExtResource("1_hrqk6")]
+transform = Transform3D(-0.1730637, 0.98491067, 0, -0.98491067, -0.1730637, 0, 0, 0, 1, 1.2689421, 1.0778868, 0.68407)
