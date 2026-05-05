@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bu7quq1hjvelc"]
+
+[ext_resource type="Material" uid="uid://tbba7mt7d3t6" path="res://sandbox/barricades_proto/materials/prototype_material_light_cross.tres" id="1_wvtdy"]
+[ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="2_27ald"]
+
+[node name="PlacePigalle" type="CSGCombiner3D" unique_id=1648593880]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=2048161074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.139, 0, 204.01877)
+radius = 40.0
+height = 0.2
+sides = 16
+material = ExtResource("1_wvtdy")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="." unique_id=229253347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.139, 0, 204.01877)
+radius = 20.0
+height = 0.6
+sides = 16
+material = ExtResource("2_27ald")
+
+[node name="Fountain" type="CSGCylinder3D" parent="." unique_id=1629235295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.08739, 0, 196.54121)
+radius = 6.0
+height = 1.0
+sides = 16
+material = ExtResource("1_wvtdy")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1698369715]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -110.85698, 0, 218.30078)
+operation = 2
+size = Vector3(90, 1, 40)
