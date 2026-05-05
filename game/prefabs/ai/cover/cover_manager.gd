@@ -2,6 +2,9 @@ extends Node
 # Cover -> IsFree
 var _covers: Dictionary[Cover, bool]
 
+func is_free(cover: Cover) -> bool:
+	return _covers[cover]
+
 func register(cover: Cover) -> void: _covers[cover] = true
 
 func unregister(cover: Cover) -> void: _covers.erase(cover)
