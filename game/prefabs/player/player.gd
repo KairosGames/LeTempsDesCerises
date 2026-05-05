@@ -157,6 +157,7 @@ var cam_rot_aim_twn: Tween
 var state_twn: Tween
 var recoil_twn:Tween
 
+var team: Agent.Team = Agent.Team.COMMUNARD
 
 func _ready() -> void:
 	p_inputs.gpad_crouch_pressed.connect(crouch_pressed_from_gpad)
