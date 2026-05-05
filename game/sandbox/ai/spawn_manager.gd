@@ -33,12 +33,14 @@ func _process(_delta: float) -> void:
 func _process_spawn():
 	if _entity_count < target_entity_count:
 		for spawner: Cover in _open_list:
-			if CoverManager.is_free(spawner):
+			if not spawner.enabled: continue
+			if CoverManager.is_free(spawner) and CoverManager.try_take_cover(spawner):
 				_open_list.erase(spawner)
 				_close_list.push_back(spawner)
 				get_tree().create_timer(cooldown).timeout.connect(_restore.bind(spawner))
 				_entity_count += 1
 				var versaillais: Agent = VERSAILLAIS.instantiate()
+				versaillais.cover = spawner
 				versaillais.position = spawner.global_position
 				versaillais.died.connect(_on_entity_died)
 				add_child(versaillais)

@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="2_1m1hx"]
 [ext_resource type="Script" uid="uid://d17vwjh5pnlnd" path="res://prefabs/ai/behaviours/actions/find_target.gd" id="3_7womm"]
 [ext_resource type="Script" uid="uid://bmwadp6yooef0" path="res://prefabs/ai/behaviours/actions/shoot_at_target.gd" id="4_gcc5r"]
-[ext_resource type="Script" uid="uid://dvtbf8ckxgryt" path="res://prefabs/ai/behaviours/actions/find_closer_cover.gd" id="5_gwr7d"]
 [ext_resource type="Script" uid="uid://c23rho2v0iamy" path="res://prefabs/ai/behaviours/actions/move_to_cover.gd" id="6_gwr7d"]
+[ext_resource type="Script" uid="uid://bwfed5132hftm" path="res://prefabs/ai/behaviours/actions/find_next_cover.gd" id="6_xqjhb"]
 [ext_resource type="Script" uid="uid://cu60ipyaaoxke" path="res://prefabs/ai/behaviours/actions/shoot_random.gd" id="7_gwr7d"]
 
 [node name="Offensive" type="Node" unique_id=1666196900]
@@ -28,9 +28,9 @@ metadata/_custom_type_script = "uid://bmwadp6yooef0"
 script = ExtResource("2_1m1hx")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
-[node name="FindCloserCover" type="Node" parent="GetCloser" unique_id=751285186]
-script = ExtResource("5_gwr7d")
-metadata/_custom_type_script = "uid://dvtbf8ckxgryt"
+[node name="FindNextCover" type="Node" parent="GetCloser" unique_id=1780116373]
+script = ExtResource("6_xqjhb")
+metadata/_custom_type_script = "uid://bwfed5132hftm"
 
 [node name="MoveToCover" type="Node" parent="GetCloser" unique_id=236371648]
 script = ExtResource("6_gwr7d")

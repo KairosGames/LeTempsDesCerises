@@ -13,6 +13,7 @@ func release(cover: Cover) -> void:
 	_covers[cover] = true
 	
 func try_take_cover(cover: Cover) -> bool:
+	if not _covers.has(cover): return false
 	if _covers[cover]:
 		_covers[cover] = false
 		return true

@@ -11,6 +11,7 @@ class_name Cover extends Marker3D
 	Type.TRANSITORY: Color.ORANGE,
 	Type.SPAWNER: Color.CYAN,
 }
+@export var enabled: bool = true
 
 const LINE_SIZE: float = 0.1
 const MOTION_WIDTH: float = 0.1
@@ -116,7 +117,7 @@ func _update_color() -> void:
 		_color = colors[type]
 		#_line_material.albedo_color = Color(_color, 0.2)
 		#_motion_material.albedo_color = Color(_color, 0.7)
-		_point_material.albedo_color = Color(_color, 0.9)
+		_point_material.albedo_color = Color(_color if enabled else Color.BLACK, 0.9)
 
 func _update_lines() -> void:
 	if not _lines or not _lines.multimesh: return
@@ -130,6 +131,7 @@ func _update_lines() -> void:
 			_lines.multimesh.set_instance_transform(i, Transform3D(Basis.from_scale(Vector3.ZERO), Vector3.ZERO))
 			break
 		var color: Color = colors[Type.TRANSITORY] if next_cover.type == Type.TRANSITORY else colors[type]
+		if not next_cover.enabled: color = Color.BLACK
 		var line_position: Vector3 = (global_position + next_cover.global_position) / 2.0
 		var line_length: float = global_position.distance_to(next_cover.global_position)
 		var line_scale: Vector3 = Vector3(LINE_SIZE, LINE_SIZE, line_length)
@@ -155,6 +157,7 @@ func _update_motions() -> void:
 			_motions.multimesh.set_instance_transform(i, Transform3D(Basis.from_scale(Vector3.ZERO), Vector3.ZERO))
 			break
 		var color: Color = colors[Type.TRANSITORY] if next_cover.type == Type.TRANSITORY else colors[type]
+		if not next_cover.enabled: color = Color.BLACK
 		var motion_position: Vector3 = global_position.lerp(next_cover.global_position, motion_progress)
 		var motion_transform: Transform3D = Transform3D.IDENTITY
 		motion_transform.origin = motion_position
