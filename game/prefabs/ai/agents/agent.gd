@@ -1,5 +1,7 @@
 class_name Agent extends CharacterBody3D
 
+signal died
+
 static var all: Array[Agent]
 
 @onready var navigation: Navigation = $Navigation
@@ -37,4 +39,5 @@ func die() -> void:
 	animation.play("die")
 	navigation.stop()
 	await animation.animation_finished
+	died.emit()
 	queue_free()
