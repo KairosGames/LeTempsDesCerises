@@ -19,7 +19,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	# TODO peeking 
 	# await agent.start_peek()
 		
-	var targets_data: Array[TargetData] = get_targets(agent.team).map(
+	var targets_data: Array = get_targets(agent.team).map(
 		func(target: Node3D) -> TargetData:
 			var data: TargetData = TargetData.new()
 			data.target = target
