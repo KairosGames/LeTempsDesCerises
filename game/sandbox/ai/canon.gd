@@ -18,6 +18,7 @@ func _physics_process(delta: float) -> void:
 	progress += speed * (holded_slots.size() / float(_slots.size())) * delta
 	if progress_ratio == 1 and (Time.get_ticks_msec() - _last_shoot_time) > shoot_delay * 1000:
 		print("[Canon] shoot")
+		_last_shoot_time = Time.get_ticks_msec()
 		shoot.emit()
 
 func _ready() -> void: 
