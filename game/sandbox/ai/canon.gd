@@ -10,7 +10,7 @@ signal shoot
 var available_slots: Array[Marker3D] = []
 var holded_slots: Array[Marker3D] = []
 
-@onready var _slots: Array[Marker3D] = [$AnimatableBody3D/Slot0, $AnimatableBody3D/Slot1, $AnimatableBody3D/Slot2]
+@onready var _slots: Array[Marker3D] = [%Slot0, %Slot1, %Slot2]
 
 var _last_shoot_time: float
 

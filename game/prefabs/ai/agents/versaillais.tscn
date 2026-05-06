@@ -3,17 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://n8jqgeouvopc" path="res://prefabs/ai/agents/agent.tscn" id="1_145la"]
 [ext_resource type="PackedScene" uid="uid://3y1qt50xdawu" path="res://prefabs/ai/behaviours/versaillais.tscn" id="2_uhkv7"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_145la"]
-albedo_color = Color(0, 0.7019608, 1, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_f4ypf"]
-material = SubResource("StandardMaterial3D_145la")
-radius = 0.25
-height = 0.5
-
 [node name="Versaillais" unique_id=1349390169 instance=ExtResource("1_145la")]
 
-[node name="Hat" parent="Body" parent_id_path=PackedInt32Array(1096738211) index="2" unique_id=209391601]
-mesh = SubResource("SphereMesh_f4ypf")
-
 [node name="Versaillais" parent="BeehaveTree/BeAlive" parent_id_path=PackedInt32Array(1853354031) index="1" unique_id=451543637 instance=ExtResource("2_uhkv7")]
+
+[editable path="PlaceholderBody"]
