@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{23E59525-27DD-4789-9862-5F2910D25BAE}" SchemaVersion="133">
+	<Events>
+		<WorkUnit Name="SFX" ID="{23E59525-27DD-4789-9862-5F2910D25BAE}" PersistMode="Standalone">
+			<PropertyList>
+				<Property Name="Color" Type="int16" Value="10"/>
+				<Property Name="OverrideColor" Type="bool" Value="True"/>
+			</PropertyList>
+			<ChildrenList>
+				<Folder Name="Player" ID="{7B0A9415-14AE-4E7B-8899-C0FD357F6959}" ShortID="860806700">
+					<ChildrenList>
+						<Event Name="Player_Shoot" ID="{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}">
+							<ChildrenList>
+								<Action Name="" ID="{EDE24413-AD02-4D03-BE3C-E6BCF78AB722}" ShortID="804408190">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerCrack_Oneshot" ID="{D9D474F4-91F3-48CC-AE2C-7F9A03CF6129}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{D977A9E7-CF33-46F5-9FAF-F9A0C212AF90}" ShortID="954143357">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{5FBC319D-C008-4154-8C2C-738AA4173B8A}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3BF36D4F-E6DB-48A1-9452-7A61A03E4672}" ShortID="153425534">
+									<PropertyList>
+										<Property Name="AbsoluteOrRelative" Type="int16" Value="1"/>
+										<Property Name="ActionType" Type="int16" Value="38"/>
+										<Property Name="Delay" Type="Real64" Value="0.2"/>
+										<Property Name="GameParameterValue" Type="Real64" Value="10"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{35B09AA6-485C-447D-BD96-BCBEBE4FB62D}" ShortID="881748335">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening_Recover" ID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" WorkUnitID="{23E59525-27DD-4789-9862-5F2910D25BAE}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Player_Reload" ID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}">
+							<ChildrenList>
+								<Action Name="" ID="{1CC1AD89-3C14-41DE-8A0B-30AC7340D5AB}" ShortID="604875797">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Player_Reload_Oneshot" ID="{E9FDFEC8-A3E8-44FB-A1F6-94A74981BCFA}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Deafening_Recover" ID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}">
+							<PropertyList>
+								<Property Name="InstanceLimit" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{D204D785-02FE-4D40-9F82-FFBD6B156A75}" ShortID="16817253">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="39"/>
+										<Property Name="FadeTime" Type="Real64" Value="5"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Bullet_Hit" ID="{13B273F2-57C8-4A62-9A0E-5479116C3DB7}">
+							<PropertyList>
+								<Property Name="CooldownTime" Type="Real32">
+									<ValueList>
+										<Value>4</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{AA161D02-E0D4-4BD4-8E42-417B78FAE655}" ShortID="591970666">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Bullet_Hit_LayerCore_Oneshot" ID="{172213FC-8D86-47A8-8D13-C26D17DBBD7E}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{E834A555-99DA-4EE8-93EA-727DA890610F}" ShortID="239462344">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Bullet_Hit_Surface" ID="{3C87D3B7-C3EF-410F-82C4-EB90989F8BEC}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Player_Steps" ID="{219EF9C5-BD01-44F6-8054-19E1EA4E63C0}">
+							<PropertyList>
+								<Property Name="InstanceLimit" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ChildrenList>
+								<Action Name="" ID="{8BA1AC88-53A1-42A2-A0AE-6036A49118B5}" ShortID="155857833">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{1F652385-867D-4038-80ED-BD4149BC19EB}" ShortID="905903143">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Brick" ID="{1A90D8A4-6CF5-41F5-B4C7-60F218FE8B45}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Folder Name="Stance" ID="{7E4BDC40-BB3B-42EE-95D7-7D7E13816C2C}" ShortID="26554154">
+							<ChildrenList>
+								<Event Name="Player_Up" ID="{4522F8E8-2547-4E53-85E8-2F1D0788D631}">
+									<ChildrenList>
+										<Action Name="" ID="{EFF5BE37-16C9-4E9C-8CC7-0639C60D35CF}" ShortID="552976548">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="22"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="stand" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{A87156C0-E277-4B36-8CBD-16D15726D955}" ShortID="543900513">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{30E11257-E831-49CA-92A2-307E9960FFDF}" ShortID="473525650">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Player_Crouch" ID="{0DEF7495-B440-4E74-9C4B-9073F849D823}">
+									<ChildrenList>
+										<Action Name="" ID="{C601DB63-C38F-4D45-8DAB-43C9ED7A36EC}" ShortID="26901526">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="22"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="crouch" ID="{A48E2FBF-CCA9-4B0B-967C-367263A876A4}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{7132ED26-844C-4EE2-82FE-BE70BD597453}" ShortID="425499116">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{99AB072A-4699-4C7D-8C56-9F9BA20AD8C2}" ShortID="75787305">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Player_Prone" ID="{FE60E622-47E0-4B0A-8224-00824D1DFFA5}">
+									<ChildrenList>
+										<Action Name="" ID="{B01F7E86-3676-4144-BC45-C721052544E3}" ShortID="39836267">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="22"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="prone" ID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{3DC4B70C-5908-4A4A-8B86-0A0F1A65F6A4}" ShortID="437698357">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{36EDFB61-0678-4DA6-822C-A373A599B5CF}" ShortID="672079540">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{74D077EF-CA64-4F65-9635-8D3C093F226B}" ShortID="258121623">
+											<PropertyList>
+												<Property Name="Delay" Type="Real64" Value="0.6"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+										<Action Name="" ID="{93CBD6B2-0FF9-4DD0-AC3F-DD4B10F8D5E9}" ShortID="675382779">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="2"/>
+												<Property Name="Delay" Type="Real64" Value="0.9"/>
+												<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="Cloth" ID="{BA4B8290-21E7-4F11-9A7B-9128EA36D0E6}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Player_Sprint" ID="{6896C878-A293-4133-9E1F-3A23F80B8F43}">
+									<ChildrenList>
+										<Action Name="" ID="{3D141346-EC1D-41AA-8AE9-E6410F608AAB}" ShortID="940813034">
+											<PropertyList>
+												<Property Name="ActionType" Type="int16" Value="22"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="sprint" ID="{A55EE69E-41C3-4B69-9732-3DA8627F23FD}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Enemy" ID="{B5140E2A-4A79-4337-AE16-E75E3C18D0C9}" ShortID="380814325">
+					<ChildrenList>
+						<Event Name="Enemy_Shoot" ID="{3FDD584B-7295-4A08-9570-8775D7B756E9}">
+							<ChildrenList>
+								<Action Name="" ID="{74781B11-DE9A-46CE-B193-19618FAB148F}" ShortID="27331121">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{37B8C0BF-BD75-44AD-8A16-529DBCA517BF}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{55F64626-53CD-470D-B737-D42E69B01256}" ShortID="864445380">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="0.2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Enemy_Bullet_Miss" ID="{25FA0D96-992C-4A2C-9989-DCA998EF30A6}" WorkUnitID="{23E59525-27DD-4789-9862-5F2910D25BAE}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{E3552584-A32A-4975-ADF3-DCDDDDCCC1FC}" ShortID="621184166">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="4"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening_Recover" ID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" WorkUnitID="{23E59525-27DD-4789-9862-5F2910D25BAE}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3368AEA3-8C33-4A0E-AD0E-80230EAA9F8D}" ShortID="130108963">
+									<PropertyList>
+										<Property Name="AbsoluteOrRelative" Type="int16" Value="1"/>
+										<Property Name="ActionType" Type="int16" Value="38"/>
+										<Property Name="Delay" Type="Real64" Value="0.1"/>
+										<Property Name="GameParameterValue" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Enemy_Steps" ID="{925872CA-03A4-4FC1-8E1A-768C93F1A808}">
+							<ChildrenList>
+								<Action Name="" ID="{2B422346-F05D-4C69-8A0B-38DE0104938F}" ShortID="842325574">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Brick" ID="{697F11E6-7433-465A-BADD-32F47D422237}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Enemy_Bullet_Miss" ID="{25FA0D96-992C-4A2C-9989-DCA998EF30A6}">
+							<ChildrenList>
+								<Action Name="" ID="{21316A6B-6D02-4F61-A30A-CA44A5B67633}" ShortID="548624385">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Bullet_Hit_Surface" ID="{90A249CC-0D30-4A9C-BEA2-BF119E87CBC7}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Event Name="Amb_Cannons" ID="{42733E42-B5F5-44F1-98EB-A729172BF973}">
+					<ChildrenList>
+						<Action Name="" ID="{6AE5ACCD-44AC-4F68-9A6C-61722BEF355E}" ShortID="360158429">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cannons_Heavy" ID="{AFA4CAE5-B7DA-4996-BD00-7E1362AC1F4E}" WorkUnitID="{C021C757-01C4-4039-B7FC-F2B868336782}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{44B9A6FB-E5C3-4D49-9028-3BE09B5C5F4A}" ShortID="655955233">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Cannons_Light" ID="{BE8593A3-2955-490C-943A-F1D753BDF488}" WorkUnitID="{C021C757-01C4-4039-B7FC-F2B868336782}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{5A9BC714-E2B9-44B1-8C1B-4CF4C10755EC}" ShortID="869058987">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LTDC_AMB_Street_WindBirds_Loop" ID="{34497A7D-ABE1-409E-92D5-E3B8A7BC49D6}" WorkUnitID="{C021C757-01C4-4039-B7FC-F2B868336782}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Folder Name="Cannon" ID="{59333DCA-BB11-4A2C-BA76-D958EFA7899C}" ShortID="459529562">
+					<ChildrenList>
+						<Event Name="Cannon_Shoot" ID="{91A29903-C449-45A3-830D-63BA22BF8416}">
+							<ChildrenList>
+								<Action Name="" ID="{FA46A9B9-00C1-4884-B933-037B37891202}" ShortID="755392701">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_Cannon_Shot_Oneshot" ID="{ADF06739-CF51-4A56-B3B1-0D2CD672DD11}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Barricade" ID="{F72787C1-DB2D-4961-91C0-C570BB371248}" ShortID="89441555">
+					<ChildrenList>
+						<Event Name="Barricade_Damaged" ID="{3D5106B6-DB52-4CAD-8B67-C5FA9BAE909C}">
+							<ChildrenList>
+								<Action Name="" ID="{29F238FB-946A-497E-8E97-F84FB35CD571}" ShortID="298145276">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Barricade_Damage_LayerCore_Oneshot" ID="{6B0D95F7-CF42-4B8D-BE1D-F18197FD9E90}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Brick_Fall" ID="{420BB33C-4BFB-4756-92E0-198AC47BDC12}"/>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

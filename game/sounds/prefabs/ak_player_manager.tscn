@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bgg5b13i7sqme"]
 
+[ext_resource type="Script" uid="uid://tntha6dbwiuy" path="res://sounds/scripts/ak_player_manager.gd" id="1_g1o18"]
 [ext_resource type="PackedScene" uid="uid://d1qotbnwtmkrg" path="res://sounds/prefabs/bulett_hit.tscn" id="2_g1o18"]
 [ext_resource type="PackedScene" uid="uid://bq47sux5pblj4" path="res://sounds/prefabs/bank_loader.tscn" id="2_sdg1b"]
 [ext_resource type="WwiseEvent" uid="uid://cqdf7u10ggy7x" path="res://Wwise/resources/Event/{42733E42-B5F5-44F1-98EB-A729172BF973}.tres" id="3_cgjv3"]
@@ -11,90 +12,11 @@
 [ext_resource type="WwiseBank" uid="uid://crxnj0v3wpc0k" path="res://Wwise/resources/SoundBank/{49827AFC-1442-4066-AF70-C2B0B3B40C86}.tres" id="9_sdg1b"]
 [ext_resource type="WwiseEvent" uid="uid://b6s21jrtjah4e" path="res://Wwise/resources/Event/{6896C878-A293-4133-9E1F-3A23F80B8F43}.tres" id="9_vws2r"]
 
-[sub_resource type="GDScript" id="GDScript_lthba"]
-script/source = "extends Node3D
-
-var is_walking := false
-var is_crouched := false
-var controller_id
-
-
-@export var player : Player
-@export var shoot : AkEvent3D
-@export var steps : AkEvent3D
-
-@export_category(\"Stances\")
-@export var up : AkEvent3D
-@export var crouch : AkEvent3D
-@export var prone : AkEvent3D
-@export var sprint : AkEvent3D
-
-@export_category(\"Prefabs\")
-@export var bullet_prefab : PackedScene
-
-func _ready() -> void:
-	#Input.start_joy_vibration(0, 1.0, 1.0, 1.0)
-	if Input.get_connected_joypads().is_empty() : return
-	for i in Input.get_connected_joypads():
-		print(Input.get_joy_guid(i))
-		Input.set_joy_light(i, Color.CRIMSON)
-		print(\"id\", i)
-		controller_id = Input.get_joy_guid(i)
-		print(controller_id)
-	Wwise.add_output(\"Motion\", (0))
-
-func _unhandled_input(_event: InputEvent) -> void:
-
-	if Input.is_action_just_pressed(\"shoot\"):
-		Wwise.set_state(\"player_aim\", str(player.is_aiming))
-		shoot.post_event()
-		var target : Node3D = player.weapon_ray_cast.get_collider()
-		var hit_position : Vector3 = player.weapon_ray_cast.get_collision_point()
-		var hit = bullet_prefab.instantiate()
-		hit.position = hit_position
-		var delay : float = self.global_position.distance_to(hit_position)/375
-		await get_tree().create_timer(delay).timeout
-		call_deferred(\"add_child\", hit)
-		if target == null : return
-		for i in target.get_children():
-			if i.has_meta(\"Surface\") and i.get_class() == \"MeshInstance3D\":
-				print(i.get_meta(\"Surface\"))
-				Wwise.set_switch(\"bullet_material\",i.get_meta(\"Surface\"), self)
-			#elif i.get_class() == \"MeshInstance3D\":
-				#print(\"Orlane tu as oublié un mat !\")
-	
-	if Input.is_action_just_pressed(\"crouch\"):
-		if is_crouched:
-			crouch.post_event()
-			is_crouched = true
-		else:
-			up.post_event()
-			is_crouched = false
-	if Input.is_action_just_pressed(\"prone\"):
-		if !player.is_prone:
-			prone.post_event()
-		else:
-			up.post_event()
-	if Input.is_action_just_pressed(\"run\"):
-		sprint.post_event()
-	if Input.is_action_just_released(\"run\"):
-		crouch.post_event()
-		crouch.post_event()
-
-func _process(_delta: float) -> void:
-	if player.is_on_floor() and player.velocity.x + player.velocity.z != float(0) and !is_walking:
-		steps.post_event()
-		is_walking = true
-	elif is_walking and player.velocity.x + player.velocity.z == 0 or !player.is_on_floor():
-		steps.stop_event()
-		is_walking = false
-"
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_s8o8u"]
 radius = 0.1
 
 [node name="ak_player_manager" type="Node3D" unique_id=1168469569 node_paths=PackedStringArray("shoot", "steps", "up", "crouch", "prone", "sprint")]
-script = SubResource("GDScript_lthba")
+script = ExtResource("1_g1o18")
 shoot = NodePath("Shoot")
 steps = NodePath("Steps")
 up = NodePath("Up")

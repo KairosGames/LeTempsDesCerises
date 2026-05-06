@@ -1,6 +1,10 @@
 extends Node3D
 
 var is_walking := false
+var is_crouched := false
+var is_prone := false
+var controller_id
+
 
 @export var player : Player
 @export var shoot : AkEvent3D
@@ -19,12 +23,12 @@ func _ready() -> void:
 	#Input.start_joy_vibration(0, 1.0, 1.0, 1.0)
 	if Input.get_connected_joypads().is_empty() : return
 	for i in Input.get_connected_joypads():
-		print("id", i)
-	Wwise.add_output("Motion", (0))
+		Wwise.add_output("Motion", (i))
 
 func _unhandled_input(_event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed("shoot"):
+		if !player.can_use_shoot() : return
 		Wwise.set_state("player_aim", str(player.is_aiming))
 		shoot.post_event()
 		var target : Node3D = player.weapon_ray_cast.get_collider()
@@ -36,24 +40,28 @@ func _unhandled_input(_event: InputEvent) -> void:
 		call_deferred("add_child", hit)
 		if target == null : return
 		for i in target.get_children():
-			if i.has_meta("Surface"):
+			if i.has_meta("Surface") and i.get_class() == "MeshInstance3D":
 				print(i.get_meta("Surface"))
-				#Wwise.set_switch("bullet_material",i.get_meta("Surface"), self)
-	
-	if Input.is_action_just_pressed("crouch"):
-		if !player.is_crouched:
-			crouch.post_event()
-		else:
-			up.post_event()
-	if Input.is_action_just_pressed("lying_down"):
-		if !player.is_lyingd:
-			prone.post_event()
-		else:
-			up.post_event()
-	if Input.is_action_just_pressed("run"):
-		sprint.post_event()
+				Wwise.set_switch("bullet_material",i.get_meta("Surface"), self)
+			#elif i.get_class() == "MeshInstance3D":
+				#print("Orlane tu as oublié un mat !")
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	
+	if player.is_changing_state:
+			match player.curr_posture:
+				player.Posture.STAND:
+					up.post_event()
+				player.Posture.CROUCH:
+					crouch.post_event()
+				player.Posture.PRONE:
+					prone.post_event()
+	
+	if player.local_velocity.length() == 0:
+		Wwise.set_rtpc_value("Player_Velocity", 1, null)
+	else:
+		Wwise.set_rtpc_value("Player_Velocity", remap(player.local_velocity.length(), 0, player.get_used_speed(),0 , 1), null)
+
 	if player.is_on_floor() and player.velocity.x + player.velocity.z != float(0) and !is_walking:
 		steps.post_event()
 		is_walking = true

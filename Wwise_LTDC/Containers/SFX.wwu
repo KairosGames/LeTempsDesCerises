@@ -47,7 +47,7 @@
 							<ChildrenList>
 								<PropertyContainer Name="Chassepot" ID="{2C7E86A7-AE31-4B62-932A-3CE2293EFE73}" ShortID="711613522">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
@@ -70,11 +70,6 @@
 										<Sound Name="LTDC_SFX_Player_GunShot_LayerCrack_Oneshot" ID="{D9D474F4-91F3-48CC-AE2C-7F9A03CF6129}" ShortID="516835742">
 											<PropertyList>
 												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
-												<Property Name="MakeUpGain" Type="Real64">
-													<ValueList>
-														<Value>6</Value>
-													</ValueList>
-												</Property>
 												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 												<Property Name="MaxSoundPerInstance" Type="int16">
 													<ValueList>
@@ -124,6 +119,7 @@
 													<PropertyList>
 														<Property Name="FadeOutDuration" Type="Real64" Value="0.04079"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.63772"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerCrack_Oneshot.wav</AudioFile>
@@ -233,113 +229,10 @@
 										</Sound>
 										<Sound Name="LTDC_SFX_Player_Reload_Oneshot" ID="{E9FDFEC8-A3E8-44FB-A1F6-94A74981BCFA}" ShortID="600803265">
 											<PropertyList>
-												<Property Name="3DSpatialization" Type="int16" Value="2"/>
-												<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+												<Property Name="EnableAttenuation" Type="bool" Value="False"/>
 												<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
-												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
-												<Reference Name="Attenuation">
-													<Custom>
-														<Attenuation Name="Attenuation (Custom)" ID="{9071D778-A625-4BDB-AD1C-21BFB97183D7}" ShortID="212666304">
-															<PropertyList>
-																<Property Name="RadiusMax" Type="Real64" Value="10"/>
-															</PropertyList>
-															<CurveUsageInfoList>
-																<VolumeDryUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
-																		<Curve Name="VolumeDry" ID="{04FF5885-B4B2-4EEC-9C3C-976468CBF20F}">
-																			<PropertyList>
-																				<Property Name="Flags" Type="int32" Value="3"/>
-																			</PropertyList>
-																			<PointList>
-																				<Point>
-																					<XPos>0</XPos>
-																					<YPos>0</YPos>
-																					<Flags>5</Flags>
-																				</Point>
-																				<Point>
-																					<XPos>10</XPos>
-																					<YPos>-200</YPos>
-																					<Flags>37</Flags>
-																				</Point>
-																			</PointList>
-																		</Curve>
-																	</CurveUsageInfo>
-																</VolumeDryUsage>
-																<VolumeWetGameUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
-																</VolumeWetGameUsage>
-																<VolumeWetUserUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
-																</VolumeWetUserUsage>
-																<LowPassFilterUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-																</LowPassFilterUsage>
-																<HighPassFilterUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-																</HighPassFilterUsage>
-																<DualShelfUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-																</DualShelfUsage>
-																<SpreadUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-																</SpreadUsage>
-																<FocusUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-																</FocusUsage>
-																<ObstructionVolumeUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</ObstructionVolumeUsage>
-																<ObstructionLPFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</ObstructionLPFUsage>
-																<ObstructionHPFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</ObstructionHPFUsage>
-																<ObstructionDSFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</ObstructionDSFUsage>
-																<OcclusionVolumeUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</OcclusionVolumeUsage>
-																<OcclusionLPFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</OcclusionLPFUsage>
-																<OcclusionHPFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</OcclusionHPFUsage>
-																<OcclusionDSFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</OcclusionDSFUsage>
-																<DiffractionVolumeUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</DiffractionVolumeUsage>
-																<DiffractionLPFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</DiffractionLPFUsage>
-																<DiffractionHPFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</DiffractionHPFUsage>
-																<DiffractionDSFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</DiffractionDSFUsage>
-																<TransmissionVolumeUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</TransmissionVolumeUsage>
-																<TransmissionLPFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</TransmissionLPFUsage>
-																<TransmissionHPFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</TransmissionHPFUsage>
-																<TransmissionDSFUsage>
-																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-																</TransmissionDSFUsage>
-															</CurveUsageInfoList>
-														</Attenuation>
-													</Custom>
-												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 												</Reference>
@@ -362,15 +255,12 @@
 										</Sound>
 										<Sound Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{5FBC319D-C008-4154-8C2C-738AA4173B8A}" ShortID="4250792">
 											<PropertyList>
+												<Property Name="EnableAttenuation" Type="bool" Value="False"/>
+												<Property Name="HoldListenerOrientation" Type="bool" Value="True"/>
 												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.15</Value>
-													</ValueList>
-												</Property>
-												<Property Name="MakeUpGain" Type="Real64">
-													<ValueList>
-														<Value>3</Value>
 													</ValueList>
 												</Property>
 												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
@@ -381,6 +271,7 @@
 												</Property>
 												<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 												<Property Name="OverrideEffect" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 												<Property Name="Pitch" Type="int32">
 													<ModifierList>
@@ -427,7 +318,6 @@
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{869C5124-E9C2-49FF-9357-4424E580906B}">
 													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="1.81942"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 													</PropertyList>
 													<Language>SFX</Language>
@@ -437,6 +327,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Position Name="" ID="{75237E28-5C20-4EC4-ABEE-606A5CD0AA26}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -459,6 +352,47 @@
 													</CustomState>
 												</CustomStateList>
 											</StateInfo>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<RTPC Name="" ID="{39DB4E4E-181F-4A20-B11B-93F6040A661E}" ShortID="930724507">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="ReflectionsVolume"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<Custom>
+																	<ModulatorTime Name="Modulator Time (Custom)" ID="{23E7DD09-1859-42B3-B7AF-78FFFD1A75BA}" ShortID="889588621">
+																		<PropertyList>
+																			<Property Name="TimeModDuration" Type="Real64" Value="2"/>
+																		</PropertyList>
+																	</ModulatorTime>
+																</Custom>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{38BB51C7-564F-4703-9665-44AD85101A59}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-12</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>2</XPos>
+																				<YPos>-200</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</ObjectList>
+											</ObjectLists>
 											<ActiveSourceList>
 												<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{869C5124-E9C2-49FF-9357-4424E580906B}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -2654,7 +2588,7 @@
 														<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 														<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 														<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-														<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.4">
+														<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0">
 															<ModifierList>
 																<ModifierInfo>
 																	<Modifier Name="" ID="{2FD24E67-BB46-4D96-BFE5-FB0A2428B28A}"/>
@@ -2818,13 +2752,13 @@
 														<StateGroupList>
 															<StateGroupInfo>
 																<StateGroupRef Name="player_stance" ID="{02DC436E-58FA-4CBB-9770-4451633B92C8}"/>
-																<StateGroupInfo Name="" ID="{9603D356-EA3B-4139-A267-BB3CC9A0636E}" ShortID="623085035"/>
+																<StateGroupInfo Name="" ID="{08DCCEBB-91E2-42B2-A7E2-D38EE875166E}" ShortID="375782684"/>
 															</StateGroupInfo>
 														</StateGroupList>
 														<CustomStateList>
 															<CustomState>
-																<StateRef Name="up" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
-																<CustomState Name="" ID="{47066A01-EB62-47CD-B14B-C9991E106468}" ShortID="1011176256">
+																<StateRef Name="stand" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
+																<CustomState Name="" ID="{E08FA0BD-4DA5-4B8C-93FB-8561D67F0032}" ShortID="709311687">
 																	<PropertyList>
 																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
 																	</PropertyList>
@@ -2832,32 +2766,31 @@
 															</CustomState>
 															<CustomState>
 																<StateRef Name="prone" ID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
-																<CustomState Name="" ID="{C5A9D2F0-61CA-42E8-B8BE-67980164AEC4}" ShortID="244495116">
+																<CustomState Name="" ID="{0201A79F-2C6A-463E-8DF5-BD2B09B48BD2}" ShortID="484410514">
 																	<PropertyList>
-																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
+																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
 																	</PropertyList>
 																</CustomState>
 															</CustomState>
 															<CustomState>
 																<StateRef Name="crouch" ID="{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"/>
-																<CustomState Name="" ID="{FA712503-E398-4ACE-8638-430717B3281F}" ShortID="336305708">
+																<CustomState Name="" ID="{27A7FD3A-094F-445F-B975-77DF7125D0AE}" ShortID="705073194">
 																	<PropertyList>
-																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.25"/>
+																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.2"/>
 																	</PropertyList>
 																</CustomState>
 															</CustomState>
 															<CustomState>
 																<StateRef Name="sprint" ID="{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"/>
-																<CustomState Name="" ID="{15D47C0B-11A2-4533-AEB1-F7F62AADD238}" ShortID="687095712">
+																<CustomState Name="" ID="{4266995A-9A44-4965-A3CB-12E1B46C1F54}" ShortID="391061592">
 																	<PropertyList>
-																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="-0.25"/>
-																		<Property Name="Volume" Type="Real64" Value="3"/>
+																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="-0.2"/>
 																	</PropertyList>
 																</CustomState>
 															</CustomState>
 															<CustomState>
 																<StateRef Name="None" ID="{1DDBDC63-7073-4B7E-A290-B582E49C0F09}"/>
-																<CustomState Name="" ID="{6D46EC11-FCAB-4244-BC7F-209CF734F1A7}" ShortID="968975635">
+																<CustomState Name="" ID="{48C3FEF3-41B1-468C-9F79-EB709AED69C6}" ShortID="595656960">
 																	<PropertyList>
 																		<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
 																	</PropertyList>
@@ -2865,6 +2798,41 @@
 															</CustomState>
 														</CustomStateList>
 													</StateInfo>
+													<ObjectLists>
+														<ObjectList Name="RTPC">
+															<RTPC Name="" ID="{07346C80-537F-4AA7-9227-E4D1772867F8}" ShortID="708580253">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="PlayMechanismSpecialTransitionsValue"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="Player_Velocity" ID="{C608E447-1D9D-4717-B429-A50B1CC84984}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{9EBF3CDE-A262-4741-81CA-96E8A1BBC2AE}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="1"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>2</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>1</XPos>
+																						<YPos>0.4</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</ObjectList>
+													</ObjectLists>
 												</RandomSequenceContainer>
 											</ChildrenList>
 											<PositioningInfo>
@@ -2879,7 +2847,7 @@
 												</StateGroupList>
 												<CustomStateList>
 													<CustomState>
-														<StateRef Name="up" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
+														<StateRef Name="stand" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
 														<CustomState Name="" ID="{DD75C6FF-A957-46A9-8154-F188A4D739ED}" ShortID="667417868"/>
 													</CustomState>
 													<CustomState>
@@ -2902,7 +2870,11 @@
 													</CustomState>
 													<CustomState>
 														<StateRef Name="sprint" ID="{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"/>
-														<CustomState Name="" ID="{11031D67-C782-406F-826E-5D89445D3B0B}" ShortID="976223783"/>
+														<CustomState Name="" ID="{11031D67-C782-406F-826E-5D89445D3B0B}" ShortID="976223783">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-3"/>
+															</PropertyList>
+														</CustomState>
 													</CustomState>
 													<CustomState>
 														<StateRef Name="None" ID="{1DDBDC63-7073-4B7E-A290-B582E49C0F09}"/>
@@ -2936,9 +2908,6 @@
 												</Property>
 												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 												<Property Name="Pitch" Type="int32">
-													<ValueList>
-														<Value>370</Value>
-													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{2763EA1F-CE9B-4163-9325-63AF4BDE89E9}">
@@ -2954,7 +2923,7 @@
 												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 												<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
 												<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.25"/>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
 												<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 												<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
@@ -3118,7 +3087,7 @@
 												</StateGroupList>
 												<CustomStateList>
 													<CustomState>
-														<StateRef Name="up" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
+														<StateRef Name="stand" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
 														<CustomState Name="" ID="{CA077622-FCAC-44EE-AD2F-2370BAD8DEEB}" ShortID="333072845">
 															<PropertyList>
 																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
@@ -3130,7 +3099,7 @@
 														<CustomState Name="" ID="{61A4FD9F-65B3-4EE3-8178-C236D9C78F50}" ShortID="675772897">
 															<PropertyList>
 																<Property Name="Lowpass" Type="int16" Value="25"/>
-																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="-0.1"/>
+																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="-0.5"/>
 																<Property Name="UserAuxSendVolume0" Type="Real64" Value="20"/>
 															</PropertyList>
 														</CustomState>
@@ -3140,7 +3109,7 @@
 														<CustomState Name="" ID="{E596E5DA-A750-4925-9ACA-0CC00745E0F4}" ShortID="444610628">
 															<PropertyList>
 																<Property Name="Lowpass" Type="int16" Value="25"/>
-																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.25"/>
+																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.2"/>
 																<Property Name="UserAuxSendVolume0" Type="Real64" Value="6"/>
 																<Property Name="Volume" Type="Real64" Value="-6"/>
 															</PropertyList>
@@ -3150,7 +3119,7 @@
 														<StateRef Name="sprint" ID="{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"/>
 														<CustomState Name="" ID="{543E3D22-54A3-4D70-B2F0-69CABF2347E6}" ShortID="488625879">
 															<PropertyList>
-																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="-0.25"/>
+																<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="-0.2"/>
 															</PropertyList>
 														</CustomState>
 													</CustomState>
@@ -3164,6 +3133,78 @@
 													</CustomState>
 												</CustomStateList>
 											</StateInfo>
+											<ObjectLists>
+												<ObjectList Name="RTPC">
+													<RTPC Name="" ID="{AC35075F-303C-4E59-BB2F-1B629B0A9D9B}" ShortID="114995952">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Volume"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Player_Velocity" ID="{C608E447-1D9D-4717-B429-A50B1CC84984}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{5A1E94BF-FE18-4020-B229-D51CDC967FA4}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-15</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>0.125</XPos>
+																				<YPos>-15</YPos>
+																				<Flags>0</Flags>
+																				<SegmentShape>Log1</SegmentShape>
+																			</Point>
+																			<Point>
+																				<XPos>1</XPos>
+																				<YPos>0</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+													<RTPC Name="" ID="{6631794E-2AD8-438C-B554-DD9CE753DB5F}" ShortID="845469736">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="PlayMechanismSpecialTransitionsValue"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Player_Velocity" ID="{C608E447-1D9D-4717-B429-A50B1CC84984}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{7EE540FB-F8C0-460F-87DC-FEAD196F4EB4}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="1"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>2.00000000000045</YPos>
+																				<Flags>5</Flags>
+																			</Point>
+																			<Point>
+																				<XPos>1</XPos>
+																				<YPos>0.4</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</ObjectList>
+											</ObjectLists>
 										</RandomSequenceContainer>
 									</ChildrenList>
 									<BlendTrackList>
@@ -3525,7 +3566,7 @@
 										</StateGroupList>
 										<CustomStateList>
 											<CustomState>
-												<StateRef Name="up" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
+												<StateRef Name="stand" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
 												<CustomState Name="" ID="{8563ADB6-B8AA-42BB-BABE-39507DE9008C}" ShortID="396981863"/>
 											</CustomState>
 											<CustomState>
@@ -5820,8 +5861,563 @@
 										</Position>
 									</PositioningInfo>
 								</PropertyContainer>
+								<PropertyContainer Name="Cannon" ID="{D66E316B-07D5-418F-86B6-741B0A74237E}" ShortID="609513157">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+										<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Cannon" ID="{DF2C1369-8215-4F3D-A2BB-53CC1964EC04}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="ReflectionsAuxSend">
+											<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="LTDC_Cannon_Shot_Oneshot" ID="{ADF06739-CF51-4A56-B3B1-0D2CD672DD11}" ShortID="22565981">
+											<PropertyList>
+												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="Wwise_Motion_Send" ID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_Cannon_Shot_Oneshot" ID="{CD6CD600-C445-4C6C-8888-E435DA8A4B28}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_Cannon_Shot_Oneshot.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="891776346"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_Cannon_Shot_Oneshot" ID="{CD6CD600-C445-4C6C-8888-E435DA8A4B28}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</PropertyContainer>
 							</ChildrenList>
 						</PropertyContainer>
+					</ChildrenList>
+				</PropertyContainer>
+				<PropertyContainer Name="Barricade" ID="{F7FCE1A8-0914-4545-BE09-3E8BC1082D27}" ShortID="1006033881">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<Sound Name="LTDC_SFX_Barricade_Damage_LayerCore_Oneshot" ID="{6B0D95F7-CF42-4B8D-BE1D-F18197FD9E90}" ShortID="373227831">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="LTDC_SFX_Barricade_Damage_LayerCore_Oneshot" ID="{36C53BA3-99B8-42C7-92DD-68E91067B0AA}">
+									<Language>SFX</Language>
+									<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Damage_LayerCore_Oneshot.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="1021233491"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="LTDC_SFX_Barricade_Damage_LayerCore_Oneshot" ID="{36C53BA3-99B8-42C7-92DD-68E91067B0AA}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<SwitchContainer Name="Debris_Brick" ID="{1D49AFEF-A978-475F-8A79-D4E07ED29FFF}" ShortID="96312180">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="First" ID="{0E917C72-AA5E-4F81-8F09-69B5A910E6E0}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="Debris" ID="{74E2D250-64B7-405D-8F20-9EB76B8320A1}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Light_Brick" ID="{250C55C4-3D80-4529-A037-842EE496ABC9}" ShortID="767246368">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_001" ID="{3B1BE92D-4E26-4227-84AD-30D9A2699F2F}" ShortID="131715128">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_001" ID="{7A8973B5-8428-4CEC-AB18-BCFF2EB0BAD3}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_001.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="413837929"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_001" ID="{7A8973B5-8428-4CEC-AB18-BCFF2EB0BAD3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_002" ID="{4BE371AF-CEE3-4951-BEBA-2BE4FA26B3F7}" ShortID="895018733">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_002" ID="{5E720E3D-FB1E-4A8E-8955-65BE8EE800F1}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_002.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="852557919"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_002" ID="{5E720E3D-FB1E-4A8E-8955-65BE8EE800F1}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_003" ID="{A2FEEBF4-7284-40F8-8CB4-1E33FDD3D7A9}" ShortID="648085803">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_003" ID="{37159D9C-7404-4CE6-88FE-17B8973A6F2D}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_003.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="432687729"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_003" ID="{37159D9C-7404-4CE6-88FE-17B8973A6F2D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_004" ID="{F586D5C0-BBF7-402A-816A-D7385AC81D0C}" ShortID="996827970">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_004" ID="{019B2C1B-E88E-4C0D-9EDF-E145FB24D23A}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_004.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="150264634"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_004" ID="{019B2C1B-E88E-4C0D-9EDF-E145FB24D23A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_005" ID="{E9AF83A4-3AE2-4562-A521-5E963372A2EA}" ShortID="607590900">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_005" ID="{58F1D824-A5A2-4862-83F8-6A1FEF599E9C}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_005.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="219682458"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_005" ID="{58F1D824-A5A2-4862-83F8-6A1FEF599E9C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_006" ID="{6A0F0E10-175B-47D2-9C2E-C3AB1EF6F07D}" ShortID="779109425">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_006" ID="{F22BFC09-C79B-40FF-8CBB-8CEB69165E65}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_006.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="306712885"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_006" ID="{F22BFC09-C79B-40FF-8CBB-8CEB69165E65}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_007" ID="{0BE51A35-3F66-48EF-92B0-4A8BA7579A8C}" ShortID="346354779">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_007" ID="{9B6925D7-5433-46D6-84B5-11F2E48EFD9E}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_007.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="462682528"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_007" ID="{9B6925D7-5433-46D6-84B5-11F2E48EFD9E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_008" ID="{C0ADB0B5-4EE3-4530-84E8-CFA82035760D}" ShortID="747650717">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_008" ID="{B2256D6D-466A-471F-8B1F-E4D7E327D6F7}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_008.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="569318931"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_008" ID="{B2256D6D-466A-471F-8B1F-E4D7E327D6F7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_009" ID="{FD5D24E4-4876-4967-A3D8-BC86F2E1C7B7}" ShortID="601944197">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_009" ID="{13CF38E8-8D52-4889-95E0-07DD61247729}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_009.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1041905271"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_009" ID="{13CF38E8-8D52-4889-95E0-07DD61247729}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_010" ID="{EC60D125-2A9E-4540-9B56-01C1A72C186E}" ShortID="922962263">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_010" ID="{83C97E6C-35A6-45F3-A40D-868973EFDB5B}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_010.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1043901543"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_010" ID="{83C97E6C-35A6-45F3-A40D-868973EFDB5B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_011" ID="{CF4198C2-1F31-4521-A2D8-6D77B990D04F}" ShortID="1014767614">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_011" ID="{49606D3B-C9D3-4840-A312-AA2CAF1F57DF}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_011.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="777364051"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_011" ID="{49606D3B-C9D3-4840-A312-AA2CAF1F57DF}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_012" ID="{5A09D7B6-14D0-420C-BCCB-AD1F4A7D7DB0}" ShortID="733596702">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_012" ID="{78EDF639-BF8D-4CCE-9BDC-A80D9FCB9834}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_012.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="573833834"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_012" ID="{78EDF639-BF8D-4CCE-9BDC-A80D9FCB9834}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Heavy_Brick" ID="{848C0DBF-E5E1-4D70-B6A4-FC87D433DF2E}" ShortID="412767018">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_001" ID="{1ADAD8EC-FF3B-43C6-A916-EF42DE060B14}" ShortID="482264648">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_001" ID="{F47833BA-748B-40ED-B3F5-0FC000236A78}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_001.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="206031601"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_001" ID="{F47833BA-748B-40ED-B3F5-0FC000236A78}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_002" ID="{C24D49D6-3601-4564-8855-C0925FBE02D9}" ShortID="46008754">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_002" ID="{D85FA297-31CF-4682-92C7-BA1390B415AD}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_002.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="368056344"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_002" ID="{D85FA297-31CF-4682-92C7-BA1390B415AD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_003" ID="{504874D1-43FA-4696-B73A-97A16A70EF03}" ShortID="1045651225">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_003" ID="{E03E6B7D-D1EA-45BA-99BB-2083792D521C}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_003.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="770928260"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_003" ID="{E03E6B7D-D1EA-45BA-99BB-2083792D521C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_004" ID="{F300D6CC-4E19-4EF2-BA67-30AB932FB556}" ShortID="500685052">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_004" ID="{501591E0-5564-4452-87FD-68CD1C5381F6}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_004.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="831039896"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_004" ID="{501591E0-5564-4452-87FD-68CD1C5381F6}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_005" ID="{FD6E973B-0DB9-445F-839A-BDF64BC36235}" ShortID="75582217">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_005" ID="{1D466867-D71F-49BB-914E-0B645C3FF15F}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_005.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="159950334"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_005" ID="{1D466867-D71F-49BB-914E-0B645C3FF15F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_006" ID="{5B03CE88-1EAB-4EFC-B5F5-9188DD1A6E88}" ShortID="682868942">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_006" ID="{A9A41F26-881D-4EAE-96C2-37944045C05B}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_006.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="228586405"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_006" ID="{A9A41F26-881D-4EAE-96C2-37944045C05B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="Heavy_Brick" ID="{848C0DBF-E5E1-4D70-B6A4-FC87D433DF2E}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
+										<ItemRef Name="Light_Brick" ID="{250C55C4-3D80-4529-A037-842EE496ABC9}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="First" ID="{0E917C72-AA5E-4F81-8F09-69B5A910E6E0}"/>
+										<ItemList>
+											<ItemRef Name="Heavy_Brick" ID="{848C0DBF-E5E1-4D70-B6A4-FC87D433DF2E}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Second" ID="{462AC773-1076-4E41-8643-F3EBA6E5A5B0}"/>
+										<ItemList>
+											<ItemRef Name="Light_Brick" ID="{250C55C4-3D80-4529-A037-842EE496ABC9}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
 					</ChildrenList>
 				</PropertyContainer>
 			</ChildrenList>

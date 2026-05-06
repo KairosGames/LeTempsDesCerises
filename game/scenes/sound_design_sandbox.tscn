@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://fbp2ofes0q52" path="res://sandbox/barricades_proto/barricade_part_1.tscn" id="12_dym0f"]
 [ext_resource type="PackedScene" uid="uid://dw7fv1qq3ewxa" path="res://sandbox/barricades_proto/barricade_part_2.tscn" id="13_p0yv6"]
 [ext_resource type="PackedScene" uid="uid://yrcffpgog2ra" path="res://prefabs/ai/barricade.tscn" id="14_pc7os"]
+[ext_resource type="PackedScene" uid="uid://bipkjq8ss0hjs" path="res://sounds/prefabs/ak_cannon_manager.tscn" id="15_pc7os"]
 [ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="16_54uho"]
 [ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="16_arrrh"]
 [ext_resource type="WwiseBank" uid="uid://be8q2yq5klk88" path="res://Wwise/resources/SoundBank/{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}.tres" id="20_uyvsv"]
@@ -443,7 +444,7 @@ mesh = SubResource("ArrayMesh_54uho")
 [node name="AkGeometry" type="AkGeometry" parent="NavigationRegion3D/FirstGym/Environment/CSGBakedMeshInstance3D/StaticBody3D" unique_id=323147722]
 enable_diffraction_on_boundary_edges = true
 acoustic_texture = ExtResource("16_54uho")
-transmission_loss_value = 0.25
+transmission_loss_value = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/FirstGym/Environment/CSGBakedMeshInstance3D/StaticBody3D" unique_id=920158296]
 shape = SubResource("ConcavePolygonShape3D_54uho")
@@ -488,3 +489,6 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 [node name="AkBank" type="AkBank" parent="." unique_id=783484259]
 bank = ExtResource("4_s8o8u")
 load_on = 1
+
+[node name="AkCannonManager" parent="." unique_id=1286440460 instance=ExtResource("15_pc7os")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.976978, 1.0553861, 3.8852901)

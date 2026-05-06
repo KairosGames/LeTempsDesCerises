@@ -14,7 +14,10 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID AMB_CANNONS = 3265814676U;
+        static const AkUniqueID BARRICADE_DAMAGED = 482738278U;
+        static const AkUniqueID BRICK_FALL = 3840667520U;
         static const AkUniqueID BULLET_HIT = 384143791U;
+        static const AkUniqueID CANNON_SHOOT = 2469499398U;
         static const AkUniqueID DEAFENING_RECOVER = 3687575925U;
         static const AkUniqueID ENEMY_BULLET_MISS = 3787232089U;
         static const AkUniqueID ENEMY_SHOOT = 1050776119U;
@@ -64,7 +67,7 @@ namespace AK
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID PRONE = 1270007533U;
                 static const AkUniqueID SPRINT = 1296465089U;
-                static const AkUniqueID UP = 1551306158U;
+                static const AkUniqueID STAND = 1214700371U;
             } // namespace STATE
         } // namespace PLAYER_STANCE
 
@@ -93,6 +96,17 @@ namespace AK
                 static const AkUniqueID TYPE2 = 408582741U;
             } // namespace SWITCH
         } // namespace CHARACTER_TYPE
+
+        namespace DEBRIS
+        {
+            static const AkUniqueID GROUP = 459611840U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID FIRST = 998496889U;
+                static const AkUniqueID SECOND = 3476314365U;
+            } // namespace SWITCH
+        } // namespace DEBRIS
 
         namespace PLAYER_POSITION
         {
@@ -126,6 +140,7 @@ namespace AK
         static const AkUniqueID CANNONS_PROBABILITY = 2576556105U;
         static const AkUniqueID DEAFENING = 711096812U;
         static const AkUniqueID PLAYER_POSITION = 2221031936U;
+        static const AkUniqueID PLAYER_VELOCITY = 1833811084U;
         static const AkUniqueID POETIC_LEVEL = 3680281974U;
     } // namespace GAME_PARAMETERS
 
@@ -133,6 +148,7 @@ namespace AK
     {
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID SB_AMB = 925885567U;
+        static const AkUniqueID SB_CANNON = 2061449278U;
         static const AkUniqueID SB_ENEMY = 3827176343U;
         static const AkUniqueID SB_PLAYER = 2103316850U;
     } // namespace BANKS
