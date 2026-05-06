@@ -13,7 +13,7 @@ signal shoot
 @onready var navigation: Navigation = $Navigation
 @onready var animation: AnimationPlayer = $PlaceholderBody/AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var shoot_targets: Array[Area3D]
+@onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Head]
 
 var is_alive: bool = true
 var is_weapon_loaded: bool = true
@@ -25,7 +25,7 @@ var canon_slot: Marker3D = null:
 	set(value):
 		canon_slot = value
 		if cover: cover = null
-var cover: Cover = null:
+@export var cover: Cover = null:
 	set(value):
 		if cover: cover.holder = null
 		cover = value

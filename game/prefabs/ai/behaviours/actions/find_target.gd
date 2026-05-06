@@ -9,8 +9,8 @@ class_name FindTarget extends ActionLeaf
 
 func get_targets(team : Agent.Team) -> Array[Node]:
 	match team:
-		Agent.Team.VERSALLAIS: return get_tree().get_nodes_in_group(&"Versaillais")
-		Agent.Team.COMMUNARD: return get_tree().get_nodes_in_group(&"Communard")
+		Agent.Team.VERSALLAIS: return get_tree().get_nodes_in_group(&"Communard")
+		Agent.Team.COMMUNARD: return get_tree().get_nodes_in_group(&"Versaillais")
 		_: return []
 
 func tick(actor: Node, _blackboard: Blackboard) -> int:
