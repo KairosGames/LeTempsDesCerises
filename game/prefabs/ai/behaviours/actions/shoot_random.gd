@@ -8,7 +8,7 @@ const duration: float = 2
 # TODO implement
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	if not is_shooting:
-		(actor as Agent).animation.play("random_shoot")
+		(actor as Agent).shoot_anim()
 		is_shooting = true
 		shoot_start_time = Time.get_ticks_msec()
 		return RUNNING

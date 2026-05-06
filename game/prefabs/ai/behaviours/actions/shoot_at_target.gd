@@ -23,8 +23,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 			var will_touch: bool = precision > (randi() % 100)
 			is_shooting = false
 			agent.aim_to(target.global_position)
-			(actor as Agent).animation.play("shoot")
-			(actor as Agent).shoot.emit()
+			(actor as Agent).shoot_anim()
 			(actor as Agent).is_weapon_loaded = false
 			if will_touch:
 				target.die()

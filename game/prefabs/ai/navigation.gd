@@ -1,6 +1,7 @@
 class_name Navigation extends NavigationAgent3D
 
 @export var movement_speed: float = 4.0
+@export var rotation_speed: float = 4.0
 
 var _character: CharacterBody3D = null
 var _physics_delta: float
