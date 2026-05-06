@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dhj8g57pk5bi0"]
 
 [ext_resource type="PackedScene" uid="uid://diay4as6f3uoj" path="res://sandbox/ai/wall.tscn" id="2_ec114"]
+[ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="3_cpm1f"]
 [ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="3_pt8rx"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_v1doc"]
 [ext_resource type="PackedScene" uid="uid://chfbdpud1npmp" path="res://sandbox/ai/canon.tscn" id="6_cpm1f"]
@@ -166,67 +167,134 @@ transform = Transform3D(-0.9258731, 0.3773299, -0.019522645, 0.34570774, 0.86686
 [node name="Wall37" parent="Geometry/Walls" unique_id=1804211735 instance=ExtResource("2_ec114")]
 transform = Transform3D(-0.9258731, 0.3773299, -0.019522645, 0.34570774, 0.8668652, 0.3592091, 0.15246382, 0.3258329, -0.93305296, 14.916505, -1.7730439, -10.104334)
 
-[node name="Covers" type="Node3D" parent="Geometry" unique_id=2014370194]
+[node name="Versaillais" type="Node3D" parent="Geometry" unique_id=2014370194]
 
-[node name="Cover" type="Marker3D" parent="Geometry/Covers" unique_id=978294005 node_paths=PackedStringArray("next_covers")]
+[node name="Cover" type="Marker3D" parent="Geometry/Versaillais" unique_id=978294005 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79902077, 0.49999952, 37.33379)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover2")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
-[node name="Cover6" type="Marker3D" parent="Geometry/Covers" unique_id=1718118931 node_paths=PackedStringArray("next_covers")]
+[node name="Cover6" type="Marker3D" parent="Geometry/Versaillais" unique_id=1718118931 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.339286, 0.49999952, 41.274895)
 script = ExtResource("3_pt8rx")
 type = 2
 next_covers = [NodePath("../Cover2")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
-[node name="Cover7" type="Marker3D" parent="Geometry/Covers" unique_id=1952332466 node_paths=PackedStringArray("next_covers")]
+[node name="Cover7" type="Marker3D" parent="Geometry/Versaillais" unique_id=1952332466 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.917129, 0.49999666, 41.02418)
 script = ExtResource("3_pt8rx")
 type = 2
 next_covers = [NodePath("../Cover3")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
-[node name="Cover2" type="Marker3D" parent="Geometry/Covers" unique_id=2012545856 node_paths=PackedStringArray("next_covers")]
+[node name="Cover2" type="Marker3D" parent="Geometry/Versaillais" unique_id=2012545856 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.018543, 0.5, 27.307499)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover2A"), NodePath("../Cover2B")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
-[node name="Cover2A" type="Marker3D" parent="Geometry/Covers" unique_id=426303714 node_paths=PackedStringArray("next_covers")]
+[node name="Cover2A" type="Marker3D" parent="Geometry/Versaillais" unique_id=426303714 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0035626888, 0.5, 25.328827)
 script = ExtResource("3_pt8rx")
 type = 1
 next_covers = [NodePath("../Cover3")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
-[node name="Cover2B" type="Marker3D" parent="Geometry/Covers" unique_id=1335342873 node_paths=PackedStringArray("next_covers")]
+[node name="Cover2B" type="Marker3D" parent="Geometry/Versaillais" unique_id=1335342873 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4125906, 0.5, 31.705091)
 script = ExtResource("3_pt8rx")
 type = 1
 next_covers = [NodePath("../Cover3")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
-[node name="Cover3" type="Marker3D" parent="Geometry/Covers" unique_id=886454026 node_paths=PackedStringArray("next_covers")]
+[node name="Cover3" type="Marker3D" parent="Geometry/Versaillais" unique_id=886454026 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.924609, 0.5, 28.231752)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover4"), NodePath("../Cover5")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
-[node name="Cover4" type="Marker3D" parent="Geometry/Covers" unique_id=1340758334 node_paths=PackedStringArray("next_covers")]
+[node name="Cover4" type="Marker3D" parent="Geometry/Versaillais" unique_id=1340758334 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0231366, 0.49999905, 17.202177)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover5"), NodePath("../Cover8")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
-[node name="Cover5" type="Marker3D" parent="Geometry/Covers" unique_id=1075914960 node_paths=PackedStringArray("next_covers")]
+[node name="Cover5" type="Marker3D" parent="Geometry/Versaillais" unique_id=1075914960 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.699058, 0.5, 16.128708)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover4")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
-[node name="Cover8" type="Marker3D" parent="Geometry/Covers" unique_id=1219188629]
+[node name="Cover8" type="Marker3D" parent="Geometry/Versaillais" unique_id=1219188629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.301645, 0.5000005, 12.577001)
+script = ExtResource("3_pt8rx")
+enabled = false
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Communard" type="Node3D" parent="Geometry" unique_id=1857917587]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Cover" type="Marker3D" parent="Geometry/Communard" unique_id=1068961987 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79902077, 0.49999952, 37.33379)
+script = ExtResource("3_pt8rx")
+next_covers = [NodePath("../Cover2")]
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover6" type="Marker3D" parent="Geometry/Communard" unique_id=174301587 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.339286, 0.49999952, 41.274895)
+script = ExtResource("3_pt8rx")
+type = 2
+next_covers = [NodePath("../Cover2")]
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover7" type="Marker3D" parent="Geometry/Communard" unique_id=1388104651 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.917129, 0.49999666, 41.02418)
+script = ExtResource("3_pt8rx")
+type = 2
+next_covers = [NodePath("../Cover3")]
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover2" type="Marker3D" parent="Geometry/Communard" unique_id=443275070 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.018543, 0.5, 27.307499)
+script = ExtResource("3_pt8rx")
+next_covers = [NodePath("../Cover2A"), NodePath("../Cover2B")]
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover2A" type="Marker3D" parent="Geometry/Communard" unique_id=1697730660 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0035626888, 0.5, 25.328827)
+script = ExtResource("3_pt8rx")
+type = 1
+next_covers = [NodePath("../Cover3")]
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover2B" type="Marker3D" parent="Geometry/Communard" unique_id=1772975586 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4125906, 0.5, 31.705091)
+script = ExtResource("3_pt8rx")
+type = 1
+next_covers = [NodePath("../Cover3")]
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover3" type="Marker3D" parent="Geometry/Communard" unique_id=1114710914 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.924609, 0.5, 28.231752)
+script = ExtResource("3_pt8rx")
+next_covers = [NodePath("../Cover4"), NodePath("../Cover5")]
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover4" type="Marker3D" parent="Geometry/Communard" unique_id=762855720 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.0231366, 0.49999905, 17.202177)
+script = ExtResource("3_pt8rx")
+next_covers = [NodePath("../Cover5"), NodePath("../Cover8")]
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover5" type="Marker3D" parent="Geometry/Communard" unique_id=1330218876 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.699058, 0.5, 16.128708)
+script = ExtResource("3_pt8rx")
+next_covers = [NodePath("../Cover4")]
+metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Cover8" type="Marker3D" parent="Geometry/Communard" unique_id=1526976214]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.301645, 0.5000005, 12.577001)
 script = ExtResource("3_pt8rx")
 enabled = false
@@ -234,8 +302,16 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Spawner" type="Marker3D" parent="Geometry" unique_id=1110648986]
 
+[node name="Communard2" parent="Geometry" unique_id=1349390169 node_paths=PackedStringArray("cover") instance=ExtResource("3_cpm1f")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 13.216956, 0.0019399751, -41.28759)
+cover = NodePath("../Communard/Cover7")
+
+[node name="Communard3" parent="Geometry" unique_id=1739006648 node_paths=PackedStringArray("cover") instance=ExtResource("3_cpm1f")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -13.146985, 0.0019399751, -41.28759)
+cover = NodePath("../Communard/Cover6")
+
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("3_v1doc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.867939, 0, 3.1573315)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4469824, 0, -46.06268)
 
 [node name="Agents" type="Node3D" parent="." unique_id=1254652160]
 
@@ -255,6 +331,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.08265, 4.7683716e-07, 15.6
 
 [node name="SpawnManager" type="Node" parent="." unique_id=1268294321 node_paths=PackedStringArray("spawners")]
 script = ExtResource("10_pt8rx")
-spawners = [NodePath("../Geometry/Covers/Cover7"), NodePath("../Geometry/Covers/Cover6")]
+spawners = [NodePath("../Geometry/Versaillais/Cover7"), NodePath("../Geometry/Versaillais/Cover6")]
 cooldown = 5.0
 metadata/_custom_type_script = "uid://dlpem5ct2ufhg"
