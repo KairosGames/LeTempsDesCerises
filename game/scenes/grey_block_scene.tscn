@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bu1f4j2mtjfi6" path="res://sandbox/csg_to_save/streets.tscn" id="4_62d4a"]
 [ext_resource type="PackedScene" uid="uid://bhg8mku4vikc2" path="res://sandbox/barricades_proto/module_s2c.tscn" id="4_hw16s"]
-[ext_resource type="PackedScene" uid="uid://bp8x0y3cbrgxr" path="res://sandbox/barricades_proto/module_F2s.tscn" id="5_50w5n"]
+[ext_resource type="PackedScene" uid="uid://bp8x0y3cbrgxr" path="res://sandbox/barricades_proto/module_f2s.tscn" id="5_50w5n"]
 [ext_resource type="PackedScene" uid="uid://bvt0ppodsqqmp" path="res://sandbox/csg_to_save/building_a.tscn" id="5_mljuc"]
 [ext_resource type="PackedScene" uid="uid://bwoam7oo1imct" path="res://sandbox/csg_to_save/building_b.tscn" id="6_mbxdm"]
-[ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover/cover.gd" id="6_wfqi1"]
+[ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="6_wfqi1"]
 [ext_resource type="PackedScene" uid="uid://coinjslo0k4qj" path="res://sandbox/csg_to_save/building_c.tscn" id="7_51cw4"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="7_vj5vi"]
 [ext_resource type="PackedScene" uid="uid://d28tbnqpob3um" path="res://prefabs/ai/agents/versaillais.tscn" id="8_62d4a"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cgjnksovxn0go" path="res://sandbox/csg_to_save/building_g.tscn" id="11_ko4ry"]
 [ext_resource type="PackedScene" uid="uid://bu7quq1hjvelc" path="res://sandbox/csg_to_save/place_pigalle.tscn" id="12_do2ed"]
 [ext_resource type="PackedScene" uid="uid://bkb8xv1h0cwjs" path="res://sources/meshes/sm_morris_column_complete_c.glb" id="14_mljuc"]
+[ext_resource type="PackedScene" uid="uid://ck6egvcr6jysn" path="res://sandbox/barricades_proto/module_s2s.tscn" id="15_mbxdm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o0uso"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -57,20 +58,11 @@ navigation_mesh = SubResource("NavigationMesh_fvv7y")
 [node name="Covers" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=764488555]
 
 [node name="Stand_cover" type="Node3D" parent="Environment/NavigationRegion3D/Level/Covers" unique_id=1262689281]
-transform = Transform3D(167.46716, 0, 0, 0, 1, 0, 0, 0, 5.302166, 17.598604, -9.536743e-07, 3.4726875)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.598604, -9.536743e-07, 3.4726875)
 
-[node name="Cover" type="Marker3D" parent="Environment/NavigationRegion3D/Level/Covers/Stand_cover" unique_id=1799286224]
+[node name="Cover" type="Marker3D" parent="Environment/NavigationRegion3D/Level/Covers/Stand_cover" unique_id=803159170]
 script = ExtResource("6_wfqi1")
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
-
-[node name="Module_s2c" parent="Environment/NavigationRegion3D/Level" unique_id=649058329 instance=ExtResource("4_hw16s")]
-transform = Transform3D(0.5404312, 0, -0.8413882, 0, 1, 0, 0.8413882, 0, 0.5404312, -5.37, 0.1, -5.136)
-
-[node name="Module_f2s" parent="Environment/NavigationRegion3D/Level" unique_id=1391267331 instance=ExtResource("5_50w5n")]
-transform = Transform3D(-0.44053468, 0, 0.89773566, 0, 1, 0, -0.89773566, 0, -0.44053468, -0.8351413, 0.10000048, 5.275471)
-
-[node name="Module_c2c" parent="Environment/NavigationRegion3D/Level" unique_id=1403838488 instance=ExtResource("11_50w5n")]
-transform = Transform3D(-0.47242767, 0, 0.8813695, 0, 1, 0, -0.8813695, 0, -0.47242767, -2.607629, 0.1, 1.523146)
 
 [node name="Base_map" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=405278169]
 
@@ -95,8 +87,26 @@ transform = Transform3D(-0.47242767, 0, 0.8813695, 0, 1, 0, -0.8813695, 0, -0.47
 [node name="sm_morris_column_complete_c2" parent="Environment/NavigationRegion3D/Level" unique_id=2100647934 instance=ExtResource("14_mljuc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.388905, 0.19999671, 8.113325)
 
+[node name="Barricade" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1868737066]
+transform = Transform3D(0.9980212, 0, -0.06287761, 0, 1, 0, 0.06287761, 0, 0.9980212, 1.5186749, 4.7683716e-07, 2.4222565)
+
+[node name="Module_s2c" parent="Environment/NavigationRegion3D/Level/Barricade" unique_id=649058329 instance=ExtResource("4_hw16s")]
+transform = Transform3D(0.13887921, 0, -0.99030936, 0, 1, 0, 0.99030936, 0, 0.13887921, -4.788594, 0.1, -4.558055)
+
+[node name="Module_f2s" parent="Environment/NavigationRegion3D/Level/Barricade" unique_id=1391267331 instance=ExtResource("5_50w5n")]
+transform = Transform3D(-0.44053468, 0, 0.89773566, 0, 1, 0, -0.89773566, 0, -0.44053468, -0.8351413, 0.10000048, 5.275471)
+
+[node name="Module_c2c" parent="Environment/NavigationRegion3D/Level/Barricade" unique_id=1403838488 instance=ExtResource("11_50w5n")]
+transform = Transform3D(-0.64505756, 0, 0.76413393, 0, 1, 0, -0.76413393, 0, -0.64505756, -2.6767776, 0.1, 1.730053)
+
+[node name="Module_c2c2" parent="Environment/NavigationRegion3D/Level/Barricade" unique_id=1194709539 instance=ExtResource("11_50w5n")]
+transform = Transform3D(0.79676193, 0, -0.6042932, 0, 1, 0, 0.6042932, 0, 0.79676193, -7.7990446, 0.1, -7.6559615)
+
+[node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade" unique_id=2035223165 instance=ExtResource("15_mbxdm")]
+transform = Transform3D(-0.8715991, 0, 0.49021947, 0, 1, 0, -0.49021947, 0, -0.8715991, -8.125614, 0.19999953, -6.072383)
+
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("7_vj5vi")]
-transform = Transform3D(-0.38651785, 0, 0.9222819, 0, 1, 0, -0.9222819, 0, -0.38651785, -14.25284, 0.99106574, 3.6184187)
+transform = Transform3D(-0.38651785, 0, 0.9222819, 0, 1, 0, -0.9222819, 0, -0.38651785, 3.555108, 0.99106574, -14.280336)
 
 [node name="Ennemies" type="Node3D" parent="." unique_id=126015613]
 

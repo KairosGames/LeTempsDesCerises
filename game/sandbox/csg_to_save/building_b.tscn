@@ -2,26 +2,43 @@
 
 [ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="1_dcwmk"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dcwmk"]
+
 [node name="BuildingB" type="CSGCombiner3D" unique_id=399764161]
 use_collision = true
 
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="." unique_id=1871419505]
+[node name="Building" type="CSGPolygon3D" parent="." unique_id=1871419505]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 92.462, 0, -29.098)
 polygon = PackedVector2Array(-59.613857, -33.525955, -78.116714, 4.281843, -74.70933, 8.812115, -14.260963, -33.558502)
 depth = 15.0
 material = ExtResource("1_dcwmk")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=413668432]
+[node name="Trottoir1" type="CSGBox3D" parent="." unique_id=413668432]
 transform = Transform3D(0.43837112, 0, 0.898794, 0, 1, 0, -0.898794, 0, 0.43837112, 22.432516, 0.1, -43.48101)
 size = Vector3(43.278, 0.2, 4)
 material = ExtResource("1_dcwmk")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=180536125]
+[node name="Trottoir2" type="CSGBox3D" parent="." unique_id=180536125]
 transform = Transform3D(0.819152, 0, 0.5735764, 0, 1, 0, -0.5735764, 0, 0.819152, 48.575714, 0.1, -40.65375)
 size = Vector3(73.827, 0.2, 4)
 material = ExtResource("1_dcwmk")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=749510388]
+[node name="Trottoir3" type="CSGBox3D" parent="." unique_id=749510388]
 transform = Transform3D(-0.6025117, 0, 0.79810995, 0, 1, 0, -0.79810995, 0, -0.6025117, 15.741658, 0.1, -21.728567)
 size = Vector3(10.668, 0.2, 3.5)
 material = ExtResource("1_dcwmk")
+
+[node name="Balcon1" type="CSGBox3D" parent="." unique_id=1712934117]
+transform = Transform3D(-0.60181504, 0, 0.7986354, 0, 1, 0, -0.7986354, 0, -0.60181504, 15.898, 5, -22.33)
+size = Vector3(2.5980644, 0.2, 1)
+material = ExtResource("1_dcwmk")
+
+[node name="Hole" type="CSGBox3D" parent="." unique_id=669937553]
+transform = Transform3D(0.60741746, 0, -0.7943828, 0, 1, 0, 0.7943828, 0, 0.60741746, 16.252195, 6.4987054, -22.6)
+operation = 2
+size = Vector3(1.4, 2.8, 0.4)
+
+[node name="Glass" type="CSGBox3D" parent="." unique_id=1366493196]
+transform = Transform3D(0.60741746, 0, -0.794383, 0, 1, 0, 0.794383, 0, 0.60741746, 16.387814, 6.4987054, -22.703701)
+size = Vector3(1.4, 2.8, 0.1)
+material = SubResource("StandardMaterial3D_dcwmk")
