@@ -1,5 +1,5 @@
 @tool
-class_name ShootAtTarget extends ActionLeaf
+class_name Shoot extends ActionLeaf
 
 var is_shooting: bool = false
 var shoot_start_time: int

@@ -2,12 +2,50 @@
 
 [ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_x0bws"]
 [ext_resource type="PackedScene" uid="uid://detjnvcenglo7" path="res://prefabs/ai/behaviours/load_weapon.tscn" id="3_lb3wh"]
-[ext_resource type="PackedScene" uid="uid://u7vhym1nppbj" path="res://prefabs/ai/behaviours/offensive.tscn" id="4_qnfed"]
+[ext_resource type="Script" uid="uid://d17vwjh5pnlnd" path="res://prefabs/ai/behaviours/actions/find_target.gd" id="4_t2guh"]
+[ext_resource type="Script" uid="uid://bsoyuqkktjyrp" path="res://prefabs/ai/target_selection_coefficient.gd" id="4_u4ja4"]
+[ext_resource type="Script" uid="uid://bmwadp6yooef0" path="res://prefabs/ai/behaviours/actions/shoot.gd" id="5_u4ja4"]
+[ext_resource type="Script" uid="uid://bwfed5132hftm" path="res://prefabs/ai/behaviours/actions/find_next_cover.gd" id="6_u4ja4"]
+[ext_resource type="Script" uid="uid://c23rho2v0iamy" path="res://prefabs/ai/behaviours/actions/move_to_cover.gd" id="7_uqrrd"]
+
+[sub_resource type="Resource" id="Resource_uqrrd"]
+script = ExtResource("4_u4ja4")
+player = -0.2
+metadata/_custom_type_script = "uid://bsoyuqkktjyrp"
+
+[sub_resource type="Resource" id="Resource_2ited"]
+script = ExtResource("4_u4ja4")
+canon = 1.0
+metadata/_custom_type_script = "uid://bsoyuqkktjyrp"
 
 [node name="Fighting" type="Node" unique_id=1112314994]
 script = ExtResource("1_x0bws")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
-[node name="LoadWeapon" parent="." unique_id=1666196900 instance=ExtResource("3_lb3wh")]
+[node name="ShootTarget" type="Node" parent="." unique_id=1718198684]
+script = ExtResource("1_x0bws")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
-[node name="Offensive" parent="." unique_id=1920128803 instance=ExtResource("4_qnfed")]
+[node name="LoadWeapon" parent="ShootTarget" unique_id=1666196900 instance=ExtResource("3_lb3wh")]
+
+[node name="FindTarget" type="Node" parent="ShootTarget" unique_id=1046107259]
+script = ExtResource("4_t2guh")
+versaillais = SubResource("Resource_uqrrd")
+communard = SubResource("Resource_2ited")
+metadata/_custom_type_script = "uid://d17vwjh5pnlnd"
+
+[node name="Shoot" type="Node" parent="ShootTarget" unique_id=1881246047]
+script = ExtResource("5_u4ja4")
+metadata/_custom_type_script = "uid://bmwadp6yooef0"
+
+[node name="MoveFoward" type="Node" parent="." unique_id=119180968]
+script = ExtResource("1_x0bws")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="FindNextCover" type="Node" parent="MoveFoward" unique_id=1013176243]
+script = ExtResource("6_u4ja4")
+metadata/_custom_type_script = "uid://bwfed5132hftm"
+
+[node name="MoveToCover" type="Node" parent="MoveFoward" unique_id=103882024]
+script = ExtResource("7_uqrrd")
+metadata/_custom_type_script = "uid://c23rho2v0iamy"
