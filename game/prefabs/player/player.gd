@@ -185,20 +185,6 @@ func _ready() -> void:
 	initiate(global_position, global_rotation)
 
 
-func initiate(pos: Vector3, rot: Vector3, h_weapon: bool = true, posture: Posture = Posture.STAND, right_handed: bool = true) -> void:
-	global_position = pos
-	global_rotation = rot
-	is_right_handed = right_handed
-	curr_posture = posture
-	match posture:
-		Posture.STAND: camera_pivot.position.y = stand_height
-		Posture.CROUCH: camera_pivot.position.y = crouch_height
-		Posture.PRONE: camera_pivot.position.y = prone_height
-	weapon_container.position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
-	has_weapon = h_weapon
-	weapon_sway_root.visible = h_weapon
-
-
 func _process(delta: float) -> void:
 	set_context()
 	set_dynamic_collider()
@@ -211,7 +197,30 @@ func _process(delta: float) -> void:
 	late_process(delta)
 	
 	if Input.is_action_just_pressed("TEST"):
-		die()
+		if is_alive: die()
+
+
+func initiate(pos: Vector3,
+				rot: Vector3,
+				h_weapon: bool = true,
+				wpn_loaded: bool = true,
+				posture: Posture = Posture.STAND,
+				right_handed: bool = true) -> void:
+	global_position = pos
+	global_rotation_degrees = rot
+	is_right_handed = right_handed
+	curr_posture = posture
+	match posture:
+		Posture.STAND: camera_pivot.position.y = stand_height
+		Posture.CROUCH: camera_pivot.position.y = crouch_height
+		Posture.PRONE: camera_pivot.position.y = prone_height
+	weapon_container.position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
+	has_weapon = h_weapon
+	weapon_sway_root.visible = h_weapon
+	is_alive = true
+	can_play = true
+	is_weapon_loaded = wpn_loaded
+	synchronise_after_pop()
 
 
 func late_process(delta: float) -> void:
@@ -833,7 +842,8 @@ func on_reloaded() -> void:
 
 func exit_reload(is_realoded: bool = true, is_from_die = false) -> void:
 	reload_ui.activation(false)
-	reload_ui.reloaded.disconnect(on_reloaded)
+	if reload_ui.reloaded.is_connected(on_reloaded):
+		reload_ui.reloaded.disconnect(on_reloaded)
 	is_reload_interruped = not is_realoded
 	if reload_twn: reload_twn.kill()
 	if not is_from_die:
@@ -847,7 +857,8 @@ func exit_reload(is_realoded: bool = true, is_from_die = false) -> void:
 
 func die() -> void:
 	is_alive = false
-	if is_reloading: exit_reload(false, true)
+	#if is_reloading: exit_reload(false, true)
+	exit_reload(false, true)
 	weapon_sway_root.visible = false
 	on_death.emit()
 	reset_player_controller()
@@ -856,23 +867,40 @@ func die() -> void:
 func reset_player_controller() -> void:
 	kill_all_tweens()
 	reload_ui.activation(false)
+	velocity = Vector3.ZERO
+	local_velocity = Vector3.ZERO
+	aim_vel = Vector3.ZERO
 	curr_posture = Posture.STAND
 	camera_pivot.position.y = stand_height
 	global_rotation = Vector3.ZERO
 	camera_pivot.rotation = Vector3.ZERO
 	weapon_camera.rotation = Vector3.ZERO
-	aim_target = Vector3(camera_pivot.rotation_degrees.x, rotation_degrees.y, 0.0)
-	weapon_container. position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
-	weapon_lag_root.position = Vector3.ZERO
-	lag_target.global_position = weapon_lag_root.global_position
+	weapon_container.position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
+	weapon_container.rotation = Vector3.ZERO
 	player_camera.fov = default_fov
 	weapon_camera.fov = default_fov - weapon_fov_diff
 	recoil_offset = 0.0
 	ads_timer = 0.0
 	sway_timer = 0.0
+	concentration_sample = 0.0
+	curr_sway_len = Vector2.ZERO
+	weapon_sway_root.rotation = Vector3.ZERO
+	curr_sway_noise_len = 0.0
 	has_weapon = false
 	is_aiming = false
 	is_running = false
+	is_reloading = false
+	synchronise_after_pop()
+
+
+func synchronise_after_pop() -> void:
+	aim_target = Vector3(camera_pivot.rotation_degrees.x, rotation_degrees.y, 0.0)
+	weapon_lag_root.position = weapon_lag_root_base_pos
+	weapon_lag_root.rotation = Vector3.ZERO
+	lag_target.global_position = weapon_container.global_position
+	lag_target.global_rotation = weapon_container.global_rotation
+	applied_pos_lag_speed = wpn_pos_lag_close_speed
+	applied_rot_lag_speed = wpn_rot_lag_close_speed
 
 
 func kill_all_tweens() -> void:
@@ -883,3 +911,8 @@ func kill_all_tweens() -> void:
 	if wpn_y_aim_twn: wpn_y_aim_twn.kill()
 	if wpn_z_aim_twn: wpn_z_aim_twn.kill()
 	if reload_twn: reload_twn.kill()
+
+
+func revive(pos: Vector3, rot: Vector3) -> void:
+	initiate(pos, rot)
+	player_camera.current = true
