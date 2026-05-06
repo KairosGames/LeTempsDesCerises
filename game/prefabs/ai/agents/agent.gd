@@ -35,6 +35,9 @@ func on_start_moving() -> void:
 func on_stop_moving() -> void:
 	animation_tree["parameters/MoveBlend/blend_position"] = 0.0
 
+func reload_anim() -> void:
+	pass
+
 func shoot_anim() -> void:
 	animation_tree["parameters/Shoot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	shoot.emit()
