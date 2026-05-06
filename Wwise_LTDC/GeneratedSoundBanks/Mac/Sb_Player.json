@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{49827AFC-1442-4066-AF70-C2B0B3B40C86}",
     "Language": "SFX",
-    "Hash": "{7B56BA3D-D9D3-3C65-718D-60057625FCB8}",
+    "Hash": "{A015BFDC-3BC1-423E-04CE-BFCCC57BE4C6}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Player",
     "ShortName": "Sb_Player",
     "Path": "Sb_Player.bnk",
@@ -69,7 +69,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Chassepot\\LTDC_SFX_Player_GunShot_LayerTail_Oneshot.wav",
-      "CachePath": "34/{34D6F026-FA41-B432-757D-BC580D2D3A2E}.wem"
+      "CachePath": "0F/{0F4C032C-97CE-65B1-72D3-D567C0499218}.wem"
      },
      {
       "Id": "301802129",
@@ -149,7 +149,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Chassepot\\LTDC_SFX_Player_GunShot_LayerCrack_Oneshot.wav",
-      "CachePath": "64/{64CE7303-C813-BE82-DE9F-0B0D53A74D59}.wem"
+      "CachePath": "B7/{B79CC642-01D9-34AC-08E0-2EE4D75A8E0B}.wem"
      },
      {
       "Id": "702837950",
@@ -243,9 +243,17 @@
     "Plugins": {
      "Custom": [
       {
+       "Id": "75143502",
+       "Name": "Compressor (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\[Effect Slot [1]: (Compressor)]\\Compressor (Custom)",
+       "GUID": "{A26D26DC-6631-4E48-AA7C-BFF94ADEBECE}",
+       "LibName": "Wwise Compressor",
+       "LibId": "7077891"
+      },
+      {
        "Id": "80258421",
        "Name": "Meter (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\[Effect Slot [1]: (Meter)]\\Meter (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\[Effect Slot [2]: (Meter)]\\Meter (Custom)",
        "GUID": "{8908185C-5E26-46E0-AFC3-C890C86B4246}",
        "LibName": "Wwise Meter",
        "LibId": "8454147"
@@ -366,8 +374,7 @@
          "GroupType": "Switch",
          "GroupId": "1834394558",
          "Id": "504532776",
-         "GUID": "{34CF5667-9CE6-468C-9F75-33E0A6DECE94}",
-         "Default": "true"
+         "GUID": "{34CF5667-9CE6-468C-9F75-33E0A6DECE94}"
         },
         "MediaRefs": [
          {
@@ -405,7 +412,8 @@
          "GroupType": "Switch",
          "GroupId": "1834394558",
          "Id": "2473969246",
-         "GUID": "{00F5A187-15DF-42FD-91F4-E9687F923AA3}"
+         "GUID": "{00F5A187-15DF-42FD-91F4-E9687F923AA3}",
+         "Default": "true"
         },
         "MediaRefs": [
          {
@@ -453,6 +461,12 @@
       ],
       "AuxBusRefs": [
        {
+        "Id": "214837138",
+        "Name": "Wwise_Motion_Send",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send",
+        "GUID": "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"
+       },
+       {
         "Id": "243379636",
         "Name": "Reflect",
         "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
@@ -490,6 +504,12 @@
        }
       ],
       "AuxBusRefs": [
+       {
+        "Id": "214837138",
+        "Name": "Wwise_Motion_Send",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send",
+        "GUID": "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"
+       },
        {
         "Id": "243379636",
         "Name": "Reflect",
@@ -535,8 +555,8 @@
       "ObjectPath": "\\Events\\Default Work Unit\\Player\\Player_Shoot",
       "GUID": "{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}",
       "DurationType": "OneShot",
-      "DurationMin": "1.2667894",
-      "DurationMax": "1.5700625",
+      "DurationMin": "2.5449936",
+      "DurationMax": "2.6942084",
       "MediaRefs": [
        {
         "Id": "247688113"
@@ -567,12 +587,6 @@
        }
       ],
       "ActionPostEvent": [
-       {
-        "Id": "1650679582",
-        "Name": "Player_Reload",
-        "ObjectPath": "\\Events\\Default Work Unit\\Player\\Player_Reload",
-        "GUID": "{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}"
-       },
        {
         "Id": "3687575925",
         "Name": "Deafening_Recover",
@@ -640,6 +654,12 @@
       ],
       "AuxBusRefs": [
        {
+        "Id": "214837138",
+        "Name": "Wwise_Motion_Send",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send",
+        "GUID": "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"
+       },
+       {
         "Id": "243379636",
         "Name": "Reflect",
         "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
@@ -668,6 +688,12 @@
        }
       ],
       "AuxBusRefs": [
+       {
+        "Id": "214837138",
+        "Name": "Wwise_Motion_Send",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send",
+        "GUID": "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"
+       },
        {
         "Id": "243379636",
         "Name": "Reflect",
@@ -758,6 +784,9 @@
       "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}",
       "PluginRefs": {
        "Custom": [
+        {
+         "Id": "75143502"
+        },
         {
          "Id": "80258421"
         },
@@ -898,6 +927,6 @@
     ]
    }
   ],
-  "FileHash": "{56E24BF2-F834-DD6E-BA2A-6425B653FD41}"
+  "FileHash": "{AEBFF258-4FA1-DCBD-D46B-C3F7F5430C67}"
  }
 }

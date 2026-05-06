@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bgg5b13i7sqme" path="res://sounds/prefabs/ak_player_manager.tscn" id="2_mwbm5"]
 [ext_resource type="WwiseBank" uid="uid://yrjkf33a41hu" path="res://Wwise/resources/SoundBank/{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}.tres" id="4_s8o8u"]
 [ext_resource type="WwiseAuxBus" uid="uid://5rf3bkxshgg5" path="res://Wwise/resources/Aux Bus/{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}.tres" id="5_8ipeh"]
-[ext_resource type="WwiseBank" uid="uid://crxnj0v3wpc0k" path="res://Wwise/resources/SoundBank/{49827AFC-1442-4066-AF70-C2B0B3B40C86}.tres" id="6_ekd4w"]
 [ext_resource type="Material" uid="uid://tbba7mt7d3t6" path="res://sandbox/barricades_proto/materials/prototype_material_light_cross.tres" id="8_v07pq"]
 [ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="9_pc7os"]
 [ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="10_54uho"]
@@ -12,13 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://fbp2ofes0q52" path="res://sandbox/barricades_proto/barricade_part_1.tscn" id="12_dym0f"]
 [ext_resource type="PackedScene" uid="uid://dw7fv1qq3ewxa" path="res://sandbox/barricades_proto/barricade_part_2.tscn" id="13_p0yv6"]
 [ext_resource type="PackedScene" uid="uid://yrcffpgog2ra" path="res://prefabs/ai/barricade.tscn" id="14_pc7os"]
-[ext_resource type="PackedScene" uid="uid://dei4ifl4vg6pb" path="res://sandbox/barricades_proto/dummy.tscn" id="14_uyvsv"]
-[ext_resource type="PackedScene" uid="uid://d28tbnqpob3um" path="res://prefabs/ai/agents/versaillais.tscn" id="15_54uho"]
 [ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="16_54uho"]
 [ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="16_arrrh"]
-[ext_resource type="PackedScene" uid="uid://dsg3ocv10jitn" path="res://sounds/prefabs/ak_ennemy_manager.tscn" id="16_uyvsv"]
-[ext_resource type="WwiseEvent" uid="uid://d0ajhjfwwl2tk" path="res://Wwise/resources/Event/{3FDD584B-7295-4A08-9570-8775D7B756E9}.tres" id="17_uyvsv"]
-[ext_resource type="WwiseEvent" uid="uid://lgjm7lyaevq4" path="res://Wwise/resources/Event/{925872CA-03A4-4FC1-8E1A-768C93F1A808}.tres" id="18_rn7v6"]
 [ext_resource type="WwiseBank" uid="uid://be8q2yq5klk88" path="res://Wwise/resources/SoundBank/{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}.tres" id="20_uyvsv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8o8u"]
@@ -103,26 +97,6 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_54uho")
 height = 1.8
 
-[sub_resource type="GDScript" id="GDScript_dym0f"]
-script/source = "extends Node3D
-
-@export var versaillais : Node3D
-@export var shoot : AkEvent3D
-@export var steps : AkEvent3D
-
-func _on_versaillais_shoot() -> void:
-	shoot.post_event()
-
-func _on_versaillais_move_start() -> void:
-	steps.post_event()
-
-func _on_versaillais_move_end() -> void:
-	steps.stop_event()
-"
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_p0yv6"]
-radius = 0.1
-
 [node name="SoundDesignSandbox" type="Node3D" unique_id=348257552]
 
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("1_xu5xm")]
@@ -131,14 +105,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.530138, 0.10000384, 6.200
 [node name="wwise_player" parent="Player" unique_id=1168469569 node_paths=PackedStringArray("player") instance=ExtResource("2_mwbm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5560427, 0)
 player = NodePath("..")
-
-[node name="AkBank" type="AkBank" parent="." unique_id=1339667316]
-bank = ExtResource("4_s8o8u")
-load_on = 1
-
-[node name="AkBank2" type="AkBank" parent="." unique_id=703618222]
-bank = ExtResource("6_ekd4w")
-load_on = 1
 
 [node name="Room_Street" type="AkRoom" parent="." unique_id=2083901287]
 aux_bus = ExtResource("5_8ipeh")
@@ -156,6 +122,7 @@ enable_diffraction_on_boundary_edges = true
 transmission_loss_value = 0.0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1067788041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009486198, 0, 0.022623062)
 navigation_mesh = SubResource("NavigationMesh_54uho")
 
 [node name="FirstGym" type="Node3D" parent="NavigationRegion3D" unique_id=875032816]
@@ -482,32 +449,6 @@ transmission_loss_value = 0.25
 shape = SubResource("ConcavePolygonShape3D_54uho")
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
-[node name="Ennemies" type="Node3D" parent="NavigationRegion3D/FirstGym" unique_id=182266753]
-
-[node name="Dummy" parent="NavigationRegion3D/FirstGym/Ennemies" unique_id=1554602810 instance=ExtResource("14_uyvsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5219254, 1.0000002, -28.752487)
-
-[node name="Dummy8" parent="NavigationRegion3D/FirstGym/Ennemies" unique_id=1092086611 instance=ExtResource("14_uyvsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.390152, 1.0000021, -61.98277)
-
-[node name="Dummy2" parent="NavigationRegion3D/FirstGym/Ennemies" unique_id=664263413 instance=ExtResource("14_uyvsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.546394, 1.0000002, -32.217075)
-
-[node name="Dummy3" parent="NavigationRegion3D/FirstGym/Ennemies" unique_id=132376657 instance=ExtResource("14_uyvsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.188305, 1.0000002, -19.934055)
-
-[node name="Dummy4" parent="NavigationRegion3D/FirstGym/Ennemies" unique_id=616301036 instance=ExtResource("14_uyvsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.20744, 1.0000002, -12.558921)
-
-[node name="Dummy5" parent="NavigationRegion3D/FirstGym/Ennemies" unique_id=200570830 instance=ExtResource("14_uyvsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.160161, 1.0000002, -15.210282)
-
-[node name="Dummy6" parent="NavigationRegion3D/FirstGym/Ennemies" unique_id=1859173029 instance=ExtResource("14_uyvsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7863, 1.0000002, -1.2182579)
-
-[node name="Dummy7" parent="NavigationRegion3D/FirstGym/Ennemies" unique_id=445260533 instance=ExtResource("14_uyvsv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.455877, 1.0000002, 1.835288)
-
 [node name="Allies" type="Node3D" parent="NavigationRegion3D/FirstGym" unique_id=1348615623]
 
 [node name="Dummy9" type="Node3D" parent="NavigationRegion3D/FirstGym/Allies" unique_id=1602948448]
@@ -527,11 +468,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5347214, 1.9073486e-06, -7.
 script = ExtResource("16_arrrh")
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
-[node name="Versaillais" parent="." unique_id=1349390169 instance=ExtResource("15_54uho")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.155407, 0.10000038, -2.5667272)
-
-[node name="ak_ennemy_manager" parent="Versaillais" unique_id=1364272514 instance=ExtResource("16_uyvsv")]
-
 [node name="Barricade" parent="." unique_id=1923619645 instance=ExtResource("14_pc7os")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.342671, 0.10000038, 0.3303156)
 
@@ -549,69 +485,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.856873, -9.536743e-07, -7.
 script = ExtResource("16_arrrh")
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
-[node name="Versaillais2" parent="." unique_id=406104245 instance=ExtResource("15_54uho")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.180452, 0.10000038, -16.99598)
-
-[node name="ak_ennemy_manager" type="Node3D" parent="Versaillais2" unique_id=593911741 node_paths=PackedStringArray("shoot", "steps")]
-script = SubResource("GDScript_dym0f")
-shoot = NodePath("Shoot")
-steps = NodePath("Steps")
-
-[node name="Shoot" type="AkEvent3D" parent="Versaillais2/ak_ennemy_manager" unique_id=1258131730]
-event = ExtResource("17_uyvsv")
-trigger_on = 2
-stop_on = 3
-is_environment_aware = true
-
-[node name="Area3D" type="Area3D" parent="Versaillais2/ak_ennemy_manager/Shoot" unique_id=1303221389]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Versaillais2/ak_ennemy_manager/Shoot/Area3D" unique_id=325092120]
-shape = SubResource("SphereShape3D_p0yv6")
-
-[node name="Steps" type="AkEvent3D" parent="Versaillais2/ak_ennemy_manager" unique_id=320018597]
-event = ExtResource("18_rn7v6")
-trigger_on = 2
-stop_on = 3
-is_environment_aware = true
-
-[node name="Area3D" type="Area3D" parent="Versaillais2/ak_ennemy_manager/Steps" unique_id=1877530560]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Versaillais2/ak_ennemy_manager/Steps/Area3D" unique_id=374066982]
-shape = SubResource("SphereShape3D_p0yv6")
-
-[node name="Versaillais3" parent="." unique_id=1574488673 instance=ExtResource("15_54uho")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.476842, 0.10000038, -22.519358)
-
-[node name="ak_ennemy_manager" type="Node3D" parent="Versaillais3" unique_id=1036160928 node_paths=PackedStringArray("shoot", "steps")]
-script = SubResource("GDScript_dym0f")
-shoot = NodePath("Shoot")
-steps = NodePath("Steps")
-
-[node name="Shoot" type="AkEvent3D" parent="Versaillais3/ak_ennemy_manager" unique_id=735250016]
-event = ExtResource("17_uyvsv")
-trigger_on = 2
-stop_on = 3
-is_environment_aware = true
-
-[node name="Area3D" type="Area3D" parent="Versaillais3/ak_ennemy_manager/Shoot" unique_id=2039373196]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Versaillais3/ak_ennemy_manager/Shoot/Area3D" unique_id=2119774001]
-shape = SubResource("SphereShape3D_p0yv6")
-
-[node name="Steps" type="AkEvent3D" parent="Versaillais3/ak_ennemy_manager" unique_id=6138580]
-event = ExtResource("18_rn7v6")
-trigger_on = 2
-stop_on = 3
-is_environment_aware = true
-
-[node name="Area3D" type="Area3D" parent="Versaillais3/ak_ennemy_manager/Steps" unique_id=385837171]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Versaillais3/ak_ennemy_manager/Steps/Area3D" unique_id=1188121913]
-shape = SubResource("SphereShape3D_p0yv6")
-
-[connection signal="move_end" from="Versaillais2" to="Versaillais2/ak_ennemy_manager" method="_on_versaillais_move_end"]
-[connection signal="move_start" from="Versaillais2" to="Versaillais2/ak_ennemy_manager" method="_on_versaillais_move_start"]
-[connection signal="shoot" from="Versaillais2" to="Versaillais2/ak_ennemy_manager" method="_on_versaillais_shoot"]
-[connection signal="move_end" from="Versaillais3" to="Versaillais3/ak_ennemy_manager" method="_on_versaillais_move_end"]
-[connection signal="move_start" from="Versaillais3" to="Versaillais3/ak_ennemy_manager" method="_on_versaillais_move_start"]
-[connection signal="shoot" from="Versaillais3" to="Versaillais3/ak_ennemy_manager" method="_on_versaillais_shoot"]
+[node name="AkBank" type="AkBank" parent="." unique_id=783484259]
+bank = ExtResource("4_s8o8u")
+load_on = 1

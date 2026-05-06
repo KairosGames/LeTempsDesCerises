@@ -72,7 +72,7 @@
 												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
@@ -86,7 +86,7 @@
 												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
-														<Value>500</Value>
+														<Value>30</Value>
 													</ValueList>
 												</Property>
 												<Property Name="ReflectionsVolume" Type="Real64">
@@ -365,7 +365,7 @@
 												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
-														<Value>0.1</Value>
+														<Value>0.15</Value>
 													</ValueList>
 												</Property>
 												<Property Name="MakeUpGain" Type="Real64">
@@ -383,16 +383,12 @@
 												<Property Name="OverrideEffect" Type="bool" Value="True"/>
 												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 												<Property Name="Pitch" Type="int32">
-													<ValueList>
-														<Value>500</Value>
-													</ValueList>
 													<ModifierList>
 														<ModifierInfo>
 															<Modifier Name="" ID="{4558BF4D-1A2F-48B1-B2B4-E56CD82557E7}">
 																<PropertyList>
 																	<Property Name="Enabled" Type="bool" Value="True"/>
-																	<Property Name="Max" Type="Real64" Value="200"/>
-																	<Property Name="Min" Type="Real64" Value="-200"/>
+																	<Property Name="Max" Type="Real64" Value="250"/>
 																</PropertyList>
 															</Modifier>
 														</ModifierInfo>
@@ -400,7 +396,7 @@
 												</Property>
 												<Property Name="ReflectionsVolume" Type="Real64">
 													<ValueList>
-														<Value>-3</Value>
+														<Value>-12</Value>
 													</ValueList>
 												</Property>
 												<Property Name="UseMaxSoundPerInstance" Type="bool">
@@ -431,6 +427,7 @@
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{869C5124-E9C2-49FF-9357-4424E580906B}">
 													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="1.81942"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 													</PropertyList>
 													<Language>SFX</Language>

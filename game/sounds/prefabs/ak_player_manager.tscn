@@ -8,13 +8,16 @@
 [ext_resource type="WwiseEvent" uid="uid://dt4vw8aqjpjhu" path="res://Wwise/resources/Event/{4522F8E8-2547-4E53-85E8-2F1D0788D631}.tres" id="6_a4l4r"]
 [ext_resource type="WwiseEvent" uid="uid://dawyxy14v2mkj" path="res://Wwise/resources/Event/{0DEF7495-B440-4E74-9C4B-9073F849D823}.tres" id="7_cerox"]
 [ext_resource type="WwiseEvent" uid="uid://co2j27iintfpx" path="res://Wwise/resources/Event/{FE60E622-47E0-4B0A-8224-00824D1DFFA5}.tres" id="8_hpeom"]
+[ext_resource type="WwiseBank" uid="uid://crxnj0v3wpc0k" path="res://Wwise/resources/SoundBank/{49827AFC-1442-4066-AF70-C2B0B3B40C86}.tres" id="9_sdg1b"]
 [ext_resource type="WwiseEvent" uid="uid://b6s21jrtjah4e" path="res://Wwise/resources/Event/{6896C878-A293-4133-9E1F-3A23F80B8F43}.tres" id="9_vws2r"]
 
 [sub_resource type="GDScript" id="GDScript_lthba"]
 script/source = "extends Node3D
 
 var is_walking := false
+var is_crouched := false
 var controller_id
+
 
 @export var player : Player
 @export var shoot : AkEvent3D
@@ -61,10 +64,12 @@ func _unhandled_input(_event: InputEvent) -> void:
 				#print(\"Orlane tu as oublié un mat !\")
 	
 	if Input.is_action_just_pressed(\"crouch\"):
-		if !player.is_crouched:
+		if is_crouched:
 			crouch.post_event()
+			is_crouched = true
 		else:
 			up.post_event()
+			is_crouched = false
 	if Input.is_action_just_pressed(\"prone\"):
 		if !player.is_prone:
 			prone.post_event()
@@ -183,3 +188,7 @@ is_environment_aware = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Sprint/Area3D" unique_id=1700008872]
 shape = SubResource("SphereShape3D_s8o8u")
+
+[node name="AkBank" type="AkBank" parent="." unique_id=813719834]
+bank = ExtResource("9_sdg1b")
+load_on = 1

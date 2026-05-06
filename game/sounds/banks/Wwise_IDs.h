@@ -140,6 +140,7 @@ namespace AK
     namespace BUSSES
     {
         static const AkUniqueID AMB = 1117531639U;
+        static const AkUniqueID CONTROLLER = 1720438449U;
         static const AkUniqueID MAIN_AUDIO_BUS = 2246998526U;
         static const AkUniqueID SFX = 393239870U;
         static const AkUniqueID SFX_NPC = 161171466U;
@@ -163,6 +164,7 @@ namespace AK
     {
         static const AkUniqueID MOTION = 2012559111U;
         static const AkUniqueID NO_OUTPUT = 2317455096U;
+        static const AkUniqueID REMOTE_SYSTEM = 2791299949U;
         static const AkUniqueID SYSTEM = 3859886410U;
     } // namespace AUDIO_DEVICES
 
