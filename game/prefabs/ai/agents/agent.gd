@@ -16,7 +16,10 @@ signal shoot
 var is_alive: bool = true
 var is_weapon_loaded: bool = true
 var is_covered: bool = false
-var canon_slot: Marker3D = null
+var canon_slot: Marker3D = null:
+	set(value):
+		canon_slot = value
+		if cover: cover = null
 var cover: Cover = null:
 	set(value):
 		if cover: cover.holder = null

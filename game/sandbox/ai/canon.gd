@@ -14,20 +14,34 @@ var holded_slots: Array[Marker3D] = []
 
 var _last_shoot_time: float
 
+func _ready() -> void: 
+	singleton = self
+	available_slots = _slots.duplicate()
+	
 func _physics_process(delta: float) -> void:
+	_find_workers()
 	progress += speed * (holded_slots.size() / float(_slots.size())) * delta
 	if progress_ratio == 1 and (Time.get_ticks_msec() - _last_shoot_time) > shoot_delay * 1000:
 		print("[Canon] shoot")
 		_last_shoot_time = Time.get_ticks_msec()
 		shoot.emit()
 
-func _ready() -> void: 
-	singleton = self
-	available_slots = _slots.duplicate()
+func _find_workers() -> void:
+	if available_slots.size():
+		var nearest_agent: Agent = null
+		var nearest_distance: float = 0
+		for agent: Agent in get_tree().get_nodes_in_group(&"Versaillais"):
+			if agent.canon_slot: continue
+			var distance: float = agent.global_position.distance_squared_to(global_position)
+			if not nearest_agent or  distance< nearest_distance:
+				nearest_agent = agent
+				nearest_distance = distance
+		if nearest_agent:
+			nearest_agent.canon_slot = _take_slot(nearest_agent)
 
 func is_slot_available() -> bool: return available_slots.size()
 
-func take_slot(agent: Agent) -> Marker3D:
+func _take_slot(agent: Agent) -> Marker3D:
 	var slot: Marker3D = available_slots.pop_front()
 	holded_slots.push_back(slot)
 	agent.died.connect(_restore.bind(slot))
