@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dg2ftlf3g1ljm"]
 
-[ext_resource type="Script" uid="uid://dcojdhvj8qcw0" path="res://addons/beehave/nodes/composites/sequence_reactive.gd" id="1_6e11o"]
 [ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_y8s13"]
 [ext_resource type="Script" uid="uid://dfvnt62bk2jix" path="res://prefabs/ai/behaviours/actions/push_canon.gd" id="2_gpedi"]
 [ext_resource type="Script" uid="uid://buihc54c8r0wx" path="res://prefabs/ai/behaviours/conditions/is_canon_available.gd" id="2_yl5yd"]
@@ -10,15 +9,11 @@
 script = ExtResource("1_y8s13")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
-[node name="MoveTo" type="Node" parent="." unique_id=531625569]
-script = ExtResource("1_6e11o")
-metadata/_custom_type_script = "uid://dcojdhvj8qcw0"
-
-[node name="IsCanonAvailable" type="Node" parent="MoveTo" unique_id=522130645]
+[node name="IsCanonAvailable" type="Node" parent="." unique_id=522130645]
 script = ExtResource("2_yl5yd")
 metadata/_custom_type_script = "uid://buihc54c8r0wx"
 
-[node name="MoveToCanon" type="Node" parent="MoveTo" unique_id=2143693052]
+[node name="MoveToCanon" type="Node" parent="." unique_id=2143693052]
 script = ExtResource("4_6e11o")
 metadata/_custom_type_script = "uid://clp32jsbpxe8y"
 
