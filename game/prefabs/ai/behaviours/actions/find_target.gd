@@ -16,8 +16,10 @@ func get_targets(team : Agent.Team) -> Array[Node]:
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var raycast: RayCast3D = agent.shoot_raycast
-	# TODO peeking
-	# await agent.start_peek()
+	
+	agent.is_covered = false
+	
+	await  get_tree().create_timer(2).timeout
 
 	var targets_data: Array = get_targets(agent.team).map(
 		func(target: Node3D) -> TargetData:
@@ -59,6 +61,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 					agent.target_point = shoot_target
 					return SUCCESS
 
+	agent.is_covered = true
 	return FAILURE
 
 class TargetData:

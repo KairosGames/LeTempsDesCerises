@@ -84,10 +84,10 @@ target_position = Vector3(0, 0, -100)
 collision_mask = 7
 collide_with_areas = true
 
-[node name="solder" parent="." unique_id=828590820 instance=ExtResource("2_f5m6n")]
+[node name="Body" parent="." unique_id=828590820 instance=ExtResource("2_f5m6n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="solder/Armature" parent_id_path=PackedInt32Array(828590820, 310710795) index="0" unique_id=745284837]
+[node name="Skeleton3D" parent="Body/Armature" parent_id_path=PackedInt32Array(828590820, 310710795) index="0" unique_id=745284837]
 bones/0/position = Vector3(-0.28754532, 3.1539216, -87.41124)
 bones/0/rotation = Quaternion(-0.73367953, -0.27375683, 0.23108552, 0.5773829)
 bones/1/rotation = Quaternion(0.012091754, -0.00039802826, -0.0008898069, 0.9999265)
@@ -190,39 +190,39 @@ bones/61/rotation = Quaternion(-0.35591, -0.025383301, -0.02745001, 0.93377215)
 bones/62/rotation = Quaternion(0.69442385, 0.12895778, 0.12639482, 0.69654137)
 bones/63/rotation = Quaternion(0.2960605, 0.030593026, -0.009098733, 0.95463586)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="solder/Armature/Skeleton3D" index="2" unique_id=1039528541]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" index="2" unique_id=1039528541]
 transform = Transform3D(0.033070624, 0.13294725, 0.99057126, -0.28716016, 0.9505875, -0.11799401, -0.95731145, -0.2805504, 0.06961346, -19.434269, 17.895035, -130.4743)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
 
-[node name="sk_chassepot" parent="solder/Armature/Skeleton3D/BoneAttachment3D" unique_id=1025414177 instance=ExtResource("3_sm080")]
+[node name="sk_chassepot" parent="Body/Armature/Skeleton3D/BoneAttachment3D" unique_id=1025414177 instance=ExtResource("3_sm080")]
 transform = Transform3D(-10.55309, 95.53138, 27.611444, 11.808159, 28.773891, -95.04016, -98.73802, -6.7692723, -14.317036, 3.4706862, 18.70045, 6.007675)
 
-[node name="sk_chassepot_body" parent="solder/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot" index="0" unique_id=588837796]
+[node name="sk_chassepot_body" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot" index="0" unique_id=588837796]
 layers = 1
 
-[node name="bagette" parent="solder/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body" index="0" unique_id=437964636]
+[node name="bagette" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body" index="0" unique_id=437964636]
 layers = 1
 
-[node name="barrel_body" parent="solder/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body" index="1" unique_id=1009322438]
+[node name="barrel_body" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body" index="1" unique_id=1009322438]
 layers = 1
 
-[node name="bolt_handle" parent="solder/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle" parent_id_path=PackedInt32Array(1025414177, 569320331) index="0" unique_id=2121048013]
+[node name="bolt_handle" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle" parent_id_path=PackedInt32Array(1025414177, 569320331) index="0" unique_id=2121048013]
 layers = 1
 
-[node name="safety_mechanism" parent="solder/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_barrel" parent_id_path=PackedInt32Array(1025414177, 125741250) index="1" unique_id=321110234]
+[node name="safety_mechanism" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_barrel" parent_id_path=PackedInt32Array(1025414177, 125741250) index="1" unique_id=321110234]
 layers = 1
 
-[node name="rear_sight" parent="solder/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight" parent_id_path=PackedInt32Array(1025414177, 739362279) index="0" unique_id=58885415]
+[node name="rear_sight" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight" parent_id_path=PackedInt32Array(1025414177, 739362279) index="0" unique_id=58885415]
 layers = 1
 
-[node name="rear_sight_slider" parent="solder/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight/rear_sight" index="0" unique_id=1209452833]
+[node name="rear_sight_slider" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight/rear_sight" index="0" unique_id=1209452833]
 layers = 1
 
-[node name="rear_sight_body" parent="solder/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body" parent_id_path=PackedInt32Array(1025414177, 403407998) index="1" unique_id=41726384]
+[node name="rear_sight_body" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body" parent_id_path=PackedInt32Array(1025414177, 403407998) index="1" unique_id=41726384]
 layers = 1
 
-[node name="weapon_trigger" parent="solder/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/ctrl_weapon_trigger" parent_id_path=PackedInt32Array(1025414177, 1342119738) index="0" unique_id=1747753677]
+[node name="weapon_trigger" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/ctrl_weapon_trigger" parent_id_path=PackedInt32Array(1025414177, 1342119738) index="0" unique_id=1747753677]
 layers = 1
 
 [node name="Navigation" type="NavigationAgent3D" parent="." unique_id=514776903]
@@ -251,10 +251,10 @@ script = ExtResource("6_f5m6n")
 metadata/_custom_type_script = "uid://1nss82y33gkp"
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1094944530]
-root_node = NodePath("../solder")
+root_node = NodePath("../Body")
 tree_root = SubResource("AnimationNodeBlendTree_u0bw3")
 advance_expression_base_node = NodePath("..")
-anim_player = NodePath("../solder/AnimationPlayer")
+anim_player = NodePath("../Body/AnimationPlayer")
 parameters/MoveBlend/blend_position = 0.0
 parameters/Shoot/active = false
 parameters/Shoot/internal_active = false
@@ -264,5 +264,5 @@ parameters/Die/internal_active = false
 parameters/Die/request = 0
 parameters/Crouching/blend_amount = 0.0
 
-[editable path="solder"]
-[editable path="solder/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot"]
+[editable path="Body"]
+[editable path="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot"]

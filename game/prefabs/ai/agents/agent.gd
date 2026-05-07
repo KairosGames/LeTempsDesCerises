@@ -11,7 +11,7 @@ signal died(agent: Agent)
 
 @onready var shoot_raycast: RayCast3D = $RayCast3D
 @onready var navigation: Navigation = $Navigation
-@onready var animation: AnimationPlayer = $PlaceholderBody/AnimationPlayer
+@onready var animation: AnimationPlayer = $Body/AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Head]
 

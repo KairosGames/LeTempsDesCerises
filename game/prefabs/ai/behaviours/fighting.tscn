@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8hn4kne15ac5" path="res://addons/beehave/nodes/composites/selector.gd" id="1_uqrrd"]
 [ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_x0bws"]
+[ext_resource type="Script" uid="uid://wr4w63a3cf1r" path="res://prefabs/ai/behaviours/conditions/is_not_on_spawner.gd" id="3_4ysxr"]
 [ext_resource type="PackedScene" uid="uid://detjnvcenglo7" path="res://prefabs/ai/behaviours/load_weapon.tscn" id="3_lb3wh"]
 [ext_resource type="Script" uid="uid://bho7msdr7jjtk" path="res://prefabs/ai/behaviours/compositors/repeater.gd" id="4_2ited"]
 [ext_resource type="Script" uid="uid://d3v8rutw8rwkx" path="res://prefabs/ai/behaviours/conditions/has_enemy_in_range.gd" id="4_3fwdg"]
@@ -29,6 +30,10 @@ metadata/_custom_type_script = "uid://8hn4kne15ac5"
 script = ExtResource("1_x0bws")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
+[node name="IsNotOnSpawner" type="Node" parent="ShootTarget" unique_id=364800608]
+script = ExtResource("3_4ysxr")
+metadata/_custom_type_script = "uid://wr4w63a3cf1r"
+
 [node name="LoadWeapon" parent="ShootTarget" unique_id=1666196900 instance=ExtResource("3_lb3wh")]
 
 [node name="HasEnemyInRange" type="Node" parent="ShootTarget" unique_id=1875736344]
@@ -41,6 +46,7 @@ metadata/_custom_type_script = "uid://bho7msdr7jjtk"
 
 [node name="FindTarget" type="Node" parent="ShootTarget/Repeater" unique_id=1046107259]
 script = ExtResource("4_t2guh")
+max_distance = 50.0
 versaillais = SubResource("Resource_uqrrd")
 communard = SubResource("Resource_2ited")
 metadata/_custom_type_script = "uid://d17vwjh5pnlnd"

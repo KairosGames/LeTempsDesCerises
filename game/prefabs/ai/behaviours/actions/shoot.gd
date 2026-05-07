@@ -11,8 +11,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	
 	if not agent.target: return FAILURE
 	
-	# TODO? avait animation
-	# return RUNNING
+	agent.is_covered = false
 	
 	raycast.global_position = agent.global_position + Vector3(0, 1.45, 0)
 	raycast.look_at(agent.target_point.global_position)
