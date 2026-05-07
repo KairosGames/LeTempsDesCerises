@@ -16,6 +16,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		_duration = randf_range(duration - duration_random, duration + duration_random)
 		_is_reloading = true
 		_reloading_start_time = Time.get_ticks_msec()
+		agent.is_covered = true
 		agent.reload_anim()
 		return RUNNING
 	

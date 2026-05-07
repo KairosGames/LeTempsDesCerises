@@ -39,6 +39,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		
 		if running_child: running_child = null
 		
+		if response == SUCCESS: return SUCCESS
 		if response == FAILURE: return RUNNING
 		
 		if _current_count >= repetitions: return FAILURE

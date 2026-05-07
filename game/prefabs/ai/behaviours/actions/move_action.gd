@@ -12,6 +12,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	if agent.navigation.target_position.distance_to(destination) > stop_distance: # handle moving target
 		agent.navigation.move_to(destination, stop_distance)
 		agent.on_start_moving()
+		on_start(actor, blackboard)
 	if agent.navigation.is_navigation_finished():
 		agent.on_stop_moving()
 		var is_target_reached: bool = agent.navigation.is_target_reached()
@@ -29,6 +30,6 @@ func interrupt(actor: Node, _blackboard: Blackboard) -> void:
 	agent.on_stop_moving()
 	agent.navigation.stop()
 
-func on_start(actor: Node, _blackboard: Blackboard) -> void: pass
-func on_success(actor: Node, _blackboard: Blackboard) -> void: pass
-func on_failure(actor: Node, _blackboard: Blackboard) -> void: pass
+func on_start(_actor: Node, _blackboard: Blackboard) -> void: pass
+func on_success(_actor: Node, _blackboard: Blackboard) -> void: pass
+func on_failure(_actor: Node, _blackboard: Blackboard) -> void: pass

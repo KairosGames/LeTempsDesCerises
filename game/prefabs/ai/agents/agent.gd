@@ -21,10 +21,7 @@ var is_weapon_loaded: bool = true
 var target: Node3D = null
 var target_point: Node3D = null
 var threats: Array[Agent]
-var is_covered: bool = false:
-	set(value):
-		is_covered = value
-		animation_tree["parameters/Crouching/blend_amount"] = int(value)
+var is_covered: bool = false
 var is_pushing_canon: bool = false
 var canon_slot: Marker3D = null:
 	set(value):
@@ -57,16 +54,16 @@ func remove_threat(agent) -> void: # Not typed lambda because of timeout callbac
 	threats.erase(agent)
 
 func on_start_moving() -> void:
-	animation_tree["parameters/MoveBlend/blend_position"] = 1.0
+	animation_tree["parameters/Move & Shoot/Move/blend_position"] = 1.0
 
 func on_stop_moving() -> void:
-	animation_tree["parameters/MoveBlend/blend_position"] = 0.0
+	animation_tree["parameters/Move & Shoot/Move/blend_position"] = 0.0
 
 func reload_anim() -> void:
 	pass
 
 func shoot_anim() -> void:
-	animation_tree["parameters/Shoot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	animation_tree["parameters/Move & Shoot/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	shoot.emit()
 
 func die() -> void:
@@ -75,7 +72,6 @@ func die() -> void:
 	cover = null
 	set_collision_layer_value(3, false)
 	navigation.stop()
-	animation_tree["parameters/Die/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	await animation_tree.animation_finished
 	died.emit(self)
 	queue_free()

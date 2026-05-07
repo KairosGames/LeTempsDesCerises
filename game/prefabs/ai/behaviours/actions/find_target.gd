@@ -29,9 +29,9 @@ func interrupt(_actor: Node, _blackboard: Blackboard) -> void:
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var raycast: RayCast3D = agent.shoot_raycast
-	
-	agent.is_covered = false
+
 	if not _is_waiting:
+		agent.is_covered = false
 		_duration = randf_range(duration - duration_random, duration + duration_random)
 		_is_waiting = true
 		_start_wait_time = Time.get_ticks_msec()
