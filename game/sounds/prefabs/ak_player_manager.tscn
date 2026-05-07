@@ -11,14 +11,16 @@
 [ext_resource type="WwiseEvent" uid="uid://co2j27iintfpx" path="res://Wwise/resources/Event/{FE60E622-47E0-4B0A-8224-00824D1DFFA5}.tres" id="8_hpeom"]
 [ext_resource type="WwiseBank" uid="uid://crxnj0v3wpc0k" path="res://Wwise/resources/SoundBank/{49827AFC-1442-4066-AF70-C2B0B3B40C86}.tres" id="9_sdg1b"]
 [ext_resource type="WwiseEvent" uid="uid://b6s21jrtjah4e" path="res://Wwise/resources/Event/{6896C878-A293-4133-9E1F-3A23F80B8F43}.tres" id="9_vws2r"]
+[ext_resource type="WwiseEvent" uid="uid://bcnom4oj1p3mj" path="res://Wwise/resources/Event/{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}.tres" id="11_cgjv3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s8o8u"]
 radius = 0.1
 
-[node name="ak_player_manager" type="Node3D" unique_id=1168469569 node_paths=PackedStringArray("shoot", "steps", "up", "crouch", "prone", "sprint")]
+[node name="ak_player_manager" type="Node3D" unique_id=1168469569 node_paths=PackedStringArray("shoot", "steps", "reload", "up", "crouch", "prone", "sprint")]
 script = ExtResource("1_g1o18")
 shoot = NodePath("Shoot")
 steps = NodePath("Steps")
+reload = NodePath("Reload")
 up = NodePath("Up")
 crouch = NodePath("Crouch")
 prone = NodePath("Prone")
@@ -114,3 +116,12 @@ shape = SubResource("SphereShape3D_s8o8u")
 [node name="AkBank" type="AkBank" parent="." unique_id=813719834]
 bank = ExtResource("9_sdg1b")
 load_on = 1
+
+[node name="Reload" type="AkEvent3D" parent="." unique_id=192366096]
+event = ExtResource("11_cgjv3")
+is_environment_aware = true
+
+[node name="Area3D" type="Area3D" parent="Reload" unique_id=1514642875]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reload/Area3D" unique_id=1701300271]
+shape = SubResource("SphereShape3D_s8o8u")

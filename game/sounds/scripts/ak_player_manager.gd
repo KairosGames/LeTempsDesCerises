@@ -4,11 +4,13 @@ var is_walking := false
 var is_crouched := false
 var is_prone := false
 var controller_id
+var reload_step
 
 
 @export var player : Player
 @export var shoot : AkEvent3D
 @export var steps : AkEvent3D
+@export var reload : AkEvent3D
 
 @export_category("Stances")
 @export var up : AkEvent3D
@@ -46,8 +48,18 @@ func _unhandled_input(_event: InputEvent) -> void:
 			#elif i.get_class() == "MeshInstance3D":
 				#print("Orlane tu as oublié un mat !")
 
+	if Input.is_action_just_pressed("reload") and player.can_reload() or player.is_reloading:
+		print(reload_step)
+		reload_step = player.reload_ui.step
+		reload.post_event()
+
 func _process(_delta: float) -> void:
 	
+	if player.is_running:
+		Wwise.set_state("player_stance", "sprint")
+	elif player.curr_posture == player.Posture.STAND:
+		Wwise.set_state("player_stance", "sprint")
+
 	if player.is_changing_state:
 			match player.curr_posture:
 				player.Posture.STAND:

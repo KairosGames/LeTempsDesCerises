@@ -180,7 +180,6 @@ namespace AK
     {
         static const AkUniqueID MOTION = 2012559111U;
         static const AkUniqueID NO_OUTPUT = 2317455096U;
-        static const AkUniqueID REMOTE_SYSTEM = 2791299949U;
         static const AkUniqueID SYSTEM = 3859886410U;
     } // namespace AUDIO_DEVICES
 
