@@ -12,6 +12,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	if not agent.target: return FAILURE
 	
 	agent.is_covered = false
+	agent.look_at(agent.target_point.global_position)
 	
 	raycast.global_position = agent.global_position + Vector3(0, 1.45, 0)
 	raycast.look_at(agent.target_point.global_position)

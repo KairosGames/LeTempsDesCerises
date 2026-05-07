@@ -13,13 +13,22 @@ func get_targets(team : Agent.Team) -> Array[Node]:
 		Agent.Team.COMMUNARD: return get_tree().get_nodes_in_group(&"Versaillais")
 		_: return []
 
+var _is_waiting: = false
+var _start_wait_time: int = 0
+
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var raycast: RayCast3D = agent.shoot_raycast
 	
 	agent.is_covered = false
+	if not _is_waiting:
+		_is_waiting = true
+		_start_wait_time = Time.get_ticks_msec()
 	
-	await  get_tree().create_timer(2).timeout
+	if Time.get_ticks_msec() - _start_wait_time < 2.0:
+		return RUNNING
+	
+	_is_waiting = false
 
 	var targets_data: Array = get_targets(agent.team).map(
 		func(target: Node3D) -> TargetData:
@@ -51,6 +60,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	targets_data.sort_custom(func(a: TargetData, b: TargetData) -> bool: return a.score > b.score )
 
 	for data: TargetData in targets_data:
+		#agent.look_at(data.target.global_position)
 		for shoot_target: Marker3D in data.target.shoot_targets:
 			raycast.look_at(shoot_target.global_position)
 			raycast.force_raycast_update()
