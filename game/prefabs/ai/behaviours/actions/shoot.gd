@@ -19,12 +19,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	
 	var t: float = randf_range(0, TAU)
 	var d: float = randf_range(0, deg_to_rad(max_angle_variation))
-	var variation: Vector2 = Vector2(cos(t), sin(t)) * d * _vagueness
-	raycast.rotation += Vector3(
-		variation.y,
-		variation.x
-		,0
-	)
+	raycast.rotation += Vector3(cos(t), sin(t), 0 ) * d * _vagueness
 	
 	raycast.force_raycast_update()
 	agent.is_weapon_loaded = false
