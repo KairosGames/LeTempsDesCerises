@@ -1,7 +1,7 @@
 @tool
 class_name Shoot extends ActionLeaf
 
-@export var max_angle_variation: float = 0
+@export var max_angle_variation: float = 2
 @export var vagueness_decrease: float = 2.0
 var _vagueness: float = 1.0
 
@@ -19,7 +19,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	raycast.look_at(target.global_position)
 	
 	var t: float = randf_range(0, TAU)
-	var d: float = randf_range(0, max_angle_variation)
+	var d: float = randf_range(0, deg_to_rad(max_angle_variation))
 	var variation: Vector2 = Vector2(cos(t), sin(t)) * d * _vagueness
 	raycast.rotation += Vector3(
 		variation.y,

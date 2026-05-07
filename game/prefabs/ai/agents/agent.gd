@@ -18,7 +18,7 @@ signal died
 var is_alive: bool = true
 var is_weapon_loaded: bool = true
 var target: Node3D = null
-
+var target_point: Node3D = null
 var threats: Array[Agent]
 var is_covered: bool = false
 var is_pushing_canon: bool = false
