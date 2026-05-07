@@ -45,7 +45,7 @@ func _process_spawn():
 				add_child(versaillais)
 				return
 
-func _on_entity_died() -> void: _entity_count -= 1
+func _on_entity_died(_agent: Agent) -> void: _entity_count -= 1
 
 func _restore(spawner: Cover) -> void:
 	_close_list.erase(spawner)

@@ -14,10 +14,10 @@ var holded_slots: Array[Marker3D] = []
 
 var _last_shoot_time: float
 
-func _ready() -> void: 
+func _ready() -> void:
 	singleton = self
 	available_slots = _slots.duplicate()
-	
+
 func _physics_process(delta: float) -> void:
 	_find_workers()
 	progress += speed * (holded_slots.size() / float(_slots.size())) * delta
@@ -47,5 +47,5 @@ func _take_slot(agent: Agent) -> Marker3D:
 	agent.died.connect(_restore.bind(slot))
 	return slot
 
-func _restore(slot: Marker3D) -> void:
+func _restore(_agent: Agent, slot: Marker3D) -> void:
 	available_slots.push_back(slot)

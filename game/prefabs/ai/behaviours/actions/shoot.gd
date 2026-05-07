@@ -35,6 +35,6 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	else:
 		_vagueness /= vagueness_decrease
 		if agent.target is Agent:
-			agent.target.add_threat(agent)
+			(agent.target as Agent).add_threat(agent)
 	
 	return SUCCESS
