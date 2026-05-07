@@ -18,9 +18,12 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	raycast.global_position = agent.global_position + Vector3(0, 1.45, 0)
 	raycast.look_at(target.global_position)
 	
+	var t: float = randf_range(0, TAU)
+	var d: float = randf_range(0, max_angle_variation)
+	var variation: Vector2 = Vector2(cos(t), sin(t)) * d * _vagueness
 	raycast.rotation += Vector3(
-		deg_to_rad(randf_range(-max_angle_variation, max_angle_variation) * _vagueness),
-		deg_to_rad(randf_range(-max_angle_variation, max_angle_variation))
+		variation.y,
+		variation.x
 		,0
 	)
 	
@@ -37,6 +40,6 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			_vagueness = 1.0
 	else:
 		_vagueness /= vagueness_decrease
-		target.add_treat(agent)
+		target.add_threat(agent)
 	
 	return SUCCESS
