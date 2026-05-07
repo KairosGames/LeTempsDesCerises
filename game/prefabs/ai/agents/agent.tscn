@@ -69,9 +69,10 @@ shape = SubResource("CapsuleShape3D_otrs2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6312335, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=2136817593]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.461414, 0)
-enabled = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
+top_level = true
 target_position = Vector3(0, 0, -100)
+collision_mask = 7
 collide_with_areas = true
 
 [node name="PlaceholderBody" parent="." unique_id=63322229 instance=ExtResource("2_f5m6n")]
@@ -84,6 +85,33 @@ bone_idx = 34
 
 [node name="sk_chassepot" parent="PlaceholderBody/Armature/Skeleton3D/BoneAttachment3D" unique_id=1025414177 instance=ExtResource("3_sm080")]
 transform = Transform3D(-10.55309, 95.53138, 27.611444, 11.808159, 28.773891, -95.04016, -98.73802, -6.7692723, -14.317036, 3.4706862, 18.70045, 6.007675)
+
+[node name="sk_chassepot_body" parent="PlaceholderBody/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot" index="0" unique_id=588837796]
+layers = 1
+
+[node name="bagette" parent="PlaceholderBody/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body" index="0" unique_id=437964636]
+layers = 1
+
+[node name="barrel_body" parent="PlaceholderBody/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body" index="1" unique_id=1009322438]
+layers = 1
+
+[node name="bolt_handle" parent="PlaceholderBody/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle" parent_id_path=PackedInt32Array(1025414177, 569320331) index="0" unique_id=2121048013]
+layers = 1
+
+[node name="safety_mechanism" parent="PlaceholderBody/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_barrel" parent_id_path=PackedInt32Array(1025414177, 125741250) index="1" unique_id=321110234]
+layers = 1
+
+[node name="rear_sight" parent="PlaceholderBody/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight" parent_id_path=PackedInt32Array(1025414177, 739362279) index="0" unique_id=58885415]
+layers = 1
+
+[node name="rear_sight_slider" parent="PlaceholderBody/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight/rear_sight" index="0" unique_id=1209452833]
+layers = 1
+
+[node name="rear_sight_body" parent="PlaceholderBody/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body" parent_id_path=PackedInt32Array(1025414177, 403407998) index="1" unique_id=41726384]
+layers = 1
+
+[node name="weapon_trigger" parent="PlaceholderBody/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/ctrl_weapon_trigger" parent_id_path=PackedInt32Array(1025414177, 1342119738) index="0" unique_id=1747753677]
+layers = 1
 
 [node name="AnimationPlayer" parent="PlaceholderBody" index="1" unique_id=232189190]
 autoplay = &"Aiming"
@@ -127,3 +155,4 @@ parameters/Die/internal_active = false
 parameters/Die/request = 0
 
 [editable path="PlaceholderBody"]
+[editable path="PlaceholderBody/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot"]

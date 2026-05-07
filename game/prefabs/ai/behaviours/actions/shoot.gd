@@ -1,35 +1,42 @@
 @tool
 class_name Shoot extends ActionLeaf
 
-var is_shooting: bool = false
-var shoot_start_time: int
-const duration: float = 2
+@export var max_angle_variation: float = 0
+@export var vagueness_decrease: float = 2.0
+var _vagueness: float = 1.0
 
-# TODO implement
-func tick(actor: Node, blackboard: Blackboard) -> int:
+func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
-	var target: Node3D = blackboard.get_value("target", null)
+	var target: Node3D = agent.target
+	var raycast: RayCast3D = agent.shoot_raycast
+	
 	if not target: return FAILURE
-
-	if not is_shooting:
-		is_shooting = true
-		shoot_start_time = Time.get_ticks_msec()
-		return RUNNING
+	
+	# TODO? avait animation
+	# return RUNNING
+	
+	raycast.global_position = agent.global_position + Vector3(0, 1.45, 0)
+	raycast.look_at(target.global_position)
+	
+	raycast.rotation += Vector3(
+		deg_to_rad(randf_range(-max_angle_variation, max_angle_variation) * _vagueness),
+		deg_to_rad(randf_range(-max_angle_variation, max_angle_variation))
+		,0
+	)
+	
+	raycast.force_raycast_update()
+	agent.is_weapon_loaded = false
+	agent.shoot_anim()
+	agent.shoot.emit()
+	
+	if raycast.is_colliding():
+		var collider: Object = raycast.get_collider()
+		if collider is Player or collider is Agent:
+			collider.die()
+			print("[%s] touched %s" % [agent.name, collider.name])
+			_vagueness = 1.0
 	else:
-		var elasped_timed: float = (Time.get_ticks_msec() - shoot_start_time) / 1000.0
-		if elasped_timed > duration:
-			var precision: int = 50
-			if target is Agent and (target as Agent).cover: precision /= 3
-			var will_touch: bool = precision > (randi() % 100)
-			is_shooting = false
-			agent.aim_to(target.global_position)
-			(actor as Agent).shoot_anim()
-			(actor as Agent).is_weapon_loaded = false
-			if will_touch:
-				target.die()
-			return SUCCESS
-		else:
-			return RUNNING
-
-func interrupt(_actor: Node, _blackboard: Blackboard) -> void:
-	is_shooting = false
+		_vagueness /= vagueness_decrease
+		target.add_treat(agent)
+	
+	return SUCCESS

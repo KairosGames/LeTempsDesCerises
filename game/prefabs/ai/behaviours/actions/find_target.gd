@@ -48,7 +48,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			if raycast.is_colliding():
 				var collider: Object = raycast.get_collider()
 				if collider is Agent or collider is Player:
-					agent.target = data.target
+					agent.target = shoot_target
 					return SUCCESS
 	
 	return FAILURE

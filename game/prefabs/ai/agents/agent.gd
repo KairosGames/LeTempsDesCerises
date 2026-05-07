@@ -1,8 +1,8 @@
 class_name Agent extends CharacterBody3D
 
 @warning_ignore_start("unused_signal")
-signal died
 signal shoot
+signal died
 #signal reload_start
 #signal reload_end
 @warning_ignore_restore("unused_signal")
@@ -18,7 +18,8 @@ signal shoot
 var is_alive: bool = true
 var is_weapon_loaded: bool = true
 var target: Node3D = null
-var threats: Array[Node3D] = []
+
+var threats: Dictionary[Agent, SceneTreeTimer] = {}
 var is_covered: bool = false
 var is_pushing_canon: bool = false
 var canon_slot: Marker3D = null:
@@ -36,6 +37,13 @@ enum Team { VERSALLAIS = -1, NONE = 0, COMMUNARD = 1 }
 func aim_to(target: Vector3) -> void:
 	target.y = global_position.y
 	look_at(target)
+
+const threat_duration: float = 10
+
+#func add_treat(agent: Agent) -> void:
+	#if not threats.has(agent):
+		#threats[agent] = get_tree().create_timer(threat_duration).timeout
+		#
 
 func on_start_moving() -> void:
 	animation_tree["parameters/MoveBlend/blend_position"] = 1.0
