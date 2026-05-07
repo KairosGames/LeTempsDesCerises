@@ -50,4 +50,5 @@ func _take_slot(agent: Agent) -> Marker3D:
 	return slot
 
 func _restore(_agent: Agent, slot: Marker3D) -> void:
+	holded_slots.erase(slot)
 	available_slots.push_back(slot)
