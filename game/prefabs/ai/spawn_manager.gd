@@ -4,10 +4,10 @@ class_name SpawnManager extends Node
 @export var spawners: Array[Cover]
 @export var cooldown: float = 60
 @export var target_entity_count: int = 6
-@export var team: Agent.Team = Agent.Team.VERSAILLAIS
+@export var team: Agent.Team = Agent.Team.NONE
 
-const VERSAILLAIS = preload("uid://d28tbnqpob3um")
-const COMMUNARD = preload("uid://dydlynqmwu5n5")
+const VERSAILLAIS: PackedScene = preload("uid://d28tbnqpob3um")
+const COMMUNARD: PackedScene  = preload("uid://dydlynqmwu5n5")
 
 var _entity_count: int = 0
 
@@ -33,6 +33,7 @@ func _process(_delta: float) -> void:
 	_process_spawn()
 
 func _process_spawn():
+	if team == Agent.Team.NONE: return
 	if _entity_count < target_entity_count:
 		for spawner: Cover in _open_list:
 			if spawner.enabled and not spawner.holder:
@@ -40,11 +41,15 @@ func _process_spawn():
 				_close_list.push_back(spawner)
 				get_tree().create_timer(cooldown).timeout.connect(_restore.bind(spawner))
 				_entity_count += 1
-				var versaillais: Agent = VERSAILLAIS.instantiate()
-				versaillais.cover = spawner
-				versaillais.position = spawner.global_position
-				versaillais.died.connect(_on_entity_died)
-				add_child(versaillais)
+				var prefab: PackedScene
+				match team:
+					Agent.Team.VERSAILLAIS: prefab = VERSAILLAIS
+					Agent.Team.COMMUNARD: prefab = COMMUNARD
+				var agent: Agent = prefab.instantiate()
+				agent.cover = spawner
+				agent.position = spawner.global_position
+				agent.died.connect(_on_entity_died)
+				add_child(agent)
 				return
 
 func _on_entity_died(_agent: Agent) -> void: _entity_count -= 1
