@@ -3,7 +3,7 @@
 ## If the child returns `FAILURE`, the repeater will return RUNNING.
 ## The counter resets when the node is interrupted (such as when the behavior tree changes branches).
 @tool
-@icon("addons/beehave/icons/repeater.svg")
+@icon("res://addons/beehave/icons/repeater.svg")
 class_name Repeater extends Decorator
 
 @export var repetitions: int = 3
