@@ -15,6 +15,7 @@ signal died(agent: Agent)
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Head]
 
+var has_enemy_in_range: bool = false
 var is_alive: bool = true
 var is_weapon_loaded: bool = true
 var target: Node3D = null

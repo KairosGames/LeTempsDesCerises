@@ -34,6 +34,10 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		if distance > max_distance: targets_data.remove_at(i)
 		else: targets_data[i].distance = distance
 
+	agent.has_enemy_in_range = targets_data.size()
+	if not agent.has_enemy_in_range:
+		return FAILURE
+
 	for i in range(targets_data.size() -1, -1 -1):
 		var data: TargetData = targets_data[i]
 		data.is_player = data.target is Player
