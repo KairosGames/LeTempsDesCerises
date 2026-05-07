@@ -4,8 +4,10 @@ class_name SpawnManager extends Node
 @export var spawners: Array[Cover]
 @export var cooldown: float = 60
 @export var target_entity_count: int = 6
+@export var team: Agent.Team = Agent.Team.VERSAILLAIS
 
 const VERSAILLAIS = preload("uid://d28tbnqpob3um")
+const COMMUNARD = preload("uid://dydlynqmwu5n5")
 
 var _entity_count: int = 0
 

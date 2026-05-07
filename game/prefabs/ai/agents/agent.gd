@@ -7,7 +7,7 @@ signal died(agent: Agent)
 #signal reload_end
 @warning_ignore_restore("unused_signal")
 
-@export var team: Team = Team.VERSALLAIS
+@export var team: Team = Team.VERSAILLAIS
 
 @onready var shoot_raycast: RayCast3D = $RayCast3D
 @onready var navigation: Navigation = $Navigation
@@ -32,7 +32,7 @@ var canon_slot: Marker3D = null:
 		cover = value
 		if cover: cover.holder = self
 
-enum Team { VERSALLAIS = -1, NONE = 0, COMMUNARD = 1 }
+enum Team { VERSAILLAIS = -1, NONE = 0, COMMUNARD = 1 }
 
 func aim_to(point: Vector3) -> void:
 	point.y = global_position.y
