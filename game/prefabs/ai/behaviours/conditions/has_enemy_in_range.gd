@@ -12,12 +12,12 @@ func get_targets(team : Agent.Team) -> Array[Node]:
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	
-	var targets_data: Array = get_targets(agent.team)
+	var targets: Array = get_targets(agent.team)
 	
-	for i in range(targets_data.size()):
-		if targets_data[i] is Player and not (targets_data[i] as Player).is_alive:
+	for target in targets:
+		if target is Player and not (target as Player).is_alive:
 			continue
-		var distance: float = targets_data[i].target.global_position.distance_to(agent.global_position)
+		var distance: float = target.global_position.distance_to(agent.global_position)
 		if distance > max_distance: continue
 		else:
 			agent.has_enemy_in_range = true
