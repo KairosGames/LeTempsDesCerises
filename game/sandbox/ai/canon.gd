@@ -6,6 +6,7 @@ signal shoot
 
 @export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var speed: float = 1
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var shoot_delay: float = 5
+@export var max_recruitment_range: float = 30
 
 var available_slots: Array[Marker3D] = []
 var holded_slots: Array[Marker3D] = []
@@ -33,6 +34,7 @@ func _find_workers() -> void:
 		for agent: Agent in get_tree().get_nodes_in_group(&"Versaillais"):
 			if agent.canon_slot: continue
 			var distance: float = agent.global_position.distance_squared_to(global_position)
+			if distance > max_recruitment_range: continue
 			if not nearest_agent or  distance< nearest_distance:
 				nearest_agent = agent
 				nearest_distance = distance
