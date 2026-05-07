@@ -6,6 +6,7 @@ signal shoot
 
 @export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var speed: float = 1
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var shoot_delay: float = 5
+@export var max_recruitment_range: float = 30
 
 var available_slots: Array[Marker3D] = []
 var holded_slots: Array[Marker3D] = []
@@ -14,10 +15,10 @@ var holded_slots: Array[Marker3D] = []
 
 var _last_shoot_time: float
 
-func _ready() -> void: 
+func _ready() -> void:
 	singleton = self
 	available_slots = _slots.duplicate()
-	
+
 func _physics_process(delta: float) -> void:
 	_find_workers()
 	progress += speed * (holded_slots.size() / float(_slots.size())) * delta
@@ -33,6 +34,7 @@ func _find_workers() -> void:
 		for agent: Agent in get_tree().get_nodes_in_group(&"Versaillais"):
 			if agent.canon_slot: continue
 			var distance: float = agent.global_position.distance_squared_to(global_position)
+			if distance > max_recruitment_range: continue
 			if not nearest_agent or  distance< nearest_distance:
 				nearest_agent = agent
 				nearest_distance = distance
@@ -47,5 +49,5 @@ func _take_slot(agent: Agent) -> Marker3D:
 	agent.died.connect(_restore.bind(slot))
 	return slot
 
-func _restore(slot: Marker3D) -> void:
+func _restore(_agent: Agent, slot: Marker3D) -> void:
 	available_slots.push_back(slot)

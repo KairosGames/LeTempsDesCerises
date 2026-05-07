@@ -4,8 +4,10 @@ class_name SpawnManager extends Node
 @export var spawners: Array[Cover]
 @export var cooldown: float = 60
 @export var target_entity_count: int = 6
+@export var team: Agent.Team = Agent.Team.VERSAILLAIS
 
 const VERSAILLAIS = preload("uid://d28tbnqpob3um")
+const COMMUNARD = preload("uid://dydlynqmwu5n5")
 
 var _entity_count: int = 0
 
@@ -45,7 +47,7 @@ func _process_spawn():
 				add_child(versaillais)
 				return
 
-func _on_entity_died() -> void: _entity_count -= 1
+func _on_entity_died(_agent: Agent) -> void: _entity_count -= 1
 
 func _restore(spawner: Cover) -> void:
 	_close_list.erase(spawner)
