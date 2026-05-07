@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://bfxqdxe6sfsl3" path="res://sandbox/scripts_proto/shoot_target.gd" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://bka3ud42srojy" path="res://sandbox/textures_proto/dark/texture_04.png" id="2_k0juu"]
+[ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="5_71j4m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nnsk1"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -462,3 +463,6 @@ mesh = SubResource("BoxMesh_o8fc1")
 shape = SubResource("BoxShape3D_xo05s")
 
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("1_nnsk1")]
+
+[node name="Communard" parent="." unique_id=1349390169 instance=ExtResource("5_71j4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0074487, 0.0019399751, 3.695386)

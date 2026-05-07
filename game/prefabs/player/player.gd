@@ -69,12 +69,12 @@ signal on_death
 @export var wpn_pos_lag_away_speed: float = 2.5
 @export var wpn_pos_lag_close_speed: float = 5.0
 @export var ads_wpn_pos_lag_reducer: float = 0.30
-@export var max_wpn_x_rot_lag_deg: float = 0.2
-@export var max_wpn_y_rot_lag_deg: float = 20.0
+@export var max_wpn_pitch_lag_deg: float = 0.2
+@export var max_wpn_yaw_lag_deg: float = 20.0
 @export var wpn_rot_lag_away_speed: float = 1.0
 @export var wpn_rot_lag_close_speed: float = 5.0
-@export var max_wpn_z_rot_lag_from_move_deg: float = 10.0
-@export var max_wpn_z_rot_lag_from_view_deg: float = 10.0
+@export var max_wpn_roll_lag_from_move_deg: float = 10.0
+@export var max_wpn_roll_lag_from_view_deg: float = 10.0
 
 @export_category("Recoil settings")
 @export var recoil_strength: float = 7.0
@@ -717,8 +717,8 @@ func apply_weapon_xy_rot_lag(delta: float) -> void:
 	var f_targ: Vector3 = weapon_container.global_rotation
 	var y_diff: float = angle_difference(f_targ.y, lag_target.global_rotation.y)
 	var x_diff: float = angle_difference(f_targ.x, lag_target.global_rotation.x)
-	var max_y: float = max_wpn_y_rot_lag_deg * concentration_sample
-	var max_x: float = max_wpn_x_rot_lag_deg * concentration_sample
+	var max_y: float = max_wpn_yaw_lag_deg * concentration_sample
+	var max_x: float = max_wpn_pitch_lag_deg * concentration_sample
 	
 	var y_ratio: float = clampf(abs(y_diff) / deg_to_rad(max_y), 0.0, 1.0)
 	var x_ratio := clampf(abs(x_diff) / deg_to_rad(max_x), 0.0, 1.0)
@@ -743,9 +743,9 @@ func apply_weapon_z_rot_lag(delta: float) -> void:
 		return
 	var ratio_move: float = -local_velocity.x / (stand_speed * side_speed_ratio)
 	var y_rot_diff: float = angle_difference(weapon_container.global_rotation.y, lag_target.global_rotation.y)
-	var ratio_view: float = clampf((y_rot_diff * 2.0) / deg_to_rad(max_wpn_y_rot_lag_deg), -1.0, 1.0)
-	var target_move: float = deg_to_rad(max_wpn_z_rot_lag_from_move_deg) * ratio_move
-	var target_view: float = deg_to_rad(max_wpn_z_rot_lag_from_view_deg) * ratio_view
+	var ratio_view: float = clampf((y_rot_diff * 2.0) / deg_to_rad(max_wpn_yaw_lag_deg), -1.0, 1.0)
+	var target_move: float = deg_to_rad(max_wpn_roll_lag_from_move_deg) * ratio_move
+	var target_view: float = deg_to_rad(max_wpn_roll_lag_from_view_deg) * ratio_view
 	var target_z: float = target_move - target_view
 	var targ: float = lerp_angle(weapon_lag_root.rotation.z, target_z, dt_lerp_t(wpn_pos_lag_away_speed, delta))
 	weapon_lag_root.rotation.z =  targ
