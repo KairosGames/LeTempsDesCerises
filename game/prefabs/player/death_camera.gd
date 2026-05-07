@@ -1,15 +1,19 @@
 class_name DeathCamera extends Camera3D
 
 @onready var player: Player = get_parent()
-var is_active: bool
 
-var first_pos: Vector3
+var is_active: bool
 var fall_twn: Tween
 var fall_rot_twn: Tween
+
+var first_pos: Vector3
+var first_rot: Vector3
+
 
 func _ready() -> void:
 	player.on_death.connect(handle_death)
 	first_pos = player.global_position
+	first_rot = player.global_rotation
 
 
 func handle_death() -> void:
@@ -32,7 +36,20 @@ func play_fall_effect() -> void:
 	var fall_rot: Vector3 = Vector3(0.0, -z_rot, global_rotation_degrees.z + z_rot)
 	fall_rot_twn.tween_property(self, "global_rotation_degrees", fall_rot, 0.3)
 	await get_tree().create_timer(2.0).timeout
+	
+	var communard: Array = get_tree().get_nodes_in_group("Communard")
+	
+	
 	var rand: float = 1.0 if randi() % 2 else -1.0
 	var pos: Vector3 = Vector3 (first_pos.x + (6.0 * rand), 0.0, 0.0)
 	var rot: Vector3 = Vector3 (0.0, -90.0 * rand, 0.0)
+	is_active = false
 	player.revive(pos, rot)
+
+
+func get_free_communard() -> Agent:
+	var communards: Array = get_tree().get_nodes_in_group("Communard")
+	var nearer_communard: Agent = null
+	var max
+	#for communard in communards:
+	return
