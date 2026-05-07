@@ -7,16 +7,15 @@ var _vagueness: float = 1.0
 
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
-	var target: Node3D = agent.target
 	var raycast: RayCast3D = agent.shoot_raycast
 	
-	if not target: return FAILURE
+	if not agent.target: return FAILURE
 	
 	# TODO? avait animation
 	# return RUNNING
 	
 	raycast.global_position = agent.global_position + Vector3(0, 1.45, 0)
-	raycast.look_at(target.global_position)
+	raycast.look_at(agent.target_point.global_position)
 	
 	var t: float = randf_range(0, TAU)
 	var d: float = randf_range(0, deg_to_rad(max_angle_variation))
@@ -40,6 +39,6 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			_vagueness = 1.0
 	else:
 		_vagueness /= vagueness_decrease
-		target.add_threat(agent)
+		agent.target.add_threat(agent)
 	
 	return SUCCESS
