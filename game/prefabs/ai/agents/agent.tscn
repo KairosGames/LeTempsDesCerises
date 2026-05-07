@@ -54,14 +54,17 @@ node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"Move", &"OneShot"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7hc28"]
+xfade_time = 0.5
 advance_mode = 2
 advance_expression = "is_covered"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smkgt"]
+xfade_time = 0.5
 advance_mode = 2
 advance_expression = "not is_covered"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u0bw3"]
+xfade_time = 0.5
 advance_mode = 2
 advance_expression = "not is_alive"
 
@@ -75,7 +78,7 @@ states/Kneel/position = Vector2(279.75, 243)
 "states/Move & Shoot/position" = Vector2(279.5, 100)
 states/Start/position = Vector2(60, 98.75)
 transitions = ["Start", "Move & Shoot", SubResource("AnimationNodeStateMachineTransition_8chkj"), "Move & Shoot", "Kneel", SubResource("AnimationNodeStateMachineTransition_7hc28"), "Kneel", "Move & Shoot", SubResource("AnimationNodeStateMachineTransition_smkgt"), "Move & Shoot", "Die", SubResource("AnimationNodeStateMachineTransition_u0bw3")]
-graph_offset = Vector2(-368, -26)
+graph_offset = Vector2(-18, -60)
 
 [node name="Agent" type="CharacterBody3D" unique_id=1349390169 groups=["Entities"]]
 collision_layer = 4
