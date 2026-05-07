@@ -3,14 +3,16 @@
 [ext_resource type="Script" uid="uid://8hn4kne15ac5" path="res://addons/beehave/nodes/composites/selector.gd" id="1_uqrrd"]
 [ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_x0bws"]
 [ext_resource type="Script" uid="uid://wr4w63a3cf1r" path="res://prefabs/ai/behaviours/conditions/is_not_on_spawner.gd" id="3_4ysxr"]
-[ext_resource type="PackedScene" uid="uid://detjnvcenglo7" path="res://prefabs/ai/behaviours/load_weapon.tscn" id="3_lb3wh"]
 [ext_resource type="Script" uid="uid://bho7msdr7jjtk" path="res://prefabs/ai/behaviours/compositors/repeater.gd" id="4_2ited"]
 [ext_resource type="Script" uid="uid://d3v8rutw8rwkx" path="res://prefabs/ai/behaviours/conditions/has_enemy_in_range.gd" id="4_3fwdg"]
+[ext_resource type="Script" uid="uid://57xh8fn2vkbo" path="res://prefabs/ai/behaviours/conditions/is_weapon_loaded.gd" id="4_oh8aj"]
 [ext_resource type="Script" uid="uid://d17vwjh5pnlnd" path="res://prefabs/ai/behaviours/actions/find_target.gd" id="4_t2guh"]
 [ext_resource type="Script" uid="uid://bsoyuqkktjyrp" path="res://prefabs/ai/target_selection_coefficient.gd" id="4_u4ja4"]
 [ext_resource type="Script" uid="uid://bmwadp6yooef0" path="res://prefabs/ai/behaviours/actions/shoot.gd" id="5_u4ja4"]
+[ext_resource type="Script" uid="uid://cvdvij20sdtj5" path="res://prefabs/ai/behaviours/actions/reload.gd" id="5_x24sq"]
 [ext_resource type="Script" uid="uid://bwfed5132hftm" path="res://prefabs/ai/behaviours/actions/find_next_cover.gd" id="6_u4ja4"]
 [ext_resource type="Script" uid="uid://c23rho2v0iamy" path="res://prefabs/ai/behaviours/actions/move_to_cover.gd" id="7_uqrrd"]
+[ext_resource type="Script" uid="uid://bvv3uwi6i8ghk" path="res://prefabs/ai/behaviours/actions/wait.gd" id="13_x24sq"]
 
 [sub_resource type="Resource" id="Resource_uqrrd"]
 script = ExtResource("4_u4ja4")
@@ -34,7 +36,17 @@ metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 script = ExtResource("3_4ysxr")
 metadata/_custom_type_script = "uid://wr4w63a3cf1r"
 
-[node name="LoadWeapon" parent="ShootTarget" unique_id=1666196900 instance=ExtResource("3_lb3wh")]
+[node name="LoadWeapon" type="Node" parent="ShootTarget" unique_id=1666196900]
+script = ExtResource("1_uqrrd")
+metadata/_custom_type_script = "uid://8hn4kne15ac5"
+
+[node name="IsWeaponLoaded" type="Node" parent="ShootTarget/LoadWeapon" unique_id=1459819174]
+script = ExtResource("4_oh8aj")
+metadata/_custom_type_script = "uid://57xh8fn2vkbo"
+
+[node name="Reload" type="Node" parent="ShootTarget/LoadWeapon" unique_id=1630386082]
+script = ExtResource("5_x24sq")
+metadata/_custom_type_script = "uid://cvdvij20sdtj5"
 
 [node name="HasEnemyInRange" type="Node" parent="ShootTarget" unique_id=1875736344]
 script = ExtResource("4_3fwdg")
@@ -45,12 +57,21 @@ metadata/_custom_type_script = "uid://d3v8rutw8rwkx"
 script = ExtResource("4_2ited")
 metadata/_custom_type_script = "uid://bho7msdr7jjtk"
 
-[node name="FindTarget" type="Node" parent="ShootTarget/Repeater" unique_id=1046107259]
+[node name="FindTarget or Wait" type="Node" parent="ShootTarget/Repeater" unique_id=1518757306]
+script = ExtResource("1_uqrrd")
+metadata/_custom_type_script = "uid://8hn4kne15ac5"
+
+[node name="FindTarget" type="Node" parent="ShootTarget/Repeater/FindTarget or Wait" unique_id=1046107259]
 script = ExtResource("4_t2guh")
 max_distance = 60.0
 versaillais = SubResource("Resource_uqrrd")
 communard = SubResource("Resource_2ited")
 metadata/_custom_type_script = "uid://d17vwjh5pnlnd"
+
+[node name="Wait" type="Node" parent="ShootTarget/Repeater/FindTarget or Wait" unique_id=1995188101]
+script = ExtResource("13_x24sq")
+result = 1
+metadata/_custom_type_script = "uid://bvv3uwi6i8ghk"
 
 [node name="Shoot" type="Node" parent="ShootTarget" unique_id=1881246047]
 script = ExtResource("5_u4ja4")
@@ -75,3 +96,7 @@ metadata/_custom_type_script = "uid://bwfed5132hftm"
 [node name="MoveToCover" type="Node" parent="MoveFoward" unique_id=103882024]
 script = ExtResource("7_uqrrd")
 metadata/_custom_type_script = "uid://c23rho2v0iamy"
+
+[node name="Wait" type="Node" parent="MoveFoward" unique_id=731333807]
+script = ExtResource("13_x24sq")
+metadata/_custom_type_script = "uid://bvv3uwi6i8ghk"

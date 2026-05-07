@@ -14,7 +14,13 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		agent.on_start_moving()
 	if agent.navigation.is_navigation_finished():
 		agent.on_stop_moving()
-		return SUCCESS if agent.navigation.is_target_reached() else FAILURE
+		var is_target_reached: bool = agent.navigation.is_target_reached()
+		if is_target_reached:
+			on_success(actor, blackboard)
+			return SUCCESS
+		else:
+			on_failure(actor, blackboard)
+			return FAILURE
 	else:
 		return RUNNING
 
@@ -22,3 +28,7 @@ func interrupt(actor: Node, _blackboard: Blackboard) -> void:
 	var agent: Agent = actor
 	agent.on_stop_moving()
 	agent.navigation.stop()
+
+func on_start(actor: Node, _blackboard: Blackboard) -> void: pass
+func on_success(actor: Node, _blackboard: Blackboard) -> void: pass
+func on_failure(actor: Node, _blackboard: Blackboard) -> void: pass

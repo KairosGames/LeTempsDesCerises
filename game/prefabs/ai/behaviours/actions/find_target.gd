@@ -1,8 +1,13 @@
 @tool
 class_name FindTarget extends ActionLeaf
 
+@export_group("Duration")
+@export var duration: float = 3
+@export var duration_random: float = 1
+
 @export_group("Limits")
 @export var max_distance: float = 30
+
 @export_group("Coefficient")
 @export var versaillais: TargetSelectionCoefficient
 @export var communard: TargetSelectionCoefficient
@@ -15,6 +20,11 @@ func get_targets(team : Agent.Team) -> Array[Node]:
 
 var _is_waiting: = false
 var _start_wait_time: int = 0
+var _duration: float
+
+
+func interrupt(_actor: Node, _blackboard: Blackboard) -> void:
+	_is_waiting = false
 
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
@@ -22,11 +32,13 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	
 	agent.is_covered = false
 	if not _is_waiting:
+		_duration = randf_range(duration - duration_random, duration + duration_random)
 		_is_waiting = true
 		_start_wait_time = Time.get_ticks_msec()
 	
-	if Time.get_ticks_msec() - _start_wait_time < 2.0:
-		return RUNNING
+	var elasped_timed: float = (Time.get_ticks_msec() - _start_wait_time) / 1000.0
+	
+	if elasped_timed < _duration: return RUNNING
 	
 	_is_waiting = false
 
