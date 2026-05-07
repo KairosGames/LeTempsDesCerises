@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_x0bws"]
 [ext_resource type="PackedScene" uid="uid://detjnvcenglo7" path="res://prefabs/ai/behaviours/load_weapon.tscn" id="3_lb3wh"]
 [ext_resource type="Script" uid="uid://bho7msdr7jjtk" path="res://prefabs/ai/behaviours/compositors/repeater.gd" id="4_2ited"]
+[ext_resource type="Script" uid="uid://d3v8rutw8rwkx" path="res://prefabs/ai/behaviours/conditions/has_enemy_in_range.gd" id="4_3fwdg"]
 [ext_resource type="Script" uid="uid://d17vwjh5pnlnd" path="res://prefabs/ai/behaviours/actions/find_target.gd" id="4_t2guh"]
 [ext_resource type="Script" uid="uid://bsoyuqkktjyrp" path="res://prefabs/ai/target_selection_coefficient.gd" id="4_u4ja4"]
 [ext_resource type="Script" uid="uid://bmwadp6yooef0" path="res://prefabs/ai/behaviours/actions/shoot.gd" id="5_u4ja4"]
@@ -30,6 +31,10 @@ metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
 [node name="LoadWeapon" parent="ShootTarget" unique_id=1666196900 instance=ExtResource("3_lb3wh")]
 
+[node name="HasEnemyInRange" type="Node" parent="ShootTarget" unique_id=1875736344]
+script = ExtResource("4_3fwdg")
+metadata/_custom_type_script = "uid://d3v8rutw8rwkx"
+
 [node name="Repeater" type="Node" parent="ShootTarget" unique_id=2142149888]
 script = ExtResource("4_2ited")
 metadata/_custom_type_script = "uid://bho7msdr7jjtk"
@@ -43,6 +48,14 @@ metadata/_custom_type_script = "uid://d17vwjh5pnlnd"
 [node name="Shoot" type="Node" parent="ShootTarget" unique_id=1881246047]
 script = ExtResource("5_u4ja4")
 metadata/_custom_type_script = "uid://bmwadp6yooef0"
+
+[node name="FindNextCover" type="Node" parent="ShootTarget" unique_id=1705824596]
+script = ExtResource("6_u4ja4")
+metadata/_custom_type_script = "uid://bwfed5132hftm"
+
+[node name="MoveToCover" type="Node" parent="ShootTarget" unique_id=790279516]
+script = ExtResource("7_uqrrd")
+metadata/_custom_type_script = "uid://c23rho2v0iamy"
 
 [node name="MoveFoward" type="Node" parent="." unique_id=119180968]
 script = ExtResource("1_x0bws")
