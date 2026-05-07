@@ -18,7 +18,6 @@ signal reloaded
 @export var qte_delay: float = 0.5
 @export var valid_offset_px: float = 10.0
 
-
 @export_category("Color settings")
 @export var default_color: Color
 @export var valid_target_color: Color

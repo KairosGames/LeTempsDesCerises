@@ -31,6 +31,7 @@ signal on_death
 @export_category("Character settings")
 @export var is_right_handed: bool = true
 @export var has_weapon: bool = true
+@export var shoot_targets: Array[Marker3D]
 
 @export_category("View settings")
 @export var v_clamp_deg: Vector2 = Vector2(-70.0, 85.0)
@@ -261,7 +262,7 @@ func set_dynamic_collider() -> void:
 		high_capsule_shape.radius = min_capsule_radius
 		return
 	var d: float = min_capsule_radius * 2.0
-	low_capsule_shape.height = d + ((d - camera_pivot.position.y) * 2.0)
+	low_capsule_shape.height = d + ((d - camera_pivot.position.y) * 2.5)
 
 
 func capture_states() -> void:

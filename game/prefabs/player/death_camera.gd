@@ -1,6 +1,6 @@
 class_name DeathCamera extends Camera3D
 
-var player: Player
+@onready var player: Player = get_parent()
 var is_active: bool
 
 var first_pos: Vector3
@@ -8,7 +8,6 @@ var fall_twn: Tween
 var fall_rot_twn: Tween
 
 func _ready() -> void:
-	player = get_parent() as Player
 	player.on_death.connect(handle_death)
 	first_pos = player.global_position
 
