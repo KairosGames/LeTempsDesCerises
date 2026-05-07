@@ -69,6 +69,7 @@ func die() -> void:
 	if not is_alive: return
 	is_alive = false
 	cover = null
+	set_collision_layer_value(3, false)
 	navigation.stop()
 	animation_tree["parameters/Die/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	await animation_tree.animation_finished

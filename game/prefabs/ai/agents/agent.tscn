@@ -55,8 +55,8 @@ nodes/Die/position = Vector2(150, 120)
 node_connections = [&"output", 0, &"Die", &"Shoot", 0, &"MoveBlend", &"Shoot", 1, &"ShootAnimation", &"Die", 0, &"Shoot", &"Die", 1, &"DieAnimation"]
 
 [node name="Agent" type="CharacterBody3D" unique_id=1349390169 groups=["Entities"]]
-axis_lock_angular_x = true
-axis_lock_angular_z = true
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_3m1mu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1662563447]
