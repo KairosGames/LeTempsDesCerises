@@ -19,7 +19,7 @@ var is_alive: bool = true
 var is_weapon_loaded: bool = true
 var target: Node3D = null
 
-var threats: Dictionary[Agent, SceneTreeTimer] = {}
+var threats: Array[Agent]
 var is_covered: bool = false
 var is_pushing_canon: bool = false
 var canon_slot: Marker3D = null:
@@ -40,10 +40,12 @@ func aim_to(target: Vector3) -> void:
 
 const threat_duration: float = 10
 
-#func add_treat(agent: Agent) -> void:
-	#if not threats.has(agent):
-		#threats[agent] = get_tree().create_timer(threat_duration).timeout
-		#
+func add_threat(agent: Agent) -> void:
+	if not threats.has(agent):
+		threats.append(agent) 
+		get_tree().create_timer(threat_duration).timeout.connect(remove_threat.bind(agent), CONNECT_ONE_SHOT)
+
+func remove_threat(agent: Agent) -> void: threats.erase(agent)
 
 func on_start_moving() -> void:
 	animation_tree["parameters/MoveBlend/blend_position"] = 1.0
