@@ -25,8 +25,11 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			data.target = target
 			return data
 	)
-
+	
 	for i in range(targets_data.size() -1, -1 -1):
+		if targets_data[i] is Player and not (targets_data[i] as Player).is_alive:
+			targets_data.remove_at(i)
+			continue
 		var distance: float = targets_data[i].target.global_position.distance_to(agent.global_position)
 		if distance > max_distance: targets_data.remove_at(i)
 		else: targets_data[i].distance = distance
@@ -42,7 +45,6 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	targets_data.sort_custom(func(a: TargetData, b: TargetData) -> bool: return a.score > b.score )
 
 	for data: TargetData in targets_data:
-		if data.target is Player: continue
 		for shoot_target: Marker3D in data.target.shoot_targets:
 			raycast.look_at(shoot_target.global_position)
 			raycast.force_raycast_update()
