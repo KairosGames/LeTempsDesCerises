@@ -72,6 +72,6 @@ func die() -> void:
 	cover = null
 	set_collision_layer_value(3, false)
 	navigation.stop()
-	await animation_tree.animation_finished
+	await get_tree().create_timer(2.0).timeout
 	died.emit(self)
 	queue_free()

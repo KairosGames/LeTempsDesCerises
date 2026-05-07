@@ -8,19 +8,25 @@ class_name Wait extends ActionLeaf
 @export_enum("SUCCESS", "FAILURE", "RUNNING") var result: int
 
 var _is_waiting: bool = false
-var _start_time: int
-var _duration: float = 0
+var timer: Timer = Timer.new()
+
+func _ready() -> void:
+	timer.one_shot = true
+	timer.autostart = false
+	add_child(timer)
 
 func tick(_actor: Node, _blackboard: Blackboard) -> int:
 	if not _is_waiting:
-		_duration = randf_range(duration - duration_random, duration + duration_random)
-		_start_time = Time.get_ticks_msec()
 		_is_waiting = true
+		var test_duration: float = randf_range(duration - duration_random, duration + duration_random)
+		timer.start(test_duration)
 		return RUNNING
-	var elasped_timed: float = (Time.get_ticks_msec() - _start_time) / 1000.0
-	if elasped_timed < _duration: return RUNNING
-	_is_waiting = false
-	return result
+	elif timer.time_left:
+		return RUNNING
+	else:
+		_is_waiting = false
+		return result
 
 func interrupt(_actor: Node, _blackboard: Blackboard) -> void:
 	_is_waiting = false
+	timer.stop()

@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cvdvij20sdtj5" path="res://prefabs/ai/behaviours/actions/reload.gd" id="5_x24sq"]
 [ext_resource type="Script" uid="uid://bwfed5132hftm" path="res://prefabs/ai/behaviours/actions/find_next_cover.gd" id="6_u4ja4"]
 [ext_resource type="Script" uid="uid://c23rho2v0iamy" path="res://prefabs/ai/behaviours/actions/move_to_cover.gd" id="7_uqrrd"]
+[ext_resource type="Script" uid="uid://ba1r4kyokrsjq" path="res://prefabs/ai/behaviours/actions/change_cover.gd" id="9_0hyxe"]
 [ext_resource type="Script" uid="uid://bvv3uwi6i8ghk" path="res://prefabs/ai/behaviours/actions/wait.gd" id="13_x24sq"]
 
 [sub_resource type="Resource" id="Resource_uqrrd"]
@@ -57,24 +58,53 @@ metadata/_custom_type_script = "uid://d3v8rutw8rwkx"
 script = ExtResource("4_2ited")
 metadata/_custom_type_script = "uid://bho7msdr7jjtk"
 
-[node name="FindTarget or Wait" type="Node" parent="ShootTarget/Repeater" unique_id=1518757306]
+[node name="Find or Wait" type="Node" parent="ShootTarget/Repeater" unique_id=1771532690]
 script = ExtResource("1_uqrrd")
 metadata/_custom_type_script = "uid://8hn4kne15ac5"
 
-[node name="FindTarget" type="Node" parent="ShootTarget/Repeater/FindTarget or Wait" unique_id=1046107259]
+[node name="FindTarget or Wait" type="Node" parent="ShootTarget/Repeater/Find or Wait" unique_id=1473216281]
+script = ExtResource("1_x0bws")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="GetOutCover" type="Node" parent="ShootTarget/Repeater/Find or Wait/FindTarget or Wait" unique_id=961137992]
+script = ExtResource("9_0hyxe")
+metadata/_custom_type_script = "uid://ba1r4kyokrsjq"
+
+[node name="Wait" type="Node" parent="ShootTarget/Repeater/Find or Wait/FindTarget or Wait" unique_id=1728271045]
+script = ExtResource("13_x24sq")
+duration = 4.0
+metadata/_custom_type_script = "uid://bvv3uwi6i8ghk"
+
+[node name="FindTarget" type="Node" parent="ShootTarget/Repeater/Find or Wait/FindTarget or Wait" unique_id=1046107259]
 script = ExtResource("4_t2guh")
 max_distance = 60.0
 versaillais = SubResource("Resource_uqrrd")
 communard = SubResource("Resource_2ited")
 metadata/_custom_type_script = "uid://d17vwjh5pnlnd"
 
-[node name="Wait" type="Node" parent="ShootTarget/Repeater/FindTarget or Wait" unique_id=1995188101]
+[node name="Wait" type="Node" parent="ShootTarget/Repeater/Find or Wait" unique_id=1603856499]
+script = ExtResource("1_x0bws")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="GetInCover" type="Node" parent="ShootTarget/Repeater/Find or Wait/Wait" unique_id=1391076959]
+script = ExtResource("9_0hyxe")
+is_covered = true
+metadata/_custom_type_script = "uid://ba1r4kyokrsjq"
+
+[node name="Wait" type="Node" parent="ShootTarget/Repeater/Find or Wait/Wait" unique_id=1995188101]
 script = ExtResource("13_x24sq")
+duration = 4.0
 result = 1
+metadata/_custom_type_script = "uid://bvv3uwi6i8ghk"
+
+[node name="Wait" type="Node" parent="ShootTarget" unique_id=85657866]
+script = ExtResource("13_x24sq")
+duration = 2.0
 metadata/_custom_type_script = "uid://bvv3uwi6i8ghk"
 
 [node name="Shoot" type="Node" parent="ShootTarget" unique_id=1881246047]
 script = ExtResource("5_u4ja4")
+max_angle_variation = 0.0
 metadata/_custom_type_script = "uid://bmwadp6yooef0"
 
 [node name="FindNextCover" type="Node" parent="ShootTarget" unique_id=1705824596]

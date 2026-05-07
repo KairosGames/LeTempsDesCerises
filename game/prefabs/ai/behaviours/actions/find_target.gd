@@ -1,10 +1,6 @@
 @tool
 class_name FindTarget extends ActionLeaf
 
-@export_group("Duration")
-@export var duration: float = 3
-@export var duration_random: float = 1
-
 @export_group("Limits")
 @export var max_distance: float = 30
 
@@ -18,29 +14,9 @@ func get_targets(team : Agent.Team) -> Array[Node]:
 		Agent.Team.COMMUNARD: return get_tree().get_nodes_in_group(&"Versaillais")
 		_: return []
 
-var _is_waiting: = false
-var _start_wait_time: int = 0
-var _duration: float
-
-
-func interrupt(_actor: Node, _blackboard: Blackboard) -> void:
-	_is_waiting = false
-
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var raycast: RayCast3D = agent.shoot_raycast
-
-	if not _is_waiting:
-		agent.is_covered = false
-		_duration = randf_range(duration - duration_random, duration + duration_random)
-		_is_waiting = true
-		_start_wait_time = Time.get_ticks_msec()
-	
-	var elasped_timed: float = (Time.get_ticks_msec() - _start_wait_time) / 1000.0
-	
-	if elasped_timed < _duration: return RUNNING
-	
-	_is_waiting = false
 
 	var targets_data: Array = get_targets(agent.team).map(
 		func(target: Node3D) -> TargetData:
@@ -83,7 +59,6 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 					agent.target_point = shoot_target
 					return SUCCESS
 
-	agent.is_covered = true
 	return FAILURE
 
 class TargetData:
