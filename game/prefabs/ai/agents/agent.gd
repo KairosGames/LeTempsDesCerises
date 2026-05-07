@@ -20,7 +20,10 @@ var is_weapon_loaded: bool = true
 var target: Node3D = null
 var target_point: Node3D = null
 var threats: Array[Agent]
-var is_covered: bool = false
+var is_covered: bool = false:
+	set(value):
+		is_covered = value
+		animation_tree["parameters/Crouching/blend_amount"] = int(value)
 var is_pushing_canon: bool = false
 var canon_slot: Marker3D = null:
 	set(value):
