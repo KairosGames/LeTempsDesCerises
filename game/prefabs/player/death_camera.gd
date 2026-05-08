@@ -2,12 +2,15 @@ class_name DeathCamera extends Camera3D
 
 @onready var player: Player = get_parent()
 
-var is_active: bool
-var fall_twn: Tween
-var fall_rot_twn: Tween
+@export var time_to_swap: float = 3.0
 
 var first_pos: Vector3
 var first_rot: Vector3
+var is_active: bool
+
+var fall_twn: Tween
+var fall_rot_twn: Tween
+var fov_twn: Tween
 
 
 func _ready() -> void:
@@ -31,8 +34,10 @@ func play_fall_effect() -> void:
 	var ground_y: float = player.global_position.y
 	fall_twn = create_tween()
 	fall_rot_twn = create_tween()
+	fov_twn = create_tween()
 	fall_twn.tween_property(self, "global_position:y", ground_y + 0.3, 0.4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	fall_twn.tween_property(self, "global_position:y", ground_y + 0.1, 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	fov_twn.tween_property(self, "fov", player.default_fov, 0.4)
 	var fall_rot: Vector3
 	
 	if communard:
@@ -48,15 +53,38 @@ func play_fall_effect() -> void:
 		var fall_angle: float = deg_to_rad(90.0)
 		fall_rot = Vector3(current_rot.x, final_yaw, current_rot.z + fall_angle * side)
 		fall_rot_twn.tween_property(self, "global_rotation", fall_rot, 0.45).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-		await get_tree().create_timer(2.0).timeout
-		player.revive(communard.global_position, communard.global_rotation)
+		
+		var second_targ: Vector3 = communard.global_position + Vector3(0.0, 1.5, 0.0)
+		#var second_targ: Vector3 = communard.shoot_targets[0].global_position
+		var start_transform: Transform3D = global_transform
+		start_transform.origin.y = ground_y + 0.1
+		start_transform.basis = Basis.from_euler(fall_rot)
+		var up_dir: Vector3 = start_transform.basis.y.normalized()
+		var look_transform: Transform3D = start_transform.looking_at(second_targ, up_dir)
+		var start_quat: Quaternion = start_transform.basis.get_rotation_quaternion()
+		var target_quat: Quaternion = look_transform.basis.get_rotation_quaternion()
+		fall_rot_twn.tween_method(
+			func(t: float) -> void: global_transform.basis = Basis(start_quat.slerp(target_quat, t)),
+			0.0, 1.0, 0.1)
+		
+		await get_tree().create_timer(time_to_swap).timeout
+		fov_twn = create_tween()
+		fov_twn.tween_property(self, "fov", 120.0, 0.2
+					).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		await fov_twn.tween_property(self, "fov", 1.0, 0.25
+					).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).finished
+		#await fov_twn.tween_property(self, "fov", 1.0, 0.45
+					#).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK).finished
+		delete_swaped_communard(communard)
+		var offset_rot: Vector3 = Vector3(0.0, PI, 0.0)
+		player.revive(communard.global_position, communard.global_rotation + offset_rot)
 		is_active = false
 		return
-
+	
 	var z_rot: float = 90.0 if randi() % 2 else -90.0
 	fall_rot = Vector3(0.0, -z_rot, global_rotation_degrees.z + z_rot)
 	fall_rot_twn.tween_property(self, "global_rotation_degrees", fall_rot, 0.3)
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(time_to_swap).timeout
 	player.revive(first_pos, first_rot)
 	is_active = false
 
@@ -72,3 +100,9 @@ func get_free_communard() -> Agent:
 			max_dist = dist
 			nearer_communard = communard
 	return nearer_communard
+
+
+func delete_swaped_communard(communard: Agent) -> void:
+	communard.cover = null
+	communard.died.emit(communard)
+	communard.queue_free()

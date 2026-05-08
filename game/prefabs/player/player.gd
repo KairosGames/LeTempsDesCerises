@@ -208,7 +208,7 @@ func initiate(pos: Vector3,
 				posture: Posture = Posture.STAND,
 				right_handed: bool = true) -> void:
 	global_position = pos
-	global_rotation_degrees = rot
+	global_rotation = rot
 	is_right_handed = right_handed
 	curr_posture = posture
 	match posture:
@@ -857,8 +857,9 @@ func exit_reload(is_realoded: bool = true, is_from_die = false) -> void:
 
 
 func die() -> void:
+	if not is_alive: return
 	is_alive = false
-	#if is_reloading: exit_reload(false, true)
+	if is_reloading: exit_reload(false, true)
 	exit_reload(false, true)
 	weapon_sway_root.visible = false
 	on_death.emit()
