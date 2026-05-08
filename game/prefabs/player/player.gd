@@ -73,7 +73,7 @@ signal on_death
 @export var max_wpn_yaw_lag_deg: float = 20.0
 @export var wpn_rot_lag_away_speed: float = 1.0
 @export var wpn_rot_lag_close_speed: float = 5.0
-@export var max_wpn_roll_lag_from_move_deg: float = 20.0
+@export var max_wpn_roll_lag_from_move_deg: float = 15.0
 @export var max_wpn_roll_lag_from_view_deg: float = 0.0
 
 @export_category("Recoil settings")
