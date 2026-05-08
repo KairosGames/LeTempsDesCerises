@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://8h2see0efmmk"]
+
+[ext_resource type="PackedScene" uid="uid://bkb8xv1h0cwjs" path="res://sources/meshes/sm_morris_column_complete_c.glb" id="1_3tikv"]
+[ext_resource type="Material" uid="uid://c6jwmpwhck58r" path="res://sandbox/chassepot_proto/steel_proto.tres" id="2_eg2yi"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3tikv"]
+height = 4.5294
+radius = 0.6401367
+
+[node name="MorrisColumn" type="StaticBody3D" unique_id=1149487519]
+
+[node name="sm_morris_column_complete_c2" parent="." unique_id=760765616 instance=ExtResource("1_3tikv")]
+
+[node name="sm_morris_column_complete_c" parent="sm_morris_column_complete_c2" index="0" unique_id=1278992596]
+surface_material_override/0 = ExtResource("2_eg2yi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1777114855]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2647, 0)
+shape = SubResource("CylinderShape3D_3tikv")
+
+[editable path="sm_morris_column_complete_c2"]
