@@ -23,6 +23,7 @@ namespace AK
         static const AkUniqueID ENEMY_SHOOT = 1050776119U;
         static const AkUniqueID ENEMY_STEPS = 3114531655U;
         static const AkUniqueID PLAYER_CROUCH = 3055475155U;
+        static const AkUniqueID PLAYER_DEATH = 3083087645U;
         static const AkUniqueID PLAYER_PRONE = 1806823001U;
         static const AkUniqueID PLAYER_RELOAD = 1650679582U;
         static const AkUniqueID PLAYER_SHOOT = 4004702906U;
@@ -149,6 +150,7 @@ namespace AK
     {
         static const AkUniqueID CANNONS_PROBABILITY = 2576556105U;
         static const AkUniqueID DEAFENING = 711096812U;
+        static const AkUniqueID DEATH_FILTER = 4205136178U;
         static const AkUniqueID PLAYER_POSITION = 2221031936U;
         static const AkUniqueID PLAYER_VELOCITY = 1833811084U;
         static const AkUniqueID POETIC_LEVEL = 3680281974U;

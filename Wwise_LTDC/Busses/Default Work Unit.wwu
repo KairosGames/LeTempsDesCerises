@@ -24,12 +24,82 @@
 								<Bus Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}"/>
 								<Bus Name="SFX_NPC" ID="{C50F8E9D-E1E1-4B38-A0FA-27AA94AFC147}"/>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<RTPC Name="" ID="{87F587B3-D8B3-4BAB-AD9A-8FD54D59E92D}" ShortID="422672250">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Lowpass"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="Death_Filter" ID="{C73A6915-BB76-4746-95CC-A87CCED79E78}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{B0621B12-ECA9-4A3D-B357-B0B151DCAA07}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-100</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>80</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</ObjectList>
+							</ObjectLists>
 						</Bus>
 						<Bus Name="AMB" ID="{3C49B583-C63B-4CCB-A1B9-D71E082D055E}">
 							<PropertyList>
 								<Property Name="Color" Type="int16" Value="4"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<RTPC Name="" ID="{1E65BB09-A1C3-4B52-A056-96DAECF9B5C4}" ShortID="985214513">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Lowpass"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="Death_Filter" ID="{C73A6915-BB76-4746-95CC-A87CCED79E78}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{067A2899-4656-4A52-B2E2-1361FF6C6AFA}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-100</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>80</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</ObjectList>
+							</ObjectLists>
 						</Bus>
 						<Bus Name="UI" ID="{D7CABC36-B31D-4789-A7B2-46175473A0AA}">
 							<PropertyList>
@@ -52,11 +122,6 @@
 								<Property Name="BusChannelConfig" Type="int32">
 									<ValueList>
 										<Value>3584</Value>
-									</ValueList>
-								</Property>
-								<Property Name="BusVolume" Type="Real64">
-									<ValueList>
-										<Value>12</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -523,8 +588,8 @@
 				</Bus>
 				<Bus Name="Wwise_Motion" ID="{01B95841-D9A2-4051-9C07-3EF7EF52C3B7}">
 					<ReferenceList>
-						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
-							<ObjectRef Name="System" ID="{4D4AD273-68C1-440A-B66A-544BF2C11596}" WorkUnitID="{D735F844-887C-4A98-9F58-CBDB3795BB8B}"/>
+						<Reference Name="AudioDevice" PluginName="Motion" CompanyID="0" PluginID="507" PluginType="7">
+							<ObjectRef Name="Motion" ID="{882328E3-4BF4-4402-9C6C-32775CE7D72E}" WorkUnitID="{D735F844-887C-4A98-9F58-CBDB3795BB8B}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>

@@ -10,6 +10,13 @@
 				<Folder Name="Player" ID="{7B0A9415-14AE-4E7B-8899-C0FD357F6959}" ShortID="860806700">
 					<ChildrenList>
 						<Event Name="Player_Shoot" ID="{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}">
+							<PropertyList>
+								<Property Name="CooldownTime" Type="Real32">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{EDE24413-AD02-4D03-BE3C-E6BCF78AB722}" ShortID="804408190">
 									<ReferenceList>
@@ -47,6 +54,13 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Deafening_Recover" ID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" WorkUnitID="{23E59525-27DD-4789-9862-5F2910D25BAE}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{646521E4-7892-4AC3-8496-596853C3CCC6}" ShortID="1035917101">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot_01" ID="{C9254587-A041-4AA2-B76B-4B04BE084D24}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -279,6 +293,34 @@
 								</Event>
 							</ChildrenList>
 						</Folder>
+						<Event Name="Player_Death" ID="{FC96ABC9-59AC-438F-B837-19B7E11ADF1C}">
+							<ChildrenList>
+								<Action Name="" ID="{4F459BDE-33BE-4975-B3C0-45CBB185E86D}" ShortID="118009441">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="38"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+										<Property Name="GameParameterValue" Type="Real64" Value="100"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Death_Filter" ID="{C73A6915-BB76-4746-95CC-A87CCED79E78}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3FC88F99-A86F-4FDA-8224-60339F47346E}" ShortID="601095760">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="38"/>
+										<Property Name="Delay" Type="Real64" Value="0.5"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Death_Filter" ID="{C73A6915-BB76-4746-95CC-A87CCED79E78}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Enemy" ID="{B5140E2A-4A79-4337-AE16-E75E3C18D0C9}" ShortID="380814325">

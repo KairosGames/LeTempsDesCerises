@@ -269,17 +269,17 @@
 										</RandomSequenceContainer>
 										<Sound Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{69D7541A-5DD6-4769-8EC6-8BFA74923139}" ShortID="896097705">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+												<Property Name="HoldListenerOrientation" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>0.15</Value>
 													</ValueList>
 												</Property>
 												<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
-												<Property Name="ReflectionsVolume" Type="Real64">
-													<ValueList>
-														<Value>-6</Value>
-													</ValueList>
-												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
@@ -295,9 +295,106 @@
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{548AA5B6-08F2-4747-A203-F9C80EFF3D42}">
 													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="3.03467"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 														<Property Name="VolumeOffset" Type="Real64">
 															<ValueList>
-																<Value>6</Value>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Oneshot.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="543300058"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<PositioningInfo>
+												<Position Name="" ID="{64338B20-58E4-4887-BDE4-E9CC2CACE3F4}">
+													<PropertyList>
+														<Property Name="NewPathForEachSound" Type="bool" Value="True"/>
+													</PropertyList>
+													<ChildrenList>
+														<Path2D Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot_Path" ID="{5DAB4B0F-ED31-411C-A0FB-C0D4F0E83232}">
+															<PropertyList>
+																<Property Name="RandomX" Type="Real64" Value="25"/>
+																<Property Name="RandomY" Type="Real64" Value="50"/>
+															</PropertyList>
+															<PointList>
+																<Point>
+																	<XPos>0</XPos>
+																	<YPos>50</YPos>
+																	<Flags>12</Flags>
+																	<Time>0</Time>
+																</Point>
+																<Point>
+																	<XPos>58.88325</XPos>
+																	<YPos>75.9887</YPos>
+																	<Flags>0</Flags>
+																	<Time>5000</Time>
+																</Point>
+															</PointList>
+														</Path2D>
+														<Path2D Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot_Path_01" ID="{0DA1BF47-E1E4-478F-A1E6-B96E5D1BDA23}">
+															<PropertyList>
+																<Property Name="RandomX" Type="Real64" Value="50"/>
+																<Property Name="RandomY" Type="Real64" Value="50"/>
+															</PropertyList>
+															<PointList>
+																<Point>
+																	<XPos>0</XPos>
+																	<YPos>50</YPos>
+																	<Flags>12</Flags>
+																	<Time>0</Time>
+																</Point>
+																<Point>
+																	<XPos>-68.52792</XPos>
+																	<YPos>75.70621</YPos>
+																	<Flags>0</Flags>
+																	<Time>5000</Time>
+																</Point>
+															</PointList>
+														</Path2D>
+													</ChildrenList>
+												</Position>
+											</PositioningInfo>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{548AA5B6-08F2-4747-A203-F9C80EFF3D42}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot_01" ID="{C9254587-A041-4AA2-B76B-4B04BE084D24}" ShortID="326325877">
+											<PropertyList>
+												<Property Name="3DPosition" Type="int16" Value="2"/>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+												<Property Name="HoldListenerOrientation" Type="bool" Value="True"/>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>0.15</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="ReflectionsAuxSend">
+													<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{4634D343-ECBB-421D-BACF-880E1F0FECF6}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -308,8 +405,57 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Position Name="" ID="{82FFB1DF-76E1-4FE3-A555-49766F6DDACE}">
+													<PropertyList>
+														<Property Name="NewPathForEachSound" Type="bool" Value="True"/>
+													</PropertyList>
+													<ChildrenList>
+														<Path2D Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot_Path" ID="{E742EF08-E531-4124-A27B-7522B4028474}">
+															<PropertyList>
+																<Property Name="RandomX" Type="Real64" Value="25"/>
+																<Property Name="RandomY" Type="Real64" Value="50"/>
+															</PropertyList>
+															<PointList>
+																<Point>
+																	<XPos>0</XPos>
+																	<YPos>50</YPos>
+																	<Flags>12</Flags>
+																	<Time>0</Time>
+																</Point>
+																<Point>
+																	<XPos>58.88325</XPos>
+																	<YPos>75.9887</YPos>
+																	<Flags>0</Flags>
+																	<Time>5000</Time>
+																</Point>
+															</PointList>
+														</Path2D>
+														<Path2D Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot_Path_01" ID="{FF6F334B-4FFB-4F5D-B6E1-44515E5212BA}">
+															<PropertyList>
+																<Property Name="RandomX" Type="Real64" Value="50"/>
+																<Property Name="RandomY" Type="Real64" Value="50"/>
+															</PropertyList>
+															<PointList>
+																<Point>
+																	<XPos>0</XPos>
+																	<YPos>50</YPos>
+																	<Flags>12</Flags>
+																	<Time>0</Time>
+																</Point>
+																<Point>
+																	<XPos>-68.52792</XPos>
+																	<YPos>75.70621</YPos>
+																	<Flags>0</Flags>
+																	<Time>5000</Time>
+																</Point>
+															</PointList>
+														</Path2D>
+													</ChildrenList>
+												</Position>
+											</PositioningInfo>
 											<ActiveSourceList>
-												<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{548AA5B6-08F2-4747-A203-F9C80EFF3D42}" Platform="Linked"/>
+												<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot" ID="{4634D343-ECBB-421D-BACF-880E1F0FECF6}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
