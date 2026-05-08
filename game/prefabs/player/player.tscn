@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://c3xeqmp502atg" path="res://prefabs/player/player_targets.gd" id="4_2c4n1"]
 [ext_resource type="Curve" uid="uid://chdf25t3wnct4" path="res://prefabs/player/gpad_aiming_speed_curve.tres" id="4_ev8v4"]
 [ext_resource type="PackedScene" uid="uid://b56vcde62m1gw" path="res://sandbox/chassepot_proto/sk_chassepot.tscn" id="4_klv5p"]
+[ext_resource type="PackedScene" uid="uid://bgg5b13i7sqme" path="res://sounds/prefabs/ak_player_manager.tscn" id="9_oo3uv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c4n1"]
 albedo_color = Color(0.85343254, 0, 0.12842149, 1)
@@ -244,6 +245,9 @@ unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.6, 0)
 cull_mask = 2
 near = 0.001
+
+[node name="ak_player_manager" parent="CameraPivot/WeaponCameraBase/PlayerCamera" unique_id=1168469569 node_paths=PackedStringArray("player") instance=ExtResource("9_oo3uv")]
+player = NodePath("../../../..")
 
 [node name="RightWeaponPos" type="Marker3D" parent="CameraPivot/WeaponCameraBase" unique_id=675375272]
 unique_name_in_owner = true

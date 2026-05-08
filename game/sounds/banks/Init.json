@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{558FFE16-177D-49CF-AB77-E042C7257DEA}",
+    "Hash": "{C4472074-9BFF-E68A-50FD-257165B0E9D1}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -29,15 +29,23 @@
       "Streaming": "false",
       "Location": "OtherBank",
       "ShortName": "AudioEase\\Altiverb - Outdoor and More\\Outdoor\\Alley\\AE_NarrowShortAlley.wav",
-      "CachePath": "62/{62A92FA2-7BCC-608F-FFAD-2338D370CB86}.wem"
+      "CachePath": "67/{67C47793-C666-C7C5-F11C-9EF62A7D5B56}.wem"
      }
     ],
     "Plugins": {
      "Custom": [
       {
+       "Id": "75143502",
+       "Name": "Compressor (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\[Effect Slot [1]: (Compressor)]\\Compressor (Custom)",
+       "GUID": "{A26D26DC-6631-4E48-AA7C-BFF94ADEBECE}",
+       "LibName": "Wwise Compressor",
+       "LibId": "7077891"
+      },
+      {
        "Id": "80258421",
        "Name": "Meter (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\[Effect Slot [1]: (Meter)]\\Meter (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\[Effect Slot [2]: (Meter)]\\Meter (Custom)",
        "GUID": "{8908185C-5E26-46E0-AFC3-C890C86B4246}",
        "LibName": "Wwise Meter",
        "LibId": "8454147"
@@ -195,6 +203,12 @@
       "Color": "19"
      },
      {
+      "Id": "1720438449",
+      "Name": "Controller",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Controller",
+      "GUID": "{F54B5D1A-5409-4E3B-AA70-3504A48EFB80}"
+     },
+     {
       "Id": "1728828729",
       "Name": "VX_Player",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_Player",
@@ -208,6 +222,9 @@
       "GUID": "{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}",
       "PluginRefs": {
        "Custom": [
+        {
+         "Id": "75143502"
+        },
         {
          "Id": "80258421"
         },
@@ -285,6 +302,12 @@
       "GUID": "{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}"
      },
      {
+      "Id": "1833811084",
+      "Name": "Player_Velocity",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Player_Velocity",
+      "GUID": "{C608E447-1D9D-4717-B429-A50B1CC84984}"
+     },
+     {
       "Id": "2221031936",
       "Name": "Player_Position",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\Player_Position",
@@ -301,6 +324,12 @@
       "Name": "Poetic_Level",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\Poetic_Level",
       "GUID": "{FB93CEA7-2418-4DE2-8C31-999E6239D31F}"
+     },
+     {
+      "Id": "4205136178",
+      "Name": "Death_Filter",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Death_Filter",
+      "GUID": "{C73A6915-BB76-4746-95CC-A87CCED79E78}"
      }
     ],
     "StateGroups": [
@@ -343,6 +372,12 @@
         "GUID": "{1DDBDC63-7073-4B7E-A290-B582E49C0F09}"
        },
        {
+        "Id": "1214700371",
+        "Name": "stand",
+        "ObjectPath": "\\States\\Default Work Unit\\player_stance\\stand",
+        "GUID": "{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"
+       },
+       {
         "Id": "1270007533",
         "Name": "prone",
         "ObjectPath": "\\States\\Default Work Unit\\player_stance\\prone",
@@ -353,12 +388,6 @@
         "Name": "sprint",
         "ObjectPath": "\\States\\Default Work Unit\\player_stance\\sprint",
         "GUID": "{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"
-       },
-       {
-        "Id": "1551306158",
-        "Name": "up",
-        "ObjectPath": "\\States\\Default Work Unit\\player_stance\\up",
-        "GUID": "{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"
        },
        {
         "Id": "2655407367",
@@ -397,6 +426,26 @@
     ],
     "SwitchGroups": [
      {
+      "Id": "459611840",
+      "Name": "Debris",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Debris",
+      "GUID": "{74E2D250-64B7-405D-8F20-9EB76B8320A1}",
+      "Switches": [
+       {
+        "Id": "998496889",
+        "Name": "First",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Debris\\First",
+        "GUID": "{0E917C72-AA5E-4F81-8F09-69B5A910E6E0}"
+       },
+       {
+        "Id": "3476314365",
+        "Name": "Second",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Debris\\Second",
+        "GUID": "{462AC773-1076-4E41-8643-F3EBA6E5A5B0}"
+       }
+      ]
+     },
+     {
       "Id": "1117085073",
       "Name": "Character_Type",
       "ObjectPath": "\\Switches\\Default Work Unit\\Character_Type",
@@ -413,6 +462,20 @@
         "Name": "Type1",
         "ObjectPath": "\\Switches\\Default Work Unit\\Character_Type\\Type1",
         "GUID": "{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"
+       }
+      ]
+     },
+     {
+      "Id": "1334157877",
+      "Name": "Clothing",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Clothing",
+      "GUID": "{9911114A-D75D-42E0-98CC-D4058993900F}",
+      "Switches": [
+       {
+        "Id": "3469052180",
+        "Name": "Coat",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Clothing\\Coat",
+        "GUID": "{F59A1BE2-DA9E-4315-96EE-347DB7FF7F8A}"
        }
       ]
      },
@@ -977,6 +1040,6 @@
     ]
    }
   ],
-  "FileHash": "{36BC2D8E-67ED-2419-C4C8-BAAB714A0B1A}"
+  "FileHash": "{F6FA1610-8079-5330-3018-98042CAB4A8A}"
  }
 }

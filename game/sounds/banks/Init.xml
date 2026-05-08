@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{558FFE16-177D-49CF-AB77-E042C7257DEA}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{C4472074-9BFF-E68A-50FD-257165B0E9D1}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -12,12 +12,13 @@
 				</File>
 				<File Id="702837950" Language="SFX" Streaming="false" Location="OtherBank">
 					<ShortName>AudioEase\Altiverb - Outdoor and More\Outdoor\Alley\AE_NarrowShortAlley.wav</ShortName>
-					<CachePath>62/{62A92FA2-7BCC-608F-FFAD-2338D370CB86}.wem</CachePath>
+					<CachePath>67/{67C47793-C666-C7C5-F11C-9EF62A7D5B56}.wem</CachePath>
 				</File>
 			</Media>
 			<Plugins>
 				<Custom>
-					<Plugin Id="80258421" Name="Meter (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{8908185C-5E26-46E0-AFC3-C890C86B4246}" LibName="Wwise Meter" LibId="8454147"/>
+					<Plugin Id="75143502" Name="Compressor (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\[Effect Slot [1]: (Compressor)]\Compressor (Custom)" GUID="{A26D26DC-6631-4E48-AA7C-BFF94ADEBECE}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="80258421" Name="Meter (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\[Effect Slot [2]: (Meter)]\Meter (Custom)" GUID="{8908185C-5E26-46E0-AFC3-C890C86B4246}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="550680016" Name="City_Center (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Crossroad_Reverb\[Effect Slot [0]: (iZotope Hybrid Reverb)]\City_Center (Custom)" GUID="{0CED8B58-229C-4808-884B-315BA8D32323}" LibName="iZotope Hybrid Reverb" LibId="135219">
 						<MediaRefs>
 							<MediaRef Id="379374117"/>
@@ -54,10 +55,12 @@
 				<Bus Id="1277101407" Name="VX_NPC" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_NPC" GUID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" Color="11"/>
 				<Bus Id="1534528563" Name="VX" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX" GUID="{E8C3D5DB-24D6-472C-93CA-D6BB12427941}" Color="11"/>
 				<Bus Id="1551306167" Name="UI" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\UI" GUID="{D7CABC36-B31D-4789-A7B2-46175473A0AA}" Color="19"/>
+				<Bus Id="1720438449" Name="Controller" ObjectPath="\Busses\Default Work Unit\Controller" GUID="{F54B5D1A-5409-4E3B-AA70-3504A48EFB80}"/>
 				<Bus Id="1728828729" Name="VX_Player" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_Player" GUID="{46D92596-0E19-4482-83A1-FAABFE94F255}" Color="11"/>
 				<Bus Id="2246998526" Name="Main Audio Bus" ObjectPath="\Busses\Default Work Unit\Main Audio Bus" GUID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
 					<PluginRefs>
 						<Custom>
+							<PluginRef Id="75143502"/>
 							<PluginRef Id="80258421"/>
 							<PluginRef Id="628580303"/>
 						</Custom>
@@ -99,9 +102,11 @@
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="711096812" Name="Deafening" ObjectPath="\Game Parameters\Default Work Unit\Deafening" GUID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}"/>
+				<GameParameter Id="1833811084" Name="Player_Velocity" ObjectPath="\Game Parameters\Default Work Unit\Player_Velocity" GUID="{C608E447-1D9D-4717-B429-A50B1CC84984}"/>
 				<GameParameter Id="2221031936" Name="Player_Position" ObjectPath="\Game Parameters\Default Work Unit\Player_Position" GUID="{7797433B-9024-4066-9F96-1380C3B89EA1}"/>
 				<GameParameter Id="2576556105" Name="Cannons_Probability" ObjectPath="\Game Parameters\Default Work Unit\Cannons_Probability" GUID="{44235752-3ED7-4F8D-ABCB-15BA17B653AB}"/>
 				<GameParameter Id="3680281974" Name="Poetic_Level" ObjectPath="\Game Parameters\Default Work Unit\Poetic_Level" GUID="{FB93CEA7-2418-4DE2-8C31-999E6239D31F}"/>
+				<GameParameter Id="4205136178" Name="Death_Filter" ObjectPath="\Game Parameters\Default Work Unit\Death_Filter" GUID="{C73A6915-BB76-4746-95CC-A87CCED79E78}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="314259375" Name="player_breath" ObjectPath="\States\Default Work Unit\player_breath" GUID="{5E643EBD-D3D2-483F-B8F0-D5985C137861}">
@@ -114,9 +119,9 @@
 				<StateGroup Id="1343755517" Name="player_stance" ObjectPath="\States\Default Work Unit\player_stance" GUID="{02DC436E-58FA-4CBB-9770-4451633B92C8}">
 					<States>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\player_stance\None" GUID="{1DDBDC63-7073-4B7E-A290-B582E49C0F09}"/>
+						<State Id="1214700371" Name="stand" ObjectPath="\States\Default Work Unit\player_stance\stand" GUID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
 						<State Id="1270007533" Name="prone" ObjectPath="\States\Default Work Unit\player_stance\prone" GUID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
 						<State Id="1296465089" Name="sprint" ObjectPath="\States\Default Work Unit\player_stance\sprint" GUID="{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"/>
-						<State Id="1551306158" Name="up" ObjectPath="\States\Default Work Unit\player_stance\up" GUID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
 						<State Id="2655407367" Name="crouch" ObjectPath="\States\Default Work Unit\player_stance\crouch" GUID="{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"/>
 					</States>
 				</StateGroup>
@@ -129,10 +134,21 @@
 				</StateGroup>
 			</StateGroups>
 			<SwitchGroups>
+				<SwitchGroup Id="459611840" Name="Debris" ObjectPath="\Switches\Default Work Unit\Debris" GUID="{74E2D250-64B7-405D-8F20-9EB76B8320A1}">
+					<Switches>
+						<Switch Id="998496889" Name="First" ObjectPath="\Switches\Default Work Unit\Debris\First" GUID="{0E917C72-AA5E-4F81-8F09-69B5A910E6E0}"/>
+						<Switch Id="3476314365" Name="Second" ObjectPath="\Switches\Default Work Unit\Debris\Second" GUID="{462AC773-1076-4E41-8643-F3EBA6E5A5B0}"/>
+					</Switches>
+				</SwitchGroup>
 				<SwitchGroup Id="1117085073" Name="Character_Type" ObjectPath="\Switches\Default Work Unit\Character_Type" GUID="{C2F12799-5347-4922-A1A4-63D6CB176947}">
 					<Switches>
 						<Switch Id="408582741" Name="Type2" ObjectPath="\Switches\Default Work Unit\Character_Type\Type2" GUID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
 						<Switch Id="408582742" Name="Type1" ObjectPath="\Switches\Default Work Unit\Character_Type\Type1" GUID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="1334157877" Name="Clothing" ObjectPath="\Switches\Default Work Unit\Clothing" GUID="{9911114A-D75D-42E0-98CC-D4058993900F}">
+					<Switches>
+						<Switch Id="3469052180" Name="Coat" ObjectPath="\Switches\Default Work Unit\Clothing\Coat" GUID="{F59A1BE2-DA9E-4315-96EE-347DB7FF7F8A}"/>
 					</Switches>
 				</SwitchGroup>
 				<SwitchGroup Id="1834394558" Name="Surface" ObjectPath="\Switches\Default Work Unit\Surface" GUID="{5CA4360B-D253-4948-8173-23B1C55917B4}">
@@ -288,5 +304,5 @@
 			</AcousticTextures>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{AA3A6F72-51E7-AA18-416A-D6E341B51395}</FileHash>
+	<FileHash>{A36275C4-2548-D65D-64C8-CBF09A23FBB0}</FileHash>
 </SoundBanksInfo>
