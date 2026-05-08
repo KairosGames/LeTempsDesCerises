@@ -7,7 +7,7 @@
 [ext_resource type="Material" uid="uid://dym6muecs2tlc" path="res://sandbox/barricades_proto/materials/prototype_material_wood_3d.tres" id="4_01sgp"]
 [ext_resource type="PackedScene" uid="uid://fbp2ofes0q52" path="res://sandbox/barricades_proto/barricade_part_1.tscn" id="5_k7dhk"]
 [ext_resource type="PackedScene" uid="uid://dw7fv1qq3ewxa" path="res://sandbox/barricades_proto/barricade_part_2.tscn" id="6_lsy2y"]
-[ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="7_5aofd"]
+[ext_resource type="Script" path="res://prefabs/ai/cover.gd" id="7_5aofd"]
 [ext_resource type="PackedScene" uid="uid://bscuwka1t1iog" path="res://sandbox/Covers/lampadaire_proto.tscn" id="7_g8jv5"]
 [ext_resource type="PackedScene" uid="uid://d28tbnqpob3um" path="res://prefabs/ai/agents/versaillais.tscn" id="10_qf655"]
 [ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="11_g8jv5"]
@@ -53,6 +53,7 @@ navigation_mesh = SubResource("NavigationMesh_imnog")
 use_collision = true
 
 [node name="Streets" type="CSGCombiner3D" parent="Environment/NavigationRegion3D/Level" unique_id=1374442116]
+visible = false
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment/NavigationRegion3D/Level/Streets" unique_id=1595705673]
@@ -195,6 +196,7 @@ size = Vector3(98.64682, 0.2, 2)
 material = ExtResource("1_s20kv")
 
 [node name="Buildings" type="CSGCombiner3D" parent="Environment/NavigationRegion3D/Level" unique_id=1720209812]
+visible = false
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="Environment/NavigationRegion3D/Level/Buildings" unique_id=981407099]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -8.625005, 0, -9.643534)
@@ -240,7 +242,6 @@ depth = 17.0
 material = ExtResource("1_s20kv")
 
 [node name="Barricade1" type="CSGCombiner3D" parent="Environment/NavigationRegion3D/Level" unique_id=2092521936]
-visible = false
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment/NavigationRegion3D/Level/Barricade1" unique_id=1261571316]
 transform = Transform3D(0.9021716, 0, 0.43137732, 0, 1, 0, -0.43137732, 0, 0.9021716, -6.54901, 0.59999955, -6.563224)
@@ -508,62 +509,50 @@ material = ExtResource("4_01sgp")
 [node name="Cover" type="Marker3D" parent="Environment" unique_id=732484378]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9039583, 0.2, -26.657957)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover2" type="Marker3D" parent="Environment" unique_id=1493139583]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.246717, 0.2, -33.23976)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover3" type="Marker3D" parent="Environment" unique_id=771375507]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.297316, 0.2, -19.859224)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover4" type="Marker3D" parent="Environment" unique_id=978221223]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.86654, 0.20000096, -6.1731143)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover5" type="Marker3D" parent="Environment" unique_id=491872594]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.001278, 0.20000096, 6.084361)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover6" type="Marker3D" parent="Environment" unique_id=1300411119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.305204, 0.2, -4.472364)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover7" type="Marker3D" parent="Environment" unique_id=1895057477]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.194066, 0.2, 14.9037695)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover8" type="Marker3D" parent="Environment" unique_id=109812188]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.624831, 0.20000048, -1.7550852)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover12" type="Marker3D" parent="Environment" unique_id=1396378364]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.622887, 0.20000048, 7.3657064)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover10" type="Marker3D" parent="Environment" unique_id=358822269]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8071666, 0.20000048, 3.1219385)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover11" type="Marker3D" parent="Environment" unique_id=1912579509]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0381103, 0.58334893, 6.595094)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Cover9" type="Marker3D" parent="Environment" unique_id=343022912]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3835316, 1.1418817, -4.786932)
 script = ExtResource("7_5aofd")
-metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("1_kc46i")]
 transform = Transform3D(-0.38651785, 0, 0.9222819, 0, 1, 0, -0.9222819, 0, -0.38651785, -14.25284, 0.99106574, 3.6184187)
@@ -573,48 +562,48 @@ transform = Transform3D(-0.38651785, 0, 0.9222819, 0, 1, 0, -0.9222819, 0, -0.38
 [node name="Versaillais" parent="Ennemies" unique_id=1349390169 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.6370339, 0, 0.7708358, 0, 1, 0, -0.7708358, 0, -0.6370339, 41.275, 0.1, -30.896)
 
-[node name="Versaillais2" parent="Ennemies" unique_id=264857565 instance=ExtResource("10_qf655")]
+[node name="Versaillais2" parent="Ennemies" unique_id=392339713 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.9504289, 0, 0.31094196, 0, 1, 0, -0.31094196, 0, -0.9504289, 22.09, 0.1, -54.553)
 
-[node name="Versaillais3" parent="Ennemies" unique_id=130736728 instance=ExtResource("10_qf655")]
+[node name="Versaillais3" parent="Ennemies" unique_id=1755967208 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.0104368655, 0, 0.9999455, 0, 1, 0, -0.9999455, 0, -0.0104368655, 56.138, 0.1, 1.105)
 
-[node name="Versaillais6" parent="Ennemies" unique_id=611012108 instance=ExtResource("10_qf655")]
+[node name="Versaillais6" parent="Ennemies" unique_id=1620582329 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.0104368655, 0, 0.9999455, 0, 1, 0, -0.9999455, 0, -0.0104368655, 82.31969, 0.1, -1.6956599)
 
-[node name="Versaillais7" parent="Ennemies" unique_id=976065638 instance=ExtResource("10_qf655")]
+[node name="Versaillais7" parent="Ennemies" unique_id=3153157 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.0104368655, 0, 0.9999455, 0, 1, 0, -0.9999455, 0, -0.0104368655, 38.08006, 0.1, -2.118541)
 
-[node name="Versaillais4" parent="Ennemies" unique_id=1806389919 instance=ExtResource("10_qf655")]
+[node name="Versaillais4" parent="Ennemies" unique_id=1270935299 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.68403804, 0, 0.72944635, 0, 1, 0, -0.72944635, 0, -0.68403804, 51.879414, 0.1, -36.69051)
 
-[node name="Versaillais10" parent="Ennemies" unique_id=1283205550 instance=ExtResource("10_qf655")]
+[node name="Versaillais10" parent="Ennemies" unique_id=294516634 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.6370339, 0, 0.7708358, 0, 1, 0, -0.7708358, 0, -0.6370339, 33.23341, 0.1, -21.111809)
 
-[node name="Versaillais11" parent="Ennemies" unique_id=2013007471 instance=ExtResource("10_qf655")]
+[node name="Versaillais11" parent="Ennemies" unique_id=2076139408 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.68403804, 0, 0.72944635, 0, 1, 0, -0.72944635, 0, -0.68403804, 43.837326, 0.1, -26.906212)
 
-[node name="Versaillais12" parent="Ennemies" unique_id=693407882 instance=ExtResource("10_qf655")]
+[node name="Versaillais12" parent="Ennemies" unique_id=800487621 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.6370339, 0, 0.7708358, 0, 1, 0, -0.7708358, 0, -0.6370339, 62.848167, 0.1, -47.072792)
 
-[node name="Versaillais13" parent="Ennemies" unique_id=1053031696 instance=ExtResource("10_qf655")]
+[node name="Versaillais13" parent="Ennemies" unique_id=414781777 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.68403804, 0, 0.72944635, 0, 1, 0, -0.72944635, 0, -0.68403804, 73.45209, 0.1, -52.867195)
 
-[node name="Versaillais5" parent="Ennemies" unique_id=1102054823 instance=ExtResource("10_qf655")]
+[node name="Versaillais5" parent="Ennemies" unique_id=863201821 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.9392022, 0, 0.34336466, 0, 1, 0, -0.34336466, 0, -0.9392022, 15.500868, 0.1, -45.86819)
 
-[node name="Versaillais8" parent="Ennemies" unique_id=347386064 instance=ExtResource("10_qf655")]
+[node name="Versaillais8" parent="Ennemies" unique_id=820387528 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.9504289, 0, 0.31094196, 0, 1, 0, -0.31094196, 0, -0.9504289, 19.83757, 0.1, -45.008568)
 
-[node name="Versaillais9" parent="Ennemies" unique_id=247583482 instance=ExtResource("10_qf655")]
+[node name="Versaillais9" parent="Ennemies" unique_id=1397023435 instance=ExtResource("10_qf655")]
 transform = Transform3D(-0.9392022, 0, 0.34336466, 0, 1, 0, -0.34336466, 0, -0.9392022, 13.248266, 0.1, -36.323948)
 
 [node name="Allies" type="Node3D" parent="." unique_id=1348615623]
 
-[node name="Communard" parent="Allies" unique_id=1141100025 instance=ExtResource("11_g8jv5")]
+[node name="Communard" parent="Allies" unique_id=722118918 instance=ExtResource("11_g8jv5")]
 transform = Transform3D(0.5959726, 0, -0.80300474, 0, 1, 0, 0.80300474, 0, 0.5959726, -12.278, 0.1, 8.97)
 
-[node name="Communard2" parent="Allies" unique_id=1899055301 instance=ExtResource("11_g8jv5")]
+[node name="Communard2" parent="Allies" unique_id=1432801718 instance=ExtResource("11_g8jv5")]
 transform = Transform3D(0.1022891, 0, -0.99475473, 0, 1, 0, 0.99475473, 0, 0.1022891, -16.3, 0.1, -1.164)
 
 [node name="GameManager" type="Node" parent="." unique_id=965333407]
