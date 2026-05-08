@@ -27,6 +27,8 @@ func _ready() -> void:
 	for i in Input.get_connected_joypads():
 		Wwise.add_output("Motion", (i))
 
+	#player.reload_ui.reloaded.connect(on_reload())
+
 func _unhandled_input(_event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed("shoot"):
@@ -51,14 +53,14 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("reload") and player.can_reload() or player.is_reloading:
 		print(reload_step)
 		reload_step = player.reload_ui.step
-		reload.post_event()
+		#reload.post_event()
 
 func _process(_delta: float) -> void:
 	
 	if player.is_running:
 		Wwise.set_state("player_stance", "sprint")
 	elif player.curr_posture == player.Posture.STAND:
-		Wwise.set_state("player_stance", "sprint")
+		Wwise.set_state("player_stance", "stand")
 
 	if player.is_changing_state:
 			match player.curr_posture:
@@ -80,3 +82,6 @@ func _process(_delta: float) -> void:
 	elif is_walking and player.velocity.x + player.velocity.z == 0 or !player.is_on_floor():
 		steps.stop_event()
 		is_walking = false
+
+func on_reload():
+	reload.post_event()

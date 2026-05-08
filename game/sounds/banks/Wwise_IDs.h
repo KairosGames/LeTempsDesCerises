@@ -97,6 +97,16 @@ namespace AK
             } // namespace SWITCH
         } // namespace CHARACTER_TYPE
 
+        namespace CLOTHING
+        {
+            static const AkUniqueID GROUP = 1334157877U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID COAT = 3469052180U;
+            } // namespace SWITCH
+        } // namespace CLOTHING
+
         namespace DEBRIS
         {
             static const AkUniqueID GROUP = 459611840U;
