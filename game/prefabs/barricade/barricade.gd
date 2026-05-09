@@ -5,15 +5,15 @@ signal state_changed
 signal just_destroyed
 
 @export_category("References")
-@export var full_life_modules: Array[StaticBody3D]
-@export var damages_modules_1: Array[StaticBody3D]
-@export var damages_modules_2: Array[StaticBody3D]
-@export var destroyed_modules: Array[StaticBody3D]
+@export var full_life_modules: Node3D
+@export var damages_modules_1: Node3D
+@export var damages_modules_2: Node3D
+@export var destroyed_modules: Node3D
 
 @export_category("Settings")
 @export var life_btw_steps: int = 1
 
-var all_modules: Array[Array]
+@onready var all_steps: Array[Node3D] = [full_life_modules, damages_modules_1, damages_modules_2, destroyed_modules]
 var state: int = 0
 var max_state: int = 3
 var curr_life: int
@@ -22,19 +22,15 @@ var is_destroyed: bool = false
 
 func _ready() -> void:
 	curr_life = life_btw_steps
-	all_modules[0] = full_life_modules
-	all_modules[1] = damages_modules_1
-	all_modules[2] = damages_modules_2
-	all_modules[3] = destroyed_modules
 	set_state()
 
 
 func set_state() -> void:
-	for i in range(max_state + 1):
-		var state_modules: Array[StaticBody3D] = all_modules[i]
-		for body: StaticBody3D in state_modules:
-			if i != state: body.process_mode = Node.PROCESS_MODE_DISABLED
-			else: body.process_mode = Node.PROCESS_MODE_INHERIT
+	for i in range(all_steps.size()):
+		all_steps[i].visible = i == state
+		var mode: Node.ProcessMode = PROCESS_MODE_INHERIT if i == state else PROCESS_MODE_DISABLED
+		all_steps[i].process_mode = mode
+		
 
 
 func take_damage() -> void:

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dlpem5ct2ufhg" path="res://prefabs/ai/spawn_manager.gd" id="1_51cw4"]
 [ext_resource type="PackedScene" uid="uid://bu1f4j2mtjfi6" path="res://sandbox/csg_to_save/streets.tscn" id="4_62d4a"]
 [ext_resource type="PackedScene" uid="uid://bhg8mku4vikc2" path="res://sandbox/barricades_proto/module_s2c.tscn" id="4_hw16s"]
-[ext_resource type="PackedScene" uid="uid://bp8x0y3cbrgxr" path="res://sandbox/barricades_proto/module_f2s.tscn" id="5_50w5n"]
+[ext_resource type="PackedScene" uid="uid://bp8x0y3cbrgxr" path="res://sandbox/barricades_proto/module_F2s.tscn" id="5_50w5n"]
 [ext_resource type="PackedScene" uid="uid://bvt0ppodsqqmp" path="res://sandbox/csg_to_save/building_a.tscn" id="5_mljuc"]
 [ext_resource type="PackedScene" uid="uid://bwoam7oo1imct" path="res://sandbox/csg_to_save/building_b.tscn" id="6_mbxdm"]
 [ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="6_wfqi1"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="9_mljuc"]
 [ext_resource type="PackedScene" uid="uid://bqxatw7y4bt0m" path="res://sandbox/csg_to_save/building_f.tscn" id="10_fvv7y"]
 [ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://scripts/game_manager.gd" id="10_mbxdm"]
+[ext_resource type="Script" uid="uid://dexhveoh7rgj3" path="res://prefabs/barricade/barricade.gd" id="10_wymxb"]
 [ext_resource type="PackedScene" uid="uid://cxvybyhea4hnk" path="res://sandbox/barricades_proto/module_c2c.tscn" id="11_50w5n"]
 [ext_resource type="PackedScene" uid="uid://cgjnksovxn0go" path="res://sandbox/csg_to_save/building_g.tscn" id="11_ko4ry"]
 [ext_resource type="PackedScene" uid="uid://bu7quq1hjvelc" path="res://sandbox/csg_to_save/place_pigalle.tscn" id="12_do2ed"]
@@ -121,8 +122,13 @@ navigation_mesh = SubResource("NavigationMesh_fvv7y")
 
 [node name="PlacePigalle" parent="Environment/NavigationRegion3D/Level/Base_map" unique_id=1648593880 instance=ExtResource("12_do2ed")]
 
-[node name="Barricade" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1868737066]
+[node name="Barricade" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1868737066 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules")]
 transform = Transform3D(0.9980212, 0, -0.06287761, 0, 1, 0, 0.06287761, 0, 0.9980212, 1.5186749, 4.7683716e-07, 2.4222565)
+script = ExtResource("10_wymxb")
+full_life_modules = NodePath("Intact")
+damages_modules_1 = NodePath("Damaged")
+damages_modules_2 = NodePath("Damaged2")
+destroyed_modules = NodePath("Destroyed")
 
 [node name="Intact" type="Node3D" parent="Environment/NavigationRegion3D/Level/Barricade" unique_id=1604357173]
 
