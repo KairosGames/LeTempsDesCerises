@@ -47,6 +47,7 @@ func take_damage() -> void:
 
 func go_next_step() -> void:
 	state += 1
+	curr_life = life_btw_steps
 	state_changed.emit()
 	if state >= max_state:
 		is_destroyed = true
