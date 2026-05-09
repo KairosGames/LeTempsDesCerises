@@ -85,10 +85,14 @@ _data = {
 }
 point_count = 2
 
-[node name="GreyBlockScene" type="Node3D" unique_id=111111966 node_paths=PackedStringArray("player", "first_barricade")]
+[node name="GreyBlockScene" type="Node3D" unique_id=111111966]
+
+[node name="GameManager" type="Node" parent="." unique_id=2096740420 node_paths=PackedStringArray("player", "first_barricade", "canon")]
 script = ExtResource("10_mbxdm")
-player = NodePath("Player")
-first_barricade = NodePath("Environment/NavigationRegion3D/Level/Barricade")
+player = NodePath("../Player")
+first_barricade = NodePath("../Environment/NavigationRegion3D/Level/Barricade")
+canon = NodePath("../Ennemies/Path3DCanon/Canon")
+metadata/_custom_type_script = "uid://bho08aptyf7f"
 
 [node name="Environment" type="Node3D" parent="." unique_id=1360081451]
 
@@ -609,7 +613,3 @@ transform = Transform3D(0.1022891, 0, -0.99475473, 0, 1, 0, 0.99475473, 0, 0.102
 
 [node name="Communard4" parent="Allies" unique_id=587175889 instance=ExtResource("9_mljuc")]
 transform = Transform3D(0.1022891, 0, -0.99475473, 0, 1, 0, 0.99475473, 0, 0.1022891, -2.0159483, 0.1, 6.418195)
-
-[node name="GameManager" type="Node" parent="." unique_id=2096740420]
-script = ExtResource("10_mbxdm")
-metadata/_custom_type_script = "uid://bho08aptyf7f"
