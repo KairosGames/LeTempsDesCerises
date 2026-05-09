@@ -3,6 +3,8 @@ class_name Canon extends PathFollow3D
 static var singleton: Canon
 
 signal shoot
+signal start_move
+signal stop_move
 
 @export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var speed: float = 1
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var shoot_delay: float = 5
@@ -46,9 +48,11 @@ func is_slot_available() -> bool: return available_slots.size()
 func _take_slot(agent: Agent) -> Marker3D:
 	var slot: Marker3D = available_slots.pop_front()
 	holded_slots.push_back(slot)
+	if holded_slots.size() == 1: start_move.emit()
 	agent.died.connect(_restore.bind(slot))
 	return slot
 
 func _restore(_agent: Agent, slot: Marker3D) -> void:
 	holded_slots.erase(slot)
 	available_slots.push_back(slot)
+	if not holded_slots.size(): stop_move.emit()
