@@ -1,6 +1,8 @@
 class_name ReloadUI extends Control
 
 signal reloaded
+signal try_failed
+signal try_succeeded
 
 @onready var focus: ColorRect = %ReloadFocus
 @onready var pos1: Control = %ReloadPos1
@@ -76,6 +78,7 @@ func switch_target() -> void:
 	counter += 1
 	if counter >= max_step_count:
 		go_next_step()
+		try_succeeded.emit()
 		return
 	target_i += 1
 	if target_i >= curr_targets.size():
@@ -106,9 +109,11 @@ func try_qte() -> void:
 	var dist: float = (valid_target.global_position - focus.global_position).length()
 	if dist <= valid_offset_px:
 		go_next_step()
+		try_succeeded.emit()
 		focus.color = sucess_focus_color
 	else:
 		focus.color = fail_focus_color
+		try_failed.emit()
 	await get_tree().create_timer(qte_delay).timeout
 	can_qte = true
 	focus.color = default_focus_color
