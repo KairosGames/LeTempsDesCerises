@@ -85,7 +85,10 @@ _data = {
 }
 point_count = 2
 
-[node name="GreyBlockScene" type="Node3D" unique_id=111111966]
+[node name="GreyBlockScene" type="Node3D" unique_id=111111966 node_paths=PackedStringArray("player", "first_barricade")]
+script = ExtResource("10_mbxdm")
+player = NodePath("Player")
+first_barricade = NodePath("Environment/NavigationRegion3D/Level/Barricade")
 
 [node name="Environment" type="Node3D" parent="." unique_id=1360081451]
 

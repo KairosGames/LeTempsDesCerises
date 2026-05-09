@@ -45,13 +45,13 @@ func _unhandled_input(_event: InputEvent) -> void:
 		if target == null : return
 		for i in target.get_children():
 			if i.has_meta("Surface") and i.get_class() == "MeshInstance3D":
-				print(i.get_meta("Surface"))
+				#print(i.get_meta("Surface"))
 				Wwise.set_switch("bullet_material",i.get_meta("Surface"), self)
 			#elif i.get_class() == "MeshInstance3D":
 				#print("Orlane tu as oublié un mat !")
 
 	if Input.is_action_just_pressed("reload") and player.can_reload() or player.is_reloading:
-		print(reload_step)
+		#print(reload_step)
 		reload_step = player.reload_ui.step
 		#reload.post_event()
 
