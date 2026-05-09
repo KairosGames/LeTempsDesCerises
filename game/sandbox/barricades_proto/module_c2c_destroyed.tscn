@@ -1,0 +1,149 @@
+[gd_scene format=4 uid="uid://c56uyajkusgti"]
+
+[ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="1_afs3p"]
+[ext_resource type="PackedScene" uid="uid://7cud0kva4fsn" path="res://sandbox/covers_proto/barrel_big_destroyed.tscn" id="2_r34ex"]
+
+[sub_resource type="Curve3D" id="Curve3D_ecxfy"]
+_data = {
+"points": PackedVector3Array(-0.12678257, 0.05726278, -0.3272072, 0.12678257, -0.05726278, 0.3272072, -0.1, 1.1, 0, 0.00069344044, 0.05035317, -0.012461305, -0.00069344044, -0.05035317, 0.012461305, 1, 1.1, 0, -0.057336807, -0.035874724, 0.027938366, 0.057336807, 0.035874724, -0.027938366, 2, 0.8, 0, 0, 0, 0, 0, 0, 0, 3, 1.1, -0.1, -0.18887901, -0.22997534, 0.052381516, 0.18887901, 0.22997534, -0.052381516, 4, 1, 0, 0, 0, 0, 0, 0, 0, 4.2, -0.1, 0),
+"tilts": PackedFloat32Array(0, 0, 0.06981317, -0.05235988, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_hrqk6"]
+_data = {
+"points": PackedVector3Array(-0.12678257, 0.05726278, -0.3272072, 0.127, -0.057, -0.327, -0.1, 1.1, 0, 0.001, 0.05, 0.012, -0.001, -0.05, -0.012, 1, 1.1, 0, -0.057, -0.036, -0.028, 0.057, 0.036, 0.028, 2, 0.8, 0, 0, 0, 0, 0, 0, 0, 3, 1.1, 0.1, -0.189, -0.23, -0.052, 0.189, 0.23, 0.052, 4, 1, 0, 0, 0, 0, 0, 0, 0, 4.2, -0.1, 0),
+"tilts": PackedFloat32Array(0, 0, -0.06981317, 0.05235988, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_u7c7x"]
+_surfaces = [{
+"aabb": AABB(2.5139744, -0.1998291, 0, 2.0121381, 0.4601539, 0.8276262),
+"attribute_data": PackedByteArray("q5H+PiH1QT6weBU+IfVBPrB4FT4DqJI+q5H+PiH1QT6weBU+A6iSPq21Fj6uyrc+25GqQC4A7z4kSqRAk4/xPnOWqkBh/PE+25GqQC4A7z4nVqpACR/bPj6zp0DVDuU+25GqQC4A7z4+s6dA1Q7lPiRKpECTj/E+POW5Pm+wuz0AAAA/CogQPgAAAD/OJ/Y+RkCrPtjd0D085bk+b7C7PQAAAD/OJ/Y+7gLePv0sMj4AKDM/qH8CPgAoMz/wu1s/7gLePv0sMj6Jft8+qH8CPgAoMz+ofwI+7gLePv0sMj4AKDM/8LtbP8d+0z78z/c+ACgzP/C7Wz/Kxhg/8LtbP8d+0z78z/c+ACgzP3JjmD7Kxhg/qG4UPgAoMz+obhQ+RrGsPqxpWT5Bkqk+6GlNPrH+tT4uFA0/9TCiPtgtMj6x/rU+LhQNP0GSqT7oaU0+cIKfPllYOz6x/rU+LhQNP/Uwoj7YLTI+RrGsPqxpWT6x/rU+LhQNP6yesD6mgGg+"),
+"format": 34359738391,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("9eQgQACgTL4AAAAAJaWIQACgTL4AAAAAJaWIQNwFgj0AAAAA9eQgQACgTL4AAAAAJaWIQNwFgj0AAAAAnXOIQEtJhT4AAAAAtiqJQEr0hz3ioTI9nXOIQEtJhT4AAAAAJaWIQNwFgj0AAAAAtiqJQEr0hz3ioTI9DqSMQOMEsj2/AKs+AMmKQCOhJz50kD4+tiqJQEr0hz3ioTI9AMmKQCOhJz50kD4+nXOIQEtJhT4AAAAA6tWQQACgTL7qQi8/JaWIQACgTL4AAAAA9eQgQACgTL4AAAAA4x+PQACgTL5Q31M/6tWQQACgTL7qQi8/9eQgQACgTL4AAAAAtiqJQEr0hz3ioTI9JaWIQACgTL4AAAAA6tWQQACgTL7qQi8/tiqJQEr0hz3ioTI9JaWIQNwFgj0AAAAAJaWIQACgTL4AAAAAtiqJQEr0hz3ioTI96tWQQACgTL7qQi8/DqSMQOMEsj2/AKs+6tWQQACgTL7qQi8/6tWQQFE2xr3qQi8/DqSMQOMEsj2/AKs+4x+PQACgTL5Q31M/6tWQQFE2xr3qQi8/6tWQQACgTL7qQi8/AMmKQCOhJz50kD4+DqSMQOMEsj2/AKs+9eQgQACgTL4AAAAA6tWQQFE2xr3qQi8/9eQgQACgTL4AAAAADqSMQOMEsj2/AKs+4x+PQACgTL5Q31M/9eQgQACgTL4AAAAA6tWQQFE2xr3qQi8/AMmKQCOhJz50kD4+9eQgQACgTL4AAAAAnXOIQEtJhT4AAAAA/////wAA/z//////AAD/P/////8AAP8//////wAA/z//////AAD/P/////8AAP8/M/3/pBKFk3sz/f+kEoWTezP9/6QShZN7Lv0FpRiFkXsu/QWlGIWRey79BaUYhZF7M/3/pBKFk3sz/f+kEoWTezP9/6QShZN7/38AAP///v//fwAA///+//9/AAD///7//38AAP///v//fwAA///+//9/AAD///7//v/Uov9/AID+/9Si/38AgP7/1KL/fwCA///Uov9/AID//9Si/38AgP//1KL/fwCA//8qXf9/AID//ypd/38AgP//Kl3/fwCA///Uov9/AID//9Si/38AgP//1KL/fwCAKd3/f/9/AIAp3f9//38AgCnd/3//fwCAJW7lw4LPYAElbuXDgs9gASVu5cOCz2ABJW7lw4LPYAElbuXDgs9gASVu5cOCz2ABJW7lw4LPYAElbuXDgs9gASVu5cOCz2ABJW7lw4LPYAElbuXDgs9gASVu5cOCz2AB")
+}]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vntm4"]
+data = PackedVector3Array(2.514, -0.1998, 0, 4.2702, -0.1998, 0, 4.2702, 0.0635, 0, 2.514, -0.1998, 0, 4.2702, 0.0635, 0, 4.2641, 0.26029998, 0, 4.2865, 0.0664, 0.0436, 4.2641, 0.26029998, 0, 4.2702, 0.0635, 0, 4.2865, 0.0664, 0.0436, 4.395, 0.086899996, 0.334, 4.337, 0.1637, 0.18609999, 4.2865, 0.0664, 0.0436, 4.337, 0.1637, 0.18609999, 4.2641, 0.26029998, 0, 4.5260997, -0.1998, 0.6846, 4.2702, -0.1998, 0, 2.514, -0.1998, 0, 4.4726, -0.1998, 0.8276, 4.5260997, -0.1998, 0.6846, 2.514, -0.1998, 0, 4.2865, 0.0664, 0.0436, 4.2702, -0.1998, 0, 4.5260997, -0.1998, 0.6846, 4.2865, 0.0664, 0.0436, 4.2702, 0.0635, 0, 4.2702, -0.1998, 0, 4.2865, 0.0664, 0.0436, 4.5260997, -0.1998, 0.6846, 4.395, 0.086899996, 0.334, 4.5260997, -0.1998, 0.6846, 4.5260997, -0.0968, 0.6846, 4.395, 0.086899996, 0.334, 4.4726, -0.1998, 0.8276, 4.5260997, -0.0968, 0.6846, 4.5260997, -0.1998, 0.6846, 4.337, 0.1637, 0.18609999, 4.395, 0.086899996, 0.334, 2.514, -0.1998, 0, 4.5260997, -0.0968, 0.6846, 2.514, -0.1998, 0, 4.395, 0.086899996, 0.334, 4.4726, -0.1998, 0.8276, 2.514, -0.1998, 0, 4.5260997, -0.0968, 0.6846, 4.337, 0.1637, 0.18609999, 2.514, -0.1998, 0, 4.2641, 0.26029998, 0)
+
+[node name="Module_c2c_destroyed" type="Node3D" unique_id=649058329]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=928548258]
+visible = false
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=138130727]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.6430664, 0.7)
+size = Vector3(5, 2.7138672, 1.4)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1857459027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
+operation = 2
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 0
+path_interval = 0.3
+path_simplify_angle = 2.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="Path3D" type="Path3D" parent="CSGCombiner3D" unique_id=712818506]
+curve = SubResource("Curve3D_ecxfy")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=268721600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9176806)
+operation = 2
+polygon = PackedVector2Array(0, 0, 0, 1, -1, 1, -1, 0)
+mode = 2
+path_node = NodePath("../Path3D3")
+path_interval_type = 0
+path_interval = 0.3
+path_simplify_angle = 2.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="Path3D3" type="Path3D" parent="CSGCombiner3D" unique_id=903102138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4831877)
+curve = SubResource("Curve3D_hrqk6")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1869497102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4145508, -0.59991455, 0)
+operation = 2
+size = Vector3(5.1708984, 0.8001709, 5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1382011350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4145508, 1.768306, 0)
+operation = 2
+size = Vector3(5.1708984, 1, 5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=76787182]
+transform = Transform3D(0.9925483, -0.12185203, 0, 0.12185203, 0.9925483, 0, 0, 0, 1, 5.315245, 0.8058181, 0)
+operation = 2
+size = Vector3(1.7208862, 3.555542, 5)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=305856276]
+transform = Transform3D(0.9366783, 0, 0.350191, 0, 1, 0, -0.350191, 0, 0.9366783, 4.8754826, 0, 0.17143664)
+operation = 2
+size = Vector3(1.013916, 1, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1039434236]
+transform = Transform3D(0.9366722, 0, -0.3502074, 0, 1, 0, 0.3502074, 0, 0.9366722, 4.8760543, 0, 1.1945038)
+operation = 2
+size = Vector3(1.0126953, 1, 1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=1382799210]
+transform = Transform3D(0.17364816, 0.98480755, -8.742278e-08, 0.98480755, -0.17364816, 0, -1.5180804e-08, -8.609461e-08, -1, 1.9676, 0.95469457, 0.68406993)
+operation = 2
+radius = 0.52
+height = 1.3858643
+sides = 16
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CSGCombiner3D" unique_id=660966832]
+transform = Transform3D(1.0000001, 0, -7.1054274e-15, 0, 1.0000001, 0, 0, 0, 1, 2.7073092, 1.4707401, 0.6840699)
+operation = 2
+radius = 0.901
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGCombiner3D" unique_id=974943914]
+transform = Transform3D(1.0000001, 0, -7.1054274e-15, 0, 1.0000001, 0, 0, 0, 1, 4.337033, 1.6829987, 0.9972656)
+operation = 2
+radius = 0.901
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=116972373]
+transform = Transform3D(-0.6799218, -0.24454403, 0.691306, -0.08838977, -0.9085466, -0.4083254, 0.7279373, -0.33873367, 0.5961256, 3.1739829, 0.8271534, 0.51930106)
+operation = 2
+radius = 3.2
+height = 1.6588948
+cone = true
+smooth_faces = false
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="CSGCombiner3D" unique_id=2004430791]
+transform = Transform3D(-0.38646415, -0.34859383, 0.8538896, -0.37452763, -0.7867367, -0.49068746, 0.84283674, -0.50943834, 0.1734872, 0.6169013, 0.42445672, 0.6348696)
+operation = 2
+radius = 5.0
+height = 3.0
+cone = true
+smooth_faces = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=819571706]
+
+[node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1197278567]
+mesh = SubResource("ArrayMesh_u7c7x")
+surface_material_override/0 = ExtResource("1_afs3p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1139775023]
+shape = SubResource("ConcavePolygonShape3D_vntm4")
+
+[node name="BarrelBigDestroyed" parent="." unique_id=1800423914 instance=ExtResource("2_r34ex")]
+transform = Transform3D(-0.6068351, -0.7705136, 0.19509046, -0.7856089, 0.6187238, -2.6133032e-08, -0.12070715, -0.15326464, -0.9807855, 0.84302306, -1.1201825, 0.9680284)
