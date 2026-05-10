@@ -73,8 +73,8 @@ signal on_death
 @export var max_wpn_yaw_lag_deg: float = 20.0
 @export var wpn_rot_lag_away_speed: float = 1.0
 @export var wpn_rot_lag_close_speed: float = 5.0
-@export var max_wpn_roll_lag_from_move_deg: float = 15.0
-@export var max_wpn_roll_lag_from_view_deg: float = 0.0
+@export var max_wpn_roll_lag_from_move_deg: float = 10.0
+@export var max_wpn_roll_lag_from_view_deg: float = 6.0
 
 @export_category("Recoil settings")
 @export var recoil_strength: float = 7.0
@@ -155,6 +155,8 @@ var aim_target: Vector3 = Vector3.ZERO
 var local_velocity: Vector3
 var acc_time_ratio: float
 var brake_time_ratio: float
+var view_yaw_speed: float = 0.0
+var prev_view_yaw: float = 0.0
 
 var wpn_x_aim_twn: Tween
 var wpn_y_aim_twn: Tween
@@ -179,6 +181,7 @@ func _ready() -> void:
 	curr_sway_len = Vector2(sway_pitch_len, sway_yaw_len)
 	curr_sway_noise_len = sway_noise_len
 	weapon_lag_root_base_pos = weapon_lag_root.position
+	prev_view_yaw = rotation.y
 	high_capsule_shape = high_collider.shape as CapsuleShape3D
 	low_capsule_shape = low_collider.shape as CapsuleShape3D
 	height_above_eyes = high_capsule_shape.height - stand_height
@@ -187,7 +190,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	set_context()
+	set_context(delta)
 	set_dynamic_collider()
 	capture_states()
 	process_movement(delta)
@@ -229,13 +232,15 @@ func late_process(delta: float) -> void:
 	handle_camera_effects(delta)
 
 
-func set_context() -> void:
+func set_context(delta: float) -> void:
 	is_grounded = is_on_floor()
 	set_input_context()
 	var input_dir: Vector2 = p_inputs.move_vec
 	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
 	is_moving_side = abs(input_dir.x) > 0.70
 	local_velocity = global_basis.inverse() * velocity
+	view_yaw_speed = angle_difference(prev_view_yaw, rotation.y) / delta
+	prev_view_yaw = rotation.y
 	if Input.is_action_just_released("run"): wait_run_release = false
 	if Input.is_action_just_released("aim"): wait_aim_release = false
 	if not is_alive: can_play = false
@@ -673,8 +678,8 @@ func apply_ads_sway() -> void:
 func handle_weapon_lag(delta: float) -> void:
 	set_weapon_lag_parameters(delta)
 	apply_weapon_pos_lag(delta)
-	apply_weapon_xy_rot_lag(delta)
-	apply_weapon_z_rot_lag(delta)
+	if is_aiming: apply_weapon_pitch_yaw_lag(delta)
+	apply_weapon_roll_lag(delta)
 
 
 func set_weapon_lag_parameters(delta: float) -> void:
@@ -713,7 +718,7 @@ func apply_weapon_pos_lag(delta: float) -> void:
 	weapon_lag_root.position = weapon_lag_root.position.lerp(targ, dt_lerp_t(applied_pos_lag_speed, delta))
 
 
-func apply_weapon_xy_rot_lag(delta: float) -> void:
+func apply_weapon_pitch_yaw_lag(delta: float) -> void:
 	var f_targ: Vector3 = weapon_container.global_rotation
 	var y_diff: float = angle_difference(f_targ.y, lag_target.global_rotation.y)
 	var x_diff: float = angle_difference(f_targ.x, lag_target.global_rotation.x)
@@ -737,16 +742,16 @@ func apply_weapon_xy_rot_lag(delta: float) -> void:
 	weapon_lag_root.rotation = lerp_rot(weapon_lag_root.rotation, s_targ, dt_lerp_t(applied_rot_lag_speed, delta))
 
 
-func apply_weapon_z_rot_lag(delta: float) -> void:
+func apply_weapon_roll_lag(delta: float) -> void:
 	if is_aiming:
 		weapon_lag_root.rotation.z = lerp_angle(weapon_lag_root.rotation.z, 0.0, dt_lerp_t(wpn_pos_lag_away_speed, delta))
 		return
 	var ratio_move: float = -local_velocity.x / (stand_speed * side_speed_ratio)
-	var y_rot_diff: float = angle_difference(weapon_container.global_rotation.y, lag_target.global_rotation.y)
-	var ratio_view: float = clampf((y_rot_diff * 2.0) / deg_to_rad(max_wpn_yaw_lag_deg), -1.0, 1.0)
+	var max_yaw_speed: float = deg_to_rad(180.0)
+	var ratio_view: float = clampf(view_yaw_speed / max_yaw_speed, -1.0, 1.0)
 	var target_move: float = deg_to_rad(max_wpn_roll_lag_from_move_deg) * ratio_move
 	var target_view: float = deg_to_rad(max_wpn_roll_lag_from_view_deg) * ratio_view
-	var target_z: float = target_move - target_view
+	var target_z: float = target_view + (target_move / (2.0 if is_running else 1.0))
 	var targ: float = lerp_angle(weapon_lag_root.rotation.z, target_z, dt_lerp_t(wpn_pos_lag_away_speed, delta))
 	weapon_lag_root.rotation.z =  targ
 
