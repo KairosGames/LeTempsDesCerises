@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://nflhhwmnp8x6" path="res://sandbox/covers_proto/wheel_simple.tscn" id="28_od8bt"]
 [ext_resource type="PackedScene" uid="uid://cq0pdq64nmyf4" path="res://sandbox/covers_proto/table.tscn" id="35_vhmt3"]
 [ext_resource type="PackedScene" uid="uid://biifyrwiahnhf" path="res://sandbox/covers_proto/chair.tscn" id="36_gcqud"]
+[ext_resource type="PackedScene" uid="uid://dedr46kiqfa64" path="res://sources/meshes/geometry.blend" id="46_nof6i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o0uso"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -111,6 +112,7 @@ navigation_mesh = SubResource("NavigationMesh_fvv7y")
 [node name="Level" type="Node3D" parent="Environment/NavigationRegion3D" unique_id=956342788]
 
 [node name="Base_map" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=405278169]
+visible = false
 
 [node name="Streets" parent="Environment/NavigationRegion3D/Level/Base_map" unique_id=1466092671 instance=ExtResource("4_62d4a")]
 
@@ -616,5 +618,7 @@ transform = Transform3D(0.1022891, 0, -0.99475473, 0, 1, 0, 0.99475473, 0, 0.102
 
 [node name="Communard4" parent="Allies" unique_id=587175889 instance=ExtResource("9_mljuc")]
 transform = Transform3D(0.1022891, 0, -0.99475473, 0, 1, 0, 0.99475473, 0, 0.1022891, -2.0159483, 0.1, 6.418195)
+
+[node name="geometry" parent="." unique_id=1751647457 instance=ExtResource("46_nof6i")]
 
 [connection signal="damaged" from="Environment/NavigationRegion3D/Level/Barricade" to="Environment/NavigationRegion3D/Level/Barricade/AkBarricadeManager" method="_on_barricade_damaged"]
