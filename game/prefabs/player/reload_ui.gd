@@ -1,8 +1,9 @@
 class_name ReloadUI extends Control
 
-signal reloaded
+signal entered_reload
 signal try_failed
 signal try_succeeded
+signal reloaded
 
 @onready var focus: ColorRect = %ReloadFocus
 @onready var pos1: Control = %ReloadPos1
@@ -48,6 +49,7 @@ func _process(delta: float) -> void:
 
 
 func activation(active: bool):
+	if active: entered_reload.emit()
 	step = 0
 	set_step()
 	visible = active

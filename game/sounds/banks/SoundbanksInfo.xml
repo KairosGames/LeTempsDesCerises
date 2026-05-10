@@ -726,7 +726,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{7424527A-0CC7-F6C4-556C-1C5F47529A57}">
+		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{CAB97D72-9FBF-947F-D293-1A116741B06F}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Player</ObjectPath>
 			<ShortName>Sb_Player</ShortName>
 			<Path>Sb_Player.bnk</Path>
@@ -742,6 +742,10 @@
 				<File Id="65015294" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_07.wav</ShortName>
 					<CachePath>36/{361FDFAE-9C35-E361-0186-707143B8636C}.wem</CachePath>
+				</File>
+				<File Id="155932512" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_Oneshot_5.wav</ShortName>
+					<CachePath>73/{73D9E0D8-E9A8-FD6A-B7B3-CAA4C274B250}.wem</CachePath>
 				</File>
 				<File Id="170408866" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerCore_Oneshot.wav</ShortName>
@@ -811,6 +815,14 @@
 					<ShortName>City Center.wav</ShortName>
 					<CachePath>2E/{2EDDDD61-30F2-CE38-83CC-42EE7CBC8969}.wem</CachePath>
 				</File>
+				<File Id="383513897" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_Oneshot_1.wav</ShortName>
+					<CachePath>44/{448DBFBE-DABC-E348-F308-A36C16700949}.wem</CachePath>
+				</File>
+				<File Id="384251993" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_Oneshot_2.wav</ShortName>
+					<CachePath>5B/{5BAA40E5-BF2C-D06A-34DF-287C7B00400F}.wem</CachePath>
+				</File>
 				<File Id="395081999" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerBrick_Random_2.wav</ShortName>
 					<CachePath>02/{02589DCA-C1B4-3068-901D-4E54ECB36F87}.wem</CachePath>
@@ -863,6 +875,10 @@
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerGlass_Random_3.wav</ShortName>
 					<CachePath>38/{38050CBC-CCA5-5224-A021-535D7CB88F7E}.wem</CachePath>
 				</File>
+				<File Id="740464653" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_Oneshot_3.wav</ShortName>
+					<CachePath>4D/{4D75D097-3297-8044-8356-866BFF15BF6A}.wem</CachePath>
+				</File>
 				<File Id="749417595" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerMetal_Random_3.wav</ShortName>
 					<CachePath>AE/{AEF3A6E4-3323-11B4-6CA9-1CA823C51D39}.wem</CachePath>
@@ -898,6 +914,10 @@
 				<File Id="960862092" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Accessories\Bandolier\LTDC_SFX_Player_Access_Bandolier_Move_Random_03.wav</ShortName>
 					<CachePath>B1/{B1F6935F-400B-C76D-71F8-DAF1304DB84D}.wem</CachePath>
+				</File>
+				<File Id="970797179" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_Oneshot_4.wav</ShortName>
+					<CachePath>7C/{7CB9A6B7-4630-E588-1C67-49ABE5655077}.wem</CachePath>
 				</File>
 				<File Id="978092744" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_04.wav</ShortName>
@@ -1033,7 +1053,18 @@
 						<ActionSetStateEntry GroupId="1343755517" Id="1270007533" Name="prone" ObjectPath="\States\Default Work Unit\player_stance\prone" GUID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
 					</ActionSetState>
 				</Event>
-				<Event Id="1650679582" Name="Player_Reload" ObjectPath="\Events\SFX\Player\Player_Reload" GUID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="1650679582" Name="Player_Reload" ObjectPath="\Events\SFX\Player\Player_Reload" GUID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}" Color="10" DurationType="OneShot" DurationMin="0.23241666" DurationMax="0.74670833">
+					<MediaRefs>
+						<MediaRef Id="155932512"/>
+						<MediaRef Id="383513897"/>
+						<MediaRef Id="384251993"/>
+						<MediaRef Id="740464653"/>
+						<MediaRef Id="970797179"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
+					</AuxBusRefs>
+				</Event>
 				<Event Id="4004702906" Name="Player_Shoot" ObjectPath="\Events\SFX\Player\Player_Shoot" GUID="{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}" Color="10" DurationType="OneShot" DurationMin="3.645771" DurationMax="3.645771">
 					<MediaRefs>
 						<MediaRef Id="247688113"/>
@@ -1503,5 +1534,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E10D998E-881F-3367-38E4-37362DB5BF94}</FileHash>
+	<FileHash>{E7841069-9E96-ACCB-3E6A-92A32A37230B}</FileHash>
 </SoundBanksInfo>

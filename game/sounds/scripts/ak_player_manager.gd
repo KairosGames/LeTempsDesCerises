@@ -4,7 +4,6 @@ var is_walking := false
 var is_crouched := false
 var is_prone := false
 var controller_id
-var reload_step
 
 @export_category("AkEvents")
 @export var player : Player
@@ -52,11 +51,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 			#elif i.get_class() == "MeshInstance3D":
 				#print("Orlane tu as oublié un mat !")
 
-	if Input.is_action_just_pressed("reload") and player.can_reload() or player.is_reloading:
-		#print(reload_step)
-		reload_step = player.reload_ui.step
-		#reload.post_event()
-
 func _process(_delta: float) -> void:
 	
 	if player.is_running:
@@ -100,3 +94,11 @@ func _on_reload_ui_try_failed() -> void:
 
 func _on_reload_ui_try_succeeded() -> void:
 	reload.post_event()
+
+
+func _on_reload_ui_entered_reload() -> void:
+	reload.post_event()
+
+
+func _on_player_on_death() -> void:
+	pass # Replace with function body.

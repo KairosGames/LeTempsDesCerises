@@ -295,3 +295,8 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013229132, 0.8648107)
 target_position = Vector3(0, 0, 300)
 collision_mask = 7
+
+[connection signal="on_death" from="." to="CameraPivot/WeaponCameraBase/PlayerCamera/ak_player_manager" method="_on_player_on_death"]
+[connection signal="entered_reload" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/PlayerCamera/ak_player_manager" method="_on_reload_ui_entered_reload"]
+[connection signal="try_failed" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/PlayerCamera/ak_player_manager" method="_on_reload_ui_try_failed"]
+[connection signal="try_succeeded" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/PlayerCamera/ak_player_manager" method="_on_reload_ui_try_succeeded"]
