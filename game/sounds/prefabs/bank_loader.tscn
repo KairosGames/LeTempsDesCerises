@@ -3,6 +3,7 @@
 [ext_resource type="WwiseBank" uid="uid://yrjkf33a41hu" path="res://Wwise/resources/SoundBank/{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}.tres" id="1_ukiyf"]
 [ext_resource type="WwiseBank" uid="uid://be8q2yq5klk88" path="res://Wwise/resources/SoundBank/{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}.tres" id="2_lq8la"]
 [ext_resource type="WwiseBank" uid="uid://crxnj0v3wpc0k" path="res://Wwise/resources/SoundBank/{49827AFC-1442-4066-AF70-C2B0B3B40C86}.tres" id="3_krqfd"]
+[ext_resource type="WwiseBank" uid="uid://duvdhk3xpnfpv" path="res://Wwise/resources/SoundBank/{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}.tres" id="4_lq8la"]
 
 [node name="Bank_Loader" type="Node3D" unique_id=404085232]
 
@@ -18,5 +19,10 @@ unload_on = 3
 
 [node name="player" type="AkBank" parent="." unique_id=93305419]
 bank = ExtResource("3_krqfd")
+load_on = 1
+unload_on = 3
+
+[node name="cannon" type="AkBank" parent="." unique_id=1755489597]
+bank = ExtResource("4_lq8la")
 load_on = 1
 unload_on = 3

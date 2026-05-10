@@ -2,10 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://n8jqgeouvopc" path="res://prefabs/ai/agents/agent.tscn" id="1_6272e"]
 [ext_resource type="PackedScene" uid="uid://rg0ngp2orgpb" path="res://prefabs/ai/behaviours/communard.tscn" id="2_tcnhd"]
+[ext_resource type="PackedScene" uid="uid://dsg3ocv10jitn" path="res://sounds/prefabs/ak_enemy_manager.tscn" id="3_de8u4"]
 
 [node name="Communard" unique_id=1349390169 groups=["Communard"] instance=ExtResource("1_6272e")]
 team = 1
 
 [node name="Comunard" parent="BeehaveTree/BeAlive" parent_id_path=PackedInt32Array(1853354031) index="1" unique_id=546313229 instance=ExtResource("2_tcnhd")]
 
-[editable path="PlaceholderBody"]
+[node name="ak_enemy_manager" parent="." index="8" unique_id=1364272514 instance=ExtResource("3_de8u4")]
+
+[connection signal="shoot" from="." to="ak_enemy_manager" method="_on_communard_shoot"]
+
+[editable path="Body"]
+[editable path="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot"]

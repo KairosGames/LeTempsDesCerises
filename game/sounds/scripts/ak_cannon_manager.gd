@@ -1,10 +1,15 @@
 extends Node3D
 
-@export var shoot_event : AkEvent3D
+@export var cannon : Node3D
+@export var shoot : AkEvent3D
 
-# Called when the node enters the scene tree for the first time.
-func moving():
-	pass
+func _on_canon_shoot() -> void:
+	shoot.post_event()
 
-func shoot():
-	shoot_event.post_event()
+
+func _on_canon_start_move() -> void:
+	pass # Replace with function body.
+
+
+func _on_canon_stop_move() -> void:
+	pass # Replace with function body.

@@ -6,11 +6,12 @@ var is_prone := false
 var controller_id
 var reload_step
 
-
+@export_category("AkEvents")
 @export var player : Player
 @export var shoot : AkEvent3D
 @export var steps : AkEvent3D
 @export var reload : AkEvent3D
+@export var death : AkEvent3D
 
 @export_category("Stances")
 @export var up : AkEvent3D
@@ -28,6 +29,7 @@ func _ready() -> void:
 		Wwise.add_output("Motion", (i))
 
 	#player.reload_ui.reloaded.connect(on_reload())
+	player.on_death.connect(death_event)
 
 func _unhandled_input(_event: InputEvent) -> void:
 
@@ -84,4 +86,17 @@ func _process(_delta: float) -> void:
 		is_walking = false
 
 func on_reload():
+	reload.post_event()
+
+func death_event():
+	self.reparent(player.player_camera)
+	print("mort")
+	death.post_event()
+
+
+func _on_reload_ui_try_failed() -> void:
+	pass # Replace with function body.
+
+
+func _on_reload_ui_try_succeeded() -> void:
 	reload.post_event()

@@ -7,9 +7,9 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_mbhga"]
 radius = 0.1
 
-[node name="AkCannonManager" type="Node3D" unique_id=1286440460 node_paths=PackedStringArray("shoot_event")]
+[node name="AkCannonManager" type="Node3D" unique_id=1286440460 node_paths=PackedStringArray("shoot")]
 script = ExtResource("1_dfrxc")
-shoot_event = NodePath("Cannon_Shoot")
+shoot = NodePath("Cannon_Shoot")
 
 [node name="AkBank" type="AkBank" parent="." unique_id=770026060]
 bank = ExtResource("2_mbhga")
@@ -17,7 +17,6 @@ load_on = 1
 
 [node name="Cannon_Shoot" type="AkEvent3D" parent="." unique_id=1346840611]
 event = ExtResource("2_4pv3f")
-trigger_on = 2
 
 [node name="Area3D" type="Area3D" parent="Cannon_Shoot" unique_id=1284653614]
 

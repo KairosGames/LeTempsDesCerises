@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://dmtlm60wq4eqf" path="res://sandbox/barricades_proto/module_f2s_damaged.tscn" id="20_wymxb"]
 [ext_resource type="PackedScene" uid="uid://cbgib1n4tspd7" path="res://sandbox/covers_proto/plank_simple.tscn" id="22_7nfjk"]
 [ext_resource type="PackedScene" uid="uid://dlbfo6n0j4rn1" path="res://sandbox/covers_proto/barrel_big.tscn" id="23_kcujw"]
+[ext_resource type="PackedScene" uid="uid://187vl1c0h0u3" path="res://sounds/prefabs/ak_barricade_manager.tscn" id="23_nm50r"]
 [ext_resource type="PackedScene" uid="uid://bb8fxuc1b4vfl" path="res://sandbox/covers_proto/bag_simple.tscn" id="23_od8bt"]
 [ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="24_vhmt3"]
 [ext_resource type="PackedScene" uid="uid://bscuwka1t1iog" path="res://sandbox/covers_proto/lampadaire_proto.tscn" id="27_4ksxk"]
@@ -219,6 +220,8 @@ transform = Transform3D(0.13887912, 0, -0.99030936, 0, 1, 0, 0.99030936, 0, 0.13
 
 [node name="Module_f2s2" parent="Environment/NavigationRegion3D/Level/Barricade/Destroyed" unique_id=389786929 instance=ExtResource("20_wymxb")]
 transform = Transform3D(-0.4405346, 0, 0.89773566, 0, 1, 0, -0.89773566, 0, -0.4405346, -0.8351419, 0.10000048, 5.2754717)
+
+[node name="AkBarricadeManager" parent="Environment/NavigationRegion3D/Level/Barricade" unique_id=40989191 instance=ExtResource("23_nm50r")]
 
 [node name="Barricade2" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=645437679]
 
@@ -613,3 +616,5 @@ transform = Transform3D(0.1022891, 0, -0.99475473, 0, 1, 0, 0.99475473, 0, 0.102
 
 [node name="Communard4" parent="Allies" unique_id=587175889 instance=ExtResource("9_mljuc")]
 transform = Transform3D(0.1022891, 0, -0.99475473, 0, 1, 0, 0.99475473, 0, 0.1022891, -2.0159483, 0.1, 6.418195)
+
+[connection signal="damaged" from="Environment/NavigationRegion3D/Level/Barricade" to="Environment/NavigationRegion3D/Level/Barricade/AkBarricadeManager" method="_on_barricade_damaged"]

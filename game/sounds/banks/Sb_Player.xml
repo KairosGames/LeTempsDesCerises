@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{D207CEC4-8130-4615-2F4D-E0B5B2FD57F3}">
+		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{7424527A-0CC7-F6C4-556C-1C5F47529A57}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Player</ObjectPath>
 			<ShortName>Sb_Player</ShortName>
 			<Path>Sb_Player.bnk</Path>
@@ -117,10 +117,6 @@
 				<File Id="568077254" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerGlass_Random_1.wav</ShortName>
 					<CachePath>08/{08026EAD-8FF1-D523-594A-3D4EE89A8BDD}.wem</CachePath>
-				</File>
-				<File Id="605834236" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\LTDC_SFX_Player_Reload_Oneshot.wav</ShortName>
-					<CachePath>DB/{DB864609-9280-3D1B-361A-A78C833D299D}.wem</CachePath>
 				</File>
 				<File Id="632494295" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\LTDC_SFX_Player_GunShot_LayerCrack_Oneshot.wav</ShortName>
@@ -312,14 +308,7 @@
 						<ActionSetStateEntry GroupId="1343755517" Id="1270007533" Name="prone" ObjectPath="\States\Default Work Unit\player_stance\prone" GUID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
 					</ActionSetState>
 				</Event>
-				<Event Id="1650679582" Name="Player_Reload" ObjectPath="\Events\SFX\Player\Player_Reload" GUID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}" Color="10" DurationType="OneShot" DurationMin="6" DurationMax="6">
-					<MediaRefs>
-						<MediaRef Id="605834236"/>
-					</MediaRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
-					</AuxBusRefs>
-				</Event>
+				<Event Id="1650679582" Name="Player_Reload" ObjectPath="\Events\SFX\Player\Player_Reload" GUID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="4004702906" Name="Player_Shoot" ObjectPath="\Events\SFX\Player\Player_Shoot" GUID="{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}" Color="10" DurationType="OneShot" DurationMin="3.645771" DurationMax="3.645771">
 					<MediaRefs>
 						<MediaRef Id="247688113"/>
@@ -492,5 +481,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{97E5E0B8-16F5-1056-FD1D-67DA8C84B9BC}</FileHash>
+	<FileHash>{97DA8AA2-D7E1-3240-B9C1-CE40F0072CF2}</FileHash>
 </SoundBanksInfo>

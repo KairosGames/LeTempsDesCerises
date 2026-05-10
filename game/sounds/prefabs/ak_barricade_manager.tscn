@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://187vl1c0h0u3"]
+
+[ext_resource type="Script" uid="uid://b654rh4nlsnwq" path="res://sounds/scripts/ak_barricade_manager.gd" id="1_opldd"]
+[ext_resource type="WwiseEvent" uid="uid://cron4bsfnjdte" path="res://Wwise/resources/Event/{3D5106B6-DB52-4CAD-8B67-C5FA9BAE909C}.tres" id="1_pgwyu"]
+
+[node name="AkBarricadeManager" type="Node3D" unique_id=40989191 node_paths=PackedStringArray("damaged")]
+script = ExtResource("1_opldd")
+damaged = NodePath("AkEvent3D")
+
+[node name="AkEvent3D" type="AkEvent3D" parent="." unique_id=1211295715]
+event = ExtResource("1_pgwyu")
+stop_on = 3

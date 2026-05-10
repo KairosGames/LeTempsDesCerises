@@ -12,3 +12,6 @@ func _on_versaillais_move_start() -> void:
 
 func _on_versaillais_move_end() -> void:
 	steps.stop_event()
+
+func _on_communard_shoot() -> void:
+	shoot.post_event()

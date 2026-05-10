@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://hngppffli8f3" path="res://sandbox/ai/canon.gd" id="1_hy2yp"]
 [ext_resource type="PackedScene" uid="uid://dap0o4uyp2p3g" path="res://sources/meshes/canon.glb" id="2_0eglo"]
+[ext_resource type="PackedScene" uid="uid://bipkjq8ss0hjs" path="res://sounds/prefabs/ak_cannon_manager.tscn" id="3_nnek4"]
 
 [node name="Canon" type="PathFollow3D" unique_id=1666123749]
 loop = false
@@ -9,6 +10,10 @@ script = ExtResource("1_hy2yp")
 
 [node name="canon2" parent="." unique_id=359011155 instance=ExtResource("2_0eglo")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1.4412985)
+
+[node name="AkCannonManager" parent="canon2" unique_id=1286440460 node_paths=PackedStringArray("cannon") instance=ExtResource("3_nnek4")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1.9888745e-07, 0.84135675, 2.275007)
+cannon = NodePath("../..")
 
 [node name="Slot0" type="Marker3D" parent="." unique_id=621133641]
 unique_name_in_owner = true
@@ -21,3 +26,7 @@ transform = Transform3D(0.80233854, 0, 0.59686923, 0, 1, 0, -0.59686923, 0, 0.80
 [node name="Slot2" type="Marker3D" parent="." unique_id=504665155]
 unique_name_in_owner = true
 transform = Transform3D(0.7624312, 0, -0.6470693, 0, 1, 0, 0.6470693, 0, 0.7624312, -1.411, 0, 0.774)
+
+[connection signal="shoot" from="." to="canon2/AkCannonManager" method="_on_canon_shoot"]
+[connection signal="start_move" from="." to="canon2/AkCannonManager" method="_on_canon_start_move"]
+[connection signal="stop_move" from="." to="canon2/AkCannonManager" method="_on_canon_stop_move"]
