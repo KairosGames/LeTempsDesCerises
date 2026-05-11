@@ -30,7 +30,6 @@ func set_state() -> void:
 		all_steps[i].visible = i == state
 		var mode: Node.ProcessMode = PROCESS_MODE_INHERIT if i == state else PROCESS_MODE_DISABLED
 		all_steps[i].process_mode = mode
-		
 
 
 func take_damage() -> void:
