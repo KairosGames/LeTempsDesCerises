@@ -6,7 +6,7 @@ signal shoot
 signal start_move
 signal stop_move
 
-@export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var speed: float = 1
+@export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var speeds: Array[float] = [0, 0.25, 0.5, 1]
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var shoot_delay: float = 5
 @export var max_recruitment_range: float = 30
 
@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	_find_workers()
-	progress += speed * (holded_slots.size() / float(_slots.size())) * delta
+	progress += speeds[holded_slots.size()] * delta
 	if progress_ratio == 1 and (Time.get_ticks_msec() - _last_shoot_time) > shoot_delay * 1000:
 		print("[Canon] shoot")
 		_last_shoot_time = Time.get_ticks_msec()
