@@ -14,7 +14,7 @@ var fov_twn: Tween
 
 
 func _ready() -> void:
-	player.on_death.connect(handle_death)
+	player.died.connect(handle_death)
 	first_pos = player.global_position
 	first_rot = player.global_rotation
 

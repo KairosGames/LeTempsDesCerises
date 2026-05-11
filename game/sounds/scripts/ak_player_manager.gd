@@ -28,7 +28,7 @@ func _ready() -> void:
 		Wwise.add_output("Motion", (i))
 
 	#player.reload_ui.reloaded.connect(on_reload())
-	player.on_death.connect(death_event)
+	player.died.connect(death_event)
 
 func _unhandled_input(_event: InputEvent) -> void:
 
@@ -84,7 +84,6 @@ func on_reload():
 
 func death_event():
 	self.reparent(player.player_camera)
-	print("mort")
 	death.post_event()
 
 
@@ -98,7 +97,3 @@ func _on_reload_ui_try_succeeded() -> void:
 
 func _on_reload_ui_entered_reload() -> void:
 	reload.post_event()
-
-
-func _on_player_on_death() -> void:
-	pass # Replace with function body.

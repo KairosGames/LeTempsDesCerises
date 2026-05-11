@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody3D
 
-signal on_death
+signal missed_by_enemy
+signal died
 
 @onready var p_inputs: PlayerInputs = %PlayerInputs
 @onready var reload_ui: ReloadUI = %ReloadUI
@@ -861,13 +862,17 @@ func exit_reload(is_realoded: bool = true, is_from_die = false) -> void:
 	is_reload_interruped = false
 
 
+func on_missed_from_versaillais() -> void:
+	missed_by_enemy.emit()
+
+
 func die() -> void:
 	if not is_alive: return
 	is_alive = false
 	if is_reloading: exit_reload(false, true)
 	exit_reload(false, true)
 	weapon_sway_root.visible = false
-	on_death.emit()
+	died.emit()
 	reset_player_controller()
 
 
