@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dexhveoh7rgj3" path="res://prefabs/barricade/barricade.gd" id="1_voip0"]
 [ext_resource type="PackedScene" uid="uid://diay4as6f3uoj" path="res://sandbox/ai/wall.tscn" id="2_ec114"]
-[ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="3_pt8rx"]
+[ext_resource type="Script" path="res://prefabs/ai/cover.gd" id="3_pt8rx"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_v1doc"]
 [ext_resource type="PackedScene" uid="uid://chfbdpud1npmp" path="res://sandbox/ai/canon.tscn" id="6_cpm1f"]
-[ext_resource type="Script" uid="uid://dlpem5ct2ufhg" path="res://prefabs/ai/spawn_manager.gd" id="10_pt8rx"]
+[ext_resource type="Script" path="res://prefabs/ai/spawn_manager.gd" id="10_pt8rx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_76nee"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -84,13 +84,16 @@ environment = SubResource("Environment_voip0")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Barricade" type="Node3D" parent="." unique_id=952411854]
+[node name="Barricade" type="Node3D" parent="." unique_id=952411854 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules")]
 script = ExtResource("1_voip0")
+full_life_modules = NodePath("Barricade")
+damages_modules_1 = NodePath("Barricade2")
+damages_modules_2 = NodePath("Barricade2")
+destroyed_modules = NodePath("Barricade2")
 metadata/_custom_type_script = "uid://dexhveoh7rgj3"
 
 [node name="Barricade" type="StaticBody3D" parent="Barricade" unique_id=611951933 groups=["zone_a", "zone_b"]]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barricade/Barricade" unique_id=1170016487]
 shape = SubResource("BoxShape3D_ec114")
@@ -100,7 +103,6 @@ mesh = SubResource("BoxMesh_voip0")
 
 [node name="Barricade2" type="StaticBody3D" parent="Barricade" unique_id=233541321 groups=["zone_a", "zone_b"]]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, -2.5186424, 0)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Barricade/Barricade2" unique_id=1513616603]
 shape = SubResource("BoxShape3D_ec114")
