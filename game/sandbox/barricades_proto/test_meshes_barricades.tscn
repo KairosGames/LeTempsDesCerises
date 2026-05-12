@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dquel4m5ig2n3"]
+
+[ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="1_kvfpl"]
+[ext_resource type="PackedScene" uid="uid://dl66uuxhjdsg" path="res://sources/meshes/barricade_meshes/f2s_barricade_asset.glb" id="2_x2e1e"]
+[ext_resource type="PackedScene" uid="uid://bp8x0y3cbrgxr" path="res://sandbox/barricades_proto/module_F2s.tscn" id="3_x2e1e"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kvfpl"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_x2e1e"]
+sky_material = SubResource("ProceduralSkyMaterial_kvfpl")
+
+[sub_resource type="Environment" id="Environment_bkb4l"]
+background_mode = 2
+sky = SubResource("Sky_x2e1e")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bkb4l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_edsly"]
+size = Vector3(2, 0.001, 2)
+
+[node name="TestMeshesBarricades" type="Node3D" unique_id=1029378097]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1502191995]
+environment = SubResource("Environment_bkb4l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1427886546]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=1368497348 instance=ExtResource("1_kvfpl")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2097346841]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+mesh = SubResource("PlaneMesh_bkb4l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=768011474]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=314111942]
+shape = SubResource("BoxShape3D_edsly")
+
+[node name="f2s_barricade_asset2" parent="." unique_id=1299005446 instance=ExtResource("2_x2e1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19768047, 0.00250113, 3.0967574)
+
+[node name="Module_f2s" parent="." unique_id=649058329 instance=ExtResource("3_x2e1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
