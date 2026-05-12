@@ -161,7 +161,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{5EE7CD72-0A51-FE9D-09CA-982D0E657C36}">
+		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{29B0F562-7889-6C02-DDDC-CCF8BF4FE89F}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Amb</ObjectPath>
 			<ShortName>Sb_Amb</ShortName>
 			<Path>Sb_Amb.bnk</Path>
@@ -189,7 +189,7 @@
 				<File Id="310481320" Language="SFX" Streaming="true" Location="Memory">
 					<ShortName>AMB\Street\LTDC_AMB_Street_WindBirds_Loop.wav</ShortName>
 					<Path>Media/310481320.wem</Path>
-					<CachePath>C4/{C4BBC3B5-8FA8-DF79-4399-BE31CC9316FE}.wem</CachePath>
+					<CachePath>D1/{D15832A8-0D70-6123-6A91-D815F42CED0D}.wem</CachePath>
 					<PrefetchSize>7628</PrefetchSize>
 					<ContainsPrefetch>true</ContainsPrefetch>
 				</File>
@@ -292,7 +292,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{39AEF7B7-88A5-DDF1-F3ED-6506A177B987}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{92DB5673-B456-A969-1BFC-80ED7AE36996}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -594,7 +594,7 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{051E32A9-63D3-8EE7-E038-5B4968E250B8}">
+		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{F296273B-27B7-4194-BF90-2D4C4304D8D3}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Cannon</ObjectPath>
 			<ShortName>Sb_Cannon</ShortName>
 			<Path>Sb_Cannon.bnk</Path>
@@ -715,7 +715,11 @@
 							</MediaRefs>
 						</SwitchContainer>
 					</SwitchContainers>
+					<ActionPostEvent>
+						<ActionPostEventEntry Id="3687575925" Name="Deafening_Recover" ObjectPath="\Events\SFX\Player\Deafening_Recover" GUID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" Color="10"/>
+					</ActionPostEvent>
 				</Event>
+				<Event Id="3687575925" Name="Deafening_Recover" ObjectPath="\Events\SFX\Player\Deafening_Recover" GUID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 			<SwitchGroups>
 				<SwitchGroup Id="459611840" Name="Debris" ObjectPath="\Switches\Default Work Unit\Debris" GUID="{74E2D250-64B7-405D-8F20-9EB76B8320A1}">
@@ -726,7 +730,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{CAB97D72-9FBF-947F-D293-1A116741B06F}">
+		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{7F6A7EC1-9143-50CB-0EE4-0C2E7FF50533}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Player</ObjectPath>
 			<ShortName>Sb_Player</ShortName>
 			<Path>Sb_Player.bnk</Path>
@@ -1012,18 +1016,9 @@
 					</SwitchContainers>
 				</Event>
 				<Event Id="3687575925" Name="Deafening_Recover" ObjectPath="\Events\SFX\Player\Deafening_Recover" GUID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="3055475155" Name="Player_Crouch" ObjectPath="\Events\SFX\Player\Stance\Player_Crouch" GUID="{0DEF7495-B440-4E74-9C4B-9073F849D823}" Color="10" DurationType="Infinite">
+				<Event Id="3055475155" Name="Player_Crouch" ObjectPath="\Events\SFX\Player\Stance\Player_Crouch" GUID="{0DEF7495-B440-4E74-9C4B-9073F849D823}" Color="10" DurationType="OneShot" DurationMin="0.472696" DurationMax="0.59555966">
 					<MediaRefs>
-						<MediaRef Id="3520462"/>
-						<MediaRef Id="176463537"/>
-						<MediaRef Id="208125764"/>
-						<MediaRef Id="256736755"/>
 						<MediaRef Id="434123214"/>
-						<MediaRef Id="463745797"/>
-						<MediaRef Id="665368749"/>
-						<MediaRef Id="955352295"/>
-						<MediaRef Id="978092744"/>
-						<MediaRef Id="1027744682"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
@@ -1033,18 +1028,10 @@
 					</ActionSetState>
 				</Event>
 				<Event Id="3083087645" Name="Player_Death" ObjectPath="\Events\SFX\Player\Player_Death" GUID="{FC96ABC9-59AC-438F-B837-19B7E11ADF1C}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="1806823001" Name="Player_Prone" ObjectPath="\Events\SFX\Player\Stance\Player_Prone" GUID="{FE60E622-47E0-4B0A-8224-00824D1DFFA5}" Color="10" DurationType="Infinite">
+				<Event Id="1806823001" Name="Player_Prone" ObjectPath="\Events\SFX\Player\Stance\Player_Prone" GUID="{FE60E622-47E0-4B0A-8224-00824D1DFFA5}" Color="10" DurationType="OneShot" DurationMin="0.6444656" DurationMax="0.7599916">
 					<MediaRefs>
-						<MediaRef Id="3520462"/>
 						<MediaRef Id="176463537"/>
-						<MediaRef Id="208125764"/>
-						<MediaRef Id="256736755"/>
 						<MediaRef Id="434123214"/>
-						<MediaRef Id="463745797"/>
-						<MediaRef Id="665368749"/>
-						<MediaRef Id="955352295"/>
-						<MediaRef Id="978092744"/>
-						<MediaRef Id="1027744682"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
@@ -1126,18 +1113,9 @@
 						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
 					</AuxBusRefs>
 				</Event>
-				<Event Id="4024398754" Name="Player_Up" ObjectPath="\Events\SFX\Player\Stance\Player_Up" GUID="{4522F8E8-2547-4E53-85E8-2F1D0788D631}" Color="10" DurationType="Infinite">
+				<Event Id="4024398754" Name="Player_Up" ObjectPath="\Events\SFX\Player\Stance\Player_Up" GUID="{4522F8E8-2547-4E53-85E8-2F1D0788D631}" Color="10" DurationType="OneShot" DurationMin="0.472696" DurationMax="0.59555966">
 					<MediaRefs>
-						<MediaRef Id="3520462"/>
-						<MediaRef Id="176463537"/>
-						<MediaRef Id="208125764"/>
-						<MediaRef Id="256736755"/>
 						<MediaRef Id="434123214"/>
-						<MediaRef Id="463745797"/>
-						<MediaRef Id="665368749"/>
-						<MediaRef Id="955352295"/>
-						<MediaRef Id="978092744"/>
-						<MediaRef Id="1027744682"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
@@ -1534,5 +1512,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E7841069-9E96-ACCB-3E6A-92A32A37230B}</FileHash>
+	<FileHash>{F1ED5913-3BAA-DEEA-A4DB-04D268C31A1C}</FileHash>
 </SoundBanksInfo>

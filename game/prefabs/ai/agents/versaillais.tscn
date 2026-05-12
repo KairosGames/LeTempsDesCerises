@@ -6,14 +6,12 @@
 
 [node name="Versaillais" unique_id=1349390169 groups=["Versaillais"] instance=ExtResource("1_145la")]
 
-[node name="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(828590820, 1882623072) index="2" unique_id=1039528541]
-transform = Transform3D(0.02120629, 0.12206559, 0.99229556, -0.29507428, 0.94906974, -0.110442154, -0.95523894, -0.2904588, 0.056144536, -18.757956, 18.231773, -137.18929)
-
 [node name="Versaillais" parent="BeehaveTree/BeAlive" parent_id_path=PackedInt32Array(1853354031) index="1" unique_id=451543637 instance=ExtResource("2_uhkv7")]
 
 [node name="ak_enemy_manager" parent="." index="8" unique_id=1364272514 node_paths=PackedStringArray("versaillais") instance=ExtResource("3_2c3ib")]
 versaillais = NodePath("..")
 
+[connection signal="died" from="." to="ak_enemy_manager" method="_on_versaillais_died"]
 [connection signal="shoot" from="." to="ak_enemy_manager" method="_on_versaillais_shoot"]
 
 [editable path="Body"]

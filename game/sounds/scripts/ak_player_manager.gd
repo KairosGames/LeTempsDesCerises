@@ -22,12 +22,8 @@ var controller_id
 @export var bullet_prefab : PackedScene
 
 func _ready() -> void:
-	#Input.start_joy_vibration(0, 1.0, 1.0, 1.0)
-	if Input.get_connected_joypads().is_empty() : return
-	for i in Input.get_connected_joypads():
-		Wwise.add_output("Motion", (i))
-
-	#player.reload_ui.reloaded.connect(on_reload())
+	BarksManager.player = self
+	init_motion()
 	player.died.connect(death_event)
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -97,3 +93,8 @@ func _on_reload_ui_try_succeeded() -> void:
 
 func _on_reload_ui_entered_reload() -> void:
 	reload.post_event()
+
+func init_motion():
+	if Input.get_connected_joypads().is_empty() : return
+	for i in Input.get_connected_joypads():
+		Wwise.add_output("Motion", (i))
