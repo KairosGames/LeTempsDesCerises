@@ -30,14 +30,11 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		var collider: Object = raycast.get_collider()
 		if collider is Player or collider is Agent:
 			collider.die()
-			print("[%s] touched %s" % [agent.name, collider.name])
 			_vagueness = 1.0
 			return SUCCESS
 
 	_vagueness /= vagueness_decrease
-	if agent.target is Agent:
-		(agent.target as Agent).add_threat(agent)
-	elif agent.target is Player:
-		(agent.target as Player).miss_by_versaillais()
+	if agent.target is Agent: (agent.target as Agent).add_threat(agent)
+	elif agent.target is Player: (agent.target as Player).miss_by_versaillais()
 
 	return SUCCESS

@@ -24,12 +24,13 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			data.target = target
 			return data
 	)
-	
+
 	for i in range(targets_data.size() -1, -1 -1):
-		if targets_data[i] is Player and not (targets_data[i] as Player).is_alive:
+		var target: Node3D = targets_data[i].target
+		if not target.is_alive or target is Agent and not target.can_die:
 			targets_data.remove_at(i)
 			continue
-		var distance: float = targets_data[i].target.global_position.distance_to(agent.global_position)
+		var distance: float = target.global_position.distance_to(agent.global_position)
 		if distance > max_distance: targets_data.remove_at(i)
 		else: targets_data[i].distance = distance
 

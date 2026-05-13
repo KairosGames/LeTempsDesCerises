@@ -16,6 +16,7 @@ signal died(agent: Agent)
 @onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Head]
 
 var has_enemy_in_range: bool = false
+var can_die: bool = true
 var is_alive: bool = true
 var is_weapon_loaded: bool = true
 var target: Node3D = null
@@ -67,7 +68,7 @@ func shoot_anim() -> void:
 	shoot.emit()
 
 func die() -> void:
-	if not is_alive: return
+	if not can_die or not is_alive: return
 	is_alive = false
 	cover = null
 	set_collision_layer_value(3, false)
