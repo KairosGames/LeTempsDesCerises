@@ -9,7 +9,6 @@ uniform float alpha_mul : hint_range(0.0, 1.0) = 1.0;
 uniform float rotation_speed = 0.05;
 
 void vertex() {
-	//add squach and stretch
 }
 
 void fragment() {
