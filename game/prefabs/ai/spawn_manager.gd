@@ -36,7 +36,7 @@ func _process_spawn():
 	if team == Agent.Team.NONE: return
 	if _entity_count < target_entity_count:
 		for spawner: Cover in _open_list:
-			if spawner.enabled and not spawner.holder:
+			if spawner.enabled and not spawner.holder and _has_a_next_cover_available(spawner):
 				_open_list.erase(spawner)
 				_close_list.push_back(spawner)
 				get_tree().create_timer(cooldown).timeout.connect(_restore.bind(spawner))
@@ -51,6 +51,12 @@ func _process_spawn():
 				agent.died.connect(_on_entity_died)
 				add_child(agent)
 				return
+
+func _has_a_next_cover_available(cover: Cover) -> bool:
+	for next_cover in cover.next_covers:
+		if next_cover and not next_cover.holder:
+			return true
+	return false
 
 func _on_entity_died(_agent: Agent) -> void: _entity_count -= 1
 
