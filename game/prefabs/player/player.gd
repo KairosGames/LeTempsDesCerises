@@ -200,7 +200,7 @@ func _process(delta: float) -> void:
 	handle_shoot()
 	handle_reload()
 	late_process(delta)
-	
+
 	if Input.is_action_just_pressed("TEST"):
 		if is_alive: die()
 
@@ -281,12 +281,12 @@ func capture_states() -> void:
 
 func capture_aim_state() -> void:
 	var was_aiming: bool = is_aiming
-	
+
 	if can_aim():
 		if is_aim_toggle: handle_toggle_aim()
 		else : handle_hold_aim()
 	else : is_aiming = false
-	
+
 	p_inputs.is_aiming = is_aiming
 	if was_aiming != is_aiming :
 		switch_aim_state()
@@ -306,7 +306,7 @@ func handle_toggle_aim() -> void:
 			is_running = false
 		elif Input.is_action_just_pressed("run"): is_aiming = false
 		return
-	
+
 	if Input.is_action_just_pressed("aim"):
 		is_aiming = !is_aiming
 		if Input.is_action_pressed("run"): wait_run_release = is_aiming
@@ -318,7 +318,7 @@ func handle_hold_aim() -> void:
 		is_aiming = Input.is_action_pressed("aim") and not wait_aim_release
 		if is_aiming: is_running = false
 		return
-	
+
 	is_aiming = Input.is_action_pressed("aim") and not wait_aim_release
 	if is_aiming and is_running: wait_run_release = true
 	elif not is_aiming and Input.is_action_pressed("run"): wait_run_release = false
@@ -370,7 +370,7 @@ func handle_toggle_run() -> void:
 	if is_aim_toggle:
 		if Input.is_action_just_pressed("run"): go_for_run()
 		return
-	
+
 	if Input.is_action_just_pressed("run"):
 		go_for_run()
 		if is_aiming: wait_aim_release = true
@@ -382,7 +382,7 @@ func handle_hold_run() -> void:
 		if Input.is_action_pressed("run") and not wait_run_release: go_for_run()
 		else: is_running = false
 		return
-	
+
 	if Input.is_action_pressed("run") and not wait_run_release:
 		go_for_run()
 		if is_aiming: wait_aim_release = true
@@ -401,14 +401,14 @@ func go_for_run() -> void:
 
 func capture_position_state() -> void:
 	if not is_grounded or is_changing_state: return
-	
+
 	if Input.is_action_just_pressed("crouch"):
 		if p_inputs.is_gamepad: return
 		match curr_posture:
 			Posture.STAND:crouch_to_stand(true)
 			Posture.CROUCH: crouch_to_stand()
 			Posture.PRONE: prone_to_crouch()
-	
+
 	if Input.is_action_just_pressed("prone"):
 		if p_inputs.is_gamepad: return
 		match curr_posture:
@@ -523,18 +523,18 @@ func apply_plane_movement(delta: float) -> void:
 	var ref_speed = get_used_speed()
 	var run_f: float = run_speed_ratio if is_running else 1.0
 	var aim_f: float = aiming_speed_ratio if is_aiming else 1.0
-	
+
 	var f_speed: float = ref_speed * abs(mov_vec.y)
 	if mov_vec.y < 0 : f_speed *= back_speed_ratio
 	var s_speed: float = abs(mov_vec.x) * ref_speed * side_speed_ratio
 	var dir_speed: float = sqrt(f_speed * f_speed + s_speed * s_speed)
 	var applied_speed: float = dir_speed * run_f * aim_f
-	
+
 	if not is_grounded:
 		var lcl_max: float = stand_speed * (run_speed_ratio if is_running else 1.0)
 		if velocity.length() < lcl_max: velocity += dir * ref_speed * delta
 		return
-	
+
 	if is_movement_smooth:
 		var lcl_vel: Vector3 = local_velocity
 		var lcl_dir: Vector3 = Vector3(mov_vec.x, 0.0, mov_vec.y).normalized()
@@ -548,14 +548,14 @@ func apply_plane_movement(delta: float) -> void:
 				lcl_vel.x = move_toward(lcl_vel.x, lcl_target_speed.x, abs(lcl_target_speed.x) * delta * acc_time_ratio)
 		else:
 			lcl_vel.x = move_toward(lcl_vel.x, 0.0, x_brake_step)
-		
+
 		if lcl_dir.z:
 			lcl_vel.z = move_toward(lcl_vel.z, lcl_target_speed.z, abs(lcl_target_speed.z) * delta * acc_time_ratio)
 			if sign(lcl_target_speed.z) and sign(lcl_vel.z) != sign(lcl_target_speed.z):
 				lcl_vel.z = move_toward(lcl_vel.z, lcl_target_speed.z, abs(lcl_target_speed.z) * delta * acc_time_ratio)
 		else:
 			lcl_vel.z = move_toward(lcl_vel.z, 0.0, z_brake_step)
-		
+
 		velocity = global_transform.basis * lcl_vel
 		var plane_vel := Vector3(velocity.x, 0.0, velocity.z)
 		if plane_vel.length() > applied_speed:
@@ -585,7 +585,7 @@ func process_view(delta: float) -> void:
 	aim_target.x += p_inputs.get_view_input().y * p_inputs.v_sensi_multiplier * inversion * reducer
 	var clamp_applied: Vector2 = v_clamp_prone if curr_posture == Posture.PRONE else v_clamp_deg
 	aim_target.x = clampf(aim_target.x, clamp_applied.x, clamp_applied.y)
-	
+
 	if is_aim_smooth:
 		var result_y: Dictionary = smooth_damp_angle(rotation_degrees.y, aim_target.y, aim_vel.y, aim_smooth_strength, delta)
 		var result_x: Dictionary = smooth_damp_angle(camera_pivot.rotation_degrees.x, aim_target.x, aim_vel.x, aim_smooth_strength, delta)
@@ -688,7 +688,7 @@ func set_weapon_lag_parameters(delta: float) -> void:
 	var targ_pos_dist: float = (weapon_container.global_position - lag_target.global_position).length()
 	var targ_pos_speed: float = wpn_pos_lag_close_speed if (root_pos_dist > targ_pos_dist) else wpn_pos_lag_away_speed
 	applied_pos_lag_speed = targ_pos_speed * (1.5 if is_aiming else 1.0)
-	
+
 	var root_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, weapon_lag_root.global_rotation.y))
 	var targ_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, lag_target.global_rotation.y))
 	var targ_rot_speed: float = wpn_rot_lag_close_speed if (root_rot_dist > targ_rot_dist) else wpn_rot_lag_away_speed
@@ -702,17 +702,17 @@ func apply_weapon_pos_lag(delta: float) -> void:
 	var dist_y: Vector3 = Vector3(0.0, dist.y, 0.0)
 	var max_xz = max_wpn_xz_pos_lag * concentration_sample * (ads_wpn_pos_lag_reducer if is_aiming else 1.0)
 	var max_y = max_wpn_y_pos_lag * concentration_sample
-	
+
 	if dist_xz.length() >= max_xz:
 		var dir_xz: Vector3 = dist_xz.normalized()
 		var new_xz: Vector3 = f_targ + (dir_xz * max_xz)
 		lag_target.global_position = Vector3(new_xz.x, lag_target.global_position.y, new_xz.z)
-	
+
 	if dist_y.length() >= max_y:
 		var dir_y: Vector3 = dist_y.normalized()
 		var new_y: Vector3 = f_targ + (dir_y * max_y)
 		lag_target.global_position.y = new_y.y
-	
+
 	lag_target.global_position = lag_target.global_position.lerp(f_targ, dt_lerp_t(wpn_pos_lag_close_speed, delta))
 	var s_targ: Vector3 = weapon_container.to_local(lag_target.global_position)
 	var targ = weapon_lag_root_base_pos + s_targ
@@ -725,7 +725,7 @@ func apply_weapon_pitch_yaw_lag(delta: float) -> void:
 	var x_diff: float = angle_difference(f_targ.x, lag_target.global_rotation.x)
 	var max_y: float = max_wpn_yaw_lag_deg * concentration_sample
 	var max_x: float = max_wpn_pitch_lag_deg * concentration_sample
-	
+
 	var y_ratio: float = clampf(abs(y_diff) / deg_to_rad(max_y), 0.0, 1.0)
 	var x_ratio := clampf(abs(x_diff) / deg_to_rad(max_x), 0.0, 1.0)
 	y_ratio = pow(y_ratio, 1.2)
@@ -734,7 +734,7 @@ func apply_weapon_pitch_yaw_lag(delta: float) -> void:
 	var x_lag: float = deg_to_rad(max_x) * x_ratio * sign(x_diff)
 	lag_target.global_rotation.y = f_targ.y + y_lag
 	lag_target.global_rotation.x = f_targ.x + x_lag
-	
+
 	lag_target.global_rotation = lerp_rot(lag_target.global_rotation,f_targ, dt_lerp_t(wpn_rot_lag_close_speed, delta))
 	var parent_q: Quaternion = weapon_container.global_basis.get_rotation_quaternion()
 	var target_q: Quaternion = lag_target.global_basis.get_rotation_quaternion()
@@ -834,7 +834,7 @@ func enter_reload() -> void:
 	var default_pos: Vector3 = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
 	var time: float = time_to_ads * inverse_lerp(default_pos.x, aim_pos.position.x, weapon_container.position.x)
 	await get_tree().create_timer(time).timeout
-	if is_reload_interruped or not can_play: 
+	if is_reload_interruped or not can_play:
 		is_reload_interruped = false
 		return
 	reload_twn = create_tween()
@@ -862,7 +862,8 @@ func exit_reload(is_realoded: bool = true, is_from_die = false) -> void:
 	is_reload_interruped = false
 
 
-func on_missed_from_versaillais() -> void:
+func miss_by_versaillais() -> void:
+	print("Test")
 	missed_by_enemy.emit()
 
 
