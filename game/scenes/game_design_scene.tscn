@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bu7quq1hjvelc" path="res://sandbox/csg_to_save/place_pigalle.tscn" id="10_nq07h"]
 [ext_resource type="Script" uid="uid://dexhveoh7rgj3" path="res://prefabs/barricade/barricade.gd" id="11_yy57t"]
 [ext_resource type="PackedScene" uid="uid://bhg8mku4vikc2" path="res://sandbox/barricades_proto/module_s2c.tscn" id="12_ng0ul"]
-[ext_resource type="PackedScene" uid="uid://bp8x0y3cbrgxr" path="res://sandbox/barricades_proto/module_F2s.tscn" id="13_md0ey"]
+[ext_resource type="PackedScene" uid="uid://bp8x0y3cbrgxr" path="res://sandbox/barricades_proto/module_f2s.tscn" id="13_md0ey"]
 [ext_resource type="PackedScene" uid="uid://cxvybyhea4hnk" path="res://sandbox/barricades_proto/module_c2c.tscn" id="14_6c3r5"]
 [ext_resource type="PackedScene" uid="uid://ck6egvcr6jysn" path="res://sandbox/barricades_proto/module_s2s.tscn" id="15_aiyng"]
 [ext_resource type="PackedScene" uid="uid://ciigxgp4nxd8t" path="res://sandbox/covers_proto/dirt_pile_medium.tscn" id="16_npp8f"]
@@ -41,6 +41,7 @@
 [ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="40_aese6"]
 [ext_resource type="PackedScene" uid="uid://cq0pdq64nmyf4" path="res://sandbox/covers_proto/table.tscn" id="41_vx7q6"]
 [ext_resource type="PackedScene" uid="uid://biifyrwiahnhf" path="res://sandbox/covers_proto/chair.tscn" id="42_n4jea"]
+[ext_resource type="PackedScene" uid="uid://cvgennjoefedh" path="res://sandbox/covers_proto/dirt_pile_little.tscn" id="43_3s0cs"]
 [ext_resource type="PackedScene" uid="uid://chfbdpud1npmp" path="res://sandbox/ai/canon.tscn" id="43_u321f"]
 [ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="44_a1jd1"]
 
@@ -214,6 +215,29 @@ transform = Transform3D(0.09553289, 0, -0.9954263, 0, 1, 0, 0.9954263, 0, 0.0955
 [node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade2" unique_id=1014438200 instance=ExtResource("15_aiyng")]
 transform = Transform3D(-0.049756184, 0, -0.99876136, 0, 1, 0, 0.99876136, 0, -0.049756184, -37.658, 0.1, -3.823)
 
+[node name="Barricade3" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1345238611]
+
+[node name="Module_f2s" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=7283369 instance=ExtResource("13_md0ey")]
+transform = Transform3D(0.95558316, -0.17340052, -0.23831306, 0.17854463, 0.9839318, 7.926673e-09, 0.2344839, -0.042549513, 0.9711884, -30.358788, -0.73005927, 19.231047)
+
+[node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=150561402 instance=ExtResource("15_aiyng")]
+transform = Transform3D(0.7348908, 0, -0.67818516, 0, 1, 0, 0.67818516, 0, 0.7348908, -26.75316, 0.099999994, 20.12793)
+
+[node name="Module_s2c" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=729379186 instance=ExtResource("12_ng0ul")]
+transform = Transform3D(0.6204773, 0, -0.7842244, 0, 1, 0, 0.7842244, 0, 0.6204773, -33.962643, 0.2, 15.737865)
+
+[node name="Module_c2c" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=1789373896 instance=ExtResource("14_6c3r5")]
+transform = Transform3D(-0.67228925, 0, 0.7402885, 0, 1, 0, -0.7402885, 0, -0.67228925, -31.111887, 0.100000896, 20.686789)
+
+[node name="Module_f2s2" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=1718246046 instance=ExtResource("13_md0ey")]
+transform = Transform3D(0.70548815, 0, -0.70872164, 0, 1, 0, 0.70872164, 0, 0.70548815, -23.836912, -0.19999905, 22.813894)
+
+[node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=1767674198 instance=ExtResource("16_npp8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.405336, 0.100004196, 23.637638)
+
+[node name="Dirt_pile2" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=468253981 instance=ExtResource("16_npp8f")]
+transform = Transform3D(0.73900825, 0, -0.6736964, 0, 1, 0, 0.6736964, 0, 0.73900825, -27.994457, 0.100004196, 20.975965)
+
 [node name="CoverObjects" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1398436869]
 
 [node name="MorrisColumn" parent="Environment/NavigationRegion3D/Level/CoverObjects" unique_id=1149487519 instance=ExtResource("24_ovq67")]
@@ -379,6 +403,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0302, 0.20013133, 13.0048
 
 [node name="BigCart" parent="Environment/NavigationRegion3D/Level/CoverObjects" unique_id=896286637 instance=ExtResource("38_5iju0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.354704, 0.13223827, -1.8150609)
+
+[node name="Bar" type="Node3D" parent="Environment/NavigationRegion3D/Level/CoverObjects" unique_id=1324237859]
+
+[node name="Chair" parent="Environment/NavigationRegion3D/Level/CoverObjects/Bar" unique_id=1121497105 instance=ExtResource("42_n4jea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.896624, 0.19999743, 9.305388)
+
+[node name="Chair2" parent="Environment/NavigationRegion3D/Level/CoverObjects/Bar" unique_id=1619638689 instance=ExtResource("42_n4jea")]
+transform = Transform3D(-0.99997807, 0, -0.0066322135, 0, 1, 0, 0.0066322135, 0, -0.99997807, -31.873634, 0.19999766, 10.882503)
+
+[node name="Table" parent="Environment/NavigationRegion3D/Level/CoverObjects/Bar" unique_id=1672893821 instance=ExtResource("41_vx7q6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.867762, 0.2000009, 10.119819)
+
+[node name="Chair3" parent="Environment/NavigationRegion3D/Level/CoverObjects/Bar" unique_id=1300653541 instance=ExtResource("42_n4jea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.79516, 0.19999743, 12.140799)
+
+[node name="Chair4" parent="Environment/NavigationRegion3D/Level/CoverObjects/Bar" unique_id=582218082 instance=ExtResource("42_n4jea")]
+transform = Transform3D(-0.99997807, 0, -0.0066322135, 0, 1, 0, 0.0066322135, 0, -0.99997807, -31.772171, 0.19999766, 13.717913)
+
+[node name="Table2" parent="Environment/NavigationRegion3D/Level/CoverObjects/Bar" unique_id=1481710161 instance=ExtResource("41_vx7q6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.766298, 0.2000009, 12.955229)
 
 [node name="Coverpoints" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1213920481]
 
@@ -586,6 +630,9 @@ transform = Transform3D(0.41158953, -0.90644443, -0.09461909, 0.86674124, 0.4214
 
 [node name="Table5" parent="Environment/NavigationRegion3D/Level/CoffeeTerrace" unique_id=692868358 instance=ExtResource("41_vx7q6")]
 transform = Transform3D(0.48816127, -0.60709286, 0.6270062, 0.86674136, 0.42140988, -0.2667833, -0.10226433, 0.67368555, 0.7319083, 4.137806, 0.2312628, 2.7409642)
+
+[node name="Dirt_pile_little" parent="Environment" unique_id=958166927 instance=ExtResource("43_3s0cs")]
+transform = Transform3D(0.9522627, 0, -0.30527985, 0, 1, 0, 0.30527985, 0, 0.9522627, -28.941113, 0.10000229, 21.008152)
 
 [node name="Ennemies" type="Node3D" parent="." unique_id=1662896707]
 
