@@ -477,6 +477,18 @@ alpha_curve = SubResource("CurveTexture_r5k7s")
 
 [sub_resource type="QuadMesh" id="QuadMesh_52th0"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5o32g"]
+initial_velocity_min = 8.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_v40an"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v40an"]
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+
 [node name="VfxChassepotFireSelf" type="Node3D" unique_id=1392159559]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1620702775]
@@ -534,3 +546,28 @@ mesh = SubResource("QuadMesh_52th0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.799462, 1.0528454, 1.6557744)
 material_override = ExtResource("4_id5v0")
 mesh = SubResource("QuadMesh_52th0")
+
+[node name="vfx_shoot_impact_chara" type="Node3D" parent="." unique_id=981296286]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.185, 1.6, -1.81)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="vfx_shoot_impact_chara" unique_id=23179703]
+emitting = false
+amount = 4
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.6
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_5o32g")
+draw_pass_1 = SubResource("QuadMesh_v40an")
+
+[node name="vfx_shoot_impact_wall" type="Node3D" parent="." unique_id=2034200371]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.185, 1.6, -1.81)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="vfx_shoot_impact_wall" unique_id=1617497540]
+material_override = ExtResource("3_l4du4")
+amount = 4
+lifetime = 4.0
+explosiveness = 0.6
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_v40an")
+draw_pass_1 = SubResource("QuadMesh_v40an")
