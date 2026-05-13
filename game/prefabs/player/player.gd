@@ -863,7 +863,6 @@ func exit_reload(is_realoded: bool = true, is_from_die = false) -> void:
 
 
 func miss_by_versaillais() -> void:
-	print("Test")
 	missed_by_enemy.emit()
 
 
