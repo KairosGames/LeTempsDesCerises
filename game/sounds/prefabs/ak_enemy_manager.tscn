@@ -7,15 +7,17 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_p0yv6"]
 radius = 0.1
 
-[node name="ak_enemy_manager" type="Node3D" unique_id=1364272514 node_paths=PackedStringArray("shoot", "steps")]
+[node name="ak_enemy_manager" type="Node3D" unique_id=1364272514 node_paths=PackedStringArray("shoot", "steps", "label")]
 script = ExtResource("1_5kuf7")
 shoot = NodePath("Shoot")
 steps = NodePath("Steps")
+label = NodePath("Label3D")
 
 [node name="Shoot" type="AkEvent3D" parent="." unique_id=1491082347]
 event = ExtResource("1_wycht")
 stop_on = 3
 is_environment_aware = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4898686, 0)
 
 [node name="Area3D" type="Area3D" parent="Shoot" unique_id=1911157760]
 
@@ -31,3 +33,10 @@ is_environment_aware = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Steps/Area3D" unique_id=638135567]
 shape = SubResource("SphereShape3D_p0yv6")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=887757885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8940933, 0)
+billboard = 1
+double_sided = false
+text = "Placeholder"
+font_size = 128

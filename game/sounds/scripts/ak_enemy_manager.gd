@@ -3,9 +3,11 @@ extends Node3D
 @export var versaillais : Node3D
 @export var shoot : AkEvent3D
 @export var steps : AkEvent3D
+@export var label : Label3D
 
 func _enter_tree() -> void:
 	BarksManager.register(self, "enemy")
+	label.text = ""
 
 func _on_versaillais_shoot() -> void:
 	shoot.post_event()
@@ -21,3 +23,8 @@ func _on_communard_shoot() -> void:
 
 func _on_versaillais_died(agent: Agent) -> void:
 	BarksManager.remove(self)
+
+func bark(text : String):
+	label.text = text
+	await get_tree().create_timer(5).timeout
+	label.text = ""
