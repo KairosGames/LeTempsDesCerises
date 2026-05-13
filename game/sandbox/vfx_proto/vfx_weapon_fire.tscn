@@ -3,134 +3,6 @@
 [ext_resource type="Material" uid="uid://rsa8wfwgptvu" path="res://materials/materials_vfx/m_vfx_fire_muzzle.tres" id="1_enct5"]
 [ext_resource type="Material" uid="uid://cvwjj1evahaj0" path="res://materials/materials_vfx/m_vfx_fire_fog.tres" id="2_2jrkm"]
 
-[sub_resource type="Animation" id="Animation_52th0"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/vfx_ps_player_fire_main_fog:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.96666664),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/GPUParticles3D2:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationPlayer/vfx_ps_player_fire_muzzle:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_enct5"]
-resource_name = "anim_vfx_fire_other"
-length = 9.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/vfx_ps_player_fire_main_fog:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.099999994, 7.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/GPUParticles3D2:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.099999994, 2.4333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationPlayer/vfx_ps_player_fire_muzzle:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.099999994),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_hxrhv"]
-resource_name = "anim_vfx_fire_player"
-length = 9.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/vfx_ps_player_fire_main_fog:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.099999994, 7.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/GPUParticles3D2:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.099999994, 2.4333334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("AnimationPlayer/vfx_ps_player_fire_muzzle:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.099999994),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_o1wrc"]
-_data = {
-&"RESET": SubResource("Animation_52th0"),
-&"anim_vfx_fire_other": SubResource("Animation_enct5"),
-&"anim_vfx_fire_player": SubResource("Animation_hxrhv")
-}
-
 [sub_resource type="Curve" id="Curve_dig0m"]
 _data = [Vector2(0, 0.79491675), 0.0, 0.0, 0, 0, Vector2(1, 0.008764267), -0.041206658, 0.0, 0, 0]
 point_count = 2
@@ -313,9 +185,133 @@ scale_curve = SubResource("CurveTexture_g4k8p")
 color = Color(0.8483372, 0.7481818, 0.74633175, 1)
 alpha_curve = SubResource("CurveTexture_a43y4")
 
-[node name="AnimationPlayer" type="AnimationPlayer" unique_id=1479490180]
-libraries/ = SubResource("AnimationLibrary_o1wrc")
-autoplay = &"anim_vfx_fire_other"
+[sub_resource type="Animation" id="Animation_enct5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vfx_ps_player_fire_muzzle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("vfx_ps_player_fire_main_fog:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vfx_fog_add_layer:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_2jrkm"]
+resource_name = "anim_weapon_fire_self"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("vfx_ps_player_fire_muzzle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1999998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("vfx_ps_player_fire_main_fog:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8.033334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vfx_fog_add_layer:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ee2jh"]
+resource_name = "anim_weapon_fire_other_2"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("vfx_ps_player_fire_muzzle:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1999998),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("vfx_ps_player_fire_main_fog:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8.033334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("vfx_fog_add_layer:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ee2jh"]
+_data = {
+&"RESET": SubResource("Animation_enct5"),
+&"anim_vfx_weapon_fire_other": SubResource("Animation_2jrkm"),
+&"anim_vfx_weapon_fire_self": SubResource("Animation_ee2jh")
+}
+
+[node name="vfx_weapon_fire" type="Node3D" unique_id=7534225]
 
 [node name="vfx_ps_player_fire_muzzle" type="GPUParticles3D" parent="." unique_id=1777595371]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07122351, 1.5024747, 1.0459815)
@@ -330,9 +326,8 @@ draw_pass_1 = SubResource("QuadMesh_hxrhv")
 draw_pass_2 = SubResource("QuadMesh_a43y4")
 draw_pass_3 = SubResource("QuadMesh_o1wrc")
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="." unique_id=1976703905]
+[node name="vfx_fog_add_layer" type="GPUParticles3D" parent="." unique_id=1976703905]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5024747, 1.0459815)
-visible = false
 material_override = ExtResource("2_2jrkm")
 emitting = false
 amount = 2
@@ -377,3 +372,7 @@ explosiveness = 1.0
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_1bvr6")
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1137087610]
+libraries/ = SubResource("AnimationLibrary_ee2jh")
+autoplay = &"anim_vfx_weapon_fire_other"
