@@ -24,15 +24,17 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
-	for spawner: Cover in spawners:
-		if spawner:
-			_open_list.push_back(spawner)
+	_init_spawner()
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	_process_spawn()
 
-func _process_spawn():
+func _init_spawner() -> void:
+	for spawner: Cover in spawners:
+		if spawner: _open_list.push_back(spawner)
+
+func _process_spawn() -> void:
 	if team == Agent.Team.NONE: return
 	if _entity_count < target_entity_count:
 		for spawner: Cover in _open_list:
@@ -54,7 +56,7 @@ func _process_spawn():
 
 func _has_a_next_cover_available(cover: Cover) -> bool:
 	for next_cover in cover.next_covers:
-		if next_cover and not next_cover.holder:
+		if next_cover and next_cover.enabled and not next_cover.holder:
 			return true
 	return false
 
