@@ -10,12 +10,18 @@ class_name Cover extends Marker3D
 }
 @export var enabled: bool = true
 
-var holder: Agent = null
+var holder: Node3D = null:
+	set(value):
+		var was_agent: bool = holder and holder is Agent
+		holder = value
+		if not holder and was_agent: _check_player_overlapping()
 
 const LINE_SIZE: float = 0.1
 const MOTION_WIDTH: float = 0.1
 const EDITOR_ONLY: bool = true
 enum Type { COVER, TRANSITORY, SPAWNER }
+
+var _area: Area3D
 
 var _color: Color
 var _lines: MultiMeshInstance3D
@@ -34,6 +40,8 @@ func _get_configuration_warnings() -> PackedStringArray:
 	return warnings
 
 func _ready() -> void:
+	_init_area()
+
 	if is_gizmo_enabled():
 		_init_name()
 		_init_point()
@@ -45,6 +53,7 @@ func _process(_delta: float) -> void: _update_gizmos()
 func _init_name() -> void:
 	var label: Label3D = Label3D.new()
 	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	label.font_size = 48
 	label.text = name
 	label.position = Vector3(0, 0.5, 0)
 	add_child(label, false, Node.INTERNAL_MODE_BACK)
@@ -67,7 +76,7 @@ func _init_lines() -> void:
 	_lines.multimesh.use_colors = true
 	_lines.multimesh.mesh = line_mesh
 
-	add_child(_lines, false, Node.INTERNAL_MODE_FRONT)
+	add_child(_lines, false, Node.INTERNAL_MODE_BACK)
 
 func _init_motions() -> void:
 	_motions = MultiMeshInstance3D.new()
@@ -90,7 +99,7 @@ func _init_motions() -> void:
 	_motions.multimesh.use_colors = true
 	_motions.multimesh.mesh = motion_mesh
 
-	add_child(_motions, false, Node.INTERNAL_MODE_FRONT)
+	add_child(_motions, false, Node.INTERNAL_MODE_BACK)
 
 func _init_point() -> void:
 	_point = MeshInstance3D.new()
@@ -105,7 +114,7 @@ func _init_point() -> void:
 
 	_point.mesh = mesh
 
-	add_child(_point, false, Node.INTERNAL_MODE_FRONT)
+	add_child(_point, false, Node.INTERNAL_MODE_BACK)
 
 func _update_gizmos() -> void:
 	if is_gizmo_enabled():
@@ -165,3 +174,29 @@ func _update_motions() -> void:
 
 func is_gizmo_enabled() -> bool:
 	return Engine.is_editor_hint() or not EDITOR_ONLY
+
+func _init_area() -> void:
+	_area = Area3D.new()
+	_area.collision_layer = 0
+	_area.collision_mask = 2
+	var collision_shape: CollisionShape3D = CollisionShape3D.new()
+	var sphere_shape: SphereShape3D = SphereShape3D.new()
+	sphere_shape.radius = 0.5
+	collision_shape.shape = sphere_shape
+	_area.add_child(collision_shape)
+	add_child(_area)
+	_area.body_entered.connect(_on_area_body_entered)
+	_area.body_exited.connect(_on_area_body_exited)
+	_check_player_overlapping()
+
+func _on_area_body_entered(body: Node3D) -> void:
+	assert(body is Player)
+	if not holder: holder = body
+
+func _on_area_body_exited(body: Node3D) -> void:
+	assert(body is Player)
+	if holder == body: holder = null
+
+func _check_player_overlapping() -> void:
+	for body in _area.get_overlapping_bodies():
+		if body is Player: holder = body; break
