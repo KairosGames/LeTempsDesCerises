@@ -35,11 +35,20 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func _ready() -> void:
 	if is_gizmo_enabled():
+		_init_name()
 		_init_point()
 		_init_lines()
 		_init_motions()
 
 func _process(_delta: float) -> void: _update_gizmos()
+
+func _init_name() -> void:
+	var label: Label3D = Label3D.new()
+	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	label.text = name
+	label.position = Vector3(0, 0.5, 0)
+	add_child(label, false, Node.INTERNAL_MODE_BACK)
+	renamed.connect(func() -> void: label.set_text(self.name) )
 
 func _init_lines() -> void:
 	_lines = MultiMeshInstance3D.new()
