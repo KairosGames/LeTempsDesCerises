@@ -1,14 +1,24 @@
 @tool
 class_name Cover extends Marker3D
 
-@export var type: Type = Type.COVER
+@export var enabled: bool = true
 @export var next_covers: Array[Cover] = []
+@export var type: Type = Type.COVER:
+	set(value):
+		type = value
+		notify_property_list_changed()
+
+@export_category("Postures")
+@export var cover_posture: Posture = Posture.CROUCHING
+@export var reload_posture: Posture = Posture.CROUCHING
+@export var shoot_posture: Posture = Posture.STANDING
+
+@export_category("Debug")
 @export var colors: Dictionary[Type, Color] = {
 	Type.COVER: Color.GREEN_YELLOW,
 	Type.TRANSITORY: Color.ORANGE,
 	Type.SPAWNER: Color.CYAN,
 }
-@export var enabled: bool = true
 
 var holder: Node3D = null:
 	set(value):
@@ -38,6 +48,12 @@ func _get_configuration_warnings() -> PackedStringArray:
 	if not colors.has(Type.TRANSITORY): warnings.append("Color for Type.TRANSITORY not defined")
 	if not colors.has(Type.SPAWNER): warnings.append("Color for Type.SPAWNER not defined")
 	return warnings
+
+func _validate_property(property: Dictionary) -> void:
+	match property.name:
+		"cover_posture" when type != Type.COVER: property.usage = PROPERTY_USAGE_NO_EDITOR
+		"shoot_posture" when type != Type.COVER: property.usage = PROPERTY_USAGE_NO_EDITOR
+		"reload_posture" when type != Type.COVER: property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready() -> void:
 	_init_area()
@@ -200,3 +216,6 @@ func _on_area_body_exited(body: Node3D) -> void:
 func _check_player_overlapping() -> void:
 	for body in _area.get_overlapping_bodies():
 		if body is Player: holder = body; break
+
+
+enum Posture { STANDING, CROUCHING, PRONE }
