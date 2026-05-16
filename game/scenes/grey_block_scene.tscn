@@ -16,9 +16,11 @@ background_energy_multiplier = 0.7
 sky = SubResource("Sky_rwgxs")
 ambient_light_source = 2
 ambient_light_color = Color(0.26461196, 0.4929511, 0.5843781, 1)
+ambient_light_energy = 4.47
 tonemap_mode = 2
 tonemap_exposure = 1.1
 sdfgi_enabled = true
+sdfgi_bounce_feedback = 1.5
 glow_enabled = true
 glow_intensity = 0.2
 glow_bloom = 0.05
@@ -26,10 +28,13 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.03
 volumetric_fog_albedo = Color(0.70511323, 0.6740287, 0.84011126, 1)
 volumetric_fog_emission = Color(0.12955844, 0.12955847, 0.12955844, 1)
+volumetric_fog_gi_inject = 0.0
+volumetric_fog_ambient_inject = 1.0
+adjustment_enabled = true
 
 [sub_resource type="Animation" id="Animation_124fr"]
 resource_name = "Phase1"
-length = 700.0
+length = 600.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -37,10 +42,10 @@ tracks/0/path = NodePath("DirectionalLight3D:light_energy")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(-0.033333335, 0, 199.2, 399.73334, 400, 600),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 199.2, 399.73334, 400, 600),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [1.0, 2.0, 2.5, 3.0, 4.0, 3.5]
+"values": [3.0, 2.5, 3.0, 4.0, 6.095]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -49,10 +54,10 @@ tracks/1/path = NodePath("DirectionalLight3D:light_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 199.2, 399.73334, 600),
+"times": PackedFloat32Array(0, 197.63333, 399.73334, 600),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.5790732, 0.3095458, 0.25275397, 1), Color(0.86229765, 0.70289946, 0.72794884, 1), Color(0.98496026, 0.57115406, 3.85046e-07, 1), Color(0.7483809, 0.55100065, 0.42947513, 1)]
+"values": [Color(0.41557044, 0.0710542, 2.4065375e-08, 1), Color(0.9578702, 0.65602696, 0.6815773, 1), Color(0.86337084, 0.6458207, 0.24474531, 1), Color(0.7442614, 0.57321036, 0.20412531, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -73,10 +78,10 @@ tracks/3/path = NodePath("WorldEnvironment:environment:ambient_light_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 200, 404.16666, 599.23065),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.44264907, 0.40465522, 0.7385663, 1)]
+"values": [Color(0.7893647, 0, 0.15905982, 1), Color(0.81515193, 0.4928645, 0.30501178, 1), Color(0.73266685, 0.5180757, 0.19058716, 1), Color(0.41350198, 0.30265868, 0.99486095, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -88,7 +93,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 199.2, 399.73334, 600),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.03, 0.02, 0.015, 0.03]
+"values": [0.03, 0.025, 0.015, 0.025]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -97,10 +102,10 @@ tracks/5/path = NodePath("WorldEnvironment:environment:volumetric_fog_albedo")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 199.2, 400, 600),
+"times": PackedFloat32Array(0, 199.2, 400, 598.43335),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.68816936, 0.6758498, 0.8790131, 1), Color(0.62818086, 0.6899876, 0.9103391, 1), Color(1, 0.44303712, 0.108559154, 1), Color(0.9564584, 0.61204046, 0.6362092, 1)]
+"values": [Color(0.33194888, 0.27354333, 0.39752373, 1), Color(0.6245045, 0.5479856, 0.7710569, 1), Color(1, 0.44303712, 0.108559154, 1), Color(0.9564584, 0.61204046, 0.6362092, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -124,7 +129,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 199.2, 399.73334, 600),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.61086524, 2.6179938, 0), Vector3(-0.2617994, 2.6179938, 0), Vector3(0.08726646, 2.6179938, 0), Vector3(0.5235988, 2.6179938, 0)]
+"values": [Vector3(-0.61086524, 2.6179938, 0), Vector3(-0.2617994, 2.6179938, 0), Vector3(0.2617994, 2.6179938, 0), Vector3(0.5235988, 2.6179938, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -172,7 +177,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0, 199.2, 399.73334, 600),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.8, 0.9, 1.0, 1.2]
+"values": [0.5, 0.5, 1.0, 1.2]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -185,6 +190,18 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("WorldEnvironment:environment:volumetric_fog_ambient_inject")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_3ivn4"]
@@ -345,6 +362,18 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("WorldEnvironment:environment:volumetric_fog_ambient_inject")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gedxo"]
 _data = {
@@ -369,7 +398,7 @@ transform = Transform3D(-0.38651785, 0, 0.9222819, 0, 1, 0, -0.9222819, 0, -0.38
 environment = SubResource("Environment_g3y20")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lightning" unique_id=1755602407]
-transform = Transform3D(-0.8660254, -0.12940954, 0.48296297, 0, 0.9659258, 0.25881904, -0.50000006, 0.22414386, -0.83651626, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.12940952, 0.48296297, 0, 0.96592575, 0.25881904, -0.50000006, 0.22414385, -0.83651626, 0, 0, 0)
 layers = 3
 light_color = Color(0.7136707, 0.8126599, 0.9598977, 1)
 light_angular_distance = 4.0
@@ -385,4 +414,258 @@ libraries/ = SubResource("AnimationLibrary_gedxo")
 [node name="Area3D" type="Area3D" parent="Lightning" unique_id=1545516969]
 visible = false
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning" unique_id=840798217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9359007, 0.33915377, -1.5785846)
+light_color = Color(0.23621076, 0.20175159, 0.44036254, 1)
+light_energy = 5.617
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lightning/OmniLight3D" unique_id=424032369]
+transform = Transform3D(0.98036426, 0, 0.19719544, 0, 1, 0, -0.19719544, 0, 0.98036426, 9.923468, 1.2388024, 6.5507507)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2" unique_id=724601645]
+transform = Transform3D(1, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, 1, 6.1771274, 1.3193965, 2.1885962)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D" unique_id=742890248]
+transform = Transform3D(1.0000001, 0, 4.4703484e-08, 0, 1, 0, -2.9802322e-08, 0, 1.0000001, -24.988247, 0.7728057, 1.778225)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+omni_range = 4.058
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D" unique_id=1648238430]
+transform = Transform3D(1, 0, 1.1920929e-07, 0, 1, 0, -1.1920929e-07, 0, 1, 6.1771274, 1.3193965, 2.1885962)
+visible = false
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D2" unique_id=212665737]
+transform = Transform3D(1.0000001, 0, 4.4703484e-08, 0, 1, 0, -2.9802322e-08, 0, 1.0000001, -24.988247, 0.7728057, 1.778225)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+omni_range = 4.058
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D" unique_id=693560001]
+transform = Transform3D(1.0000001, 0, 7.4505806e-08, 0, 1, 0, -5.9604645e-08, 0, 1.0000001, -3.5097718, -1.7427754, -11.825129)
+light_color = Color(0.46459186, 0.0012838397, 0.08128973, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3" unique_id=1717676585]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, -28.5326, 0.20538473, -2.1313703)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D" unique_id=1690264083]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 14.400858, -0.1942234, -0.29541683)
+light_color = Color(0.2383065, 0.20952505, 0.41479865, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D" unique_id=1207819980]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 12.909605, 2.3783998, -14.706708)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D" unique_id=23092430]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 17.980322, -0.004213333, -23.506262)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D" unique_id=234740440]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 13.09049, -0.2406025, -5.305498)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D2" unique_id=225384087]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 17.980322, -0.004213333, -23.506262)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D" unique_id=809019625]
+transform = Transform3D(0.8836676, 0, -0.46811488, 0, 1, 0, 0.46811488, 0, 0.8836676, 27.440153, 0.23118591, 2.1913548)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D3" unique_id=964888480]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 17.980322, -0.004213333, -23.506262)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D3" unique_id=944398676]
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 13.09049, -0.2406025, -5.305498)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D3/OmniLight3D2" unique_id=2091005517]
+transform = Transform3D(0.99999994, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, 0.99999994, 17.61515, -0.004213333, -21.287018)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D3/OmniLight3D2/OmniLight3D" unique_id=1720341129]
+transform = Transform3D(1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, 1, 2.5469284, -0.004213333, -15.472534)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D3" unique_id=556127986]
+transform = Transform3D(0.80676454, 0, -0.59087306, 0, 1, 0, 0.59087306, 0, 0.80676454, 14.946976, -0.49813128, 16.715607)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D3/OmniLight3D3" unique_id=932393800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.73765, -0.004213333, -22.930538)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D3/OmniLight3D3" unique_id=1767147021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0066166, -0.2406025, 11.919542)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D3/OmniLight3D3/OmniLight3D2" unique_id=1646197482]
+transform = Transform3D(1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, 1, 17.666094, -0.004213333, -22.269651)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D2/OmniLight3D/OmniLight3D3/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D3/OmniLight3D3/OmniLight3D2/OmniLight3D" unique_id=1227615538]
+transform = Transform3D(1, 0, 8.940697e-08, 0, 1, 0, -8.940697e-08, 0, 1, 16.878662, -0.004213333, -25.868744)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 5.617
+light_specular = 0.0
+omni_range = 4.058
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D" unique_id=1030650032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8338604, 3.0852108, -2.9532452)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 5.617
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D" unique_id=2024212732]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9926634, 3.9306111, -2.6100297)
+visible = false
+light_color = Color(0.9679604, 0.57831454, 0.26361904, 1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D/OmniLight3D" unique_id=98025948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0744095, -2.9013672, 0.38940287)
+light_color = Color(0.91498154, 0.5863094, 0.5634187, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D/OmniLight3D" unique_id=2120960886]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.385633, -2.5566888, 14.673855)
+light_color = Color(0.9679604, 0.57831454, 0.26361904, 1)
+light_energy = 3.345
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D2" unique_id=2132314394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0744095, -2.861926, 1.5733953)
+light_color = Color(0.7953721, 0.6688629, 0.4338896, 1)
+light_energy = 3.74
+omni_range = 3.6868777
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D2" unique_id=1039263254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.385633, -2.5566888, 14.673855)
+light_color = Color(0.9679604, 0.57831454, 0.26361904, 1)
+light_energy = 3.345
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D2/OmniLight3D2" unique_id=1477427114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0744095, -2.861926, 1.5733953)
+light_color = Color(0.91498154, 0.5863094, 0.5634187, 1)
+light_energy = 3.74
+omni_range = 3.6868777
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D2/OmniLight3D2" unique_id=1916834947]
+transform = Transform3D(0.98036426, 0, 0.19719532, 0, 1, 0, -0.19719532, 0, 0.98036426, 30.545265, 6.487301, -24.216831)
+visible = false
+light_color = Color(0.9679604, 0.57831454, 0.26361904, 1)
+light_energy = 3.345
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D2/OmniLight3D2/OmniLight3D2" unique_id=1983313412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0744095, -2.861926, 1.5733953)
+visible = false
+light_color = Color(0.91498154, 0.5863094, 0.5634187, 1)
+light_energy = 3.74
+omni_range = 3.6868777
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D/OmniLight3D" unique_id=1402940554]
+transform = Transform3D(0.98036426, 0, 0.19719532, 0, 1, 0, -0.19719532, 0, 0.98036426, 43.33939, 3.9306116, -6.2208695)
+visible = false
+light_color = Color(0.9679604, 0.57831454, 0.26361904, 1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lightning/OmniLight3D/OmniLight3D/OmniLight3D/OmniLight3D3" unique_id=301686210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0744095, -2.9013672, 0.38940287)
+visible = false
+light_color = Color(0.91498154, 0.5863094, 0.5634187, 1)
+
 [node name="GameDesignScene" parent="." unique_id=1256367080 instance=ExtResource("3_vgclv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.8146973e-06, 0)
