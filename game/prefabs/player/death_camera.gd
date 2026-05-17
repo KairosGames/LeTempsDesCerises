@@ -41,6 +41,7 @@ func play_fall_effect() -> void:
 	var fall_rot: Vector3
 	
 	if communard:
+		communard.can_die = false
 		var to_target: Vector3 = communard.global_position - global_position
 		to_target.y = 0.0
 		to_target = to_target.normalized()
@@ -75,7 +76,9 @@ func play_fall_effect() -> void:
 					).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).finished
 		#await fov_twn.tween_property(self, "fov", 1.0, 0.45
 					#).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK).finished
-		if communard: delete_swaped_communard(communard)
+		if communard:
+			communard.can_die = true
+			delete_swaped_communard(communard)
 		var offset_rot: Vector3 = Vector3(0.0, PI, 0.0)
 		player.revive(communard.global_position, communard.global_rotation + offset_rot)
 		is_active = false
