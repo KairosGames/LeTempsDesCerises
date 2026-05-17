@@ -56,12 +56,12 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7hc28"]
 xfade_time = 0.25
 advance_mode = 2
-advance_expression = "is_covered"
+advance_expression = "posture == Agent.Posture.CROUCHING"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smkgt"]
 xfade_time = 0.25
 advance_mode = 2
-advance_expression = "not is_covered"
+advance_expression = "posture == Agent.Posture.STANDING"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u0bw3"]
 xfade_time = 0.5

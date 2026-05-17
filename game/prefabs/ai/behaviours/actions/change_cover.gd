@@ -5,5 +5,6 @@ class_name ChangeCover extends ActionLeaf
 
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
-	agent.is_covered = is_covered
+	# FIXME
+	# agent.is_covered = is_covered
 	return SUCCESS

@@ -9,9 +9,8 @@ class_name Cover extends Marker3D
 		notify_property_list_changed()
 
 @export_category("Postures")
-@export var cover_posture: Posture = Posture.CROUCHING
-@export var reload_posture: Posture = Posture.CROUCHING
-@export var shoot_posture: Posture = Posture.STANDING
+@export var height: Height = Height.MEDIUM
+@export var side_distance: float = 0
 
 @export_category("Debug")
 @export var colors: Dictionary[Type, Color] = {
@@ -51,9 +50,8 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func _validate_property(property: Dictionary) -> void:
 	match property.name:
-		"cover_posture" when type != Type.COVER: property.usage = PROPERTY_USAGE_NO_EDITOR
-		"shoot_posture" when type != Type.COVER: property.usage = PROPERTY_USAGE_NO_EDITOR
-		"reload_posture" when type != Type.COVER: property.usage = PROPERTY_USAGE_NO_EDITOR
+		"height" when type != Type.COVER: property.usage = PROPERTY_USAGE_NO_EDITOR
+		"side_distance" when type != Type.COVER or height != Height.HIGH: property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready() -> void:
 	_init_area()
@@ -217,5 +215,32 @@ func _check_player_overlapping() -> void:
 	for body in _area.get_overlapping_bodies():
 		if body is Player: holder = body; break
 
+func get_shoot_posture() -> Agent.Posture:
+	match height:
+		Height.HIGH: return Agent.Posture.STANDING
+		Height.MEDIUM: return Agent.Posture.CROUCHING
+		Height.LOW: return Agent.Posture.PRONE
+		Height.NONE: return Agent.Posture.STANDING
+		_: return Agent.Posture.STANDING
 
-enum Posture { STANDING, CROUCHING, PRONE }
+func get_cover_posture() -> Agent.Posture:
+	match height:
+		Height.HIGH: return Agent.Posture.STANDING
+		Height.MEDIUM: return Agent.Posture.CROUCHING
+		Height.LOW: return Agent.Posture.PRONE
+		Height.NONE: return Agent.Posture.NONE
+		_: return Agent.Posture.STANDING
+
+func get_reload_posture() -> Agent.Posture:
+	match height:
+		Height.HIGH: return Agent.Posture.STANDING
+		Height.MEDIUM: return Agent.Posture.CROUCHING
+		Height.LOW: return Agent.Posture.PRONE
+		Height.NONE: return Agent.Posture.CROUCHING
+		_: return Agent.Posture.STANDING
+
+func compute_covering_of(agent: Agent) -> float:
+	# TODO
+	return 0
+
+enum Height { NONE, LOW, MEDIUM, HIGH }

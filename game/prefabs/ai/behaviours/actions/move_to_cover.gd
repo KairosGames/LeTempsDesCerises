@@ -9,8 +9,10 @@ func get_destination(actor: Node, _blackboard: Blackboard) -> Vector3:
 
 func on_start(actor: Node, _blackboard: Blackboard) -> void:
 	var agent: Agent = actor
-	agent.is_covered = false
+	# FIXME
+	# agent.is_covered = false
 
 func on_success(actor: Node, _blackboard: Blackboard) -> void:
 	var agent: Agent = actor
-	agent.is_covered = true
+	# FIXME
+	# agent.is_covered = true

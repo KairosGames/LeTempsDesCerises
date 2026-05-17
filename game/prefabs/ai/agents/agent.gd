@@ -21,8 +21,8 @@ var is_alive: bool = true
 var is_weapon_loaded: bool = true
 var target: Node3D = null
 var target_point: Node3D = null
-var threats: Array[Agent]
-var is_covered: bool = false
+var threats: Array[Agent] = []
+var posture: Posture = Posture.STANDING
 var is_pushing_canon: bool = false
 var canon_slot: Marker3D = null:
 	set(value):
@@ -76,3 +76,5 @@ func die() -> void:
 	await get_tree().create_timer(2.0).timeout
 	died.emit(self)
 	queue_free()
+
+enum Posture { NONE, PRONE, CROUCHING, STANDING}

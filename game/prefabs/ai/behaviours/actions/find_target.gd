@@ -19,37 +19,26 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var raycast: RayCast3D = agent.shoot_raycast
 
 	var targets_data: Array = get_targets(agent.team).map(
-		func(target: Node3D) -> TargetData:
-			var data: TargetData = TargetData.new()
-			data.target = target
-			return data
+		func(target: Node3D) -> TargetData: return TargetData.new(target, agent)
 	)
 
+	# TODO if target is Player always do raycast
+
 	for i in range(targets_data.size() -1, -1 -1):
-		var target: Node3D = targets_data[i].target
-		if not target.is_alive or target is Agent and not target.can_die:
+		var data: TargetData = targets_data[i]
+		if not data.target.is_alive or data.target is Agent and not data.target.can_die:
 			targets_data.remove_at(i)
 			continue
-		var distance: float = target.global_position.distance_to(agent.global_position)
-		if distance > max_distance: targets_data.remove_at(i)
-		else: targets_data[i].distance = distance
+		if data.distance > max_distance:
+			targets_data.remove_at(i)
 
 	agent.has_enemy_in_range = targets_data.size()
 	if not agent.has_enemy_in_range:
 		return FAILURE
 
-	for i in range(targets_data.size() -1, -1 -1):
-		var data: TargetData = targets_data[i]
-		data.is_player = data.target is Player
-		data.is_threatening = agent.threats.has(data.target)
-		data.is_covered = not data.is_player and (data.target as Agent).is_covered
-		data.is_pushing_canon = not data.is_player and (data.target as Agent).is_pushing_canon
-		data.compute_score()
-
-	targets_data.sort_custom(func(a: TargetData, b: TargetData) -> bool: return a.score > b.score )
+	targets_data.sort_custom(best_score)
 
 	for data: TargetData in targets_data:
-		#agent.look_at(data.target.global_position)
 		for shoot_target: Marker3D in data.target.shoot_targets:
 			raycast.look_at(shoot_target.global_position)
 			raycast.force_raycast_update()
@@ -62,22 +51,35 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
 	return FAILURE
 
+static func best_score(a: TargetData, b: TargetData) -> bool: return a.score > b.score
+
 class TargetData:
+
+	func _init(_target: Node3D, _agent: Agent) -> void:
+		target = target
+
+		is_player = target is Player
+		is_threatening = _agent.threats.has(target)
+		is_pushing_canon = not is_player and target.is_pushing_canon
+		distance = target.global_position.distance_to(_agent.global_position)
+
+		covering = 0.0 if is_player else target.cover.get_cover_posture() / float(target.posture)
+
+		score = \
+			distance * coefficents.distance + \
+			covering * coefficents.covering + \
+			int(is_player) * coefficents.player + \
+			int(is_pushing_canon) * coefficents.canon + \
+			int(is_threatening) * coefficents.threatening
+
 	var target: Node3D
 
 	var coefficents: TargetSelectionCoefficient
 	var score: float
 
-	var distance: float
+	var covering: float
 	var is_player: bool
 	var is_pushing_canon: bool
-	var is_threatening: bool
-	var is_covered: bool
 
-	func compute_score() -> void:
-		score = \
-			distance * coefficents.distance + \
-			int(is_player) * coefficents.player + \
-			int(is_pushing_canon) * coefficents.canon + \
-			int(is_threatening) * coefficents.threatening + \
-			int(is_covered) * coefficents.covering
+	var distance: float
+	var is_threatening: bool
