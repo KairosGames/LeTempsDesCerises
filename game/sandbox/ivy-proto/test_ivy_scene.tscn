@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bka3ud42srojy" path="res://sandbox/textures_proto/dark/texture_04.png" id="1_htnpt"]
 [ext_resource type="Script" uid="uid://bf4s0ywyeeapt" path="res://sandbox/ivy-proto/ivy_generator.gd" id="2_r8k0i"]
 [ext_resource type="PackedScene" uid="uid://dn6c77ee5a2ta" path="res://sandbox/ivy-proto/ivy_renderer.tscn" id="3_gw2ef"]
-[ext_resource type="Script" uid="uid://ckmnrf6xobwlx" path="res://sandbox/ivy-proto/ivy_renderer.gd" id="4_7c6h7"]
+[ext_resource type="PackedScene" uid="uid://dkt8waqe74010" path="res://sandbox/ivy-proto/V2/strand_renderer_2.tscn" id="4_7c6h7"]
+[ext_resource type="Script" uid="uid://bl11f5navwn2q" path="res://sandbox/ivy-proto/TEST_GEN.gd" id="5_1fgvl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8k0i"]
 albedo_color = Color(0.48805398, 0.48805404, 0.48805404, 1)
@@ -76,12 +77,6 @@ height = 2.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vfbay"]
 radius = 1.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gw2ef"]
-transparency = 1
-vertex_color_use_as_albedo = true
-
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_7c6h7"]
 
 [node name="TestIvyScene" type="Node3D" unique_id=1988388322]
 
@@ -183,14 +178,8 @@ ivy_gen = ExtResource("3_gw2ef")
 var_angle = 360.0
 max_deepness = 3
 
-[node name="@MeshInstance3D@61244" type="MeshInstance3D" parent="IvyPoint" unique_id=1111237628 instance=ExtResource("3_gw2ef")]
-material_override = SubResource("StandardMaterial3D_gw2ef")
-mesh = SubResource("ImmediateMesh_7c6h7")
-script = ExtResource("4_7c6h7")
-points = Array[Vector3]([Vector3(0, 0, 0), Vector3(0, 0, -0.1), Vector3(0.015676295, 0, -0.19876364), Vector3(0.03675128, 0, -0.29651764), Vector3(0.06315147, 0, -0.39296985), Vector3(0.09587456, 0, -0.4874643), Vector3(0.13563456, 0, -0.5792202), Vector3(0.1815401, 0, -0.66806096), Vector3(0.23282447, 0, -0.7539092), Vector3(0.2870957, 0, -0.83790106), Vector3(0.34036306, 0, -0.92253315), Vector3(0.38945374, 0, -1.0096544), Vector3(0.43409383, 0, -1.0991377), Vector3(0.4756058, 0, -1.1901144), Vector3(0.5159417, 0, -1.2816186), Vector3(0.5587889, 0, -1.3719741), Vector3(0.60716206, 0, -1.4594958), Vector3(0.6616644, 0, -1.5433378), Vector3(0.72052985, 0, -1.6241763), Vector3(0.78165436, 0, -1.7033204), Vector3(0.844907, 0, -1.7807742), Vector3(0.9108194, 0, -1.8559777), Vector3(0.97922176, 0, -1.9289236), Vector3(1.0486131, 0, -2.0009294), Vector3(1.1162709, 0, -2.0745664), Vector3(1.1792903, 0, -2.15221), Vector3(1.2367994, 0, -2.234019), Vector3(1.2898878, 0, -2.3187635), Vector3(1.3400711, 0, -2.40526), Vector3(1.3882635, 0, -2.4928813), Vector3(1.434445, 0, -2.581579), Vector3(1.4781052, 0, -2.6715446), Vector3(1.519576, 0, -2.76254), Vector3(1.5610714, 0, -2.8535242), Vector3(1.604179, 0, -2.9437559), Vector3(1.6482482, 0, -3.0335217), Vector3(1.690726, 0, -3.1240513), Vector3(1.7285252, 0, -3.2166324), Vector3(1.759702, 0, -3.3116481), Vector3(1.7830422, 0, -3.4088862), Vector3(1.7989968, 0, -3.5076053), Vector3(1.8103951, 0, -3.6069536), Vector3(1.8201749, 0, -3.7064743), Vector3(1.8289094, 0, -3.806092), Vector3(1.8351082, 0, -3.9058998), Vector3(1.8370783, 0, -4.0058804), Vector3(1.8319905, 0, -4.105751), Vector3(1.8178197, 0, -4.204742), Vector3(1.7945746, 0, -4.302003), Vector3(1.764087, 0, -4.397242)])
-start_thickness = 0.05
-end_thickness = 0.005
-use_global_coords = false
-start_color = Color(0.56660324, 0.25176433, 0, 1)
-end_color = Color(0.56660324, 0.25176433, 0, 1)
-use_start_and_end_color = true
+[node name="IvyPoint2" type="Node3D" parent="." unique_id=1424137816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9537258, 5.082378, 0.942045)
+script = ExtResource("5_1fgvl")
+path_gen = ExtResource("4_7c6h7")
+max_deepness = 2
