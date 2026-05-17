@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://ddpkv5h57epap"]
+
+[ext_resource type="Theme" uid="uid://cxp26janux3yv" path="res://prefabs/ui/home/home_theme.tres" id="1_krot7"]
+[ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="2_u4wd2"]
+[ext_resource type="Script" uid="uid://cu1v212nu7svv" path="res://prefabs/ui/home/home_manager.gd" id="2_w18ys"]
+[ext_resource type="PackedScene" uid="uid://bqw181keq72d" path="res://scenes/grey_block_scene.tscn" id="3_reixx"]
+
+[node name="Home" type="Control" unique_id=1340749672]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_krot7")
+script = ExtResource("2_w18ys")
+main_scene = ExtResource("3_reixx")
+
+[node name="Buttons" type="VBoxContainer" parent="." unique_id=977573993]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 117.0
+offset_top = -211.0
+offset_right = 547.0
+offset_bottom = 464.0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Play" type="Button" parent="Buttons" unique_id=900796725]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
+text = "Play"
+script = ExtResource("2_u4wd2")
+
+[node name="Options" type="Button" parent="Buttons" unique_id=1495270967]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Options"
+script = ExtResource("2_u4wd2")
+
+[node name="Referecences" type="Button" parent="Buttons" unique_id=329392333]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "References
+"
+script = ExtResource("2_u4wd2")
+
+[node name="Credits" type="Button" parent="Buttons" unique_id=2037007232]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Credits
+"
+script = ExtResource("2_u4wd2")
+
+[node name="Quit" type="Button" parent="Buttons" unique_id=1075831581]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+script = ExtResource("2_u4wd2")
+
+[connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Buttons/Referecences" to="." method="_on_referecences_pressed"]
+[connection signal="pressed" from="Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]

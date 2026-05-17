@@ -168,7 +168,6 @@ var state_twn: Tween
 var recoil_twn:Tween
 var reload_twn: Tween
 
-var team: Agent.Team = Agent.Team.COMMUNARD
 
 func _ready() -> void:
 	p_inputs.gpad_crouch_pressed.connect(crouch_pressed_from_gpad)
@@ -660,11 +659,11 @@ func set_ads_sway_freq(delta: float) -> void:
 	if ads_timer >= time_to_ads:
 		var fov_diff: float = ads_fov - perfect_fov
 		var fov_target: float = ads_fov - (fov_diff * (1 - concentration_sample))
-		player_camera.fov = lerp(player_camera.fov, fov_target, dt_lerp_t(10.0, delta))
+		player_camera.fov = lerp(player_camera.fov, fov_target, dt_lerp(10.0, delta))
 
 
-func dt_lerp_t(speed: float, delta: float) -> float:
-	return 1.0 - exp(-speed * delta)
+func dt_lerp(speed: float, delta: float) -> float:
+	return Tools.dt_lerp(speed, delta)
 
 
 func apply_ads_sway() -> void:
@@ -692,7 +691,7 @@ func set_weapon_lag_parameters(delta: float) -> void:
 	var root_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, weapon_lag_root.global_rotation.y))
 	var targ_rot_dist: float = abs(angle_difference(weapon_container.global_rotation.y, lag_target.global_rotation.y))
 	var targ_rot_speed: float = wpn_rot_lag_close_speed if (root_rot_dist > targ_rot_dist) else wpn_rot_lag_away_speed
-	applied_rot_lag_speed = lerp(applied_rot_lag_speed, targ_rot_speed, dt_lerp_t(10.0, delta))
+	applied_rot_lag_speed = lerp(applied_rot_lag_speed, targ_rot_speed, dt_lerp(10.0, delta))
 
 
 func apply_weapon_pos_lag(delta: float) -> void:
@@ -713,10 +712,10 @@ func apply_weapon_pos_lag(delta: float) -> void:
 		var new_y: Vector3 = f_targ + (dir_y * max_y)
 		lag_target.global_position.y = new_y.y
 
-	lag_target.global_position = lag_target.global_position.lerp(f_targ, dt_lerp_t(wpn_pos_lag_close_speed, delta))
+	lag_target.global_position = lag_target.global_position.lerp(f_targ, dt_lerp(wpn_pos_lag_close_speed, delta))
 	var s_targ: Vector3 = weapon_container.to_local(lag_target.global_position)
 	var targ = weapon_lag_root_base_pos + s_targ
-	weapon_lag_root.position = weapon_lag_root.position.lerp(targ, dt_lerp_t(applied_pos_lag_speed, delta))
+	weapon_lag_root.position = weapon_lag_root.position.lerp(targ, dt_lerp(applied_pos_lag_speed, delta))
 
 
 func apply_weapon_pitch_yaw_lag(delta: float) -> void:
@@ -735,17 +734,17 @@ func apply_weapon_pitch_yaw_lag(delta: float) -> void:
 	lag_target.global_rotation.y = f_targ.y + y_lag
 	lag_target.global_rotation.x = f_targ.x + x_lag
 
-	lag_target.global_rotation = lerp_rot(lag_target.global_rotation,f_targ, dt_lerp_t(wpn_rot_lag_close_speed, delta))
+	lag_target.global_rotation = lerp_rot(lag_target.global_rotation,f_targ, dt_lerp(wpn_rot_lag_close_speed, delta))
 	var parent_q: Quaternion = weapon_container.global_basis.get_rotation_quaternion()
 	var target_q: Quaternion = lag_target.global_basis.get_rotation_quaternion()
 	var local_q: Quaternion = parent_q.inverse() * target_q
 	var s_targ: Vector3 = local_q.get_euler()
-	weapon_lag_root.rotation = lerp_rot(weapon_lag_root.rotation, s_targ, dt_lerp_t(applied_rot_lag_speed, delta))
+	weapon_lag_root.rotation = lerp_rot(weapon_lag_root.rotation, s_targ, dt_lerp(applied_rot_lag_speed, delta))
 
 
 func apply_weapon_roll_lag(delta: float) -> void:
 	if is_aiming:
-		weapon_lag_root.rotation.z = lerp_angle(weapon_lag_root.rotation.z, 0.0, dt_lerp_t(wpn_pos_lag_away_speed, delta))
+		weapon_lag_root.rotation.z = lerp_angle(weapon_lag_root.rotation.z, 0.0, dt_lerp(wpn_pos_lag_away_speed, delta))
 		return
 	var ratio_move: float = -local_velocity.x / (stand_speed * side_speed_ratio)
 	var max_yaw_speed: float = deg_to_rad(180.0)
@@ -753,7 +752,7 @@ func apply_weapon_roll_lag(delta: float) -> void:
 	var target_move: float = deg_to_rad(max_wpn_roll_lag_from_move_deg) * ratio_move
 	var target_view: float = deg_to_rad(max_wpn_roll_lag_from_view_deg) * ratio_view
 	var target_z: float = target_view + (target_move / (2.0 if is_running else 1.0))
-	var targ: float = lerp_angle(weapon_lag_root.rotation.z, target_z, dt_lerp_t(wpn_pos_lag_away_speed, delta))
+	var targ: float = lerp_angle(weapon_lag_root.rotation.z, target_z, dt_lerp(wpn_pos_lag_away_speed, delta))
 	weapon_lag_root.rotation.z =  targ
 
 
@@ -902,6 +901,7 @@ func reset_player_controller() -> void:
 	is_aiming = false
 	is_running = false
 	is_reloading = false
+	is_changing_state = false
 	synchronise_after_pop()
 
 
