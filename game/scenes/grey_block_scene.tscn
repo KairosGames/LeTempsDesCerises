@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bqw181keq72d"]
 
+[ext_resource type="Script" uid="uid://dcg7ewl2ahw4g" path="res://scripts/effect_manager.gd" id="2_124fr"]
+[ext_resource type="PackedScene" uid="uid://cbwpfvcia7dju" path="res://prefabs/vfx/vfx_player_shot.tscn" id="3_3ivn4"]
 [ext_resource type="PackedScene" uid="uid://cowhe7krsng37" path="res://scenes/game_design_scene.tscn" id="3_vgclv"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="7_vj5vi"]
 [ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://scripts/game_manager.gd" id="10_mbxdm"]
@@ -26,8 +28,15 @@ first_barricade = NodePath("../GameDesignScene/Environment/NavigationRegion3D/Le
 canon = NodePath("../GameDesignScene/Ennemies/Path3DCanon/Canon")
 metadata/_custom_type_script = "uid://bho08aptyf7f"
 
-[node name="Player" parent="." unique_id=1368497348 instance=ExtResource("7_vj5vi")]
+[node name="EffectManager" type="Node" parent="." unique_id=989998865]
+script = ExtResource("2_124fr")
+effects_dic = Dictionary[int, PackedScene]({
+0: ExtResource("3_3ivn4")
+})
+
+[node name="Player" parent="." unique_id=1368497348 node_paths=PackedStringArray("eff_manager") instance=ExtResource("7_vj5vi")]
 transform = Transform3D(-0.38651785, 0, 0.9222819, 0, 1, 0, -0.9222819, 0, -0.38651785, -12.283444, 0.99106574, -1.4737027)
+eff_manager = NodePath("../EffectManager")
 
 [node name="Lightning" type="Node3D" parent="." unique_id=1080471342]
 

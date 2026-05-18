@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://cbwpfvcia7dju"]
+[gd_scene format=3 uid="uid://ckpkymdprs6dq"]
 
-[ext_resource type="Material" uid="uid://rsa8wfwgptvu" path="res://materials/materials_vfx/m_vfx_fire_muzzle.tres" id="1_enct5"]
-[ext_resource type="Script" uid="uid://ctjtqdteggxy7" path="res://scripts/particles_player.gd" id="1_ge61n"]
-[ext_resource type="Material" uid="uid://cvwjj1evahaj0" path="res://materials/materials_vfx/m_vfx_fire_fog.tres" id="2_2jrkm"]
+[ext_resource type="Script" uid="uid://ctjtqdteggxy7" path="res://scripts/particles_player.gd" id="1_53x7b"]
+[ext_resource type="Material" uid="uid://cvwjj1evahaj0" path="res://materials/materials_vfx/m_vfx_fire_fog.tres" id="2_6uud1"]
+[ext_resource type="Material" uid="uid://rsa8wfwgptvu" path="res://materials/materials_vfx/m_vfx_fire_muzzle.tres" id="3_woc4a"]
 
 [sub_resource type="Curve" id="Curve_hxrhv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.008764267), -0.65062976, 0.0, 0, 0]
@@ -266,61 +266,19 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_ee2jh"]
-resource_name = "anim_weapon_fire_other_2"
-length = 9.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("vfx_ps_player_fire_muzzle:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.1999998),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("vfx_ps_player_fire_main_fog:emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 8.033334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("vfx_ps_fog_add_layer:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ee2jh"]
 _data = {
 &"RESET": SubResource("Animation_enct5"),
-&"anim_vfx_weapon_fire_other": SubResource("Animation_2jrkm"),
-&"anim_vfx_weapon_fire_self": SubResource("Animation_ee2jh")
+&"anim_vfx_weapon_fire_other": SubResource("Animation_2jrkm")
 }
 
-[node name="vfx_weapon_fire" type="Node3D" unique_id=7534225 node_paths=PackedStringArray("animationPlayer")]
-script = ExtResource("1_ge61n")
+[node name="vfx_pnj_shot" type="Node3D" unique_id=7534225 node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("1_53x7b")
 worksWithAnimation = true
 animationPlayer = NodePath("AnimationPlayer")
 
 [node name="vfx_ps_player_fire_main_fog" type="GPUParticles3D" parent="." unique_id=27388485]
-material_override = ExtResource("2_2jrkm")
+material_override = ExtResource("2_6uud1")
 emitting = false
 amount = 3
 sub_emitter = NodePath("../vfx_ps_player_fire_main_fog_sub")
@@ -331,7 +289,7 @@ process_material = SubResource("ParticleProcessMaterial_52th0")
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
 
 [node name="vfx_ps_player_fire_main_fog_sub" type="GPUParticles3D" parent="." unique_id=1001879862]
-material_override = ExtResource("2_2jrkm")
+material_override = ExtResource("2_6uud1")
 amount = 3
 lifetime = 8.0
 explosiveness = 1.0
@@ -340,7 +298,7 @@ process_material = SubResource("ParticleProcessMaterial_1bvr6")
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
 
 [node name="vfx_ps_player_fire_muzzle" type="GPUParticles3D" parent="." unique_id=1777595371]
-material_override = ExtResource("1_enct5")
+material_override = ExtResource("3_woc4a")
 emitting = false
 amount = 1
 one_shot = true
@@ -352,7 +310,7 @@ draw_pass_2 = SubResource("QuadMesh_a43y4")
 draw_pass_3 = SubResource("QuadMesh_o1wrc")
 
 [node name="vfx_ps_fog_add_layer" type="GPUParticles3D" parent="." unique_id=1976703905]
-material_override = ExtResource("2_2jrkm")
+material_override = ExtResource("2_6uud1")
 emitting = false
 amount = 2
 lifetime = 3.0
@@ -364,7 +322,7 @@ draw_pass_1 = SubResource("QuadMesh_hxrhv")
 
 [node name="GPUParticles3D3" type="GPUParticles3D" parent="." unique_id=78775754]
 visible = false
-material_override = ExtResource("2_2jrkm")
+material_override = ExtResource("2_6uud1")
 emitting = false
 amount = 2
 lifetime = 3.0

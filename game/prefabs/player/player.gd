@@ -20,6 +20,9 @@ signal died
 @onready var high_collider: CollisionShape3D = %HighDynamicCollider
 @onready var low_collider: CollisionShape3D = %LowDynamicCollider
 
+@export_category("References")
+@export var eff_manager: EffectManager
+
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
 @export var is_run_toggle_km: bool = false
@@ -779,7 +782,13 @@ func can_use_shoot() -> bool:
 
 func play_shoot_effects() -> void:
 	if is_aiming: ads_timer += 10.0
+	play_shoot_vfx()
 	play_recoil_effect()
+
+
+func play_shoot_vfx() -> void:
+	eff_manager.play_effect(EffectManager.EffectType.PlayerShoot, weapon_ray_cast.global_position)
+	pass
 
 
 func play_recoil_effect() -> void:
