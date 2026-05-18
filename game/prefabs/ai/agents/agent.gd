@@ -3,6 +3,7 @@ class_name Agent extends CharacterBody3D
 @warning_ignore_start("unused_signal")
 signal shoot
 signal died(agent: Agent)
+signal posture_changed(posture: Posture)
 #signal reload_start
 #signal reload_end
 @warning_ignore_restore("unused_signal")
@@ -22,8 +23,9 @@ var is_weapon_loaded: bool = true
 var target: Node3D = null
 var target_point: Node3D = null
 var threats: Array[Agent] = []
-var posture: Posture = Posture.STANDING
 var is_pushing_canon: bool = false
+var posture: Posture = Posture.STANDING:
+	set(value): posture = value; posture_changed.emit(posture)
 var canon_slot: Marker3D = null:
 	set(value):
 		canon_slot = value

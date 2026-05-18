@@ -12,8 +12,9 @@
 [ext_resource type="Script" uid="uid://cvdvij20sdtj5" path="res://prefabs/ai/behaviours/actions/reload.gd" id="5_x24sq"]
 [ext_resource type="Script" uid="uid://bwfed5132hftm" path="res://prefabs/ai/behaviours/actions/find_next_cover.gd" id="6_u4ja4"]
 [ext_resource type="Script" uid="uid://c23rho2v0iamy" path="res://prefabs/ai/behaviours/actions/move_to_cover.gd" id="7_uqrrd"]
-[ext_resource type="Script" uid="uid://ba1r4kyokrsjq" path="res://prefabs/ai/behaviours/actions/change_cover.gd" id="9_0hyxe"]
 [ext_resource type="Script" uid="uid://bvv3uwi6i8ghk" path="res://prefabs/ai/behaviours/actions/wait.gd" id="13_x24sq"]
+[ext_resource type="Script" uid="uid://bqa4rx6h1jbh1" path="res://prefabs/ai/behaviours/actions/change_posture.gd" id="15_jjw1a"]
+[ext_resource type="Script" uid="uid://cbiatfaeg2o3p" path="res://prefabs/ai/behaviours/actions/change_cover_posture.gd" id="16_vvprg"]
 
 [sub_resource type="Resource" id="Resource_uqrrd"]
 script = ExtResource("4_u4ja4")
@@ -45,6 +46,11 @@ metadata/_custom_type_script = "uid://8hn4kne15ac5"
 script = ExtResource("4_oh8aj")
 metadata/_custom_type_script = "uid://57xh8fn2vkbo"
 
+[node name="GetReloadPosture" type="Node" parent="ShootTarget/LoadWeapon" unique_id=757822056]
+script = ExtResource("16_vvprg")
+type = 3
+metadata/_custom_type_script = "uid://cbiatfaeg2o3p"
+
 [node name="Reload" type="Node" parent="ShootTarget/LoadWeapon" unique_id=1630386082]
 script = ExtResource("5_x24sq")
 metadata/_custom_type_script = "uid://cvdvij20sdtj5"
@@ -66,14 +72,10 @@ metadata/_custom_type_script = "uid://8hn4kne15ac5"
 script = ExtResource("1_x0bws")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
-[node name="GetOutCover" type="Node" parent="ShootTarget/Repeater/Find or Wait/FindTarget or Wait" unique_id=961137992]
-script = ExtResource("9_0hyxe")
-metadata/_custom_type_script = "uid://ba1r4kyokrsjq"
-
-[node name="Wait" type="Node" parent="ShootTarget/Repeater/Find or Wait/FindTarget or Wait" unique_id=1728271045]
-script = ExtResource("13_x24sq")
-duration = 4.0
-metadata/_custom_type_script = "uid://bvv3uwi6i8ghk"
+[node name="GetPeekPosture" type="Node" parent="ShootTarget/Repeater/Find or Wait/FindTarget or Wait" unique_id=771714465]
+script = ExtResource("16_vvprg")
+type = 1
+metadata/_custom_type_script = "uid://cbiatfaeg2o3p"
 
 [node name="FindTarget" type="Node" parent="ShootTarget/Repeater/Find or Wait/FindTarget or Wait" unique_id=1046107259]
 script = ExtResource("4_t2guh")
@@ -86,10 +88,10 @@ metadata/_custom_type_script = "uid://d17vwjh5pnlnd"
 script = ExtResource("1_x0bws")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
-[node name="GetInCover" type="Node" parent="ShootTarget/Repeater/Find or Wait/Wait" unique_id=1391076959]
-script = ExtResource("9_0hyxe")
-is_covered = true
-metadata/_custom_type_script = "uid://ba1r4kyokrsjq"
+[node name="GetCoverPosture" type="Node" parent="ShootTarget/Repeater/Find or Wait/Wait" unique_id=316051808]
+script = ExtResource("16_vvprg")
+type = 2
+metadata/_custom_type_script = "uid://cbiatfaeg2o3p"
 
 [node name="Wait" type="Node" parent="ShootTarget/Repeater/Find or Wait/Wait" unique_id=1995188101]
 script = ExtResource("13_x24sq")
@@ -97,7 +99,11 @@ duration = 4.0
 result = 1
 metadata/_custom_type_script = "uid://bvv3uwi6i8ghk"
 
-[node name="Wait" type="Node" parent="ShootTarget" unique_id=85657866]
+[node name="GetShootPosture" type="Node" parent="ShootTarget" unique_id=1176939589]
+script = ExtResource("16_vvprg")
+metadata/_custom_type_script = "uid://cbiatfaeg2o3p"
+
+[node name="Aiming" type="Node" parent="ShootTarget" unique_id=85657866]
 script = ExtResource("13_x24sq")
 duration = 2.0
 metadata/_custom_type_script = "uid://bvv3uwi6i8ghk"
@@ -110,6 +116,11 @@ metadata/_custom_type_script = "uid://bmwadp6yooef0"
 script = ExtResource("6_u4ja4")
 metadata/_custom_type_script = "uid://bwfed5132hftm"
 
+[node name="GetMovePosture" type="Node" parent="ShootTarget" unique_id=687875446]
+script = ExtResource("15_jjw1a")
+posture = 3
+metadata/_custom_type_script = "uid://bqa4rx6h1jbh1"
+
 [node name="MoveToCover" type="Node" parent="ShootTarget" unique_id=790279516]
 script = ExtResource("7_uqrrd")
 metadata/_custom_type_script = "uid://c23rho2v0iamy"
@@ -118,13 +129,29 @@ metadata/_custom_type_script = "uid://c23rho2v0iamy"
 script = ExtResource("1_x0bws")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 
+[node name="GetPeekPosture" type="Node" parent="MoveFoward" unique_id=910484771]
+script = ExtResource("16_vvprg")
+type = 1
+duration = 1.0
+metadata/_custom_type_script = "uid://cbiatfaeg2o3p"
+
 [node name="FindNextCover" type="Node" parent="MoveFoward" unique_id=1013176243]
 script = ExtResource("6_u4ja4")
 metadata/_custom_type_script = "uid://bwfed5132hftm"
 
+[node name="GetMovePosture" type="Node" parent="MoveFoward" unique_id=944103351]
+script = ExtResource("15_jjw1a")
+posture = 3
+metadata/_custom_type_script = "uid://bqa4rx6h1jbh1"
+
 [node name="MoveToCover" type="Node" parent="MoveFoward" unique_id=103882024]
 script = ExtResource("7_uqrrd")
 metadata/_custom_type_script = "uid://c23rho2v0iamy"
+
+[node name="GetCoverPosture" type="Node" parent="MoveFoward" unique_id=263323319]
+script = ExtResource("16_vvprg")
+type = 2
+metadata/_custom_type_script = "uid://cbiatfaeg2o3p"
 
 [node name="Wait" type="Node" parent="MoveFoward" unique_id=731333807]
 script = ExtResource("13_x24sq")
