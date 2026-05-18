@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://dquel4m5ig2n3"]
 
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="1_kvfpl"]
-[ext_resource type="PackedScene" uid="uid://ba2biam3gyy5l" path="res://sources/meshes/barricade_meshes/f2s_barricade_asset.glb" id="2_x2e1e"]
+[ext_resource type="PackedScene" uid="uid://dfda4jtu8xtyb" path="res://sources/meshes/barricade_meshes/f2s_barricade_asset.glb" id="2_x2e1e"]
 [ext_resource type="PackedScene" uid="uid://bp8x0y3cbrgxr" path="res://sandbox/barricades_proto/module_F2s.tscn" id="3_x2e1e"]
+[ext_resource type="PackedScene" uid="uid://cjajam5hx8i3e" path="res://sources/meshes/barricade_meshes/s2c_barricade_asset.glb" id="4_bkb4l"]
+[ext_resource type="PackedScene" uid="uid://bvwk5u3t7rdnv" path="res://sources/meshes/barricade_meshes/s2c_damaged_asset.glb" id="5_edsly"]
+[ext_resource type="PackedScene" uid="uid://cnbka50m71ee2" path="res://sources/meshes/barricade_meshes/f2s_damaged_asset.glb" id="6_i22a7"]
+[ext_resource type="PackedScene" uid="uid://b88tflyqd0cwg" path="res://sources/meshes/barricade_meshes/s2s_barricade_asset.glb" id="7_fh8m3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kvfpl"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -42,8 +46,23 @@ mesh = SubResource("PlaneMesh_bkb4l")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=314111942]
 shape = SubResource("BoxShape3D_edsly")
 
-[node name="f2s_barricade_asset2" parent="." unique_id=1739208967 instance=ExtResource("2_x2e1e")]
+[node name="f2s_barricade_asset2" parent="." unique_id=764129457 instance=ExtResource("2_x2e1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19768047, 0.00250113, 3.0967574)
 
 [node name="Module_f2s" parent="." unique_id=649058329 instance=ExtResource("3_x2e1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
+
+[node name="f2s_barricade_asset3" parent="." unique_id=2020244081 instance=ExtResource("2_x2e1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.686844, 0.0025013685, 0.56975734)
+
+[node name="s2c_barricade_asset2" parent="." unique_id=1681166902 instance=ExtResource("4_bkb4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9501457, 0, 0.7666216)
+
+[node name="s2c_damaged_asset2" parent="." unique_id=844888613 instance=ExtResource("5_edsly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.760215, 0.0025072098, -2.1350546)
+
+[node name="f2s_damaged_asset2" parent="." unique_id=111683775 instance=ExtResource("6_i22a7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6696584, 0.0025006256, -3.675399)
+
+[node name="s2s_barricade_asset2" parent="." unique_id=773493677 instance=ExtResource("7_fh8m3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.717486, 0.20250511, -5.172849)
