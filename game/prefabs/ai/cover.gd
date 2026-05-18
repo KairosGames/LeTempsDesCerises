@@ -215,6 +215,14 @@ func _check_player_overlapping() -> void:
 	for body in _area.get_overlapping_bodies():
 		if body is Player: holder = body; break
 
+func get_posture_for(action: Action) -> Agent.Posture:
+	match action:
+			Action.SHOOT : return get_shoot_posture()
+			Action.COVER : return get_cover_posture()
+			Action.RELOAD: return get_reload_posture()
+			Action.PEEK  : return get_shoot_posture()
+			_: return Agent.Posture.NONE
+	
 func get_shoot_posture() -> Agent.Posture:
 	match height:
 		Height.HIGH: return Agent.Posture.STANDING
@@ -244,3 +252,4 @@ func compute_covering_of(agent: Agent) -> float:
 	return 0
 
 enum Height { NONE, LOW, MEDIUM, HIGH }
+enum Action { SHOOT, PEEK, COVER, RELOAD }

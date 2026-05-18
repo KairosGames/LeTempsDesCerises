@@ -8,6 +8,8 @@ var _has_started: bool = false
 var _is_transitioning: bool = false
 var _timer: Timer 
 
+func get_posture(_agent: Agent) -> Agent.Posture: return posture
+
 func _ready() -> void:
 	_timer = Timer.new()
 	_timer.autostart = false
@@ -22,7 +24,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			return SUCCESS
 	else:
 		_is_transitioning = true
-		(actor as Agent).posture = posture
+		(actor as Agent).posture = get_posture(actor)
 		_timer.start(duration)
 		return RUNNING
 
