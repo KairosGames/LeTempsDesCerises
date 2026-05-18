@@ -3,11 +3,11 @@ extends Node
 var player : Node3D
 var allies : Array[Node3D]
 var enemies : Array[Node3D]
-var text : Array[String] = ["Mort à la canaille !", "Phillipe !", "Saignez-les !"]
+var allowed_switch : Array[String] = ["Zone1", "BarricadeBien"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	barks_loop()
+	pass
 
 func register(target : Node3D, type : String):
 	if type == "ally":
@@ -31,7 +31,9 @@ func closest():
 		print(closest.global_position.distance_to(player.global_position))
 
 func barks_loop():
-	print("bark")
-	await get_tree().create_timer(5).timeout
-	enemies.pick_random().bark(text.pick_random())
+	await get_tree().create_timer(0.5).timeout
+	for i in enemies :
+		if is_instance_valid(i) and i.is_barking == false:
+			i.is_barking = true
+			i.trigg_bark()
 	barks_loop()

@@ -19,6 +19,7 @@ namespace AK
         static const AkUniqueID BULLET_HIT = 384143791U;
         static const AkUniqueID CANNON_SHOOT = 2469499398U;
         static const AkUniqueID DEAFENING_RECOVER = 3687575925U;
+        static const AkUniqueID ENEMY_BARK = 2802320212U;
         static const AkUniqueID ENEMY_BULLET_MISS = 3787232089U;
         static const AkUniqueID ENEMY_SHOOT = 1050776119U;
         static const AkUniqueID ENEMY_STEPS = 3114531655U;
