@@ -23,6 +23,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			_has_started = false
 			return SUCCESS
 	else:
+		_has_started = true
 		_is_transitioning = true
 		(actor as Agent).posture = get_posture(actor)
 		_timer.start(duration)
