@@ -2,7 +2,7 @@
 class_name ChangePosture extends ActionLeaf
 
 @export var posture: Agent.Posture
-@export var duration: float = 2
+@export var duration: float = 0.5
 
 var _has_started: bool = false
 var _is_transitioning: bool = false
@@ -13,7 +13,7 @@ func get_posture(_agent: Agent) -> Agent.Posture: return posture
 func _ready() -> void:
 	_timer = Timer.new()
 	_timer.autostart = false
-	_timer.timeout.connect(_on_animation_finished, CONNECT_ONE_SHOT)
+	_timer.timeout.connect(_on_animation_finished)
 	add_child(_timer)
 
 func tick(actor: Node, _blackboard: Blackboard) -> int:
