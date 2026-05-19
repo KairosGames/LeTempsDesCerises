@@ -21,12 +21,17 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		if _is_transitioning: return RUNNING
 		else: 
 			_has_started = false
+			_on_finished(actor)
 			return SUCCESS
 	else:
 		_has_started = true
 		_is_transitioning = true
 		(actor as Agent).posture = get_posture(actor)
 		_timer.start(duration)
+		_on_start(actor)
 		return RUNNING
 
 func _on_animation_finished() -> void: _is_transitioning = false
+
+func _on_start(_agent: Agent) -> void: pass
+func _on_finished(_agent: Agent) -> void: pass

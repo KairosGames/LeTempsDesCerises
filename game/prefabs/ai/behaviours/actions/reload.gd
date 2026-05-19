@@ -15,6 +15,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	if not _is_reloading:
 		_duration = randf_range(duration - duration_random, duration + duration_random)
 		_is_reloading = true
+		agent.is_reloading = true
 		_reloading_start_time = Time.get_ticks_msec()
 		# FIXME
 		# agent.is_covered = true
@@ -26,6 +27,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	if elasped_timed < _duration: return RUNNING
 
 	_is_reloading = false
+	agent.is_reloading = false
 
 	agent.is_weapon_loaded = true
 

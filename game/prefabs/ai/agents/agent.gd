@@ -20,6 +20,7 @@ var has_enemy_in_range: bool = false
 var can_die: bool = true
 var is_alive: bool = true
 var is_weapon_loaded: bool = true
+var is_reloading = false
 var target: Node3D = null
 var target_point: Node3D = null
 var threats: Array
@@ -69,6 +70,12 @@ func shoot_anim() -> void:
 	animation_tree["parameters/Move & Shoot/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	shoot.emit()
 
+func look(target: Vector3, duration: float = 1.0):
+	#var direction: Vector3 = global_position.direction_to(target)
+	#var angle: float = atan2(direction.x, direction.z)
+	var target_angle: float = global_position.angle_to(target)
+	create_tween().tween_method(func(v): rotation.y = lerp_angle(rotation.y, target_angle, v), 0.0, 1.0, 0.25)
+	
 func die() -> void:
 	if not can_die or not is_alive: return
 	is_alive = false
