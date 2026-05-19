@@ -83,6 +83,8 @@ signal died
 
 @export_category("Weapon pull back settings")
 @export var pull_back_timer: float = 0.2
+@export var pull_back_default_dist: float = 0.9
+@export var pull_back_reload_dist: float = 0.38
 
 @export_category("Recoil settings")
 @export var recoil_strength: float = 7.0
@@ -260,6 +262,7 @@ func set_context(delta: float) -> void:
 	if Input.is_action_just_released("run"): wait_run_release = false
 	if Input.is_action_just_released("aim"): wait_aim_release = false
 	if not is_alive: can_play = false
+	pull_back_cast.target_position.z = pull_back_reload_dist if is_reloading else pull_back_default_dist
 
 
 func set_input_context() -> void:
