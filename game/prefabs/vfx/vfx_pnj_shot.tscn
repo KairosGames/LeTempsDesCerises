@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://ckpkymdprs6dq"]
 
-[ext_resource type="Script" uid="uid://ctjtqdteggxy7" path="res://scripts/particles_player.gd" id="1_53x7b"]
+[ext_resource type="Script" uid="uid://ctjtqdteggxy7" path="res://prefabs/vfx/particles_player.gd" id="1_53x7b"]
 [ext_resource type="Material" uid="uid://cvwjj1evahaj0" path="res://materials/materials_vfx/m_vfx_fire_fog.tres" id="2_6uud1"]
+[ext_resource type="Script" uid="uid://ddwci23um2mq8" path="res://prefabs/vfx/cam_layer_handler.gd" id="2_woc4a"]
 [ext_resource type="Material" uid="uid://rsa8wfwgptvu" path="res://materials/materials_vfx/m_vfx_fire_muzzle.tres" id="3_woc4a"]
 
 [sub_resource type="Curve" id="Curve_hxrhv"]
@@ -228,7 +229,6 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_2jrkm"]
 resource_name = "anim_weapon_fire_self"
 length = 9.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -265,6 +265,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"free_animation"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ee2jh"]
 _data = {
@@ -277,6 +291,10 @@ script = ExtResource("1_53x7b")
 worksWithAnimation = true
 animationPlayer = NodePath("AnimationPlayer")
 
+[node name="CameraLayerHandler" type="Node3D" parent="." unique_id=950186064 node_paths=PackedStringArray("gpu_particles")]
+script = ExtResource("2_woc4a")
+gpu_particles = [NodePath("../vfx_ps_player_fire_main_fog"), NodePath("../vfx_ps_player_fire_main_fog_sub"), NodePath("../vfx_ps_player_fire_muzzle"), NodePath("../vfx_ps_fog_add_layer"), NodePath("../GPUParticles3D3")]
+
 [node name="vfx_ps_player_fire_main_fog" type="GPUParticles3D" parent="." unique_id=27388485]
 material_override = ExtResource("2_6uud1")
 emitting = false
@@ -284,15 +302,18 @@ amount = 3
 sub_emitter = NodePath("../vfx_ps_player_fire_main_fog_sub")
 one_shot = true
 explosiveness = 1.0
+local_coords = true
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_52th0")
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
 
 [node name="vfx_ps_player_fire_main_fog_sub" type="GPUParticles3D" parent="." unique_id=1001879862]
 material_override = ExtResource("2_6uud1")
+emitting = false
 amount = 3
 lifetime = 8.0
 explosiveness = 1.0
+local_coords = true
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_1bvr6")
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
@@ -303,6 +324,7 @@ emitting = false
 amount = 1
 one_shot = true
 explosiveness = 1.0
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_m3isd")
 draw_passes = 3
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
@@ -316,6 +338,7 @@ amount = 2
 lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
+local_coords = true
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_dig0m")
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
@@ -328,10 +351,10 @@ amount = 2
 lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
+local_coords = true
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_dag3l")
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1137087610]
 libraries/ = SubResource("AnimationLibrary_ee2jh")
-autoplay = &"anim_vfx_weapon_fire_other"

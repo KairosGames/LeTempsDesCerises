@@ -20,9 +20,6 @@ signal died
 @onready var high_collider: CollisionShape3D = %HighDynamicCollider
 @onready var low_collider: CollisionShape3D = %LowDynamicCollider
 
-@export_category("References")
-@export var eff_manager: EffectManager
-
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
 @export var is_run_toggle_km: bool = false
@@ -171,8 +168,14 @@ var state_twn: Tween
 var recoil_twn:Tween
 var reload_twn: Tween
 
+static var instance: Player:
+	set(value):
+		if not instance: instance = value
+		else: push_error("MORE THAN ONE PLAYER IN SCENE")
+
 
 func _ready() -> void:
+	instance = self
 	p_inputs.gpad_crouch_pressed.connect(crouch_pressed_from_gpad)
 	p_inputs.gpad_crouch_released.connect(crouch_released_from_gpad)
 	p_inputs.gpad_ask_prone.connect(prone_from_gpad)
@@ -787,8 +790,13 @@ func play_shoot_effects() -> void:
 
 
 func play_shoot_vfx() -> void:
-	eff_manager.play_effect(EffectManager.EffectType.PlayerShoot, weapon_ray_cast.global_position)
-	pass
+	if not EffectsManager.instance:
+		printerr("EFFECT MANAGER NOT IN SCENE !")
+		return
+	var eff: EffectsManager.EffectType = EffectsManager.EffectType.PlayerShoot
+	var pos: Vector3 = weapon_ray_cast.global_position
+	var rot: Vector3 = weapon_ray_cast.global_rotation
+	EffectsManager.instance.play_effect(eff, pos, rot)
 
 
 func play_recoil_effect() -> void:

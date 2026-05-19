@@ -38,7 +38,7 @@ func get_max_lifetime() -> float:
 
 
 func play_animation() -> void:
-	animationPlayer.play(animationPlayer.get_animation_list()[0])
+	animationPlayer.play(animationPlayer.get_animation_list()[1])
 	is_free = false
 
 

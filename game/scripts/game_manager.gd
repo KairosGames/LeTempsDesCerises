@@ -9,8 +9,14 @@ static var active_fight_area: FightArea
 
 var step: int = 0
 
+static var instance: GameManager:
+	set(value):
+		if not instance: instance = value
+		else: push_error("MORE THAN ONE GAME_MANAGER IN SCENE")
+
 
 func _ready() -> void:
+	instance = self
 	if canon: canon.shoot.connect(handle_canon_shoot)
 
 
