@@ -17,8 +17,8 @@ func get_targets(team : Agent.Team) -> Array[Node]:
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var raycast: RayCast3D = agent.shoot_raycast
-
-	var targets_data: Array = get_targets(agent.team).filter(func(n): is_instance_valid(n)).map(
+	
+	var targets_data: Array = get_targets(agent.team).map(
 		func(target: Node3D) -> TargetData: return TargetData.new(target, agent)
 	)
 
@@ -56,7 +56,7 @@ static func best_score(a: TargetData, b: TargetData) -> bool: return a.score > b
 class TargetData:
 
 	func _init(_target: Node3D, _agent: Agent) -> void:
-		target = target
+		target = _target
 
 		is_player = target is Player
 		is_threatening = _agent.threats.has(target)
