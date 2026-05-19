@@ -19,6 +19,10 @@ signal died
 @onready var weapon_ray_cast: RayCast3D = %WeaponRayCast
 @onready var high_collider: CollisionShape3D = %HighDynamicCollider
 @onready var low_collider: CollisionShape3D = %LowDynamicCollider
+@onready var sub_wpn_container: Node3D = %SubWeaponContainer
+@onready var pull_back_cast: RayCast3D = %PullBackCast
+@onready var pull_back_marker_right: Marker3D = %RightPullBackPosture
+@onready var pull_back_marker_left: Marker3D = %LefttPullBackPosture
 
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
@@ -36,7 +40,7 @@ signal died
 
 @export_category("View settings")
 @export var v_clamp_deg: Vector2 = Vector2(-70.0, 85.0)
-@export var v_clamp_prone: Vector2 = Vector2(-45.0, 45.0)
+@export var v_clamp_prone: Vector2 = Vector2(-30.0, 20.0)
 @export_range(0.01, 1.0, 0.01) var ads_speed_view_reduc: float = 0.4
 @export_range(0.1, 1.0, 0.01) var prone_speed_view_reduc: float = 0.3
 
@@ -77,6 +81,9 @@ signal died
 @export var max_wpn_roll_lag_from_move_deg: float = 10.0
 @export var max_wpn_roll_lag_from_view_deg: float = 6.0
 
+@export_category("Weapon pull back settings")
+@export var pull_back_timer: float = 0.2
+
 @export_category("Recoil settings")
 @export var recoil_strength: float = 7.0
 @export var recoil_time: float = 0.1
@@ -109,8 +116,9 @@ signal died
 @export_range(0.01, 0.5, 0.01) var brake_time: float = 0.1
 @export_range(0.01, 1.0, 0.001) var aim_smooth_strength: float = 0.05
 
-enum Posture {STAND, CROUCH, PRONE}
+enum Posture { STAND, CROUCH, PRONE }
 var curr_posture: Posture = Posture.STAND
+var is_changing_state: bool = false
 var was_it_just_prone_gpad: bool
 
 var high_capsule_shape: CapsuleShape3D
@@ -127,13 +135,13 @@ var stop_run: bool = false
 var is_moving_side: bool = false
 var is_aiming: bool = false
 var is_running: bool = false
-var is_changing_state: bool = false
 var wait_aim_release: bool = false
 var wait_run_release: bool = false
 
 var can_shoot: bool = true
 var is_weapon_loaded: bool = true
 var is_reloading: bool = false
+var is_pulling_back: bool = false
 var is_reload_interruped: bool = false
 var is_alive: bool = true
 var can_play: bool = true
@@ -167,6 +175,8 @@ var cam_rot_aim_twn: Tween
 var state_twn: Tween
 var recoil_twn:Tween
 var reload_twn: Tween
+var pull_back_pos_twn: Tween
+var pull_back_rot_twn: Tween
 
 static var instance: Player:
 	set(value):
@@ -299,6 +309,7 @@ func capture_aim_state() -> void:
 
 func can_aim() -> bool:
 	if not has_weapon: return false
+	if is_pulling_back and not is_running: return false
 	if is_reloading: return false
 	if not is_grounded: return false
 	return true
@@ -365,7 +376,6 @@ func capture_run_state() -> void:
 
 
 func can_run() -> bool:
-	if is_reloading: return false
 	if not is_grounded: return false
 	if stop_run: return false
 	return true
@@ -638,8 +648,28 @@ func handle_fov_changes(delta: float) -> void:
 
 func handle_weapon_movement(delta: float) -> void:
 	if not has_weapon: return
+	handle_weapon_pull_back()
 	handle_weapon_sway(delta)
 	handle_weapon_lag(delta)
+
+
+func handle_weapon_pull_back() -> void:
+	var was_PB: bool = is_pulling_back
+	is_pulling_back = pull_back_cast.is_colliding()
+	if is_running: is_pulling_back = true
+	if curr_posture == Posture.PRONE and local_velocity: is_pulling_back = true
+	if was_PB != is_pulling_back:
+		if is_reloading: exit_reload(false)
+		var target_marker: Marker3D = pull_back_marker_right if is_right_handed else pull_back_marker_left
+		var target_pos: Vector3 = target_marker.position if is_pulling_back else Vector3.ZERO
+		var target_rot: Vector3 = target_marker.rotation if is_pulling_back else Vector3.ZERO
+		if pull_back_pos_twn:
+			pull_back_pos_twn.kill()
+			pull_back_rot_twn.kill()
+		pull_back_pos_twn = create_tween()
+		pull_back_rot_twn = create_tween()
+		pull_back_pos_twn.tween_property(sub_wpn_container, "position", target_pos, pull_back_timer)
+		pull_back_rot_twn.tween_property(sub_wpn_container, "rotation", target_rot, pull_back_timer)
 
 
 func handle_weapon_sway(delta: float) -> void:
@@ -780,6 +810,8 @@ func can_use_shoot() -> bool:
 	if not has_weapon: return false
 	if not is_weapon_loaded: return false
 	if not can_shoot: return false
+	if is_running: return false
+	if is_pulling_back: return false
 	return true
 
 
@@ -839,6 +871,7 @@ func can_reload() -> bool:
 	if not p_inputs.is_mouse_locked(): return false
 	if not can_play: return false
 	if not has_weapon: return false
+	if is_pulling_back: return false
 	if is_reloading: return false
 	if is_weapon_loaded: return false
 	return true
