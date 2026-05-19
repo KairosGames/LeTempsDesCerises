@@ -9,7 +9,10 @@ class_name Cover extends Marker3D
 		notify_property_list_changed()
 
 @export_category("Postures")
-@export var height: Height = Height.MEDIUM
+@export var height: Height = Height.MEDIUM:
+	set(value):
+		height = value
+		_update_name()
 @export var side_distance: float = 0
 
 @export_category("Debug")
@@ -27,7 +30,7 @@ var holder: Node3D = null:
 
 const LINE_SIZE: float = 0.1
 const MOTION_WIDTH: float = 0.1
-const EDITOR_ONLY: bool = true
+const EDITOR_ONLY: bool = false
 enum Type { COVER, TRANSITORY, SPAWNER }
 
 var _area: Area3D
@@ -64,14 +67,18 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void: _update_gizmos()
 
+var _label: Label3D = Label3D.new()
 func _init_name() -> void:
-	var label: Label3D = Label3D.new()
-	label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-	label.font_size = 48
-	label.text = name
-	label.position = Vector3(0, 0.5, 0)
-	add_child(label, false, Node.INTERNAL_MODE_BACK)
-	renamed.connect(func() -> void: label.set_text(self.name) )
+	_label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	_label.font_size = 48
+	_label.text = name
+	_label.position = Vector3(0, 0.5, 0)
+	add_child(_label, false, Node.INTERNAL_MODE_BACK)
+	renamed.connect(_update_name)
+	_update_name()
+
+func _update_name() -> void:
+	_label.text = ("%s [%s]" % [name, Height.find_key(height)]) if type != Type.SPAWNER else name
 
 func _init_lines() -> void:
 	_lines = MultiMeshInstance3D.new()
@@ -220,16 +227,24 @@ func get_posture_for(action: Action) -> Agent.Posture:
 			Action.SHOOT : return get_shoot_posture()
 			Action.COVER : return get_cover_posture()
 			Action.RELOAD: return get_reload_posture()
-			Action.PEEK  : return get_shoot_posture()
+			Action.PEEK  : return get_peek_posture()
 			_: return Agent.Posture.NONE
-	
+
+func get_peek_posture() -> Agent.Posture:
+	match height:
+		Height.HIGH: return Agent.Posture.STANDING # Side
+		Height.MEDIUM: return Agent.Posture.STANDING
+		Height.LOW: return Agent.Posture.CROUCHING
+		Height.NONE: return Agent.Posture.STANDING
+		_: return Agent.Posture.NONE
+
 func get_shoot_posture() -> Agent.Posture:
 	match height:
 		Height.HIGH: return Agent.Posture.STANDING
 		Height.MEDIUM: return Agent.Posture.CROUCHING
 		Height.LOW: return Agent.Posture.PRONE
 		Height.NONE: return Agent.Posture.STANDING
-		_: return Agent.Posture.STANDING
+		_: return Agent.Posture.NONE
 
 func get_cover_posture() -> Agent.Posture:
 	match height:
@@ -237,7 +252,7 @@ func get_cover_posture() -> Agent.Posture:
 		Height.MEDIUM: return Agent.Posture.CROUCHING
 		Height.LOW: return Agent.Posture.PRONE
 		Height.NONE: return Agent.Posture.NONE
-		_: return Agent.Posture.STANDING
+		_: return Agent.Posture.NONE
 
 func get_reload_posture() -> Agent.Posture:
 	match height:
@@ -245,7 +260,7 @@ func get_reload_posture() -> Agent.Posture:
 		Height.MEDIUM: return Agent.Posture.CROUCHING
 		Height.LOW: return Agent.Posture.PRONE
 		Height.NONE: return Agent.Posture.CROUCHING
-		_: return Agent.Posture.STANDING
+		_: return Agent.Posture.NONE
 
 func compute_covering_of(agent: Agent) -> float:
 	# TODO
