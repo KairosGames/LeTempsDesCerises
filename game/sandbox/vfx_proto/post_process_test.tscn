@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dxemi8wxsooyr"]
+
+[ext_resource type="Shader" uid="uid://dxliciusnic4v" path="res://materials/shaders/sg_pp_base.gdshader" id="1_75nvh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhnup"]
+render_priority = 0
+shader = ExtResource("1_75nvh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_75nvh"]
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lo3gj"]
+
+[node name="PostProcessTest" type="Node3D" unique_id=21352644]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=179525889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2768865)
+material_override = SubResource("ShaderMaterial_jhnup")
+extra_cull_margin = 4886.46
+mesh = SubResource("QuadMesh_75nvh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1080438458]
+mesh = SubResource("BoxMesh_lo3gj")
