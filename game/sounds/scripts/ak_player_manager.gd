@@ -30,7 +30,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 	if Input.is_action_just_pressed("shoot"):
 		if !player.can_use_shoot() : return
-		Wwise.set_state("player_aim", str(player.is_aiming))
 		shoot.post_event()
 		var target : Node3D = player.weapon_ray_cast.get_collider()
 		var hit_position : Vector3 = player.weapon_ray_cast.get_collision_point()
@@ -46,6 +45,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 				Wwise.set_switch("bullet_material",i.get_meta("Surface"), self)
 			#elif i.get_class() == "MeshInstance3D":
 				#print("Orlane tu as oublié un mat !")
+	
+	if Input.is_action_just_pressed("aim"):
+		Wwise.set_state("player_aim", str(!player.is_aiming))
 
 func _process(_delta: float) -> void:
 	

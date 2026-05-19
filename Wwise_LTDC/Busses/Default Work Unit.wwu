@@ -116,6 +116,41 @@
 								<Bus Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}"/>
 								<Bus Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}"/>
 							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<RTPC Name="" ID="{4D28B8D8-9F56-41A7-A567-53D588187F17}" ShortID="1011409304">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Lowpass"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="Death_Filter" ID="{C73A6915-BB76-4746-95CC-A87CCED79E78}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{014F7587-F5E9-4D0F-BBE7-C2A17F9CA7C3}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-100</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>80</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</ObjectList>
+							</ObjectLists>
 						</Bus>
 						<AuxBus Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}">
 							<PropertyList>
@@ -143,6 +178,7 @@
 															<Property Name="FilterTypeBand1" Type="int32" Value="1"/>
 															<Property Name="FrequencyBand1" Type="Real32" Value="158.5198"/>
 															<Property Name="OnOffBand2" Type="bool" Value="False"/>
+															<Property Name="OutputLevel" Type="Real32" Value="3"/>
 														</PropertyList>
 													</Effect>
 												</Custom>

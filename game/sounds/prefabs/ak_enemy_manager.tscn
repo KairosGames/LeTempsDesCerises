@@ -40,12 +40,17 @@ shape = SubResource("SphereShape3D_p0yv6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8940933, 0)
 billboard = 1
 double_sided = false
+no_depth_test = true
+modulate = Color(0.39607844, 0.5921569, 0.90588236, 1)
 text = "Placeholder"
 font_size = 128
+outline_size = 64
 
 [node name="Bark" type="AkEvent3D" parent="." unique_id=2129268944]
 event = ExtResource("4_trdkh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
 
 [connection signal="audio_marker" from="Steps" to="." method="_on_steps_audio_marker"]
 [connection signal="audio_marker" from="Bark" to="." method="_on_ak_event_3d_audio_marker"]
+[connection signal="duration" from="Bark" to="." method="_on_bark_duration"]
 [connection signal="end_of_event" from="Bark" to="." method="_on_bark_end_of_event"]

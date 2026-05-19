@@ -12,6 +12,8 @@
 [ext_resource type="WwiseEvent" uid="uid://b6s21jrtjah4e" path="res://Wwise/resources/Event/{6896C878-A293-4133-9E1F-3A23F80B8F43}.tres" id="9_vws2r"]
 [ext_resource type="WwiseEvent" uid="uid://bcnom4oj1p3mj" path="res://Wwise/resources/Event/{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}.tres" id="11_cgjv3"]
 [ext_resource type="WwiseEvent" uid="uid://bb6dk321jnvm1" path="res://Wwise/resources/Event/{FC96ABC9-59AC-438F-B837-19B7E11ADF1C}.tres" id="12_dpj62"]
+[ext_resource type="WwiseEvent" uid="uid://dfyjb81y2cvtg" path="res://Wwise/resources/Event/{6AB802F9-F564-4477-8C4F-144112C5939D}.tres" id="13_usst2"]
+[ext_resource type="WwiseState" uid="uid://cyd20p1ui587k" path="res://Wwise/resources/State/{1A08D4AD-3BFC-498C-89E9-90C6C5D68726}.tres" id="14_a4l4r"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_s8o8u"]
 radius = 0.1
@@ -31,7 +33,6 @@ bullet_prefab = ExtResource("2_g1o18")
 [node name="Bank_Loader" parent="." unique_id=404085232 instance=ExtResource("2_sdg1b")]
 
 [node name="AkListener3D" type="AkListener3D" parent="." unique_id=1427046769]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="AkListener3D" unique_id=1524320620]
 
@@ -130,5 +131,19 @@ is_environment_aware = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Death/Area3D" unique_id=1410843877]
 shape = SubResource("SphereShape3D_s8o8u")
+
+[node name="Alive" type="AkEvent3D" parent="." unique_id=10566895]
+event = ExtResource("13_usst2")
+trigger_on = 2
+is_environment_aware = true
+
+[node name="Area3D" type="Area3D" parent="Alive" unique_id=432494759]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Alive/Area3D" unique_id=166621035]
+shape = SubResource("SphereShape3D_s8o8u")
+
+[node name="AkState" type="AkState" parent="Alive" unique_id=1956142358]
+state = ExtResource("14_a4l4r")
+trigger_on = 2
 
 [connection signal="audio_marker" from="Steps" to="." method="_on_steps_audio_marker"]

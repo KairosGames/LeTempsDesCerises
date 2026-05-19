@@ -13,6 +13,7 @@ namespace AK
 {
     namespace EVENTS
     {
+        static const AkUniqueID ALLY_BARK = 3470134616U;
         static const AkUniqueID AMB_CANNONS = 3265814676U;
         static const AkUniqueID BARRICADE_DAMAGED = 482738278U;
         static const AkUniqueID BRICK_FALL = 3840667520U;
@@ -23,6 +24,7 @@ namespace AK
         static const AkUniqueID ENEMY_BULLET_MISS = 3787232089U;
         static const AkUniqueID ENEMY_SHOOT = 1050776119U;
         static const AkUniqueID ENEMY_STEPS = 3114531655U;
+        static const AkUniqueID PLAYER_ALIVE = 2917189548U;
         static const AkUniqueID PLAYER_CROUCH = 3055475155U;
         static const AkUniqueID PLAYER_DEATH = 3083087645U;
         static const AkUniqueID PLAYER_PRONE = 1806823001U;
@@ -152,6 +154,7 @@ namespace AK
         static const AkUniqueID CANNONS_PROBABILITY = 2576556105U;
         static const AkUniqueID DEAFENING = 711096812U;
         static const AkUniqueID DEATH_FILTER = 4205136178U;
+        static const AkUniqueID DISTANCE = 1240670792U;
         static const AkUniqueID PLAYER_POSITION = 2221031936U;
         static const AkUniqueID PLAYER_VELOCITY = 1833811084U;
         static const AkUniqueID POETIC_LEVEL = 3680281974U;

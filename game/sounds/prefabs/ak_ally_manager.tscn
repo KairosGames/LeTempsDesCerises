@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://1e7ymrdq6sai"]
+
+[ext_resource type="Script" uid="uid://qhvcleo64wpo" path="res://sounds/scripts/ak_ally_manager.gd" id="1_ljc3s"]
+[ext_resource type="WwiseEvent" uid="uid://d0ajhjfwwl2tk" path="res://Wwise/resources/Event/{3FDD584B-7295-4A08-9570-8775D7B756E9}.tres" id="2_jrslf"]
+[ext_resource type="WwiseEvent" uid="uid://lgjm7lyaevq4" path="res://Wwise/resources/Event/{925872CA-03A4-4FC1-8E1A-768C93F1A808}.tres" id="3_ch3wf"]
+[ext_resource type="WwiseEvent" uid="uid://b5uetttn4b4je" path="res://Wwise/resources/Event/{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}.tres" id="4_ljc3s"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p0yv6"]
+radius = 0.1
+
+[node name="ak_ally_manager" type="Node3D" unique_id=1364272514 node_paths=PackedStringArray("shoot", "steps", "bark", "label")]
+script = ExtResource("1_ljc3s")
+shoot = NodePath("Shoot")
+steps = NodePath("Steps")
+bark = NodePath("Bark")
+label = NodePath("Label3D")
+
+[node name="Shoot" type="AkEvent3D" parent="." unique_id=1491082347]
+event = ExtResource("2_jrslf")
+stop_on = 3
+is_environment_aware = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4898686, 0)
+
+[node name="Area3D" type="Area3D" parent="Shoot" unique_id=1911157760]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shoot/Area3D" unique_id=2052436755]
+shape = SubResource("SphereShape3D_p0yv6")
+
+[node name="Steps" type="AkEvent3D" parent="." unique_id=237937215]
+event = ExtResource("3_ch3wf")
+stop_on = 3
+is_environment_aware = true
+
+[node name="Area3D" type="Area3D" parent="Steps" unique_id=1053268034]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Steps/Area3D" unique_id=638135567]
+shape = SubResource("SphereShape3D_p0yv6")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=887757885]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8940933, 0)
+billboard = 1
+double_sided = false
+no_depth_test = true
+modulate = Color(0.9098039, 0.47058824, 0.47843137, 1)
+text = "Placeholder"
+outline_size = 16
+
+[node name="Bark" type="AkEvent3D" parent="." unique_id=2129268944]
+event = ExtResource("4_ljc3s")
+stop_on = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
+
+[connection signal="audio_marker" from="Steps" to="." method="_on_steps_audio_marker"]
+[connection signal="audio_marker" from="Bark" to="." method="_on_ak_event_3d_audio_marker"]
+[connection signal="duration" from="Bark" to="." method="_on_bark_duration"]
+[connection signal="end_of_event" from="Bark" to="." method="_on_bark_end_of_event"]

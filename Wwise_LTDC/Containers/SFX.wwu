@@ -602,6 +602,11 @@
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="ReflectionsVolume" Type="Real64">
 											<ValueList>
@@ -4106,6 +4111,28 @@
 										</BlendTrack>
 									</BlendTrackList>
 								</BlendContainer>
+								<Sound Name="LTDC_SFX_Player_Death_Oneshot" ID="{4CE3D209-334C-40C6-BE28-B58AE30F5CA5}" ShortID="956446899">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="LTDC_SFX_Player_Death_Oneshot" ID="{08803DEC-5B52-4F83-B03E-9360B0DFC5FE}">
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Communard\LTDC_SFX_Player_Death_Oneshot.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="49496949"/>
+											</MediaIDList>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="LTDC_SFX_Player_Death_Oneshot" ID="{08803DEC-5B52-4F83-B03E-9360B0DFC5FE}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
 							</ChildrenList>
 							<PositioningInfo>
 								<Panner Name="" ID="{087146D1-5D25-4948-979C-BB39A0B9F49D}"/>
@@ -6973,6 +7000,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<RandomSequenceContainer Name="Light_Brick" ID="{250C55C4-3D80-4529-A037-842EE496ABC9}" ShortID="767246368">
+									<PropertyList>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -7249,6 +7279,9 @@
 									</ChildrenList>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Heavy_Brick" ID="{848C0DBF-E5E1-4D70-B6A4-FC87D433DF2E}" ShortID="412767018">
+									<PropertyList>
+										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -7269,6 +7302,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_001" ID="{F47833BA-748B-40ED-B3F5-0FC000236A78}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.00575"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_001.wav</AudioFile>
 													<MediaIDList>
@@ -7291,6 +7329,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_002" ID="{D85FA297-31CF-4682-92C7-BA1390B415AD}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.02742"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.16496"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_002.wav</AudioFile>
 													<MediaIDList>
@@ -7313,6 +7356,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_003" ID="{E03E6B7D-D1EA-45BA-99BB-2083792D521C}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.01902"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_003.wav</AudioFile>
 													<MediaIDList>
@@ -7335,6 +7383,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_004" ID="{501591E0-5564-4452-87FD-68CD1C5381F6}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.01593"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_004.wav</AudioFile>
 													<MediaIDList>
@@ -7357,6 +7410,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_005" ID="{1D466867-D71F-49BB-914E-0B645C3FF15F}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.03107"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_005.wav</AudioFile>
 													<MediaIDList>
@@ -7379,6 +7437,11 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_006" ID="{A9A41F26-881D-4EAE-96C2-37944045C05B}">
+													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.01318"/>
+														<Property Name="LoopBegin" Type="Real64" Value="0"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_006.wav</AudioFile>
 													<MediaIDList>

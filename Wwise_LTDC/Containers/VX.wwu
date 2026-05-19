@@ -15,6 +15,9 @@
 						<Reference Name="OutputBus">
 							<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 						</Reference>
+						<Reference Name="UserAuxSend1">
+							<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<RandomSequenceContainer Name="Breath" ID="{AAD00F59-AD16-4510-BFD7-871DE34FF90A}" ShortID="941909608">
@@ -29,527 +32,564 @@
 									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 								</Reference>
 							</ReferenceList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="VX_Player_Breath_Loop" ID="{80CE796F-A267-427E-ADF5-BA301DBA1801}" ShortID="1032415340">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-40</Value>
+									</ValueList>
+								</Property>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.25"/>
+								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
+							</ReferenceList>
 							<ChildrenList>
-								<RandomSequenceContainer Name="VX_Player_Breath" ID="{80CE796F-A267-427E-ADF5-BA301DBA1801}" ShortID="1032415340">
-									<PropertyList>
-										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
-										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
-									</PropertyList>
+								<SwitchContainer Name="Breath_In" ID="{F4F3F0A7-519D-41AA-AA28-EA035C654C4A}" ShortID="187930683">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="calm" ID="{1A08D4AD-3BFC-498C-89E9-90C6C5D68726}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="player_breath" ID="{5E643EBD-D3D2-483F-B8F0-D5985C137861}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<SwitchContainer Name="Breath_In" ID="{F4F3F0A7-519D-41AA-AA28-EA035C654C4A}" ShortID="187930683">
+										<RandomSequenceContainer Name="Anxious" ID="{EA81A398-A4CF-4FA1-ADA5-E9414F86B97A}" ShortID="593545649">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-												</Reference>
-												<Reference Name="DefaultSwitchOrState">
-													<ObjectRef Name="None" ID="{FDC1DACA-2D38-4965-BFB2-0B7C8BA08DD2}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
-												</Reference>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-												</Reference>
-												<Reference Name="SwitchGroupOrStateGroup">
-													<ObjectRef Name="player_breath" ID="{5E643EBD-D3D2-483F-B8F0-D5985C137861}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<RandomSequenceContainer Name="Anxious" ID="{EA81A398-A4CF-4FA1-ADA5-E9414F86B97A}" ShortID="593545649">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_001" ID="{768706D8-E1AE-4654-9979-386B646D3DBA}" ShortID="763603033">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_001" ID="{CBFE30E4-3AE7-4A83-BB62-B2BEE7165455}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_001.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="495281761"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_001" ID="{CBFE30E4-3AE7-4A83-BB62-B2BEE7165455}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_002" ID="{0D19806D-5152-4745-8957-32ECA166851B}" ShortID="1016187711">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_002" ID="{E8CF67FF-EF1A-42D9-B03C-5BFF266D0B9A}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_002.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="560969047"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_002" ID="{E8CF67FF-EF1A-42D9-B03C-5BFF266D0B9A}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_003" ID="{F6A00832-5EB2-4D9E-AEED-CDB729C725F3}" ShortID="216393615">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_003" ID="{337842E8-80AA-4352-86B9-14DDC6CABCA9}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_003.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="1048244134"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_003" ID="{337842E8-80AA-4352-86B9-14DDC6CABCA9}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_004" ID="{9C1A7F7A-DE7C-4A95-B67A-B5B589E4687C}" ShortID="98534102">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_004" ID="{1EBCDE2E-EEAF-4264-8F8B-B983AEA70E8D}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_004.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="1038666549"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_004" ID="{1EBCDE2E-EEAF-4264-8F8B-B983AEA70E8D}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-													</ChildrenList>
-												</RandomSequenceContainer>
-												<RandomSequenceContainer Name="Calm" ID="{8604D5FE-D75F-4041-8637-02F5DFC4DA9F}" ShortID="357938351">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{C23C0B3C-EFF4-4309-9640-C8BF3FB3B9FC}" ShortID="792659449">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{23D7CDB0-3B33-4F64-A75F-CBD99996C55F}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="747448429"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{23D7CDB0-3B33-4F64-A75F-CBD99996C55F}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{707CE81F-358C-4DCF-9B39-34115957FB28}" ShortID="921666340">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{02673F13-13C5-4A1F-8EDD-4E9437DB37C5}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="67108238"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{02673F13-13C5-4A1F-8EDD-4E9437DB37C5}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{5801B36E-9796-4608-B408-20A083980A6D}" ShortID="919728542">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{213323E5-3D71-453A-8748-6391596D7191}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="610060490"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{213323E5-3D71-453A-8748-6391596D7191}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{52BAE057-DF5D-41DD-A48B-5FAB5CDAEFBA}" ShortID="92743281">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{26C5584B-8DE7-4583-9C7D-8D7742C58CD4}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="108476024"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{26C5584B-8DE7-4583-9C7D-8D7742C58CD4}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-													</ChildrenList>
-												</RandomSequenceContainer>
-											</ChildrenList>
-											<GroupingInfo>
-												<GroupingBehaviorList>
-													<GroupingBehavior>
-														<ItemRef Name="Anxious" ID="{EA81A398-A4CF-4FA1-ADA5-E9414F86B97A}"/>
-													</GroupingBehavior>
-													<GroupingBehavior>
-														<ItemRef Name="Calm" ID="{8604D5FE-D75F-4041-8637-02F5DFC4DA9F}"/>
-													</GroupingBehavior>
-												</GroupingBehaviorList>
-												<GroupingList>
-													<Grouping>
-														<SwitchRef Name="anxious" ID="{68E47680-1106-48AB-8CD1-994A7346C657}"/>
-														<ItemList>
-															<ItemRef Name="Anxious" ID="{EA81A398-A4CF-4FA1-ADA5-E9414F86B97A}"/>
-														</ItemList>
-													</Grouping>
-													<Grouping>
-														<SwitchRef Name="calm" ID="{1A08D4AD-3BFC-498C-89E9-90C6C5D68726}"/>
-														<ItemList>
-															<ItemRef Name="Calm" ID="{8604D5FE-D75F-4041-8637-02F5DFC4DA9F}"/>
-														</ItemList>
-													</Grouping>
-												</GroupingList>
-											</GroupingInfo>
-										</SwitchContainer>
-										<SwitchContainer Name="Breath_Out" ID="{B9691230-934A-4F7F-9A24-C985EAC513DC}" ShortID="1069597462">
-											<ReferenceList>
-												<Reference Name="Conversion">
-													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-												</Reference>
-												<Reference Name="DefaultSwitchOrState">
-													<ObjectRef Name="None" ID="{FDC1DACA-2D38-4965-BFB2-0B7C8BA08DD2}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
 												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
-												<Reference Name="SwitchGroupOrStateGroup">
-													<ObjectRef Name="player_breath" ID="{5E643EBD-D3D2-483F-B8F0-D5985C137861}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_001" ID="{768706D8-E1AE-4654-9979-386B646D3DBA}" ShortID="763603033">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_001" ID="{CBFE30E4-3AE7-4A83-BB62-B2BEE7165455}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="495281761"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_001" ID="{CBFE30E4-3AE7-4A83-BB62-B2BEE7165455}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_002" ID="{0D19806D-5152-4745-8957-32ECA166851B}" ShortID="1016187711">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_002" ID="{E8CF67FF-EF1A-42D9-B03C-5BFF266D0B9A}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="560969047"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_002" ID="{E8CF67FF-EF1A-42D9-B03C-5BFF266D0B9A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_003" ID="{F6A00832-5EB2-4D9E-AEED-CDB729C725F3}" ShortID="216393615">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_003" ID="{337842E8-80AA-4352-86B9-14DDC6CABCA9}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1048244134"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_003" ID="{337842E8-80AA-4352-86B9-14DDC6CABCA9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_004" ID="{9C1A7F7A-DE7C-4A95-B67A-B5B589E4687C}" ShortID="98534102">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_004" ID="{1EBCDE2E-EEAF-4264-8F8B-B983AEA70E8D}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1038666549"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_004" ID="{1EBCDE2E-EEAF-4264-8F8B-B983AEA70E8D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Calm" ID="{8604D5FE-D75F-4041-8637-02F5DFC4DA9F}" ShortID="357938351">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<RandomSequenceContainer Name="Anxious" ID="{056F3942-A596-4431-87A1-A9B5E15C562D}" ShortID="48701841">
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{C23C0B3C-EFF4-4309-9640-C8BF3FB3B9FC}" ShortID="792659449">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 														</Reference>
 														<Reference Name="OutputBus">
-															<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_001" ID="{9A1410CA-D2E0-4CD5-AC8F-00FEBC963D14}" ShortID="526357247">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_001" ID="{4C5F770E-2659-4E63-AF8B-B0F75FDC8366}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_001.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="261265778"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_001" ID="{4C5F770E-2659-4E63-AF8B-B0F75FDC8366}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_002" ID="{FC107309-291F-4096-B35F-BDA7DC7876B6}" ShortID="257385879">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_002" ID="{0AB222B6-D6BC-4CC3-B859-2C3FD494050D}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_002.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="173851476"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_002" ID="{0AB222B6-D6BC-4CC3-B859-2C3FD494050D}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_003" ID="{219E6ACF-CEF0-44F7-A8A8-968BF309C9FF}" ShortID="687960674">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_003" ID="{3EE8D142-E36F-4E48-8E0B-76F3D05E6621}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_003.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="92141161"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_003" ID="{3EE8D142-E36F-4E48-8E0B-76F3D05E6621}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_004" ID="{0AA212AA-359D-439E-864F-B067B31A4789}" ShortID="474158676">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_004" ID="{EC8772B0-8053-46A0-A7A2-FC1C422348CD}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_004.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="874190780"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_004" ID="{EC8772B0-8053-46A0-A7A2-FC1C422348CD}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{23D7CDB0-3B33-4F64-A75F-CBD99996C55F}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="747448429"/>
+															</MediaIDList>
+														</AudioFileSource>
 													</ChildrenList>
-												</RandomSequenceContainer>
-												<RandomSequenceContainer Name="Calm" ID="{1FD44503-E271-40F6-BD1E-16F1749355CA}" ShortID="490026317">
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{23D7CDB0-3B33-4F64-A75F-CBD99996C55F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{707CE81F-358C-4DCF-9B39-34115957FB28}" ShortID="921666340">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 														</Reference>
 														<Reference Name="OutputBus">
-															<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{AC75D9F4-3F0A-4BB6-AC98-4589C2B4771A}" ShortID="1000661201">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{14CD3B23-F370-4C51-9FC0-5C53DCD8F3F2}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="794092549"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{14CD3B23-F370-4C51-9FC0-5C53DCD8F3F2}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{1B7AF25F-A752-4966-8BA1-43FB08448213}" ShortID="128880982">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{50EB2FC0-C4FA-4BC5-94CB-8854010F8760}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="571217104"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{50EB2FC0-C4FA-4BC5-94CB-8854010F8760}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{4298AF1D-2A2B-41A5-B15F-EA398EABD2A1}" ShortID="832492791">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{88BD8049-1474-4AB8-A019-7AD94AA187AB}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="454630269"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{88BD8049-1474-4AB8-A019-7AD94AA187AB}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
-														<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{5BCC66B0-A25F-4BB0-9307-4D38AD2F1A76}" ShortID="529193452">
-															<ReferenceList>
-																<Reference Name="Conversion">
-																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-																</Reference>
-																<Reference Name="OutputBus">
-																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-																</Reference>
-															</ReferenceList>
-															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{5B92C43C-72FC-4EE9-8823-53D953949B81}">
-																	<Language>SFX</Language>
-																	<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="297652126"/>
-																	</MediaIDList>
-																</AudioFileSource>
-															</ChildrenList>
-															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{5B92C43C-72FC-4EE9-8823-53D953949B81}" Platform="Linked"/>
-															</ActiveSourceList>
-														</Sound>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{02673F13-13C5-4A1F-8EDD-4E9437DB37C5}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="67108238"/>
+															</MediaIDList>
+														</AudioFileSource>
 													</ChildrenList>
-												</RandomSequenceContainer>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{02673F13-13C5-4A1F-8EDD-4E9437DB37C5}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{5801B36E-9796-4608-B408-20A083980A6D}" ShortID="919728542">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{213323E5-3D71-453A-8748-6391596D7191}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="610060490"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{213323E5-3D71-453A-8748-6391596D7191}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{52BAE057-DF5D-41DD-A48B-5FAB5CDAEFBA}" ShortID="92743281">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{26C5584B-8DE7-4583-9C7D-8D7742C58CD4}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="108476024"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{26C5584B-8DE7-4583-9C7D-8D7742C58CD4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
 											</ChildrenList>
-											<GroupingInfo>
-												<GroupingBehaviorList>
-													<GroupingBehavior>
-														<ItemRef Name="Calm" ID="{1FD44503-E271-40F6-BD1E-16F1749355CA}"/>
-													</GroupingBehavior>
-													<GroupingBehavior>
-														<ItemRef Name="Anxious" ID="{056F3942-A596-4431-87A1-A9B5E15C562D}"/>
-													</GroupingBehavior>
-												</GroupingBehaviorList>
-												<GroupingList>
-													<Grouping>
-														<SwitchRef Name="anxious" ID="{68E47680-1106-48AB-8CD1-994A7346C657}"/>
-														<ItemList>
-															<ItemRef Name="Anxious" ID="{056F3942-A596-4431-87A1-A9B5E15C562D}"/>
-														</ItemList>
-													</Grouping>
-													<Grouping>
-														<SwitchRef Name="calm" ID="{1A08D4AD-3BFC-498C-89E9-90C6C5D68726}"/>
-														<ItemList>
-															<ItemRef Name="Calm" ID="{1FD44503-E271-40F6-BD1E-16F1749355CA}"/>
-														</ItemList>
-													</Grouping>
-												</GroupingList>
-											</GroupingInfo>
-										</SwitchContainer>
+										</RandomSequenceContainer>
 									</ChildrenList>
-									<ObjectLists>
-										<ObjectList Name="Playlist">
-											<PluginInnerObject Name="" ID="{A7626D89-20AE-4B2C-8784-0C528653F19B}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
-												<ReferenceList>
-													<Reference Name="PlaylistObject">
-														<ObjectRef Name="Breath_In" ID="{F4F3F0A7-519D-41AA-AA28-EA035C654C4A}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
-													</Reference>
-												</ReferenceList>
-											</PluginInnerObject>
-											<PluginInnerObject Name="" ID="{F934889B-11FB-499E-823B-F3355C9D0CFD}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
-												<ReferenceList>
-													<Reference Name="PlaylistObject">
-														<ObjectRef Name="Breath_Out" ID="{B9691230-934A-4F7F-9A24-C985EAC513DC}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
-													</Reference>
-												</ReferenceList>
-											</PluginInnerObject>
-										</ObjectList>
-									</ObjectLists>
-								</RandomSequenceContainer>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Anxious" ID="{EA81A398-A4CF-4FA1-ADA5-E9414F86B97A}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Calm" ID="{8604D5FE-D75F-4041-8637-02F5DFC4DA9F}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="anxious" ID="{68E47680-1106-48AB-8CD1-994A7346C657}"/>
+												<ItemList>
+													<ItemRef Name="Anxious" ID="{EA81A398-A4CF-4FA1-ADA5-E9414F86B97A}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="calm" ID="{1A08D4AD-3BFC-498C-89E9-90C6C5D68726}"/>
+												<ItemList>
+													<ItemRef Name="Calm" ID="{8604D5FE-D75F-4041-8637-02F5DFC4DA9F}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Breath_Out" ID="{B9691230-934A-4F7F-9A24-C985EAC513DC}" ShortID="1069597462">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="calm" ID="{1A08D4AD-3BFC-498C-89E9-90C6C5D68726}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="player_breath" ID="{5E643EBD-D3D2-483F-B8F0-D5985C137861}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Anxious" ID="{056F3942-A596-4431-87A1-A9B5E15C562D}" ShortID="48701841">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_001" ID="{9A1410CA-D2E0-4CD5-AC8F-00FEBC963D14}" ShortID="526357247">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_001" ID="{4C5F770E-2659-4E63-AF8B-B0F75FDC8366}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="261265778"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_001" ID="{4C5F770E-2659-4E63-AF8B-B0F75FDC8366}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_002" ID="{FC107309-291F-4096-B35F-BDA7DC7876B6}" ShortID="257385879">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_002" ID="{0AB222B6-D6BC-4CC3-B859-2C3FD494050D}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="173851476"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_002" ID="{0AB222B6-D6BC-4CC3-B859-2C3FD494050D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_003" ID="{219E6ACF-CEF0-44F7-A8A8-968BF309C9FF}" ShortID="687960674">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_003" ID="{3EE8D142-E36F-4E48-8E0B-76F3D05E6621}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="92141161"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_003" ID="{3EE8D142-E36F-4E48-8E0B-76F3D05E6621}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_004" ID="{0AA212AA-359D-439E-864F-B067B31A4789}" ShortID="474158676">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_004" ID="{EC8772B0-8053-46A0-A7A2-FC1C422348CD}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="874190780"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_004" ID="{EC8772B0-8053-46A0-A7A2-FC1C422348CD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Calm" ID="{1FD44503-E271-40F6-BD1E-16F1749355CA}" ShortID="490026317">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{AC75D9F4-3F0A-4BB6-AC98-4589C2B4771A}" ShortID="1000661201">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{14CD3B23-F370-4C51-9FC0-5C53DCD8F3F2}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="794092549"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{14CD3B23-F370-4C51-9FC0-5C53DCD8F3F2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{1B7AF25F-A752-4966-8BA1-43FB08448213}" ShortID="128880982">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{50EB2FC0-C4FA-4BC5-94CB-8854010F8760}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="571217104"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{50EB2FC0-C4FA-4BC5-94CB-8854010F8760}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{4298AF1D-2A2B-41A5-B15F-EA398EABD2A1}" ShortID="832492791">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{88BD8049-1474-4AB8-A019-7AD94AA187AB}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="454630269"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{88BD8049-1474-4AB8-A019-7AD94AA187AB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{5BCC66B0-A25F-4BB0-9307-4D38AD2F1A76}" ShortID="529193452">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{5B92C43C-72FC-4EE9-8823-53D953949B81}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="297652126"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{5B92C43C-72FC-4EE9-8823-53D953949B81}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Calm" ID="{1FD44503-E271-40F6-BD1E-16F1749355CA}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Anxious" ID="{056F3942-A596-4431-87A1-A9B5E15C562D}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="anxious" ID="{68E47680-1106-48AB-8CD1-994A7346C657}"/>
+												<ItemList>
+													<ItemRef Name="Anxious" ID="{056F3942-A596-4431-87A1-A9B5E15C562D}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="calm" ID="{1A08D4AD-3BFC-498C-89E9-90C6C5D68726}"/>
+												<ItemList>
+													<ItemRef Name="Calm" ID="{1FD44503-E271-40F6-BD1E-16F1749355CA}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
 							</ChildrenList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="player_aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
+										<StateGroupInfo Name="" ID="{0DE1D69E-D5EF-41E4-BE00-697A88DF96AA}" ShortID="709004809"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+										<CustomState Name="" ID="{05857FC6-23A9-46BE-99CD-FD6E552E4957}" ShortID="104880062"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="None" ID="{3F4E19DC-A92B-410B-A80A-BE5560C10551}"/>
+										<CustomState Name="" ID="{0114ABD5-76ED-4ACC-8889-B151C61C8EBD}" ShortID="906199826"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="true" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+										<CustomState Name="" ID="{B4E05E17-7871-4F05-8FBA-65E884C9D2B3}" ShortID="197430">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-108"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<ObjectLists>
+								<ObjectList Name="Playlist">
+									<PluginInnerObject Name="" ID="{A7626D89-20AE-4B2C-8784-0C528653F19B}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+										<ReferenceList>
+											<Reference Name="PlaylistObject">
+												<ObjectRef Name="Breath_In" ID="{F4F3F0A7-519D-41AA-AA28-EA035C654C4A}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+											</Reference>
+										</ReferenceList>
+									</PluginInnerObject>
+									<PluginInnerObject Name="" ID="{F934889B-11FB-499E-823B-F3355C9D0CFD}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+										<ReferenceList>
+											<Reference Name="PlaylistObject">
+												<ObjectRef Name="Breath_Out" ID="{B9691230-934A-4F7F-9A24-C985EAC513DC}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+											</Reference>
+										</ReferenceList>
+									</PluginInnerObject>
+								</ObjectList>
+							</ObjectLists>
 						</RandomSequenceContainer>
 					</ChildrenList>
 				</PropertyContainer>
@@ -561,17 +601,39 @@
 						<Reference Name="OutputBus">
 							<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<RandomSequenceContainer Name="New Random Container" ID="{9E2DB7F9-264B-4AE6-89FC-241C8835FE94}" ShortID="539238651">
+						<RandomSequenceContainer Name="Communard" ID="{7B32CC11-5A77-4BB1-9784-2051B7F775BB}" ShortID="214645082">
 							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="PlayMechanismInfiniteOrNumberOfLoops" Type="int16" Value="0"/>
+								<Property Name="PlayMechanismLoopCount" Type="int32" Value="1">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{8F1799DF-E9FF-4BC4-B89D-A0140B120A54}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="1"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-96</Value>
+										<Value>-6</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Communard" ID="{979280CD-4BBE-47F3-8454-619DE6C622DD}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 								</Reference>
@@ -580,26 +642,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="LTDC_SFX_Player_Cloth_Coat_Move_Random_01" ID="{90C17053-3102-4D1F-BC62-E4AAF45B2E3F}" ShortID="301330882">
-									<PropertyList>
-										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
-										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
-										<Property Name="MaxSoundPerInstance" Type="int16">
-											<ValueList>
-												<Value>1</Value>
-											</ValueList>
-										</Property>
-										<Property Name="Pitch" Type="int32">
-											<ValueList>
-												<Value>-2400</Value>
-											</ValueList>
-										</Property>
-										<Property Name="UseMaxSoundPerInstance" Type="bool">
-											<ValueList>
-												<Value>True</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
+								<Sound Name="Vx_Plachold_Vas-001" ID="{A6603E78-0E77-4EAF-A7B0-5AD45B3DE1C8}" ShortID="718891537">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -609,20 +652,20 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="LTDC_SFX_Player_Cloth_Coat_Move_Random_01" ID="{22B6DA15-6278-4CD0-B78A-6EC33EF896C5}">
+										<AudioFileSource Name="Vx_Plachold_Vas-001" ID="{15BC921D-17F3-48DE-BCE5-06345CEC8B38}">
 											<PropertyList>
 												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
 											</PropertyList>
 											<Language>SFX</Language>
-											<AudioFile>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_01.wav</AudioFile>
+											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-001.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="909241847"/>
+												<MediaID ID="25468903"/>
 											</MediaIDList>
 											<ObjectLists>
 												<ObjectList Name="Markers">
-													<Marker Name="" ID="{B1939AE0-19D0-4B3A-8831-13491A2437AA}">
+													<Marker Name="" ID="{F158EAF9-74D5-482C-90BF-3F0E00522575}">
 														<PropertyList>
-															<Property Name="Label" Type="string" Value="Mort à la canaille !"/>
+															<Property Name="Label" Type="string" Value="Vive la sociale !"/>
 														</PropertyList>
 													</Marker>
 												</ObjectList>
@@ -630,21 +673,400 @@
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="LTDC_SFX_Player_Cloth_Coat_Move_Random_01" ID="{22B6DA15-6278-4CD0-B78A-6EC33EF896C5}" Platform="Linked"/>
+										<ActiveSource Name="Vx_Plachold_Vas-001" ID="{15BC921D-17F3-48DE-BCE5-06345CEC8B38}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="LTDC_SFX_Player_Cloth_Coat_Move_Random_02" ID="{340A3435-100C-475E-8E4F-2FD7E2B1A680}" ShortID="215788747">
+								<Sound Name="Vx_Plachold_Vas-002" ID="{0CA2406F-7226-407F-BA77-88299B166E6E}" ShortID="670294328">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Vas-002" ID="{374B3F43-2060-444A-8E3E-604598C9CC1E}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-002.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="301467003"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{6138C804-15C6-4888-9B13-7B8ED3AC4C55}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Ils vont tirer !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Vas-002" ID="{374B3F43-2060-444A-8E3E-604598C9CC1E}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Vas-003" ID="{25B39FF6-F4E8-4114-8780-FA946B4432BC}" ShortID="71437873">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Vas-003" ID="{EA4F74C0-0C7A-4D53-9217-9D039FF4C8C5}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-003.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="163755063"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{45D0E7BB-2014-4C67-8155-41A23A042008}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="On va droit à la bouillasse !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Vas-003" ID="{EA4F74C0-0C7A-4D53-9217-9D039FF4C8C5}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Vas-004" ID="{304DF115-711C-40CA-8250-B3F3AA4EB85B}" ShortID="85494977">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Vas-004" ID="{61318B82-D53B-4704-9EE1-FB847E2DE105}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-004.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="418546237"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{73440FF5-895E-4F4F-B332-E20EBFC563EF}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Qui viennent, qui viennent !"/>
+														</PropertyList>
+													</Marker>
+													<Marker Name="" ID="{F90DF8C1-44B1-4FA9-85F5-82F88C83548E}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="On fricassera la Ligne !"/>
+															<Property Name="Time" Type="Real64" Value="1.35014512545201"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Vas-004" ID="{61318B82-D53B-4704-9EE1-FB847E2DE105}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Vas-005" ID="{CC8738EE-4D7A-4525-B9DC-19D2B89A1877}" ShortID="697297067">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Vas-005" ID="{6849F730-DA78-4305-9BC6-CD3B77F5B361}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-005.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="157719317"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{B6D5544D-17CE-44B1-9EFC-B1EB4D09900D}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Attention à ton museau petit !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Vas-005" ID="{6849F730-DA78-4305-9BC6-CD3B77F5B361}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Vas-006" ID="{F442F8AF-D7B8-4C48-A1A5-F264F9B5C123}" ShortID="314569990">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Vas-006" ID="{5852DAC9-BC47-4046-9C70-ECD18F49A7BC}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-006.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="41844498"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{25AEB344-6099-4D87-9399-D0F1EBB06C5B}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Abattez-le !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Vas-006" ID="{5852DAC9-BC47-4046-9C70-ECD18F49A7BC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Vas-007" ID="{6174EB33-59F2-4EC1-98C3-8BDFEF962BB5}" ShortID="774215292">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Vas-007" ID="{94460543-DC9D-42F5-A8E7-26A3F243E349}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-007.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="144592759"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{80B4C43B-A118-4A45-8A23-994A18048916}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Salauds de ruraux !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Vas-007" ID="{94460543-DC9D-42F5-A8E7-26A3F243E349}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Vas-008" ID="{07FF89A9-BFD1-4DD1-9591-66A8A829C62C}" ShortID="296846099">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Vas-008" ID="{0F55C0A7-2871-4BDC-88CE-CA3CC7E2B45F}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-008.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="940876037"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{46EC6D48-0289-43C4-8476-897D332AACBC}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Des Versaillais !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Vas-008" ID="{0F55C0A7-2871-4BDC-88CE-CA3CC7E2B45F}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Vas-009" ID="{B7FD7828-2462-4E56-BF8B-7C2018FA8D12}" ShortID="1064247301">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Vas-009" ID="{CA179873-4C12-41D7-8715-7EC8087B99CC}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-009.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="12475208"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{705DEAB6-95EC-4E39-A0B4-4A4E389BFAEA}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Mange tes morts !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Vas-009" ID="{CA179873-4C12-41D7-8715-7EC8087B99CC}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Vas-010" ID="{EED052C7-78B6-4932-A4AA-C3D95F54472E}" ShortID="902077306">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Vas-010" ID="{62A3A0E0-B35A-4F42-A332-FA73DCD0C225}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-010.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="49514846"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{2A91AF01-AD27-4EB9-9E3B-8CF75E64E7F0}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Ils ont un canon !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Vas-010" ID="{62A3A0E0-B35A-4F42-A332-FA73DCD0C225}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Vas-011" ID="{068944A7-3776-4F94-81B1-A84122537AE7}" ShortID="186441530">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Vas-011" ID="{087EA923-0D41-48C9-A2BE-F0088DD16B4E}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-011.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="553093102"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{58E2E4B1-40D1-46F6-AFCE-2D968213A458}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Planquez-vous !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Vas-011" ID="{087EA923-0D41-48C9-A2BE-F0088DD16B4E}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+							</ChildrenList>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="Versaillais" ID="{B13E3E5E-603C-4FA5-897B-4BF9BD76D5AB}" ShortID="33206578">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.75"/>
+								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>10</Value>
+									</ValueList>
+								</Property>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-18</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Versaillais" ID="{6D0DE6C2-4CE9-4C2D-B4A6-5E0DCBAD5A34}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Sound Name="Vx_Plachold_Sev-001" ID="{DA8C0CCA-9E09-43D9-888D-36C67A03412B}" ShortID="887809480">
 									<PropertyList>
 										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
 										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 										<Property Name="MaxSoundPerInstance" Type="int16">
 											<ValueList>
 												<Value>1</Value>
-											</ValueList>
-										</Property>
-										<Property Name="Pitch" Type="int32">
-											<ValueList>
-												<Value>-2400</Value>
 											</ValueList>
 										</Property>
 										<Property Name="UseMaxSoundPerInstance" Type="bool">
@@ -662,20 +1084,21 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="LTDC_SFX_Player_Cloth_Coat_Move_Random_02" ID="{C78399C7-3805-4AA6-84EA-DD9E1E1AADD3}">
+										<AudioFileSource Name="Vx_Plachold_Sev-001" ID="{35B6160C-64F3-4156-AD59-7B40B4C39258}">
 											<PropertyList>
 												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 											</PropertyList>
 											<Language>SFX</Language>
-											<AudioFile>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_02.wav</AudioFile>
+											<AudioFile>Vx_Barks\Vx_Versaillais\Vx_Plachold_Sev-001.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="713088081"/>
+												<MediaID ID="916174023"/>
 											</MediaIDList>
 											<ObjectLists>
 												<ObjectList Name="Markers">
-													<Marker Name="" ID="{3538E02C-1823-420C-A52B-5A2057106901}">
+													<Marker Name="" ID="{FA9A9C69-4670-476E-B53C-37CC01958FDC}">
 														<PropertyList>
-															<Property Name="Label" Type="string" Value="Saignez-les !"/>
+															<Property Name="Label" Type="string" Value="Mort à la Commune !"/>
 														</PropertyList>
 													</Marker>
 												</ObjectList>
@@ -683,12 +1106,495 @@
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="LTDC_SFX_Player_Cloth_Coat_Move_Random_02" ID="{C78399C7-3805-4AA6-84EA-DD9E1E1AADD3}" Platform="Linked"/>
+										<ActiveSource Name="Vx_Plachold_Sev-001" ID="{35B6160C-64F3-4156-AD59-7B40B4C39258}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Sev-002" ID="{759EB97D-DDC3-4ACF-AFC3-48EC6F903FBC}" ShortID="135330653">
+									<PropertyList>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Sev-002" ID="{2A075B03-A6EC-4FC2-BDEC-29ACA8BBDCA4}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Versaillais\Vx_Plachold_Sev-002.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="537075827"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{C0725440-FA70-493B-9267-B23440146BD8}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Sur le flanc !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Sev-002" ID="{2A075B03-A6EC-4FC2-BDEC-29ACA8BBDCA4}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Sev-003" ID="{BFB444FE-1EEB-4E36-AE3F-8B449664F3ED}" ShortID="635498108">
+									<PropertyList>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Sev-003" ID="{8FAF2808-83C3-4078-BAC2-D93F2D2F748C}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Versaillais\Vx_Plachold_Sev-003.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="368468118"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{53708225-6400-47FD-A37D-363A9A7F29C2}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="A droite !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Sev-003" ID="{8FAF2808-83C3-4078-BAC2-D93F2D2F748C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Sev-004" ID="{FCACEB33-E13B-47E0-A112-70644A21DA75}" ShortID="405101755">
+									<PropertyList>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Sev-004" ID="{4C17168B-CDF2-4A66-A329-09391868920C}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Versaillais\Vx_Plachold_Sev-004.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="381854914"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{AEF4CF96-526A-4C11-BDF6-C73E0C456001}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Tenez vos positions !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Sev-004" ID="{4C17168B-CDF2-4A66-A329-09391868920C}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Sev-005" ID="{4D0F23B9-C062-44F0-8DD9-300FA26DC7BF}" ShortID="629375807">
+									<PropertyList>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Sev-005" ID="{5382F6F5-EC64-4B7D-A0CB-F88917AC154A}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimBegin" Type="Real64" Value="0.08707"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.96574"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Versaillais\Vx_Plachold_Sev-005.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="807820417"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{08D1FD04-5B88-4B14-961B-08422657AA43}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Marchons sur la Comune !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Sev-005" ID="{5382F6F5-EC64-4B7D-A0CB-F88917AC154A}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Sev-006" ID="{39A896BC-090D-426C-8583-BD82D5BF1FC0}" ShortID="192751185">
+									<PropertyList>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Sev-006" ID="{CB6E8F18-86FA-4219-8BEF-349A226AD47E}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Versaillais\Vx_Plachold_Sev-006.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1027704734"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{F1839CBF-259C-4ED5-BD68-1C299B441A15}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Nous Vaincrons !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Sev-006" ID="{CB6E8F18-86FA-4219-8BEF-349A226AD47E}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Sev-007" ID="{AF7C1237-EE3A-41D9-BFF3-79934C557D1C}" ShortID="579283140">
+									<PropertyList>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Sev-007" ID="{9C8B8AFA-5DAD-4EE0-AB83-5A2D8FA270E8}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Versaillais\Vx_Plachold_Sev-007.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="889476363"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{1E1B4CCF-917B-4597-A3B8-43ABF3BF3929}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Tirez !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Sev-007" ID="{9C8B8AFA-5DAD-4EE0-AB83-5A2D8FA270E8}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Sev-008" ID="{5F2573EF-37B0-420C-9336-4C2DC7A38643}" ShortID="742985847">
+									<PropertyList>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Sev-008" ID="{9CDDCAFE-DE17-42BE-8A15-59B66B7C5428}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Versaillais\Vx_Plachold_Sev-008.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="673581502"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{735CF6C7-7D6E-4CE3-8B7E-F8D1AA22992D}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Faites-feu !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Sev-008" ID="{9CDDCAFE-DE17-42BE-8A15-59B66B7C5428}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Sev-009" ID="{98BB4E67-18BC-4746-BE15-9B7CDAA6955A}" ShortID="471899656">
+									<PropertyList>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Sev-009" ID="{FF7207B2-5F61-4EF4-982F-433AC0961829}">
+											<PropertyList>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Versaillais\Vx_Plachold_Sev-009.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1022944147"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{DCE35800-BD3A-496E-AA9D-81B05956096A}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="Anhéantissez-les !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Sev-009" ID="{FF7207B2-5F61-4EF4-982F-433AC0961829}" Platform="Linked"/>
+									</ActiveSourceList>
+								</Sound>
+								<Sound Name="Vx_Plachold_Sev-010" ID="{CF489282-911F-4629-80BC-3072C7E842D2}" ShortID="2487892">
+									<PropertyList>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<AudioFileSource Name="Vx_Plachold_Sev-010" ID="{07B233EA-A193-44BF-8995-2E62BEF4491F}">
+											<PropertyList>
+												<Property Name="LoopBegin" Type="Real64" Value="0"/>
+												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="1.02753"/>
+											</PropertyList>
+											<Language>SFX</Language>
+											<AudioFile>Vx_Barks\Vx_Versaillais\Vx_Plachold_Sev-010.wav</AudioFile>
+											<MediaIDList>
+												<MediaID ID="1033205563"/>
+											</MediaIDList>
+											<ObjectLists>
+												<ObjectList Name="Markers">
+													<Marker Name="" ID="{D744FD4A-AF3F-4DE5-BD0B-6B7C7A9A7555}">
+														<PropertyList>
+															<Property Name="Label" Type="string" Value="A mort !"/>
+														</PropertyList>
+													</Marker>
+												</ObjectList>
+											</ObjectLists>
+										</AudioFileSource>
+									</ChildrenList>
+									<ActiveSourceList>
+										<ActiveSource Name="Vx_Plachold_Sev-010" ID="{07B233EA-A193-44BF-8995-2E62BEF4491F}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
 					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="RTPC">
+							<RTPC Name="" ID="{3EF5B608-78C2-4EE0-820D-EF24914458E5}" ShortID="1071007715">
+								<PropertyList>
+									<Property Name="PropertyName" Type="string" Value="UserAuxSendVolume0"/>
+								</PropertyList>
+								<ReferenceList>
+									<Reference Name="ControlInput">
+										<ObjectRef Name="Distance" ID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+									</Reference>
+									<Reference Name="Curve">
+										<Custom>
+											<Curve Name="" ID="{590CEE3A-1054-4567-984E-15532C7D11DC}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>10</XPos>
+														<YPos>-0.01378</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>50</XPos>
+														<YPos>24</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>24</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</RTPC>
+						</ObjectList>
+					</ObjectLists>
 				</PropertyContainer>
 			</ChildrenList>
 		</WorkUnit>
