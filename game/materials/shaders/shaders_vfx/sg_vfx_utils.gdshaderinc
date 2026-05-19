@@ -1,5 +1,6 @@
 
 //flipbook : size correspond au tilling, progress à time * speed
+// utiliser flipbook intégré au vertex à la place
 vec2 flipbook(vec2 uv, vec2 size, float progress){
 	progress = floor( mod(progress, (size.x * size.y)) );
 	vec2 frame_size = vec2(1.0, 1.0) / vec2(size.x, size.y);
@@ -11,6 +12,7 @@ vec2 flipbook(vec2 uv, vec2 size, float progress){
 	return frame;
 }
 
+//utiliser angular velocity à la place
 vec2 rotate(vec2 uv, vec2 pivot, float angle)
 {
 	mat2 rotation = mat2(vec2(sin(angle), -cos(angle)), vec2(cos(angle), sin(angle)));
