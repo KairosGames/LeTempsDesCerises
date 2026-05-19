@@ -18,7 +18,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var raycast: RayCast3D = agent.shoot_raycast
 
-	var targets_data: Array = get_targets(agent.team).map(
+	var targets_data: Array = get_targets(agent.team).filter(func(n): is_instance_valid(n)).map(
 		func(target: Node3D) -> TargetData: return TargetData.new(target, agent)
 	)
 
