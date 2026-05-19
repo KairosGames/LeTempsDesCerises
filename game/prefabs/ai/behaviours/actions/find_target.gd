@@ -17,9 +17,13 @@ func get_targets(team : Agent.Team) -> Array[Node]:
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var raycast: RayCast3D = agent.shoot_raycast
+	var coefficents: TargetSelectionCoefficient
+	match agent.team:
+		Agent.Team.VERSAILLAIS: coefficents = versaillais
+		Agent.Team.COMMUNARD: coefficents = communard
 	
 	var targets_data: Array = get_targets(agent.team).map(
-		func(target: Node3D) -> TargetData: return TargetData.new(target, agent)
+		func(target: Node3D) -> TargetData: return TargetData.new(target, agent, coefficents)
 	)
 
 	# TODO if target is Player always do raycast
@@ -55,15 +59,17 @@ static func best_score(a: TargetData, b: TargetData) -> bool: return a.score > b
 
 class TargetData:
 
-	func _init(_target: Node3D, _agent: Agent) -> void:
-		target = _target
+	@warning_ignore("shadowed_variable")
+	func _init(target: Node3D, agent: Agent, coefficents: TargetSelectionCoefficient) -> void:
+		
+		self.target = target
 
 		is_player = target is Player
-		is_threatening = _agent.threats.has(target)
+		is_threatening = agent.threats.has(target)
 		is_pushing_canon = not is_player and target.is_pushing_canon
-		distance = target.global_position.distance_to(_agent.global_position)
+		distance = target.global_position.distance_to(agent.global_position)
 
-		covering = 0.0 if is_player else target.cover.get_cover_posture() / float(target.posture)
+		covering = 0.0 if is_player or not target.cover else target.cover.get_cover_posture() / float(target.posture)
 
 		score = \
 			distance * coefficents.distance + \
@@ -73,8 +79,7 @@ class TargetData:
 			int(is_threatening) * coefficents.threatening
 
 	var target: Node3D
-
-	var coefficents: TargetSelectionCoefficient
+	
 	var score: float
 
 	var covering: float

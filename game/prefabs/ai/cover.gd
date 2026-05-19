@@ -78,7 +78,7 @@ func _init_name() -> void:
 	_update_name()
 
 func _update_name() -> void:
-	_label.text = ("%s [%s]" % [name, Height.find_key(height)]) if type != Type.SPAWNER else name
+	_label.text = ("%s [%s]" % [name, Height.find_key(height)]) if type != Type.SPAWNER else str(name)
 
 func _init_lines() -> void:
 	_lines = MultiMeshInstance3D.new()
@@ -261,10 +261,6 @@ func get_reload_posture() -> Agent.Posture:
 		Height.LOW: return Agent.Posture.PRONE
 		Height.NONE: return Agent.Posture.CROUCHING
 		_: return Agent.Posture.NONE
-
-func compute_covering_of(agent: Agent) -> float:
-	# TODO
-	return 0
 
 enum Height { NONE, LOW, MEDIUM, HIGH }
 enum Action { SHOOT, PEEK, COVER, RELOAD }

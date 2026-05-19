@@ -22,7 +22,7 @@ var is_alive: bool = true
 var is_weapon_loaded: bool = true
 var target: Node3D = null
 var target_point: Node3D = null
-var threats: Array[Agent] = []
+var threats: Array
 var is_pushing_canon: bool = false
 var posture: Posture = Posture.STANDING:
 	set(value): posture = value; posture_changed.emit(posture); $Action.text = Posture.find_key(value)
@@ -32,8 +32,6 @@ var canon_slot: Marker3D = null:
 		if cover: cover = null
 @export var cover: Cover = null:
 	set(value):
-		if not value:
-			print_stack()
 		if cover: cover.holder = null
 		cover = value
 		if cover: cover.holder = self
