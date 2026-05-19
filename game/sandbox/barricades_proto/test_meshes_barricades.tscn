@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bvwk5u3t7rdnv" path="res://sources/meshes/barricade_meshes/s2c_damaged_asset.glb" id="5_edsly"]
 [ext_resource type="PackedScene" uid="uid://cnbka50m71ee2" path="res://sources/meshes/barricade_meshes/f2s_damaged_asset.glb" id="6_i22a7"]
 [ext_resource type="PackedScene" uid="uid://b88tflyqd0cwg" path="res://sources/meshes/barricade_meshes/s2s_barricade_asset.glb" id="7_fh8m3"]
+[ext_resource type="PackedScene" uid="uid://bhjfv1pmvwwli" path="res://sources/meshes/barricade_meshes/c2c_barricade_asset.glb" id="8_wwbs8"]
+[ext_resource type="PackedScene" uid="uid://dnt58rvhc1ekc" path="res://sources/meshes/barricade_meshes/c2c_damaged_r_asset.glb" id="9_fseg5"]
+[ext_resource type="PackedScene" uid="uid://b8iatns8tfwtm" path="res://sources/meshes/barricade_meshes/c2c_damaged_l_asset.glb" id="10_wivbe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kvfpl"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -32,13 +35,14 @@ size = Vector3(2, 0.001, 2)
 environment = SubResource("Environment_bkb4l")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1427886546]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(0.35301775, -0.81026787, 0.46780825, 2.7805948e-08, 0.49999994, 0.86602545, -0.9356167, -0.30572233, 0.17650881, 0, 0, 0)
 shadow_enabled = true
 
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("1_kvfpl")]
+transform = Transform3D(-0.860253, 0, 0.5098675, 0, 1, 0, -0.5098675, 0, -0.860253, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2097346841]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 mesh = SubResource("PlaneMesh_bkb4l")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=768011474]
@@ -46,23 +50,29 @@ mesh = SubResource("PlaneMesh_bkb4l")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=314111942]
 shape = SubResource("BoxShape3D_edsly")
 
-[node name="f2s_barricade_asset2" parent="." unique_id=945963903 instance=ExtResource("2_x2e1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19768047, 0.00250113, 3.0967574)
+[node name="f2s_barricade_asset2" parent="." unique_id=298908260 instance=ExtResource("2_x2e1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.584631, 0.00250113, -10.646313)
 
 [node name="Module_f2s" parent="." unique_id=649058329 instance=ExtResource("3_x2e1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 5.1661854)
 
-[node name="f2s_barricade_asset3" parent="." unique_id=1685028490 instance=ExtResource("2_x2e1e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.686844, 0.0025013685, 0.56975734)
+[node name="s2c_barricade_asset2" parent="." unique_id=827112390 instance=ExtResource("4_bkb4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8054094, 0, -5.785239)
 
-[node name="s2c_barricade_asset2" parent="." unique_id=1681166902 instance=ExtResource("4_bkb4l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9501457, 0, 0.7666216)
+[node name="s2c_damaged_asset2" parent="." unique_id=582588011 instance=ExtResource("5_edsly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.931649, 0.0025072098, -5.946106)
 
-[node name="s2c_damaged_asset2" parent="." unique_id=844888613 instance=ExtResource("5_edsly")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.760215, 0.0025072098, -2.1350546)
+[node name="f2s_damaged_asset2" parent="." unique_id=97490196 instance=ExtResource("6_i22a7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7779534, 0.0025006256, -10.737766)
 
-[node name="f2s_damaged_asset2" parent="." unique_id=111683775 instance=ExtResource("6_i22a7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6696584, 0.0025006256, -3.675399)
+[node name="s2s_barricade_asset2" parent="." unique_id=427407189 instance=ExtResource("7_fh8m3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7725735, 0.20250511, -10.481161)
 
-[node name="s2s_barricade_asset2" parent="." unique_id=523786347 instance=ExtResource("7_fh8m3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.717486, 0.20250511, -5.172849)
+[node name="c2c_barricade_asset2" parent="." unique_id=636001976 instance=ExtResource("8_wwbs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.200779, 0.20983362, -0.8681474)
+
+[node name="c2c_damaged_r_asset2" parent="." unique_id=325732084 instance=ExtResource("9_fseg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -1)
+
+[node name="c2c_damaged_l_asset2" parent="." unique_id=903756461 instance=ExtResource("10_wivbe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.632842, 0.07098627, -0.8777261)
