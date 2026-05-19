@@ -83,12 +83,24 @@ states/Kneel/position = Vector2(279.75, 243)
 "states/Move & Shoot/position" = Vector2(279.5, 100)
 states/Start/position = Vector2(60, 98.75)
 transitions = ["Start", "Move & Shoot", SubResource("AnimationNodeStateMachineTransition_8chkj"), "Move & Shoot", "Kneel", SubResource("AnimationNodeStateMachineTransition_7hc28"), "Kneel", "Move & Shoot", SubResource("AnimationNodeStateMachineTransition_smkgt"), "Move & Shoot", "Die", SubResource("AnimationNodeStateMachineTransition_u0bw3"), "Kneel", "Die", SubResource("AnimationNodeStateMachineTransition_sm080")]
-graph_offset = Vector2(-328, -36)
+graph_offset = Vector2(-568, -190)
 
 [node name="Agent" type="CharacterBody3D" unique_id=1349390169 groups=["Entities"]]
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_3m1mu")
+
+[node name="Name" type="Label3D" parent="." unique_id=591017363]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0061777, 0)
+visible = false
+billboard = 1
+text = "Philipe"
+
+[node name="Action" type="Label3D" parent="." unique_id=1469404321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8231578, 0)
+billboard = 1
+modulate = Color(1, 0.5176471, 0, 1)
+text = "Running"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1662563447]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -106,10 +118,10 @@ target_position = Vector3(0, 0, -100)
 collision_mask = 7
 collide_with_areas = true
 
-[node name="Body" parent="." unique_id=828590820 instance=ExtResource("2_f5m6n")]
+[node name="Body" parent="." unique_id=1904847892 instance=ExtResource("2_f5m6n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(828590820, 432300268) index="2" unique_id=1039528541]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 57126605) index="2" unique_id=1039528541]
 transform = Transform3D(-0.098535545, -0.9945377, 0.034431607, 0.99505264, -0.098028034, 0.016132727, -0.012669392, 0.035850953, 0.99927676, -69.82887, -5.136288, -143.44977)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34

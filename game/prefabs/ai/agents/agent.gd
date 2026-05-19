@@ -25,13 +25,15 @@ var target_point: Node3D = null
 var threats: Array[Agent] = []
 var is_pushing_canon: bool = false
 var posture: Posture = Posture.STANDING:
-	set(value): posture = value; posture_changed.emit(posture)
+	set(value): posture = value; posture_changed.emit(posture); $Action.text = Posture.find_key(value)
 var canon_slot: Marker3D = null:
 	set(value):
 		canon_slot = value
 		if cover: cover = null
 @export var cover: Cover = null:
 	set(value):
+		if not value:
+			print_stack()
 		if cover: cover.holder = null
 		cover = value
 		if cover: cover.holder = self
