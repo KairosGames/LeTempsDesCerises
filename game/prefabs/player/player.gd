@@ -22,7 +22,7 @@ signal died
 @onready var sub_wpn_container: Node3D = %SubWeaponContainer
 @onready var pull_back_cast: RayCast3D = %PullBackCast
 @onready var pull_back_marker_right: Marker3D = %RightPullBackPosture
-@onready var pull_back_marker_left: Marker3D = %LefttPullBackPosture
+@onready var pull_back_marker_left: Marker3D = %LeftPullBackPosture
 
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
@@ -84,7 +84,8 @@ signal died
 @export_category("Weapon pull back settings")
 @export var pull_back_timer: float = 0.2
 @export var pull_back_default_dist: float = 0.9
-@export var pull_back_reload_dist: float = 0.38
+@export var pull_back_aim_dist: float = 0.5
+@export var pull_back_reload_dist: float = 0.35
 
 @export_category("Recoil settings")
 @export var recoil_strength: float = 7.0
@@ -204,7 +205,7 @@ func _ready() -> void:
 	low_capsule_shape = low_collider.shape as CapsuleShape3D
 	height_above_eyes = high_capsule_shape.height - stand_height
 	min_capsule_radius = high_capsule_shape.radius
-	initiate(global_position, global_rotation)
+	initiate(global_position, global_rotation, has_weapon, is_weapon_loaded, Posture.STAND, is_right_handed)
 
 
 func _process(delta: float) -> void:
@@ -262,7 +263,8 @@ func set_context(delta: float) -> void:
 	if Input.is_action_just_released("run"): wait_run_release = false
 	if Input.is_action_just_released("aim"): wait_aim_release = false
 	if not is_alive: can_play = false
-	pull_back_cast.target_position.z = pull_back_reload_dist if is_reloading else pull_back_default_dist
+	var pb_targ: float = pull_back_reload_dist if is_reloading else (pull_back_aim_dist if is_aiming else pull_back_default_dist)
+	pull_back_cast.target_position.z = pb_targ
 
 
 func set_input_context() -> void:
@@ -662,17 +664,21 @@ func handle_weapon_pull_back() -> void:
 	if is_running: is_pulling_back = true
 	if curr_posture == Posture.PRONE and local_velocity: is_pulling_back = true
 	if was_PB != is_pulling_back:
-		if is_reloading: exit_reload(false)
-		var target_marker: Marker3D = pull_back_marker_right if is_right_handed else pull_back_marker_left
-		var target_pos: Vector3 = target_marker.position if is_pulling_back else Vector3.ZERO
-		var target_rot: Vector3 = target_marker.rotation if is_pulling_back else Vector3.ZERO
-		if pull_back_pos_twn:
-			pull_back_pos_twn.kill()
-			pull_back_rot_twn.kill()
-		pull_back_pos_twn = create_tween()
-		pull_back_rot_twn = create_tween()
-		pull_back_pos_twn.tween_property(sub_wpn_container, "position", target_pos, pull_back_timer)
-		pull_back_rot_twn.tween_property(sub_wpn_container, "rotation", target_rot, pull_back_timer)
+		switch_pull_back_state()
+
+
+func switch_pull_back_state() -> void:
+	if is_reloading and is_pulling_back: exit_reload(false)
+	var target_marker: Marker3D = pull_back_marker_right if is_right_handed else pull_back_marker_left
+	var target_pos: Vector3 = target_marker.position if is_pulling_back else Vector3.ZERO
+	var target_rot: Vector3 = target_marker.rotation if is_pulling_back else Vector3.ZERO
+	if pull_back_pos_twn:
+		pull_back_pos_twn.kill()
+		pull_back_rot_twn.kill()
+	pull_back_pos_twn = create_tween()
+	pull_back_rot_twn = create_tween()
+	pull_back_pos_twn.tween_property(sub_wpn_container, "position", target_pos, pull_back_timer)
+	pull_back_rot_twn.tween_property(sub_wpn_container, "rotation", target_rot, pull_back_timer)
 
 
 func handle_weapon_sway(delta: float) -> void:
@@ -874,7 +880,6 @@ func can_reload() -> bool:
 	if not p_inputs.is_mouse_locked(): return false
 	if not can_play: return false
 	if not has_weapon: return false
-	if is_pulling_back: return false
 	if is_reloading: return false
 	if is_weapon_loaded: return false
 	return true
@@ -882,6 +887,9 @@ func can_reload() -> bool:
 
 func enter_reload() -> void:
 	is_reloading = true
+	if is_running:
+		is_running = false
+		if not is_run_toggle: wait_run_release = true
 	reload_ui.reloaded.connect(on_reloaded, CONNECT_ONE_SHOT)
 	var default_pos: Vector3 = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
 	var time: float = time_to_ads * inverse_lerp(default_pos.x, aim_pos.position.x, weapon_container.position.x)
@@ -941,6 +949,9 @@ func reset_player_controller() -> void:
 	weapon_camera.rotation = Vector3.ZERO
 	weapon_container.position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
 	weapon_container.rotation = Vector3.ZERO
+	sub_wpn_container. rotation = Vector3.ZERO
+	sub_wpn_container.position = Vector3.ZERO
+	wpn_cam_base.rotation = Vector3.ZERO
 	player_camera.fov = default_fov
 	weapon_camera.fov = default_fov - weapon_fov_diff
 	recoil_offset = 0.0
@@ -976,6 +987,8 @@ func kill_all_tweens() -> void:
 	if wpn_y_aim_twn: wpn_y_aim_twn.kill()
 	if wpn_z_aim_twn: wpn_z_aim_twn.kill()
 	if reload_twn: reload_twn.kill()
+	if pull_back_pos_twn: pull_back_pos_twn.kill()
+	if pull_back_rot_twn: pull_back_rot_twn.kill()
 
 
 func revive(pos: Vector3, rot: Vector3) -> void:
