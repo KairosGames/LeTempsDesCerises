@@ -295,23 +295,27 @@ top_level = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 
-[node name="WeaponSwayRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot" unique_id=269191037]
+[node name="WeaponBobRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot" unique_id=236003033]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02699995, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.54525745)
 
-[node name="Weapon" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponSwayRoot" unique_id=2061743200]
+[node name="WeaponSwayRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot" unique_id=269191037]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02699995, -0.44525743)
+
+[node name="Weapon" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot" unique_id=2061743200]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027, 0.1)
 
-[node name="sk_chassepot" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponSwayRoot/Weapon" unique_id=1025414177 instance=ExtResource("4_klv5p")]
+[node name="sk_chassepot" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1025414177 instance=ExtResource("4_klv5p")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="FrontSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponSwayRoot/Weapon" unique_id=2022825120]
+[node name="FrontSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=2022825120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029570341, 0.845)
 
-[node name="RearSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponSwayRoot/Weapon" unique_id=1146183657]
+[node name="RearSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1146183657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029152155, 0.14946882)
 
-[node name="WeaponRayCast" type="RayCast3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponSwayRoot/Weapon" unique_id=1123149694]
+[node name="WeaponRayCast" type="RayCast3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1123149694]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013229132, 0.31301522)
 target_position = Vector3(0, 0, 300)
