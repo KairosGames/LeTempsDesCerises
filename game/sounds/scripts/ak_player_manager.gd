@@ -51,6 +51,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	
+	if player.is_reload_interruped == true:
+		Wwise.post_event("Reset_Reload", self)
+	
 	if player.is_running:
 		Wwise.set_state("player_stance", "sprint")
 	elif player.curr_posture == player.Posture.STAND:

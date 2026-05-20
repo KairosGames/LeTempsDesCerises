@@ -33,6 +33,7 @@ namespace AK
         static const AkUniqueID PLAYER_SPRINT = 2500953213U;
         static const AkUniqueID PLAYER_STEPS = 4272057794U;
         static const AkUniqueID PLAYER_UP = 4024398754U;
+        static const AkUniqueID RESET_RELOAD = 1795565902U;
     } // namespace EVENTS
 
     namespace STATES
