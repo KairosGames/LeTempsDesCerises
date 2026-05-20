@@ -1,16 +1,19 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://bi033y2vn77qi"]
 
 [ext_resource type="Shader" uid="uid://b18b2fip8omdm" path="res://materials/shaders/sg_enviro_tileable.gdshader" id="1_vxscm"]
+[ext_resource type="Texture2D" uid="uid://jdedydu6fhed" path="res://sources/images/textures/enviro_textures/t_placeholder_brush.png" id="2_a06nx"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_vxscm")
-shader_parameter/albedo = Color(0.8731949, 0.7595626, 0.7285767, 1)
+shader_parameter/texture_brush = ExtResource("2_a06nx")
+shader_parameter/brush_strength = 0.41
+shader_parameter/albedo = Color(0.4257807, 0.20517987, 0.113219865, 1)
 shader_parameter/color_saturation = 1.0
 shader_parameter/color_contrast = 1.0
-shader_parameter/roughness = 0.0
+shader_parameter/roughness = 0.5250000249375
 shader_parameter/metallic = 0.0
-shader_parameter/normal_scale = 0.0
+shader_parameter/normal_scale = 1.0
 shader_parameter/ao_light_affect = 0.0
 shader_parameter/uv1_blend_sharpness = 1.0
 shader_parameter/uv1_scale = 1.0
