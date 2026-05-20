@@ -201,12 +201,14 @@ func _ready() -> void:
 	curr_sway_len = Vector2(sway_pitch_len, sway_yaw_len)
 	curr_sway_noise_len = sway_noise_len
 	weapon_lag_root_base_pos = weapon_lag_root.position
+	weapon_bob_base_pos = weapon_bob_root.position
 	prev_view_yaw = rotation.y
 	high_capsule_shape = high_collider.shape as CapsuleShape3D
 	low_capsule_shape = low_collider.shape as CapsuleShape3D
 	height_above_eyes = high_capsule_shape.height - stand_height
 	min_capsule_radius = high_capsule_shape.radius
 	initiate(global_position, global_rotation, has_weapon, is_weapon_loaded, Posture.STAND, is_right_handed)
+
 
 
 func _process(delta: float) -> void:
@@ -1003,8 +1005,8 @@ func revive(pos: Vector3, rot: Vector3) -> void:
 #################################################################################################################################################
 
 @export_category("Weapon bob settings")
-@export var walk_bob_freq: float = 7.0
-@export var run_bob_freq: float = 10.5
+@export var walk_bob_freq: float = 8.0
+@export var run_bob_freq: float = 20.0
 
 @export var walk_bob_pos: Vector3 = Vector3(0.006, 0.010, 0.004)
 @export var run_bob_pos: Vector3 = Vector3(0.014, 0.022, 0.010)
@@ -1012,10 +1014,10 @@ func revive(pos: Vector3, rot: Vector3) -> void:
 @export var walk_bob_rot_deg: Vector3 = Vector3(0.5, 0.35, 0.8)
 @export var run_bob_rot_deg: Vector3 = Vector3(1.1, 0.7, 1.8)
 
-@export_range(0.0, 1.0, 0.01) var ads_bob_reducer: float = 0.2
+@export_range(0.0, 1.0, 0.01) var ads_bob_reducer: float = 0.8
 @export var bob_smooth_speed: float = 10.0
 
-var weapon_bob_base_pos: Vector3 = Vector3.ZERO
+var weapon_bob_base_pos: Vector3
 var bob_timer: float = 0.0
 var bob_amount: float = 0.0
 
