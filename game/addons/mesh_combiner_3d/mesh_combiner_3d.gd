@@ -54,7 +54,7 @@ func _merge() -> void:
 	multimesh.mesh = mesh
 	for index: int in range(count):
 		var child: MeshInstance3D = instances[index]
-		multimesh.set_instance_transform(index, child.global_transform)
+		multimesh.set_instance_transform(index, child.transform)
 		child.queue_free()
 	notify_property_list_changed()
 	EditorInterface.mark_scene_as_unsaved()
@@ -68,7 +68,7 @@ func _split():
 		var instance: MeshInstance3D = MeshInstance3D.new()
 		add_child(instance)
 		instance.owner = owner
-		instance.global_transform = multimesh.get_instance_transform(index)
+		instance.transform = multimesh.get_instance_transform(index)
 		instance.mesh = multimesh.mesh
 
 	multimesh.instance_count = 0
