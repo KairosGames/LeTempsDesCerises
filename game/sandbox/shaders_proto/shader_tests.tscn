@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cgt1vwisuiedc"]
+
+[ext_resource type="Material" uid="uid://bi033y2vn77qi" path="res://materials/materials_enviro/m_building_facade.tres" id="1_ml7vg"]
+[ext_resource type="Material" uid="uid://cwtdwb7xf3nh0" path="res://materials/materials_enviro/m_roof.tres" id="2_n5nun"]
+[ext_resource type="Material" uid="uid://chrtds3sl2u11" path="res://materials/materials_enviro/m_tiles.tres" id="3_u7pfp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wj2c7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ml7vg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_iv6yn"]
+
+[node name="ShaderTests" type="Node3D" unique_id=1278625798]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=627157502]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_wj2c7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=52430188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6994296, 0.40535808, -1.264927)
+material_override = ExtResource("1_ml7vg")
+mesh = SubResource("SphereMesh_ml7vg")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=102538336]
+transform = Transform3D(1.120804, 0, -0.77348626, -0.89168376, 1.577519, -0.41319087, 1.0371906, 1.3562099, 0.48061633, -2.6238236, 0.8390603, -0.88386667)
+material_override = ExtResource("1_ml7vg")
+mesh = SubResource("BoxMesh_iv6yn")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1551226420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38357067, 0.40535808, -0.88386667)
+material_override = ExtResource("2_n5nun")
+mesh = SubResource("BoxMesh_iv6yn")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=497798188]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0316522, 0.40535808, -0.88386667)
+material_override = ExtResource("3_u7pfp")
+mesh = SubResource("BoxMesh_iv6yn")
