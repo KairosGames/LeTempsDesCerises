@@ -88,6 +88,25 @@ signal died
 @export var pull_back_aim_dist: float = 0.5
 @export var pull_back_reload_dist: float = 0.35
 
+@export_category("Weapon bob settings")
+@export var walk_bob_pos: Vector3 = Vector3(0.006, 0.010, 0.004)
+@export var crouch_bob_pos: Vector3 = Vector3(0.010, 0.018, 0.008)
+@export var prone_bob_pos: Vector3 = Vector3(0.025, -0.03, 0.025)
+@export var run_bob_pos: Vector3 = Vector3(0.014, 0.022, 0.010)
+@export var walk_bob_rot_deg: Vector3 = Vector3(0.5, 0.35, 0.8)
+@export var crouch_bob_rot_deg: Vector3 = Vector3(0.9, 0.45, 1.4)
+@export var prone_bob_rot_deg: Vector3 = Vector3(7.0, 5.0, 9.0)
+@export var run_bob_rot_deg: Vector3 = Vector3(1.1, 0.7, 1.8)
+@export var walk_bob_freq: float = 6.0
+@export var run_bob_freq: float = 21.0
+@export var crouch_bob_freq_factor: float = 0.8
+@export var prone_bob_freq_factor: float = 2.5
+@export_range(0.0, 1.0, 0.01) var ads_bob_freq_factor: float = 2.0
+@export_range(0.0, 1.0, 0.01) var ads_bob_amp_factor: float = 0.3
+@export_range(0.0, 1.0, 0.01) var pull_bob_freq_factor: float = 0.5
+@export var bob_default_smooth_speed: float = 10.0
+@export var bob_run_smooth_speed: float = 50.0
+
 @export_category("Recoil settings")
 @export var recoil_strength: float = 7.0
 @export var recoil_time: float = 0.1
@@ -171,6 +190,11 @@ var brake_time_ratio: float
 var view_yaw_speed: float = 0.0
 var prev_view_yaw: float = 0.0
 
+var weapon_bob_base_pos: Vector3
+var bob_timer: float = 0.0
+var bob_amount: float = 0.0
+var bob_phase: float
+
 var wpn_x_aim_twn: Tween
 var wpn_y_aim_twn: Tween
 var wpn_z_aim_twn: Tween
@@ -181,6 +205,7 @@ var recoil_twn:Tween
 var reload_twn: Tween
 var pull_back_pos_twn: Tween
 var pull_back_rot_twn: Tween
+
 
 static var instance: Player:
 	set(value):
@@ -657,9 +682,7 @@ func handle_fov_changes(delta: float) -> void:
 func handle_weapon_movement(delta: float) -> void:
 	if not has_weapon: return
 	handle_weapon_pull_back()
-	
 	handle_weapon_bob(delta)
-	
 	handle_weapon_sway(delta)
 	handle_weapon_lag(delta)
 
@@ -685,6 +708,48 @@ func switch_pull_back_state() -> void:
 	pull_back_rot_twn = create_tween()
 	pull_back_pos_twn.tween_property(sub_wpn_container, "position", target_pos, pull_back_timer)
 	pull_back_rot_twn.tween_property(sub_wpn_container, "rotation", target_rot, pull_back_timer)
+
+
+func handle_weapon_bob(delta: float) -> void:
+	var horizontal_speed: float = Vector2(local_velocity.x, local_velocity.z).length()
+	var max_speed: float = stand_speed * (run_speed_ratio if is_running else 1.0)
+	var tweak: float = (horizontal_speed / max_speed) if ((horizontal_speed / max_speed) == 0.0 or is_aiming) else (horizontal_speed / max_speed) + 0.3
+	var target_amount: float = clampf(tweak, 0.0, 1.0)
+
+	if not is_grounded: target_amount = 0.0
+	
+	if curr_posture == Posture.PRONE:
+		target_amount *= prone_bob_freq_factor
+	elif curr_posture == Posture.CROUCH:
+		target_amount *= crouch_bob_freq_factor
+
+	if is_aiming: target_amount *= ads_bob_freq_factor
+	if is_pulling_back: target_amount *= pull_bob_freq_factor
+
+	var freq: float = run_bob_freq if is_running else walk_bob_freq
+	
+	var targ_bob_pos: Vector3 = walk_bob_pos if curr_posture == Posture.STAND else (crouch_bob_pos if curr_posture == Posture.CROUCH else prone_bob_pos)
+	var pos_amp: Vector3 = run_bob_pos if is_running else targ_bob_pos
+	
+	var targ_bob_rot: Vector3 = walk_bob_rot_deg if curr_posture == Posture.STAND else (crouch_bob_rot_deg if curr_posture == Posture.CROUCH else prone_bob_rot_deg)
+	var rot_amp: Vector3 = run_bob_rot_deg if is_running else targ_bob_rot
+	
+	if is_aiming:
+		rot_amp *= ads_bob_amp_factor
+		pos_amp *= ads_bob_amp_factor
+	
+	var targ_smooth: float = bob_default_smooth_speed if not is_running else bob_run_smooth_speed
+	bob_amount = lerp(bob_amount, target_amount, dt_lerp(targ_smooth, delta))
+	bob_timer += delta * freq * max(bob_amount, 0.05)
+
+	var s: float = sin(bob_timer)
+	var c: float = cos(bob_timer)
+	var step: float = abs(s)
+	var target_pos: Vector3 = weapon_bob_base_pos + Vector3(c * pos_amp.x, step * pos_amp.y, s * pos_amp.z) * bob_amount
+	var target_rot: Vector3 = Vector3(s * deg_to_rad(rot_amp.x), c * deg_to_rad(rot_amp.y), c * deg_to_rad(rot_amp.z)) * bob_amount
+	weapon_bob_root.position = weapon_bob_root.position.lerp(target_pos,dt_lerp(targ_smooth, delta))
+	weapon_bob_root.rotation = lerp_rot(weapon_bob_root.rotation, target_rot, dt_lerp(targ_smooth, delta))
+	bob_phase = fposmod(bob_timer, TAU) / TAU
 
 
 func handle_weapon_sway(delta: float) -> void:
@@ -997,80 +1062,3 @@ func kill_all_tweens() -> void:
 func revive(pos: Vector3, rot: Vector3) -> void:
 	initiate(pos, rot)
 	player_camera.current = true
-
-
-#################################################################################################################################################
-#################################################################################################################################################
-#################################################################################################################################################
-#################################################################################################################################################
-
-@export_category("Weapon bob settings")
-@export var walk_bob_freq: float = 8.0
-@export var run_bob_freq: float = 20.0
-
-@export var walk_bob_pos: Vector3 = Vector3(0.006, 0.010, 0.004)
-@export var run_bob_pos: Vector3 = Vector3(0.014, 0.022, 0.010)
-
-@export var walk_bob_rot_deg: Vector3 = Vector3(0.5, 0.35, 0.8)
-@export var run_bob_rot_deg: Vector3 = Vector3(1.1, 0.7, 1.8)
-
-@export_range(0.0, 1.0, 0.01) var ads_bob_reducer: float = 0.8
-@export var bob_smooth_speed: float = 10.0
-
-var weapon_bob_base_pos: Vector3
-var bob_timer: float = 0.0
-var bob_amount: float = 0.0
-
-func handle_weapon_bob(delta: float) -> void:
-	var horizontal_speed := Vector2(local_velocity.x, local_velocity.z).length()
-	var max_speed := stand_speed * (run_speed_ratio if is_running else 1.0)
-	var target_amount := clampf(horizontal_speed / max_speed, 0.0, 1.0)
-
-	if not is_grounded:
-		target_amount = 0.0
-
-	if curr_posture == Posture.PRONE:
-		target_amount *= 0.25
-	elif curr_posture == Posture.CROUCH:
-		target_amount *= 0.55
-
-	if is_aiming:
-		target_amount *= ads_bob_reducer
-
-	if is_pulling_back:
-		target_amount *= 0.5
-
-	bob_amount = lerp(bob_amount, target_amount, dt_lerp(bob_smooth_speed, delta))
-
-	var freq := run_bob_freq if is_running else walk_bob_freq
-	var pos_amp := run_bob_pos if is_running else walk_bob_pos
-	var rot_amp := run_bob_rot_deg if is_running else walk_bob_rot_deg
-
-	bob_timer += delta * freq * max(bob_amount, 0.05)
-
-	var s : float = sin(bob_timer)
-	var c : float = cos(bob_timer)
-	var step : float = abs(s)
-
-	var target_pos := weapon_bob_base_pos + Vector3(
-		c * pos_amp.x,
-		step * pos_amp.y,
-		s * pos_amp.z
-	) * bob_amount
-
-	var target_rot := Vector3(
-		s * deg_to_rad(rot_amp.x),
-		c * deg_to_rad(rot_amp.y),
-		c * deg_to_rad(rot_amp.z)
-	) * bob_amount
-
-	weapon_bob_root.position = weapon_bob_root.position.lerp(
-		target_pos,
-		dt_lerp(bob_smooth_speed, delta)
-	)
-
-	weapon_bob_root.rotation = lerp_rot(
-		weapon_bob_root.rotation,
-		target_rot,
-		dt_lerp(bob_smooth_speed, delta)
-	)
