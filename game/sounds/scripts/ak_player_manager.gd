@@ -59,7 +59,7 @@ func _process(_delta: float) -> void:
 	elif player.curr_posture == player.Posture.STAND:
 		Wwise.set_state("player_stance", "stand")
 
-	if player.is_changing_state:
+	if player.is_changing_posture:
 			match player.curr_posture:
 				player.Posture.STAND:
 					up.post_event()

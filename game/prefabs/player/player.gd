@@ -141,7 +141,7 @@ signal died
 
 enum Posture { STAND, CROUCH, PRONE }
 var curr_posture: Posture = Posture.STAND
-var is_changing_state: bool = false
+var is_changing_posture: bool = false
 var was_it_just_prone_gpad: bool
 
 var high_capsule_shape: CapsuleShape3D
@@ -440,7 +440,7 @@ func handle_hold_run() -> void:
 
 
 func go_for_run() -> void:
-	if is_changing_state: return
+	if is_changing_posture: return
 	match curr_posture:
 		Posture.STAND: is_running = !is_running if is_run_toggle else true
 		Posture.CROUCH: crouch_to_stand(false, true)
@@ -448,7 +448,7 @@ func go_for_run() -> void:
 
 
 func capture_position_state() -> void:
-	if not is_grounded or is_changing_state: return
+	if not is_grounded or is_changing_posture: return
 
 	if Input.is_action_just_pressed("crouch"):
 		if p_inputs.is_gamepad: return
@@ -466,7 +466,7 @@ func capture_position_state() -> void:
 
 
 func crouch_to_stand(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
-	is_changing_state = true
+	is_changing_posture = true
 	curr_posture = Posture.CROUCH if inverse else Posture.STAND
 	if inverse: is_running = false
 	if ask_run: is_running = true
@@ -474,21 +474,21 @@ func crouch_to_stand(inverse: bool = false, ask_run: bool = false, time: float =
 	state_twn = create_tween()
 	state_twn.tween_property(camera_pivot, "position:y", target, time)
 	await state_twn.finished
-	is_changing_state = false
+	is_changing_posture = false
 
 
 func prone_to_crouch(inverse: bool = false, time: float = state_switch_time) -> void:
-	is_changing_state = true
+	is_changing_posture = true
 	curr_posture = Posture.PRONE if inverse else Posture.CROUCH
 	var target: float = prone_height if inverse else crouch_height
 	state_twn = create_tween()
 	state_twn.tween_property(camera_pivot, "position:y", target, time)
 	await state_twn.finished
-	is_changing_state = false
+	is_changing_posture = false
 
 
 func prone_to_up(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
-	is_changing_state = true
+	is_changing_posture = true
 	curr_posture = Posture.CROUCH
 	if inverse: is_running = false
 	var target: float = prone_height if inverse else stand_height
@@ -501,11 +501,11 @@ func prone_to_up(inverse: bool = false, ask_run: bool = false, time: float = sta
 	state_twn = create_tween()
 	state_twn.tween_property(camera_pivot, "position:y", target, state_switch_time)
 	await state_twn.finished
-	is_changing_state = false
+	is_changing_posture = false
 
 
 func crouch_pressed_from_gpad() -> void:
-	if not is_grounded or is_changing_state or curr_posture == Posture.CROUCH:
+	if not is_grounded or is_changing_posture or curr_posture == Posture.CROUCH:
 		return
 	if curr_posture == Posture.PRONE:
 		prone_to_crouch()
@@ -517,12 +517,12 @@ func crouch_pressed_from_gpad() -> void:
 
 
 func crouch_released_from_gpad() -> void:
-	if not is_grounded or is_changing_state: return
+	if not is_grounded or is_changing_posture: return
 	if curr_posture == Posture.CROUCH: crouch_to_stand()
 
 
 func prone_from_gpad() -> void:
-	if not is_grounded or is_changing_state or not curr_posture == Posture.CROUCH:
+	if not is_grounded or is_changing_posture or not curr_posture == Posture.CROUCH:
 		return
 	if was_it_just_prone_gpad:
 		crouch_to_stand()
@@ -549,7 +549,7 @@ func can_jump() -> bool:
 	if not is_jump_possible: return false
 	if not is_grounded: return false
 	if is_reloading: return false
-	if is_changing_state: return false
+	if is_changing_posture: return false
 	return true
 
 
@@ -1033,7 +1033,7 @@ func reset_player_controller() -> void:
 	is_aiming = false
 	is_running = false
 	is_reloading = false
-	is_changing_state = false
+	is_changing_posture = false
 	synchronise_after_pop()
 
 
