@@ -42,6 +42,7 @@ var _point: MeshInstance3D
 var _line_material: StandardMaterial3D = StandardMaterial3D.new()
 var _motion_material: StandardMaterial3D = StandardMaterial3D.new()
 var _point_material: StandardMaterial3D = StandardMaterial3D.new()
+var visible_on_screen_notifier: VisibleOnScreenNotifier3D
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray
@@ -57,6 +58,10 @@ func _validate_property(property: Dictionary) -> void:
 		"side_distance" when type != Type.COVER or height != Height.HIGH: property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready() -> void:
+	if type == Type.SPAWNER:
+		visible_on_screen_notifier = VisibleOnScreenNotifier3D.new()
+		add_child(visible_on_screen_notifier)
+	
 	_init_area()
 
 	if is_gizmo_enabled():

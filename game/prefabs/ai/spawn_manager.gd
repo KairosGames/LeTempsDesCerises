@@ -38,21 +38,25 @@ func _process_spawn() -> void:
 	if team == Agent.Team.NONE: return
 	if _entity_count < target_entity_count:
 		for spawner: Cover in _open_list:
-			if spawner.enabled and not spawner.holder and _has_a_next_cover_available(spawner):
-				_open_list.erase(spawner)
-				_close_list.push_back(spawner)
-				get_tree().create_timer(cooldown).timeout.connect(_restore.bind(spawner))
-				_entity_count += 1
-				var prefab: PackedScene
-				match team:
-					Agent.Team.VERSAILLAIS: prefab = VERSAILLAIS
-					Agent.Team.COMMUNARD: prefab = COMMUNARD
-				var agent: Agent = prefab.instantiate()
-				agent.cover = spawner
-				agent.position = spawner.global_position
-				agent.died.connect(_on_entity_died)
-				add_child(agent)
-				return
+			if not spawner.enabled: continue
+			if spawner.holder: continue
+			if spawner.visible_on_screen_notifier.is_on_screen(): continue
+			if not _has_a_next_cover_available(spawner): continue
+			
+			_open_list.erase(spawner)
+			_close_list.push_back(spawner)
+			get_tree().create_timer(cooldown).timeout.connect(_restore.bind(spawner))
+			_entity_count += 1
+			var prefab: PackedScene
+			match team:
+				Agent.Team.VERSAILLAIS: prefab = VERSAILLAIS
+				Agent.Team.COMMUNARD: prefab = COMMUNARD
+			var agent: Agent = prefab.instantiate()
+			agent.cover = spawner
+			agent.position = spawner.global_position
+			agent.died.connect(_on_entity_died)
+			add_child(agent)
+			return
 
 func _has_a_next_cover_available(cover: Cover) -> bool:
 	for next_cover in cover.next_covers:
