@@ -24,5 +24,7 @@ func _run() -> void:
 			var surface_name: String = mesh.surface_get_name(index)
 			if materials.has(surface_name):
 				mesh.surface_set_material(index, materials[surface_name])
+			else:
+				push_warning("material ",surface_name," not available")
 		var output_path: String = OUTPUT_DIR + name + ".tres"
 		ResourceSaver.save(mesh, output_path)
