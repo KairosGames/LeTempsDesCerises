@@ -25,4 +25,4 @@ func _run() -> void:
 			if materials.has(surface_name):
 				mesh.surface_set_material(index, materials[surface_name])
 		var output_path: String = OUTPUT_DIR + name + ".tres"
-		ResourceSaver.save(mesh, output_path, ResourceSaver.FLAG_REPLACE_SUBRESOURCE_PATHS)
+		ResourceSaver.save(mesh, output_path)
