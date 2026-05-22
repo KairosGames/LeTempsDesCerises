@@ -201,7 +201,7 @@ var wpn_z_aim_twn: Tween
 var fov_aim_twn: Tween
 var cam_rot_aim_twn: Tween
 var state_twn: Tween
-var recoil_twn:Tween
+var recoil_twn: Tween
 var reload_twn: Tween
 var pull_back_pos_twn: Tween
 var pull_back_rot_twn: Tween
@@ -235,7 +235,6 @@ func _ready() -> void:
 	initiate(global_position, global_rotation, has_weapon, is_weapon_loaded, Posture.STAND, is_right_handed)
 
 
-
 func _process(delta: float) -> void:
 	set_context(delta)
 	set_dynamic_collider()
@@ -246,7 +245,6 @@ func _process(delta: float) -> void:
 	handle_shoot()
 	handle_reload()
 	late_process(delta)
-
 	if Input.is_action_just_pressed("TEST"):
 		if is_alive: die()
 

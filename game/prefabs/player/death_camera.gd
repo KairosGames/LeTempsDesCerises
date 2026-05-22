@@ -56,7 +56,6 @@ func play_fall_effect() -> void:
 		fall_rot_twn.tween_property(self, "global_rotation", fall_rot, 0.45).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 		
 		var second_targ: Vector3 = communard.global_position + Vector3(0.0, 1.5, 0.0)
-		#var second_targ: Vector3 = communard.shoot_targets[0].global_position
 		var start_transform: Transform3D = global_transform
 		start_transform.origin.y = ground_y + 0.1
 		start_transform.basis = Basis.from_euler(fall_rot)
@@ -74,8 +73,6 @@ func play_fall_effect() -> void:
 					).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 		await fov_twn.tween_property(self, "fov", 1.0, 0.25
 					).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).finished
-		#await fov_twn.tween_property(self, "fov", 1.0, 0.45
-					#).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK).finished
 		var offset_rot: Vector3 = Vector3(0.0, PI, 0.0)
 		player.revive(communard.global_position, communard.global_rotation + offset_rot)
 		communard.can_die = true
