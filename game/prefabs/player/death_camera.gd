@@ -2,12 +2,19 @@ class_name DeathCamera extends Camera3D
 
 @onready var player: Player = get_parent()
 @onready var death_petals: DeathPetalsEffect = %DeathPetals
+@onready var blink_effect: BlinkEffect = %BlinkEffect
 
 @export_category("Settings")
 @export var time_to_swap: float = 3.0
+@export var fall_time_1: float = 0.4
+@export var fall_time_2: float = 0.5
 
 var first_pos: Vector3
 var first_rot: Vector3
+var revive_pos: Vector3
+var revive_rot: Vector3
+var is_repop_on_communard: Vector3
+var target_communard: Agent
 var is_active: bool
 
 var fall_twn: Tween
@@ -37,19 +44,21 @@ func play_death_effect() -> void:
 	fall_twn = create_tween()
 	fall_rot_twn = create_tween()
 	fov_twn = create_tween()
-	fall_twn.tween_property(self, "global_position:y", ground_y + 0.3, 0.4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	fall_twn.tween_property(self, "global_position:y", ground_y + 0.1, 0.5).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
-	fov_twn.tween_property(self, "fov", player.default_fov, 0.4)
+	fall_twn.tween_property(self, "global_position:y", ground_y + 0.3, fall_time_1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	fall_twn.tween_property(self, "global_position:y", ground_y + 0.1, fall_time_2).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	fov_twn.tween_property(self, "fov", player.default_fov, fall_time_1)
 	
 	if communard:
-		handle_revive_on_communard(communard, ground_y)
+		play_eyes_effect_and_revive(true)
+		handle_camera_on_communard(communard, ground_y)
 		fall_twn.tween_callback(play_death_petals_effect.bind(self, communard))
 		return
 	
-	handle_simple_revive()
+	play_eyes_effect_and_revive(false)
+	handle_camera_simple_move()
 
 
-func handle_revive_on_communard(communard: Agent, ground: float) -> void:
+func handle_camera_on_communard(communard: Agent, ground: float) -> void:
 	communard.can_die = false
 	var to_target: Vector3 = communard.global_position - global_position
 	to_target.y = 0.0
@@ -77,29 +86,52 @@ func handle_revive_on_communard(communard: Agent, ground: float) -> void:
 		0.0, 1.0, 0.1)
 	
 	await get_tree().create_timer(time_to_swap).timeout
-	fov_twn = create_tween()
-	fov_twn.tween_property(self, "fov", 120.0, 0.2
-				).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	await fov_twn.tween_property(self, "fov", 1.0, 0.25
-				).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).finished
 	var offset_rot: Vector3 = Vector3(0.0, PI, 0.0)
-	player.revive(communard.global_position, communard.global_rotation + offset_rot)
-	delete_swaped_communard(communard)
+	revive_pos = communard.global_position
+	revive_rot = communard.global_rotation + offset_rot
+	target_communard = communard
+	#fov_twn = create_tween()
+	#fov_twn.tween_property(self, "fov", 120.0, 0.2
+				#).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	#await fov_twn.tween_property(self, "fov", 1.0, 0.25
+				#).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).finished
+
+
+func handle_camera_simple_move() -> void:
+	var z_rot: float = 90.0 if randi() % 2 else -90.0
+	var fall_rot: Vector3 = Vector3(0.0, -z_rot, global_rotation_degrees.z + z_rot)
+	fall_rot_twn.tween_property(self, "global_rotation_degrees", fall_rot, 0.3)
+	await get_tree().create_timer(time_to_swap).timeout
+	revive_pos = first_pos
+	revive_rot = first_rot
+
+
+func play_eyes_effect_and_revive(is_on_communard: bool) -> void:
+	blink_effect.move_eyes(BlinkEffect.EyesStep.A_OPEN, 0.3)
+	await get_tree().create_timer(fall_time_1 + fall_time_2).timeout
+	
+	blink_effect.move_eyes(BlinkEffect.EyesStep.A_CLOSED, 0.3)
+	await get_tree().create_timer(0.3).timeout
+	blink_effect.move_eyes(BlinkEffect.EyesStep.A_OPEN, 0.5)
+	
+	await get_tree().create_timer(1.0).timeout
+	blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.4)
+	await get_tree().create_timer(0.2).timeout
+	blink_effect.move_eyes(BlinkEffect.EyesStep.A_CLOSED, 1.0)
+	
+	await get_tree().create_timer(0.8).timeout
+	blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.2)
+	
+	await get_tree().create_timer(0.5).timeout
+	player.revive(revive_pos, revive_rot)
+	if is_on_communard: delete_swaped_communard(target_communard)
 	is_active = false
+	blink_effect.move_eyes(BlinkEffect.EyesStep.OPEN, 0.1)
 
 
 func play_death_petals_effect(camera: Node3D, communard: Node3D) -> void:
 	var offset: Vector3 = Vector3(0.0, 1.5, 0.0) - (communard.basis.z * 0.2)
 	death_petals.play_effect(camera.global_position, communard.global_position + offset, time_to_swap - 0.4)
-
-
-func handle_simple_revive() -> void:
-	var z_rot: float = 90.0 if randi() % 2 else -90.0
-	var fall_rot: Vector3 = Vector3(0.0, -z_rot, global_rotation_degrees.z + z_rot)
-	fall_rot_twn.tween_property(self, "global_rotation_degrees", fall_rot, 0.3)
-	await get_tree().create_timer(time_to_swap).timeout
-	player.revive(first_pos, first_rot)
-	is_active = false
 
 
 func get_free_communard() -> Agent:

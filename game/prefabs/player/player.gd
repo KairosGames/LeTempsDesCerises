@@ -250,7 +250,6 @@ func _process(delta: float) -> void:
 	
 	##DEBUG
 	if Input.is_action_just_pressed("TEST"):
-		return
 		if is_alive: die()
 
 
