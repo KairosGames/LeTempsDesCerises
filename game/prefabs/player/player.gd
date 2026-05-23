@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody3D
 
 signal missed_by_enemy
+signal die_called
 signal died
 
 @onready var p_inputs: PlayerInputs = %PlayerInputs
@@ -168,6 +169,7 @@ var is_pulling_back: bool = false
 var is_reload_interruped: bool = false
 var is_alive: bool = true
 var can_play: bool = true
+var will_die: bool = false
 
 var aim_noise_x: FastNoiseLite = FastNoiseLite.new()
 var aim_noise_y: FastNoiseLite = FastNoiseLite.new()
@@ -245,6 +247,8 @@ func _process(delta: float) -> void:
 	handle_shoot()
 	handle_reload()
 	late_process(delta)
+	
+	##DEBUG
 	if Input.is_action_just_pressed("TEST"):
 		if is_alive: die()
 
@@ -993,10 +997,12 @@ func miss_by_versaillais() -> void:
 
 
 func die() -> void:
-	if not is_alive: return
+	if not is_alive or will_die: return
+	will_die = true
+	die_called.emit()
+	await get_tree().create_timer(0.1).timeout
 	is_alive = false
 	if is_reloading: exit_reload(false, true)
-	exit_reload(false, true)
 	weapon_sway_root.visible = false
 	died.emit()
 	reset_player_controller()
@@ -1018,6 +1024,7 @@ func reset_player_controller() -> void:
 	sub_wpn_container. rotation = Vector3.ZERO
 	sub_wpn_container.position = Vector3.ZERO
 	wpn_cam_base.rotation = Vector3.ZERO
+	weapon_sway_root.rotation = Vector3.ZERO
 	player_camera.fov = default_fov
 	weapon_camera.fov = default_fov - weapon_fov_diff
 	recoil_offset = 0.0
@@ -1025,13 +1032,17 @@ func reset_player_controller() -> void:
 	sway_timer = 0.0
 	concentration_sample = 0.0
 	curr_sway_len = Vector2.ZERO
-	weapon_sway_root.rotation = Vector3.ZERO
 	curr_sway_noise_len = 0.0
+	bob_timer = 0.0
+	bob_amount = 0.0
+	bob_phase = 0.0
 	has_weapon = false
 	is_aiming = false
 	is_running = false
 	is_reloading = false
 	is_changing_posture = false
+	is_pulling_back = false
+	will_die = false
 	synchronise_after_pop()
 
 

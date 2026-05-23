@@ -24,7 +24,7 @@ var controller_id
 func _ready() -> void:
 	BarksManager.player = self
 	init_motion()
-	player.died.connect(death_event)
+	player.die_called.connect(death_event)
 
 func _unhandled_input(_event: InputEvent) -> void:
 

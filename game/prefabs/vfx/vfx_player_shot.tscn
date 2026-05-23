@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ctjtqdteggxy7" path="res://prefabs/vfx/particles_player.gd" id="1_ge61n"]
 [ext_resource type="Material" uid="uid://cvwjj1evahaj0" path="res://materials/materials_vfx/m_vfx_fire_fog.tres" id="2_2jrkm"]
-[ext_resource type="Script" uid="uid://ddwci23um2mq8" path="res://prefabs/vfx/cam_layer_handler.gd" id="2_5l2le"]
 
 [sub_resource type="Curve" id="Curve_hxrhv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.008764267), -0.65062976, 0.0, 0, 0]
@@ -235,10 +234,6 @@ _data = {
 script = ExtResource("1_ge61n")
 worksWithAnimation = true
 animationPlayer = NodePath("AnimationPlayer")
-
-[node name="CameraLayerHandler" type="Node3D" parent="." unique_id=1420658882 node_paths=PackedStringArray("gpu_particles")]
-script = ExtResource("2_5l2le")
-gpu_particles = [NodePath("../vfx_ps_player_fire_main_fog"), NodePath("../vfx_ps_player_fire_main_fog_sub"), NodePath("../vfx_ps_fog_add_layer"), NodePath("../GPUParticles3D3")]
 
 [node name="vfx_ps_player_fire_main_fog" type="GPUParticles3D" parent="." unique_id=27388485]
 material_override = ExtResource("2_2jrkm")
