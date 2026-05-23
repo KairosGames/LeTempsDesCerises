@@ -1,10 +1,42 @@
 [gd_scene format=3 uid="uid://dwp51gcdjh3l6"]
 
-[ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://scripts/game_manager.gd" id="1_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://bfxqdxe6sfsl3" path="res://sandbox/scripts_proto/shoot_target.gd" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://bka3ud42srojy" path="res://sandbox/textures_proto/dark/texture_04.png" id="2_k0juu"]
 [ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="5_71j4m"]
+
+[sub_resource type="GDScript" id="GDScript_124fr"]
+script/source = "class_name GameManager extends Node
+
+static var active_fight_area: FightArea
+
+@export_category(\"References\")
+@export var player: Player
+@export var first_barricade: Barricade
+@export var canon: Canon
+
+var step: int = 0
+
+static var instance: GameManager:
+	set(value):
+		if not instance: instance = value
+		else: push_error(\"MORE THAN ONE GAME_MANAGER IN SCENE\")
+
+
+func _ready() -> void:
+	instance = self
+	if canon: canon.shoot.connect(handle_canon_shoot)
+
+
+func handle_canon_shoot() -> void:
+	var curr_barricade = get_active_barricade()
+	if curr_barricade: curr_barricade.take_damage()
+
+
+func get_active_barricade() -> Barricade:
+	if step == 0: return first_barricade
+	return null
+"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nnsk1"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -130,7 +162,7 @@ size = Vector3(0.25, 0.25, 0.1)
 size = Vector3(0.25, 0.25, 0.1)
 
 [node name="World" type="Node3D" unique_id=1121832902 node_paths=PackedStringArray("player")]
-script = ExtResource("1_4wyf3")
+script = SubResource("GDScript_124fr")
 player = NodePath("Player")
 
 [node name="Environment" type="Node3D" parent="." unique_id=532340216]

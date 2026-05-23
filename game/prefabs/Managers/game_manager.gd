@@ -3,7 +3,6 @@ class_name GameManager extends Node
 static var active_fight_area: FightArea
 
 @export_category("References")
-@export var player: Player
 @export var first_barricade: Barricade
 @export var canon: Canon
 
