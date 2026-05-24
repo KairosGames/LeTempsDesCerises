@@ -1,6 +1,22 @@
 [gd_scene format=3 uid="uid://c7t14wpqn81yh"]
 
 [ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://prefabs/Managers/game_manager.gd" id="1_utpm8"]
+[ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="2_oroiu"]
+[ext_resource type="PackedScene" uid="uid://beech0hdhe6o0" path="res://prefabs/GameStates/game_state_00.tscn" id="3_mvb55"]
+[ext_resource type="PackedScene" uid="uid://7j15kus7g3jt" path="res://prefabs/GameStates/game_state_01.tscn" id="4_ljy1t"]
+[ext_resource type="PackedScene" uid="uid://qwhdtvmxif5t" path="res://prefabs/GameStates/game_state_02.tscn" id="5_m6g67"]
 
 [node name="GameManager" type="Node" unique_id=1070764289]
 script = ExtResource("1_utpm8")
+player_prefab = ExtResource("2_oroiu")
+
+[node name="States" type="Node" parent="." unique_id=103955825]
+
+[node name="GameState00" parent="States" unique_id=1759019559 instance=ExtResource("3_mvb55")]
+
+[node name="GameState01" parent="States" unique_id=443097567 instance=ExtResource("4_ljy1t")]
+
+[node name="GameState02" parent="States" unique_id=345645137 instance=ExtResource("5_m6g67")]
+
+[node name="PlayerSpwaner" type="Node3D" parent="." unique_id=573929595]
+transform = Transform3D(-0.69127357, 0, -0.7225932, 0, 1, 0, 0.7225932, 0, -0.69127357, -23.035017, 0, 7.442451)

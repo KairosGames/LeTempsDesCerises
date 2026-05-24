@@ -1,0 +1,1 @@
+class_name GameState00 extends GameState

@@ -1,13 +1,23 @@
 class_name GameManager extends Node
 
-static var active_fight_area: FightArea
+@onready var player_spwaner: Node3D = $PlayerSpwaner
+
+@export_category("Settings")
+@export var use_narrative: bool = true
 
 @export_category("References")
 @export var first_barricade: Barricade
 @export var canon: Canon
 
-var step: int = 0
+@export_category("Packed Scenes")
+@export var player_prefab: PackedScene
+@export var all_states: Array[GameState]
 
+var player: Player
+var curr_state: GameState
+var game_state_index: int = -1
+
+static var active_fight_area: FightArea
 static var instance: GameManager:
 	set(value):
 		if not instance: instance = value
@@ -17,6 +27,46 @@ static var instance: GameManager:
 func _ready() -> void:
 	instance = self
 	if canon: canon.shoot.connect(handle_canon_shoot)
+	ready_deferred.call_deferred()
+
+
+func ready_deferred() -> void:
+	spawn_player_if_needed()
+	set_run()
+
+
+func spawn_player_if_needed() -> void:
+	if Player.instance:
+		print_rich("[color=yellow]PLAYER ALREADY IN SCENE ![/color]")
+		return
+	var new_player: Player = player_prefab.instantiate()
+	get_parent().add_child(new_player)
+	print_rich("[color=yellow]PLAYER HAS SPAWN ![/color]")
+	print("NEW PLAYER HAS SPAWN !")
+
+
+func set_run() -> void:
+	player = Player.instance
+	if use_narrative:
+		player.initiate(player_spwaner.global_position, player_spwaner.global_rotation, false, false, Player.Posture.CROUCH)
+		return
+	player.initiate(player_spwaner.global_position, player_spwaner.global_rotation)
+	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
+
+
+func go_next_state() -> void:
+	if curr_state:
+		curr_state.completed.disconnect(go_next_state)
+		curr_state.exit()
+
+	game_state_index += 1
+
+	if game_state_index >= all_states.size():
+		return
+
+	curr_state = all_states[game_state_index]
+	curr_state.completed.connect(go_next_state)
+	curr_state.enter()
 
 
 func handle_canon_shoot() -> void:
@@ -25,5 +75,5 @@ func handle_canon_shoot() -> void:
 
 
 func get_active_barricade() -> Barricade:
-	if step == 0: return first_barricade
+	if game_state_index == 0: return first_barricade
 	return null

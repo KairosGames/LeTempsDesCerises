@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dwp51gcdjh3l6"]
 
+[ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/Managers/game_manager.tscn" id="1_71j4m"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://bfxqdxe6sfsl3" path="res://sandbox/scripts_proto/shoot_target.gd" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://bka3ud42srojy" path="res://sandbox/textures_proto/dark/texture_04.png" id="2_k0juu"]
@@ -129,6 +130,12 @@ size = Vector3(0.25, 0.25, 0.1)
 size = Vector3(0.25, 0.25, 0.1)
 
 [node name="World" type="Node3D" unique_id=1121832902]
+
+[node name="GameManager" parent="." unique_id=1070764289 instance=ExtResource("1_71j4m")]
+use_narrative = false
+
+[node name="PlayerSpwaner" parent="GameManager" index="0" unique_id=573929595]
+transform = Transform3D(-0.5848585, 0, 0.8111354, 0, 1, 0, -0.8111354, 0, -0.5848585, -2.1009655, -2.3841858e-07, -4.781696)
 
 [node name="Environment" type="Node3D" parent="." unique_id=532340216]
 
@@ -481,3 +488,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.169285, 0.0019409287, 7.29
 
 [node name="Communard8" parent="." unique_id=1733032661 instance=ExtResource("5_71j4m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.304285, 0.0019409287, -17.273026)
+
+[editable path="GameManager"]

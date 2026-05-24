@@ -78,6 +78,15 @@ func ingore_inputs() -> void:
 	move_vec = Vector2.ZERO
 
 
+func ignore_move_inputs() -> void:
+	move_vec = Vector2.ZERO
+
+
+func ignore_aim_inputs() -> void:
+	aim_vec_gamepad = Vector2.ZERO
+	aim_vec_mouse = Vector2.ZERO
+
+
 func capture_gpad_switch_state(delta: float) -> void:
 	if Input.is_action_just_pressed("gpad_switch_state"):
 		gpad_crouch_pressed.emit()
@@ -129,5 +138,5 @@ func get_view_input() -> Vector2:
 	return aim_vec_gamepad if is_gamepad else aim_vec_mouse
 
 
-func get_move_inpit() -> Vector2:
+func get_move_input() -> Vector2:
 	return move_vec

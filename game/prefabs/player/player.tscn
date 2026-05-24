@@ -123,6 +123,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Crosshairs" type="TextureRect" parent="UI/CenterContainer" unique_id=1952164863]
+visible = false
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("2_r66lb")
+expand_mode = 1
+
 [node name="BlinkEffect" type="ColorRect" parent="UI/CenterContainer" unique_id=1580177522]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_b6byk")
@@ -130,13 +137,6 @@ custom_minimum_size = Vector2(2020, 1180)
 layout_mode = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("9_b6byk")
-
-[node name="Crosshairs" type="TextureRect" parent="UI/CenterContainer" unique_id=1952164863]
-visible = false
-custom_minimum_size = Vector2(30, 30)
-layout_mode = 2
-texture = ExtResource("2_r66lb")
-expand_mode = 1
 
 [node name="ReloadUI" type="Control" parent="UI" unique_id=604342347 node_paths=PackedStringArray("all_pos", "pos_to_rect")]
 unique_name_in_owner = true
@@ -298,7 +298,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0.08)
 
 [node name="WeaponContainer" type="Node3D" parent="CameraPivot/WeaponCameraBase" unique_id=1925293918]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, -0.055, 0.122)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, -0.05, 0.122)
 
 [node name="RightPullBackPosture" type="Marker3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer" unique_id=910350629]
 unique_name_in_owner = true
@@ -345,6 +345,10 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013229132, 0.31301522)
 target_position = Vector3(0, 0, 300)
 collision_mask = 7
+
+[node name="OutOfCamera" type="Marker3D" parent="CameraPivot/WeaponCameraBase" unique_id=51978982]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.34202015, -0.9396926, 0, 0.9396926, 0.34202015, -0.04, -0.1, 0)
 
 [connection signal="entered_reload" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/PlayerCamera/ak_player_manager" method="_on_reload_ui_entered_reload"]
 [connection signal="try_failed" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/PlayerCamera/ak_player_manager" method="_on_reload_ui_try_failed"]

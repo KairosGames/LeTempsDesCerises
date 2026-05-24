@@ -3,6 +3,9 @@ class_name Player extends CharacterBody3D
 signal missed_by_enemy
 signal die_called
 signal died
+signal weapon_took_or_dropped
+signal shot
+signal tried_shoot_no_reload
 
 @onready var p_inputs: PlayerInputs = %PlayerInputs
 @onready var reload_ui: ReloadUI = %ReloadUI
@@ -25,6 +28,8 @@ signal died
 @onready var pull_back_marker_right: Marker3D = %RightPullBackPosture
 @onready var pull_back_marker_left: Marker3D = %LeftPullBackPosture
 @onready var weapon_bob_root: Node3D = %WeaponBobRoot
+@onready var out_of_camera: Marker3D = %OutOfCamera
+@onready var blink_effect: BlinkEffect = %BlinkEffect
 
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
@@ -36,9 +41,18 @@ signal died
 @export var is_movement_smooth: bool = true
 
 @export_category("Character settings")
-@export var is_right_handed: bool = true
-@export var has_weapon: bool = true
 @export var shoot_targets: Array[Marker3D]
+@export var is_right_handed: bool = true
+@export var has_weapon: bool = false
+@export var time_to_pop_weapon: float = 0.4
+@export var can_use_shoot: bool = true
+@export var can_use_move: bool = true
+@export var can_use_view: bool = true
+@export var can_use_aim: bool = true
+@export var can_use_run: bool = true
+@export var can_use_reload: bool = true
+@export var can_change_posture: bool = true
+@export var can_use_jump: bool = true
 
 @export_category("View settings")
 @export var v_clamp_deg: Vector2 = Vector2(-70.0, 85.0)
@@ -131,7 +145,6 @@ signal died
 @export_range(0.0, 1.0, 0.01) var aiming_speed_ratio: float = 0.3
 
 @export_category("Air settings")
-@export var is_jump_possible: bool = true
 @export var jump_strength = 4.5
 @export var gravity_multiplier = 2.0
 
@@ -162,13 +175,12 @@ var is_running: bool = false
 var wait_aim_release: bool = false
 var wait_run_release: bool = false
 
-var can_shoot: bool = true
 var is_weapon_loaded: bool = true
 var is_reloading: bool = false
 var is_pulling_back: bool = false
 var is_reload_interruped: bool = false
 var is_alive: bool = true
-var can_play: bool = true
+var can_play: bool = false
 var will_die: bool = false
 
 var aim_noise_x: FastNoiseLite = FastNoiseLite.new()
@@ -207,6 +219,9 @@ var recoil_twn: Tween
 var reload_twn: Tween
 var pull_back_pos_twn: Tween
 var pull_back_rot_twn: Tween
+var pop_wpn_pitch_twn: Tween
+var pop_wpn_pos_y_twn: Tween
+var pop_wpn_pos_z_twn: Tween
 
 
 static var instance: Player:
@@ -250,7 +265,9 @@ func _process(delta: float) -> void:
 	
 	##DEBUG
 	if Input.is_action_just_pressed("TEST"):
-		if is_alive: die()
+		can_use_jump = !can_use_jump
+		give_or_drop_weapon(true)
+		#if is_alive: die()
 
 
 func initiate(pos: Vector3,
@@ -269,7 +286,7 @@ func initiate(pos: Vector3,
 		Posture.PRONE: camera_pivot.position.y = prone_height
 	weapon_container.position = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
 	has_weapon = h_weapon
-	weapon_sway_root.visible = h_weapon
+	weapon_container.visible = h_weapon
 	is_alive = true
 	can_play = true
 	is_weapon_loaded = wpn_loaded
@@ -343,6 +360,7 @@ func capture_aim_state() -> void:
 
 
 func can_aim() -> bool:
+	if not can_use_aim: return false
 	if not has_weapon: return false
 	if is_pulling_back and not is_running: return false
 	if is_reloading: return false
@@ -412,6 +430,8 @@ func capture_run_state() -> void:
 
 func can_run() -> bool:
 	if not is_grounded: return false
+	if not can_use_move: return false
+	if not can_use_run: return false
 	if stop_run: return false
 	return true
 
@@ -445,26 +465,26 @@ func go_for_run() -> void:
 	if is_changing_posture: return
 	match curr_posture:
 		Posture.STAND: is_running = !is_running if is_run_toggle else true
-		Posture.CROUCH: crouch_to_stand(false, true)
-		Posture.PRONE: prone_to_up(false, true)
+		Posture.CROUCH: if can_change_posture: crouch_to_stand(false, true)
+		Posture.PRONE: if can_change_posture: prone_to_stand(false, true)
 
 
 func capture_position_state() -> void:
 	if not is_grounded or is_changing_posture: return
 
 	if Input.is_action_just_pressed("crouch"):
-		if p_inputs.is_gamepad: return
+		if p_inputs.is_gamepad or not can_change_posture: return
 		match curr_posture:
 			Posture.STAND:crouch_to_stand(true)
 			Posture.CROUCH: crouch_to_stand()
 			Posture.PRONE: prone_to_crouch()
 
 	if Input.is_action_just_pressed("prone"):
-		if p_inputs.is_gamepad: return
+		if p_inputs.is_gamepad or not can_change_posture: return
 		match curr_posture:
-			Posture.STAND: prone_to_up(true)
+			Posture.STAND: prone_to_stand(true)
 			Posture.CROUCH: prone_to_crouch(true)
-			Posture.PRONE: prone_to_up()
+			Posture.PRONE: prone_to_stand()
 
 
 func crouch_to_stand(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
@@ -489,7 +509,7 @@ func prone_to_crouch(inverse: bool = false, time: float = state_switch_time) -> 
 	is_changing_posture = false
 
 
-func prone_to_up(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
+func prone_to_stand(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
 	is_changing_posture = true
 	curr_posture = Posture.CROUCH
 	if inverse: is_running = false
@@ -507,7 +527,7 @@ func prone_to_up(inverse: bool = false, ask_run: bool = false, time: float = sta
 
 
 func crouch_pressed_from_gpad() -> void:
-	if not is_grounded or is_changing_posture or curr_posture == Posture.CROUCH:
+	if not is_grounded or is_changing_posture or curr_posture == Posture.CROUCH or not can_change_posture:
 		return
 	if curr_posture == Posture.PRONE:
 		prone_to_crouch()
@@ -519,12 +539,13 @@ func crouch_pressed_from_gpad() -> void:
 
 
 func crouch_released_from_gpad() -> void:
-	if not is_grounded or is_changing_posture: return
+	if not is_grounded or is_changing_posture or not can_change_posture:
+		return
 	if curr_posture == Posture.CROUCH: crouch_to_stand()
 
 
 func prone_from_gpad() -> void:
-	if not is_grounded or is_changing_posture or not curr_posture == Posture.CROUCH:
+	if not is_grounded or is_changing_posture or not curr_posture == Posture.CROUCH or not can_change_posture:
 		return
 	if was_it_just_prone_gpad:
 		crouch_to_stand()
@@ -537,8 +558,8 @@ func capture_jump() -> void:
 	if Input.is_action_just_pressed("jump"):
 		match curr_posture:
 			Posture.STAND when can_jump(): jump()
-			Posture.CROUCH: crouch_to_stand()
-			Posture.PRONE: prone_to_up()
+			Posture.CROUCH: if can_change_posture: crouch_to_stand()
+			Posture.PRONE: if can_change_posture: prone_to_stand()
 
 
 func can_try_jump_action() -> bool:
@@ -548,7 +569,7 @@ func can_try_jump_action() -> bool:
 
 
 func can_jump() -> bool:
-	if not is_jump_possible: return false
+	if not can_use_jump: return false
 	if not is_grounded: return false
 	if is_reloading: return false
 	if is_changing_posture: return false
@@ -568,6 +589,7 @@ func process_movement(delta: float) -> void:
 
 func apply_plane_movement(delta: float) -> void:
 	if not can_play or not p_inputs.is_mouse_locked(): p_inputs.ingore_inputs()
+	if not can_use_move: p_inputs.ignore_move_inputs()
 	var mov_vec: Vector2 = p_inputs.move_vec
 	var dir: Vector3 = (transform.basis * Vector3(mov_vec.x, 0, mov_vec.y).normalized())
 	var ref_speed = get_used_speed()
@@ -629,6 +651,7 @@ func get_used_speed() -> float:
 func process_view(delta: float) -> void:
 	if not p_inputs.is_mouse_locked(): return
 	if not can_play: return
+	if not can_use_view: p_inputs.ignore_aim_inputs()
 	var inversion: float = -1 if p_inputs.is_inverted else 1
 	var reducer: float = (ads_speed_view_reduc if is_aiming else 1.0) * (prone_speed_view_reduc if curr_posture == Posture.PRONE else 1.0)
 	aim_target.y -= p_inputs.get_view_input().x * p_inputs.h_sensi_multiplier * reducer
@@ -682,10 +705,10 @@ func handle_fov_changes(delta: float) -> void:
 
 
 func handle_weapon_movement(delta: float) -> void:
-	if not has_weapon: return
 	handle_weapon_pull_back()
 	handle_weapon_bob(delta)
 	handle_weapon_sway(delta)
+	if not has_weapon: return
 	handle_weapon_lag(delta)
 
 
@@ -876,19 +899,22 @@ func lerp_rot(a: Vector3, b: Vector3, t: float) -> Vector3:
 
 
 func handle_shoot() -> void:
-	if not can_use_shoot() : return
+	if not can_shoot() : return
 	if Input.is_action_just_pressed("shoot"):
+		if not is_weapon_loaded:
+			tried_shoot_no_reload.emit()
+			return
 		is_weapon_loaded = false
+		shot.emit()
 		play_shoot_effects()
 		handle_shoot_cast()
 
 
-func can_use_shoot() -> bool:
+func can_shoot() -> bool:
 	if not p_inputs.is_mouse_locked() : return false
+	if not can_use_shoot: return false
 	if not can_play: return false
 	if not has_weapon: return false
-	if not is_weapon_loaded: return false
-	if not can_shoot: return false
 	if is_running: return false
 	if is_pulling_back: return false
 	return true
@@ -949,6 +975,7 @@ func capture_begin_reload() -> void:
 func can_reload() -> bool:
 	if not p_inputs.is_mouse_locked(): return false
 	if not can_play: return false
+	if not can_use_reload: return false
 	if not has_weapon: return false
 	if is_reloading: return false
 	if is_weapon_loaded: return false
@@ -990,6 +1017,32 @@ func exit_reload(is_realoded: bool = true, is_from_die = false) -> void:
 	is_reloading = false
 	if not is_weapon_loaded: is_weapon_loaded = is_realoded
 	is_reload_interruped = false
+
+
+func give_or_drop_weapon(is_given: bool) -> void:
+	if has_weapon == is_given: return
+	if pop_wpn_pitch_twn: pop_wpn_pitch_twn.kill()
+	if pop_wpn_pos_y_twn: pop_wpn_pos_y_twn.kill()
+	if pop_wpn_pos_z_twn: pop_wpn_pos_z_twn.kill()
+	if is_given:
+		weapon_container.rotation.x = out_of_camera.rotation.x
+		weapon_container.position.y = out_of_camera.position.y
+		weapon_container.position.z = out_of_camera.position.z
+		weapon_container.visible = true
+	else:
+		has_weapon = false
+	weapon_took_or_dropped.emit()
+	var x_rot: float = right_weapon_pos.rotation.x if is_given else out_of_camera.rotation.x
+	var z_pos: float = right_weapon_pos.position.z if is_given else out_of_camera.position.z
+	var y_pos: float = right_weapon_pos.position.y if is_given else out_of_camera.position.y
+	pop_wpn_pitch_twn = create_tween()
+	pop_wpn_pos_y_twn = create_tween()
+	pop_wpn_pos_z_twn = create_tween()
+	pop_wpn_pitch_twn.tween_property(weapon_container, "rotation:x", x_rot, time_to_pop_weapon)
+	pop_wpn_pos_z_twn.tween_property(weapon_container, "position:z", z_pos, time_to_pop_weapon)
+	await pop_wpn_pos_y_twn.tween_property(weapon_container, "position:y", y_pos, time_to_pop_weapon).finished
+	if is_given: has_weapon = true
+	else: weapon_container.visible = false
 
 
 func miss_by_versaillais() -> void:
@@ -1066,6 +1119,9 @@ func kill_all_tweens() -> void:
 	if reload_twn: reload_twn.kill()
 	if pull_back_pos_twn: pull_back_pos_twn.kill()
 	if pull_back_rot_twn: pull_back_rot_twn.kill()
+	if pop_wpn_pitch_twn: pop_wpn_pitch_twn.kill()
+	if pop_wpn_pos_y_twn: pop_wpn_pos_y_twn.kill()
+	if pop_wpn_pos_z_twn: pop_wpn_pos_z_twn.kill()
 
 
 func revive(pos: Vector3, rot: Vector3) -> void:

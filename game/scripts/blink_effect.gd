@@ -108,7 +108,21 @@ func kill_all_tweens() -> void:
 	if softness_twn: softness_twn.kill()
 
 
-############### TO_DELETE FOR ONBOARDING
-func _ready() -> void:
-	await get_tree().create_timer(0.5).timeout
-	open_eyes_from_sleep()
+func set_eyes_to_step(step: EyesStep) -> void:
+	match step_target:
+		EyesStep.OPEN:
+			shader.set_shader_parameter("opening", open_height)
+			shader.set_shader_parameter("corner_opening", open_corners)
+			shader.set_shader_parameter("softness", open_softness)
+		EyesStep.A_OPEN:
+			shader.set_shader_parameter("opening", a_open_height)
+			shader.set_shader_parameter("corner_opening", a_open_corners)
+			shader.set_shader_parameter("softness", a_open_softness)
+		EyesStep.A_CLOSED:
+			shader.set_shader_parameter("opening", a_closed_height)
+			shader.set_shader_parameter("corner_opening", a_closed_corners)
+			shader.set_shader_parameter("softness", a_closed_softness)
+		EyesStep.CLOSED:
+			shader.set_shader_parameter("opening", closed_height)
+			shader.set_shader_parameter("corner_opening", closed_corners)
+			shader.set_shader_parameter("softness", closed_softness)
