@@ -18,7 +18,7 @@
     "Type": "Event",
     "GUID": "{3D5106B6-DB52-4CAD-8B67-C5FA9BAE909C}",
     "Language": "SFX",
-    "Hash": "{0D817468-CA4A-FC68-C0B1-B621A9564808}",
+    "Hash": "{6A96F06C-905E-03F8-45AA-0FD294685CEB}",
     "ObjectPath": "Barricade_Damaged",
     "ShortName": "Barricade_Damaged",
     "Path": "Event/Barricade_Damaged.bnk",
@@ -336,7 +336,7 @@
     "Type": "User",
     "GUID": "{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}",
     "Language": "SFX",
-    "Hash": "{29B0F562-7889-6C02-DDDC-CCF8BF4FE89F}",
+    "Hash": "{A6C1BFCF-2861-624F-8F86-529971124094}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Amb",
     "ShortName": "Sb_Amb",
     "Path": "Sb_Amb.bnk",
@@ -612,11 +612,91 @@
     ]
    },
    {
+    "Id": "1318320503",
+    "Type": "Event",
+    "GUID": "{F199BA00-0E92-4FCC-B44C-4B16C4D9BADA}",
+    "Language": "SFX",
+    "Hash": "{9782FC90-8BE5-8CE4-7BE1-79E49141DB51}",
+    "ObjectPath": "Ally_Bark_Coward",
+    "ShortName": "Ally_Bark_Coward",
+    "Path": "Event/Ally_Bark_Coward.bnk",
+    "Media": [
+     {
+      "Id": "817127270",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Vx_Barks\\Vx_Communard\\PH_VX_Bar_M_Comm_Military_Player_Far_02.wav",
+      "Path": "Media/817127270.wem",
+      "CachePath": "0C/{0C1B2752-9971-B2FA-9A9B-D01228BAD279}.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "807526038",
+       "Name": "Meter (Custom)",
+       "ObjectPath": "\\Containers\\VX\\NPC\\Communard\\[Effect Slot [0]: (Meter)]\\Meter (Custom)",
+       "GUID": "{2855D257-F711-4259-8A16-CCC31E5A8F21}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "1318320503",
+      "Name": "Ally_Bark_Coward",
+      "ObjectPath": "\\Events\\VX\\Ally\\Ally_Bark_Coward",
+      "GUID": "{F199BA00-0E92-4FCC-B44C-4B16C4D9BADA}",
+      "Color": "11",
+      "MaxAttenuation": "50",
+      "DurationType": "OneShot",
+      "DurationMin": "1.6638958",
+      "DurationMax": "1.6638958",
+      "MediaRefs": [
+       {
+        "Id": "817127270"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "807526038"
+        }
+       ]
+      },
+      "AuxBusRefs": [
+       {
+        "Id": "2635253023",
+        "Name": "Street_Reverb",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb",
+        "GUID": "{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "1240670792",
+      "Name": "Distance",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Distance",
+      "GUID": "{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"
+     },
+     {
+      "Id": "2103536148",
+      "Name": "Bark_Volume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Bark_Volume",
+      "GUID": "{310D6C14-6344-45E9-8379-034A9EEF5868}"
+     }
+    ]
+   },
+   {
     "Id": "1355168291",
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{C8761C91-A26F-3C60-AB08-981CEEC0B4A2}",
+    "Hash": "{3BD7FC60-58F8-5A4B-13AB-60A280F33762}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -920,6 +1000,12 @@
       "GUID": "{C608E447-1D9D-4717-B429-A50B1CC84984}"
      },
      {
+      "Id": "2103536148",
+      "Name": "Bark_Volume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Bark_Volume",
+      "GUID": "{310D6C14-6344-45E9-8379-034A9EEF5868}"
+     },
+     {
       "Id": "2221031936",
       "Name": "Player_Position",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\Player_Position",
@@ -946,6 +1032,32 @@
     ],
     "StateGroups": [
      {
+      "Id": "219569822",
+      "Name": "player_cover",
+      "ObjectPath": "\\States\\Default Work Unit\\player_cover",
+      "GUID": "{C9327D6E-8FAB-42D5-8D81-231F326EF92D}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\player_cover\\None",
+        "GUID": "{4DF22A44-EA85-42F6-9E4F-DCC14894FFC5}"
+       },
+       {
+        "Id": "2008504509",
+        "Name": "covered",
+        "ObjectPath": "\\States\\Default Work Unit\\player_cover\\covered",
+        "GUID": "{0EF77DA3-5BFE-441F-9807-046A753432ED}"
+       },
+       {
+        "Id": "2407602878",
+        "Name": "uncovered",
+        "ObjectPath": "\\States\\Default Work Unit\\player_cover\\uncovered",
+        "GUID": "{DD238AEA-5EE8-436C-B2AC-55E54113E820}"
+       }
+      ]
+     },
+     {
       "Id": "314259375",
       "Name": "player_breath",
       "ObjectPath": "\\States\\Default Work Unit\\player_breath",
@@ -968,6 +1080,32 @@
         "Name": "anxious",
         "ObjectPath": "\\States\\Default Work Unit\\player_breath\\anxious",
         "GUID": "{68E47680-1106-48AB-8CD1-994A7346C657}"
+       }
+      ]
+     },
+     {
+      "Id": "1138488279",
+      "Name": "fight_state",
+      "ObjectPath": "\\States\\Default Work Unit\\fight_state",
+      "GUID": "{B590F5C3-04EB-4072-9F80-947A15BE497F}",
+      "States": [
+       {
+        "Id": "514064485",
+        "Name": "fight",
+        "ObjectPath": "\\States\\Default Work Unit\\fight_state\\fight",
+        "GUID": "{59DEFC00-A9CB-408F-BA8B-8A763F416A5E}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\fight_state\\None",
+        "GUID": "{C6C63CB6-7042-4BCB-9073-3AD401AFE0E9}"
+       },
+       {
+        "Id": "3967984634",
+        "Name": "retreat",
+        "ObjectPath": "\\States\\Default Work Unit\\fight_state\\retreat",
+        "GUID": "{28EDBE20-05B2-4F81-B02B-E8DE56DB8604}"
        }
       ]
      },
@@ -1032,6 +1170,64 @@
         "Name": "true",
         "ObjectPath": "\\States\\Default Work Unit\\player_aim\\true",
         "GUID": "{70CC75B8-1662-466B-9357-884CFAE6C01A}"
+       }
+      ]
+     },
+     {
+      "Id": "2280690262",
+      "Name": "barks_barricade",
+      "ObjectPath": "\\States\\Default Work Unit\\barks_barricade",
+      "GUID": "{53125CC4-7CB9-45A3-BFEC-E0F678A67D51}",
+      "States": [
+       {
+        "Id": "231230354",
+        "Name": "broken",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_barricade\\broken",
+        "GUID": "{188F5E20-5B0B-4BF1-A442-20828EB444ED}"
+       },
+       {
+        "Id": "545371365",
+        "Name": "low",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_barricade\\low",
+        "GUID": "{94C02136-BC10-4A28-B9A1-9DCF4BF3C2AE}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_barricade\\None",
+        "GUID": "{FAF24D92-8060-43E9-92D5-DDACD2AD38BA}"
+       },
+       {
+        "Id": "3094168564",
+        "Name": "intact",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_barricade\\intact",
+        "GUID": "{6769E500-8558-496D-8DA4-1F3F2BE3C572}"
+       }
+      ]
+     },
+     {
+      "Id": "4265991608",
+      "Name": "barks_player_distance",
+      "ObjectPath": "\\States\\Default Work Unit\\barks_player_distance",
+      "GUID": "{F3D872A7-B4A5-4C80-8E2F-BD45D645AFBE}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_player_distance\\None",
+        "GUID": "{DDEE31FC-0546-46BC-B4F8-7246C3392C16}"
+       },
+       {
+        "Id": "1183803292",
+        "Name": "far",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_player_distance\\far",
+        "GUID": "{4D4608CE-2BDA-4503-9A24-337534372CB7}"
+       },
+       {
+        "Id": "1451272583",
+        "Name": "close",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_player_distance\\close",
+        "GUID": "{997C47FE-0730-4B78-AEBE-B8EE578B8C48}"
        }
       ]
      }
@@ -1169,6 +1365,32 @@
         "Name": "crouch",
         "ObjectPath": "\\Switches\\Default Work Unit\\Player_Position\\crouch",
         "GUID": "{9CA6C40A-4F89-47F3-8D65-3B6B7CD4A1B4}"
+       }
+      ]
+     },
+     {
+      "Id": "3705103691",
+      "Name": "Shoe_Type",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type",
+      "GUID": "{B85E88EA-8A53-484A-909B-161E2E3D5B96}",
+      "Switches": [
+       {
+        "Id": "755604413",
+        "Name": "Worn_Boots",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type\\Worn_Boots",
+        "GUID": "{C30E9443-1FE8-4C03-9F8A-655F31BAB9E5}"
+       },
+       {
+        "Id": "1672723819",
+        "Name": "Clog_Shoes",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type\\Clog_Shoes",
+        "GUID": "{2A84FCF9-E908-4AAB-BF21-611AC65BE502}"
+       },
+       {
+        "Id": "2632515210",
+        "Name": "Heels",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type\\Heels",
+        "GUID": "{89B43353-FC1E-4814-8A4A-098729DFA6CF}"
        }
       ]
      }
@@ -1656,139 +1878,11 @@
     "Type": "User",
     "GUID": "{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}",
     "Language": "SFX",
-    "Hash": "{5121B499-ECBA-36BD-2151-2E92E314A040}",
+    "Hash": "{8F8625AA-BAA4-C3D5-BA08-7A0A7F2C4938}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Cannon",
     "ShortName": "Sb_Cannon",
     "Path": "Sb_Cannon.bnk",
     "Media": [
-     {
-      "Id": "150264634",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_004.wav",
-      "CachePath": "27/{27BC8A20-1331-8E4C-6C70-C0A0C0306706}.wem"
-     },
-     {
-      "Id": "159950334",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_005.wav",
-      "CachePath": "00/{005E2595-0102-D10C-3AB8-4D47B0074CDF}.wem"
-     },
-     {
-      "Id": "206031601",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_001.wav",
-      "CachePath": "83/{83027ECE-9330-BCB8-A104-9CFCE02686C2}.wem"
-     },
-     {
-      "Id": "219682458",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_005.wav",
-      "CachePath": "D2/{D2644052-896D-9627-E5BE-E3AA29708C53}.wem"
-     },
-     {
-      "Id": "228586405",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_006.wav",
-      "CachePath": "D2/{D2CE7D2E-DD64-C871-410B-FAE26A5770DA}.wem"
-     },
-     {
-      "Id": "306712885",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_006.wav",
-      "CachePath": "7A/{7A594014-9B67-CC5E-09D5-119943EB2848}.wem"
-     },
-     {
-      "Id": "368056344",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_002.wav",
-      "CachePath": "DE/{DE0C058B-BBB0-3808-DA54-6A9FFA0BD7B5}.wem"
-     },
-     {
-      "Id": "413837929",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_001.wav",
-      "CachePath": "0C/{0C13A0DC-AC72-A268-63AD-F3797E960335}.wem"
-     },
-     {
-      "Id": "432687729",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_003.wav",
-      "CachePath": "47/{47874B74-60BB-B2E3-9FBE-81829D12EF69}.wem"
-     },
-     {
-      "Id": "462682528",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_007.wav",
-      "CachePath": "77/{7729E8B0-29AD-A0D8-DBB0-53817195E4A0}.wem"
-     },
-     {
-      "Id": "569318931",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_008.wav",
-      "CachePath": "AA/{AAC1B9F6-4FC2-D75D-DDAE-A6DE7C12A845}.wem"
-     },
-     {
-      "Id": "573833834",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_012.wav",
-      "CachePath": "EE/{EE3E9F1F-3609-6AAF-E42C-5D190FE3A905}.wem"
-     },
-     {
-      "Id": "770928260",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_003.wav",
-      "CachePath": "F3/{F3B19257-2B5F-05C3-015E-4594892B16D2}.wem"
-     },
-     {
-      "Id": "777364051",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_011.wav",
-      "CachePath": "B1/{B174B7DC-8653-4BF2-DD34-952CA1BC9EDE}.wem"
-     },
-     {
-      "Id": "831039896",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_004.wav",
-      "CachePath": "22/{22211CE3-2A72-72AE-D4E7-DAC76698B466}.wem"
-     },
-     {
-      "Id": "852557919",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_002.wav",
-      "CachePath": "B3/{B344DB2E-A49D-C2C7-5844-892E70EE4D95}.wem"
-     },
      {
       "Id": "891776346",
       "Language": "SFX",
@@ -1796,22 +1890,6 @@
       "Location": "Memory",
       "ShortName": "Chassepot\\Bullet_Impact\\LTDC_Cannon_Shot_Oneshot.wav",
       "CachePath": "06/{06D222FA-F34F-AF63-4B1F-B517FB6F5CA8}.wem"
-     },
-     {
-      "Id": "1041905271",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_009.wav",
-      "CachePath": "B4/{B49B3171-9B61-3EC4-D151-FACC4FF8A0EC}.wem"
-     },
-     {
-      "Id": "1043901543",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Bullet_Impact\\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_010.wav",
-      "CachePath": "68/{68F57E70-7D42-48E2-93C0-4ED7E8166DF6}.wem"
      }
     ],
     "Events": [
@@ -1821,9 +1899,10 @@
       "ObjectPath": "\\Events\\SFX\\Cannon\\Cannon_Shoot",
       "GUID": "{91A29903-C449-45A3-830D-63BA22BF8416}",
       "Color": "10",
+      "MaxAttenuation": "100",
       "DurationType": "OneShot",
-      "DurationMin": "2.9923124",
-      "DurationMax": "2.9923124",
+      "DurationMin": "1.6793785",
+      "DurationMax": "1.6793785",
       "MediaRefs": [
        {
         "Id": "891776346"
@@ -1841,83 +1920,12 @@
         "Name": "Reflect",
         "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
         "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
-       }
-      ],
-      "SwitchContainers": [
-       {
-        "SwitchValue": {
-         "GroupType": "Switch",
-         "GroupId": "459611840",
-         "Id": "998496889",
-         "GUID": "{0E917C72-AA5E-4F81-8F09-69B5A910E6E0}"
-        },
-        "MediaRefs": [
-         {
-          "Id": "159950334"
-         },
-         {
-          "Id": "206031601"
-         },
-         {
-          "Id": "228586405"
-         },
-         {
-          "Id": "368056344"
-         },
-         {
-          "Id": "770928260"
-         },
-         {
-          "Id": "831039896"
-         }
-        ]
        },
        {
-        "SwitchValue": {
-         "GroupType": "Switch",
-         "GroupId": "459611840",
-         "Id": "3476314365",
-         "GUID": "{462AC773-1076-4E41-8643-F3EBA6E5A5B0}",
-         "Default": "true"
-        },
-        "MediaRefs": [
-         {
-          "Id": "150264634"
-         },
-         {
-          "Id": "219682458"
-         },
-         {
-          "Id": "306712885"
-         },
-         {
-          "Id": "413837929"
-         },
-         {
-          "Id": "432687729"
-         },
-         {
-          "Id": "462682528"
-         },
-         {
-          "Id": "569318931"
-         },
-         {
-          "Id": "573833834"
-         },
-         {
-          "Id": "777364051"
-         },
-         {
-          "Id": "852557919"
-         },
-         {
-          "Id": "1041905271"
-         },
-         {
-          "Id": "1043901543"
-         }
-        ]
+        "Id": "2635253023",
+        "Name": "Street_Reverb",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb",
+        "GUID": "{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"
        }
       ],
       "ActionPostEvent": [
@@ -1941,28 +1949,6 @@
       "DurationMin": "0",
       "DurationMax": "0"
      }
-    ],
-    "SwitchGroups": [
-     {
-      "Id": "459611840",
-      "Name": "Debris",
-      "ObjectPath": "\\Switches\\Default Work Unit\\Debris",
-      "GUID": "{74E2D250-64B7-405D-8F20-9EB76B8320A1}",
-      "Switches": [
-       {
-        "Id": "998496889",
-        "Name": "First",
-        "ObjectPath": "\\Switches\\Default Work Unit\\Debris\\First",
-        "GUID": "{0E917C72-AA5E-4F81-8F09-69B5A910E6E0}"
-       },
-       {
-        "Id": "3476314365",
-        "Name": "Second",
-        "ObjectPath": "\\Switches\\Default Work Unit\\Debris\\Second",
-        "GUID": "{462AC773-1076-4E41-8643-F3EBA6E5A5B0}"
-       }
-      ]
-     }
     ]
    },
    {
@@ -1970,7 +1956,7 @@
     "Type": "User",
     "GUID": "{49827AFC-1442-4066-AF70-C2B0B3B40C86}",
     "Language": "SFX",
-    "Hash": "{9582D571-4312-7B57-A578-EE3402457D32}",
+    "Hash": "{119BFAC9-A40E-372E-0957-E13BF61D8541}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Player",
     "ShortName": "Sb_Player",
     "Path": "Sb_Player.bnk",
@@ -1982,6 +1968,14 @@
       "Location": "Memory",
       "ShortName": "SFX_Player_Cloth\\Coat\\LTDC_SFX_Player_Cloth_Coat_Move_Random_02.wav",
       "CachePath": "33/{336C180A-B876-09C8-5625-8B07481EF5EB}.wem"
+     },
+     {
+      "Id": "8378917",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_10.wav",
+      "CachePath": "67/{67A51400-3754-A2AF-835F-CAF79E0F900E}.wem"
      },
      {
       "Id": "24042832",
@@ -1997,7 +1991,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Vx_Barks\\Vx_Communard\\LTDC_SFX_Player_Death_Oneshot.wav",
-      "CachePath": "A3/{A35EE971-2EA3-A28B-FB0D-76A9E924F918}.wem"
+      "CachePath": "B5/{B557378F-89CF-5A8E-30B7-DD90009471A8}.wem"
      },
      {
       "Id": "52646283",
@@ -2008,14 +2002,6 @@
       "CachePath": "93/{9370D88C-C05A-331B-60D0-08165597AA3B}.wem"
      },
      {
-      "Id": "65015294",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_07.wav",
-      "CachePath": "36/{361FDFAE-9C35-E361-0186-707143B8636C}.wem"
-     },
-     {
       "Id": "67108238",
       "Language": "SFX",
       "Streaming": "false",
@@ -2024,12 +2010,36 @@
       "CachePath": "F0/{F0AEB8D0-5B7A-BD52-F0AF-5917024F4E2B}.wem"
      },
      {
+      "Id": "84661739",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_06.wav",
+      "CachePath": "64/{641C4411-7C41-825D-28D4-4DF581A10A5C}.wem"
+     },
+     {
+      "Id": "90287885",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_08.wav",
+      "CachePath": "ED/{EDEC4107-0BC1-A7E7-09DC-E9C21CF616CC}.wem"
+     },
+     {
       "Id": "92141161",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "VX_Player_Breath\\Anxious\\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_003.wav",
       "CachePath": "E3/{E3C2475D-EC9E-F764-160E-5E3AAF193A2E}.wem"
+     },
+     {
+      "Id": "93854415",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_09.wav",
+      "CachePath": "77/{77900788-1E4F-4B99-AB4E-DC158C42244A}.wem"
      },
      {
       "Id": "108476024",
@@ -2046,6 +2056,22 @@
       "Location": "Memory",
       "ShortName": "Chassepot\\Reload\\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03.wav",
       "CachePath": "8E/{8E4B57D6-CDF1-AE46-BFA3-233EDA4361BE}.wem"
+     },
+     {
+      "Id": "110993894",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_01.wav",
+      "CachePath": "4D/{4D678305-5588-5510-24FF-72DCE2E5618D}.wem"
+     },
+     {
+      "Id": "113504718",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_08.wav",
+      "CachePath": "10/{104916C9-EA38-8015-C9B0-A41190D655AB}.wem"
      },
      {
       "Id": "170408866",
@@ -2072,14 +2098,6 @@
       "CachePath": "5B/{5BB88118-327C-1B70-B0E0-F988C8CEA1CF}.wem"
      },
      {
-      "Id": "177445382",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05.wav",
-      "CachePath": "F5/{F59E98DD-99A0-8923-67E7-CE93FA0D38B6}.wem"
-     },
-     {
       "Id": "208125764",
       "Language": "SFX",
       "Streaming": "false",
@@ -2096,12 +2114,12 @@
       "CachePath": "F6/{F6D7A621-F674-4D16-0212-1162E529837C}.wem"
      },
      {
-      "Id": "235351759",
+      "Id": "234685167",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03.wav",
-      "CachePath": "8F/{8FA600A6-DFD2-5B71-93F5-CF1C26FDE8C7}.wem"
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_07.wav",
+      "CachePath": "50/{50529E42-68ED-C4CA-4519-1FD1E1C879D0}.wem"
      },
      {
       "Id": "244128652",
@@ -2110,6 +2128,14 @@
       "Location": "Memory",
       "ShortName": "Chassepot\\Bullet_Impact\\SFX_Bullet_Impact\\LTDC_SFX_Bullet_Hit_LayerWood_Random_3.wav",
       "CachePath": "72/{72B5A3D1-7376-B6D1-B4E2-01AA1A445764}.wem"
+     },
+     {
+      "Id": "246629166",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_09.wav",
+      "CachePath": "62/{6204C162-8384-B3D6-1B78-43FF49235B6C}.wem"
      },
      {
       "Id": "247688113",
@@ -2168,12 +2194,12 @@
       "CachePath": "A9/{A9D3E216-C20D-1C29-9DEF-2024004EE356}.wem"
      },
      {
-      "Id": "325438990",
+      "Id": "313762575",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_09.wav",
-      "CachePath": "46/{464C559C-3BF4-6DCF-2A07-3567462FD1D1}.wem"
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_09.wav",
+      "CachePath": "C0/{C02B771A-4337-53F8-C04C-C4E4B5EC0639}.wem"
      },
      {
       "Id": "345847656",
@@ -2240,20 +2266,20 @@
       "CachePath": "02/{02589DCA-C1B4-3068-901D-4E54ECB36F87}.wem"
      },
      {
+      "Id": "403636337",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_01.wav",
+      "CachePath": "83/{838D5C68-E7B1-360C-6E3D-D816BB8496F3}.wem"
+     },
+     {
       "Id": "414727295",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "SFX_Player_Accessories\\Bandolier\\LTDC_SFX_Player_Access_Bandolier_Move_Random_09.wav",
       "CachePath": "7B/{7BA21F6C-0FDB-A52C-307E-9820B3696A53}.wem"
-     },
-     {
-      "Id": "426340724",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_10.wav",
-      "CachePath": "0E/{0EC9C593-4DC1-7D03-BDF3-3CA9977609B2}.wem"
      },
      {
       "Id": "434123214",
@@ -2264,20 +2290,20 @@
       "CachePath": "82/{8258EADD-7C81-A092-B5F1-EC6883BB4F52}.wem"
      },
      {
+      "Id": "444052320",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_03.wav",
+      "CachePath": "46/{46A7CAE7-2E38-DF20-14B6-836D5502C5A9}.wem"
+     },
+     {
       "Id": "454630269",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "VX_Player_Breath\\Calm\\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003.wav",
       "CachePath": "9E/{9E4F9991-AFB4-B7B5-6A74-847B86DA9731}.wem"
-     },
-     {
-      "Id": "460395499",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06.wav",
-      "CachePath": "00/{00CC859C-4A5E-ED00-94C6-2453C6C515D4}.wem"
      },
      {
       "Id": "463745797",
@@ -2302,6 +2328,14 @@
       "Location": "Memory",
       "ShortName": "Chassepot\\Reload\\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot.wav",
       "CachePath": "4D/{4D75D097-3297-8044-8356-866BFF15BF6A}.wem"
+     },
+     {
+      "Id": "538935591",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_02.wav",
+      "CachePath": "78/{78200181-75A1-D64C-D882-220EEE69178E}.wem"
      },
      {
       "Id": "543300058",
@@ -2336,6 +2370,38 @@
       "CachePath": "D0/{D03FECC8-1995-6DF0-4C54-868999829CDE}.wem"
      },
      {
+      "Id": "572850137",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_06.wav",
+      "CachePath": "A1/{A19D92D5-4B72-AAF7-0C6D-96F77E53AAFD}.wem"
+     },
+     {
+      "Id": "575654546",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_05.wav",
+      "CachePath": "39/{399D6710-CAF7-4823-3D3F-6D8581A6A1DF}.wem"
+     },
+     {
+      "Id": "582177549",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_03.wav",
+      "CachePath": "74/{740CCD31-344B-3077-4D87-71E27C005C49}.wem"
+     },
+     {
+      "Id": "596578976",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_02.wav",
+      "CachePath": "BA/{BA43E0AF-8042-161E-15C9-08960A468206}.wem"
+     },
+     {
       "Id": "602687413",
       "Language": "SFX",
       "Streaming": "false",
@@ -2350,6 +2416,14 @@
       "Location": "Memory",
       "ShortName": "VX_Player_Breath\\Calm\\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003.wav",
       "CachePath": "B2/{B2419593-2917-DA23-0D02-3572ABD80B6B}.wem"
+     },
+     {
+      "Id": "610176216",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_10.wav",
+      "CachePath": "0F/{0FEFD324-0E2C-ABB0-9BE1-40DDA4F2F16B}.wem"
      },
      {
       "Id": "632494295",
@@ -2368,12 +2442,44 @@
       "CachePath": "AB/{AB327EE8-9F01-38B1-8603-A190A35D7938}.wem"
      },
      {
+      "Id": "669746352",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_06.wav",
+      "CachePath": "1F/{1FFC757F-4860-9AAD-E712-35F205D49720}.wem"
+     },
+     {
       "Id": "702837950",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "AudioEase\\Altiverb - Outdoor and More\\Outdoor\\Alley\\AE_NarrowShortAlley.wav",
       "CachePath": "67/{67C47793-C666-C7C5-F11C-9EF62A7D5B56}.wem"
+     },
+     {
+      "Id": "704299937",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_04.wav",
+      "CachePath": "C0/{C0EA72B8-B8D9-2E76-90F6-CC09349F31E5}.wem"
+     },
+     {
+      "Id": "716815183",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_02.wav",
+      "CachePath": "F5/{F5C7F167-48B6-941F-157B-5DCBD4671D0A}.wem"
+     },
+     {
+      "Id": "724383836",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_05.wav",
+      "CachePath": "66/{66685900-1D11-0ABD-E583-29C96CE9F68F}.wem"
      },
      {
       "Id": "729252264",
@@ -2416,6 +2522,14 @@
       "CachePath": "AE/{AEF3A6E4-3323-11B4-6CA9-1CA823C51D39}.wem"
      },
      {
+      "Id": "765549266",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_08.wav",
+      "CachePath": "FB/{FBA2EC94-E08E-28A3-F8C3-6B4307E66D14}.wem"
+     },
+     {
       "Id": "773399391",
       "Language": "SFX",
       "Streaming": "false",
@@ -2424,12 +2538,12 @@
       "CachePath": "3D/{3D979F61-D542-6701-1B77-EE55ED378176}.wem"
      },
      {
-      "Id": "780702883",
+      "Id": "792125895",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01.wav",
-      "CachePath": "28/{285E4709-A3AE-BA29-6EEB-63C47DE3F002}.wem"
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_03.wav",
+      "CachePath": "AD/{AD383A8D-E56C-28C6-A74B-8B5C3DC902F6}.wem"
      },
      {
       "Id": "794092549",
@@ -2448,12 +2562,28 @@
       "CachePath": "9D/{9DCACCCA-D77B-E7DD-5F09-F350795B7DF1}.wem"
      },
      {
-      "Id": "812421663",
+      "Id": "812248446",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04.wav",
-      "CachePath": "39/{39EF3C64-B235-83F5-01D0-612CD43A1C75}.wem"
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_07.wav",
+      "CachePath": "75/{757171F2-47C1-98F3-5A03-0A4D4801285C}.wem"
+     },
+     {
+      "Id": "814728128",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_05.wav",
+      "CachePath": "E9/{E9F0EF14-5A7E-9D55-9691-AF36A31C6CA8}.wem"
+     },
+     {
+      "Id": "820768894",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_04.wav",
+      "CachePath": "B5/{B56805B2-471B-A461-1EF6-57DD64140AD4}.wem"
      },
      {
       "Id": "842328612",
@@ -2462,14 +2592,6 @@
       "Location": "Memory",
       "ShortName": "Chassepot\\Bullet_Impact\\SFX_Bullet_Impact\\LTDC_SFX_Bullet_Hit_LayerMetal_Random_1.wav",
       "CachePath": "9B/{9B82547B-348C-F833-D661-7CF4B8A7ED65}.wem"
-     },
-     {
-      "Id": "844921791",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_08.wav",
-      "CachePath": "3A/{3AC383A7-F62F-5AFF-DB3C-EDE907EABFE4}.wem"
      },
      {
       "Id": "868852621",
@@ -2486,6 +2608,22 @@
       "Location": "Memory",
       "ShortName": "VX_Player_Breath\\Anxious\\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_004.wav",
       "CachePath": "F4/{F4BA7133-0239-1B3F-9AD1-BA9BB0C29E0D}.wem"
+     },
+     {
+      "Id": "875863879",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_01.wav",
+      "CachePath": "95/{9537C8FA-97C4-879E-10DF-C7D9ADA024C5}.wem"
+     },
+     {
+      "Id": "905384235",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_04.wav",
+      "CachePath": "9B/{9BD6B348-9668-D130-B08D-6B580F6A82CB}.wem"
      },
      {
       "Id": "917246979",
@@ -2536,20 +2674,20 @@
       "CachePath": "55/{55304EF3-ACB4-3B65-B9BC-44447365B56C}.wem"
      },
      {
+      "Id": "1005098820",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_10.wav",
+      "CachePath": "80/{80C610A3-2B7B-57C0-8D44-F5B765A7EB61}.wem"
+     },
+     {
       "Id": "1013298916",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Chassepot\\Reload\\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_04.wav",
       "CachePath": "E5/{E5537DD6-F6E4-9AD9-BCCB-5A4C2F4F78D0}.wem"
-     },
-     {
-      "Id": "1024503505",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02.wav",
-      "CachePath": "C2/{C25B7A14-CC45-5028-15E1-E0993E82F9A1}.wem"
      },
      {
       "Id": "1026796877",
@@ -2566,6 +2704,14 @@
       "Location": "Memory",
       "ShortName": "SFX_Player_Cloth\\Coat\\LTDC_SFX_Player_Cloth_Coat_Move_Random_06.wav",
       "CachePath": "0D/{0DF200F2-BF1D-757E-F59F-8997CB272884}.wem"
+     },
+     {
+      "Id": "1034913934",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_07.wav",
+      "CachePath": "52/{5229FA47-C627-85A2-1D53-310CE4571D66}.wem"
      },
      {
       "Id": "1035585658",
@@ -2936,6 +3082,9 @@
       "DurationMax": "0.59555966",
       "MediaRefs": [
        {
+        "Id": "371277881"
+       },
+       {
         "Id": "434123214"
        }
       ],
@@ -2964,8 +3113,8 @@
       "GUID": "{FC96ABC9-59AC-438F-B837-19B7E11ADF1C}",
       "Color": "10",
       "DurationType": "OneShot",
-      "DurationMin": "1.4068125",
-      "DurationMax": "1.4068125",
+      "DurationMin": "0.85201",
+      "DurationMax": "0.85201",
       "MediaRefs": [
        {
         "Id": "49496949"
@@ -2988,14 +3137,14 @@
       "GUID": "{FE60E622-47E0-4B0A-8224-00824D1DFFA5}",
       "Color": "10",
       "DurationType": "OneShot",
-      "DurationMin": "0.6444656",
-      "DurationMax": "0.7599916",
+      "DurationMin": "0.47624105",
+      "DurationMax": "0.60002613",
       "MediaRefs": [
        {
-        "Id": "176463537"
+        "Id": "955352295"
        },
        {
-        "Id": "434123214"
+        "Id": "1056242460"
        }
       ],
       "AuxBusRefs": [
@@ -3161,19 +3310,10 @@
         "Id": "3520462"
        },
        {
-        "Id": "65015294"
-       },
-       {
         "Id": "176463537"
        },
        {
-        "Id": "177445382"
-       },
-       {
         "Id": "208125764"
-       },
-       {
-        "Id": "235351759"
        },
        {
         "Id": "247851767"
@@ -3185,22 +3325,13 @@
         "Id": "258356127"
        },
        {
-        "Id": "325438990"
-       },
-       {
         "Id": "371277881"
        },
        {
         "Id": "414727295"
        },
        {
-        "Id": "426340724"
-       },
-       {
         "Id": "434123214"
-       },
-       {
-        "Id": "460395499"
        },
        {
         "Id": "463745797"
@@ -3215,15 +3346,6 @@
         "Id": "773399391"
        },
        {
-        "Id": "780702883"
-       },
-       {
-        "Id": "812421663"
-       },
-       {
-        "Id": "844921791"
-       },
-       {
         "Id": "955352295"
        },
        {
@@ -3231,9 +3353,6 @@
        },
        {
         "Id": "978092744"
-       },
-       {
-        "Id": "1024503505"
        },
        {
         "Id": "1026796877"
@@ -3255,6 +3374,129 @@
         "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send",
         "GUID": "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"
        }
+      ],
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "3705103691",
+         "Id": "755604413",
+         "GUID": "{C30E9443-1FE8-4C03-9F8A-655F31BAB9E5}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "8378917"
+         },
+         {
+          "Id": "84661739"
+         },
+         {
+          "Id": "90287885"
+         },
+         {
+          "Id": "246629166"
+         },
+         {
+          "Id": "403636337"
+         },
+         {
+          "Id": "596578976"
+         },
+         {
+          "Id": "704299937"
+         },
+         {
+          "Id": "792125895"
+         },
+         {
+          "Id": "814728128"
+         },
+         {
+          "Id": "1034913934"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "3705103691",
+         "Id": "2632515210",
+         "GUID": "{89B43353-FC1E-4814-8A4A-098729DFA6CF}"
+        },
+        "MediaRefs": [
+         {
+          "Id": "313762575"
+         },
+         {
+          "Id": "444052320"
+         },
+         {
+          "Id": "538935591"
+         },
+         {
+          "Id": "669746352"
+         },
+         {
+          "Id": "724383836"
+         },
+         {
+          "Id": "765549266"
+         },
+         {
+          "Id": "812248446"
+         },
+         {
+          "Id": "875863879"
+         },
+         {
+          "Id": "905384235"
+         },
+         {
+          "Id": "1005098820"
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "3705103691",
+         "Id": "1672723819",
+         "GUID": "{2A84FCF9-E908-4AAB-BF21-611AC65BE502}",
+         "Default": "true"
+        },
+        "MediaRefs": [
+         {
+          "Id": "93854415"
+         },
+         {
+          "Id": "110993894"
+         },
+         {
+          "Id": "113504718"
+         },
+         {
+          "Id": "234685167"
+         },
+         {
+          "Id": "572850137"
+         },
+         {
+          "Id": "575654546"
+         },
+         {
+          "Id": "582177549"
+         },
+         {
+          "Id": "610176216"
+         },
+         {
+          "Id": "716815183"
+         },
+         {
+          "Id": "820768894"
+         }
+        ]
+       }
       ]
      },
      {
@@ -3269,6 +3511,9 @@
       "MediaRefs": [
        {
         "Id": "434123214"
+       },
+       {
+        "Id": "773399391"
        }
       ],
       "AuxBusRefs": [
@@ -3583,6 +3828,32 @@
         "GUID": "{00F5A187-15DF-42FD-91F4-E9687F923AA3}"
        }
       ]
+     },
+     {
+      "Id": "3705103691",
+      "Name": "Shoe_Type",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type",
+      "GUID": "{B85E88EA-8A53-484A-909B-161E2E3D5B96}",
+      "Switches": [
+       {
+        "Id": "755604413",
+        "Name": "Worn_Boots",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type\\Worn_Boots",
+        "GUID": "{C30E9443-1FE8-4C03-9F8A-655F31BAB9E5}"
+       },
+       {
+        "Id": "1672723819",
+        "Name": "Clog_Shoes",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type\\Clog_Shoes",
+        "GUID": "{2A84FCF9-E908-4AAB-BF21-611AC65BE502}"
+       },
+       {
+        "Id": "2632515210",
+        "Name": "Heels",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type\\Heels",
+        "GUID": "{89B43353-FC1E-4814-8A4A-098729DFA6CF}"
+       }
+      ]
      }
     ]
    },
@@ -3591,7 +3862,7 @@
     "Type": "Event",
     "GUID": "{17422CDB-5486-44BA-A4E2-730B71CE20EA}",
     "Language": "SFX",
-    "Hash": "{F75CC0E1-EB28-7486-723C-53547699A005}",
+    "Hash": "{9E875BD9-97E9-0E67-A6F1-5C9C644088E1}",
     "ObjectPath": "Enemy_Bark",
     "ShortName": "Enemy_Bark",
     "Path": "Event/Enemy_Bark.bnk",
@@ -3750,24 +4021,95 @@
     ]
    },
    {
+    "Id": "3295768610",
+    "Type": "Event",
+    "GUID": "{31CF92CC-1D11-498D-9E4C-E3F4E7791732}",
+    "Language": "SFX",
+    "Hash": "{1B8FEFC4-4C85-9AA5-1596-3D19FE086595}",
+    "ObjectPath": "Ally_Bark_Ally_Dead",
+    "ShortName": "Ally_Bark_Ally_Dead",
+    "Path": "Event/Ally_Bark_Ally_Dead.bnk",
+    "Media": [
+     {
+      "Id": "357761274",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Vx_Barks\\Vx_Communard\\PH_VX_Bar_M_Comm_Worker_Ally_Death_03.wav",
+      "Path": "Media/357761274.wem",
+      "CachePath": "17/{171FAD20-3635-D809-4BF2-FA1C708FB2DE}.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "807526038",
+       "Name": "Meter (Custom)",
+       "ObjectPath": "\\Containers\\VX\\NPC\\Communard\\[Effect Slot [0]: (Meter)]\\Meter (Custom)",
+       "GUID": "{2855D257-F711-4259-8A16-CCC31E5A8F21}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "3295768610",
+      "Name": "Ally_Bark_Ally_Dead",
+      "ObjectPath": "\\Events\\VX\\Ally\\Ally_Bark_Ally_Dead",
+      "GUID": "{31CF92CC-1D11-498D-9E4C-E3F4E7791732}",
+      "Color": "11",
+      "MaxAttenuation": "50",
+      "DurationType": "OneShot",
+      "DurationMin": "1.8476459",
+      "DurationMax": "1.8476459",
+      "MediaRefs": [
+       {
+        "Id": "357761274"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "807526038"
+        }
+       ]
+      },
+      "AuxBusRefs": [
+       {
+        "Id": "2635253023",
+        "Name": "Street_Reverb",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb",
+        "GUID": "{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "1240670792",
+      "Name": "Distance",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Distance",
+      "GUID": "{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"
+     },
+     {
+      "Id": "2103536148",
+      "Name": "Bark_Volume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Bark_Volume",
+      "GUID": "{310D6C14-6344-45E9-8379-034A9EEF5868}"
+     }
+    ]
+   },
+   {
     "Id": "3470134616",
     "Type": "Event",
     "GUID": "{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}",
     "Language": "SFX",
-    "Hash": "{64DDB392-94F0-3BDC-FB9D-517C061F5CA4}",
+    "Hash": "{26A34197-F90E-ACC5-F933-DBAAE0458D32}",
     "ObjectPath": "Ally_Bark",
     "ShortName": "Ally_Bark",
     "Path": "Event/Ally_Bark.bnk",
     "Media": [
-     {
-      "Id": "12475208",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Loose",
-      "ShortName": "Vx_Barks\\Vx_Communard\\Vx_Plachold_Vas-009.wav",
-      "Path": "Media/12475208.wem",
-      "CachePath": "28/{280315C5-DB1F-E8C0-A416-8BA4DD81C804}.wem"
-     },
      {
       "Id": "25468903",
       "Language": "SFX",
@@ -3859,6 +4201,18 @@
       "CachePath": "B6/{B65A6884-F693-BE7E-F519-727047DB8A79}.wem"
      }
     ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "807526038",
+       "Name": "Meter (Custom)",
+       "ObjectPath": "\\Containers\\VX\\NPC\\Communard\\[Effect Slot [0]: (Meter)]\\Meter (Custom)",
+       "GUID": "{2855D257-F711-4259-8A16-CCC31E5A8F21}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      }
+     ]
+    },
     "Events": [
      {
       "Id": "3470134616",
@@ -3871,9 +4225,6 @@
       "DurationMin": "1.0104166",
       "DurationMax": "2.6151874",
       "MediaRefs": [
-       {
-        "Id": "12475208"
-       },
        {
         "Id": "25468903"
        },
@@ -3905,6 +4256,13 @@
         "Id": "940876037"
        }
       ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "807526038"
+        }
+       ]
+      },
       "AuxBusRefs": [
        {
         "Id": "2635253023",
@@ -3921,6 +4279,104 @@
       "Name": "Distance",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\Distance",
       "GUID": "{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"
+     },
+     {
+      "Id": "2103536148",
+      "Name": "Bark_Volume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Bark_Volume",
+      "GUID": "{310D6C14-6344-45E9-8379-034A9EEF5868}"
+     }
+    ]
+   },
+   {
+    "Id": "3598975830",
+    "Type": "Event",
+    "GUID": "{CCDE5342-885C-4CF5-B310-0B051AF8D0F0}",
+    "Language": "SFX",
+    "Hash": "{78743ECA-F7F9-3479-4C45-4C4AA2AF2442}",
+    "ObjectPath": "Ally_Bark_Enemy_Dead",
+    "ShortName": "Ally_Bark_Enemy_Dead",
+    "Path": "Event/Ally_Bark_Enemy_Dead.bnk",
+    "Media": [
+     {
+      "Id": "12475208",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Vx_Barks\\Vx_Communard\\Vx_Plachold_Vas-009.wav",
+      "Path": "Media/12475208.wem",
+      "CachePath": "28/{280315C5-DB1F-E8C0-A416-8BA4DD81C804}.wem"
+     },
+     {
+      "Id": "620133278",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "Vx_Barks\\Vx_Communard\\PH_VX_Bar_M_Comm_Military_Player_Kill_01.wav",
+      "Path": "Media/620133278.wem",
+      "CachePath": "12/{12F0BE47-37A8-3E9F-C5FE-FC88B5FABEA7}.wem"
+     }
+    ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "807526038",
+       "Name": "Meter (Custom)",
+       "ObjectPath": "\\Containers\\VX\\NPC\\Communard\\[Effect Slot [0]: (Meter)]\\Meter (Custom)",
+       "GUID": "{2855D257-F711-4259-8A16-CCC31E5A8F21}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      }
+     ]
+    },
+    "Events": [
+     {
+      "Id": "3598975830",
+      "Name": "Ally_Bark_Enemy_Dead",
+      "ObjectPath": "\\Events\\VX\\Ally\\Ally_Bark_Enemy_Dead",
+      "GUID": "{CCDE5342-885C-4CF5-B310-0B051AF8D0F0}",
+      "Color": "11",
+      "MaxAttenuation": "50",
+      "DurationType": "OneShot",
+      "DurationMin": "1.3106667",
+      "DurationMax": "1.8258542",
+      "MediaRefs": [
+       {
+        "Id": "12475208"
+       },
+       {
+        "Id": "620133278"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "807526038"
+        }
+       ]
+      },
+      "AuxBusRefs": [
+       {
+        "Id": "2635253023",
+        "Name": "Street_Reverb",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb",
+        "GUID": "{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"
+       }
+      ]
+     }
+    ],
+    "GameParameters": [
+     {
+      "Id": "1240670792",
+      "Name": "Distance",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Distance",
+      "GUID": "{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"
+     },
+     {
+      "Id": "2103536148",
+      "Name": "Bark_Volume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Bark_Volume",
+      "GUID": "{310D6C14-6344-45E9-8379-034A9EEF5868}"
      }
     ]
    },
@@ -3929,7 +4385,7 @@
     "Type": "User",
     "GUID": "{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}",
     "Language": "SFX",
-    "Hash": "{B1DF6992-5255-F1CA-F4FF-46DB6677CC1F}",
+    "Hash": "{AC8AA452-B5A1-2C8F-7F63-742ECA2A92F0}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Enemy",
     "ShortName": "Sb_Enemy",
     "Path": "Sb_Enemy.bnk",
@@ -3948,7 +4404,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Chassepot\\LTDC_SFX_Player_GunShot_LayerTail_Oneshot.wav",
-      "CachePath": "CC/{CC36FDDF-A594-5A4B-BD0B-1664AD02E540}.wem"
+      "CachePath": "4C/{4C1B1F8A-1BA3-B59D-8F9C-AE6E39ABFFA7}.wem"
      },
      {
       "Id": "220576500",
@@ -3965,14 +4421,6 @@
       "Location": "Memory",
       "ShortName": "Chassepot\\Bullet_Impact\\SFX_Bullet_Impact\\LTDC_SFX_Bullet_Hit_LayerWood_Random_3.wav",
       "CachePath": "72/{72B5A3D1-7376-B6D1-B4E2-01AA1A445764}.wem"
-     },
-     {
-      "Id": "271200390",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03.wav",
-      "CachePath": "0D/{0D40DF66-637E-D359-577E-324F99AF211D}.wem"
      },
      {
       "Id": "301802129",
@@ -4015,28 +4463,12 @@
       "CachePath": "08/{08026EAD-8FF1-D523-594A-3D4EE89A8BDD}.wem"
      },
      {
-      "Id": "708986119",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02.wav",
-      "CachePath": "B9/{B93A425F-0984-F1C1-60AA-A006F92E7678}.wem"
-     },
-     {
       "Id": "732266218",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Chassepot\\Bullet_Impact\\SFX_Bullet_Impact\\LTDC_SFX_Bullet_Hit_LayerGlass_Random_3.wav",
       "CachePath": "38/{38050CBC-CCA5-5224-A021-535D7CB88F7E}.wem"
-     },
-     {
-      "Id": "733828454",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06.wav",
-      "CachePath": "42/{42581677-78C4-B360-C16A-2C341AB09130}.wem"
      },
      {
       "Id": "749417595",
@@ -4047,36 +4479,12 @@
       "CachePath": "AE/{AEF3A6E4-3323-11B4-6CA9-1CA823C51D39}.wem"
      },
      {
-      "Id": "811812976",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05.wav",
-      "CachePath": "E9/{E95A81EE-85A0-9E3B-6962-D992FEB08FC7}.wem"
-     },
-     {
-      "Id": "817899543",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04.wav",
-      "CachePath": "C8/{C8ADD602-A8CA-8B3D-8319-7C16878E5CB2}.wem"
-     },
-     {
       "Id": "842328612",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Chassepot\\Bullet_Impact\\SFX_Bullet_Impact\\LTDC_SFX_Bullet_Hit_LayerMetal_Random_1.wav",
       "CachePath": "9B/{9B82547B-348C-F833-D661-7CF4B8A7ED65}.wem"
-     },
-     {
-      "Id": "842959201",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01.wav",
-      "CachePath": "93/{9321AF10-301A-030B-C121-1B120D89F252}.wem"
      },
      {
       "Id": "917246979",
@@ -4249,28 +4657,10 @@
       "ObjectPath": "\\Events\\SFX\\Enemy\\Enemy_Steps",
       "GUID": "{925872CA-03A4-4FC1-8E1A-768C93F1A808}",
       "Color": "10",
-      "MaxAttenuation": "100",
-      "DurationType": "Infinite",
-      "MediaRefs": [
-       {
-        "Id": "271200390"
-       },
-       {
-        "Id": "708986119"
-       },
-       {
-        "Id": "733828454"
-       },
-       {
-        "Id": "811812976"
-       },
-       {
-        "Id": "817899543"
-       },
-       {
-        "Id": "842959201"
-       }
-      ]
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0"
      }
     ],
     "SwitchGroups": [
@@ -4313,7 +4703,7 @@
     "Type": "Event",
     "GUID": "{420BB33C-4BFB-4756-92E0-198AC47BDC12}",
     "Language": "SFX",
-    "Hash": "{11009A1E-E5B4-6266-F5A7-798748274542}",
+    "Hash": "{263D529F-5225-AE12-5DD6-536BD50D6233}",
     "ObjectPath": "Brick_Fall",
     "ShortName": "Brick_Fall",
     "Path": "Event/Brick_Fall.bnk",
@@ -4594,6 +4984,6 @@
     ]
    }
   ],
-  "FileHash": "{A058702F-C587-0724-5054-870C202D642D}"
+  "FileHash": "{EF4635B0-2ACA-E1D8-0F60-EF1B971F945A}"
  }
 }

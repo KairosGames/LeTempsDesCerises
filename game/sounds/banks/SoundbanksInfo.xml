@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="482738278" Type="Event" GUID="{3D5106B6-DB52-4CAD-8B67-C5FA9BAE909C}" Language="SFX" Hash="{0D817468-CA4A-FC68-C0B1-B621A9564808}">
+		<SoundBank Id="482738278" Type="Event" GUID="{3D5106B6-DB52-4CAD-8B67-C5FA9BAE909C}" Language="SFX" Hash="{6A96F06C-905E-03F8-45AA-0FD294685CEB}">
 			<ObjectPath>Barricade_Damaged</ObjectPath>
 			<ShortName>Barricade_Damaged</ShortName>
 			<Path>Event/Barricade_Damaged.bnk</Path>
@@ -161,7 +161,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{29B0F562-7889-6C02-DDDC-CCF8BF4FE89F}">
+		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{A6C1BFCF-2861-624F-8F86-529971124094}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Amb</ObjectPath>
 			<ShortName>Sb_Amb</ShortName>
 			<Path>Sb_Amb.bnk</Path>
@@ -292,7 +292,43 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{C8761C91-A26F-3C60-AB08-981CEEC0B4A2}">
+		<SoundBank Id="1318320503" Type="Event" GUID="{F199BA00-0E92-4FCC-B44C-4B16C4D9BADA}" Language="SFX" Hash="{9782FC90-8BE5-8CE4-7BE1-79E49141DB51}">
+			<ObjectPath>Ally_Bark_Coward</ObjectPath>
+			<ShortName>Ally_Bark_Coward</ShortName>
+			<Path>Event/Ally_Bark_Coward.bnk</Path>
+			<Media>
+				<File Id="817127270" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>Vx_Barks\Vx_Communard\PH_VX_Bar_M_Comm_Military_Player_Far_02.wav</ShortName>
+					<Path>Media/817127270.wem</Path>
+					<CachePath>0C/{0C1B2752-9971-B2FA-9A9B-D01228BAD279}.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="807526038" Name="Meter (Custom)" ObjectPath="\Containers\VX\NPC\Communard\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{2855D257-F711-4259-8A16-CCC31E5A8F21}" LibName="Wwise Meter" LibId="8454147"/>
+				</Custom>
+			</Plugins>
+			<Events>
+				<Event Id="1318320503" Name="Ally_Bark_Coward" ObjectPath="\Events\VX\Ally\Ally_Bark_Coward" GUID="{F199BA00-0E92-4FCC-B44C-4B16C4D9BADA}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="1.6638958" DurationMax="1.6638958">
+					<MediaRefs>
+						<MediaRef Id="817127270"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="807526038"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
+					</AuxBusRefs>
+				</Event>
+			</Events>
+			<GameParameters>
+				<GameParameter Id="1240670792" Name="Distance" ObjectPath="\Game Parameters\Default Work Unit\Distance" GUID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"/>
+				<GameParameter Id="2103536148" Name="Bark_Volume" ObjectPath="\Game Parameters\Default Work Unit\Bark_Volume" GUID="{310D6C14-6344-45E9-8379-034A9EEF5868}"/>
+			</GameParameters>
+		</SoundBank>
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{3BD7FC60-58F8-5A4B-13AB-60A280F33762}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -395,17 +431,32 @@
 				<GameParameter Id="711096812" Name="Deafening" ObjectPath="\Game Parameters\Default Work Unit\Deafening" GUID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}"/>
 				<GameParameter Id="1240670792" Name="Distance" ObjectPath="\Game Parameters\Default Work Unit\Distance" GUID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"/>
 				<GameParameter Id="1833811084" Name="Player_Velocity" ObjectPath="\Game Parameters\Default Work Unit\Player_Velocity" GUID="{C608E447-1D9D-4717-B429-A50B1CC84984}"/>
+				<GameParameter Id="2103536148" Name="Bark_Volume" ObjectPath="\Game Parameters\Default Work Unit\Bark_Volume" GUID="{310D6C14-6344-45E9-8379-034A9EEF5868}"/>
 				<GameParameter Id="2221031936" Name="Player_Position" ObjectPath="\Game Parameters\Default Work Unit\Player_Position" GUID="{7797433B-9024-4066-9F96-1380C3B89EA1}"/>
 				<GameParameter Id="2576556105" Name="Cannons_Probability" ObjectPath="\Game Parameters\Default Work Unit\Cannons_Probability" GUID="{44235752-3ED7-4F8D-ABCB-15BA17B653AB}"/>
 				<GameParameter Id="3680281974" Name="Poetic_Level" ObjectPath="\Game Parameters\Default Work Unit\Poetic_Level" GUID="{FB93CEA7-2418-4DE2-8C31-999E6239D31F}"/>
 				<GameParameter Id="4205136178" Name="Death_Filter" ObjectPath="\Game Parameters\Default Work Unit\Death_Filter" GUID="{C73A6915-BB76-4746-95CC-A87CCED79E78}"/>
 			</GameParameters>
 			<StateGroups>
+				<StateGroup Id="219569822" Name="player_cover" ObjectPath="\States\Default Work Unit\player_cover" GUID="{C9327D6E-8FAB-42D5-8D81-231F326EF92D}">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\player_cover\None" GUID="{4DF22A44-EA85-42F6-9E4F-DCC14894FFC5}"/>
+						<State Id="2008504509" Name="covered" ObjectPath="\States\Default Work Unit\player_cover\covered" GUID="{0EF77DA3-5BFE-441F-9807-046A753432ED}"/>
+						<State Id="2407602878" Name="uncovered" ObjectPath="\States\Default Work Unit\player_cover\uncovered" GUID="{DD238AEA-5EE8-436C-B2AC-55E54113E820}"/>
+					</States>
+				</StateGroup>
 				<StateGroup Id="314259375" Name="player_breath" ObjectPath="\States\Default Work Unit\player_breath" GUID="{5E643EBD-D3D2-483F-B8F0-D5985C137861}">
 					<States>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\player_breath\None" GUID="{FDC1DACA-2D38-4965-BFB2-0B7C8BA08DD2}"/>
 						<State Id="3753286132" Name="calm" ObjectPath="\States\Default Work Unit\player_breath\calm" GUID="{1A08D4AD-3BFC-498C-89E9-90C6C5D68726}"/>
 						<State Id="3823044812" Name="anxious" ObjectPath="\States\Default Work Unit\player_breath\anxious" GUID="{68E47680-1106-48AB-8CD1-994A7346C657}"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="1138488279" Name="fight_state" ObjectPath="\States\Default Work Unit\fight_state" GUID="{B590F5C3-04EB-4072-9F80-947A15BE497F}">
+					<States>
+						<State Id="514064485" Name="fight" ObjectPath="\States\Default Work Unit\fight_state\fight" GUID="{59DEFC00-A9CB-408F-BA8B-8A763F416A5E}"/>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\fight_state\None" GUID="{C6C63CB6-7042-4BCB-9073-3AD401AFE0E9}"/>
+						<State Id="3967984634" Name="retreat" ObjectPath="\States\Default Work Unit\fight_state\retreat" GUID="{28EDBE20-05B2-4F81-B02B-E8DE56DB8604}"/>
 					</States>
 				</StateGroup>
 				<StateGroup Id="1343755517" Name="player_stance" ObjectPath="\States\Default Work Unit\player_stance" GUID="{02DC436E-58FA-4CBB-9770-4451633B92C8}">
@@ -422,6 +473,21 @@
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\player_aim\None" GUID="{3F4E19DC-A92B-410B-A80A-BE5560C10551}"/>
 						<State Id="2452206122" Name="false" ObjectPath="\States\Default Work Unit\player_aim\false" GUID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
 						<State Id="3053630529" Name="true" ObjectPath="\States\Default Work Unit\player_aim\true" GUID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="2280690262" Name="barks_barricade" ObjectPath="\States\Default Work Unit\barks_barricade" GUID="{53125CC4-7CB9-45A3-BFEC-E0F678A67D51}">
+					<States>
+						<State Id="231230354" Name="broken" ObjectPath="\States\Default Work Unit\barks_barricade\broken" GUID="{188F5E20-5B0B-4BF1-A442-20828EB444ED}"/>
+						<State Id="545371365" Name="low" ObjectPath="\States\Default Work Unit\barks_barricade\low" GUID="{94C02136-BC10-4A28-B9A1-9DCF4BF3C2AE}"/>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\barks_barricade\None" GUID="{FAF24D92-8060-43E9-92D5-DDACD2AD38BA}"/>
+						<State Id="3094168564" Name="intact" ObjectPath="\States\Default Work Unit\barks_barricade\intact" GUID="{6769E500-8558-496D-8DA4-1F3F2BE3C572}"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="4265991608" Name="barks_player_distance" ObjectPath="\States\Default Work Unit\barks_player_distance" GUID="{F3D872A7-B4A5-4C80-8E2F-BD45D645AFBE}">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\barks_player_distance\None" GUID="{DDEE31FC-0546-46BC-B4F8-7246C3392C16}"/>
+						<State Id="1183803292" Name="far" ObjectPath="\States\Default Work Unit\barks_player_distance\far" GUID="{4D4608CE-2BDA-4503-9A24-337534372CB7}"/>
+						<State Id="1451272583" Name="close" ObjectPath="\States\Default Work Unit\barks_player_distance\close" GUID="{997C47FE-0730-4B78-AEBE-B8EE578B8C48}"/>
 					</States>
 				</StateGroup>
 			</StateGroups>
@@ -463,6 +529,13 @@
 						<Switch Id="1270007533" Name="prone" ObjectPath="\Switches\Default Work Unit\Player_Position\prone" GUID="{55E48646-668F-4D5A-AFAF-0D6A3642CFDD}"/>
 						<Switch Id="1551306158" Name="up" ObjectPath="\Switches\Default Work Unit\Player_Position\up" GUID="{6ED7AC77-E0A0-4562-B15A-68E109245BA3}"/>
 						<Switch Id="2655407367" Name="crouch" ObjectPath="\Switches\Default Work Unit\Player_Position\crouch" GUID="{9CA6C40A-4F89-47F3-8D65-3B6B7CD4A1B4}"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="3705103691" Name="Shoe_Type" ObjectPath="\Switches\Default Work Unit\Shoe_Type" GUID="{B85E88EA-8A53-484A-909B-161E2E3D5B96}">
+					<Switches>
+						<Switch Id="755604413" Name="Worn_Boots" ObjectPath="\Switches\Default Work Unit\Shoe_Type\Worn_Boots" GUID="{C30E9443-1FE8-4C03-9F8A-655F31BAB9E5}"/>
+						<Switch Id="1672723819" Name="Clog_Shoes" ObjectPath="\Switches\Default Work Unit\Shoe_Type\Clog_Shoes" GUID="{2A84FCF9-E908-4AAB-BF21-611AC65BE502}"/>
+						<Switch Id="2632515210" Name="Heels" ObjectPath="\Switches\Default Work Unit\Shoe_Type\Heels" GUID="{89B43353-FC1E-4814-8A4A-098729DFA6CF}"/>
 					</Switches>
 				</SwitchGroup>
 			</SwitchGroups>
@@ -595,143 +668,34 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{5121B499-ECBA-36BD-2151-2E92E314A040}">
+		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{8F8625AA-BAA4-C3D5-BA08-7A0A7F2C4938}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Cannon</ObjectPath>
 			<ShortName>Sb_Cannon</ShortName>
 			<Path>Sb_Cannon.bnk</Path>
 			<Media>
-				<File Id="150264634" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_004.wav</ShortName>
-					<CachePath>27/{27BC8A20-1331-8E4C-6C70-C0A0C0306706}.wem</CachePath>
-				</File>
-				<File Id="159950334" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_005.wav</ShortName>
-					<CachePath>00/{005E2595-0102-D10C-3AB8-4D47B0074CDF}.wem</CachePath>
-				</File>
-				<File Id="206031601" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_001.wav</ShortName>
-					<CachePath>83/{83027ECE-9330-BCB8-A104-9CFCE02686C2}.wem</CachePath>
-				</File>
-				<File Id="219682458" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_005.wav</ShortName>
-					<CachePath>D2/{D2644052-896D-9627-E5BE-E3AA29708C53}.wem</CachePath>
-				</File>
-				<File Id="228586405" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_006.wav</ShortName>
-					<CachePath>D2/{D2CE7D2E-DD64-C871-410B-FAE26A5770DA}.wem</CachePath>
-				</File>
-				<File Id="306712885" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_006.wav</ShortName>
-					<CachePath>7A/{7A594014-9B67-CC5E-09D5-119943EB2848}.wem</CachePath>
-				</File>
-				<File Id="368056344" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_002.wav</ShortName>
-					<CachePath>DE/{DE0C058B-BBB0-3808-DA54-6A9FFA0BD7B5}.wem</CachePath>
-				</File>
-				<File Id="413837929" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_001.wav</ShortName>
-					<CachePath>0C/{0C13A0DC-AC72-A268-63AD-F3797E960335}.wem</CachePath>
-				</File>
-				<File Id="432687729" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_003.wav</ShortName>
-					<CachePath>47/{47874B74-60BB-B2E3-9FBE-81829D12EF69}.wem</CachePath>
-				</File>
-				<File Id="462682528" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_007.wav</ShortName>
-					<CachePath>77/{7729E8B0-29AD-A0D8-DBB0-53817195E4A0}.wem</CachePath>
-				</File>
-				<File Id="569318931" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_008.wav</ShortName>
-					<CachePath>AA/{AAC1B9F6-4FC2-D75D-DDAE-A6DE7C12A845}.wem</CachePath>
-				</File>
-				<File Id="573833834" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_012.wav</ShortName>
-					<CachePath>EE/{EE3E9F1F-3609-6AAF-E42C-5D190FE3A905}.wem</CachePath>
-				</File>
-				<File Id="770928260" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_003.wav</ShortName>
-					<CachePath>F3/{F3B19257-2B5F-05C3-015E-4594892B16D2}.wem</CachePath>
-				</File>
-				<File Id="777364051" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_011.wav</ShortName>
-					<CachePath>B1/{B174B7DC-8653-4BF2-DD34-952CA1BC9EDE}.wem</CachePath>
-				</File>
-				<File Id="831039896" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Heavy_Random_004.wav</ShortName>
-					<CachePath>22/{22211CE3-2A72-72AE-D4E7-DAC76698B466}.wem</CachePath>
-				</File>
-				<File Id="852557919" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_002.wav</ShortName>
-					<CachePath>B3/{B344DB2E-A49D-C2C7-5844-892E70EE4D95}.wem</CachePath>
-				</File>
 				<File Id="891776346" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\LTDC_Cannon_Shot_Oneshot.wav</ShortName>
 					<CachePath>06/{06D222FA-F34F-AF63-4B1F-B517FB6F5CA8}.wem</CachePath>
 				</File>
-				<File Id="1041905271" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_009.wav</ShortName>
-					<CachePath>B4/{B49B3171-9B61-3EC4-D151-FACC4FF8A0EC}.wem</CachePath>
-				</File>
-				<File Id="1043901543" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Bullet_Impact\LTDC_SFX_Barricade_Debris_LayerBrick_Light_Random_010.wav</ShortName>
-					<CachePath>68/{68F57E70-7D42-48E2-93C0-4ED7E8166DF6}.wem</CachePath>
-				</File>
 			</Media>
 			<Events>
-				<Event Id="2469499398" Name="Cannon_Shoot" ObjectPath="\Events\SFX\Cannon\Cannon_Shoot" GUID="{91A29903-C449-45A3-830D-63BA22BF8416}" Color="10" DurationType="OneShot" DurationMin="2.9923124" DurationMax="2.9923124">
+				<Event Id="2469499398" Name="Cannon_Shoot" ObjectPath="\Events\SFX\Cannon\Cannon_Shoot" GUID="{91A29903-C449-45A3-830D-63BA22BF8416}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.6793785" DurationMax="1.6793785">
 					<MediaRefs>
 						<MediaRef Id="891776346"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
 						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
+						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
 					</AuxBusRefs>
-					<SwitchContainers>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="459611840" Id="998496889" GUID="{0E917C72-AA5E-4F81-8F09-69B5A910E6E0}"/>
-							<MediaRefs>
-								<MediaRef Id="159950334"/>
-								<MediaRef Id="206031601"/>
-								<MediaRef Id="228586405"/>
-								<MediaRef Id="368056344"/>
-								<MediaRef Id="770928260"/>
-								<MediaRef Id="831039896"/>
-							</MediaRefs>
-						</SwitchContainer>
-						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="459611840" Id="3476314365" GUID="{462AC773-1076-4E41-8643-F3EBA6E5A5B0}" Default="true"/>
-							<MediaRefs>
-								<MediaRef Id="150264634"/>
-								<MediaRef Id="219682458"/>
-								<MediaRef Id="306712885"/>
-								<MediaRef Id="413837929"/>
-								<MediaRef Id="432687729"/>
-								<MediaRef Id="462682528"/>
-								<MediaRef Id="569318931"/>
-								<MediaRef Id="573833834"/>
-								<MediaRef Id="777364051"/>
-								<MediaRef Id="852557919"/>
-								<MediaRef Id="1041905271"/>
-								<MediaRef Id="1043901543"/>
-							</MediaRefs>
-						</SwitchContainer>
-					</SwitchContainers>
 					<ActionPostEvent>
 						<ActionPostEventEntry Id="3687575925" Name="Deafening_Recover" ObjectPath="\Events\SFX\Player\Deafening_Recover" GUID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" Color="10"/>
 					</ActionPostEvent>
 				</Event>
 				<Event Id="3687575925" Name="Deafening_Recover" ObjectPath="\Events\SFX\Player\Deafening_Recover" GUID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
-			<SwitchGroups>
-				<SwitchGroup Id="459611840" Name="Debris" ObjectPath="\Switches\Default Work Unit\Debris" GUID="{74E2D250-64B7-405D-8F20-9EB76B8320A1}">
-					<Switches>
-						<Switch Id="998496889" Name="First" ObjectPath="\Switches\Default Work Unit\Debris\First" GUID="{0E917C72-AA5E-4F81-8F09-69B5A910E6E0}"/>
-						<Switch Id="3476314365" Name="Second" ObjectPath="\Switches\Default Work Unit\Debris\Second" GUID="{462AC773-1076-4E41-8643-F3EBA6E5A5B0}"/>
-					</Switches>
-				</SwitchGroup>
-			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{9582D571-4312-7B57-A578-EE3402457D32}">
+		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{119BFAC9-A40E-372E-0957-E13BF61D8541}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Player</ObjectPath>
 			<ShortName>Sb_Player</ShortName>
 			<Path>Sb_Player.bnk</Path>
@@ -740,29 +704,41 @@
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_02.wav</ShortName>
 					<CachePath>33/{336C180A-B876-09C8-5625-8B07481EF5EB}.wem</CachePath>
 				</File>
+				<File Id="8378917" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_10.wav</ShortName>
+					<CachePath>67/{67A51400-3754-A2AF-835F-CAF79E0F900E}.wem</CachePath>
+				</File>
 				<File Id="24042832" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerBrick_Random_1.wav</ShortName>
 					<CachePath>D5/{D53AF61A-41BD-35F6-1D31-59D9ECEB7E7B}.wem</CachePath>
 				</File>
 				<File Id="49496949" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Vx_Barks\Vx_Communard\LTDC_SFX_Player_Death_Oneshot.wav</ShortName>
-					<CachePath>A3/{A35EE971-2EA3-A28B-FB0D-76A9E924F918}.wem</CachePath>
+					<CachePath>B5/{B557378F-89CF-5A8E-30B7-DD90009471A8}.wem</CachePath>
 				</File>
 				<File Id="52646283" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_02.wav</ShortName>
 					<CachePath>93/{9370D88C-C05A-331B-60D0-08165597AA3B}.wem</CachePath>
 				</File>
-				<File Id="65015294" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_07.wav</ShortName>
-					<CachePath>36/{361FDFAE-9C35-E361-0186-707143B8636C}.wem</CachePath>
-				</File>
 				<File Id="67108238" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002.wav</ShortName>
 					<CachePath>F0/{F0AEB8D0-5B7A-BD52-F0AF-5917024F4E2B}.wem</CachePath>
 				</File>
+				<File Id="84661739" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_06.wav</ShortName>
+					<CachePath>64/{641C4411-7C41-825D-28D4-4DF581A10A5C}.wem</CachePath>
+				</File>
+				<File Id="90287885" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_08.wav</ShortName>
+					<CachePath>ED/{EDEC4107-0BC1-A7E7-09DC-E9C21CF616CC}.wem</CachePath>
+				</File>
 				<File Id="92141161" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_003.wav</ShortName>
 					<CachePath>E3/{E3C2475D-EC9E-F764-160E-5E3AAF193A2E}.wem</CachePath>
+				</File>
+				<File Id="93854415" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_09.wav</ShortName>
+					<CachePath>77/{77900788-1E4F-4B99-AB4E-DC158C42244A}.wem</CachePath>
 				</File>
 				<File Id="108476024" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004.wav</ShortName>
@@ -771,6 +747,14 @@
 				<File Id="110834382" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03.wav</ShortName>
 					<CachePath>8E/{8E4B57D6-CDF1-AE46-BFA3-233EDA4361BE}.wem</CachePath>
+				</File>
+				<File Id="110993894" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_01.wav</ShortName>
+					<CachePath>4D/{4D678305-5588-5510-24FF-72DCE2E5618D}.wem</CachePath>
+				</File>
+				<File Id="113504718" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_08.wav</ShortName>
+					<CachePath>10/{104916C9-EA38-8015-C9B0-A41190D655AB}.wem</CachePath>
 				</File>
 				<File Id="170408866" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerCore_Oneshot.wav</ShortName>
@@ -784,10 +768,6 @@
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_10.wav</ShortName>
 					<CachePath>5B/{5BB88118-327C-1B70-B0E0-F988C8CEA1CF}.wem</CachePath>
 				</File>
-				<File Id="177445382" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05.wav</ShortName>
-					<CachePath>F5/{F59E98DD-99A0-8923-67E7-CE93FA0D38B6}.wem</CachePath>
-				</File>
 				<File Id="208125764" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_03.wav</ShortName>
 					<CachePath>1C/{1C827535-B215-75C0-9DEE-DB6C86AC1E59}.wem</CachePath>
@@ -796,13 +776,17 @@
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerWood_Random_2.wav</ShortName>
 					<CachePath>F6/{F6D7A621-F674-4D16-0212-1162E529837C}.wem</CachePath>
 				</File>
-				<File Id="235351759" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03.wav</ShortName>
-					<CachePath>8F/{8FA600A6-DFD2-5B71-93F5-CF1C26FDE8C7}.wem</CachePath>
+				<File Id="234685167" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_07.wav</ShortName>
+					<CachePath>50/{50529E42-68ED-C4CA-4519-1FD1E1C879D0}.wem</CachePath>
 				</File>
 				<File Id="244128652" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerWood_Random_3.wav</ShortName>
 					<CachePath>72/{72B5A3D1-7376-B6D1-B4E2-01AA1A445764}.wem</CachePath>
+				</File>
+				<File Id="246629166" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_09.wav</ShortName>
+					<CachePath>62/{6204C162-8384-B3D6-1B78-43FF49235B6C}.wem</CachePath>
 				</File>
 				<File Id="247688113" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Oneshot.wav</ShortName>
@@ -832,9 +816,9 @@
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerBrick_Random_3.wav</ShortName>
 					<CachePath>A9/{A9D3E216-C20D-1C29-9DEF-2024004EE356}.wem</CachePath>
 				</File>
-				<File Id="325438990" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_09.wav</ShortName>
-					<CachePath>46/{464C559C-3BF4-6DCF-2A07-3567462FD1D1}.wem</CachePath>
+				<File Id="313762575" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_09.wav</ShortName>
+					<CachePath>C0/{C02B771A-4337-53F8-C04C-C4E4B5EC0639}.wem</CachePath>
 				</File>
 				<File Id="345847656" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerWood_Random_1.wav</ShortName>
@@ -868,25 +852,25 @@
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerBrick_Random_2.wav</ShortName>
 					<CachePath>02/{02589DCA-C1B4-3068-901D-4E54ECB36F87}.wem</CachePath>
 				</File>
+				<File Id="403636337" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_01.wav</ShortName>
+					<CachePath>83/{838D5C68-E7B1-360C-6E3D-D816BB8496F3}.wem</CachePath>
+				</File>
 				<File Id="414727295" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Accessories\Bandolier\LTDC_SFX_Player_Access_Bandolier_Move_Random_09.wav</ShortName>
 					<CachePath>7B/{7BA21F6C-0FDB-A52C-307E-9820B3696A53}.wem</CachePath>
-				</File>
-				<File Id="426340724" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_10.wav</ShortName>
-					<CachePath>0E/{0EC9C593-4DC1-7D03-BDF3-3CA9977609B2}.wem</CachePath>
 				</File>
 				<File Id="434123214" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_01.wav</ShortName>
 					<CachePath>82/{8258EADD-7C81-A092-B5F1-EC6883BB4F52}.wem</CachePath>
 				</File>
+				<File Id="444052320" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_03.wav</ShortName>
+					<CachePath>46/{46A7CAE7-2E38-DF20-14B6-836D5502C5A9}.wem</CachePath>
+				</File>
 				<File Id="454630269" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003.wav</ShortName>
 					<CachePath>9E/{9E4F9991-AFB4-B7B5-6A74-847B86DA9731}.wem</CachePath>
-				</File>
-				<File Id="460395499" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06.wav</ShortName>
-					<CachePath>00/{00CC859C-4A5E-ED00-94C6-2453C6C515D4}.wem</CachePath>
 				</File>
 				<File Id="463745797" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_08.wav</ShortName>
@@ -899,6 +883,10 @@
 				<File Id="534887455" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot.wav</ShortName>
 					<CachePath>4D/{4D75D097-3297-8044-8356-866BFF15BF6A}.wem</CachePath>
+				</File>
+				<File Id="538935591" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_02.wav</ShortName>
+					<CachePath>78/{78200181-75A1-D64C-D882-220EEE69178E}.wem</CachePath>
 				</File>
 				<File Id="543300058" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Oneshot.wav</ShortName>
@@ -916,6 +904,22 @@
 					<ShortName>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002.wav</ShortName>
 					<CachePath>D0/{D03FECC8-1995-6DF0-4C54-868999829CDE}.wem</CachePath>
 				</File>
+				<File Id="572850137" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_06.wav</ShortName>
+					<CachePath>A1/{A19D92D5-4B72-AAF7-0C6D-96F77E53AAFD}.wem</CachePath>
+				</File>
+				<File Id="575654546" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_05.wav</ShortName>
+					<CachePath>39/{399D6710-CAF7-4823-3D3F-6D8581A6A1DF}.wem</CachePath>
+				</File>
+				<File Id="582177549" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_03.wav</ShortName>
+					<CachePath>74/{740CCD31-344B-3077-4D87-71E27C005C49}.wem</CachePath>
+				</File>
+				<File Id="596578976" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_02.wav</ShortName>
+					<CachePath>BA/{BA43E0AF-8042-161E-15C9-08960A468206}.wem</CachePath>
+				</File>
 				<File Id="602687413" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_03.wav</ShortName>
 					<CachePath>C2/{C220019D-9006-956E-DE63-70FEF2D532E0}.wem</CachePath>
@@ -923,6 +927,10 @@
 				<File Id="610060490" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003.wav</ShortName>
 					<CachePath>B2/{B2419593-2917-DA23-0D02-3572ABD80B6B}.wem</CachePath>
+				</File>
+				<File Id="610176216" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_10.wav</ShortName>
+					<CachePath>0F/{0FEFD324-0E2C-ABB0-9BE1-40DDA4F2F16B}.wem</CachePath>
 				</File>
 				<File Id="632494295" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\LTDC_SFX_Player_GunShot_LayerCrack_Oneshot.wav</ShortName>
@@ -932,9 +940,25 @@
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_07.wav</ShortName>
 					<CachePath>AB/{AB327EE8-9F01-38B1-8603-A190A35D7938}.wem</CachePath>
 				</File>
+				<File Id="669746352" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_06.wav</ShortName>
+					<CachePath>1F/{1FFC757F-4860-9AAD-E712-35F205D49720}.wem</CachePath>
+				</File>
 				<File Id="702837950" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AudioEase\Altiverb - Outdoor and More\Outdoor\Alley\AE_NarrowShortAlley.wav</ShortName>
 					<CachePath>67/{67C47793-C666-C7C5-F11C-9EF62A7D5B56}.wem</CachePath>
+				</File>
+				<File Id="704299937" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_04.wav</ShortName>
+					<CachePath>C0/{C0EA72B8-B8D9-2E76-90F6-CC09349F31E5}.wem</CachePath>
+				</File>
+				<File Id="716815183" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_02.wav</ShortName>
+					<CachePath>F5/{F5C7F167-48B6-941F-157B-5DCBD4671D0A}.wem</CachePath>
+				</File>
+				<File Id="724383836" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_05.wav</ShortName>
+					<CachePath>66/{66685900-1D11-0ABD-E583-29C96CE9F68F}.wem</CachePath>
 				</File>
 				<File Id="729252264" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_01.wav</ShortName>
@@ -956,13 +980,17 @@
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerMetal_Random_3.wav</ShortName>
 					<CachePath>AE/{AEF3A6E4-3323-11B4-6CA9-1CA823C51D39}.wem</CachePath>
 				</File>
+				<File Id="765549266" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_08.wav</ShortName>
+					<CachePath>FB/{FBA2EC94-E08E-28A3-F8C3-6B4307E66D14}.wem</CachePath>
+				</File>
 				<File Id="773399391" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Accessories\Bandolier\LTDC_SFX_Player_Access_Bandolier_Move_Random_05.wav</ShortName>
 					<CachePath>3D/{3D979F61-D542-6701-1B77-EE55ED378176}.wem</CachePath>
 				</File>
-				<File Id="780702883" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01.wav</ShortName>
-					<CachePath>28/{285E4709-A3AE-BA29-6EEB-63C47DE3F002}.wem</CachePath>
+				<File Id="792125895" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_03.wav</ShortName>
+					<CachePath>AD/{AD383A8D-E56C-28C6-A74B-8B5C3DC902F6}.wem</CachePath>
 				</File>
 				<File Id="794092549" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001.wav</ShortName>
@@ -972,17 +1000,21 @@
 					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_02.wav</ShortName>
 					<CachePath>9D/{9DCACCCA-D77B-E7DD-5F09-F350795B7DF1}.wem</CachePath>
 				</File>
-				<File Id="812421663" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04.wav</ShortName>
-					<CachePath>39/{39EF3C64-B235-83F5-01D0-612CD43A1C75}.wem</CachePath>
+				<File Id="812248446" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_07.wav</ShortName>
+					<CachePath>75/{757171F2-47C1-98F3-5A03-0A4D4801285C}.wem</CachePath>
+				</File>
+				<File Id="814728128" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_05.wav</ShortName>
+					<CachePath>E9/{E9F0EF14-5A7E-9D55-9691-AF36A31C6CA8}.wem</CachePath>
+				</File>
+				<File Id="820768894" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_04.wav</ShortName>
+					<CachePath>B5/{B56805B2-471B-A461-1EF6-57DD64140AD4}.wem</CachePath>
 				</File>
 				<File Id="842328612" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerMetal_Random_1.wav</ShortName>
 					<CachePath>9B/{9B82547B-348C-F833-D661-7CF4B8A7ED65}.wem</CachePath>
-				</File>
-				<File Id="844921791" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_08.wav</ShortName>
-					<CachePath>3A/{3AC383A7-F62F-5AFF-DB3C-EDE907EABFE4}.wem</CachePath>
 				</File>
 				<File Id="868852621" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_03.wav</ShortName>
@@ -991,6 +1023,14 @@
 				<File Id="874190780" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_Out_LayerAnxious_Random_004.wav</ShortName>
 					<CachePath>F4/{F4BA7133-0239-1B3F-9AD1-BA9BB0C29E0D}.wem</CachePath>
+				</File>
+				<File Id="875863879" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_01.wav</ShortName>
+					<CachePath>95/{9537C8FA-97C4-879E-10DF-C7D9ADA024C5}.wem</CachePath>
+				</File>
+				<File Id="905384235" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_04.wav</ShortName>
+					<CachePath>9B/{9BD6B348-9668-D130-B08D-6B580F6A82CB}.wem</CachePath>
 				</File>
 				<File Id="917246979" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerMetal_Random_2.wav</ShortName>
@@ -1016,13 +1056,13 @@
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_04.wav</ShortName>
 					<CachePath>55/{55304EF3-ACB4-3B65-B9BC-44447365B56C}.wem</CachePath>
 				</File>
+				<File Id="1005098820" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_10.wav</ShortName>
+					<CachePath>80/{80C610A3-2B7B-57C0-8D44-F5B765A7EB61}.wem</CachePath>
+				</File>
 				<File Id="1013298916" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_04.wav</ShortName>
 					<CachePath>E5/{E5537DD6-F6E4-9AD9-BCCB-5A4C2F4F78D0}.wem</CachePath>
-				</File>
-				<File Id="1024503505" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02.wav</ShortName>
-					<CachePath>C2/{C25B7A14-CC45-5028-15E1-E0993E82F9A1}.wem</CachePath>
 				</File>
 				<File Id="1026796877" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Accessories\Bandolier\LTDC_SFX_Player_Access_Bandolier_Move_Random_06.wav</ShortName>
@@ -1031,6 +1071,10 @@
 				<File Id="1027744682" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_06.wav</ShortName>
 					<CachePath>0D/{0DF200F2-BF1D-757E-F59F-8997CB272884}.wem</CachePath>
+				</File>
+				<File Id="1034913934" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_07.wav</ShortName>
+					<CachePath>52/{5229FA47-C627-85A2-1D53-310CE4571D66}.wem</CachePath>
 				</File>
 				<File Id="1035585658" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Accessories\Bandolier\LTDC_SFX_Player_Access_Bandolier_Move_Random_01.wav</ShortName>
@@ -1166,6 +1210,7 @@
 				</Event>
 				<Event Id="3055475155" Name="Player_Crouch" ObjectPath="\Events\SFX\Player\Stance\Player_Crouch" GUID="{0DEF7495-B440-4E74-9C4B-9073F849D823}" Color="10" DurationType="OneShot" DurationMin="0.472696" DurationMax="0.59555966">
 					<MediaRefs>
+						<MediaRef Id="371277881"/>
 						<MediaRef Id="434123214"/>
 					</MediaRefs>
 					<AuxBusRefs>
@@ -1175,7 +1220,7 @@
 						<ActionSetStateEntry GroupId="1343755517" Id="2655407367" Name="crouch" ObjectPath="\States\Default Work Unit\player_stance\crouch" GUID="{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"/>
 					</ActionSetState>
 				</Event>
-				<Event Id="3083087645" Name="Player_Death" ObjectPath="\Events\SFX\Player\Player_Death" GUID="{FC96ABC9-59AC-438F-B837-19B7E11ADF1C}" Color="10" DurationType="OneShot" DurationMin="1.4068125" DurationMax="1.4068125">
+				<Event Id="3083087645" Name="Player_Death" ObjectPath="\Events\SFX\Player\Player_Death" GUID="{FC96ABC9-59AC-438F-B837-19B7E11ADF1C}" Color="10" DurationType="OneShot" DurationMin="0.85201" DurationMax="0.85201">
 					<MediaRefs>
 						<MediaRef Id="49496949"/>
 					</MediaRefs>
@@ -1183,10 +1228,10 @@
 						<ActionPostEventEntry Id="1795565902" Name="Reset_Reload" ObjectPath="\Events\SFX\Player\Reset_Reload" GUID="{FB9581D7-305D-4AEB-8363-F92282F7C8F3}" Color="10"/>
 					</ActionPostEvent>
 				</Event>
-				<Event Id="1806823001" Name="Player_Prone" ObjectPath="\Events\SFX\Player\Stance\Player_Prone" GUID="{FE60E622-47E0-4B0A-8224-00824D1DFFA5}" Color="10" DurationType="OneShot" DurationMin="0.6444656" DurationMax="0.7599916">
+				<Event Id="1806823001" Name="Player_Prone" ObjectPath="\Events\SFX\Player\Stance\Player_Prone" GUID="{FE60E622-47E0-4B0A-8224-00824D1DFFA5}" Color="10" DurationType="OneShot" DurationMin="0.47624105" DurationMax="0.60002613">
 					<MediaRefs>
-						<MediaRef Id="176463537"/>
-						<MediaRef Id="434123214"/>
+						<MediaRef Id="955352295"/>
+						<MediaRef Id="1056242460"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
@@ -1243,31 +1288,21 @@
 				<Event Id="4272057794" Name="Player_Steps" ObjectPath="\Events\SFX\Player\Player_Steps" GUID="{219EF9C5-BD01-44F6-8054-19E1EA4E63C0}" Color="10" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="3520462"/>
-						<MediaRef Id="65015294"/>
 						<MediaRef Id="176463537"/>
-						<MediaRef Id="177445382"/>
 						<MediaRef Id="208125764"/>
-						<MediaRef Id="235351759"/>
 						<MediaRef Id="247851767"/>
 						<MediaRef Id="256736755"/>
 						<MediaRef Id="258356127"/>
-						<MediaRef Id="325438990"/>
 						<MediaRef Id="371277881"/>
 						<MediaRef Id="414727295"/>
-						<MediaRef Id="426340724"/>
 						<MediaRef Id="434123214"/>
-						<MediaRef Id="460395499"/>
 						<MediaRef Id="463745797"/>
 						<MediaRef Id="665368749"/>
 						<MediaRef Id="729570167"/>
 						<MediaRef Id="773399391"/>
-						<MediaRef Id="780702883"/>
-						<MediaRef Id="812421663"/>
-						<MediaRef Id="844921791"/>
 						<MediaRef Id="955352295"/>
 						<MediaRef Id="960862092"/>
 						<MediaRef Id="978092744"/>
-						<MediaRef Id="1024503505"/>
 						<MediaRef Id="1026796877"/>
 						<MediaRef Id="1027744682"/>
 						<MediaRef Id="1035585658"/>
@@ -1276,10 +1311,58 @@
 					<AuxBusRefs>
 						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
 					</AuxBusRefs>
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="3705103691" Id="755604413" GUID="{C30E9443-1FE8-4C03-9F8A-655F31BAB9E5}"/>
+							<MediaRefs>
+								<MediaRef Id="8378917"/>
+								<MediaRef Id="84661739"/>
+								<MediaRef Id="90287885"/>
+								<MediaRef Id="246629166"/>
+								<MediaRef Id="403636337"/>
+								<MediaRef Id="596578976"/>
+								<MediaRef Id="704299937"/>
+								<MediaRef Id="792125895"/>
+								<MediaRef Id="814728128"/>
+								<MediaRef Id="1034913934"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="3705103691" Id="2632515210" GUID="{89B43353-FC1E-4814-8A4A-098729DFA6CF}"/>
+							<MediaRefs>
+								<MediaRef Id="313762575"/>
+								<MediaRef Id="444052320"/>
+								<MediaRef Id="538935591"/>
+								<MediaRef Id="669746352"/>
+								<MediaRef Id="724383836"/>
+								<MediaRef Id="765549266"/>
+								<MediaRef Id="812248446"/>
+								<MediaRef Id="875863879"/>
+								<MediaRef Id="905384235"/>
+								<MediaRef Id="1005098820"/>
+							</MediaRefs>
+						</SwitchContainer>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="3705103691" Id="1672723819" GUID="{2A84FCF9-E908-4AAB-BF21-611AC65BE502}" Default="true"/>
+							<MediaRefs>
+								<MediaRef Id="93854415"/>
+								<MediaRef Id="110993894"/>
+								<MediaRef Id="113504718"/>
+								<MediaRef Id="234685167"/>
+								<MediaRef Id="572850137"/>
+								<MediaRef Id="575654546"/>
+								<MediaRef Id="582177549"/>
+								<MediaRef Id="610176216"/>
+								<MediaRef Id="716815183"/>
+								<MediaRef Id="820768894"/>
+							</MediaRefs>
+						</SwitchContainer>
+					</SwitchContainers>
 				</Event>
 				<Event Id="4024398754" Name="Player_Up" ObjectPath="\Events\SFX\Player\Stance\Player_Up" GUID="{4522F8E8-2547-4E53-85E8-2F1D0788D631}" Color="10" DurationType="OneShot" DurationMin="0.472696" DurationMax="0.59555966">
 					<MediaRefs>
 						<MediaRef Id="434123214"/>
+						<MediaRef Id="773399391"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
@@ -1384,9 +1467,16 @@
 						<Switch Id="2473969246" Name="Metal" ObjectPath="\Switches\Default Work Unit\Surface\Metal" GUID="{00F5A187-15DF-42FD-91F4-E9687F923AA3}"/>
 					</Switches>
 				</SwitchGroup>
+				<SwitchGroup Id="3705103691" Name="Shoe_Type" ObjectPath="\Switches\Default Work Unit\Shoe_Type" GUID="{B85E88EA-8A53-484A-909B-161E2E3D5B96}">
+					<Switches>
+						<Switch Id="755604413" Name="Worn_Boots" ObjectPath="\Switches\Default Work Unit\Shoe_Type\Worn_Boots" GUID="{C30E9443-1FE8-4C03-9F8A-655F31BAB9E5}"/>
+						<Switch Id="1672723819" Name="Clog_Shoes" ObjectPath="\Switches\Default Work Unit\Shoe_Type\Clog_Shoes" GUID="{2A84FCF9-E908-4AAB-BF21-611AC65BE502}"/>
+						<Switch Id="2632515210" Name="Heels" ObjectPath="\Switches\Default Work Unit\Shoe_Type\Heels" GUID="{89B43353-FC1E-4814-8A4A-098729DFA6CF}"/>
+					</Switches>
+				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2802320212" Type="Event" GUID="{17422CDB-5486-44BA-A4E2-730B71CE20EA}" Language="SFX" Hash="{F75CC0E1-EB28-7486-723C-53547699A005}">
+		<SoundBank Id="2802320212" Type="Event" GUID="{17422CDB-5486-44BA-A4E2-730B71CE20EA}" Language="SFX" Hash="{9E875BD9-97E9-0E67-A6F1-5C9C644088E1}">
 			<ObjectPath>Enemy_Bark</ObjectPath>
 			<ShortName>Enemy_Bark</ShortName>
 			<Path>Event/Enemy_Bark.bnk</Path>
@@ -1465,16 +1555,47 @@
 				<GameParameter Id="1240670792" Name="Distance" ObjectPath="\Game Parameters\Default Work Unit\Distance" GUID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3470134616" Type="Event" GUID="{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}" Language="SFX" Hash="{64DDB392-94F0-3BDC-FB9D-517C061F5CA4}">
+		<SoundBank Id="3295768610" Type="Event" GUID="{31CF92CC-1D11-498D-9E4C-E3F4E7791732}" Language="SFX" Hash="{1B8FEFC4-4C85-9AA5-1596-3D19FE086595}">
+			<ObjectPath>Ally_Bark_Ally_Dead</ObjectPath>
+			<ShortName>Ally_Bark_Ally_Dead</ShortName>
+			<Path>Event/Ally_Bark_Ally_Dead.bnk</Path>
+			<Media>
+				<File Id="357761274" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>Vx_Barks\Vx_Communard\PH_VX_Bar_M_Comm_Worker_Ally_Death_03.wav</ShortName>
+					<Path>Media/357761274.wem</Path>
+					<CachePath>17/{171FAD20-3635-D809-4BF2-FA1C708FB2DE}.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="807526038" Name="Meter (Custom)" ObjectPath="\Containers\VX\NPC\Communard\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{2855D257-F711-4259-8A16-CCC31E5A8F21}" LibName="Wwise Meter" LibId="8454147"/>
+				</Custom>
+			</Plugins>
+			<Events>
+				<Event Id="3295768610" Name="Ally_Bark_Ally_Dead" ObjectPath="\Events\VX\Ally\Ally_Bark_Ally_Dead" GUID="{31CF92CC-1D11-498D-9E4C-E3F4E7791732}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="1.8476459" DurationMax="1.8476459">
+					<MediaRefs>
+						<MediaRef Id="357761274"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="807526038"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
+					</AuxBusRefs>
+				</Event>
+			</Events>
+			<GameParameters>
+				<GameParameter Id="1240670792" Name="Distance" ObjectPath="\Game Parameters\Default Work Unit\Distance" GUID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"/>
+				<GameParameter Id="2103536148" Name="Bark_Volume" ObjectPath="\Game Parameters\Default Work Unit\Bark_Volume" GUID="{310D6C14-6344-45E9-8379-034A9EEF5868}"/>
+			</GameParameters>
+		</SoundBank>
+		<SoundBank Id="3470134616" Type="Event" GUID="{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}" Language="SFX" Hash="{26A34197-F90E-ACC5-F933-DBAAE0458D32}">
 			<ObjectPath>Ally_Bark</ObjectPath>
 			<ShortName>Ally_Bark</ShortName>
 			<Path>Event/Ally_Bark.bnk</Path>
 			<Media>
-				<File Id="12475208" Language="SFX" Streaming="false" Location="Loose">
-					<ShortName>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-009.wav</ShortName>
-					<Path>Media/12475208.wem</Path>
-					<CachePath>28/{280315C5-DB1F-E8C0-A416-8BA4DD81C804}.wem</CachePath>
-				</File>
 				<File Id="25468903" Language="SFX" Streaming="false" Location="Loose">
 					<ShortName>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-001.wav</ShortName>
 					<Path>Media/25468903.wem</Path>
@@ -1526,10 +1647,14 @@
 					<CachePath>B6/{B65A6884-F693-BE7E-F519-727047DB8A79}.wem</CachePath>
 				</File>
 			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="807526038" Name="Meter (Custom)" ObjectPath="\Containers\VX\NPC\Communard\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{2855D257-F711-4259-8A16-CCC31E5A8F21}" LibName="Wwise Meter" LibId="8454147"/>
+				</Custom>
+			</Plugins>
 			<Events>
 				<Event Id="3470134616" Name="Ally_Bark" ObjectPath="\Events\VX\Ally\Ally_Bark" GUID="{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="1.0104166" DurationMax="2.6151874">
 					<MediaRefs>
-						<MediaRef Id="12475208"/>
 						<MediaRef Id="25468903"/>
 						<MediaRef Id="41844498"/>
 						<MediaRef Id="49514846"/>
@@ -1541,6 +1666,11 @@
 						<MediaRef Id="553093102"/>
 						<MediaRef Id="940876037"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="807526038"/>
+						</Custom>
+					</PluginRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
 					</AuxBusRefs>
@@ -1548,9 +1678,52 @@
 			</Events>
 			<GameParameters>
 				<GameParameter Id="1240670792" Name="Distance" ObjectPath="\Game Parameters\Default Work Unit\Distance" GUID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"/>
+				<GameParameter Id="2103536148" Name="Bark_Volume" ObjectPath="\Game Parameters\Default Work Unit\Bark_Volume" GUID="{310D6C14-6344-45E9-8379-034A9EEF5868}"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="3827176343" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="SFX" Hash="{B1DF6992-5255-F1CA-F4FF-46DB6677CC1F}">
+		<SoundBank Id="3598975830" Type="Event" GUID="{CCDE5342-885C-4CF5-B310-0B051AF8D0F0}" Language="SFX" Hash="{78743ECA-F7F9-3479-4C45-4C4AA2AF2442}">
+			<ObjectPath>Ally_Bark_Enemy_Dead</ObjectPath>
+			<ShortName>Ally_Bark_Enemy_Dead</ShortName>
+			<Path>Event/Ally_Bark_Enemy_Dead.bnk</Path>
+			<Media>
+				<File Id="12475208" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-009.wav</ShortName>
+					<Path>Media/12475208.wem</Path>
+					<CachePath>28/{280315C5-DB1F-E8C0-A416-8BA4DD81C804}.wem</CachePath>
+				</File>
+				<File Id="620133278" Language="SFX" Streaming="false" Location="Loose">
+					<ShortName>Vx_Barks\Vx_Communard\PH_VX_Bar_M_Comm_Military_Player_Kill_01.wav</ShortName>
+					<Path>Media/620133278.wem</Path>
+					<CachePath>12/{12F0BE47-37A8-3E9F-C5FE-FC88B5FABEA7}.wem</CachePath>
+				</File>
+			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="807526038" Name="Meter (Custom)" ObjectPath="\Containers\VX\NPC\Communard\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{2855D257-F711-4259-8A16-CCC31E5A8F21}" LibName="Wwise Meter" LibId="8454147"/>
+				</Custom>
+			</Plugins>
+			<Events>
+				<Event Id="3598975830" Name="Ally_Bark_Enemy_Dead" ObjectPath="\Events\VX\Ally\Ally_Bark_Enemy_Dead" GUID="{CCDE5342-885C-4CF5-B310-0B051AF8D0F0}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="1.3106667" DurationMax="1.8258542">
+					<MediaRefs>
+						<MediaRef Id="12475208"/>
+						<MediaRef Id="620133278"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="807526038"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
+					</AuxBusRefs>
+				</Event>
+			</Events>
+			<GameParameters>
+				<GameParameter Id="1240670792" Name="Distance" ObjectPath="\Game Parameters\Default Work Unit\Distance" GUID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"/>
+				<GameParameter Id="2103536148" Name="Bark_Volume" ObjectPath="\Game Parameters\Default Work Unit\Bark_Volume" GUID="{310D6C14-6344-45E9-8379-034A9EEF5868}"/>
+			</GameParameters>
+		</SoundBank>
+		<SoundBank Id="3827176343" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="SFX" Hash="{AC8AA452-B5A1-2C8F-7F63-742ECA2A92F0}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Enemy</ObjectPath>
 			<ShortName>Sb_Enemy</ShortName>
 			<Path>Sb_Enemy.bnk</Path>
@@ -1561,7 +1734,7 @@
 				</File>
 				<File Id="34509446" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Oneshot.wav</ShortName>
-					<CachePath>CC/{CC36FDDF-A594-5A4B-BD0B-1664AD02E540}.wem</CachePath>
+					<CachePath>4C/{4C1B1F8A-1BA3-B59D-8F9C-AE6E39ABFFA7}.wem</CachePath>
 				</File>
 				<File Id="220576500" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerWood_Random_2.wav</ShortName>
@@ -1570,10 +1743,6 @@
 				<File Id="244128652" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerWood_Random_3.wav</ShortName>
 					<CachePath>72/{72B5A3D1-7376-B6D1-B4E2-01AA1A445764}.wem</CachePath>
-				</File>
-				<File Id="271200390" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_03.wav</ShortName>
-					<CachePath>0D/{0D40DF66-637E-D359-577E-324F99AF211D}.wem</CachePath>
 				</File>
 				<File Id="301802129" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerBrick_Random_3.wav</ShortName>
@@ -1595,37 +1764,17 @@
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerGlass_Random_1.wav</ShortName>
 					<CachePath>08/{08026EAD-8FF1-D523-594A-3D4EE89A8BDD}.wem</CachePath>
 				</File>
-				<File Id="708986119" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_02.wav</ShortName>
-					<CachePath>B9/{B93A425F-0984-F1C1-60AA-A006F92E7678}.wem</CachePath>
-				</File>
 				<File Id="732266218" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerGlass_Random_3.wav</ShortName>
 					<CachePath>38/{38050CBC-CCA5-5224-A021-535D7CB88F7E}.wem</CachePath>
-				</File>
-				<File Id="733828454" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_06.wav</ShortName>
-					<CachePath>42/{42581677-78C4-B360-C16A-2C341AB09130}.wem</CachePath>
 				</File>
 				<File Id="749417595" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerMetal_Random_3.wav</ShortName>
 					<CachePath>AE/{AEF3A6E4-3323-11B4-6CA9-1CA823C51D39}.wem</CachePath>
 				</File>
-				<File Id="811812976" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_05.wav</ShortName>
-					<CachePath>E9/{E95A81EE-85A0-9E3B-6962-D992FEB08FC7}.wem</CachePath>
-				</File>
-				<File Id="817899543" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_04.wav</ShortName>
-					<CachePath>C8/{C8ADD602-A8CA-8B3D-8319-7C16878E5CB2}.wem</CachePath>
-				</File>
 				<File Id="842328612" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerMetal_Random_1.wav</ShortName>
 					<CachePath>9B/{9B82547B-348C-F833-D661-7CF4B8A7ED65}.wem</CachePath>
-				</File>
-				<File Id="842959201" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_LayerSurface_Brick_Random_01.wav</ShortName>
-					<CachePath>93/{9321AF10-301A-030B-C121-1B120D89F252}.wem</CachePath>
 				</File>
 				<File Id="917246979" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerMetal_Random_2.wav</ShortName>
@@ -1686,16 +1835,7 @@
 						<ActionPostEventEntry Id="3787232089" Name="Enemy_Bullet_Miss" ObjectPath="\Events\SFX\Enemy\Enemy_Bullet_Miss" GUID="{25FA0D96-992C-4A2C-9989-DCA998EF30A6}" Color="10"/>
 					</ActionPostEvent>
 				</Event>
-				<Event Id="3114531655" Name="Enemy_Steps" ObjectPath="\Events\SFX\Enemy\Enemy_Steps" GUID="{925872CA-03A4-4FC1-8E1A-768C93F1A808}" Color="10" MaxAttenuation="100" DurationType="Infinite">
-					<MediaRefs>
-						<MediaRef Id="271200390"/>
-						<MediaRef Id="708986119"/>
-						<MediaRef Id="733828454"/>
-						<MediaRef Id="811812976"/>
-						<MediaRef Id="817899543"/>
-						<MediaRef Id="842959201"/>
-					</MediaRefs>
-				</Event>
+				<Event Id="3114531655" Name="Enemy_Steps" ObjectPath="\Events\SFX\Enemy\Enemy_Steps" GUID="{925872CA-03A4-4FC1-8E1A-768C93F1A808}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 			</Events>
 			<SwitchGroups>
 				<SwitchGroup Id="1834394558" Name="Surface" ObjectPath="\Switches\Default Work Unit\Surface" GUID="{5CA4360B-D253-4948-8173-23B1C55917B4}">
@@ -1708,7 +1848,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3840667520" Type="Event" GUID="{420BB33C-4BFB-4756-92E0-198AC47BDC12}" Language="SFX" Hash="{11009A1E-E5B4-6266-F5A7-798748274542}">
+		<SoundBank Id="3840667520" Type="Event" GUID="{420BB33C-4BFB-4756-92E0-198AC47BDC12}" Language="SFX" Hash="{263D529F-5225-AE12-5DD6-536BD50D6233}">
 			<ObjectPath>Brick_Fall</ObjectPath>
 			<ShortName>Brick_Fall</ShortName>
 			<Path>Event/Brick_Fall.bnk</Path>
@@ -1848,5 +1988,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{3B7F1F17-5ECE-7F0D-58D9-72A5ADE3CF0F}</FileHash>
+	<FileHash>{BFEB20C1-D5E6-1A64-B772-E896A1D0D7D6}</FileHash>
 </SoundBanksInfo>

@@ -148,10 +148,10 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
-								<Action Name="" ID="{1F652385-867D-4038-80ED-BD4149BC19EB}" ShortID="905903143">
+								<Action Name="" ID="{DF98D20D-9AB0-4F08-BB47-884A41D3B76B}" ShortID="747758403">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Brick" ID="{1A90D8A4-6CF5-41F5-B4C7-60F218FE8B45}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+											<ObjectRef Name="Shoe_Type" ID="{FDC0E553-5814-4128-889B-B46731C882FB}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -178,6 +178,13 @@
 												</Reference>
 											</ReferenceList>
 										</Action>
+										<Action Name="" ID="{E044DE98-60CC-4473-BC52-779F98F69F70}" ShortID="360859870">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LTDC_SFX_Player_Access_Bandolier_Move_Random_05" ID="{F0948DAA-92E3-4C1B-9E5C-25CD55104D34}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 									</ChildrenList>
 								</Event>
 								<Event Name="Player_Crouch" ID="{0DEF7495-B440-4E74-9C4B-9073F849D823}">
@@ -199,6 +206,13 @@
 												</Reference>
 											</ReferenceList>
 										</Action>
+										<Action Name="" ID="{7D7F8AA0-E6F6-4D6E-BDB3-91DF4783E076}" ShortID="847104329">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="LTDC_SFX_Player_Access_Bandolier_Move_Random_10" ID="{B5BAD3FF-6204-4D4B-BFD6-9F721E1CE0A3}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
 									</ChildrenList>
 								</Event>
 								<Event Name="Player_Prone" ID="{FE60E622-47E0-4B0A-8224-00824D1DFFA5}">
@@ -213,20 +227,17 @@
 												</Reference>
 											</ReferenceList>
 										</Action>
-										<Action Name="" ID="{3DC4B70C-5908-4A4A-8B86-0A0F1A65F6A4}" ShortID="437698357">
+										<Action Name="" ID="{74D077EF-CA64-4F65-9635-8D3C093F226B}" ShortID="258121623">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="LTDC_SFX_Player_Cloth_Coat_Move_Random_01" ID="{D8F8BC63-1030-4BFE-BE83-19E67DBC136A}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+													<ObjectRef Name="LTDC_SFX_Player_Cloth_Coat_Move_Random_05" ID="{E6BBF90C-A4E9-4151-80C9-25E51C096985}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
-										<Action Name="" ID="{74D077EF-CA64-4F65-9635-8D3C093F226B}" ShortID="258121623">
-											<PropertyList>
-												<Property Name="Delay" Type="Real64" Value="0.2"/>
-											</PropertyList>
+										<Action Name="" ID="{35AC24F7-6104-411B-AD45-DD074C5AE58A}" ShortID="172193084">
 											<ReferenceList>
 												<Reference Name="Target">
-													<ObjectRef Name="LTDC_SFX_Player_Cloth_Coat_Move_Random_10" ID="{E406CF2E-A87C-4BB1-9BA9-817E3596F8DC}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+													<ObjectRef Name="LTDC_SFX_Player_Access_Bandolier_Move_Random_07" ID="{88C0C415-D508-4A50-AC5C-9EAE04787134}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 												</Reference>
 											</ReferenceList>
 										</Action>
@@ -293,6 +304,16 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Player" ID="{BA5EE073-0BF3-4F39-9FA2-758F3B1D7E16}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{3A107B98-39DC-4323-96D1-144A3D208A04}" ShortID="805106079">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player" ID="{5E9B791F-AAC8-43AE-9460-7727FA3FBF7C}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -385,17 +406,7 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Enemy_Steps" ID="{925872CA-03A4-4FC1-8E1A-768C93F1A808}">
-							<ChildrenList>
-								<Action Name="" ID="{2B422346-F05D-4C69-8A0B-38DE0104938F}" ShortID="842325574">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Brick" ID="{697F11E6-7433-465A-BADD-32F47D422237}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
+						<Event Name="Enemy_Steps" ID="{925872CA-03A4-4FC1-8E1A-768C93F1A808}"/>
 						<Event Name="Enemy_Bullet_Miss" ID="{25FA0D96-992C-4A2C-9989-DCA998EF30A6}">
 							<ChildrenList>
 								<Action Name="" ID="{21316A6B-6D02-4F61-A30A-CA44A5B67633}" ShortID="548624385">
@@ -445,159 +456,12 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
-								<Action Name="" ID="{9F153757-9684-49EE-9D41-CA65E0B467F6}" ShortID="947464986">
-									<PropertyList>
-										<Property Name="Delay" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{94F8EFA9-C5A5-431C-A223-D0BC6600C6CE}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="1"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Debris_Brick" ID="{1D49AFEF-A978-475F-8A79-D4E07ED29FFF}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-								<Action Name="" ID="{85CF2816-5A73-4616-B600-9A5CC549EA4F}" ShortID="453019019">
-									<PropertyList>
-										<Property Name="Delay" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{1C8174B3-EA7F-4E68-A7EE-4D6EC7CA3DE0}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="1"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Debris_Brick" ID="{1D49AFEF-A978-475F-8A79-D4E07ED29FFF}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-								<Action Name="" ID="{DF71C0DF-2FA9-455D-AE0B-2B4C32582A06}" ShortID="368668660">
-									<PropertyList>
-										<Property Name="Delay" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{E702319B-3DB1-4555-8695-298373FBA997}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="1"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Debris_Brick" ID="{1D49AFEF-A978-475F-8A79-D4E07ED29FFF}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-								<Action Name="" ID="{66C4A899-1DED-4F81-83C1-FA136A42AC5C}" ShortID="550294481">
-									<PropertyList>
-										<Property Name="Delay" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{4FA0E3A2-C048-4674-84E8-3304511FC1B1}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="1"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Debris_Brick" ID="{1D49AFEF-A978-475F-8A79-D4E07ED29FFF}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-								<Action Name="" ID="{1E8784F9-D7D9-42FB-85DC-07FAC38B0D05}" ShortID="976558820">
-									<PropertyList>
-										<Property Name="Delay" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{AE0C3135-CF3A-4746-9FDE-7F74C87CFAB7}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="1"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Debris_Brick" ID="{1D49AFEF-A978-475F-8A79-D4E07ED29FFF}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-								<Action Name="" ID="{84A50D96-D291-4F98-AF75-F716CAF6E62B}" ShortID="297434544">
-									<PropertyList>
-										<Property Name="Delay" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{B857000D-F093-42DA-BABF-228FFB626460}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="1"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Debris_Brick" ID="{1D49AFEF-A978-475F-8A79-D4E07ED29FFF}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-								<Action Name="" ID="{15EF517F-0998-4636-A2A9-167388F930FA}" ShortID="400483398">
-									<PropertyList>
-										<Property Name="Delay" Type="Real64">
-											<ModifierList>
-												<ModifierInfo>
-													<Modifier Name="" ID="{31918664-9AA4-428D-88DD-987E3077A195}">
-														<PropertyList>
-															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="1"/>
-														</PropertyList>
-													</Modifier>
-												</ModifierInfo>
-											</ModifierList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Debris_Brick" ID="{1D49AFEF-A978-475F-8A79-D4E07ED29FFF}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
 								<Action Name="" ID="{9C0B098A-BE41-47E1-8478-6EA61CB86D66}" ShortID="559880467">
 									<PropertyList>
 										<Property Name="AbsoluteOrRelative" Type="int16" Value="1"/>
 										<Property Name="ActionType" Type="int16" Value="38"/>
 										<Property Name="Delay" Type="Real64" Value="0.2"/>
-										<Property Name="GameParameterValue" Type="Real64" Value="100"/>
+										<Property Name="GameParameterValue" Type="Real64" Value="50"/>
 										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>

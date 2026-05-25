@@ -5,6 +5,7 @@ extends Node3D
 
 func _on_canon_shoot() -> void:
 	shoot.post_event()
+	BarksManager.cannon_shoot()
 
 
 func _on_canon_start_move() -> void:

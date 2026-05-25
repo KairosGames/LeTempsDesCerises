@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="3470134616" Type="Event" GUID="{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}" Language="SFX" Hash="{64DDB392-94F0-3BDC-FB9D-517C061F5CA4}">
+		<SoundBank Id="3470134616" Type="Event" GUID="{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}" Language="SFX" Hash="{26A34197-F90E-ACC5-F933-DBAAE0458D32}">
 			<ObjectPath>Ally_Bark</ObjectPath>
 			<ShortName>Ally_Bark</ShortName>
 			<Path>Event/Ally_Bark.bnk</Path>
 			<Media>
-				<File Id="12475208" Language="SFX" Streaming="false" Location="Loose">
-					<ShortName>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-009.wav</ShortName>
-					<Path>Media/12475208.wem</Path>
-					<CachePath>28/{280315C5-DB1F-E8C0-A416-8BA4DD81C804}.wem</CachePath>
-				</File>
 				<File Id="25468903" Language="SFX" Streaming="false" Location="Loose">
 					<ShortName>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-001.wav</ShortName>
 					<Path>Media/25468903.wem</Path>
@@ -62,10 +57,14 @@
 					<CachePath>B6/{B65A6884-F693-BE7E-F519-727047DB8A79}.wem</CachePath>
 				</File>
 			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="807526038" Name="Meter (Custom)" ObjectPath="\Containers\VX\NPC\Communard\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{2855D257-F711-4259-8A16-CCC31E5A8F21}" LibName="Wwise Meter" LibId="8454147"/>
+				</Custom>
+			</Plugins>
 			<Events>
 				<Event Id="3470134616" Name="Ally_Bark" ObjectPath="\Events\VX\Ally\Ally_Bark" GUID="{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="1.0104166" DurationMax="2.6151874">
 					<MediaRefs>
-						<MediaRef Id="12475208"/>
 						<MediaRef Id="25468903"/>
 						<MediaRef Id="41844498"/>
 						<MediaRef Id="49514846"/>
@@ -77,6 +76,11 @@
 						<MediaRef Id="553093102"/>
 						<MediaRef Id="940876037"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="807526038"/>
+						</Custom>
+					</PluginRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
 					</AuxBusRefs>
@@ -84,8 +88,9 @@
 			</Events>
 			<GameParameters>
 				<GameParameter Id="1240670792" Name="Distance" ObjectPath="\Game Parameters\Default Work Unit\Distance" GUID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"/>
+				<GameParameter Id="2103536148" Name="Bark_Volume" ObjectPath="\Game Parameters\Default Work Unit\Bark_Volume" GUID="{310D6C14-6344-45E9-8379-034A9EEF5868}"/>
 			</GameParameters>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{C198787F-101C-DB1D-A7D5-7C2B2D1E319C}</FileHash>
+	<FileHash>{4DB0D60B-9866-8F20-5AD0-C6F14A8B8E8E}</FileHash>
 </SoundBanksInfo>

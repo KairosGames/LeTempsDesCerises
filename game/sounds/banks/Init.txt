@@ -7,14 +7,24 @@ Switch	ID	Name	Switch Group			Notes
 	2655407367	crouch	Player_Position			
 
 State Group	ID	Name			Wwise Object Path	Notes
+	219569822	player_cover			\Default Work Unit\player_cover	
 	314259375	player_breath			\Default Work Unit\player_breath	
+	1138488279	fight_state			\Default Work Unit\fight_state	
 	1343755517	player_stance			\Default Work Unit\player_stance	
 	1608601952	player_aim			\Default Work Unit\player_aim	
+	2280690262	barks_barricade			\Default Work Unit\barks_barricade	
+	4265991608	barks_player_distance			\Default Work Unit\barks_player_distance	
 
 State	ID	Name	State Group			Notes
+	748895195	None	player_cover			
+	2008504509	covered	player_cover			
+	2407602878	uncovered	player_cover			
 	748895195	None	player_breath			
 	3753286132	calm	player_breath			
 	3823044812	anxious	player_breath			
+	514064485	fight	fight_state			
+	748895195	None	fight_state			
+	3967984634	retreat	fight_state			
 	748895195	None	player_stance			
 	1214700371	stand	player_stance			
 	1270007533	prone	player_stance			
@@ -23,6 +33,13 @@ State	ID	Name	State Group			Notes
 	748895195	None	player_aim			
 	2452206122	false	player_aim			
 	3053630529	true	player_aim			
+	231230354	broken	barks_barricade			
+	545371365	low	barks_barricade			
+	748895195	None	barks_barricade			
+	3094168564	intact	barks_barricade			
+	748895195	None	barks_player_distance			
+	1183803292	far	barks_player_distance			
+	1451272583	close	barks_player_distance			
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	711096812	Deafening			\Default Work Unit\Deafening	

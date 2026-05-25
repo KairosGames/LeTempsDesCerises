@@ -4,15 +4,21 @@
 [ext_resource type="WwiseEvent" uid="uid://d0ajhjfwwl2tk" path="res://Wwise/resources/Event/{3FDD584B-7295-4A08-9570-8775D7B756E9}.tres" id="2_jrslf"]
 [ext_resource type="WwiseEvent" uid="uid://lgjm7lyaevq4" path="res://Wwise/resources/Event/{925872CA-03A4-4FC1-8E1A-768C93F1A808}.tres" id="3_ch3wf"]
 [ext_resource type="WwiseEvent" uid="uid://b5uetttn4b4je" path="res://Wwise/resources/Event/{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}.tres" id="4_ljc3s"]
+[ext_resource type="WwiseEvent" uid="uid://jgkrca3igtj2" path="res://Wwise/resources/Event/{CCDE5342-885C-4CF5-B310-0B051AF8D0F0}.tres" id="5_ch3wf"]
+[ext_resource type="WwiseEvent" uid="uid://bmded83g7due" path="res://Wwise/resources/Event/{31CF92CC-1D11-498D-9E4C-E3F4E7791732}.tres" id="6_4fq6u"]
+[ext_resource type="WwiseEvent" uid="uid://dyvxpdvv4yyjt" path="res://Wwise/resources/Event/{F199BA00-0E92-4FCC-B44C-4B16C4D9BADA}.tres" id="7_4fq6u"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p0yv6"]
 radius = 0.1
 
-[node name="ak_ally_manager" type="Node3D" unique_id=1364272514 node_paths=PackedStringArray("shoot", "steps", "bark", "label")]
+[node name="ak_ally_manager" type="Node3D" unique_id=1364272514 node_paths=PackedStringArray("shoot", "steps", "bark", "ally_dead", "enemy_dead", "coward", "label")]
 script = ExtResource("1_ljc3s")
 shoot = NodePath("Shoot")
 steps = NodePath("Steps")
 bark = NodePath("Bark")
+ally_dead = NodePath("Ally_Dead")
+enemy_dead = NodePath("Enemy_Dead")
+coward = NodePath("Coward")
 label = NodePath("Label3D")
 
 [node name="Shoot" type="AkEvent3D" parent="." unique_id=1491082347]
@@ -50,7 +56,26 @@ event = ExtResource("4_ljc3s")
 stop_on = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
 
+[node name="Enemy_Dead" type="AkEvent3D" parent="." unique_id=230195150]
+event = ExtResource("5_ch3wf")
+stop_on = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
+
+[node name="Ally_Dead" type="AkEvent3D" parent="." unique_id=1998089313]
+event = ExtResource("6_4fq6u")
+stop_on = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
+
+[node name="Coward" type="AkEvent3D" parent="." unique_id=417787323]
+event = ExtResource("7_4fq6u")
+stop_on = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
+
 [connection signal="audio_marker" from="Steps" to="." method="_on_steps_audio_marker"]
-[connection signal="audio_marker" from="Bark" to="." method="_on_ak_event_3d_audio_marker"]
+[connection signal="audio_marker" from="Bark" to="." method="_on_bark_audio_marker"]
 [connection signal="duration" from="Bark" to="." method="_on_bark_duration"]
 [connection signal="end_of_event" from="Bark" to="." method="_on_bark_end_of_event"]
+[connection signal="speaker_volume_matrix" from="Bark" to="." method="_on_bark_speaker_volume_matrix"]
+[connection signal="audio_marker" from="Enemy_Dead" to="." method="_on_enemy_dead_audio_marker"]
+[connection signal="audio_marker" from="Ally_Dead" to="." method="_on_ally_dead_audio_marker"]
+[connection signal="audio_marker" from="Coward" to="." method="_on_coward_audio_marker"]

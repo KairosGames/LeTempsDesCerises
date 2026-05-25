@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var versaillais : Node3D
+@export var versaillais : CharacterBody3D
 @export var shoot : AkEvent3D
 @export var steps : AkEvent3D
 @export var bark : AkEvent3D

@@ -37,7 +37,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-40</Value>
+										<Value>-35</Value>
 									</ValueList>
 								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
@@ -606,424 +606,6 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<RandomSequenceContainer Name="Communard" ID="{7B32CC11-5A77-4BB1-9784-2051B7F775BB}" ShortID="214645082">
-							<PropertyList>
-								<Property Name="3DSpatialization" Type="int16" Value="2"/>
-								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
-								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismInfiniteOrNumberOfLoops" Type="int16" Value="0"/>
-								<Property Name="PlayMechanismLoopCount" Type="int32" Value="1">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{8F1799DF-E9FF-4BC4-B89D-A0140B120A54}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="1"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-6</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Attenuation">
-									<ObjectRef Name="Communard" ID="{979280CD-4BBE-47F3-8454-619DE6C622DD}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
-								</Reference>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<Sound Name="Vx_Plachold_Vas-001" ID="{A6603E78-0E77-4EAF-A7B0-5AD45B3DE1C8}" ShortID="718891537">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Vx_Plachold_Vas-001" ID="{15BC921D-17F3-48DE-BCE5-06345CEC8B38}">
-											<PropertyList>
-												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-001.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="25468903"/>
-											</MediaIDList>
-											<ObjectLists>
-												<ObjectList Name="Markers">
-													<Marker Name="" ID="{F158EAF9-74D5-482C-90BF-3F0E00522575}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="Vive la sociale !"/>
-														</PropertyList>
-													</Marker>
-												</ObjectList>
-											</ObjectLists>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Vx_Plachold_Vas-001" ID="{15BC921D-17F3-48DE-BCE5-06345CEC8B38}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Vx_Plachold_Vas-002" ID="{0CA2406F-7226-407F-BA77-88299B166E6E}" ShortID="670294328">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Vx_Plachold_Vas-002" ID="{374B3F43-2060-444A-8E3E-604598C9CC1E}">
-											<PropertyList>
-												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-002.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="301467003"/>
-											</MediaIDList>
-											<ObjectLists>
-												<ObjectList Name="Markers">
-													<Marker Name="" ID="{6138C804-15C6-4888-9B13-7B8ED3AC4C55}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="Ils vont tirer !"/>
-														</PropertyList>
-													</Marker>
-												</ObjectList>
-											</ObjectLists>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Vx_Plachold_Vas-002" ID="{374B3F43-2060-444A-8E3E-604598C9CC1E}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Vx_Plachold_Vas-003" ID="{25B39FF6-F4E8-4114-8780-FA946B4432BC}" ShortID="71437873">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Vx_Plachold_Vas-003" ID="{EA4F74C0-0C7A-4D53-9217-9D039FF4C8C5}">
-											<PropertyList>
-												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-003.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="163755063"/>
-											</MediaIDList>
-											<ObjectLists>
-												<ObjectList Name="Markers">
-													<Marker Name="" ID="{45D0E7BB-2014-4C67-8155-41A23A042008}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="On va droit à la bouillasse !"/>
-														</PropertyList>
-													</Marker>
-												</ObjectList>
-											</ObjectLists>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Vx_Plachold_Vas-003" ID="{EA4F74C0-0C7A-4D53-9217-9D039FF4C8C5}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Vx_Plachold_Vas-004" ID="{304DF115-711C-40CA-8250-B3F3AA4EB85B}" ShortID="85494977">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Vx_Plachold_Vas-004" ID="{61318B82-D53B-4704-9EE1-FB847E2DE105}">
-											<PropertyList>
-												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-004.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="418546237"/>
-											</MediaIDList>
-											<ObjectLists>
-												<ObjectList Name="Markers">
-													<Marker Name="" ID="{73440FF5-895E-4F4F-B332-E20EBFC563EF}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="Qui viennent, qui viennent !"/>
-														</PropertyList>
-													</Marker>
-													<Marker Name="" ID="{F90DF8C1-44B1-4FA9-85F5-82F88C83548E}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="On fricassera la Ligne !"/>
-															<Property Name="Time" Type="Real64" Value="1.35014512545201"/>
-														</PropertyList>
-													</Marker>
-												</ObjectList>
-											</ObjectLists>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Vx_Plachold_Vas-004" ID="{61318B82-D53B-4704-9EE1-FB847E2DE105}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Vx_Plachold_Vas-005" ID="{CC8738EE-4D7A-4525-B9DC-19D2B89A1877}" ShortID="697297067">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Vx_Plachold_Vas-005" ID="{6849F730-DA78-4305-9BC6-CD3B77F5B361}">
-											<PropertyList>
-												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-005.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="157719317"/>
-											</MediaIDList>
-											<ObjectLists>
-												<ObjectList Name="Markers">
-													<Marker Name="" ID="{B6D5544D-17CE-44B1-9EFC-B1EB4D09900D}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="Attention à ton museau petit !"/>
-														</PropertyList>
-													</Marker>
-												</ObjectList>
-											</ObjectLists>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Vx_Plachold_Vas-005" ID="{6849F730-DA78-4305-9BC6-CD3B77F5B361}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Vx_Plachold_Vas-006" ID="{F442F8AF-D7B8-4C48-A1A5-F264F9B5C123}" ShortID="314569990">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Vx_Plachold_Vas-006" ID="{5852DAC9-BC47-4046-9C70-ECD18F49A7BC}">
-											<PropertyList>
-												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-006.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="41844498"/>
-											</MediaIDList>
-											<ObjectLists>
-												<ObjectList Name="Markers">
-													<Marker Name="" ID="{25AEB344-6099-4D87-9399-D0F1EBB06C5B}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="Abattez-le !"/>
-														</PropertyList>
-													</Marker>
-												</ObjectList>
-											</ObjectLists>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Vx_Plachold_Vas-006" ID="{5852DAC9-BC47-4046-9C70-ECD18F49A7BC}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Vx_Plachold_Vas-007" ID="{6174EB33-59F2-4EC1-98C3-8BDFEF962BB5}" ShortID="774215292">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Vx_Plachold_Vas-007" ID="{94460543-DC9D-42F5-A8E7-26A3F243E349}">
-											<PropertyList>
-												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-007.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="144592759"/>
-											</MediaIDList>
-											<ObjectLists>
-												<ObjectList Name="Markers">
-													<Marker Name="" ID="{80B4C43B-A118-4A45-8A23-994A18048916}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="Salauds de ruraux !"/>
-														</PropertyList>
-													</Marker>
-												</ObjectList>
-											</ObjectLists>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Vx_Plachold_Vas-007" ID="{94460543-DC9D-42F5-A8E7-26A3F243E349}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Vx_Plachold_Vas-008" ID="{07FF89A9-BFD1-4DD1-9591-66A8A829C62C}" ShortID="296846099">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Vx_Plachold_Vas-008" ID="{0F55C0A7-2871-4BDC-88CE-CA3CC7E2B45F}">
-											<PropertyList>
-												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-008.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="940876037"/>
-											</MediaIDList>
-											<ObjectLists>
-												<ObjectList Name="Markers">
-													<Marker Name="" ID="{46EC6D48-0289-43C4-8476-897D332AACBC}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="Des Versaillais !"/>
-														</PropertyList>
-													</Marker>
-												</ObjectList>
-											</ObjectLists>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Vx_Plachold_Vas-008" ID="{0F55C0A7-2871-4BDC-88CE-CA3CC7E2B45F}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Vx_Plachold_Vas-009" ID="{B7FD7828-2462-4E56-BF8B-7C2018FA8D12}" ShortID="1064247301">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Vx_Plachold_Vas-009" ID="{CA179873-4C12-41D7-8715-7EC8087B99CC}">
-											<PropertyList>
-												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-009.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="12475208"/>
-											</MediaIDList>
-											<ObjectLists>
-												<ObjectList Name="Markers">
-													<Marker Name="" ID="{705DEAB6-95EC-4E39-A0B4-4A4E389BFAEA}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="Mange tes morts !"/>
-														</PropertyList>
-													</Marker>
-												</ObjectList>
-											</ObjectLists>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Vx_Plachold_Vas-009" ID="{CA179873-4C12-41D7-8715-7EC8087B99CC}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Vx_Plachold_Vas-010" ID="{EED052C7-78B6-4932-A4AA-C3D95F54472E}" ShortID="902077306">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Vx_Plachold_Vas-010" ID="{62A3A0E0-B35A-4F42-A332-FA73DCD0C225}">
-											<PropertyList>
-												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-010.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="49514846"/>
-											</MediaIDList>
-											<ObjectLists>
-												<ObjectList Name="Markers">
-													<Marker Name="" ID="{2A91AF01-AD27-4EB9-9E3B-8CF75E64E7F0}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="Ils ont un canon !"/>
-														</PropertyList>
-													</Marker>
-												</ObjectList>
-											</ObjectLists>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Vx_Plachold_Vas-010" ID="{62A3A0E0-B35A-4F42-A332-FA73DCD0C225}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="Vx_Plachold_Vas-011" ID="{068944A7-3776-4F94-81B1-A84122537AE7}" ShortID="186441530">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="Vx_Plachold_Vas-011" ID="{087EA923-0D41-48C9-A2BE-F0088DD16B4E}">
-											<PropertyList>
-												<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-											</PropertyList>
-											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-011.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="553093102"/>
-											</MediaIDList>
-											<ObjectLists>
-												<ObjectList Name="Markers">
-													<Marker Name="" ID="{58E2E4B1-40D1-46F6-AFCE-2D968213A458}">
-														<PropertyList>
-															<Property Name="Label" Type="string" Value="Planquez-vous !"/>
-														</PropertyList>
-													</Marker>
-												</ObjectList>
-											</ObjectLists>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="Vx_Plachold_Vas-011" ID="{087EA923-0D41-48C9-A2BE-F0088DD16B4E}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="Versaillais" ID="{B13E3E5E-603C-4FA5-897B-4BF9BD76D5AB}" ShortID="33206578">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
@@ -1044,7 +626,7 @@
 								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-18</Value>
+										<Value>-25</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>
@@ -1549,6 +1131,780 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
+						<PropertyContainer Name="New Property Container" ID="{8CB0F4D7-5746-4C56-ACC8-6EADF4362CB5}" ShortID="966555448">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
+							</ReferenceList>
+						</PropertyContainer>
+						<PropertyContainer Name="Communard" ID="{89C20E2E-7626-4FF8-AD21-803CF5C14C71}" ShortID="16358675">
+							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverrideEffect" Type="bool" Value="True"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Communard" ID="{979280CD-4BBE-47F3-8454-619DE6C622DD}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+								</Reference>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="Generic_Communard" ID="{7B32CC11-5A77-4BB1-9784-2051B7F775BB}" ShortID="214645082">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+										<Property Name="OverridePriority" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismInfiniteOrNumberOfLoops" Type="int16" Value="0"/>
+										<Property Name="PlayMechanismLoopCount" Type="int32" Value="1">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{8F1799DF-E9FF-4BC4-B89D-A0140B120A54}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="1"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Priority" Type="int16">
+											<ValueList>
+												<Value>10</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Communard" ID="{979280CD-4BBE-47F3-8454-619DE6C622DD}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="Vx_Plachold_Vas-001" ID="{A6603E78-0E77-4EAF-A7B0-5AD45B3DE1C8}" ShortID="718891537">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Vx_Plachold_Vas-001" ID="{15BC921D-17F3-48DE-BCE5-06345CEC8B38}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-001.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="25468903"/>
+													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{F158EAF9-74D5-482C-90BF-3F0E00522575}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Vive la sociale !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Vx_Plachold_Vas-001" ID="{15BC921D-17F3-48DE-BCE5-06345CEC8B38}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Vx_Plachold_Vas-002" ID="{0CA2406F-7226-407F-BA77-88299B166E6E}" ShortID="670294328">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Vx_Plachold_Vas-002" ID="{374B3F43-2060-444A-8E3E-604598C9CC1E}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-002.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="301467003"/>
+													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{6138C804-15C6-4888-9B13-7B8ED3AC4C55}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Ils vont tirer !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Vx_Plachold_Vas-002" ID="{374B3F43-2060-444A-8E3E-604598C9CC1E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Vx_Plachold_Vas-003" ID="{25B39FF6-F4E8-4114-8780-FA946B4432BC}" ShortID="71437873">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Vx_Plachold_Vas-003" ID="{EA4F74C0-0C7A-4D53-9217-9D039FF4C8C5}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-003.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="163755063"/>
+													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{45D0E7BB-2014-4C67-8155-41A23A042008}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="On va droit à la bouillasse !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Vx_Plachold_Vas-003" ID="{EA4F74C0-0C7A-4D53-9217-9D039FF4C8C5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Vx_Plachold_Vas-004" ID="{304DF115-711C-40CA-8250-B3F3AA4EB85B}" ShortID="85494977">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Vx_Plachold_Vas-004" ID="{61318B82-D53B-4704-9EE1-FB847E2DE105}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-004.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="418546237"/>
+													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{73440FF5-895E-4F4F-B332-E20EBFC563EF}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Qui viennent, qui viennent !"/>
+																</PropertyList>
+															</Marker>
+															<Marker Name="" ID="{F90DF8C1-44B1-4FA9-85F5-82F88C83548E}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="On fricassera la Ligne !"/>
+																	<Property Name="Time" Type="Real64" Value="1.35014512545201"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Vx_Plachold_Vas-004" ID="{61318B82-D53B-4704-9EE1-FB847E2DE105}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Vx_Plachold_Vas-005" ID="{CC8738EE-4D7A-4525-B9DC-19D2B89A1877}" ShortID="697297067">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Vx_Plachold_Vas-005" ID="{6849F730-DA78-4305-9BC6-CD3B77F5B361}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-005.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="157719317"/>
+													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{B6D5544D-17CE-44B1-9EFC-B1EB4D09900D}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Attention à ton museau petit !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Vx_Plachold_Vas-005" ID="{6849F730-DA78-4305-9BC6-CD3B77F5B361}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Vx_Plachold_Vas-006" ID="{F442F8AF-D7B8-4C48-A1A5-F264F9B5C123}" ShortID="314569990">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Vx_Plachold_Vas-006" ID="{5852DAC9-BC47-4046-9C70-ECD18F49A7BC}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-006.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="41844498"/>
+													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{25AEB344-6099-4D87-9399-D0F1EBB06C5B}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Abattez-le !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Vx_Plachold_Vas-006" ID="{5852DAC9-BC47-4046-9C70-ECD18F49A7BC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Vx_Plachold_Vas-007" ID="{6174EB33-59F2-4EC1-98C3-8BDFEF962BB5}" ShortID="774215292">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Vx_Plachold_Vas-007" ID="{94460543-DC9D-42F5-A8E7-26A3F243E349}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-007.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="144592759"/>
+													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{80B4C43B-A118-4A45-8A23-994A18048916}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Salauds de ruraux !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Vx_Plachold_Vas-007" ID="{94460543-DC9D-42F5-A8E7-26A3F243E349}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Vx_Plachold_Vas-008" ID="{07FF89A9-BFD1-4DD1-9591-66A8A829C62C}" ShortID="296846099">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Vx_Plachold_Vas-008" ID="{0F55C0A7-2871-4BDC-88CE-CA3CC7E2B45F}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-008.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="940876037"/>
+													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{46EC6D48-0289-43C4-8476-897D332AACBC}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Des Versaillais !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Vx_Plachold_Vas-008" ID="{0F55C0A7-2871-4BDC-88CE-CA3CC7E2B45F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Vx_Plachold_Vas-010" ID="{EED052C7-78B6-4932-A4AA-C3D95F54472E}" ShortID="902077306">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Vx_Plachold_Vas-010" ID="{62A3A0E0-B35A-4F42-A332-FA73DCD0C225}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-010.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="49514846"/>
+													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{2A91AF01-AD27-4EB9-9E3B-8CF75E64E7F0}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Ils ont un canon !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Vx_Plachold_Vas-010" ID="{62A3A0E0-B35A-4F42-A332-FA73DCD0C225}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="Vx_Plachold_Vas-011" ID="{068944A7-3776-4F94-81B1-A84122537AE7}" ShortID="186441530">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="Vx_Plachold_Vas-011" ID="{087EA923-0D41-48C9-A2BE-F0088DD16B4E}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
+													<Language>SFX</Language>
+													<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-011.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="553093102"/>
+													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{58E2E4B1-40D1-46F6-AFCE-2D968213A458}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Planquez-vous !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="Vx_Plachold_Vas-011" ID="{087EA923-0D41-48C9-A2BE-F0088DD16B4E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<PropertyContainer Name="Feedback" ID="{111AB2F5-4EC0-4622-8237-24374C8B9845}" ShortID="1070899276">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Ally_Dead" ID="{D0BF77A0-2D82-4A96-8EC8-B8045DB4DAA1}" ShortID="581807572">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
+													<ValueList>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OverridePriority" Type="bool" Value="True"/>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Communard" ID="{979280CD-4BBE-47F3-8454-619DE6C622DD}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PH_VX_Bar_M_Comm_Worker_Ally_Death_03" ID="{64AF6955-2412-4B2F-9E34-27BC66AD623D}" ShortID="193016010">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PH_VX_Bar_M_Comm_Worker_Ally_Death_03" ID="{13A613EF-3675-4689-BA93-0BBC87C5488E}">
+															<PropertyList>
+																<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+																<Property Name="VolumeOffset" Type="Real64">
+																	<ValueList>
+																		<Value>-6</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Vx_Barks\Vx_Communard\PH_VX_Bar_M_Comm_Worker_Ally_Death_03.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="357761274"/>
+															</MediaIDList>
+															<ObjectLists>
+																<ObjectList Name="Markers">
+																	<Marker Name="" ID="{240D09C5-A115-4C14-86C6-D7086D6A6577}">
+																		<PropertyList>
+																			<Property Name="Label" Type="string" Value="Encore un camarade"/>
+																		</PropertyList>
+																	</Marker>
+																	<Marker Name="" ID="{1762E85E-47DC-4FFB-B2B8-A545AA29646A}">
+																		<PropertyList>
+																			<Property Name="Label" Type="string" Value="qui s'est fait rétamer !"/>
+																			<Property Name="Time" Type="Real64" Value="0.815759218252848"/>
+																		</PropertyList>
+																	</Marker>
+																	<Marker Name="" ID="{9D6AF611-BBCB-47AD-BC2A-495C038B19F6}">
+																		<PropertyList>
+																			<Property Name="Time" Type="Real64" Value="1.80245888719092"/>
+																		</PropertyList>
+																	</Marker>
+																</ObjectList>
+															</ObjectLists>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PH_VX_Bar_M_Comm_Worker_Ally_Death_03" ID="{13A613EF-3675-4689-BA93-0BBC87C5488E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Coward" ID="{39CC0191-5321-47E3-A157-B2310FE1EED0}" ShortID="27078966">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="OverridePriority" Type="bool" Value="True"/>
+												<Property Name="Priority" Type="int16">
+													<ValueList>
+														<Value>40</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Communard" ID="{979280CD-4BBE-47F3-8454-619DE6C622DD}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PH_VX_Bar_M_Comm_Military_Player_Far_02" ID="{BCC79CF0-736A-4238-B24E-09D3238678CE}" ShortID="560955373">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PH_VX_Bar_M_Comm_Military_Player_Far_02" ID="{DCA81FC7-A723-4A9D-9DA9-1C2056260497}">
+															<PropertyList>
+																<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+																<Property Name="VolumeOffset" Type="Real64">
+																	<ValueList>
+																		<Value>-6</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Vx_Barks\Vx_Communard\PH_VX_Bar_M_Comm_Military_Player_Far_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="817127270"/>
+															</MediaIDList>
+															<ObjectLists>
+																<ObjectList Name="Markers">
+																	<Marker Name="" ID="{511223E5-FF87-4193-B62F-01CDB5978ED1}">
+																		<PropertyList>
+																			<Property Name="Label" Type="string" Value="Bat-toi camarade !"/>
+																		</PropertyList>
+																	</Marker>
+																	<Marker Name="" ID="{A3630916-3AC4-486B-A610-A1D3001FCA20}">
+																		<PropertyList>
+																			<Property Name="Label" Type="string" Value="Bat-toi !"/>
+																			<Property Name="Time" Type="Real64" Value="1.00150252651909"/>
+																		</PropertyList>
+																	</Marker>
+																</ObjectList>
+															</ObjectLists>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PH_VX_Bar_M_Comm_Military_Player_Far_02" ID="{DCA81FC7-A723-4A9D-9DA9-1C2056260497}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Enemy_Dead" ID="{0BADF438-0730-4A3C-9A7A-4B3C59C8430F}" ShortID="217737471">
+											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="OverridePriority" Type="bool" Value="True"/>
+												<Property Name="Priority" Type="int16">
+													<ValueList>
+														<Value>20</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Communard" ID="{979280CD-4BBE-47F3-8454-619DE6C622DD}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+												</Reference>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="PH_VX_Bar_M_Comm_Military_Player_Kill_01" ID="{BBA0C768-7767-45FD-96CE-A3C71F2C732E}" ShortID="431261193">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="PH_VX_Bar_M_Comm_Military_Player_Kill_01" ID="{C69434D7-97AF-415E-844B-B52326BF629B}">
+															<PropertyList>
+																<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+																<Property Name="VolumeOffset" Type="Real64">
+																	<ValueList>
+																		<Value>-6</Value>
+																	</ValueList>
+																</Property>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Vx_Barks\Vx_Communard\PH_VX_Bar_M_Comm_Military_Player_Kill_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="620133278"/>
+															</MediaIDList>
+															<ObjectLists>
+																<ObjectList Name="Markers">
+																	<Marker Name="" ID="{A0005690-FD6C-4E01-BE04-17300EC7EEBD}">
+																		<PropertyList>
+																			<Property Name="Label" Type="string" Value="Tiens il a été bien trucidé celui-là !"/>
+																		</PropertyList>
+																	</Marker>
+																	<Marker Name="" ID="{3DC027F5-3775-42CE-A25A-305ECF068A63}">
+																		<PropertyList>
+																			<Property Name="Time" Type="Real64" Value="1.7911232602985"/>
+																		</PropertyList>
+																	</Marker>
+																</ObjectList>
+															</ObjectLists>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="PH_VX_Bar_M_Comm_Military_Player_Kill_01" ID="{C69434D7-97AF-415E-844B-B52326BF629B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Vx_Plachold_Vas-009" ID="{B7FD7828-2462-4E56-BF8B-7C2018FA8D12}" ShortID="1064247301">
+													<PropertyList>
+														<Property Name="3DSpatialization" Type="int16" Value="2"/>
+														<Property Name="Priority" Type="int16">
+															<ValueList>
+																<Value>10</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Attenuation">
+															<ObjectRef Name="Communard" ID="{979280CD-4BBE-47F3-8454-619DE6C622DD}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+														</Reference>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+														<Reference Name="UserAuxSend0">
+															<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Vx_Plachold_Vas-009" ID="{CA179873-4C12-41D7-8715-7EC8087B99CC}">
+															<PropertyList>
+																<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+															</PropertyList>
+															<Language>SFX</Language>
+															<AudioFile>Vx_Barks\Vx_Communard\Vx_Plachold_Vas-009.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="12475208"/>
+															</MediaIDList>
+															<ObjectLists>
+																<ObjectList Name="Markers">
+																	<Marker Name="" ID="{705DEAB6-95EC-4E39-A0B4-4A4E389BFAEA}">
+																		<PropertyList>
+																			<Property Name="Label" Type="string" Value="Mange tes morts !"/>
+																		</PropertyList>
+																	</Marker>
+																</ObjectList>
+															</ObjectLists>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="Vx_Plachold_Vas-009" ID="{CA179873-4C12-41D7-8715-7EC8087B99CC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+								</PropertyContainer>
+							</ChildrenList>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{B8350854-BC72-495A-8923-2E6B92BC9D5E}" ShortID="840822483">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom>
+													<Effect Name="Meter (Custom)" ID="{2855D257-F711-4259-8A16-CCC31E5A8F21}" ShortID="807526038" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+														<PropertyList>
+															<Property Name="MeterMode" Type="int32" Value="1"/>
+															<Property Name="MeterScope" Type="int32" Value="1"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="GameParameter">
+																<ObjectRef Name="Bark_Volume" ID="{310D6C14-6344-45E9-8379-034A9EEF5868}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+															</Reference>
+														</ReferenceList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
+								<ObjectList Name="RTPC">
+									<RTPC Name="" ID="{784FE2EA-28B8-4304-A2AA-26C16311F2F4}" ShortID="475620912">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="CenterPercentage"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="Bark_Volume" ID="{310D6C14-6344-45E9-8379-034A9EEF5868}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{002DB8C5-E1F1-4350-AADC-885191D8B91E}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>-60</XPos>
+																<YPos>0</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</ObjectList>
+							</ObjectLists>
+						</PropertyContainer>
 					</ChildrenList>
 					<ObjectLists>
 						<ObjectList Name="RTPC">

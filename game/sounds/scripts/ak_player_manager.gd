@@ -49,6 +49,28 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("aim"):
 		Wwise.set_state("player_aim", str(!player.is_aiming))
 
+	if Input.is_action_just_pressed("crouch"):
+		match player.curr_posture:
+			player.Posture.STAND:
+				crouch.post_event()
+			player.Posture.CROUCH:
+				up.post_event()
+			player.Posture.PRONE:
+				crouch.post_event()
+
+	if Input.is_action_just_pressed("prone"):
+		match player.curr_posture:
+			player.Posture.STAND:
+				crouch.post_event()
+				await get_tree().create_timer(0.25).timeout
+				prone.post_event()
+			player.Posture.CROUCH:
+				prone.post_event()
+			player.Posture.PRONE:
+				crouch.post_event()
+				await get_tree().create_timer(0.25).timeout
+				up.post_event()
+
 func _process(_delta: float) -> void:
 	
 	if player.is_reload_interruped == true:
@@ -59,15 +81,6 @@ func _process(_delta: float) -> void:
 	elif player.curr_posture == player.Posture.STAND:
 		Wwise.set_state("player_stance", "stand")
 
-	if player.is_changing_posture:
-			match player.curr_posture:
-				player.Posture.STAND:
-					up.post_event()
-				player.Posture.CROUCH:
-					crouch.post_event()
-				player.Posture.PRONE:
-					prone.post_event()
-	
 	if player.local_velocity.length() == 0:
 		Wwise.set_rtpc_value("Player_Velocity", 1, null)
 	else:

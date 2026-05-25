@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{C8761C91-A26F-3C60-AB08-981CEEC0B4A2}",
+    "Hash": "{3BD7FC60-58F8-5A4B-13AB-60A280F33762}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -314,6 +314,12 @@
       "GUID": "{C608E447-1D9D-4717-B429-A50B1CC84984}"
      },
      {
+      "Id": "2103536148",
+      "Name": "Bark_Volume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Bark_Volume",
+      "GUID": "{310D6C14-6344-45E9-8379-034A9EEF5868}"
+     },
+     {
       "Id": "2221031936",
       "Name": "Player_Position",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\Player_Position",
@@ -340,6 +346,32 @@
     ],
     "StateGroups": [
      {
+      "Id": "219569822",
+      "Name": "player_cover",
+      "ObjectPath": "\\States\\Default Work Unit\\player_cover",
+      "GUID": "{C9327D6E-8FAB-42D5-8D81-231F326EF92D}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\player_cover\\None",
+        "GUID": "{4DF22A44-EA85-42F6-9E4F-DCC14894FFC5}"
+       },
+       {
+        "Id": "2008504509",
+        "Name": "covered",
+        "ObjectPath": "\\States\\Default Work Unit\\player_cover\\covered",
+        "GUID": "{0EF77DA3-5BFE-441F-9807-046A753432ED}"
+       },
+       {
+        "Id": "2407602878",
+        "Name": "uncovered",
+        "ObjectPath": "\\States\\Default Work Unit\\player_cover\\uncovered",
+        "GUID": "{DD238AEA-5EE8-436C-B2AC-55E54113E820}"
+       }
+      ]
+     },
+     {
       "Id": "314259375",
       "Name": "player_breath",
       "ObjectPath": "\\States\\Default Work Unit\\player_breath",
@@ -362,6 +394,32 @@
         "Name": "anxious",
         "ObjectPath": "\\States\\Default Work Unit\\player_breath\\anxious",
         "GUID": "{68E47680-1106-48AB-8CD1-994A7346C657}"
+       }
+      ]
+     },
+     {
+      "Id": "1138488279",
+      "Name": "fight_state",
+      "ObjectPath": "\\States\\Default Work Unit\\fight_state",
+      "GUID": "{B590F5C3-04EB-4072-9F80-947A15BE497F}",
+      "States": [
+       {
+        "Id": "514064485",
+        "Name": "fight",
+        "ObjectPath": "\\States\\Default Work Unit\\fight_state\\fight",
+        "GUID": "{59DEFC00-A9CB-408F-BA8B-8A763F416A5E}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\fight_state\\None",
+        "GUID": "{C6C63CB6-7042-4BCB-9073-3AD401AFE0E9}"
+       },
+       {
+        "Id": "3967984634",
+        "Name": "retreat",
+        "ObjectPath": "\\States\\Default Work Unit\\fight_state\\retreat",
+        "GUID": "{28EDBE20-05B2-4F81-B02B-E8DE56DB8604}"
        }
       ]
      },
@@ -426,6 +484,64 @@
         "Name": "true",
         "ObjectPath": "\\States\\Default Work Unit\\player_aim\\true",
         "GUID": "{70CC75B8-1662-466B-9357-884CFAE6C01A}"
+       }
+      ]
+     },
+     {
+      "Id": "2280690262",
+      "Name": "barks_barricade",
+      "ObjectPath": "\\States\\Default Work Unit\\barks_barricade",
+      "GUID": "{53125CC4-7CB9-45A3-BFEC-E0F678A67D51}",
+      "States": [
+       {
+        "Id": "231230354",
+        "Name": "broken",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_barricade\\broken",
+        "GUID": "{188F5E20-5B0B-4BF1-A442-20828EB444ED}"
+       },
+       {
+        "Id": "545371365",
+        "Name": "low",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_barricade\\low",
+        "GUID": "{94C02136-BC10-4A28-B9A1-9DCF4BF3C2AE}"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_barricade\\None",
+        "GUID": "{FAF24D92-8060-43E9-92D5-DDACD2AD38BA}"
+       },
+       {
+        "Id": "3094168564",
+        "Name": "intact",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_barricade\\intact",
+        "GUID": "{6769E500-8558-496D-8DA4-1F3F2BE3C572}"
+       }
+      ]
+     },
+     {
+      "Id": "4265991608",
+      "Name": "barks_player_distance",
+      "ObjectPath": "\\States\\Default Work Unit\\barks_player_distance",
+      "GUID": "{F3D872A7-B4A5-4C80-8E2F-BD45D645AFBE}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_player_distance\\None",
+        "GUID": "{DDEE31FC-0546-46BC-B4F8-7246C3392C16}"
+       },
+       {
+        "Id": "1183803292",
+        "Name": "far",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_player_distance\\far",
+        "GUID": "{4D4608CE-2BDA-4503-9A24-337534372CB7}"
+       },
+       {
+        "Id": "1451272583",
+        "Name": "close",
+        "ObjectPath": "\\States\\Default Work Unit\\barks_player_distance\\close",
+        "GUID": "{997C47FE-0730-4B78-AEBE-B8EE578B8C48}"
        }
       ]
      }
@@ -563,6 +679,32 @@
         "Name": "crouch",
         "ObjectPath": "\\Switches\\Default Work Unit\\Player_Position\\crouch",
         "GUID": "{9CA6C40A-4F89-47F3-8D65-3B6B7CD4A1B4}"
+       }
+      ]
+     },
+     {
+      "Id": "3705103691",
+      "Name": "Shoe_Type",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type",
+      "GUID": "{B85E88EA-8A53-484A-909B-161E2E3D5B96}",
+      "Switches": [
+       {
+        "Id": "755604413",
+        "Name": "Worn_Boots",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type\\Worn_Boots",
+        "GUID": "{C30E9443-1FE8-4C03-9F8A-655F31BAB9E5}"
+       },
+       {
+        "Id": "1672723819",
+        "Name": "Clog_Shoes",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type\\Clog_Shoes",
+        "GUID": "{2A84FCF9-E908-4AAB-BF21-611AC65BE502}"
+       },
+       {
+        "Id": "2632515210",
+        "Name": "Heels",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Shoe_Type\\Heels",
+        "GUID": "{89B43353-FC1E-4814-8A4A-098729DFA6CF}"
        }
       ]
      }
@@ -1046,6 +1188,6 @@
     ]
    }
   ],
-  "FileHash": "{0E56EC64-4221-8A7C-A7C1-22F5B3B39E64}"
+  "FileHash": "{C88C3599-DF6A-C031-9AC4-94DE25A2C261}"
  }
 }

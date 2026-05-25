@@ -10,20 +10,11 @@
     "Type": "Event",
     "GUID": "{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}",
     "Language": "SFX",
-    "Hash": "{64DDB392-94F0-3BDC-FB9D-517C061F5CA4}",
+    "Hash": "{26A34197-F90E-ACC5-F933-DBAAE0458D32}",
     "ObjectPath": "Ally_Bark",
     "ShortName": "Ally_Bark",
     "Path": "Event/Ally_Bark.bnk",
     "Media": [
-     {
-      "Id": "12475208",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Loose",
-      "ShortName": "Vx_Barks\\Vx_Communard\\Vx_Plachold_Vas-009.wav",
-      "Path": "Media/12475208.wem",
-      "CachePath": "28/{280315C5-DB1F-E8C0-A416-8BA4DD81C804}.wem"
-     },
      {
       "Id": "25468903",
       "Language": "SFX",
@@ -115,6 +106,18 @@
       "CachePath": "B6/{B65A6884-F693-BE7E-F519-727047DB8A79}.wem"
      }
     ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "807526038",
+       "Name": "Meter (Custom)",
+       "ObjectPath": "\\Containers\\VX\\NPC\\Communard\\[Effect Slot [0]: (Meter)]\\Meter (Custom)",
+       "GUID": "{2855D257-F711-4259-8A16-CCC31E5A8F21}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      }
+     ]
+    },
     "Events": [
      {
       "Id": "3470134616",
@@ -127,9 +130,6 @@
       "DurationMin": "1.0104166",
       "DurationMax": "2.6151874",
       "MediaRefs": [
-       {
-        "Id": "12475208"
-       },
        {
         "Id": "25468903"
        },
@@ -161,6 +161,13 @@
         "Id": "940876037"
        }
       ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "807526038"
+        }
+       ]
+      },
       "AuxBusRefs": [
        {
         "Id": "2635253023",
@@ -177,10 +184,16 @@
       "Name": "Distance",
       "ObjectPath": "\\Game Parameters\\Default Work Unit\\Distance",
       "GUID": "{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"
+     },
+     {
+      "Id": "2103536148",
+      "Name": "Bark_Volume",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Bark_Volume",
+      "GUID": "{310D6C14-6344-45E9-8379-034A9EEF5868}"
      }
     ]
    }
   ],
-  "FileHash": "{07A59FCC-2A4D-CFA4-226E-68A2F8DD1696}"
+  "FileHash": "{A72EA706-AAEF-2572-84C5-AC6A514FC568}"
  }
 }

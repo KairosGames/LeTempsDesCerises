@@ -14,6 +14,9 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID ALLY_BARK = 3470134616U;
+        static const AkUniqueID ALLY_BARK_ALLY_DEAD = 3295768610U;
+        static const AkUniqueID ALLY_BARK_COWARD = 1318320503U;
+        static const AkUniqueID ALLY_BARK_ENEMY_DEAD = 3598975830U;
         static const AkUniqueID AMB_CANNONS = 3265814676U;
         static const AkUniqueID BARRICADE_DAMAGED = 482738278U;
         static const AkUniqueID BRICK_FALL = 3840667520U;
@@ -38,6 +41,43 @@ namespace AK
 
     namespace STATES
     {
+        namespace BARKS_BARRICADE
+        {
+            static const AkUniqueID GROUP = 2280690262U;
+
+            namespace STATE
+            {
+                static const AkUniqueID BROKEN = 231230354U;
+                static const AkUniqueID INTACT = 3094168564U;
+                static const AkUniqueID LOW = 545371365U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace BARKS_BARRICADE
+
+        namespace BARKS_PLAYER_DISTANCE
+        {
+            static const AkUniqueID GROUP = 4265991608U;
+
+            namespace STATE
+            {
+                static const AkUniqueID CLOSE = 1451272583U;
+                static const AkUniqueID FAR = 1183803292U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace BARKS_PLAYER_DISTANCE
+
+        namespace FIGHT_STATE
+        {
+            static const AkUniqueID GROUP = 1138488279U;
+
+            namespace STATE
+            {
+                static const AkUniqueID FIGHT = 514064485U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID RETREAT = 3967984634U;
+            } // namespace STATE
+        } // namespace FIGHT_STATE
+
         namespace PLAYER_AIM
         {
             static const AkUniqueID GROUP = 1608601952U;
@@ -61,6 +101,18 @@ namespace AK
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace PLAYER_BREATH
+
+        namespace PLAYER_COVER
+        {
+            static const AkUniqueID GROUP = 219569822U;
+
+            namespace STATE
+            {
+                static const AkUniqueID COVERED = 2008504509U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID UNCOVERED = 2407602878U;
+            } // namespace STATE
+        } // namespace PLAYER_COVER
 
         namespace PLAYER_STANCE
         {
@@ -135,6 +187,18 @@ namespace AK
             } // namespace SWITCH
         } // namespace PLAYER_POSITION
 
+        namespace SHOE_TYPE
+        {
+            static const AkUniqueID GROUP = 3705103691U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID CLOG_SHOES = 1672723819U;
+                static const AkUniqueID HEELS = 2632515210U;
+                static const AkUniqueID WORN_BOOTS = 755604413U;
+            } // namespace SWITCH
+        } // namespace SHOE_TYPE
+
         namespace SURFACE
         {
             static const AkUniqueID GROUP = 1834394558U;
@@ -152,6 +216,7 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
+        static const AkUniqueID BARK_VOLUME = 2103536148U;
         static const AkUniqueID CANNONS_PROBABILITY = 2576556105U;
         static const AkUniqueID DEAFENING = 711096812U;
         static const AkUniqueID DEATH_FILTER = 4205136178U;
