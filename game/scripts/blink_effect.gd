@@ -40,30 +40,54 @@ var s_softness: String = "shader_parameter/softness"
 func open_eyes_from_sleep() -> void:
 	set_targets(EyesStep.A_CLOSED)
 	create_all_tweens()
-	var t1: float = 0.3
+	var t1: float = 1.5
 	var trans1: Tween.TransitionType = Tween.TRANS_QUAD
 	var ea1: Tween.EaseType = Tween.EASE_OUT
 	height_twn.tween_property(shader, s_opening, height_target, t1).set_trans(trans1).set_ease(ea1)
 	corners_twn.tween_property(shader, s_corners, corners_target, t1).set_trans(trans1).set_ease(ea1)
 	await softness_twn.tween_property(shader, s_softness, softness_target, t1).set_trans(trans1).set_ease(ea1).finished
 	
+	await get_tree().create_timer(0.5).timeout
+	
 	set_targets(EyesStep.CLOSED)
 	create_all_tweens()
-	var t2: float = 0.3
+	var t2: float = 0.2
 	var trans2: Tween.TransitionType = Tween.TRANS_QUAD
 	var ea2: Tween.EaseType = Tween.EASE_IN
 	height_twn.tween_property(shader, s_opening, height_target, t2).set_trans(trans2).set_ease(ea2)
 	corners_twn.tween_property(shader, s_corners, corners_target, t2).set_trans(trans2).set_ease(ea2)
 	await softness_twn.tween_property(shader, s_softness, softness_target, t2).set_trans(trans2).set_ease(ea2).finished
 	
+	await get_tree().create_timer(0.1).timeout
+	
+	set_targets(EyesStep.A_OPEN)
 	create_all_tweens()
-	set_targets(EyesStep.OPEN)
-	var t3: float = 0.3
+	var t3: float = 0.5
 	var trans3: Tween.TransitionType = Tween.TRANS_QUAD
 	var ea3: Tween.EaseType = Tween.EASE_OUT
 	height_twn.tween_property(shader, s_opening, height_target, t3).set_trans(trans3).set_ease(ea3)
 	corners_twn.tween_property(shader, s_corners, corners_target, t3).set_trans(trans3).set_ease(ea3)
 	await softness_twn.tween_property(shader, s_softness, softness_target, t3).set_trans(trans3).set_ease(ea3).finished
+	
+	await get_tree().create_timer(1.0).timeout
+	
+	set_targets(EyesStep.CLOSED)
+	create_all_tweens()
+	var t4: float = 0.15
+	var trans4: Tween.TransitionType = Tween.TRANS_QUAD
+	var ea4: Tween.EaseType = Tween.EASE_OUT
+	height_twn.tween_property(shader, s_opening, height_target, t4).set_trans(trans4).set_ease(ea4)
+	corners_twn.tween_property(shader, s_corners, corners_target, t4).set_trans(trans4).set_ease(ea4)
+	await softness_twn.tween_property(shader, s_softness, softness_target, t4).set_trans(trans4).set_ease(ea4).finished
+	
+	create_all_tweens()
+	set_targets(EyesStep.OPEN)
+	var t5: float = 0.5
+	var trans5: Tween.TransitionType = Tween.TRANS_QUAD
+	var ea5: Tween.EaseType = Tween.EASE_OUT
+	height_twn.tween_property(shader, s_opening, height_target, t5).set_trans(trans5).set_ease(ea5)
+	corners_twn.tween_property(shader, s_corners, corners_target, t5).set_trans(trans5).set_ease(ea5)
+	await softness_twn.tween_property(shader, s_softness, softness_target, t5).set_trans(trans5).set_ease(ea5).finished
 
 
 func move_eyes(step: EyesStep, time: float) -> void:
@@ -109,7 +133,7 @@ func kill_all_tweens() -> void:
 
 
 func set_eyes_to_step(step: EyesStep) -> void:
-	match step_target:
+	match step:
 		EyesStep.OPEN:
 			shader.set_shader_parameter("opening", open_height)
 			shader.set_shader_parameter("corner_opening", open_corners)

@@ -251,17 +251,20 @@ collision_mask = 5
 [node name="WeaponCameraBase" type="Node3D" parent="CameraPivot" unique_id=36626819]
 unique_name_in_owner = true
 
-[node name="PlayerCamera" type="Camera3D" parent="CameraPivot/WeaponCameraBase" unique_id=619415518]
+[node name="CameraLandingRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase" unique_id=1149755116]
+unique_name_in_owner = true
+
+[node name="PlayerCamera" type="Camera3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot" unique_id=619415518]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 cull_mask = 1048573
 current = true
 near = 0.001
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPivot/WeaponCameraBase/PlayerCamera" unique_id=741617742]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/PlayerCamera" unique_id=741617742]
 remote_path = NodePath("../WeaponSubViewContainer/WeaponSubViewport/WeaponCamera")
 
-[node name="WeaponSubViewContainer" type="SubViewportContainer" parent="CameraPivot/WeaponCameraBase/PlayerCamera" unique_id=1472858896]
+[node name="WeaponSubViewContainer" type="SubViewportContainer" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/PlayerCamera" unique_id=1472858896]
 z_index = -1
 anchors_preset = 15
 anchor_right = 1.0
@@ -269,87 +272,87 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WeaponSubViewport" type="SubViewport" parent="CameraPivot/WeaponCameraBase/PlayerCamera/WeaponSubViewContainer" unique_id=1630650414]
+[node name="WeaponSubViewport" type="SubViewport" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/PlayerCamera/WeaponSubViewContainer" unique_id=1630650414]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="WeaponCamera" type="Camera3D" parent="CameraPivot/WeaponCameraBase/PlayerCamera/WeaponSubViewContainer/WeaponSubViewport" unique_id=1260547542]
+[node name="WeaponCamera" type="Camera3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/PlayerCamera/WeaponSubViewContainer/WeaponSubViewport" unique_id=1260547542]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.6, 0)
 cull_mask = 2
 near = 0.001
 
-[node name="ak_player_manager" parent="CameraPivot/WeaponCameraBase/PlayerCamera" unique_id=1168469569 node_paths=PackedStringArray("player") instance=ExtResource("9_oo3uv")]
-player = NodePath("../../../..")
+[node name="ak_player_manager" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/PlayerCamera" unique_id=1168469569 node_paths=PackedStringArray("player") instance=ExtResource("9_oo3uv")]
+player = NodePath("../../../../..")
 
-[node name="RightWeaponPos" type="Marker3D" parent="CameraPivot/WeaponCameraBase" unique_id=675375272]
+[node name="RightWeaponPos" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot" unique_id=675375272]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, -0.055, 0.122)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, -0.054999948, 0.122)
 
-[node name="LeftWeaponPos" type="Marker3D" parent="CameraPivot/WeaponCameraBase" unique_id=938227459]
+[node name="LeftWeaponPos" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot" unique_id=938227459]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04, -0.055, 0.122)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04, -0.054999948, 0.122)
 
-[node name="AimPos" type="Marker3D" parent="CameraPivot/WeaponCameraBase" unique_id=971970464]
+[node name="AimPos" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot" unique_id=971970464]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03, 0.08)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.029999971, 0.08)
 
-[node name="WeaponContainer" type="Node3D" parent="CameraPivot/WeaponCameraBase" unique_id=1925293918]
+[node name="WeaponContainer" type="Node3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot" unique_id=1925293918]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, -0.05, 0.122)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04, -0.049999952, 0.122)
 
-[node name="RightPullBackPosture" type="Marker3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer" unique_id=910350629]
+[node name="RightPullBackPosture" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer" unique_id=910350629]
 unique_name_in_owner = true
 transform = Transform3D(0.6087614, 0.35894057, 0.70751053, 0, 0.89179754, -0.45243472, -0.7933533, 0.2754248, 0.5428919, 0, -0.03000009, -0.024999999)
 
-[node name="LeftPullBackPosture" type="Marker3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer" unique_id=681316153]
+[node name="LeftPullBackPosture" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer" unique_id=681316153]
 unique_name_in_owner = true
 transform = Transform3D(0.6087614, -0.35894057, -0.70751053, 0, 0.89179754, -0.45243472, 0.7933533, 0.2754248, 0.5428919, 0, -0.03000009, -0.024999999)
 
-[node name="SubWeaponContainer" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer" unique_id=1912786900]
+[node name="SubWeaponContainer" type="Node3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer" unique_id=1912786900]
 unique_name_in_owner = true
 
-[node name="LagTarget" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer" unique_id=1445844705]
+[node name="LagTarget" type="Node3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer" unique_id=1445844705]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.065, 1.49, -0.012999997)
 top_level = true
 
-[node name="WeaponLagRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer" unique_id=1013309617]
+[node name="WeaponLagRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer" unique_id=1013309617]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
 
-[node name="WeaponBobRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot" unique_id=236003033]
+[node name="WeaponBobRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot" unique_id=236003033]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.54525745)
 
-[node name="WeaponSwayRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot" unique_id=269191037]
+[node name="WeaponSwayRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot" unique_id=269191037]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02699995, -0.44525743)
 
-[node name="Weapon" type="Node3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot" unique_id=2061743200]
+[node name="Weapon" type="Node3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot" unique_id=2061743200]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027, 0.1)
 
-[node name="sk_chassepot" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1025414177 instance=ExtResource("4_klv5p")]
+[node name="sk_chassepot" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1025414177 instance=ExtResource("4_klv5p")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="FrontSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=2022825120]
+[node name="FrontSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=2022825120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029570341, 0.845)
 
-[node name="RearSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1146183657]
+[node name="RearSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1146183657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029152155, 0.14946882)
 
-[node name="WeaponRayCast" type="RayCast3D" parent="CameraPivot/WeaponCameraBase/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1123149694]
+[node name="WeaponRayCast" type="RayCast3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1123149694]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013229132, 0.31301522)
 target_position = Vector3(0, 0, 300)
 collision_mask = 7
 
-[node name="OutOfCamera" type="Marker3D" parent="CameraPivot/WeaponCameraBase" unique_id=51978982]
+[node name="OutOfCamera" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot" unique_id=51978982]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.34202015, -0.9396926, 0, 0.9396926, 0.34202015, -0.04, -0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 0.34202015, -0.9396926, 0, 0.9396926, 0.34202015, -0.04, -0.100000024, 0)
 
-[connection signal="entered_reload" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/PlayerCamera/ak_player_manager" method="_on_reload_ui_entered_reload"]
-[connection signal="try_failed" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/PlayerCamera/ak_player_manager" method="_on_reload_ui_try_failed"]
-[connection signal="try_succeeded" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/PlayerCamera/ak_player_manager" method="_on_reload_ui_try_succeeded"]
+[connection signal="entered_reload" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/CameraLandingRoot/PlayerCamera/ak_player_manager" method="_on_reload_ui_entered_reload"]
+[connection signal="try_failed" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/CameraLandingRoot/PlayerCamera/ak_player_manager" method="_on_reload_ui_try_failed"]
+[connection signal="try_succeeded" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/CameraLandingRoot/PlayerCamera/ak_player_manager" method="_on_reload_ui_try_succeeded"]

@@ -41,15 +41,18 @@ func spawn_player_if_needed() -> void:
 		return
 	var new_player: Player = player_prefab.instantiate()
 	get_parent().add_child(new_player)
-	print_rich("[color=yellow]PLAYER HAS SPAWN ![/color]")
-	print("NEW PLAYER HAS SPAWN !")
+	print_rich("[color=yellow]NEW PLAYER HAS SPAWN ![/color]")
 
 
 func set_run() -> void:
 	player = Player.instance
 	if use_narrative:
-		player.initiate(player_spwaner.global_position, player_spwaner.global_rotation, false, false, Player.Posture.CROUCH)
+		go_next_state()
 		return
+	set_player_out_of_run()
+
+
+func set_player_out_of_run() -> void:
 	player.initiate(player_spwaner.global_position, player_spwaner.global_rotation)
 	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
 
@@ -62,6 +65,7 @@ func go_next_state() -> void:
 	game_state_index += 1
 
 	if game_state_index >= all_states.size():
+		print("GAME IS FINISHED !")
 		return
 
 	curr_state = all_states[game_state_index]

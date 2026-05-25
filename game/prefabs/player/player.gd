@@ -6,6 +6,9 @@ signal died
 signal weapon_took_or_dropped
 signal shot
 signal tried_shoot_no_reload
+signal ally_shot
+signal enemy_shot
+signal shoot_missed
 
 @onready var p_inputs: PlayerInputs = %PlayerInputs
 @onready var reload_ui: ReloadUI = %ReloadUI
@@ -30,6 +33,8 @@ signal tried_shoot_no_reload
 @onready var weapon_bob_root: Node3D = %WeaponBobRoot
 @onready var out_of_camera: Marker3D = %OutOfCamera
 @onready var blink_effect: BlinkEffect = %BlinkEffect
+@onready var cam_land_root: Node3D = %CameraLandingRoot
+
 
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
@@ -53,6 +58,11 @@ signal tried_shoot_no_reload
 @export var can_use_reload: bool = true
 @export var can_change_posture: bool = true
 @export var can_use_jump: bool = true
+
+@export_category("Smoothness settings")
+@export_range(0.01, 0.5, 0.01) var acc_time: float = 0.1
+@export_range(0.01, 0.5, 0.01) var brake_time: float = 0.1
+@export_range(0.01, 1.0, 0.001) var aim_smooth_strength: float = 0.05
 
 @export_category("View settings")
 @export var v_clamp_deg: Vector2 = Vector2(-70.0, 85.0)
@@ -148,10 +158,11 @@ signal tried_shoot_no_reload
 @export var jump_strength = 4.5
 @export var gravity_multiplier = 2.0
 
-@export_category("Smoothness settings")
-@export_range(0.01, 0.5, 0.01) var acc_time: float = 0.1
-@export_range(0.01, 0.5, 0.01) var brake_time: float = 0.1
-@export_range(0.01, 1.0, 0.001) var aim_smooth_strength: float = 0.05
+@export_category("Camera effects settings")
+@export var land_max_y_offset: float = -0.1
+@export var land_max_pitch_offset: float = 1.0
+@export var land_effect_time: float = 0.2
+
 
 enum Posture { STAND, CROUCH, PRONE }
 var curr_posture: Posture = Posture.STAND
@@ -168,6 +179,7 @@ var is_run_toggle: bool
 var is_posture_switch_toggle: bool
 
 var is_grounded: bool = true
+var was_grounded: bool = true
 var stop_run: bool = false
 var is_moving_side: bool = false
 var is_aiming: bool = false
@@ -222,6 +234,8 @@ var pull_back_rot_twn: Tween
 var pop_wpn_pitch_twn: Tween
 var pop_wpn_pos_y_twn: Tween
 var pop_wpn_pos_z_twn: Tween
+var cam_land_y_twn: Tween
+var cam_land_pitch_twn: Tween
 
 
 static var instance: Player:
@@ -265,9 +279,8 @@ func _process(delta: float) -> void:
 	
 	##DEBUG
 	if Input.is_action_just_pressed("TEST"):
-		can_use_jump = !can_use_jump
-		give_or_drop_weapon(true)
-		#if is_alive: die()
+		if is_alive: die()
+		pass
 
 
 func initiate(pos: Vector3,
@@ -657,7 +670,7 @@ func process_view(delta: float) -> void:
 	aim_target.y -= p_inputs.get_view_input().x * p_inputs.h_sensi_multiplier * reducer
 	aim_target.x += p_inputs.get_view_input().y * p_inputs.v_sensi_multiplier * inversion * reducer
 	var clamp_applied: Vector2 = v_clamp_prone if curr_posture == Posture.PRONE else v_clamp_deg
-	aim_target.x = clampf(aim_target.x, clamp_applied.x, clamp_applied.y)
+	if can_use_view: aim_target.x = clampf(aim_target.x, clamp_applied.x, clamp_applied.y)
 
 	if is_aim_smooth:
 		var result_y: Dictionary = smooth_damp_angle(rotation_degrees.y, aim_target.y, aim_vel.y, aim_smooth_strength, delta)
@@ -691,6 +704,7 @@ func smooth_damp(current: float, target: float, current_velocity: float, smooth_
 func handle_camera_effects(delta: float) -> void:
 	handle_shoot_recoil()
 	handle_fov_changes(delta)
+	handle_landing_effect()
 
 
 func handle_shoot_recoil() -> void:
@@ -702,6 +716,29 @@ func handle_fov_changes(delta: float) -> void:
 	if is_running and is_run_fov_active: player_camera.fov = move_toward(player_camera.fov, run_fov, fov_diff * delta * 5.0)
 	elif not is_aiming: player_camera.fov = move_toward(player_camera.fov, default_fov, fov_diff * delta * 5.0)
 	weapon_camera.fov = player_camera.fov - weapon_fov_diff
+
+
+func handle_landing_effect() -> void:
+	if not was_grounded and is_grounded:
+		play_cam_landing_effect(land_max_y_offset, land_max_pitch_offset, land_effect_time)
+	was_grounded = is_grounded
+
+
+func play_cam_landing_effect(y_offset: float, pitch: float, time: float) -> void:
+	if cam_land_y_twn and cam_land_y_twn.is_running(): return
+	if cam_land_pitch_twn and cam_land_pitch_twn.is_running(): return
+	if cam_land_y_twn: cam_land_y_twn.kill()
+	if cam_land_pitch_twn: cam_land_pitch_twn.kill()
+	cam_land_y_twn = create_tween()
+	cam_land_pitch_twn = create_tween()
+	var t: float = time / 10.0
+	var angle: float = deg_to_rad(pitch)
+	cam_land_y_twn.tween_property(cam_land_root, "position:y", y_offset, t * 4.0
+			).set_trans(Tween.TransitionType.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	cam_land_y_twn.tween_property(cam_land_root, "position:y", 0.0, t * 6.0)
+	cam_land_pitch_twn.tween_property(cam_land_root, "rotation:x", angle, t * 4.0
+			).set_trans(Tween.TransitionType.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	cam_land_pitch_twn.tween_property(cam_land_root, "rotation:x", 0.0, t * 6.0)
 
 
 func handle_weapon_movement(delta: float) -> void:
@@ -947,18 +984,23 @@ func play_recoil_effect() -> void:
 func handle_shoot_cast() -> void:
 	var obj: Object = weapon_ray_cast.get_collider()
 	if not obj or (obj is not Agent and obj is not ShootTarget):
+		shoot_missed.emit()
 		print("MISS !")
 		return
 	if obj is Agent:
 		obj.die()
 		if obj.team == Agent.Team.COMMUNARD:
 			print("Communard touched !")
+			ally_shot.emit()
 			return
+		enemy_shot.emit()
 		print("Versaillais touched !")
 	elif obj is ShootTarget:
 		if obj.is_ally:
+			ally_shot.emit()
 			print("Communard touched !")
 			return
+		enemy_shot.emit()
 		print("Versaillais touched !")
 
 
@@ -1056,7 +1098,7 @@ func die() -> void:
 	await get_tree().create_timer(0.1).timeout
 	is_alive = false
 	if is_reloading: exit_reload(false, true)
-	weapon_sway_root.visible = false
+	weapon_container.visible = false
 	died.emit()
 	reset_player_controller()
 
@@ -1078,6 +1120,9 @@ func reset_player_controller() -> void:
 	sub_wpn_container.position = Vector3.ZERO
 	wpn_cam_base.rotation = Vector3.ZERO
 	weapon_sway_root.rotation = Vector3.ZERO
+	wpn_cam_base.rotation = Vector3.ZERO
+	cam_land_root.position = Vector3.ZERO
+	cam_land_root.rotation = Vector3.ZERO
 	player_camera.fov = default_fov
 	weapon_camera.fov = default_fov - weapon_fov_diff
 	recoil_offset = 0.0
@@ -1089,6 +1134,8 @@ func reset_player_controller() -> void:
 	bob_timer = 0.0
 	bob_amount = 0.0
 	bob_phase = 0.0
+	is_grounded = true
+	was_grounded = true
 	has_weapon = false
 	is_aiming = false
 	is_running = false
@@ -1122,8 +1169,21 @@ func kill_all_tweens() -> void:
 	if pop_wpn_pitch_twn: pop_wpn_pitch_twn.kill()
 	if pop_wpn_pos_y_twn: pop_wpn_pos_y_twn.kill()
 	if pop_wpn_pos_z_twn: pop_wpn_pos_z_twn.kill()
+	if cam_land_y_twn: cam_land_y_twn.kill()
+	if cam_land_pitch_twn: cam_land_pitch_twn.kill()
 
 
 func revive(pos: Vector3, rot: Vector3) -> void:
 	initiate(pos, rot)
 	player_camera.current = true
+
+
+func set_for_onboarding() -> void:
+	can_use_shoot = false
+	can_use_move = false
+	can_use_view = false
+	can_use_aim = false
+	can_use_run = false
+	can_use_reload = false
+	can_change_posture = false
+	can_use_jump = false
