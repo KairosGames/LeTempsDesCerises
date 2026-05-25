@@ -79,5 +79,4 @@ func handle_canon_shoot() -> void:
 
 
 func get_active_barricade() -> Barricade:
-	if game_state_index == 0: return first_barricade
-	return null
+	return first_barricade
