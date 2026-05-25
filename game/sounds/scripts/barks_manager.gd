@@ -27,9 +27,6 @@ func remove(target : Node3D):
 			allies.pick_random().ally_dead.post_event()
 	elif enemies.has(target):
 		enemies.erase(target)
-		if !allies.is_empty():
-			var closest = find_closest(allies)
-			closest.enemy_dead.post_event()
 
 func find_closest(type : Array) -> Node3D : 
 	var closest : Node3D
@@ -71,3 +68,9 @@ func retreat():
 
 func fight():
 	Wwise.set_state("fight_state", "fight")
+
+func enemy_killed():
+	await get_tree().create_timer(1.5).timeout
+	if !allies.is_empty():
+			var closest = find_closest(allies)
+			closest.enemy_dead.post_event()

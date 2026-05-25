@@ -25,6 +25,7 @@ func _ready() -> void:
 	BarksManager.player = self
 	init_motion()
 	player.die_called.connect(death_event)
+	player.enemy_shot.connect(BarksManager.enemy_killed)
 
 func _unhandled_input(_event: InputEvent) -> void:
 
