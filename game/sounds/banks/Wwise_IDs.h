@@ -224,6 +224,7 @@ namespace AK
         static const AkUniqueID PLAYER_POSITION = 2221031936U;
         static const AkUniqueID PLAYER_VELOCITY = 1833811084U;
         static const AkUniqueID POETIC_LEVEL = 3680281974U;
+        static const AkUniqueID SIDECHAIN = 1883033791U;
     } // namespace GAME_PARAMETERS
 
     namespace BANKS
@@ -231,14 +232,13 @@ namespace AK
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID SB_AMB = 925885567U;
         static const AkUniqueID SB_CANNON = 2061449278U;
-        static const AkUniqueID SB_ENEMY = 3827176343U;
+        static const AkUniqueID SB_NPC = 1278759826U;
         static const AkUniqueID SB_PLAYER = 2103316850U;
     } // namespace BANKS
 
     namespace BUSSES
     {
         static const AkUniqueID AMB = 1117531639U;
-        static const AkUniqueID CONTROLLER = 1720438449U;
         static const AkUniqueID MAIN_AUDIO_BUS = 2246998526U;
         static const AkUniqueID SFX = 393239870U;
         static const AkUniqueID SFX_NPC = 161171466U;
@@ -252,8 +252,8 @@ namespace AK
 
     namespace AUX_BUSSES
     {
-        static const AkUniqueID CROSSROAD_REVERB = 1865335600U;
         static const AkUniqueID REFLECT = 243379636U;
+        static const AkUniqueID SFX_GUNSHOT_SEND = 3189108374U;
         static const AkUniqueID STREET_REVERB = 2635253023U;
         static const AkUniqueID WWISE_MOTION_SEND = 214837138U;
     } // namespace AUX_BUSSES

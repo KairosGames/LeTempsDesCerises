@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://vhe61d734aj8" path="res://sounds/scripts/ak_cannon_manager.gd" id="1_dfrxc"]
 [ext_resource type="WwiseEvent" uid="uid://c1obmoxl6uso1" path="res://Wwise/resources/Event/{91A29903-C449-45A3-830D-63BA22BF8416}.tres" id="2_4pv3f"]
-[ext_resource type="WwiseBank" uid="uid://duvdhk3xpnfpv" path="res://Wwise/resources/SoundBank/{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}.tres" id="2_mbhga"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mbhga"]
 radius = 0.1
@@ -10,10 +9,6 @@ radius = 0.1
 [node name="AkCannonManager" type="Node3D" unique_id=1286440460 node_paths=PackedStringArray("shoot")]
 script = ExtResource("1_dfrxc")
 shoot = NodePath("Cannon_Shoot")
-
-[node name="AkBank" type="AkBank" parent="." unique_id=770026060]
-bank = ExtResource("2_mbhga")
-load_on = 1
 
 [node name="Cannon_Shoot" type="AkEvent3D" parent="." unique_id=1346840611]
 event = ExtResource("2_4pv3f")

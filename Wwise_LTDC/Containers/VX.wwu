@@ -59,6 +59,9 @@
 								<Reference Name="OutputBus">
 									<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 								</Reference>
+								<Reference Name="UserAuxSend1">
+									<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
 							</ReferenceList>
 							<ChildrenList>
 								<SwitchContainer Name="Breath_In" ID="{F4F3F0A7-519D-41AA-AA28-EA035C654C4A}" ShortID="187930683">
@@ -1574,6 +1577,7 @@
 										<RandomSequenceContainer Name="Ally_Dead" ID="{D0BF77A0-2D82-4A96-8EC8-B8045DB4DAA1}" ShortID="581807572">
 											<PropertyList>
 												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
 												<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 												<Property Name="MaxSoundPerInstance" Type="int16">
 													<ValueList>

@@ -30,8 +30,6 @@ prone = NodePath("Prone")
 sprint = NodePath("Sprint")
 bullet_prefab = ExtResource("2_g1o18")
 
-[node name="Bank_Loader" parent="." unique_id=404085232 instance=ExtResource("2_sdg1b")]
-
 [node name="AkListener3D" type="AkListener3D" parent="." unique_id=1427046769]
 
 [node name="Area3D" type="Area3D" parent="AkListener3D" unique_id=1524320620]
@@ -145,5 +143,7 @@ shape = SubResource("SphereShape3D_s8o8u")
 [node name="AkState" type="AkState" parent="Alive" unique_id=1956142358]
 state = ExtResource("14_a4l4r")
 trigger_on = 2
+
+[node name="Bank_Loader" parent="." unique_id=404085232 instance=ExtResource("2_sdg1b")]
 
 [connection signal="audio_marker" from="Steps" to="." method="_on_steps_audio_marker"]

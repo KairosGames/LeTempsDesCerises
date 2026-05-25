@@ -10,7 +10,7 @@ var coward_distance : int = 600
 
 # Called when the node enters the scene tree for the first time.
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if barricade.global_position.distance_squared_to(player.global_position) > coward_distance and is_coward == false:
 		coward()
 
