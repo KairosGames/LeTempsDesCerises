@@ -163,11 +163,6 @@
 								<Value>False</Value>
 							</ValueList>
 						</Property>
-						<Property Name="Soundly:FileIDForAudioSource" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
 						<Property Name="TrimBegin" Type="Real64">
 							<ValueList>
 								<Value>-0.001</Value>
@@ -569,76 +564,6 @@
 						<Property Name="ReflectionsVolume" Type="Real64">
 							<ValueList>
 								<Value>0</Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:ActiveChannels" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:FileID" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:FileName" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:HandleStartTime" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:HandleStopTime" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:LibraryID" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:LibraryLocation" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:PlaybackSpeed" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:ProcessList" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:RenderedFileBitRate" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:RenderedFilePath" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:RenderedFileSampleRate" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:SelectionStartTime" Type="string">
-							<ValueList>
-								<Value></Value>
-							</ValueList>
-						</Property>
-						<Property Name="Soundly:SelectionStopTime" Type="string">
-							<ValueList>
-								<Value></Value>
 							</ValueList>
 						</Property>
 						<Property Name="SpeakerPanning" Type="int16">
@@ -11259,6 +11184,40 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
+				<SharedPropertyList ClassName="ASIO Output" PluginType="7" CompanyID="0" PluginID="168">
+					<PropertyList>
+						<Property Name="BaseChannel" Type="int32">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="BypassEffect" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+						<Property Name="ChannelConfig" Type="int32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Color" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Inclusion" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OverrideColor" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+				</SharedPropertyList>
 				<SharedPropertyList ClassName="Wwise Reflect" PluginType="3" CompanyID="0" PluginID="171">
 					<PropertyList>
 						<Property Name="BaseTextureFrequency" Type="Real32">
@@ -12242,6 +12201,30 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
+				<SharedPropertyList ClassName="Wwise Channel Router" PluginType="3" CompanyID="0" PluginID="191">
+					<PropertyList>
+						<Property Name="BusChannelConfig" Type="int32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Color" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Inclusion" Type="bool">
+							<ValueList>
+								<Value>True</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OverrideColor" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+				</SharedPropertyList>
 				<SharedPropertyList ClassName="Ak Sidechain Send" PluginType="3" CompanyID="0" PluginID="193">
 					<PropertyList>
 						<Property Name="Color" Type="int16">
@@ -12746,6 +12729,30 @@
 						</Property>
 					</PropertyList>
 				</SharedPropertyList>
+				<SharedPropertyList ClassName="ASIO Input" PluginType="2" CompanyID="0" PluginID="204">
+					<PropertyList>
+						<Property Name="BaseChannel" Type="int32">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="ChannelConfig" Type="int32">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Color" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OverrideColor" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+				</SharedPropertyList>
 				<SharedPropertyList ClassName="Motion Source" PluginType="2" CompanyID="0" PluginID="409">
 					<PropertyList>
 						<Property Name="Channel1" Type="int16">
@@ -12908,6 +12915,30 @@
 						<Property Name="Mix" Type="int32">
 							<ValueList>
 								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="OverrideColor" Type="bool">
+							<ValueList>
+								<Value>False</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+				</SharedPropertyList>
+				<SharedPropertyList ClassName="Channel Router Settings" PluginType="9" CompanyID="0" PluginID="903">
+					<PropertyList>
+						<Property Name="Channel" Type="Uint32">
+							<ValueList>
+								<Value>1</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Color" Type="int16">
+							<ValueList>
+								<Value>0</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Inclusion" Type="bool">
+							<ValueList>
+								<Value>True</Value>
 							</ValueList>
 						</Property>
 						<Property Name="OverrideColor" Type="bool">

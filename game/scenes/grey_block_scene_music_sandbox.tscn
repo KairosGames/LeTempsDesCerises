@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://nx5kmjw8laiy"]
+
+[ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/Managers/game_manager.tscn" id="1_cppqq"]
+[ext_resource type="PackedScene" uid="uid://ctinark3l27ws" path="res://prefabs/Managers/effects_manager.tscn" id="2_yb0o8"]
+[ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_wvsj3"]
+[ext_resource type="PackedScene" uid="uid://cowhe7krsng37" path="res://scenes/game_design_scene.tscn" id="4_v5jej"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o0uso"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_rwgxs"]
+sky_material = SubResource("ProceduralSkyMaterial_o0uso")
+
+[sub_resource type="Environment" id="Environment_g3y20"]
+background_mode = 2
+sky = SubResource("Sky_rwgxs")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="GreyBlockScene" type="Node3D" unique_id=111111966]
+
+[node name="GameManager" parent="." unique_id=1070764289 node_paths=PackedStringArray("first_barricade", "canon") instance=ExtResource("1_cppqq")]
+first_barricade = NodePath("../GameDesignScene/Environment/NavigationRegion3D/Level/Barricade")
+canon = NodePath("../GameDesignScene/Ennemies/Path3DCanon/Canon")
+
+[node name="EffectsManager" parent="." unique_id=1116254742 instance=ExtResource("2_yb0o8")]
+
+[node name="Player" parent="." unique_id=1368497348 instance=ExtResource("3_wvsj3")]
+transform = Transform3D(-0.38651785, 0, 0.9222819, 0, 1, 0, -0.9222819, 0, -0.38651785, -12.283444, 0.99106574, -1.4737027)
+
+[node name="Lightning" type="Node3D" parent="." unique_id=1080471342]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Lightning" unique_id=1512237811]
+environment = SubResource("Environment_g3y20")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lightning" unique_id=1755602407]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+layers = 3
+shadow_enabled = true
+
+[node name="GameDesignScene" parent="." unique_id=1256367080 instance=ExtResource("4_v5jej")]
