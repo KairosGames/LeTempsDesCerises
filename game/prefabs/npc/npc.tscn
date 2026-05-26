@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dn5y2en06sd76"]
+
+[ext_resource type="Script" uid="uid://twx4wqiu4ang" path="res://prefabs/npc/npc.gd" id="1_s40ew"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fdau"]
+radius = 0.25
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cy00r"]
+radius = 0.25
+height = 1.8
+
+[node name="NPC" type="CharacterBody3D" unique_id=1296143105]
+script = ExtResource("1_s40ew")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=277200552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_3fdau")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=646011561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_cy00r")
