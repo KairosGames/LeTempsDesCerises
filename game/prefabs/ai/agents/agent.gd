@@ -4,8 +4,10 @@ class_name Agent extends CharacterBody3D
 signal shoot
 signal died(agent: Agent)
 signal posture_changed(posture: Posture)
-#signal reload_start
-#signal reload_end
+signal reload_started
+signal reload_ended
+signal move_started
+signal move_stoped
 @warning_ignore_restore("unused_signal")
 
 @export var team: Team = Team.VERSAILLAIS
@@ -20,7 +22,6 @@ var has_enemy_in_range: bool = false
 var can_die: bool = true
 var is_alive: bool = true
 var is_weapon_loaded: bool = true
-var is_reloading = false
 var target: Node3D = null
 var target_point: Node3D = null
 var threats: Array
@@ -31,6 +32,11 @@ var canon_slot: Marker3D = null:
 	set(value):
 		canon_slot = value
 		if cover: cover = null
+var is_reloading = false:
+	set(value):
+		is_reloading = value
+		if value: reload_started.emit()
+		else: reload_ended.emit()
 @export var cover: Cover = null:
 	set(value):
 		if cover: cover.holder = null
@@ -58,13 +64,12 @@ func remove_threat(agent) -> void: # Not typed lambda because of timeout callbac
 	threats.erase(agent)
 
 func on_start_moving() -> void:
+	move_started.emit()
 	animation_tree["parameters/Move & Shoot/Move/blend_position"] = 1.0
 
 func on_stop_moving() -> void:
+	move_stoped.emit()
 	animation_tree["parameters/Move & Shoot/Move/blend_position"] = 0.0
-
-func reload_anim() -> void:
-	pass
 
 func shoot_anim() -> void:
 	animation_tree["parameters/Move & Shoot/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
