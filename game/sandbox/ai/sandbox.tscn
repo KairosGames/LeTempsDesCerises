@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="3_pt8rx"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_v1doc"]
 [ext_resource type="PackedScene" uid="uid://chfbdpud1npmp" path="res://sandbox/ai/canon.tscn" id="6_cpm1f"]
+[ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://prefabs/__managers/game_manager.gd" id="6_voip0"]
 [ext_resource type="Script" uid="uid://dlpem5ct2ufhg" path="res://prefabs/ai/spawn_manager.gd" id="10_pt8rx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_76nee"]
@@ -63,24 +64,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
-
-[sub_resource type="GDScript" id="GDScript_ec114"]
-resource_name = "FakeGameManager"
-script/source = "extends Node
-
-@export var canon: Canon
-@export var barricade: Barricade
-@export var disabled_covers: Array[Cover]
-
-
-func _ready() -> void:
-	canon.shoot.connect(_on_canon_shot, CONNECT_ONE_SHOT)
-
-func _on_canon_shot() -> void:
-	barricade.take_damage()
-	for cover in disabled_covers: 
-		cover.enabled = true
-"
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ec114"]
 
@@ -376,9 +359,6 @@ shape = SubResource("BoxShape3D_76nee")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CommunardSide/Walls/Wall26" unique_id=1673922521]
 mesh = SubResource("BoxMesh_ec114")
 
-[node name="Player" parent="." unique_id=1368497348 instance=ExtResource("3_v1doc")]
-transform = Transform3D(0.7936295, 0, -0.60840136, 0, 1, 0, 0.60840136, 0, 0.7936295, 4.2808723, 0, -43.958324)
-
 [node name="Agents" type="Node3D" parent="." unique_id=1254652160]
 
 [node name="Path" type="Path3D" parent="." unique_id=1449059118]
@@ -401,12 +381,6 @@ spawners = [NodePath("../CommunardSide/Covers/Cover7"), NodePath("../CommunardSi
 cooldown = 5.0
 team = 1
 
-[node name="FakeGameManager" type="Node" parent="." unique_id=353275382 node_paths=PackedStringArray("canon", "barricade", "disabled_covers")]
-script = SubResource("GDScript_ec114")
-canon = NodePath("../Path/Canon")
-barricade = NodePath("../Barricade")
-disabled_covers = [NodePath("../VersaillaisSide/Covers/Cover8"), NodePath("../CommunardSide/Covers/Cover8")]
-
 [node name="Link" type="NavigationLink3D" parent="." unique_id=448330349]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61, 0, 0)
 start_position = Vector3(0, 0, -4)
@@ -419,3 +393,14 @@ end_position = Vector3(0, 0, 4)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1322255480]
 process_material = SubResource("ParticleProcessMaterial_ec114")
+
+[node name="GameManager" type="Node" parent="." unique_id=889302577 node_paths=PackedStringArray("first_barricade", "canon")]
+script = ExtResource("6_voip0")
+use_narrative = false
+first_barricade = NodePath("../Barricade")
+canon = NodePath("../Path/Canon")
+player_prefab = ExtResource("3_v1doc")
+metadata/_custom_type_script = "uid://bho08aptyf7f"
+
+[node name="PlayerSpwaner" type="Marker3D" parent="GameManager" unique_id=529411981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46.057167)
