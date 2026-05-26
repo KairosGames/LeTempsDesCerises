@@ -30,6 +30,53 @@
 										<MusicTransition Name="Transition" ID="{879BA97B-B1BF-402B-92D9-F38112895F27}">
 											<TransitionInfo/>
 										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{152DC8D6-3033-4D7D-A08B-5169B2F36A39}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="5"/>
+												<Property Name="ExitSourceCustomCueMatchName" Type="string" Value="EndPhase1"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="Phase_2" ID="{5BD656C0-D1DB-4324-B66E-32C9DDE96A58}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="Phase_1" ID="{B13C0AA3-BC50-4067-AD0F-F45245567BE1}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo/>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{318E54E9-561E-42D3-9211-4995B8A40A58}">
+											<PropertyList>
+												<Property Name="DestinationContextType" Type="int16" Value="2"/>
+												<Property Name="ExitSourceAt" Type="int16" Value="5"/>
+												<Property Name="ExitSourceCustomCueMatchName" Type="string" Value="EndPhase2"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="DestinationContextObject">
+													<ObjectRef Name="Phase_3" ID="{41CFFF26-B0C4-4FEC-A401-F1BE13C16B00}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
+												</Reference>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="Phase_2" ID="{5BD656C0-D1DB-4324-B66E-32C9DDE96A58}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo/>
+										</MusicTransition>
+										<MusicTransition Name="Transition" ID="{CE17B88C-8D72-4344-8E39-4F8205181A24}">
+											<PropertyList>
+												<Property Name="ExitSourceAt" Type="int16" Value="5"/>
+												<Property Name="ExitSourceCustomCueMatchName" Type="string" Value="EndPhase3"/>
+												<Property Name="SourceContextType" Type="int16" Value="2"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="SourceContextObject">
+													<ObjectRef Name="Phase_3" ID="{41CFFF26-B0C4-4FEC-A401-F1BE13C16B00}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
+												</Reference>
+											</ReferenceList>
+											<TransitionInfo/>
+										</MusicTransition>
 									</ChildrenList>
 									<TransitionInfo/>
 								</MusicTransition>
@@ -604,6 +651,12 @@
 											<MusicCue Name="Exit Cue" ID="{C8456B05-2C6A-4661-B2A5-46E91323147C}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="1"/>
+													<Property Name="TimeMs" Type="Real64" Value="23544.3037974684"/>
+												</PropertyList>
+											</MusicCue>
+											<MusicCue Name="EndPhase1" ID="{FEA737C8-E422-4C41-B8C1-8A62D215814E}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
 													<Property Name="TimeMs" Type="Real64" Value="23544.3037974684"/>
 												</PropertyList>
 											</MusicCue>
@@ -1413,6 +1466,12 @@
 											<MusicCue Name="Exit Cue" ID="{E4793F1F-DF75-4D6F-8A53-1487C8DAACA5}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="1"/>
+													<Property Name="TimeMs" Type="Real64" Value="23544.3037974684"/>
+												</PropertyList>
+											</MusicCue>
+											<MusicCue Name="EndPhase2" ID="{A956F8A0-7151-48FE-90A8-7C42D4537545}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
 													<Property Name="TimeMs" Type="Real64" Value="23544.3037974684"/>
 												</PropertyList>
 											</MusicCue>
@@ -2314,6 +2373,12 @@
 											<MusicCue Name="Exit Cue" ID="{2528C792-90ED-47AD-8A91-360CA9671B2D}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="1"/>
+													<Property Name="TimeMs" Type="Real64" Value="23544.3037974684"/>
+												</PropertyList>
+											</MusicCue>
+											<MusicCue Name="EndPhase3" ID="{158AD11A-087D-4EF9-BBA7-6BE4F81A031E}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
 													<Property Name="TimeMs" Type="Real64" Value="23544.3037974684"/>
 												</PropertyList>
 											</MusicCue>
