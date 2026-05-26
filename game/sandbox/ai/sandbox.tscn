@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_v1doc"]
 [ext_resource type="PackedScene" uid="uid://chfbdpud1npmp" path="res://sandbox/ai/canon.tscn" id="6_cpm1f"]
 [ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://prefabs/__managers/game_manager.gd" id="6_voip0"]
+[ext_resource type="Script" uid="uid://dcg7ewl2ahw4g" path="res://prefabs/__managers/effects_manager.gd" id="7_cpm1f"]
 [ext_resource type="Script" uid="uid://dlpem5ct2ufhg" path="res://prefabs/ai/spawn_manager.gd" id="10_pt8rx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_76nee"]
@@ -404,3 +405,7 @@ metadata/_custom_type_script = "uid://bho08aptyf7f"
 
 [node name="PlayerSpwaner" type="Marker3D" parent="GameManager" unique_id=529411981]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46.057167)
+
+[node name="EffectsManager" type="Node" parent="." unique_id=1119148525]
+script = ExtResource("7_cpm1f")
+metadata/_custom_type_script = "uid://dcg7ewl2ahw4g"
