@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dt06rgwsgrjv8"]
+
+[ext_resource type="Shader" uid="uid://bp5200x4ef7iv" path="res://prefabs/vfx/barricade_hit.gdshader" id="1_tt4fr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tt4fr"]
+shader = ExtResource("1_tt4fr")
+shader_parameter/box_size = Vector3(3, 1, 1)
+shader_parameter/grid_count = Vector3(15, 5, 5)
+shader_parameter/explosion_direction = Vector3(0, 0, 1)
+shader_parameter/explosion_force = 8.0
+shader_parameter/random_force = 4.0
+shader_parameter/upward_force = 2.0
+shader_parameter/angular_velocity = 8.0
+shader_parameter/particle_scale = 0.2
+shader_parameter/gravity = Vector3(0, -9.8, 0)
+shader_parameter/damping = 0.08
+shader_parameter/collision_bounce = 0.35
+shader_parameter/collision_friction = 0.65
+shader_parameter/collision_spin_damping = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_s2ri7"]
+
+[node name="BarricadeHit" type="GPUParticles3D" unique_id=656924349]
+emitting = false
+amount = 375
+explosiveness = 1.0
+process_material = SubResource("ShaderMaterial_tt4fr")
+draw_pass_1 = SubResource("BoxMesh_s2ri7")
