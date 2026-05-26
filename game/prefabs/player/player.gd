@@ -35,7 +35,6 @@ signal shoot_missed
 @onready var blink_effect: BlinkEffect = %BlinkEffect
 @onready var cam_land_root: Node3D = %CameraLandingRoot
 
-
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
 @export var is_run_toggle_km: bool = false
@@ -983,24 +982,37 @@ func play_recoil_effect() -> void:
 
 func handle_shoot_cast() -> void:
 	var obj: Object = weapon_ray_cast.get_collider()
-	if not obj or (obj is not Agent and obj is not ShootTarget):
+	var coll: Vector3 = weapon_ray_cast.get_collision_point()
+	var dir: Vector3 = weapon_container.global_rotation
+	var eff_manager: EffectsManager = EffectsManager.instance
+	
+	if not obj:
 		shoot_missed.emit()
 		print("MISS !")
 		return
-	if obj is Agent:
+	elif obj is not Agent and obj is not ShootTarget:
+		shoot_missed.emit()
+		if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, false)
+		print("MISS !")
+		pass
+	elif obj is Agent:
 		obj.die()
 		if obj.team == Agent.Team.COMMUNARD:
+			if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, true)
 			print("Communard touched !")
 			ally_shot.emit()
 			return
 		enemy_shot.emit()
+		if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, true)
 		print("Versaillais touched !")
 	elif obj is ShootTarget:
 		if obj.is_ally:
 			ally_shot.emit()
+			if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, false)
 			print("Communard touched !")
 			return
 		enemy_shot.emit()
+		if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, false)
 		print("Versaillais touched !")
 
 
