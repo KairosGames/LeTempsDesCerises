@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://bscuwka1t1iog"]
 
 [ext_resource type="Texture2D" uid="uid://bjcoy6cx7toxr" path="res://sandbox/textures_proto/light/texture_13.png" id="1_6d2fc"]
+[ext_resource type="ArrayMesh" uid="uid://b8utbln2x4yjx" path="res://prefabs/geometry/props_lamp.tres" id="2_v8gck"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66v01"]
 albedo_color = Color(0.26404577, 0.23104367, 0.20276332, 1)
@@ -40,6 +41,10 @@ material = SubResource("StandardMaterial3D_66v01")
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=915465122]
 mesh = SubResource("ArrayMesh_47143")
+
+[node name="PropsLamp" type="MeshInstance3D" parent="StaticBody3D" unique_id=542368822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4874797, 0)
+mesh = ExtResource("2_v8gck")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=819255523]
 shape = SubResource("ConcavePolygonShape3D_v8gck")
