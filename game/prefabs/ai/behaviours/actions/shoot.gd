@@ -29,10 +29,20 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
 	if raycast.is_colliding():
 		var collider: Object = raycast.get_collider()
-		if collider is Player or collider is Agent:
+		if collider is Player:
 			collider.die()
 			_vagueness = 1.0
-			return SUCCESS
+		elif collider is Agent:
+			collider.die()
+			_vagueness = 1.0
+			var position: Vector3 = raycast.get_collision_point()
+			var direction: Vector3 = raycast.get_collision_normal()
+			EffectsManager.instance.impact_from_shoot.emit(position, direction, true)
+		else:
+			var position: Vector3 = raycast.get_collision_point()
+			var direction: Vector3 = raycast.get_collision_normal()
+			EffectsManager.instance.impact_from_shoot.emit(position, direction, false)
+		return SUCCESS
 
 	_vagueness /= vagueness_decrease
 	if agent.target is Agent: (agent.target as Agent).add_threat(agent)
