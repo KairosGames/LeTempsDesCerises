@@ -219,6 +219,7 @@ var weapon_bob_base_pos: Vector3
 var bob_timer: float = 0.0
 var bob_amount: float = 0.0
 var bob_phase: float
+var last_y_air_vel: float
 
 var wpn_x_aim_twn: Tween
 var wpn_y_aim_twn: Tween
@@ -312,6 +313,7 @@ func late_process(delta: float) -> void:
 
 func set_context(delta: float) -> void:
 	is_grounded = is_on_floor()
+	if not is_grounded: last_y_air_vel = velocity.y
 	set_input_context()
 	var input_dir: Vector2 = p_inputs.move_vec
 	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
@@ -718,7 +720,7 @@ func handle_fov_changes(delta: float) -> void:
 
 
 func handle_landing_effect() -> void:
-	if not was_grounded and is_grounded:
+	if not was_grounded and is_grounded and last_y_air_vel < -0.1:
 		play_cam_landing_effect(land_max_y_offset, land_max_pitch_offset, land_effect_time)
 	was_grounded = is_grounded
 
