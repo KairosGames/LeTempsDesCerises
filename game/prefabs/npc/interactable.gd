@@ -1,1 +1,0 @@
-class_name Interactable extends CollisionObject3D

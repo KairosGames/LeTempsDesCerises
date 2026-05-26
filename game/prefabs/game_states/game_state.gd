@@ -12,6 +12,8 @@ var curr_step: int = 0
 var game_manager: GameManager
 var eff_manager: EffectsManager
 var player: Player
+var on_process: Callable
+var delta_t: float
 
 
 func _ready() -> void:
@@ -19,12 +21,15 @@ func _ready() -> void:
 
 
 func ready_deffered() -> void:
+	on_process = do_nothing
 	game_manager = GameManager.instance
 	eff_manager = EffectsManager.instance
 	player = Player.instance
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	delta_t = delta
+	on_process.call()
 	if Input.is_action_just_pressed("go_next_step"):
 		voice_line_finished.emit()
 
@@ -39,7 +44,7 @@ func run_steps() -> void:
 	completed.emit()
 
 
-func do_nothing() -> void:
+func do_nothing(_p: float = 0.0) -> void:
 	pass
 
 
@@ -59,3 +64,14 @@ func wait_signal(signal_to_wait: Signal) -> void:
 
 func wait_voice() -> void:
 	await voice_line_finished
+
+
+func set_on_process(callable: Callable) -> void:
+	on_process = callable
+
+
+func clean_process() -> void:
+	on_process = do_nothing
+
+func walk_forward(delta: float, speed: float) -> void:
+	player.velocity = player.basis.z * speed * delta

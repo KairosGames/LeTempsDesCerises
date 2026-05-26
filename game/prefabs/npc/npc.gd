@@ -1,7 +1,7 @@
 class_name Npc extends CharacterBody3D
 
 enum NpcName{
-	LePremier
+	Georges
 }
 
 @export var npc_name: NpcName

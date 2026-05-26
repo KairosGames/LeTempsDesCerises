@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://h0dft4mcr3qp"]
+
+[ext_resource type="Script" uid="uid://oiuwfiebkx50" path="res://prefabs/game_states/custom_marker.gd" id="1_xev0x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1heyh"]
+albedo_color = Color(0.65725195, 0.10564219, 0.9999998, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3ybq8"]
+material = SubResource("StandardMaterial3D_1heyh")
+radius = 0.3
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xev0x"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1heyh"]
+material = SubResource("StandardMaterial3D_xev0x")
+size = Vector3(0.03, 0.2, 0.3)
+
+[node name="CustomMarker" type="Marker3D" unique_id=1090379721]
+gizmo_extents = 0.5
+script = ExtResource("1_xev0x")
+
+[node name="MeshMarker" type="MeshInstance3D" parent="." unique_id=1596071723]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("SphereMesh_3ybq8")
+
+[node name="Forward" type="MeshInstance3D" parent="MeshMarker" unique_id=717777415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15)
+mesh = SubResource("BoxMesh_1heyh")

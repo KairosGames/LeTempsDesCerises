@@ -720,6 +720,8 @@ func handle_fov_changes(delta: float) -> void:
 
 
 func handle_landing_effect() -> void:
+	if not was_grounded and is_grounded:
+		print("prout")
 	if not was_grounded and is_grounded and last_y_air_vel < -0.1:
 		play_cam_landing_effect(land_max_y_offset, land_max_pitch_offset, land_effect_time)
 	was_grounded = is_grounded

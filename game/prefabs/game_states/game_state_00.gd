@@ -1,10 +1,13 @@
 class_name GameState00 extends GameState
 
+@onready var go_to_georges: CustomMaker = %GoToGeorges
+
 
 func enter() -> void:
 	curr_step = 0
 	steps = [
 		Step.new(set_player_for_onboarding, wait_voice, get_up),
+		#Step.new()
 	]
 	run_steps()
 
@@ -36,9 +39,5 @@ func get_up() -> void:
 	player.can_use_view = true
 
 
-func unlock_jump() -> void:
-	player.can_use_jump = true
-
-
-func test() -> bool:
-	return Input.is_action_just_pressed("jump")
+func go_for_georges() -> void:
+	on_process = walk_forward.bind(delta_t, 4.0)

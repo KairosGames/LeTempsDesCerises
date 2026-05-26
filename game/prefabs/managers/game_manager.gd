@@ -1,6 +1,7 @@
 class_name GameManager extends Node
 
-@onready var player_spwaner: Node3D = $PlayerSpwaner
+@onready var player_spwaner: Node3D = %PlayerSpwaner
+
 
 @export_category("Settings")
 @export var use_narrative: bool = true
