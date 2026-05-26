@@ -17,9 +17,6 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		_is_reloading = true
 		agent.is_reloading = true
 		_reloading_start_time = Time.get_ticks_msec()
-		# FIXME
-		# agent.is_covered = true
-		agent.reload_anim()
 		return RUNNING
 
 	var elasped_timed: float = (Time.get_ticks_msec() - _reloading_start_time) / 1000.0
