@@ -5,10 +5,14 @@ signal impact_from_shoot(position: Vector3, direction, is_body: bool)
 enum EffectType {
 	PlayerShoot,
 	PnjShoot
-	}
+}
 
 @export var instances_per_pool: int = 20
-@export var effects_dic: Dictionary[EffectType, PackedScene]
+
+var EFFECT_PREFABS: Dictionary[EffectType, PackedScene] = {
+	EffectType.PlayerShoot: preload("uid://cbwpfvcia7dju"),
+	EffectType.PnjShoot: preload("uid://ckpkymdprs6dq")
+}
 
 var effects_list_dic: Dictionary[EffectType, Array]
 
@@ -20,10 +24,10 @@ static var instance: EffectsManager:
 
 func _ready() -> void:
 	instance = self
-	for effect_type in effects_dic:
+	for effect_type in EFFECT_PREFABS:
 		effects_list_dic[effect_type] = []
 		for i in range(0, instances_per_pool):
-			var new_vfx: ParticlesPlayer = effects_dic[effect_type].instantiate()
+			var new_vfx: ParticlesPlayer = EFFECT_PREFABS[effect_type].instantiate()
 			new_vfx.position = Vector3(0.0, -10.0, 0.0)
 			add_child(new_vfx, true)
 			effects_list_dic[effect_type].push_back(new_vfx)
@@ -38,7 +42,7 @@ func play_effect(eff_type: EffectType, glb_pos: Vector3, glb_rot: Vector3 = Vect
 			break
 	
 	if not particle_player:
-		var new_vfx = effects_dic[eff_type].instantiate()
+		var new_vfx = EFFECT_PREFABS[eff_type].instantiate()
 		add_child(new_vfx, true)
 		effects_list_dic[eff_type].push_back(new_vfx)
 		particle_player = new_vfx
