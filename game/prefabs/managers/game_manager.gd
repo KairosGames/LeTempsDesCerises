@@ -1,6 +1,6 @@
 class_name GameManager extends Node
 
-@onready var player_spwaner: Node3D = %PlayerSpwaner
+@onready var player_spawner: CustomMaker = %PlayerSpawner
 
 
 @export_category("Settings")
@@ -26,6 +26,7 @@ static var instance: GameManager:
 
 
 func _ready() -> void:
+	if not player_spawner: print("PROOOOOOOOOOOOOOOUT !!")
 	instance = self
 	if canon: canon.shoot.connect(handle_canon_shoot)
 	ready_deferred.call_deferred()
@@ -54,7 +55,7 @@ func set_run() -> void:
 
 
 func set_player_out_of_run() -> void:
-	player.initiate(player_spwaner.global_position, player_spwaner.global_rotation)
+	player.initiate(player_spawner.global_position, player_spawner.global_rotation)
 	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
 
 

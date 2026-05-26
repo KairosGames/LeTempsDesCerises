@@ -1,13 +1,13 @@
 class_name GameState00 extends GameState
 
-@onready var go_to_georges: CustomMaker = %GoToGeorges
+@onready var georges_rdv: CustomMaker = %GoToGeorges
 
 
 func enter() -> void:
 	curr_step = 0
 	steps = [
 		Step.new(set_player_for_onboarding, wait_voice, get_up),
-		#Step.new()
+		Step.new(go_for_georges, wait.bind(10.0), do_nothing)
 	]
 	run_steps()
 
@@ -17,7 +17,7 @@ func exit() -> void:
 
 
 func set_player_for_onboarding() -> void:
-	var spawn: Node3D = game_manager.player_spwaner
+	var spawn: CustomMaker = game_manager.player_spawner
 	player.initiate(spawn.global_position, spawn.global_rotation, false, false, Player.Posture.PRONE)
 	player.set_for_onboarding()
 	player.aim_target.x = -70.0
@@ -35,8 +35,6 @@ func get_up() -> void:
 	player.play_cam_landing_effect(-0.2, 5.0, 0.5)
 	player.crouch_to_stand(false, 0.5)
 	await get_tree().create_timer(1.1).timeout
-	player.can_use_move = true
-	player.can_use_view = true
 
 
 func go_for_georges() -> void:

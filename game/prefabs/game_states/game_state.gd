@@ -74,4 +74,5 @@ func clean_process() -> void:
 	on_process = do_nothing
 
 func walk_forward(delta: float, speed: float) -> void:
-	player.velocity = player.basis.z * speed * delta
+	player.velocity = player.basis.z * speed
+	player.move_and_slide()
