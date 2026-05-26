@@ -742,6 +742,7 @@ curve = SubResource("Curve3D_g3y20")
 
 [node name="Canon" parent="Ennemies/Path3DCanon" unique_id=1666123749 instance=ExtResource("43_u321f")]
 transform = Transform3D(-0.542814, 5.685481e-09, 0.8398487, -2.2204384e-16, 1, -6.769601e-09, -0.8398487, -3.674661e-09, -0.542814, 70.722595, -4.7683716e-07, -48.777164)
+shoot_delay = 60.0
 
 [node name="SpawnVersaillais" type="Node3D" parent="Ennemies" unique_id=1945716246]
 
@@ -797,17 +798,16 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 [node name="Allies" type="Node3D" parent="." unique_id=264397879]
 
 [node name="SpawnCommunard" type="Node3D" parent="Allies" unique_id=1067908618]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.761801, 11.815101, 1.8604908)
 
 [node name="SpawnerCommunard" type="Marker3D" parent="Allies/SpawnCommunard" unique_id=1473570572 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.026165, -11.615102, 16.47257)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.264, 0.3, 18.333)
 script = ExtResource("40_aese6")
 next_covers = [NodePath("../../../Environment/NavigationRegion3D/Level/Coverpoints_commune/Column"), NodePath("../../../Environment/NavigationRegion3D/Level/Coverpoints_commune/Tables")]
 type = 2
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="SpawnerCommunard2" type="Marker3D" parent="Allies/SpawnCommunard" unique_id=1030046139 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.333683, -11.615102, 20.907225)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.572, 0.4, 22.768)
 script = ExtResource("40_aese6")
 next_covers = [NodePath("../../../Environment/NavigationRegion3D/Level/Coverpoints_commune/Lamp"), NodePath("../../../Environment/NavigationRegion3D/Level/Coverpoints_commune/Column")]
 type = 2
