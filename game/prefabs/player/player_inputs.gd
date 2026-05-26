@@ -38,6 +38,9 @@ var is_aiming: bool = false
 var is_gamepad: bool = false
 var is_state_button_to_release: bool = false
 
+var is_game_controlling_movement: bool = false
+var is_game_controlling_view: bool = false
+
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -61,6 +64,7 @@ func _process(delta: float) -> void:
 
 func capture_inputs(delta: float) -> void:
 	if not is_mouse_locked():
+		if is_game_controlling_movement: return
 		ingore_inputs()
 		return
 	capture_gpad_switch_state(delta)
@@ -118,6 +122,8 @@ func set_gpad_aim_timers(aim_vec: Vector2, delta: float) -> void:
 
 
 func capture_movement() -> void:
+	if is_game_controlling_movement:
+		return
 	move_vec = Input.get_vector("move_right", "move_left", "move_back", "move_forward", l_jstick_threshold)
 
 
@@ -138,5 +144,5 @@ func get_view_input() -> Vector2:
 	return aim_vec_gamepad if is_gamepad else aim_vec_mouse
 
 
-func get_move_input() -> Vector2:
-	return move_vec
+#func get_move_input() -> Vector2:
+	#return move_vec

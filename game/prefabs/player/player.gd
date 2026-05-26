@@ -307,6 +307,7 @@ func initiate(pos: Vector3,
 
 
 func late_process(delta: float) -> void:
+	if not p_inputs.is_game_controlling_view: set_view_target(delta)
 	process_view(delta)
 	handle_camera_effects(delta)
 
@@ -602,8 +603,7 @@ func process_movement(delta: float) -> void:
 
 
 func apply_plane_movement(delta: float) -> void:
-	if not can_play or not p_inputs.is_mouse_locked(): p_inputs.ingore_inputs()
-	if not can_use_move: p_inputs.ignore_move_inputs()
+	if not p_inputs.is_game_controlling_movement: set_inputs_in_context()
 	var mov_vec: Vector2 = p_inputs.move_vec
 	var dir: Vector3 = (transform.basis * Vector3(mov_vec.x, 0, mov_vec.y).normalized())
 	var ref_speed = get_used_speed()
@@ -653,6 +653,11 @@ func apply_plane_movement(delta: float) -> void:
 		velocity = Vector3(speed.x, velocity.y, speed.z) if dir else Vector3(0.0, velocity.y, 0.0)
 
 
+func set_inputs_in_context() -> void:
+	if not can_play or not p_inputs.is_mouse_locked(): p_inputs.ingore_inputs()
+	if not can_use_move: p_inputs.ignore_move_inputs()
+
+
 func get_used_speed() -> float:
 	if not is_grounded:
 		return air_up_speed
@@ -662,7 +667,7 @@ func get_used_speed() -> float:
 		_: return stand_speed
 
 
-func process_view(delta: float) -> void:
+func set_view_target(delta: float) -> void:
 	if not p_inputs.is_mouse_locked(): return
 	if not can_play: return
 	if not can_use_view: p_inputs.ignore_aim_inputs()
@@ -673,6 +678,8 @@ func process_view(delta: float) -> void:
 	var clamp_applied: Vector2 = v_clamp_prone if curr_posture == Posture.PRONE else v_clamp_deg
 	if can_use_view: aim_target.x = clampf(aim_target.x, clamp_applied.x, clamp_applied.y)
 
+
+func process_view(delta: float) -> void:
 	if is_aim_smooth:
 		var result_y: Dictionary = smooth_damp_angle(rotation_degrees.y, aim_target.y, aim_vel.y, aim_smooth_strength, delta)
 		var result_x: Dictionary = smooth_damp_angle(camera_pivot.rotation_degrees.x, aim_target.x, aim_vel.x, aim_smooth_strength, delta)
@@ -721,7 +728,7 @@ func handle_fov_changes(delta: float) -> void:
 
 func handle_landing_effect() -> void:
 	if not was_grounded and is_grounded:
-		print("prout")
+		print("Just fell")
 	if not was_grounded and is_grounded and last_y_air_vel < -0.1:
 		play_cam_landing_effect(land_max_y_offset, land_max_pitch_offset, land_effect_time)
 	was_grounded = is_grounded

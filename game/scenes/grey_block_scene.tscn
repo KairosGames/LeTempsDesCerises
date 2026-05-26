@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cowhe7krsng37" path="res://scenes/game_design_scene.tscn" id="3_vgclv"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="7_vj5vi"]
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_124fr"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o0uso"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -24,6 +26,12 @@ glow_enabled = true
 first_barricade = NodePath("../GameDesignScene/Environment/NavigationRegion3D/Level/Barricade")
 canon = NodePath("../GameDesignScene/Ennemies/Path3DCanon/Canon")
 
+[node name="GeorgesRDV" parent="GameManager/States/GameState00" parent_id_path=PackedInt32Array(1070764289, 1759019559) index="1" unique_id=1327558998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.553173, -6.198883e-06, -1.6242609)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GameManager/States/GameState00/GeorgesRDV" index="1" unique_id=1883844616]
+mesh = SubResource("CylinderMesh_124fr")
+
 [node name="EffectsManager" parent="." unique_id=1116254742 instance=ExtResource("2_3ivn4")]
 
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("7_vj5vi")]
@@ -40,3 +48,33 @@ layers = 3
 shadow_enabled = true
 
 [node name="GameDesignScene" parent="." unique_id=1256367080 instance=ExtResource("3_vgclv")]
+
+[node name="Spawner" parent="GameDesignScene/Ennemies/SpawnVersaillais" parent_id_path=PackedInt32Array(1256367080, 1945716246) index="0" unique_id=591991253]
+enabled = false
+
+[node name="Spawner6" parent="GameDesignScene/Ennemies/SpawnVersaillais" parent_id_path=PackedInt32Array(1256367080, 1945716246) index="1" unique_id=1542699479]
+enabled = false
+
+[node name="Spawner2" parent="GameDesignScene/Ennemies/SpawnVersaillais" parent_id_path=PackedInt32Array(1256367080, 1945716246) index="2" unique_id=693916420]
+enabled = false
+
+[node name="Spawner7" parent="GameDesignScene/Ennemies/SpawnVersaillais" parent_id_path=PackedInt32Array(1256367080, 1945716246) index="3" unique_id=865338294]
+enabled = false
+
+[node name="Spawner3" parent="GameDesignScene/Ennemies/SpawnVersaillais" parent_id_path=PackedInt32Array(1256367080, 1945716246) index="4" unique_id=1789655922]
+enabled = false
+
+[node name="Spawner4" parent="GameDesignScene/Ennemies/SpawnVersaillais" parent_id_path=PackedInt32Array(1256367080, 1945716246) index="5" unique_id=1721752132]
+enabled = false
+
+[node name="Spawner5" parent="GameDesignScene/Ennemies/SpawnVersaillais" parent_id_path=PackedInt32Array(1256367080, 1945716246) index="6" unique_id=1525492192]
+enabled = false
+
+[node name="SpawnerCommunard" parent="GameDesignScene/Allies/SpawnCommunard" parent_id_path=PackedInt32Array(1256367080, 1067908618) index="0" unique_id=1473570572]
+enabled = false
+
+[node name="SpawnerCommunard2" parent="GameDesignScene/Allies/SpawnCommunard" parent_id_path=PackedInt32Array(1256367080, 1067908618) index="1" unique_id=1030046139]
+enabled = false
+
+[editable path="GameManager"]
+[editable path="GameDesignScene"]

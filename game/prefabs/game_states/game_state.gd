@@ -73,6 +73,27 @@ func set_on_process(callable: Callable) -> void:
 func clean_process() -> void:
 	on_process = do_nothing
 
-func walk_forward(delta: float, speed: float) -> void:
-	player.velocity = player.basis.z * speed
-	player.move_and_slide()
+
+func take_player_move_control(is_taken: bool) -> void:
+	player.p_inputs.is_game_controlling_movement = is_taken
+	player.p_inputs.move_vec = Vector2.ZERO
+
+
+func take_player_view_control(is_taken: bool) -> void:
+	player.p_inputs.is_game_controlling_view = is_taken
+	player.p_inputs.aim_vec_gamepad = Vector2.ZERO
+	player.p_inputs.aim_vec_mouse = Vector2.ZERO
+
+
+func set_player_move(dir: Vector2) -> void:
+	player.p_inputs.move_vec = dir.normalized()
+
+
+func rotate_node_to(node: Node3D, pos: Vector3, speed:float, delta: float) -> void:
+	var yaw_targ: float = Tools.get_yaw_to(node.global_position, pos, node.rotation.y)
+	node.global_rotation.y = lerp_angle(node.global_rotation.y, yaw_targ, Tools.dt_lerp(speed, delta))
+
+
+func rotate_player_to(pos: Vector3, speed:float, delta: float) -> void:
+	var yaw_targ: float = Tools.get_yaw_degree_to(player.global_position, pos, deg_to_rad(player.aim_target.y))
+	player.aim_target.y = lerp_angle(player.aim_target.y, yaw_targ, Tools.dt_lerp(speed, delta))
