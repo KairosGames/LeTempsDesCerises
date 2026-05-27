@@ -48,15 +48,16 @@ signal shoot_missed
 @export var shoot_targets: Array[Marker3D]
 @export var is_right_handed: bool = true
 @export var has_weapon: bool = false
-@export var time_to_pop_weapon: float = 0.4
-@export var can_use_shoot: bool = true
-@export var can_use_move: bool = true
-@export var can_use_view: bool = true
-@export var can_use_aim: bool = true
-@export var can_use_run: bool = true
-@export var can_use_reload: bool = true
-@export var can_change_posture: bool = true
-@export var can_use_jump: bool = true
+@export var time_to_pop_weapon: float = 1.0
+var can_use_shoot: bool = true
+var can_use_move: bool = true
+var can_use_view: bool = true
+var can_use_aim: bool = true
+var can_use_run: bool = true
+var can_use_reload: bool = true
+var can_change_posture: bool = true
+var can_use_jump: bool = true
+var can_quit_aim: bool = true
 
 @export_category("Smoothness settings")
 @export_range(0.01, 0.5, 0.01) var acc_time: float = 0.1
@@ -362,6 +363,7 @@ func capture_states() -> void:
 
 
 func capture_aim_state() -> void:
+	if is_aiming and not can_quit_aim: return
 	var was_aiming: bool = is_aiming
 
 	if can_aim():
@@ -1201,12 +1203,13 @@ func revive(pos: Vector3, rot: Vector3) -> void:
 	player_camera.current = true
 
 
-func set_for_onboarding() -> void:
-	can_use_shoot = false
-	can_use_move = false
-	can_use_view = false
-	can_use_aim = false
-	can_use_run = false
-	can_use_reload = false
-	can_change_posture = false
-	can_use_jump = false
+func set_is_free(free: bool) -> void:
+	can_use_shoot = free
+	can_use_move = free
+	can_use_view = free
+	can_use_aim = free
+	can_use_run = free
+	can_use_reload = free
+	can_change_posture = free
+	can_use_jump = free
+	can_quit_aim = not free

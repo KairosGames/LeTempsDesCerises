@@ -14,7 +14,8 @@ var eff_manager: EffectsManager
 var player: Player
 var on_process: Callable
 var delta_t: float
-
+var voice_line_index: int = -1
+var local_bool: bool
 
 func _ready() -> void:
 	ready_deffered.call_deferred()
@@ -64,7 +65,16 @@ func wait_signal(signal_to_wait: Signal) -> void:
 	await signal_to_wait
 
 
+func wait_until_or_signal(condition: Callable, signal_to_wait: Signal) -> void:
+	local_bool = false
+	signal_to_wait.connect(func(): local_bool = true, CONNECT_ONE_SHOT)
+	while not local_bool:
+		local_bool = condition.call()
+		await get_tree().process_frame
+
+
 func wait_voice() -> void:
+	voice_line_index += 1
 	await voice_line_finished
 
 
