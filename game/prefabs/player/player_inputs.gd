@@ -142,7 +142,3 @@ func capture_gpad_aim(delta: float) -> void:
 
 func get_view_input() -> Vector2:
 	return aim_vec_gamepad if is_gamepad else aim_vec_mouse
-
-
-#func get_move_input() -> Vector2:
-	#return move_vec

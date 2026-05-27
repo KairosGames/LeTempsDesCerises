@@ -14,7 +14,8 @@ func enter() -> void:
 		Step.new(wait_voice, wait_player_crouch, do_nothing),
 		Step.new(wait_voice, wait_player_prone, do_nothing),
 		Step.new(wait_voice, wait_player_stand, do_nothing),
-		Step.new(wait_voice, wait_player_aim, do_nothing)
+		Step.new(wait_voice, wait_player_aim, do_nothing),
+		Step.new(free_player_view, do_nothing, do_nothing)
 	]
 	run_steps()
 
@@ -86,3 +87,12 @@ func wait_player_stand() -> void:
 func wait_player_aim() -> void:
 	player.can_use_aim = true
 	await wait_until(func(): return Input.is_action_just_pressed("aim"))
+	on_process = block_ads_concentration.bind(2.5)
+	await wait_voice()
+	clean_process()
+	await wait_voice()
+	await wait(0.5)
+
+
+func free_player_view() -> void:
+	pass

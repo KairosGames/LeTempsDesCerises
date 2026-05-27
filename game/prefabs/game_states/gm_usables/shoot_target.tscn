@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://x6umueunebab"]
+
+[ext_resource type="Script" uid="uid://bfxqdxe6sfsl3" path="res://prefabs/game_states/gm_usables/shoot_target.gd" id="1_fug1t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wyf3"]
+albedo_color = Color(0.8312102, 0.11292025, 6.738305e-07, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4mrxx"]
+material = SubResource("StandardMaterial3D_4wyf3")
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7r4gi"]
+size = Vector3(1, 1, 0.1)
+
+[node name="StaticBody3D3" type="StaticBody3D" unique_id=336517668]
+script = ExtResource("1_fug1t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=631219142]
+mesh = SubResource("BoxMesh_4mrxx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1994086882]
+shape = SubResource("BoxShape3D_7r4gi")

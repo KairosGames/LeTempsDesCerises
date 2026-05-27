@@ -111,3 +111,7 @@ func rotate_player_to_pos(pos: Vector3, speed: float, delta: float) -> void:
 func rotate_player_to_yaw(yaw: float, speed: float, delta: float) -> void:
 	var arg1 = deg_to_rad(player.aim_target.y)
 	player.aim_target.y = rad_to_deg(rotate_toward(arg1, yaw, speed * delta))
+
+
+func block_ads_concentration(t: float) -> void:
+	if player.ads_timer >= t: player.ads_timer = t
