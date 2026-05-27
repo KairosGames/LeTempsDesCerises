@@ -669,7 +669,7 @@ func get_used_speed() -> float:
 		_: return stand_speed
 
 
-func set_view_target(delta: float) -> void:
+func set_view_target(_delta: float) -> void:
 	if not p_inputs.is_mouse_locked(): return
 	if not can_play: return
 	if not can_use_view: p_inputs.ignore_aim_inputs()
@@ -1212,4 +1212,4 @@ func set_is_free(free: bool) -> void:
 	can_use_reload = free
 	can_change_posture = free
 	can_use_jump = free
-	can_quit_aim = not free
+	can_quit_aim = free

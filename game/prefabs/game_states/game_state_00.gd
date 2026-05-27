@@ -14,8 +14,9 @@ func enter() -> void:
 		Step.new(wait_voice, wait_player_crouch, do_nothing),
 		Step.new(wait_voice, wait_player_prone, do_nothing),
 		Step.new(wait_voice, wait_player_stand, do_nothing),
-		Step.new(wait_voice, wait_player_aim, do_nothing),
-		Step.new(free_player_view, do_nothing, do_nothing)
+		Step.new(wait_voice, wait_player_aim, free_changing_posture),
+		Step.new(open_player_view, wait_player_shoot, free_player_view),
+		Step.new(do_nothing, do_nothing, do_nothing),
 	]
 	run_steps()
 
@@ -49,12 +50,12 @@ func go_for_georges() -> void:
 	take_player_move_control(true)
 	take_player_view_control(true)
 	set_player_move(Vector2(0.0, 0.5))
-	on_process = rotate_player_to_pos.bind(georges_rdv.global_position, PI/4.0, delta_t)
+	add_on_process(rotate_player_to_pos.bind(georges_rdv.global_position, PI/4.0, delta_t))
 	await wait(2.0)
 	clean_process()
 	await wait_until(func(): return player.global_position.distance_squared_to(georges_rdv.global_position) <= 0.1)
 	take_player_move_control(false)
-	on_process = rotate_player_to_pos.bind(georges.global_position, PI, delta_t)
+	add_on_process(rotate_player_to_pos.bind(georges.global_position, PI, delta_t))
 	await wait(0.25)
 	clean_process()
 	take_player_view_control(false)
@@ -62,7 +63,7 @@ func go_for_georges() -> void:
 
 func take_weapon() -> void:
 	take_player_view_control(true)
-	on_process = rotate_player_to_yaw.bind(georges_rdv.rotation.y, PI/1.5, delta_t)
+	add_on_process(rotate_player_to_yaw.bind(georges_rdv.rotation.y, PI/1.5, delta_t))
 	await wait(0.5)
 	clean_process()
 	take_player_view_control(false)
@@ -87,12 +88,46 @@ func wait_player_stand() -> void:
 func wait_player_aim() -> void:
 	player.can_use_aim = true
 	await wait_until(func(): return Input.is_action_just_pressed("aim"))
-	on_process = block_ads_concentration.bind(2.5)
+	player.can_quit_aim = false
+	add_on_process(block_ads_concentration.bind(2.5))
 	await wait_voice()
 	clean_process()
 	await wait_voice()
 	await wait(0.5)
 
 
+func free_changing_posture() -> void:
+	player.can_change_posture = true
+
+
+func open_player_view() -> void:
+	player.can_use_view = true
+	player.can_quit_aim = true
+	if player.p_inputs.is_gamepad and not Input.is_action_just_pressed("aim"):
+		player.is_aiming = false
+		player.switch_aim_state()
+	if not player.p_inputs.is_gamepad:
+		player.is_aiming = false
+		player.switch_aim_state()
+	add_on_process(clamp_view.bind(player.aim_target, 30.0, 30.0))
+	await wait_voice()
+
+
+func wait_player_shoot()-> void:
+	await wait_until(is_player_shooting_target)
+	player.tried_shoot_no_reload.emit()
+	if player.is_aiming and not player.p_inputs.is_gamepad:
+		player.is_aiming = false
+		player.switch_aim_state()
+	await wait(0.75)
+	if player.curr_posture == Player.Posture.PRONE: player.prone_to_stand()
+
+
+func is_player_shooting_target() -> bool:
+	var obj: Object = player.weapon_ray_cast.get_collider()
+	if not obj: return false
+	return obj is ShootTarget and Input.is_action_just_pressed("shoot")
+
+
 func free_player_view() -> void:
-	pass
+	clean_process()

@@ -12,17 +12,17 @@ var curr_step: int = 0
 var game_manager: GameManager
 var eff_manager: EffectsManager
 var player: Player
-var on_process: Callable
+var on_process: Array[Callable]
 var delta_t: float
 var voice_line_index: int = -1
 var local_bool: bool
+
 
 func _ready() -> void:
 	ready_deffered.call_deferred()
 
 
 func ready_deffered() -> void:
-	on_process = do_nothing
 	game_manager = GameManager.instance
 	eff_manager = EffectsManager.instance
 	player = Player.instance
@@ -30,7 +30,7 @@ func ready_deffered() -> void:
 
 func _process(delta: float) -> void:
 	delta_t = delta
-	on_process.call()
+	for callable: Callable in on_process: callable.call()
 	if Input.is_action_just_pressed("go_next_step"):
 		voice_line_finished.emit()
 
@@ -50,6 +50,14 @@ func run_steps() -> void:
 
 func do_nothing(_p: float = 0.0) -> void:
 	pass
+
+
+func add_on_process(callable: Callable) -> void:
+	on_process.push_back(callable)
+
+
+func clean_process() -> void:
+	on_process.clear()
 
 
 func wait(seconds: float) -> void:
@@ -76,14 +84,6 @@ func wait_until_or_signal(condition: Callable, signal_to_wait: Signal) -> void:
 func wait_voice() -> void:
 	voice_line_index += 1
 	await voice_line_finished
-
-
-func set_on_process(callable: Callable) -> void:
-	on_process = callable
-
-
-func clean_process() -> void:
-	on_process = do_nothing
 
 
 func take_player_move_control(is_taken: bool) -> void:
@@ -115,3 +115,8 @@ func rotate_player_to_yaw(yaw: float, speed: float, delta: float) -> void:
 
 func block_ads_concentration(t: float) -> void:
 	if player.ads_timer >= t: player.ads_timer = t
+
+
+func clamp_view(center: Vector3, pitch_max: float, yaw_max) -> void:
+	player.aim_target.y = clamp(player.aim_target.y, center.y - pitch_max, center.y + pitch_max)
+	player.aim_target.x = clamp(player.aim_target.x, center.x - yaw_max, center.x + yaw_max)
