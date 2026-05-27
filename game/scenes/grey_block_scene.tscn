@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cowhe7krsng37" path="res://scenes/game_design_scene.tscn" id="3_vgclv"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="7_vj5vi"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_124fr"]
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o0uso"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -23,14 +21,15 @@ glow_enabled = true
 [node name="GreyBlockScene" type="Node3D" unique_id=111111966]
 
 [node name="GameManager" parent="." unique_id=1070764289 node_paths=PackedStringArray("first_barricade", "canon") instance=ExtResource("1_124fr")]
+use_narrative = false
 first_barricade = NodePath("../GameDesignScene/Environment/NavigationRegion3D/Level/Barricade")
 canon = NodePath("../GameDesignScene/Ennemies/Path3DCanon/Canon")
 
 [node name="GeorgesRDV" parent="GameManager/States/GameState00" parent_id_path=PackedInt32Array(1070764289, 1759019559) index="1" unique_id=1327558998]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.553173, -6.198883e-06, -1.6242609)
+transform = Transform3D(-0.065455385, 0, -0.9978556, 0, 1, 0, 0.9978556, 0, -0.065455385, -35.27412, -7.1525574e-06, 5.0118155)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="GameManager/States/GameState00/GeorgesRDV" index="1" unique_id=1883844616]
-mesh = SubResource("CylinderMesh_124fr")
+[node name="Georges" parent="GameManager/NPC" parent_id_path=PackedInt32Array(1070764289, 2013234831) index="0" unique_id=1296143105]
+transform = Transform3D(0.9616791, 0, 0.27417743, 0, 1, 0, -0.27417743, 0, 0.9616791, -35.806408, 4.7683716e-07, 2.279154)
 
 [node name="EffectsManager" parent="." unique_id=1116254742 instance=ExtResource("2_3ivn4")]
 

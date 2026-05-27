@@ -36,8 +36,11 @@ func _process(delta: float) -> void:
 
 func run_steps() -> void:
 	for step in steps:
+		step.curr_state = Step.StepState.ENTER
 		await step.on_enter.call()
-		await step.is_done.call()
+		step.curr_state = Step.StepState.DOING
+		await step.on_doing.call()
+		step.curr_state = Step.StepState.EXIT
 		await step.on_exit.call()
 		print("STEP ", curr_step, " PASSED !")
 		curr_step += 1
@@ -48,9 +51,8 @@ func do_nothing(_p: float = 0.0) -> void:
 	pass
 
 
-func wait(seconds: float) -> bool:
+func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
-	return true
 
 
 func wait_until(condition: Callable) -> void:
@@ -89,11 +91,13 @@ func set_player_move(dir: Vector2) -> void:
 	player.p_inputs.move_vec = dir.normalized()
 
 
-func rotate_node_to(node: Node3D, pos: Vector3, speed:float, delta: float) -> void:
-	var yaw_targ: float = Tools.get_yaw_to(node.global_position, pos, node.rotation.y)
-	node.global_rotation.y = lerp_angle(node.global_rotation.y, yaw_targ, Tools.dt_lerp(speed, delta))
+func rotate_player_to_pos(pos: Vector3, speed: float, delta: float) -> void:
+	var dir = player.global_position - pos
+	var target_angle = atan2(-dir.x, -dir.z)
+	var arg1 = deg_to_rad(player.aim_target.y)
+	player.aim_target.y = rad_to_deg(rotate_toward(arg1, target_angle, speed * delta))
 
 
-func rotate_player_to(pos: Vector3, speed:float, delta: float) -> void:
-	var yaw_targ: float = Tools.get_yaw_degree_to(player.global_position, pos, deg_to_rad(player.aim_target.y))
-	player.aim_target.y = lerp_angle(player.aim_target.y, yaw_targ, Tools.dt_lerp(speed, delta))
+func rotate_player_to_yaw(yaw: float, speed: float, delta: float) -> void:
+	var arg1 = deg_to_rad(player.aim_target.y)
+	player.aim_target.y = rad_to_deg(rotate_toward(arg1, yaw, speed * delta))

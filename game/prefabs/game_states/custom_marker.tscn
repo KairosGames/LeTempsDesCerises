@@ -5,17 +5,18 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1heyh"]
 albedo_color = Color(0.65725195, 0.10564219, 0.9999998, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_3ybq8"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_xev0x"]
 material = SubResource("StandardMaterial3D_1heyh")
-radius = 0.3
-height = 0.2
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.25
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xev0x"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_1heyh"]
 material = SubResource("StandardMaterial3D_xev0x")
-size = Vector3(0.03, 0.2, 0.3)
+size = Vector3(0.03, 0.3, 0.3)
 
 [node name="CustomMarker" type="Marker3D" unique_id=1090379721]
 gizmo_extents = 0.5
@@ -24,7 +25,7 @@ script = ExtResource("1_xev0x")
 [node name="MeshMarker" type="MeshInstance3D" parent="." unique_id=1596071723]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-mesh = SubResource("SphereMesh_3ybq8")
+mesh = SubResource("CylinderMesh_xev0x")
 
 [node name="Forward" type="MeshInstance3D" parent="MeshMarker" unique_id=717777415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.15)
