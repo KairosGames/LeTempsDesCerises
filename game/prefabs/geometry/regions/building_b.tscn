@@ -35,6 +35,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bj34uet0ryprp" path="res://prefabs/geometry/shop_b.tres" id="33_wamef"]
 [ext_resource type="ArrayMesh" uid="uid://prdwcmfrf8af" path="res://prefabs/geometry/wall_props_g_angle.tres" id="34_it6ba"]
 [ext_resource type="ArrayMesh" uid="uid://brrw61ceh5xtx" path="res://prefabs/geometry/wall_props_f_angle.tres" id="35_xnqxa"]
+[ext_resource type="ArrayMesh" uid="uid://bgdnny4nf7i8h" path="res://prefabs/geometry/wall_props_b_angle.tres" id="36_matxu"]
 
 [sub_resource type="MultiMesh" id="MultiMesh_4xsgd"]
 transform_format = 1
@@ -130,6 +131,9 @@ transform_format = 1
 transform_format = 1
 
 [sub_resource type="MultiMesh" id="MultiMesh_poqpm"]
+transform_format = 1
+
+[sub_resource type="MultiMesh" id="MultiMesh_w1upd"]
 transform_format = 1
 
 [node name="BuildingB" type="Node3D" unique_id=1386307082]
@@ -4156,6 +4160,10 @@ metadata/_custom_type_script = "uid://bmespkxucvogk"
 transform = Transform3D(0.57357645, 0, -0.81915206, 0, 1, 0, 0.81915206, 0, 0.57357645, 17.674, 11.4, -20.211)
 mesh = ExtResource("34_it6ba")
 
+[node name="WallPropsGAngle4" type="MeshInstance3D" parent="WallGAngle" unique_id=590837376]
+transform = Transform3D(0.57357645, 0, -0.81915206, 0, 1, 0, 0.81915206, 0, 0.57357645, 32.418736, 11.4, -30.535378)
+mesh = ExtResource("34_it6ba")
+
 [node name="WallPropsGAngle2" type="MeshInstance3D" parent="WallGAngle" unique_id=640800377]
 transform = Transform3D(-0.46947157, 0, -0.88294756, 0, 1, 0, 0.88294756, 0, -0.46947157, 14.232541, 11.4, -25.125912)
 mesh = ExtResource("34_it6ba")
@@ -4173,6 +4181,14 @@ metadata/_custom_type_script = "uid://bmespkxucvogk"
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 17.673899, 5.8, -20.21107)
 mesh = ExtResource("35_xnqxa")
 
+[node name="WallPropsFAngle6" type="MeshInstance3D" parent="WallFAngle" unique_id=1898261318]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 28.0773, 5.8, -26.274834)
+mesh = ExtResource("35_xnqxa")
+
+[node name="WallPropsFAngle7" type="MeshInstance3D" parent="WallFAngle" unique_id=1277290275]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 57.566776, 5.8, -46.92359)
+mesh = ExtResource("35_xnqxa")
+
 [node name="WallPropsFAngle2" type="MeshInstance3D" parent="WallFAngle" unique_id=869932479]
 transform = Transform3D(0.57357645, 0, -0.81915206, 0, 1, 0, 0.81915206, 0, 0.57357645, 14.23244, 5.8, -25.12598)
 mesh = ExtResource("35_xnqxa")
@@ -4188,3 +4204,13 @@ mesh = ExtResource("35_xnqxa")
 [node name="WallPropsFAngle5" type="MeshInstance3D" parent="WallFAngle" unique_id=356496405]
 transform = Transform3D(0.88294756, 0, -0.46947157, 0, 1, 0, 0.46947157, 0, 0.88294756, 27.494713, 5.8, -54.31847)
 mesh = ExtResource("35_xnqxa")
+
+[node name="WallPropsBAngle" type="MultiMeshInstance3D" parent="." unique_id=1218436203]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+multimesh = SubResource("MultiMesh_w1upd")
+script = ExtResource("2_4n8mr")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
+
+[node name="WallPropsBAngle2" type="MeshInstance3D" parent="." unique_id=1923555988]
+transform = Transform3D(0.8829475, 0, -0.46947154, 0, 1, 0, 0.46947154, 0, 0.8829475, 16.227053, 3, -33.127472)
+mesh = ExtResource("36_matxu")
