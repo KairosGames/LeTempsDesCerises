@@ -37,6 +37,10 @@ var is_reloading = false:
 		is_reloading = value
 		if value: reload_started.emit()
 		else: reload_ended.emit()
+var can_move: bool:
+	set(value):
+		can_move = value
+		if not can_move: navigation.stop()
 @export var cover: Cover = null:
 	set(value):
 		if cover: cover.holder = null

@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cvdvij20sdtj5" path="res://prefabs/ai/behaviours/actions/reload.gd" id="5_x24sq"]
 [ext_resource type="Script" uid="uid://bwfed5132hftm" path="res://prefabs/ai/behaviours/actions/find_next_cover.gd" id="6_u4ja4"]
 [ext_resource type="Script" uid="uid://c23rho2v0iamy" path="res://prefabs/ai/behaviours/actions/move_to_cover.gd" id="7_uqrrd"]
+[ext_resource type="Script" uid="uid://c6up0iistptxy" path="res://prefabs/ai/behaviours/conditions/can_move.gd" id="13_vvprg"]
 [ext_resource type="Script" uid="uid://bvv3uwi6i8ghk" path="res://prefabs/ai/behaviours/actions/wait.gd" id="13_x24sq"]
 [ext_resource type="Script" uid="uid://bqa4rx6h1jbh1" path="res://prefabs/ai/behaviours/actions/change_posture.gd" id="15_jjw1a"]
 [ext_resource type="Script" uid="uid://cbiatfaeg2o3p" path="res://prefabs/ai/behaviours/actions/change_cover_posture.gd" id="16_vvprg"]
@@ -113,6 +114,10 @@ metadata/_custom_type_script = "uid://bvv3uwi6i8ghk"
 script = ExtResource("5_u4ja4")
 metadata/_custom_type_script = "uid://bmwadp6yooef0"
 
+[node name="CanMove" type="Node" parent="ShootTarget" unique_id=2138510090]
+script = ExtResource("13_vvprg")
+metadata/_custom_type_script = "uid://c6up0iistptxy"
+
 [node name="FindNextCover" type="Node" parent="ShootTarget" unique_id=1705824596]
 script = ExtResource("6_u4ja4")
 metadata/_custom_type_script = "uid://bwfed5132hftm"
@@ -129,6 +134,10 @@ metadata/_custom_type_script = "uid://c23rho2v0iamy"
 [node name="MoveFoward" type="Node" parent="." unique_id=119180968]
 script = ExtResource("1_x0bws")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="CanMove" type="Node" parent="MoveFoward" unique_id=1110158821]
+script = ExtResource("13_vvprg")
+metadata/_custom_type_script = "uid://c6up0iistptxy"
 
 [node name="GetPeekPosture" type="Node" parent="MoveFoward" unique_id=910484771]
 script = ExtResource("16_vvprg")
