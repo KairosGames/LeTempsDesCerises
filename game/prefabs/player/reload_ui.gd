@@ -23,7 +23,7 @@ signal reloaded
 @export var speed_px_sec: float = 100.0
 @export var max_step_count: float = 5
 @export var qte_delay: float = 0.5
-@export var valid_offset_px: float = 10.0
+@export var valid_offset_px: float = 15.0
 
 @export_category("Color settings")
 @export var default_color: Color
@@ -46,7 +46,7 @@ var is_hammer_cocked = false
 func _ready() -> void:
 	wpn_animator.play("idle")
 	chassepot.call_load_ammo = play_amo_anim
-	chassepot.call_next_step = go_next_step
+	chassepot.call_next_step = go_next_step_after_ammo_anim
 	set_step(0)
 
 
@@ -91,6 +91,9 @@ func switch_target() -> void:
 	if counter >= max_step_count:
 		var anim_name: String = "go_step_" + str(step + 1)
 		wpn_animator.play(anim_name)
+		if step == 1:
+			focus.visible = false
+			pos_to_rect[2].color = default_color
 		go_next_step()
 		try_succeeded.emit()
 		return
@@ -126,6 +129,9 @@ func try_qte() -> void:
 	if dist <= valid_offset_px:
 		var anim_name: String = "go_step_" + str(step + 1)
 		wpn_animator.play(anim_name)
+		if step == 1:
+			focus.visible = false
+			pos_to_rect[2].color = default_color
 		go_next_step()
 		try_succeeded.emit()
 		focus.color = sucess_focus_color
@@ -139,6 +145,10 @@ func try_qte() -> void:
 
 func play_amo_anim() -> void:
 	wpn_animator.play("go_step_3")
+
+func go_next_step_after_ammo_anim() -> void:
+	focus.visible = true
+	go_next_step()
 
 
 func cock_hammer(time_to_wait: float) -> void:
