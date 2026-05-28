@@ -138,7 +138,7 @@ layout_mode = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("9_b6byk")
 
-[node name="ReloadUI" type="Control" parent="UI" unique_id=604342347 node_paths=PackedStringArray("all_pos", "pos_to_rect")]
+[node name="ReloadUI" type="Control" parent="UI" unique_id=604342347 node_paths=PackedStringArray("wpn_animator", "all_pos", "pos_to_rect")]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 0
@@ -147,9 +147,10 @@ offset_top = 918.0
 offset_right = 942.0
 offset_bottom = 958.0
 script = ExtResource("3_klv5p")
+wpn_animator = NodePath("../../CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/Weapon/sk_chassepot/WeaponAnimator")
 all_pos = [NodePath("ReloadPos1"), NodePath("ReloadPos2"), NodePath("ReloadPos3")]
 pos_to_rect = [NodePath("ReloadStep1"), NodePath("ReloadStep2"), NodePath("ReloadStep3")]
-steps = Array[Array]([[0, 1], [1, 2], [2, 1], [1, 0]])
+steps = Array[Array]([[0, 1], [1, 2], [], [2, 1], [1, 0]])
 default_color = Color(0, 0, 0, 0.61960787)
 valid_target_color = Color(0, 0.5469833, 0.98331386, 0.63529414)
 default_focus_color = Color(0.7159255, 0.72724795, 0.7299672, 1)
@@ -331,19 +332,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.54525745)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02699995, -0.44525743)
 
-[node name="Weapon" type="Node3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot" unique_id=2061743200]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.027, 0.1)
+[node name="ReloadPosRight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot" unique_id=1480498438]
+unique_name_in_owner = true
+transform = Transform3D(0.9784322, 0.18789192, 0.08583164, -0.17101006, 0.96984625, -0.17364818, -0.11587059, 0.15522489, 0.98106027, 0.02, -0.005, 0)
 
-[node name="sk_chassepot" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1025414177 instance=ExtResource("4_klv5p")]
+[node name="ReloadPosLeft" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot" unique_id=1488468438]
+unique_name_in_owner = true
+transform = Transform3D(0.98368835, -0.15808289, 0.08583164, 0.17101006, 0.96984625, -0.17364818, -0.055792697, 0.18549377, 0.98106027, -0.02, -0.005, 0)
+
+[node name="ReloadRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot" unique_id=604600782]
+unique_name_in_owner = true
+
+[node name="Weapon" type="Node3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot" unique_id=2061743200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02699995, 0.1)
+
+[node name="sk_chassepot" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/Weapon" unique_id=1025414177 instance=ExtResource("4_klv5p")]
+unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="FrontSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=2022825120]
+[node name="FrontSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/Weapon" unique_id=2022825120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029570341, 0.845)
 
-[node name="RearSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1146183657]
+[node name="RearSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/Weapon" unique_id=1146183657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029152155, 0.14946882)
 
-[node name="WeaponRayCast" type="RayCast3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/Weapon" unique_id=1123149694]
+[node name="WeaponRayCast" type="RayCast3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/Weapon" unique_id=1123149694]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013229132, 0.31301522)
 target_position = Vector3(0, 0, 300)

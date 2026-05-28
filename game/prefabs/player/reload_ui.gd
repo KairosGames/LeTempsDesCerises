@@ -9,6 +9,10 @@ signal reloaded
 @onready var pos1: Control = %ReloadPos1
 @onready var pos2: Control = %ReloadPos2
 @onready var pos3: Control = %ReloadPos3
+@onready var chassepot: Chassepot = %sk_chassepot
+
+@export_category("References")
+@export var wpn_animator: AnimationPlayer
 
 @export_category("Configuration settings")
 @export var all_pos: Array[Control]
@@ -36,22 +40,25 @@ var counter: int = 0
 var target_i: int = 1
 var is_active: bool = false
 var can_qte: bool = true
+var is_hammer_cocked = false
 
 
 func _ready() -> void:
-	set_step()
+	wpn_animator.play("idle")
+	chassepot.call_load_ammo = play_amo_anim
+	chassepot.call_next_step = go_next_step
+	set_step(0)
 
 
 func _process(delta: float) -> void:
-	if is_active:
+	if is_active and step != 2:
 		handle_reload_phase(delta)
 		capture_reload_QTE()
 
 
 func activation(active: bool):
 	if active: entered_reload.emit()
-	step = 0
-	set_step()
+	set_step(step)
 	visible = active
 	is_active = active
 
@@ -64,7 +71,10 @@ func handle_reload_phase(delta: float) -> void:
 		switch_target()
 
 
-func set_step() -> void:
+func set_step(p_step: int) -> void:
+	if step == 2: return
+	step = p_step
+	if step >= steps.size() : step = 0
 	counter = 0
 	target_i = 1
 	curr_targets = steps[step]
@@ -79,6 +89,8 @@ func set_step() -> void:
 func switch_target() -> void:
 	counter += 1
 	if counter >= max_step_count:
+		var anim_name: String = "go_step_" + str(step + 1)
+		wpn_animator.play(anim_name)
 		go_next_step()
 		try_succeeded.emit()
 		return
@@ -89,11 +101,13 @@ func switch_target() -> void:
 
 
 func go_next_step() -> void:
-	step +=1
+	step += 1
 	if step >= steps.size():
 		reloaded.emit()
 		return
-	set_step()
+	if step != 2:
+		set_step(step)
+		return
 
 
 func capture_reload_QTE() -> void:
@@ -110,6 +124,8 @@ func try_qte() -> void:
 	can_qte = false
 	var dist: float = (valid_target.global_position - focus.global_position).length()
 	if dist <= valid_offset_px:
+		var anim_name: String = "go_step_" + str(step + 1)
+		wpn_animator.play(anim_name)
 		go_next_step()
 		try_succeeded.emit()
 		focus.color = sucess_focus_color
@@ -119,3 +135,13 @@ func try_qte() -> void:
 	await get_tree().create_timer(qte_delay).timeout
 	can_qte = true
 	focus.color = default_focus_color
+
+
+func play_amo_anim() -> void:
+	wpn_animator.play("go_step_3")
+
+
+func cock_hammer(time_to_wait: float) -> void:
+	await get_tree().create_timer(time_to_wait).timeout
+	is_hammer_cocked = true
+	wpn_animator.play("go_step_0")

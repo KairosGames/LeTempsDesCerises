@@ -34,6 +34,9 @@ signal shoot_missed
 @onready var out_of_camera: Marker3D = %OutOfCamera
 @onready var blink_effect: BlinkEffect = %BlinkEffect
 @onready var cam_land_root: Node3D = %CameraLandingRoot
+@onready var reload_root: Node3D = %ReloadRoot
+@onready var reload_pos_right: Marker3D = %ReloadPosRight
+@onready var reload_pos_left: Marker3D = %ReloadPosLeft
 
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
@@ -133,9 +136,12 @@ var can_quit_aim: bool = true
 @export var bob_run_smooth_speed: float = 50.0
 
 @export_category("Recoil settings")
-@export var recoil_strength: float = 7.0
-@export var recoil_time: float = 0.1
-@export var time_to_return_from_recoil: float = 1.0
+@export var recoil_strength: float = 10.0
+@export var recoil_time: float = 0.12
+@export var time_to_return_from_recoil: float = 1.2
+
+@export_category("Reload settings")
+@export var time_enter_reload = 0.4
 
 @export_category("States settings")
 @export var state_switch_time: float = 0.2
@@ -229,7 +235,8 @@ var fov_aim_twn: Tween
 var cam_rot_aim_twn: Tween
 var state_twn: Tween
 var recoil_twn: Tween
-var reload_twn: Tween
+var reload_pos_twn: Tween
+var reload_rot_twn: Tween
 var pull_back_pos_twn: Tween
 var pull_back_rot_twn: Tween
 var pop_wpn_pitch_twn: Tween
@@ -771,7 +778,8 @@ func handle_weapon_pull_back() -> void:
 
 
 func switch_pull_back_state() -> void:
-	if is_reloading and is_pulling_back: exit_reload(false)
+	if is_reloading and is_pulling_back:
+		exit_reload(false)
 	var target_marker: Marker3D = pull_back_marker_right if is_right_handed else pull_back_marker_left
 	var target_pos: Vector3 = target_marker.position if is_pulling_back else Vector3.ZERO
 	var target_rot: Vector3 = target_marker.rotation if is_pulling_back else Vector3.ZERO
@@ -987,7 +995,8 @@ func play_shoot_vfx() -> void:
 
 func play_recoil_effect() -> void:
 	recoil_twn = create_tween()
-	recoil_twn.tween_property(self, "recoil_offset", recoil_strength, recoil_time
+	var recoil: float = recoil_strength * (1.0 if not is_aiming else 0.75)
+	recoil_twn.tween_property(self, "recoil_offset", recoil, recoil_time
 					).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EaseType.EASE_OUT)
 	recoil_twn.tween_property(self, "recoil_offset", 0.0, time_to_return_from_recoil
 					).set_trans(Tween.TRANS_SINE).set_ease(Tween.EaseType.EASE_OUT)
@@ -1057,17 +1066,27 @@ func enter_reload() -> void:
 	reload_ui.reloaded.connect(on_reloaded, CONNECT_ONE_SHOT)
 	var default_pos: Vector3 = right_weapon_pos.position if is_right_handed else left_weapon_pos.position
 	var time: float = time_to_ads * inverse_lerp(default_pos.x, aim_pos.position.x, weapon_container.position.x)
+	time = clamp(time, 0.0, 0.3)
 	await get_tree().create_timer(time).timeout
 	if is_reload_interruped or not can_play:
 		is_reload_interruped = false
 		return
-	reload_twn = create_tween()
-	await reload_twn.tween_property(weapon_container, "rotation_degrees:x", 25.0, 0.5
+	var targ: Node3D = reload_pos_right if is_right_handed else reload_pos_left
+	if reload_pos_twn: reload_pos_twn.kill()
+	if reload_rot_twn: reload_rot_twn.kill()
+	reload_pos_twn = create_tween()
+	reload_rot_twn = create_tween()
+	if not reload_ui.is_hammer_cocked: reload_ui.cock_hammer(time_enter_reload / 1.5)
+	reload_pos_twn.tween_property(reload_root, "position", targ.position, time_enter_reload
+					).set_trans(Tween.TRANS_QUART).set_ease(Tween.EaseType.EASE_OUT)
+	await reload_rot_twn.tween_property(reload_root, "rotation", targ.rotation, time_enter_reload
 					).set_trans(Tween.TRANS_QUART).set_ease(Tween.EaseType.EASE_OUT).finished
 	reload_ui.activation(true)
 
 
 func on_reloaded() -> void:
+	is_weapon_loaded = true
+	reload_ui.is_hammer_cocked = false
 	exit_reload()
 
 
@@ -1076,10 +1095,14 @@ func exit_reload(is_realoded: bool = true, is_from_die = false) -> void:
 	if reload_ui.reloaded.is_connected(on_reloaded):
 		reload_ui.reloaded.disconnect(on_reloaded)
 	is_reload_interruped = not is_realoded
-	if reload_twn: reload_twn.kill()
+	if reload_pos_twn: reload_pos_twn.kill()
+	if reload_rot_twn: reload_rot_twn.kill()
 	if not is_from_die:
-		reload_twn = create_tween()
-		await reload_twn.tween_property(weapon_container, "rotation_degrees:x", 0.0, 0.5
+		reload_pos_twn = create_tween()
+		reload_rot_twn = create_tween()
+		reload_pos_twn.tween_property(reload_root, "position", Vector3.ZERO, time_enter_reload
+					).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EaseType.EASE_IN)
+		await reload_rot_twn.tween_property(reload_root, "rotation", Vector3.ZERO, time_enter_reload
 					).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EaseType.EASE_IN).finished
 	is_reloading = false
 	if not is_weapon_loaded: is_weapon_loaded = is_realoded
@@ -1130,6 +1153,7 @@ func die() -> void:
 
 func reset_player_controller() -> void:
 	kill_all_tweens()
+	reload_ui.step = 0
 	reload_ui.activation(false)
 	velocity = Vector3.ZERO
 	local_velocity = Vector3.ZERO
@@ -1148,6 +1172,8 @@ func reset_player_controller() -> void:
 	wpn_cam_base.rotation = Vector3.ZERO
 	cam_land_root.position = Vector3.ZERO
 	cam_land_root.rotation = Vector3.ZERO
+	reload_root. position = Vector3.ZERO
+	reload_root.rotation = Vector3.ZERO
 	player_camera.fov = default_fov
 	weapon_camera.fov = default_fov - weapon_fov_diff
 	recoil_offset = 0.0
@@ -1188,7 +1214,8 @@ func kill_all_tweens() -> void:
 	if wpn_x_aim_twn: wpn_x_aim_twn.kill()
 	if wpn_y_aim_twn: wpn_y_aim_twn.kill()
 	if wpn_z_aim_twn: wpn_z_aim_twn.kill()
-	if reload_twn: reload_twn.kill()
+	if reload_pos_twn: reload_pos_twn.kill()
+	if reload_rot_twn: reload_rot_twn.kill()
 	if pull_back_pos_twn: pull_back_pos_twn.kill()
 	if pull_back_rot_twn: pull_back_rot_twn.kill()
 	if pop_wpn_pitch_twn: pop_wpn_pitch_twn.kill()

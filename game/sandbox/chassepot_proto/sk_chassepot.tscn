@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://b56vcde62m1gw"]
 
+[ext_resource type="Script" uid="uid://db5hoclmtj4ek" path="res://prefabs/player/chassepot.gd" id="1_cqdav"]
 [ext_resource type="Material" uid="uid://cx5n0bf3yck8x" path="res://sandbox/chassepot_proto/wood_proto.tres" id="1_pokdq"]
 [ext_resource type="Material" uid="uid://c6jwmpwhck58r" path="res://sandbox/chassepot_proto/steel_proto.tres" id="2_cqdav"]
 
@@ -291,54 +292,772 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hs58q")
 
-[node name="sk_chassepot" type="Node3D" unique_id=1025414177]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pokdq"]
+albedo_color = Color(0.83866096, 0.5779288, 0.40238383, 1)
 
-[node name="sk_chassepot_body" type="MeshInstance3D" parent="." unique_id=588837796]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cqdav"]
+material = SubResource("StandardMaterial3D_pokdq")
+radius = 0.005
+height = 0.03
+
+[sub_resource type="Animation" id="Animation_pokdq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/safety_mechanism:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.0018727435, -0.08300679)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.088170364)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.13131927, -0.057853, 0.20212224)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PivotPoint/container:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PivotPoint/container:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_msfwk"]
+resource_name = "go_step_0"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.088170364), Vector3(0, 0, -0.088170364)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/safety_mechanism:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1102, 0.223, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0018727435, -0.08300679), Vector3(0, -0.002, -0.065), Vector3(0, -0.002, -0.078), Vector3(0, -0.002, -0.078)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.13131927, -0.057853, 0.20212224), Vector3(0.13131927, -0.057853, 0.20212224)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PivotPoint/container:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1102, 0.223, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.003, 0, 0.003), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PivotPoint/container:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1102, 0.22301249, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0052359877, -0.0052359877, -0.0052359877), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cqdav"]
+resource_name = "go_step_1"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/safety_mechanism:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.002, -0.078), Vector3(0, -0.002, -0.078)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1333, 0.2667, 0.3667, 0.5),
+"transitions": PackedFloat32Array(1, 0.36602157, 0.35, 0.35, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.08726646), Vector3(0, 0, 0), Vector3(0, 0, 1.5707964), Vector3(0, 0, 1.5707964)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.13131927, -0.057853, 0.20212224), Vector3(0.13131927, -0.057853, 0.20212224)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.088), Vector3(0, 0, -0.088)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PivotPoint/container:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1333, 0.2667, 0.36666667, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.003, -0.001, 0), Vector3(-0.001, 0, 0), Vector3(-0.003, -0.001, 0), Vector3(-0.006, -0.001, 0), Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PivotPoint/container:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.36666667, 0.4015934, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.0034906585, 0.017453292), Vector3(0, 0, 0), Vector3(0, 0.0034906585, 0.017453292), Vector3(0, 0.0034906585, 0.05235988), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r3jo4"]
+resource_name = "go_step_2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/safety_mechanism:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.002, -0.078), Vector3(0, -0.002, -0.078), Vector3(0, -0.0020000003, -0.030024808)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.36666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5707964), Vector3(0, 0, 1.6580628), Vector3(0, 0, 1.4835298), Vector3(0, 0, 1.5707964), Vector3(0, 0, 1.5707964)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.088170364), Vector3(0, 0, -0.088170364), Vector3(0, 0, -0.016073361)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.13131927, -0.057853, 0.20212224), Vector3(0.13131927, -0.057853, 0.20212224)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"load_ammo"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PivotPoint/container:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.36666667, 0.4597, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.003, 0, 0.01), Vector3(0.003, 0, 0.01), Vector3(0, 0, 0.01), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PivotPoint/container:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.36666667, 0.45969626, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0034906585, 0.0034906585, 0.017453292), Vector3(0.0034906585, -0.0034906585, -0.017453292), Vector3(0.0034906585, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dpnyi"]
+resource_name = "go_step_3"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.016073361), Vector3(0, 0, -0.016073361)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5707964), Vector3(0, 0, 1.5707964)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/safety_mechanism:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0020000003, -0.030024808), Vector3(0, -0.0020000003, -0.030024808)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.061982058, -0.004580356, 0.09458261), Vector3(0.069811575, 0.0382547, -0.046895564), Vector3(0.0017848164, 0.016016401, -0.046895564)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"next_step"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_yjxat"]
+resource_name = "go_step_4"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.016073361), Vector3(0, 0, -0.016073361), Vector3(0, 0, -0.088)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.26666668, 0.36666667, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5707964), Vector3(0, 0, 1.6580628), Vector3(0, 0, 1.4835298), Vector3(0, 0, 1.6580628), Vector3(0, 0, 1.5707964), Vector3(0, 0, 1.5707964)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/safety_mechanism:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0020000003, -0.030024808), Vector3(0, -0.0020000003, -0.030024808), Vector3(0, -0.002, -0.078)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0017848164, 0.016016401, -0.046895564), Vector3(0.0017848164, 0.016016401, -0.046895564), Vector3(0.0017848164, 0.016016401, -0.12362385)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PivotPoint/container:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.06835632, 0.2674441, 0.36826968, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.003, 0, -0.01), Vector3(0.003, 0, -0.01), Vector3(-0.003, 0, -0.01), Vector3(0, 0, -0.01), Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PivotPoint/container:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.06835632, 0.2674441, 0.36826968, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0034906585, 0.0034906585, 0.017453292), Vector3(0.0034906585, -0.0034906585, -0.017453292), Vector3(0.0034906585, 0.0034906585, 0), Vector3(0.0034906585, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eojx6"]
+resource_name = "go_step_5"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.0017848164, 0.016016401, -0.12362385), Vector3(0.0017848164, 0.016016401, -0.12362385)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -0.088), Vector3(0, 0, -0.088)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668, 0.36666667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5707964), Vector3(0, 0, 1.4835298), Vector3(0, 0, 1.6580628), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/safety_mechanism:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.36666667, 0.43333334, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.002, -0.078), Vector3(0, -0.002, -0.078), Vector3(0, -0.002, -0.083), Vector3(0, -0.002, -0.083)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PivotPoint/container:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.13500373, 0.2674441, 0.36826968, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.003, 0.001, 0), Vector3(-0.003, 0.001, 0), Vector3(0, 0.001, 0), Vector3(0.006, 0.001, 0), Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PivotPoint/container:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.13500373, 0.2674441, 0.36826968, 0.39903003, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0034906585, -0.0034906585, -0.017453292), Vector3(-0.0034906585, 0.0034906585, 0.017453292), Vector3(0, 0, 0), Vector3(0, 0.0034906585, -0.05235988), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xbre7"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotPoint/container/sk_chassepot_body/amo:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.13131927, -0.057853, 0.20212224)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -0.088170364)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/safety_mechanism:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.0018727435, -0.08300679)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r3jo4"]
+_data = {
+&"RESET": SubResource("Animation_pokdq"),
+&"go_step_0": SubResource("Animation_msfwk"),
+&"go_step_1": SubResource("Animation_cqdav"),
+&"go_step_2": SubResource("Animation_r3jo4"),
+&"go_step_3": SubResource("Animation_dpnyi"),
+&"go_step_4": SubResource("Animation_yjxat"),
+&"go_step_5": SubResource("Animation_eojx6"),
+&"idle": SubResource("Animation_xbre7")
+}
+
+[node name="sk_chassepot" type="Node3D" unique_id=1025414177]
+script = ExtResource("1_cqdav")
+
+[node name="PivotPoint" type="Node3D" parent="." unique_id=1994332491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.23298101)
+
+[node name="container" type="Node3D" parent="PivotPoint" unique_id=760258873]
+
+[node name="sk_chassepot_body" type="MeshInstance3D" parent="PivotPoint/container" unique_id=588837796]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23298101)
 mesh = SubResource("ArrayMesh_3vkog")
 
-[node name="bagette" type="MeshInstance3D" parent="sk_chassepot_body" unique_id=437964636]
+[node name="bagette" type="MeshInstance3D" parent="PivotPoint/container/sk_chassepot_body" unique_id=437964636]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.070533e-05, -0.0041818484, -0.78761023)
 mesh = SubResource("ArrayMesh_bl741")
 
-[node name="barrel_body" type="MeshInstance3D" parent="sk_chassepot_body" unique_id=1009322438]
+[node name="barrel_body" type="MeshInstance3D" parent="PivotPoint/container/sk_chassepot_body" unique_id=1009322438]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.070533e-05, 0.014507392, -0.74875873)
 mesh = SubResource("ArrayMesh_c088x")
 
-[node name="ctrl_barrel" type="Node3D" parent="sk_chassepot_body/barrel_body" unique_id=125741250]
+[node name="ctrl_barrel" type="Node3D" parent="PivotPoint/container/sk_chassepot_body/barrel_body" unique_id=125741250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.002543226, 0.8077416)
 
-[node name="ctrl_bolt_handle" type="Node3D" parent="sk_chassepot_body/barrel_body/ctrl_barrel" unique_id=569320331]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.08250946)
+[node name="ctrl_bolt_handle" type="Node3D" parent="PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel" unique_id=569320331]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0, 0, -0.088170364)
 
-[node name="bolt_handle" type="MeshInstance3D" parent="sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle" unique_id=2121048013]
+[node name="bolt_handle" type="MeshInstance3D" parent="PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle" unique_id=2121048013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0018727435, -0.0004973337)
 mesh = SubResource("ArrayMesh_aptpu")
 
-[node name="safety_mechanism" type="MeshInstance3D" parent="sk_chassepot_body/barrel_body/ctrl_barrel" unique_id=321110234]
+[node name="safety_mechanism" type="MeshInstance3D" parent="PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_barrel" unique_id=321110234]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0018727435, -0.08300679)
 mesh = SubResource("ArrayMesh_in1eo")
 
-[node name="ctrl_rear_sight_body" type="Node3D" parent="sk_chassepot_body/barrel_body" unique_id=403407998]
+[node name="ctrl_rear_sight_body" type="Node3D" parent="PivotPoint/container/sk_chassepot_body/barrel_body" unique_id=403407998]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.007, 0.54)
 
-[node name="ctrl_rear_sight" type="Node3D" parent="sk_chassepot_body/barrel_body/ctrl_rear_sight_body" unique_id=739362279]
+[node name="ctrl_rear_sight" type="Node3D" parent="PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_rear_sight_body" unique_id=739362279]
 transform = Transform3D(1, 0, 0, 0, 0.9999541, 0.00957878, 0, -0.00957878, 0.9999541, 0, 0.00351643, 0.0030131042)
 
-[node name="rear_sight" type="MeshInstance3D" parent="sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight" unique_id=58885415]
+[node name="rear_sight" type="MeshInstance3D" parent="PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight" unique_id=58885415]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0005652909, -0.001987686)
 mesh = SubResource("ArrayMesh_jhhqf")
 
-[node name="rear_sight_slider" type="MeshInstance3D" parent="sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight/rear_sight" unique_id=1209452833]
+[node name="rear_sight_slider" type="MeshInstance3D" parent="PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight/rear_sight" unique_id=1209452833]
 transform = Transform3D(1, 0, 0, 0, 0.9999541, -0.00957878, 0, 0.00957878, 0.9999541, -8.070482e-05, -0.005100764, 0.053804595)
 mesh = SubResource("ArrayMesh_ilgqj")
 
-[node name="rear_sight_body" type="MeshInstance3D" parent="sk_chassepot_body/barrel_body/ctrl_rear_sight_body" unique_id=41726384]
+[node name="rear_sight_body" type="MeshInstance3D" parent="PivotPoint/container/sk_chassepot_body/barrel_body/ctrl_rear_sight_body" unique_id=41726384]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005924901, -0.000112473965)
 mesh = SubResource("ArrayMesh_sjtv8")
 
-[node name="ctrl_weapon_trigger" type="Node3D" parent="sk_chassepot_body" unique_id=1342119738]
+[node name="ctrl_weapon_trigger" type="Node3D" parent="PivotPoint/container/sk_chassepot_body" unique_id=1342119738]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0010481124, -0.0365107, 0.05340939)
 
-[node name="weapon_trigger" type="MeshInstance3D" parent="sk_chassepot_body/ctrl_weapon_trigger" unique_id=1747753677]
+[node name="weapon_trigger" type="MeshInstance3D" parent="PivotPoint/container/sk_chassepot_body/ctrl_weapon_trigger" unique_id=1747753677]
 transform = Transform3D(0.008978161, 0, 0, 0, 0.0043150038, 0, 0, 0, 0.0043150038, 0.0010481124, 0.002362892, -0.031004429)
 mesh = SubResource("ArrayMesh_t4q2f")
+
+[node name="amo" type="MeshInstance3D" parent="PivotPoint/container/sk_chassepot_body" unique_id=683528543]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.13131927, -0.057853, 0.20212224)
+visible = false
+mesh = SubResource("CapsuleMesh_cqdav")
+
+[node name="WeaponAnimator" type="AnimationPlayer" parent="." unique_id=1610870418]
+libraries/ = SubResource("AnimationLibrary_r3jo4")
+autoplay = &"idle"
