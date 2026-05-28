@@ -7,8 +7,8 @@ class_name GameState00 extends GameState
 func enter() -> void:
 	curr_step = 0
 	steps = [
-		#Step.new(set_player_for_onboarding, wait_voice, get_up),
-		Step.new(set_player_for_onboarding, func(): player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN), get_up),
+		Step.new(set_player_for_onboarding, wait_voice, get_up),
+		#Step.new(set_player_for_onboarding, func(): player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN), get_up),
 
 		Step.new(go_for_georges, wait_voice, take_weapon),
 		Step.new(wait_voice, wait_player_crouch, do_nothing),
@@ -33,9 +33,9 @@ func set_player_for_onboarding() -> void:
 
 
 func get_up() -> void:
-	#await wait(1.0)
-	#await player.blink_effect.open_eyes_from_sleep()
-	#await wait(2.0)
+	await wait(1.0)
+	await player.blink_effect.open_eyes_from_sleep()
+	await wait(2.0)
 	var twn: Tween = create_tween()
 	twn.tween_property(player, "aim_target:x", 0.0, 0.7)
 	player.play_cam_landing_effect(-0.2, 30.0, 1.0)
