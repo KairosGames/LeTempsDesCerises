@@ -40,7 +40,7 @@ func _process_spawn() -> void:
 		for spawner: Cover in _open_list:
 			if not spawner.enabled: continue
 			if spawner.holder: continue
-			if spawner.visible_on_screen_notifier.is_on_screen(): continue
+			if team == Agent.Team.COMMUNARD and spawner.visible_on_screen_notifier.is_on_screen(): continue
 			if not _has_a_next_cover_available(spawner): continue
 			
 			_open_list.erase(spawner)
