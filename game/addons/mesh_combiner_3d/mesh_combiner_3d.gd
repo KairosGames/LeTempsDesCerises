@@ -70,6 +70,7 @@ func _split():
 		instance.owner = owner
 		instance.transform = multimesh.get_instance_transform(index)
 		instance.mesh = multimesh.mesh
+		instance.name = instance.mesh.resource_path.get_file().get_basename().to_pascal_case()
 
 	multimesh.instance_count = 0
 	multimesh.transform_format = MultiMesh.TRANSFORM_3D
