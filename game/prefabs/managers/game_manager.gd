@@ -2,7 +2,6 @@ class_name GameManager extends Node
 
 @onready var player_spawner: CustomMaker = %PlayerSpawner
 
-
 @export_category("Settings")
 @export var use_narrative: bool = true
 
@@ -26,7 +25,6 @@ static var instance: GameManager:
 
 
 func _ready() -> void:
-	if not player_spawner: print("PROOOOOOOOOOOOOOOUT !!")
 	instance = self
 	if canon: canon.shoot.connect(handle_canon_shoot)
 	ready_deferred.call_deferred()
@@ -63,15 +61,17 @@ func go_next_state() -> void:
 	if curr_state:
 		curr_state.completed.disconnect(go_next_state)
 		curr_state.exit()
-
+		curr_state.is_active = false
+	
 	game_state_index += 1
-
+	
 	if game_state_index >= all_states.size():
 		print("GAME IS FINISHED !")
 		return
-
+	
 	curr_state = all_states[game_state_index]
 	curr_state.completed.connect(go_next_state)
+	curr_state.is_active = true
 	curr_state.enter()
 
 

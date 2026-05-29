@@ -41,6 +41,7 @@ var target_i: int = 1
 var is_active: bool = false
 var can_qte: bool = true
 var is_hammer_cocked = false
+var is_tutorial = false
 
 
 func _ready() -> void:
@@ -87,7 +88,7 @@ func set_step(p_step: int) -> void:
 
 
 func switch_target() -> void:
-	counter += 1
+	if not is_tutorial: counter += 1
 	if counter >= max_step_count:
 		var anim_name: String = "go_step_" + str(step + 1)
 		wpn_animator.play(anim_name)
@@ -120,7 +121,7 @@ func capture_reload_QTE() -> void:
 
 
 func can_reload_QTE() -> bool:
-	return Input.mouse_mode == Input.MouseMode.MOUSE_MODE_CAPTURED and can_qte
+	return Input.mouse_mode == Input.MouseMode.MOUSE_MODE_CAPTURED and can_qte and not is_tutorial
 
 
 func try_qte() -> void:
@@ -145,6 +146,7 @@ func try_qte() -> void:
 
 func play_amo_anim() -> void:
 	wpn_animator.play("go_step_3")
+
 
 func go_next_step_after_ammo_anim() -> void:
 	focus.visible = true

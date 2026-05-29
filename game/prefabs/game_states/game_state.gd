@@ -8,6 +8,7 @@
 
 var steps: Array[Step] = []
 var curr_step: int = 0
+var is_active = false
 
 var game_manager: GameManager
 var eff_manager: EffectsManager
@@ -29,9 +30,11 @@ func ready_deffered() -> void:
 
 
 func _process(delta: float) -> void:
+	if not is_active: return
 	delta_t = delta
 	for callable: Callable in on_process: callable.call()
 	if Input.is_action_just_pressed("go_next_step"):
+		print("NEXT CALLED")
 		voice_line_finished.emit()
 
 
@@ -83,6 +86,7 @@ func wait_until_or_signal(condition: Callable, signal_to_wait: Signal) -> void:
 
 func wait_voice() -> void:
 	voice_line_index += 1
+	print("WAIT VOICE LINE")
 	await voice_line_finished
 
 
@@ -101,7 +105,7 @@ func set_player_move(dir: Vector2) -> void:
 	player.p_inputs.move_vec = dir.normalized()
 
 
-func rotate_player_to_pos(pos: Vector3, speed: float, delta: float) -> void:
+func rotate_yaw_player_to_pos(pos: Vector3, speed: float, delta: float) -> void:
 	var dir = player.global_position - pos
 	var target_angle = atan2(-dir.x, -dir.z)
 	var arg1 = deg_to_rad(player.aim_target.y)

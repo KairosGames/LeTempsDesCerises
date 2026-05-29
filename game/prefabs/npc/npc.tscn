@@ -17,10 +17,73 @@ albedo_color = Color(0.022979883, 0.022979883, 0.022979883, 1)
 material = SubResource("StandardMaterial3D_s40ew")
 size = Vector3(0.5, 0.1, 0.3)
 
+[sub_resource type="Animation" id="Animation_s40ew"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.9, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_470b1"]
+resource_name = "death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.9, 0), Vector3(0.439, 0.2, 0.2), Vector3(0.439, 0.2, 0.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.20470455, -0.5230478, 1.5747987), Vector3(0.49080345, -0.5201399, 1.5752397)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_thrj0"]
+_data = {
+&"RESET": SubResource("Animation_s40ew"),
+&"death": SubResource("Animation_470b1")
+}
+
 [node name="NPC" type="CharacterBody3D" unique_id=1296143105 groups=["Npc"]]
+floor_max_angle = 1.0471976
 script = ExtResource("1_s40ew")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=277200552]
+[node name="Collider" type="CollisionShape3D" parent="." unique_id=277200552]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_3fdau")
 
@@ -31,3 +94,7 @@ mesh = SubResource("CapsuleMesh_cy00r")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=81210126]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6490259, 0.15578356)
 mesh = SubResource("BoxMesh_470b1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=844202678]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_thrj0")

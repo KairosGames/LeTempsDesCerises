@@ -1,22 +1,26 @@
 class_name GameState00 extends GameState
 
+signal first_fire_from_barricade
+signal fire_kill_georges
+
 @onready var georges_rdv: CustomMaker = %GeorgesRDV
 @onready var georges: Npc = %Georges
+@onready var barricade_point: CustomMaker = %BarricadePoint
 
 
 func enter() -> void:
 	curr_step = 0
 	steps = [
 		Step.new(set_player_for_onboarding, wait_voice, get_up),
-		#Step.new(set_player_for_onboarding, func(): player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN), get_up),
-
+		#Step.new(set_player_for_onboarding, func():player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN), get_up),
 		Step.new(go_for_georges, wait_voice, take_weapon),
 		Step.new(wait_voice, wait_player_crouch, do_nothing),
 		Step.new(wait_voice, wait_player_prone, do_nothing),
 		Step.new(wait_voice, wait_player_stand, do_nothing),
 		Step.new(wait_voice, wait_player_aim, free_changing_posture),
 		Step.new(open_player_view, wait_player_shoot, free_player_view),
-		Step.new(do_nothing, do_nothing, do_nothing),
+		Step.new(wait_voice, wait_player_enter_reload, wait_voice),
+		Step.new(enter_fight_begin, georges_death, free_player)
 	]
 	run_steps()
 
@@ -50,12 +54,12 @@ func go_for_georges() -> void:
 	take_player_move_control(true)
 	take_player_view_control(true)
 	set_player_move(Vector2(0.0, 0.5))
-	add_on_process(rotate_player_to_pos.bind(georges_rdv.global_position, PI/4.0, delta_t))
+	add_on_process(rotate_yaw_player_to_pos.bind(georges_rdv.global_position, PI/4.0, delta_t))
 	await wait(2.0)
 	clean_process()
 	await wait_until(func(): return player.global_position.distance_squared_to(georges_rdv.global_position) <= 0.1)
 	take_player_move_control(false)
-	add_on_process(rotate_player_to_pos.bind(georges.global_position, PI, delta_t))
+	add_on_process(rotate_yaw_player_to_pos.bind(georges.global_position, PI, delta_t))
 	await wait(0.25)
 	clean_process()
 	take_player_view_control(false)
@@ -131,3 +135,70 @@ func is_player_shooting_target() -> bool:
 
 func free_player_view() -> void:
 	clean_process()
+
+
+func wait_player_enter_reload() -> void:
+	await wait_until(func(): return Input.is_action_just_pressed("reload"))
+	player.enter_reload()
+	player.reload_ui.is_tutorial = true
+	await wait_voice()
+	add_on_process(func(): if Input.is_action_just_pressed("reload"): player.reload_ui.try_qte())
+	await wait_until(func(): return player.reload_ui.step == 2)
+	clean_process()
+	await wait_voice()
+	add_on_process(func(): if Input.is_action_just_pressed("reload"): player.reload_ui.try_qte())
+	await wait_until(func(): return player.is_weapon_loaded)
+	player.reload_ui.is_tutorial = false
+	clean_process()
+	player.can_use_reload = true
+	await wait(0.8)
+	set_player_before_george_death()
+
+
+func set_player_before_george_death() -> void:
+	player.can_change_posture = false
+	player.can_use_view = false
+	player.can_use_aim = false
+	if player.curr_posture == Player.Posture.CROUCH: player.crouch_to_stand()
+	if player.curr_posture == Player.Posture.PRONE: player.prone_to_stand()
+	if player.is_aiming:
+		player.is_aiming = false
+		player.switch_aim_state()
+	take_player_view_control(true)
+	var targ: Vector3 = georges.global_position + (georges.basis.x * 1.0)
+	add_on_process(rotate_yaw_player_to_pos.bind(targ, PI * 1.5, delta_t))
+	var twn: Tween = create_tween()
+	twn.tween_property(player, "aim_target:x", 10.0, 0.3)
+
+
+func enter_fight_begin() -> void:
+	first_fire_from_barricade.emit()
+	await wait(0.3)
+	clean_process()
+	add_on_process(rotate_yaw_player_to_pos.bind(barricade_point.global_position, PI * 3.0, delta_t))
+	await wait(0.5)
+	await wait_voice()
+	take_player_view_control(false)
+
+
+func georges_death() -> void:
+	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.2)
+	var george_targ: Vector3 = (player.global_position + (player.basis.x * 1.0)) + player.basis.z * 2.0
+	await georges.move_to(george_targ, 4.0)
+	await georges.rotate_yaw_to_pos_tween(player.global_position, 0.2)
+	await wait_voice()
+	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.2)
+	call_georges_death()
+	await georges.move_to(barricade_point.global_position, 4.0)
+	await wait_voice()
+
+
+func call_georges_death() -> void:
+	await wait(1.0)
+	fire_kill_georges.emit()
+	await wait(0.1)
+	georges.die()
+
+
+func free_player() -> void:
+	player.set_is_free(true)
