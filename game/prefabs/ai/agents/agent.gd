@@ -37,7 +37,7 @@ var is_reloading = false:
 		is_reloading = value
 		if value: reload_started.emit()
 		else: reload_ended.emit()
-var can_move: bool:
+var can_move: bool = true:
 	set(value):
 		can_move = value
 		if not can_move: navigation.stop()
