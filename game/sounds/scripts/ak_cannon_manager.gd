@@ -4,6 +4,7 @@ extends Node3D
 @export var shoot : AkEvent3D
 
 func _on_canon_shoot() -> void:
+	print("nulachier")
 	shoot.post_event()
 	BarksManager.cannon_shoot()
 

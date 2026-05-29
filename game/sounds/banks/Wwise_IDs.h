@@ -17,6 +17,7 @@ namespace AK
         static const AkUniqueID ALLY_BARK_ALLY_DEAD = 3295768610U;
         static const AkUniqueID ALLY_BARK_COWARD = 1318320503U;
         static const AkUniqueID ALLY_BARK_ENEMY_DEAD = 3598975830U;
+        static const AkUniqueID ALLY_SHOOT = 3252427803U;
         static const AkUniqueID AMB_CANNONS = 3265814676U;
         static const AkUniqueID BARRICADE_DAMAGED = 482738278U;
         static const AkUniqueID BRICK_FALL = 3840667520U;
@@ -217,6 +218,7 @@ namespace AK
     namespace GAME_PARAMETERS
     {
         static const AkUniqueID BARK_VOLUME = 2103536148U;
+        static const AkUniqueID CANNON_SIDECHAIN = 243460359U;
         static const AkUniqueID CANNONS_PROBABILITY = 2576556105U;
         static const AkUniqueID DEAFENING = 711096812U;
         static const AkUniqueID DEATH_FILTER = 4205136178U;
@@ -241,6 +243,7 @@ namespace AK
         static const AkUniqueID AMB = 1117531639U;
         static const AkUniqueID MAIN_AUDIO_BUS = 2246998526U;
         static const AkUniqueID SFX = 393239870U;
+        static const AkUniqueID SFX_CANNON = 1541696182U;
         static const AkUniqueID SFX_NPC = 161171466U;
         static const AkUniqueID SFX_PLAYER = 217780010U;
         static const AkUniqueID UI = 1551306167U;

@@ -8130,6 +8130,7 @@
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
@@ -8140,7 +8141,7 @@
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+											<ObjectRef Name="SFX_Cannon" ID="{A00DBD55-36EA-44AA-ADF0-55DEE40480F9}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 										</Reference>
 										<Reference Name="ReflectionsAuxSend">
 											<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -8149,6 +8150,7 @@
 									<ChildrenList>
 										<Sound Name="LTDC_Cannon_Shot_Oneshot" ID="{ADF06739-CF51-4A56-B3B1-0D2CD672DD11}" ShortID="22565981">
 											<PropertyList>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
 												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 												<Property Name="Pitch" Type="int32">
 													<ValueList>
@@ -8194,6 +8196,25 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<EffectSlot Name="" ID="{D9A0D2AC-F8A2-4C6D-AC07-D54F8D5CF295}" ShortID="281400786">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom>
+																	<Effect Name="Meter (Custom)" ID="{CC7B7A5A-8054-435A-B7CD-14B599EBA377}" ShortID="508389284" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+																		<ReferenceList>
+																			<Reference Name="GameParameter">
+																				<ObjectRef Name="Cannon_Sidechain" ID="{79978E96-EE44-4536-A821-0932926129B4}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																			</Reference>
+																		</ReferenceList>
+																	</Effect>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</ObjectList>
+											</ObjectLists>
 											<ActiveSourceList>
 												<ActiveSource Name="LTDC_Cannon_Shot_Oneshot" ID="{CD6CD600-C445-4C6C-8888-E435DA8A4B28}" Platform="Linked"/>
 											</ActiveSourceList>
@@ -8273,7 +8294,7 @@
 														<MediaID ID="629537322"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{5B747EAB-BCC3-41E7-A3A3-8A5B71899487}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{5B747EAB-BCC3-41E7-A3A3-8A5B71899487}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_01.wav</AudioFile>
 													<MediaIDList>
@@ -8282,7 +8303,7 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{5B747EAB-BCC3-41E7-A3A3-8A5B71899487}" Platform="Linked"/>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{5B747EAB-BCC3-41E7-A3A3-8A5B71899487}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{9E7F3D5C-CE4C-44FA-8FFE-01106BD12B36}" ShortID="890271531">
@@ -8309,7 +8330,7 @@
 														<MediaID ID="948386357"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{00C6968A-60A5-4026-932B-FEB614EFFAD6}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{00C6968A-60A5-4026-932B-FEB614EFFAD6}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
@@ -8318,7 +8339,7 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{00C6968A-60A5-4026-932B-FEB614EFFAD6}" Platform="Linked"/>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{00C6968A-60A5-4026-932B-FEB614EFFAD6}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{DE4E3D60-0954-496E-8292-AAB53CBFBAB4}" ShortID="970327352">
@@ -8345,7 +8366,7 @@
 														<MediaID ID="916788496"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{A6F7D173-6E64-4A1F-B009-CADB60CC6F8D}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{A6F7D173-6E64-4A1F-B009-CADB60CC6F8D}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
@@ -8354,7 +8375,7 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{A6F7D173-6E64-4A1F-B009-CADB60CC6F8D}" Platform="Linked"/>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{A6F7D173-6E64-4A1F-B009-CADB60CC6F8D}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_04" ID="{04A70641-E38E-43D3-87AF-89BFF926C5F8}" ShortID="77507703">
@@ -8381,7 +8402,7 @@
 														<MediaID ID="1026693139"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_04" ID="{3B77EBC9-3935-4FA4-994D-202BF5A1184C}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{3B77EBC9-3935-4FA4-994D-202BF5A1184C}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
 													<MediaIDList>
@@ -8390,7 +8411,7 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_04" ID="{3B77EBC9-3935-4FA4-994D-202BF5A1184C}" Platform="Linked"/>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{3B77EBC9-3935-4FA4-994D-202BF5A1184C}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_05" ID="{90FDCE08-1D0E-4FE2-9303-3F8BC915D23B}" ShortID="767183442">
@@ -8417,7 +8438,7 @@
 														<MediaID ID="512603057"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_05" ID="{428BB293-7F3C-4609-A73A-864D5A13ED53}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{428BB293-7F3C-4609-A73A-864D5A13ED53}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_05.wav</AudioFile>
 													<MediaIDList>
@@ -8426,7 +8447,7 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_05" ID="{428BB293-7F3C-4609-A73A-864D5A13ED53}" Platform="Linked"/>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{428BB293-7F3C-4609-A73A-864D5A13ED53}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>

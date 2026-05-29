@@ -4,6 +4,7 @@ var is_walking := false
 var is_crouched := false
 var is_prone := false
 var controller_id
+var first_reload : bool = true
 
 @export_category("AkEvents")
 @export var player : Player
@@ -74,9 +75,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	
-	if player.is_reload_interruped == true:
-		Wwise.post_event("Reset_Reload", self)
-	
 	if player.is_running:
 		Wwise.set_state("player_stance", "sprint")
 	elif player.curr_posture == player.Posture.STAND:
@@ -111,7 +109,9 @@ func _on_reload_ui_try_succeeded() -> void:
 
 
 func _on_reload_ui_entered_reload() -> void:
-	reload.post_event()
+	if first_reload:
+		reload.post_event()
+		!first_reload
 
 func init_motion():
 	if Input.get_connected_joypads().is_empty() : return

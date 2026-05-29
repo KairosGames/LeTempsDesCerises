@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{13AB4265-6544-BFF6-4A04-0935CB751E78}">
+		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{24DE753C-5AA4-AC52-0914-AA90B0148D5C}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Cannon</ObjectPath>
 			<ShortName>Sb_Cannon</ShortName>
 			<Path>Sb_Cannon.bnk</Path>
@@ -87,6 +87,11 @@
 					<CachePath>68/{68F57E70-7D42-48E2-93C0-4ED7E8166DF6}.wem</CachePath>
 				</File>
 			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="508389284" Name="Meter (Custom)" ObjectPath="\Containers\SFX\Characters\NPC\Cannon\LTDC_Cannon_Shot_Oneshot\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{CC7B7A5A-8054-435A-B7CD-14B599EBA377}" LibName="Wwise Meter" LibId="8454147"/>
+				</Custom>
+			</Plugins>
 			<Events>
 				<Event Id="482738278" Name="Barricade_Damaged" ObjectPath="\Events\SFX\Barricade\Barricade_Damaged" GUID="{3D5106B6-DB52-4CAD-8B67-C5FA9BAE909C}" Color="10" DurationType="OneShot" DurationMin="2.8614166" DurationMax="2.8614166">
 					<MediaRefs>
@@ -132,6 +137,11 @@
 					<MediaRefs>
 						<MediaRef Id="891776346"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="508389284"/>
+						</Custom>
+					</PluginRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
 						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
@@ -153,5 +163,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{1E032321-7A6D-73E9-F8EC-5664F6714E0E}</FileHash>
+	<FileHash>{B799D024-5204-A241-02F3-B0DB18FA4D5A}</FileHash>
 </SoundBanksInfo>

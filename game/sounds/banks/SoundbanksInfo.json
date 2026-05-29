@@ -298,7 +298,7 @@
     "Type": "User",
     "GUID": "{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}",
     "Language": "SFX",
-    "Hash": "{9340C5A2-8B2F-2638-A5C7-ADA7DD4FEC37}",
+    "Hash": "{F6923210-8BD2-9660-86BE-FA5060A38CC0}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_NPC",
     "ShortName": "Sb_NPC",
     "Path": "Sb_NPC.bnk",
@@ -800,6 +800,43 @@
       ]
      },
      {
+      "Id": "3252427803",
+      "Name": "Ally_Shoot",
+      "ObjectPath": "\\Events\\VX\\Ally\\Ally_Shoot",
+      "GUID": "{A3F66230-1FF8-4047-8EEA-ABF4431B10E7}",
+      "Color": "11",
+      "MaxAttenuation": "200",
+      "DurationType": "OneShot",
+      "DurationMin": "1.7817974",
+      "DurationMax": "2.0586045",
+      "MediaRefs": [
+       {
+        "Id": "512603057"
+       },
+       {
+        "Id": "629537322"
+       },
+       {
+        "Id": "916788496"
+       },
+       {
+        "Id": "948386357"
+       },
+       {
+        "Id": "1026693139"
+       }
+      ],
+      "AuxBusRefs": [
+       {
+        "Id": "3189108374",
+        "Name": "SFX_Gunshot_Send",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Gunshot_Send",
+        "GUID": "{DE5FF445-1300-4435-9172-64B1CB7B0816}",
+        "Color": "10"
+       }
+      ]
+     },
+     {
       "Id": "3687575925",
       "Name": "Deafening_Recover",
       "ObjectPath": "\\Events\\SFX\\Player\\Deafening_Recover",
@@ -1078,7 +1115,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{AFDB471B-C97E-1B1F-79CA-893E9C15E614}",
+    "Hash": "{BB124911-31F2-7293-E6F8-32DB038FEECD}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -1119,18 +1156,18 @@
        "LibId": "8454147"
       },
       {
-       "Id": "292293286",
+       "Id": "288099940",
        "Name": "Parametric EQ (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\AMB\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
-       "GUID": "{0A47A387-8368-497D-A884-F854DF248E43}",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_NPC\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{2789B10C-C119-4E55-ADC9-22734A929676}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
       },
       {
-       "Id": "503399084",
+       "Id": "292293286",
        "Name": "Parametric EQ (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
-       "GUID": "{877D4A71-772A-44C9-8D2A-B08A8EDADE7D}",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\AMB\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{0A47A387-8368-497D-A884-F854DF248E43}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
       },
@@ -1163,6 +1200,14 @@
        "Name": "Parametric EQ (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_Player\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
        "GUID": "{0C25AD9E-4355-4060-B199-A712931C05E7}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
+      {
+       "Id": "822713401",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Player\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{7B3679D9-8791-4078-B349-B04B1359B269}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
       },
@@ -1232,6 +1277,13 @@
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_NPC",
       "GUID": "{C50F8E9D-E1E1-4B38-A0FA-27AA94AFC147}",
       "Color": "10",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "288099940"
+        }
+       ]
+      },
       "AuxBusRefs": [
        {
         "Id": "2635253023",
@@ -1247,6 +1299,13 @@
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Player",
       "GUID": "{1565B943-2767-465E-81AB-61E687ABF67E}",
       "Color": "10",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "822713401"
+        }
+       ]
+      },
       "AuxBusRefs": [
        {
         "Id": "2635253023",
@@ -1261,14 +1320,7 @@
       "Name": "SFX",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX",
       "GUID": "{8FE46C9B-4641-43D1-B739-F2D46260CC7F}",
-      "Color": "10",
-      "PluginRefs": {
-       "Custom": [
-        {
-         "Id": "503399084"
-        }
-       ]
-      }
+      "Color": "10"
      },
      {
       "Id": "1117531639",
@@ -1310,6 +1362,13 @@
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX",
       "GUID": "{E8C3D5DB-24D6-472C-93CA-D6BB12427941}",
       "Color": "11"
+     },
+     {
+      "Id": "1541696182",
+      "Name": "SFX_Cannon",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Cannon",
+      "GUID": "{A00DBD55-36EA-44AA-ADF0-55DEE40480F9}",
+      "Color": "10"
      },
      {
       "Id": "1551306167",
@@ -1413,6 +1472,12 @@
      }
     ],
     "GameParameters": [
+     {
+      "Id": "243460359",
+      "Name": "Cannon_Sidechain",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Cannon_Sidechain",
+      "GUID": "{79978E96-EE44-4536-A821-0932926129B4}"
+     },
      {
       "Id": "711096812",
       "Name": "Deafening",
@@ -2316,7 +2381,7 @@
     "Type": "User",
     "GUID": "{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}",
     "Language": "SFX",
-    "Hash": "{13AB4265-6544-BFF6-4A04-0935CB751E78}",
+    "Hash": "{24DE753C-5AA4-AC52-0914-AA90B0148D5C}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Cannon",
     "ShortName": "Sb_Cannon",
     "Path": "Sb_Cannon.bnk",
@@ -2482,6 +2547,18 @@
       "CachePath": "68/{68F57E70-7D42-48E2-93C0-4ED7E8166DF6}.wem"
      }
     ],
+    "Plugins": {
+     "Custom": [
+      {
+       "Id": "508389284",
+       "Name": "Meter (Custom)",
+       "ObjectPath": "\\Containers\\SFX\\Characters\\NPC\\Cannon\\LTDC_Cannon_Shot_Oneshot\\[Effect Slot [0]: (Meter)]\\Meter (Custom)",
+       "GUID": "{CC7B7A5A-8054-435A-B7CD-14B599EBA377}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      }
+     ]
+    },
     "Events": [
      {
       "Id": "482738278",
@@ -2609,6 +2686,13 @@
         "Id": "891776346"
        }
       ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "508389284"
+        }
+       ]
+      },
       "AuxBusRefs": [
        {
         "Id": "214837138",
@@ -2680,7 +2764,7 @@
     "Type": "User",
     "GUID": "{49827AFC-1442-4066-AF70-C2B0B3B40C86}",
     "Language": "SFX",
-    "Hash": "{8E475321-7191-5A57-BF9E-C47874FF6E5C}",
+    "Hash": "{C84CFA5B-2010-8259-6A31-5368DE830587}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Player",
     "ShortName": "Sb_Player",
     "Path": "Sb_Player.bnk",
@@ -3529,18 +3613,18 @@
        "LibId": "8454147"
       },
       {
-       "Id": "292293286",
+       "Id": "288099940",
        "Name": "Parametric EQ (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\AMB\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
-       "GUID": "{0A47A387-8368-497D-A884-F854DF248E43}",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_NPC\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{2789B10C-C119-4E55-ADC9-22734A929676}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
       },
       {
-       "Id": "503399084",
+       "Id": "292293286",
        "Name": "Parametric EQ (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
-       "GUID": "{877D4A71-772A-44C9-8D2A-B08A8EDADE7D}",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\AMB\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{0A47A387-8368-497D-A884-F854DF248E43}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
       },
@@ -3581,6 +3665,14 @@
        "Name": "Parametric EQ (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_Player\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
        "GUID": "{0C25AD9E-4355-4060-B199-A712931C05E7}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
+      {
+       "Id": "822713401",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Player\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{7B3679D9-8791-4078-B349-B04B1359B269}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
       },
@@ -4347,6 +4439,13 @@
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_NPC",
       "GUID": "{C50F8E9D-E1E1-4B38-A0FA-27AA94AFC147}",
       "Color": "10",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "288099940"
+        }
+       ]
+      },
       "AuxBusRefs": [
        {
         "Id": "2635253023",
@@ -4362,6 +4461,13 @@
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Player",
       "GUID": "{1565B943-2767-465E-81AB-61E687ABF67E}",
       "Color": "10",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "822713401"
+        }
+       ]
+      },
       "AuxBusRefs": [
        {
         "Id": "2635253023",
@@ -4376,14 +4482,7 @@
       "Name": "SFX",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX",
       "GUID": "{8FE46C9B-4641-43D1-B739-F2D46260CC7F}",
-      "Color": "10",
-      "PluginRefs": {
-       "Custom": [
-        {
-         "Id": "503399084"
-        }
-       ]
-      }
+      "Color": "10"
      },
      {
       "Id": "1117531639",
@@ -4425,6 +4524,13 @@
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX",
       "GUID": "{E8C3D5DB-24D6-472C-93CA-D6BB12427941}",
       "Color": "11"
+     },
+     {
+      "Id": "1541696182",
+      "Name": "SFX_Cannon",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Cannon",
+      "GUID": "{A00DBD55-36EA-44AA-ADF0-55DEE40480F9}",
+      "Color": "10"
      },
      {
       "Id": "1551306167",
@@ -4528,6 +4634,12 @@
      }
     ],
     "GameParameters": [
+     {
+      "Id": "243460359",
+      "Name": "Cannon_Sidechain",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Cannon_Sidechain",
+      "GUID": "{79978E96-EE44-4536-A821-0932926129B4}"
+     },
      {
       "Id": "711096812",
       "Name": "Deafening",
@@ -4695,6 +4807,6 @@
     ]
    }
   ],
-  "FileHash": "{31A7131E-97ED-5259-9B15-C72B4A5727E0}"
+  "FileHash": "{E7AAB273-5C3E-B8D9-72A7-06AB9C51FC1A}"
  }
 }

@@ -17,7 +17,6 @@ label = NodePath("Label3D")
 
 [node name="Shoot" type="AkEvent3D" parent="." unique_id=1491082347]
 event = ExtResource("1_wycht")
-stop_on = 3
 is_environment_aware = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4898686, 0)
 
@@ -48,6 +47,8 @@ outline_size = 32
 
 [node name="Bark" type="AkEvent3D" parent="." unique_id=2129268944]
 event = ExtResource("4_trdkh")
+stop_on = 3
+stop_fade_time = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
 
 [connection signal="audio_marker" from="Steps" to="." method="_on_steps_audio_marker"]

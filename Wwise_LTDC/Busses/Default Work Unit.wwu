@@ -22,13 +22,125 @@
 											<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 										</Reference>
 									</ReferenceList>
-								</Bus>
-								<Bus Name="SFX_NPC" ID="{C50F8E9D-E1E1-4B38-A0FA-27AA94AFC147}">
-									<ReferenceList>
-										<Reference Name="UserAuxSend0">
-											<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{49485DA3-1285-4B49-A779-64FDF737F182}" ShortID="897651011">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Parametric EQ (Custom)" ID="{7B3679D9-8791-4078-B349-B04B1359B269}" ShortID="822713401" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																<PropertyList>
+																	<Property Name="FilterTypeBand3" Type="int32" Value="0"/>
+																	<Property Name="FrequencyBand3" Type="Real32" Value="20000"/>
+																	<Property Name="OnOffBand3" Type="bool" Value="True"/>
+																	<Property Name="RolloffRateBand3" Type="int32" Value="24"/>
+																</PropertyList>
+																<ObjectLists>
+																	<ObjectList Name="RTPC">
+																		<RTPC Name="" ID="{E2730D53-2260-4C99-82EF-782634D6ED5C}" ShortID="220691136">
+																			<PropertyList>
+																				<Property Name="PropertyName" Type="string" Value="FrequencyBand3"/>
+																			</PropertyList>
+																			<ReferenceList>
+																				<Reference Name="ControlInput">
+																					<ObjectRef Name="Sidechain" ID="{85DB9D89-EF22-4542-95A6-10D2B8BE9341}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																				</Reference>
+																				<Reference Name="Curve">
+																					<Custom>
+																						<Curve Name="" ID="{A34C5237-9C3F-472F-A010-0F20ACC3F2E9}">
+																							<PropertyList>
+																								<Property Name="Flags" Type="int32" Value="5"/>
+																							</PropertyList>
+																							<PointList>
+																								<Point>
+																									<XPos>-48</XPos>
+																									<YPos>20000</YPos>
+																									<Flags>5</Flags>
+																								</Point>
+																								<Point>
+																									<XPos>0</XPos>
+																									<YPos>1000</YPos>
+																									<Flags>37</Flags>
+																								</Point>
+																							</PointList>
+																						</Curve>
+																					</Custom>
+																				</Reference>
+																			</ReferenceList>
+																		</RTPC>
+																		<RTPC Name="" ID="{A424D29C-A160-4CEF-8801-E4A174949E6B}" ShortID="274005951">
+																			<PropertyList>
+																				<Property Name="PropertyName" Type="string" Value="OutputLevel"/>
+																			</PropertyList>
+																			<ReferenceList>
+																				<Reference Name="ControlInput">
+																					<ObjectRef Name="Sidechain" ID="{85DB9D89-EF22-4542-95A6-10D2B8BE9341}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																				</Reference>
+																				<Reference Name="Curve">
+																					<Custom>
+																						<Curve Name="" ID="{D3288A8E-7370-4BE0-BED2-12032F0C1FDF}">
+																							<PropertyList>
+																								<Property Name="Flags" Type="int32" Value="3"/>
+																							</PropertyList>
+																							<PointList>
+																								<Point>
+																									<XPos>-48</XPos>
+																									<YPos>0</YPos>
+																									<Flags>5</Flags>
+																								</Point>
+																								<Point>
+																									<XPos>0</XPos>
+																									<YPos>-30</YPos>
+																									<Flags>37</Flags>
+																								</Point>
+																							</PointList>
+																						</Curve>
+																					</Custom>
+																				</Reference>
+																			</ReferenceList>
+																		</RTPC>
+																	</ObjectList>
+																</ObjectLists>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+										<ObjectList Name="RTPC">
+											<RTPC Name="" ID="{86867A60-E719-4187-9ACD-438C04937D82}" ShortID="662793247">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="Cannon_Sidechain" ID="{79978E96-EE44-4536-A821-0932926129B4}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{E4744CB2-3C4E-4A27-A28C-B41FF4082F51}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>-48</XPos>
+																		<YPos>-0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-20</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</ObjectList>
+									</ObjectLists>
 								</Bus>
 								<AuxBus Name="SFX_Gunshot_Send" ID="{DE5FF445-1300-4435-9172-64B1CB7B0816}">
 									<ObjectLists>
@@ -68,92 +180,135 @@
 										</ObjectList>
 									</ObjectLists>
 								</AuxBus>
+								<Bus Name="SFX_Cannon" ID="{A00DBD55-36EA-44AA-ADF0-55DEE40480F9}"/>
+								<Bus Name="SFX_NPC" ID="{C50F8E9D-E1E1-4B38-A0FA-27AA94AFC147}">
+									<ReferenceList>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{D4E30DCA-E96B-4BDA-8D00-4759937318B6}" ShortID="237064877">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Parametric EQ (Custom)" ID="{2789B10C-C119-4E55-ADC9-22734A929676}" ShortID="288099940" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																<PropertyList>
+																	<Property Name="FilterTypeBand3" Type="int32" Value="0"/>
+																	<Property Name="FrequencyBand3" Type="Real32" Value="20000"/>
+																	<Property Name="OnOffBand3" Type="bool" Value="True"/>
+																	<Property Name="RolloffRateBand3" Type="int32" Value="24"/>
+																</PropertyList>
+																<ObjectLists>
+																	<ObjectList Name="RTPC">
+																		<RTPC Name="" ID="{D50D92EB-EA33-4AE3-91E3-4AA284FD1977}" ShortID="703624665">
+																			<PropertyList>
+																				<Property Name="PropertyName" Type="string" Value="FrequencyBand3"/>
+																			</PropertyList>
+																			<ReferenceList>
+																				<Reference Name="ControlInput">
+																					<ObjectRef Name="Sidechain" ID="{85DB9D89-EF22-4542-95A6-10D2B8BE9341}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																				</Reference>
+																				<Reference Name="Curve">
+																					<Custom>
+																						<Curve Name="" ID="{F44BF912-45EF-456B-A382-E214E044B660}">
+																							<PropertyList>
+																								<Property Name="Flags" Type="int32" Value="5"/>
+																							</PropertyList>
+																							<PointList>
+																								<Point>
+																									<XPos>-48</XPos>
+																									<YPos>20000</YPos>
+																									<Flags>5</Flags>
+																								</Point>
+																								<Point>
+																									<XPos>0</XPos>
+																									<YPos>1000</YPos>
+																									<Flags>37</Flags>
+																								</Point>
+																							</PointList>
+																						</Curve>
+																					</Custom>
+																				</Reference>
+																			</ReferenceList>
+																		</RTPC>
+																		<RTPC Name="" ID="{F94D4885-8FC0-4E90-BB5A-4C0723A31F76}" ShortID="417561291">
+																			<PropertyList>
+																				<Property Name="PropertyName" Type="string" Value="OutputLevel"/>
+																			</PropertyList>
+																			<ReferenceList>
+																				<Reference Name="ControlInput">
+																					<ObjectRef Name="Sidechain" ID="{85DB9D89-EF22-4542-95A6-10D2B8BE9341}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																				</Reference>
+																				<Reference Name="Curve">
+																					<Custom>
+																						<Curve Name="" ID="{5A562F45-9F89-40B9-8440-AF66D7DCA081}">
+																							<PropertyList>
+																								<Property Name="Flags" Type="int32" Value="3"/>
+																							</PropertyList>
+																							<PointList>
+																								<Point>
+																									<XPos>-48</XPos>
+																									<YPos>0</YPos>
+																									<Flags>5</Flags>
+																								</Point>
+																								<Point>
+																									<XPos>0</XPos>
+																									<YPos>-30</YPos>
+																									<Flags>37</Flags>
+																								</Point>
+																							</PointList>
+																						</Curve>
+																					</Custom>
+																				</Reference>
+																			</ReferenceList>
+																		</RTPC>
+																	</ObjectList>
+																</ObjectLists>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+										<ObjectList Name="RTPC">
+											<RTPC Name="" ID="{7653FA5A-0565-410D-9D26-0A64C73CB6D5}" ShortID="303455348">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="Volume"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="Cannon_Sidechain" ID="{79978E96-EE44-4536-A821-0932926129B4}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{343320D1-9ABA-408F-A9B3-C2258421F399}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>-48</XPos>
+																		<YPos>-0</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-20</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</ObjectList>
+									</ObjectLists>
+								</Bus>
 							</ChildrenList>
 							<ObjectLists>
-								<ObjectList Name="Effects">
-									<EffectSlot Name="" ID="{7868A633-61B5-4E19-8C9F-5F00A78219D7}" ShortID="524605825">
-										<ReferenceList>
-											<Reference Name="Effect">
-												<Custom>
-													<Effect Name="Parametric EQ (Custom)" ID="{877D4A71-772A-44C9-8D2A-B08A8EDADE7D}" ShortID="503399084" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-														<PropertyList>
-															<Property Name="FilterTypeBand3" Type="int32" Value="0"/>
-															<Property Name="FrequencyBand3" Type="Real32" Value="20000"/>
-															<Property Name="OnOffBand3" Type="bool" Value="True"/>
-															<Property Name="RolloffRateBand3" Type="int32" Value="24"/>
-														</PropertyList>
-														<ObjectLists>
-															<ObjectList Name="RTPC">
-																<RTPC Name="" ID="{DFC96EF0-D3F6-4983-98B6-19BCB3BFA4BB}" ShortID="114267849">
-																	<PropertyList>
-																		<Property Name="PropertyName" Type="string" Value="FrequencyBand3"/>
-																	</PropertyList>
-																	<ReferenceList>
-																		<Reference Name="ControlInput">
-																			<ObjectRef Name="Sidechain" ID="{85DB9D89-EF22-4542-95A6-10D2B8BE9341}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
-																		</Reference>
-																		<Reference Name="Curve">
-																			<Custom>
-																				<Curve Name="" ID="{DD1FF79D-5F4E-421F-A7CE-EC7421A0C294}">
-																					<PropertyList>
-																						<Property Name="Flags" Type="int32" Value="5"/>
-																					</PropertyList>
-																					<PointList>
-																						<Point>
-																							<XPos>-48</XPos>
-																							<YPos>20000</YPos>
-																							<Flags>5</Flags>
-																						</Point>
-																						<Point>
-																							<XPos>0</XPos>
-																							<YPos>1000</YPos>
-																							<Flags>37</Flags>
-																						</Point>
-																					</PointList>
-																				</Curve>
-																			</Custom>
-																		</Reference>
-																	</ReferenceList>
-																</RTPC>
-																<RTPC Name="" ID="{A58278F5-ECBB-4C18-8B16-4AEDD5E1CBFA}" ShortID="301314630">
-																	<PropertyList>
-																		<Property Name="PropertyName" Type="string" Value="OutputLevel"/>
-																	</PropertyList>
-																	<ReferenceList>
-																		<Reference Name="ControlInput">
-																			<ObjectRef Name="Sidechain" ID="{85DB9D89-EF22-4542-95A6-10D2B8BE9341}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
-																		</Reference>
-																		<Reference Name="Curve">
-																			<Custom>
-																				<Curve Name="" ID="{78826AD0-6402-429D-9147-5855F2F1E57A}">
-																					<PropertyList>
-																						<Property Name="Flags" Type="int32" Value="3"/>
-																					</PropertyList>
-																					<PointList>
-																						<Point>
-																							<XPos>-48</XPos>
-																							<YPos>0</YPos>
-																							<Flags>5</Flags>
-																						</Point>
-																						<Point>
-																							<XPos>0</XPos>
-																							<YPos>-30</YPos>
-																							<Flags>37</Flags>
-																						</Point>
-																					</PointList>
-																				</Curve>
-																			</Custom>
-																		</Reference>
-																	</ReferenceList>
-																</RTPC>
-															</ObjectList>
-														</ObjectLists>
-													</Effect>
-												</Custom>
-											</Reference>
-										</ReferenceList>
-									</EffectSlot>
-								</ObjectList>
 								<ObjectList Name="RTPC">
 									<RTPC Name="" ID="{87F587B3-D8B3-4BAB-AD9A-8FD54D59E92D}" ShortID="422672250">
 										<PropertyList>
@@ -529,6 +684,37 @@
 															<Point>
 																<XPos>100</XPos>
 																<YPos>80</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+									<RTPC Name="" ID="{51E7F624-1EF5-44C4-9B1D-5CCAE1D26952}" ShortID="647046565">
+										<PropertyList>
+											<Property Name="PropertyName" Type="string" Value="Volume"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="Cannon_Sidechain" ID="{79978E96-EE44-4536-A821-0932926129B4}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{D7E3AD09-8ED1-4E7A-B851-E6091D298FBF}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>-48</XPos>
+																<YPos>-0</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-20</YPos>
 																<Flags>37</Flags>
 															</Point>
 														</PointList>
