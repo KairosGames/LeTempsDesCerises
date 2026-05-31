@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://nx5kmjw8laiy"]
 
-[ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/managers/game_manager.tscn" id="1_cppqq"]
-[ext_resource type="PackedScene" uid="uid://ctinark3l27ws" path="res://prefabs/managers/effects_manager.tscn" id="2_yb0o8"]
+[ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/Managers/game_manager.tscn" id="1_cppqq"]
+[ext_resource type="PackedScene" uid="uid://ctinark3l27ws" path="res://prefabs/Managers/effects_manager.tscn" id="2_yb0o8"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_wvsj3"]
 [ext_resource type="PackedScene" uid="uid://cowhe7krsng37" path="res://scenes/game_design_scene.tscn" id="4_v5jej"]
 [ext_resource type="PackedScene" uid="uid://cfj1xeyr6n64c" path="res://sounds/prefabs/music_emitter.tscn" id="6_wvsj3"]
+[ext_resource type="WwiseEvent" uid="uid://bdemm5t2ie2yc" path="res://Wwise/resources/Event/{82175BA3-289F-4BFE-B1DC-56C8BFD14012}.tres" id="7_uev6j"]
+[ext_resource type="WwiseBank" uid="uid://ngbvlid2bx0m" path="res://Wwise/resources/SoundBank/{DFB0A60C-AE39-4F70-A779-508046776C1C}.tres" id="7_v5jej"]
+[ext_resource type="WwiseRTPC" uid="uid://j6nwqrio2spm" path="res://Wwise/resources/Game Parameter/{B964DDEA-0965-4408-B8D1-10C1D71136BB}.tres" id="8_4ro70"]
+[ext_resource type="WwiseRTPC" uid="uid://cijw0oxal4nt7" path="res://Wwise/resources/Game Parameter/{6265CC32-EB32-48B5-A910-7A5CCA21E939}.tres" id="9_ysp4r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o0uso"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -43,43 +47,26 @@ shadow_enabled = true
 [node name="GameDesignScene" parent="." unique_id=1256367080 instance=ExtResource("4_v5jej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015010834, 1.9073486e-06, 0.027700424)
 
-[node name="Music_EmitterAtea" parent="." unique_id=483744097 instance=ExtResource("6_wvsj3")]
+[node name="AkBank" type="AkBank" parent="." unique_id=631793135]
+bank = ExtResource("7_v5jej")
+load_on = 1
+unload_on = 3
+
+[node name="Music_Emitter" parent="." unique_id=483744097 instance=ExtResource("6_wvsj3")]
+event = ExtResource("7_uev6j")
+stop_on = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.435648, 6.0368752, -6.7866716)
 Distance_scale = 50
+DistScale = ExtResource("8_4ro70")
+IsPlay = ExtResource("9_ysp4r")
 Is_playing = 100.0
 
-[node name="Music_EmitterHugo" parent="." unique_id=1422198211 instance=ExtResource("6_wvsj3")]
+[node name="Music_Emitter2" parent="." unique_id=1422198211 instance=ExtResource("6_wvsj3")]
+event = ExtResource("7_uev6j")
+stop_on = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.119455, 2.7690005, -2.1813154)
 Voice_sel = "Solo_Hugo"
 Distance_scale = 50
-Enter_at = "C1-1"
-
-[node name="Music_EmitterG3" parent="." unique_id=2043314176 instance=ExtResource("6_wvsj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.55578, 2.9555025, 24.16666)
-Voice_sel = "G3"
-Distance_scale = 70
-Enter_at = "R3"
-
-[node name="Music_EmitterG2" parent="." unique_id=254096901 instance=ExtResource("6_wvsj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.326637, 3.633563, 26.607632)
-Voice_sel = "G2"
-Distance_scale = 70
-Enter_at = "R2"
-
-[node name="Music_EmitterWania" parent="." unique_id=350465865 instance=ExtResource("6_wvsj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.610508, 3.420083, -6.949461)
-Voice_sel = "Solo_Wania"
-Distance_scale = 68
-Enter_at = "C2-1"
-
-[node name="Music_EmitterYdris" parent="." unique_id=520670118 instance=ExtResource("6_wvsj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9649096, 9.159113, 13.552745)
-Voice_sel = "Solo_Ydris"
-Distance_scale = 98
-Enter_at = "C3-1"
-
-[node name="Music_EmitterTambour" parent="." unique_id=1153388421 instance=ExtResource("6_wvsj3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.307453, 1.1908784, 22.417318)
-Voice_sel = "Tambour"
-Distance_scale = 70
-Enter_at = "C1-1"
+DistScale = ExtResource("8_4ro70")
+IsPlay = ExtResource("9_ysp4r")
+Enter_at = "C1"
