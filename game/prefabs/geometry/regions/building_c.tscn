@@ -63,6 +63,18 @@ transform_format = 1
 [sub_resource type="MultiMesh" id="MultiMesh_h5yb3"]
 transform_format = 1
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gs8wv"]
+size = Vector3(1.8286133, 10.981812, 3.980713)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_766td"]
+size = Vector3(1.9152832, 15.11969, 73.71475)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q8yag"]
+size = Vector3(1.9152832, 15.11969, 73.71475)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_slcrk"]
+size = Vector3(4.253479, 15.11969, 50.017067)
+
 [node name="BuildingC" type="Node3D" unique_id=426587762]
 
 [node name="BuildingC" parent="." unique_id=330346715 instance=ExtResource("1_6da71")]
@@ -4648,3 +4660,25 @@ mesh = ExtResource("34_iq3c4")
 [node name="RoofAHalf5" type="MeshInstance3D" parent="RoofAHalf" unique_id=871799428]
 transform = Transform3D(-0.1736482, 0, -0.9848077, 0, 1, 0, 0.9848077, 0, -0.1736482, 44.992355, 14.199995, -22.69691)
 mesh = ExtResource("34_iq3c4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=602005939]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1162272396]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 27.376709, 4.990906, -8.905184)
+shape = SubResource("BoxShape3D_gs8wv")
+debug_color = Color(0, 0.6392157, 0.38039216, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=177484724]
+transform = Transform3D(0.52659976, 0, -0.85011333, 0, 1, 0, 0.85011333, 0, 0.52659976, 57.118908, 7.059845, -28.874743)
+shape = SubResource("BoxShape3D_766td")
+debug_color = Color(0, 0.6392157, 0.38039216, 1)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=1469732262]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 64.6499, 7.059845, -7.678772)
+shape = SubResource("BoxShape3D_q8yag")
+debug_color = Color(0, 0.6392157, 0.38039216, 1)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1734944031]
+transform = Transform3D(0.52659976, 0, -0.85011333, 0, 1, 0, 0.85011333, 0, 0.52659976, 66.2836, 7.059845, -36.580433)
+shape = SubResource("BoxShape3D_slcrk")
+debug_color = Color(0, 0.6392157, 0.38039216, 1)
