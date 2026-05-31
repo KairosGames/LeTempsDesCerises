@@ -3,7 +3,7 @@ class_name ButtonBehavior extends Button
 @export var hover_multiplier: float = 1.15
 @export var button_type: Type = Type.SIZE
 
-enum Type {SCALE, SIZE}
+enum Type { SCALE, SIZE }
 
 var start: Vector2
 

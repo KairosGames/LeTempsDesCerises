@@ -1,8 +1,6 @@
 class_name GameManager extends Node
 
 @onready var player_spawner: CustomMarker = %PlayerSpawner
-@onready var pause_container: CenterContainer = %PauseContainer
-
 
 @export_category("Settings")
 @export var use_narrative: bool = true
@@ -16,6 +14,7 @@ class_name GameManager extends Node
 @export var all_states: Array[GameState]
 
 var player: Player
+var ui_manager: UIManager
 var curr_state: GameState
 var game_state_index: int = -1
 
@@ -32,12 +31,12 @@ static var instance: GameManager:
 
 func _ready() -> void:
 	instance = self
-	pause_container.visible = false
 	if canon: canon.shoot.connect(handle_canon_shoot)
 	ready_deferred.call_deferred()
 
 
 func ready_deferred() -> void:
+	if UIManager.instance: ui_manager = UIManager.instance
 	spawn_player_if_needed()
 	set_run()
 
@@ -89,8 +88,7 @@ func go_next_state() -> void:
 func handle_pause_menu() -> void:
 	if Input.is_action_just_pressed("pause"):
 		is_in_pause = not is_in_pause
-		pause_container.visible = is_in_pause
-		if not player.p_inputs.is_gamepad: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if is_in_pause else Input.MOUSE_MODE_CAPTURED
+		ui_manager.enter_pause(is_in_pause)
 		var targ: float = 0.0 if is_in_pause else 1.0
 		if pause_twn: pause_twn.kill()
 		pause_twn = create_tween()
