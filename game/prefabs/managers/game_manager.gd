@@ -1,6 +1,8 @@
 class_name GameManager extends Node
 
-@onready var player_spawner: CustomMaker = %PlayerSpawner
+@onready var player_spawner: CustomMarker = %PlayerSpawner
+@onready var pause_container: CenterContainer = %PauseContainer
+
 
 @export_category("Settings")
 @export var use_narrative: bool = true
@@ -17,6 +19,10 @@ var player: Player
 var curr_state: GameState
 var game_state_index: int = -1
 
+var is_in_pause: bool = false
+
+var pause_twn: Tween
+
 static var active_fight_area: FightArea
 static var instance: GameManager:
 	set(value):
@@ -26,6 +32,7 @@ static var instance: GameManager:
 
 func _ready() -> void:
 	instance = self
+	pause_container.visible = false
 	if canon: canon.shoot.connect(handle_canon_shoot)
 	ready_deferred.call_deferred()
 
@@ -33,6 +40,10 @@ func _ready() -> void:
 func ready_deferred() -> void:
 	spawn_player_if_needed()
 	set_run()
+
+
+func _process(_delta: float) -> void:
+	handle_pause_menu()
 
 
 func spawn_player_if_needed() -> void:
@@ -73,6 +84,22 @@ func go_next_state() -> void:
 	curr_state.completed.connect(go_next_state)
 	curr_state.is_active = true
 	curr_state.enter()
+
+
+func handle_pause_menu() -> void:
+	if Input.is_action_just_pressed("pause"):
+		is_in_pause = not is_in_pause
+		pause_container.visible = is_in_pause
+		if not player.p_inputs.is_gamepad: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if is_in_pause else Input.MOUSE_MODE_CAPTURED
+		var targ: float = 0.0 if is_in_pause else 1.0
+		if pause_twn: pause_twn.kill()
+		pause_twn = create_tween()
+		pause_twn.set_ignore_time_scale(true)
+		pause_twn.tween_property(Engine, "time_scale", targ, 0.37)
+
+
+func is_game_playing() -> bool:
+	return not is_in_pause
 
 
 func handle_canon_shoot() -> void:

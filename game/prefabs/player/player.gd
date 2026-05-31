@@ -328,7 +328,7 @@ func set_context(delta: float) -> void:
 	stop_run = input_dir.y <= 0.0 or abs(input_dir.x) > 0.71 or input_dir.length() < gpad_mini_run_length
 	is_moving_side = abs(input_dir.x) > 0.70
 	local_velocity = global_basis.inverse() * velocity
-	view_yaw_speed = angle_difference(prev_view_yaw, rotation.y) / delta
+	view_yaw_speed = angle_difference(prev_view_yaw, rotation.y) / max(0.0001, delta)
 	prev_view_yaw = rotation.y
 	if Input.is_action_just_released("run"): wait_run_release = false
 	if Input.is_action_just_released("aim"): wait_aim_release = false

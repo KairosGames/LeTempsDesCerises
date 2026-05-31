@@ -3,16 +3,16 @@ class_name GameState00 extends GameState
 signal first_fire_from_barricade
 signal fire_kill_georges
 
-@onready var georges_rdv: CustomMaker = %GeorgesRDV
+@onready var georges_rdv: CustomMarker = %GeorgesRDV
 @onready var georges: Npc = %Georges
-@onready var barricade_point: CustomMaker = %BarricadePoint
+@onready var barricade_point: CustomMarker = %BarricadePoint
 
 
 func enter() -> void:
 	curr_step = 0
 	steps = [
-		Step.new(set_player_for_onboarding, wait_voice, get_up),
-		#Step.new(set_player_for_onboarding, func():player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN), get_up),
+		Step.new(set_player_for_onboarding, func():player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN), get_up),
+		#Step.new(set_player_for_onboarding, wait_voice, get_up),
 		Step.new(go_for_georges, wait_voice, take_weapon),
 		Step.new(wait_voice, wait_player_crouch, do_nothing),
 		Step.new(wait_voice, wait_player_prone, do_nothing),
@@ -30,16 +30,16 @@ func exit() -> void:
 
 
 func set_player_for_onboarding() -> void:
-	var spawn: CustomMaker = game_manager.player_spawner
+	var spawn: CustomMarker = game_manager.player_spawner
 	player.initiate(spawn.global_position, spawn.global_rotation, false, false, Player.Posture.PRONE)
 	player.set_is_free(false)
 	player.aim_target.x = -70.0
 
 
 func get_up() -> void:
-	await wait(1.0)
-	await player.blink_effect.open_eyes_from_sleep()
-	await wait(2.0)
+	#await wait(1.0)
+	#await player.blink_effect.open_eyes_from_sleep()
+	#await wait(2.0)
 	var twn: Tween = create_tween()
 	twn.tween_property(player, "aim_target:x", 0.0, 0.7)
 	player.play_cam_landing_effect(-0.2, 30.0, 1.0)
@@ -75,23 +75,31 @@ func take_weapon() -> void:
 
 
 func wait_player_crouch() -> void:
+	handle_action_tooltip("crouch")
 	await wait_until_or_signal(func(): return Input.is_action_just_pressed("crouch"), player.p_inputs.gpad_crouch_pressed)
 	player.crouch_to_stand(true)
+	free_tool_tip()
 
 
 func wait_player_prone() -> void:
+	handle_action_tooltip("prone")
 	await wait_until_or_signal(func(): return Input.is_action_just_pressed("prone"), player.p_inputs.gpad_ask_prone)
 	player.prone_to_crouch(true)
+	free_tool_tip()
 
 
 func wait_player_stand() -> void:
+	handle_action_tooltip("stand")
 	await wait_until_or_signal(func(): return Input.is_action_just_pressed("prone"), player.p_inputs.gpad_ask_prone)
 	player.prone_to_stand()
+	free_tool_tip()
 
 
 func wait_player_aim() -> void:
+	handle_action_tooltip("aim")
 	player.can_use_aim = true
 	await wait_until(func(): return Input.is_action_just_pressed("aim"))
+	free_tool_tip()
 	player.can_quit_aim = false
 	add_on_process(block_ads_concentration.bind(2.5))
 	await wait_voice()
@@ -105,6 +113,7 @@ func free_changing_posture() -> void:
 
 
 func open_player_view() -> void:
+	handle_action_tooltip("view")
 	player.can_use_view = true
 	player.can_quit_aim = true
 	if player.p_inputs.is_gamepad and not Input.is_action_just_pressed("aim"):
@@ -115,10 +124,14 @@ func open_player_view() -> void:
 		player.switch_aim_state()
 	add_on_process(clamp_view.bind(player.aim_target, 30.0, 30.0))
 	await wait_voice()
+	free_tool_tip()
 
 
 func wait_player_shoot()-> void:
+	handle_action_tooltip("shoot")
+	add_on_process(process_shoot_tooltip, true)
 	await wait_until(is_player_shooting_target)
+	free_tool_tip()
 	player.tried_shoot_no_reload.emit()
 	if player.is_aiming and not player.p_inputs.is_gamepad:
 		player.is_aiming = false
@@ -133,21 +146,32 @@ func is_player_shooting_target() -> bool:
 	return obj is ShootTarget and Input.is_action_just_pressed("shoot")
 
 
+func process_shoot_tooltip() -> void:
+	var obj: Object = player.weapon_ray_cast.get_collider()
+	ui_manager.tooltip.display(obj and obj is ShootTarget)
+
+
 func free_player_view() -> void:
 	clean_process()
 
 
 func wait_player_enter_reload() -> void:
+	handle_action_tooltip("reload")
 	await wait_until(func(): return Input.is_action_just_pressed("reload"))
 	player.enter_reload()
+	free_tool_tip()
 	player.reload_ui.is_tutorial = true
 	await wait_voice()
+	handle_action_tooltip("open_bolt")
 	add_on_process(func(): if Input.is_action_just_pressed("reload"): player.reload_ui.try_qte())
 	await wait_until(func(): return player.reload_ui.step == 2)
+	free_tool_tip()
 	clean_process()
 	await wait_voice()
+	handle_action_tooltip("close_bolt")
 	add_on_process(func(): if Input.is_action_just_pressed("reload"): player.reload_ui.try_qte())
 	await wait_until(func(): return player.is_weapon_loaded)
+	free_tool_tip()
 	player.reload_ui.is_tutorial = false
 	clean_process()
 	player.can_use_reload = true

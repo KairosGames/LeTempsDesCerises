@@ -2,18 +2,122 @@
 
 [ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://prefabs/managers/game_manager.gd" id="1_utpm8"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="2_oroiu"]
+[ext_resource type="Script" uid="uid://c5krjyeui5vq" path="res://prefabs/managers/ui_manager.gd" id="3_eijdo"]
 [ext_resource type="PackedScene" uid="uid://beech0hdhe6o0" path="res://prefabs/game_states/game_state_00.tscn" id="3_mvb55"]
+[ext_resource type="Script" uid="uid://nxby0mkl27i5" path="res://prefabs/ui/tooltip.gd" id="4_cvqlx"]
 [ext_resource type="PackedScene" uid="uid://7j15kus7g3jt" path="res://prefabs/game_states/game_state_01.tscn" id="4_ljy1t"]
 [ext_resource type="PackedScene" uid="uid://h0dft4mcr3qp" path="res://prefabs/game_states/gm_usables/custom_marker.tscn" id="4_ruyh4"]
 [ext_resource type="PackedScene" uid="uid://qwhdtvmxif5t" path="res://prefabs/game_states/game_state_02.tscn" id="5_m6g67"]
+[ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="5_rmfoy"]
 [ext_resource type="PackedScene" uid="uid://x6umueunebab" path="res://prefabs/game_states/gm_usables/shoot_target.tscn" id="5_vkqci"]
 [ext_resource type="PackedScene" uid="uid://dn5y2en06sd76" path="res://prefabs/npc/npc.tscn" id="6_2cgp0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvqlx"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_eijdo"]
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmfoy"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [node name="GameManager" type="Node" unique_id=1070764289 node_paths=PackedStringArray("all_states")]
 script = ExtResource("1_utpm8")
 use_narrative = false
 player_prefab = ExtResource("2_oroiu")
 all_states = [NodePath("States/GameState00"), NodePath("States/GameState01"), NodePath("States/GameState02")]
+
+[node name="UIManager" type="Control" parent="." unique_id=430990409]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_eijdo")
+
+[node name="TooltipContainer" type="CenterContainer" parent="UIManager" unique_id=156249013]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -272.0
+offset_right = 192.0
+offset_bottom = -218.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Tooltip" type="PanelContainer" parent="UIManager/TooltipContainer" unique_id=876765785]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "
+"
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvqlx")
+script = ExtResource("4_cvqlx")
+
+[node name="TipLabel" type="Label" parent="UIManager/TooltipContainer/Tooltip" unique_id=613230358]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PRESS <INPUT>  TO <ACTION>"
+label_settings = SubResource("LabelSettings_eijdo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseContainer" type="CenterContainer" parent="UIManager" unique_id=49054125]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PanelContainer" type="PanelContainer" parent="UIManager/PauseContainer" unique_id=456973355]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rmfoy")
+
+[node name="Buttons" type="VBoxContainer" parent="UIManager/PauseContainer" unique_id=2052351423]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Options" type="Button" parent="UIManager/PauseContainer/Buttons" unique_id=923722221]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Options"
+script = ExtResource("5_rmfoy")
+
+[node name="Quit" type="Button" parent="UIManager/PauseContainer/Buttons" unique_id=621774024]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+script = ExtResource("5_rmfoy")
 
 [node name="States" type="Node" parent="." unique_id=103955825]
 

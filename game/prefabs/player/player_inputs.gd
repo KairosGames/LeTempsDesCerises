@@ -53,8 +53,6 @@ func _input(event: InputEvent) -> void:
 		is_gamepad = true
 	if event is InputEventMouseMotion:
 		aim_vec_mouse = event.relative * (sensi_aiming if is_aiming else sensi_default) * mouse_aim_reducer
-	if event is InputEventKey and event.is_pressed() and event.keycode == KEY_ESCAPE:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE
 
 
 func _process(delta: float) -> void:

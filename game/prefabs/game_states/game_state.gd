@@ -1,7 +1,10 @@
 @abstract class_name GameState extends Node
 
+signal voice_line_called(index: int)
 @warning_ignore("unused_signal") signal completed
 @warning_ignore("unused_signal") signal voice_line_finished
+
+@onready var ui_manager: UIManager = %UIManager
 
 @abstract func enter() -> void
 @abstract func exit() -> void
@@ -14,9 +17,11 @@ var game_manager: GameManager
 var eff_manager: EffectsManager
 var player: Player
 var on_process: Array[Callable]
+var on_ui_process: Array[Callable]
 var delta_t: float
 var voice_line_index: int = -1
 var local_bool: bool
+var was_gpad: bool
 
 
 func _ready() -> void:
@@ -33,7 +38,8 @@ func _process(delta: float) -> void:
 	if not is_active: return
 	delta_t = delta
 	for callable: Callable in on_process: callable.call()
-	if Input.is_action_just_pressed("go_next_step"):
+	for callable: Callable in on_ui_process: callable.call()
+	if Input.is_action_just_pressed("go_next_step") and game_manager.is_game_playing():
 		print("NEXT CALLED")
 		voice_line_finished.emit()
 
@@ -55,7 +61,10 @@ func do_nothing(_p: float = 0.0) -> void:
 	pass
 
 
-func add_on_process(callable: Callable) -> void:
+func add_on_process(callable: Callable, is_ui: bool = false) -> void:
+	if is_ui:
+		on_ui_process.push_back(callable)
+		return
 	on_process.push_back(callable)
 
 
@@ -63,12 +72,16 @@ func clean_process() -> void:
 	on_process.clear()
 
 
+func clean_ui_process() -> void:
+	on_ui_process.clear()
+
+
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
 
 func wait_until(condition: Callable) -> void:
-	while not condition.call():
+	while not condition.call() or not game_manager.is_game_playing():
 		await get_tree().process_frame
 
 
@@ -78,14 +91,20 @@ func wait_signal(signal_to_wait: Signal) -> void:
 
 func wait_until_or_signal(condition: Callable, signal_to_wait: Signal) -> void:
 	local_bool = false
-	signal_to_wait.connect(func(): local_bool = true, CONNECT_ONE_SHOT)
+	signal_to_wait.connect(set_local_bool)
 	while not local_bool:
-		local_bool = condition.call()
+		local_bool = condition.call() and game_manager.is_game_playing()
 		await get_tree().process_frame
+	signal_to_wait.disconnect(set_local_bool)
+
+
+func set_local_bool() -> void:
+	local_bool = game_manager.is_game_playing()
 
 
 func wait_voice() -> void:
 	voice_line_index += 1
+	voice_line_called.emit(voice_line_index)
 	print("WAIT VOICE LINE")
 	await voice_line_finished
 
@@ -124,3 +143,21 @@ func block_ads_concentration(t: float) -> void:
 func clamp_view(center: Vector3, pitch_max: float, yaw_max) -> void:
 	player.aim_target.y = clamp(player.aim_target.y, center.y - pitch_max, center.y + pitch_max)
 	player.aim_target.x = clamp(player.aim_target.x, center.x - yaw_max, center.x + yaw_max)
+
+
+func handle_action_tooltip(action: String) -> void:
+	was_gpad = player.p_inputs.is_gamepad
+	ui_manager.tooltip.set_label(action, was_gpad)
+	add_on_process(process_tooltip_display.bind(action), true)
+	ui_manager.tooltip.display(true)
+
+
+func process_tooltip_display(action: String) -> void:
+	if was_gpad == player.p_inputs.is_gamepad: return
+	was_gpad = player.p_inputs.is_gamepad
+	ui_manager.tooltip.set_label(action, was_gpad)
+
+
+func free_tool_tip() -> void:
+	ui_manager.tooltip.display(false)
+	clean_ui_process()

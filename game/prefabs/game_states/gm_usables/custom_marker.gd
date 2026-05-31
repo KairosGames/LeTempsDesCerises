@@ -1,4 +1,4 @@
-class_name CustomMaker extends Marker3D
+class_name CustomMarker extends Marker3D
 
 @onready var mesh_marker: MeshInstance3D = %MeshMarker
 
