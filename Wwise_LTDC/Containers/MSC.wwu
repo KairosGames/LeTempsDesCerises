@@ -9,16 +9,25 @@
 			<ChildrenList>
 				<MusicSwitchContainer Name="Main_GP_Music" ID="{ABB567F5-1F72-44EA-ADE0-F98D5FF7BFC9}" ShortID="781835119">
 					<PropertyList>
+						<Property Name="3DSpatialization" Type="int16" Value="2"/>
 						<Property Name="Tempo" Type="Real64" Value="158"/>
 						<Property Name="TimeSignatureLower" Type="int16" Value="8"/>
 						<Property Name="TimeSignatureUpper" Type="int16" Value="12"/>
+						<Property Name="UserAuxSendVolume0" Type="Real64">
+							<ValueList>
+								<Value>-12</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
+						<Reference Name="Attenuation">
+							<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+						</Reference>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+							<ObjectRef Name="Music_Bus" ID="{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}" WorkUnitID="{3EE695F8-7F6E-4BE8-B1D1-D1CCBEC0C323}"/>
 						</Reference>
 						<Reference Name="TransitionRoot">
 							<Custom>
@@ -81,6 +90,9 @@
 									<TransitionInfo/>
 								</MusicTransition>
 							</Custom>
+						</Reference>
+						<Reference Name="UserAuxSend0">
+							<ObjectRef Name="Music_Rev" ID="{A12D3D2A-E2E7-49E7-80D3-5AC252A96818}" WorkUnitID="{3EE695F8-7F6E-4BE8-B1D1-D1CCBEC0C323}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -397,7 +409,13 @@
 											<MusicCue Name="C1" ID="{5BF179F3-47EF-4BC0-8D2C-25DAACE153C0}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
-													<Property Name="TimeMs" Type="Real64" Value="10063.2911392405"/>
+													<Property Name="TimeMs" Type="Real64" Value="9493.67088607595"/>
+												</PropertyList>
+											</MusicCue>
+											<MusicCue Name="Start" ID="{BF0AB0AB-B449-48BA-81C6-4BD000593463}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
+													<Property Name="TimeMs" Type="Real64" Value="174.696398761474"/>
 												</PropertyList>
 											</MusicCue>
 										</ObjectList>
@@ -2667,6 +2685,80 @@
 									</ObjectList>
 								</ObjectLists>
 							</MultiSwitchEntry>
+						</ObjectList>
+						<ObjectList Name="RTPC">
+							<RTPC Name="" ID="{AB6D83B4-2381-4B7C-BDE7-9A33F4262211}" ShortID="941699602">
+								<PropertyList>
+									<Property Name="PropertyName" Type="string" Value="AttenuationDistanceScaling"/>
+								</PropertyList>
+								<ReferenceList>
+									<Reference Name="ControlInput">
+										<ObjectRef Name="Choir_Volume" ID="{B964DDEA-0965-4408-B8D1-10C1D71136BB}" WorkUnitID="{27C8EC13-A10B-4C99-B50C-AF9FB75B6D3C}"/>
+									</Reference>
+									<Reference Name="Curve">
+										<Custom>
+											<Curve Name="" ID="{B02D7A9C-9718-472C-BF09-BE00593BA8B3}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="131073"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0.5</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>2</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</RTPC>
+							<RTPC Name="" ID="{E194EF9D-35EB-4FB5-90D4-7920FA6C3B1B}" ShortID="356677392">
+								<PropertyList>
+									<Property Name="PropertyName" Type="string" Value="Volume"/>
+								</PropertyList>
+								<ReferenceList>
+									<Reference Name="ControlInput">
+										<ObjectRef Name="IsPlaying" ID="{6265CC32-EB32-48B5-A910-7A5CCA21E939}" WorkUnitID="{27C8EC13-A10B-4C99-B50C-AF9FB75B6D3C}"/>
+									</Reference>
+									<Reference Name="Curve">
+										<Custom>
+											<Curve Name="" ID="{91C32399-5C47-4F0F-837C-4713CA732BC4}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>2.86885</XPos>
+														<YPos>-200</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>2.86985</XPos>
+														<YPos>0</YPos>
+														<Flags>0</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</RTPC>
 						</ObjectList>
 					</ObjectLists>
 				</MusicSwitchContainer>

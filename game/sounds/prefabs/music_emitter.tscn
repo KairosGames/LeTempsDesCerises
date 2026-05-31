@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cfj1xeyr6n64c"]
+
+[ext_resource type="Script" uid="uid://1ogltfyya1p1" path="res://sounds/scripts/ak_musicevent_3d.gd" id="1_jg2qr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_v5jej"]
+
+[node name="Music_Emitter" type="AkEvent3D" unique_id=483744097]
+script = ExtResource("1_jg2qr")
+Voice_sel = "Solo_Atea"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=623837888]
+mesh = SubResource("BoxMesh_v5jej")
+
+[connection signal="music_sync_user_cue" from="." to="." method="_on_music_sync_user_cue"]

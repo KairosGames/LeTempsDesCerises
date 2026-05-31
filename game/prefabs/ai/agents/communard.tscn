@@ -7,10 +7,10 @@
 [node name="Communard" unique_id=1349390169 groups=["Communard"] instance=ExtResource("1_6272e")]
 team = 1
 
-[node name="Comunard" parent="BeehaveTree/BeAlive" parent_id_path=PackedInt32Array(1853354031) index="1" unique_id=546313229 instance=ExtResource("2_tcnhd")]
-
 [node name="ak_ally_manager" parent="." index="8" unique_id=1364272514 node_paths=PackedStringArray("communard") instance=ExtResource("3_de8u4")]
 communard = NodePath("..")
+
+[node name="Comunard" parent="BeehaveTree/BeAlive" parent_id_path=PackedInt32Array(1853354031) index="1" unique_id=546313229 instance=ExtResource("2_tcnhd")]
 
 [connection signal="died" from="." to="ak_ally_manager" method="_on_communard_died"]
 [connection signal="shoot" from="." to="ak_ally_manager" method="_on_communard_shoot"]
