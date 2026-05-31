@@ -26,7 +26,7 @@ var target: Node3D = null
 var target_point: Node3D = null
 var threats: Array
 var is_pushing_canon: bool = false
-var posture: Posture = Posture.STANDING:
+var posture: Posture = Posture.STAND:
 	set(value): posture = value; posture_changed.emit(posture); $Action.text = Posture.find_key(value)
 var canon_slot: Marker3D = null:
 	set(value):
@@ -84,7 +84,7 @@ func look(target: Vector3, duration: float = 1.0):
 	#var angle: float = atan2(direction.x, direction.z)
 	var target_angle: float = global_position.angle_to(target)
 	create_tween().tween_method(func(v): rotation.y = lerp_angle(rotation.y, target_angle, v), 0.0, 1.0, 0.25)
-	
+
 func die() -> void:
 	if not can_die or not is_alive: return
 	is_alive = false
@@ -95,4 +95,4 @@ func die() -> void:
 	died.emit(self)
 	queue_free()
 
-enum Posture { NONE, PRONE, CROUCHING, STANDING}
+enum Posture { NONE, PRONE, CROUCH, STAND}

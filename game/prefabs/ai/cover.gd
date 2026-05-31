@@ -61,7 +61,7 @@ func _ready() -> void:
 	if type == Type.SPAWNER:
 		visible_on_screen_notifier = VisibleOnScreenNotifier3D.new()
 		add_child(visible_on_screen_notifier)
-	
+
 	_init_area()
 
 	if is_gizmo_enabled():
@@ -237,34 +237,34 @@ func get_posture_for(action: Action) -> Agent.Posture:
 
 func get_peek_posture() -> Agent.Posture:
 	match height:
-		Height.HIGH: return Agent.Posture.STANDING # Side
-		Height.MEDIUM: return Agent.Posture.STANDING
-		Height.LOW: return Agent.Posture.CROUCHING
-		Height.NONE: return Agent.Posture.STANDING
+		Height.HIGH: return Agent.Posture.STAND # Side
+		Height.MEDIUM: return Agent.Posture.STAND
+		Height.LOW: return Agent.Posture.CROUCH
+		Height.NONE: return Agent.Posture.STAND
 		_: return Agent.Posture.NONE
 
 func get_shoot_posture() -> Agent.Posture:
 	match height:
-		Height.HIGH: return Agent.Posture.STANDING
-		Height.MEDIUM: return Agent.Posture.CROUCHING
+		Height.HIGH: return Agent.Posture.STAND
+		Height.MEDIUM: return Agent.Posture.CROUCH
 		Height.LOW: return Agent.Posture.PRONE
-		Height.NONE: return Agent.Posture.STANDING
+		Height.NONE: return Agent.Posture.STAND
 		_: return Agent.Posture.NONE
 
 func get_cover_posture() -> Agent.Posture:
 	match height:
-		Height.HIGH: return Agent.Posture.STANDING
-		Height.MEDIUM: return Agent.Posture.CROUCHING
+		Height.HIGH: return Agent.Posture.STAND
+		Height.MEDIUM: return Agent.Posture.CROUCH
 		Height.LOW: return Agent.Posture.PRONE
 		Height.NONE: return Agent.Posture.NONE
 		_: return Agent.Posture.NONE
 
 func get_reload_posture() -> Agent.Posture:
 	match height:
-		Height.HIGH: return Agent.Posture.STANDING
-		Height.MEDIUM: return Agent.Posture.CROUCHING
+		Height.HIGH: return Agent.Posture.STAND
+		Height.MEDIUM: return Agent.Posture.CROUCH
 		Height.LOW: return Agent.Posture.PRONE
-		Height.NONE: return Agent.Posture.CROUCHING
+		Height.NONE: return Agent.Posture.CROUCH
 		_: return Agent.Posture.NONE
 
 enum Height { NONE, LOW, MEDIUM, HIGH }
