@@ -30,7 +30,7 @@ var holder: Node3D = null:
 
 const LINE_SIZE: float = 0.1
 const MOTION_WIDTH: float = 0.1
-const EDITOR_ONLY: bool = false
+const EDITOR_ONLY: bool = true
 enum Type { COVER, TRANSITORY, SPAWNER }
 
 var _area: Area3D
