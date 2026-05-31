@@ -375,11 +375,11 @@ func capture_aim_state() -> void:
 
 	if can_aim():
 		if is_aim_toggle: handle_toggle_aim()
-		else : handle_hold_aim()
-	else : is_aiming = false
+		else: handle_hold_aim()
+	else: is_aiming = false
 
 	p_inputs.is_aiming = is_aiming
-	if was_aiming != is_aiming :
+	if was_aiming != is_aiming:
 		switch_aim_state()
 
 

@@ -104,6 +104,8 @@ func handle_camera_simple_move() -> void:
 	await get_tree().create_timer(time_to_swap).timeout
 	revive_pos = first_pos
 	revive_rot = first_rot
+	revive_rot.x = 0.0
+	revive_rot.z = 0.0
 
 
 func play_eyes_effect_and_revive(is_on_communard: bool) -> void:
@@ -127,6 +129,9 @@ func play_eyes_effect_and_revive(is_on_communard: bool) -> void:
 	if is_on_communard: delete_swaped_communard(target_communard)
 	is_active = false
 	blink_effect.move_eyes(BlinkEffect.EyesStep.OPEN, 0.1)
+	if fall_twn: fall_twn.kill()
+	if fall_rot_twn: fall_rot_twn.kill()
+	if fov_twn: fov_twn.kill()
 
 
 func play_death_petals_effect(camera: Node3D, communard: Node3D) -> void:

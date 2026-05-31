@@ -4,8 +4,6 @@ signal voice_line_called(index: int)
 @warning_ignore("unused_signal") signal completed
 @warning_ignore("unused_signal") signal voice_line_finished
 
-@onready var ui_manager: UIManager = %UIManager
-
 @abstract func enter() -> void
 @abstract func exit() -> void
 
@@ -15,6 +13,7 @@ var is_active = false
 
 var game_manager: GameManager
 var eff_manager: EffectsManager
+var ui_manager: UIManager
 var player: Player
 var on_process: Array[Callable]
 var on_ui_process: Array[Callable]
@@ -31,6 +30,7 @@ func _ready() -> void:
 func ready_deffered() -> void:
 	game_manager = GameManager.instance
 	eff_manager = EffectsManager.instance
+	ui_manager = UIManager.instance
 	player = Player.instance
 
 

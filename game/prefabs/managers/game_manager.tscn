@@ -35,6 +35,45 @@ font_size = 24
 shadow_size = 3
 shadow_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83msq"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.84313726)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+corner_detail = 20
+expand_margin_left = 40.0
+expand_margin_top = 40.0
+expand_margin_right = 40.0
+expand_margin_bottom = 60.0
+shadow_color = Color(1, 1, 1, 0.23529412)
+shadow_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_x50xo"]
+font_size = 48
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7sktv"]
+line_spacing = 30.0
+font_size = 24
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r74ma"]
+line_spacing = 30.0
+font_size = 24
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmfoy"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -159,45 +198,6 @@ corner_detail = 20
 shadow_color = Color(1, 1, 1, 0.23529412)
 shadow_size = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83msq"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.84313726)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-corner_detail = 20
-expand_margin_left = 40.0
-expand_margin_top = 40.0
-expand_margin_right = 40.0
-expand_margin_bottom = 60.0
-shadow_color = Color(1, 1, 1, 0.23529412)
-shadow_size = 10
-
-[sub_resource type="LabelSettings" id="LabelSettings_x50xo"]
-font_size = 48
-shadow_size = 10
-shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_7sktv"]
-line_spacing = 30.0
-font_size = 24
-shadow_size = 5
-shadow_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_r74ma"]
-line_spacing = 30.0
-font_size = 24
-shadow_size = 5
-shadow_color = Color(0, 0, 0, 1)
-
 [node name="GameManager" type="Node" unique_id=1070764289 node_paths=PackedStringArray("all_states")]
 script = ExtResource("1_utpm8")
 use_narrative = false
@@ -252,49 +252,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="PauseContainer" type="PanelContainer" parent="UIManager/CenterContainer" unique_id=456973355]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 300)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rmfoy")
-
-[node name="Buttons" type="VBoxContainer" parent="UIManager/CenterContainer/PauseContainer" unique_id=2052351423]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/separation = 25
-alignment = 1
-
-[node name="Options" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=923722221]
-unique_name_in_owner = true
-z_index = 3
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_x50xo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7sktv")
-theme_override_styles/focus = SubResource("StyleBoxFlat_r74ma")
-text = "Options"
-script = ExtResource("5_rmfoy")
-
-[node name="Quit" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=621774024]
-unique_name_in_owner = true
-z_index = 3
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_ol0j6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_jv7w5")
-theme_override_styles/focus = SubResource("StyleBoxFlat_0po2u")
-text = "Quit"
-script = ExtResource("5_rmfoy")
-
 [node name="TutorialKeyboardMouse" type="PanelContainer" parent="UIManager/CenterContainer" unique_id=978923551]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_83msq")
 
@@ -339,7 +298,6 @@ vertical_alignment = 1
 
 [node name="TutorialGamepad" type="PanelContainer" parent="UIManager/CenterContainer" unique_id=1831936992]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_83msq")
 
@@ -381,6 +339,46 @@ A
 START"
 label_settings = SubResource("LabelSettings_r74ma")
 vertical_alignment = 1
+
+[node name="PauseContainer" type="PanelContainer" parent="UIManager/CenterContainer" unique_id=456973355]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rmfoy")
+
+[node name="Buttons" type="VBoxContainer" parent="UIManager/CenterContainer/PauseContainer" unique_id=2052351423]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Options" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=923722221]
+unique_name_in_owner = true
+z_index = 3
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_x50xo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7sktv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_r74ma")
+text = "Options"
+script = ExtResource("5_rmfoy")
+
+[node name="Quit" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=621774024]
+unique_name_in_owner = true
+z_index = 3
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ol0j6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jv7w5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0po2u")
+text = "Quit"
+script = ExtResource("5_rmfoy")
 
 [node name="States" type="Node" parent="." unique_id=103955825]
 

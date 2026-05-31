@@ -86,9 +86,9 @@ func go_next_state() -> void:
 
 
 func handle_pause_menu() -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and not ui_manager.is_tutorial:
 		is_in_pause = not is_in_pause
-		ui_manager.enter_pause(is_in_pause)
+		ui_manager.set_pause(is_in_pause)
 		var targ: float = 0.0 if is_in_pause else 1.0
 		if pause_twn: pause_twn.kill()
 		pause_twn = create_tween()
