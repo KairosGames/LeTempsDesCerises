@@ -31,7 +31,7 @@ var target_point: Node3D = null
 var threats: Array
 var is_pushing_canon: bool = false
 var posture: Posture = Posture.STAND:
-	set(value): posture = value; posture_changed.emit(posture); $Action.text = Posture.find_key(value)
+	set(value): posture = value; posture_changed.emit(posture);
 var canon_slot: Marker3D = null:
 	set(value):
 		canon_slot = value
