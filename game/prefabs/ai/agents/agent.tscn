@@ -14,76 +14,217 @@ radius = 0.25
 height = 1.8
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sm080"]
-animation = &"Die"
+animation = &"crouch-aiming"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1vahk"]
-animation = &"Kneel"
+animation = &"crouch-die"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1maqd"]
-animation = &"Aiming"
+animation = &"crouch-idle"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8chkj"]
-animation = &"Moving"
+animation = &"crouch-reload"
 
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_7hc28"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_1maqd")
-blend_point_0/pos = 0.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_8chkj")
-blend_point_1/pos = 1.0
-min_space = 0.0
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7hc28"]
+animation = &"crouch-shoot"
 
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_smkgt"]
-fadein_time = 0.5
-fadeout_time = 0.5
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_smkgt"]
+animation = &"prone-die"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u0bw3"]
-animation = &"Shoot"
+animation = &"prone-idle"
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1maqd"]
-graph_offset = Vector2(-72.69293, 63.51407)
-nodes/output/position = Vector2(790, 220)
-nodes/Shoot/node = SubResource("AnimationNodeAnimation_u0bw3")
-nodes/Shoot/position = Vector2(310, 380)
-nodes/OneShot/node = SubResource("AnimationNodeOneShot_smkgt")
-nodes/OneShot/position = Vector2(560, 210)
-nodes/Move/node = SubResource("AnimationNodeBlendSpace1D_7hc28")
-nodes/Move/position = Vector2(290, 180)
-node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"Move", &"OneShot", 1, &"Shoot"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hrer8"]
+animation = &"prone-reload"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8chkj"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0hmfr"]
+animation = &"prone-shoot"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jfkeb"]
+animation = &"stand-aiming"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m23y6"]
+animation = &"stand-die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o53c3"]
+animation = &"stand-idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r8u3h"]
+animation = &"stand-moving"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d4tat"]
+animation = &"stand-reload"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8bes1"]
+animation = &"stand-shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tiy8a"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7hc28"]
-xfade_time = 0.25
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ettbl"]
 advance_mode = 2
-advance_expression = "posture == Posture.CROUCHING"
+advance_expression = "is_moving"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smkgt"]
-xfade_time = 0.25
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fyimo"]
 advance_mode = 2
-advance_expression = "posture == Posture.STANDING"
+advance_expression = "not is_moving"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u0bw3"]
-xfade_time = 0.5
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q4ugu"]
+advance_mode = 2
+advance_expression = "is_aiming"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gvyxx"]
+advance_mode = 2
+advance_expression = "posture == Posture.STAND"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sbwer"]
+advance_mode = 2
+advance_expression = "posture == Posture.CROUCH"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m61uk"]
+advance_mode = 2
+advance_expression = "posture == Posture.CROUCH"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4g52g"]
+advance_mode = 2
+advance_expression = "posture == Posture.PRONE"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g06vu"]
+advance_mode = 2
+advance_expression = "is_reloading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_niv30"]
+advance_mode = 2
+advance_expression = "not is_reloading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bhv7o"]
+advance_mode = 2
+advance_expression = "not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6g6v6"]
+advance_mode = 2
+advance_expression = "is_shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xwwb6"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ri6wh"]
+advance_mode = 2
+advance_expression = "is_aiming"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rvkq6"]
+advance_mode = 2
+advance_expression = "is_shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_btduq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p71j7"]
+advance_mode = 2
+advance_expression = "not is_aiming"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f0kng"]
+advance_mode = 2
+advance_expression = "is_reloading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ldw4k"]
+advance_mode = 2
+advance_expression = "not is_reloading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xoguh"]
+advance_mode = 2
+advance_expression = "not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mkxas"]
+advance_mode = 2
+advance_expression = "not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j27nn"]
+advance_mode = 2
+advance_expression = "not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_21eml"]
+advance_mode = 2
+advance_expression = "not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dl64i"]
+advance_mode = 2
+advance_expression = "not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qmajf"]
+advance_mode = 2
+advance_expression = "not is_aiming"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g2ncj"]
+advance_mode = 2
+advance_expression = "is_reloading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6gv33"]
+advance_mode = 2
+advance_expression = "not is_reloading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1ec0m"]
+advance_mode = 2
+advance_expression = "is_shooting"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2aw1y"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o5j7l"]
+advance_mode = 2
+advance_expression = "not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6kbgm"]
+advance_mode = 2
+advance_expression = "not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ues8j"]
 advance_mode = 2
 advance_expression = "not is_alive"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sm080"]
-xfade_time = 0.5
+advance_mode = 2
+advance_expression = "not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1vahk"]
 advance_mode = 2
 advance_expression = "not is_alive"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hrer8"]
-states/Die/node = SubResource("AnimationNodeAnimation_sm080")
-states/Die/position = Vector2(502, 100.4375)
-states/End/position = Vector2(680, 101.21875)
-states/Kneel/node = SubResource("AnimationNodeAnimation_1vahk")
-states/Kneel/position = Vector2(279.75, 243)
-"states/Move & Shoot/node" = SubResource("AnimationNodeBlendTree_1maqd")
-"states/Move & Shoot/position" = Vector2(279.5, 100)
-states/Start/position = Vector2(60, 98.75)
-transitions = ["Start", "Move & Shoot", SubResource("AnimationNodeStateMachineTransition_8chkj"), "Move & Shoot", "Kneel", SubResource("AnimationNodeStateMachineTransition_7hc28"), "Kneel", "Move & Shoot", SubResource("AnimationNodeStateMachineTransition_smkgt"), "Move & Shoot", "Die", SubResource("AnimationNodeStateMachineTransition_u0bw3"), "Kneel", "Die", SubResource("AnimationNodeStateMachineTransition_sm080")]
-graph_offset = Vector2(-554, -68)
+states/End/position = Vector2(-167.0625, 249.71875)
+states/Start/position = Vector2(64.95752, 8.75)
+states/crouch-aiming/node = SubResource("AnimationNodeAnimation_sm080")
+states/crouch-aiming/position = Vector2(472.0056, 388.5)
+states/crouch-die/node = SubResource("AnimationNodeAnimation_1vahk")
+states/crouch-die/position = Vector2(732.5, 488.5)
+states/crouch-idle/node = SubResource("AnimationNodeAnimation_1maqd")
+states/crouch-idle/position = Vector2(260.4497, 472)
+states/crouch-reload/node = SubResource("AnimationNodeAnimation_8chkj")
+states/crouch-reload/position = Vector2(469.44727, 553.25)
+states/crouch-shoot/node = SubResource("AnimationNodeAnimation_7hc28")
+states/crouch-shoot/position = Vector2(471.3806, 264.25)
+states/prone-die/node = SubResource("AnimationNodeAnimation_smkgt")
+states/prone-die/position = Vector2(717.2744, 923.4375)
+states/prone-idle/node = SubResource("AnimationNodeAnimation_u0bw3")
+states/prone-idle/position = Vector2(260.5713, 925.5)
+states/prone-reload/node = SubResource("AnimationNodeAnimation_hrer8")
+states/prone-reload/position = Vector2(474.56396, 1004.25)
+states/prone-shoot/node = SubResource("AnimationNodeAnimation_0hmfr")
+states/prone-shoot/position = Vector2(485.66846, 841)
+states/stand-aiming/node = SubResource("AnimationNodeAnimation_jfkeb")
+states/stand-aiming/position = Vector2(485.70508, -128.75)
+states/stand-die/node = SubResource("AnimationNodeAnimation_m23y6")
+states/stand-die/position = Vector2(709.9575, 7.34375)
+states/stand-idle/node = SubResource("AnimationNodeAnimation_o53c3")
+states/stand-idle/position = Vector2(259.61377, 1.4375)
+states/stand-moving/node = SubResource("AnimationNodeAnimation_r8u3h")
+states/stand-moving/position = Vector2(260.03174, -246.28125)
+states/stand-reload/node = SubResource("AnimationNodeAnimation_d4tat")
+states/stand-reload/position = Vector2(485.65015, 119.375)
+states/stand-shoot/node = SubResource("AnimationNodeAnimation_8bes1")
+states/stand-shoot/position = Vector2(485.63184, -237)
+transitions = ["Start", "stand-idle", SubResource("AnimationNodeStateMachineTransition_tiy8a"), "stand-idle", "stand-moving", SubResource("AnimationNodeStateMachineTransition_ettbl"), "stand-moving", "stand-idle", SubResource("AnimationNodeStateMachineTransition_fyimo"), "stand-idle", "stand-aiming", SubResource("AnimationNodeStateMachineTransition_q4ugu"), "crouch-idle", "stand-idle", SubResource("AnimationNodeStateMachineTransition_gvyxx"), "prone-idle", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_sbwer"), "stand-idle", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_m61uk"), "crouch-idle", "prone-idle", SubResource("AnimationNodeStateMachineTransition_4g52g"), "prone-idle", "prone-reload", SubResource("AnimationNodeStateMachineTransition_g06vu"), "prone-reload", "prone-idle", SubResource("AnimationNodeStateMachineTransition_niv30"), "prone-idle", "prone-die", SubResource("AnimationNodeStateMachineTransition_bhv7o"), "prone-idle", "prone-shoot", SubResource("AnimationNodeStateMachineTransition_6g6v6"), "prone-shoot", "prone-idle", SubResource("AnimationNodeStateMachineTransition_xwwb6"), "crouch-idle", "crouch-aiming", SubResource("AnimationNodeStateMachineTransition_ri6wh"), "crouch-aiming", "crouch-shoot", SubResource("AnimationNodeStateMachineTransition_rvkq6"), "crouch-shoot", "crouch-aiming", SubResource("AnimationNodeStateMachineTransition_btduq"), "crouch-aiming", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_p71j7"), "crouch-idle", "crouch-reload", SubResource("AnimationNodeStateMachineTransition_f0kng"), "crouch-reload", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_ldw4k"), "crouch-reload", "crouch-die", SubResource("AnimationNodeStateMachineTransition_xoguh"), "crouch-aiming", "crouch-die", SubResource("AnimationNodeStateMachineTransition_mkxas"), "crouch-shoot", "crouch-die", SubResource("AnimationNodeStateMachineTransition_j27nn"), "prone-shoot", "prone-die", SubResource("AnimationNodeStateMachineTransition_21eml"), "prone-reload", "prone-die", SubResource("AnimationNodeStateMachineTransition_dl64i"), "stand-aiming", "stand-idle", SubResource("AnimationNodeStateMachineTransition_qmajf"), "stand-idle", "stand-reload", SubResource("AnimationNodeStateMachineTransition_g2ncj"), "stand-reload", "stand-idle", SubResource("AnimationNodeStateMachineTransition_6gv33"), "stand-aiming", "stand-shoot", SubResource("AnimationNodeStateMachineTransition_1ec0m"), "stand-shoot", "stand-aiming", SubResource("AnimationNodeStateMachineTransition_2aw1y"), "stand-aiming", "stand-die", SubResource("AnimationNodeStateMachineTransition_o5j7l"), "stand-shoot", "stand-die", SubResource("AnimationNodeStateMachineTransition_6kbgm"), "stand-reload", "stand-die", SubResource("AnimationNodeStateMachineTransition_ues8j"), "stand-idle", "stand-die", SubResource("AnimationNodeStateMachineTransition_sm080"), "crouch-idle", "crouch-die", SubResource("AnimationNodeStateMachineTransition_1vahk")]
+graph_offset = Vector2(-372, -184.24548)
 
 [node name="Agent" type="CharacterBody3D" unique_id=1349390169 groups=["Entities"]]
 collision_layer = 4
@@ -121,40 +262,13 @@ collide_with_areas = true
 [node name="Body" parent="." unique_id=1904847892 instance=ExtResource("2_f5m6n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 57126605) index="2" unique_id=1039528541]
-transform = Transform3D(-0.098535545, -0.9945377, 0.034431607, 0.99505264, -0.098028034, 0.016132727, -0.012669392, 0.035850953, 0.99927676, -69.82887, -5.136288, -143.44977)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1968613330) index="2" unique_id=1039528541]
+transform = Transform3D(-0.098535545, -0.9945377, 0.034431607, 0.99505264, -0.098028034, 0.016132727, -0.012669392, 0.035850953, 0.99927676, -69.828865, -5.1362824, -143.44972)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
 
 [node name="sk_chassepot" parent="Body/Armature/Skeleton3D/BoneAttachment3D" unique_id=1025414177 instance=ExtResource("3_sm080")]
 transform = Transform3D(-10.55309, 95.53138, 27.611444, 11.808159, 28.773891, -95.04016, -98.73802, -6.7692723, -14.317036, 3.4706862, 18.70045, 6.007675)
-
-[node name="sk_chassepot_body" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot" index="0" unique_id=588837796]
-layers = 1
-
-[node name="bagette" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body" index="0" unique_id=437964636]
-layers = 1
-
-[node name="barrel_body" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body" index="1" unique_id=1009322438]
-layers = 1
-
-[node name="bolt_handle" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_barrel/ctrl_bolt_handle" parent_id_path=PackedInt32Array(1025414177, 569320331) index="0" unique_id=2121048013]
-layers = 1
-
-[node name="safety_mechanism" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_barrel" parent_id_path=PackedInt32Array(1025414177, 125741250) index="1" unique_id=321110234]
-layers = 1
-
-[node name="rear_sight" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight" parent_id_path=PackedInt32Array(1025414177, 739362279) index="0" unique_id=58885415]
-layers = 1
-
-[node name="rear_sight_slider" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body/ctrl_rear_sight/rear_sight" index="0" unique_id=1209452833]
-layers = 1
-
-[node name="rear_sight_body" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/barrel_body/ctrl_rear_sight_body" parent_id_path=PackedInt32Array(1025414177, 403407998) index="1" unique_id=41726384]
-layers = 1
-
-[node name="weapon_trigger" parent="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot/sk_chassepot_body/ctrl_weapon_trigger" parent_id_path=PackedInt32Array(1025414177, 1342119738) index="0" unique_id=1747753677]
-layers = 1
 
 [node name="Navigation" type="NavigationAgent3D" parent="." unique_id=514776903]
 avoidance_enabled = true
@@ -186,10 +300,6 @@ root_node = NodePath("../Body")
 tree_root = SubResource("AnimationNodeStateMachine_hrer8")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../Body/AnimationPlayer")
-"parameters/Move & Shoot/OneShot/active" = false
-"parameters/Move & Shoot/OneShot/internal_active" = false
-"parameters/Move & Shoot/OneShot/request" = 0
-"parameters/Move & Shoot/Move/blend_position" = 0.0
 
 [editable path="Body"]
 [editable path="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot"]
