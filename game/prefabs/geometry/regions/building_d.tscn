@@ -32,6 +32,15 @@
 [ext_resource type="ArrayMesh" uid="uid://bnwd4fsakf0fi" path="res://prefabs/geometry/wall_props_d1.tres" id="30_uverg"]
 [ext_resource type="ArrayMesh" uid="uid://bj34uet0ryprp" path="res://prefabs/geometry/shop_b.tres" id="31_valms"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_j4qk7"]
+size = Vector3(98.14343, 20, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_valms"]
+size = Vector3(26.858887, 20, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3jbfb"]
+size = Vector3(9.971802, 20, 4)
+
 [node name="BuildingD" type="Node3D" unique_id=904898415]
 
 [node name="BuildingD" parent="." unique_id=1814658762 instance=ExtResource("1_jw373")]
@@ -3170,3 +3179,20 @@ mesh = ExtResource("2_valms")
 [node name="ShopB" type="MeshInstance3D" parent="." unique_id=1501032856]
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -1.135932, 0.20000172, 8.626336)
 mesh = ExtResource("31_valms")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1928103658]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=901455172]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.396816, 10.0633135, 8.7609215)
+shape = SubResource("BoxShape3D_j4qk7")
+debug_color = Color(0.98039216, 0, 0.3764706, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=451835568]
+transform = Transform3D(0.8081133, 0, 0.5890271, 0, 1, 0, -0.5890271, 0, 0.8081133, -8.616706, 10.0633135, 16.308939)
+shape = SubResource("BoxShape3D_valms")
+debug_color = Color(0.98039216, 0, 0.3764706, 1)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=1044463949]
+transform = Transform3D(0.49347138, 0, 0.869762, 0, 1, 0, -0.869762, 0, 0.49347138, -21.080915, 10.0633135, 27.997507)
+shape = SubResource("BoxShape3D_3jbfb")
+debug_color = Color(0.98039216, 0, 0.3764706, 1)
