@@ -2,10 +2,9 @@
 
 [ext_resource type="Script" uid="uid://dexhveoh7rgj3" path="res://prefabs/barricade/barricade.gd" id="1_voip0"]
 [ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="3_pt8rx"]
-[ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_v1doc"]
+[ext_resource type="PackedScene" uid="uid://ctinark3l27ws" path="res://prefabs/managers/effects_manager.tscn" id="5_voip0"]
+[ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/managers/game_manager.tscn" id="6_1ma2d"]
 [ext_resource type="PackedScene" uid="uid://chfbdpud1npmp" path="res://sandbox/ai/canon.tscn" id="6_cpm1f"]
-[ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://prefabs/managers/game_manager.gd" id="6_voip0"]
-[ext_resource type="Script" uid="uid://dcg7ewl2ahw4g" path="res://prefabs/managers/effects_manager.gd" id="7_cpm1f"]
 [ext_resource type="Script" uid="uid://dlpem5ct2ufhg" path="res://prefabs/ai/spawn_manager.gd" id="10_pt8rx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_76nee"]
@@ -395,17 +394,13 @@ end_position = Vector3(0, 0, 4)
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1322255480]
 process_material = SubResource("ParticleProcessMaterial_ec114")
 
-[node name="GameManager" type="Node" parent="." unique_id=889302577 node_paths=PackedStringArray("first_barricade", "canon")]
-script = ExtResource("6_voip0")
-use_narrative = false
+[node name="EffectsManager" parent="." unique_id=1116254742 instance=ExtResource("5_voip0")]
+
+[node name="GameManager" parent="." unique_id=1070764289 node_paths=PackedStringArray("first_barricade", "canon") instance=ExtResource("6_1ma2d")]
 first_barricade = NodePath("../Barricade")
 canon = NodePath("../Path/Canon")
-player_prefab = ExtResource("3_v1doc")
-metadata/_custom_type_script = "uid://bho08aptyf7f"
 
-[node name="PlayerSpwaner" type="Marker3D" parent="GameManager" unique_id=529411981]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46.057167)
+[node name="PlayerSpawner" parent="GameManager/States/GameState00" parent_id_path=PackedInt32Array(1070764289, 1759019559) index="0" unique_id=1090379721]
+transform = Transform3D(0.9997547, 0, 0.022146285, 0, 1, 0, -0.022146285, 0, 0.9997547, 1.7515259, 0, -42.59412)
 
-[node name="EffectsManager" type="Node" parent="." unique_id=1119148525]
-script = ExtResource("7_cpm1f")
-metadata/_custom_type_script = "uid://dcg7ewl2ahw4g"
+[editable path="GameManager"]
