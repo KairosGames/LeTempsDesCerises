@@ -9,7 +9,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var raycast: RayCast3D = agent.shoot_raycast
 
-	if not agent.target: return FAILURE
+	if not agent.target_object: return FAILURE
 
 	# TODO USE a change posture action
 	agent.posture = agent.cover.get_shoot_posture()
@@ -45,7 +45,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		return SUCCESS
 
 	_vagueness /= vagueness_decrease
-	if agent.target is Agent: (agent.target as Agent).add_threat(agent)
-	elif agent.target is Player: (agent.target as Player).miss_by_versaillais()
+	if agent.target_object is Agent: (agent.target_object as Agent).add_threat(agent)
+	elif agent.target_object is Player: (agent.target_object as Player).miss_by_versaillais()
 
 	return SUCCESS

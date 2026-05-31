@@ -17,12 +17,16 @@ signal move_stoped
 @onready var animation: AnimationPlayer = $Body/AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Head]
+@onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 
 var has_enemy_in_range: bool = false
 var can_die: bool = true
 var is_alive: bool = true
+var is_aiming: bool = false
+var is_moving: bool = false
+var is_shooting: bool = false
 var is_weapon_loaded: bool = true
-var target: Node3D = null
+var target_object: Node3D = null
 var target_point: Node3D = null
 var threats: Array
 var is_pushing_canon: bool = false
@@ -69,21 +73,29 @@ func remove_threat(agent) -> void: # Not typed lambda because of timeout callbac
 
 func on_start_moving() -> void:
 	move_started.emit()
-	animation_tree["parameters/Move & Shoot/Move/blend_position"] = 1.0
+	is_moving = true
+	playback.travel(&"stand-moving")
 
 func on_stop_moving() -> void:
 	move_stoped.emit()
-	animation_tree["parameters/Move & Shoot/Move/blend_position"] = 0.0
+	is_moving = false
 
 func shoot_anim() -> void:
-	animation_tree["parameters/Move & Shoot/OneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	shoot.emit()
+	is_shooting = true
+	var target: StringName
+	match posture:
+		Posture.PRONE: target = "prone-shoot"
+		Posture.CROUCH: target = "crouch-shoot"
+		Posture.STAND: target = "stand-shoot"
+	playback.travel(target)
+	is_shooting = false
 
-func look(target: Vector3, duration: float = 1.0):
-	#var direction: Vector3 = global_position.direction_to(target)
-	#var angle: float = atan2(direction.x, direction.z)
+func look(target: Vector3, duration: float = 1.0) -> void:
 	var target_angle: float = global_position.angle_to(target)
-	create_tween().tween_method(func(v): rotation.y = lerp_angle(rotation.y, target_angle, v), 0.0, 1.0, 0.25)
+	var tween: Tween = create_tween()
+	tween.tween_method(func(v): rotation.y = lerp_angle(rotation.y, target_angle, v), 0.0, 1.0, duration)
+	await tween.finished
 
 func die() -> void:
 	if not can_die or not is_alive: return

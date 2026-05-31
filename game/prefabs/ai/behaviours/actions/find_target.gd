@@ -21,7 +21,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	match agent.team:
 		Agent.Team.VERSAILLAIS: coefficents = versaillais
 		Agent.Team.COMMUNARD: coefficents = communard
-	
+
 	var targets_data: Array = get_targets(agent.team).map(
 		func(target: Node3D) -> TargetData: return TargetData.new(target, agent, coefficents)
 	)
@@ -49,7 +49,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			if raycast.is_colliding():
 				var collider: Object = raycast.get_collider()
 				if collider is Agent or collider is Player:
-					agent.target = data.target
+					agent.target_object = data.target
 					agent.target_point = shoot_target
 					return SUCCESS
 
@@ -61,7 +61,7 @@ class TargetData:
 
 	@warning_ignore("shadowed_variable")
 	func _init(target: Node3D, agent: Agent, coefficents: TargetSelectionCoefficient) -> void:
-		
+
 		self.target = target
 
 		is_player = target is Player
@@ -79,7 +79,7 @@ class TargetData:
 			int(is_threatening) * coefficents.threatening
 
 	var target: Node3D
-	
+
 	var score: float
 
 	var covering: float
