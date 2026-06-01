@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="5_rmfoy"]
 [ext_resource type="PackedScene" uid="uid://x6umueunebab" path="res://prefabs/game_states/gm_usables/shoot_target.tscn" id="5_vkqci"]
 [ext_resource type="PackedScene" uid="uid://dn5y2en06sd76" path="res://prefabs/npc/npc.tscn" id="6_2cgp0"]
+[ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="10_83msq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvqlx"]
 content_margin_left = 20.0
@@ -198,6 +199,34 @@ corner_detail = 20
 shadow_color = Color(1, 1, 1, 0.23529412)
 shadow_size = 10
 
+[sub_resource type="Gradient" id="Gradient_83msq"]
+colors = PackedColorArray(0, 0, 0, 0.49019608, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x50xo"]
+gradient = SubResource("Gradient_83msq")
+fill_from = Vector2(0.31965813, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sktv"]
+content_margin_left = 20.0
+texture = SubResource("GradientTexture2D_x50xo")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ol0j6"]
+font_size = 24
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_83msq"]
+content_margin_left = 10.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_jv7w5"]
+font_size = 18
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmfoy"]
+size = Vector3(2.4902344, 2.6345215, 14.923035)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83msq"]
+size = Vector3(3.2592773, 2.6173096, 21.94949)
+
 [node name="GameManager" type="Node" unique_id=1070764289 node_paths=PackedStringArray("all_states")]
 script = ExtResource("1_utpm8")
 use_narrative = false
@@ -251,6 +280,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TutorialKeyboardMouse" type="PanelContainer" parent="UIManager/CenterContainer" unique_id=978923551]
 unique_name_in_owner = true
@@ -380,6 +411,31 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_0po2u")
 text = "Quit"
 script = ExtResource("5_rmfoy")
 
+[node name="ObjectiveContainer" type="VBoxContainer" parent="UIManager" unique_id=812492473]
+layout_mode = 0
+offset_top = 74.0
+offset_right = 619.0
+offset_bottom = 398.0
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="UIManager/ObjectiveContainer" unique_id=506578922]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7sktv")
+
+[node name="Label" type="Label" parent="UIManager/ObjectiveContainer/PanelContainer" unique_id=593496218]
+layout_mode = 2
+text = "Objective"
+label_settings = SubResource("LabelSettings_ol0j6")
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UIManager/ObjectiveContainer" unique_id=174662653]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_83msq")
+text = "· Go to the barricade"
+label_settings = SubResource("LabelSettings_jv7w5")
+vertical_alignment = 1
+
 [node name="States" type="Node" parent="." unique_id=103955825]
 
 [node name="GameState00" parent="States" unique_id=1759019559 instance=ExtResource("3_mvb55")]
@@ -400,6 +456,21 @@ unique_name_in_owner = true
 
 [node name="GameState01" parent="States" unique_id=443097567 instance=ExtResource("4_ljy1t")]
 
+[node name="GoToBarricade2" parent="States/GameState01" unique_id=1458560722 instance=ExtResource("10_83msq")]
+unique_name_in_owner = true
+transform = Transform3D(0.872888, 0, 0.4879206, 0, 1, 0, -0.4879206, 0, 0.872888, -4.462287, 1.3473175, 1.8657641)
+
+[node name="CollisionShape3D" parent="States/GameState01/GoToBarricade2" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_rmfoy")
+
+[node name="ReturnToBarricade" parent="States/GameState01" unique_id=334245662 instance=ExtResource("10_83msq")]
+unique_name_in_owner = true
+transform = Transform3D(0.872888, 0, 0.4879206, 0, 1, 0, -0.4879206, 0, 0.872888, -8.900592, 0, 4.669562)
+
+[node name="CollisionShape3D" parent="States/GameState01/ReturnToBarricade" index="0" unique_id=447369626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20455933, 1.3654175, 0.23666382)
+shape = SubResource("BoxShape3D_83msq")
+
 [node name="GameState02" parent="States" unique_id=345645137 instance=ExtResource("5_m6g67")]
 
 [node name="NPC" type="Node" parent="." unique_id=2013234831]
@@ -407,3 +478,6 @@ unique_name_in_owner = true
 [node name="Georges" parent="NPC" unique_id=1296143105 instance=ExtResource("6_2cgp0")]
 unique_name_in_owner = true
 transform = Transform3D(0.9616791, 0, 0.2741775, 0, 1, 0, -0.2741775, 0, 0.9616791, -35.806408, 4.7683716e-07, 2.279154)
+
+[editable path="States/GameState01/GoToBarricade2"]
+[editable path="States/GameState01/ReturnToBarricade"]

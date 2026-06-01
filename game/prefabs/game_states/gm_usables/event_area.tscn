@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dg02fdnf8mxre"]
+
+[ext_resource type="Script" uid="uid://7hquiwnqcnwd" path="res://prefabs/game_states/gm_usables/event_area.gd" id="1_1elmn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yt36u"]
+
+[node name="EventArea" type="Area3D" unique_id=1458560722]
+monitoring = false
+script = ExtResource("1_1elmn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=447369626]
+shape = SubResource("BoxShape3D_yt36u")
+debug_color = Color(0.10534895, 0.690246, 1.92523e-07, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
