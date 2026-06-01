@@ -9,6 +9,9 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 	var destination: Vector3 = get_destination(actor, blackboard)
 	var stop_distance: float = get_stop_distance()
+	
+	if not agent.can_move: return FAILURE
+	
 	if agent.navigation.target_position.distance_to(destination) > stop_distance: # handle moving target
 		agent.navigation.move_to(destination, stop_distance)
 		agent.on_start_moving()

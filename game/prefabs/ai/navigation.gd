@@ -24,6 +24,7 @@ func _physics_process(_delta: float) -> void:
 		else: _on_velocity_computed(new_velocity)
 
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
+	if not _agent.can_move: return
 	_agent.velocity = safe_velocity
 	_agent.move_and_slide()
 

@@ -60,6 +60,7 @@ func play_death_effect() -> void:
 
 func handle_camera_on_communard(communard: Agent, ground: float) -> void:
 	communard.can_die = false
+	communard.can_move = false
 	var to_target: Vector3 = communard.global_position - global_position
 	to_target.y = 0.0
 	to_target = to_target.normalized()
