@@ -2,7 +2,8 @@ class_name Agent extends CharacterBody3D
 
 @warning_ignore_start("unused_signal")
 signal shoot
-signal died(agent: Agent)
+signal dying
+signal died
 signal posture_changed(posture: Posture)
 signal reload_started
 signal reload_ended
@@ -62,13 +63,11 @@ const threat_duration: float = 10
 func add_threat(agent: Agent) -> void:
 	if not threats.has(agent):
 		threats.append(agent)
-		agent.died.connect(remove_threat, CONNECT_ONE_SHOT)
+		agent.died.connect(remove_threat.bind(agent), CONNECT_ONE_SHOT)
 		get_tree().create_timer(threat_duration).timeout.connect(remove_threat.bind(agent), CONNECT_ONE_SHOT)
 
 func remove_threat(agent) -> void: # Not typed lambda because of timeout callback failing to cast null to Agent
 	if not agent: return
-	if agent.died.is_connected(remove_threat):
-		agent.died.disconnect(remove_threat)
 	threats.erase(agent)
 
 func on_start_moving() -> void:
@@ -99,12 +98,16 @@ func look(target: Vector3, duration: float = 1.0) -> void:
 
 func die() -> void:
 	if not can_die or not is_alive: return
+	dying.emit()
 	is_alive = false
-	cover = null
 	set_collision_layer_value(3, false)
 	navigation.stop()
 	await get_tree().create_timer(2.0).timeout
-	died.emit(self)
+	remove()
+
+func remove() -> void:
+	cover = null
+	died.emit()
 	queue_free()
 
 enum Posture { NONE, PRONE, CROUCH, STAND}

@@ -42,7 +42,7 @@ func _process_spawn() -> void:
 			if spawner.holder: continue
 			if team == Agent.Team.COMMUNARD and spawner.visible_on_screen_notifier.is_on_screen(): continue
 			if not _has_a_next_cover_available(spawner): continue
-			
+
 			_open_list.erase(spawner)
 			_close_list.push_back(spawner)
 			get_tree().create_timer(cooldown).timeout.connect(_restore.bind(spawner))
@@ -64,7 +64,7 @@ func _has_a_next_cover_available(cover: Cover) -> bool:
 			return true
 	return false
 
-func _on_entity_died(_agent: Agent) -> void: _entity_count -= 1
+func _on_entity_died() -> void: _entity_count -= 1
 
 func _restore(spawner: Cover) -> void:
 	_close_list.erase(spawner)

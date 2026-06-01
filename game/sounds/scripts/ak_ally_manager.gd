@@ -18,7 +18,7 @@ func _enter_tree() -> void:
 func _on_communard_shoot() -> void:
 	shoot.post_event()
 
-func _on_communard_died(agent: Agent) -> void:
+func _on_communard_died() -> void:
 	BarksManager.remove(self)
 	bark.stop_event()
 

@@ -47,13 +47,13 @@ func play_death_effect() -> void:
 	fall_twn.tween_property(self, "global_position:y", ground_y + 0.3, fall_time_1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	fall_twn.tween_property(self, "global_position:y", ground_y + 0.1, fall_time_2).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	fov_twn.tween_property(self, "fov", player.default_fov, fall_time_1)
-	
+
 	if communard:
 		play_eyes_effect_and_revive(true)
 		handle_camera_on_communard(communard, ground_y)
 		fall_twn.tween_callback(play_death_petals_effect.bind(self, communard))
 		return
-	
+
 	play_eyes_effect_and_revive(false)
 	handle_camera_simple_move()
 
@@ -72,7 +72,7 @@ func handle_camera_on_communard(communard: Agent, ground: float) -> void:
 	var fall_angle: float = deg_to_rad(90.0)
 	var fall_rot: Vector3 = Vector3(current_rot.x, final_yaw, current_rot.z + fall_angle * side)
 	fall_rot_twn.tween_property(self, "global_rotation", fall_rot, 0.45).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-	
+
 	var second_targ: Vector3 = communard.global_position + Vector3(0.0, 1.5, 0.0)
 	var start_transform: Transform3D = global_transform
 	start_transform.origin.y = ground + 0.1
@@ -84,7 +84,7 @@ func handle_camera_on_communard(communard: Agent, ground: float) -> void:
 	fall_rot_twn.tween_method(
 		func(t: float) -> void: global_transform.basis = Basis(start_quat.slerp(target_quat, t)),
 		0.0, 1.0, 0.1)
-	
+
 	await get_tree().create_timer(time_to_swap).timeout
 	var offset_rot: Vector3 = Vector3(0.0, PI, 0.0)
 	revive_pos = communard.global_position
@@ -111,19 +111,19 @@ func handle_camera_simple_move() -> void:
 func play_eyes_effect_and_revive(is_on_communard: bool) -> void:
 	blink_effect.move_eyes(BlinkEffect.EyesStep.A_OPEN, 0.3)
 	await get_tree().create_timer(fall_time_1 + fall_time_2).timeout
-	
+
 	blink_effect.move_eyes(BlinkEffect.EyesStep.A_CLOSED, 0.3)
 	await get_tree().create_timer(0.3).timeout
 	blink_effect.move_eyes(BlinkEffect.EyesStep.A_OPEN, 0.5)
-	
+
 	await get_tree().create_timer(1.0).timeout
 	blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.4)
 	await get_tree().create_timer(0.2).timeout
 	blink_effect.move_eyes(BlinkEffect.EyesStep.A_CLOSED, 1.0)
-	
+
 	await get_tree().create_timer(0.8).timeout
 	blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.2)
-	
+
 	await get_tree().create_timer(0.5).timeout
 	player.revive(revive_pos, revive_rot)
 	if is_on_communard: delete_swaped_communard(target_communard)
@@ -154,6 +154,4 @@ func get_free_communard() -> Agent:
 
 
 func delete_swaped_communard(communard: Agent) -> void:
-	communard.cover = null
-	communard.died.emit(communard)
-	communard.queue_free()
+	communard.remove()

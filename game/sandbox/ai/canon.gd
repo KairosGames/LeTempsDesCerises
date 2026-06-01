@@ -52,7 +52,7 @@ func _take_slot(agent: Agent) -> Marker3D:
 	agent.died.connect(_restore.bind(slot))
 	return slot
 
-func _restore(_agent: Agent, slot: Marker3D) -> void:
+func _restore(slot: Marker3D) -> void:
 	holded_slots.erase(slot)
 	available_slots.push_back(slot)
 	if not holded_slots.size(): stop_move.emit()
