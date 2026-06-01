@@ -5,6 +5,12 @@ const MESH_DIR: String = "res://sources/meshes/geometry/meshes/"
 const MATERIAL_DIR: String = "res://sources/meshes/geometry/materials/"
 const OUTPUT_DIR: String = "res://prefabs/geometry/"
 
+# material -> override
+const OVERRIDES: Dictionary[StringName, StringName] = {
+	"bricks": "concrete",
+	"brick_b": "concrete",
+}
+
 func _run() -> void:
 	var materials: Dictionary[String, Material]
 	for material_file in DirAccess.get_files_at(MATERIAL_DIR):
@@ -22,6 +28,7 @@ func _run() -> void:
 		mesh = mesh.duplicate() # deep?
 		for index: int in range(mesh.get_surface_count()):
 			var surface_name: String = mesh.surface_get_name(index)
+			if OVERRIDES.has(surface_name): surface_name = OVERRIDES[surface_name]
 			if materials.has(surface_name):
 				mesh.surface_set_material(index, materials[surface_name])
 			else:
