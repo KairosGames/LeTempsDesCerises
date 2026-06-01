@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{BB124911-31F2-7293-E6F8-32DB038FEECD}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{A141FC2F-DDB3-B205-7190-08C9ABA99DC2}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -32,6 +32,7 @@
 							<MediaRef Id="702837950"/>
 						</MediaRefs>
 					</Plugin>
+					<Plugin Id="3701691487" Name="Hall_Large_Bright" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Bright" GUID="{CB602948-2D1D-4977-A8D5-378184293E80}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</ShareSets>
 				<AudioDevices>
 					<Plugin Id="2012559111" Name="Motion" ObjectPath="\Devices\Default Work Unit\Motion" GUID="{882328E3-4BF4-4402-9C6C-32775CE7D72E}" LibName="Motion" LibId="33226759"/>
@@ -94,6 +95,7 @@
 						</Custom>
 					</PluginRefs>
 				</Bus>
+				<Bus Id="2680856269" Name="Music_Bus" ObjectPath="\Busses\Music_Bus\Music_Bus" GUID="{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}" Color="2"/>
 			</Busses>
 			<AuxBusses>
 				<AuxBus Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}">
@@ -108,6 +110,13 @@
 						<Custom>
 							<PluginRef Id="695506173"/>
 						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="2415077256" Name="Music_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Rev" GUID="{A12D3D2A-E2E7-49E7-80D3-5AC252A96818}" Color="2">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3701691487"/>
+						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
 				<AuxBus Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}">
@@ -132,12 +141,14 @@
 			<GameParameters>
 				<GameParameter Id="243460359" Name="Cannon_Sidechain" ObjectPath="\Game Parameters\Default Work Unit\Cannon_Sidechain" GUID="{79978E96-EE44-4536-A821-0932926129B4}"/>
 				<GameParameter Id="711096812" Name="Deafening" ObjectPath="\Game Parameters\Default Work Unit\Deafening" GUID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}"/>
+				<GameParameter Id="728654205" Name="IsPlaying" ObjectPath="\Game Parameters\MUSIC_RTPC\IsPlaying" GUID="{6265CC32-EB32-48B5-A910-7A5CCA21E939}" Color="2"/>
 				<GameParameter Id="1240670792" Name="Distance" ObjectPath="\Game Parameters\Default Work Unit\Distance" GUID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"/>
 				<GameParameter Id="1833811084" Name="Player_Velocity" ObjectPath="\Game Parameters\Default Work Unit\Player_Velocity" GUID="{C608E447-1D9D-4717-B429-A50B1CC84984}"/>
 				<GameParameter Id="1883033791" Name="Sidechain" ObjectPath="\Game Parameters\Default Work Unit\Sidechain" GUID="{85DB9D89-EF22-4542-95A6-10D2B8BE9341}"/>
 				<GameParameter Id="2103536148" Name="Bark_Volume" ObjectPath="\Game Parameters\Default Work Unit\Bark_Volume" GUID="{310D6C14-6344-45E9-8379-034A9EEF5868}"/>
 				<GameParameter Id="2221031936" Name="Player_Position" ObjectPath="\Game Parameters\Default Work Unit\Player_Position" GUID="{7797433B-9024-4066-9F96-1380C3B89EA1}"/>
 				<GameParameter Id="2576556105" Name="Cannons_Probability" ObjectPath="\Game Parameters\Default Work Unit\Cannons_Probability" GUID="{44235752-3ED7-4F8D-ABCB-15BA17B653AB}"/>
+				<GameParameter Id="2909751391" Name="Choir_Volume" ObjectPath="\Game Parameters\MUSIC_RTPC\Choir_Volume" GUID="{B964DDEA-0965-4408-B8D1-10C1D71136BB}" Color="2"/>
 				<GameParameter Id="3680281974" Name="Poetic_Level" ObjectPath="\Game Parameters\Default Work Unit\Poetic_Level" GUID="{FB93CEA7-2418-4DE2-8C31-999E6239D31F}"/>
 				<GameParameter Id="4205136178" Name="Death_Filter" ObjectPath="\Game Parameters\Default Work Unit\Death_Filter" GUID="{C73A6915-BB76-4746-95CC-A87CCED79E78}"/>
 			</GameParameters>
@@ -185,6 +196,14 @@
 						<State Id="545371365" Name="low" ObjectPath="\States\Default Work Unit\barks_barricade\low" GUID="{94C02136-BC10-4A28-B9A1-9DCF4BF3C2AE}"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\barks_barricade\None" GUID="{FAF24D92-8060-43E9-92D5-DDACD2AD38BA}"/>
 						<State Id="3094168564" Name="intact" ObjectPath="\States\Default Work Unit\barks_barricade\intact" GUID="{6769E500-8558-496D-8DA4-1F3F2BE3C572}"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="3826569560" Name="Music_State" ObjectPath="\States\MUSIC_STATE\Music_State" GUID="{E0527FB2-A14D-4624-BF74-6B4556D6DDD9}" Color="2">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\MUSIC_STATE\Music_State\None" GUID="{3208AAD9-A1DA-4140-A012-772480E8C410}" Color="2"/>
+						<State Id="3630028968" Name="Phase2" ObjectPath="\States\MUSIC_STATE\Music_State\Phase2" GUID="{65AF7CF1-BA0E-4474-94C0-BD24BC7E9746}" Color="2"/>
+						<State Id="3630028969" Name="Phase3" ObjectPath="\States\MUSIC_STATE\Music_State\Phase3" GUID="{97F554C9-80CB-4C13-A0BA-32BA139D5768}" Color="2"/>
+						<State Id="3630028971" Name="Phase1" ObjectPath="\States\MUSIC_STATE\Music_State\Phase1" GUID="{31C19E01-B376-48C1-9CA2-CF46B0246B1E}" Color="2"/>
 					</States>
 				</StateGroup>
 				<StateGroup Id="4265991608" Name="barks_player_distance" ObjectPath="\States\Default Work Unit\barks_player_distance" GUID="{F3D872A7-B4A5-4C80-8E2F-BD45D645AFBE}">
@@ -240,6 +259,23 @@
 						<Switch Id="755604413" Name="Worn_Boots" ObjectPath="\Switches\Default Work Unit\Shoe_Type\Worn_Boots" GUID="{C30E9443-1FE8-4C03-9F8A-655F31BAB9E5}"/>
 						<Switch Id="1672723819" Name="Clog_Shoes" ObjectPath="\Switches\Default Work Unit\Shoe_Type\Clog_Shoes" GUID="{2A84FCF9-E908-4AAB-BF21-611AC65BE502}"/>
 						<Switch Id="2632515210" Name="Heels" ObjectPath="\Switches\Default Work Unit\Shoe_Type\Heels" GUID="{89B43353-FC1E-4814-8A4A-098729DFA6CF}"/>
+					</Switches>
+				</SwitchGroup>
+				<SwitchGroup Id="4244338540" Name="Voice_Sel" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel" GUID="{11CB5203-161F-42BA-96CB-BE782C099121}" Color="2">
+					<Switches>
+						<Switch Id="697539359" Name="Guimbarde" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\Guimbarde" GUID="{2DFA9481-76B9-40DB-90B0-3CE816CD0925}" Color="2"/>
+						<Switch Id="703172684" Name="Guitare" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\Guitare" GUID="{7667BE30-AC1D-41C2-B229-908970F01FA5}" Color="2"/>
+						<Switch Id="739772697" Name="Solo_Wania" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\Solo_Wania" GUID="{7EF451FA-EE52-44BB-9913-EDC0D24D628C}" Color="2"/>
+						<Switch Id="840291561" Name="Accordeon" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\Accordeon" GUID="{8D7390CA-00CA-459A-8FBB-64D1A6AAE331}" Color="2"/>
+						<Switch Id="1064071544" Name="Sifflement" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\Sifflement" GUID="{F1101193-6235-4C1B-81BF-71D6850FA178}" Color="2"/>
+						<Switch Id="1783951004" Name="Solo_Hugo" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\Solo_Hugo" GUID="{A249C771-7B78-4D0A-8518-B898914822B1}" Color="2"/>
+						<Switch Id="1786192857" Name="G1" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\G1" GUID="{E2E5BE4B-0109-433A-9930-41E597FDCC83}" Color="2"/>
+						<Switch Id="1786192858" Name="G2" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\G2" GUID="{AEBC97CA-D325-427F-BC48-9D8C5847A774}" Color="2"/>
+						<Switch Id="1786192859" Name="G3" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\G3" GUID="{F514B720-75A1-4916-911B-3B8899C2324B}" Color="2"/>
+						<Switch Id="2729355702" Name="Solo_Atea" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\Solo_Atea" GUID="{3F16AEB3-B834-4CFE-97B3-3F80DB63F473}" Color="2"/>
+						<Switch Id="3360712845" Name="Tambour" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\Tambour" GUID="{277E7C21-E8F6-4298-AEF7-D02841647DEC}" Color="2"/>
+						<Switch Id="3476834350" Name="Solo_Ydris" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\Solo_Ydris" GUID="{016E2D01-BBA8-4C90-BA40-88B2BDE41F48}" Color="2"/>
+						<Switch Id="3603862282" Name="Viele" ObjectPath="\Switches\MUSIC_SWITCH\Voice_Sel\Viele" GUID="{12E04AAA-8C1B-4179-B2F8-69C222758796}" Color="2"/>
 					</Switches>
 				</SwitchGroup>
 			</SwitchGroups>
@@ -373,5 +409,5 @@
 			</AcousticTextures>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{37EB4D12-3B0C-7569-BC98-CFAC88EC6182}</FileHash>
+	<FileHash>{3E0565F1-09A8-FC4E-24D2-1F275B670878}</FileHash>
 </SoundBanksInfo>

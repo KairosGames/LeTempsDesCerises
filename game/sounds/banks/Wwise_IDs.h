@@ -28,6 +28,7 @@ namespace AK
         static const AkUniqueID ENEMY_BULLET_MISS = 3787232089U;
         static const AkUniqueID ENEMY_SHOOT = 1050776119U;
         static const AkUniqueID ENEMY_STEPS = 3114531655U;
+        static const AkUniqueID MUSIC = 3991942870U;
         static const AkUniqueID PLAYER_ALIVE = 2917189548U;
         static const AkUniqueID PLAYER_CROUCH = 3055475155U;
         static const AkUniqueID PLAYER_DEATH = 3083087645U;
@@ -78,6 +79,19 @@ namespace AK
                 static const AkUniqueID RETREAT = 3967984634U;
             } // namespace STATE
         } // namespace FIGHT_STATE
+
+        namespace MUSIC_STATE
+        {
+            static const AkUniqueID GROUP = 3826569560U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID PHASE1 = 3630028971U;
+                static const AkUniqueID PHASE2 = 3630028968U;
+                static const AkUniqueID PHASE3 = 3630028969U;
+            } // namespace STATE
+        } // namespace MUSIC_STATE
 
         namespace PLAYER_AIM
         {
@@ -213,6 +227,28 @@ namespace AK
             } // namespace SWITCH
         } // namespace SURFACE
 
+        namespace VOICE_SEL
+        {
+            static const AkUniqueID GROUP = 4244338540U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID ACCORDEON = 840291561U;
+                static const AkUniqueID G1 = 1786192857U;
+                static const AkUniqueID G2 = 1786192858U;
+                static const AkUniqueID G3 = 1786192859U;
+                static const AkUniqueID GUIMBARDE = 697539359U;
+                static const AkUniqueID GUITARE = 703172684U;
+                static const AkUniqueID SIFFLEMENT = 1064071544U;
+                static const AkUniqueID SOLO_ATEA = 2729355702U;
+                static const AkUniqueID SOLO_HUGO = 1783951004U;
+                static const AkUniqueID SOLO_WANIA = 739772697U;
+                static const AkUniqueID SOLO_YDRIS = 3476834350U;
+                static const AkUniqueID TAMBOUR = 3360712845U;
+                static const AkUniqueID VIELE = 3603862282U;
+            } // namespace SWITCH
+        } // namespace VOICE_SEL
+
     } // namespace SWITCHES
 
     namespace GAME_PARAMETERS
@@ -220,9 +256,11 @@ namespace AK
         static const AkUniqueID BARK_VOLUME = 2103536148U;
         static const AkUniqueID CANNON_SIDECHAIN = 243460359U;
         static const AkUniqueID CANNONS_PROBABILITY = 2576556105U;
+        static const AkUniqueID CHOIR_VOLUME = 2909751391U;
         static const AkUniqueID DEAFENING = 711096812U;
         static const AkUniqueID DEATH_FILTER = 4205136178U;
         static const AkUniqueID DISTANCE = 1240670792U;
+        static const AkUniqueID ISPLAYING = 728654205U;
         static const AkUniqueID PLAYER_POSITION = 2221031936U;
         static const AkUniqueID PLAYER_VELOCITY = 1833811084U;
         static const AkUniqueID POETIC_LEVEL = 3680281974U;
@@ -234,6 +272,7 @@ namespace AK
         static const AkUniqueID INIT = 1355168291U;
         static const AkUniqueID SB_AMB = 925885567U;
         static const AkUniqueID SB_CANNON = 2061449278U;
+        static const AkUniqueID SB_MUSIC = 779753582U;
         static const AkUniqueID SB_NPC = 1278759826U;
         static const AkUniqueID SB_PLAYER = 2103316850U;
     } // namespace BANKS
@@ -242,6 +281,7 @@ namespace AK
     {
         static const AkUniqueID AMB = 1117531639U;
         static const AkUniqueID MAIN_AUDIO_BUS = 2246998526U;
+        static const AkUniqueID MUSIC_BUS = 2680856269U;
         static const AkUniqueID SFX = 393239870U;
         static const AkUniqueID SFX_CANNON = 1541696182U;
         static const AkUniqueID SFX_NPC = 161171466U;
@@ -255,6 +295,7 @@ namespace AK
 
     namespace AUX_BUSSES
     {
+        static const AkUniqueID MUSIC_REV = 2415077256U;
         static const AkUniqueID REFLECT = 243379636U;
         static const AkUniqueID SFX_GUNSHOT_SEND = 3189108374U;
         static const AkUniqueID STREET_REVERB = 2635253023U;
