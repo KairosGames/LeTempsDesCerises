@@ -60,6 +60,9 @@ func coward():
 		is_coward = true
 		find_closest(allies).coward.post_event()
 		print("coward")
+		
+		Wwise.set_state("Music_state", "Phase2")
+		
 		await get_tree().create_timer(10).timeout
 		is_coward = false
 
