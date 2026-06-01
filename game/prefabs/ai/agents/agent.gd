@@ -32,7 +32,10 @@ var target_point: Node3D = null
 var threats: Array
 var is_pushing_canon: bool = false
 var posture: Posture = Posture.STAND:
-	set(value): posture = value; posture_changed.emit(posture);
+	set(value):
+		posture = value;
+		posture_changed.emit(posture);
+		_update_collider(posture)
 var canon_slot: Marker3D = null:
 	set(value):
 		canon_slot = value
@@ -109,5 +112,26 @@ func remove() -> void:
 	cover = null
 	died.emit()
 	queue_free()
+
+@onready var collider: CollisionShape3D = $CollisionShape3D
+@onready var collider_shape: CapsuleShape3D = collider.shape
+
+func _update_collider(new_posture: Posture) -> void:
+	match new_posture:
+		Posture.PRONE:
+			collider.position = Vector3(0, 0.25 , 0)
+			collider_shape.height = 1.6
+			collider_shape.radius = 0.25
+			collider.rotation = Vector3(PI/2, 0, 0)
+		Posture.CROUCH:
+			collider.position = Vector3(0, 0.575 , -0.25)
+			collider_shape.height = 1.15
+			collider_shape.radius = 0.3
+			collider.rotation = Vector3.ZERO
+		Posture.STAND:
+			collider.position = Vector3(0, 0.9 , 0)
+			collider_shape.height = 1.8
+			collider_shape.radius = 0.25
+			collider.rotation = Vector3.ZERO
 
 enum Posture { NONE, PRONE, CROUCH, STAND}
