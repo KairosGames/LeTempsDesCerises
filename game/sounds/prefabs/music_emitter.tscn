@@ -1,12 +1,20 @@
 [gd_scene format=3 uid="uid://cfj1xeyr6n64c"]
 
 [ext_resource type="Script" uid="uid://1ogltfyya1p1" path="res://sounds/scripts/ak_musicevent_3d.gd" id="1_jg2qr"]
+[ext_resource type="WwiseEvent" uid="uid://bdemm5t2ie2yc" path="res://Wwise/resources/Event/{82175BA3-289F-4BFE-B1DC-56C8BFD14012}.tres" id="1_pfpev"]
+[ext_resource type="WwiseRTPC" uid="uid://j6nwqrio2spm" path="res://Wwise/resources/Game Parameter/{B964DDEA-0965-4408-B8D1-10C1D71136BB}.tres" id="3_irsj8"]
+[ext_resource type="WwiseRTPC" uid="uid://cijw0oxal4nt7" path="res://Wwise/resources/Game Parameter/{6265CC32-EB32-48B5-A910-7A5CCA21E939}.tres" id="4_pe3ne"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_v5jej"]
 
 [node name="Music_Emitter" type="AkEvent3D" unique_id=483744097]
+event = ExtResource("1_pfpev")
+stop_on = 3
+stop_fade_time = 1
 script = ExtResource("1_jg2qr")
 Voice_sel = "Solo_Atea"
+DistScale = ExtResource("3_irsj8")
+IsPlay = ExtResource("4_pe3ne")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=623837888]
 mesh = SubResource("BoxMesh_v5jej")
