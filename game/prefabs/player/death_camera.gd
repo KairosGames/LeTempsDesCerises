@@ -88,7 +88,7 @@ func handle_camera_on_communard(communard: Agent, ground: float) -> void:
 	await get_tree().create_timer(time_to_swap).timeout
 	var offset_rot: Vector3 = Vector3(0.0, PI, 0.0)
 	revive_pos = communard.global_position
-	revive_rot = communard.global_rotation + offset_rot
+	revive_rot = Vector3(0, communard.global_rotation.y, 0) + offset_rot
 	target_communard = communard
 	#fov_twn = create_tween()
 	#fov_twn.tween_property(self, "fov", 120.0, 0.2
