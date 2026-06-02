@@ -9,6 +9,10 @@ signal tried_shoot_no_reload
 signal ally_shot
 signal enemy_shot
 signal shoot_missed
+signal changed_aim_state
+signal changed_posture(from: Posture, to: Posture)
+signal jumped
+signal landed
 
 @onready var p_inputs: PlayerInputs = %PlayerInputs
 @onready var reload_ui: ReloadUI = %ReloadUI
@@ -424,6 +428,7 @@ func switch_aim_state() -> void:
 	var taget_rot: float = (ads_z_rot if is_right_handed else ads_z_rot * -1.0) if is_aiming else 0.0
 	var ratio: float = inverse_lerp(default_pos.x, aim_pos.position.x, weapon_container.position.x)
 	var time: float = time_to_ads * ((1 - ratio) if is_aiming else ratio)
+	if time >= time_to_ads / 2.0: changed_aim_state.emit()
 	var in_first: Tween.EaseType = Tween.EASE_IN if is_aiming else Tween.EASE_OUT
 	var out_first: Tween.EaseType = Tween.EASE_OUT if is_aiming else Tween.EASE_IN
 	if wpn_x_aim_twn:
@@ -512,6 +517,9 @@ func capture_position_state() -> void:
 
 
 func crouch_to_stand(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
+	var from: Posture = Posture.STAND if inverse else Posture.CROUCH
+	var to: Posture = Posture.CROUCH if inverse else Posture.STAND
+	changed_posture.emit(from, to)
 	is_changing_posture = true
 	curr_posture = Posture.CROUCH if inverse else Posture.STAND
 	if inverse: is_running = false
@@ -524,6 +532,9 @@ func crouch_to_stand(inverse: bool = false, ask_run: bool = false, time: float =
 
 
 func prone_to_crouch(inverse: bool = false, time: float = state_switch_time) -> void:
+	var from: Posture = Posture.CROUCH if inverse else Posture.PRONE
+	var to: Posture = Posture.PRONE if inverse else Posture.CROUCH
+	changed_posture.emit(from, to)
 	is_changing_posture = true
 	curr_posture = Posture.PRONE if inverse else Posture.CROUCH
 	var target: float = prone_height if inverse else crouch_height
@@ -534,6 +545,9 @@ func prone_to_crouch(inverse: bool = false, time: float = state_switch_time) -> 
 
 
 func prone_to_stand(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
+	var from: Posture = Posture.STAND if inverse else Posture.PRONE
+	var to = Posture.PRONE if inverse else Posture.STAND
+	changed_posture.emit(from, Posture.CROUCH)
 	is_changing_posture = true
 	curr_posture = Posture.CROUCH
 	if inverse: is_running = false
@@ -542,6 +556,7 @@ func prone_to_stand(inverse: bool = false, ask_run: bool = false, time: float = 
 	state_twn.tween_property(camera_pivot, "position:y", crouch_height, time)
 	await state_twn.finished
 	await get_tree().create_timer(0.1).timeout
+	changed_posture.emit(Posture.CROUCH, to)
 	curr_posture = Posture.PRONE if inverse else Posture.STAND
 	if ask_run: is_running = true
 	state_twn = create_tween()
@@ -601,6 +616,7 @@ func can_jump() -> bool:
 
 
 func jump() -> void:
+	jumped.emit()
 	velocity.y = jump_strength
 
 
@@ -744,6 +760,7 @@ func handle_landing_effect() -> void:
 func play_cam_landing_effect(y_offset: float, pitch: float, time: float) -> void:
 	if cam_land_y_twn and cam_land_y_twn.is_running(): return
 	if cam_land_pitch_twn and cam_land_pitch_twn.is_running(): return
+	landed.emit()
 	if cam_land_y_twn: cam_land_y_twn.kill()
 	if cam_land_pitch_twn: cam_land_pitch_twn.kill()
 	cam_land_y_twn = create_tween()

@@ -1,5 +1,7 @@
 class_name GameState01 extends GameState
 
+signal player_tried_to_exit
+
 @onready var go_to_barricade_area: EventArea = %GoToBarricadeArea
 @onready var objective_point_barricade: Node3D = %ObjectivePointBarricade
 @onready var return_to_barricade: EventArea = %ReturnToBarricadeArea
@@ -40,6 +42,7 @@ func stay_into_barricade_area() -> void:
 
 
 func on_player_exit_barricade_zone() -> void:
+	player_tried_to_exit.emit()
 	player.can_play = false
 	take_player_move_control(true)
 	take_player_view_control(true)
