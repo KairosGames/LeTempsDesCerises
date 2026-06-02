@@ -12,7 +12,7 @@ radius = 0.1
 script = ExtResource("1_5kuf7")
 shoot = NodePath("Shoot")
 steps = NodePath("Steps")
-bark = NodePath("Bark")
+bark = NodePath("Barks")
 label = NodePath("Label3D")
 
 [node name="Shoot" type="AkEvent3D" parent="." unique_id=1491082347]
@@ -45,13 +45,10 @@ text = "Placeholder"
 font_size = 64
 outline_size = 32
 
-[node name="Bark" type="AkEvent3D" parent="." unique_id=2129268944]
+[node name="Barks" type="AkEvent3D" parent="." unique_id=2086559002]
 event = ExtResource("4_trdkh")
 stop_on = 3
 stop_fade_time = 1
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
+is_environment_aware = true
 
 [connection signal="audio_marker" from="Steps" to="." method="_on_steps_audio_marker"]
-[connection signal="audio_marker" from="Bark" to="." method="_on_ak_event_3d_audio_marker"]
-[connection signal="duration" from="Bark" to="." method="_on_bark_duration"]
-[connection signal="end_of_event" from="Bark" to="." method="_on_bark_end_of_event"]

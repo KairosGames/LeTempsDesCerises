@@ -105,6 +105,12 @@ namespace AK
                 static const AkUniqueID _2 = 846646258U;
                 static const AkUniqueID _3 = 846646259U;
                 static const AkUniqueID _4 = 846646260U;
+                static const AkUniqueID _5 = 846646261U;
+                static const AkUniqueID _6 = 846646262U;
+                static const AkUniqueID _7 = 846646263U;
+                static const AkUniqueID _8 = 846646264U;
+                static const AkUniqueID _9 = 846646265U;
+                static const AkUniqueID _10 = 1644366931U;
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace NARRATIVE_STEP
@@ -174,6 +180,16 @@ namespace AK
             } // namespace SWITCH
         } // namespace ALLEGIANCE
 
+        namespace CHARACTER
+        {
+            static const AkUniqueID GROUP = 436743010U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID GEORGES = 2519917785U;
+            } // namespace SWITCH
+        } // namespace CHARACTER
+
         namespace CHARACTER_TYPE
         {
             static const AkUniqueID GROUP = 1117085073U;
@@ -184,17 +200,6 @@ namespace AK
                 static const AkUniqueID TYPE2 = 408582741U;
             } // namespace SWITCH
         } // namespace CHARACTER_TYPE
-
-        namespace CHARACTERS
-        {
-            static const AkUniqueID GROUP = 1557941045U;
-
-            namespace SWITCH
-            {
-                static const AkUniqueID GEORGES = 2519917785U;
-                static const AkUniqueID NULL = 784127654U;
-            } // namespace SWITCH
-        } // namespace CHARACTERS
 
         namespace CLOTHING
         {

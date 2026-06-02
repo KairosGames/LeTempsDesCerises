@@ -7,13 +7,12 @@ extends Node3D
 @export var label : Label3D
 
 var is_barking : bool = false
-var delay : float
+var delay : float = 1
 var delay_offset : float = 1
 
 func _enter_tree() -> void:
 	WwiseGlobal.register(self, "enemy")
 	label.text = ""
-	trigg_bark()
 
 func _on_versaillais_shoot() -> void:
 	shoot.post_event()

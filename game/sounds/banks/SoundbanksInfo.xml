@@ -984,6 +984,12 @@
 						<State Id="846646258" Name="_2" ObjectPath="\States\Default Work Unit\narrative_step\_2" GUID="{09BF8DFE-6A5A-44EE-A0D7-571B4C8B3627}"/>
 						<State Id="846646259" Name="_3" ObjectPath="\States\Default Work Unit\narrative_step\_3" GUID="{C457F9CA-271E-4272-942C-51EEAEE06664}"/>
 						<State Id="846646260" Name="_4" ObjectPath="\States\Default Work Unit\narrative_step\_4" GUID="{DB51FE53-D417-4C2D-B0AD-AF7D47A428F6}"/>
+						<State Id="846646261" Name="_5" ObjectPath="\States\Default Work Unit\narrative_step\_5" GUID="{57D83889-9A1E-463F-B503-43B0F186EC42}"/>
+						<State Id="846646262" Name="_6" ObjectPath="\States\Default Work Unit\narrative_step\_6" GUID="{BB0BF348-3AAC-445F-9377-A559B5D27FFE}"/>
+						<State Id="846646263" Name="_7" ObjectPath="\States\Default Work Unit\narrative_step\_7" GUID="{BEEF9ABF-6A8B-4693-91ED-6D3976B6BB29}"/>
+						<State Id="846646264" Name="_8" ObjectPath="\States\Default Work Unit\narrative_step\_8" GUID="{77FB47BE-8100-4FB2-BB6B-27312CD1E536}"/>
+						<State Id="846646265" Name="_9" ObjectPath="\States\Default Work Unit\narrative_step\_9" GUID="{6C822E1A-4489-4B5D-84C3-AC69987C7C58}"/>
+						<State Id="1644366931" Name="_10" ObjectPath="\States\Default Work Unit\narrative_step\_10" GUID="{C35534AB-DCD5-4E4A-B929-F1B3F9550035}"/>
 					</States>
 				</StateGroup>
 				<StateGroup Id="219569822" Name="player_cover" ObjectPath="\States\Default Work Unit\player_cover" GUID="{C9327D6E-8FAB-42D5-8D81-231F326EF92D}">
@@ -1048,6 +1054,11 @@
 				</StateGroup>
 			</StateGroups>
 			<SwitchGroups>
+				<SwitchGroup Id="436743010" Name="Character" ObjectPath="\Switches\Default Work Unit\Character" GUID="{97FF0941-0EB1-4797-A824-6C0F93352B3C}">
+					<Switches>
+						<Switch Id="2519917785" Name="Georges" ObjectPath="\Switches\Default Work Unit\Character\Georges" GUID="{626A0164-AC07-4ABB-8C3F-48A4716786F8}"/>
+					</Switches>
+				</SwitchGroup>
 				<SwitchGroup Id="459611840" Name="Debris" ObjectPath="\Switches\Default Work Unit\Debris" GUID="{74E2D250-64B7-405D-8F20-9EB76B8320A1}">
 					<Switches>
 						<Switch Id="998496889" Name="First" ObjectPath="\Switches\Default Work Unit\Debris\First" GUID="{0E917C72-AA5E-4F81-8F09-69B5A910E6E0}"/>
@@ -1063,12 +1074,6 @@
 				<SwitchGroup Id="1334157877" Name="Clothing" ObjectPath="\Switches\Default Work Unit\Clothing" GUID="{9911114A-D75D-42E0-98CC-D4058993900F}">
 					<Switches>
 						<Switch Id="3469052180" Name="Coat" ObjectPath="\Switches\Default Work Unit\Clothing\Coat" GUID="{F59A1BE2-DA9E-4315-96EE-347DB7FF7F8A}"/>
-					</Switches>
-				</SwitchGroup>
-				<SwitchGroup Id="1557941045" Name="Characters" ObjectPath="\Switches\Default Work Unit\Characters" GUID="{97FF0941-0EB1-4797-A824-6C0F93352B3C}">
-					<Switches>
-						<Switch Id="784127654" Name="Null" ObjectPath="\Switches\Default Work Unit\Characters\Null" GUID="{5D355572-1B0F-49B5-A363-ADC031E10001}"/>
-						<Switch Id="2519917785" Name="Georges" ObjectPath="\Switches\Default Work Unit\Characters\Georges" GUID="{626A0164-AC07-4ABB-8C3F-48A4716786F8}"/>
 					</Switches>
 				</SwitchGroup>
 				<SwitchGroup Id="1834394558" Name="Surface" ObjectPath="\Switches\Default Work Unit\Surface" GUID="{5CA4360B-D253-4948-8173-23B1C55917B4}">
@@ -1247,14 +1252,14 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="1681189201" Type="User" GUID="{D73E2F75-02EA-4C7C-ADF2-3388F5A6D6EA}" Language="SFX" Hash="{573F90E7-F979-9EBE-F6B3-20BBD388AA8C}">
+		<SoundBank Id="1681189201" Type="User" GUID="{D73E2F75-02EA-4C7C-ADF2-3388F5A6D6EA}" Language="SFX" Hash="{80DE6551-2D0F-7CDF-B06E-032FA9649D14}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Narrative</ObjectPath>
 			<ShortName>Sb_Narrative</ShortName>
 			<Path>Sb_Narrative.bnk</Path>
 			<Media>
 				<File Id="75446240" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Narrative\PH_VX_Amb_M_Comm_Military_OB_Start_1.wav</ShortName>
-					<CachePath>7C/{7CC524FB-F9EF-19E5-5974-26E443871C2E}.wem</CachePath>
+					<CachePath>3B/{3B98BEF5-EB82-C6B5-BFF5-AC1E4DEFD1C0}.wem</CachePath>
 				</File>
 				<File Id="136034824" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Narrative\PH_VX_Amb_M_Comm_Military_OB_Start_2.wav</ShortName>
@@ -1269,7 +1274,7 @@
 				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" DurationType="OneShot" DurationMin="3.1475832" DurationMax="7.69">
 					<SwitchContainers>
 						<SwitchContainer>
-							<SwitchValue GroupType="Switch" GroupId="1557941045" Id="2519917785" GUID="{626A0164-AC07-4ABB-8C3F-48A4716786F8}"/>
+							<SwitchValue GroupType="Switch" GroupId="436743010" Id="2519917785" GUID="{626A0164-AC07-4ABB-8C3F-48A4716786F8}"/>
 							<Children>
 								<SwitchContainer>
 									<SwitchValue GroupType="State" GroupId="212893962" Id="846646256" GUID="{EB35525B-54B9-4D6A-B167-53471942451F}"/>
@@ -1303,14 +1308,19 @@
 						<State Id="846646258" Name="_2" ObjectPath="\States\Default Work Unit\narrative_step\_2" GUID="{09BF8DFE-6A5A-44EE-A0D7-571B4C8B3627}"/>
 						<State Id="846646259" Name="_3" ObjectPath="\States\Default Work Unit\narrative_step\_3" GUID="{C457F9CA-271E-4272-942C-51EEAEE06664}"/>
 						<State Id="846646260" Name="_4" ObjectPath="\States\Default Work Unit\narrative_step\_4" GUID="{DB51FE53-D417-4C2D-B0AD-AF7D47A428F6}"/>
+						<State Id="846646261" Name="_5" ObjectPath="\States\Default Work Unit\narrative_step\_5" GUID="{57D83889-9A1E-463F-B503-43B0F186EC42}"/>
+						<State Id="846646262" Name="_6" ObjectPath="\States\Default Work Unit\narrative_step\_6" GUID="{BB0BF348-3AAC-445F-9377-A559B5D27FFE}"/>
+						<State Id="846646263" Name="_7" ObjectPath="\States\Default Work Unit\narrative_step\_7" GUID="{BEEF9ABF-6A8B-4693-91ED-6D3976B6BB29}"/>
+						<State Id="846646264" Name="_8" ObjectPath="\States\Default Work Unit\narrative_step\_8" GUID="{77FB47BE-8100-4FB2-BB6B-27312CD1E536}"/>
+						<State Id="846646265" Name="_9" ObjectPath="\States\Default Work Unit\narrative_step\_9" GUID="{6C822E1A-4489-4B5D-84C3-AC69987C7C58}"/>
+						<State Id="1644366931" Name="_10" ObjectPath="\States\Default Work Unit\narrative_step\_10" GUID="{C35534AB-DCD5-4E4A-B929-F1B3F9550035}"/>
 					</States>
 				</StateGroup>
 			</StateGroups>
 			<SwitchGroups>
-				<SwitchGroup Id="1557941045" Name="Characters" ObjectPath="\Switches\Default Work Unit\Characters" GUID="{97FF0941-0EB1-4797-A824-6C0F93352B3C}">
+				<SwitchGroup Id="436743010" Name="Character" ObjectPath="\Switches\Default Work Unit\Character" GUID="{97FF0941-0EB1-4797-A824-6C0F93352B3C}">
 					<Switches>
-						<Switch Id="784127654" Name="Null" ObjectPath="\Switches\Default Work Unit\Characters\Null" GUID="{5D355572-1B0F-49B5-A363-ADC031E10001}"/>
-						<Switch Id="2519917785" Name="Georges" ObjectPath="\Switches\Default Work Unit\Characters\Georges" GUID="{626A0164-AC07-4ABB-8C3F-48A4716786F8}"/>
+						<Switch Id="2519917785" Name="Georges" ObjectPath="\Switches\Default Work Unit\Character\Georges" GUID="{626A0164-AC07-4ABB-8C3F-48A4716786F8}"/>
 					</Switches>
 				</SwitchGroup>
 			</SwitchGroups>
@@ -2311,5 +2321,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{446BE800-5BC0-5BFF-0358-72EC905E6E02}</FileHash>
+	<FileHash>{FE7C2BC9-C647-218C-2729-674C7553099D}</FileHash>
 </SoundBanksInfo>
