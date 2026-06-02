@@ -72,5 +72,6 @@ func _on_ally_dead_audio_marker(data: Dictionary) -> void:
 	is_feedbarking = true
 
 func _on_coward_audio_marker(data: Dictionary) -> void:
+	if !WwiseGlobal.allow_barks : return
 	set_text(data, true)
 	is_feedbarking = true

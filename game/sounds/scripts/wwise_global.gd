@@ -26,7 +26,7 @@ func _ready() -> void:
 		flip_barks_system()
 
 func _process(_delta: float) -> void:
-	if barricade.global_position.distance_squared_to(player.global_position) > coward_distance and is_coward == false:
+	if barricade != null and barricade.global_position.distance_squared_to(player.global_position) > coward_distance and is_coward == false:
 		coward()
 
 func new_line(step : int):
@@ -42,12 +42,13 @@ func line_ended():
 
 func flip_barks_system():
 	allow_barks = !allow_barks
-	for i in allies:
-		i.delay = randf_range(0.5, 5)
-		i.trigg_bark()
-	for i in enemies:
-		i.delay = randf_range(0.5, 5)
-		i.trigg_bark()
+	if allow_barks:
+		for i in allies:
+			i.delay = randf_range(0.5, 5)
+			i.trigg_bark()
+		for i in enemies:
+			i.delay = randf_range(0.5, 5)
+			i.trigg_bark()
 
 func register(target : Node3D, type : String):
 	if type == "ally":

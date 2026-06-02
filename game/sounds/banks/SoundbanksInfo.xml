@@ -1247,12 +1247,52 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="1681189201" Type="User" GUID="{D73E2F75-02EA-4C7C-ADF2-3388F5A6D6EA}" Language="SFX" Hash="{1EB6F230-2095-25AF-7274-3B839FCB7C1D}">
+		<SoundBank Id="1681189201" Type="User" GUID="{D73E2F75-02EA-4C7C-ADF2-3388F5A6D6EA}" Language="SFX" Hash="{573F90E7-F979-9EBE-F6B3-20BBD388AA8C}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Narrative</ObjectPath>
 			<ShortName>Sb_Narrative</ShortName>
 			<Path>Sb_Narrative.bnk</Path>
+			<Media>
+				<File Id="75446240" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VX_Narrative\PH_VX_Amb_M_Comm_Military_OB_Start_1.wav</ShortName>
+					<CachePath>7C/{7CC524FB-F9EF-19E5-5974-26E443871C2E}.wem</CachePath>
+				</File>
+				<File Id="136034824" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VX_Narrative\PH_VX_Amb_M_Comm_Military_OB_Start_2.wav</ShortName>
+					<CachePath>12/{1216D0C0-3928-9422-181E-B55BF034276C}.wem</CachePath>
+				</File>
+				<File Id="989720768" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>VX_Narrative\PH_VX_Amb_M_Comm_Military_OB_Start_3.wav</ShortName>
+					<CachePath>7E/{7EF39BF3-356E-00EA-2888-4125DA6F02EF}.wem</CachePath>
+				</File>
+			</Media>
 			<Events>
-				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" DurationType="OneShot" DurationMin="3.1475832" DurationMax="7.69">
+					<SwitchContainers>
+						<SwitchContainer>
+							<SwitchValue GroupType="Switch" GroupId="1557941045" Id="2519917785" GUID="{626A0164-AC07-4ABB-8C3F-48A4716786F8}"/>
+							<Children>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="212893962" Id="846646256" GUID="{EB35525B-54B9-4D6A-B167-53471942451F}"/>
+									<MediaRefs>
+										<MediaRef Id="75446240"/>
+									</MediaRefs>
+								</SwitchContainer>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="212893962" Id="846646257" GUID="{031667A8-7D99-4644-A81A-526A9C11C7CD}"/>
+									<MediaRefs>
+										<MediaRef Id="136034824"/>
+									</MediaRefs>
+								</SwitchContainer>
+								<SwitchContainer>
+									<SwitchValue GroupType="State" GroupId="212893962" Id="846646258" GUID="{09BF8DFE-6A5A-44EE-A0D7-571B4C8B3627}"/>
+									<MediaRefs>
+										<MediaRef Id="989720768"/>
+									</MediaRefs>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+					</SwitchContainers>
+				</Event>
 			</Events>
 			<StateGroups>
 				<StateGroup Id="212893962" Name="narrative_step" ObjectPath="\States\Default Work Unit\narrative_step" GUID="{DC7D94F8-F1CD-4344-8D78-703A4905E20A}">
@@ -2271,5 +2311,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{6B0F70A9-BE34-E295-24EF-881EA90F0779}</FileHash>
+	<FileHash>{446BE800-5BC0-5BFF-0358-72EC905E6E02}</FileHash>
 </SoundBanksInfo>

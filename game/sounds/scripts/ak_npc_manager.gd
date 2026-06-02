@@ -6,7 +6,7 @@ var npc_name : String
 
 func _enter_tree() -> void:
 	npc_name = get_parent().name
-	print("my name is ", npc_name)
+	print("my name is ", npc_name, " and parent is ", get_parent())
 	WwiseGlobal.narrators.append(self)
 	Wwise.set_switch("Character", npc_name, self)
 
