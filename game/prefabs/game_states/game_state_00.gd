@@ -34,6 +34,7 @@ func set_player_for_onboarding() -> void:
 	player.initiate(spawn.global_position, spawn.global_rotation, false, false, Player.Posture.PRONE)
 	player.set_is_free(false)
 	player.aim_target.x = -70.0
+	player.can_die = false
 
 
 func get_up() -> void:

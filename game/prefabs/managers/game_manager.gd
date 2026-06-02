@@ -1,6 +1,7 @@
 class_name GameManager extends Node
 
 @onready var player_spawner: CustomMarker = %PlayerSpawner
+@onready var objective_target: ObjectiveTarget = %ObjectiveTarget
 
 @export_category("Settings")
 @export var use_narrative: bool = true
@@ -17,7 +18,6 @@ var player: Player
 var ui_manager: UIManager
 var curr_state: GameState
 var game_state_index: int = -1
-
 var is_in_pause: bool = false
 
 var pause_twn: Tween

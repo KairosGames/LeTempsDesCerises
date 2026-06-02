@@ -61,6 +61,7 @@ var can_use_reload: bool = true
 var can_change_posture: bool = true
 var can_use_jump: bool = true
 var can_quit_aim: bool = true
+var can_die: bool = true
 
 @export_category("Smoothness settings")
 @export_range(0.01, 0.5, 0.01) var acc_time: float = 0.1
@@ -168,7 +169,6 @@ var can_quit_aim: bool = true
 @export var land_max_y_offset: float = -0.1
 @export var land_max_pitch_offset: float = 1.0
 @export var land_effect_time: float = 0.2
-
 
 enum Posture { STAND, CROUCH, PRONE }
 var curr_posture: Posture = Posture.STAND
@@ -736,8 +736,6 @@ func handle_fov_changes(delta: float) -> void:
 
 
 func handle_landing_effect() -> void:
-	if not was_grounded and is_grounded:
-		print("Just fell")
 	if not was_grounded and is_grounded and last_y_air_vel < -0.1:
 		play_cam_landing_effect(land_max_y_offset, land_max_pitch_offset, land_effect_time)
 	was_grounded = is_grounded
@@ -1140,7 +1138,7 @@ func miss_by_versaillais() -> void:
 
 
 func die() -> void:
-	if not is_alive or will_die: return
+	if not is_alive or will_die or not can_die: return
 	will_die = true
 	die_called.emit()
 	await get_tree().create_timer(0.1).timeout
@@ -1155,6 +1153,7 @@ func reset_player_controller() -> void:
 	kill_all_tweens()
 	reload_ui.step = 0
 	reload_ui.activation(false)
+	reload_ui.wpn_animator.play("idle")
 	velocity = Vector3.ZERO
 	local_velocity = Vector3.ZERO
 	aim_vel = Vector3.ZERO

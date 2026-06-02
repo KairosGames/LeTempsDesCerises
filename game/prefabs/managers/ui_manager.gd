@@ -6,6 +6,9 @@ class_name UIManager extends Control
 @onready var tutorial_gpad: PanelContainer = %TutorialGamepad
 @onready var options: ButtonBehavior = %Options
 @onready var quit: ButtonBehavior = %Quit
+@onready var objective_container: VBoxContainer = %ObjectiveContainer
+@onready var objective_label: Label = %ObjectiveLabel
+@onready var objective_target: ObjectiveTarget = %ObjectiveTarget
 
 var player: Player
 var on_process: Array[Callable]
@@ -30,6 +33,10 @@ func _ready() -> void:
 
 func ready_deferred() -> void:
 	player = Player.instance
+	objective_container.visible = false
+	objective_target.controller_node = player
+	objective_target.camera_node = player.player_camera
+	objective_target.target = null
 
 
 func _process(_delta: float) -> void:
@@ -102,3 +109,9 @@ func set_pause(is_pause: bool) -> void:
 	else: clear_process()
 	if player.p_inputs.is_gamepad: options.grab_focus()
 	else: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if is_pause else Input.MOUSE_MODE_CAPTURED
+
+
+func set_objective(is_active: bool, target: Node3D = null, objective: String = "") -> void:
+	objective_label.text = "· " + objective
+	objective_container.visible = is_active
+	objective_target.target = target

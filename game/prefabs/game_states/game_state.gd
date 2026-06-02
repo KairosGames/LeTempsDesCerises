@@ -22,6 +22,8 @@ var voice_line_index: int = -1
 var local_bool: bool
 var was_gpad: bool
 
+var rot_twn: Tween
+
 
 func _ready() -> void:
 	ready_deffered.call_deferred()
@@ -55,6 +57,12 @@ func run_steps() -> void:
 		print("STEP ", curr_step, " PASSED !")
 		curr_step += 1
 	completed.emit()
+
+
+func set_player_for_debug() -> void:
+	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
+	player.give_or_drop_weapon(true)
+	player.is_weapon_loaded = true
 
 
 func do_nothing(_p: float = 0.0) -> void:
@@ -134,6 +142,14 @@ func rotate_yaw_player_to_pos(pos: Vector3, speed: float, delta: float) -> void:
 func rotate_player_to_yaw(yaw: float, speed: float, delta: float) -> void:
 	var arg1 = deg_to_rad(player.aim_target.y)
 	player.aim_target.y = rad_to_deg(rotate_toward(arg1, yaw, speed * delta))
+
+
+func tween_rotate_player_to_pos(pos: Vector3, time: float) -> void:
+	var dir = player.global_position - pos
+	var target_angle = atan2(-dir.x, -dir.z)
+	if rot_twn: rot_twn.kill()
+	rot_twn = create_tween()
+	await rot_twn.tween_property(player, "aim_target:y", rad_to_deg(target_angle), time).finished
 
 
 func block_ads_concentration(t: float) -> void:

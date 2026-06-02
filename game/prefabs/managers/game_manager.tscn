@@ -4,9 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="2_oroiu"]
 [ext_resource type="Script" uid="uid://c5krjyeui5vq" path="res://prefabs/managers/ui_manager.gd" id="3_eijdo"]
 [ext_resource type="PackedScene" uid="uid://beech0hdhe6o0" path="res://prefabs/game_states/game_state_00.tscn" id="3_mvb55"]
+[ext_resource type="Texture2D" uid="uid://d0odgerepsyjj" path="res://prefabs/game_states/gm_usables/red_circle.webp" id="4_7sktv"]
 [ext_resource type="Script" uid="uid://nxby0mkl27i5" path="res://prefabs/ui/tooltip.gd" id="4_cvqlx"]
 [ext_resource type="PackedScene" uid="uid://7j15kus7g3jt" path="res://prefabs/game_states/game_state_01.tscn" id="4_ljy1t"]
 [ext_resource type="PackedScene" uid="uid://h0dft4mcr3qp" path="res://prefabs/game_states/gm_usables/custom_marker.tscn" id="4_ruyh4"]
+[ext_resource type="Script" uid="uid://dedkctoc126kq" path="res://prefabs/game_states/gm_usables/objective_target.gd" id="4_x50xo"]
 [ext_resource type="PackedScene" uid="uid://qwhdtvmxif5t" path="res://prefabs/game_states/game_state_02.tscn" id="5_m6g67"]
 [ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="5_rmfoy"]
 [ext_resource type="PackedScene" uid="uid://x6umueunebab" path="res://prefabs/game_states/gm_usables/shoot_target.tscn" id="5_vkqci"]
@@ -215,17 +217,26 @@ font_size = 24
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r74ma"]
+
+[sub_resource type="Theme" id="Theme_ol0j6"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_83msq"]
 content_margin_left = 10.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_jv7w5"]
-font_size = 18
+font_size = 20
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rmfoy"]
 size = Vector3(2.4902344, 2.6345215, 14.923035)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_83msq"]
-size = Vector3(3.2592773, 2.6173096, 21.94949)
+size = Vector3(3.2592773, 2.6088943, 21.94949)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7sktv"]
+size = Vector3(6.770752, 1.5043945, 9.221161)
 
 [node name="GameManager" type="Node" unique_id=1070764289 node_paths=PackedStringArray("all_states")]
 script = ExtResource("1_utpm8")
@@ -243,6 +254,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_eijdo")
+
+[node name="ObjectiveTarget" type="TextureRect" parent="UIManager" unique_id=554183493]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_7sktv")
+expand_mode = 1
+script = ExtResource("4_x50xo")
 
 [node name="TooltipContainer" type="CenterContainer" parent="UIManager" unique_id=156249013]
 layout_mode = 1
@@ -412,11 +432,12 @@ text = "Quit"
 script = ExtResource("5_rmfoy")
 
 [node name="ObjectiveContainer" type="VBoxContainer" parent="UIManager" unique_id=812492473]
+unique_name_in_owner = true
 layout_mode = 0
-offset_top = 74.0
+offset_top = 32.0
 offset_right = 619.0
-offset_bottom = 398.0
-theme_override_constants/separation = 0
+offset_bottom = 114.0
+theme_override_constants/separation = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="UIManager/ObjectiveContainer" unique_id=506578922]
 custom_minimum_size = Vector2(0, 50)
@@ -429,7 +450,24 @@ text = "Objective"
 label_settings = SubResource("LabelSettings_ol0j6")
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="UIManager/ObjectiveContainer" unique_id=174662653]
+[node name="HBoxContainer" type="HBoxContainer" parent="UIManager/ObjectiveContainer" unique_id=1188741627]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="UIManager/ObjectiveContainer/HBoxContainer" unique_id=1450316153]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_r74ma")
+
+[node name="TextureRect" type="TextureRect" parent="UIManager/ObjectiveContainer/HBoxContainer" unique_id=274613385]
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+theme = SubResource("Theme_ol0j6")
+texture = ExtResource("4_7sktv")
+expand_mode = 1
+
+[node name="ObjectiveLabel" type="Label" parent="UIManager/ObjectiveContainer/HBoxContainer" unique_id=174662653]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxEmpty_83msq")
 text = "· Go to the barricade"
@@ -456,20 +494,30 @@ unique_name_in_owner = true
 
 [node name="GameState01" parent="States" unique_id=443097567 instance=ExtResource("4_ljy1t")]
 
-[node name="GoToBarricade2" parent="States/GameState01" unique_id=1458560722 instance=ExtResource("10_83msq")]
+[node name="GoToBarricadeArea" parent="States/GameState01" unique_id=1458560722 instance=ExtResource("10_83msq")]
 unique_name_in_owner = true
 transform = Transform3D(0.872888, 0, 0.4879206, 0, 1, 0, -0.4879206, 0, 0.872888, -4.462287, 1.3473175, 1.8657641)
 
-[node name="CollisionShape3D" parent="States/GameState01/GoToBarricade2" index="0" unique_id=447369626]
+[node name="CollisionShape3D" parent="States/GameState01/GoToBarricadeArea" index="0" unique_id=447369626]
 shape = SubResource("BoxShape3D_rmfoy")
 
-[node name="ReturnToBarricade" parent="States/GameState01" unique_id=334245662 instance=ExtResource("10_83msq")]
+[node name="ObjectivePointBarricade" type="Node3D" parent="States/GameState01" unique_id=1189628983]
 unique_name_in_owner = true
-transform = Transform3D(0.872888, 0, 0.4879206, 0, 1, 0, -0.4879206, 0, 0.872888, -8.900592, 0, 4.669562)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.552303, 1.4723235, 0.7906283)
 
-[node name="CollisionShape3D" parent="States/GameState01/ReturnToBarricade" index="0" unique_id=447369626]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20455933, 1.3654175, 0.23666382)
+[node name="ReturnToBarricadeArea" parent="States/GameState01" unique_id=334245662 instance=ExtResource("10_83msq")]
+unique_name_in_owner = true
+transform = Transform3D(0.872888, 0, 0.4879206, 0, 1, 0, -0.4879206, 0, 0.872888, -11.280796, 1.3412502, 3.0036588)
+
+[node name="CollisionShape3D" parent="States/GameState01/ReturnToBarricadeArea" index="0" unique_id=447369626]
 shape = SubResource("BoxShape3D_83msq")
+
+[node name="FirstDieArea" parent="States/GameState01" unique_id=1996662221 instance=ExtResource("10_83msq")]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" parent="States/GameState01/FirstDieArea" index="0" unique_id=447369626]
+transform = Transform3D(0.9085082, 0, 0.41786706, 0, 1, 0, -0.41786706, 0, 0.9085082, -5.5735774, 0.87063456, 0.5666423)
+shape = SubResource("BoxShape3D_7sktv")
 
 [node name="GameState02" parent="States" unique_id=345645137 instance=ExtResource("5_m6g67")]
 
@@ -479,5 +527,6 @@ shape = SubResource("BoxShape3D_83msq")
 unique_name_in_owner = true
 transform = Transform3D(0.9616791, 0, 0.2741775, 0, 1, 0, -0.2741775, 0, 0.9616791, -35.806408, 4.7683716e-07, 2.279154)
 
-[editable path="States/GameState01/GoToBarricade2"]
-[editable path="States/GameState01/ReturnToBarricade"]
+[editable path="States/GameState01/GoToBarricadeArea"]
+[editable path="States/GameState01/ReturnToBarricadeArea"]
+[editable path="States/GameState01/FirstDieArea"]
