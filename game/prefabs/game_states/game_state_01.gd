@@ -3,9 +3,10 @@ class_name GameState01 extends GameState
 signal player_tried_to_exit
 
 @onready var go_to_barricade_area: EventArea = %GoToBarricadeArea
-@onready var objective_point_barricade: Node3D = %ObjectivePointBarricade
+@onready var objective_point_barricade: CustomMarker = %ObjectivePointBarricade
 @onready var return_to_barricade: EventArea = %ReturnToBarricadeArea
 @onready var first_die_area: EventArea = %FirstDieArea
+@onready var jules: Npc = %Jules
 
 var kill_counter: int = 0
 var it_is_time_to_die: bool
@@ -15,21 +16,27 @@ func enter() -> void:
 	curr_step = 0
 	steps = [
 		#Step.new(set_player_for_debug, do_nothing, do_nothing),
-
 		Step.new(go_to_barricade, stay_into_barricade_area, go_to_first_die),
 	]
 	run_steps()
+	if game_manager.use_debug: set_player_for_debug()
 
 
 func exit() -> void:
 	pass
 
 
+func set_player_for_debug() -> void:
+	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
+	player.give_or_drop_weapon(true)
+	player.is_weapon_loaded = true
+
+
 func go_to_barricade() -> void:
 	ui_manager.set_objective(true, objective_point_barricade, "Go to the barricade")
 	go_to_barricade_area.monitoring = true
 	await wait_signal(go_to_barricade_area.player_entered)
-	go_to_barricade_area.monitoring = false
+	go_to_barricade_area.set_deferred("monitoring", false)
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 
 
@@ -50,7 +57,8 @@ func on_player_exit_barricade_zone() -> void:
 	if player.is_aiming:
 		player.is_aiming = false
 		player.switch_aim_state()
-	await tween_rotate_player_to_pos(objective_point_barricade.global_position, 0.35)
+	var target_point: Vector3 = player.global_position + return_to_barricade.basis.x
+	await tween_rotate_player_to_pos(target_point, 0.7)
 	set_player_move(Vector2(0.0, 1.0))
 	await wait(1.0)
 	take_player_move_control(false)

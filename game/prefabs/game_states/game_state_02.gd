@@ -6,5 +6,10 @@ func enter() -> void:
 	steps = []
 	run_steps()
 
+
 func exit() -> void:
+	pass
+
+
+func set_player_for_debug() -> void:
 	pass

@@ -6,13 +6,14 @@ signal fire_kill_georges
 @onready var georges_rdv: CustomMarker = %GeorgesRDV
 @onready var georges: Npc = %Georges
 @onready var barricade_point: CustomMarker = %BarricadePoint
+@onready var jules: Npc = %Jules
+@onready var versaillais_coming_point: CustomMarker = $VersaillaisComingPoint
 
 
 func enter() -> void:
 	curr_step = 0
 	steps = [
-		#Step.new(set_player_for_onboarding, func():player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN), get_up),
-		Step.new(set_player_for_onboarding, wait_voice, get_up),
+		Step.new(set_player_for_onboarding, get_up, do_nothing),
 		Step.new(go_for_georges, wait_voice, take_weapon),
 		Step.new(wait_voice, wait_player_crouch, do_nothing),
 		Step.new(wait_voice, wait_player_prone, do_nothing),
@@ -23,10 +24,15 @@ func enter() -> void:
 		Step.new(enter_fight_begin, georges_death, free_player)
 	]
 	run_steps()
+	if game_manager.use_debug: set_player_for_debug()
 
 
 func exit() -> void:
 	pass
+
+
+func set_player_for_debug() -> void:
+	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
 
 
 func set_player_for_onboarding() -> void:
@@ -38,9 +44,11 @@ func set_player_for_onboarding() -> void:
 
 
 func get_up() -> void:
-	await wait(1.0)
-	await player.blink_effect.open_eyes_from_sleep()
-	await wait(2.0)
+	if not game_manager.use_debug:
+		await wait_voice()
+		await wait(1.0)
+		await player.blink_effect.open_eyes_from_sleep()
+		await wait(2.0)
 	var twn: Tween = create_tween()
 	twn.tween_property(player, "aim_target:x", 0.0, 0.7)
 	player.play_cam_landing_effect(-0.2, 30.0, 1.0)
@@ -200,8 +208,12 @@ func enter_fight_begin() -> void:
 	first_fire_from_barricade.emit()
 	await wait(0.3)
 	clean_process()
+	francois.rotate_yaw_to_pos_tween(versaillais_coming_point.global_position, 0.05)
 	add_on_process(rotate_yaw_player_to_pos.bind(barricade_point.global_position, PI * 3.0, delta_t))
-	await wait(0.5)
+	await wait(0.3)
+	jules.rotate_yaw_to_pos_tween(versaillais_coming_point.global_position, 0.4)
+	await francois.rotate_yaw_to_pos_tween(player.global_position, 0.4)
+	jules.is_figthing = true
 	await wait_voice()
 	take_player_view_control(false)
 
@@ -216,6 +228,8 @@ func georges_death() -> void:
 	call_georges_death()
 	await georges.move_to(barricade_point.global_position, 4.0)
 	await wait_voice()
+	await francois.rotate_yaw_to_pos_tween(versaillais_coming_point.global_position, 0.4)
+	francois.is_figthing = true
 
 
 func call_georges_death() -> void:

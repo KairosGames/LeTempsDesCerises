@@ -5,7 +5,9 @@ class_name Npc extends CharacterBody3D
 
 
 enum NpcName{
-	Georges
+	Georges,
+	Jules,
+	François
 }
 
 @export var npc_name: NpcName
@@ -13,6 +15,7 @@ enum NpcName{
 var on_process: Array[Callable]
 var delta_t: float
 var is_alive: bool = true
+var is_figthing: bool = false
 
 var rot_twn: Tween
 
@@ -21,6 +24,7 @@ func _process(delta: float) -> void:
 	delta_t = delta
 	if is_alive: apply_gravity()
 	for callable: Callable in on_process: callable.call()
+	handle_animations()
 
 
 func clean_process() -> void:
@@ -34,8 +38,7 @@ func move_to(pos: Vector3, speed: float) -> void:
 		move_and_slide()
 		if not is_alive: break
 		await get_tree().process_frame
-	velocity.x = 0.0
-	velocity.z = 0.0
+	velocity = Vector3.ZERO
 
 
 func apply_gravity() -> void:
@@ -57,7 +60,8 @@ func rotate_yaw_to_pos_tween(pos: Vector3, time: float) -> void:
 	var target_angle = atan2(-dir.x, -dir.z)
 	if rot_twn: rot_twn.kill()
 	rot_twn = create_tween()
-	await rot_twn.tween_property(self, "global_rotation:y", target_angle, time).finished
+	var delta: float = wrapf(target_angle - global_rotation.y, -PI, PI)
+	await rot_twn.tween_property(self, "global_rotation:y", delta, time).as_relative().finished
 
 
 func is_at_point(pos: Vector3) -> bool:
@@ -75,3 +79,26 @@ func die() -> void:
 	is_alive = false
 	collider.disabled = true
 	animator.play("death")
+
+
+func handle_animations() -> void:
+	var lateral_vel: float = Vector3(velocity.x, 0.0, velocity.z).length_squared()
+	if lateral_vel >= 0.1:
+		enter_in_walk_anim()
+		return
+	if is_figthing:
+		enter_in_fight_anim()
+		return
+	enter_in_idle_anim()
+
+
+func enter_in_idle_anim() -> void:
+	pass
+
+
+func enter_in_walk_anim() -> void:
+	pass
+
+
+func enter_in_fight_anim() -> void:
+	pass

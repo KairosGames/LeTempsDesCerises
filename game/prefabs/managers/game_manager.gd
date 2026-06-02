@@ -1,12 +1,14 @@
 class_name GameManager extends Node
 
 @onready var player_spawner: CustomMarker = %PlayerSpawner
-@onready var objective_target: ObjectiveTarget = %ObjectiveTarget
 
 @export_category("Settings")
 @export var use_narrative: bool = true
+@export var use_debug: bool = false
+@export var starting_game_state: int = 0
 
 @export_category("References")
+@export var spawners: Array[Cover]
 @export var first_barricade: Barricade
 @export var canon: Canon
 
@@ -30,6 +32,7 @@ static var instance: GameManager:
 
 
 func _ready() -> void:
+	if use_debug: game_state_index = starting_game_state - 1
 	instance = self
 	if canon: canon.shoot.connect(handle_canon_shoot)
 	ready_deferred.call_deferred()
