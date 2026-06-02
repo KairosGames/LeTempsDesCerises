@@ -23,30 +23,14 @@ var first_reload : bool = true
 @export var bullet_prefab : PackedScene
 
 func _ready() -> void:
-	BarksManager.player = self
+	WwiseGlobal.player = self
 	init_motion()
 	player.die_called.connect(death_event)
-	player.enemy_shot.connect(BarksManager.enemy_killed)
+	player.enemy_shot.connect(WwiseGlobal.enemy_killed)
+	player.shot.connect(shoot_event)
+	player.tried_shoot_no_reload.connect(no_ammo)
 
 func _unhandled_input(_event: InputEvent) -> void:
-
-	if Input.is_action_just_pressed("shoot"):
-		if !player.can_shoot() : return
-		shoot.post_event()
-		var target : Node3D = player.weapon_ray_cast.get_collider()
-		var hit_position : Vector3 = player.weapon_ray_cast.get_collision_point()
-		var hit = bullet_prefab.instantiate()
-		hit.position = hit_position
-		var delay : float = self.global_position.distance_to(hit_position)/375
-		await get_tree().create_timer(delay).timeout
-		call_deferred("add_child", hit)
-		if target == null : return
-		for i in target.get_children():
-			if i.has_meta("Surface") and i.get_class() == "MeshInstance3D":
-				#print(i.get_meta("Surface"))
-				Wwise.set_switch("bullet_material",i.get_meta("Surface"), self)
-			#elif i.get_class() == "MeshInstance3D":
-				#print("Orlane tu as oublié un mat !")
 	
 	if Input.is_action_just_pressed("aim"):
 		Wwise.set_state("player_aim", str(!player.is_aiming))
@@ -91,6 +75,27 @@ func _process(_delta: float) -> void:
 	elif is_walking and player.velocity.x + player.velocity.z == 0 or !player.is_on_floor():
 		steps.stop_event()
 		is_walking = false
+
+func shoot_event():
+	if !player.can_shoot() : return
+	shoot.post_event()
+	var target : Node3D = player.weapon_ray_cast.get_collider()
+	var hit_position : Vector3 = player.weapon_ray_cast.get_collision_point()
+	var hit = bullet_prefab.instantiate()
+	hit.position = hit_position
+	var delay : float = self.global_position.distance_to(hit_position)/375
+	await get_tree().create_timer(delay).timeout
+	call_deferred("add_child", hit)
+	if target == null : return
+	for i in target.get_children():
+		if i.has_meta("Surface") and i.get_class() == "MeshInstance3D":
+			#print(i.get_meta("Surface"))
+			Wwise.set_switch("bullet_material",i.get_meta("Surface"), self)
+		#elif i.get_class() == "MeshInstance3D":
+			#print("Orlane tu as oublié un mat !")
+
+func no_ammo():
+	pass
 
 func on_reload():
 	reload.post_event()

@@ -1711,13 +1711,18 @@
 																<ObjectList Name="Markers">
 																	<Marker Name="" ID="{511223E5-FF87-4193-B62F-01CDB5978ED1}">
 																		<PropertyList>
-																			<Property Name="Label" Type="string" Value="Bat-toi camarade !"/>
+																			<Property Name="Label" Type="string" Value="Bagarre !"/>
 																		</PropertyList>
 																	</Marker>
 																	<Marker Name="" ID="{A3630916-3AC4-486B-A610-A1D3001FCA20}">
 																		<PropertyList>
-																			<Property Name="Label" Type="string" Value="Bat-toi !"/>
+																			<Property Name="Label" Type="string" Value="Bagarre !"/>
 																			<Property Name="Time" Type="Real64" Value="1.00150252651909"/>
+																		</PropertyList>
+																	</Marker>
+																	<Marker Name="" ID="{E996C56F-5E14-472D-96A1-2B414B48E136}">
+																		<PropertyList>
+																			<Property Name="Time" Type="Real64" Value="1.66243243657819"/>
 																		</PropertyList>
 																	</Marker>
 																</ObjectList>
@@ -1955,6 +1960,168 @@
 							</RTPC>
 						</ObjectList>
 					</ObjectLists>
+				</PropertyContainer>
+				<PropertyContainer Name="Scripted" ID="{EC6575AE-A3DC-4B64-9E38-FBE798AA3260}" ShortID="314099733">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<SwitchContainer Name="Character" ID="{71F62CB4-A443-43C3-BCD9-B5C5EFC7CEF0}" ShortID="1048524615">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+								</Reference>
+								<Reference Name="DefaultSwitchOrState">
+									<ObjectRef Name="Georges" ID="{3DD8F71B-69BB-45E5-867B-1A57F85C22F6}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
+								<Reference Name="SwitchGroupOrStateGroup">
+									<ObjectRef Name="Character" ID="{DA0CD53D-5479-43A0-9A8F-337DC32F0157}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<SwitchContainer Name="Georges" ID="{EA267C89-B50A-4122-98FA-5A205B6AF088}" ShortID="229494349">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="None" ID="{23E4A53A-7217-486C-A6CA-F04AE842A181}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="narrative_step" ID="{CA387616-F5B9-4C7F-812F-0262E9D400C1}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="PH_VX_Amb_M_Comm_Military_OB_Start_1" ID="{207347C7-DE6F-44D0-94E4-B25ED29D6CB0}" ShortID="12709820">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PH_VX_Amb_M_Comm_Military_OB_Start_1" ID="{F80F4E38-16F2-4446-9C5E-7FA0414DB487}">
+													<Language>SFX</Language>
+													<AudioFile>VX_Narrative\PH_VX_Amb_M_Comm_Military_OB_Start_1.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="75446240"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PH_VX_Amb_M_Comm_Military_OB_Start_1" ID="{F80F4E38-16F2-4446-9C5E-7FA0414DB487}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PH_VX_Amb_M_Comm_Military_OB_Start_2" ID="{ED1CE673-72CF-4CCD-9779-6CE13E5F9D6E}" ShortID="1056466139">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PH_VX_Amb_M_Comm_Military_OB_Start_2" ID="{53E81C97-09D1-4B6B-B836-9E82F085E332}">
+													<Language>SFX</Language>
+													<AudioFile>VX_Narrative\PH_VX_Amb_M_Comm_Military_OB_Start_2.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="136034824"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PH_VX_Amb_M_Comm_Military_OB_Start_2" ID="{53E81C97-09D1-4B6B-B836-9E82F085E332}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="PH_VX_Amb_M_Comm_Military_OB_Start_3" ID="{60F56720-7238-44DF-9F21-721D91E9E848}" ShortID="962857729">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="PH_VX_Amb_M_Comm_Military_OB_Start_3" ID="{849C1918-E96E-44F4-A2B8-FCD08336AB0A}">
+													<Language>SFX</Language>
+													<AudioFile>VX_Narrative\PH_VX_Amb_M_Comm_Military_OB_Start_3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="989720768"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="PH_VX_Amb_M_Comm_Military_OB_Start_3" ID="{849C1918-E96E-44F4-A2B8-FCD08336AB0A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Start_3" ID="{60F56720-7238-44DF-9F21-721D91E9E848}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Start_2" ID="{ED1CE673-72CF-4CCD-9779-6CE13E5F9D6E}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Start_1" ID="{207347C7-DE6F-44D0-94E4-B25ED29D6CB0}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="_1" ID="{C34A9C0F-23CC-4871-BBFE-25145C220875}"/>
+												<ItemList>
+													<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Start_2" ID="{ED1CE673-72CF-4CCD-9779-6CE13E5F9D6E}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_2" ID="{C362E317-1747-4153-A50B-F0123BAB31BF}"/>
+												<ItemList>
+													<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Start_3" ID="{60F56720-7238-44DF-9F21-721D91E9E848}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_0" ID="{C038D754-CC03-4243-A7A4-4738584CE12D}"/>
+												<ItemList>
+													<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Start_1" ID="{207347C7-DE6F-44D0-94E4-B25ED29D6CB0}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+							</ChildrenList>
+							<GroupingInfo>
+								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="Georges" ID="{EA267C89-B50A-4122-98FA-5A205B6AF088}"/>
+									</GroupingBehavior>
+								</GroupingBehaviorList>
+								<GroupingList>
+									<Grouping>
+										<SwitchRef Name="Georges" ID="{3DD8F71B-69BB-45E5-867B-1A57F85C22F6}"/>
+										<ItemList>
+											<ItemRef Name="Georges" ID="{EA267C89-B50A-4122-98FA-5A205B6AF088}"/>
+										</ItemList>
+									</Grouping>
+								</GroupingList>
+							</GroupingInfo>
+						</SwitchContainer>
+					</ChildrenList>
 				</PropertyContainer>
 			</ChildrenList>
 		</WorkUnit>

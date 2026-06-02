@@ -11,7 +11,7 @@ var delay : float
 var delay_offset : float = 1
 
 func _enter_tree() -> void:
-	BarksManager.register(self, "enemy")
+	WwiseGlobal.register(self, "enemy")
 	label.text = ""
 	trigg_bark()
 
@@ -25,10 +25,11 @@ func _on_versaillais_move_end() -> void:
 	steps.stop_event()
 
 func _on_versaillais_died() -> void:
-	BarksManager.remove(self)
+	WwiseGlobal.remove(self)
 	bark.stop_event()
 
 func trigg_bark():
+	if !WwiseGlobal.allow_barks : return
 	await get_tree().create_timer(randf_range(delay, delay * 2)).timeout
 	if !is_barking :
 		bark.post_event()
@@ -45,7 +46,7 @@ func _on_ak_event_3d_audio_marker(data: Dictionary) -> void:
 	label.text = text
 
 
-func _on_bark_end_of_event(data: Dictionary) -> void:
+func _on_bark_end_of_event(_data: Dictionary) -> void:
 	label.text = ""
 	is_barking = false
 

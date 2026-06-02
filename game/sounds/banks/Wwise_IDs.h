@@ -24,6 +24,7 @@ namespace AK
         static const AkUniqueID BULLET_HIT = 384143791U;
         static const AkUniqueID CANNON_SHOOT = 2469499398U;
         static const AkUniqueID DEAFENING_RECOVER = 3687575925U;
+        static const AkUniqueID DIALOGUE = 3930136735U;
         static const AkUniqueID ENEMY_BARK = 2802320212U;
         static const AkUniqueID ENEMY_BULLET_MISS = 3787232089U;
         static const AkUniqueID ENEMY_SHOOT = 1050776119U;
@@ -93,6 +94,20 @@ namespace AK
             } // namespace STATE
         } // namespace MUSIC_STATE
 
+        namespace NARRATIVE_STEP
+        {
+            static const AkUniqueID GROUP = 212893962U;
+
+            namespace STATE
+            {
+                static const AkUniqueID _0 = 846646256U;
+                static const AkUniqueID _1 = 846646257U;
+                static const AkUniqueID _2 = 846646258U;
+                static const AkUniqueID _3 = 846646259U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace NARRATIVE_STEP
+
         namespace PLAYER_AIM
         {
             static const AkUniqueID GROUP = 1608601952U;
@@ -158,6 +173,16 @@ namespace AK
             } // namespace SWITCH
         } // namespace ALLEGIANCE
 
+        namespace CHARACTER
+        {
+            static const AkUniqueID GROUP = 436743010U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID GEORGES = 2519917785U;
+            } // namespace SWITCH
+        } // namespace CHARACTER
+
         namespace CHARACTER_TYPE
         {
             static const AkUniqueID GROUP = 1117085073U;
@@ -189,6 +214,22 @@ namespace AK
                 static const AkUniqueID SECOND = 3476314365U;
             } // namespace SWITCH
         } // namespace DEBRIS
+
+        namespace NARRATIVE_STEP
+        {
+            static const AkUniqueID GROUP = 212893962U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID _1 = 846646257U;
+                static const AkUniqueID _2 = 846646258U;
+                static const AkUniqueID _3 = 846646259U;
+                static const AkUniqueID _4 = 846646260U;
+                static const AkUniqueID _5 = 846646261U;
+                static const AkUniqueID _6 = 846646262U;
+                static const AkUniqueID _7 = 846646263U;
+            } // namespace SWITCH
+        } // namespace NARRATIVE_STEP
 
         namespace PLAYER_POSITION
         {
@@ -273,6 +314,7 @@ namespace AK
         static const AkUniqueID SB_AMB = 925885567U;
         static const AkUniqueID SB_CANNON = 2061449278U;
         static const AkUniqueID SB_MUSIC = 779753582U;
+        static const AkUniqueID SB_NARRATIVE = 1681189201U;
         static const AkUniqueID SB_NPC = 1278759826U;
         static const AkUniqueID SB_PLAYER = 2103316850U;
     } // namespace BANKS

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://br5nta464et5g"]
+
+[ext_resource type="Script" uid="uid://bm7ybn2hcgy5a" path="res://sounds/scripts/ak_npc_manager.gd" id="1_fkqbr"]
+[ext_resource type="WwiseEvent" uid="uid://8nvc14b6pxnx" path="res://Wwise/resources/Event/{EF85AF80-FCCD-4F94-8378-F5C11CE25E4A}.tres" id="2_cp211"]
+[ext_resource type="WwiseBank" uid="uid://bscvqobiasjdi" path="res://Wwise/resources/SoundBank/{9EF79BA6-5418-4791-BC42-4F694AE716FA}.tres" id="3_yp40e"]
+
+[node name="AkNpcManager" type="Node3D" unique_id=944047016 node_paths=PackedStringArray("dialogue_event")]
+script = ExtResource("1_fkqbr")
+dialogue_event = NodePath("Dialogue")
+
+[node name="Dialogue" type="AkEvent3D" parent="." unique_id=986202133]
+event = ExtResource("2_cp211")
+
+[node name="AkBank" type="AkBank" parent="." unique_id=1186855680]
+bank = ExtResource("3_yp40e")
+load_on = 1
+unload_on = 3
+
+[connection signal="end_of_event" from="Dialogue" to="." method="_on_dialogue_end_of_event"]

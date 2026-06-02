@@ -14,7 +14,7 @@ var is_feedbarking : bool = false
 var delay : float
 
 func _enter_tree() -> void:
-	BarksManager.register(self, "ally")
+	WwiseGlobal.register(self, "ally")
 	label.text = ""
 	await get_tree().create_timer(randf_range(0, 10)).timeout
 	trigg_bark()
@@ -26,10 +26,11 @@ func _on_communard_shoot() -> void:
 	shoot.post_event()
 
 func _on_communard_died() -> void:
-	BarksManager.remove(self)
+	WwiseGlobal.remove(self)
 	bark.stop_event()
 
 func trigg_bark():
+	if !WwiseGlobal.allow_barks : return
 	await get_tree().create_timer(randf_range(delay, delay * 2)).timeout
 	if !is_barking and !is_feedbarking :
 		bark.post_event()
@@ -50,11 +51,11 @@ func set_text(data: Dictionary, is_feedback : bool):
 func _on_bark_audio_marker(data: Dictionary) -> void:
 	set_text(data, false)
 
-func _on_bark_end_of_event(data: Dictionary) -> void:
+func _on_bark_end_of_event(_data: Dictionary) -> void:
 	label.text = ""
 	is_barking = false
 
-func reset_text(data):
+func reset_text(_data):
 	print("reset")
 	label.text = ""
 	is_feedbarking = false
@@ -69,7 +70,6 @@ func _on_enemy_dead_audio_marker(data: Dictionary) -> void:
 func _on_ally_dead_audio_marker(data: Dictionary) -> void:
 	set_text(data, true)
 	is_feedbarking = true
-
 
 func _on_coward_audio_marker(data: Dictionary) -> void:
 	set_text(data, true)

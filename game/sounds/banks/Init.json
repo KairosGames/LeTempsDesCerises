@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{A141FC2F-DDB3-B205-7190-08C9ABA99DC2}",
+    "Hash": "{E42F2316-934C-846E-33EF-915A3C768B17}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -75,14 +75,6 @@
        "LibId": "8912899"
       },
       {
-       "Id": "695506173",
-       "Name": "Reflect (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect\\[Effect Slot [0]: (Reflect)]\\Reflect (Custom)",
-       "GUID": "{C4B726EC-1419-424F-ADF7-FACE67C11922}",
-       "LibName": "Wwise Reflect",
-       "LibId": "11206659"
-      },
-      {
        "Id": "756484234",
        "Name": "Parametric EQ (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
@@ -121,6 +113,14 @@
        "GUID": "{F71FC67B-11E7-40D0-888F-EA74552BBC0A}",
        "LibName": "Wwise Meter",
        "LibId": "8454147"
+      },
+      {
+       "Id": "1036215768",
+       "Name": "Reflect_Physically_Based (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect\\[Effect Slot [0]: (Reflect)]\\Reflect_Physically_Based (Custom)",
+       "GUID": "{E875F448-89F6-401A-9CE3-518C20B85596}",
+       "LibName": "Wwise Reflect",
+       "LibId": "11206659"
       }
      ],
      "ShareSets": [
@@ -340,7 +340,7 @@
       "PluginRefs": {
        "Custom": [
         {
-         "Id": "695506173"
+         "Id": "1036215768"
         }
        ]
       }
@@ -472,6 +472,44 @@
      }
     ],
     "StateGroups": [
+     {
+      "Id": "212893962",
+      "Name": "narrative_step",
+      "ObjectPath": "\\States\\Default Work Unit\\narrative_step",
+      "GUID": "{CA387616-F5B9-4C7F-812F-0262E9D400C1}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\None",
+        "GUID": "{23E4A53A-7217-486C-A6CA-F04AE842A181}"
+       },
+       {
+        "Id": "846646256",
+        "Name": "_0",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_0",
+        "GUID": "{C038D754-CC03-4243-A7A4-4738584CE12D}"
+       },
+       {
+        "Id": "846646257",
+        "Name": "_1",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_1",
+        "GUID": "{C34A9C0F-23CC-4871-BBFE-25145C220875}"
+       },
+       {
+        "Id": "846646258",
+        "Name": "_2",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_2",
+        "GUID": "{C362E317-1747-4153-A50B-F0123BAB31BF}"
+       },
+       {
+        "Id": "846646259",
+        "Name": "_3",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_3",
+        "GUID": "{C0DDB2E7-12A0-4132-9B32-628705969EE9}"
+       }
+      ]
+     },
      {
       "Id": "219569822",
       "Name": "player_cover",
@@ -711,6 +749,70 @@
      }
     ],
     "SwitchGroups": [
+     {
+      "Id": "212893962",
+      "Name": "Narrative_Step",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step",
+      "GUID": "{D9CCAEA0-F42A-408A-BBF0-8FC75FD1FF6A}",
+      "Switches": [
+       {
+        "Id": "846646257",
+        "Name": "_1",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_1",
+        "GUID": "{F9F192A7-6E9A-49CE-9926-0517D087C749}"
+       },
+       {
+        "Id": "846646258",
+        "Name": "_2",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_2",
+        "GUID": "{C1FA5A0F-77C2-47A9-BDBF-0FDE348C2934}"
+       },
+       {
+        "Id": "846646259",
+        "Name": "_3",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_3",
+        "GUID": "{2A2FC0D0-CB66-4441-A636-98D9A02BE645}"
+       },
+       {
+        "Id": "846646260",
+        "Name": "_4",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_4",
+        "GUID": "{3496DEC7-A3E0-4B41-B1FC-6E44C932CA05}"
+       },
+       {
+        "Id": "846646261",
+        "Name": "_5",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_5",
+        "GUID": "{B4E77832-7158-41F5-8B68-4B27139F5CDE}"
+       },
+       {
+        "Id": "846646262",
+        "Name": "_6",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_6",
+        "GUID": "{4980D2E4-B863-4773-9215-8902E1C67F58}"
+       },
+       {
+        "Id": "846646263",
+        "Name": "_7",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_7",
+        "GUID": "{8FADEE3B-A545-4997-986F-A741B202EF4E}"
+       }
+      ]
+     },
+     {
+      "Id": "436743010",
+      "Name": "Character",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Character",
+      "GUID": "{DA0CD53D-5479-43A0-9A8F-337DC32F0157}",
+      "Switches": [
+       {
+        "Id": "2519917785",
+        "Name": "Georges",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Georges",
+        "GUID": "{3DD8F71B-69BB-45E5-867B-1A57F85C22F6}"
+       }
+      ]
+     },
      {
       "Id": "459611840",
       "Name": "Debris",
@@ -1452,6 +1554,6 @@
     ]
    }
   ],
-  "FileHash": "{132CB721-F2C4-8AB2-72D1-C3A47D30F28F}"
+  "FileHash": "{A95B19BD-6147-2F04-59E8-EFB27A499227}"
  }
 }

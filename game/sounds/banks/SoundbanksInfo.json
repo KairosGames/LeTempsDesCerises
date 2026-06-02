@@ -1139,7 +1139,7 @@
     "Type": "User",
     "GUID": "{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}",
     "Language": "SFX",
-    "Hash": "{1C53EC63-2363-1991-A360-D70A761BA1D0}",
+    "Hash": "{60BA49E1-90FB-E891-D05F-037A32A148E2}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_NPC",
     "ShortName": "Sb_NPC",
     "Path": "Sb_NPC.bnk",
@@ -1382,7 +1382,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Vx_Barks\\Vx_Communard\\PH_VX_Bar_M_Comm_Military_Player_Far_02.wav",
-      "CachePath": "0C/{0C1B2752-9971-B2FA-9A9B-D01228BAD279}.wem"
+      "CachePath": "F5/{F555818D-B14C-180E-897A-2FF4D1D5D07B}.wem"
      },
      {
       "Id": "842328612",
@@ -1669,11 +1669,10 @@
       ],
       "AuxBusRefs": [
        {
-        "Id": "3189108374",
-        "Name": "SFX_Gunshot_Send",
-        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Gunshot_Send",
-        "GUID": "{DE5FF445-1300-4435-9172-64B1CB7B0816}",
-        "Color": "10"
+        "Id": "243379636",
+        "Name": "Reflect",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+        "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
        }
       ]
      },
@@ -1866,11 +1865,10 @@
       ],
       "AuxBusRefs": [
        {
-        "Id": "3189108374",
-        "Name": "SFX_Gunshot_Send",
-        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Gunshot_Send",
-        "GUID": "{DE5FF445-1300-4435-9172-64B1CB7B0816}",
-        "Color": "10"
+        "Id": "243379636",
+        "Name": "Reflect",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+        "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
        }
       ],
       "ActionPostEvent": [
@@ -1956,7 +1954,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{A141FC2F-DDB3-B205-7190-08C9ABA99DC2}",
+    "Hash": "{E42F2316-934C-846E-33EF-915A3C768B17}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -2021,14 +2019,6 @@
        "LibId": "8912899"
       },
       {
-       "Id": "695506173",
-       "Name": "Reflect (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect\\[Effect Slot [0]: (Reflect)]\\Reflect (Custom)",
-       "GUID": "{C4B726EC-1419-424F-ADF7-FACE67C11922}",
-       "LibName": "Wwise Reflect",
-       "LibId": "11206659"
-      },
-      {
        "Id": "756484234",
        "Name": "Parametric EQ (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
@@ -2067,6 +2057,14 @@
        "GUID": "{F71FC67B-11E7-40D0-888F-EA74552BBC0A}",
        "LibName": "Wwise Meter",
        "LibId": "8454147"
+      },
+      {
+       "Id": "1036215768",
+       "Name": "Reflect_Physically_Based (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect\\[Effect Slot [0]: (Reflect)]\\Reflect_Physically_Based (Custom)",
+       "GUID": "{E875F448-89F6-401A-9CE3-518C20B85596}",
+       "LibName": "Wwise Reflect",
+       "LibId": "11206659"
       }
      ],
      "ShareSets": [
@@ -2286,7 +2284,7 @@
       "PluginRefs": {
        "Custom": [
         {
-         "Id": "695506173"
+         "Id": "1036215768"
         }
        ]
       }
@@ -2418,6 +2416,44 @@
      }
     ],
     "StateGroups": [
+     {
+      "Id": "212893962",
+      "Name": "narrative_step",
+      "ObjectPath": "\\States\\Default Work Unit\\narrative_step",
+      "GUID": "{CA387616-F5B9-4C7F-812F-0262E9D400C1}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\None",
+        "GUID": "{23E4A53A-7217-486C-A6CA-F04AE842A181}"
+       },
+       {
+        "Id": "846646256",
+        "Name": "_0",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_0",
+        "GUID": "{C038D754-CC03-4243-A7A4-4738584CE12D}"
+       },
+       {
+        "Id": "846646257",
+        "Name": "_1",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_1",
+        "GUID": "{C34A9C0F-23CC-4871-BBFE-25145C220875}"
+       },
+       {
+        "Id": "846646258",
+        "Name": "_2",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_2",
+        "GUID": "{C362E317-1747-4153-A50B-F0123BAB31BF}"
+       },
+       {
+        "Id": "846646259",
+        "Name": "_3",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_3",
+        "GUID": "{C0DDB2E7-12A0-4132-9B32-628705969EE9}"
+       }
+      ]
+     },
      {
       "Id": "219569822",
       "Name": "player_cover",
@@ -2657,6 +2693,70 @@
      }
     ],
     "SwitchGroups": [
+     {
+      "Id": "212893962",
+      "Name": "Narrative_Step",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step",
+      "GUID": "{D9CCAEA0-F42A-408A-BBF0-8FC75FD1FF6A}",
+      "Switches": [
+       {
+        "Id": "846646257",
+        "Name": "_1",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_1",
+        "GUID": "{F9F192A7-6E9A-49CE-9926-0517D087C749}"
+       },
+       {
+        "Id": "846646258",
+        "Name": "_2",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_2",
+        "GUID": "{C1FA5A0F-77C2-47A9-BDBF-0FDE348C2934}"
+       },
+       {
+        "Id": "846646259",
+        "Name": "_3",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_3",
+        "GUID": "{2A2FC0D0-CB66-4441-A636-98D9A02BE645}"
+       },
+       {
+        "Id": "846646260",
+        "Name": "_4",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_4",
+        "GUID": "{3496DEC7-A3E0-4B41-B1FC-6E44C932CA05}"
+       },
+       {
+        "Id": "846646261",
+        "Name": "_5",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_5",
+        "GUID": "{B4E77832-7158-41F5-8B68-4B27139F5CDE}"
+       },
+       {
+        "Id": "846646262",
+        "Name": "_6",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_6",
+        "GUID": "{4980D2E4-B863-4773-9215-8902E1C67F58}"
+       },
+       {
+        "Id": "846646263",
+        "Name": "_7",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Narrative_Step\\_7",
+        "GUID": "{8FADEE3B-A545-4997-986F-A741B202EF4E}"
+       }
+      ]
+     },
+     {
+      "Id": "436743010",
+      "Name": "Character",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Character",
+      "GUID": "{DA0CD53D-5479-43A0-9A8F-337DC32F0157}",
+      "Switches": [
+       {
+        "Id": "2519917785",
+        "Name": "Georges",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Georges",
+        "GUID": "{3DD8F71B-69BB-45E5-867B-1A57F85C22F6}"
+       }
+      ]
+     },
      {
       "Id": "459611840",
       "Name": "Debris",
@@ -3398,6 +3498,162 @@
     ]
    },
    {
+    "Id": "1681189201",
+    "Type": "User",
+    "GUID": "{9EF79BA6-5418-4791-BC42-4F694AE716FA}",
+    "Language": "SFX",
+    "Hash": "{61D5270F-134D-FD2D-70B9-BA745E463505}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Narrative",
+    "ShortName": "Sb_Narrative",
+    "Path": "Sb_Narrative.bnk",
+    "Media": [
+     {
+      "Id": "75446240",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "VX_Narrative\\PH_VX_Amb_M_Comm_Military_OB_Start_1.wav",
+      "CachePath": "7C/{7CC524FB-F9EF-19E5-5974-26E443871C2E}.wem"
+     },
+     {
+      "Id": "136034824",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "VX_Narrative\\PH_VX_Amb_M_Comm_Military_OB_Start_2.wav",
+      "CachePath": "12/{1216D0C0-3928-9422-181E-B55BF034276C}.wem"
+     },
+     {
+      "Id": "989720768",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "VX_Narrative\\PH_VX_Amb_M_Comm_Military_OB_Start_3.wav",
+      "CachePath": "7E/{7EF39BF3-356E-00EA-2888-4125DA6F02EF}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3930136735",
+      "Name": "Dialogue",
+      "ObjectPath": "\\Events\\VX\\Narrative\\Dialogue",
+      "GUID": "{EF85AF80-FCCD-4F94-8378-F5C11CE25E4A}",
+      "Color": "11",
+      "DurationType": "OneShot",
+      "DurationMin": "3.1475832",
+      "DurationMax": "7.69",
+      "SwitchContainers": [
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "436743010",
+         "Id": "2519917785",
+         "GUID": "{3DD8F71B-69BB-45E5-867B-1A57F85C22F6}",
+         "Default": "true"
+        },
+        "Children": [
+         {
+          "SwitchValue": {
+           "GroupType": "State",
+           "GroupId": "212893962",
+           "Id": "846646257",
+           "GUID": "{C34A9C0F-23CC-4871-BBFE-25145C220875}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "136034824"
+           }
+          ]
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "State",
+           "GroupId": "212893962",
+           "Id": "846646258",
+           "GUID": "{C362E317-1747-4153-A50B-F0123BAB31BF}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "989720768"
+           }
+          ]
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "State",
+           "GroupId": "212893962",
+           "Id": "846646256",
+           "GUID": "{C038D754-CC03-4243-A7A4-4738584CE12D}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "75446240"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "StateGroups": [
+     {
+      "Id": "212893962",
+      "Name": "narrative_step",
+      "ObjectPath": "\\States\\Default Work Unit\\narrative_step",
+      "GUID": "{CA387616-F5B9-4C7F-812F-0262E9D400C1}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\None",
+        "GUID": "{23E4A53A-7217-486C-A6CA-F04AE842A181}"
+       },
+       {
+        "Id": "846646256",
+        "Name": "_0",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_0",
+        "GUID": "{C038D754-CC03-4243-A7A4-4738584CE12D}"
+       },
+       {
+        "Id": "846646257",
+        "Name": "_1",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_1",
+        "GUID": "{C34A9C0F-23CC-4871-BBFE-25145C220875}"
+       },
+       {
+        "Id": "846646258",
+        "Name": "_2",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_2",
+        "GUID": "{C362E317-1747-4153-A50B-F0123BAB31BF}"
+       },
+       {
+        "Id": "846646259",
+        "Name": "_3",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_3",
+        "GUID": "{C0DDB2E7-12A0-4132-9B32-628705969EE9}"
+       }
+      ]
+     }
+    ],
+    "SwitchGroups": [
+     {
+      "Id": "436743010",
+      "Name": "Character",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Character",
+      "GUID": "{DA0CD53D-5479-43A0-9A8F-337DC32F0157}",
+      "Switches": [
+       {
+        "Id": "2519917785",
+        "Name": "Georges",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Georges",
+        "GUID": "{3DD8F71B-69BB-45E5-867B-1A57F85C22F6}"
+       }
+      ]
+     }
+    ]
+   },
+   {
     "Id": "2061449278",
     "Type": "User",
     "GUID": "{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}",
@@ -3785,7 +4041,7 @@
     "Type": "User",
     "GUID": "{49827AFC-1442-4066-AF70-C2B0B3B40C86}",
     "Language": "SFX",
-    "Hash": "{47C124E5-5467-48F1-36CA-5C9EB706C19B}",
+    "Hash": "{E1E7A468-8187-9583-3359-C0927225FD53}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Player",
     "ShortName": "Sb_Player",
     "Path": "Sb_Player.bnk",
@@ -4666,14 +4922,6 @@
        "LibId": "8912899"
       },
       {
-       "Id": "695506173",
-       "Name": "Reflect (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect\\[Effect Slot [0]: (Reflect)]\\Reflect (Custom)",
-       "GUID": "{C4B726EC-1419-424F-ADF7-FACE67C11922}",
-       "LibName": "Wwise Reflect",
-       "LibId": "11206659"
-      },
-      {
        "Id": "756484234",
        "Name": "Parametric EQ (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
@@ -4712,6 +4960,14 @@
        "GUID": "{F71FC67B-11E7-40D0-888F-EA74552BBC0A}",
        "LibName": "Wwise Meter",
        "LibId": "8454147"
+      },
+      {
+       "Id": "1036215768",
+       "Name": "Reflect_Physically_Based (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect\\[Effect Slot [0]: (Reflect)]\\Reflect_Physically_Based (Custom)",
+       "GUID": "{E875F448-89F6-401A-9CE3-518C20B85596}",
+       "LibName": "Wwise Reflect",
+       "LibId": "11206659"
       }
      ],
      "ShareSets": [
@@ -5613,7 +5869,7 @@
       "PluginRefs": {
        "Custom": [
         {
-         "Id": "695506173"
+         "Id": "1036215768"
         }
        ]
       }
@@ -5828,6 +6084,6 @@
     ]
    }
   ],
-  "FileHash": "{0904D050-2719-96DD-A590-139FE03B1E37}"
+  "FileHash": "{E9E1326C-D36C-2362-D92B-EF5065748C20}"
  }
 }
