@@ -237,7 +237,7 @@ func get_posture_for(action: Action) -> Agent.Posture:
 
 func get_peek_posture() -> Agent.Posture:
 	match height:
-		Height.HIGH: return Agent.Posture.STAND # Side
+		Height.HIGH: return Agent.Posture.STAND # TODO Side
 		Height.MEDIUM: return Agent.Posture.STAND
 		Height.LOW: return Agent.Posture.CROUCH
 		Height.NONE: return Agent.Posture.STAND
@@ -247,7 +247,7 @@ func get_shoot_posture() -> Agent.Posture:
 	match height:
 		Height.HIGH: return Agent.Posture.STAND
 		Height.MEDIUM: return Agent.Posture.CROUCH
-		Height.LOW: return Agent.Posture.PRONE
+		Height.LOW: return Agent.Posture.CROUCH
 		Height.NONE: return Agent.Posture.STAND
 		_: return Agent.Posture.NONE
 
@@ -255,16 +255,16 @@ func get_cover_posture() -> Agent.Posture:
 	match height:
 		Height.HIGH: return Agent.Posture.STAND
 		Height.MEDIUM: return Agent.Posture.CROUCH
-		Height.LOW: return Agent.Posture.PRONE
-		Height.NONE: return Agent.Posture.NONE
+		Height.LOW: return Agent.Posture.CROUCH
+		Height.NONE: return Agent.Posture.STAND
 		_: return Agent.Posture.NONE
 
 func get_reload_posture() -> Agent.Posture:
 	match height:
 		Height.HIGH: return Agent.Posture.STAND
 		Height.MEDIUM: return Agent.Posture.CROUCH
-		Height.LOW: return Agent.Posture.PRONE
-		Height.NONE: return Agent.Posture.CROUCH
+		Height.LOW: return Agent.Posture.CROUCH
+		Height.NONE: return Agent.Posture.STAND
 		_: return Agent.Posture.NONE
 
 enum Height { NONE, LOW, MEDIUM, HIGH }
