@@ -187,6 +187,7 @@ namespace AK
             namespace SWITCH
             {
                 static const AkUniqueID GEORGES = 2519917785U;
+                static const AkUniqueID NULL = 784127654U;
             } // namespace SWITCH
         } // namespace CHARACTER
 

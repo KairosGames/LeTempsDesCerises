@@ -20,7 +20,9 @@ func _ready() -> void:
 		for i in game_manager.get_children(true):
 			if i.name == "NPC":
 				for npc in i.get_children():
-					npc.add_child(preload("res://sounds/prefabs/ak_npc_manager.tscn").instantiate())
+					var new_npc = preload("res://sounds/prefabs/ak_npc_manager.tscn").instantiate()
+					npc.add_child(new_npc)
+					new_npc.init()
 			new_line(0)
 	else:
 		flip_barks_system()

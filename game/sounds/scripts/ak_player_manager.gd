@@ -23,6 +23,7 @@ var first_reload : bool = true
 @export var bullet_prefab : PackedScene
 
 func _ready() -> void:
+	print("j'existe")
 	WwiseGlobal.player = self
 	init_motion()
 	player.die_called.connect(death_event)
@@ -119,6 +120,7 @@ func _on_reload_ui_entered_reload() -> void:
 		!first_reload
 
 func init_motion():
+	return
 	if Input.get_connected_joypads().is_empty() : return
 	for i in Input.get_connected_joypads():
 		Wwise.add_output("Motion", (i))
