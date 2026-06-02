@@ -30,8 +30,11 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	if raycast.is_colliding():
 		var collider: Object = raycast.get_collider()
 		if collider is Player:
-			collider.die()
-			_vagueness = 1.0
+			if not (collider as Player).can_die:
+				(collider as Player).missed_by_enemy.emit()
+			else:
+				collider.die()
+				_vagueness = 1.0
 		elif collider is Agent:
 			collider.die()
 			_vagueness = 1.0
