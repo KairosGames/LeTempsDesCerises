@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dqbng6jsn2ial"]
+
+[ext_resource type="ArrayMesh" uid="uid://b35lymfrxigvb" path="res://prefabs/geometry/wooden_case.tres" id="1_01ilg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_01ilg"]
+size = Vector3(0.520549, 0.436999, 0.501018)
+
+[node name="SimpleBox" type="Node3D" unique_id=1214650661]
+
+[node name="WoodenCase" type="MeshInstance3D" parent="." unique_id=1176923914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = ExtResource("1_01ilg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=538005790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00017949939, 0.2204525, 7.0005655e-05)
+shape = SubResource("BoxShape3D_01ilg")

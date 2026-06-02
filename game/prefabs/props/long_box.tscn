@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dwt8kt4627ga"]
+
+[ext_resource type="ArrayMesh" uid="uid://cwlwtxy73xwtx" path="res://prefabs/geometry/big_wodden_case.tres" id="1_vp33y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vp33y"]
+size = Vector3(1.020549, 0.436999, 0.501018)
+
+[node name="LongBox" type="StaticBody3D" unique_id=1673471307]
+
+[node name="BigWoddenCase" type="MeshInstance3D" parent="." unique_id=1849975339]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = ExtResource("1_vp33y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=210052977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00017946959, 0.2204525, 7.0005655e-05)
+shape = SubResource("BoxShape3D_vp33y")
