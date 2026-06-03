@@ -43,6 +43,9 @@ signal landed
 @onready var reload_pos_left: Marker3D = %ReloadPosLeft
 @onready var death_camera: DeathCamera = %DeathCamera
 
+@export_category("Gameplay Settings")
+@export var immortal_timer: float = 10.0
+
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
 @export var is_run_toggle_km: bool = false
@@ -1246,6 +1249,13 @@ func kill_all_tweens() -> void:
 func revive(pos: Vector3, rot: Vector3) -> void:
 	initiate(pos, rot)
 	player_camera.current = true
+	can_die = false
+	launch_killable_timer()
+
+
+func launch_killable_timer() -> void:
+	await get_tree().create_timer(immortal_timer).timeout
+	can_die = true
 
 
 func set_is_free(free: bool) -> void:
