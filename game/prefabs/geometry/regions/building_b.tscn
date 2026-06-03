@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bq4r3noe6r40s"]
 
 [ext_resource type="ArrayMesh" uid="uid://b8lcs04fs61t2" path="res://prefabs/geometry/window_b.tres" id="1_iuqfw"]
-[ext_resource type="PackedScene" uid="uid://bwoam7oo1imct" path="res://sandbox/csg_to_save/building_b.tscn" id="1_uf4n5"]
+[ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="1_matxu"]
 [ext_resource type="Script" uid="uid://bmespkxucvogk" path="res://addons/mesh_combiner_3d/mesh_combiner_3d.gd" id="2_4n8mr"]
 [ext_resource type="ArrayMesh" uid="uid://ckkf8euhqqlun" path="res://prefabs/geometry/wall_a.tres" id="3_uw8le"]
 [ext_resource type="ArrayMesh" uid="uid://b4uoppjw23a88" path="res://prefabs/geometry/wall_c.tres" id="4_3sylf"]
@@ -36,6 +36,27 @@
 [ext_resource type="ArrayMesh" uid="uid://prdwcmfrf8af" path="res://prefabs/geometry/wall_props_g_angle.tres" id="34_it6ba"]
 [ext_resource type="ArrayMesh" uid="uid://brrw61ceh5xtx" path="res://prefabs/geometry/wall_props_f_angle.tres" id="35_xnqxa"]
 [ext_resource type="ArrayMesh" uid="uid://bgdnny4nf7i8h" path="res://prefabs/geometry/wall_props_b_angle.tres" id="36_matxu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_fvkg2"]
+material = ExtResource("1_matxu")
+size = Vector3(44.228, 0.2, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fvkg2"]
+size = Vector3(44.228, 0.2, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_matxu"]
+material = ExtResource("1_matxu")
+size = Vector3(73.827, 0.2, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hncdj"]
+size = Vector3(73.827, 0.2, 6)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8g8pk"]
+material = ExtResource("1_matxu")
+size = Vector3(13.47, 0.2, 5.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c23ks"]
+size = Vector3(13.47, 0.2, 5.5)
 
 [sub_resource type="MultiMesh" id="MultiMesh_4xsgd"]
 transform_format = 1
@@ -279,7 +300,31 @@ size = Vector3(10, 13.552887, 4.702)
 
 [node name="BuildingB" type="Node3D" unique_id=1386307082]
 
-[node name="BuildingB" parent="." unique_id=399764161 instance=ExtResource("1_uf4n5")]
+[node name="Trottoirs" type="StaticBody3D" parent="." unique_id=552487230]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Trottoirs" unique_id=1756282713]
+transform = Transform3D(0.43837115, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837115, 21.69484, 0.1, -43.8408)
+mesh = SubResource("BoxMesh_fvkg2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trottoirs" unique_id=1226601328]
+transform = Transform3D(0.43837115, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837115, 21.69484, 0.1, -43.8408)
+shape = SubResource("BoxShape3D_fvkg2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Trottoirs" unique_id=1033308055]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 48.81317, 0.1, -40.314625)
+mesh = SubResource("BoxMesh_matxu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Trottoirs" unique_id=503243351]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 48.81317, 0.1, -40.314625)
+shape = SubResource("BoxShape3D_hncdj")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Trottoirs" unique_id=1581442475]
+transform = Transform3D(-0.6018151, 0, 0.7986355, 0, 1, 0, -0.7986355, 0, -0.6018151, 15.554863, 0.1, -21.50851)
+mesh = SubResource("BoxMesh_8g8pk")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Trottoirs" unique_id=1394450536]
+transform = Transform3D(-0.6018151, 0, 0.7986355, 0, 1, 0, -0.7986355, 0, -0.6018151, 15.554863, 0.1, -21.50851)
+shape = SubResource("BoxShape3D_c23ks")
 
 [node name="WallA" type="MultiMeshInstance3D" parent="." unique_id=1394707042]
 multimesh = SubResource("MultiMesh_4xsgd")
