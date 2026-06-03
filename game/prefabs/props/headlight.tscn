@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bdclgyj6yyleb"]
+
+[ext_resource type="Texture2D" uid="uid://gdp81fkorbpi" path="res://sources/images/textures/textures_vfx/flame_05.png" id="1_f08ob"]
+[ext_resource type="ArrayMesh" uid="uid://b8utbln2x4yjx" path="res://prefabs/geometry/props_lamp.tres" id="2_1hmc6"]
+
+[sub_resource type="Gradient" id="Gradient_m2akg"]
+offsets = PackedFloat32Array(0, 0.62716764)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.69, 0.39999998, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uqrem"]
+gradient = SubResource("Gradient_m2akg")
+width = 66
+height = 77
+fill = 1
+fill_from = Vector2(0.51652426, 0.71282053)
+fill_to = Vector2(0.4965812, 0.16239317)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnnwg"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("1_f08ob")
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = SubResource("GradientTexture2D_uqrem")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_gnp1d"]
+material = SubResource("StandardMaterial3D_cnnwg")
+size = Vector2(0.4, 0.4)
+
+[node name="HeadLight" type="OmniLight3D" unique_id=1270948155]
+transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, 0, 0, 0)
+light_color = Color(0.98720604, 0.55851805, 0.15902582, 1)
+light_energy = 7.24
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.0
+omni_range = 4.058
+
+[node name="Flame_SM" type="MeshInstance3D" parent="." unique_id=320990409]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0002648197, 0.047403336, 9.924165e-06)
+mesh = SubResource("QuadMesh_gnp1d")
+
+[node name="PropsLamp" type="MeshInstance3D" parent="." unique_id=1734397993]
+transform = Transform3D(1, 0, -2.9802319e-08, 0, 1, 0, 2.9802319e-08, 0, 1, 0, 0, 0)
+mesh = ExtResource("2_1hmc6")

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cs4w61410jvvw" path="res://sandbox/csg_to_save/building_d.tscn" id="1_jw373"]
 [ext_resource type="ArrayMesh" uid="uid://ckkf8euhqqlun" path="res://prefabs/geometry/wall_a.tres" id="2_valms"]
 [ext_resource type="ArrayMesh" uid="uid://dstjnv2qgt488" path="res://prefabs/geometry/wall_b.tres" id="3_3jbfb"]
+[ext_resource type="PackedScene" uid="uid://bdclgyj6yyleb" path="res://prefabs/props/headlight.tscn" id="3_022d3"]
 [ext_resource type="ArrayMesh" uid="uid://b4uoppjw23a88" path="res://prefabs/geometry/wall_c.tres" id="4_j4qk7"]
 [ext_resource type="ArrayMesh" uid="uid://deno2kvmgtq3b" path="res://prefabs/geometry/wall_d.tres" id="5_8ydhy"]
 [ext_resource type="ArrayMesh" uid="uid://cwofahpbfe0gp" path="res://prefabs/geometry/wall_props_a.tres" id="6_022d3"]
@@ -30,7 +31,6 @@
 [ext_resource type="ArrayMesh" uid="uid://bo1kwp5apdjx3" path="res://prefabs/geometry/roof_props_a.tres" id="24_qacuc"]
 [ext_resource type="ArrayMesh" uid="uid://5t0eqetfeoys" path="res://prefabs/geometry/roof_props_b.tres" id="25_kfm14"]
 [ext_resource type="ArrayMesh" uid="uid://s6odx757a8bm" path="res://prefabs/geometry/roof_a_angle_90.tres" id="26_1e3rv"]
-[ext_resource type="ArrayMesh" uid="uid://b8utbln2x4yjx" path="res://prefabs/geometry/props_lamp.tres" id="27_7thni"]
 [ext_resource type="ArrayMesh" uid="uid://ctu06gymwm3nu" path="res://prefabs/geometry/shop_a.tres" id="28_8muxm"]
 [ext_resource type="ArrayMesh" uid="uid://brrw61ceh5xtx" path="res://prefabs/geometry/wall_props_f_angle.tres" id="29_ynvx6"]
 [ext_resource type="ArrayMesh" uid="uid://bnwd4fsakf0fi" path="res://prefabs/geometry/wall_props_d1.tres" id="30_uverg"]
@@ -56,9 +56,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.32222, 3, 6.9059963)
 transform = Transform3D(-8.7422784e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -8.7422784e-08, -9.1552734e-05, 0.5, 0.00034475327)
 mesh = ExtResource("7_4sbpl")
 
-[node name="PropsLamp4" type="MeshInstance3D" parent="lamp" unique_id=280066730]
-transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, -0.0008010864, 0.9089999, -1.3149185)
-mesh = ExtResource("27_7thni")
+[node name="HeadLight" parent="lamp" unique_id=1270948155 instance=ExtResource("3_022d3")]
+transform = Transform3D(-1, 0, -1.1722509e-07, 0, 1, 0, 1.1722509e-07, 0, -1, -0.0008010864, 0.9089999, -1.3149185)
 
 [node name="lamp2" type="Node3D" parent="." unique_id=829340642]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 0.5030678, 3, 7.479573)
@@ -67,9 +66,8 @@ transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81
 transform = Transform3D(-8.7422784e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -8.7422784e-08, -9.1552734e-05, 0.5, 0.00034475327)
 mesh = ExtResource("7_4sbpl")
 
-[node name="PropsLamp4" type="MeshInstance3D" parent="lamp2" unique_id=752833651]
-transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, -0.0008010864, 0.9089999, -1.3149185)
-mesh = ExtResource("27_7thni")
+[node name="Vassadaire_Omni_LGT" parent="lamp2" unique_id=896472745 instance=ExtResource("3_022d3")]
+transform = Transform3D(-1, 0, -5.9604645e-08, 0, 1, 0, 5.9604645e-08, 0, -1, -0.0008010864, 0.9089999, -1.3149185)
 
 [node name="Facade" type="Node3D" parent="." unique_id=974275082]
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -16.699821, 0.20000172, 19.524288)
@@ -2664,9 +2662,8 @@ mesh = ExtResource("26_1e3rv")
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, 1.321152, 8.6, 6.9054236)
 mesh = ExtResource("26_1e3rv")
 
-[node name="PropsLamp3" type="MeshInstance3D" parent="." unique_id=715055000]
-transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, 50.32142, 3.909, 5.5910683)
-mesh = ExtResource("27_7thni")
+[node name="HeadLight" parent="." unique_id=984653378 instance=ExtResource("3_022d3")]
+transform = Transform3D(-1, 0, -1.1722509e-07, 0, 1, 0, 1.1722509e-07, 0, -1, 50.32142, 3.909, 5.5910683)
 
 [node name="ShopA" type="MeshInstance3D" parent="." unique_id=69484770]
 transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, 36.32166, 0.2, 7.8946333)

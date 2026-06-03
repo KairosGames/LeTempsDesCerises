@@ -6,7 +6,6 @@
 [ext_resource type="ArrayMesh" uid="uid://ctu06gymwm3nu" path="res://prefabs/geometry/shop_a.tres" id="4_7wvyu"]
 [ext_resource type="ArrayMesh" uid="uid://b4uoppjw23a88" path="res://prefabs/geometry/wall_c.tres" id="4_n3if2"]
 [ext_resource type="ArrayMesh" uid="uid://dstjnv2qgt488" path="res://prefabs/geometry/wall_b.tres" id="5_c0c4s"]
-[ext_resource type="ArrayMesh" uid="uid://b8utbln2x4yjx" path="res://prefabs/geometry/props_lamp.tres" id="5_n3if2"]
 [ext_resource type="ArrayMesh" uid="uid://dpx3puefcawn2" path="res://prefabs/geometry/wall_props_d2.tres" id="6_jgn7v"]
 [ext_resource type="ArrayMesh" uid="uid://y611pd1kxlcc" path="res://prefabs/geometry/window_a.tres" id="7_yjjy0"]
 [ext_resource type="ArrayMesh" uid="uid://drlw2xtdu0b30" path="res://prefabs/geometry/wall_props_g.tres" id="8_87p1g"]
@@ -24,6 +23,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cwofahpbfe0gp" path="res://prefabs/geometry/wall_props_a.tres" id="19_qccca"]
 [ext_resource type="ArrayMesh" uid="uid://c3d71jt6kk7ck" path="res://prefabs/geometry/roof_a.tres" id="20_en86c"]
 [ext_resource type="ArrayMesh" uid="uid://5t0eqetfeoys" path="res://prefabs/geometry/roof_props_b.tres" id="21_uw3wy"]
+[ext_resource type="PackedScene" uid="uid://bdclgyj6yyleb" path="res://prefabs/props/headlight.tscn" id="24_ic86n"]
 [ext_resource type="ArrayMesh" uid="uid://dx4ot6t2m5mfq" path="res://prefabs/geometry/window_props_b.tres" id="24_n3if2"]
 [ext_resource type="ArrayMesh" uid="uid://dxp27e1hhy1nj" path="res://prefabs/geometry/roof_a_side.tres" id="24_yjjy0"]
 [ext_resource type="ArrayMesh" uid="uid://coqmu4xpu7ky0" path="res://prefabs/geometry/wall_props_c.tres" id="27_yjjy0"]
@@ -164,9 +164,6 @@ buffer = PackedFloat32Array(1, 0, 0, -79.957, 0, 1, 0, 14.2, 0, 0, 1, -5.952, 1,
 
 [sub_resource type="MultiMesh" id="MultiMesh_2b3i4"]
 transform_format = 1
-instance_count = 5
-mesh = ExtResource("5_n3if2")
-buffer = PackedFloat32Array(1, 0, 0, -45.957, 0, 1, 0, 3.4157617, 0, 0, 1, -5.134231, 1, 0, 0, -47.957, 0, 1, 0, 7.6139565, 0, 0, 1, -5.134359, 1, 0, 0, -43.957, 0, 1, 0, 7.6287537, 0, 0, 1, -5.135404, 1, 0, 0, -25.638319, 0, 1, 0, 3.4254403, 0, 0, 1, -7.452, 0.43837115, 0, 0.89879405, 15.358, 0, 1, 0, 4.209, -0.89879405, 0, 0.43837115, -50.912)
 
 [sub_resource type="MultiMesh" id="MultiMesh_f2m14"]
 transform_format = 1
@@ -386,6 +383,21 @@ metadata/_custom_type_script = "uid://bmespkxucvogk"
 multimesh = SubResource("MultiMesh_2b3i4")
 script = ExtResource("2_pwqa3")
 metadata/_custom_type_script = "uid://bmespkxucvogk"
+
+[node name="HeadLight" parent="Lamps" unique_id=1270948155 instance=ExtResource("24_ic86n")]
+transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, -45.957, 3.4157617, -5.134231)
+
+[node name="HeadLight2" parent="Lamps" unique_id=232322880 instance=ExtResource("24_ic86n")]
+transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, -47.957, 7.6139565, -5.134359)
+
+[node name="HeadLight3" parent="Lamps" unique_id=1592482521 instance=ExtResource("24_ic86n")]
+transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, -43.957, 7.6287537, -5.135404)
+
+[node name="HeadLight4" parent="Lamps" unique_id=75296691 instance=ExtResource("24_ic86n")]
+transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, -25.638319, 3.4254403, -7.452)
+
+[node name="HeadLight5" parent="Lamps" unique_id=1806495090 instance=ExtResource("24_ic86n")]
+transform = Transform3D(0.43837112, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837112, 15.358, 4.209, -50.912)
 
 [node name="Shop" type="MultiMeshInstance3D" parent="." unique_id=844177684]
 multimesh = SubResource("MultiMesh_f2m14")

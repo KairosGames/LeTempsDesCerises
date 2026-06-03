@@ -19,7 +19,6 @@
 [ext_resource type="ArrayMesh" uid="uid://c1tt3jq7sl6wi" path="res://prefabs/geometry/window_props_e.tres" id="15_akxtx"]
 [ext_resource type="ArrayMesh" uid="uid://jr1bk0740af1" path="res://prefabs/geometry/wall_door_a.tres" id="15_matxu"]
 [ext_resource type="ArrayMesh" uid="uid://coqmu4xpu7ky0" path="res://prefabs/geometry/wall_props_c.tres" id="16_cc8tm"]
-[ext_resource type="ArrayMesh" uid="uid://b8utbln2x4yjx" path="res://prefabs/geometry/props_lamp.tres" id="17_hhdi8"]
 [ext_resource type="ArrayMesh" uid="uid://deno2kvmgtq3b" path="res://prefabs/geometry/wall_d.tres" id="18_bjfeo"]
 [ext_resource type="ArrayMesh" uid="uid://cwtfcw04fjjun" path="res://prefabs/geometry/window_props_f.tres" id="19_akxtx"]
 [ext_resource type="ArrayMesh" uid="uid://bkear3dq7gdlv" path="res://prefabs/geometry/window_props_c.tres" id="20_cc8tm"]
@@ -32,6 +31,7 @@
 [ext_resource type="ArrayMesh" uid="uid://5t0eqetfeoys" path="res://prefabs/geometry/roof_props_b.tres" id="27_matxu"]
 [ext_resource type="ArrayMesh" uid="uid://crwyij7ok6iv3" path="res://prefabs/geometry/roof_a_side_alt.tres" id="28_akxtx"]
 [ext_resource type="ArrayMesh" uid="uid://s6odx757a8bm" path="res://prefabs/geometry/roof_a_angle_90.tres" id="29_8g8pk"]
+[ext_resource type="PackedScene" uid="uid://bdclgyj6yyleb" path="res://prefabs/props/headlight.tscn" id="30_matxu"]
 [ext_resource type="ArrayMesh" uid="uid://bj34uet0ryprp" path="res://prefabs/geometry/shop_b.tres" id="33_wamef"]
 [ext_resource type="ArrayMesh" uid="uid://prdwcmfrf8af" path="res://prefabs/geometry/wall_props_g_angle.tres" id="34_it6ba"]
 [ext_resource type="ArrayMesh" uid="uid://brrw61ceh5xtx" path="res://prefabs/geometry/wall_props_f_angle.tres" id="35_xnqxa"]
@@ -198,12 +198,6 @@ transform_format = 1
 instance_count = 2
 mesh = ExtResource("7_cc8tm")
 buffer = PackedFloat32Array(0.061048508, 0, -0.9981348, 14.238424, 0, 1, 0, 14.2, 0.9981348, 0, 0.061048508, -25.125153, 0.061048504, 0, -0.99813473, 22.42382, 0, 1, 0, 17, 0.99813473, 0, 0.061048504, -30.86197)
-
-[sub_resource type="MultiMesh" id="MultiMesh_3mbba"]
-transform_format = 1
-instance_count = 5
-mesh = ExtResource("17_hhdi8")
-buffer = PackedFloat32Array(0.81915206, 0, 0.57357645, 29.650978, 0, 1, 0, 6.208501, -0.57357645, 0, 0.81915206, -25.771446, 0.81915206, 0, 0.57357645, 32.927586, 0, 1, 0, 6.208501, -0.57357645, 0, 0.81915206, -28.065752, 0.81915206, 0, 0.57357645, 42.184, 0, 1, 0, 3.909, -0.57357645, 0, 0.81915206, -35.768, 0.81915206, 0, 0.57357645, 45.460606, 0, 1, 0, 3.909, -0.57357645, 0, 0.81915206, -38.06231, 0.57357645, 0, -0.8191521, 14.883942, 0, 1, 0, 8.2710085, 0.8191521, 0, 0.57357645, -21.915201)
 
 [sub_resource type="MultiMesh" id="MultiMesh_s2sao"]
 transform_format = 1
@@ -422,10 +416,22 @@ multimesh = SubResource("MultiMesh_kxuv6")
 script = ExtResource("2_4n8mr")
 metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="PropsLamp" type="MultiMeshInstance3D" parent="." unique_id=1566824232]
-multimesh = SubResource("MultiMesh_3mbba")
-script = ExtResource("2_4n8mr")
-metadata/_custom_type_script = "uid://bmespkxucvogk"
+[node name="PropsLamp" type="Node3D" parent="." unique_id=1772222671]
+
+[node name="HeadLight5" parent="PropsLamp" unique_id=1270948155 instance=ExtResource("30_matxu")]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 29.650978, 6.208501, -25.771446)
+
+[node name="HeadLight4" parent="PropsLamp" unique_id=267878323 instance=ExtResource("30_matxu")]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 32.927586, 6.208501, -28.065752)
+
+[node name="HeadLight3" parent="PropsLamp" unique_id=1366516986 instance=ExtResource("30_matxu")]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 42.184, 3.909, -35.768)
+
+[node name="HeadLight2" parent="PropsLamp" unique_id=246238753 instance=ExtResource("30_matxu")]
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 45.460606, 3.909, -38.06231)
+
+[node name="HeadLight" parent="PropsLamp" unique_id=1884936870 instance=ExtResource("30_matxu")]
+transform = Transform3D(0.57357645, 0, -0.8191521, 0, 1, 0, 0.8191521, 0, 0.57357645, 14.883942, 8.2710085, -21.915201)
 
 [node name="ShopA" type="MultiMeshInstance3D" parent="." unique_id=1698361465]
 multimesh = SubResource("MultiMesh_s2sao")
