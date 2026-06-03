@@ -44,6 +44,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
 	for data: TargetData in targets_data:
 		for shoot_target: Marker3D in data.target.shoot_targets:
+			raycast.global_position = agent.global_position + Vector3(0, 1.45, 0)
 			raycast.look_at(shoot_target.global_position)
 			raycast.force_raycast_update()
 			if raycast.is_colliding():
