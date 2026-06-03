@@ -46,6 +46,8 @@ func stay_into_barricade_area() -> void:
 	player.enemy_shot.connect(on_enemy_shot)
 	launch_first_die_timer()
 	await wait_until(is_it_time_to_die)
+	player.enemy_shot.disconnect(on_enemy_shot)
+	await wait_voice()
 
 
 func on_player_exit_barricade_zone() -> void:
@@ -80,15 +82,17 @@ func is_it_time_to_die() -> bool:
 
 
 func go_to_first_die() -> void:
-	player.enemy_shot.disconnect(on_enemy_shot)
 	first_die_area.monitoring = true
 	await wait_until(can_player_die)
-	await wait(0.4)
+	await wait(0.3)
 	player.can_die = true
-	player.die()
+	next_respawn = jules
+	player.die(true)
 	return_to_barricade.player_entered.disconnect(on_player_exit_barricade_zone)
 	return_to_barricade.monitoring = false
 	first_die_area.monitoring = false
+	await wait(player.death_camera.fall_time_1 + player.death_camera.fall_time_2)
+	await wait_voice()
 
 
 func can_player_die() -> bool:

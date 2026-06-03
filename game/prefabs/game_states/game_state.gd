@@ -18,6 +18,7 @@ var game_manager: GameManager
 var eff_manager: EffectsManager
 var ui_manager: UIManager
 var player: Player
+var next_respawn: Npc
 var on_process: Array[Callable]
 var on_ui_process: Array[Callable]
 var delta_t: float

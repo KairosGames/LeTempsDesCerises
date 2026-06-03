@@ -2,7 +2,7 @@ class_name Player extends CharacterBody3D
 
 signal missed_by_enemy
 signal die_called
-signal died
+signal died()
 signal weapon_took_or_dropped
 signal shot
 signal tried_shoot_no_reload
@@ -41,6 +41,7 @@ signal landed
 @onready var reload_root: Node3D = %ReloadRoot
 @onready var reload_pos_right: Marker3D = %ReloadPosRight
 @onready var reload_pos_left: Marker3D = %ReloadPosLeft
+@onready var death_camera: DeathCamera = %DeathCamera
 
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
@@ -166,8 +167,8 @@ var can_die: bool = true
 @export_range(0.0, 1.0, 0.01) var aiming_speed_ratio: float = 0.3
 
 @export_category("Air settings")
-@export var jump_strength = 4.5
-@export var gravity_multiplier = 2.0
+@export var jump_strength: float = 4.5
+@export var gravity_multiplier: float = 2.0
 
 @export_category("Camera effects settings")
 @export var land_max_y_offset: float = -0.1
@@ -1154,10 +1155,11 @@ func miss_by_versaillais() -> void:
 	missed_by_enemy.emit()
 
 
-func die() -> void:
+func die(is_scripted: bool = false) -> void:
 	if not is_alive or will_die or not can_die: return
 	will_die = true
 	die_called.emit()
+	death_camera.handle_death(is_scripted)
 	await get_tree().create_timer(0.1).timeout
 	is_alive = false
 	if is_reloading: exit_reload(false, true)
