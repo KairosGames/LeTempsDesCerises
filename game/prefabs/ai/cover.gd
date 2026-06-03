@@ -256,7 +256,7 @@ func get_cover_posture() -> Agent.Posture:
 		Height.HIGH: return Agent.Posture.STAND
 		Height.MEDIUM: return Agent.Posture.CROUCH
 		Height.LOW: return Agent.Posture.CROUCH
-		Height.NONE: return Agent.Posture.STAND
+		Height.NONE: return Agent.Posture.NONE
 		_: return Agent.Posture.NONE
 
 func get_reload_posture() -> Agent.Posture:

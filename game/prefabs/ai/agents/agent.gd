@@ -57,6 +57,9 @@ var can_move: bool = true:
 
 enum Team { VERSAILLAIS = -1, NONE = 0, COMMUNARD = 1 }
 
+func _ready() -> void:
+	shoot_raycast.debug_shape_custom_color = Color.RED if team == Team.COMMUNARD else Color.BLUE
+
 func aim_to(point: Vector3) -> void:
 	point.y = global_position.y
 	look_at(point)

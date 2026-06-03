@@ -25,7 +25,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var targets_data: Array = get_targets(agent.team).map(
 		func(target: Node3D) -> TargetData: return TargetData.new(target, agent, coefficents)
 	)
-
+		
 	# TODO if target is Player always do raycast
 
 	for i in range(targets_data.size() -1, -1 -1):
@@ -55,7 +55,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
 	return FAILURE
 
-static func best_score(a: TargetData, b: TargetData) -> bool: return a.score > b.score
+static func best_score(a: TargetData, b: TargetData) -> bool: return a.score < b.score
 
 class TargetData:
 
