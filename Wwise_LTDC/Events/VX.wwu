@@ -9,12 +9,56 @@
 			<ChildrenList>
 				<Folder Name="Enemy" ID="{66A0CA39-49DF-4565-8BD1-B466D16ED885}" ShortID="812580917">
 					<ChildrenList>
-						<Event Name="Enemy_Bark" ID="{17422CDB-5486-44BA-A4E2-730B71CE20EA}">
+						<Event Name="Enemy_Voice_Cancel" ID="{2821C044-A076-4670-80B7-F83740940A72}">
 							<ChildrenList>
-								<Action Name="" ID="{E5A22A71-6EEE-4207-9D21-CA45582FF2AA}" ShortID="77879702">
+								<Action Name="" ID="{30B30B80-28EA-4C1A-AA40-31E7A21FC490}" ShortID="128764245">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Versaillais" ID="{B13E3E5E-603C-4FA5-897B-4BF9BD76D5AB}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+											<ObjectRef Name="Voice_Cancel" ID="{9645F931-205C-44A8-8949-05D8A92EA850}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Enemy_Cannon_Advance" ID="{B87BEEB3-1D5D-4524-B166-879E9838F2E4}">
+							<ChildrenList>
+								<Action Name="" ID="{1B44AF53-8A81-4BF4-869A-3851814FB29A}" ShortID="124600078">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Cannon_Advance" ID="{589692B1-97DC-4AEC-AB8A-10557B778145}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Enemy_Barricade_State" ID="{31E2C0A9-7E7A-494B-9613-C74D03464B25}">
+							<ChildrenList>
+								<Action Name="" ID="{3C273E11-5AF4-4C10-8A87-A1D29A86F2C4}" ShortID="621052037">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Barricade_State" ID="{B0857ADB-18EC-433E-AAE5-1E0B354C809D}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Enemy_Cannon_Fire" ID="{2D328B0C-378F-473A-9D13-08FB635F21CB}">
+							<ChildrenList>
+								<Action Name="" ID="{EAADFD27-1AEE-4829-A3F8-53552CF53067}" ShortID="592203716">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Cannon_Fire" ID="{0B884076-A154-4B59-B8AA-1A74E360E27E}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Enemy_Cannon_Incoming" ID="{2E2AC514-41EC-40C2-B741-99ABD8D6FB72}">
+							<ChildrenList>
+								<Action Name="" ID="{A2A3BDA2-105E-47A3-B72E-FE7B4ADB2A16}" ShortID="1018005739">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Cannon_Incoming" ID="{22CDDEB0-5732-4323-971F-F5ABB40B2A46}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -24,56 +68,100 @@
 				</Folder>
 				<Folder Name="Ally" ID="{77F84EE2-6CA6-4F68-A269-7085069BA12E}" ShortID="418257499">
 					<ChildrenList>
-						<Event Name="Ally_Bark" ID="{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}">
+						<Event Name="Ally_Player_Hidden" ID="{436D765A-D007-485C-9AD6-29A9B39E8716}">
 							<ChildrenList>
-								<Action Name="" ID="{34A299FA-2A7B-4344-864D-FAE2A4A6C890}" ShortID="993159230">
+								<Action Name="" ID="{2996424C-9492-4ADF-BCD1-A3DB8B623AE4}" ShortID="215928296">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Generic_Communard" ID="{7B32CC11-5A77-4BB1-9784-2051B7F775BB}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+											<ObjectRef Name="Player_Hidden" ID="{C26C27F1-98B2-4E0C-BCDC-1DC407553F27}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Ally_Bark_Coward" ID="{F199BA00-0E92-4FCC-B44C-4B16C4D9BADA}">
+						<Event Name="Ally_Player_Kill" ID="{97332C5A-2392-46AA-B1A8-FE96C5DDFA3D}">
 							<ChildrenList>
-								<Action Name="" ID="{079D39FA-373A-42B6-9C31-A2EC10FF35EE}" ShortID="223896845">
+								<Action Name="" ID="{52EF48AF-31A7-4DDF-83EA-F4E34C531149}" ShortID="977609852">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Coward" ID="{39CC0191-5321-47E3-A157-B2310FE1EED0}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+											<ObjectRef Name="Player_Kill" ID="{2D8B57AC-768B-467A-865E-AC562E0A33BA}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Ally_Bark_Ally_Dead" ID="{31CF92CC-1D11-498D-9E4C-E3F4E7791732}">
+						<Event Name="Ally_Voice_Cancel" ID="{928D4D41-F865-482A-BA88-F9B89C59EFB4}">
 							<ChildrenList>
-								<Action Name="" ID="{B0200BB6-6B9F-49D1-90ED-5678652245FF}" ShortID="791642530">
+								<Action Name="" ID="{F2EFDB6C-D2ED-4335-BCA5-AE6DE7B8FFAB}" ShortID="451208453">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Ally_Dead" ID="{D0BF77A0-2D82-4A96-8EC8-B8045DB4DAA1}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+											<ObjectRef Name="Voice_Cancel" ID="{4AEAE5BC-549D-43B4-9708-9D0C54F5D137}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Ally_Bark_Enemy_Dead" ID="{CCDE5342-885C-4CF5-B310-0B051AF8D0F0}">
+						<Event Name="Ally_Barricade_State" ID="{5ED8AD1F-7513-4157-B5D1-5981EB8F070A}">
 							<ChildrenList>
-								<Action Name="" ID="{E8175674-10C6-4F90-99F1-9167AF74E744}" ShortID="139597898">
+								<Action Name="" ID="{6C26C367-388A-44F8-9E18-BD4E3929A611}" ShortID="84870172">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Enemy_Dead" ID="{0BADF438-0730-4A3C-9A7A-4B3C59C8430F}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+											<ObjectRef Name="Barricade_State" ID="{6292CFDC-D2EA-42BB-8272-0618F7F1898B}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Ally_Shoot" ID="{A3F66230-1FF8-4047-8EEA-ABF4431B10E7}">
+						<Event Name="Ally_Ally_Death" ID="{81D6C764-2FD2-4FC5-832F-2938E40C1E3A}">
 							<ChildrenList>
-								<Action Name="" ID="{F4A7C33D-EED4-4E19-B116-F559F2D873C9}" ShortID="764212185">
+								<Action Name="" ID="{D285BCBD-CC95-4B04-8F2B-D7D76C547602}" ShortID="642923666">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="NPC_Shoot" ID="{9892C910-23AC-4551-A381-3CB9993A7506}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+											<ObjectRef Name="Ally_Death" ID="{F31159D5-8643-4C80-9C52-AAEA4135BF73}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Ally_Cannon_Incoming" ID="{141649D3-E81E-4F76-877A-EF118562CD31}">
+							<ChildrenList>
+								<Action Name="" ID="{F7D36E24-C4EC-47A7-BDF0-4FE1C9B77FCE}" ShortID="741374803">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Cannon_Incoming" ID="{5A0F22D1-A365-4DCD-832F-8ECD6334DC42}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Ally_Player_Far" ID="{B819BE77-37FE-4F17-864E-4725CA00F95F}">
+							<ChildrenList>
+								<Action Name="" ID="{28F60A1F-8CC1-4849-A8F0-CF55FC9FA26D}" ShortID="619241217">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Far" ID="{FC9E8237-CEA1-42DA-9917-22B2CDB6BE8C}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Ally_Cannon_Advance" ID="{F54263CD-0C17-42B9-A796-C274BAE7E586}">
+							<ChildrenList>
+								<Action Name="" ID="{68D7E6A7-4D96-427A-A9D7-51A521563C7B}" ShortID="199764741">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Cannon_Advance" ID="{9546BC8A-448C-40BB-AFDE-BF20F1AFFB2D}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Ally_Cannon_Fire" ID="{2FD3860B-1D80-4BB0-8D2F-554A4650D647}">
+							<ChildrenList>
+								<Action Name="" ID="{51DF54B8-2B74-48F1-B6B9-E0CA9395003A}" ShortID="398066972">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Cannon_Fire" ID="{F0BDFF00-D062-4EB4-BD04-16CE2F6451F9}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

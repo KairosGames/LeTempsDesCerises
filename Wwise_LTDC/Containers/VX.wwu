@@ -609,7 +609,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<RandomSequenceContainer Name="Versaillais" ID="{B13E3E5E-603C-4FA5-897B-4BF9BD76D5AB}" ShortID="33206578">
+						<RandomSequenceContainer Name="Versaillais_Placeholder" ID="{B13E3E5E-603C-4FA5-897B-4BF9BD76D5AB}" ShortID="33206578">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
 								<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.75"/>
@@ -1134,7 +1134,11 @@
 								</Sound>
 							</ChildrenList>
 						</RandomSequenceContainer>
-						<PropertyContainer Name="New Property Container" ID="{8CB0F4D7-5746-4C56-ACC8-6EADF4362CB5}" ShortID="966555448">
+						<PropertyContainer Name="Versaillais" ID="{8CB0F4D7-5746-4C56-ACC8-6EADF4362CB5}" ShortID="966555448">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="14"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -1143,15 +1147,515 @@
 									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 								</Reference>
 							</ReferenceList>
+							<ChildrenList>
+								<SwitchContainer Name="Cannon_Advance" ID="{589692B1-97DC-4AEC-AB8A-10557B778145}" ShortID="197647630">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Séverin" ID="{A1C0AA4A-0F26-469D-B76B-76E2B2A4CF73}" ShortID="376078141">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Armand" ID="{924BBDC0-706D-4E9F-B62D-B53549DC62B1}" ShortID="592320733">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Tom" ID="{F81B988D-0220-4098-BEF7-CF2F963F9EE0}" ShortID="238386216">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Séverin" ID="{A1C0AA4A-0F26-469D-B76B-76E2B2A4CF73}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Tom" ID="{F81B988D-0220-4098-BEF7-CF2F963F9EE0}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Armand" ID="{924BBDC0-706D-4E9F-B62D-B53549DC62B1}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Tom" ID="{F81B988D-0220-4098-BEF7-CF2F963F9EE0}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Séverin" ID="{A1C0AA4A-0F26-469D-B76B-76E2B2A4CF73}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Armand" ID="{924BBDC0-706D-4E9F-B62D-B53549DC62B1}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Cannon_Fire" ID="{0B884076-A154-4B59-B8AA-1A74E360E27E}" ShortID="979784951">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Armand" ID="{134654C2-3B3D-476D-985B-81C4B1DEA312}" ShortID="927629876">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Tom" ID="{B3CD4568-BEF5-433F-9C1E-1815ADEB0EEB}" ShortID="443017000">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Séverin" ID="{5F2A4E04-138F-4268-A189-A81FD62538D5}" ShortID="568742133">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Séverin" ID="{5F2A4E04-138F-4268-A189-A81FD62538D5}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Tom" ID="{B3CD4568-BEF5-433F-9C1E-1815ADEB0EEB}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Armand" ID="{134654C2-3B3D-476D-985B-81C4B1DEA312}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Tom" ID="{B3CD4568-BEF5-433F-9C1E-1815ADEB0EEB}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Séverin" ID="{5F2A4E04-138F-4268-A189-A81FD62538D5}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Armand" ID="{134654C2-3B3D-476D-985B-81C4B1DEA312}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Cannon_Incoming" ID="{22CDDEB0-5732-4323-971F-F5ABB40B2A46}" ShortID="534397250">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Armand" ID="{DB4E4B73-703A-47B0-9F71-DE9126C9598F}" ShortID="112401754">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Tom" ID="{46078621-70FC-431C-86CC-41D696009985}" ShortID="714149716">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Séverin" ID="{B11C067F-4387-493E-9444-3BF0A5F76755}" ShortID="444706574">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Tom" ID="{46078621-70FC-431C-86CC-41D696009985}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Armand" ID="{DB4E4B73-703A-47B0-9F71-DE9126C9598F}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Séverin" ID="{B11C067F-4387-493E-9444-3BF0A5F76755}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Tom" ID="{46078621-70FC-431C-86CC-41D696009985}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Séverin" ID="{B11C067F-4387-493E-9444-3BF0A5F76755}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Armand" ID="{DB4E4B73-703A-47B0-9F71-DE9126C9598F}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Barricade_State" ID="{B0857ADB-18EC-433E-AAE5-1E0B354C809D}" ShortID="297163737">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="None" ID="{FAF24D92-8060-43E9-92D5-DDACD2AD38BA}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="barricade_state" ID="{53125CC4-7CB9-45A3-BFEC-E0F678A67D51}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SwitchContainer Name="Barricade_Low" ID="{C0750922-5426-423B-B58D-78B5E031EBB3}" ShortID="912269362">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="SwitchGroupOrStateGroup">
+													<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="Armand" ID="{B8BCE01B-B9A1-4212-9DCF-D8B7F41495CC}" ShortID="114875176">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Tom" ID="{A633FB86-34C6-4833-BE37-7F25FDAA99D6}" ShortID="439275029">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Séverin" ID="{0E661547-EEF7-47BF-9973-007ED20BBFD7}" ShortID="239434085">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+											</ChildrenList>
+											<GroupingInfo>
+												<GroupingBehaviorList>
+													<GroupingBehavior>
+														<ItemRef Name="Armand" ID="{B8BCE01B-B9A1-4212-9DCF-D8B7F41495CC}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Séverin" ID="{0E661547-EEF7-47BF-9973-007ED20BBFD7}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Tom" ID="{A633FB86-34C6-4833-BE37-7F25FDAA99D6}"/>
+													</GroupingBehavior>
+												</GroupingBehaviorList>
+												<GroupingList>
+													<Grouping>
+														<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+														<ItemList>
+															<ItemRef Name="Tom" ID="{A633FB86-34C6-4833-BE37-7F25FDAA99D6}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+														<ItemList>
+															<ItemRef Name="Séverin" ID="{0E661547-EEF7-47BF-9973-007ED20BBFD7}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+														<ItemList>
+															<ItemRef Name="Armand" ID="{B8BCE01B-B9A1-4212-9DCF-D8B7F41495CC}"/>
+														</ItemList>
+													</Grouping>
+												</GroupingList>
+											</GroupingInfo>
+										</SwitchContainer>
+										<SwitchContainer Name="Barricade_Broken" ID="{07F549D6-280D-4CB3-ACD8-FEEF94AAFA06}" ShortID="664218066">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="SwitchGroupOrStateGroup">
+													<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="Armand" ID="{5E0448F0-BF62-44EC-A0B8-9B56825339DD}" ShortID="1063055687">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Tom" ID="{A85F7F89-CBAB-4A2F-B4DD-CAB91552A14D}" ShortID="1041350760">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Séverin" ID="{038CFF04-FEF4-4332-B0D6-5FE9E2C4EC65}" ShortID="1032684418">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+											</ChildrenList>
+											<GroupingInfo>
+												<GroupingBehaviorList>
+													<GroupingBehavior>
+														<ItemRef Name="Séverin" ID="{038CFF04-FEF4-4332-B0D6-5FE9E2C4EC65}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Tom" ID="{A85F7F89-CBAB-4A2F-B4DD-CAB91552A14D}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Armand" ID="{5E0448F0-BF62-44EC-A0B8-9B56825339DD}"/>
+													</GroupingBehavior>
+												</GroupingBehaviorList>
+												<GroupingList>
+													<Grouping>
+														<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+														<ItemList>
+															<ItemRef Name="Tom" ID="{A85F7F89-CBAB-4A2F-B4DD-CAB91552A14D}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+														<ItemList>
+															<ItemRef Name="Séverin" ID="{038CFF04-FEF4-4332-B0D6-5FE9E2C4EC65}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+														<ItemList>
+															<ItemRef Name="Armand" ID="{5E0448F0-BF62-44EC-A0B8-9B56825339DD}"/>
+														</ItemList>
+													</Grouping>
+												</GroupingList>
+											</GroupingInfo>
+										</SwitchContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Barricade_Low" ID="{C0750922-5426-423B-B58D-78B5E031EBB3}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Barricade_Broken" ID="{07F549D6-280D-4CB3-ACD8-FEEF94AAFA06}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Voice_Cancel" ID="{9645F931-205C-44A8-8949-05D8A92EA850}" ShortID="224497492">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Séverin" ID="{8FE2AAF4-F25F-486F-9F43-170B7EE769E8}" ShortID="615690629">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Armand" ID="{AD87544C-0BCB-4952-9968-B7E911F366DE}" ShortID="1067099908">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Tom" ID="{B03A1A62-B7D7-434C-8682-29D32689787E}" ShortID="24605973">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Armand" ID="{AD87544C-0BCB-4952-9968-B7E911F366DE}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Tom" ID="{B03A1A62-B7D7-434C-8682-29D32689787E}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Séverin" ID="{8FE2AAF4-F25F-486F-9F43-170B7EE769E8}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Tom" ID="{B03A1A62-B7D7-434C-8682-29D32689787E}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Séverin" ID="{8FE2AAF4-F25F-486F-9F43-170B7EE769E8}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Armand" ID="{AD87544C-0BCB-4952-9968-B7E911F366DE}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+							</ChildrenList>
 						</PropertyContainer>
 						<PropertyContainer Name="Communard" ID="{89C20E2E-7626-4FF8-AD21-803CF5C14C71}" ShortID="16358675">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="Color" Type="int16" Value="23"/>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
 									</ValueList>
 								</Property>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
 								<Property Name="OverrideEffect" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
@@ -1868,6 +2372,1384 @@
 										</RandomSequenceContainer>
 									</ChildrenList>
 								</PropertyContainer>
+								<SwitchContainer Name="Barricade_State" ID="{6292CFDC-D2EA-42BB-8272-0618F7F1898B}" ShortID="270084004">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="None" ID="{FAF24D92-8060-43E9-92D5-DDACD2AD38BA}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="barricade_state" ID="{53125CC4-7CB9-45A3-BFEC-E0F678A67D51}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<SwitchContainer Name="Barricade_Low" ID="{6F615099-497D-4307-8523-EFE7549FD3F2}" ShortID="313484589">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="SwitchGroupOrStateGroup">
+													<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="Atéa" ID="{888EC258-2EA5-4D7F-B104-900992B4C2EC}" ShortID="351104626">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Thomas" ID="{5EA0C0C6-F7FB-4FA6-AEA4-2C9B853D406E}" ShortID="492655165">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Loris" ID="{8B25D9BA-AD41-4688-A4A0-B971AA40D4A2}" ShortID="164652779">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Nathan" ID="{3D90F871-3E24-45FE-8598-98DF3B3BB958}" ShortID="975608958">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Yuna" ID="{A2DA2185-B0DB-466D-8E4D-D49685BE6BFB}" ShortID="754527549">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Zoé" ID="{48758ED0-45CC-4C6D-8ABD-C3D26DED7C4F}" ShortID="95439502">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+											</ChildrenList>
+											<GroupingInfo>
+												<GroupingBehaviorList>
+													<GroupingBehavior>
+														<ItemRef Name="Atéa" ID="{888EC258-2EA5-4D7F-B104-900992B4C2EC}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Nathan" ID="{3D90F871-3E24-45FE-8598-98DF3B3BB958}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Yuna" ID="{A2DA2185-B0DB-466D-8E4D-D49685BE6BFB}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Loris" ID="{8B25D9BA-AD41-4688-A4A0-B971AA40D4A2}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Thomas" ID="{5EA0C0C6-F7FB-4FA6-AEA4-2C9B853D406E}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Zoé" ID="{48758ED0-45CC-4C6D-8ABD-C3D26DED7C4F}"/>
+													</GroupingBehavior>
+												</GroupingBehaviorList>
+												<GroupingList>
+													<Grouping>
+														<SwitchRef Name="Type6" ID="{3DA5AB17-9749-4FDA-9874-044F8624A145}"/>
+														<ItemList>
+															<ItemRef Name="Thomas" ID="{5EA0C0C6-F7FB-4FA6-AEA4-2C9B853D406E}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+														<ItemList>
+															<ItemRef Name="Yuna" ID="{A2DA2185-B0DB-466D-8E4D-D49685BE6BFB}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+														<ItemList>
+															<ItemRef Name="Atéa" ID="{888EC258-2EA5-4D7F-B104-900992B4C2EC}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type4" ID="{26A34EB8-AA7F-49C7-A14E-A9184835341C}"/>
+														<ItemList>
+															<ItemRef Name="Loris" ID="{8B25D9BA-AD41-4688-A4A0-B971AA40D4A2}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+														<ItemList>
+															<ItemRef Name="Zoé" ID="{48758ED0-45CC-4C6D-8ABD-C3D26DED7C4F}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type5" ID="{7FFEB0DE-E9FB-408D-8AE6-CF2C9AFD9233}"/>
+														<ItemList>
+															<ItemRef Name="Nathan" ID="{3D90F871-3E24-45FE-8598-98DF3B3BB958}"/>
+														</ItemList>
+													</Grouping>
+												</GroupingList>
+											</GroupingInfo>
+										</SwitchContainer>
+										<SwitchContainer Name="Barricade_Broken" ID="{4446F35C-B763-4AE7-BDD6-4335C61680CB}" ShortID="710475125">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="SwitchGroupOrStateGroup">
+													<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<RandomSequenceContainer Name="Atéa" ID="{15BBCD89-52C9-4294-B39F-190A599A5C95}" ShortID="519542715">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Thomas" ID="{EFCB6613-EADB-4BA4-9D8A-1623877865A4}" ShortID="886546502">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Loris" ID="{638D99F7-7489-4FB5-B1BB-1C0897A70261}" ShortID="155053118">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Nathan" ID="{FB8F5E27-A0A2-4469-B0D0-9D03D81034D7}" ShortID="11276024">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Yuna" ID="{D67008B0-31D8-4338-B96F-63BAE3D697F5}" ShortID="703703976">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Zoé" ID="{693678FD-B8A3-45D6-96F7-B7E32693236F}" ShortID="1060557773">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+												</RandomSequenceContainer>
+											</ChildrenList>
+											<GroupingInfo>
+												<GroupingBehaviorList>
+													<GroupingBehavior>
+														<ItemRef Name="Thomas" ID="{EFCB6613-EADB-4BA4-9D8A-1623877865A4}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Nathan" ID="{FB8F5E27-A0A2-4469-B0D0-9D03D81034D7}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Atéa" ID="{15BBCD89-52C9-4294-B39F-190A599A5C95}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Yuna" ID="{D67008B0-31D8-4338-B96F-63BAE3D697F5}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Loris" ID="{638D99F7-7489-4FB5-B1BB-1C0897A70261}"/>
+													</GroupingBehavior>
+													<GroupingBehavior>
+														<ItemRef Name="Zoé" ID="{693678FD-B8A3-45D6-96F7-B7E32693236F}"/>
+													</GroupingBehavior>
+												</GroupingBehaviorList>
+												<GroupingList>
+													<Grouping>
+														<SwitchRef Name="Type6" ID="{3DA5AB17-9749-4FDA-9874-044F8624A145}"/>
+														<ItemList>
+															<ItemRef Name="Thomas" ID="{EFCB6613-EADB-4BA4-9D8A-1623877865A4}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+														<ItemList>
+															<ItemRef Name="Yuna" ID="{D67008B0-31D8-4338-B96F-63BAE3D697F5}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+														<ItemList>
+															<ItemRef Name="Atéa" ID="{15BBCD89-52C9-4294-B39F-190A599A5C95}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type4" ID="{26A34EB8-AA7F-49C7-A14E-A9184835341C}"/>
+														<ItemList>
+															<ItemRef Name="Loris" ID="{638D99F7-7489-4FB5-B1BB-1C0897A70261}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+														<ItemList>
+															<ItemRef Name="Zoé" ID="{693678FD-B8A3-45D6-96F7-B7E32693236F}"/>
+														</ItemList>
+													</Grouping>
+													<Grouping>
+														<SwitchRef Name="Type5" ID="{7FFEB0DE-E9FB-408D-8AE6-CF2C9AFD9233}"/>
+														<ItemList>
+															<ItemRef Name="Nathan" ID="{FB8F5E27-A0A2-4469-B0D0-9D03D81034D7}"/>
+														</ItemList>
+													</Grouping>
+												</GroupingList>
+											</GroupingInfo>
+										</SwitchContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Barricade_Broken" ID="{4446F35C-B763-4AE7-BDD6-4335C61680CB}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Barricade_Low" ID="{6F615099-497D-4307-8523-EFE7549FD3F2}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Cannon_Advance" ID="{9546BC8A-448C-40BB-AFDE-BF20F1AFFB2D}" ShortID="297959100">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Zoé" ID="{7DE6B6A3-48A0-4404-BB20-7E297543A756}" ShortID="970813397">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Atéa" ID="{F3CC92AC-53E5-49E0-8CDF-3560C5CF935C}" ShortID="365227322">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Yuna" ID="{D2C9054A-4F1B-4B6B-A10F-24D5CD2002E1}" ShortID="675677506">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Loris" ID="{9617D70E-309E-4461-A613-0474A614B619}" ShortID="982386349">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Nathan" ID="{69AB6B9C-1280-45D9-B81F-C60D55557733}" ShortID="375489412">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Thomas" ID="{1FB13DFC-4436-44F1-89A4-641DCA965431}" ShortID="517959748">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Loris" ID="{9617D70E-309E-4461-A613-0474A614B619}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Yuna" ID="{D2C9054A-4F1B-4B6B-A10F-24D5CD2002E1}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Nathan" ID="{69AB6B9C-1280-45D9-B81F-C60D55557733}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Zoé" ID="{7DE6B6A3-48A0-4404-BB20-7E297543A756}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Atéa" ID="{F3CC92AC-53E5-49E0-8CDF-3560C5CF935C}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Thomas" ID="{1FB13DFC-4436-44F1-89A4-641DCA965431}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type6" ID="{3DA5AB17-9749-4FDA-9874-044F8624A145}"/>
+												<ItemList>
+													<ItemRef Name="Thomas" ID="{1FB13DFC-4436-44F1-89A4-641DCA965431}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Yuna" ID="{D2C9054A-4F1B-4B6B-A10F-24D5CD2002E1}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Atéa" ID="{F3CC92AC-53E5-49E0-8CDF-3560C5CF935C}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type4" ID="{26A34EB8-AA7F-49C7-A14E-A9184835341C}"/>
+												<ItemList>
+													<ItemRef Name="Loris" ID="{9617D70E-309E-4461-A613-0474A614B619}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Zoé" ID="{7DE6B6A3-48A0-4404-BB20-7E297543A756}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type5" ID="{7FFEB0DE-E9FB-408D-8AE6-CF2C9AFD9233}"/>
+												<ItemList>
+													<ItemRef Name="Nathan" ID="{69AB6B9C-1280-45D9-B81F-C60D55557733}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Cannon_Fire" ID="{F0BDFF00-D062-4EB4-BD04-16CE2F6451F9}" ShortID="754002174">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Atéa" ID="{2FF5AF82-491A-4A93-9880-05B0CEEF358D}" ShortID="365704530">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Thomas" ID="{89D95025-7932-4C9A-907B-AF25485B5D28}" ShortID="730824478">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Loris" ID="{E3646D72-1C31-4995-965B-996AB5FE7C3F}" ShortID="415979290">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Nathan" ID="{D06051CB-2145-4E21-9A9D-27A440913128}" ShortID="530256261">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Yuna" ID="{0733FC9B-9EC3-4885-BCD7-829E874AB1B9}" ShortID="397642963">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Zoé" ID="{95036E29-35C1-4383-BC4B-5AB276A71622}" ShortID="565654662">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Thomas" ID="{89D95025-7932-4C9A-907B-AF25485B5D28}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Zoé" ID="{95036E29-35C1-4383-BC4B-5AB276A71622}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Loris" ID="{E3646D72-1C31-4995-965B-996AB5FE7C3F}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Atéa" ID="{2FF5AF82-491A-4A93-9880-05B0CEEF358D}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Yuna" ID="{0733FC9B-9EC3-4885-BCD7-829E874AB1B9}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Nathan" ID="{D06051CB-2145-4E21-9A9D-27A440913128}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type6" ID="{3DA5AB17-9749-4FDA-9874-044F8624A145}"/>
+												<ItemList>
+													<ItemRef Name="Thomas" ID="{89D95025-7932-4C9A-907B-AF25485B5D28}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Yuna" ID="{0733FC9B-9EC3-4885-BCD7-829E874AB1B9}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Atéa" ID="{2FF5AF82-491A-4A93-9880-05B0CEEF358D}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type4" ID="{26A34EB8-AA7F-49C7-A14E-A9184835341C}"/>
+												<ItemList>
+													<ItemRef Name="Loris" ID="{E3646D72-1C31-4995-965B-996AB5FE7C3F}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Zoé" ID="{95036E29-35C1-4383-BC4B-5AB276A71622}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type5" ID="{7FFEB0DE-E9FB-408D-8AE6-CF2C9AFD9233}"/>
+												<ItemList>
+													<ItemRef Name="Nathan" ID="{D06051CB-2145-4E21-9A9D-27A440913128}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Cannon_Incoming" ID="{5A0F22D1-A365-4DCD-832F-8ECD6334DC42}" ShortID="43366749">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Atéa" ID="{09EC3E22-F363-4B33-A776-165CACDD0F09}" ShortID="95148924">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Thomas" ID="{B28F2A1E-6142-4874-A247-1EC08A98BBDC}" ShortID="479758473">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Loris" ID="{1CA65953-4FC3-4BC9-84E6-DFA4848339DD}" ShortID="268425258">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Nathan" ID="{F7372917-FE4D-4A5A-AD1F-9FFF57AB9691}" ShortID="705689082">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Yuna" ID="{79496875-9FCC-4AC8-9D93-0BE3A8021C7C}" ShortID="479845482">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Zoé" ID="{D665FE58-3B31-491E-BF66-2A9DA58B306C}" ShortID="27216587">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Nathan" ID="{F7372917-FE4D-4A5A-AD1F-9FFF57AB9691}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Thomas" ID="{B28F2A1E-6142-4874-A247-1EC08A98BBDC}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Atéa" ID="{09EC3E22-F363-4B33-A776-165CACDD0F09}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Loris" ID="{1CA65953-4FC3-4BC9-84E6-DFA4848339DD}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Zoé" ID="{D665FE58-3B31-491E-BF66-2A9DA58B306C}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Yuna" ID="{79496875-9FCC-4AC8-9D93-0BE3A8021C7C}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type6" ID="{3DA5AB17-9749-4FDA-9874-044F8624A145}"/>
+												<ItemList>
+													<ItemRef Name="Thomas" ID="{B28F2A1E-6142-4874-A247-1EC08A98BBDC}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Yuna" ID="{79496875-9FCC-4AC8-9D93-0BE3A8021C7C}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Atéa" ID="{09EC3E22-F363-4B33-A776-165CACDD0F09}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type4" ID="{26A34EB8-AA7F-49C7-A14E-A9184835341C}"/>
+												<ItemList>
+													<ItemRef Name="Loris" ID="{1CA65953-4FC3-4BC9-84E6-DFA4848339DD}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Zoé" ID="{D665FE58-3B31-491E-BF66-2A9DA58B306C}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type5" ID="{7FFEB0DE-E9FB-408D-8AE6-CF2C9AFD9233}"/>
+												<ItemList>
+													<ItemRef Name="Nathan" ID="{F7372917-FE4D-4A5A-AD1F-9FFF57AB9691}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Player_Kill" ID="{2D8B57AC-768B-467A-865E-AC562E0A33BA}" ShortID="316379042">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Zoé" ID="{4066F627-07D6-4DB6-BAA4-0C667B522CB7}" ShortID="930743894">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Atéa" ID="{9D0C0024-31DC-47A1-AE3B-68A8FBFFD55F}" ShortID="929734001">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Yuna" ID="{CC62617B-D9D9-4A4D-B00C-AF8CCFAD17C7}" ShortID="633725462">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Loris" ID="{021609B1-B299-4E6F-8B24-58EBE2278DA1}" ShortID="330050793">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Nathan" ID="{66068C4D-A1A4-48E0-930A-00A0EE83C6D5}" ShortID="805397013">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Thomas" ID="{2AEF1F39-5C2C-4A84-91A6-9A1EC5DB5141}" ShortID="365960354">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Atéa" ID="{9D0C0024-31DC-47A1-AE3B-68A8FBFFD55F}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Zoé" ID="{4066F627-07D6-4DB6-BAA4-0C667B522CB7}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Thomas" ID="{2AEF1F39-5C2C-4A84-91A6-9A1EC5DB5141}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Nathan" ID="{66068C4D-A1A4-48E0-930A-00A0EE83C6D5}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Yuna" ID="{CC62617B-D9D9-4A4D-B00C-AF8CCFAD17C7}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Loris" ID="{021609B1-B299-4E6F-8B24-58EBE2278DA1}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type6" ID="{3DA5AB17-9749-4FDA-9874-044F8624A145}"/>
+												<ItemList>
+													<ItemRef Name="Thomas" ID="{2AEF1F39-5C2C-4A84-91A6-9A1EC5DB5141}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Yuna" ID="{CC62617B-D9D9-4A4D-B00C-AF8CCFAD17C7}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Atéa" ID="{9D0C0024-31DC-47A1-AE3B-68A8FBFFD55F}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type4" ID="{26A34EB8-AA7F-49C7-A14E-A9184835341C}"/>
+												<ItemList>
+													<ItemRef Name="Loris" ID="{021609B1-B299-4E6F-8B24-58EBE2278DA1}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Zoé" ID="{4066F627-07D6-4DB6-BAA4-0C667B522CB7}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type5" ID="{7FFEB0DE-E9FB-408D-8AE6-CF2C9AFD9233}"/>
+												<ItemList>
+													<ItemRef Name="Nathan" ID="{66068C4D-A1A4-48E0-930A-00A0EE83C6D5}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Ally_Death" ID="{F31159D5-8643-4C80-9C52-AAEA4135BF73}" ShortID="734968476">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Zoé" ID="{5B926A0D-11A7-4839-AED1-77B89DA0A12D}" ShortID="814281974">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Atéa" ID="{42AE6540-4507-4A19-9AFB-BF49DB646340}" ShortID="121704578">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Yuna" ID="{A4B4FFAC-2BC7-4A81-A49F-BB61346E8E78}" ShortID="825921411">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Loris" ID="{23406E4C-9703-4021-8AC2-ED724A4E3325}" ShortID="663531224">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Nathan" ID="{ECDF4553-40F8-4179-8DD6-C1EC8C9E7C80}" ShortID="958164764">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Thomas" ID="{4B32A2CD-9583-4134-A6B3-A0B16B007B1B}" ShortID="645651048">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Zoé" ID="{5B926A0D-11A7-4839-AED1-77B89DA0A12D}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Atéa" ID="{42AE6540-4507-4A19-9AFB-BF49DB646340}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Loris" ID="{23406E4C-9703-4021-8AC2-ED724A4E3325}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Nathan" ID="{ECDF4553-40F8-4179-8DD6-C1EC8C9E7C80}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Yuna" ID="{A4B4FFAC-2BC7-4A81-A49F-BB61346E8E78}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Thomas" ID="{4B32A2CD-9583-4134-A6B3-A0B16B007B1B}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type6" ID="{3DA5AB17-9749-4FDA-9874-044F8624A145}"/>
+												<ItemList>
+													<ItemRef Name="Thomas" ID="{4B32A2CD-9583-4134-A6B3-A0B16B007B1B}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Yuna" ID="{A4B4FFAC-2BC7-4A81-A49F-BB61346E8E78}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Atéa" ID="{42AE6540-4507-4A19-9AFB-BF49DB646340}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type4" ID="{26A34EB8-AA7F-49C7-A14E-A9184835341C}"/>
+												<ItemList>
+													<ItemRef Name="Loris" ID="{23406E4C-9703-4021-8AC2-ED724A4E3325}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Zoé" ID="{5B926A0D-11A7-4839-AED1-77B89DA0A12D}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type5" ID="{7FFEB0DE-E9FB-408D-8AE6-CF2C9AFD9233}"/>
+												<ItemList>
+													<ItemRef Name="Nathan" ID="{ECDF4553-40F8-4179-8DD6-C1EC8C9E7C80}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Player_Far" ID="{FC9E8237-CEA1-42DA-9917-22B2CDB6BE8C}" ShortID="1023118018">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Zoé" ID="{CA8A0612-1180-4C43-8933-AD49E0666649}" ShortID="385899795">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Atéa" ID="{6BED8329-0B1E-487D-9800-6CD3588F3A31}" ShortID="1037317251">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Yuna" ID="{96919399-CD83-443C-A4A8-72718B5EC25D}" ShortID="259669927">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Loris" ID="{40177884-2E20-4672-A6B6-60D3B64E44C1}" ShortID="119469232">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Nathan" ID="{AE2DCF2B-9468-4BC7-8735-9F37BC0C856B}" ShortID="690160556">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Thomas" ID="{A4554CA2-423B-4588-B3DD-18B15A2E2D33}" ShortID="547896165">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Zoé" ID="{CA8A0612-1180-4C43-8933-AD49E0666649}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Atéa" ID="{6BED8329-0B1E-487D-9800-6CD3588F3A31}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Nathan" ID="{AE2DCF2B-9468-4BC7-8735-9F37BC0C856B}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Loris" ID="{40177884-2E20-4672-A6B6-60D3B64E44C1}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Yuna" ID="{96919399-CD83-443C-A4A8-72718B5EC25D}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Thomas" ID="{A4554CA2-423B-4588-B3DD-18B15A2E2D33}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type6" ID="{3DA5AB17-9749-4FDA-9874-044F8624A145}"/>
+												<ItemList>
+													<ItemRef Name="Thomas" ID="{A4554CA2-423B-4588-B3DD-18B15A2E2D33}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Yuna" ID="{96919399-CD83-443C-A4A8-72718B5EC25D}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Atéa" ID="{6BED8329-0B1E-487D-9800-6CD3588F3A31}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type4" ID="{26A34EB8-AA7F-49C7-A14E-A9184835341C}"/>
+												<ItemList>
+													<ItemRef Name="Loris" ID="{40177884-2E20-4672-A6B6-60D3B64E44C1}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Zoé" ID="{CA8A0612-1180-4C43-8933-AD49E0666649}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type5" ID="{7FFEB0DE-E9FB-408D-8AE6-CF2C9AFD9233}"/>
+												<ItemList>
+													<ItemRef Name="Nathan" ID="{AE2DCF2B-9468-4BC7-8735-9F37BC0C856B}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Player_Hidden" ID="{C26C27F1-98B2-4E0C-BCDC-1DC407553F27}" ShortID="698622456">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Zoé" ID="{79A8C145-E3F5-453D-9C85-2654419990EB}" ShortID="687583139">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Atéa" ID="{038C8AEF-12B8-42BC-AE62-752A2B3D57CE}" ShortID="207225448">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Yuna" ID="{6B703A8A-3A4A-4696-8493-9B4899E7C5F3}" ShortID="122384049">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Loris" ID="{FF230AAC-3C78-4CE4-86C6-5150297593F2}" ShortID="461210048">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Nathan" ID="{73B5E634-1B4B-46E2-A15A-66F9EEA9B1B8}" ShortID="1062258481">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Thomas" ID="{DEF6906F-E593-41DF-9FD2-E44B6B0B2B05}" ShortID="223138718">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Nathan" ID="{73B5E634-1B4B-46E2-A15A-66F9EEA9B1B8}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Zoé" ID="{79A8C145-E3F5-453D-9C85-2654419990EB}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Thomas" ID="{DEF6906F-E593-41DF-9FD2-E44B6B0B2B05}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Yuna" ID="{6B703A8A-3A4A-4696-8493-9B4899E7C5F3}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Loris" ID="{FF230AAC-3C78-4CE4-86C6-5150297593F2}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Atéa" ID="{038C8AEF-12B8-42BC-AE62-752A2B3D57CE}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type6" ID="{3DA5AB17-9749-4FDA-9874-044F8624A145}"/>
+												<ItemList>
+													<ItemRef Name="Thomas" ID="{DEF6906F-E593-41DF-9FD2-E44B6B0B2B05}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Yuna" ID="{6B703A8A-3A4A-4696-8493-9B4899E7C5F3}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Atéa" ID="{038C8AEF-12B8-42BC-AE62-752A2B3D57CE}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type4" ID="{26A34EB8-AA7F-49C7-A14E-A9184835341C}"/>
+												<ItemList>
+													<ItemRef Name="Loris" ID="{FF230AAC-3C78-4CE4-86C6-5150297593F2}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Zoé" ID="{79A8C145-E3F5-453D-9C85-2654419990EB}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type5" ID="{7FFEB0DE-E9FB-408D-8AE6-CF2C9AFD9233}"/>
+												<ItemList>
+													<ItemRef Name="Nathan" ID="{73B5E634-1B4B-46E2-A15A-66F9EEA9B1B8}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Voice_Cancel" ID="{4AEAE5BC-549D-43B4-9708-9D0C54F5D137}" ShortID="410879970">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="Character_Type" ID="{C2F12799-5347-4922-A1A4-63D6CB176947}" WorkUnitID="{9FCE8E72-58F2-42B5-8D8D-973773E897B7}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Atéa" ID="{66D92E35-5399-4CEB-AEA9-96E762DE1BC1}" ShortID="439809576">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Thomas" ID="{3186F010-EC97-4DC6-A55E-1D750D1B658C}" ShortID="11126167">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Loris" ID="{248BD7E9-6BE8-4E76-8DB9-BE3420A79450}" ShortID="236466415">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Nathan" ID="{8F8B4FF7-EDA0-44F3-B174-CCF6D9A39B17}" ShortID="929258738">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Yuna" ID="{9378592B-FF3D-4906-8201-2D34D6BD91ED}" ShortID="195030159">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="Zoé" ID="{EA65087A-BF95-4680-A44B-FC1A78E93D91}" ShortID="142793190">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="Thomas" ID="{3186F010-EC97-4DC6-A55E-1D750D1B658C}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Yuna" ID="{9378592B-FF3D-4906-8201-2D34D6BD91ED}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Atéa" ID="{66D92E35-5399-4CEB-AEA9-96E762DE1BC1}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Zoé" ID="{EA65087A-BF95-4680-A44B-FC1A78E93D91}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Loris" ID="{248BD7E9-6BE8-4E76-8DB9-BE3420A79450}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="Nathan" ID="{8F8B4FF7-EDA0-44F3-B174-CCF6D9A39B17}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="Type6" ID="{3DA5AB17-9749-4FDA-9874-044F8624A145}"/>
+												<ItemList>
+													<ItemRef Name="Thomas" ID="{3186F010-EC97-4DC6-A55E-1D750D1B658C}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type2" ID="{1C6A7A8B-7012-4234-99A3-B43FB0C35686}"/>
+												<ItemList>
+													<ItemRef Name="Yuna" ID="{9378592B-FF3D-4906-8201-2D34D6BD91ED}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type1" ID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
+												<ItemList>
+													<ItemRef Name="Atéa" ID="{66D92E35-5399-4CEB-AEA9-96E762DE1BC1}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type4" ID="{26A34EB8-AA7F-49C7-A14E-A9184835341C}"/>
+												<ItemList>
+													<ItemRef Name="Loris" ID="{248BD7E9-6BE8-4E76-8DB9-BE3420A79450}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type3" ID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
+												<ItemList>
+													<ItemRef Name="Zoé" ID="{EA65087A-BF95-4680-A44B-FC1A78E93D91}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="Type5" ID="{7FFEB0DE-E9FB-408D-8AE6-CF2C9AFD9233}"/>
+												<ItemList>
+													<ItemRef Name="Nathan" ID="{8F8B4FF7-EDA0-44F3-B174-CCF6D9A39B17}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="Effects">
