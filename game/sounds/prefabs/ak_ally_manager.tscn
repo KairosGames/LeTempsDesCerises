@@ -3,23 +3,25 @@
 [ext_resource type="Script" uid="uid://qhvcleo64wpo" path="res://sounds/scripts/ak_ally_manager.gd" id="1_ljc3s"]
 [ext_resource type="WwiseEvent" uid="uid://d0ajhjfwwl2tk" path="res://Wwise/resources/Event/{3FDD584B-7295-4A08-9570-8775D7B756E9}.tres" id="2_jrslf"]
 [ext_resource type="WwiseEvent" uid="uid://lgjm7lyaevq4" path="res://Wwise/resources/Event/{925872CA-03A4-4FC1-8E1A-768C93F1A808}.tres" id="3_ch3wf"]
-[ext_resource type="WwiseEvent" uid="uid://b5uetttn4b4je" path="res://Wwise/resources/Event/{1792F8C3-C674-43D7-A22D-3D60E7C10EB7}.tres" id="4_ljc3s"]
-[ext_resource type="WwiseEvent" uid="uid://jgkrca3igtj2" path="res://Wwise/resources/Event/{CCDE5342-885C-4CF5-B310-0B051AF8D0F0}.tres" id="5_ch3wf"]
-[ext_resource type="WwiseEvent" uid="uid://bmded83g7due" path="res://Wwise/resources/Event/{31CF92CC-1D11-498D-9E4C-E3F4E7791732}.tres" id="6_4fq6u"]
-[ext_resource type="WwiseEvent" uid="uid://dyvxpdvv4yyjt" path="res://Wwise/resources/Event/{F199BA00-0E92-4FCC-B44C-4B16C4D9BADA}.tres" id="7_4fq6u"]
+[ext_resource type="WwiseEvent" uid="uid://ghhbx3gst55i" path="res://Wwise/resources/Event/{81D6C764-2FD2-4FC5-832F-2938E40C1E3A}.tres" id="8_mdtd2"]
+[ext_resource type="WwiseEvent" uid="uid://di5i7n6lrcg3u" path="res://Wwise/resources/Event/{5ED8AD1F-7513-4157-B5D1-5981EB8F070A}.tres" id="9_8a2po"]
+[ext_resource type="WwiseEvent" uid="uid://s3qrxiqf8q4m" path="res://Wwise/resources/Event/{F54263CD-0C17-42B9-A796-C274BAE7E586}.tres" id="10_7ma61"]
+[ext_resource type="WwiseEvent" uid="uid://d4lp1c75yibl1" path="res://Wwise/resources/Event/{2FD3860B-1D80-4BB0-8D2F-554A4650D647}.tres" id="11_dupfb"]
+[ext_resource type="WwiseEvent" uid="uid://ccfnho2s6rgvt" path="res://Wwise/resources/Event/{2E2AC514-41EC-40C2-B741-99ABD8D6FB72}.tres" id="12_o5qyw"]
+[ext_resource type="WwiseEvent" uid="uid://s360lmhi65gb" path="res://Wwise/resources/Event/{B819BE77-37FE-4F17-864E-4725CA00F95F}.tres" id="13_kmvvo"]
+[ext_resource type="WwiseEvent" uid="uid://yu2jwbtetotr" path="res://Wwise/resources/Event/{436D765A-D007-485C-9AD6-29A9B39E8716}.tres" id="14_62kix"]
+[ext_resource type="WwiseEvent" uid="uid://b05ns363ha8i2" path="res://Wwise/resources/Event/{97332C5A-2392-46AA-B1A8-FE96C5DDFA3D}.tres" id="15_chetr"]
+[ext_resource type="WwiseEvent" uid="uid://d4nvnlflys87k" path="res://Wwise/resources/Event/{2821C044-A076-4670-80B7-F83740940A72}.tres" id="16_lgxlg"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p0yv6"]
 radius = 0.1
 
-[node name="ak_ally_manager" type="Node3D" unique_id=1364272514 node_paths=PackedStringArray("shoot", "steps", "bark", "ally_dead", "enemy_dead", "coward", "label")]
+[node name="ak_ally_manager" type="Node3D" unique_id=1364272514 node_paths=PackedStringArray("shoot", "steps", "label", "barks_parent")]
 script = ExtResource("1_ljc3s")
 shoot = NodePath("Shoot")
 steps = NodePath("Steps")
-bark = NodePath("Bark")
-ally_dead = NodePath("Ally_Dead")
-enemy_dead = NodePath("Enemy_Dead")
-coward = NodePath("Coward")
 label = NodePath("Label3D")
+barks_parent = NodePath("Barks_Parent")
 
 [node name="Shoot" type="AkEvent3D" parent="." unique_id=1491082347]
 event = ExtResource("2_jrslf")
@@ -51,31 +53,34 @@ modulate = Color(0.9098039, 0.47058824, 0.47843137, 1)
 text = "Placeholder"
 outline_size = 16
 
-[node name="Bark" type="AkEvent3D" parent="." unique_id=2129268944]
-event = ExtResource("4_ljc3s")
-stop_on = 3
+[node name="Barks_Parent" type="Node3D" parent="." unique_id=1301582642]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
 
-[node name="Enemy_Dead" type="AkEvent3D" parent="." unique_id=230195150]
-event = ExtResource("5_ch3wf")
-stop_on = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
+[node name="Ally_Death" type="AkEvent3D" parent="Barks_Parent" unique_id=1422039803]
+event = ExtResource("8_mdtd2")
 
-[node name="Ally_Dead" type="AkEvent3D" parent="." unique_id=1998089313]
-event = ExtResource("6_4fq6u")
-stop_on = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
+[node name="Barricade_State" type="AkEvent3D" parent="Barks_Parent" unique_id=536538755]
+event = ExtResource("9_8a2po")
 
-[node name="Coward" type="AkEvent3D" parent="." unique_id=417787323]
-event = ExtResource("7_4fq6u")
-stop_on = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
+[node name="Cannon_Advance" type="AkEvent3D" parent="Barks_Parent" unique_id=1215320660]
+event = ExtResource("10_7ma61")
+
+[node name="Cannon_Fire" type="AkEvent3D" parent="Barks_Parent" unique_id=486884012]
+event = ExtResource("11_dupfb")
+
+[node name="Cannon_Incoming" type="AkEvent3D" parent="Barks_Parent" unique_id=1699726938]
+event = ExtResource("12_o5qyw")
+
+[node name="Player_Far" type="AkEvent3D" parent="Barks_Parent" unique_id=1772664776]
+event = ExtResource("13_kmvvo")
+
+[node name="Player_Hidden" type="AkEvent3D" parent="Barks_Parent" unique_id=1379327128]
+event = ExtResource("14_62kix")
+
+[node name="Player_Kill" type="AkEvent3D" parent="Barks_Parent" unique_id=537427678]
+event = ExtResource("15_chetr")
+
+[node name="Voice_Cancel" type="AkEvent3D" parent="Barks_Parent" unique_id=62482749]
+event = ExtResource("16_lgxlg")
 
 [connection signal="audio_marker" from="Steps" to="." method="_on_steps_audio_marker"]
-[connection signal="audio_marker" from="Bark" to="." method="_on_bark_audio_marker"]
-[connection signal="duration" from="Bark" to="." method="_on_bark_duration"]
-[connection signal="end_of_event" from="Bark" to="." method="_on_bark_end_of_event"]
-[connection signal="speaker_volume_matrix" from="Bark" to="." method="_on_bark_speaker_volume_matrix"]
-[connection signal="audio_marker" from="Enemy_Dead" to="." method="_on_enemy_dead_audio_marker"]
-[connection signal="audio_marker" from="Ally_Dead" to="." method="_on_ally_dead_audio_marker"]
-[connection signal="audio_marker" from="Coward" to="." method="_on_coward_audio_marker"]

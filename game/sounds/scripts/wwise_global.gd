@@ -25,11 +25,12 @@ func _ready() -> void:
 					new_npc.init()
 			new_line(0)
 	else:
+		allow_barks = true
 		flip_barks_system()
 
 func _process(_delta: float) -> void:
 	if barricade != null and barricade.global_position.distance_squared_to(player.global_position) > coward_distance and is_coward == false:
-		coward()
+		player_far()
 
 func new_line(step : int):
 	line_count = 0
@@ -43,6 +44,7 @@ func line_ended():
 		game_manager.curr_state.voice_line_finished.emit()
 
 func flip_barks_system():
+	return
 	allow_barks = !allow_barks
 	if allow_barks:
 		for i in allies:
@@ -62,7 +64,7 @@ func remove(target : Node3D):
 	if allies.has(target):
 		allies.erase(target)
 		if !allies.is_empty():
-			allies.pick_random().ally_dead.post_event()
+			allies.pick_random().post_event("Ally_Death", 1.5)
 	elif enemies.has(target):
 		enemies.erase(target)
 
@@ -75,6 +77,15 @@ func find_closest(type : Array) -> Node3D :
 			closest = i
 	return closest
 
+func find_random(type : Array) -> Node3D :
+	var random : Node3D
+	var randomize : Array = type
+	randomize.shuffle()
+	for i in randomize:
+		if !i.is_barking:
+			return i
+	return find_closest(type)
+
 func select_random(type : Array) -> Node3D :
 	for i in type:
 		if !i.is_barking:
@@ -85,20 +96,18 @@ func cannon_checkpoint():
 	pass
 	("le canon arrive")
 
-func cannon_ready():
-	pass
-	print("ils vont tirer")
+func cannon_incoming():
+	find_random(allies).post_event("Cannon_Incoming", 0)
 
-func cannon_shoot():
+func cannon_fire():
 	if !allies.is_empty():
 		select_random(allies).bark.post_event()
 
-func coward():
+func player_far():
 	if !allow_barks : return
 	if !allies.is_empty():
 		is_coward = true
-		find_closest(allies).coward.post_event()
-		print("coward")
+		find_closest(allies).post_event("Player_Far", 0)
 		await get_tree().create_timer(10).timeout
 		is_coward = false
 
@@ -112,4 +121,4 @@ func enemy_killed():
 	await get_tree().create_timer(1.5).timeout
 	if !allies.is_empty():
 			var closest = find_closest(allies)
-			closest.enemy_dead.post_event()
+			closest.post_event("Player_Kill", 1)

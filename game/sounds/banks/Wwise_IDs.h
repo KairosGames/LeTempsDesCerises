@@ -13,11 +13,15 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID ALLY_BARK = 3470134616U;
-        static const AkUniqueID ALLY_BARK_ALLY_DEAD = 3295768610U;
-        static const AkUniqueID ALLY_BARK_COWARD = 1318320503U;
-        static const AkUniqueID ALLY_BARK_ENEMY_DEAD = 3598975830U;
-        static const AkUniqueID ALLY_SHOOT = 3252427803U;
+        static const AkUniqueID ALLY_ALLY_DEATH = 1707855831U;
+        static const AkUniqueID ALLY_BARRICADE_STATE = 3014529809U;
+        static const AkUniqueID ALLY_CANNON_ADVANCE = 535045682U;
+        static const AkUniqueID ALLY_CANNON_FIRE = 413417616U;
+        static const AkUniqueID ALLY_CANNON_INCOMING = 3186371416U;
+        static const AkUniqueID ALLY_PLAYER_FAR = 1337332127U;
+        static const AkUniqueID ALLY_PLAYER_HIDDEN = 1135788384U;
+        static const AkUniqueID ALLY_PLAYER_KILL = 2988219764U;
+        static const AkUniqueID ALLY_VOICE_CANCEL = 243533429U;
         static const AkUniqueID AMB_CANNONS = 3265814676U;
         static const AkUniqueID BARRICADE_DAMAGED = 482738278U;
         static const AkUniqueID BRICK_FALL = 3840667520U;
@@ -25,10 +29,14 @@ namespace AK
         static const AkUniqueID CANNON_SHOOT = 2469499398U;
         static const AkUniqueID DEAFENING_RECOVER = 3687575925U;
         static const AkUniqueID DIALOGUE = 3930136735U;
-        static const AkUniqueID ENEMY_BARK = 2802320212U;
+        static const AkUniqueID ENEMY_BARRICADE_STATE = 3457462997U;
         static const AkUniqueID ENEMY_BULLET_MISS = 3787232089U;
+        static const AkUniqueID ENEMY_CANNON_ADVANCE = 1807735670U;
+        static const AkUniqueID ENEMY_CANNON_FIRE = 378772636U;
+        static const AkUniqueID ENEMY_CANNON_INCOMING = 3891079404U;
         static const AkUniqueID ENEMY_SHOOT = 1050776119U;
         static const AkUniqueID ENEMY_STEPS = 3114531655U;
+        static const AkUniqueID ENEMY_VOICE_CANCEL = 2376509257U;
         static const AkUniqueID MUSIC = 3991942870U;
         static const AkUniqueID PLAYER_ALIVE = 2917189548U;
         static const AkUniqueID PLAYER_CROUCH = 3055475155U;
@@ -44,19 +52,6 @@ namespace AK
 
     namespace STATES
     {
-        namespace BARKS_BARRICADE
-        {
-            static const AkUniqueID GROUP = 2280690262U;
-
-            namespace STATE
-            {
-                static const AkUniqueID BROKEN = 231230354U;
-                static const AkUniqueID INTACT = 3094168564U;
-                static const AkUniqueID LOW = 545371365U;
-                static const AkUniqueID NONE = 748895195U;
-            } // namespace STATE
-        } // namespace BARKS_BARRICADE
-
         namespace BARKS_PLAYER_DISTANCE
         {
             static const AkUniqueID GROUP = 4265991608U;
@@ -68,6 +63,19 @@ namespace AK
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace BARKS_PLAYER_DISTANCE
+
+        namespace BARRICADE_STATE
+        {
+            static const AkUniqueID GROUP = 3394146252U;
+
+            namespace STATE
+            {
+                static const AkUniqueID BROKEN = 231230354U;
+                static const AkUniqueID INTACT = 3094168564U;
+                static const AkUniqueID LOW = 545371365U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace BARRICADE_STATE
 
         namespace FIGHT_STATE
         {
@@ -199,6 +207,10 @@ namespace AK
             {
                 static const AkUniqueID TYPE1 = 408582742U;
                 static const AkUniqueID TYPE2 = 408582741U;
+                static const AkUniqueID TYPE3 = 408582740U;
+                static const AkUniqueID TYPE4 = 408582739U;
+                static const AkUniqueID TYPE5 = 408582738U;
+                static const AkUniqueID TYPE6 = 408582737U;
             } // namespace SWITCH
         } // namespace CHARACTER_TYPE
 
@@ -222,6 +234,17 @@ namespace AK
                 static const AkUniqueID SECOND = 3476314365U;
             } // namespace SWITCH
         } // namespace DEBRIS
+
+        namespace GENDER
+        {
+            static const AkUniqueID GROUP = 1776943274U;
+
+            namespace SWITCH
+            {
+                static const AkUniqueID F = 84696441U;
+                static const AkUniqueID M = 84696434U;
+            } // namespace SWITCH
+        } // namespace GENDER
 
         namespace PLAYER_POSITION
         {

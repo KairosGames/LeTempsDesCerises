@@ -1,23 +1,47 @@
 Event	ID	Name			Wwise Object Path	Notes
+	243533429	Ally_Voice_Cancel			\VX\Ally\Ally_Voice_Cancel	
+	378772636	Enemy_Cannon_Fire			\VX\Enemy\Enemy_Cannon_Fire	
+	413417616	Ally_Cannon_Fire			\VX\Ally\Ally_Cannon_Fire	
+	535045682	Ally_Cannon_Advance			\VX\Ally\Ally_Cannon_Advance	
 	1050776119	Enemy_Shoot			\SFX\Enemy\Enemy_Shoot	
-	1318320503	Ally_Bark_Coward			\VX\Ally\Ally_Bark_Coward	
-	2802320212	Enemy_Bark			\VX\Enemy\Enemy_Bark	
+	1135788384	Ally_Player_Hidden			\VX\Ally\Ally_Player_Hidden	
+	1337332127	Ally_Player_Far			\VX\Ally\Ally_Player_Far	
+	1707855831	Ally_Ally_Death			\VX\Ally\Ally_Ally_Death	
+	1807735670	Enemy_Cannon_Advance			\VX\Enemy\Enemy_Cannon_Advance	
+	2376509257	Enemy_Voice_Cancel			\VX\Enemy\Enemy_Voice_Cancel	
+	2988219764	Ally_Player_Kill			\VX\Ally\Ally_Player_Kill	
+	3014529809	Ally_Barricade_State			\VX\Ally\Ally_Barricade_State	
 	3114531655	Enemy_Steps			\SFX\Enemy\Enemy_Steps	
-	3252427803	Ally_Shoot			\VX\Ally\Ally_Shoot	
-	3295768610	Ally_Bark_Ally_Dead			\VX\Ally\Ally_Bark_Ally_Dead	
-	3470134616	Ally_Bark			\VX\Ally\Ally_Bark	
-	3598975830	Ally_Bark_Enemy_Dead			\VX\Ally\Ally_Bark_Enemy_Dead	
+	3186371416	Ally_Cannon_Incoming			\VX\Ally\Ally_Cannon_Incoming	
+	3457462997	Enemy_Barricade_State			\VX\Enemy\Enemy_Barricade_State	
 	3687575925	Deafening_Recover			\SFX\Player\Deafening_Recover	
 	3787232089	Enemy_Bullet_Miss			\SFX\Enemy\Enemy_Bullet_Miss	
+	3891079404	Enemy_Cannon_Incoming			\VX\Enemy\Enemy_Cannon_Incoming	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
+	1117085073	Character_Type			\Default Work Unit\Character_Type	
 	1834394558	Surface			\Default Work Unit\Surface	
 
 Switch	ID	Name	Switch Group			Notes
+	408582737	Type6	Character_Type			
+	408582738	Type5	Character_Type			
+	408582739	Type4	Character_Type			
+	408582740	Type3	Character_Type			
+	408582741	Type2	Character_Type			
+	408582742	Type1	Character_Type			
 	504532776	Brick	Surface			
 	2058049674	Wood	Surface			
 	2449969375	Glass	Surface			
 	2473969246	Metal	Surface			
+
+State Group	ID	Name			Wwise Object Path	Notes
+	3394146252	barricade_state			\Default Work Unit\barricade_state	
+
+State	ID	Name	State Group			Notes
+	231230354	broken	barricade_state			
+	545371365	low	barricade_state			
+	748895195	None	barricade_state			
+	3094168564	intact	barricade_state			
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	1240670792	Distance			\Default Work Unit\Distance	
@@ -27,45 +51,21 @@ Effect plug-ins	ID	Name	Type				Notes
 	807526038	Meter (Custom)	Wwise Meter			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	12475208	Vx_Plachold_Vas-009	.cache\28\{280315C5-DB1F-E8C0-A416-8BA4DD81C804}.wem		\Containers\VX\NPC\Communard\Feedback\Enemy_Dead\Vx_Plachold_Vas-009		39777
 	24042832	LTDC_SFX_Bullet_Hit_LayerBrick_Random_1	.cache\D5\{D53AF61A-41BD-35F6-1D31-59D9ECEB7E7B}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Brick\LTDC_SFX_Bullet_Hit_LayerBrick_Random_1		50344
-	25468903	Vx_Plachold_Vas-001	.cache\47\{47D64754-A498-3096-9DFE-9437213FD1E2}.wem		\Containers\VX\NPC\Communard\Generic_Communard\Vx_Plachold_Vas-001		49360
-	41844498	Vx_Plachold_Vas-006	.cache\23\{23ACE953-8788-5696-2D1A-5391C22D735F}.wem		\Containers\VX\NPC\Communard\Generic_Communard\Vx_Plachold_Vas-006		39205
-	49514846	Vx_Plachold_Vas-010	.cache\72\{724C1274-8952-A11D-04F3-0E1ED3DD52DE}.wem		\Containers\VX\NPC\Communard\Generic_Communard\Vx_Plachold_Vas-010		36763
-	144592759	Vx_Plachold_Vas-007	.cache\3A\{3AAEE18B-E85D-52F9-3333-62575D8E16BD}.wem		\Containers\VX\NPC\Communard\Generic_Communard\Vx_Plachold_Vas-007		43915
-	157719317	Vx_Plachold_Vas-005	.cache\98\{98B10C71-D0F8-55C5-B2E6-69760B8DDD20}.wem		\Containers\VX\NPC\Communard\Generic_Communard\Vx_Plachold_Vas-005		57440
-	163755063	Vx_Plachold_Vas-003	.cache\36\{365B6640-284A-9D28-3C66-3D6CABAAC156}.wem		\Containers\VX\NPC\Communard\Generic_Communard\Vx_Plachold_Vas-003		40708
 	220576500	LTDC_SFX_Bullet_Hit_LayerWood_Random_2	.cache\F6\{F6D7A621-F674-4D16-0212-1162E529837C}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Wood\LTDC_SFX_Bullet_Hit_LayerWood_Random_2		12751
 	244128652	LTDC_SFX_Bullet_Hit_LayerWood_Random_3	.cache\72\{72B5A3D1-7376-B6D1-B4E2-01AA1A445764}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Wood\LTDC_SFX_Bullet_Hit_LayerWood_Random_3		17696
-	301467003	Vx_Plachold_Vas-002	.cache\16\{164946FF-11E9-E4AF-894E-E904D6AC10E0}.wem		\Containers\VX\NPC\Communard\Generic_Communard\Vx_Plachold_Vas-002		32620
 	301802129	LTDC_SFX_Bullet_Hit_LayerBrick_Random_3	.cache\A9\{A9D3E216-C20D-1C29-9DEF-2024004EE356}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Brick\LTDC_SFX_Bullet_Hit_LayerBrick_Random_3		39847
 	345847656	LTDC_SFX_Bullet_Hit_LayerWood_Random_1	.cache\B4\{B46C692C-5EC7-D671-06BA-17ABECE1ECD3}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Wood\LTDC_SFX_Bullet_Hit_LayerWood_Random_1		14317
-	357761274	PH_VX_Bar_M_Comm_Worker_Ally_Death_03	.cache\17\{171FAD20-3635-D809-4BF2-FA1C708FB2DE}.wem		\Containers\VX\NPC\Communard\Feedback\Ally_Dead\PH_VX_Bar_M_Comm_Worker_Ally_Death_03		65581
-	368468118	Vx_Plachold_Sev-003	.cache\A5\{A5C3E207-2331-0535-5F6E-503C707F3C1A}.wem		\Containers\VX\NPC\Versaillais\Vx_Plachold_Sev-003		34673
 	375366214	LTDC_SFX_Bullet_Hit_LayerGlass_Random_2	.cache\56\{56884EB0-3B65-63D9-3397-2DA04AE45057}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Glass\LTDC_SFX_Bullet_Hit_LayerGlass_Random_2		41672
-	381854914	Vx_Plachold_Sev-004	.cache\D9\{D9F5F33F-6B3D-3FD3-A64E-E8DAD503FCBA}.wem		\Containers\VX\NPC\Versaillais\Vx_Plachold_Sev-004		48215
 	395081999	LTDC_SFX_Bullet_Hit_LayerBrick_Random_2	.cache\02\{02589DCA-C1B4-3068-901D-4E54ECB36F87}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Brick\LTDC_SFX_Bullet_Hit_LayerBrick_Random_2		44580
-	418546237	Vx_Plachold_Vas-004	.cache\B2\{B21929A1-0297-4C6D-204C-C9DC57DFFD42}.wem		\Containers\VX\NPC\Communard\Generic_Communard\Vx_Plachold_Vas-004		82286
 	512603057	LTDC_SFX_NPC_Shoot_Random_05	.cache\90\{9069CED1-A130-030A-538C-46DD0A6C46F8}.wem		\Containers\SFX\Characters\NPC\NPC_Shoot\LTDC_SFX_NPC_Shoot_Random_05		52220
-	537075827	Vx_Plachold_Sev-002	.cache\F4\{F4269D22-EA13-6BEF-5204-3BD1A1EE1F41}.wem		\Containers\VX\NPC\Versaillais\Vx_Plachold_Sev-002		40831
-	553093102	Vx_Plachold_Vas-011	.cache\AB\{ABB08E02-1D80-3AB7-260A-C9530DFEE961}.wem		\Containers\VX\NPC\Communard\Generic_Communard\Vx_Plachold_Vas-011		34433
 	568077254	LTDC_SFX_Bullet_Hit_LayerGlass_Random_1	.cache\08\{08026EAD-8FF1-D523-594A-3D4EE89A8BDD}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Glass\LTDC_SFX_Bullet_Hit_LayerGlass_Random_1		45780
-	620133278	PH_VX_Bar_M_Comm_Military_Player_Kill_01	.cache\12\{12F0BE47-37A8-3E9F-C5FE-FC88B5FABEA7}.wem		\Containers\VX\NPC\Communard\Feedback\Enemy_Dead\PH_VX_Bar_M_Comm_Military_Player_Kill_01		57221
 	629537322	LTDC_SFX_NPC_Shoot_Random_01	.cache\7F\{7F835A32-7E14-F0CD-1600-6866AFCDDF8C}.wem		\Containers\SFX\Characters\NPC\NPC_Shoot\LTDC_SFX_NPC_Shoot_Random_01		53445
-	673581502	Vx_Plachold_Sev-008	.cache\1A\{1A8E526A-30BD-EC6E-3560-A5896A26BC63}.wem		\Containers\VX\NPC\Versaillais\Vx_Plachold_Sev-008		42433
 	732266218	LTDC_SFX_Bullet_Hit_LayerGlass_Random_3	.cache\38\{38050CBC-CCA5-5224-A021-535D7CB88F7E}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Glass\LTDC_SFX_Bullet_Hit_LayerGlass_Random_3		44875
 	749417595	LTDC_SFX_Bullet_Hit_LayerMetal_Random_3	.cache\AE\{AEF3A6E4-3323-11B4-6CA9-1CA823C51D39}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Metal\LTDC_SFX_Bullet_Hit_LayerMetal_Random_3		17597
-	807820417	Vx_Plachold_Sev-005	.cache\33\{332842E9-5A73-6D43-C82C-0AAFB6D04B9A}.wem		\Containers\VX\NPC\Versaillais\Vx_Plachold_Sev-005		62956
-	817127270	PH_VX_Bar_M_Comm_Military_Player_Far_02	.cache\F6\{F66A62BB-6F11-3C49-504E-522E927D754D}.wem		\Containers\VX\NPC\Communard\Feedback\Coward\PH_VX_Bar_M_Comm_Military_Player_Far_02		52775
 	842328612	LTDC_SFX_Bullet_Hit_LayerMetal_Random_1	.cache\9B\{9B82547B-348C-F833-D661-7CF4B8A7ED65}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Metal\LTDC_SFX_Bullet_Hit_LayerMetal_Random_1		10346
-	889476363	Vx_Plachold_Sev-007	.cache\19\{192AED41-2022-BB05-F053-FDC226CACD10}.wem		\Containers\VX\NPC\Versaillais\Vx_Plachold_Sev-007		40288
-	916174023	Vx_Plachold_Sev-001	.cache\A4\{A41C4822-B7E7-9A9C-0EA4-2222DE7D2909}.wem		\Containers\VX\NPC\Versaillais\Vx_Plachold_Sev-001		48275
 	916788496	LTDC_SFX_NPC_Shoot_Random_03	.cache\2A\{2AEBB31C-D27E-2026-2677-9FF0C366451E}.wem		\Containers\SFX\Characters\NPC\NPC_Shoot\LTDC_SFX_NPC_Shoot_Random_03		51766
 	917246979	LTDC_SFX_Bullet_Hit_LayerMetal_Random_2	.cache\30\{3046B50A-FBE6-B54E-4BCA-08BC59EFE390}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Metal\LTDC_SFX_Bullet_Hit_LayerMetal_Random_2		14398
-	940876037	Vx_Plachold_Vas-008	.cache\B6\{B65A6884-F693-BE7E-F519-727047DB8A79}.wem		\Containers\VX\NPC\Communard\Generic_Communard\Vx_Plachold_Vas-008		63753
 	948386357	LTDC_SFX_NPC_Shoot_Random_02	.cache\B1\{B1B3CF0F-1C24-6E34-9578-18289DB95315}.wem		\Containers\SFX\Characters\NPC\NPC_Shoot\LTDC_SFX_NPC_Shoot_Random_02		52545
-	1022944147	Vx_Plachold_Sev-009	.cache\B5\{B5C3EF57-D8AE-AAF5-6D3F-D8722575A7D7}.wem		\Containers\VX\NPC\Versaillais\Vx_Plachold_Sev-009		58869
 	1026693139	LTDC_SFX_NPC_Shoot_Random_04	.cache\3C\{3CF590BC-BA8D-9690-7B12-6BCAE56E5490}.wem		\Containers\SFX\Characters\NPC\NPC_Shoot\LTDC_SFX_NPC_Shoot_Random_04		53346
-	1027704734	Vx_Plachold_Sev-006	.cache\A9\{A9761579-C4FA-6500-C2B3-4B65F8E64670}.wem		\Containers\VX\NPC\Versaillais\Vx_Plachold_Sev-006		43286
-	1033205563	Vx_Plachold_Sev-010	.cache\66\{665EB050-476D-1BEB-6A8C-F63A0EF7B08F}.wem		\Containers\VX\NPC\Versaillais\Vx_Plachold_Sev-010		31746
 
