@@ -4,6 +4,20 @@
 [ext_resource type="Material" uid="uid://cwtdwb7xf3nh0" path="res://materials/materials_enviro/m_roof.tres" id="2_n5nun"]
 [ext_resource type="Material" uid="uid://chrtds3sl2u11" path="res://materials/materials_enviro/m_tiles.tres" id="3_u7pfp"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ml7vg"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_n5nun"]
+sky_material = SubResource("ProceduralSkyMaterial_ml7vg")
+
+[sub_resource type="Environment" id="Environment_u7pfp"]
+background_mode = 1
+background_color = Color(0.33511627, 0.33511627, 0.33511627, 1)
+sky = SubResource("Sky_n5nun")
+tonemap_mode = 2
+glow_enabled = true
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_wj2c7"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_ml7vg"]
@@ -11,6 +25,13 @@
 [sub_resource type="BoxMesh" id="BoxMesh_iv6yn"]
 
 [node name="ShaderTests" type="Node3D" unique_id=1278625798]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=975002794]
+transform = Transform3D(-0.50000006, -0.34532684, 0.7941973, 0, 0.9170601, 0.39874908, -0.8660254, 0.19937457, -0.4585301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=334180203]
+environment = SubResource("Environment_u7pfp")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=627157502]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
@@ -23,7 +44,7 @@ material_override = ExtResource("1_ml7vg")
 mesh = SubResource("SphereMesh_ml7vg")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=102538336]
-transform = Transform3D(1.120804, 0, -0.77348626, -0.89168376, 1.577519, -0.41319087, 1.0371906, 1.3562099, 0.48061633, -2.6238236, 0.8390603, -0.88386667)
+transform = Transform3D(1.7657206, 0.03488258, -0.051881254, -0.031007824, 2.0798192, -0.014368476, 0.09129447, 0.03173953, 0.9985497, -2.5165095, 0.7801351, -0.8831953)
 material_override = ExtResource("1_ml7vg")
 mesh = SubResource("BoxMesh_iv6yn")
 
