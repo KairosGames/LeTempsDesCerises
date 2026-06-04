@@ -53,7 +53,10 @@ size = Vector3(73.827, 0.2, 6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8g8pk"]
 material = ExtResource("1_matxu")
-size = Vector3(12.465, 0.2, 5.5)
+size = Vector3(10.125, 0.2, 5.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c23ks"]
+size = Vector3(10.125, 0.2, 5.5)
 
 [sub_resource type="MultiMesh" id="MultiMesh_4xsgd"]
 transform_format = 1
@@ -300,24 +303,28 @@ size = Vector3(10, 13.552887, 4.702)
 [node name="Trottoirs" type="StaticBody3D" parent="." unique_id=552487230]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Trottoirs" unique_id=1756282713]
-transform = Transform3D(0.43837115, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837115, 21.69484, 0.1, -43.8408)
+transform = Transform3D(0.43837115, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837115, 23.127813, 0.1, -43.14189)
 mesh = SubResource("BoxMesh_fvkg2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trottoirs" unique_id=1226601328]
-transform = Transform3D(0.43837115, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837115, 21.69484, 0.1, -43.8408)
+transform = Transform3D(0.43837115, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837115, 23.127813, 0.1, -43.14189)
 shape = SubResource("BoxShape3D_fvkg2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Trottoirs" unique_id=1033308055]
-transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 48.218227, 0.1, -41.16429)
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 47.70429, 0.1, -41.898273)
 mesh = SubResource("BoxMesh_matxu")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Trottoirs" unique_id=503243351]
-transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 48.218227, 0.1, -41.16429)
+transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 47.70429, 0.1, -41.898273)
 shape = SubResource("BoxShape3D_hncdj")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Trottoirs" unique_id=1581442475]
-transform = Transform3D(-0.6018151, 0, 0.7986355, 0, 1, 0, -0.7986355, 0, -0.6018151, 15.244264, 0.1, -21.92069)
+transform = Transform3D(-0.6018151, 0, 0.7986355, 0, 1, 0, -0.7986355, 0, -0.6018151, 16.017572, 0.1, -22.22844)
 mesh = SubResource("BoxMesh_8g8pk")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Trottoirs" unique_id=1558659058]
+transform = Transform3D(-0.6018151, 0, 0.7986355, 0, 1, 0, -0.7986355, 0, -0.6018151, 16.017572, 0.1, -22.22844)
+shape = SubResource("BoxShape3D_c23ks")
 
 [node name="WallA" type="MultiMeshInstance3D" parent="." unique_id=1394707042]
 multimesh = SubResource("MultiMesh_4xsgd")
