@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://bhjfv1pmvwwli" path="res://sources/meshes/barricade_meshes/c2c_barricade_asset.glb" id="1_det1f"]
 [ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="1_do0gn"]
 [ext_resource type="PackedScene" uid="uid://dlbfo6n0j4rn1" path="res://sandbox/covers_proto/barrel_big.tscn" id="2_do0gn"]
+[ext_resource type="Material" uid="uid://dfrsy150v5044" path="res://sources/meshes/barricade_meshes/material.tres" id="4_m4ayy"]
+[ext_resource type="ArrayMesh" uid="uid://d1we637hyqvrr" path="res://sources/meshes/barricade_meshes/c2c.obj" id="4_r8gi7"]
 
 [sub_resource type="Curve3D" id="Curve3D_h8eh7"]
 _data = {
@@ -35,6 +37,7 @@ data = PackedVector3Array(0, -0.1998, 1.4, 0, -0.1998, 0, 0, 0.99799997, 0.4587,
 [node name="Module_c2c" type="Node3D" unique_id=649058329]
 
 [node name="c2c_barricade_asset2" parent="." unique_id=636001976 instance=ExtResource("1_det1f")]
+visible = false
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=928548258]
 visible = false
@@ -118,3 +121,7 @@ shape = SubResource("ConcavePolygonShape3D_det1f")
 
 [node name="Barrel_big" parent="." unique_id=1356934924 instance=ExtResource("2_do0gn")]
 transform = Transform3D(-0.17306374, 0.9849106, 0, -0.9849106, -0.17306374, 0, 0, 0, 1, 1.2658769, 1.0820493, 0.68407)
+
+[node name="C2c" type="MeshInstance3D" parent="." unique_id=2058673209]
+material_override = ExtResource("4_m4ayy")
+mesh = ExtResource("4_r8gi7")

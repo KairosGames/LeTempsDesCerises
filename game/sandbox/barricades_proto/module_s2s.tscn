@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b88tflyqd0cwg" path="res://sources/meshes/barricade_meshes/s2s_barricade_asset.glb" id="1_sbd0u"]
 [ext_resource type="PackedScene" uid="uid://cbgib1n4tspd7" path="res://sandbox/covers_proto/plank_simple.tscn" id="2_sbd0u"]
 [ext_resource type="PackedScene" uid="uid://bb8fxuc1b4vfl" path="res://sandbox/covers_proto/bag_simple.tscn" id="3_a0kkg"]
+[ext_resource type="ArrayMesh" uid="uid://cu2c5nipywtvn" path="res://sources/meshes/barricade_meshes/s2s.obj" id="5_sbd0u"]
+[ext_resource type="Material" uid="uid://dfrsy150v5044" path="res://sources/meshes/barricade_meshes/material.tres" id="5_w5e51"]
 
 [sub_resource type="Curve3D" id="Curve3D_h8eh7"]
 _data = {
@@ -37,6 +39,7 @@ data = PackedVector3Array(0, 0.6296, 0, 0, -0.19999999, 0, 1.3192999, 0.4278, 0,
 
 [node name="s2s_barricade_asset2" parent="." unique_id=427407189 instance=ExtResource("1_sbd0u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19539034, 0)
+visible = false
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=928548258]
 visible = false
@@ -144,3 +147,8 @@ transform = Transform3D(0.1422611, -0.98972386, 0.014435317, 0.98466766, 0.14299
 
 [node name="BagSimple4" parent="." unique_id=1174401849 instance=ExtResource("3_a0kkg")]
 transform = Transform3D(-0.5401858, -0.841536, 0.004046573, 0.84066975, -0.53939795, 0.048209544, -0.038387354, 0.029443946, 0.998829, 1.703, 0.937, 0.578)
+
+[node name="S2s" type="MeshInstance3D" parent="." unique_id=117377408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26617312, 0)
+material_override = ExtResource("5_w5e51")
+mesh = ExtResource("5_sbd0u")

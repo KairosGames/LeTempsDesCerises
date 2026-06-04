@@ -2,6 +2,8 @@
 
 [ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="1_8x5b2"]
 [ext_resource type="PackedScene" uid="uid://dfda4jtu8xtyb" path="res://sources/meshes/barricade_meshes/f2s_barricade_asset.glb" id="1_42brb"]
+[ext_resource type="ArrayMesh" uid="uid://doxmcxrx1v4bw" path="res://sources/meshes/barricade_meshes/f2s.obj" id="3_86sqx"]
+[ext_resource type="Material" uid="uid://dfrsy150v5044" path="res://sources/meshes/barricade_meshes/material.tres" id="3_y1ff4"]
 
 [sub_resource type="Curve3D" id="Curve3D_h8eh7"]
 _data = {
@@ -34,6 +36,7 @@ data = PackedVector3Array(0, 0, 0, 0, 1.8963, 0, 0, 0, 1.4, 0, 0, 0, 0, 0, 1.4, 
 [node name="Module_f2s" type="Node3D" unique_id=649058329]
 
 [node name="f2s_barricade_asset2" parent="." unique_id=298908260 instance=ExtResource("1_42brb")]
+visible = false
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=928548258]
 visible = false
@@ -99,3 +102,7 @@ surface_material_override/0 = ExtResource("1_8x5b2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=2044820538]
 shape = SubResource("ConcavePolygonShape3D_42brb")
+
+[node name="F2s" type="MeshInstance3D" parent="." unique_id=1042193463]
+material_override = ExtResource("3_y1ff4")
+mesh = ExtResource("3_86sqx")
