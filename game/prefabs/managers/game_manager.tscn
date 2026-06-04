@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="5_rmfoy"]
 [ext_resource type="PackedScene" uid="uid://x6umueunebab" path="res://prefabs/game_states/gm_usables/shoot_target.tscn" id="5_vkqci"]
 [ext_resource type="PackedScene" uid="uid://dn5y2en06sd76" path="res://prefabs/npc/npc.tscn" id="6_2cgp0"]
+[ext_resource type="Script" uid="uid://xileblfnbaed" path="res://prefabs/managers/battle_director.gd" id="8_r74ma"]
+[ext_resource type="Script" uid="uid://jn3qgxouvero" path="res://scripts/cover_group.gd" id="9_ol0j6"]
 [ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="10_83msq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvqlx"]
@@ -473,6 +475,19 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_83msq")
 text = "· Go to the barricade"
 label_settings = SubResource("LabelSettings_jv7w5")
 vertical_alignment = 1
+
+[node name="BattleDirector" type="Node" parent="." unique_id=952621406]
+script = ExtResource("8_r74ma")
+
+[node name="CoverGroupActivations" type="Node" parent="BattleDirector" unique_id=1536081756]
+
+[node name="ActivationGroup00" type="Node" parent="BattleDirector/CoverGroupActivations" unique_id=1345656321]
+script = ExtResource("9_ol0j6")
+
+[node name="CoverGroupDeath" type="Node" parent="BattleDirector" unique_id=1770760575]
+
+[node name="DeathGroup00" type="Node" parent="BattleDirector/CoverGroupDeath" unique_id=1206889462]
+script = ExtResource("9_ol0j6")
 
 [node name="States" type="Node" parent="." unique_id=103955825]
 

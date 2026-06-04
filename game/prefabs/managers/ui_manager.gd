@@ -19,7 +19,7 @@ var is_tutorial_skipable: bool = false
 static var instance: UIManager:
 	set(value):
 		if not instance: instance = value
-		else: push_error("MORE THAN ONE GAME_MANAGER IN SCENE")
+		else: push_error("MORE THAN ONE UI_MANAGER IN SCENE")
 
 
 func _ready() -> void:
