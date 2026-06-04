@@ -3,12 +3,54 @@
 [ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/managers/game_manager.tscn" id="1_124fr"]
 [ext_resource type="PackedScene" uid="uid://ctinark3l27ws" path="res://prefabs/managers/effects_manager.tscn" id="2_3ivn4"]
 [ext_resource type="PackedScene" uid="uid://cowhe7krsng37" path="res://scenes/game_design_scene.tscn" id="3_vgclv"]
+[ext_resource type="Shader" uid="uid://ccs46yyijk1tk" path="res://materials/shaders/sg_custom_sky.gdshader" id="4_3ivn4"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="7_vj5vi"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vgclv"]
+[sub_resource type="Gradient" id="Gradient_3ivn4"]
+offsets = PackedFloat32Array(0.47007042, 0.8257042)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gedxo"]
+noise_type = 3
+frequency = 0.0024
+fractal_octaves = 3
+fractal_lacunarity = 4.82
+fractal_gain = -0.3
+fractal_weighted_strength = 0.72
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hmfrt"]
+width = 1024
+height = 1024
+noise = SubResource("FastNoiseLite_gedxo")
+color_ramp = SubResource("Gradient_3ivn4")
+seamless = true
+invert = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hw16s"]
+shader = ExtResource("4_3ivn4")
+shader_parameter/sky_day = Color(0.572636, 0.7010139, 1, 1)
+shader_parameter/horizon_day = Color(0.94723016, 0.70680094, 0.70148295, 1)
+shader_parameter/horizon_sunset = Color(0.9, 0.27255005, 0.09900001, 1)
+shader_parameter/sky_sunset = Color(0.15, 0.2, 0.4, 1)
+shader_parameter/horizon_night = Color(0.87, 0.39788, 0.2262, 1)
+shader_parameter/sky_night = Color(0.2584, 0.26542675, 0.68, 1)
+shader_parameter/day_night_mix = 0.8
+shader_parameter/use_directional_light = true
+shader_parameter/horizon_exponent = 2.0
+shader_parameter/sunset_amount_exponent = 0.7
+shader_parameter/night_amount_exponent = 4.0
+shader_parameter/cloud_tex_01 = SubResource("NoiseTexture2D_hmfrt")
+shader_parameter/cloud_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/cloud_tiling = Vector2(1, 1)
+shader_parameter/wind_speed = Vector2(0.1, 0.1)
+shader_parameter/cloud_density = 1.20000001788144
+shader_parameter/cloud_depth = 12.11
+shader_parameter/cloud_shape_exponent = 1.605
+shader_parameter/cloud_occlude_exponent = 1.9649999999999999
+shader_parameter/sun_scale = 0.05
+shader_parameter/sun_strength = 27.535
 
 [sub_resource type="Sky" id="Sky_rwgxs"]
-sky_material = SubResource("ProceduralSkyMaterial_vgclv")
+sky_material = SubResource("ShaderMaterial_hw16s")
 
 [sub_resource type="Environment" id="Environment_g3y20"]
 background_mode = 2
@@ -17,18 +59,28 @@ sky = SubResource("Sky_rwgxs")
 ambient_light_source = 2
 ambient_light_color = Color(0.26461196, 0.4929511, 0.5843781, 1)
 ambient_light_energy = 4.47
-tonemap_mode = 2
+tonemap_mode = 3
 tonemap_exposure = 1.1
 sdfgi_enabled = true
 sdfgi_bounce_feedback = 1.5
+sdfgi_min_cell_size = 0.48828125
 glow_enabled = true
 glow_intensity = 0.2
 glow_bloom = 0.05
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.825791, 0.4031165, 0.39095142, 1)
+fog_sun_scatter = 0.05
+fog_density = 0.255
+fog_sky_affect = 0.123
+fog_height = 10.0
+fog_height_density = -0.0259
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.03
 volumetric_fog_albedo = Color(0.70511323, 0.6740287, 0.84011126, 1)
 volumetric_fog_emission = Color(0.12955844, 0.12955847, 0.12955844, 1)
 volumetric_fog_gi_inject = 0.0
+volumetric_fog_length = 15.3
 volumetric_fog_ambient_inject = 1.0
 adjustment_enabled = true
 
@@ -57,7 +109,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 197.63333, 399.73334, 600),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.41557044, 0.0710542, 2.4065375e-08, 1), Color(0.9578702, 0.65602696, 0.6815773, 1), Color(0.86337084, 0.6458207, 0.24474531, 1), Color(0.7442614, 0.57321036, 0.20412531, 1)]
+"values": [Color(0.63, 0.1995, 0, 1), Color(0.9578702, 0.65602696, 0.6815773, 1), Color(0.86337084, 0.6458207, 0.24474531, 1), Color(0.7442614, 0.57321036, 0.20412531, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -90,10 +142,10 @@ tracks/4/path = NodePath("WorldEnvironment:environment:volumetric_fog_density")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 199.2, 399.73334, 600),
+"times": PackedFloat32Array(0.8, 199.2, 399.73334, 600),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.03, 0.025, 0.015, 0.025]
+"values": [0.04, 0.003, 0.003, 0.003]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -105,7 +157,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 199.2, 400, 598.43335),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.33194888, 0.27354333, 0.39752373, 1), Color(0.6245045, 0.5479856, 0.7710569, 1), Color(1, 0.44303712, 0.108559154, 1), Color(0.9564584, 0.61204046, 0.6362092, 1)]
+"values": [Color(0.060799997, 0.10399996, 0.32, 1), Color(0.6245045, 0.5479856, 0.7710569, 1), Color(1, 0.44303712, 0.108559154, 1), Color(0.9564584, 0.61204046, 0.6362092, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -126,10 +178,10 @@ tracks/7/path = NodePath("DirectionalLight3D:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 199.2, 399.73334, 600),
+"times": PackedFloat32Array(0, 200, 400, 600),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.61086524, 2.6179938, 0), Vector3(-0.2617994, 2.6179938, 0), Vector3(0.2617994, 2.6179938, 0), Vector3(0.5235988, 2.6179938, 0)]
+"values": [Vector3(0.5235988, 2.6179938, 0), Vector3(0.2617994, 2.6179938, 0), Vector3(-0.2617994, 2.6179938, 0), Vector3(-0.61086524, 2.6179938, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -165,7 +217,7 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0, 199.2, 399.73334, 600),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.05, 1.0, 0.5, 0.6]
+"values": [0.02, 1.0, 0.2, 0.1]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -202,6 +254,18 @@ tracks/13/keys = {
 "transitions": PackedFloat32Array(),
 "update": 0,
 "values": []
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("WorldEnvironment:environment:sky:sky_material:shader_parameter/cloud_color")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.71989715, 0.6531166, 0.8454321, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_3ivn4"]
@@ -374,6 +438,18 @@ tracks/13/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("WorldEnvironment:environment:sky:sky_material:shader_parameter/cloud_color")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.8, 0.8, 0.8, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gedxo"]
 _data = {
@@ -390,7 +466,7 @@ canon = NodePath("../GameDesignScene/Ennemies/Path3DCanon/Canon")
 [node name="EffectsManager" parent="." unique_id=1116254742 instance=ExtResource("2_3ivn4")]
 
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("7_vj5vi")]
-transform = Transform3D(-0.38651785, 0, 0.9222819, 0, 1, 0, -0.9222819, 0, -0.38651785, -12.283444, 0.99106574, -1.4737027)
+transform = Transform3D(-0.81941104, 0.05092906, 0.57093936, 0.0059322696, 0.9967451, -0.08039789, -0.57317585, -0.062491957, -0.81704617, -4.772786, -0.027533531, -2.1603115)
 
 [node name="Lightning" type="Node3D" parent="." unique_id=1080471342]
 
@@ -398,7 +474,7 @@ transform = Transform3D(-0.38651785, 0, 0.9222819, 0, 1, 0, -0.9222819, 0, -0.38
 environment = SubResource("Environment_g3y20")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lightning" unique_id=1755602407]
-transform = Transform3D(-0.8660254, -0.1294095, 0.48296297, 0, 0.9659256, 0.25881904, -0.50000006, 0.2241438, -0.83651626, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.12940949, 0.48296297, 0, 0.9659255, 0.25881904, -0.50000006, 0.2241438, -0.83651626, 0, 0, 0)
 layers = 3
 light_color = Color(0.7136707, 0.8126599, 0.9598977, 1)
 light_angular_distance = 4.0
@@ -410,6 +486,7 @@ visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Lightning" unique_id=2048182837]
 libraries/ = SubResource("AnimationLibrary_gedxo")
+autoplay = &"Phase1"
 
 [node name="Area3D" type="Area3D" parent="Lightning" unique_id=1545516969]
 visible = false
@@ -495,11 +572,21 @@ light_volumetric_fog_energy = 10.0
 omni_range = 4.058
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lightning/SCENE_LGT" unique_id=698105578]
-transform = Transform3D(-0.84967196, 0, 0.52731174, 0, 1, 0, -0.52731174, 0, -0.84967196, -6.604935, 1.1134578, -6.7561593)
-light_color = Color(0.6862745, 0.7411765, 0.93333334, 1)
+transform = Transform3D(-0.023961127, 0.23168136, 0.9724967, 0, 0.9727759, -0.23174793, -0.999713, -0.00555294, -0.023308806, -2.5715504, 0.2973261, -1.6449506)
+light_color = Color(0.6375377, 0.35593554, 0.38405657, 1)
 light_energy = 3.857
 light_volumetric_fog_energy = 11.857
-spot_range = 2.106
+spot_range = 1.627
+spot_attenuation = -1.01
+spot_angle = 38.26
+spot_angle_attenuation = 0.2414844
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lightning/SCENE_LGT" unique_id=1743645363]
+transform = Transform3D(-0.84967196, 0, 0.52731174, 0, 1, 0, -0.52731174, 0, -0.84967196, -6.7019453, 1.1134578, -6.599844)
+light_color = Color(0.6375377, 0.35593554, 0.38405657, 1)
+light_energy = 3.857
+light_volumetric_fog_energy = 11.857
+spot_range = 2.343
 spot_attenuation = -1.01
 spot_angle = 38.26
 spot_angle_attenuation = 0.2414844
