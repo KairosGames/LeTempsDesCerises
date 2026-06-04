@@ -1,28 +1,26 @@
-// base shader for tileable textures
-
-//objectifs shader : 
-// triplanar 
-//worldpos
-//brush
-//value breakup
-
+// base shader for painted look and da adaptation
 
 shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
 
 #include "sg_shader_utils.gdshaderinc"
 
+//global uniform float da_state : hint_range(0.0, 1.0);
 uniform float da_state : hint_range(0.0, 1.0);
 
 group_uniforms brush;
 uniform sampler2D texture_brush_oil : filter_linear_mipmap, repeat_enable;
 uniform sampler2D texture_brush_wc : filter_linear_mipmap, repeat_enable;
+uniform sampler2D texture_normal_supp : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
 
-uniform float brush_strength = 0.5;
+uniform float brush_strength = 1.0;
+uniform float brush_tilling = 1.0;
+uniform float brush_hue_shift : hint_range(-1.0, 1.0) = 0.1;
+
 
 group_uniforms albedo;
 /**
-* to lighten albedo, get I to go higher than 0 
+* to add emissive look, get I to go higher than 0 
 */
 uniform vec4 albedo : source_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
@@ -41,7 +39,6 @@ uniform float metallic : hint_range(0.0, 1.0);
 group_uniforms Normal;
 uniform sampler2D texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
 uniform float normal_scale : hint_range(-16.0, 16.0) = 1.0;
-uniform sampler2D texture_normal_supp : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
 
 group_uniforms Others;
 uniform float ao_light_affect : hint_range(0.0, 1.0, 0.01);
@@ -55,6 +52,7 @@ uniform float uv1_scale = 1.0;
 uniform float uv1_offset = 0.0;
 //uniform vec3 uv2_scale;
 //uniform vec3 uv2_offset;
+
 
 void vertex() {
 	vec3 normal = MODEL_NORMAL_MATRIX * NORMAL;
@@ -87,44 +85,56 @@ vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos
 void fragment() {
 	// SAMPLING **************************************
 	
-	vec3 brush_tex_oil = triplanar_texture(texture_brush_oil, uv1_power_normal, uv1_triplanar_pos).rgb;
-	vec3 brush_tex_wc = triplanar_texture(texture_brush_wc, uv1_power_normal, uv1_triplanar_pos).rgb;
+	vec3 uv_brushes = uv1_triplanar_pos * brush_tilling;
+	
+	vec3 brush_tex_oil = triplanar_texture(texture_brush_oil, uv1_power_normal, uv_brushes).rgb;
+	vec3 brush_tex_wc = triplanar_texture(texture_brush_wc, uv1_power_normal, uv_brushes).rgb;
+	
+	vec3 normal_tex_supp = triplanar_texture(texture_normal_supp, uv1_power_normal, uv_brushes).rgb;
 
-	vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
-
-	vec3 normal_tex = triplanar_texture(texture_normal, uv1_power_normal, uv1_triplanar_pos).rgb;
-	vec3 normal_tex_supp = triplanar_texture(texture_normal_supp, uv1_power_normal, uv1_triplanar_pos).rgb;
-
-	vec4 orm_tex = triplanar_texture(texture_orm, uv1_power_normal, uv1_triplanar_pos);
+	// CLASSIC UV MAPPING
+	vec4 albedo_tex = texture(texture_albedo, uv1_triplanar_pos.xy);
+	vec3 normal_tex = texture(texture_normal, uv1_triplanar_pos.xy).rgb;
+	vec4 orm_tex = texture(texture_orm, uv1_triplanar_pos.xy);
+	
+	// USE TRIPLANAR
+	//vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
+	//vec3 normal_tex = triplanar_texture(texture_normal, uv1_power_normal, uv1_triplanar_pos).rgb;
+	//vec4 orm_tex = triplanar_texture(texture_orm, uv1_power_normal, uv1_triplanar_pos);
 	
 	// MATERIAL PHYSICS *******************************
 	
 	vec3 c_albedo = albedo.rgb * albedo_tex.rgb;
 	
-	//AO = dot(triplanar_texture(texture_orm, uv1_power_normal, uv1_triplanar_pos), ao_texture_channel);
 	float r = orm_tex.g * roughness;
 	float m = orm_tex.b * metallic;
 	
 	// BRUSH ******************************************
 	vec3 brush_tex = mix(brush_tex_oil, brush_tex_wc, da_state);
 	
-	c_albedo *= mix(1.0, brush_tex.r, brush_strength);
+	vec3 c_hsv = rgb2hsv(c_albedo);
 	
-	vec3 c_normal = mix(normal_tex, normal_tex_supp, 0.5);
+	vec3 b_hsv = c_hsv;
+	b_hsv.x = mod(c_hsv.x + brush_hue_shift, 1.0);
+	b_hsv.y *= 0.95;
+	c_hsv = mix(c_hsv, b_hsv, brush_tex.r * brush_strength);
+
+	//corriger pour que la normal de base reste
+	//vec3 c_normal = mix(normal_tex, normal_tex_supp, 1.0 - da_state);
+	normal_tex_supp.xy *= 2.0;
+	vec3 c_normal = normalize(normal_tex + normal_tex_supp * (1.0 - da_state));
 	
 	r *= mix(1.0, brush_tex.r, brush_strength);
 
 	// STYLISATION *************************************
 	
-	c_albedo = mix(vec3(0.5), c_albedo, color_contrast);
+	c_hsv.z = 0.5 + (c_hsv.z - 0.5) * color_contrast;
+	float da_saturation = mix(1.05, 0.94, da_state);
+	c_hsv.y *= color_saturation * da_saturation;
+	c_hsv.z *= color_luminosity;
+	c_albedo = hsv2rgb(c_hsv);
 	
-	c_albedo = rgb2hsv(c_albedo);
-	float da_saturation = mix(1.2, 0.8, da_state);
-	c_albedo.y *= color_saturation * da_saturation;
-	c_albedo.z *= color_luminosity;
-	c_albedo = hsv2rgb(c_albedo);
-	
-	float da_r = mix(1.0, 0.8, da_state);
+	float da_r = mix(1.0, 0.5, da_state);
 	r *= da_r;
 	
 	// OUTPUT ******************************************

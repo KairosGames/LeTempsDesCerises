@@ -1,16 +1,19 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://chrtds3sl2u11"]
 
-[ext_resource type="Shader" uid="uid://b18b2fip8omdm" path="res://materials/shaders/sg_enviro_tileable.gdshader" id="1_gm32r"]
-[ext_resource type="Texture2D" uid="uid://jdedydu6fhed" path="res://sources/images/textures/enviro_textures/t_placeholder_brush.png" id="2_5ij22"]
-[ext_resource type="Texture2D" uid="uid://c516l1d8rl4fl" path="res://sources/images/textures/barricades_textures/t_c2c_ao.png" id="3_lfpkr"]
+[ext_resource type="Shader" uid="uid://b18b2fip8omdm" path="res://materials/shaders/sg_brush_art.gdshader" id="1_gm32r"]
+[ext_resource type="Texture2D" uid="uid://b5vnh7een37s1" path="res://sources/images/textures/enviro_textures/t_oil_r_01.png" id="2_l2mu2"]
+[ext_resource type="Texture2D" uid="uid://blu8bmtfo32pl" path="res://sources/images/textures/enviro_textures/t_watercolor_01.png" id="3_rju2d"]
+[ext_resource type="Texture2D" uid="uid://bg5dcy2h58uwr" path="res://sources/images/textures/enviro_textures/t_oil_m_01.png" id="4_fxmea"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_gm32r")
-shader_parameter/da_state = 0.0
-shader_parameter/texture_brush_oil = ExtResource("2_5ij22")
-shader_parameter/texture_brush_wc = ExtResource("3_lfpkr")
-shader_parameter/brush_strength = 0.48
+shader_parameter/da_state = 0.454000021565
+shader_parameter/texture_brush_oil = ExtResource("2_l2mu2")
+shader_parameter/texture_brush_wc = ExtResource("3_rju2d")
+shader_parameter/texture_normal_supp = ExtResource("4_fxmea")
+shader_parameter/brush_strength = 0.755
+shader_parameter/brush_tilling = 0.795
 shader_parameter/albedo = Color(1.0709092e-06, 0.356093, 0.26634458, 1)
 shader_parameter/color_saturation = 1.0
 shader_parameter/color_luminosity = 1.0
@@ -22,3 +25,4 @@ shader_parameter/ao_light_affect = 0.0
 shader_parameter/uv1_blend_sharpness = 1.0
 shader_parameter/uv1_scale = 1.0
 shader_parameter/uv1_offset = 0.0
+shader_parameter/test_value = 0.13
