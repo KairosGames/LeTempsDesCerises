@@ -6,13 +6,14 @@ class_name BattleDirector extends Node
 @export_category("Agent death management")
 @export var mortal_covers: Array[CoverGroup]
 @export var death_timers: Array[float]
+@export var death_square_dists: Array[float]
 
 var covers_activation_index: int = -1
 var death_management_index: int = -1
 var death_timer: float = 0.0
+var death_square_dist: float = 0.0
 var last_death_cover: Cover
 var death_on_cover_enable: bool = false
-var is_waiting_to_kill: bool = false
 
 static var instance: BattleDirector:
 	set(value):
@@ -22,9 +23,6 @@ static var instance: BattleDirector:
 
 func _ready() -> void:
 	instance = self
-	await get_tree().create_timer(120.0).timeout
-	print("CA COMMENCE !")
-	go_next_death_management()
 
 
 func _process(delta: float) -> void:
@@ -51,13 +49,21 @@ func desactivate_all_covers() -> void:
 func go_next_death_management() -> void:
 	death_on_cover_enable = true
 	death_management_index += 1
-	if death_timers.size() != mortal_covers.size():
+	if not are_death_lists_consistents():
 		printerr("INCONSISTENCY: DEATH LIST SIZES IN BATTLE DIRECTOR")
 		return
-	if death_management_index >= death_timers.size():
+	if death_management_index >= mortal_covers.size():
 		printerr("INCONSISTENCY: DEATH INDEX IN BATTLE DIRECTOR")
 		return
 	death_timer = death_timers[death_management_index]
+	death_square_dist = death_square_dists[death_management_index]
+
+
+func are_death_lists_consistents() -> bool:
+	if death_square_dists.size() != death_timers.size(): return false
+	if death_timers.size() != mortal_covers.size(): return false
+	if mortal_covers.size() != death_square_dists.size(): return false
+	return true
 
 
 func apply_death_on_covers(delta: float) -> void:
@@ -68,10 +74,19 @@ func apply_death_on_covers(delta: float) -> void:
 	for cover: Cover in curr_cover_group.covers:
 		if not cover.holder or cover.holder is Player: continue
 		var agent: Agent = (cover.holder as Agent)
-		if agent.posture != cover.get_cover_posture():
+		if is_agent_killable(agent, cover):
 			possible_covers.push_back(cover)
 	if possible_covers.size() <= 0: return
 	var rnd: int = randi_range(0, possible_covers.size() -1)
+	last_death_cover = possible_covers[rnd]
 	var futur_dead: Agent = possible_covers[rnd].holder as Agent
 	futur_dead.die()
 	death_timer = death_timers[death_management_index]
+
+
+func is_agent_killable(agent: Agent, cover: Cover) -> bool:
+	if last_death_cover == cover: return false
+	if cover.global_position.distance_squared_to(agent.global_position) > death_square_dist: return false
+	if agent.posture == Agent.Posture.NONE: return false
+	if float(agent.posture) / cover.get_cover_posture() < 1.01: return false
+	return true
