@@ -982,7 +982,8 @@ func handle_shoot() -> void:
 			return
 		is_weapon_loaded = false
 		shot.emit()
-		ShootDebug.instance.add_debug(weapon_ray_cast.global_position, weapon_ray_cast.global_rotation, Color.RED)
+		if ShootDebug.instance: 
+			ShootDebug.instance.add_debug(weapon_ray_cast.global_position, weapon_ray_cast.global_rotation, Color.RED, true)
 		play_shoot_effects()
 		handle_shoot_cast()
 

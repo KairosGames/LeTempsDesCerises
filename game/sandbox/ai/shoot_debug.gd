@@ -20,14 +20,14 @@ func _ready() -> void:
 		multimesh.set_instance_color(i, Color.RED)
 		multimesh.set_instance_transform(i, Transform3D.IDENTITY)
 
-func add_debug(origin: Vector3, direction: Vector3, color: Color, duration: float = 10.0, distance: float = 100.0) -> void:
+func add_debug(origin: Vector3, direction: Vector3, color: Color, is_player: bool, duration: float = 10.0, distance: float = 100.0) -> void:
 	if not _open.size(): printerr("pool is not big enough"); return
 	
 	var index: int = _open.pop_front()
 	_close.append(index)
 	
 	var line_basis: Basis = Basis.from_euler(direction)
-	multimesh.set_instance_transform(index, Transform3D(line_basis, origin + line_basis.z * distance / 2.0 ))
+	multimesh.set_instance_transform(index, Transform3D(line_basis, origin + (1 if is_player else -1) * line_basis.z * distance / 2.0 ))
 	multimesh.set_instance_color(index, color)
 	_process_line(index, duration)
 
