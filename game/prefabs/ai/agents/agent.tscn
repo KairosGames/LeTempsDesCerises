@@ -264,7 +264,7 @@ shape = SubResource("CapsuleShape3D_otrs2")
 [node name="ShootTargets" type="Node3D" parent="." unique_id=1640117776]
 
 [node name="Head" type="Marker3D" parent="ShootTargets" unique_id=1612085666]
-transform = Transform3D(-0.009986221, -0.00013473321, 0.0005071636, -0.00016320984, 0.009982883, -0.0005615987, -0.00049872906, -0.0005691027, -0.009971327, -0.015437061, 1.6111476, -0.025894403)
+transform = Transform3D(-0.99959105, -0.012815376, 0.02555303, -0.013683984, 0.9993226, -0.034112826, -0.025098722, -0.034448568, -0.9990897, 8.0337166e-05, 1.6153508, -0.00746484)
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=2136817593]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
@@ -292,6 +292,7 @@ bone_idx = 5
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Body/Armature/Skeleton3D/Head" unique_id=115027249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 8.170787, 0)
 remote_path = NodePath("../../../../../ShootTargets/Head")
+update_scale = false
 
 [node name="Navigation" type="NavigationAgent3D" parent="." unique_id=514776903]
 avoidance_enabled = true
