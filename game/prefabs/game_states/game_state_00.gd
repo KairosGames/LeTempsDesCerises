@@ -36,6 +36,7 @@ func set_player_for_debug() -> void:
 
 
 func set_player_for_onboarding() -> void:
+	ui_manager.hard_set_letter_box(true)
 	var spawn: CustomMarker = game_manager.player_spawner
 	player.initiate(spawn.global_position, spawn.global_rotation, false, false, Player.Posture.PRONE)
 	player.set_is_free(false)
@@ -44,12 +45,11 @@ func set_player_for_onboarding() -> void:
 
 
 func get_up() -> void:
-	ui_manager.hard_set_letter_box(true)
 	if not game_manager.use_debug:
 		await wait_voice()
 		await wait(1.0)
 		await player.blink_effect.open_eyes_from_sleep()
-		await wait(2.0)
+		await wait(1.5)
 	var twn: Tween = create_tween()
 	twn.tween_property(player, "aim_target:x", 0.0, 0.7)
 	player.play_cam_landing_effect(-0.2, 30.0, 1.0)
