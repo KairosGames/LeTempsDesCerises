@@ -98,13 +98,13 @@ func open_eyes_from_sleep() -> void:
 	await softness_twn.tween_property(shader, s_softness, softness_target, t5).set_trans(trans5).set_ease(ea5).finished
 
 
-func move_eyes(step: EyesStep, time: float) -> void:
+func move_eyes(step: EyesStep, time: float, with_blur: bool = false) -> void:
 	set_targets(step)
 	create_all_tweens()
 	height_twn.tween_property(shader, s_opening, height_target, time)
 	corners_twn.tween_property(shader, s_corners, corners_target, time)
 	softness_twn.tween_property(shader, s_softness, softness_target, time)
-	blur_twn.tween_property(blur_effect.shader, blur_effect.s_blur_size, blur_target, time)
+	if with_blur: blur_twn.tween_property(blur_effect.shader, blur_effect.s_blur_size, blur_target, time)
 
 
 func set_targets(step: EyesStep) -> void:

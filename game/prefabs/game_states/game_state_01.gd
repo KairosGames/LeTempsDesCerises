@@ -15,7 +15,6 @@ var it_is_time_to_die: bool
 func enter() -> void:
 	curr_step = 0
 	steps = [
-		#Step.new(set_player_for_debug, do_nothing, do_nothing),
 		Step.new(go_to_barricade, stay_into_barricade_area, go_to_first_die),
 	]
 	run_steps()

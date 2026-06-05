@@ -120,11 +120,16 @@ func play_eyes_effect_and_revive(is_on_communard: bool) -> void:
 
 	await get_tree().create_timer(1.0).timeout
 	blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.4)
+	#blink_effect.blur_effect._set_blur(3.0,)
+	#
+	#
+	#
+	#
 	await get_tree().create_timer(0.2).timeout
 	blink_effect.move_eyes(BlinkEffect.EyesStep.A_CLOSED, 1.0)
 
 	await get_tree().create_timer(0.8).timeout
-	blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.2)
+	blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.2, true)
 
 	await get_tree().create_timer(0.5).timeout
 	player.revive(revive_pos, revive_rot)
@@ -134,7 +139,7 @@ func play_eyes_effect_and_revive(is_on_communard: bool) -> void:
 		elif target_communard is Npc:
 			delete_npc(target_communard)
 	is_active = false
-	blink_effect.move_eyes(BlinkEffect.EyesStep.OPEN, 0.1)
+	blink_effect.move_eyes(BlinkEffect.EyesStep.OPEN, 0.1, true)
 	if fall_twn: fall_twn.kill()
 	if fall_rot_twn: fall_rot_twn.kill()
 	if fov_twn: fov_twn.kill()

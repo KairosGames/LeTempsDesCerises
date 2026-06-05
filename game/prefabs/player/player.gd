@@ -44,7 +44,7 @@ signal landed
 @onready var death_camera: DeathCamera = %DeathCamera
 
 @export_category("Gameplay Settings")
-@export var immortal_timer: float = 10.0
+@export var immortal_timer: float = 0.1#10.0
 
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true

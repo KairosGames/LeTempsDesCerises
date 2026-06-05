@@ -8,3 +8,15 @@ class_name BlurEffect extends ColorRect
 @export var open_size: float = 0.0
 
 var s_blur_size: String = "shader_parameter/blur_size"
+
+var twn: Tween
+
+
+func hard_set_blur(value: float) -> void:
+	shader.set_shader_parameter(s_blur_size, value)
+
+
+func set_blur(value: float, time: float) -> void:
+	if twn: twn.kill()
+	twn = create_tween()
+	twn.tween_property(shader, s_blur_size, value, time)
