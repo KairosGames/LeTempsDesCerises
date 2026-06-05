@@ -296,6 +296,33 @@ label_settings = SubResource("LabelSettings_eijdo")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LetterBoxContainer" type="VBoxContainer" parent="UIManager" unique_id=1532973952]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopStrip" type="ColorRect" parent="UIManager/LetterBoxContainer" unique_id=2028525904]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="UIManager/LetterBoxContainer" unique_id=1864974758]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="BottomStrip" type="ColorRect" parent="UIManager/LetterBoxContainer" unique_id=712892285]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
 [node name="CenterContainer" type="CenterContainer" parent="UIManager" unique_id=49054125]
 z_index = 2
 layout_mode = 1
@@ -435,6 +462,7 @@ script = ExtResource("5_rmfoy")
 
 [node name="ObjectiveContainer" type="VBoxContainer" parent="UIManager" unique_id=812492473]
 unique_name_in_owner = true
+z_index = 2
 layout_mode = 0
 offset_top = 32.0
 offset_right = 619.0

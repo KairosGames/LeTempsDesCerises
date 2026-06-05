@@ -44,6 +44,7 @@ func set_player_for_onboarding() -> void:
 
 
 func get_up() -> void:
+	ui_manager.hard_set_letter_box(true)
 	if not game_manager.use_debug:
 		await wait_voice()
 		await wait(1.0)
@@ -84,6 +85,7 @@ func take_weapon() -> void:
 
 
 func wait_player_crouch() -> void:
+	await ui_manager.launch_letter_box(false)
 	handle_action_tooltip("crouch")
 	await wait_until_or_signal(func(): return Input.is_action_just_pressed("crouch"), player.p_inputs.gpad_crouch_pressed)
 	player.crouch_to_stand(true)
@@ -189,6 +191,7 @@ func wait_player_enter_reload() -> void:
 
 
 func set_player_before_george_death() -> void:
+	ui_manager.launch_letter_box(true)
 	player.can_change_posture = false
 	player.can_use_view = false
 	player.can_use_aim = false
@@ -240,6 +243,7 @@ func call_georges_death() -> void:
 
 
 func free_player() -> void:
+	ui_manager.launch_letter_box(false)
 	player.set_is_free(true)
 	await wait(1.0)
 	ui_manager.enter_tutorial()

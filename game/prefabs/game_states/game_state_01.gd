@@ -30,6 +30,7 @@ func set_player_for_debug() -> void:
 	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
 	player.give_or_drop_weapon(true)
 	player.is_weapon_loaded = true
+	ui_manager.hard_set_letter_box(false)
 
 
 func go_to_barricade() -> void:
@@ -53,6 +54,7 @@ func stay_into_barricade_area() -> void:
 func on_player_exit_barricade_zone() -> void:
 	player_tried_to_exit.emit()
 	player.can_play = false
+	ui_manager.launch_letter_box(true)
 	take_player_move_control(true)
 	take_player_view_control(true)
 	if player.is_running: player.is_running = false
@@ -60,12 +62,16 @@ func on_player_exit_barricade_zone() -> void:
 		player.is_aiming = false
 		player.switch_aim_state()
 	var target_point: Vector3 = player.global_position + return_to_barricade.basis.x
-	await tween_rotate_player_to_pos(target_point, 0.7)
+	var dir = player.global_position - target_point
+	var target_angle = atan2(-dir.x, -dir.z)
+	var time_ratio: float = inverse_lerp(0.0, PI, abs(wrapf(target_angle - player.global_rotation.y, -PI, PI)))
+	await tween_rotate_player_to_pos(target_point, 1.0 * time_ratio)
 	set_player_move(Vector2(0.0, 1.0))
-	await wait(1.0)
+	await wait(0.5)
 	take_player_move_control(false)
 	take_player_view_control(false)
 	player.can_play = true
+	ui_manager.launch_letter_box(false)
 
 
 func on_enemy_shot() -> void:

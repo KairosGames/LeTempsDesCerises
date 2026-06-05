@@ -9,12 +9,22 @@ class_name UIManager extends Control
 @onready var objective_container: VBoxContainer = %ObjectiveContainer
 @onready var objective_label: Label = %ObjectiveLabel
 @onready var objective_target: ObjectiveTarget = %ObjectiveTarget
+@onready var top_strip: ColorRect = %TopStrip
+@onready var bottom_strip: ColorRect = %BottomStrip
+
+@export_category("Letter box")
+@export var time_to_open_letter_box: float = 0.35
 
 var player: Player
 var on_process: Array[Callable]
 var tuto_twn: Tween
 var is_tutorial: bool = false
+
 var is_tutorial_skipable: bool = false
+var is_letter_box_open: bool = false
+
+var strip_twn: Tween
+
 
 static var instance: UIManager:
 	set(value):
@@ -115,3 +125,18 @@ func set_objective(is_active: bool, target: Node3D = null, objective: String = "
 	objective_label.text = "· " + objective
 	objective_container.visible = is_active
 	objective_target.target = target
+
+
+func hard_set_letter_box(to_open: bool) -> void:
+	top_strip.size_flags_stretch_ratio = 1.0 if to_open else 0.0
+	bottom_strip.size_flags_stretch_ratio = 1.0 if to_open else 0.0
+
+
+func launch_letter_box(to_open: bool) -> void:
+	if strip_twn: strip_twn.kill()
+	strip_twn = create_tween()
+	var target: float = 1.0 if to_open else 0.0
+	var ratio: float = 1.0 - top_strip.size_flags_stretch_ratio if to_open else top_strip.size_flags_stretch_ratio
+	var time: float =  time_to_open_letter_box * ratio
+	strip_twn.tween_property(top_strip, "size_flags_stretch_ratio", target, time)
+	await strip_twn.set_parallel().tween_property(bottom_strip, "size_flags_stretch_ratio", target, time).finished
