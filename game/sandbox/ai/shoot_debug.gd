@@ -10,6 +10,9 @@ var _close: Array[int] = []
 
 func _ready() -> void:
 	instance = self
+	multimesh = MultiMesh.new()
+	multimesh.use_colors = true
+	multimesh.transform_format = MultiMesh.TRANSFORM_3D
 	multimesh.instance_count = POOL_SIZE
 	multimesh.mesh = DEBUG_LINE
 	for i: int in range(POOL_SIZE): 
