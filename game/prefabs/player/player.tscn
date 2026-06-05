@@ -13,6 +13,8 @@
 [ext_resource type="Shader" uid="uid://d17gvn18namde" path="res://prefabs/player/blink_shader.gdshader" id="8_hvqk4"]
 [ext_resource type="Script" uid="uid://8an16l3kykwh" path="res://scripts/blink_effect.gd" id="9_b6byk"]
 [ext_resource type="PackedScene" uid="uid://bgg5b13i7sqme" path="res://sounds/prefabs/ak_player_manager.tscn" id="9_oo3uv"]
+[ext_resource type="Shader" uid="uid://clrsbi4wrdvxs" path="res://prefabs/player/blur_effect.gdshader" id="11_6barq"]
+[ext_resource type="Script" uid="uid://cg463hdmyrtmx" path="res://prefabs/player/blur_effect.gd" id="12_agiw0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c4n1"]
 albedo_color = Color(0.85343254, 0, 0.12842149, 1)
@@ -30,6 +32,11 @@ shader_parameter/softness = 0.03
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/half_width = 0.5
 shader_parameter/darkness = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_agiw0"]
+shader = ExtResource("11_6barq")
+shader_parameter/strength = 20
+shader_parameter/blur_size = 0.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fp3wc"]
 radius = 0.35
@@ -142,6 +149,15 @@ layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("9_b6byk")
+
+[node name="BlurEffect" type="ColorRect" parent="UI/CenterContainer" unique_id=700880816]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_agiw0")
+custom_minimum_size = Vector2(2020, 1180)
+layout_mode = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("12_agiw0")
 
 [node name="ReloadUI" type="Control" parent="UI" unique_id=604342347 node_paths=PackedStringArray("wpn_animator", "all_pos", "pos_to_rect")]
 unique_name_in_owner = true

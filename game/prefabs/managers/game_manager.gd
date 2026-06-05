@@ -62,10 +62,11 @@ func set_run() -> void:
 	if use_narrative:
 		go_next_state()
 		return
-	set_player_out_of_run()
+	set_game_out_of_run()
 
 
-func set_player_out_of_run() -> void:
+func set_game_out_of_run() -> void:
+	ui_manager.hard_set_letter_box(false)
 	player.initiate(player_spawner.global_position, player_spawner.global_rotation)
 	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
 
