@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bhg8mku4vikc2" path="res://sandbox/barricades_proto/module_s2c.tscn" id="12_ng0ul"]
 [ext_resource type="PackedScene" uid="uid://bp8x0y3cbrgxr" path="res://sandbox/barricades_proto/module_F2s.tscn" id="13_md0ey"]
 [ext_resource type="PackedScene" uid="uid://cxvybyhea4hnk" path="res://sandbox/barricades_proto/module_c2c.tscn" id="14_6c3r5"]
-[ext_resource type="PackedScene" uid="uid://ck6egvcr6jysn" path="res://sandbox/barricades_proto/module_s2s.tscn" id="15_aiyng"]
+[ext_resource type="PackedScene" uid="uid://dqxnb3r7rauke" path="res://sandbox/barricades_proto/module_s2s_v2.tscn" id="15_lujon"]
 [ext_resource type="PackedScene" uid="uid://4g4gy7yer0qa" path="res://prefabs/props/flag.tscn" id="16_8bk3w"]
 [ext_resource type="PackedScene" uid="uid://ciigxgp4nxd8t" path="res://sandbox/covers_proto/dirt_pile_medium.tscn" id="16_npp8f"]
 [ext_resource type="PackedScene" uid="uid://df04oju8245ub" path="res://sandbox/barricades_proto/module_s2c_damaged.tscn" id="17_m4fmx"]
@@ -120,14 +120,14 @@ transform = Transform3D(-0.64505756, 0, 0.76413393, 0, 1, 0, -0.76413393, 0, -0.
 [node name="Module_c2c2" parent="Environment/NavigationRegion3D/Level/Barricade/Intact" unique_id=1806483270 instance=ExtResource("14_6c3r5")]
 transform = Transform3D(0.79676193, 0, -0.6042932, 0, 1, 0, 0.6042932, 0, 0.79676193, -7.799045, 0.1, -7.655962)
 
-[node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade/Intact" unique_id=968071702 instance=ExtResource("15_aiyng")]
-transform = Transform3D(-0.871599, 0, 0.49021947, 0, 1, 0, -0.49021947, 0, -0.871599, -8.125616, 0.19999953, -6.0723825)
-
-[node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade/Intact/Module_s2s" unique_id=703671390 instance=ExtResource("16_npp8f")]
-transform = Transform3D(0.49697387, 0, -0.8677654, 0, 1, 0, 0.8677654, 0, 0.49697387, 3.5628796, -0.12789723, -0.4696207)
-
 [node name="Flag" parent="Environment/NavigationRegion3D/Level/Barricade/Intact" unique_id=822376103 instance=ExtResource("16_8bk3w")]
 transform = Transform3D(0.2636725, 0.16562912, -0.95028615, -0.4162082, 0.9082606, 0.04282072, 0.8701998, 0.38422623, 0.3084194, -4.984265, 3.9639544, -3.2443836)
+
+[node name="Module_s2s_v2" parent="Environment/NavigationRegion3D/Level/Barricade/Intact" unique_id=1021987457 instance=ExtResource("15_lujon")]
+transform = Transform3D(-0.87159896, 0, 0.49021956, 0, 1, 0, -0.49021956, 0, -0.87159896, -8.125616, 0.19999953, -6.0723825)
+
+[node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade/Intact/Module_s2s_v2" unique_id=703671390 instance=ExtResource("16_npp8f")]
+transform = Transform3D(0.49697393, 0, -0.86776537, 0, 1, 0, 0.86776537, 0, 0.49697393, 3.5628796, -0.12789723, -0.46962166)
 
 [node name="Damaged" type="Node3D" parent="Environment/NavigationRegion3D/Level/Barricade" unique_id=249451088]
 visible = false
@@ -138,17 +138,17 @@ transform = Transform3D(0.13887915, 0, -0.99030936, 0, 1, 0, 0.99030936, 0, 0.13
 [node name="Module_f2s" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged" unique_id=720770254 instance=ExtResource("13_md0ey")]
 transform = Transform3D(-0.44053468, 0, 0.89773566, 0, 1, 0, -0.89773566, 0, -0.44053468, -0.8351413, 0.10000048, 5.2754717)
 
-[node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged" unique_id=1164547972 instance=ExtResource("15_aiyng")]
-transform = Transform3D(-0.871599, 0, 0.49021947, 0, 1, 0, -0.49021947, 0, -0.871599, -8.125616, 0.19999953, -6.0723825)
-
-[node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged/Module_s2s" unique_id=392461201 instance=ExtResource("16_npp8f")]
-transform = Transform3D(0.49697387, 0, -0.8677654, 0, 1, 0, 0.8677654, 0, 0.49697387, 3.5628796, -0.12789723, -0.4696207)
-
 [node name="Module_c2c_damaged" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged" unique_id=1231883915 instance=ExtResource("18_n2eli")]
 transform = Transform3D(-0.6450577, 0, 0.7641343, 0, 1, 0, -0.7641343, 0, -0.6450577, -2.6769996, 0.1, 1.7299998)
 
 [node name="Module_c2c2" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged" unique_id=1596498306 instance=ExtResource("14_6c3r5")]
 transform = Transform3D(0.79676205, 0, -0.6042932, 0, 1, 0, 0.6042932, 0, 0.79676205, -7.799045, 0.1, -7.655964)
+
+[node name="Module_s2s_v2" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged" unique_id=518955583 instance=ExtResource("15_lujon")]
+transform = Transform3D(-0.87159896, 0, 0.49021956, 0, 1, 0, -0.49021956, 0, -0.87159896, -8.125616, 0.19999953, -6.0723825)
+
+[node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged/Module_s2s_v2" unique_id=93136575 instance=ExtResource("16_npp8f")]
+transform = Transform3D(0.49697393, 0, -0.86776537, 0, 1, 0, 0.86776537, 0, 0.49697393, 3.5628796, -0.12789723, -0.46962166)
 
 [node name="Damaged2" type="Node3D" parent="Environment/NavigationRegion3D/Level/Barricade" unique_id=821546682]
 visible = false
@@ -159,26 +159,20 @@ transform = Transform3D(0.13887915, 0, -0.99030936, 0, 1, 0, 0.99030936, 0, 0.13
 [node name="Module_f2s" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged2" unique_id=1784038752 instance=ExtResource("13_md0ey")]
 transform = Transform3D(-0.44053468, 0, 0.89773566, 0, 1, 0, -0.89773566, 0, -0.44053468, -0.8351413, 0.10000048, 5.2754717)
 
-[node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged2" unique_id=1686295630 instance=ExtResource("15_aiyng")]
-transform = Transform3D(-0.871599, 0, 0.49021947, 0, 1, 0, -0.49021947, 0, -0.871599, -8.125616, 0.19999953, -6.0723825)
-
-[node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged2/Module_s2s" unique_id=484719467 instance=ExtResource("16_npp8f")]
-transform = Transform3D(0.49697387, 0, -0.8677654, 0, 1, 0, 0.8677654, 0, 0.49697387, 3.5628796, -0.12789723, -0.4696207)
-
 [node name="Module_c2c_damaged" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged2" unique_id=1352268142 instance=ExtResource("18_n2eli")]
 transform = Transform3D(-0.6450577, 0, 0.7641343, 0, 1, 0, -0.7641343, 0, -0.6450577, -2.6769996, 0.1, 1.7299998)
 
 [node name="Module_c2c_damaged2" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged2" unique_id=1307518068 instance=ExtResource("20_4a26s")]
 transform = Transform3D(0.796762, 0, -0.6042932, 0, 1, 0, 0.6042932, 0, 0.796762, -7.799045, 0.1, -7.655964)
 
+[node name="Module_s2s_v2" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged2" unique_id=317726494 instance=ExtResource("15_lujon")]
+transform = Transform3D(-0.87159896, 0, 0.49021956, 0, 1, 0, -0.49021956, 0, -0.87159896, -8.125616, 0.19999953, -6.0723825)
+
+[node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade/Damaged2/Module_s2s_v2" unique_id=2144706175 instance=ExtResource("16_npp8f")]
+transform = Transform3D(0.49697393, 0, -0.86776537, 0, 1, 0, 0.86776537, 0, 0.49697393, 3.5628796, -0.12789723, -0.46962166)
+
 [node name="Destroyed" type="Node3D" parent="Environment/NavigationRegion3D/Level/Barricade" unique_id=460025749]
 visible = false
-
-[node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade/Destroyed" unique_id=1891307891 instance=ExtResource("15_aiyng")]
-transform = Transform3D(-0.871599, 0, 0.49021947, 0, 1, 0, -0.49021947, 0, -0.871599, -8.125616, 0.19999953, -6.0723825)
-
-[node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade/Destroyed/Module_s2s" unique_id=113123740 instance=ExtResource("16_npp8f")]
-transform = Transform3D(0.49697387, 0, -0.8677654, 0, 1, 0, 0.8677654, 0, 0.49697387, 3.5628796, -0.12789723, -0.4696207)
 
 [node name="Module_c2c_damaged3" parent="Environment/NavigationRegion3D/Level/Barricade/Destroyed" unique_id=23807558 instance=ExtResource("21_fjqpb")]
 transform = Transform3D(-0.6450574, 0, 0.76413417, 0, 1, 0, -0.76413417, 0, -0.6450574, -2.6769996, 0.1, 1.7299998)
@@ -191,6 +185,12 @@ transform = Transform3D(0.13887912, 0, -0.99030936, 0, 1, 0, 0.99030936, 0, 0.13
 
 [node name="Module_f2s2" parent="Environment/NavigationRegion3D/Level/Barricade/Destroyed" unique_id=1130356292 instance=ExtResource("22_3xfs1")]
 transform = Transform3D(-0.4405346, 0, 0.89773566, 0, 1, 0, -0.89773566, 0, -0.4405346, -0.8351419, 0.10000048, 5.2754717)
+
+[node name="Module_s2s_v2" parent="Environment/NavigationRegion3D/Level/Barricade/Destroyed" unique_id=1756593533 instance=ExtResource("15_lujon")]
+transform = Transform3D(-0.87159896, 0, 0.49021956, 0, 1, 0, -0.49021956, 0, -0.87159896, -8.125616, 0.19999953, -6.0723825)
+
+[node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade/Destroyed/Module_s2s_v2" unique_id=1907620943 instance=ExtResource("16_npp8f")]
+transform = Transform3D(0.49697393, 0, -0.86776537, 0, 1, 0, 0.86776537, 0, 0.49697393, 3.5628796, -0.12789723, -0.46962166)
 
 [node name="AkBarricadeManager" parent="Environment/NavigationRegion3D/Level/Barricade" unique_id=40989191 instance=ExtResource("23_o7hd0")]
 
@@ -208,8 +208,8 @@ transform = Transform3D(0.0929093, 0, 0.9956746, 0, 1, 0, -0.9956746, 0, 0.09290
 [node name="Module_c2c" parent="Environment/NavigationRegion3D/Level/Barricade2" unique_id=345851367 instance=ExtResource("14_6c3r5")]
 transform = Transform3D(0.54447806, 0, -0.83877516, 0, 1, 0, 0.83877516, 0, 0.54447806, -34.758636, -2.3841858e-07, -4.3130636)
 
-[node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade2" unique_id=1014438200 instance=ExtResource("15_aiyng")]
-transform = Transform3D(-0.049756184, 0, -0.99876136, 0, 1, 0, 0.99876136, 0, -0.049756184, -34.250534, 0.1, -7.7083044)
+[node name="Module_s2s_v2" parent="Environment/NavigationRegion3D/Level/Barricade2" unique_id=1360057906 instance=ExtResource("15_lujon")]
+transform = Transform3D(-0.05059291, 0, -0.99871933, 0, 1, 0, 0.99871933, 0, -0.05059291, -34.250534, 0.1, -7.7083044)
 
 [node name="Barricade3" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1345238611]
 
@@ -220,13 +220,10 @@ transform = Transform3D(0.50481164, 0.022458505, -0.8629372, 0.02150051, 0.99902
 transform = Transform3D(0.5178479, 0, -0.8554727, 0, 1, 0, 0.8554727, 0, 0.5178479, -23.8342, 0.19999953, 14.6126795)
 
 [node name="Module_c2c" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=1789373896 instance=ExtResource("14_6c3r5")]
-transform = Transform3D(-0.30390024, 0, 0.9527041, 0, 1, 0, -0.9527041, 0, -0.30390024, -20.268774, 0.100001134, 22.981443)
+transform = Transform3D(-0.3039002, 0, 0.952704, 0, 1, 0, -0.952704, 0, -0.3039002, -20.269, 0.2, 22.981)
 
 [node name="Node3D" type="Node3D" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=904505585]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.12857, 1.9073486e-06, 18.773432)
-
-[node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade3/Node3D" unique_id=150561402 instance=ExtResource("15_aiyng")]
-transform = Transform3D(0.8418879, 0, -0.5396527, 0, 1, 0, 0.5396527, 0, 0.8418879, -3.636036, 0.099998325, -2.0490685)
 
 [node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade3/Node3D" unique_id=1767674198 instance=ExtResource("16_npp8f")]
 transform = Transform3D(0.98468024, 0, 0.17437007, 0, 1, 0, -0.17437007, 0, 0.98468024, -1.6968727, 0.10000253, 1.1718521)
@@ -236,6 +233,9 @@ transform = Transform3D(0.8451592, 0, -0.53451467, 0, 1, 0, 0.53451467, 0, 0.845
 
 [node name="Dirt_pile_little" parent="Environment/NavigationRegion3D/Level/Barricade3/Node3D" unique_id=958166927 instance=ExtResource("43_3s0cs")]
 transform = Transform3D(0.9909059, 0, -0.13455692, 0, 1, 0, 0.13455692, 0, 0.9909059, -5.6616, 0.10000157, -0.8469753)
+
+[node name="Module_s2s_v2" parent="Environment/NavigationRegion3D/Level/Barricade3/Node3D" unique_id=1283742663 instance=ExtResource("15_lujon")]
+transform = Transform3D(0.8418878, 0, -0.53965265, 0, 1, 0, 0.53965265, 0, 0.8418878, -3.636036, 0.099998325, -2.0490685)
 
 [node name="CoverObjects" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1398436869]
 
