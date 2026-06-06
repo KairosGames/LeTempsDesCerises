@@ -119,6 +119,16 @@ namespace AK
                 static const AkUniqueID _8 = 846646264U;
                 static const AkUniqueID _9 = 846646265U;
                 static const AkUniqueID _10 = 1644366931U;
+                static const AkUniqueID _11 = 1644366930U;
+                static const AkUniqueID _12 = 1644366929U;
+                static const AkUniqueID _13 = 1644366928U;
+                static const AkUniqueID _14 = 1644366935U;
+                static const AkUniqueID _15 = 1644366934U;
+                static const AkUniqueID _16 = 1644366933U;
+                static const AkUniqueID _17 = 1644366932U;
+                static const AkUniqueID _18 = 1644366939U;
+                static const AkUniqueID _19 = 1644366938U;
+                static const AkUniqueID _20 = 1661144518U;
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace NARRATIVE_STEP
@@ -194,7 +204,9 @@ namespace AK
 
             namespace SWITCH
             {
+                static const AkUniqueID FRANCOIS = 3484216754U;
                 static const AkUniqueID GEORGES = 2519917785U;
+                static const AkUniqueID JULES = 652153290U;
                 static const AkUniqueID NULL = 784127654U;
             } // namespace SWITCH
         } // namespace CHARACTER

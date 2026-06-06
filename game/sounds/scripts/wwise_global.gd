@@ -17,13 +17,14 @@ func _ready() -> void:
 	game_manager = GameManager.instance
 	if game_manager.use_narrative:
 		game_manager.curr_state.voice_line_called.connect(new_line)
+		new_line(0)
+		return
 		for i in game_manager.get_children(true):
 			if i.name == "NPC":
 				for npc in i.get_children():
 					var new_npc = preload("res://sounds/prefabs/ak_npc_manager.tscn").instantiate()
 					npc.add_child(new_npc)
 					new_npc.init()
-			new_line(0)
 	else:
 		allow_barks = true
 		flip_barks_system()
@@ -110,6 +111,8 @@ func player_far():
 		find_closest(allies).post_event("Player_Far", 0)
 		await get_tree().create_timer(10).timeout
 		is_coward = false
+		for i in allies:
+			i.post_event("Player_Far", 0)
 
 func retreat():
 	Wwise.set_state("fight_state", "retreat")

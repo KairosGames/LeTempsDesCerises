@@ -6,6 +6,9 @@ var is_prone := false
 var controller_id
 var first_reload : bool = true
 
+@export_category("Nodes")
+@export var subtitles : VBoxContainer
+
 @export_category("AkEvents")
 @export var player : Player
 @export var shoot : AkEvent3D
@@ -21,6 +24,7 @@ var first_reload : bool = true
 
 @export_category("Prefabs")
 @export var bullet_prefab : PackedScene
+@export var line : Label
 
 func _ready() -> void:
 	print("j'existe")
@@ -124,3 +128,28 @@ func init_motion():
 	if Input.get_connected_joypads().is_empty() : return
 	for i in Input.get_connected_joypads():
 		Wwise.add_output("Motion", (i))
+
+func add_line(new_name):
+	var new_line := line.duplicate()
+	subtitles.add_child(new_line)
+	new_line.name = new_name
+
+func update_line(npc_name, new_text : String):
+	var text : String = new_text
+	text = text.replace("Ã©", "é")
+	text = text.replace("Ã¨", "è")
+	text = text.replace("Ã¹", "ù")
+	text = text.replace("Ã", "à")
+	text = text.replace("à´", "ô")
+	text = text.replace("à§", "ç")
+	text = text.replace("àª", "ê")
+	text = text.replace(" ", "")
+	for i in subtitles.get_children():
+		if i.name == npc_name:
+			print(new_text)
+			if new_text == "":
+				i.visible = false
+				i.text = ""
+			else:
+				i.text = str(npc_name + " : " + text)
+				i.visible = true

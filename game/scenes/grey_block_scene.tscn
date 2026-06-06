@@ -45,7 +45,7 @@ shader_parameter/wind_speed = Vector2(0.1, 0.1)
 shader_parameter/cloud_density = 1.20000001788144
 shader_parameter/cloud_depth = 12.11
 shader_parameter/cloud_shape_exponent = 1.605
-shader_parameter/cloud_occlude_exponent = 1.9649999999999999
+shader_parameter/cloud_occlude_exponent = 1.965
 shader_parameter/sun_scale = 0.05
 shader_parameter/sun_strength = 27.535
 
@@ -460,6 +460,7 @@ _data = {
 [node name="GreyBlockScene" type="Node3D" unique_id=111111966]
 
 [node name="GameManager" parent="." unique_id=1070764289 node_paths=PackedStringArray("first_barricade", "canon") instance=ExtResource("1_124fr")]
+use_narrative = true
 first_barricade = NodePath("../GameDesignScene/Environment/NavigationRegion3D/Level/Barricade")
 canon = NodePath("../GameDesignScene/Ennemies/Path3DCanon/Canon")
 
@@ -589,4 +590,4 @@ spot_angle = 38.26
 spot_angle_attenuation = 0.2414844
 
 [node name="GameDesignScene" parent="." unique_id=1256367080 instance=ExtResource("3_vgclv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.8146973e-06, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010229111, -3.33786e-06, 0.014831543)

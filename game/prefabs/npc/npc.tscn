@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dn5y2en06sd76"]
 
 [ext_resource type="Script" uid="uid://twx4wqiu4ang" path="res://prefabs/npc/npc.gd" id="1_s40ew"]
+[ext_resource type="PackedScene" uid="uid://br5nta464et5g" path="res://sounds/prefabs/ak_npc_manager.tscn" id="2_470b1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fdau"]
 radius = 0.25
@@ -98,3 +99,6 @@ mesh = SubResource("BoxMesh_470b1")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=844202678]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_thrj0")
+
+[node name="AkNpcManager" parent="." unique_id=944047016 instance=ExtResource("2_470b1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

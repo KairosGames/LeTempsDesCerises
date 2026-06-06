@@ -45,8 +45,9 @@ func _on_communard_shoot() -> void:
 	shoot.post_event()
 
 func _on_communard_died() -> void:
+	post_event("Voice_Cancel", 0)
 	WwiseGlobal.remove(self)
-	Wwise.stop_all(self)
+	#Wwise.stop_all(self)
 
 func set_text(data: Dictionary): 
 	var text : String = data.get("strLabel")
@@ -54,11 +55,11 @@ func set_text(data: Dictionary):
 	text = text.replace("Ã¨", "è")
 	text = text.replace("Ã¹", "ù")
 	text = text.replace("Ã", "à")
+	text = text.replace("à´", "ô")
+	text = text.replace("à§", "ç")
 	text = text.replace(" ", "")
 	label.text = text
-	print(text)
 
 func reset_text(_data):
-	print("reset")
 	label.text = ""
 	is_barking = false

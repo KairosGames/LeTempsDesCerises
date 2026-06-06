@@ -18,8 +18,9 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_s8o8u"]
 radius = 0.1
 
-[node name="ak_player_manager" type="Node3D" unique_id=1168469569 node_paths=PackedStringArray("shoot", "steps", "reload", "death", "up", "crouch", "prone", "sprint")]
+[node name="ak_player_manager" type="Node3D" unique_id=1168469569 node_paths=PackedStringArray("subtitles", "shoot", "steps", "reload", "death", "up", "crouch", "prone", "sprint", "line")]
 script = ExtResource("1_g1o18")
+subtitles = NodePath("CanvasLayer/VBoxContainer")
 shoot = NodePath("Shoot")
 steps = NodePath("Steps")
 reload = NodePath("Reload")
@@ -29,6 +30,7 @@ crouch = NodePath("Crouch")
 prone = NodePath("Prone")
 sprint = NodePath("Sprint")
 bullet_prefab = ExtResource("2_g1o18")
+line = NodePath("CanvasLayer/VBoxContainer/Label")
 
 [node name="AkListener3D" type="AkListener3D" parent="." unique_id=1427046769]
 
@@ -145,5 +147,26 @@ state = ExtResource("14_a4l4r")
 trigger_on = 2
 
 [node name="Bank_Loader" parent="." unique_id=404085232 instance=ExtResource("2_sdg1b")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1102447426]
+follow_viewport_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=103734438]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -180.0
+offset_right = 22.0
+offset_bottom = -157.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1443971855]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
 
 [connection signal="audio_marker" from="Steps" to="." method="_on_steps_audio_marker"]

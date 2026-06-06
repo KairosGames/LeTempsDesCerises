@@ -38,5 +38,7 @@ func _on_ak_event_3d_audio_marker(data: Dictionary) -> void:
 	text = text.replace("Ã¨", "è")
 	text = text.replace("Ã¹", "ù")
 	text = text.replace("Ã", "à")
+	text = text.replace("à´", "ô")
+	text = text.replace("à§", "ç")
 	text = text.replace(" ", "")
 	label.text = text
