@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://bq4r3noe6r40s" path="res://prefabs/geometry/regions/building_b.tscn" id="3_tvueo"]
 [ext_resource type="PackedScene" uid="uid://4pg403ov4jpu" path="res://prefabs/geometry/regions/building_c.tscn" id="4_q2fw7"]
 [ext_resource type="PackedScene" uid="uid://c85fms2wp51n8" path="res://prefabs/geometry/regions/building_d.tscn" id="5_q2fw7"]
+[ext_resource type="PackedScene" uid="uid://cc08vg8k342a7" path="res://prefabs/geometry/regions/building_g.tscn" id="6_8bk3w"]
 [ext_resource type="PackedScene" uid="uid://b36107aenutsn" path="res://sandbox/csg_to_save/building_e.tscn" id="7_lujon"]
 [ext_resource type="PackedScene" uid="uid://bqxatw7y4bt0m" path="res://sandbox/csg_to_save/building_f.tscn" id="8_hmepn"]
-[ext_resource type="PackedScene" uid="uid://cgjnksovxn0go" path="res://sandbox/csg_to_save/building_g.tscn" id="9_dwitp"]
 [ext_resource type="PackedScene" uid="uid://bu7quq1hjvelc" path="res://sandbox/csg_to_save/place_pigalle.tscn" id="10_nq07h"]
 [ext_resource type="Script" uid="uid://dexhveoh7rgj3" path="res://prefabs/barricade/barricade.gd" id="11_yy57t"]
 [ext_resource type="PackedScene" uid="uid://bhg8mku4vikc2" path="res://sandbox/barricades_proto/module_s2c.tscn" id="12_ng0ul"]
@@ -89,11 +89,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.292148, 0, 4.4349327)
 
 [node name="BuildingD" parent="Environment/NavigationRegion3D/Level/Base_map" unique_id=904898415 instance=ExtResource("5_q2fw7")]
 
+[node name="BuildingG" parent="Environment/NavigationRegion3D/Level/Base_map" unique_id=458440975 instance=ExtResource("6_8bk3w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.110487, 0, -3.7938263)
+
 [node name="BuildingE" parent="Environment/NavigationRegion3D/Level/Base_map" unique_id=1432521819 instance=ExtResource("7_lujon")]
 
 [node name="BuildingF" parent="Environment/NavigationRegion3D/Level/Base_map" unique_id=784597991 instance=ExtResource("8_hmepn")]
-
-[node name="BuildingG" parent="Environment/NavigationRegion3D/Level/Base_map" unique_id=18426116 instance=ExtResource("9_dwitp")]
 
 [node name="PlacePigalle" parent="Environment/NavigationRegion3D/Level/Base_map" unique_id=1648593880 instance=ExtResource("10_nq07h")]
 
@@ -196,45 +197,45 @@ transform = Transform3D(-0.4405346, 0, 0.89773566, 0, 1, 0, -0.89773566, 0, -0.4
 [node name="Barricade2" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=858039154]
 
 [node name="Module_f2s_damaged" parent="Environment/NavigationRegion3D/Level/Barricade2" unique_id=1304689169 instance=ExtResource("22_3xfs1")]
-transform = Transform3D(-0.5725466, 0, 0.8198722, 0, 1, 0, -0.8198722, 0, -0.5725466, -35.82413, 0.19999905, 8.738136)
+transform = Transform3D(-0.5725466, 0, 0.8198722, 0, 1, 0, -0.8198722, 0, -0.5725466, -32.416664, 0.19999905, 4.852832)
 
 [node name="Module_s2c_damaged" parent="Environment/NavigationRegion3D/Level/Barricade2" unique_id=1880456942 instance=ExtResource("17_m4fmx")]
-transform = Transform3D(-0.13545623, 0, -0.99078333, 0, 1, 0, 0.99078333, 0, -0.13545623, -36.23401, 0.2, 4.2264123)
+transform = Transform3D(-0.13545623, 0, -0.99078333, 0, 1, 0, 0.99078333, 0, -0.13545623, -32.82654, 0.2, 0.34110665)
 
 [node name="Module_s2c" parent="Environment/NavigationRegion3D/Level/Barricade2" unique_id=2123468199 instance=ExtResource("12_ng0ul")]
-transform = Transform3D(0.0929093, 0, 0.9956746, 0, 1, 0, -0.9956746, 0, 0.0929093, -37.41567, 0.1, 4.1308165)
+transform = Transform3D(0.0929093, 0, 0.9956746, 0, 1, 0, -0.9956746, 0, 0.0929093, -34.0082, 0.1, 0.2455113)
 
 [node name="Module_c2c" parent="Environment/NavigationRegion3D/Level/Barricade2" unique_id=345851367 instance=ExtResource("14_6c3r5")]
-transform = Transform3D(0.54447806, 0, -0.83877516, 0, 1, 0, 0.83877516, 0, 0.54447806, -38.166103, -2.3841858e-07, -0.42775917)
-
-[node name="Module_f2s" parent="Environment/NavigationRegion3D/Level/Barricade2" unique_id=11849398 instance=ExtResource("13_md0ey")]
-transform = Transform3D(0.09553289, 0, -0.9954263, 0, 1, 0, 0.9954263, 0, 0.09553289, -37.844593, 0.20000024, -8.166808)
+transform = Transform3D(0.54447806, 0, -0.83877516, 0, 1, 0, 0.83877516, 0, 0.54447806, -34.758636, -2.3841858e-07, -4.3130636)
 
 [node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade2" unique_id=1014438200 instance=ExtResource("15_aiyng")]
-transform = Transform3D(-0.049756184, 0, -0.99876136, 0, 1, 0, 0.99876136, 0, -0.049756184, -37.658, 0.1, -3.823)
+transform = Transform3D(-0.049756184, 0, -0.99876136, 0, 1, 0, 0.99876136, 0, -0.049756184, -34.250534, 0.1, -7.7083044)
 
 [node name="Barricade3" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1345238611]
 
 [node name="Module_f2s" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=7283369 instance=ExtResource("13_md0ey")]
-transform = Transform3D(0.95558316, -0.17340052, -0.23831306, 0.17854463, 0.9839318, 7.926673e-09, 0.2344839, -0.042549513, 0.9711884, -30.358788, -0.73005927, 19.231047)
-
-[node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=150561402 instance=ExtResource("15_aiyng")]
-transform = Transform3D(0.7348908, 0, -0.67818516, 0, 1, 0, 0.67818516, 0, 0.7348908, -26.75316, 0.099999994, 20.12793)
+transform = Transform3D(0.50481164, 0.022458505, -0.8629372, 0.02150051, 0.9990244, 0.038577978, 0.8629616, -0.038028236, 0.5038365, -26.19539, -0.35093546, 10.92612)
 
 [node name="Module_s2c" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=729379186 instance=ExtResource("12_ng0ul")]
-transform = Transform3D(0.6204773, 0, -0.7842244, 0, 1, 0, 0.7842244, 0, 0.6204773, -33.962643, 0.2, 15.737865)
+transform = Transform3D(0.5178479, 0, -0.8554727, 0, 1, 0, 0.8554727, 0, 0.5178479, -23.8342, 0.19999953, 14.6126795)
 
 [node name="Module_c2c" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=1789373896 instance=ExtResource("14_6c3r5")]
-transform = Transform3D(-0.67228925, 0, 0.7402885, 0, 1, 0, -0.7402885, 0, -0.67228925, -31.111887, 0.100000896, 20.686789)
+transform = Transform3D(-0.30390024, 0, 0.9527041, 0, 1, 0, -0.9527041, 0, -0.30390024, -20.268774, 0.100001134, 22.981443)
 
-[node name="Module_f2s2" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=1718246046 instance=ExtResource("13_md0ey")]
-transform = Transform3D(0.70548815, 0, -0.70872164, 0, 1, 0, 0.70872164, 0, 0.70548815, -23.836912, -0.19999905, 22.813894)
+[node name="Node3D" type="Node3D" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=904505585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.12857, 1.9073486e-06, 18.773432)
 
-[node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=1767674198 instance=ExtResource("16_npp8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.405336, 0.100004196, 23.637638)
+[node name="Module_s2s" parent="Environment/NavigationRegion3D/Level/Barricade3/Node3D" unique_id=150561402 instance=ExtResource("15_aiyng")]
+transform = Transform3D(0.8418879, 0, -0.5396527, 0, 1, 0, 0.5396527, 0, 0.8418879, -3.636036, 0.099998325, -2.0490685)
 
-[node name="Dirt_pile2" parent="Environment/NavigationRegion3D/Level/Barricade3" unique_id=468253981 instance=ExtResource("16_npp8f")]
-transform = Transform3D(0.73900825, 0, -0.6736964, 0, 1, 0, 0.6736964, 0, 0.73900825, -27.994457, 0.100004196, 20.975965)
+[node name="Dirt_pile" parent="Environment/NavigationRegion3D/Level/Barricade3/Node3D" unique_id=1767674198 instance=ExtResource("16_npp8f")]
+transform = Transform3D(0.98468024, 0, 0.17437007, 0, 1, 0, -0.17437007, 0, 0.98468024, -1.6968727, 0.10000253, 1.1718521)
+
+[node name="Dirt_pile2" parent="Environment/NavigationRegion3D/Level/Barricade3/Node3D" unique_id=468253981 instance=ExtResource("16_npp8f")]
+transform = Transform3D(0.8451592, 0, -0.53451467, 0, 1, 0, 0.53451467, 0, 0.8451592, -4.7104435, 0.10000253, -0.9975796)
+
+[node name="Dirt_pile_little" parent="Environment/NavigationRegion3D/Level/Barricade3/Node3D" unique_id=958166927 instance=ExtResource("43_3s0cs")]
+transform = Transform3D(0.9909059, 0, -0.13455692, 0, 1, 0, 0.13455692, 0, 0.9909059, -5.6616, 0.10000157, -0.8469753)
 
 [node name="CoverObjects" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1398436869]
 
@@ -242,7 +243,7 @@ transform = Transform3D(0.73900825, 0, -0.6736964, 0, 1, 0, 0.6736964, 0, 0.7390
 transform = Transform3D(-0.026927173, 0, 0.99963737, 0, 1, 0, -0.99963737, 0, -0.026927173, 8.986606, 0.19999929, -10.736834)
 
 [node name="MorrisColumn" parent="Environment/NavigationRegion3D/Level/CoverObjects" unique_id=1149487519 instance=ExtResource("24_ovq67")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.388905, 0.19999671, 8.113325)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.321062, 0.19999695, 4.562297)
 
 [node name="SimpleColumn" parent="Environment/NavigationRegion3D/Level/CoverObjects" unique_id=959808939 instance=ExtResource("25_r83xy")]
 transform = Transform3D(0.88286567, 0, 0.46962565, 0, 1, 0, -0.46962565, 0, 0.88286567, -0.70493495, 0.10003233, 4.7541227)
@@ -393,6 +394,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.417082, 0.2, -17.15777)
 [node name="Vassadaire15" parent="Environment/NavigationRegion3D/Level/CoverObjects/Vassadaires" unique_id=1287712772 instance=ExtResource("37_gdu2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.769678, 0.20013133, -4.603508)
 
+[node name="Vassadaire19" parent="Environment/NavigationRegion3D/Level/CoverObjects/Vassadaires" unique_id=1145793719 instance=ExtResource("37_gdu2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.9721, 0.20013109, -5.07913)
+
+[node name="Vassadaire20" parent="Environment/NavigationRegion3D/Level/CoverObjects/Vassadaires" unique_id=2062828527 instance=ExtResource("37_gdu2u")]
+transform = Transform3D(-0.07330787, 0, 0.9973094, 0, 1, 0, -0.9973094, 0, -0.07330787, -60.10174, 0.20013109, 2.011472)
+
 [node name="Vassadaire2" parent="Environment/NavigationRegion3D/Level/CoverObjects/Vassadaires" unique_id=1583849995 instance=ExtResource("37_gdu2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.557592, 0.20013085, -36.011448)
 
@@ -439,6 +446,7 @@ transform = Transform3D(0.99999976, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 38.5
 transform = Transform3D(1, 0, 0, 0, 0.99939096, 0.0348995, 0, -0.0348995, 0.99939096, -16.00818, 0.13223815, -0.7448528)
 
 [node name="Bar" type="Node3D" parent="Environment/NavigationRegion3D/Level/CoverObjects" unique_id=1324237859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.110487, 0, -3.7938263)
 
 [node name="Chair" parent="Environment/NavigationRegion3D/Level/CoverObjects/Bar" unique_id=1121497105 instance=ExtResource("42_n4jea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.896624, 0.19999743, 9.305388)
@@ -530,7 +538,7 @@ transform = Transform3D(0.50326115, -0.86356586, 0.031357646, -0.86383355, -0.50
 transform = Transform3D(-0.47218186, 0, 0.8815013, 0, 1, 0, -0.8815013, 0, -0.47218186, 1.087, 0.1, 0.179)
 
 [node name="WoodPile" parent="Environment/NavigationRegion3D/Level/CoverObjects" unique_id=579835535 instance=ExtResource("43_fpe7n")]
-transform = Transform3D(0.40805957, 0, 0.9129553, 0, 1, 0, -0.9129553, 0, 0.40805957, -28.196, 0.15, -3.166)
+transform = Transform3D(0.40805957, 0, 0.9129553, 0, 1, 0, -0.9129553, 0, 0.40805957, -21.941887, 0.15, -4.0355406)
 
 [node name="Crates" type="Node3D" parent="Environment/NavigationRegion3D/Level/CoverObjects" unique_id=925110112]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.074, 0.1, -21.175)
@@ -766,16 +774,13 @@ height = 3
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Pave_pile" parent="Environment/NavigationRegion3D/Level/Coverpoints_commune" unique_id=1440382695 instance=ExtResource("45_fpe7n")]
-transform = Transform3D(-0.4797489, 0, 0.8774057, 0, 1, 0, -0.8774057, 0, -0.4797489, -30.417929, 0.1, -2.124834)
+transform = Transform3D(-0.4797489, 0, 0.8774057, 0, 1, 0, -0.8774057, 0, -0.4797489, -24.163816, 0.1, -2.9943745)
 
 [node name="Decoration" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=218436027]
 
 [node name="Shovel" type="MeshInstance3D" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=575543751]
 transform = Transform3D(1, 0, 0, 0, 0.99916327, 0.040899105, 0, -0.040899105, 0.99916327, -10.496651, 0.16811788, -6.865674)
 mesh = ExtResource("45_8bk3w")
-
-[node name="Dirt_pile_little" parent="Environment" unique_id=958166927 instance=ExtResource("43_3s0cs")]
-transform = Transform3D(0.9522627, 0, -0.30527985, 0, 1, 0, 0.30527985, 0, 0.9522627, -28.941113, 0.10000229, 21.008152)
 
 [node name="Ennemies" type="Node3D" parent="." unique_id=1662896707]
 
