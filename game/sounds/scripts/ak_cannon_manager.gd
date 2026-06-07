@@ -4,9 +4,8 @@ extends Node3D
 @export var shoot : AkEvent3D
 
 func _on_canon_shoot() -> void:
-	print("nulachier")
 	shoot.post_event()
-	WwiseGlobal.cannon_shoot()
+	WwiseGlobal.cannon_fire()
 
 
 func _on_canon_start_move() -> void:

@@ -21,6 +21,7 @@ namespace AK
         static const AkUniqueID ALLY_PLAYER_FAR = 1337332127U;
         static const AkUniqueID ALLY_PLAYER_HIDDEN = 1135788384U;
         static const AkUniqueID ALLY_PLAYER_KILL = 2988219764U;
+        static const AkUniqueID ALLY_SHOOT = 3252427803U;
         static const AkUniqueID ALLY_VOICE_CANCEL = 243533429U;
         static const AkUniqueID AMB_CANNONS = 3265814676U;
         static const AkUniqueID BARRICADE_DAMAGED = 482738278U;
@@ -338,10 +339,12 @@ namespace AK
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
+        static const AkUniqueID FRANCOIS = 3484216754U;
+        static const AkUniqueID GEORGES = 2519917785U;
+        static const AkUniqueID JULES = 652153290U;
         static const AkUniqueID SB_AMB = 925885567U;
         static const AkUniqueID SB_CANNON = 2061449278U;
         static const AkUniqueID SB_MUSIC = 779753582U;
-        static const AkUniqueID SB_NARRATIVE = 1681189201U;
         static const AkUniqueID SB_NPC = 1278759826U;
         static const AkUniqueID SB_PLAYER = 2103316850U;
     } // namespace BANKS

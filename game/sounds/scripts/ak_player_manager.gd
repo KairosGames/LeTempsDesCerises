@@ -15,6 +15,7 @@ var first_reload : bool = true
 @export var steps : AkEvent3D
 @export var reload : AkEvent3D
 @export var death : AkEvent3D
+@export var alive : AkEvent3D
 
 @export_category("Stances")
 @export var up : AkEvent3D
@@ -34,6 +35,8 @@ func _ready() -> void:
 	player.shot.connect(shoot_event)
 	player.shoot_missed.connect(bullet)
 	player.tried_shoot_no_reload.connect(no_ammo)
+	await get_tree().create_timer(7).timeout
+	alive.post_event()
 
 func _unhandled_input(_event: InputEvent) -> void:
 	

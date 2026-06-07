@@ -101,13 +101,6 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="Bullet_Hit" ID="{13B273F2-57C8-4A62-9A0E-5479116C3DB7}">
-							<PropertyList>
-								<Property Name="CooldownTime" Type="Real32">
-									<ValueList>
-										<Value>4</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{AA161D02-E0D4-4BD4-8E42-417B78FAE655}" ShortID="591970666">
 									<ReferenceList>
@@ -343,6 +336,32 @@
 						<Event Name="Player_Alive" ID="{6AB802F9-F564-4477-8C4F-144112C5939D}">
 							<ChildrenList>
 								<Action Name="" ID="{19E714A3-CD8A-444D-99E4-38294CD72C93}" ShortID="19463277">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="VX_Player_Breath_Loop" ID="{80CE796F-A267-427E-ADF5-BA301DBA1801}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{636A1043-F6C8-459D-928F-98716493EF8D}" ShortID="804449425">
+									<PropertyList>
+										<Property Name="AbsoluteOrRelative" Type="int16" Value="1"/>
+										<Property Name="ActionType" Type="int16" Value="12"/>
+										<Property Name="Volume" Type="Real64" Value="11"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="VX_Player_Breath_Loop" ID="{80CE796F-A267-427E-ADF5-BA301DBA1801}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{DC62709C-896A-47BE-8C14-FE40C1E746B6}" ShortID="602735209">
+									<PropertyList>
+										<Property Name="AbsoluteOrRelative" Type="int16" Value="1"/>
+										<Property Name="ActionType" Type="int16" Value="12"/>
+										<Property Name="Delay" Type="Real64" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="5"/>
+										<Property Name="Volume" Type="Real64" Value="-12"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="VX_Player_Breath_Loop" ID="{80CE796F-A267-427E-ADF5-BA301DBA1801}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
@@ -955,6 +974,46 @@
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Debris_Brick" ID="{1D49AFEF-A978-475F-8A79-D4E07ED29FFF}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Ally" ID="{FE026173-BAEB-406C-8C26-3ED895E54B66}" ShortID="352411140">
+					<ChildrenList>
+						<Event Name="Ally_Shoot" ID="{0758294E-77B6-49B7-9D4C-4F0A410A33B6}">
+							<ChildrenList>
+								<Action Name="" ID="{1F929B44-E73E-4338-8ACA-6608F23875B1}" ShortID="7215012">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="4"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening_Recover" ID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" WorkUnitID="{23E59525-27DD-4789-9862-5F2910D25BAE}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{99BAF97C-2495-4259-9975-AFE86DB05E88}" ShortID="663766153">
+									<PropertyList>
+										<Property Name="AbsoluteOrRelative" Type="int16" Value="1"/>
+										<Property Name="ActionType" Type="int16" Value="38"/>
+										<Property Name="Delay" Type="Real64" Value="0.2"/>
+										<Property Name="GameParameterValue" Type="Real64" Value="1"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{887C5812-F17E-430F-8B47-26E93BF24011}" ShortID="106207070">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="NPC_Shoot" ID="{9892C910-23AC-4551-A381-3CB9993A7506}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

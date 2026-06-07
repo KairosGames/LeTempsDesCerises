@@ -17,17 +17,9 @@ func _ready() -> void:
 	game_manager = GameManager.instance
 	if game_manager.use_narrative:
 		game_manager.curr_state.voice_line_called.connect(new_line)
+		await get_tree().create_timer(0.5).timeout
 		new_line(0)
-		return
-		for i in game_manager.get_children(true):
-			if i.name == "NPC":
-				for npc in i.get_children():
-					var new_npc = preload("res://sounds/prefabs/ak_npc_manager.tscn").instantiate()
-					npc.add_child(new_npc)
-					new_npc.init()
-	else:
-		allow_barks = true
-		flip_barks_system()
+	game_manager.all_states[1].player_tried_to_exit.connect(player_far)
 
 func _process(_delta: float) -> void:
 	if barricade != null and barricade.global_position.distance_squared_to(player.global_position) > coward_distance and is_coward == false:
@@ -106,17 +98,15 @@ func cannon_incoming():
 
 func cannon_fire():
 	if !allies.is_empty():
-		select_random(allies).bark.post_event()
+		select_random(allies).post_event("Cannon_Fire", 1)
 
 func player_far():
-	if !allow_barks : return
+	if is_coward: return
 	if !allies.is_empty():
 		is_coward = true
 		find_closest(allies).post_event("Player_Far", 0)
-		await get_tree().create_timer(10).timeout
+		await get_tree().create_timer(3).timeout
 		is_coward = false
-		for i in allies:
-			i.post_event("Player_Far", 0)
 
 func retreat():
 	Wwise.set_state("fight_state", "retreat")
@@ -128,8 +118,11 @@ func enemy_killed():
 	await get_tree().create_timer(1.5).timeout
 	if !allies.is_empty():
 			var closest = find_closest(allies)
-			closest.post_event("Player_Kill", 1)
+			closest.post_event("Player_Kill", 0.5)
 
 func localize():
 	print("change language")
 	Wwise.set_current_language("English(US)")
+
+func unload(bank_name : String):
+	Wwise.unload_bank(bank_name)

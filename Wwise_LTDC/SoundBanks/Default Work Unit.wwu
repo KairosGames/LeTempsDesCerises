@@ -23,6 +23,7 @@
 				</SoundBank>
 				<SoundBank Name="Sb_NPC" ID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Ally" ID="{FE026173-BAEB-406C-8C26-3ED895E54B66}" WorkUnitID="{23E59525-27DD-4789-9862-5F2910D25BAE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Enemy" ID="{B5140E2A-4A79-4337-AE16-E75E3C18D0C9}" WorkUnitID="{23E59525-27DD-4789-9862-5F2910D25BAE}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Enemy" ID="{66A0CA39-49DF-4565-8BD1-B466D16ED885}" WorkUnitID="{A4E91325-0A0F-4717-A39D-4699659B2236}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Ally" ID="{77F84EE2-6CA6-4F68-A269-7085069BA12E}" WorkUnitID="{A4E91325-0A0F-4717-A39D-4699659B2236}" Origin="Manual" Filter="7"/>
@@ -38,13 +39,31 @@
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>
-				<SoundBank Name="Sb_Narrative" ID="{D73E2F75-02EA-4C7C-ADF2-3388F5A6D6EA}">
-					<ObjectInclusionList>
-						<ObjectRef Name="Dialogue" ID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" WorkUnitID="{A4E91325-0A0F-4717-A39D-4699659B2236}" Origin="Manual" Filter="7"/>
-					</ObjectInclusionList>
-					<ObjectExclusionList/>
-					<GameSyncExclusionList/>
-				</SoundBank>
+				<Folder Name="Narrative" ID="{7E16FD28-A2DF-4F5E-9F22-E773B0A33B6C}" ShortID="759301315">
+					<ChildrenList>
+						<SoundBank Name="Georges" ID="{2EC33D6E-768B-4BDE-BFF0-F36421A7E2FE}">
+							<ObjectInclusionList>
+								<ObjectRef Name="Dialogue" ID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" WorkUnitID="{A4E91325-0A0F-4717-A39D-4699659B2236}" Origin="Manual" Filter="3"/>
+								<ObjectRef Name="Georges" ID="{EA267C89-B50A-4122-98FA-5A205B6AF088}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}" Origin="Manual" Filter="7"/>
+							</ObjectInclusionList>
+							<ObjectExclusionList/>
+							<GameSyncExclusionList/>
+						</SoundBank>
+						<SoundBank Name="Francois" ID="{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}">
+							<ObjectInclusionList>
+								<ObjectRef Name="Dialogue" ID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" WorkUnitID="{A4E91325-0A0F-4717-A39D-4699659B2236}" Origin="Manual" Filter="3"/>
+								<ObjectRef Name="François" ID="{2EC530F3-9986-4465-9C73-95201FFA50DC}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}" Origin="Manual" Filter="7"/>
+							</ObjectInclusionList>
+							<ObjectExclusionList/>
+							<GameSyncExclusionList/>
+						</SoundBank>
+						<SoundBank Name="Jules" ID="{64522E9F-E4F4-45D9-B335-28CF9E07510E}">
+							<ObjectInclusionList/>
+							<ObjectExclusionList/>
+							<GameSyncExclusionList/>
+						</SoundBank>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</SoundBanks>
