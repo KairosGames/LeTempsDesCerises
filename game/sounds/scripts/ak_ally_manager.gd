@@ -24,7 +24,6 @@ func _enter_tree() -> void:
 		i.audio_marker.connect(set_text)
 
 func _ready() -> void:
-	print(gender)
 	match gender:
 		gender_type.MALE:
 			var random = String("Type" + str(randi_range(1, 3)))
@@ -36,10 +35,10 @@ func _ready() -> void:
 				Wwise.set_switch("Character_Type", random, i)
 
 func post_event(event : String, delay : int):
+	if is_barking : return
 	is_barking = true
 	await get_tree().create_timer(delay).timeout
 	barks_parent.get_child(barks.get(event)).post_event()
-	print(event)
 
 func _on_communard_shoot() -> void:
 	shoot.post_event()

@@ -39,7 +39,7 @@ func _on_dialogue_audio_marker(data: Dictionary) -> void:
 	WwiseGlobal.player.update_line(npc_name,text)
 	for i in text.length():
 		label.text = label.text + text[i]
-		await get_tree().create_timer(randf_range(0.01, 0.05)).timeout
+		await get_tree().create_timer(randf_range(0.01, 0.03)).timeout
 
 func _on_tree_exited() -> void:
 	WwiseGlobal.unload_bank(npc_name)
