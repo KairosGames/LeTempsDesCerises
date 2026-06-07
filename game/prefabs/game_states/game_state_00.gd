@@ -65,7 +65,7 @@ func go_for_georges() -> void:
 	take_player_move_control(true)
 	take_player_view_control(true)
 	set_player_move(Vector2(0.0, 0.5))
-	add_on_process(rotate_yaw_player_to_pos.bind(georges_rdv.global_position, PI/12.0, delta_t))
+	add_on_process(rotate_yaw_player_to_pos.bind(georges_rdv.global_position, PI/10.0, delta_t))
 	await wait(3.0)
 	clean_process()
 	await wait_until(func(): return player.global_position.distance_squared_to(georges_rdv.global_position) <= 0.1)
