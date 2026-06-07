@@ -6,6 +6,7 @@ signal player_tried_to_exit
 @onready var objective_point_barricade: CustomMarker = %ObjectivePointBarricade
 @onready var return_to_barricade: EventArea = %ReturnToBarricadeArea
 @onready var first_die_area: EventArea = %FirstDieArea
+@onready var invisible_wall_barricade: StaticBody3D = %InvisibleWallBarricade
 @onready var jules: Npc = %Jules
 
 var kill_counter: int = 0
@@ -41,6 +42,7 @@ func go_to_barricade() -> void:
 
 
 func stay_into_barricade_area() -> void:
+	invisible_wall_barricade.process_mode = Node.PROCESS_MODE_INHERIT
 	return_to_barricade.monitoring = true
 	return_to_barricade.player_entered.connect(on_player_exit_barricade_zone)
 	player.enemy_shot.connect(on_enemy_shot)
@@ -78,7 +80,7 @@ func on_enemy_shot() -> void:
 
 
 func launch_first_die_timer() -> void:
-	await wait(120.0)
+	await wait(1.0)#120.0)
 	it_is_time_to_die = true
 
 
@@ -96,6 +98,7 @@ func go_to_first_die() -> void:
 	return_to_barricade.player_entered.disconnect(on_player_exit_barricade_zone)
 	return_to_barricade.monitoring = false
 	first_die_area.monitoring = false
+	invisible_wall_barricade.process_mode = Node.PROCESS_MODE_DISABLED
 	await wait(player.death_camera.fall_time_1 + player.death_camera.fall_time_2)
 	await wait_voice()
 

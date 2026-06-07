@@ -66,6 +66,11 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8149467, 0)
 top_level = true
 
+[node name="DeathGroundCast" type="RayCast3D" parent="DeathCamera" unique_id=735844085]
+unique_name_in_owner = true
+enabled = false
+target_position = Vector3(0, -3, 0)
+
 [node name="ShootTargets" type="Node3D" parent="." unique_id=353390461 node_paths=PackedStringArray("editor_marks")]
 script = ExtResource("4_2c4n1")
 editor_marks = [NodePath("HeadTarget/EditorMark"), NodePath("ChestTarget/EditorMark"), NodePath("LeftShoulderTarget/EditorMark"), NodePath("RightShoulderTarget/EditorMark"), NodePath("PelvisTarget/EditorMark")]
@@ -393,7 +398,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029152155, 0.14946882)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013229132, 0.31301522)
 target_position = Vector3(0, 0, 300)
-collision_mask = 7
+collision_mask = 5
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
 [node name="OutOfCamera" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot" unique_id=51978982]

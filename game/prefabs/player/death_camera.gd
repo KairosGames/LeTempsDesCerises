@@ -3,6 +3,7 @@ class_name DeathCamera extends Camera3D
 @onready var player: Player = get_parent()
 @onready var death_petals: DeathPetalsEffect = %DeathPetals
 @onready var blink_effect: BlinkEffect = %BlinkEffect
+@onready var death_ground_cast: RayCast3D = %DeathGroundCast
 
 @export_category("Settings")
 @export var time_to_swap: float = 3.0
@@ -42,7 +43,8 @@ func handle_death(is_scripted: bool) -> void:
 
 func play_death_effect() -> void:
 	var communard: Agent = get_free_communard()
-	var ground_y: float = player.global_position.y
+	death_ground_cast.force_raycast_update()
+	var ground_y: float = death_ground_cast.get_collision_point().y
 	fall_twn = create_tween()
 	fall_rot_twn = create_tween()
 	fov_twn = create_tween()
@@ -112,19 +114,19 @@ func handle_camera_simple_move() -> void:
 
 func play_eyes_effect_and_revive(is_on_communard: bool) -> void:
 	blink_effect.blur_effect.set_blur_enable(true)
-	blink_effect.blur_effect.hard_set_blur(0.2)
+	blink_effect.blur_effect.hard_set_blur(0.5)
 	
-	blink_effect.move_eyes(BlinkEffect.EyesStep.A_OPEN, 0.3, true, 0.4)
+	blink_effect.move_eyes(BlinkEffect.EyesStep.A_OPEN, 0.3, true, 1.0)
 	await get_tree().create_timer(fall_time_1 + fall_time_2).timeout
 	
-	await blink_effect.move_eyes(BlinkEffect.EyesStep.A_CLOSED, 0.3, true, 2.0)
-	await blink_effect.move_eyes(BlinkEffect.EyesStep.A_OPEN, 0.5, true, 0.4)
+	await blink_effect.move_eyes(BlinkEffect.EyesStep.A_CLOSED, 0.3, true, 5.0)
+	await blink_effect.move_eyes(BlinkEffect.EyesStep.A_OPEN, 0.5, true, 1.0)
 
 	await get_tree().create_timer(0.5).timeout
-	blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.4, true, 2.0)
+	blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.4, true, 7.0)
 	
 	await get_tree().create_timer(0.2).timeout
-	blink_effect.move_eyes(BlinkEffect.EyesStep.A_CLOSED, 1.0, true, 0.1)
+	blink_effect.move_eyes(BlinkEffect.EyesStep.A_CLOSED, 1.0, true, 2.0)
 	
 	await get_tree().create_timer(0.8).timeout
 	blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.2, true, 10.0)

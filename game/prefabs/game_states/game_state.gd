@@ -1,6 +1,7 @@
 @abstract class_name GameState extends Node
 
 @onready var francois: Npc = %Francois
+@onready var death_zone: EventArea = %DeathZone
 
 signal voice_line_called(index: int)
 @warning_ignore("unused_signal") signal completed
@@ -38,6 +39,8 @@ func ready_deffered() -> void:
 	eff_manager = EffectsManager.instance
 	ui_manager = UIManager.instance
 	player = Player.instance
+	death_zone.monitoring = true
+	death_zone.player_entered.connect(kill_player)
 
 
 func _process(delta: float) -> void:
@@ -176,3 +179,8 @@ func process_tooltip_display(action: String) -> void:
 func free_tool_tip() -> void:
 	ui_manager.tooltip.display(false)
 	clean_ui_process()
+
+
+func kill_player() -> void:
+	player.can_die = true
+	player.die()

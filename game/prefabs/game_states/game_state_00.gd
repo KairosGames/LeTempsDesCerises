@@ -5,6 +5,7 @@ signal fire_kill_georges
 
 @onready var georges_rdv: CustomMarker = %GeorgesRDV
 @onready var georges: Npc = %Georges
+@onready var first_chassepot: Node3D = %FirstChassepot
 @onready var barricade_point: CustomMarker = %BarricadePoint
 @onready var jules: Npc = %Jules
 @onready var versaillais_coming_point: CustomMarker = $VersaillaisComingPoint
@@ -13,7 +14,7 @@ signal fire_kill_georges
 func enter() -> void:
 	curr_step = 0
 	steps = [
-		Step.new(set_player_for_onboarding, get_up, do_nothing),
+		Step.new(set_game_for_onboarding, get_up, do_nothing),
 		Step.new(go_for_georges, wait_voice, take_weapon),
 		Step.new(wait_voice, wait_player_crouch, do_nothing),
 		Step.new(wait_voice, wait_player_prone, do_nothing),
@@ -35,7 +36,7 @@ func set_player_for_debug() -> void:
 	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
 
 
-func set_player_for_onboarding() -> void:
+func set_game_for_onboarding() -> void:
 	player.blink_effect.set_blink_enable(true)
 	ui_manager.hard_set_letter_box(true)
 	var spawn: CustomMarker = game_manager.player_spawner
@@ -81,6 +82,7 @@ func take_weapon() -> void:
 	add_on_process(rotate_player_to_yaw.bind(georges_rdv.rotation.y, PI/1.5, delta_t))
 	await wait(0.5)
 	clean_process()
+	first_chassepot.visible = false
 	take_player_view_control(false)
 	player.give_or_drop_weapon(true)
 
