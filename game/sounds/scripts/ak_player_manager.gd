@@ -144,6 +144,7 @@ func update_line(npc_name, new_text : String):
 	text = text.replace("Ã", "à")
 	text = text.replace("à´", "ô")
 	text = text.replace("à§", "ç")
+	text = text.replace("à¢", "â")
 	text = text.replace("àª", "ê")
 	text = text.replace(" ", "")
 	for i in subtitles.get_children():

@@ -6,8 +6,6 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_q662s"]
 radius = 0.09751394
 
-[sub_resource type="BoxMesh" id="BoxMesh_l6lbi"]
-
 [node name="bulett_hit" type="Node3D" unique_id=549965140]
 top_level = true
 script = ExtResource("1_l6lbi")
@@ -21,6 +19,3 @@ is_environment_aware = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AkEvent3D/Area3D" unique_id=2006682863]
 shape = SubResource("SphereShape3D_q662s")
-
-[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=328795029]
-mesh = SubResource("BoxMesh_l6lbi")
