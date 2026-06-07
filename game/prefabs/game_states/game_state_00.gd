@@ -10,6 +10,8 @@ signal fire_kill_georges
 @onready var jules: Npc = %Jules
 @onready var versaillais_coming_point: CustomMarker = $VersaillaisComingPoint
 
+var recorded_pos: Vector3
+
 
 func enter() -> void:
 	curr_step = 0
@@ -60,6 +62,13 @@ func get_up() -> void:
 	player.play_cam_landing_effect(-0.2, 5.0, 0.5)
 	player.crouch_to_stand(false, 0.5)
 	await wait(1.1)
+	take_player_view_control(true)
+	#var target: Vector3 = player.global_position + player.basis.x + player.basis.z
+	await tween_rotate_player_to_yaw(deg_to_rad(player.aim_target.y) - PI/6.0, 0.6)
+	await wait(2.0)
+	await tween_rotate_player_to_yaw(deg_to_rad(player.aim_target.y) + PI/6.0, 0.4)
+	take_player_view_control(false)
+	
 
 
 func go_for_georges() -> void:
@@ -175,14 +184,18 @@ func wait_player_enter_reload() -> void:
 	player.enter_reload()
 	free_tool_tip()
 	player.reload_ui.is_tutorial = true
+	player.reload_ui.is_playing_qte = false
 	await wait_voice()
 	handle_action_tooltip("open_bolt")
+	player.reload_ui.is_playing_qte = true
 	add_on_process(func(): if Input.is_action_just_pressed("reload"): player.reload_ui.try_qte())
 	await wait_until(func(): return player.reload_ui.step == 2)
 	free_tool_tip()
 	clean_process()
+	player.reload_ui.is_playing_qte = false
 	await wait_voice()
 	handle_action_tooltip("close_bolt")
+	player.reload_ui.is_playing_qte = true
 	add_on_process(func(): if Input.is_action_just_pressed("reload"): player.reload_ui.try_qte())
 	await wait_until(func(): return player.is_weapon_loaded)
 	free_tool_tip()
@@ -248,5 +261,12 @@ func call_georges_death() -> void:
 func free_player() -> void:
 	ui_manager.launch_letter_box(false)
 	player.set_is_free(true)
-	await wait(1.0)
-	ui_manager.enter_tutorial()
+	recorded_pos = player.global_position
+	player.can_use_run = false
+	handle_action_tooltip("move")
+	await wait_until(has_player_moved_enough)
+	clean_ui_process()
+
+
+func has_player_moved_enough() -> bool:
+	return player.global_position.distance_squared_to(recorded_pos) > 9.0

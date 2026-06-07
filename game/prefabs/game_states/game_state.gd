@@ -154,6 +154,13 @@ func tween_rotate_player_to_pos(pos: Vector3, time: float) -> void:
 	await rot_twn.tween_property(player, "aim_target:y", delta, time).as_relative().finished
 
 
+func tween_rotate_player_to_yaw(yaw: float, time: float) -> void:
+	if rot_twn: rot_twn.kill()
+	rot_twn = create_tween()
+	var delta: float = wrapf(rad_to_deg(yaw) - player.aim_target.y, -180.0, 180.0)
+	await rot_twn.tween_property(player, "aim_target:y", delta, time).as_relative().finished
+
+
 func block_ads_concentration(t: float) -> void:
 	if player.ads_timer >= t: player.ads_timer = t
 

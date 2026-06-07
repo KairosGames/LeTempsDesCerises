@@ -36,9 +36,20 @@ func set_player_for_debug() -> void:
 func go_to_barricade() -> void:
 	ui_manager.set_objective(true, objective_point_barricade, "Go to the barricade")
 	go_to_barricade_area.monitoring = true
+	player.can_use_run = true
+	handle_action_tooltip("run")
+	add_on_process(check_run)
 	await wait_signal(go_to_barricade_area.player_entered)
+	clean_ui_process()
 	go_to_barricade_area.set_deferred("monitoring", false)
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
+
+
+func check_run() -> void:
+	if player.is_running:
+		free_tool_tip()
+		clean_ui_process()
+		clean_process()
 
 
 func stay_into_barricade_area() -> void:
@@ -80,7 +91,7 @@ func on_enemy_shot() -> void:
 
 
 func launch_first_die_timer() -> void:
-	await wait(1.0)#120.0)
+	await wait(60.0)
 	it_is_time_to_die = true
 
 

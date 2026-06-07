@@ -37,11 +37,6 @@ corner_detail = 20
 shadow_color = Color(1, 1, 1, 0.23529412)
 shadow_size = 5
 
-[sub_resource type="LabelSettings" id="LabelSettings_eijdo"]
-font_size = 24
-shadow_size = 3
-shadow_color = Color(0, 0, 0, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83msq"]
 content_margin_left = 0.0
 content_margin_top = 0.0
@@ -292,12 +287,25 @@ tooltip_text = "
 "
 theme_override_styles/panel = SubResource("StyleBoxFlat_cvqlx")
 script = ExtResource("4_cvqlx")
+input_color = Color(0.9764706, 0.93333334, 0, 1)
+action_color = Color(0.56954795, 0.714388, 0.8659134, 1)
 
-[node name="TipLabel" type="Label" parent="UIManager/TooltipContainer/Tooltip" unique_id=613230358]
+[node name="TipLabel" type="RichTextLabel" parent="UIManager/TooltipContainer/Tooltip" unique_id=2022870588]
 unique_name_in_owner = true
+clip_contents = false
 layout_mode = 2
-text = "PRESS <INPUT>  TO <ACTION>"
-label_settings = SubResource("LabelSettings_eijdo")
+size_flags_vertical = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "PRESS [color=#f9ee00]INPUT[/color]  TO ACTION
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 

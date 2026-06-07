@@ -41,7 +41,8 @@ var target_i: int = 1
 var is_active: bool = false
 var can_qte: bool = true
 var is_hammer_cocked = false
-var is_tutorial = false
+var is_tutorial: bool = false
+var is_playing_qte: bool = true
 
 
 func _ready() -> void:
@@ -53,7 +54,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if is_active and step != 2:
-		handle_reload_phase(delta)
+		if is_playing_qte: handle_reload_phase(delta)
 		capture_reload_QTE()
 
 
