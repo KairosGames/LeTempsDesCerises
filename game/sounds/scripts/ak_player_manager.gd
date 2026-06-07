@@ -27,12 +27,12 @@ var first_reload : bool = true
 @export var line : Label
 
 func _ready() -> void:
-	print("j'existe")
 	WwiseGlobal.player = self
 	init_motion()
 	player.die_called.connect(death_event)
 	player.enemy_shot.connect(WwiseGlobal.enemy_killed)
 	player.shot.connect(shoot_event)
+	player.shoot_missed.connect(bullet)
 	player.tried_shoot_no_reload.connect(no_ammo)
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -84,6 +84,8 @@ func _process(_delta: float) -> void:
 func shoot_event():
 	if !player.can_shoot() : return
 	shoot.post_event()
+
+func bullet():
 	var target : Node3D = player.weapon_ray_cast.get_collider()
 	var hit_position : Vector3 = player.weapon_ray_cast.get_collision_point()
 	var hit = bullet_prefab.instantiate()
@@ -146,7 +148,6 @@ func update_line(npc_name, new_text : String):
 	text = text.replace(" ", "")
 	for i in subtitles.get_children():
 		if i.name == npc_name:
-			print(new_text)
 			if new_text == "":
 				i.visible = false
 				i.text = ""

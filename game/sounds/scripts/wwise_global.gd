@@ -33,6 +33,10 @@ func _process(_delta: float) -> void:
 	if barricade != null and barricade.global_position.distance_squared_to(player.global_position) > coward_distance and is_coward == false:
 		player_far()
 
+func _unhandled_key_input(event: InputEvent) -> void:
+	if Input.is_key_pressed(KEY_ENTER):
+		localize()
+
 func new_line(step : int):
 	line_count = 0
 	Wwise.set_state("narrative_step", String("_" + str(step)))
@@ -125,3 +129,7 @@ func enemy_killed():
 	if !allies.is_empty():
 			var closest = find_closest(allies)
 			closest.post_event("Player_Kill", 1)
+
+func localize():
+	print("change language")
+	Wwise.set_current_language("English(US)")
