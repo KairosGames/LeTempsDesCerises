@@ -1,8 +1,8 @@
 shader_type canvas_item;
 
 uniform sampler2D screen_texture : hint_screen_texture, filter_linear;
-uniform int strength: hint_range(0, 100) = 20;
-uniform float blur_size: hint_range(0.0, 100.0) = 0.0;
+uniform int strength: hint_range(0, 3) = 3;
+uniform float blur_size: hint_range(0.0, 20.0) = 0.0;
 
 const float STD = 8.0;
 

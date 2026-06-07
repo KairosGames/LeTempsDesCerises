@@ -10,7 +10,14 @@ enum NpcName{
 	François
 }
 
+enum NpcGender{
+	Male,
+	Female,
+	NoBinary
+}
+
 @export var npc_name: NpcName
+@export var gender: NpcGender
 
 var on_process: Array[Callable]
 var delta_t: float

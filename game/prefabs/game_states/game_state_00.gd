@@ -36,6 +36,7 @@ func set_player_for_debug() -> void:
 
 
 func set_player_for_onboarding() -> void:
+	player.blink_effect.set_blink_enable(true)
 	ui_manager.hard_set_letter_box(true)
 	var spawn: CustomMarker = game_manager.player_spawner
 	player.initiate(spawn.global_position, spawn.global_rotation, false, false, Player.Posture.PRONE)

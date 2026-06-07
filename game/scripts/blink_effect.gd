@@ -40,9 +40,18 @@ var s_corners: String = "shader_parameter/corner_opening"
 var s_softness: String = "shader_parameter/softness"
 
 
+func _ready() -> void:
+	visible = false
+
+
+func set_blink_enable(enable: bool) -> void:
+	visible = enable
+
+
 func open_eyes_from_sleep() -> void:
+	blur_effect.set_blur_enable(true)
 	set_targets(EyesStep.A_CLOSED)
-	create_all_tweens()
+	create_all_tweens(true)
 	var t1: float = 1.5
 	var trans1: Tween.TransitionType = Tween.TRANS_QUAD
 	var ea1: Tween.EaseType = Tween.EASE_OUT
@@ -54,7 +63,7 @@ func open_eyes_from_sleep() -> void:
 	await get_tree().create_timer(0.5).timeout
 	
 	set_targets(EyesStep.CLOSED)
-	create_all_tweens()
+	create_all_tweens(true)
 	var t2: float = 0.2
 	var trans2: Tween.TransitionType = Tween.TRANS_QUAD
 	var ea2: Tween.EaseType = Tween.EASE_IN
@@ -66,7 +75,7 @@ func open_eyes_from_sleep() -> void:
 	await get_tree().create_timer(0.1).timeout
 	
 	set_targets(EyesStep.A_OPEN)
-	create_all_tweens()
+	create_all_tweens(true)
 	var t3: float = 0.5
 	var trans3: Tween.TransitionType = Tween.TRANS_QUAD
 	var ea3: Tween.EaseType = Tween.EASE_OUT
@@ -78,7 +87,7 @@ func open_eyes_from_sleep() -> void:
 	await get_tree().create_timer(1.0).timeout
 	
 	set_targets(EyesStep.CLOSED)
-	create_all_tweens()
+	create_all_tweens(true)
 	var t4: float = 0.15
 	var trans4: Tween.TransitionType = Tween.TRANS_QUAD
 	var ea4: Tween.EaseType = Tween.EASE_OUT
@@ -87,7 +96,7 @@ func open_eyes_from_sleep() -> void:
 	corners_twn.tween_property(shader, s_corners, corners_target, t4).set_trans(trans4).set_ease(ea4)
 	await softness_twn.tween_property(shader, s_softness, softness_target, t4).set_trans(trans4).set_ease(ea4).finished
 	
-	create_all_tweens()
+	create_all_tweens(true)
 	set_targets(EyesStep.OPEN)
 	var t5: float = 0.5
 	var trans5: Tween.TransitionType = Tween.TRANS_QUAD
@@ -96,15 +105,21 @@ func open_eyes_from_sleep() -> void:
 	height_twn.tween_property(shader, s_opening, height_target, t5).set_trans(trans5).set_ease(ea5)
 	corners_twn.tween_property(shader, s_corners, corners_target, t5).set_trans(trans5).set_ease(ea5)
 	await softness_twn.tween_property(shader, s_softness, softness_target, t5).set_trans(trans5).set_ease(ea5).finished
+	
+	visible = false
+	blur_effect.set_blur_enable(false)
 
 
-func move_eyes(step: EyesStep, time: float, with_blur: bool = false) -> void:
+func move_eyes(step: EyesStep, time: float, with_blur: bool = false, blur_targ: float = 0.0) -> void:
+	visible = true
+	if with_blur: blur_effect.set_blur_enable(true)
 	set_targets(step)
-	create_all_tweens()
+	create_all_tweens(with_blur)
+	blur_target = blur_targ
+	if with_blur: blur_twn.tween_property(blur_effect.shader, blur_effect.s_blur_size, blur_target, time)
 	height_twn.tween_property(shader, s_opening, height_target, time)
 	corners_twn.tween_property(shader, s_corners, corners_target, time)
-	softness_twn.tween_property(shader, s_softness, softness_target, time)
-	if with_blur: blur_twn.tween_property(blur_effect.shader, blur_effect.s_blur_size, blur_target, time)
+	await softness_twn.tween_property(shader, s_softness, softness_target, time).finished
 
 
 func set_targets(step: EyesStep) -> void:
@@ -132,12 +147,12 @@ func set_targets(step: EyesStep) -> void:
 			blur_target = blur_effect.closed_size
 
 
-func create_all_tweens() -> void:
+func create_all_tweens(with_blur: bool = false) -> void:
 	kill_all_tweens()
 	height_twn = create_tween()
 	corners_twn = create_tween()
 	softness_twn = create_tween()
-	blur_twn = create_tween()
+	if with_blur: blur_twn = create_tween()
 
 
 func kill_all_tweens() -> void:
@@ -147,25 +162,25 @@ func kill_all_tweens() -> void:
 	if blur_twn: blur_twn.kill()
 
 
-func set_eyes_to_step(step: EyesStep) -> void:
+func set_eyes_to_step(step: EyesStep, with_blur: bool = false) -> void:
 	match step:
 		EyesStep.OPEN:
 			shader.set_shader_parameter("opening", open_height)
 			shader.set_shader_parameter("corner_opening", open_corners)
 			shader.set_shader_parameter("softness", open_softness)
-			blur_effect.shader.set_shader_parameter("blur_size", blur_effect.open_size)
+			if with_blur: blur_effect.shader.set_shader_parameter("blur_size", blur_effect.open_size)
 		EyesStep.A_OPEN:
 			shader.set_shader_parameter("opening", a_open_height)
 			shader.set_shader_parameter("corner_opening", a_open_corners)
 			shader.set_shader_parameter("softness", a_open_softness)
-			blur_effect.shader.set_shader_parameter("blur_size", blur_effect.a_open_size)
+			if with_blur: blur_effect.shader.set_shader_parameter("blur_size", blur_effect.a_open_size)
 		EyesStep.A_CLOSED:
 			shader.set_shader_parameter("opening", a_closed_height)
 			shader.set_shader_parameter("corner_opening", a_closed_corners)
 			shader.set_shader_parameter("softness", a_closed_softness)
-			blur_effect.shader.set_shader_parameter("blur_size", blur_effect.a_closed_size)
+			if with_blur: blur_effect.shader.set_shader_parameter("blur_size", blur_effect.a_closed_size)
 		EyesStep.CLOSED:
 			shader.set_shader_parameter("opening", closed_height)
 			shader.set_shader_parameter("corner_opening", closed_corners)
 			shader.set_shader_parameter("softness", closed_softness)
-			blur_effect.shader.set_shader_parameter("blur_size", blur_effect.closed_size)
+			if with_blur: blur_effect.shader.set_shader_parameter("blur_size", blur_effect.closed_size)

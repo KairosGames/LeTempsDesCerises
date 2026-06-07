@@ -37,6 +37,7 @@ signal landed
 @onready var weapon_bob_root: Node3D = %WeaponBobRoot
 @onready var out_of_camera: Marker3D = %OutOfCamera
 @onready var blink_effect: BlinkEffect = %BlinkEffect
+@onready var blur_effect: BlurEffect = %BlurEffect
 @onready var cam_land_root: Node3D = %CameraLandingRoot
 @onready var reload_root: Node3D = %ReloadRoot
 @onready var reload_pos_right: Marker3D = %ReloadPosRight
@@ -44,7 +45,7 @@ signal landed
 @onready var death_camera: DeathCamera = %DeathCamera
 
 @export_category("Gameplay Settings")
-@export var immortal_timer: float = 0.1#10.0
+@export var immortal_timer: float = 10.0
 
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
