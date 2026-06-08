@@ -2,7 +2,7 @@
 class_name ChangePosture extends ActionLeaf
 
 @export var posture: Agent.Posture
-@export var duration: float = 0.5
+@export var duration: float = 0.2
 
 var _has_started: bool = false
 var _is_transitioning: bool = false
