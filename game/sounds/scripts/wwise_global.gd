@@ -15,11 +15,11 @@ var allow_barks : bool = false
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	game_manager = GameManager.instance
-	if game_manager.use_narrative:
+	if game_manager and game_manager.use_narrative:
 		game_manager.curr_state.voice_line_called.connect(new_line)
 		await get_tree().create_timer(0.5).timeout
 		new_line(0)
-	game_manager.all_states[1].player_tried_to_exit.connect(player_far)
+	if game_manager: game_manager.all_states[1].player_tried_to_exit.connect(player_far)
 
 func _process(_delta: float) -> void:
 	if barricade != null and barricade.global_position.distance_squared_to(player.global_position) > coward_distance and is_coward == false:
