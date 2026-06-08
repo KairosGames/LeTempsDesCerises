@@ -17,7 +17,7 @@ signal move_stoped
 @onready var navigation: Navigation = $Navigation
 @onready var animation: AnimationPlayer = $Body/AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Head]
+@onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Chest, $ShootTargets/Head]
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 
 var has_enemy_in_range: bool = false

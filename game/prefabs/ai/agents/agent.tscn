@@ -263,12 +263,16 @@ shape = SubResource("CapsuleShape3D_otrs2")
 
 [node name="ShootTargets" type="Node3D" parent="." unique_id=1640117776]
 
-[node name="Head" type="Marker3D" parent="ShootTargets" unique_id=1612085666]
-transform = Transform3D(-0.99959105, -0.012815376, 0.02555303, -0.013683984, 0.9993226, -0.034112826, -0.025098722, -0.034448568, -0.9990897, 8.0337166e-05, 1.6153508, -0.00746484)
+[node name="Chest" type="Marker3D" parent="ShootTargets" unique_id=1612085666]
+transform = Transform3D(-0.97422665, -0.011762085, 0.22501828, 0.010842944, 0.994908, 0.098945595, -0.22507875, 0.09883958, -0.9691985, -0.002276672, 1.2632835, 0.0023069)
+
+[node name="Head" type="Marker3D" parent="ShootTargets" unique_id=2138124691]
+transform = Transform3D(-0.9995195, -0.011191463, 0.02644704, -0.01212789, 0.9991567, -0.03547847, -0.026033338, -0.035784688, -0.99887913, -5.8577687e-05, 1.6151496, -0.008559609)
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=2136817593]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
 top_level = true
+enabled = false
 target_position = Vector3(0, 0, -100)
 collision_mask = 7
 collide_with_areas = true
@@ -284,12 +288,22 @@ bone_idx = 34
 [node name="sk_chassepot" parent="Body/Armature/Skeleton3D/Weapon" unique_id=1025414177 instance=ExtResource("3_sm080")]
 transform = Transform3D(-10.55309, 95.53138, 27.611444, 11.808159, 28.773891, -95.04016, -98.73802, -6.7692723, -14.317036, 3.4706862, 18.70045, 6.007675)
 
-[node name="Head" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1309374789) index="3" unique_id=1462148920]
+[node name="Chest" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1309374789) index="3" unique_id=1462148920]
+transform = Transform3D(0.99999994, -1.1254992e-11, -8.367351e-11, 7.912604e-11, -0.11468208, 0.9934021, -7.558503e-11, -0.9934022, -0.114682086, 0.0039569456, -1.7613636, -119.754326)
+bone_name = "mixamorig_Spine1"
+bone_idx = 2
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Body/Armature/Skeleton3D/Chest" unique_id=115027249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 8.170787, 0)
+remote_path = NodePath("../../../../../ShootTargets/Chest")
+update_scale = false
+
+[node name="Head" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1309374789) index="4" unique_id=1753585876]
 transform = Transform3D(0.99999994, -2.077659e-11, -8.183071e-11, 7.9126046e-11, 1.4901161e-08, 0.9999998, -7.558503e-11, -0.9999998, 1.4901163e-08, 0.0039569447, -2.9954135, -154.90862)
 bone_name = "mixamorig_Head"
 bone_idx = 5
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Body/Armature/Skeleton3D/Head" unique_id=115027249]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Body/Armature/Skeleton3D/Head" unique_id=1880805223]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 8.170787, 0)
 remote_path = NodePath("../../../../../ShootTargets/Head")
 update_scale = false
