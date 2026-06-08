@@ -12,6 +12,11 @@ class_name Cover extends Marker3D
 @export var height: Height = Height.MEDIUM:
 	set(value):
 		height = value
+		match height:
+			Height.HIGH: _shoot_height.position.y = 1.6
+			Height.MEDIUM: _shoot_height.position.y = 0.8
+			Height.LOW: _shoot_height.position.y = 0.2
+			Height.NONE: _shoot_height.position.y = 1.6
 		_update_name()
 @export var side_distance: float = 0
 
@@ -252,8 +257,22 @@ func _show_point() -> void:
 func _hide_point() -> void:
 	remove_child(_point)
 
+var _shoot_height: MeshInstance3D
+func init_shoot_height() -> void:
+	_shoot_height = MeshInstance3D.new()
+	var mesh: PrismMesh = PrismMesh.new()
+	mesh.size.z = 0.1
+	_shoot_height.mesh = mesh
+	_shoot_height.rotation.x = PI/2
+
+func show_shoot_height() -> void: 
+	add_child(_shoot_height)
+
+func hide_shoot_height() -> void:
+	remove_child(_shoot_height)
+
 func _update_gizmos() -> void:
-	if is_gizmo_enabled():
+	if CoverGizmo.is_enabled:
 		_update_color()
 		_update_lines()
 		_update_motions()
@@ -307,7 +326,5 @@ func _update_motions() -> void:
 		motion_transform.origin = motion_position
 		_motions.multimesh.set_instance_color(i, color)
 		_motions.multimesh.set_instance_transform(i, motion_transform)
-
-func is_gizmo_enabled() -> bool: return CoverGizmo.is_enabled
 
 #endregion
