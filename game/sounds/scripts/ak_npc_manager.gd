@@ -24,7 +24,6 @@ func _on_dialogue_end_of_event(_data: Dictionary) -> void:
 	WwiseGlobal.player.update_line(npc_name, "")
 
 func _on_dialogue_audio_marker(data: Dictionary) -> void:
-	print(data)
 	var text : String = data.get("strLabel")
 	text = text.replace("Ã©", "é")
 	text = text.replace("Ã¨", "è")
