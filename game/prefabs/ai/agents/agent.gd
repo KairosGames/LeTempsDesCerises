@@ -69,12 +69,14 @@ const threat_duration: float = 10
 func add_threat(agent: Agent) -> void:
 	if not threats.has(agent):
 		threats.append(agent)
-		agent.died.connect(remove_threat.bind(agent), CONNECT_ONE_SHOT)
-		get_tree().create_timer(threat_duration).timeout.connect(remove_threat.bind(agent), CONNECT_ONE_SHOT)
+		if not agent.died.is_connected(remove_threat):
+			agent.died.connect(remove_threat.bind(agent), CONNECT_ONE_SHOT)
+		get_tree().create_timer(threat_duration).timeout.connect(remove_threat_timeout.bind(agent), CONNECT_ONE_SHOT)
 
-func remove_threat(agent) -> void: # Not typed lambda because of timeout callback failing to cast null to Agent
-	if not agent: return
-	threats.erase(agent)
+func remove_threat(agent: Agent) -> void: threats.erase(agent)
+
+@warning_ignore("untyped_declaration") # timeout callback failing to cast null to Agent
+func remove_threat_timeout(agent) -> void: if agent: threats.erase(agent)
 
 func on_start_moving() -> void:
 	move_started.emit()
