@@ -119,8 +119,12 @@ func set_local_bool() -> void:
 func wait_voice() -> void:
 	voice_line_index += 1
 	voice_line_called.emit(voice_line_index)
-	print("WAIT VOICE LINE")
 	await voice_line_finished
+
+
+func call_voice() -> void:
+	voice_line_index += 1
+	voice_line_called.emit(voice_line_index)
 
 
 func take_player_move_control(is_taken: bool) -> void:
