@@ -8,6 +8,8 @@ class_name BattleDirector extends Node
 @export var death_timers: Array[float]
 @export var death_square_dists: Array[float]
 
+var game_manager: GameManager
+
 var covers_activation_index: int = -1
 var death_management_index: int = -1
 var death_timer: float = 0.0
@@ -23,11 +25,19 @@ static var instance: BattleDirector:
 
 func _ready() -> void:
 	instance = self
+	ready_deffered.call_deferred()
+
+func ready_deffered() -> void:
+	if GameManager.instance: game_manager = GameManager.instance
 
 
 func _process(delta: float) -> void:
 	if death_on_cover_enable and death_management_index >= 0:
 		apply_death_on_covers(delta)
+	
+	#DEBUG
+	if Input.is_action_just_pressed("go_next_step") and not game_manager.use_narrative:
+		go_next_covers_activation()
 
 
 func go_next_covers_activation() -> void:
