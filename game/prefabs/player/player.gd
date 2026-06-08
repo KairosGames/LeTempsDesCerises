@@ -179,6 +179,8 @@ var can_die: bool = true
 @export var land_max_pitch_offset: float = 1.0
 @export var land_effect_time: float = 0.2
 
+var game_manager: GameManager
+
 enum Posture { STAND, CROUCH, PRONE }
 var curr_posture: Posture = Posture.STAND
 var is_changing_posture: bool = false
@@ -262,7 +264,9 @@ static var instance: Player:
 
 
 func _ready() -> void:
+	if GameManager.instance: game_manager = GameManager.instance
 	instance = self
+	game_manager.player_instance_loaded.emit()
 	p_inputs.gpad_crouch_pressed.connect(crouch_pressed_from_gpad)
 	p_inputs.gpad_crouch_released.connect(crouch_released_from_gpad)
 	p_inputs.gpad_ask_prone.connect(prone_from_gpad)

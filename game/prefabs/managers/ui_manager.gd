@@ -15,6 +15,7 @@ class_name UIManager extends Control
 @export_category("Letter box")
 @export var time_to_open_letter_box: float = 0.35
 
+var game_manager: GameManager
 var player: Player
 var on_process: Array[Callable]
 var tuto_twn: Tween
@@ -38,12 +39,18 @@ func _ready() -> void:
 	pause_container.visible = false
 	tutorial_km.visible = false
 	tutorial_gpad.visible = false
+	set_objective(false)
 	ready_deferred.call_deferred()
 
 
 func ready_deferred() -> void:
+	game_manager = GameManager.instance
+	if Player.instance: player = Player.instance
+	else: game_manager.player_instance_loaded.connect(set_local_player, CONNECT_ONE_SHOT)
+
+
+func set_local_player() -> void:
 	player = Player.instance
-	objective_container.visible = false
 	objective_target.controller_node = player
 	objective_target.camera_node = player.player_camera
 	objective_target.target = null

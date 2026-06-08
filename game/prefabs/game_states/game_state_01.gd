@@ -34,7 +34,6 @@ func set_player_for_debug() -> void:
 
 
 func go_to_barricade() -> void:
-	ui_manager.set_objective(true, objective_point_barricade, "Go to the barricade")
 	go_to_barricade_area.monitoring = true
 	player.can_use_run = true
 	handle_action_tooltip("run")

@@ -9,6 +9,8 @@ signal fire_kill_georges
 @onready var barricade_point: CustomMarker = %BarricadePoint
 @onready var jules: Npc = %Jules
 @onready var versaillais_coming_point: CustomMarker = $VersaillaisComingPoint
+@onready var objective_point_barricade: CustomMarker = %ObjectivePointBarricade
+
 
 var recorded_pos: Vector3
 
@@ -263,6 +265,7 @@ func free_player() -> void:
 	player.set_is_free(true)
 	recorded_pos = player.global_position
 	player.can_use_run = false
+	ui_manager.set_objective(true, objective_point_barricade, "Go to the barricade")
 	handle_action_tooltip("move")
 	await wait_until(has_player_moved_enough)
 	clean_ui_process()

@@ -36,11 +36,16 @@ func _ready() -> void:
 
 func ready_deffered() -> void:
 	game_manager = GameManager.instance
+	if Player.instance: player = Player.instance
+	else: game_manager.player_instance_loaded.connect(set_local_player, CONNECT_ONE_SHOT)
 	eff_manager = EffectsManager.instance
 	ui_manager = UIManager.instance
-	player = Player.instance
 	death_zone.monitoring = true
 	death_zone.player_entered.connect(kill_player)
+
+
+func set_local_player() -> void:
+	player = Player.instance
 
 
 func _process(delta: float) -> void:

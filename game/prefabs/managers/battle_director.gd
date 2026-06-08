@@ -27,8 +27,9 @@ func _ready() -> void:
 	instance = self
 	ready_deffered.call_deferred()
 
+
 func ready_deffered() -> void:
-	if GameManager.instance: game_manager = GameManager.instance
+	game_manager = GameManager.instance
 
 
 func _process(delta: float) -> void:

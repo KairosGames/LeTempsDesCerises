@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://prefabs/managers/game_manager.gd" id="1_utpm8"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="2_oroiu"]
 [ext_resource type="Script" uid="uid://c5krjyeui5vq" path="res://prefabs/managers/ui_manager.gd" id="3_eijdo"]
+[ext_resource type="PackedScene" uid="uid://ctinark3l27ws" path="res://prefabs/managers/effects_manager.tscn" id="3_g4ds3"]
 [ext_resource type="PackedScene" uid="uid://beech0hdhe6o0" path="res://prefabs/game_states/game_state_00.tscn" id="3_mvb55"]
 [ext_resource type="Texture2D" uid="uid://d0odgerepsyjj" path="res://prefabs/game_states/gm_usables/red_circle.webp" id="4_7sktv"]
 [ext_resource type="Script" uid="uid://nxby0mkl27i5" path="res://prefabs/ui/tooltip.gd" id="4_cvqlx"]
@@ -246,6 +247,8 @@ use_narrative = false
 player_prefab = ExtResource("2_oroiu")
 all_states = [NodePath("States/GameState00"), NodePath("States/GameState01"), NodePath("States/GameState02")]
 
+[node name="EffectsManager" parent="." unique_id=1116254742 instance=ExtResource("3_g4ds3")]
+
 [node name="UIManager" type="Control" parent="." unique_id=430990409]
 unique_name_in_owner = true
 z_index = 1
@@ -475,6 +478,7 @@ script = ExtResource("5_rmfoy")
 
 [node name="ObjectiveContainer" type="VBoxContainer" parent="UIManager" unique_id=812492473]
 unique_name_in_owner = true
+visible = false
 z_index = 2
 layout_mode = 0
 offset_top = 32.0

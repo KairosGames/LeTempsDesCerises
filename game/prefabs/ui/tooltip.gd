@@ -8,6 +8,8 @@ class_name Tooltip extends PanelContainer
 
 enum InputType { Press, Hold, Move, Use }
 
+var game_manager: GameManager
+
 var oflag_input: String = "[color=#f9ee00]"
 var oflag_action: String = "[color=#ffaf77]"
 var player: Player
@@ -16,12 +18,18 @@ var cflag: String = "[/color]"
 
 func _ready() -> void:
 	visible = false
-	ready_deffered.call_deferred()
 	oflag_input = "[color=#" + input_color.to_html() + "]"
 	oflag_action = "[color=#" + action_color.to_html() + "]"
+	ready_deffered.call_deferred()
 
 
 func ready_deffered() -> void:
+	game_manager = GameManager.instance
+	if Player.instance: player = Player.instance
+	else: game_manager.player_instance_loaded.connect(set_local_player, CONNECT_ONE_SHOT)
+
+
+func set_local_player() -> void:
 	player = Player.instance
 
 
