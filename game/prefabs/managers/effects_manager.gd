@@ -1,5 +1,6 @@
 class_name EffectsManager extends Node
 
+@warning_ignore("unused_signal")
 signal impact_from_shoot(position: Vector3, direction, is_body: bool)
 
 enum EffectType {
