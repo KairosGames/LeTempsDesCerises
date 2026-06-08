@@ -1,28 +1,33 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://cwtdwb7xf3nh0"]
 
 [ext_resource type="Shader" uid="uid://b18b2fip8omdm" path="res://materials/shaders/sg_brush_art.gdshader" id="1_70jst"]
+[ext_resource type="Texture2D" uid="uid://enb4sni2qkx0" path="res://sources/meshes/geometry/textures/roof/roof_albedo.png" id="2_7dr88"]
 [ext_resource type="Texture2D" uid="uid://b5vnh7een37s1" path="res://sources/images/textures/enviro_textures/t_oil_r_01.png" id="2_adh4g"]
 [ext_resource type="Texture2D" uid="uid://blu8bmtfo32pl" path="res://sources/images/textures/enviro_textures/t_watercolor_01.png" id="3_4kji4"]
 [ext_resource type="Texture2D" uid="uid://bg5dcy2h58uwr" path="res://sources/images/textures/enviro_textures/t_oil_m_01.png" id="4_mqnlb"]
+[ext_resource type="Texture2D" uid="uid://crwp4xnljbvob" path="res://sources/meshes/geometry/textures/roof/grey_roof_tiles_02_nor_gl_1k.png" id="5_tpece"]
+[ext_resource type="Texture2D" uid="uid://kncf68i5yq2f" path="res://sources/meshes/geometry/textures/roof/grey_roof_tiles_02_arm_1k.png" id="7_fsue6"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_70jst")
-shader_parameter/da_state = 0.14800000703
 shader_parameter/texture_brush_oil = ExtResource("2_adh4g")
 shader_parameter/texture_brush_wc = ExtResource("3_4kji4")
 shader_parameter/texture_normal_supp = ExtResource("4_mqnlb")
 shader_parameter/brush_strength = 0.8
 shader_parameter/brush_tilling = 1.0
-shader_parameter/albedo = Color(0.10151336, 0.29015917, 0.31563994, 1)
+shader_parameter/brush_hue_shift = 0.1
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("2_7dr88")
 shader_parameter/color_saturation = 1.0
 shader_parameter/color_luminosity = 1.0
 shader_parameter/color_contrast = 1.0
-shader_parameter/roughness = 0.0
-shader_parameter/metallic = 0.0
-shader_parameter/normal_scale = 0.0
+shader_parameter/texture_orm = ExtResource("7_fsue6")
+shader_parameter/roughness = 1.0
+shader_parameter/metallic = 1.0
+shader_parameter/texture_normal = ExtResource("5_tpece")
+shader_parameter/normal_scale = 1.0
 shader_parameter/ao_light_affect = 0.0
 shader_parameter/uv1_blend_sharpness = 1.0
-shader_parameter/uv1_scale = 1.0
+shader_parameter/uv1_scale = 0.4
 shader_parameter/uv1_offset = 0.0
-shader_parameter/test_value = 0.1

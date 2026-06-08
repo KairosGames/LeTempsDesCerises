@@ -408,6 +408,19 @@ _data = {
 &"RESET": SubResource("Animation_3ivn4")
 }
 
+[sub_resource type="GDScript" id="GDScript_124fr"]
+script/source = "extends Node
+
+var GGG: float = 0
+func _process(delta: float) -> void:
+	if Input .is_key_pressed(KEY_DOWN):
+		GGG = clampf(GGG + delta / 3, 0, 1)
+		RenderingServer.global_shader_parameter_set(\"da_state\", GGG)
+	if Input .is_key_pressed(KEY_UP):
+		GGG = clampf(GGG - delta / 3, 0, 1)
+		RenderingServer.global_shader_parameter_set(\"da_state\", GGG)
+"
+
 [node name="GreyBlockScene" type="Node3D" unique_id=111111966]
 
 [node name="GameManager" parent="." unique_id=1070764289 node_paths=PackedStringArray("first_barricade", "canon") instance=ExtResource("1_124fr")]
@@ -540,3 +553,6 @@ spot_angle_attenuation = 0.2414844
 
 [node name="GameDesignScene" parent="." unique_id=1256367080 instance=ExtResource("3_vgclv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010229111, -3.33786e-06, 0.014831543)
+
+[node name="Node" type="Node" parent="." unique_id=1166720845]
+script = SubResource("GDScript_124fr")

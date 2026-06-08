@@ -1,15 +1,16 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://bi033y2vn77qi"]
 
 [ext_resource type="Shader" uid="uid://b18b2fip8omdm" path="res://materials/shaders/sg_brush_art.gdshader" id="1_btjxx"]
-[ext_resource type="Texture2D" uid="uid://dw7kro1usbqva" path="res://sandbox/textures_proto/purple/texture_11.png" id="2_btjxx"]
+[ext_resource type="Texture2D" uid="uid://c5woxt4rncbik" path="res://sources/meshes/geometry/textures/concrete_f/rough_concrete_diff_1k.png" id="2_3v4va"]
 [ext_resource type="Texture2D" uid="uid://b5vnh7een37s1" path="res://sources/images/textures/enviro_textures/t_oil_r_01.png" id="2_x3453"]
 [ext_resource type="Texture2D" uid="uid://blu8bmtfo32pl" path="res://sources/images/textures/enviro_textures/t_watercolor_01.png" id="3_btjxx"]
 [ext_resource type="Texture2D" uid="uid://bg5dcy2h58uwr" path="res://sources/images/textures/enviro_textures/t_oil_m_01.png" id="4_7hu6h"]
+[ext_resource type="Texture2D" uid="uid://dbyp4k55gbvkf" path="res://sources/meshes/geometry/textures/concrete_f/rough_concrete_nor_gl_1k.png" id="5_acqnr"]
+[ext_resource type="Texture2D" uid="uid://jfmlb7mabeh" path="res://sources/meshes/geometry/textures/concrete_f/rough_concrete_arm_1k.png" id="7_pwu5c"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_btjxx")
-shader_parameter/da_state = 0.0
 shader_parameter/texture_brush_oil = ExtResource("2_x3453")
 shader_parameter/texture_brush_wc = ExtResource("3_btjxx")
 shader_parameter/texture_normal_supp = ExtResource("4_7hu6h")
@@ -17,12 +18,14 @@ shader_parameter/brush_strength = 0.905
 shader_parameter/brush_tilling = 0.21
 shader_parameter/brush_hue_shift = -0.15599995991000004
 shader_parameter/albedo = Color(0.94019854, 0.9401983, 0.9401983, 1)
-shader_parameter/texture_albedo = ExtResource("2_btjxx")
+shader_parameter/texture_albedo = ExtResource("2_3v4va")
 shader_parameter/color_saturation = 0.766000036385
 shader_parameter/color_luminosity = 1.0
 shader_parameter/color_contrast = 1.0
-shader_parameter/roughness = 0.8750000415625
+shader_parameter/texture_orm = ExtResource("7_pwu5c")
+shader_parameter/roughness = 0.0
 shader_parameter/metallic = 0.0
+shader_parameter/texture_normal = ExtResource("5_acqnr")
 shader_parameter/normal_scale = 2.900000897750001
 shader_parameter/ao_light_affect = 0.0
 shader_parameter/uv1_blend_sharpness = 1.0
