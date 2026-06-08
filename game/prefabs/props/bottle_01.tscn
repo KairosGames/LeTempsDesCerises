@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b34q33pudexe3"]
+
+[ext_resource type="PackedScene" uid="uid://2nsf6av7oun1" path="res://sources/meshes/props/sh_bottle_01.fbx" id="1_waevo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c30sc"]
+size = Vector3(0.058654785, 0.25199127, 0.055091858)
+
+[node name="Bottle_01" type="StaticBody3D" unique_id=359751925]
+
+[node name="sh_bottle_01" parent="." unique_id=1759324701 instance=ExtResource("1_waevo")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1514068458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00021057576, 0.12394649, 0.00049816817)
+shape = SubResource("BoxShape3D_c30sc")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlu1oyy1cyp1n"]
 
-[ext_resource type="ArrayMesh" uid="uid://dn42vbj0inoo5" path="res://sources/meshes/props/ladder_03.obj" id="1_gjsnd"]
+[ext_resource type="PackedScene" uid="uid://clfeeufcsuevd" path="res://sources/meshes/props/sh_ladder_03.fbx" id="1_gjsnd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_c46cv"]
 height = 1.4130859
@@ -34,9 +34,6 @@ radius = 0.026367188
 size = Vector3(0.068115234, 2.9216309, 0.080078125)
 
 [node name="Ladder_03" type="StaticBody3D" unique_id=995600436]
-
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=607037179]
-mesh = ExtResource("1_gjsnd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1736929513]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0.30224806, 0.48526052)
@@ -77,3 +74,5 @@ shape = SubResource("BoxShape3D_gjsnd")
 [node name="CollisionShape3D10" type="CollisionShape3D" parent="." unique_id=1938905512]
 transform = Transform3D(0.97446036, -0.21690415, -0.05813553, 0.22455986, 0.9412389, 0.25227463, 3.607806e-09, -0.25888652, 0.9659079, 0.35372066, 1.4248086, 0.1789135)
 shape = SubResource("BoxShape3D_gjsnd")
+
+[node name="sh_ladder_03" parent="." unique_id=275122288 instance=ExtResource("1_gjsnd")]
