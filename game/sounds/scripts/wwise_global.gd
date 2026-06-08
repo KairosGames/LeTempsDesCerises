@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if barricade != null and barricade.global_position.distance_squared_to(player.global_position) > coward_distance and is_coward == false:
-		player_far()
+		pass
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_ENTER):
