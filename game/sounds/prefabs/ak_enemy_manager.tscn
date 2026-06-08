@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://ci0nainusf8lp" path="res://sounds/scripts/ak_enemy_manager.gd" id="1_5kuf7"]
 [ext_resource type="WwiseEvent" uid="uid://d0ajhjfwwl2tk" path="res://Wwise/resources/Event/{3FDD584B-7295-4A08-9570-8775D7B756E9}.tres" id="1_wycht"]
 [ext_resource type="WwiseEvent" uid="uid://lgjm7lyaevq4" path="res://Wwise/resources/Event/{925872CA-03A4-4FC1-8E1A-768C93F1A808}.tres" id="2_myrs0"]
+[ext_resource type="WwiseEvent" uid="uid://den1sdfp4nrkj" path="res://Wwise/resources/Event/{31E2C0A9-7E7A-494B-9613-C74D03464B25}.tres" id="4_husj8"]
+[ext_resource type="WwiseEvent" uid="uid://bocq8m4ulppuk" path="res://Wwise/resources/Event/{B87BEEB3-1D5D-4524-B166-879E9838F2E4}.tres" id="5_73ivu"]
+[ext_resource type="WwiseEvent" uid="uid://cxcf3cgv3o5lf" path="res://Wwise/resources/Event/{2D328B0C-378F-473A-9D13-08FB635F21CB}.tres" id="6_268v3"]
+[ext_resource type="WwiseEvent" uid="uid://ccfnho2s6rgvt" path="res://Wwise/resources/Event/{2E2AC514-41EC-40C2-B741-99ABD8D6FB72}.tres" id="7_yc4fa"]
+[ext_resource type="WwiseEvent" uid="uid://d4nvnlflys87k" path="res://Wwise/resources/Event/{2821C044-A076-4670-80B7-F83740940A72}.tres" id="8_yc4fa"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_p0yv6"]
 radius = 0.1
@@ -44,6 +49,23 @@ text = "Placeholder"
 font_size = 64
 outline_size = 32
 
-[node name="Barks_Parent" type="Node3D" parent="." unique_id=1117262700]
+[node name="Barks_Parent" type="Node3D" parent="." unique_id=494386495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4964621, 0)
 
+[node name="Barricade_State" type="AkEvent3D" parent="Barks_Parent" unique_id=1068539322]
+event = ExtResource("4_husj8")
+
+[node name="Cannon_Advance" type="AkEvent3D" parent="Barks_Parent" unique_id=2125889353]
+event = ExtResource("5_73ivu")
+
+[node name="Cannon_Fire" type="AkEvent3D" parent="Barks_Parent" unique_id=1831905718]
+event = ExtResource("6_268v3")
+
+[node name="Cannon_Incoming" type="AkEvent3D" parent="Barks_Parent" unique_id=1460726335]
+event = ExtResource("7_yc4fa")
+
+[node name="Voice_Cancel" type="AkEvent3D" parent="Barks_Parent" unique_id=868517352]
+event = ExtResource("8_yc4fa")
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="audio_marker" from="Steps" to="." method="_on_steps_audio_marker"]

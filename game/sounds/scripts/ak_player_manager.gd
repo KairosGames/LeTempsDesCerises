@@ -126,13 +126,12 @@ func _on_reload_ui_try_succeeded() -> void:
 func _on_reload_ui_entered_reload() -> void:
 	if first_reload:
 		reload.post_event()
-		!first_reload
 
 func init_motion():
-	return
-	if Input.get_connected_joypads().is_empty() : return
-	for i in Input.get_connected_joypads():
-		Wwise.add_output("Motion", (i))
+	pass
+	#if Input.get_connected_joypads().is_empty() : return
+	#for i in Input.get_connected_joypads():
+		#Wwise.add_output("Motion", (i))
 
 func add_line(new_name):
 	var new_line := line.duplicate()

@@ -9,6 +9,7 @@ extends Node3D
 var is_barking : bool = false
 var barks : Dictionary[String, int]
 var gender : gender_type = gender_type.FEMALE
+var rand_array = [1, 2, 4, 6]
 
 enum gender_type {
 	MALE,
@@ -33,6 +34,10 @@ func _ready() -> void:
 			var random = String("Type" + str(randi_range(1, 3)))
 			for i in barks_parent.get_children():
 				Wwise.set_switch("Character_Type", random, i)
+	for i in barks_parent.get_children():
+		Wwise.set_switch("Character_Type", str("Type" + str(rand_array.pick_random())), i)
+	if WwiseGlobal.allow_barks:
+		trigg_bark()
 
 func post_event(event : String, delay : int):
 	if is_barking : return
@@ -62,3 +67,9 @@ func set_text(data: Dictionary):
 func reset_text(_data):
 	label.text = ""
 	is_barking = false
+
+func trigg_bark():
+	if !is_barking:
+		post_event("Barricade_State", randf_range(1, 1))
+	await get_tree().create_timer(1).timeout
+	trigg_bark()
