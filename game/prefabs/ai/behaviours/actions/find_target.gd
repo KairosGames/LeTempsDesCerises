@@ -47,13 +47,13 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			raycast.global_position = agent.global_position + Vector3(0, 1.45, 0)
 			raycast.look_at(shoot_target.global_position)
 			raycast.force_raycast_update()
-			if ShootDebug:
-				ShootDebug.add_debug(
-					raycast.global_position,
-					raycast.global_rotation,
-					Color.ORANGE if agent.team == Agent.Team.COMMUNARD else Color.CYAN, 
-					false
-				)
+			var shoot_debug = get_node_or_null("/root/ShootDebug")
+			if shoot_debug: shoot_debug.add_debug(
+				raycast.global_position,
+				raycast.global_rotation,
+				Color.ORANGE if agent.team == Agent.Team.COMMUNARD else Color.CYAN, 
+				false
+			)
 			if raycast.is_colliding():
 				var collider: Object = raycast.get_collider()
 				if collider is Agent or collider is Player:

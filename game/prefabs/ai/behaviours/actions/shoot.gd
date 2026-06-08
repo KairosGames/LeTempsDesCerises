@@ -26,13 +26,13 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	agent.is_weapon_loaded = false
 	agent.shoot_anim()
 	agent.shoot.emit()
-	if ShootDebug: 
-		ShootDebug.add_debug(
-			raycast.global_position,
-			raycast.global_rotation,
-			Color.RED if agent.team == Agent.Team.COMMUNARD else Color.BLUE, 
-			false
-		)
+	var shoot_debug = get_node_or_null("/root/ShootDebug")
+	if shoot_debug: shoot_debug.add_debug(
+		raycast.global_position,
+		raycast.global_rotation,
+		Color.RED if agent.team == Agent.Team.COMMUNARD else Color.BLUE, 
+		false
+	)
 
 	if raycast.is_colliding():
 		var collider: Object = raycast.get_collider()
