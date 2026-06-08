@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://8qmhuibj12df"]
+
+[ext_resource type="PackedScene" uid="uid://c3oudeqg4mttr" path="res://sources/meshes/props/sh_bottle_02_broken_bottom.fbx" id="1_7vref"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_me6dv"]
+size = Vector3(0.06941223, 0.058481216, 0.07505226)
+
+[node name="Bottle_02_bottom" type="StaticBody3D" unique_id=1397445026]
+
+[node name="sh_bottle_02_broken_bottom" parent="." unique_id=511449686 instance=ExtResource("1_7vref")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1381668467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00078278035, 0.02719146, 0.00335633)
+shape = SubResource("BoxShape3D_me6dv")

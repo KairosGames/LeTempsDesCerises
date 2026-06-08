@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://biifyrwiahnhf"]
 
-[ext_resource type="ArrayMesh" uid="uid://bo1t53tuug80h" path="res://sources/meshes/props/chair.obj" id="1_x2qe2"]
+[ext_resource type="PackedScene" uid="uid://dlsqlljdw3diw" path="res://sources/meshes/props/sh_chair.fbx" id="1_po2ag"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x2qe2"]
 size = Vector3(0.055725098, 0.5532532, 0.06378174)
@@ -8,10 +8,10 @@ size = Vector3(0.055725098, 0.5532532, 0.06378174)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsgt8"]
 size = Vector3(0.5341797, 0.62000275, 0.087501526)
 
-[node name="Chair" type="StaticBody3D" unique_id=1625831488]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ndpei"]
+size = Vector3(0.5341797, 0.043888092, 0.54716873)
 
-[node name="Chair" type="MeshInstance3D" parent="." unique_id=991543429]
-mesh = ExtResource("1_x2qe2")
+[node name="Chair" type="StaticBody3D" unique_id=1625831488]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1269997229]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24160767, 0.27864075, 0.18356323)
@@ -20,6 +20,10 @@ shape = SubResource("BoxShape3D_x2qe2")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=1523422694]
 transform = Transform3D(1, 0, 0, 0, 0.9935837, 0.113099165, 0, -0.113099165, 0.9935837, 0.0016140938, 0.8853736, -0.25500876)
 shape = SubResource("BoxShape3D_gsgt8")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="." unique_id=66146302]
+transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.0016140938, 0.560192, -0.02517517)
+shape = SubResource("BoxShape3D_ndpei")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1077498922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23927093, 0.27864075, 0.18356323)
@@ -32,3 +36,5 @@ shape = SubResource("BoxShape3D_x2qe2")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=1787660638]
 transform = Transform3D(1, 0, 0, 0, 0.9499611, -0.31236807, 0, 0.31236807, 0.9499611, 0.20431507, 0.27864075, -0.30516648)
 shape = SubResource("BoxShape3D_x2qe2")
+
+[node name="sh_chair" parent="." unique_id=1033124275 instance=ExtResource("1_po2ag")]

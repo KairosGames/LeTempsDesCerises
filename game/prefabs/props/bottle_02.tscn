@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cxct7a72umot2"]
+
+[ext_resource type="PackedScene" uid="uid://cpbufas2ywmte" path="res://sources/meshes/props/sh_bottle_02.fbx" id="1_8p3nb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kf745"]
+size = Vector3(0.06941223, 0.25199127, 0.07505226)
+
+[node name="Bottle_02" type="StaticBody3D" unique_id=806147565]
+
+[node name="sh_bottle_02" parent="." unique_id=1623351743 instance=ExtResource("1_8p3nb")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1265654707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00078278035, 0.12394649, 0.00335633)
+shape = SubResource("BoxShape3D_kf745")

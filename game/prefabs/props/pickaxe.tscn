@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://pgs7uwdj1pe1"]
+
+[ext_resource type="PackedScene" uid="uid://clx1jjlg7hkry" path="res://sources/meshes/props/sh_pickaxe.fbx" id="1_npugx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cawo6"]
+size = Vector3(0.2541504, 0.02607727, 0.033981323)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b1buw"]
+size = Vector3(0.45532227, 0.02607727, 0.033981323)
+
+[node name="Pickaxe" type="StaticBody3D" unique_id=1194153775]
+
+[node name="sh_pickaxe" parent="." unique_id=445096628 instance=ExtResource("1_npugx")]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=2057278148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.199)
+shape = SubResource("BoxShape3D_cawo6")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1924066941]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8.833329e-09, 0, 0.0030829906)
+shape = SubResource("BoxShape3D_b1buw")

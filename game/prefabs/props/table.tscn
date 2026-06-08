@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cq0pdq64nmyf4"]
 
-[ext_resource type="ArrayMesh" uid="uid://deqr8mxb4ocrf" path="res://sources/meshes/props/table.obj" id="1_1sg52"]
+[ext_resource type="PackedScene" uid="uid://3a8oo8i4iuh7" path="res://sources/meshes/props/sh_table.fbx" id="1_o2gi5"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7evt0"]
 height = 0.9108887
@@ -8,9 +8,8 @@ radius = 0.35
 
 [node name="Table" type="StaticBody3D" unique_id=1943177909]
 
-[node name="Mesh" type="MeshInstance3D" parent="." unique_id=1956669218]
-mesh = ExtResource("1_1sg52")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1723033216]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4565295, 0)
 shape = SubResource("CylinderShape3D_7evt0")
+
+[node name="sh_table" parent="." unique_id=1979360610 instance=ExtResource("1_o2gi5")]
