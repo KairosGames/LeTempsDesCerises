@@ -47,8 +47,8 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			raycast.global_position = agent.global_position + Vector3(0, 1.45, 0)
 			raycast.look_at(shoot_target.global_position)
 			raycast.force_raycast_update()
-			if ShootDebug.instance:
-				ShootDebug.instance.add_debug(
+			if ShootDebug:
+				ShootDebug.add_debug(
 					raycast.global_position,
 					raycast.global_rotation,
 					Color.ORANGE if agent.team == Agent.Team.COMMUNARD else Color.CYAN, 

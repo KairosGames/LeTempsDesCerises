@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://dlpem5ct2ufhg" path="res://prefabs/ai/spawn_manager.gd" id="4_g85lx"]
 [ext_resource type="Script" uid="uid://dcg7ewl2ahw4g" path="res://prefabs/managers/effects_manager.gd" id="5_fv3ql"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="7_ybq6a"]
-[ext_resource type="Script" uid="uid://cbks56no2f7ji" path="res://sandbox/ai/shoot_debug.gd" id="8_lif2n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_76nee"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -46,6 +45,10 @@ geometry_source_group_name = &"zone_b"
 cell_height = 0.01
 
 [node name="Sandbox" type="Node3D" unique_id=1549290385]
+
+[node name="EffectsManager" type="Node" parent="." unique_id=1522494224]
+script = ExtResource("5_fv3ql")
+metadata/_custom_type_script = "uid://dcg7ewl2ahw4g"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1644679522]
 environment = SubResource("Environment_voip0")
@@ -191,11 +194,93 @@ team = 1
 
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("7_ybq6a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -45)
-
-[node name="ShootDebug" type="MultiMeshInstance3D" parent="." unique_id=468233390]
-script = ExtResource("8_lif2n")
-metadata/_custom_type_script = "uid://cbks56no2f7ji"
-
-[node name="EffectsManager" type="Node" parent="." unique_id=1522494224]
-script = ExtResource("5_fv3ql")
-metadata/_custom_type_script = "uid://dcg7ewl2ahw4g"
+collision_mask = 3
+immortal_timer = null
+is_aim_toggle_km = null
+is_run_toggle_km = null
+is_aim_toggle_gpad = null
+is_run_toggle_gpad = null
+is_posture_switch_toggle_km = null
+is_aim_smooth = null
+is_movement_smooth = null
+is_right_handed = null
+has_weapon = null
+time_to_pop_weapon = null
+acc_time = null
+brake_time = null
+aim_smooth_strength = null
+v_clamp_deg = null
+v_clamp_prone = null
+ads_speed_view_reduc = null
+prone_speed_view_reduc = null
+default_fov = null
+ads_fov = null
+perfect_fov = null
+run_fov = null
+weapon_fov_diff = null
+is_run_fov_active = null
+time_to_ads = null
+is_ads_rot_active = null
+ads_z_rot = null
+sway_pitch_len = null
+sway_yaw_len = null
+crouch_sway_reduc = null
+prone_sway_reduc = null
+sway_x_freq = null
+sway_y_freq = null
+sway_noise_len = null
+sway_noise_freq = null
+max_wpn_xz_pos_lag = null
+max_wpn_y_pos_lag = null
+wpn_pos_lag_away_speed = null
+wpn_pos_lag_close_speed = null
+ads_wpn_pos_lag_reducer = null
+max_wpn_pitch_lag_deg = null
+max_wpn_yaw_lag_deg = null
+wpn_rot_lag_away_speed = null
+wpn_rot_lag_close_speed = null
+max_wpn_roll_lag_from_move_deg = null
+max_wpn_roll_lag_from_view_deg = null
+pull_back_timer = null
+pull_back_default_dist = null
+pull_back_aim_dist = null
+pull_back_reload_dist = null
+walk_bob_pos = null
+crouch_bob_pos = null
+prone_bob_pos = null
+run_bob_pos = null
+walk_bob_rot_deg = null
+crouch_bob_rot_deg = null
+prone_bob_rot_deg = null
+run_bob_rot_deg = null
+walk_bob_freq = null
+run_bob_freq = null
+crouch_bob_freq_factor = null
+prone_bob_freq_factor = null
+ads_bob_freq_factor = null
+ads_bob_amp_factor = null
+pull_bob_freq_factor = null
+bob_default_smooth_speed = null
+bob_run_smooth_speed = null
+recoil_strength = null
+recoil_time = null
+time_to_return_from_recoil = null
+time_enter_reload = null
+state_switch_time = null
+stand_height = null
+crouch_height = null
+prone_height = null
+gpad_mini_run_length = null
+stand_speed = null
+crouch_speed = null
+prone_speed = null
+air_up_speed = null
+run_speed_ratio = null
+side_speed_ratio = null
+back_speed_ratio = null
+aiming_speed_ratio = null
+jump_strength = null
+gravity_multiplier = null
+land_max_y_offset = null
+land_max_pitch_offset = null
+land_effect_time = null

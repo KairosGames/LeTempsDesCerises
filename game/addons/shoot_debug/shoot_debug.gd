@@ -1,6 +1,4 @@
-class_name ShootDebug extends MultiMeshInstance3D
-
-static var instance: ShootDebug
+extends MultiMeshInstance3D
 
 const POOL_SIZE: int = 100
 const DEBUG_LINE: BoxMesh = preload("uid://dlk3762ys1jgb")
@@ -8,7 +6,6 @@ const DEBUG_LINE: BoxMesh = preload("uid://dlk3762ys1jgb")
 var _open: Array[int] = []
 
 func _ready() -> void:
-	instance = self
 	multimesh = MultiMesh.new()
 	multimesh.use_colors = true
 	multimesh.mesh = DEBUG_LINE
@@ -18,6 +15,7 @@ func _ready() -> void:
 		_open.append(i)
 
 func add_debug(origin: Vector3, direction: Vector3, color: Color, is_player: bool, duration: float = 3.0, distance: float = 100.0) -> void:
+	if not ProjectSettings.get_setting("addons/shoot_debug/enabled", false): return
 	if not _open.size(): printerr("pool is not big enough"); return
 	var index: int = _open.pop_front()
 	var line_basis: Basis = Basis.from_euler(direction)
