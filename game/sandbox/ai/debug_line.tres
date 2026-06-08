@@ -1,23 +1,10 @@
 [gd_resource type="BoxMesh" format=3 uid="uid://dlk3762ys1jgb"]
 
-[sub_resource type="Shader" id="Shader_155yk"]
-code = "shader_type spatial;
-render_mode blend_mix, unshaded;
-
-void vertex() {
-	COLOR.a = (TIME - INSTANCE_CUSTOM.r) / INSTANCE_CUSTOM.g;
-}
-
-void fragment() {
-	ALBEDO = COLOR.rgb;
-	ALPHA = max(0.0, 1.0 - COLOR.a);
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r3qjn"]
-render_priority = 0
-shader = SubResource("Shader_155yk")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_155yk"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
 
 [resource]
-material = SubResource("ShaderMaterial_r3qjn")
+material = SubResource("StandardMaterial3D_155yk")
 size = Vector3(0.05, 0.05, 100)
