@@ -59,12 +59,17 @@ func _validate_property(property: Dictionary) -> void:
 		"side_distance" when type != Type.COVER or height != Height.HIGH: property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready() -> void:
-	if type == Type.SPAWNER:
-		visible_on_screen_notifier = VisibleOnScreenNotifier3D.new()
-		add_child(visible_on_screen_notifier)
+	if Engine.is_editor_hint():
+		_init_all()
+		CoverGizmo.show.connect(_show_all)
+		CoverGizmo.hide.connect(_hide_all)
+		if CoverGizmo.is_enabled: _show_all()
+	else:
+		if type == Type.SPAWNER:
+			visible_on_screen_notifier = VisibleOnScreenNotifier3D.new()
+			add_child(visible_on_screen_notifier)
+		_init_area()
 
-	_init_area()
-	_gizmo_ready()
 
 func _init_area() -> void:
 	_area = Area3D.new()
@@ -136,13 +141,6 @@ enum Height { NONE, LOW, MEDIUM, HIGH }
 enum Action { SHOOT, PEEK, COVER, RELOAD }
 
 #region Gizmo
-
-func _gizmo_ready() -> void:
-	if CoverGizmo.instance:
-		_init_all()
-		CoverGizmo.instance.cover_show.connect(_show_all)
-		CoverGizmo.instance.cover_hide.connect(_hide_all)
-		if CoverGizmo.is_enabled: _show_all()
 
 func _process(_delta: float) -> void: _update_gizmos()
 
