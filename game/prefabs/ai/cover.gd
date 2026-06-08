@@ -138,10 +138,11 @@ enum Action { SHOOT, PEEK, COVER, RELOAD }
 #region Gizmo
 
 func _gizmo_ready() -> void:
-	_init_all()
-	CoverGizmo.instance.cover_show.connect(_show_all)
-	CoverGizmo.instance.cover_hide.connect(_hide_all)
-	if CoverGizmo.is_enabled: _show_all()
+	if CoverGizmo.instance:
+		_init_all()
+		CoverGizmo.instance.cover_show.connect(_show_all)
+		CoverGizmo.instance.cover_hide.connect(_hide_all)
+		if CoverGizmo.is_enabled: _show_all()
 
 func _process(_delta: float) -> void: _update_gizmos()
 
