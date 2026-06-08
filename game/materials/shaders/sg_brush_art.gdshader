@@ -1,12 +1,11 @@
 // base shader for painted look and da adaptation
 
 shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_burley, specular_schlick_ggx;
 
 #include "sg_shader_utils.gdshaderinc"
 
-//global uniform float da_state : hint_range(0.0, 1.0);
-uniform float da_state : hint_range(0.0, 1.0);
+global uniform float da_state : hint_range(0.0, 1.0);
 
 group_uniforms brush;
 uniform sampler2D texture_brush_oil : filter_linear_mipmap, repeat_enable;
@@ -93,9 +92,9 @@ void fragment() {
 	vec3 normal_tex_supp = triplanar_texture(texture_normal_supp, uv1_power_normal, uv_brushes).rgb;
 
 	// CLASSIC UV MAPPING
-	vec4 albedo_tex = texture(texture_albedo, uv1_triplanar_pos.xy);
-	vec3 normal_tex = texture(texture_normal, uv1_triplanar_pos.xy).rgb;
-	vec4 orm_tex = texture(texture_orm, uv1_triplanar_pos.xy);
+	vec4 albedo_tex = texture(texture_albedo, UV);
+	vec3 normal_tex = texture(texture_normal, UV).rgb;
+	vec4 orm_tex = texture(texture_orm, UV);
 	
 	// USE TRIPLANAR
 	//vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
@@ -143,6 +142,6 @@ void fragment() {
 	NORMAL_MAP_DEPTH = normal_scale;
 	AO = orm_tex.a;
 	AO_LIGHT_AFFECT = ao_light_affect;
-	ROUGHNESS = r;
-	METALLIC = m;
+	ROUGHNESS = 1.0;
+	METALLIC = 0.0;
 }

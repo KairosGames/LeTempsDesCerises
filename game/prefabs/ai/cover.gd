@@ -274,6 +274,7 @@ func _update_lines() -> void:
 	for i: int in range(next_covers.size()):
 		var next_cover: Cover = next_covers[i]
 		if not is_instance_valid(next_cover):
+			push_error("Cover ", name, " has an empty link")
 			_lines.multimesh.set_instance_transform(i, Transform3D(Basis.from_scale(Vector3.ZERO), Vector3.ZERO))
 			break
 		var color: Color = colors[Type.TRANSITORY] if next_cover.type == Type.TRANSITORY else colors[type]
@@ -300,6 +301,7 @@ func _update_motions() -> void:
 	for i: int in range(next_covers.size()):
 		var next_cover: Cover = next_covers[i]
 		if not is_instance_valid(next_cover):
+			push_error("Cover ", name, " has an empty link")
 			_motions.multimesh.set_instance_transform(i, Transform3D(Basis.from_scale(Vector3.ZERO), Vector3.ZERO))
 			break
 		var color: Color = colors[Type.TRANSITORY] if next_cover.type == Type.TRANSITORY else colors[type]
