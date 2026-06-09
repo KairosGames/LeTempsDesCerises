@@ -30,6 +30,7 @@ func _ready() -> void:
 
 func ready_deffered() -> void:
 	game_manager = GameManager.instance
+	active_covers = CoverGroupTransfer.instance.cover_group_to_transfer
 
 
 func _process(delta: float) -> void:
@@ -47,7 +48,7 @@ func go_next_covers_activation() -> void:
 	if covers_activation_index >= active_covers.size():
 		printerr("INCONSISTENCY: ACTIVATION INDEX IN BATTLE DIRECTOR")
 		return
-	for cover: Cover in active_covers[covers_activation_index]:
+	for cover: Cover in active_covers[covers_activation_index].covers:
 		cover.enabled = true
 
 
