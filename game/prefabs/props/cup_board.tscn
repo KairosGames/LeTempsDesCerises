@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cub68du5lsu4i"]
+
+[ext_resource type="PackedScene" uid="uid://ugj4gseydxbs" path="res://sources/meshes/props/sh_cupboard.fbx" id="1_84gye"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tdskx"]
+size = Vector3(1.253418, 1.8534546, 0.5924072)
+
+[node name="CupBoard" type="StaticBody3D" unique_id=1310308026]
+
+[node name="sh_cupboard" parent="." unique_id=2095783447 instance=ExtResource("1_84gye")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=420410772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041503906, 0.92297554, -0.002746582)
+shape = SubResource("BoxShape3D_tdskx")
