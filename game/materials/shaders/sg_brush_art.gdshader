@@ -68,7 +68,7 @@ void vertex() {
 
 	// UV1 Triplanar: Enabled (with World Triplanar)
 	uv1_power_normal = pow(abs(normal), vec3(uv1_blend_sharpness));
-	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz * uv1_scale + uv1_offset;
+	uv1_triplanar_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz + uv1_offset; // *uv1_scale
 	uv1_power_normal /= dot(uv1_power_normal, vec3(1.0));
 	uv1_triplanar_pos *= vec3(1.0, -1.0, 1.0);
 }
@@ -85,6 +85,7 @@ void fragment() {
 	// SAMPLING **************************************
 	
 	vec3 uv_brushes = uv1_triplanar_pos * brush_tilling;
+	vec2 uv1 = UV * uv1_scale;
 	
 	vec3 brush_tex_oil = triplanar_texture(texture_brush_oil, uv1_power_normal, uv_brushes).rgb;
 	vec3 brush_tex_wc = triplanar_texture(texture_brush_wc, uv1_power_normal, uv_brushes).rgb;
@@ -92,9 +93,9 @@ void fragment() {
 	vec3 normal_tex_supp = triplanar_texture(texture_normal_supp, uv1_power_normal, uv_brushes).rgb;
 
 	// CLASSIC UV MAPPING
-	vec4 albedo_tex = texture(texture_albedo, UV);
-	vec3 normal_tex = texture(texture_normal, UV).rgb;
-	vec4 orm_tex = texture(texture_orm, UV);
+	vec4 albedo_tex = texture(texture_albedo, uv1);
+	vec3 normal_tex = texture(texture_normal, uv1).rgb;
+	vec4 orm_tex = texture(texture_orm, uv1);
 	
 	// USE TRIPLANAR
 	//vec4 albedo_tex = triplanar_texture(texture_albedo, uv1_power_normal, uv1_triplanar_pos);
@@ -119,11 +120,12 @@ void fragment() {
 	c_hsv = mix(c_hsv, b_hsv, brush_tex.r * brush_strength);
 
 	//corriger pour que la normal de base reste
-	//vec3 c_normal = mix(normal_tex, normal_tex_supp, 1.0 - da_state);
-	normal_tex_supp.xy *= 2.0;
-	vec3 c_normal = normalize(normal_tex + normal_tex_supp * (1.0 - da_state));
+	vec3 c_normal = mix(normal_tex, normal_tex_supp, 1.0 - da_state);
+	//normal_tex_supp.xy *= 2.0;
+	//vec3 c_normal = normalize(normal_tex + normal_tex_supp * (1.0 - da_state));
 	
-	r *= mix(1.0, brush_tex.r, brush_strength);
+	// not working properly : overide main roughness
+	r *= mix(1.0, brush_tex.r, 0.0); //brush_strength
 
 	// STYLISATION *************************************
 	
@@ -133,7 +135,7 @@ void fragment() {
 	c_hsv.z *= color_luminosity;
 	c_albedo = hsv2rgb(c_hsv);
 	
-	float da_r = mix(1.0, 0.5, da_state);
+	float da_r = mix(1.0, 0.8, da_state);
 	r *= da_r;
 	
 	// OUTPUT ******************************************
@@ -142,6 +144,6 @@ void fragment() {
 	NORMAL_MAP_DEPTH = normal_scale;
 	AO = orm_tex.a;
 	AO_LIGHT_AFFECT = ao_light_affect;
-	ROUGHNESS = 1.0;
-	METALLIC = 0.0;
+	ROUGHNESS = r;
+	METALLIC = m;
 }
