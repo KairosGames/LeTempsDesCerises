@@ -205,6 +205,10 @@ func go_to_canon_cover() -> void:
 func launch_first_canon_shoot() -> void:
 	game_ready_canon_shoot.emit()
 	# Camera Shake (MDR)
+	
+	#if Input.is_action_just_pressed("go_next_step"):
+		#wpn_cam_base.shake(1.0, 1.0, 1.0)
+	
 	# Kill allies arround barricade ?? (maybe make it directly on the barricade would be better)
 	# Put François behind the second barricade if we dont see him (maybe later ??)
 	# Give player control

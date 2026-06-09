@@ -17,7 +17,7 @@ signal landed
 @onready var p_inputs: PlayerInputs = %PlayerInputs
 @onready var reload_ui: ReloadUI = %ReloadUI
 @onready var camera_pivot: Node3D = %CameraPivot
-@onready var wpn_cam_base: Node3D = %WeaponCameraBase
+@onready var wpn_cam_base: Shake = %WeaponCameraBase
 @onready var player_camera: Camera3D = %PlayerCamera
 @onready var weapon_camera: Camera3D = %WeaponCamera
 @onready var weapon_container: Node3D = %WeaponContainer
@@ -44,6 +44,7 @@ signal landed
 @onready var reload_pos_left: Marker3D = %ReloadPosLeft
 @onready var death_camera: DeathCamera = %DeathCamera
 @onready var nav: NavigationAgent3D = %PlayerNav
+@onready var weapon_shake: Shake = %WeaponShake
 
 @export_category("Gameplay Settings")
 @export var immortal_timer: float = 10.0
@@ -303,7 +304,6 @@ func _process(delta: float) -> void:
 	##DEBUG
 	if Input.is_action_just_pressed("TEST"):
 		if is_alive: die()
-		pass
 
 
 func initiate(pos: Vector3,
@@ -1009,6 +1009,7 @@ func play_shoot_effects() -> void:
 	if is_aiming: ads_timer += 10.0
 	play_shoot_vfx()
 	play_recoil_effect()
+	wpn_cam_base.shake(1.0, 5.0, 0.15)
 
 
 func play_shoot_vfx() -> void:
@@ -1257,6 +1258,7 @@ func kill_all_tweens() -> void:
 
 func revive(pos: Vector3, rot: Vector3) -> void:
 	initiate(pos, rot)
+	blur_effect.hard_set_blur(0.0)
 	player_camera.current = true
 	can_die = false
 	launch_killable_timer()
