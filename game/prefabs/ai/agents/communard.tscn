@@ -4,16 +4,31 @@
 [ext_resource type="PackedScene" uid="uid://rg0ngp2orgpb" path="res://prefabs/ai/behaviours/communard.tscn" id="2_tcnhd"]
 [ext_resource type="PackedScene" uid="uid://1e7ymrdq6sai" path="res://sounds/prefabs/ak_ally_manager.tscn" id="3_de8u4"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_de8u4"]
+resource_local_to_scene = true
+radius = 0.25
+height = 1.8
+
 [node name="Communard" unique_id=1349390169 groups=["Communard"] instance=ExtResource("1_6272e")]
 team = 1
+
+[node name="CollisionShape3D" parent="." index="1" unique_id=1662563447]
+shape = SubResource("CapsuleShape3D_de8u4")
+
+[node name="Chest" parent="ShootTargets" parent_id_path=PackedInt32Array(1640117776) index="0" unique_id=1612085666]
+transform = Transform3D(-0.9698006, -0.0020025505, 0.24345767, 0.022625871, 0.9947229, 0.09829901, -0.24242888, 0.10084838, -0.96474206, -0.016684595, 1.2611362, -0.008257351)
+
+[node name="Head" parent="ShootTargets" parent_id_path=PackedInt32Array(1640117776) index="1" unique_id=2138124691]
+transform = Transform3D(-0.9989397, -0.012247004, 0.042731863, -0.014374417, 0.99846596, -0.049789637, -0.0420689, -0.050353907, -0.9976725, -0.009652823, 1.6122663, -0.020099608)
+
+[node name="Comunard" parent="BeehaveTree/BeAlive" parent_id_path=PackedInt32Array(1853354031) index="1" unique_id=546313229 instance=ExtResource("2_tcnhd")]
 
 [node name="ak_ally_manager" parent="." index="8" unique_id=1364272514 node_paths=PackedStringArray("communard") instance=ExtResource("3_de8u4")]
 communard = NodePath("..")
 
-[node name="Comunard" parent="BeehaveTree/BeAlive" parent_id_path=PackedInt32Array(1853354031) index="1" unique_id=546313229 instance=ExtResource("2_tcnhd")]
-
 [connection signal="died" from="." to="ak_ally_manager" method="_on_communard_died"]
+[connection signal="dying" from="." to="ak_ally_manager" method="_on_communard_dying"]
 [connection signal="shoot" from="." to="ak_ally_manager" method="_on_communard_shoot"]
 
 [editable path="Body"]
-[editable path="Body/Armature/Skeleton3D/BoneAttachment3D/sk_chassepot"]
+[editable path="Body/Armature/Skeleton3D/Weapon/sk_chassepot"]

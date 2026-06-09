@@ -1136,6 +1136,7 @@
 						</RandomSequenceContainer>
 						<PropertyContainer Name="Versaillais" ID="{8CB0F4D7-5746-4C56-ACC8-6EADF4362CB5}" ShortID="966555448">
 							<PropertyList>
+								<Property Name="3DSpatialization" Type="int16" Value="2"/>
 								<Property Name="Color" Type="int16" Value="14"/>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
@@ -1143,6 +1144,7 @@
 									</ValueList>
 								</Property>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
+								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
@@ -1150,6 +1152,9 @@
 								</Property>
 							</PropertyList>
 							<ReferenceList>
+								<Reference Name="Attenuation">
+									<ObjectRef Name="Versaillais" ID="{6D0DE6C2-4CE9-4C2D-B4A6-5E0DCBAD5A34}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 								</Reference>
@@ -1180,6 +1185,58 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Advance_Severin-001" ID="{D110ADD2-7957-40CF-A4E7-966E05B8F94E}" ShortID="601498338">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Severin-001" ID="{CB4A04C9-F39A-48ED-8BBB-0BF1D059A0E1}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Advance_Severin-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="123033365"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Severin-001" ID="{CB4A04C9-F39A-48ED-8BBB-0BF1D059A0E1}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Advance_Severin-002" ID="{23885D42-8085-4AD6-A289-BE8C5B45DE48}" ShortID="74893875">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Severin-002" ID="{7090FA68-B233-4B83-A90A-330966C43397}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Advance_Severin-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="925324916"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Severin-002" ID="{7090FA68-B233-4B83-A90A-330966C43397}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Armand" ID="{924BBDC0-706D-4E9F-B62D-B53549DC62B1}" ShortID="592320733">
 											<ReferenceList>
@@ -1190,6 +1247,58 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Advance_Armand-001" ID="{B5EA237E-6404-4821-9C8C-EAE857303A4E}" ShortID="661762298">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Armand-001" ID="{6FA45B17-6B19-43C1-85DB-EF7009C1FBC4}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Cannon_Advance_Armand-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="572441028"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Armand-001" ID="{6FA45B17-6B19-43C1-85DB-EF7009C1FBC4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Advance_Armand-002" ID="{EECE51B6-8A6D-4415-9662-ED4CC54D0420}" ShortID="774009394">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Armand-002" ID="{2EBFEAE5-654B-43F9-96D4-561ED12505FE}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Cannon_Advance_Armand-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="872896647"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Armand-002" ID="{2EBFEAE5-654B-43F9-96D4-561ED12505FE}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Tom" ID="{F81B988D-0220-4098-BEF7-CF2F963F9EE0}" ShortID="238386216">
 											<ReferenceList>
@@ -1200,6 +1309,58 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Advance_Tom-001" ID="{2F219F51-B7D3-43F7-828F-3F6064F27191}" ShortID="948759428">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Tom-001" ID="{D944D8FA-E533-4DAE-B4A2-A5276E5C31B9}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Cannon_Advance_Tom-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="118407607"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Tom-001" ID="{D944D8FA-E533-4DAE-B4A2-A5276E5C31B9}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Advance_Tom-002" ID="{E9EE97E3-7090-49EC-A486-21E8A8D25CA1}" ShortID="789935510">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Tom-002" ID="{24056D36-2BE5-4603-AD95-FF38536C5455}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Cannon_Advance_Tom-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="927981779"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Advance_Tom-002" ID="{24056D36-2BE5-4603-AD95-FF38536C5455}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 									</ChildrenList>
 									<GroupingInfo>
@@ -1258,6 +1419,108 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-001" ID="{F99A7297-9F85-4A48-92DA-A51D6CDD41B9}" ShortID="459105777">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-001" ID="{7A71022A-DC5B-4933-AC74-A87D7C7EB04E}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Cannon_Fired_Armand-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="131981677"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-001" ID="{7A71022A-DC5B-4933-AC74-A87D7C7EB04E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-002" ID="{39B1D31C-E78A-46DB-8F0E-27D15EA0029B}" ShortID="252138526">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-002" ID="{34E6CDD0-BDBF-42C3-9627-661F3406AB1B}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Cannon_Fired_Armand-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1063220628"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-002" ID="{34E6CDD0-BDBF-42C3-9627-661F3406AB1B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-003" ID="{FC433CD1-E21C-4CC0-B4DD-AB05DE453209}" ShortID="1031173198">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-003" ID="{8D8522C2-473C-4093-9D3E-28FEC882BBB2}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Cannon_Fired_Armand-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="401514120"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-003" ID="{8D8522C2-473C-4093-9D3E-28FEC882BBB2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-004" ID="{C65A7068-A799-43DA-9283-B8BCD62D670E}" ShortID="519495678">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-004" ID="{1C29EFEE-2CAA-4145-9E22-B62F84E05927}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Cannon_Fired_Armand-004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="368670293"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Armand-004" ID="{1C29EFEE-2CAA-4145-9E22-B62F84E05927}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Tom" ID="{B3CD4568-BEF5-433F-9C1E-1815ADEB0EEB}" ShortID="443017000">
 											<ReferenceList>
@@ -1268,6 +1531,108 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-001" ID="{5A786D33-1CCB-4AAA-AD32-E48F8056DA08}" ShortID="565097901">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-001" ID="{B627F4A5-A885-41D3-A81E-31992E86BE41}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Cannon_Fired_Tom-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="705811275"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-001" ID="{B627F4A5-A885-41D3-A81E-31992E86BE41}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-002" ID="{107D2175-6A00-42F5-B6BA-09A605463263}" ShortID="561814559">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-002" ID="{513D3F09-1747-4A81-BD1A-780A6C3E7CB6}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Cannon_Fired_Tom-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="554315864"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-002" ID="{513D3F09-1747-4A81-BD1A-780A6C3E7CB6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-003" ID="{18F34294-BFB7-4A78-B31B-7AA1EF03B6DC}" ShortID="449650563">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-003" ID="{D404701D-E1BB-4B87-A3A4-A9C454184BC3}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Cannon_Fired_Tom-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="243563591"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-003" ID="{D404701D-E1BB-4B87-A3A4-A9C454184BC3}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-004" ID="{6DFC4574-6292-4446-89A6-DCF00CC0986E}" ShortID="17549989">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-004" ID="{D9FBC293-63BD-40D1-91D4-2E0D28C2B30A}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Cannon_Fired_Tom-004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="163077732"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Tom-004" ID="{D9FBC293-63BD-40D1-91D4-2E0D28C2B30A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Séverin" ID="{5F2A4E04-138F-4268-A189-A81FD62538D5}" ShortID="568742133">
 											<ReferenceList>
@@ -1278,6 +1643,108 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-001" ID="{6124DAD8-4964-49C4-8D28-96162751CCAA}" ShortID="378793410">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-001" ID="{F18ADA6C-0A9E-423B-BA53-84B39799C55A}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Fired_Severin-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="242078184"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-001" ID="{F18ADA6C-0A9E-423B-BA53-84B39799C55A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-002" ID="{802554BE-E473-42D9-8F42-7C7A1489BF40}" ShortID="683841011">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-002" ID="{51936070-2374-4B1F-A4A8-05342CA9370E}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Fired_Severin-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="547321116"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-002" ID="{51936070-2374-4B1F-A4A8-05342CA9370E}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-003" ID="{CD043F1C-2228-468A-B862-7B4619F47AA8}" ShortID="341677725">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-003" ID="{BDB2CB5B-0DE2-4F2C-9B1D-BE5DEDD8CA5D}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Fired_Severin-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="462923119"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-003" ID="{BDB2CB5B-0DE2-4F2C-9B1D-BE5DEDD8CA5D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-004" ID="{EE4B3F8F-B68B-4D06-9246-7930D4256C41}" ShortID="277169518">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-004" ID="{C85956D9-5D5D-410F-B387-5341C8B774A2}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Fired_Severin-004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="771829144"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Fired_Severin-004" ID="{C85956D9-5D5D-410F-B387-5341C8B774A2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 									</ChildrenList>
 									<GroupingInfo>
@@ -1336,6 +1803,83 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-001" ID="{903D07F5-4664-40ED-BBE3-0AD0474DB966}" ShortID="684345827">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-001" ID="{0A4EB5A1-733F-491C-A186-4FE1DE71A039}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="854674203"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-001" ID="{0A4EB5A1-733F-491C-A186-4FE1DE71A039}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-002" ID="{5F123F41-0501-472F-8475-FEBF9C62C446}" ShortID="224235660">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-002" ID="{E186C500-5A84-45EE-8B64-15215B246D3A}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="793456538"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-002" ID="{E186C500-5A84-45EE-8B64-15215B246D3A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-003" ID="{52473F0C-2B0C-4C33-B751-A1B4DBF19372}" ShortID="270990933">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-003" ID="{6442C273-21E5-4C2B-8494-E7AD83DDE415}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="75634268"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Armand-003" ID="{6442C273-21E5-4C2B-8494-E7AD83DDE415}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Tom" ID="{46078621-70FC-431C-86CC-41D696009985}" ShortID="714149716">
 											<ReferenceList>
@@ -1346,6 +1890,83 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-001" ID="{348461A2-4974-4623-96AF-90D4261FD257}" ShortID="520724305">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-001" ID="{41E4EC4E-B7B9-4179-B111-D0F1A85CCCC2}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="441138940"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-001" ID="{41E4EC4E-B7B9-4179-B111-D0F1A85CCCC2}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-002" ID="{08D96D53-4BBA-4D4A-B401-1D941A8ACCAF}" ShortID="487638441">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-002" ID="{BD5D56EB-AAB2-4EF8-8756-00604D404E7F}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="848064909"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-002" ID="{BD5D56EB-AAB2-4EF8-8756-00604D404E7F}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-003" ID="{C0FCD977-B7C9-4965-8745-094485D2C2B4}" ShortID="921811671">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-003" ID="{00855A45-8424-4E54-9F37-8D537746373A}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="206743623"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Tom-003" ID="{00855A45-8424-4E54-9F37-8D537746373A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Séverin" ID="{B11C067F-4387-493E-9444-3BF0A5F76755}" ShortID="444706574">
 											<ReferenceList>
@@ -1356,6 +1977,83 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-001" ID="{470BA12F-1CDA-4B5C-8031-E3828867E88A}" ShortID="734809836">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-001" ID="{CE7B2AC4-174C-4BCD-BC21-78F1F3E03EC8}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="718681860"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-001" ID="{CE7B2AC4-174C-4BCD-BC21-78F1F3E03EC8}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-002" ID="{B083B1F7-0DAF-42BB-80D2-C23C344CCF38}" ShortID="933630948">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-002" ID="{15461F4A-C264-42E5-95F5-8C323F6BF5F7}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="886403759"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-002" ID="{15461F4A-C264-42E5-95F5-8C323F6BF5F7}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-003" ID="{5C5AA7AA-7CD0-4612-BD6E-210F734F64D9}" ShortID="910301569">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-003" ID="{0D6B485F-5A7E-4936-97A1-9A088A8922FC}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="225940071"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-003" ID="{0D6B485F-5A7E-4936-97A1-9A088A8922FC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 									</ChildrenList>
 									<GroupingInfo>
@@ -1433,6 +2131,108 @@
 															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 														</Reference>
 													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-001" ID="{F4CC4865-666C-40F2-A763-A60D73A402E7}" ShortID="104038935">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-001" ID="{529CCF70-82B7-403A-90D2-A554A5BDA0D6}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Barricade_Low_Armand-001.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="859835724"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-001" ID="{529CCF70-82B7-403A-90D2-A554A5BDA0D6}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-002" ID="{BC18C340-2EEF-4767-A67D-D9ED732E46EF}" ShortID="163763859">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-002" ID="{66B07F1C-32FD-4CE1-BEC8-0289AD380F33}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Barricade_Low_Armand-002.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="467125424"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-002" ID="{66B07F1C-32FD-4CE1-BEC8-0289AD380F33}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-003" ID="{B428E720-7775-417A-9A38-39B0B6F004C3}" ShortID="30754154">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-003" ID="{F78EAA8E-AD0D-440D-A71E-21D91B0AF902}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Barricade_Low_Armand-003.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="581276456"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-003" ID="{F78EAA8E-AD0D-440D-A71E-21D91B0AF902}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-004" ID="{C06537C3-EE5A-4186-BD9A-A7962C717CDD}" ShortID="866478625">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-004" ID="{FE214AD1-1684-4D0C-B009-2F34DE51B838}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Barricade_Low_Armand-004.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="524005034"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Armand-004" ID="{FE214AD1-1684-4D0C-B009-2F34DE51B838}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Tom" ID="{A633FB86-34C6-4833-BE37-7F25FDAA99D6}" ShortID="439275029">
 													<ReferenceList>
@@ -1443,6 +2243,108 @@
 															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 														</Reference>
 													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-001" ID="{4EE08A6A-C38D-476F-9678-E4D6AD9D6094}" ShortID="549967638">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-001" ID="{9CC8D4FF-EFA5-42C0-A4FF-447F63F1BBB6}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Barricade_Low_Tom-001.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="635532246"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-001" ID="{9CC8D4FF-EFA5-42C0-A4FF-447F63F1BBB6}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-002" ID="{8A4FA43B-D64E-4476-9136-C40C447BE4A0}" ShortID="309078110">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-002" ID="{C925E80F-8A60-4352-95AA-1B5779942B3B}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Barricade_Low_Tom-002.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1056965559"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-002" ID="{C925E80F-8A60-4352-95AA-1B5779942B3B}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-003" ID="{85A0E5A9-4610-4038-84A2-1DE9CE5171D8}" ShortID="9082824">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-003" ID="{5C1C1BC7-A500-4599-AEA6-D5DEFA6FEB0A}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Barricade_Low_Tom-003.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="153647140"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-003" ID="{5C1C1BC7-A500-4599-AEA6-D5DEFA6FEB0A}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-004" ID="{5025A8CD-CE5D-458E-B70C-73650A6C8F62}" ShortID="427721567">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-004" ID="{669A59E4-04B7-4C86-B0C2-A4CEBA4BEB29}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Barricade_Low_Tom-004.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="617691870"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Tom-004" ID="{669A59E4-04B7-4C86-B0C2-A4CEBA4BEB29}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Séverin" ID="{0E661547-EEF7-47BF-9973-007ED20BBFD7}" ShortID="239434085">
 													<ReferenceList>
@@ -1453,6 +2355,108 @@
 															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 														</Reference>
 													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-001" ID="{8998FAE6-384E-4202-A93D-8DD519943379}" ShortID="622774006">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-001" ID="{DE5EDBD1-2E4F-4A8F-B0A5-9138B4B294F4}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Barricade_Low_Severin-001.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="117788819"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-001" ID="{DE5EDBD1-2E4F-4A8F-B0A5-9138B4B294F4}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-002" ID="{5F0B512A-4770-467A-A06C-D75CAADAE9B1}" ShortID="57996845">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-002" ID="{2A4E137D-2A97-495B-BA49-4AD88374A9D3}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Barricade_Low_Severin-002.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="773355330"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-002" ID="{2A4E137D-2A97-495B-BA49-4AD88374A9D3}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-003" ID="{B8460595-0853-431A-BA5E-AC96F6DDE3F6}" ShortID="584238048">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-003" ID="{0DCE8A6E-0B12-470D-91CD-6E7A4C223609}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Barricade_Low_Severin-003.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1047236829"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-003" ID="{0DCE8A6E-0B12-470D-91CD-6E7A4C223609}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-004" ID="{86B4AA16-2372-4CC0-80C9-6E1C3F161FE6}" ShortID="347142043">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-004" ID="{7DFA79C7-3118-4DD2-8FD6-284FA0874AD9}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Barricade_Low_Severin-004.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="251758899"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Low_Severin-004" ID="{7DFA79C7-3118-4DD2-8FD6-284FA0874AD9}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
 												</RandomSequenceContainer>
 											</ChildrenList>
 											<GroupingInfo>
@@ -1511,6 +2515,83 @@
 															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 														</Reference>
 													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-001" ID="{697C51DA-B5C8-4037-A7D6-A2EFB67B7F90}" ShortID="838214673">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-001" ID="{F097DA2C-11D9-42F4-A318-D83F0D2E6F21}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-001.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="488516412"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-001" ID="{F097DA2C-11D9-42F4-A318-D83F0D2E6F21}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-002" ID="{4FE1496C-E034-4BFE-A1E9-E6021C73280A}" ShortID="776026125">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-002" ID="{98CD51AC-C61C-4DC5-8CF6-0D5788503EE7}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-002.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="207744876"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-002" ID="{98CD51AC-C61C-4DC5-8CF6-0D5788503EE7}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-003" ID="{5112CAEA-7C8F-4485-9771-438446F7E571}" ShortID="292656999">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-003" ID="{50F27E93-01A2-47E1-9842-566C4013FBD1}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-003.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="816256588"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Armand-003" ID="{50F27E93-01A2-47E1-9842-566C4013FBD1}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Tom" ID="{A85F7F89-CBAB-4A2F-B4DD-CAB91552A14D}" ShortID="1041350760">
 													<ReferenceList>
@@ -1521,6 +2602,83 @@
 															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 														</Reference>
 													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-001" ID="{74D2C3B2-C58B-4D62-8768-D0CF95975615}" ShortID="735695788">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-001" ID="{6DA9A2E8-7286-4FE3-966E-9B3DFB566CAD}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-001.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="847602554"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-001" ID="{6DA9A2E8-7286-4FE3-966E-9B3DFB566CAD}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-002" ID="{ABFF1BEB-46A8-4C27-8289-411EFDE96F24}" ShortID="689359594">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-002" ID="{0984486C-DCFC-4EC9-9E2B-4F5439ED4058}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-002.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="534471855"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-002" ID="{0984486C-DCFC-4EC9-9E2B-4F5439ED4058}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-003" ID="{48C91B39-5BBA-444C-BE69-70E89BD39701}" ShortID="963298063">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-003" ID="{113AAE7D-93F4-4F34-B17D-2B64759464A6}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-003.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="900751040"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Tom-003" ID="{113AAE7D-93F4-4F34-B17D-2B64759464A6}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Séverin" ID="{038CFF04-FEF4-4332-B0D6-5FE9E2C4EC65}" ShortID="1032684418">
 													<ReferenceList>
@@ -1531,6 +2689,83 @@
 															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 														</Reference>
 													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-001" ID="{C1113B48-B076-4925-91DC-D71A3A8E1EAE}" ShortID="553631538">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-001" ID="{995081AB-1241-4882-AAC9-BAE86108C8E6}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-001.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="300283779"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-001" ID="{995081AB-1241-4882-AAC9-BAE86108C8E6}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-002" ID="{7663D5FA-FF2D-49CC-8EEA-3FE620A905E0}" ShortID="640662545">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-002" ID="{3D64D7DB-6CEE-45A5-9B74-3028A1295E29}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-002.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="910777881"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-002" ID="{3D64D7DB-6CEE-45A5-9B74-3028A1295E29}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-003" ID="{74301965-B2E6-4D19-8A38-D1EC1DBC7008}" ShortID="103979254">
+															<PropertyList>
+																<Property Name="IsVoice" Type="bool" Value="True"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-003" ID="{96F96239-E6BB-499F-BF5A-1D04A7BF66FB}">
+																	<Language>French(France)</Language>
+																	<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-003.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="38414018"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-003" ID="{96F96239-E6BB-499F-BF5A-1D04A7BF66FB}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
 												</RandomSequenceContainer>
 											</ChildrenList>
 											<GroupingInfo>
@@ -1601,6 +2836,83 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-001" ID="{4D149194-E66C-42C9-B565-C50FBA93CEE1}" ShortID="739107062">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-001" ID="{9BBAD260-4B5E-4EBB-94DD-830812DC8114}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="650222420"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-001" ID="{9BBAD260-4B5E-4EBB-94DD-830812DC8114}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-002" ID="{777A8FF5-256C-4F66-A67A-9602FAB47E05}" ShortID="591598626">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-002" ID="{3E0BE463-25DF-42DE-B1F8-EAFE36744981}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="788457388"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-002" ID="{3E0BE463-25DF-42DE-B1F8-EAFE36744981}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-003" ID="{CC1CBAC8-5B05-4831-B7D7-B75067FB0345}" ShortID="915734868">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-003" ID="{088A8FF0-5E82-4C07-A97F-8B02471E01AF}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="486553128"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Severin-003" ID="{088A8FF0-5E82-4C07-A97F-8B02471E01AF}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Armand" ID="{AD87544C-0BCB-4952-9968-B7E911F366DE}" ShortID="1067099908">
 											<ReferenceList>
@@ -1611,6 +2923,83 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-001" ID="{908D318E-0518-40CC-BF2B-5BD2E6F2A773}" ShortID="760191176">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-001" ID="{901BFBF6-60CF-4BB3-B66C-ADB1EFD2DB8C}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="220557696"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-001" ID="{901BFBF6-60CF-4BB3-B66C-ADB1EFD2DB8C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-002" ID="{0D7C7221-D64F-4F1D-84CC-30C7C3FA65BC}" ShortID="698841021">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-002" ID="{F817947B-8943-4FF3-9FA8-CBBD8B2438A4}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1024979719"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-002" ID="{F817947B-8943-4FF3-9FA8-CBBD8B2438A4}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-003" ID="{2101FCCE-9F77-447A-A6F6-F9B0E90D6A6C}" ShortID="939599309">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-003" ID="{80B299BD-D395-4284-83E4-6E47D7FC22EB}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Armand\VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="688592605"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-003" ID="{80B299BD-D395-4284-83E4-6E47D7FC22EB}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Tom" ID="{B03A1A62-B7D7-434C-8682-29D32689787E}" ShortID="24605973">
 											<ReferenceList>
@@ -1621,6 +3010,83 @@
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-001" ID="{DE99F9F8-A126-4DC0-B166-6140D91795DA}" ShortID="274353098">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-001" ID="{04E1D170-586D-4912-A1E6-8B31B537CBEA}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="417143216"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-001" ID="{04E1D170-586D-4912-A1E6-8B31B537CBEA}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-002" ID="{36287464-AA5B-4B44-8FF7-C484B77400B2}" ShortID="715644117">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-002" ID="{3049EDC1-E889-4C06-9434-4CF62B2A4DB6}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="908524297"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-002" ID="{3049EDC1-E889-4C06-9434-4CF62B2A4DB6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-003" ID="{E0D436A9-9E5B-4263-8433-5C09E34634AB}" ShortID="358781870">
+													<PropertyList>
+														<Property Name="IsVoice" Type="bool" Value="True"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-003" ID="{4ECC6F2E-2653-4611-8E32-2F9B761C7F03}">
+															<Language>French(France)</Language>
+															<AudioFile>Generic_AI\Tom\VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="127379849"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-003" ID="{4ECC6F2E-2653-4611-8E32-2F9B761C7F03}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
 										</RandomSequenceContainer>
 									</ChildrenList>
 									<GroupingInfo>
@@ -2460,6 +3926,9 @@
 											</ReferenceList>
 											<ChildrenList>
 												<RandomSequenceContainer Name="Atéa" ID="{888EC258-2EA5-4D7F-B104-900992B4C2EC}" ShortID="351104626">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -2470,6 +3939,9 @@
 													</ReferenceList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Thomas" ID="{5EA0C0C6-F7FB-4FA6-AEA4-2C9B853D406E}" ShortID="492655165">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -2632,6 +4104,9 @@
 													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Loris" ID="{8B25D9BA-AD41-4688-A4A0-B971AA40D4A2}" ShortID="164652779">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -2794,6 +4269,9 @@
 													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Yuna" ID="{A2DA2185-B0DB-466D-8E4D-D49685BE6BFB}" ShortID="754527549">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -2998,6 +4476,9 @@
 													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Zoé" ID="{48758ED0-45CC-4C6D-8ABD-C3D26DED7C4F}" ShortID="95439502">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3074,6 +4555,9 @@
 											</ReferenceList>
 											<ChildrenList>
 												<RandomSequenceContainer Name="Atéa" ID="{15BBCD89-52C9-4294-B39F-190A599A5C95}" ShortID="519542715">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3084,6 +4568,9 @@
 													</ReferenceList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Thomas" ID="{EFCB6613-EADB-4BA4-9D8A-1623877865A4}" ShortID="886546502">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3221,6 +4708,9 @@
 													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Loris" ID="{638D99F7-7489-4FB5-B1BB-1C0897A70261}" ShortID="155053118">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3393,6 +4883,9 @@
 													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Yuna" ID="{D67008B0-31D8-4338-B96F-63BAE3D697F5}" ShortID="703703976">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3530,6 +5023,9 @@
 													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Zoé" ID="{693678FD-B8A3-45D6-96F7-B7E32693236F}" ShortID="1060557773">
+													<PropertyList>
+														<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3632,6 +5128,9 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="Zoé" ID="{7DE6B6A3-48A0-4404-BB20-7E297543A756}" ShortID="970813397">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3642,6 +5141,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Atéa" ID="{F3CC92AC-53E5-49E0-8CDF-3560C5CF935C}" ShortID="365227322">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3652,6 +5154,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Yuna" ID="{D2C9054A-4F1B-4B6B-A10F-24D5CD2002E1}" ShortID="675677506">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3714,6 +5219,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Loris" ID="{9617D70E-309E-4461-A613-0474A614B619}" ShortID="982386349">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3776,6 +5284,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Thomas" ID="{1FB13DFC-4436-44F1-89A4-641DCA965431}" ShortID="517959748">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3904,6 +5415,9 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="Atéa" ID="{2FF5AF82-491A-4A93-9880-05B0CEEF358D}" ShortID="365704530">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -3914,6 +5428,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Thomas" ID="{89D95025-7932-4C9A-907B-AF25485B5D28}" ShortID="730824478">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -4051,6 +5568,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Loris" ID="{E3646D72-1C31-4995-965B-996AB5FE7C3F}" ShortID="415979290">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -4188,6 +5708,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Yuna" ID="{0733FC9B-9EC3-4885-BCD7-829E874AB1B9}" ShortID="397642963">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -4325,6 +5848,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Zoé" ID="{95036E29-35C1-4383-BC4B-5AB276A71622}" ShortID="565654662">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -4401,6 +5927,9 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="Atéa" ID="{09EC3E22-F363-4B33-A776-165CACDD0F09}" ShortID="95148924">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -4411,6 +5940,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Thomas" ID="{B28F2A1E-6142-4874-A247-1EC08A98BBDC}" ShortID="479758473">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -4548,6 +6080,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Loris" ID="{1CA65953-4FC3-4BC9-84E6-DFA4848339DD}" ShortID="268425258">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -4685,6 +6220,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Yuna" ID="{79496875-9FCC-4AC8-9D93-0BE3A8021C7C}" ShortID="479845482">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -4822,6 +6360,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Zoé" ID="{D665FE58-3B31-491E-BF66-2A9DA58B306C}" ShortID="27216587">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -4901,6 +6442,9 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="Zoé" ID="{4066F627-07D6-4DB6-BAA4-0C667B522CB7}" ShortID="930743894">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -4911,6 +6455,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Atéa" ID="{9D0C0024-31DC-47A1-AE3B-68A8FBFFD55F}" ShortID="929734001">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -4921,6 +6468,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Yuna" ID="{CC62617B-D9D9-4A4D-B00C-AF8CCFAD17C7}" ShortID="633725462">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5058,6 +6608,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Loris" ID="{021609B1-B299-4E6F-8B24-58EBE2278DA1}" ShortID="330050793">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5195,6 +6748,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Thomas" ID="{2AEF1F39-5C2C-4A84-91A6-9A1EC5DB5141}" ShortID="365960354">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5401,6 +6957,9 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="Zoé" ID="{5B926A0D-11A7-4839-AED1-77B89DA0A12D}" ShortID="814281974">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5411,6 +6970,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Atéa" ID="{42AE6540-4507-4A19-9AFB-BF49DB646340}" ShortID="121704578">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5421,6 +6983,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Yuna" ID="{A4B4FFAC-2BC7-4A81-A49F-BB61346E8E78}" ShortID="825921411">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5533,6 +7098,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Loris" ID="{23406E4C-9703-4021-8AC2-ED724A4E3325}" ShortID="663531224">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5645,6 +7213,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Thomas" ID="{4B32A2CD-9583-4134-A6B3-A0B16B007B1B}" ShortID="645651048">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5831,6 +7402,9 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="Zoé" ID="{CA8A0612-1180-4C43-8933-AD49E0666649}" ShortID="385899795">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5841,6 +7415,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Atéa" ID="{6BED8329-0B1E-487D-9800-6CD3588F3A31}" ShortID="1037317251">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5851,6 +7428,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Yuna" ID="{96919399-CD83-443C-A4A8-72718B5EC25D}" ShortID="259669927">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5913,6 +7493,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Loris" ID="{40177884-2E20-4672-A6B6-60D3B64E44C1}" ShortID="119469232">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -5975,6 +7558,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Thomas" ID="{A4554CA2-423B-4588-B3DD-18B15A2E2D33}" ShortID="547896165">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -6103,6 +7689,9 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="Zoé" ID="{79A8C145-E3F5-453D-9C85-2654419990EB}" ShortID="687583139">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -6113,6 +7702,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Atéa" ID="{038C8AEF-12B8-42BC-AE62-752A2B3D57CE}" ShortID="207225448">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -6123,6 +7715,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Yuna" ID="{6B703A8A-3A4A-4696-8493-9B4899E7C5F3}" ShortID="122384049">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -6210,6 +7805,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Loris" ID="{FF230AAC-3C78-4CE4-86C6-5150297593F2}" ShortID="461210048">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -6297,6 +7895,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Thomas" ID="{DEF6906F-E593-41DF-9FD2-E44B6B0B2B05}" ShortID="223138718">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -6450,6 +8051,9 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="Atéa" ID="{66D92E35-5399-4CEB-AEA9-96E762DE1BC1}" ShortID="439809576">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -6460,6 +8064,9 @@
 											</ReferenceList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Thomas" ID="{3186F010-EC97-4DC6-A55E-1D750D1B658C}" ShortID="11126167">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -6572,6 +8179,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Loris" ID="{248BD7E9-6BE8-4E76-8DB9-BE3420A79450}" ShortID="236466415">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -6659,6 +8269,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Yuna" ID="{9378592B-FF3D-4906-8201-2D34D6BD91ED}" ShortID="195030159">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -6746,6 +8359,9 @@
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="Zoé" ID="{EA65087A-BF95-4680-A44B-FC1A78E93D91}" ShortID="142793190">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>

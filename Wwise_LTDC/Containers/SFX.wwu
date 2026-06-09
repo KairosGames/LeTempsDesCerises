@@ -28,13 +28,9 @@
 								<Property Name="OverrideGameAuxSends" Type="bool" Value="True"/>
 								<Property Name="OverrideOutput" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
+								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
-								<Property Name="UserAuxSendVolume0" Type="Real64">
-									<ValueList>
-										<Value>-18</Value>
-									</ValueList>
-								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -43,12 +39,14 @@
 								<Reference Name="OutputBus">
 									<ObjectRef Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 								</Reference>
+								<Reference Name="UserAuxSend0">
+									<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+								</Reference>
 							</ReferenceList>
 							<ChildrenList>
 								<PropertyContainer Name="Chassepot" ID="{2C7E86A7-AE31-4B62-932A-3CE2293EFE73}" ShortID="711613522">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="2"/>
-										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
 										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 									</PropertyList>
@@ -70,6 +68,11 @@
 										<RandomSequenceContainer Name="Reload" ID="{4A012FB1-B8C0-4113-8824-13C41B4C8EE6}" ShortID="443224131">
 											<PropertyList>
 												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
 												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 											</PropertyList>
 											<ReferenceList>
@@ -81,58 +84,14 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot" ID="{ECF9F235-C530-42A5-AB62-2613F1A073F2}" ShortID="84779272">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot" ID="{326536F3-A9E0-43EE-A637-40AA02DEEB86}">
-															<PropertyList>
-																<Property Name="VolumeOffset" Type="Real64">
-																	<ValueList>
-																		<Value>-9</Value>
-																	</ValueList>
-																</Property>
-															</PropertyList>
-															<Language>SFX</Language>
-															<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="534887455"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot" ID="{326536F3-A9E0-43EE-A637-40AA02DEEB86}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot" ID="{94DA22B7-B653-49C4-812A-06C920EBD5FC}" ShortID="663760081">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot" ID="{8B672E86-1301-4D28-A1F6-A0AE125424C9}">
-															<Language>SFX</Language>
-															<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_4_LayerGun_Oneshot.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="352520177"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot" ID="{8B672E86-1301-4D28-A1F6-A0AE125424C9}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
 												<RandomSequenceContainer Name="Reload_1" ID="{D39F167A-1037-473A-BC27-8C463F5BDC11}" ShortID="816093986">
+													<PropertyList>
+														<Property Name="MakeUpGain" Type="Real64">
+															<ValueList>
+																<Value>6</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -160,16 +119,16 @@
 																</Reference>
 															</ReferenceList>
 															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_01" ID="{6F5E2D0B-AE23-4A13-B9FB-DFF33777573D}">
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_01" ID="{E3E62DAF-37A1-48AF-BECE-8552A3A800CB}">
 																	<Language>SFX</Language>
-																	<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_01.wav</AudioFile>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_01.wav</AudioFile>
 																	<MediaIDList>
-																		<MediaID ID="729252264"/>
+																		<MediaID ID="509153447"/>
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_01" ID="{6F5E2D0B-AE23-4A13-B9FB-DFF33777573D}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_01" ID="{E3E62DAF-37A1-48AF-BECE-8552A3A800CB}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 														<Sound Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_02" ID="{C0D936F1-DBE0-4E7A-9D5F-5A36F86D6FA6}" ShortID="472182656">
@@ -190,16 +149,16 @@
 																</Reference>
 															</ReferenceList>
 															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_02" ID="{396C3805-3859-48C7-8360-44CEE0A0D9C9}">
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_02" ID="{14D2AA29-20A7-4001-A6EA-185AAB1C9FB7}">
 																	<Language>SFX</Language>
-																	<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_02.wav</AudioFile>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_02.wav</AudioFile>
 																	<MediaIDList>
-																		<MediaID ID="52646283"/>
+																		<MediaID ID="819014235"/>
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_02" ID="{396C3805-3859-48C7-8360-44CEE0A0D9C9}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_02" ID="{14D2AA29-20A7-4001-A6EA-185AAB1C9FB7}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 														<Sound Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03" ID="{9312E453-F93D-475C-9607-FD8053E6E9C1}" ShortID="741534855">
@@ -220,16 +179,16 @@
 																</Reference>
 															</ReferenceList>
 															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03" ID="{3457986D-8F26-455C-ADC7-6174F48AD6F5}">
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03" ID="{F67914C2-B1A5-42AA-9048-6DA1A4952F0F}">
 																	<Language>SFX</Language>
-																	<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03.wav</AudioFile>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03.wav</AudioFile>
 																	<MediaIDList>
-																		<MediaID ID="110834382"/>
+																		<MediaID ID="1017154576"/>
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03" ID="{3457986D-8F26-455C-ADC7-6174F48AD6F5}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03" ID="{F67914C2-B1A5-42AA-9048-6DA1A4952F0F}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 														<Sound Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_04" ID="{9168FA83-2AEF-43DF-8A39-A70297021A48}" ShortID="288564203">
@@ -250,25 +209,25 @@
 																</Reference>
 															</ReferenceList>
 															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_04" ID="{FCB3F77B-A677-4EFF-8DF8-73CC5A3FD9C0}">
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_04" ID="{5D8E2120-A0D1-4D47-B638-545C3FD2E526}">
 																	<Language>SFX</Language>
-																	<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_04.wav</AudioFile>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_04.wav</AudioFile>
 																	<MediaIDList>
-																		<MediaID ID="1013298916"/>
+																		<MediaID ID="33044302"/>
 																	</MediaIDList>
 																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_04" ID="{FCB3F77B-A677-4EFF-8DF8-73CC5A3FD9C0}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_04" ID="{5D8E2120-A0D1-4D47-B638-545C3FD2E526}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Reload_2" ID="{F99E5B8F-8DA0-4455-BD24-9DBECC26F331}" ShortID="850597265">
 													<PropertyList>
-														<Property Name="MakeUpGain" Type="Real64">
+														<Property Name="InitialDelay" Type="Real64">
 															<ValueList>
-																<Value>3</Value>
+																<Value>0.25</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -306,9 +265,23 @@
 																		<MediaID ID="977142577"/>
 																	</MediaIDList>
 																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01" ID="{68630224-A709-4BB3-A2C1-14666AE95E91}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="977142577"/>
+																	</MediaIDList>
+																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_02" ID="{073B81E3-F4FF-4C48-B636-11559C6EAF1C}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1015424545"/>
+																	</MediaIDList>
+																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01" ID="{92F469A5-AE69-48F2-BB50-03F4E96B933B}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_02" ID="{073B81E3-F4FF-4C48-B636-11559C6EAF1C}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 														<Sound Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_02" ID="{63E35D97-8C53-4709-B7A0-CB6162D092CE}" ShortID="795085157">
@@ -336,9 +309,23 @@
 																		<MediaID ID="799068689"/>
 																	</MediaIDList>
 																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_02" ID="{59AFB77C-CC42-4638-B342-062CD98C1DEA}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="799068689"/>
+																	</MediaIDList>
+																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01" ID="{659620B8-B316-419F-81C0-32495F2CA2CB}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="243322144"/>
+																	</MediaIDList>
+																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_02" ID="{AD73BD48-34CE-4B59-A621-05D2A320EBAD}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01" ID="{659620B8-B316-419F-81C0-32495F2CA2CB}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 														<Sound Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_03" ID="{C3D725E2-D445-4FAE-905F-FFFCD646780B}" ShortID="994206040">
@@ -366,9 +353,23 @@
 																		<MediaID ID="868852621"/>
 																	</MediaIDList>
 																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_03" ID="{DB4097B2-5D10-4F8F-BC00-C918E4DD9153}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="868852621"/>
+																	</MediaIDList>
+																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01" ID="{875EEBA0-A67D-42F5-96A6-22100834A759}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="761301051"/>
+																	</MediaIDList>
+																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_03" ID="{BE0720D4-6517-4A02-BB8A-4BE89B330DC0}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01" ID="{875EEBA0-A67D-42F5-96A6-22100834A759}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 														<Sound Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_04" ID="{1D3F3F6A-6C3E-4C05-849E-C5E42F9BB1E5}" ShortID="1055693807">
@@ -396,18 +397,32 @@
 																		<MediaID ID="354719533"/>
 																	</MediaIDList>
 																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_04" ID="{C9890DD3-0F6B-4E67-B140-35F07E00CA34}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="354719533"/>
+																	</MediaIDList>
+																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01" ID="{6AEA9591-0DCA-495E-B5CE-9E7B2C634B4E}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="533567872"/>
+																	</MediaIDList>
+																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_04" ID="{D819C3DD-96B2-4221-BFAD-EB422A288AE1}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01" ID="{6AEA9591-0DCA-495E-B5CE-9E7B2C634B4E}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Reload_5" ID="{A405360E-0D40-4A36-98B3-02E52D8AC67D}" ShortID="554874032">
 													<PropertyList>
-														<Property Name="MakeUpGain" Type="Real64">
+														<Property Name="InitialDelay" Type="Real64">
 															<ValueList>
-																<Value>3</Value>
+																<Value>0.2</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -445,9 +460,21 @@
 																		<MediaID ID="1045289957"/>
 																	</MediaIDList>
 																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_02" ID="{DAFDAA1E-B770-456B-AAB9-02FD1340F88E}">
+																	<PropertyList>
+																		<Property Name="LoopBegin" Type="Real64" Value="0.01091"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.01091"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="212584870"/>
+																	</MediaIDList>
+																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_01" ID="{AAD8C97A-2F29-4B2D-8F59-FD9B88CB418B}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_02" ID="{DAFDAA1E-B770-456B-AAB9-02FD1340F88E}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 														<Sound Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_02" ID="{6F1CE25F-1EC2-415F-BEE8-B0E52AFEC51A}" ShortID="57715011">
@@ -475,9 +502,21 @@
 																		<MediaID ID="365772723"/>
 																	</MediaIDList>
 																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_01" ID="{7A3C65B0-6CFB-4331-AB48-4AC1636EEAA8}">
+																	<PropertyList>
+																		<Property Name="LoopBegin" Type="Real64" Value="0.01212"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.01212"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="656421790"/>
+																	</MediaIDList>
+																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_02" ID="{3A56C464-F187-48D3-A67C-54BE32B3C6A1}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_01" ID="{7A3C65B0-6CFB-4331-AB48-4AC1636EEAA8}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 														<Sound Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_03" ID="{A794FF72-4C5E-4235-8B77-CA14CECB283A}" ShortID="99819940">
@@ -505,9 +544,20 @@
 																		<MediaID ID="602687413"/>
 																	</MediaIDList>
 																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_01" ID="{8BF08EF2-ACA1-4E00-9C0F-0BC569BFE700}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.023"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="502651267"/>
+																	</MediaIDList>
+																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_03" ID="{8F2C4C0A-8B85-4519-803B-190B5BB4B844}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_01" ID="{8BF08EF2-ACA1-4E00-9C0F-0BC569BFE700}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 														<Sound Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_04" ID="{A8E71A18-1C17-4E17-9CF8-FE5E6FC0D6C3}" ShortID="549849022">
@@ -535,9 +585,263 @@
 																		<MediaID ID="949849007"/>
 																	</MediaIDList>
 																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_01" ID="{4BA904B9-CFA1-432A-8241-DEA1FE1B4CC8}">
+																	<PropertyList>
+																		<Property Name="LoopBegin" Type="Real64" Value="0.01064"/>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.01064"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="444887343"/>
+																	</MediaIDList>
+																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_04" ID="{6EB23E80-EB92-44DB-B0A5-C578C14CBC38}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_01" ID="{4BA904B9-CFA1-432A-8241-DEA1FE1B4CC8}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Reload_3" ID="{62A8BABF-DD5C-4E61-8A08-7CB305B22069}" ShortID="930089971">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ValueList>
+																<Value>0.3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_01" ID="{5EFF9F54-89EC-48AC-A462-73A93019C4C0}" ShortID="893446982">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_01" ID="{2B998479-0F30-4371-9B67-4D64F10B0916}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="974935944"/>
+																	</MediaIDList>
+																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_01" ID="{A2521244-318B-413D-9743-991B37FD8674}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="974935944"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_01" ID="{A2521244-318B-413D-9743-991B37FD8674}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_02" ID="{94676E18-19F5-4B0A-89C4-21A4D5EA8BC5}" ShortID="311475750">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_02" ID="{33546AF8-262A-4F95-A9B9-ABBA37B1A87E}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="124766783"/>
+																	</MediaIDList>
+																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_02" ID="{ED0E0A92-02A1-4CF3-8B73-AEBB9976AF05}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="124766783"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_02" ID="{ED0E0A92-02A1-4CF3-8B73-AEBB9976AF05}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_03" ID="{8CB95964-0186-4EF4-BEDC-43355FCCBD80}" ShortID="694622370">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_03" ID="{E308FE94-FC25-4DEE-A633-650BC0E73CF0}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="18155998"/>
+																	</MediaIDList>
+																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_03" ID="{7CAE822E-A99D-4FAC-8C3B-A3944B9C1C9E}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="18155998"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_03" ID="{7CAE822E-A99D-4FAC-8C3B-A3944B9C1C9E}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_04" ID="{63B329CD-17CF-4946-9AD9-082904040A63}" ShortID="878033423">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_04" ID="{4B684058-7BF4-4EA8-B6F1-959FA3F68572}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1383483"/>
+																	</MediaIDList>
+																</AudioFileSource>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_04" ID="{C753E3BC-6052-4DFF-9A1C-AF681C1F14D6}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1383483"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_04" ID="{C753E3BC-6052-4DFF-9A1C-AF681C1F14D6}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Reload_4" ID="{6B85DE0C-06B0-4697-8AF5-95BCAF89FB94}" ShortID="1056163729">
+													<PropertyList>
+														<Property Name="InitialDelay" Type="Real64">
+															<ValueList>
+																<Value>0.5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_01" ID="{D4698B6D-B3DB-4A4E-80B5-90C306FB8EC9}" ShortID="922117363">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_01" ID="{100805A8-4566-47D0-984A-263A0C598DE5}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="216678679"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_01" ID="{100805A8-4566-47D0-984A-263A0C598DE5}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_02" ID="{08EE132C-B8D8-4C9E-94D2-29554F033BF2}" ShortID="489769588">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_02" ID="{584EC516-E404-4A28-A381-5C127069563F}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="861982477"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_02" ID="{584EC516-E404-4A28-A381-5C127069563F}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_03" ID="{533D0CBE-533D-4C9D-8674-16F7BEDAD1D4}" ShortID="564037253">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_03" ID="{EA56DB8D-5499-4310-8AA6-68742FC88895}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="628560875"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_03" ID="{EA56DB8D-5499-4310-8AA6-68742FC88895}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_04" ID="{7C532E6B-AF12-4141-8BEC-3EF0CD649BE9}" ShortID="496119002">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_04" ID="{E7C500B4-FCEC-4503-9154-C8513908B24D}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="505734138"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_04" ID="{E7C500B4-FCEC-4503-9154-C8513908B24D}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
@@ -561,35 +865,35 @@
 													</EffectSlot>
 												</ObjectList>
 												<ObjectList Name="Playlist">
-													<PluginInnerObject Name="" ID="{2DC38FAA-4B3E-4710-950D-B1982DA08FED}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+													<PluginInnerObject Name="" ID="{2635D389-7C55-4770-AE1F-CE6A17142F15}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
 														<ReferenceList>
 															<Reference Name="PlaylistObject">
 																<ObjectRef Name="Reload_1" ID="{D39F167A-1037-473A-BC27-8C463F5BDC11}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 															</Reference>
 														</ReferenceList>
 													</PluginInnerObject>
-													<PluginInnerObject Name="" ID="{9C53B3A9-5A21-4C17-AF31-326E1A539AE5}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+													<PluginInnerObject Name="" ID="{2EBC94B6-FC4D-42DD-9522-9293034291F3}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
 														<ReferenceList>
 															<Reference Name="PlaylistObject">
 																<ObjectRef Name="Reload_2" ID="{F99E5B8F-8DA0-4455-BD24-9DBECC26F331}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 															</Reference>
 														</ReferenceList>
 													</PluginInnerObject>
-													<PluginInnerObject Name="" ID="{894583F3-1DF4-4AA1-AC5F-120C34D3190F}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+													<PluginInnerObject Name="" ID="{25AD5DB8-54B3-4933-B571-FFFBF7DFE807}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
 														<ReferenceList>
 															<Reference Name="PlaylistObject">
-																<ObjectRef Name="LTDC_SFX_Player_Reload_3_LayerGun_Oneshot" ID="{ECF9F235-C530-42A5-AB62-2613F1A073F2}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+																<ObjectRef Name="Reload_3" ID="{62A8BABF-DD5C-4E61-8A08-7CB305B22069}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 															</Reference>
 														</ReferenceList>
 													</PluginInnerObject>
-													<PluginInnerObject Name="" ID="{9685C13C-9340-4EB0-B377-418AF7EC3512}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+													<PluginInnerObject Name="" ID="{93E8F5A5-D818-4C8A-A0B8-65A4E1AE93BC}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
 														<ReferenceList>
 															<Reference Name="PlaylistObject">
-																<ObjectRef Name="LTDC_SFX_Player_Reload_4_LayerGun_Oneshot" ID="{94DA22B7-B653-49C4-812A-06C920EBD5FC}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+																<ObjectRef Name="Reload_4" ID="{6B85DE0C-06B0-4697-8AF5-95BCAF89FB94}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 															</Reference>
 														</ReferenceList>
 													</PluginInnerObject>
-													<PluginInnerObject Name="" ID="{31E1946D-4D61-4FD8-BD56-59E92F1D9FF5}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
+													<PluginInnerObject Name="" ID="{EFEF0D6B-5591-470E-81C8-2CF234EE4DCC}" PluginName="PlaylistSlot" CompanyID="0" PluginID="86">
 														<ReferenceList>
 															<Reference Name="PlaylistObject">
 																<ObjectRef Name="Reload_5" ID="{A405360E-0D40-4A36-98B3-02E52D8AC67D}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
@@ -3124,6 +3428,7 @@
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+										<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
 										<Property Name="MakeUpGain" Type="Real64">
 											<ValueList>
 												<Value>-16</Value>

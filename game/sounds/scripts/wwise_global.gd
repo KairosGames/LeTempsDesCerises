@@ -59,12 +59,12 @@ func remove(target : Node3D):
 	elif enemies.has(target):
 		enemies.erase(target)
 
-func find_closest(type : Array) -> Node3D : 
+func find_closest(type : Array, target : Node3D) -> Node3D : 
 	var closest : Node3D = null
 	for i : Node3D in type:
 		if closest == null:
 			closest = i
-		elif i.global_position.distance_squared_to(player.global_position) < closest.global_position.distance_squared_to(player.global_position):
+		elif i.global_position.distance_squared_to(target.global_position) < closest.global_position.distance_squared_to(player.global_position):
 			closest = i
 	return closest
 
@@ -83,7 +83,7 @@ func find_random(type : Array) -> Node3D :
 	for i in random:
 		if !i.is_barking:
 			return i
-	return find_closest(type)
+	return find_closest(type, player)
 
 func cannon_checkpoint():
 	pass
@@ -94,7 +94,12 @@ func cannon_incoming():
 
 func cannon_fire():
 	if !allies.is_empty():
-		find_random(allies).post_event("Cannon_Fire", 1)
+		find_closest(allies, barricade).post_event("Cannon_Fire", 1)
+		find_random(allies).post_event("Cannon_Fire", 3)
+	if !enemies.is_empty():
+		find_closest(enemies, player).post_event("Cannon_Fire", 1)
+		find_random(enemies).post_event("Cannon_Fire", randf_range(2, 5))
+		find_random(enemies).post_event("Cannon_Fire", randf_range(2, 5))
 	match barricade.life :
 		3:
 			Wwise.set_state("barricade_state", "intact")
@@ -109,7 +114,7 @@ func player_far():
 	if is_coward: return
 	if !allies.is_empty():
 		is_coward = true
-		find_closest(allies).post_event("Player_Far", 0)
+		find_closest(allies, player).post_event("Player_Far", 0)
 		await get_tree().create_timer(3).timeout
 		is_coward = false
 
@@ -122,7 +127,7 @@ func fight():
 func enemy_killed(_target: Node3D):
 	await get_tree().create_timer(1.5).timeout
 	if !allies.is_empty():
-			var closest = find_closest(allies)
+			var closest = find_closest(allies, player)
 			closest.post_event("Player_Kill", 0.5)
 			find_farthest(allies).post_event("Player_Kill", randf_range(1, 2))
 

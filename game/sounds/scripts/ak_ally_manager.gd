@@ -34,8 +34,9 @@ func _ready() -> void:
 			var random = String("Type" + str(randi_range(1, 3)))
 			for i in barks_parent.get_children():
 				Wwise.set_switch("Character_Type", random, i)
+	var random : String = str("Type" + str(rand_array.pick_random()))
 	for i in barks_parent.get_children():
-		Wwise.set_switch("Character_Type", str("Type" + str(rand_array.pick_random())), i)
+		Wwise.set_switch("Character_Type", random, i)
 	if WwiseGlobal.allow_barks:
 		trigg_bark()
 
@@ -49,7 +50,6 @@ func _on_communard_shoot() -> void:
 	shoot.post_event()
 
 func _on_communard_died() -> void:
-	post_event("Voice_Cancel", 0)
 	WwiseGlobal.remove(self)
 	#Wwise.stop_all(self)
 
@@ -74,3 +74,8 @@ func trigg_bark():
 		post_event("Barricade_State", randf_range(1, 1))
 	await get_tree().create_timer(1).timeout
 	trigg_bark()
+
+
+func _on_communard_dying() -> void:
+	post_event("Voice_Cancel", 0)
+	WwiseGlobal.remove(self)

@@ -58,3 +58,8 @@ func trigg_bark():
 		post_event("Barricade_State", 0)
 	await get_tree().create_timer(randf_range(1, 5)).timeout
 	trigg_bark()
+
+
+func _on_versaillais_dying() -> void:
+	post_event("Voice_Cancel", 0)
+	WwiseGlobal.remove(self)
