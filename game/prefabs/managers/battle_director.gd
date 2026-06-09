@@ -30,7 +30,8 @@ func _ready() -> void:
 
 func ready_deffered() -> void:
 	game_manager = GameManager.instance
-	active_covers = CoverGroupTransfer.instance.cover_group_to_transfer
+	if CoverGroupTransfer.instance: active_covers = CoverGroupTransfer.instance.cover_group_to_transfer
+	else: printerr("NO COVER GROUP TO TRANSFER, USING COVERS LOCAL REFERENCES")
 
 
 func _process(delta: float) -> void:
