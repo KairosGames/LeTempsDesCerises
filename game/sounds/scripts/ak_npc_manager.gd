@@ -41,7 +41,7 @@ func _on_dialogue_audio_marker(data: Dictionary) -> void:
 		await get_tree().create_timer(randf_range(0.01, 0.03)).timeout
 
 func _on_tree_exited() -> void:
-	WwiseGlobal.unload_bank(npc_name)
+	WwiseGlobal.unload(npc_name)
 
 
 func _on_dialogue_duration(data: Dictionary) -> void:

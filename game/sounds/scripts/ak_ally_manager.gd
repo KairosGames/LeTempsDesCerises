@@ -69,6 +69,7 @@ func reset_text(_data):
 	is_barking = false
 
 func trigg_bark():
+	return
 	if !is_barking:
 		post_event("Barricade_State", randf_range(1, 1))
 	await get_tree().create_timer(1).timeout
