@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="2_8q7ft"]
 [ext_resource type="Script" uid="uid://dlpem5ct2ufhg" path="res://prefabs/ai/spawn_manager.gd" id="4_g85lx"]
 [ext_resource type="Script" uid="uid://dcg7ewl2ahw4g" path="res://prefabs/managers/effects_manager.gd" id="5_fv3ql"]
+[ext_resource type="PackedScene" uid="uid://chfbdpud1npmp" path="res://prefabs/cannon/cannon.tscn" id="5_jfsch"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="7_ybq6a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_76nee"]
@@ -43,6 +44,13 @@ geometry_parsed_geometry_type = 1
 geometry_source_geometry_mode = 1
 geometry_source_group_name = &"zone_b"
 cell_height = 0.01
+
+[sub_resource type="Curve3D" id="Curve3D_8fias"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 7.4308414, 0, 28.928104, 0, 0, 0, 0, 0, 0, 11.764463, 0, 24.407082, 0, 0, 0, 0, 0, 0, 14.130388, 0, 17.075058, 0, 0, 0, 0, 0, 0, 13.919565, 0, 12.85856, 0, 0, 0, 0, 0, 0, 11.623915, 0, 6.369836),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="Sandbox" type="Node3D" unique_id=1549290385]
 
@@ -173,3 +181,9 @@ team = -1
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("7_ybq6a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -45)
 collision_mask = 3
+
+[node name="Path3D" type="Path3D" parent="." unique_id=1761152943]
+curve = SubResource("Curve3D_8fias")
+
+[node name="Cannon" parent="Path3D" unique_id=1666123749 instance=ExtResource("5_jfsch")]
+transform = Transform3D(0.7219104, 0, -0.6919865, 0, 1, 0, 0.6919865, 0, 0.7219104, 7.4308414, 0, 28.928104)
