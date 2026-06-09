@@ -43,6 +43,7 @@ signal landed
 @onready var reload_pos_right: Marker3D = %ReloadPosRight
 @onready var reload_pos_left: Marker3D = %ReloadPosLeft
 @onready var death_camera: DeathCamera = %DeathCamera
+@onready var nav: NavigationAgent3D = %PlayerNav
 
 @export_category("Gameplay Settings")
 @export var immortal_timer: float = 10.0

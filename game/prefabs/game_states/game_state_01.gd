@@ -9,9 +9,11 @@ signal game_ready_canon_shoot
 @onready var first_die_area: EventArea = %FirstDieArea
 @onready var invisible_wall_barricade: StaticBody3D = %InvisibleWallBarricade
 @onready var jules: Npc = %Jules
+@onready var canon_shoot_cover1: CustomMarker = %CanonShootCover1
+@onready var canon_shoot_cover2: CustomMarker = %CanonShootCover2
 
 var kill_counter: int = 0
-var it_is_time_to_die: bool
+var it_is_time_to_die: bool = false
 
 
 func enter() -> void:
@@ -36,6 +38,7 @@ func set_player_for_debug() -> void:
 	player.give_or_drop_weapon(true)
 	player.is_weapon_loaded = true
 	ui_manager.hard_set_letter_box(false)
+	player.can_die = false
 
 
 func go_to_barricade() -> void:
@@ -79,9 +82,7 @@ func on_player_exit_barricade_zone() -> void:
 		player.is_aiming = false
 		player.switch_aim_state()
 	var target_point: Vector3 = player.global_position + return_to_barricade.basis.x
-	var dir = player.global_position - target_point
-	var target_angle = atan2(-dir.x, -dir.z)
-	var time_ratio: float = inverse_lerp(0.0, PI, abs(wrapf(target_angle - player.global_rotation.y, -PI, PI)))
+	var time_ratio: float = get_yaw_diff_ratio(target_point)
 	await tween_rotate_player_to_pos(target_point, 1.0 * time_ratio)
 	set_player_move(Vector2(0.0, 1.0))
 	await wait(0.5)
@@ -127,7 +128,6 @@ func can_player_die() -> bool:
 	
 
 func lauch_first_battle_phase() -> void:
-	#Set spwaners
 	await wait(120.0)
 
 
@@ -140,12 +140,66 @@ func launch_canon_arrival() -> void:
 
 
 func go_to_cover_from_canon() -> void:
+	await wait_until(is_player_alive)
+	player.can_die = false
 	await wait_voice()
-	ui_manager.set_objective(true, null, "Take cover from the cannon fire") #give canon here to the target
-	# Open letter boxes and take control of movement and view of the player
-	# Set player inputs with navigation node indication and wait player
-	# Wait that player get to the objective point
-	# Wait set posture dans view to the barricade
+	ui_manager.set_objective(true, null, "Take cover from the cannon fire")
+	player.can_play = false
+	var dist1: float = player.global_position.distance_squared_to(canon_shoot_cover1.global_position)
+	var dist2: float = player.global_position.distance_squared_to(canon_shoot_cover2.global_position)
+	var cover: CustomMarker = canon_shoot_cover1 if dist1 < dist2 else canon_shoot_cover2
+	take_player_move_control(true)
+	take_player_view_control(true)
+	ui_manager.launch_letter_box(true)
+	player.nav.target_position = cover.global_position
+	go_to_stand_posture()
+	var twn: Tween = create_tween()
+	twn.tween_property(player, "aim_target:x", 0.0, 0.3)
+	add_on_physics_process(go_to_canon_cover)
+	await wait_until(is_player_on_nav_destination)
+	var input_dir: Vector2 = get_input_dir_to_pos(cover.global_position)
+	set_player_move(input_dir)
+	await wait_until(is_player_on_canon_shoot_cover.bind(cover))
+	set_player_move(Vector2.ZERO)
+	var target_point: Vector3 = cover.global_position + return_to_barricade.basis.z
+	var time_ratio: float = get_yaw_diff_ratio(target_point)
+	await tween_rotate_player_to_yaw(cover.global_rotation.y, 1.0 * time_ratio)
+	player.crouch_to_stand(true)
+	await wait(player.state_switch_time)
+
+
+func is_player_on_nav_destination() -> bool:
+	return is_nav_mesh_finished
+
+
+func is_player_on_canon_shoot_cover(cover: CustomMarker) -> bool:
+	return player.global_position.distance_squared_to(cover.global_position) <= 0.1
+
+
+func go_to_stand_posture() -> void:
+	await wait(player.state_switch_time + 0.1)
+	if player.curr_posture == Player.Posture.CROUCH: player.crouch_to_stand()
+	if player.curr_posture == Player.Posture.PRONE: player.prone_to_stand()
+
+
+func go_to_canon_cover() -> void:
+	if player.nav.is_navigation_finished():
+		set_player_move(Vector2(0.0, 0.0))
+		player.is_running = false
+		clean_physics_process()
+		is_nav_mesh_finished = true
+		return
+	var next_pos: Vector3 = player.nav.get_next_path_position()
+	rotate_yaw_player_to_pos(next_pos, PI * 2, delta_ph)
+	var dir = player.global_position - next_pos
+	var target_angle = atan2(-dir.x, -dir.z)
+	print(target_angle)
+	if abs(wrapf(player.global_rotation.y - target_angle, -PI, PI)) < PI * 0.1:
+		set_player_move(Vector2(0.0, 1.0))
+		player.is_running = true
+	else:
+		set_player_move(Vector2(0.0, 0.0))
+		player.is_running = false
 
 
 func launch_first_canon_shoot() -> void:

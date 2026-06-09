@@ -21,11 +21,14 @@ var ui_manager: UIManager
 var player: Player
 var next_respawn: Npc
 var on_process: Array[Callable]
+var on_physics_process: Array[Callable]
 var on_ui_process: Array[Callable]
 var delta_t: float
+var delta_ph: float
 var voice_line_index: int = -1
 var local_bool: bool
 var was_gpad: bool
+var is_nav_mesh_finished: bool = false
 
 var rot_twn: Tween
 
@@ -58,6 +61,11 @@ func _process(delta: float) -> void:
 		voice_line_finished.emit()
 
 
+func _physics_process(delta: float) -> void:
+	delta_ph = delta
+	for callable: Callable in on_physics_process: callable.call()
+
+
 func run_steps() -> void:
 	for step in steps:
 		step.curr_state = Step.StepState.ENTER
@@ -82,8 +90,16 @@ func add_on_process(callable: Callable, is_ui: bool = false) -> void:
 	on_process.push_back(callable)
 
 
+func add_on_physics_process(callable: Callable) -> void:
+	on_physics_process.push_back(callable)
+
+
 func clean_process() -> void:
 	on_process.clear()
+
+
+func clean_physics_process() -> void:
+	on_physics_process.clear()
 
 
 func clean_ui_process() -> void:
@@ -170,6 +186,19 @@ func tween_rotate_player_to_yaw(yaw: float, time: float) -> void:
 	await rot_twn.tween_property(player, "aim_target:y", delta, time).as_relative().finished
 
 
+func get_input_dir_to_pos(pos: Vector3) -> Vector2:
+	var world_dir: Vector3 = (pos - player.global_position).normalized()
+	var local_dir: Vector3 = player.global_basis.inverse() * world_dir
+	var input_dir: Vector2 = Vector2(local_dir.x, local_dir.z).normalized()
+	return input_dir
+
+
+func get_yaw_diff_ratio(target_point: Vector3) -> float:
+	var dir = player.global_position - target_point
+	var target_angle = atan2(-dir.x, -dir.z)
+	return inverse_lerp(0.0, PI, abs(wrapf(target_angle - player.global_rotation.y, -PI, PI)))
+
+
 func block_ads_concentration(t: float) -> void:
 	if player.ads_timer >= t: player.ads_timer = t
 
@@ -195,6 +224,10 @@ func process_tooltip_display(action: String) -> void:
 func free_tool_tip() -> void:
 	ui_manager.tooltip.display(false)
 	clean_ui_process()
+
+
+func is_player_alive() -> bool:
+	return player.is_alive
 
 
 func kill_player() -> void:

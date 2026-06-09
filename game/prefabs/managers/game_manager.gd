@@ -1,6 +1,6 @@
 class_name GameManager extends Node
 
-signal player_instance_loaded
+@warning_ignore("unused_signal") signal player_instance_loaded
 
 @onready var player_spawner: CustomMarker = %PlayerSpawner
 
