@@ -58,52 +58,82 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="VersaillaisSide" type="NavigationRegion3D" parent="." unique_id=252556393 groups=["zone_a"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.001004219, 0, -0.011815071)
 navigation_mesh = SubResource("NavigationMesh_ec114")
 
 [node name="Covers" type="Node3D" parent="VersaillaisSide" unique_id=834501955]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Cover" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=241898963 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.79902405, 0.49999952, -37.33379)
+[node name="Spawn" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=4378273 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -19.274895)
 script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover2"), NodePath("../Cover3")]
-
-[node name="Cover6" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=4378273 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.33929, 0.49999952, -41.274895)
-script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover2"), NodePath("../Cover")]
+next_covers = [NodePath("../Cover")]
 type = 2
 
-[node name="Cover7" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=1390428081 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.917125, 0.49999666, -41.02418)
+[node name="Cover" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=1654595256 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -14.692566)
 script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover3"), NodePath("../Cover")]
+next_covers = [NodePath("../Transition")]
+
+[node name="Transition" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=514003054 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -10.180456)
+script = ExtResource("2_8q7ft")
+next_covers = [NodePath("../Final")]
+type = 1
+
+[node name="Final" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=353020236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -5.233426)
+script = ExtResource("2_8q7ft")
+enabled = false
+
+[node name="Covers2" type="Node3D" parent="VersaillaisSide" unique_id=884494350]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.3412313, 0, -2.920997e-07)
+
+[node name="Spawn" type="Marker3D" parent="VersaillaisSide/Covers2" unique_id=563932925 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -19.274895)
+script = ExtResource("2_8q7ft")
+next_covers = [NodePath("../Cover")]
 type = 2
 
-[node name="Cover2" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=597506888 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.018546, 0.5, -27.307497)
+[node name="Cover" type="Marker3D" parent="VersaillaisSide/Covers2" unique_id=80656230 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -14.692566)
 script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover3"), NodePath("../Cover5")]
+next_covers = [NodePath("../Transition")]
+type = 1
 
-[node name="Cover3" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=1040697076 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.924606, 0.5, -28.231752)
+[node name="Transition" type="Marker3D" parent="VersaillaisSide/Covers2" unique_id=1567401633 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -10.180456)
 script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover4"), NodePath("../Cover5")]
-height = 3
+next_covers = [NodePath("../Final")]
+type = 1
 
-[node name="Cover4" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=128495902 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.023135, 0.49999905, -17.202177)
+[node name="Final" type="Marker3D" parent="VersaillaisSide/Covers2" unique_id=787401509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -5.233426)
 script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover5"), NodePath("../Cover8")]
+enabled = false
 
-[node name="Cover5" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=276484909 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6990595, 0.5, -16.128708)
+[node name="Covers3" type="Node3D" parent="VersaillaisSide" unique_id=101410096]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.917881, 0, -6.047803e-07)
+
+[node name="Spawn" type="Marker3D" parent="VersaillaisSide/Covers3" unique_id=2070807370 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -19.274895)
 script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover4")]
-height = 1
+next_covers = [NodePath("../Cover")]
+type = 2
 
-[node name="Cover8" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=576471461]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.506202, 0.5000005, 7.5546126)
+[node name="Cover" type="Marker3D" parent="VersaillaisSide/Covers3" unique_id=1446131381 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -14.692566)
+script = ExtResource("2_8q7ft")
+next_covers = [NodePath("../Transition")]
+type = 1
+
+[node name="Transition" type="Marker3D" parent="VersaillaisSide/Covers3" unique_id=1931572348 node_paths=PackedStringArray("next_covers")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -10.180456)
+script = ExtResource("2_8q7ft")
+next_covers = [NodePath("../Final")]
+
+[node name="Final" type="Marker3D" parent="VersaillaisSide/Covers3" unique_id=266756906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.022949457, 0, -5.233426)
 script = ExtResource("2_8q7ft")
 enabled = false
 
@@ -122,51 +152,6 @@ navigation_mesh = SubResource("NavigationMesh_voip0")
 
 [node name="Covers" type="Node3D" parent="CommunardSide" unique_id=1857917587]
 
-[node name="Cover" type="Marker3D" parent="CommunardSide/Covers" unique_id=1068961987 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.79902405, 0.49999952, -37.33379)
-script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover2"), NodePath("../Cover3")]
-
-[node name="Cover6" type="Marker3D" parent="CommunardSide/Covers" unique_id=174301587 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.33929, 0.49999952, -41.274895)
-script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover2"), NodePath("../Cover")]
-type = 2
-
-[node name="Cover7" type="Marker3D" parent="CommunardSide/Covers" unique_id=1388104651 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12.917125, 0.49999666, -41.02418)
-script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover3"), NodePath("../Cover")]
-type = 2
-
-[node name="Cover2" type="Marker3D" parent="CommunardSide/Covers" unique_id=443275070 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12.018546, 0.5, -27.307497)
-script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover3"), NodePath("../Cover5")]
-height = 1
-
-[node name="Cover3" type="Marker3D" parent="CommunardSide/Covers" unique_id=1114710914 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.924606, 0.5, -28.231752)
-script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover4"), NodePath("../Cover5")]
-height = 3
-
-[node name="Cover4" type="Marker3D" parent="CommunardSide/Covers" unique_id=762855720 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.023135, 0.49999905, -17.202177)
-script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover5"), NodePath("../Cover8")]
-
-[node name="Cover5" type="Marker3D" parent="CommunardSide/Covers" unique_id=1330218876 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.6990595, 0.5, -16.128708)
-script = ExtResource("2_8q7ft")
-next_covers = [NodePath("../Cover4")]
-height = 1
-
-[node name="Cover8" type="Marker3D" parent="CommunardSide/Covers" unique_id=1526976214]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.748685, 0.5000005, 7.3293934)
-script = ExtResource("2_8q7ft")
-enabled = false
-
 [node name="Ground" type="StaticBody3D" parent="CommunardSide" unique_id=656051242]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CommunardSide/Ground" unique_id=229375197]
@@ -180,107 +165,11 @@ mesh = SubResource("BoxMesh_u5472")
 
 [node name="VersaillaisSpawner" type="Node" parent="." unique_id=1268294321 node_paths=PackedStringArray("spawners")]
 script = ExtResource("4_g85lx")
-spawners = [NodePath("../VersaillaisSide/Covers/Cover7"), NodePath("../VersaillaisSide/Covers/Cover6")]
+spawners = [NodePath("../VersaillaisSide/Covers/Spawn"), NodePath("../VersaillaisSide/Covers2/Spawn"), NodePath("../VersaillaisSide/Covers3/Spawn")]
 cooldown = 0.0
-target_entity_count = 1
+target_entity_count = 3
 team = -1
-
-[node name="CommunardSpawner" type="Node" parent="." unique_id=1853431877 node_paths=PackedStringArray("spawners")]
-script = ExtResource("4_g85lx")
-spawners = [NodePath("../CommunardSide/Covers/Cover7"), NodePath("../CommunardSide/Covers/Cover6")]
-cooldown = 0.0
-target_entity_count = 1
-team = 1
 
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("7_ybq6a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -45)
 collision_mask = 3
-immortal_timer = null
-is_aim_toggle_km = null
-is_run_toggle_km = null
-is_aim_toggle_gpad = null
-is_run_toggle_gpad = null
-is_posture_switch_toggle_km = null
-is_aim_smooth = null
-is_movement_smooth = null
-is_right_handed = null
-has_weapon = null
-time_to_pop_weapon = null
-acc_time = null
-brake_time = null
-aim_smooth_strength = null
-v_clamp_deg = null
-v_clamp_prone = null
-ads_speed_view_reduc = null
-prone_speed_view_reduc = null
-default_fov = null
-ads_fov = null
-perfect_fov = null
-run_fov = null
-weapon_fov_diff = null
-is_run_fov_active = null
-time_to_ads = null
-is_ads_rot_active = null
-ads_z_rot = null
-sway_pitch_len = null
-sway_yaw_len = null
-crouch_sway_reduc = null
-prone_sway_reduc = null
-sway_x_freq = null
-sway_y_freq = null
-sway_noise_len = null
-sway_noise_freq = null
-max_wpn_xz_pos_lag = null
-max_wpn_y_pos_lag = null
-wpn_pos_lag_away_speed = null
-wpn_pos_lag_close_speed = null
-ads_wpn_pos_lag_reducer = null
-max_wpn_pitch_lag_deg = null
-max_wpn_yaw_lag_deg = null
-wpn_rot_lag_away_speed = null
-wpn_rot_lag_close_speed = null
-max_wpn_roll_lag_from_move_deg = null
-max_wpn_roll_lag_from_view_deg = null
-pull_back_timer = null
-pull_back_default_dist = null
-pull_back_aim_dist = null
-pull_back_reload_dist = null
-walk_bob_pos = null
-crouch_bob_pos = null
-prone_bob_pos = null
-run_bob_pos = null
-walk_bob_rot_deg = null
-crouch_bob_rot_deg = null
-prone_bob_rot_deg = null
-run_bob_rot_deg = null
-walk_bob_freq = null
-run_bob_freq = null
-crouch_bob_freq_factor = null
-prone_bob_freq_factor = null
-ads_bob_freq_factor = null
-ads_bob_amp_factor = null
-pull_bob_freq_factor = null
-bob_default_smooth_speed = null
-bob_run_smooth_speed = null
-recoil_strength = null
-recoil_time = null
-time_to_return_from_recoil = null
-time_enter_reload = null
-state_switch_time = null
-stand_height = null
-crouch_height = null
-prone_height = null
-gpad_mini_run_length = null
-stand_speed = null
-crouch_speed = null
-prone_speed = null
-air_up_speed = null
-run_speed_ratio = null
-side_speed_ratio = null
-back_speed_ratio = null
-aiming_speed_ratio = null
-jump_strength = null
-gravity_multiplier = null
-land_max_y_offset = null
-land_max_pitch_offset = null
-land_effect_time = null

@@ -60,8 +60,7 @@ func _process_spawn() -> void:
 
 func _has_a_next_cover_available(cover: Cover) -> bool:
 	for next_cover in cover.next_covers:
-		if next_cover and next_cover.enabled and not next_cover.holder:
-			return true
+		if next_cover.is_cover_available(): return true
 	return false
 
 func _on_entity_died() -> void: _entity_count -= 1

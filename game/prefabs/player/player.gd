@@ -264,9 +264,10 @@ static var instance: Player:
 
 
 func _ready() -> void:
-	if GameManager.instance: game_manager = GameManager.instance
 	instance = self
-	game_manager.player_instance_loaded.emit()
+	if GameManager.instance:
+		game_manager = GameManager.instance
+		game_manager.player_instance_loaded.emit()
 	p_inputs.gpad_crouch_pressed.connect(crouch_pressed_from_gpad)
 	p_inputs.gpad_crouch_released.connect(crouch_released_from_gpad)
 	p_inputs.gpad_ask_prone.connect(prone_from_gpad)

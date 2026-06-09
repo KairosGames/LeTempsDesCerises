@@ -12,9 +12,9 @@ class_name Cover extends Marker3D
 @export var height: Height = Height.MEDIUM:
 	set(value):
 		height = value
-		if Engine.is_editor_hint():
-			_shoot_height.position.y = get_shoot_height(value)
+		if _shoot_height: _shoot_height.position.y = get_shoot_height(value)
 		_update_name()
+		notify_property_list_changed()
 @export var side_distance: float = 0
 
 @export_category("Debug")
@@ -99,7 +99,16 @@ func _check_player_overlapping() -> void:
 	for body in _area.get_overlapping_bodies():
 		if body is Player: holder = body; break
 
+func is_cover_available() -> bool:
+	if not enabled: return false
+	if holder: return false
+	if type != Type.TRANSITORY: return true
+	for next_cover: Cover in next_covers:
+		if next_cover.is_cover_available(): return true
+	return false
+
 func get_posture_for(action: Action) -> Agent.Posture:
+	if type == Type.TRANSITORY: return Agent.Posture.STAND
 	match action:
 			Action.SHOOT : return get_shoot_posture()
 			Action.COVER : return get_cover_posture()
@@ -301,6 +310,7 @@ func _update_lines() -> void:
 	for i: int in range(next_covers.size()):
 		var next_cover: Cover = next_covers[i]
 		if not is_instance_valid(next_cover):
+			push_error(name, " has a empty cover link")
 			_lines.multimesh.set_instance_transform(i, Transform3D(Basis.from_scale(Vector3.ZERO), Vector3.ZERO))
 			break
 		var color: Color = colors[Type.TRANSITORY] if next_cover.type == Type.TRANSITORY else colors[type]
@@ -327,6 +337,7 @@ func _update_motions() -> void:
 	for i: int in range(next_covers.size()):
 		var next_cover: Cover = next_covers[i]
 		if not is_instance_valid(next_cover):
+			push_error(name, " has a empty cover link")
 			_motions.multimesh.set_instance_transform(i, Transform3D(Basis.from_scale(Vector3.ZERO), Vector3.ZERO))
 			break
 		var color: Color = colors[Type.TRANSITORY] if next_cover.type == Type.TRANSITORY else colors[type]

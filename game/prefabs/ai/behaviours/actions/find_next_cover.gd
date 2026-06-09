@@ -10,8 +10,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var covers: Array[Cover] = current_cover.next_covers.duplicate()
 
 	for i in range(covers.size() -1, -1, -1):
-		var cover: Cover = covers[i]
-		if not cover.enabled or cover.holder: covers.remove_at(i)
+		if not (covers[i] as Cover).is_cover_available(): covers.remove_at(i)
 
 	if not covers.size(): return FAILURE
 

@@ -17,6 +17,7 @@ func _ready() -> void:
 	add_child(_timer)
 
 func tick(actor: Node, _blackboard: Blackboard) -> int:
+	var agent: Agent = actor
 	if _has_started:
 		if _is_transitioning: return RUNNING
 		else: 
@@ -26,10 +27,19 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	else:
 		_has_started = true
 		_is_transitioning = true
-		(actor as Agent).posture = get_posture(actor)
-		_timer.start(duration)
-		_on_start(actor)
-		return RUNNING
+		var current_posture: Agent.Posture = agent.posture
+		var new_posture: Agent.Posture = get_posture(agent)
+		if current_posture == new_posture: 
+			_on_start(actor)
+			_has_started = false
+			_is_transitioning = false
+			_on_finished(actor)
+			return SUCCESS
+		else: 
+			agent.posture = new_posture
+			_on_start(actor)
+			_timer.start(duration)
+			return RUNNING
 
 func _on_animation_finished() -> void: _is_transitioning = false
 

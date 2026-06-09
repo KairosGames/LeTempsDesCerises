@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://8hn4kne15ac5" path="res://addons/beehave/nodes/composites/selector.gd" id="1_uqrrd"]
 [ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_x0bws"]
 [ext_resource type="Script" uid="uid://wr4w63a3cf1r" path="res://prefabs/ai/behaviours/conditions/is_not_on_spawner.gd" id="3_4ysxr"]
+[ext_resource type="Script" uid="uid://hboqsaphg42h" path="res://prefabs/ai/behaviours/conditions/is_on_transition_cover.gd" id="3_84ug2"]
 [ext_resource type="Script" uid="uid://bho7msdr7jjtk" path="res://prefabs/ai/behaviours/compositors/repeater.gd" id="4_2ited"]
 [ext_resource type="Script" uid="uid://d3v8rutw8rwkx" path="res://prefabs/ai/behaviours/conditions/has_enemy_in_range.gd" id="4_3fwdg"]
 [ext_resource type="Script" uid="uid://57xh8fn2vkbo" path="res://prefabs/ai/behaviours/conditions/is_weapon_loaded.gd" id="4_oh8aj"]
@@ -16,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bvv3uwi6i8ghk" path="res://prefabs/ai/behaviours/actions/wait.gd" id="13_x24sq"]
 [ext_resource type="Script" uid="uid://bqa4rx6h1jbh1" path="res://prefabs/ai/behaviours/actions/change_posture.gd" id="15_jjw1a"]
 [ext_resource type="Script" uid="uid://cbiatfaeg2o3p" path="res://prefabs/ai/behaviours/actions/change_cover_posture.gd" id="16_vvprg"]
+[ext_resource type="Script" uid="uid://crkjak4kyv56m" path="res://addons/beehave/nodes/decorators/inverter.gd" id="18_e52bb"]
 
 [sub_resource type="Resource" id="Resource_uqrrd"]
 script = ExtResource("4_u4ja4")
@@ -36,6 +38,36 @@ metadata/_custom_type_script = "uid://bsoyuqkktjyrp"
 [node name="Fighting" type="Node" unique_id=1903382067]
 script = ExtResource("1_uqrrd")
 metadata/_custom_type_script = "uid://8hn4kne15ac5"
+
+[node name="FreeTransitionCover" type="Node" parent="." unique_id=1402105134]
+script = ExtResource("1_x0bws")
+metadata/_custom_type_script = "uid://cg016dbe7gs1x"
+
+[node name="IsOnTransitionCover" type="Node" parent="FreeTransitionCover" unique_id=1292094628]
+script = ExtResource("3_84ug2")
+metadata/_custom_type_script = "uid://hboqsaphg42h"
+
+[node name="CanMove" type="Node" parent="FreeTransitionCover" unique_id=2097226272]
+script = ExtResource("13_vvprg")
+metadata/_custom_type_script = "uid://c6up0iistptxy"
+
+[node name="FindNextCover" type="Node" parent="FreeTransitionCover" unique_id=1533701392]
+script = ExtResource("6_u4ja4")
+metadata/_custom_type_script = "uid://bwfed5132hftm"
+
+[node name="GetMovePosture" type="Node" parent="FreeTransitionCover" unique_id=254440535]
+script = ExtResource("15_jjw1a")
+posture = 3
+metadata/_custom_type_script = "uid://bqa4rx6h1jbh1"
+
+[node name="MoveToCover" type="Node" parent="FreeTransitionCover" unique_id=1567696220]
+script = ExtResource("7_uqrrd")
+metadata/_custom_type_script = "uid://c23rho2v0iamy"
+
+[node name="GetCoverPosture" type="Node" parent="FreeTransitionCover" unique_id=1546073919]
+script = ExtResource("16_vvprg")
+action = 2
+metadata/_custom_type_script = "uid://cbiatfaeg2o3p"
 
 [node name="ShootTarget" type="Node" parent="." unique_id=1718198684]
 script = ExtResource("1_x0bws")
@@ -103,6 +135,7 @@ metadata/_custom_type_script = "uid://cbiatfaeg2o3p"
 
 [node name="Wait" type="Node" parent="ShootTarget/Repeater/Find or Wait/Wait" unique_id=1995188101]
 script = ExtResource("13_x24sq")
+duration = 2.0
 result = 1
 metadata/_custom_type_script = "uid://bvv3uwi6i8ghk"
 
@@ -137,6 +170,11 @@ metadata/_custom_type_script = "uid://bqa4rx6h1jbh1"
 script = ExtResource("7_uqrrd")
 metadata/_custom_type_script = "uid://c23rho2v0iamy"
 
+[node name="GetCoverPosture" type="Node" parent="ShootTarget" unique_id=1970951404]
+script = ExtResource("16_vvprg")
+action = 2
+metadata/_custom_type_script = "uid://cbiatfaeg2o3p"
+
 [node name="MoveFoward" type="Node" parent="." unique_id=119180968]
 script = ExtResource("1_x0bws")
 metadata/_custom_type_script = "uid://cg016dbe7gs1x"
@@ -168,6 +206,14 @@ metadata/_custom_type_script = "uid://c23rho2v0iamy"
 script = ExtResource("16_vvprg")
 action = 2
 metadata/_custom_type_script = "uid://cbiatfaeg2o3p"
+
+[node name="InverterDecorator" type="Node" parent="MoveFoward" unique_id=900161424]
+script = ExtResource("18_e52bb")
+metadata/_custom_type_script = "uid://crkjak4kyv56m"
+
+[node name="IsOnTransitionCover" type="Node" parent="MoveFoward/InverterDecorator" unique_id=1420758765]
+script = ExtResource("3_84ug2")
+metadata/_custom_type_script = "uid://hboqsaphg42h"
 
 [node name="Wait" type="Node" parent="MoveFoward" unique_id=731333807]
 script = ExtResource("13_x24sq")
