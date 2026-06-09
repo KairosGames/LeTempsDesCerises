@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bd4h4sytm0nms" path="res://scripts/cover_group_transfer.gd" id="1_lujon"]
 [ext_resource type="PackedScene" uid="uid://bu1f4j2mtjfi6" path="res://sandbox/csg_to_save/streets.tscn" id="2_3s0cs"]
+[ext_resource type="Script" uid="uid://jn3qgxouvero" path="res://scripts/cover_group.gd" id="2_hmepn"]
 [ext_resource type="PackedScene" uid="uid://b47bjwgwaxagl" path="res://prefabs/geometry/regions/building_a.tscn" id="2_tvueo"]
 [ext_resource type="PackedScene" uid="uid://bq4r3noe6r40s" path="res://prefabs/geometry/regions/building_b.tscn" id="3_tvueo"]
 [ext_resource type="PackedScene" uid="uid://4pg403ov4jpu" path="res://prefabs/geometry/regions/building_c.tscn" id="4_q2fw7"]
@@ -69,8 +70,13 @@ point_count = 2
 
 [node name="GameDesignScene" type="Node3D" unique_id=1256367080]
 
-[node name="ActivationGroups" type="Node" parent="." unique_id=1173955416]
+[node name="ActivationGroups" type="Node" parent="." unique_id=1173955416 node_paths=PackedStringArray("cover_group_to_transfer")]
 script = ExtResource("1_lujon")
+cover_group_to_transfer = [NodePath("Group00")]
+
+[node name="Group00" type="Node" parent="ActivationGroups" unique_id=1371116934 node_paths=PackedStringArray("covers")]
+script = ExtResource("2_hmepn")
+covers = [NodePath("../../Allies/SpawnCommunard/SpawnerCommunard")]
 
 [node name="Environment" type="Node3D" parent="." unique_id=1201916943]
 
@@ -1429,6 +1435,7 @@ metadata/_custom_type_script = "uid://dlpem5ct2ufhg"
 [node name="SpawnerCommunard" type="Marker3D" parent="Allies/SpawnCommunard" unique_id=1473570572 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.651527, 0.20000096, 16.76399)
 script = ExtResource("40_aese6")
+enabled = false
 next_covers = [NodePath("../../../Environment/NavigationRegion3D/Level/Coverpoints_commune/Barrels")]
 type = 2
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
@@ -1436,6 +1443,7 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 [node name="SpawnerCommunard3" type="Marker3D" parent="Allies/SpawnCommunard" unique_id=735056914 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.583595, 0.3, 2.6771512)
 script = ExtResource("40_aese6")
+enabled = false
 next_covers = [NodePath("../../../Environment/NavigationRegion3D/Level/Coverpoints_commune/Cart2")]
 type = 2
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
@@ -1443,6 +1451,7 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 [node name="SpawnerCommunard4" type="Marker3D" parent="Allies/SpawnCommunard" unique_id=780961408 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.670597, 0.29999977, -6.1123447)
 script = ExtResource("40_aese6")
+enabled = false
 next_covers = [NodePath("../../../Environment/NavigationRegion3D/Level/Coverpoints_commune/Cart1")]
 type = 2
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
@@ -1450,6 +1459,7 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 [node name="SpawnerCommunard2" type="Marker3D" parent="Allies/SpawnCommunard" unique_id=1030046139 node_paths=PackedStringArray("next_covers")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.957, 0.3, 19.363)
 script = ExtResource("40_aese6")
+enabled = false
 next_covers = [NodePath("../../../Environment/NavigationRegion3D/Level/Coverpoints_commune/Tunnel")]
 type = 2
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
