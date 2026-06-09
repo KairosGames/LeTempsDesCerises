@@ -12,11 +12,7 @@ class_name Cover extends Marker3D
 @export var height: Height = Height.MEDIUM:
 	set(value):
 		height = value
-		match height:
-			Height.HIGH: _shoot_height.position.y = 1.6
-			Height.MEDIUM: _shoot_height.position.y = 0.8
-			Height.LOW: _shoot_height.position.y = 0.2
-			Height.NONE: _shoot_height.position.y = 1.6
+		_shoot_height.position.y = get_shoot_height(value)
 		_update_name()
 @export var side_distance: float = 0
 
@@ -142,6 +138,13 @@ func get_reload_posture() -> Agent.Posture:
 		Height.NONE: return Agent.Posture.STAND
 		_: return Agent.Posture.NONE
 
+func get_shoot_height(h: Height) -> float:
+	match h:
+		Height.HIGH, Height.NONE: return 1.6
+		Height.MEDIUM: return 0.95
+		Height.LOW: return 0.3
+		_: return 3
+
 enum Height { NONE, LOW, MEDIUM, HIGH }
 enum Action { SHOOT, PEEK, COVER, RELOAD }
 
@@ -154,18 +157,21 @@ func _init_all() -> void:
 	_init_point()
 	_init_lines()
 	_init_motions()
+	_init_shoot_height()
 
 func _show_all() -> void:
 	_show_name()
 	_show_point()
 	_show_lines()
 	_show_motions()
+	_show_shoot_height()
 
 func _hide_all() -> void:
 	_hide_name()
 	_hide_point()
 	_hide_lines()
 	_hide_motions()
+	_hide_shoot_height()
 
 var _label: Label3D = Label3D.new()
 func _init_name() -> void:
@@ -258,17 +264,20 @@ func _hide_point() -> void:
 	remove_child(_point)
 
 var _shoot_height: MeshInstance3D
-func init_shoot_height() -> void:
+func _init_shoot_height() -> void:
 	_shoot_height = MeshInstance3D.new()
 	var mesh: PrismMesh = PrismMesh.new()
-	mesh.size.z = 0.1
+	mesh.size.z = 0.05
+	mesh.size.x = 0.5
+	mesh.size.y = 0.5
 	_shoot_height.mesh = mesh
-	_shoot_height.rotation.x = PI/2
+	_shoot_height.rotation.x = -PI / 2
+	_shoot_height.position.y = get_shoot_height(height)
 
-func show_shoot_height() -> void: 
+func _show_shoot_height() -> void: 
 	add_child(_shoot_height)
 
-func hide_shoot_height() -> void:
+func _hide_shoot_height() -> void:
 	remove_child(_shoot_height)
 
 func _update_gizmos() -> void:
