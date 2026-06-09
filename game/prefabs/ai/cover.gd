@@ -12,7 +12,8 @@ class_name Cover extends Marker3D
 @export var height: Height = Height.MEDIUM:
 	set(value):
 		height = value
-		_shoot_height.position.y = get_shoot_height(value)
+		if Engine.is_editor_hint():
+			_shoot_height.position.y = get_shoot_height(value)
 		_update_name()
 @export var side_distance: float = 0
 
