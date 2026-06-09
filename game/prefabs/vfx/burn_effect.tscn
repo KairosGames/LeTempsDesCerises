@@ -54,6 +54,8 @@ point_count = 3
 curve = SubResource("Curve_o1wrc")
 
 [sub_resource type="Gradient" id="Gradient_ckp6j"]
+offsets = PackedFloat32Array(0, 0.2829787, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.12435544, 0.10996245, 0.109386735, 1, 0.84705883, 0.7490196, 0.74509805, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_se6r0"]
 gradient = SubResource("Gradient_ckp6j")
@@ -110,10 +112,21 @@ shader_parameter/rotation_speed = 0.05
 [sub_resource type="QuadMesh" id="QuadMesh_hxrhv"]
 material = SubResource("ShaderMaterial_yiou4")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phnr2"]
+render_priority = 0
+shader = ExtResource("2_se6r0")
+shader_parameter/fog_texture = ExtResource("3_i5l4e")
+shader_parameter/alpha_mul = 1.0
+shader_parameter/rotation_speed = 0.05
+
+[sub_resource type="QuadMesh" id="QuadMesh_qtaix"]
+material = SubResource("ShaderMaterial_phnr2")
+uv2_padding = 0.0
+
 [node name="BurnEffect" type="Node3D" unique_id=7534225]
 
 [node name="Fire" type="GPUParticles3D" parent="." unique_id=135159637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4662611, 0.3163061)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90046227, 0)
 material_override = SubResource("StandardMaterial3D_0elex")
 amount = 20
 lifetime = 2.0
@@ -121,11 +134,19 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_t506h")
 draw_pass_1 = SubResource("QuadMesh_2330d")
 
-[node name="Smoke" type="GPUParticles3D" parent="." unique_id=1001879862]
+[node name="Smoke1" type="GPUParticles3D" parent="." unique_id=1001879862]
 amount = 50
 lifetime = 3.0
 randomness = 0.3
-local_coords = true
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_1bvr6")
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
+
+[node name="Smoke2" type="GPUParticles3D" parent="." unique_id=1527512117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6244377)
+amount = 10
+lifetime = 3.0
+randomness = 0.3
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_1bvr6")
+draw_pass_1 = SubResource("QuadMesh_qtaix")
