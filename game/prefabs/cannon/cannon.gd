@@ -106,8 +106,9 @@ func _take_slot(agent: Agent) -> Marker3D:
 	var slot: Marker3D = available_slots.pop_front()
 	holded_slots.push_back(slot)
 	if move_speeds[holded_slots.size()]: start_move.emit()
-	agent.died.connect(_restore.bind(slot))
-	agent.died.connect(_on_worker_died.bind(agent))
+	if not agent.died.is_connected(_restore): agent.died.connect(_restore.bind(slot))
+	else: print(agent.name, "is already conected")
+	if not agent.died.is_connected(_on_worker_died): agent.died.connect(_on_worker_died.bind(agent))
 	return slot
 
 func _restore(slot: Marker3D) -> void:
@@ -116,12 +117,11 @@ func _restore(slot: Marker3D) -> void:
 	if not move_speeds[holded_slots.size()]: stop_move.emit()
 
 func _create_workers() -> void:
-	var new_worker: Agent = WORKER_PREFAB.instantiate()
-	var slot: Marker3D = _take_slot(new_worker)
-	add_child(new_worker)
-	new_worker.global_transform = slot.global_transform
-	await get_tree().process_frame
-	new_worker.canon_slot = slot
+	for i in range(2):
+		var new_worker: Agent = WORKER_PREFAB.instantiate()
+		add_child(new_worker)
+		new_worker.global_transform = global_transform
+		new_worker.global_position += global_basis.z * 4 + global_basis.x * i
 
 func _on_worker_died(worker: Agent) -> void:
 	workers.erase(worker)
