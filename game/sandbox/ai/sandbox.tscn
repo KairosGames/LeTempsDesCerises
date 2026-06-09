@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dhj8g57pk5bi0"]
 
 [ext_resource type="Script" uid="uid://dexhveoh7rgj3" path="res://prefabs/barricade/barricade.gd" id="1_voip0"]
+[ext_resource type="PackedScene" uid="uid://n8jqgeouvopc" path="res://prefabs/ai/agents/agent.tscn" id="3_1ma2d"]
 [ext_resource type="Script" uid="uid://bfk1lramy1rs8" path="res://prefabs/ai/cover.gd" id="3_pt8rx"]
 [ext_resource type="PackedScene" uid="uid://ctinark3l27ws" path="res://prefabs/managers/effects_manager.tscn" id="5_voip0"]
 [ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/managers/game_manager.tscn" id="6_1ma2d"]
@@ -108,48 +109,52 @@ navigation_mesh = SubResource("NavigationMesh_ec114")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Cover" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=241898963 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.79902405, 0.49999952, -37.33379)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.79902405, 0, -37.33379)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover2"), NodePath("../Cover3")]
 
 [node name="Cover6" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=4378273 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12.33929, 0.49999952, -41.274895)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12.33929, 0, -41.274895)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover2"), NodePath("../Cover")]
 type = 2
 
 [node name="Cover7" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=1390428081 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12.917125, 0.49999666, -41.02418)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12.917125, 0, -41.02418)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover3"), NodePath("../Cover")]
 type = 2
 
 [node name="Cover2" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=597506888 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12.018546, 0.5, -27.307497)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12.018546, 0, -27.307497)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover3"), NodePath("../Cover5")]
 
 [node name="Cover3" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=1040697076 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.924606, 0.5, -28.231752)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 9.924606, 0, -28.231752)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover4"), NodePath("../Cover5")]
 height = 3
 
 [node name="Cover4" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=128495902 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.023135, 0.49999905, -17.202177)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.023135, 0, -17.202177)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover5"), NodePath("../Cover8")]
 
 [node name="Cover5" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=276484909 node_paths=PackedStringArray("next_covers")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.6990595, 0.5, -16.128708)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.6990595, 0, -16.128708)
 script = ExtResource("3_pt8rx")
 next_covers = [NodePath("../Cover4")]
 height = 1
 
 [node name="Cover8" type="Marker3D" parent="VersaillaisSide/Covers" unique_id=576471461]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.506202, 0.5000005, 7.5546126)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.506202, 0, 7.5546126)
 script = ExtResource("3_pt8rx")
 enabled = false
+
+[node name="Agent" parent="VersaillaisSide/Covers" unique_id=1349390169 instance=ExtResource("3_1ma2d")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.7599153, 0, -38.005203)
+posture = 2
 
 [node name="Ground" type="StaticBody3D" parent="VersaillaisSide" unique_id=1030113977]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
