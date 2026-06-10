@@ -38,10 +38,13 @@ var _time_without_worker: float
 var _is_first_shoot: bool = true
 var _state: State = State.MOVING
 
+var is_first_activation: bool = true
 var enabled: bool = false:
 	set(value):
 		enabled = value
-		if enabled and not workers.size(): _create_workers()
+		if is_first_activation and enabled and not workers.size():
+			is_first_activation = false
+			_create_workers()
 
 const WORKER_PREFAB: PackedScene = preload("uid://d28tbnqpob3um")
 
