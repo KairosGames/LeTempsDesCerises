@@ -7,7 +7,7 @@ signal weapon_took_or_dropped
 signal shot
 signal tried_shoot_no_reload
 signal ally_shot
-signal enemy_shot
+signal enemy_shot(target: Node3D)
 signal shoot_missed
 signal changed_aim_state
 signal changed_posture(from: Posture, to: Posture)
@@ -1053,7 +1053,7 @@ func handle_shoot_cast() -> void:
 			print("Communard touched !")
 			ally_shot.emit()
 			return
-		enemy_shot.emit()
+		enemy_shot.emit(obj as Node3D)
 		if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, true)
 		print("Versaillais touched !")
 	elif obj is ShootTarget:
@@ -1062,7 +1062,7 @@ func handle_shoot_cast() -> void:
 			if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, false)
 			print("Communard touched !")
 			return
-		enemy_shot.emit()
+		enemy_shot.emit(obj as Node3D)
 		if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, false)
 		print("Versaillais touched !")
 

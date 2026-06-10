@@ -238,6 +238,12 @@ size = Vector3(3.2592773, 2.6088943, 21.94949)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7sktv"]
 size = Vector3(6.770752, 1.5043945, 9.221161)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uucmh"]
+size = Vector3(1.5395508, 1.8439941, 8.786865)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ftpgy"]
+size = Vector3(10.876129, 2.4041748, 4.619095)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4ds3"]
 size = Vector3(9.191589, 0.7286377, 20.975586)
 
@@ -598,6 +604,28 @@ transform = Transform3D(0.46348163, 0, 0.88610655, 0, 1, 0, -0.88610655, 0, 0.46
 unique_name_in_owner = true
 transform = Transform3D(-0.9783612, 0, 0.20690428, 0, 1, 0, -0.20690428, 0, -0.9783612, -5.4447103, -4.7683716e-07, 8.486588)
 
+[node name="CanonDetectionArea" parent="States/GameState01" unique_id=111489008 instance=ExtResource("10_83msq")]
+unique_name_in_owner = true
+transform = Transform3D(0.8192121, 0, 0.5734907, 0, 1, 0, -0.5734907, 0, 0.8192121, 19.644587, 1.0049603, -13.63063)
+
+[node name="CollisionShape3D" parent="States/GameState01/CanonDetectionArea" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_uucmh")
+
+[node name="FrancoisMovedPos" parent="States/GameState01" unique_id=1376444919 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.50226545, 0, 0.8647135, 0, 1, 0, -0.8647135, 0, -0.50226545, -30.512157, -4.7683716e-07, 17.80114)
+
+[node name="GoToSecondBarricade" parent="States/GameState01" unique_id=1366697800 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.114056, 1.1159999, 16.07647)
+
+[node name="DeathZoneSecondBarricade" parent="States/GameState01" unique_id=685588361 instance=ExtResource("10_83msq")]
+unique_name_in_owner = true
+transform = Transform3D(0.48167723, 0, -0.8763487, 0, 1, 0, 0.8763487, 0, 0.48167723, -20.369764, 0.503556, 16.570147)
+
+[node name="CollisionShape3D" parent="States/GameState01/DeathZoneSecondBarricade" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_ftpgy")
+
 [node name="GameState02" parent="States" unique_id=345645137 instance=ExtResource("5_m6g67")]
 
 [node name="NPC" type="Node" parent="." unique_id=2013234831]
@@ -616,6 +644,10 @@ unique_name_in_owner = true
 transform = Transform3D(-0.25110638, 0, -0.9679595, 0, 1, 0, 0.9679595, 0, -0.25110638, -10.116035, 0.1, 4.705014)
 npc_name = 2
 
+[node name="SecondBarricadeNPC" parent="NPC" unique_id=617198207 instance=ExtResource("6_2cgp0")]
+unique_name_in_owner = true
+transform = Transform3D(-0.57678884, 0, 0.8168933, 0, 1, 0, -0.8168933, 0, -0.57678884, -26.31036, 0, 14.651473)
+
 [node name="DeathZone" parent="." unique_id=2032830456 instance=ExtResource("10_83msq")]
 unique_name_in_owner = true
 transform = Transform3D(0.87926644, 0, 0.47633028, 0, 1, 0, -0.47633028, 0, 0.87926644, 1.981, 0.731, -3.372)
@@ -627,4 +659,6 @@ shape = SubResource("BoxShape3D_g4ds3")
 [editable path="States/GameState01/GoToBarricadeArea"]
 [editable path="States/GameState01/ReturnToBarricadeArea"]
 [editable path="States/GameState01/FirstDieArea"]
+[editable path="States/GameState01/CanonDetectionArea"]
+[editable path="States/GameState01/DeathZoneSecondBarricade"]
 [editable path="DeathZone"]

@@ -1,10 +1,12 @@
 class_name EventArea extends Area3D
 
 signal player_entered
+signal canon_entered
 
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player: player_entered.emit()
+	if body is Canon: canon_entered.emit()
 
 
 func is_player_inside() -> bool:

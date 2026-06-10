@@ -11,7 +11,6 @@ signal fire_kill_georges
 @onready var versaillais_coming_point: CustomMarker = $VersaillaisComingPoint
 @onready var objective_point_barricade: CustomMarker = %ObjectivePointBarricade
 
-
 var recorded_pos: Vector3
 
 
@@ -65,7 +64,6 @@ func get_up() -> void:
 	player.crouch_to_stand(false, 0.5)
 	await wait(1.1)
 	take_player_view_control(true)
-	#var target: Vector3 = player.global_position + player.basis.x + player.basis.z
 	await tween_rotate_player_to_yaw(deg_to_rad(player.aim_target.y) - PI/6.0, 0.6)
 	await wait(2.0)
 	await tween_rotate_player_to_yaw(deg_to_rad(player.aim_target.y) + PI/6.0, 0.4)
@@ -240,6 +238,7 @@ func enter_fight_begin() -> void:
 
 
 func georges_death() -> void:
+	# Set Spawners################################################################################################################
 	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.2)
 	var george_targ: Vector3 = (player.global_position + (player.basis.x * 1.0)) + player.basis.z * 2.0
 	await georges.move_to(george_targ, 4.0)

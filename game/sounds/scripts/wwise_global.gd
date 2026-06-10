@@ -119,7 +119,7 @@ func retreat():
 func fight():
 	Wwise.set_state("fight_state", "fight")
 
-func enemy_killed():
+func enemy_killed(_target: Node3D):
 	await get_tree().create_timer(1.5).timeout
 	if !allies.is_empty():
 			var closest = find_closest(allies)

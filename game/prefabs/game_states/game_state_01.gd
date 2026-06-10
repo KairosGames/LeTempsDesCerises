@@ -11,6 +11,11 @@ signal game_ready_canon_shoot
 @onready var jules: Npc = %Jules
 @onready var canon_shoot_cover1: CustomMarker = %CanonShootCover1
 @onready var canon_shoot_cover2: CustomMarker = %CanonShootCover2
+@onready var canon_detection_area: EventArea = %CanonDetectionArea
+@onready var francois_moved_pos: CustomMarker = %FrancoisMovedPos
+@onready var second_barricade_npc: Npc = %SecondBarricadeNPC
+@onready var go_to_second_barricade: CustomMarker = %GoToSecondBarricade
+@onready var death_zone_second_barricade: EventArea = %DeathZoneSecondBarricade
 
 var kill_counter: int = 0
 var it_is_time_to_die: bool = false
@@ -23,7 +28,8 @@ func enter() -> void:
 		Step.new(do_nothing, lauch_first_battle_phase, do_nothing),
 		Step.new(do_nothing, launch_canon_arrival, do_nothing),
 		Step.new(go_to_cover_from_canon, launch_first_canon_shoot, do_nothing),
-		Step.new(do_nothing, lauch_second_battle_phase, do_nothing),
+		Step.new(lauch_second_battle_phase, wait_francois_move, wait_barricade_destruction),
+		Step.new(enemies_enter_first_zone, do_nothing, do_nothing),
 	]
 	run_steps()
 	if game_manager.use_debug: set_player_for_debug()
@@ -126,23 +132,41 @@ func can_player_die() -> bool:
 	if player.p_inputs.is_game_controlling_view: return false
 	return first_die_area.is_player_inside()
 	
-
+	
 func lauch_first_battle_phase() -> void:
-	await wait(120.0)
+	# Set Spawners#################################################################################################################
+	await wait(90.0)
 
 
 func launch_canon_arrival() -> void:
-	# Call the canon
-	await wait_voice()
-	ui_manager.set_objective(true, null, "Stop the cannon from destroying the barricade") #give canon here to the target
-	# Check if player kill a enemy on the canon and give null target to set objective
-	# Wait canon signal ready_to_shot
+	game_manager.canon.enabled = true
+	canon_detection_area.monitoring = true
+	await wait_signal(canon_detection_area.canon_entered)
+	await wait_voice() # "Ils ont un bronze!"
+	ui_manager.set_objective(true, game_manager.canon, "Stop the cannon from destroying the barricade")
+	player.enemy_shot.connect(check_player_kill_canon_enemy)
+	await wait_signal(game_manager.canon.reloaded)
+	for agent: Agent in game_manager.canon.workers: agent.can_die = false
+	if player.enemy_shot.is_connected(check_player_kill_canon_enemy): player.enemy_shot.disconnect(check_player_kill_canon_enemy)
+	if canon_detection_area.monitoring: canon_detection_area.set_deferred("monitoring", false)
+
+
+func check_player_kill_canon_enemy(target: Node3D) -> void:
+	if not target is Agent : return
+	var versaillais: Agent = target as Agent
+	if versaillais.team != Agent.Team.VERSAILLAIS: return
+	if not versaillais.get_parent(): return
+	if not versaillais.canon_slot: return
+	if versaillais.get_parent() == versaillais.canon_slot:
+		ui_manager.objective_target.target = null
+		player.enemy_shot.disconnect(check_player_kill_canon_enemy)
+		canon_detection_area.set_deferred("monitoring", false)
 
 
 func go_to_cover_from_canon() -> void:
 	await wait_until(is_player_alive)
 	player.can_die = false
-	await wait_voice()
+	await wait_voice() # "Attention, ils vont tirer au canon !"
 	ui_manager.set_objective(true, null, "Take cover from the cannon fire")
 	player.can_play = false
 	var dist1: float = player.global_position.distance_squared_to(canon_shoot_cover1.global_position)
@@ -204,26 +228,47 @@ func go_to_canon_cover() -> void:
 
 func launch_first_canon_shoot() -> void:
 	game_ready_canon_shoot.emit()
-	# Camera Shake (MDR)
-	
-	#if Input.is_action_just_pressed("go_next_step"):
-		#wpn_cam_base.shake(1.0, 1.0, 1.0)
-	
-	# Kill allies arround barricade ?? (maybe make it directly on the barricade would be better)
-	# Put François behind the second barricade if we dont see him (maybe later ??)
-	# Give player control
-	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
+	await wait_signal(game_manager.first_barricade.state_changed)
+	player.wpn_cam_base.shake(1.0, 1.0, 1.0)
+	for agent: Agent in game_manager.canon.workers: agent.can_die = true
+	await wait_voice() # "Putain, ils ont pété la barricade"
+	take_player_move_control(false)
+	take_player_view_control(false)
+	player.can_play = true
+	ui_manager.launch_letter_box(false)
+	await wait(ui_manager.time_to_open_letter_box)
 
 
 func lauch_second_battle_phase() -> void:
-	# Set spwaners
-	# Wait barricade destruction
-	ui_manager.set_objective(true, null, "Go to the backup barricade") #give second barricade here to the target
+	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
+	# Set spwaners #################################################################################################################
+
+
+func wait_francois_move() -> void:
+	await wait_until(is_francois_out_of_screen)
+	
+
+
+func is_francois_out_of_screen() -> bool:
+	if francois.is_on_screen.is_on_screen(): return false
+	francois.global_position = francois_moved_pos.global_position
+	francois.global_rotation = francois_moved_pos.global_rotation
+	return true
+
+
+func wait_barricade_destruction() -> void:
+	await wait_until_or_signal(is_first_barricade_destroyed, game_manager.first_barricade.just_destroyed)
+
+
+func is_first_barricade_destroyed() -> bool:
+	return game_manager.first_barricade.is_destroyed
+
+
+func enemies_enter_first_zone() -> void:
+	await wait(15.0)
+	## VOICE ?????????????????????????????????
+	ui_manager.set_objective(true, go_to_second_barricade, "Go to the backup barricade") # give second baricade target
+	# Set spwaners #################################################################################################################
 	# Activate death zone near of the second barricade
-	call_enemies_enter()
 	# Wait player death and make it respawn on a chosen NPC
-
-
-func call_enemies_enter() -> void:
-	await wait(20.0)
-	# Activate ennemies covers
+	print("C'est FINIIIIIIIIIIIIII !!!")

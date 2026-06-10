@@ -2,6 +2,7 @@ class_name Npc extends CharacterBody3D
 
 @onready var animator: AnimationPlayer = %AnimationPlayer
 @onready var collider: CollisionShape3D = %Collider
+@onready var is_on_screen: VisibleOnScreenNotifier3D = %IsOnScreen
 
 
 enum NpcName{

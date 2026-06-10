@@ -4,11 +4,14 @@ signal damaged
 signal state_changed
 signal just_destroyed
 
-@export_category("References")
+@export_category("States")
 @export var full_life_modules: Node3D
 @export var damages_modules_1: Node3D
 @export var damages_modules_2: Node3D
 @export var destroyed_modules: Node3D
+
+@export_category("Covers")
+@export var near_covers: Array[Cover]
 
 @export_category("Settings")
 @export var life_btw_steps: int = 1
@@ -47,4 +50,12 @@ func go_next_step() -> void:
 	if state >= max_state:
 		is_destroyed = true
 		just_destroyed.emit()
+	#play vfx destruction
 	set_state()
+	await get_tree().create_timer(0.1).timeout
+	kill_all_near_covers_agents()
+
+
+func kill_all_near_covers_agents() -> void:
+	for cover: Cover in near_covers:
+		if cover.holder is Agent: (cover.holder as Agent).die()
