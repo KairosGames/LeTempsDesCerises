@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/managers/game_manager.tscn" id="1_124fr"]
 [ext_resource type="PackedScene" uid="uid://cowhe7krsng37" path="res://scenes/game_design_scene.tscn" id="3_vgclv"]
 [ext_resource type="Shader" uid="uid://ccs46yyijk1tk" path="res://materials/shaders/sg_custom_sky.gdshader" id="4_3ivn4"]
+[ext_resource type="Shader" uid="uid://ceuhdmtv8bpfg" path="res://kuwahara.gdshader" id="5_3ivn4"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="7_vj5vi"]
 
 [sub_resource type="Gradient" id="Gradient_3ivn4"]
@@ -408,6 +409,27 @@ _data = {
 &"RESET": SubResource("Animation_3ivn4")
 }
 
+[sub_resource type="GDScript" id="GDScript_124fr"]
+resource_name = "DynamicArt"
+script/source = "extends Node
+const DURATION: float = 600
+@export var duration: float = 600
+@export var animation_player: AnimationPlayer
+
+func _ready() -> void:
+	animation_player.speed_scale = DURATION / duration
+
+var dynamic_art_progress: float = 0
+func _process(delta: float) -> void:
+	dynamic_art_progress = clampf( dynamic_art_progress + delta / duration, 0, 1)
+	RenderingServer.global_shader_parameter_set(\"dynamic_art_progress\", dynamic_art_progress)
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ivn4"]
+shader = ExtResource("5_3ivn4")
+shader_parameter/radius = 5
+shader_parameter/offset = Vector3(0, 0, 0)
+
 [node name="GreyBlockScene" type="Node3D" unique_id=111111966]
 
 [node name="GameManager" parent="." unique_id=1070764289 node_paths=PackedStringArray("first_barricade", "canon") instance=ExtResource("1_124fr")]
@@ -540,3 +562,17 @@ spot_angle_attenuation = 0.2414844
 
 [node name="GameDesignScene" parent="." unique_id=1256367080 instance=ExtResource("3_vgclv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010229111, -3.33786e-06, 0.014831543)
+
+[node name="DynamicArt" type="Node" parent="." unique_id=32644220 node_paths=PackedStringArray("animation_player")]
+script = SubResource("GDScript_124fr")
+duration = 60.0
+animation_player = NodePath("../Lightning/AnimationPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=682699649]
+z_index = -1
+material = SubResource("ShaderMaterial_3ivn4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
