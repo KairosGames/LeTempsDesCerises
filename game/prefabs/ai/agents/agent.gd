@@ -60,9 +60,6 @@ enum Team { VERSAILLAIS = -1, NONE = 0, COMMUNARD = 1 }
 func _ready() -> void:
 	shoot_raycast.debug_shape_custom_color = Color.RED if team == Team.COMMUNARD else Color.BLUE
 
-func aim_to(point: Vector3) -> void:
-	point.y = global_position.y
-	look_at(point)
 
 const threat_duration: float = 10
 
@@ -98,11 +95,16 @@ func shoot_anim() -> void:
 	playback.travel(target)
 	is_shooting = false
 
-func look(target: Vector3, duration: float = 1.0) -> void:
-	var target_angle: float = global_position.angle_to(target)
+func rotating_to(new_rotation: float, duration: float = 1.0) -> void:
 	var tween: Tween = create_tween()
-	tween.tween_method(func(v): rotation.y = lerp_angle(rotation.y, target_angle, v), 0.0, 1.0, duration)
+	tween.tween_property(self,"global_rotation:y", new_rotation, duration)
 	await tween.finished
+	
+#func look(target: Vector3, duration: float = 1.0) -> void:
+	#var target_angle: float = global_position.angle_to(target)
+	#var tween: Tween = create_tween()
+	#tween.tween_method(func(v): rotation.y = lerp_angle(rotation.y, target_angle, v), 0.0, 1.0, duration)
+	#await tween.finished
 
 func die() -> void:
 	if not can_die or not is_alive: return

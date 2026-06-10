@@ -9,4 +9,4 @@ func get_destination(actor: Node, _blackboard: Blackboard) -> Vector3:
 
 func on_success(actor: Node, _blackboard: Blackboard) -> void:
 	var agent: Agent = actor
-	agent.look(-agent.cover.global_basis.z, 0.5)
+	agent.rotating_to(agent.cover.global_rotation.y, 0.5)

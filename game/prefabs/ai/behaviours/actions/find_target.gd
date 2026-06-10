@@ -25,7 +25,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var targets_data: Array = get_targets(agent.team).map(
 		func(target: Node3D) -> TargetData: return TargetData.new(target, agent, coefficents)
 	)
-		
+
 	# TODO if target is Player always do raycast
 
 	for i in range(targets_data.size() -1, -1 -1):
@@ -44,14 +44,14 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
 	for data: TargetData in targets_data:
 		for shoot_target: Marker3D in data.target.shoot_targets:
-			raycast.global_position = agent.global_position + Vector3(0, 1.45, 0)
+			raycast.global_position = agent.global_position + Vector3(0, agent.cover.get_shoot_height(), 0)
 			raycast.look_at(shoot_target.global_position)
 			raycast.force_raycast_update()
 			var shoot_debug = get_node_or_null("/root/ShootDebug")
 			if shoot_debug: shoot_debug.add_debug(
 				raycast.global_position,
 				raycast.global_rotation,
-				Color.ORANGE if agent.team == Agent.Team.COMMUNARD else Color.CYAN, 
+				Color.ORANGE if agent.team == Agent.Team.COMMUNARD else Color.CYAN,
 				false
 			)
 			if raycast.is_colliding():

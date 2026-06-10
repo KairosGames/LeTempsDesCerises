@@ -15,7 +15,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	agent.posture = agent.cover.get_shoot_posture()
 	agent.look_at(agent.target_point.global_position)
 
-	raycast.global_position = agent.global_position + Vector3(0, 1.45, 0)
+	raycast.global_position = agent.global_position + Vector3(0, agent.cover.get_shoot_height(), 0)
 	raycast.look_at(agent.target_point.global_position)
 
 	var t: float = randf_range(0, TAU)
@@ -30,7 +30,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	if shoot_debug: shoot_debug.add_debug(
 		raycast.global_position,
 		raycast.global_rotation,
-		Color.RED if agent.team == Agent.Team.COMMUNARD else Color.BLUE, 
+		Color.RED if agent.team == Agent.Team.COMMUNARD else Color.BLUE,
 		false
 	)
 

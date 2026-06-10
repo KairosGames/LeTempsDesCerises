@@ -12,7 +12,7 @@ class_name Cover extends Marker3D
 @export var height: Height = Height.MEDIUM:
 	set(value):
 		height = value
-		if _shoot_height: _shoot_height.position.y = get_shoot_height(value)
+		if _shoot_height: _shoot_height.position.y = get_shoot_height()
 		_update_name()
 		notify_property_list_changed()
 @export var side_distance: float = 0
@@ -148,12 +148,17 @@ func get_reload_posture() -> Agent.Posture:
 		Height.NONE: return Agent.Posture.STAND
 		_: return Agent.Posture.NONE
 
-func get_shoot_height(h: Height) -> float:
-	match h:
-		Height.HIGH, Height.NONE: return 1.6
-		Height.MEDIUM: return 0.95
-		Height.LOW: return 0.3
-		_: return 3
+func get_shoot_height() -> float:
+	return get_eye_height_from_posture(get_peek_posture())
+
+func get_eye_height_from_posture(posture: Agent.Posture) -> float:
+	match posture:
+		Agent.Posture.STAND: return 1.6
+		Agent.Posture.CROUCH: return 0.95
+		Agent.Posture.PRONE: return 0.3
+		_: 
+			push_error("posture is not valid: ", posture)
+			return 3
 
 enum Height { NONE, LOW, MEDIUM, HIGH }
 enum Action { SHOOT, PEEK, COVER, RELOAD }
@@ -162,7 +167,7 @@ enum Action { SHOOT, PEEK, COVER, RELOAD }
 
 func _process(_delta: float) -> void: _update_gizmos()
 
-func _init_all() -> void: 
+func _init_all() -> void:
 	_init_name()
 	_init_point()
 	_init_lines()
@@ -189,7 +194,7 @@ func _init_name() -> void:
 	_label.font_size = 48
 	_label.text = name
 	_label.position = Vector3(0, 0.5, 0)
-	
+
 func _show_name() -> void:
 	add_child(_label, false, Node.INTERNAL_MODE_BACK)
 	renamed.connect(_update_name)
@@ -249,7 +254,7 @@ func _init_motions() -> void:
 
 func _show_motions() -> void:
 	add_child(_motions, false, Node.INTERNAL_MODE_BACK)
-	
+
 func _hide_motions() -> void:
 	remove_child(_motions)
 
@@ -269,7 +274,7 @@ func _init_point() -> void:
 
 func _show_point() -> void:
 	add_child(_point, false, Node.INTERNAL_MODE_BACK)
-	
+
 func _hide_point() -> void:
 	remove_child(_point)
 
@@ -278,13 +283,13 @@ func _init_shoot_height() -> void:
 	_shoot_height = MeshInstance3D.new()
 	var mesh: PrismMesh = PrismMesh.new()
 	mesh.size.z = 0.05
-	mesh.size.x = 0.5
+	mesh.size.x = 0.3
 	mesh.size.y = 0.5
 	_shoot_height.mesh = mesh
 	_shoot_height.rotation.x = -PI / 2
-	_shoot_height.position.y = get_shoot_height(height)
+	_shoot_height.position.y = get_shoot_height()
 
-func _show_shoot_height() -> void: 
+func _show_shoot_height() -> void:
 	add_child(_shoot_height)
 
 func _hide_shoot_height() -> void:
