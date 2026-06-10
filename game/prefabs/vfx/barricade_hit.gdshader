@@ -36,14 +36,25 @@ void start() {
 
 	vec3 local_position = (normalized_position - vec3(0.5)) * box_size;
 
+	// do not use parent transform
+	//TRANSFORM = mat4(
+		//vec4(particle_scale, 0.0, 0.0, 0.0),
+		//vec4(0.0, particle_scale, 0.0, 0.0),
+		//vec4(0.0, 0.0, particle_scale, 0.0),
+		//vec4(local_position, 1.0)
+	//);
+	
+	// use node transform
+	mat3 emitter_basis = mat3(EMISSION_TRANSFORM);
 	TRANSFORM = mat4(
-		vec4(particle_scale, 0.0, 0.0, 0.0),
-		vec4(0.0, particle_scale, 0.0, 0.0),
-		vec4(0.0, 0.0, particle_scale, 0.0),
-		vec4(local_position, 1.0)
+    	vec4(emitter_basis[0] * particle_scale, 0.0),
+    	vec4(emitter_basis[1] * particle_scale, 0.0),
+    	vec4(emitter_basis[2] * particle_scale, 0.0),
+    	vec4((EMISSION_TRANSFORM * vec4(local_position, 1.0)).xyz, 1.0)
 	);
-
-	vec3 direction = normalize(explosion_direction);
+	
+	vec3 direction = normalize(-EMISSION_TRANSFORM[2].xyz);
+	//vec3 direction =  normalize(explosion_direction);
 	vec3 random_direction = random_unit_vector(seed);
 
 	float force_variation = mix(1.0 - 0.35, 1.0 + 0.35, random_from_seed(seed));

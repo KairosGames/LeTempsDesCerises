@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://dt06rgwsgrjv8"]
 
 [ext_resource type="Shader" uid="uid://bp5200x4ef7iv" path="res://prefabs/vfx/barricade_hit.gdshader" id="1_tt4fr"]
+[ext_resource type="ArrayMesh" uid="uid://c7klsafplch2d" path="res://sources/meshes/props/paving_stone.obj" id="2_s2ri7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bc23"]
+albedo_color = Color(0.50140655, 0.5014065, 0.5014065, 1)
+metallic = 0.2
+roughness = 0.9
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tt4fr"]
 shader = ExtResource("1_tt4fr")
@@ -18,11 +24,10 @@ shader_parameter/collision_bounce = 0.35
 shader_parameter/collision_friction = 0.65
 shader_parameter/collision_spin_damping = 0.5
 
-[sub_resource type="BoxMesh" id="BoxMesh_s2ri7"]
-
 [node name="BarricadeHit" type="GPUParticles3D" unique_id=656924349]
+material_override = SubResource("StandardMaterial3D_3bc23")
 emitting = false
 amount = 375
 explosiveness = 1.0
 process_material = SubResource("ShaderMaterial_tt4fr")
-draw_pass_1 = SubResource("BoxMesh_s2ri7")
+draw_pass_1 = ExtResource("2_s2ri7")
