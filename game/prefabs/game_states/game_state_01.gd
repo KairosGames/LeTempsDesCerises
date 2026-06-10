@@ -98,7 +98,7 @@ func on_player_exit_barricade_zone() -> void:
 	ui_manager.launch_letter_box(false)
 
 
-func on_enemy_shot() -> void:
+func on_enemy_shot(_target: Node3D) -> void:
 	kill_counter += 1
 
 
@@ -135,20 +135,27 @@ func can_player_die() -> bool:
 	
 func lauch_first_battle_phase() -> void:
 	# Set Spawners#################################################################################################################
+	print("WAIT 90S")
 	await wait(90.0)
 
 
 func launch_canon_arrival() -> void:
+	print("CANON ACTIVATED")
 	game_manager.canon.enabled = true
 	canon_detection_area.monitoring = true
 	await wait_signal(canon_detection_area.canon_entered)
+	print("CANON ENTERED WAIT VOICE")
 	await wait_voice() # "Ils ont un bronze!"
 	ui_manager.set_objective(true, game_manager.canon, "Stop the cannon from destroying the barricade")
 	player.enemy_shot.connect(check_player_kill_canon_enemy)
-	await wait_signal(game_manager.canon.reloaded)
+	await wait_until_or_signal(is_canon_ready_to_shoot, game_manager.canon.reloaded)
 	for agent: Agent in game_manager.canon.workers: agent.can_die = false
 	if player.enemy_shot.is_connected(check_player_kill_canon_enemy): player.enemy_shot.disconnect(check_player_kill_canon_enemy)
 	if canon_detection_area.monitoring: canon_detection_area.set_deferred("monitoring", false)
+
+
+func is_canon_ready_to_shoot() -> bool:
+	return game_manager.canon.reload_progress >= 1.0
 
 
 func check_player_kill_canon_enemy(target: Node3D) -> void:
