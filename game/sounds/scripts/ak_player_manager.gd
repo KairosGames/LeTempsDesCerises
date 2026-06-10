@@ -87,6 +87,7 @@ func _process(_delta: float) -> void:
 func shoot_event():
 	if !player.can_shoot() : return
 	shoot.post_event()
+	first_reload = true
 
 func bullet():
 	var target : Node3D = player.weapon_ray_cast.get_collider()
@@ -108,7 +109,8 @@ func no_ammo():
 	pass
 
 func on_reload():
-	reload.post_event()
+	pass
+	#reload.post_event()
 
 func death_event():
 	self.reparent(player.player_camera)
@@ -126,6 +128,7 @@ func _on_reload_ui_try_succeeded() -> void:
 func _on_reload_ui_entered_reload() -> void:
 	if first_reload:
 		reload.post_event()
+	first_reload = false
 
 func init_motion():
 	pass

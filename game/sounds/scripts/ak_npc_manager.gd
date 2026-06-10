@@ -19,9 +19,9 @@ func voiceline():
 	dialogue_event.post_event()
 
 func _on_dialogue_end_of_event(_data: Dictionary) -> void:
-	WwiseGlobal.line_ended()
 	label.text = ""
 	WwiseGlobal.player.update_line(npc_name, "")
+	WwiseGlobal.line_ended()
 
 func _on_dialogue_audio_marker(data: Dictionary) -> void:
 	var text : String = data.get("strLabel")
