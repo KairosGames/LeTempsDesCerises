@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bu1f4j2mtjfi6" path="res://sandbox/csg_to_save/streets.tscn" id="2_3s0cs"]
 [ext_resource type="Script" uid="uid://jn3qgxouvero" path="res://scripts/cover_group.gd" id="2_hmepn"]
 [ext_resource type="PackedScene" uid="uid://b47bjwgwaxagl" path="res://prefabs/geometry/regions/building_a.tscn" id="2_tvueo"]
+[ext_resource type="PackedScene" uid="uid://ba0txi1b7hknx" path="res://prefabs/vfx/burn_effect.tscn" id="3_dwitp"]
 [ext_resource type="PackedScene" uid="uid://bq4r3noe6r40s" path="res://prefabs/geometry/regions/building_b.tscn" id="3_tvueo"]
 [ext_resource type="PackedScene" uid="uid://4pg403ov4jpu" path="res://prefabs/geometry/regions/building_c.tscn" id="4_q2fw7"]
 [ext_resource type="PackedScene" uid="uid://c85fms2wp51n8" path="res://prefabs/geometry/regions/building_d.tscn" id="5_q2fw7"]
@@ -63,7 +64,7 @@ agent_radius = 0.25
 
 [sub_resource type="Curve3D" id="Curve3D_g3y20"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 70.722595, -4.7683716e-07, -48.777164, 0, 0, 0, 0, 0, 0, 11.565325, 0, -10.542425),
+"points": PackedVector3Array(0, 0, 0, -2, 0, 5, 7.6785297, -4.7683716e-07, -33.337776, 0, 0, 0, 0, 0, 0, 7.243234, 1.4210855e-14, -5.876878),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -76,7 +77,11 @@ cover_group_to_transfer = [NodePath("Group00"), NodePath("GroupL3"), NodePath("G
 
 [node name="Group00" type="Node" parent="ActivationGroups" unique_id=1371116934 node_paths=PackedStringArray("covers")]
 script = ExtResource("2_hmepn")
-covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_direct/L3S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_direct/L2S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_Direct/L1S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_Direct/L1S_direct2"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard2")]
+covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_direct/L3S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_direct/L2S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_Direct/L1S_direct"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard2")]
+
+[node name="Group00bis" type="Node" parent="ActivationGroups" unique_id=799918922 node_paths=PackedStringArray("covers")]
+script = ExtResource("2_hmepn")
+covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_direct/L3S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_direct/L2S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_Direct/L1S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_Direct/L1S_direct2"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard2"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard3"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard4")]
 
 [node name="GroupL3" type="Node" parent="ActivationGroups" unique_id=425100116 node_paths=PackedStringArray("covers")]
 script = ExtResource("2_hmepn")
@@ -89,6 +94,9 @@ covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_back1/L1S_back1"
 [node name="GroupL2" type="Node" parent="ActivationGroups" unique_id=56242156 node_paths=PackedStringArray("covers")]
 script = ExtResource("2_hmepn")
 covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_back1/L2S_back1"), NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_back2/L2S_back2"), NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_mid1/L2S_mid1"), NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_mid2/L2S_mid2"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard2"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard3"), NodePath("../../Allies/SpawnCommunard/SpawnerCommunard4")]
+
+[node name="BurnEffect" parent="ActivationGroups" unique_id=7534225 instance=ExtResource("3_dwitp")]
+transform = Transform3D(0.92280054, 0, -0.385278, 0, 1, 0, 0.385278, 0, 0.92280054, 5.7518473, -1.4840713, -28.680283)
 
 [node name="Environment" type="Node3D" parent="." unique_id=1201916943]
 
@@ -916,10 +924,11 @@ mesh = ExtResource("45_8bk3w")
 [node name="Ennemies" type="Node3D" parent="." unique_id=1662896707]
 
 [node name="Path3DCanon" type="Path3D" parent="Ennemies" unique_id=1006535400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 curve = SubResource("Curve3D_g3y20")
 
 [node name="Canon" parent="Ennemies/Path3DCanon" unique_id=1666123749 instance=ExtResource("43_u321f")]
-transform = Transform3D(-0.542814, 5.685481e-09, 0.8398487, -2.2204384e-16, 1, -6.769601e-09, -0.8398487, -3.674661e-09, -0.542814, 70.722595, -4.7683716e-07, -48.777164)
+transform = Transform3D(-0.92846096, 0, 0.37138444, 0, 1, 0, -0.37138444, 0, -0.92846096, 7.6785297, -4.7683716e-07, -33.337776)
 
 [node name="CoverPointsVersaillais" type="Node3D" parent="Ennemies" unique_id=1945716246]
 
@@ -927,7 +936,7 @@ transform = Transform3D(-0.542814, 5.685481e-09, 0.8398487, -2.2204384e-16, 1, -
 script = ExtResource("39_rkq34")
 spawners = [NodePath("../L3/L3_back2/L3S_back2"), NodePath("../L3/L3_back1/L3S_back1"), NodePath("../L3/L3_side2/L3S_side2"), NodePath("../L3/L3_side1/L3S_side1"), NodePath("../L2/L2_back1/L2S_back1"), NodePath("../L2/L2_back2/L2S_back2"), NodePath("../L2/L2_mid1/L2S_mid1"), NodePath("../L2/L2_mid2/L2S_mid2"), NodePath("../L1/L1_back1/L1S_back1"), NodePath("../L1/L1_back2/L1S_back2"), NodePath("../L1/L1_mid/L1S_mid"), NodePath("../L1/L1_mid2/L1S_mid2"), NodePath("../L1/L1_Direct/L1S_direct"), NodePath("../L1/L1_Direct/L1S_direct2"), NodePath("../L2/L2_direct/L2S_direct"), NodePath("../L3/L3_direct/L3S_direct")]
 cooldown = 2.0
-target_entity_count = 16
+target_entity_count = 8
 team = -1
 metadata/_custom_type_script = "uid://dlpem5ct2ufhg"
 
@@ -1455,7 +1464,7 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 script = ExtResource("39_rkq34")
 spawners = [NodePath("../SpawnerCommunard"), NodePath("../SpawnerCommunard2"), NodePath("../SpawnerCommunard3"), NodePath("../SpawnerCommunard4")]
 cooldown = 2.0
-target_entity_count = 8
+target_entity_count = 10
 team = 1
 metadata/_custom_type_script = "uid://dlpem5ct2ufhg"
 
