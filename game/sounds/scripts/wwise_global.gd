@@ -3,6 +3,7 @@ extends Node
 var player : Node3D
 var allies : Array[Node3D]
 var enemies : Array[Node3D]
+var cannon_workers : Array[Node3D]
 var narrators : Array[Node3D]
 var allowed_switch : Array[String] = ["Zone1", "BarricadeBien"]
 var barricade : Node3D
@@ -129,7 +130,7 @@ func enemy_killed(_target: Node3D):
 	if !allies.is_empty():
 			var closest = find_closest(allies, player)
 			closest.post_event("Player_Kill", 0.5)
-			find_farthest(allies).post_event("Player_Kill", randf_range(1, 2))
+			#find_farthest(allies).post_event("Player_Kill", randf_range(1, 2))
 
 func localize():
 	print("change language")
@@ -139,10 +140,15 @@ func unload(bank_name : String):
 	Wwise.unload_bank(bank_name)
 
 func on_move_progress(progress):
-	pass
-
-func on_reload_progress(progress):
 	progress /= 25
 	if progress == 1:
-		pass
-		# Windows L c pas mal quand même
+		cannon_workers.pick_random().post_event("Cannon_Advance", 0)
+		find_closest(enemies, player).post_event("Cannon_Advance", 0)
+		find_closest(allies, player).post_event("Cannon_Advance", 1)
+		find_farthest(allies).post_event("Cannon_Advance", 2)
+
+func on_reload_progress(progress):
+	if progress >= 95:
+		cannon_workers.pick_random().post_event("Cannon_Incoming", 0)
+		find_closest(allies, barricade).post_event("Cannon_Incoming", 1)
+		find_random(allies).post_event("Cannon_Incoming", 2)

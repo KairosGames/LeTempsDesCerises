@@ -106,7 +106,7 @@ func bullet():
 			#print("Orlane tu as oublié un mat !")
 
 func no_ammo():
-	pass
+	Wwise.post_event("Player_DryFire", self)
 
 func on_reload():
 	pass

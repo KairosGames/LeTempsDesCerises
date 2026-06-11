@@ -77,5 +77,7 @@ func trigg_bark():
 
 
 func _on_communard_dying() -> void:
+	for event : AkEvent3D in barks_parent.get_children() :
+		event.stop_event()
 	post_event("Voice_Cancel", 0)
 	WwiseGlobal.remove(self)

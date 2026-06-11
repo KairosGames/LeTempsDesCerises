@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{17E495A8-F444-D5D9-4504-351538BC551D}">
+		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{4FBC8D30-0303-CF44-2141-E9B529D44CBB}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Player</ObjectPath>
 			<ShortName>Sb_Player</ShortName>
 			<Path>Sb_Player.bnk</Path>
@@ -65,6 +65,10 @@
 				<File Id="113504718" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_08.wav</ShortName>
 					<CachePath>10/{104916C9-EA38-8015-C9B0-A41190D655AB}.wem</CachePath>
+				</File>
+				<File Id="116372682" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Chassepot\LTDC_SFX_Player_DryShot_Oneshot_01.wav</ShortName>
+					<CachePath>CE/{CEED188E-E2AE-24FE-C57A-6439CEA0E468}.wem</CachePath>
 				</File>
 				<File Id="124766783" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Reload\New\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_02.wav</ShortName>
@@ -217,6 +221,14 @@
 				<File Id="538935591" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_02.wav</ShortName>
 					<CachePath>78/{78200181-75A1-D64C-D882-220EEE69178E}.wem</CachePath>
+				</File>
+				<File Id="541183654" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Chassepot\LTDC_SFX_Player_DryShot_Oneshot_02.wav</ShortName>
+					<CachePath>C5/{C5697408-BD33-0C07-189C-E12E00F076F7}.wem</CachePath>
+				</File>
+				<File Id="560147033" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Chassepot\LTDC_SFX_Player_DryShot_Oneshot_03.wav</ShortName>
+					<CachePath>35/{35D0CD71-6E49-C069-AA4B-64C54C981693}.wem</CachePath>
 				</File>
 				<File Id="560969047" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Anxious\LTDC_SFX_Player_Type1_Breath_In_LayerAnxious_Random_002.wav</ShortName>
@@ -575,6 +587,16 @@
 						<ActionPostEventEntry Id="1795565902" Name="Reset_Reload" ObjectPath="\Events\SFX\Player\Reset_Reload" GUID="{FB9581D7-305D-4AEB-8363-F92282F7C8F3}" Color="10"/>
 					</ActionPostEvent>
 				</Event>
+				<Event Id="1960899976" Name="Player_DryFire" ObjectPath="\Events\SFX\Player\Player_DryFire" GUID="{7F719B68-563D-4ADA-8545-0ADB9DD1F0EB}" Color="10" DurationType="OneShot" DurationMin="0.1106875" DurationMax="0.12314583">
+					<MediaRefs>
+						<MediaRef Id="116372682"/>
+						<MediaRef Id="541183654"/>
+						<MediaRef Id="560147033"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10"/>
+					</AuxBusRefs>
+				</Event>
 				<Event Id="1806823001" Name="Player_Prone" ObjectPath="\Events\SFX\Player\Stance\Player_Prone" GUID="{FE60E622-47E0-4B0A-8224-00824D1DFFA5}" Color="10" DurationType="OneShot" DurationMin="0.47624105" DurationMax="0.60002613">
 					<MediaRefs>
 						<MediaRef Id="955352295"/>
@@ -616,8 +638,11 @@
 				</Event>
 				<Event Id="4004702906" Name="Player_Shoot" ObjectPath="\Events\SFX\Player\Player_Shoot" GUID="{712B0A22-0C30-4384-85C0-F0B1F7EC6BE4}" Color="10" DurationType="OneShot" DurationMin="2.7688694" DurationMax="2.7688694">
 					<MediaRefs>
+						<MediaRef Id="116372682"/>
 						<MediaRef Id="247688113"/>
 						<MediaRef Id="512603057"/>
+						<MediaRef Id="541183654"/>
+						<MediaRef Id="560147033"/>
 						<MediaRef Id="629537322"/>
 						<MediaRef Id="632494295"/>
 						<MediaRef Id="916788496"/>
@@ -867,5 +892,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{FF45F013-1FB9-8A30-E767-F04ED7DDF6DD}</FileHash>
+	<FileHash>{1F93B0D7-A966-7A66-DF17-8B6E876EBF9D}</FileHash>
 </SoundBanksInfo>
