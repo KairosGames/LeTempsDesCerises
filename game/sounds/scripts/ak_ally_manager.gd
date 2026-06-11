@@ -9,7 +9,7 @@ extends Node3D
 var is_barking : bool = false
 var barks : Dictionary[String, int]
 var gender : gender_type = gender_type.FEMALE
-var rand_array = [1, 2, 4, 6]
+var rand_array = [1, 2, 4, 5, 6]
 
 enum gender_type {
 	MALE,

@@ -152,11 +152,11 @@ func update_line(npc_name, new_text : String):
 	text = text.replace("à¢", "â")
 	text = text.replace("àª", "ê")
 	text = text.replace(" ", "")
-	for i in subtitles.get_children():
-		if i.name == npc_name:
+	for node : Label in subtitles.get_children():
+		if node.name == npc_name:
 			if new_text == "":
-				i.visible = false
-				i.text = ""
+				node.visible = false
+				node.text = ""
 			else:
-				i.text = str(npc_name + " : " + text)
-				i.visible = true
+				node.text = str(npc_name + " : " + text)
+				node.visible = true

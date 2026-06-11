@@ -130,6 +130,16 @@ namespace AK
                 static const AkUniqueID _18 = 1644366939U;
                 static const AkUniqueID _19 = 1644366938U;
                 static const AkUniqueID _20 = 1661144518U;
+                static const AkUniqueID _21 = 1661144519U;
+                static const AkUniqueID _22 = 1661144516U;
+                static const AkUniqueID _23 = 1661144517U;
+                static const AkUniqueID _24 = 1661144514U;
+                static const AkUniqueID _25 = 1661144515U;
+                static const AkUniqueID _26 = 1661144512U;
+                static const AkUniqueID _27 = 1661144513U;
+                static const AkUniqueID _28 = 1661144526U;
+                static const AkUniqueID _29 = 1661144527U;
+                static const AkUniqueID _30 = 1677922233U;
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace NARRATIVE_STEP

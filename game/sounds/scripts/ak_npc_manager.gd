@@ -9,6 +9,7 @@ var text_speed : float
 
 func _ready() -> void:
 	npc_name = get_parent().name
+	if npc_name == "SecondBarricadeNPC" : return
 	WwiseGlobal.narrators.append(self)
 	Wwise.set_switch("Character", npc_name, dialogue_event)
 	await get_tree().create_timer(1).timeout
@@ -40,9 +41,9 @@ func _on_dialogue_audio_marker(data: Dictionary) -> void:
 		label.text = label.text + text[i]
 		await get_tree().create_timer(randf_range(0.01, 0.03)).timeout
 
-func _on_tree_exited() -> void:
-	WwiseGlobal.unload(npc_name)
-
-
 func _on_dialogue_duration(data: Dictionary) -> void:
 	text_duration = data.get("fDuration") / 2
+
+
+func _on_tree_exiting() -> void:
+	WwiseGlobal.unload(npc_name)

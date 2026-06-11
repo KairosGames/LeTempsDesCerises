@@ -137,3 +137,12 @@ func localize():
 
 func unload(bank_name : String):
 	Wwise.unload_bank(bank_name)
+
+func on_move_progress(progress):
+	pass
+
+func on_reload_progress(progress):
+	progress /= 25
+	if progress == 1:
+		pass
+		# Windows L c pas mal quand même
