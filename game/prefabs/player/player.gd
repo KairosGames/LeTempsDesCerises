@@ -2,7 +2,7 @@ class_name Player extends CharacterBody3D
 
 signal missed_by_enemy
 signal die_called
-signal died()
+signal died
 signal weapon_took_or_dropped
 signal shot
 signal tried_shoot_no_reload
@@ -240,6 +240,8 @@ var bob_timer: float = 0.0
 var bob_amount: float = 0.0
 var bob_phase: float
 var last_y_air_vel: float
+
+var is_next_death_scripted: bool = false
 
 var wpn_x_aim_twn: Tween
 var wpn_y_aim_twn: Tween
@@ -1170,6 +1172,9 @@ func miss_by_versaillais() -> void:
 
 func die(is_scripted: bool = false) -> void:
 	if not is_alive or will_die or not can_die: return
+	if is_next_death_scripted:
+		is_scripted = true
+		is_next_death_scripted = false
 	will_die = true
 	die_called.emit()
 	death_camera.handle_death(is_scripted)

@@ -144,6 +144,7 @@ func launch_canon_arrival() -> void:
 	game_manager.canon.enabled = true
 	canon_detection_area.monitoring = true
 	await wait_signal(canon_detection_area.canon_entered)
+	canon_detection_area.set_deferred("monitoring", false)
 	print("CANON ENTERED WAIT VOICE")
 	await wait_voice() # "Ils ont un bronze!"
 	ui_manager.set_objective(true, game_manager.canon, "Stop the cannon from destroying the barricade")
@@ -151,7 +152,7 @@ func launch_canon_arrival() -> void:
 	await wait_until_or_signal(is_canon_ready_to_shoot, game_manager.canon.reloaded)
 	for agent: Agent in game_manager.canon.workers: agent.can_die = false
 	if player.enemy_shot.is_connected(check_player_kill_canon_enemy): player.enemy_shot.disconnect(check_player_kill_canon_enemy)
-	if canon_detection_area.monitoring: canon_detection_area.set_deferred("monitoring", false)
+	ui_manager.objective_target.target = null
 
 
 func is_canon_ready_to_shoot() -> bool:
@@ -167,7 +168,6 @@ func check_player_kill_canon_enemy(target: Node3D) -> void:
 	if versaillais.get_parent() == versaillais.canon_slot:
 		ui_manager.objective_target.target = null
 		player.enemy_shot.disconnect(check_player_kill_canon_enemy)
-		canon_detection_area.set_deferred("monitoring", false)
 
 
 func go_to_cover_from_canon() -> void:
@@ -183,10 +183,10 @@ func go_to_cover_from_canon() -> void:
 	take_player_view_control(true)
 	ui_manager.launch_letter_box(true)
 	player.nav.target_position = cover.global_position
-	go_to_stand_posture()
+	set_player_posture()
 	var twn: Tween = create_tween()
 	twn.tween_property(player, "aim_target:x", 0.0, 0.3)
-	add_on_physics_process(go_to_canon_cover)
+	add_on_physics_process(go_to_cover)
 	await wait_until(is_player_on_nav_destination)
 	var input_dir: Vector2 = get_input_dir_to_pos(cover.global_position)
 	set_player_move(input_dir)
@@ -207,13 +207,13 @@ func is_player_on_canon_shoot_cover(cover: CustomMarker) -> bool:
 	return player.global_position.distance_squared_to(cover.global_position) <= 0.1
 
 
-func go_to_stand_posture() -> void:
+func set_player_posture() -> void:
 	await wait(player.state_switch_time + 0.1)
 	if player.curr_posture == Player.Posture.CROUCH: player.crouch_to_stand()
 	if player.curr_posture == Player.Posture.PRONE: player.prone_to_stand()
 
 
-func go_to_canon_cover() -> void:
+func go_to_cover() -> void:
 	if player.nav.is_navigation_finished():
 		set_player_move(Vector2(0.0, 0.0))
 		player.is_running = false
@@ -273,9 +273,13 @@ func is_first_barricade_destroyed() -> bool:
 
 func enemies_enter_first_zone() -> void:
 	await wait(15.0)
+	# Set spwaners #################################################################################################################
 	## VOICE ?????????????????????????????????
 	ui_manager.set_objective(true, go_to_second_barricade, "Go to the backup barricade") # give second baricade target
-	# Set spwaners #################################################################################################################
-	# Activate death zone near of the second barricade
-	# Wait player death and make it respawn on a chosen NPC
-	print("C'est FINIIIIIIIIIIIIII !!!")
+	player.is_next_death_scripted = true
+	next_respawn = second_barricade_npc
+	death_zone_second_barricade.player_entered.connect(kill_player, CONNECT_ONE_SHOT)
+	death_zone_second_barricade.monitoring = true
+	await wait_signal(player.died)
+	canon_detection_area.set_deferred("monitoring", false)
+	if death_zone_second_barricade.player_entered.is_connected(kill_player): death_zone_second_barricade.player_entered.disconnect(kill_player)
