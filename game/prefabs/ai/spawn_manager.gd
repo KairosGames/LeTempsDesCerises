@@ -22,9 +22,12 @@ func _get_configuration_warnings() -> PackedStringArray:
 			warnings.append("%s is not a Spawner" % spawner.name)
 	return warnings
 
+func get_monitor_value() -> int: return _entity_count
+
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
 	_init_spawner()
+	Performance.add_custom_monitor("Gameplay/Entity %s" % Agent.Team.find_key(team), get_monitor_value )
 
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
