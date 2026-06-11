@@ -38,6 +38,7 @@ shader_parameter/darkness = 1.0
 shader = ExtResource("11_6barq")
 shader_parameter/strength = 3
 shader_parameter/blur_size = 0.0
+shader_parameter/effect = 8.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fp3wc"]
 radius = 0.35
@@ -57,6 +58,9 @@ ads_concentration_curve = ExtResource("2_iylwk")
 
 [node name="PlayerNav" type="NavigationAgent3D" parent="." unique_id=1624555534]
 unique_name_in_owner = true
+
+[node name="NavObstacle" type="NavigationObstacle3D" parent="." unique_id=1995672646]
+radius = 0.5
 
 [node name="DeathCamera" type="Camera3D" parent="." unique_id=1339179709]
 unique_name_in_owner = true

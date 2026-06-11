@@ -10,6 +10,7 @@ signal fire_kill_georges
 @onready var jules: Npc = %Jules
 @onready var versaillais_coming_point: CustomMarker = $VersaillaisComingPoint
 @onready var objective_point_barricade: CustomMarker = %ObjectivePointBarricade
+@onready var second_barricade_npc: Npc = %SecondBarricadeNPC
 
 var recorded_pos: Vector3
 
@@ -156,9 +157,7 @@ func wait_player_shoot()-> void:
 	await wait_until(is_player_shooting_target)
 	free_tool_tip()
 	player.tried_shoot_no_reload.emit()
-	if player.is_aiming and not player.p_inputs.is_gamepad:
-		player.is_aiming = false
-		player.switch_aim_state()
+	if not player.p_inputs.is_gamepad: leave_aim()
 	await wait(0.75)
 	if player.curr_posture == Player.Posture.PRONE: player.prone_to_stand()
 
@@ -233,12 +232,14 @@ func enter_fight_begin() -> void:
 	jules.rotate_yaw_to_pos_tween(versaillais_coming_point.global_position, 0.4)
 	await francois.rotate_yaw_to_pos_tween(player.global_position, 0.4)
 	jules.is_figthing = true
+	second_barricade_npc.is_figthing = true
 	await wait_voice()
 	take_player_view_control(false)
+	clean_process()
 
 
 func georges_death() -> void:
-	# Set Spawners################################################################################################################
+	# Set spwaners ##########################################################################################
 	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.2)
 	var george_targ: Vector3 = (player.global_position + (player.basis.x * 1.0)) + player.basis.z * 2.0
 	await georges.move_to(george_targ, 4.0)
@@ -267,7 +268,7 @@ func free_player() -> void:
 	ui_manager.set_objective(true, objective_point_barricade, "Go to the barricade")
 	handle_action_tooltip("move")
 	await wait_until(has_player_moved_enough)
-	clean_ui_process()
+	free_tool_tip()
 
 
 func has_player_moved_enough() -> bool:

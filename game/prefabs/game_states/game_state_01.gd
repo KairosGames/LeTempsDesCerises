@@ -40,6 +40,7 @@ func exit() -> void:
 
 
 func set_player_for_debug() -> void:
+	ui_manager.set_objective(true, game_manager.all_states[0].objective_point_barricade, "Go to the barricade")
 	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
 	player.give_or_drop_weapon(true)
 	player.is_weapon_loaded = true
@@ -84,9 +85,7 @@ func on_player_exit_barricade_zone() -> void:
 	take_player_move_control(true)
 	take_player_view_control(true)
 	if player.is_running: player.is_running = false
-	if player.is_aiming:
-		player.is_aiming = false
-		player.switch_aim_state()
+	leave_aim()
 	var target_point: Vector3 = player.global_position + return_to_barricade.basis.x
 	var time_ratio: float = get_yaw_diff_ratio(target_point)
 	await tween_rotate_player_to_pos(target_point, 1.0 * time_ratio)
@@ -134,7 +133,7 @@ func can_player_die() -> bool:
 	
 	
 func lauch_first_battle_phase() -> void:
-	# Set Spawners#################################################################################################################
+	# Set spwaners ##########################################################################################
 	print("WAIT 90S")
 	await wait(90.0)
 
@@ -179,58 +178,12 @@ func go_to_cover_from_canon() -> void:
 	var dist1: float = player.global_position.distance_squared_to(canon_shoot_cover1.global_position)
 	var dist2: float = player.global_position.distance_squared_to(canon_shoot_cover2.global_position)
 	var cover: CustomMarker = canon_shoot_cover1 if dist1 < dist2 else canon_shoot_cover2
-	take_player_move_control(true)
-	take_player_view_control(true)
-	ui_manager.launch_letter_box(true)
-	player.nav.target_position = cover.global_position
-	set_player_posture()
-	var twn: Tween = create_tween()
-	twn.tween_property(player, "aim_target:x", 0.0, 0.3)
-	add_on_physics_process(go_to_cover)
-	await wait_until(is_player_on_nav_destination)
-	var input_dir: Vector2 = get_input_dir_to_pos(cover.global_position)
-	set_player_move(input_dir)
-	await wait_until(is_player_on_canon_shoot_cover.bind(cover))
-	set_player_move(Vector2.ZERO)
-	var target_point: Vector3 = cover.global_position + return_to_barricade.basis.z
+	await run_to_destination(cover)
+	var target_point: Vector3 = cover.global_position + cover.basis.z
 	var time_ratio: float = get_yaw_diff_ratio(target_point)
 	await tween_rotate_player_to_yaw(cover.global_rotation.y, 1.0 * time_ratio)
 	player.crouch_to_stand(true)
 	await wait(player.state_switch_time)
-
-
-func is_player_on_nav_destination() -> bool:
-	return is_nav_mesh_finished
-
-
-func is_player_on_canon_shoot_cover(cover: CustomMarker) -> bool:
-	return player.global_position.distance_squared_to(cover.global_position) <= 0.1
-
-
-func set_player_posture() -> void:
-	await wait(player.state_switch_time + 0.1)
-	if player.curr_posture == Player.Posture.CROUCH: player.crouch_to_stand()
-	if player.curr_posture == Player.Posture.PRONE: player.prone_to_stand()
-
-
-func go_to_cover() -> void:
-	if player.nav.is_navigation_finished():
-		set_player_move(Vector2(0.0, 0.0))
-		player.is_running = false
-		clean_physics_process()
-		is_nav_mesh_finished = true
-		return
-	var next_pos: Vector3 = player.nav.get_next_path_position()
-	rotate_yaw_player_to_pos(next_pos, PI * 2, delta_ph)
-	var dir = player.global_position - next_pos
-	var target_angle = atan2(-dir.x, -dir.z)
-	print(target_angle)
-	if abs(wrapf(player.global_rotation.y - target_angle, -PI, PI)) < PI * 0.1:
-		set_player_move(Vector2(0.0, 1.0))
-		player.is_running = true
-	else:
-		set_player_move(Vector2(0.0, 0.0))
-		player.is_running = false
 
 
 func launch_first_canon_shoot() -> void:
@@ -248,23 +201,18 @@ func launch_first_canon_shoot() -> void:
 
 func lauch_second_battle_phase() -> void:
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
-	# Set spwaners #################################################################################################################
+	# Set spwaners ##########################################################################################
 
 
 func wait_francois_move() -> void:
-	await wait_until(is_francois_out_of_screen)
-	
-
-
-func is_francois_out_of_screen() -> bool:
-	if francois.is_on_screen.is_on_screen(): return false
+	await wait_until(is_npc_out_of_screen.bind(francois))
 	francois.global_position = francois_moved_pos.global_position
 	francois.global_rotation = francois_moved_pos.global_rotation
-	return true
 
 
 func wait_barricade_destruction() -> void:
 	await wait_until_or_signal(is_first_barricade_destroyed, game_manager.first_barricade.just_destroyed)
+	game_manager.canon.enabled = false
 
 
 func is_first_barricade_destroyed() -> bool:
@@ -272,14 +220,14 @@ func is_first_barricade_destroyed() -> bool:
 
 
 func enemies_enter_first_zone() -> void:
-	await wait(15.0)
-	# Set spwaners #################################################################################################################
-	## VOICE ?????????????????????????????????
 	ui_manager.set_objective(true, go_to_second_barricade, "Go to the backup barricade") # give second baricade target
+	await wait(20.0)
+	# Set spwaners #################################################################################################
 	player.is_next_death_scripted = true
 	next_respawn = second_barricade_npc
 	death_zone_second_barricade.player_entered.connect(kill_player, CONNECT_ONE_SHOT)
 	death_zone_second_barricade.monitoring = true
 	await wait_signal(player.died)
+	ui_manager.objective_target.target = null
 	canon_detection_area.set_deferred("monitoring", false)
 	if death_zone_second_barricade.player_entered.is_connected(kill_player): death_zone_second_barricade.player_entered.disconnect(kill_player)

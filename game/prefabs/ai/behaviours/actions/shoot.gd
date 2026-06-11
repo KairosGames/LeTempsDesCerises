@@ -13,7 +13,9 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
 	# TODO USE a change posture action
 	agent.posture = agent.cover.get_shoot_posture()
-	agent.look_at(agent.target_point.global_position)
+	var targ: Vector3 = agent.target_point.global_position
+	targ.y = agent.global_position.y
+	agent.look_at(targ)
 
 	raycast.global_position = agent.global_position + Vector3(0, agent.cover.get_shoot_height(), 0)
 	raycast.look_at(agent.target_point.global_position)

@@ -1,14 +1,22 @@
 class_name Npc extends CharacterBody3D
 
+signal arrived_on_path_destination
+
 @onready var animator: AnimationPlayer = %AnimationPlayer
 @onready var collider: CollisionShape3D = %Collider
 @onready var is_on_screen: VisibleOnScreenNotifier3D = %IsOnScreen
-
+@onready var nav: NavigationAgent3D = %Navigation
 
 enum NpcName{
 	Georges,
 	Jules,
-	François
+	François,
+	Louise,
+	Marie,
+	Woman1,
+	Woman2,
+	Woman3,
+	Random
 }
 
 enum NpcGender{
@@ -20,12 +28,24 @@ enum NpcGender{
 @export var npc_name: NpcName
 @export var gender: NpcGender
 
+var game_manager: GameManager
 var on_process: Array[Callable]
+var on_physics_process: Array[Callable]
 var delta_t: float
+var delta_p: float
 var is_alive: bool = true
 var is_figthing: bool = false
+var is_nav_finished: bool = false
 
 var rot_twn: Tween
+
+
+func _ready() -> void:
+	ready_deferred.call_deferred()
+
+
+func ready_deferred() -> void:
+	if GameManager.instance: game_manager = GameManager.instance
 
 
 func _process(delta: float) -> void:
@@ -35,8 +55,22 @@ func _process(delta: float) -> void:
 	handle_animations()
 
 
+func _physics_process(delta: float) -> void:
+	delta_p = delta
+	for callable: Callable in on_physics_process: callable.call()
+
+
 func clean_process() -> void:
 	on_process.clear()
+
+
+func clean_physics_process() -> void:
+	on_physics_process.clear()
+
+
+func wait_until(condition: Callable) -> void:
+	while not condition.call() or not game_manager.is_game_playing():
+		await get_tree().process_frame
 
 
 func move_to(pos: Vector3, speed: float) -> void:
@@ -57,10 +91,10 @@ func apply_gravity() -> void:
 	velocity += get_gravity() * Player.instance.gravity_multiplier * delta_t
 
 
-func rotate_yaw_to_pos(pos: Vector3, speed: float) -> void:
+func rotate_yaw_to_pos(pos: Vector3, speed: float, delta: float) -> void:
 	var dir = global_position - pos
 	var target_angle = atan2(-dir.x, -dir.z)
-	global_rotation.y = rotate_toward(global_rotation.y, target_angle, speed * delta_t)
+	global_rotation.y = rotate_toward(global_rotation.y, target_angle, speed * delta)
 
 
 func rotate_yaw_to_pos_tween(pos: Vector3, time: float) -> void:
@@ -110,3 +144,33 @@ func enter_in_walk_anim() -> void:
 
 func enter_in_fight_anim() -> void:
 	pass
+
+
+func launch_movement_to_paths(path_points: Array[Node3D]) -> void:
+	for point: Node3D in path_points:
+		is_nav_finished = false
+		nav.target_position = point.global_position
+		on_physics_process.push_back(go_to_nav_destination)
+		await wait_until(is_on_nav_destination)
+	var dest: Node3D = path_points[path_points.size() - 1]
+	var targ: Vector3 = dest.global_position + dest.basis.z
+	await rotate_yaw_to_pos_tween(targ, 0.2)
+	arrived_on_path_destination.emit()
+	is_figthing = true
+
+
+func go_to_nav_destination() -> void:
+	if nav.is_navigation_finished():
+		is_nav_finished = true
+		clean_physics_process()
+		return
+	var next_pos: Vector3 = nav.get_next_path_position()
+	rotate_yaw_to_pos(next_pos, PI * 2, delta_t)
+	var dir = global_position - next_pos
+	var target_angle = atan2(-dir.x, -dir.z)
+	if abs(wrapf(global_rotation.y - target_angle, -PI, PI)) < PI * 0.1:
+		move_forward(4.0)
+
+
+func is_on_nav_destination() -> bool:
+	return is_nav_finished

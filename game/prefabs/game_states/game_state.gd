@@ -28,7 +28,7 @@ var delta_ph: float
 var voice_line_index: int = -1
 var local_bool: bool
 var was_gpad: bool
-var is_nav_mesh_finished: bool = false
+var is_nav_finished: bool = false
 
 var rot_twn: Tween
 
@@ -165,6 +165,13 @@ func rotate_yaw_player_to_pos(pos: Vector3, speed: float, delta: float) -> void:
 	player.aim_target.y = rad_to_deg(rotate_toward(arg1, target_angle, speed * delta))
 
 
+func yaw_player_look_dest(destination: Node3D, speed: float, delta: float) -> void:
+	var dir = player.global_position - destination.global_position
+	var target_angle = atan2(-dir.x, -dir.z)
+	var arg1 = deg_to_rad(player.aim_target.y)
+	player.aim_target.y = rad_to_deg(rotate_toward(arg1, target_angle, speed * delta))
+
+
 func rotate_player_to_yaw(yaw: float, speed: float, delta: float) -> void:
 	var arg1 = deg_to_rad(player.aim_target.y)
 	player.aim_target.y = rad_to_deg(rotate_toward(arg1, yaw, speed * delta))
@@ -233,3 +240,74 @@ func is_player_alive() -> bool:
 func kill_player() -> void:
 	player.can_die = true
 	player.die()
+
+
+func run_to_destination(destination: Node3D) -> void:
+	take_player_move_control(true)
+	take_player_view_control(true)
+	ui_manager.launch_letter_box(true)
+	player.nav.target_position = destination.global_position
+	set_player_for_cinematic()
+	add_on_physics_process(go_to_nav_destination)
+	await wait_until(is_player_on_nav_destination)
+	var input_dir: Vector2 = get_input_dir_to_pos(destination.global_position)
+	set_player_move(input_dir)
+	await wait_until(is_player_on_position.bind(destination))
+	set_player_move(Vector2.ZERO)
+
+
+func set_player_for_cinematic() -> void:
+	var twn: Tween = create_tween()
+	twn.tween_property(player, "aim_target:x", 0.0, 0.3)
+	leave_reload()
+	leave_aim()
+	await wait(player.state_switch_time + 0.1)
+	if player.curr_posture == Player.Posture.CROUCH: player.crouch_to_stand()
+	if player.curr_posture == Player.Posture.PRONE: player.prone_to_stand()
+
+
+func leave_aim() -> void:
+	if player.is_aiming:
+		player.is_aiming = false
+		player.switch_aim_state()
+
+
+func leave_reload() -> void:
+	if player.is_reloading: player.exit_reload(false)
+
+
+func go_to_nav_destination(run: bool = true) -> void:
+	if player.nav.is_navigation_finished():
+		set_player_move(Vector2(0.0, 0.0))
+		player.is_running = false
+		clean_physics_process()
+		is_nav_finished = true
+		return
+	var next_pos: Vector3 = player.nav.get_next_path_position()
+	rotate_yaw_player_to_pos(next_pos, PI * 2, delta_ph)
+	var dir = player.global_position - next_pos
+	var target_angle = atan2(-dir.x, -dir.z)
+	if abs(wrapf(player.global_rotation.y - target_angle, -PI, PI)) < PI * 0.1:
+		set_player_move(Vector2(0.0, 1.0))
+		if run: player.is_running = true
+	else:
+		set_player_move(Vector2(0.0, 0.0))
+		player.is_running = false
+
+
+func is_player_on_nav_destination() -> bool:
+	return is_nav_finished
+
+
+func is_player_on_position(pos: Node3D) -> bool:
+	return player.global_position.distance_squared_to(pos.global_position) <= 0.1
+
+
+func is_npc_out_of_screen(npc: Npc) -> bool:
+	if npc.is_on_screen.is_on_screen(): return false
+	return true
+
+
+func is_npc_on_screen(npc: Npc) -> bool:
+	if not npc.is_on_screen.is_on_screen(): return false
+	return true
