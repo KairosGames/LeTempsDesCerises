@@ -6,7 +6,7 @@ signal canon_entered
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player: player_entered.emit()
-	if body is Canon: canon_entered.emit()
+	if body.get_parent() and body.get_parent() is Canon: canon_entered.emit()
 
 
 func is_player_inside() -> bool:
