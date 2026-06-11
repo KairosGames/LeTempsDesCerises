@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dq823155yuffs"]
+
+[ext_resource type="Texture2D" uid="uid://cro80aa34qagd" path="res://sources/images/textures/affiches/img004.png" id="1_tcdd8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b2pr3"]
+transparency = 1
+albedo_texture = ExtResource("1_tcdd8")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_stv4p"]
+material = SubResource("StandardMaterial3D_b2pr3")
+size = Vector2(0.5, 0.3)
+
+[node name="CarteBoulangerie" type="MeshInstance3D" unique_id=62535198]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.25, 0)
+mesh = SubResource("PlaneMesh_stv4p")
