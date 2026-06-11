@@ -127,7 +127,7 @@ func get_peek_posture() -> Agent.Posture:
 func get_shoot_posture() -> Agent.Posture:
 	match height:
 		Height.HIGH: return Agent.Posture.STAND
-		Height.MEDIUM: return Agent.Posture.CROUCH
+		Height.MEDIUM: return Agent.Posture.STAND
 		Height.LOW: return Agent.Posture.CROUCH
 		Height.NONE: return Agent.Posture.STAND
 		_: return Agent.Posture.NONE
