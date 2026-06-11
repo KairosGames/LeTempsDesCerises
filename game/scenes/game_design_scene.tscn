@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bd4h4sytm0nms" path="res://scripts/cover_group_transfer.gd" id="1_lujon"]
 [ext_resource type="PackedScene" uid="uid://bu1f4j2mtjfi6" path="res://sandbox/csg_to_save/streets.tscn" id="2_3s0cs"]
-[ext_resource type="Script" uid="uid://jn3qgxouvero" path="res://scripts/cover_group.gd" id="2_hmepn"]
+[ext_resource type="Script" path="res://scripts/cover_group.gd" id="2_hmepn"]
 [ext_resource type="PackedScene" uid="uid://b47bjwgwaxagl" path="res://prefabs/geometry/regions/building_a.tscn" id="2_tvueo"]
 [ext_resource type="PackedScene" uid="uid://ba0txi1b7hknx" path="res://prefabs/vfx/burn_effect.tscn" id="3_dwitp"]
 [ext_resource type="PackedScene" uid="uid://bq4r3noe6r40s" path="res://prefabs/geometry/regions/building_b.tscn" id="3_tvueo"]
@@ -64,10 +64,10 @@ agent_radius = 0.25
 
 [sub_resource type="Curve3D" id="Curve3D_g3y20"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, -2, 0, 5, 7.6785297, -4.7683716e-07, -33.337776, 0, 0, 0, 0, 0, 0, 7.243234, 1.4210855e-14, -5.876878),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, -1, 0, 3.5, 7.858634, -4.7683716e-07, -33.63066, 1, 0, -4, 0, 0, 0.5, 8.327121, 0.023575425, -27.93738, 1, 0, -3, -1, 0, 1.4, 0.5345526, 0, -15.287311, 2.6, 0, -1.5, 0, 0, 0, 7.2842817, 2.3841858e-07, -5.7414913),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
-point_count = 2
+point_count = 4
 
 [node name="GameDesignScene" type="Node3D" unique_id=1256367080]
 
@@ -928,7 +928,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 curve = SubResource("Curve3D_g3y20")
 
 [node name="Canon" parent="Ennemies/Path3DCanon" unique_id=1666123749 instance=ExtResource("43_u321f")]
-transform = Transform3D(-0.92846096, 0, 0.37138444, 0, 1, 0, -0.37138444, 0, -0.92846096, 7.6785297, -4.7683716e-07, -33.337776)
+transform = Transform3D(-0.9614953, 0, 0.27471277, 0, 1, 0, -0.27471277, 0, -0.9614953, 7.858634, -4.7683716e-07, -33.63066)
 
 [node name="CoverPointsVersaillais" type="Node3D" parent="Ennemies" unique_id=1945716246]
 
