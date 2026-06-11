@@ -16,26 +16,29 @@ points = PackedVector3Array(0.2911333, 1.8031296, 0.6255116, -0.13377067, 1.8294
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_o6g4p"]
 points = PackedVector3Array(0.29113445, 0.048870064, 0.6255141, -0.13471344, -0.0068571456, -0.7280867, -0.13377018, 0.022593072, -0.7229446, -0.7320763, -0.06904762, 0.23169953, 0.760419, -0.06904762, -0.047947578, -0.6852644, 0.048967358, 0.06833627, 0.5984497, 0.048950765, -0.35019735, -0.047947578, -0.06904762, 0.760419, -0.51447356, -0.06904762, -0.5766671, 0.3872579, -0.06904762, -0.6698828, -0.35048956, 0.04899752, 0.5989523, 0.6670542, -0.06904762, 0.3872579, 0.6571213, 0.049194276, 0.20868799, -0.46068594, 0.048813462, -0.51635927, 0.20821907, 0.049069177, -0.65848017, -0.7320763, -0.06904762, -0.23452812, -0.5766671, -0.06904762, 0.51164496, 0.3872579, -0.06904762, 0.6670542, 0.04511898, -0.06904762, -0.7632476, -0.6007621, 0.022379614, 0.4225044, 0.6670542, -0.06904762, -0.3900865, -0.6908209, 0.022482362, -0.25077713, 0.16035518, 0.022573298, 0.71963155, 0.599966, 0.02247876, 0.42394194, 0.71929246, 0.022559458, -0.16310771, 0.42266628, 0.022390781, -0.600991, -0.25165322, 0.022585439, 0.69041437, 0.72264695, 0.022696376, 0.13140586, -0.3900865, -0.06904762, 0.6670542, -0.7232854, 0.02260698, 0.1310041, -0.3900865, -0.06904762, -0.6698828, 0.1309063, 0.02258522, -0.7227523)
 
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_t1k4y"]
+size = Vector3(1.5485404, 1, 2.7035267)
+
 [node name="BigCart" type="StaticBody3D" unique_id=896286637]
 
 [node name="sm_cart_big2" parent="." unique_id=561521716 instance=ExtResource("1_acc31")]
 
-[node name="sm_cart_big" parent="sm_cart_big2" index="0" unique_id=569737125]
+[node name="sm_cart_big" parent="sm_cart_big2" index="0" unique_id=877617937]
 surface_material_override/0 = ExtResource("2_t1k4y")
 
-[node name="BézierCircle_006" parent="sm_cart_big2/sm_cart_big" index="0" unique_id=1524032274]
+[node name="BézierCircle_006" parent="sm_cart_big2/sm_cart_big" index="0" unique_id=1365886338]
 surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
 
-[node name="Cube_008" parent="sm_cart_big2/sm_cart_big" index="1" unique_id=1428607580]
+[node name="Cube_008" parent="sm_cart_big2/sm_cart_big" index="1" unique_id=1822308575]
 surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
 
-[node name="Cube_009" parent="sm_cart_big2/sm_cart_big" index="2" unique_id=1713917699]
+[node name="Cube_009" parent="sm_cart_big2/sm_cart_big" index="2" unique_id=998674812]
 surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
 
-[node name="Cube_010" parent="sm_cart_big2/sm_cart_big" index="3" unique_id=2079847753]
+[node name="Cube_010" parent="sm_cart_big2/sm_cart_big" index="3" unique_id=291133490]
 surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
 
-[node name="Cube_011" parent="sm_cart_big2/sm_cart_big" index="4" unique_id=355403682]
+[node name="Cube_011" parent="sm_cart_big2/sm_cart_big" index="4" unique_id=604945418]
 surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=169670401]
@@ -48,5 +51,9 @@ shape = SubResource("ConvexPolygonShape3D_t1k4y")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1689165993]
 transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, 5.9604645e-08, -4.7683716e-07, -1, -1, -5.364418e-07, -1.1920929e-07, -0.92600346, 0.715442, -0.18398751)
 shape = SubResource("ConvexPolygonShape3D_o6g4p")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." unique_id=549183400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.304836, -0.28272167)
+occluder = SubResource("BoxOccluder3D_t1k4y")
 
 [editable path="sm_cart_big2"]
