@@ -32,3 +32,10 @@ func set_second_point(woman: Npc) -> void:
 
 func get_second_point(woman: Npc) -> CustomMarker:
 	return second_points[Npc.NpcName.keys()[woman.npc_name]]
+
+
+func clean_delete_references() -> void:
+	for i in range(women.size() - 1, -1, -1):
+		if not is_instance_valid(women[i]):
+			women[i] = null
+			women.remove_at(i)

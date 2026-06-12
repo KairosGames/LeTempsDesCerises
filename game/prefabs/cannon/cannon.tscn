@@ -42,6 +42,10 @@ shape = SubResource("CapsuleShape3D_fpedu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61, 0)
 radius = 1.0
 
+[node name="ObjectivePoint" type="Marker3D" parent="." unique_id=968513193]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1523932, 0)
+
 [connection signal="shoot" from="." to="Mesh/AkCannonManager" method="_on_canon_shoot"]
 [connection signal="start_move" from="." to="Mesh/AkCannonManager" method="_on_canon_start_move"]
 [connection signal="stop_move" from="." to="Mesh/AkCannonManager" method="_on_canon_stop_move"]

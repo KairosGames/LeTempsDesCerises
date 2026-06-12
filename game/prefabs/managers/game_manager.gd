@@ -12,7 +12,7 @@ class_name GameManager extends Node
 @export_category("References")
 @export var spawners: Array[Cover]
 @export var first_barricade: Barricade
-@export var canon: Canon
+@export var cannon: Canon
 
 @export_category("Packed Scenes")
 @export var player_prefab: PackedScene
@@ -36,7 +36,7 @@ static var instance: GameManager:
 func _ready() -> void:
 	if use_debug: game_state_index = starting_game_state - 1
 	instance = self
-	if canon: canon.shoot.connect(handle_canon_shoot)
+	if cannon: cannon.shoot.connect(handle_cannon_shoot)
 	ready_deferred.call_deferred()
 
 
@@ -106,7 +106,7 @@ func is_game_playing() -> bool:
 	return not is_in_pause
 
 
-func handle_canon_shoot() -> void:
+func handle_cannon_shoot() -> void:
 	var curr_barricade = get_active_barricade()
 	if curr_barricade: curr_barricade.take_damage()
 

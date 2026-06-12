@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://twx4wqiu4ang" path="res://prefabs/npc/npc.gd" id="1_s40ew"]
 [ext_resource type="PackedScene" uid="uid://br5nta464et5g" path="res://sounds/prefabs/ak_npc_manager.tscn" id="2_470b1"]
+[ext_resource type="PackedScene" uid="uid://d28tbnqpob3um" path="res://prefabs/ai/agents/versaillais.tscn" id="2_k08jm"]
+[ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="3_y6qhm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fdau"]
 radius = 0.25
@@ -82,6 +84,8 @@ _data = {
 [node name="NPC" type="CharacterBody3D" unique_id=1296143105 groups=["Npc"]]
 floor_max_angle = 1.0471976
 script = ExtResource("1_s40ew")
+versaillais = ExtResource("2_k08jm")
+communard = ExtResource("3_y6qhm")
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=277200552]
 unique_name_in_owner = true

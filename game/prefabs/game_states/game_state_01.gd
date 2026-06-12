@@ -1,7 +1,7 @@
 class_name GameState01 extends GameState
 
 signal player_tried_to_exit
-signal game_ready_canon_shoot
+signal game_ready_cannon_shoot
 
 @onready var go_to_barricade_area: EventArea = %GoToBarricadeArea
 @onready var objective_point_barricade: CustomMarker = %ObjectivePointBarricade
@@ -9,9 +9,9 @@ signal game_ready_canon_shoot
 @onready var first_die_area: EventArea = %FirstDieArea
 @onready var invisible_wall_barricade: StaticBody3D = %InvisibleWallBarricade
 @onready var jules: Npc = %Jules
-@onready var canon_shoot_cover1: CustomMarker = %CanonShootCover1
-@onready var canon_shoot_cover2: CustomMarker = %CanonShootCover2
-@onready var canon_detection_area: EventArea = %CanonDetectionArea
+@onready var cannon_shoot_cover1: CustomMarker = %CanonShootCover1
+@onready var cannon_shoot_cover2: CustomMarker = %CanonShootCover2
+@onready var cannon_detection_area: EventArea = %CanonDetectionArea
 @onready var francois_moved_pos: CustomMarker = %FrancoisMovedPos
 @onready var second_barricade_npc: Npc = %SecondBarricadeNPC
 @onready var go_to_second_barricade: CustomMarker = %GoToSecondBarricade
@@ -26,8 +26,8 @@ func enter() -> void:
 	steps = [
 		Step.new(go_to_barricade, stay_into_barricade_area, go_to_first_die),
 		Step.new(do_nothing, lauch_first_battle_phase, do_nothing),
-		Step.new(do_nothing, launch_canon_arrival, do_nothing),
-		Step.new(go_to_cover_from_canon, launch_first_canon_shoot, do_nothing),
+		Step.new(do_nothing, launch_cannon_arrival, do_nothing),
+		Step.new(go_to_cover_from_cannon, launch_first_cannon_shoot, do_nothing),
 		Step.new(lauch_second_battle_phase, wait_francois_move, wait_barricade_destruction),
 		Step.new(enemies_enter_first_zone, do_nothing, do_nothing),
 	]
@@ -135,49 +135,51 @@ func can_player_die() -> bool:
 func lauch_first_battle_phase() -> void:
 	# Set spwaners ##########################################################################################
 	print("WAIT 90S")
-	await wait(90.0)
+	await wait(5.0)
+	jules = null
+	await wait(85.0)
 
 
-func launch_canon_arrival() -> void:
+func launch_cannon_arrival() -> void:
 	print("CANON ACTIVATED")
-	game_manager.canon.enabled = true
-	canon_detection_area.monitoring = true
-	await wait_signal(canon_detection_area.canon_entered)
-	canon_detection_area.set_deferred("monitoring", false)
+	game_manager.cannon.enabled = true
+	cannon_detection_area.monitoring = true
+	await wait_signal(cannon_detection_area.cannon_entered)
+	cannon_detection_area.set_deferred("monitoring", false)
 	print("CANON ENTERED WAIT VOICE")
 	await wait_voice() # "Ils ont un bronze!"
-	ui_manager.set_objective(true, game_manager.canon, "Stop the cannon from destroying the barricade")
-	player.enemy_shot.connect(check_player_kill_canon_enemy)
-	await wait_until_or_signal(is_canon_ready_to_shoot, game_manager.canon.reloaded)
-	for agent: Agent in game_manager.canon.workers: agent.can_die = false
-	if player.enemy_shot.is_connected(check_player_kill_canon_enemy): player.enemy_shot.disconnect(check_player_kill_canon_enemy)
+	ui_manager.set_objective(true, game_manager.cannon.objective_point, "Stop the cannon from destroying the barricade")
+	player.enemy_shot.connect(check_player_kill_cannon_enemy)
+	await wait_until_or_signal(is_cannon_ready_to_shoot, game_manager.cannon.reloaded)
+	for agent: Agent in game_manager.cannon.workers: agent.can_die = false
+	if player.enemy_shot.is_connected(check_player_kill_cannon_enemy): player.enemy_shot.disconnect(check_player_kill_cannon_enemy)
 	ui_manager.objective_target.target = null
 
 
-func is_canon_ready_to_shoot() -> bool:
-	return game_manager.canon.reload_progress >= 1.0
+func is_cannon_ready_to_shoot() -> bool:
+	return game_manager.cannon.reload_progress >= 1.0
 
 
-func check_player_kill_canon_enemy(target: Node3D) -> void:
+func check_player_kill_cannon_enemy(target: Node3D) -> void:
 	if not target is Agent : return
 	var versaillais: Agent = target as Agent
 	if versaillais.team != Agent.Team.VERSAILLAIS: return
 	if not versaillais.get_parent(): return
-	if not versaillais.canon_slot: return
-	if versaillais.get_parent() == versaillais.canon_slot:
+	if not versaillais.cannon_slot: return
+	if versaillais.get_parent() == versaillais.cannon_slot:
 		ui_manager.objective_target.target = null
-		player.enemy_shot.disconnect(check_player_kill_canon_enemy)
+		player.enemy_shot.disconnect(check_player_kill_cannon_enemy)
 
 
-func go_to_cover_from_canon() -> void:
+func go_to_cover_from_cannon() -> void:
 	await wait_until(is_player_alive)
 	player.can_die = false
-	await wait_voice() # "Attention, ils vont tirer au canon !"
+	await wait_voice() # "Attention, ils vont tirer au cannon !"
 	ui_manager.set_objective(true, null, "Take cover from the cannon fire")
 	player.can_play = false
-	var dist1: float = player.global_position.distance_squared_to(canon_shoot_cover1.global_position)
-	var dist2: float = player.global_position.distance_squared_to(canon_shoot_cover2.global_position)
-	var cover: CustomMarker = canon_shoot_cover1 if dist1 < dist2 else canon_shoot_cover2
+	var dist1: float = player.global_position.distance_squared_to(cannon_shoot_cover1.global_position)
+	var dist2: float = player.global_position.distance_squared_to(cannon_shoot_cover2.global_position)
+	var cover: CustomMarker = cannon_shoot_cover1 if dist1 < dist2 else cannon_shoot_cover2
 	await run_to_destination(cover)
 	var target_point: Vector3 = cover.global_position + cover.basis.z
 	var time_ratio: float = get_yaw_diff_ratio(target_point)
@@ -186,11 +188,11 @@ func go_to_cover_from_canon() -> void:
 	await wait(player.state_switch_time)
 
 
-func launch_first_canon_shoot() -> void:
-	game_ready_canon_shoot.emit()
+func launch_first_cannon_shoot() -> void:
+	game_ready_cannon_shoot.emit()
 	await wait_signal(game_manager.first_barricade.state_changed)
 	player.wpn_cam_base.shake(1.0, 1.0, 1.0)
-	for agent: Agent in game_manager.canon.workers: agent.can_die = true
+	for agent: Agent in game_manager.cannon.workers: agent.can_die = true
 	await wait_voice() # "Putain, ils ont pété la barricade"
 	take_player_move_control(false)
 	take_player_view_control(false)
@@ -212,7 +214,7 @@ func wait_francois_move() -> void:
 
 func wait_barricade_destruction() -> void:
 	await wait_until_or_signal(is_first_barricade_destroyed, game_manager.first_barricade.just_destroyed)
-	game_manager.canon.enabled = false
+	game_manager.cannon.enabled = false
 
 
 func is_first_barricade_destroyed() -> bool:
@@ -229,5 +231,8 @@ func enemies_enter_first_zone() -> void:
 	death_zone_second_barricade.monitoring = true
 	await wait_signal(player.died)
 	ui_manager.objective_target.target = null
-	canon_detection_area.set_deferred("monitoring", false)
-	if death_zone_second_barricade.player_entered.is_connected(kill_player): death_zone_second_barricade.player_entered.disconnect(kill_player)
+	cannon_detection_area.set_deferred("monitoring", false)
+	if death_zone_second_barricade.player_entered.is_connected(kill_player):
+		death_zone_second_barricade.player_entered.disconnect(kill_player)
+	await wait(5.0)
+	second_barricade_npc = null

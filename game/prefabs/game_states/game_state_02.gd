@@ -5,12 +5,15 @@ class_name GameState02 extends GameState
 @onready var women_arrival_point: CustomMarker = %WomenArrivalPoint
 @onready var discussion_point: CustomMarker = %DiscussionPoint
 @onready var louise_detection_area: EventArea = %LouiseDetectionArea
+@onready var discussion_area: EventArea = %DiscussionArea
+@onready var barricade_point: CustomMarker = %BarricadePoint
 
 
 func enter() -> void:
 	curr_step = 0
 	steps = [
 		Step.new(lauch_first_phase, allies_arrival, launch_women_dialogue),
+		Step.new(launch_last_battle_phase, do_nothing, do_nothing),
 	]
 	run_steps()
 	if game_manager.use_debug: set_player_for_debug()
@@ -51,6 +54,7 @@ func allies_arrival() -> void:
 	await tween_rotate_player_to_yaw(women_arrival_point.global_rotation.y, 1.0 * time_ratio)
 	var louise: Npc = woman_points.women[0]
 	await wait_signal(louise_detection_area.tracked_npc_entered)
+	louise_detection_area.set_deferred("monitoring", false)
 	francois.is_figthing = false
 	await francois.rotate_yaw_to_pos_tween(louise.global_position, 0.4)
 	await wait_voice() # "Oh regardez là bas, on est vernis ! Allez, les frangines, avec nous !"
@@ -68,7 +72,19 @@ func allies_arrival() -> void:
 	lay_down_weapon(false)
 	await wait(ui_manager.time_to_open_letter_box)
 	# Cut Enemy Spawners ############################################################################
-	# WAIT NOT ENNEMY    ############################################################################
+	await wait_until(is_there_no_enemies)
+	
+	#############################################################################FOR DEBUG
+	add_on_process(debug)
+
+
+############################################################################FOR DEBUG
+func debug() -> void:
+	if Input.is_action_just_pressed("go_next_step"):
+		for versaillais: Agent in get_tree().get_nodes_in_group("Versaillais"):
+			versaillais.die()
+		clean_process()
+############################################################################
 
 
 func lauch_women() -> void:
@@ -77,8 +93,51 @@ func lauch_women() -> void:
 		var p1: CustomMarker = woman_points.get_first_point(woman)
 		var p2: CustomMarker = woman_points.get_second_point(woman)
 		var path_points: Array[Node3D] = [p1, p2]
-		woman.launch_movement_to_paths(path_points)
+		var speed: float = randf_range(3.7, 4.3)
+		woman.launch_movement_to_paths(path_points, speed, true)
+
+
+func is_there_no_enemies() -> bool:
+	return get_tree().get_nodes_in_group("Versaillais"). size() <= 0
+
+
+func launch_movement_to_nav_point() -> void:
+	francois.is_figthing = false
+	for woman: Npc in woman_points.women: woman.is_figthing = false
+	await wait_voice()
+	var louise: Npc = woman_points.women[0]
+	var marie: Npc = woman_points.women[1]
+	louise.rotate_yaw_to_pos_tween(discussion_point.global_position, 0.5)
+	marie.rotate_yaw_to_pos_tween(discussion_point.global_position, 0.3)
+	francois.go_to_nav_point(discussion_point, 3.0)
+	await wait_signal(francois.arrived_on_path_destination)
 
 
 func launch_women_dialogue() -> void:
-	pass
+	discussion_area.monitoring = true
+	ui_manager.set_objective(true, discussion_area, "Check out the news from your Place Blanche's comrades")
+	await wait_signal(discussion_area.player_entered)
+	for woman: Npc in woman_points.women:
+		var t: float = randf_range(0.5, 1.0)
+		woman.rotate_yaw_to_pos_tween(discussion_point.global_position, t)
+	ui_manager.objective_target.target = null
+	discussion_area.set_deferred("monitoring", false)
+	await wait_voice()
+
+
+func launch_last_battle_phase() -> void:
+	# Set Spawners ############################################################################
+	var louise: Npc = woman_points.women[0]
+	for woman: Npc in woman_points.women:
+		var t: float = randf_range(0.5, 0.8)
+		woman.rotate_yaw_to_pos_tween(barricade_point.global_position, t)
+	await francois.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.9)
+	for woman: Npc in woman_points.women:
+		if woman.npc_name == Npc.NpcName.Louise: continue
+		woman.replace_with_agent()
+	woman_points.clean_delete_references()
+	francois.is_figthing = true
+	louise.is_figthing = true
+	# Set Spawners ############################################################################
+
+	

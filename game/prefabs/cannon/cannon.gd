@@ -11,6 +11,8 @@ signal workers_updated(workers: Array[Agent])
 signal move_progress_changed(float)
 signal reload_progress_changed(float)
 
+@onready var objective_point: Marker3D = %ObjectivePoint
+
 @export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var move_speeds: Array[float] = [0, 0, 0.5, 1]
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var reload_duration: Array[float] = [0, 15, 10, 5]
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var patience: float = 10

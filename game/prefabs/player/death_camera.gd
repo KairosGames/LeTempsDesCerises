@@ -187,3 +187,4 @@ func play_scripted_death() -> void:
 
 func delete_npc(communard: Node3D) -> void:
 	communard.queue_free()
+	GameManager.instance.curr_state.next_respawn = null

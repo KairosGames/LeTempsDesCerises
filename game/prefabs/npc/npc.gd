@@ -26,8 +26,19 @@ enum NpcGender{
 	NoBinary
 }
 
+enum NpcTeam{
+	Communard,
+	Versaillais
+}
+
+@export_category("Packed Scenes")
+@export var versaillais: PackedScene
+@export var communard: PackedScene
+
+@export_category("Settings")
 @export var npc_name: NpcName
 @export var gender: NpcGender
+@export var team: NpcTeam
 
 var game_manager: GameManager
 var on_process: Array[Callable]
@@ -147,9 +158,8 @@ func enter_in_fight_anim() -> void:
 	pass
 
 
-func launch_movement_to_paths(path_points: Array[Node3D]) -> void:
+func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: bool = false) -> void:
 	for point: Node3D in path_points:
-		var speed: float = randf_range(3.7, 4.3)
 		is_nav_finished = false
 		nav.target_position = point.global_position
 		on_physics_process.push_back(go_to_nav_destination.bind(speed))
@@ -159,7 +169,12 @@ func launch_movement_to_paths(path_points: Array[Node3D]) -> void:
 	var targ: Vector3 = dest.global_position + dest.basis.z
 	await rotate_yaw_to_pos_tween(targ, 0.2)
 	arrived_on_path_destination.emit()
-	is_figthing = true
+	is_figthing = fight
+
+
+func launch_movement_to_nav_point(point: Node3D, speed: float, fight: bool = false) -> void:
+	var solo: Array[Node3D] = [point]
+	launch_movement_to_paths(solo, speed, fight)
 
 
 func go_to_nav_destination(speed: float) -> void:
@@ -177,3 +192,14 @@ func go_to_nav_destination(speed: float) -> void:
 
 func is_on_nav_destination() -> bool:
 	return is_nav_finished
+
+
+func replace_with_agent() -> void:
+	var agent: Agent
+	match team:
+		NpcTeam.Communard: agent = communard.instantiate() as Agent
+		NpcTeam.Versaillais: agent = versaillais.instantiate() as Agent
+	get_parent().add_child(agent)
+	agent.global_position = global_position
+	agent.global_rotation = global_rotation
+	queue_free.call_deferred()

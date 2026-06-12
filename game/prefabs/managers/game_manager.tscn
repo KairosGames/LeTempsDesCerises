@@ -248,6 +248,9 @@ size = Vector3(10.876129, 2.4041748, 4.619095)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fs5fe"]
 size = Vector3(1, 2.694336, 8.290947)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pl46k"]
+size = Vector3(1, 1.4350586, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4ds3"]
 size = Vector3(9.191589, 0.7286377, 20.975586)
 
@@ -686,7 +689,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.974026, -1.1920929e-07, 1
 
 [node name="DiscussionPoint" parent="States/GameState02" unique_id=692784511 instance=ExtResource("4_ruyh4")]
 unique_name_in_owner = true
-transform = Transform3D(0.95298463, 0, 0.30301863, 0, 1, 0, -0.30301863, 0, 0.95298463, -28.354633, 4.7683716e-07, 18.851469)
+transform = Transform3D(0.95298463, 0, 0.30301863, 0, 1, 0, -0.30301863, 0, 0.95298463, -28.532661, 0, 17.75655)
 
 [node name="LouiseDetectionArea" parent="States/GameState02" unique_id=395173706 instance=ExtResource("10_83msq")]
 unique_name_in_owner = true
@@ -695,6 +698,14 @@ tracked_npc = 3
 
 [node name="CollisionShape3D" parent="States/GameState02/LouiseDetectionArea" index="0" unique_id=447369626]
 shape = SubResource("BoxShape3D_fs5fe")
+
+[node name="DiscussionArea" parent="States/GameState02" unique_id=1298678243 instance=ExtResource("10_83msq")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.233511, 1.3005116, 18.713589)
+
+[node name="CollisionShape3D" parent="States/GameState02/DiscussionArea" index="0" unique_id=447369626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38698435, 0)
+shape = SubResource("BoxShape3D_pl46k")
 
 [node name="NPC" type="Node" parent="." unique_id=2013234831]
 
@@ -763,4 +774,5 @@ shape = SubResource("BoxShape3D_g4ds3")
 [editable path="States/GameState01/DeathZoneSecondBarricade"]
 [editable path="States/GameState02/WomanPoints"]
 [editable path="States/GameState02/LouiseDetectionArea"]
+[editable path="States/GameState02/DiscussionArea"]
 [editable path="DeathZone"]
