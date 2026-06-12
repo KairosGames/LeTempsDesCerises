@@ -1,5 +1,6 @@
 class_name Npc extends CharacterBody3D
 
+signal arrived_on_path_point
 signal arrived_on_path_destination
 
 @onready var animator: AnimationPlayer = %AnimationPlayer
@@ -148,10 +149,12 @@ func enter_in_fight_anim() -> void:
 
 func launch_movement_to_paths(path_points: Array[Node3D]) -> void:
 	for point: Node3D in path_points:
+		var speed: float = randf_range(3.7, 4.3)
 		is_nav_finished = false
 		nav.target_position = point.global_position
-		on_physics_process.push_back(go_to_nav_destination)
+		on_physics_process.push_back(go_to_nav_destination.bind(speed))
 		await wait_until(is_on_nav_destination)
+		arrived_on_path_point.emit()
 	var dest: Node3D = path_points[path_points.size() - 1]
 	var targ: Vector3 = dest.global_position + dest.basis.z
 	await rotate_yaw_to_pos_tween(targ, 0.2)
@@ -159,7 +162,7 @@ func launch_movement_to_paths(path_points: Array[Node3D]) -> void:
 	is_figthing = true
 
 
-func go_to_nav_destination() -> void:
+func go_to_nav_destination(speed: float) -> void:
 	if nav.is_navigation_finished():
 		is_nav_finished = true
 		clean_physics_process()
@@ -169,7 +172,7 @@ func go_to_nav_destination() -> void:
 	var dir = global_position - next_pos
 	var target_angle = atan2(-dir.x, -dir.z)
 	if abs(wrapf(global_rotation.y - target_angle, -PI, PI)) < PI * 0.1:
-		move_forward(4.0)
+		move_forward(speed)
 
 
 func is_on_nav_destination() -> bool:

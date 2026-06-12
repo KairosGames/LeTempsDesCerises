@@ -289,7 +289,9 @@ func go_to_nav_destination(run: bool = true) -> void:
 	var target_angle = atan2(-dir.x, -dir.z)
 	if abs(wrapf(player.global_rotation.y - target_angle, -PI, PI)) < PI * 0.1:
 		set_player_move(Vector2(0.0, 1.0))
-		if run: player.is_running = true
+		if run:
+			player.is_running = true
+			print("prout")
 	else:
 		set_player_move(Vector2(0.0, 0.0))
 		player.is_running = false
@@ -311,3 +313,17 @@ func is_npc_out_of_screen(npc: Npc) -> bool:
 func is_npc_on_screen(npc: Npc) -> bool:
 	if not npc.is_on_screen.is_on_screen(): return false
 	return true
+
+
+func lay_down_weapon(is_down: bool) -> void:
+	var trans: Tween.TransitionType = Tween.TransitionType.TRANS_QUAD if is_down else Tween.TransitionType.TRANS_QUART
+	var ea: Tween.EaseType = Tween.EaseType.EASE_OUT if is_down else Tween.EaseType.EASE_IN
+	var targ: Node3D = player.reload_pos_right if player.is_right_handed else player.reload_pos_left
+	var targ_pos: Vector3 = targ.position if is_down else Vector3.ZERO
+	var targ_rot: Vector3 = targ.rotation if is_down else Vector3.ZERO
+	var twn: Tween = create_tween()
+	twn.tween_property(player.reload_root, "position", targ_pos, 1.0
+					).set_trans(trans).set_ease(ea)
+	twn.parallel().tween_property(player.reload_root, "rotation", targ_rot, 1.0
+					).set_trans(trans).set_ease(ea)
+	await twn.finished
