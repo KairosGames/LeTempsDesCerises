@@ -12,6 +12,7 @@ signal move_progress_changed(float)
 signal reload_progress_changed(float)
 
 @onready var objective_point: Marker3D = %ObjectivePoint
+@onready var second_path: Path3D = %Path3DCannon2
 
 @export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var move_speeds: Array[float] = [0, 0, 0.5, 1]
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var reload_duration: Array[float] = [0, 15, 10, 5]
@@ -131,5 +132,10 @@ func _create_workers() -> void:
 func _on_worker_died(worker: Agent) -> void:
 	workers.erase(worker)
 	workers_updated.emit(workers)
+
+
+func move_to_second_path() -> void:
+	reparent(second_path)
+
 
 enum State { NONE, MOVING, RELOADING }

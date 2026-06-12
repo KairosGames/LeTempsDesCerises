@@ -10,8 +10,8 @@ class_name GameManager extends Node
 @export var starting_game_state: int = 0
 
 @export_category("References")
-@export var spawners: Array[Cover]
 @export var first_barricade: Barricade
+@export var second_barricade: Barricade
 @export var cannon: Canon
 
 @export_category("Packed Scenes")
@@ -23,6 +23,7 @@ var ui_manager: UIManager
 var curr_state: GameState
 var game_state_index: int = -1
 var is_in_pause: bool = false
+var curr_barricade: Barricade
 
 var pause_twn: Tween
 
@@ -34,6 +35,7 @@ static var instance: GameManager:
 
 
 func _ready() -> void:
+	curr_barricade = first_barricade
 	if use_debug: game_state_index = starting_game_state - 1
 	instance = self
 	if cannon: cannon.shoot.connect(handle_cannon_shoot)
@@ -107,8 +109,9 @@ func is_game_playing() -> bool:
 
 
 func handle_cannon_shoot() -> void:
-	var curr_barricade = get_active_barricade()
 	if curr_barricade: curr_barricade.take_damage()
+	if curr_barricade.state == curr_barricade.max_state:
+		curr_barricade = second_barricade
 
 
 func get_active_barricade() -> Barricade:

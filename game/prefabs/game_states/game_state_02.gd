@@ -1,6 +1,7 @@
 class_name GameState02 extends GameState
 
 @onready var francois_moved_pos: CustomMarker = %FrancoisMovedPos
+@onready var desactivable_barricade: StaticBody3D = %DesactivableBarricade
 @onready var woman_points: WomanPoints = %WomanPoints
 @onready var women_arrival_point: CustomMarker = %WomenArrivalPoint
 @onready var discussion_point: CustomMarker = %DiscussionPoint
@@ -45,6 +46,7 @@ func allies_arrival() -> void:
 	await wait_until(is_player_alive)
 	player.can_die = false
 	await wait_voice() # "Faites place ! Faites place !"
+	desactivable_barricade.process_mode = Node.PROCESS_MODE_DISABLED
 	lauch_women()
 	louise_detection_area.monitoring = true
 	player.can_play = false
@@ -62,6 +64,7 @@ func allies_arrival() -> void:
 	await francois.rotate_yaw_to_pos_tween(rot_targ, 0.4)
 	francois.is_figthing = true
 	await wait_signal(louise.arrived_on_path_point)
+	desactivable_barricade.process_mode = Node.PROCESS_MODE_INHERIT
 	lay_down_weapon(true)
 	await wait_signal(louise.arrived_on_path_destination)
 	await wait(1.0)
@@ -138,6 +141,8 @@ func launch_last_battle_phase() -> void:
 	woman_points.clean_delete_references()
 	francois.is_figthing = true
 	louise.is_figthing = true
+	game_manager.cannon.move_to_second_path()
+	game_manager.cannon.enabled = true
 	# Set Spawners ############################################################################
 
 	
