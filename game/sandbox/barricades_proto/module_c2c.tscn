@@ -1,24 +1,7 @@
 [gd_scene format=4 uid="uid://cxvybyhea4hnk"]
 
-[ext_resource type="PackedScene" uid="uid://bhjfv1pmvwwli" path="res://sources/meshes/barricade_meshes/c2c_barricade_asset.glb" id="1_det1f"]
 [ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="1_do0gn"]
 [ext_resource type="PackedScene" uid="uid://dlbfo6n0j4rn1" path="res://sandbox/covers_proto/barrel_big.tscn" id="2_do0gn"]
-[ext_resource type="Material" uid="uid://dfrsy150v5044" path="res://sources/meshes/barricade_meshes/material.tres" id="4_m4ayy"]
-[ext_resource type="ArrayMesh" uid="uid://d1we637hyqvrr" path="res://sources/meshes/barricade_meshes/c2c.obj" id="4_r8gi7"]
-
-[sub_resource type="Curve3D" id="Curve3D_h8eh7"]
-_data = {
-"points": PackedVector3Array(-0.12678257, 0.05726278, -0.3272072, 0.12678257, -0.05726278, 0.3272072, -0.1, 1.1, 0, 0.00069344044, 0.05035317, -0.012461305, -0.00069344044, -0.05035317, 0.012461305, 1, 1.1, 0, -0.057336807, -0.035874724, 0.027938366, 0.057336807, 0.035874724, -0.027938366, 2, 0.8, 0, 0, 0, 0, 0, 0, 0, 3, 1.1, -0.1, -0.18887901, -0.22997534, 0.052381516, 0.18887901, 0.22997534, -0.052381516, 4, 1, 0, 0, 0, 0, 0, 0, 0, 4.2, -0.1, 0),
-"tilts": PackedFloat32Array(0, 0, 0.06981317, -0.05235988, 0, 0)
-}
-point_count = 6
-
-[sub_resource type="Curve3D" id="Curve3D_hrqk6"]
-_data = {
-"points": PackedVector3Array(-0.12678257, 0.05726278, -0.3272072, 0.127, -0.057, -0.327, -0.1, 1.1, 0, 0.001, 0.05, 0.012, -0.001, -0.05, -0.012, 1, 1.1, 0, -0.057, -0.036, -0.028, 0.057, 0.036, 0.028, 2, 0.8, 0, 0, 0, 0, 0, 0, 0, 3, 1.1, 0.1, -0.189, -0.23, -0.052, 0.189, 0.23, 0.052, 4, 1, 0, 0, 0, 0, 0, 0, 0, 4.2, -0.1, 0),
-"tilts": PackedFloat32Array(0, 0, -0.06981317, 0.05235988, 0, 0)
-}
-point_count = 6
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_do0gn"]
 _surfaces = [{
@@ -36,81 +19,7 @@ data = PackedVector3Array(0, -0.1998, 1.4, 0, -0.1998, 0, 0, 0.99799997, 0.4587,
 
 [node name="Module_c2c" type="Node3D" unique_id=649058329]
 
-[node name="c2c_barricade_asset2" parent="." unique_id=636001976 instance=ExtResource("1_det1f")]
-visible = false
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=928548258]
-visible = false
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=138130727]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0.6430664, 0.7)
-size = Vector3(5, 2.7138672, 1.4)
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=1857459027]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.2)
-operation = 2
-mode = 2
-path_node = NodePath("../Path3D")
-path_interval_type = 0
-path_interval = 0.3
-path_simplify_angle = 2.0
-path_rotation = 2
-path_rotation_accurate = false
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-
-[node name="Path3D" type="Path3D" parent="CSGCombiner3D" unique_id=712818506]
-curve = SubResource("Curve3D_h8eh7")
-
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="CSGCombiner3D" unique_id=268721600]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9176806)
-operation = 2
-polygon = PackedVector2Array(0, 0, 0, 1, -1, 1, -1, 0)
-mode = 2
-path_node = NodePath("../Path3D3")
-path_interval_type = 0
-path_interval = 0.3
-path_simplify_angle = 2.0
-path_rotation = 2
-path_rotation_accurate = false
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-
-[node name="Path3D3" type="Path3D" parent="CSGCombiner3D" unique_id=903102138]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.4831877)
-curve = SubResource("Curve3D_hrqk6")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1869497102]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4145508, -0.59991455, 0)
-operation = 2
-size = Vector3(5.1708984, 0.8001709, 5)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1382011350]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4145508, 1.768306, 0)
-operation = 2
-size = Vector3(5.1708984, 1, 5)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=76787182]
-transform = Transform3D(0.9925483, -0.12185203, 0, 0.12185203, 0.9925483, 0, 0, 0, 1, 5.315245, 0.8058181, 0)
-operation = 2
-size = Vector3(1.7208862, 3.555542, 5)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=305856276]
-transform = Transform3D(0.9366783, 0, 0.350191, 0, 1, 0, -0.350191, 0, 0.9366783, 4.8754826, 0, 0.17143664)
-operation = 2
-size = Vector3(1.013916, 1, 1)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1039434236]
-transform = Transform3D(0.9366722, 0, -0.3502074, 0, 1, 0, 0.3502074, 0, 0.9366722, 4.8760543, 0, 1.1945038)
-operation = 2
-size = Vector3(1.0126953, 1, 1)
-
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=819571706]
-visible = false
 
 [node name="CSGBakedMeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=910166382]
 mesh = SubResource("ArrayMesh_do0gn")
@@ -121,7 +30,3 @@ shape = SubResource("ConcavePolygonShape3D_det1f")
 
 [node name="Barrel_big" parent="." unique_id=1356934924 instance=ExtResource("2_do0gn")]
 transform = Transform3D(-0.17306374, 0.9849106, 0, -0.9849106, -0.17306374, 0, 0, 0, 1, 1.2658769, 1.0820493, 0.68407)
-
-[node name="C2c" type="MeshInstance3D" parent="." unique_id=2058673209]
-material_override = ExtResource("4_m4ayy")
-mesh = ExtResource("4_r8gi7")
