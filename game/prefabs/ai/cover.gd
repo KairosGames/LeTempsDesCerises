@@ -199,14 +199,13 @@ func _init_name() -> void:
 	_label.position = Vector3(0, 0.5, 0)
 
 func _show_name() -> void:
-	if _label.get_parent() != self:
-		add_child(_label, false, Node.INTERNAL_MODE_BACK)
+	if not is_ancestor_of(_label): add_child(_label, false, Node.INTERNAL_MODE_BACK)
 	if renamed.is_connected(_update_name): renamed.connect(_update_name)
 	_update_name()
 
 func _hide_name() -> void:
-	remove_child(_label)
-	renamed.disconnect(_update_name)
+	if is_ancestor_of(_label): remove_child(_label)
+	if renamed.is_connected(_update_name): renamed.disconnect(_update_name)
 
 func _update_name() -> void:
 	if _label: _label.text = ("%s [%s]" % [name, Height.find_key(height)]) if type != Type.SPAWNER else str(name)
@@ -229,10 +228,10 @@ func _init_lines() -> void:
 	_lines.multimesh.mesh = line_mesh
 
 func _show_lines() -> void:
-	add_child(_lines, false, Node.INTERNAL_MODE_BACK)
+	if not is_ancestor_of(_lines): add_child(_lines, false, Node.INTERNAL_MODE_BACK)
 
 func _hide_lines() -> void:
-	remove_child(_lines)
+	if is_ancestor_of(_lines): remove_child(_lines)
 
 func _init_motions() -> void:
 	_motions = MultiMeshInstance3D.new()
@@ -256,10 +255,10 @@ func _init_motions() -> void:
 	_motions.multimesh.mesh = motion_mesh
 
 func _show_motions() -> void:
-	add_child(_motions, false, Node.INTERNAL_MODE_BACK)
+	if not is_ancestor_of(_motions): add_child(_motions, false, Node.INTERNAL_MODE_BACK)
 
 func _hide_motions() -> void:
-	remove_child(_motions)
+	if is_ancestor_of(_motions): remove_child(_motions)
 
 func _init_point() -> void:
 	_point = MeshInstance3D.new()
@@ -275,11 +274,10 @@ func _init_point() -> void:
 	_point.mesh = mesh
 
 func _show_point() -> void:
-	if self != _point.get_parent():
-		add_child(_point, false, Node.INTERNAL_MODE_BACK)
+	if not is_ancestor_of(_point): add_child(_point, false, Node.INTERNAL_MODE_BACK)
 
 func _hide_point() -> void:
-	remove_child(_point)
+	if is_ancestor_of(_point): remove_child(_point)
 
 var _shoot_height: MeshInstance3D
 func _init_shoot_height() -> void:
@@ -293,10 +291,10 @@ func _init_shoot_height() -> void:
 	_shoot_height.position.y = get_shoot_height()
 
 func _show_shoot_height() -> void:
-	add_child(_shoot_height)
+	if not is_ancestor_of(_shoot_height): add_child(_shoot_height)
 
 func _hide_shoot_height() -> void:
-	remove_child(_shoot_height)
+	if is_ancestor_of(_shoot_height): remove_child(_shoot_height)
 
 func _update_gizmos() -> void:
 	if is_cover_available():
