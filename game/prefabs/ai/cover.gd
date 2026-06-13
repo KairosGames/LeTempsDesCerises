@@ -61,17 +61,20 @@ func _validate_property(property: Dictionary) -> void:
 		"side_distance" when type != Type.COVER or height != Height.HIGH: property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
-		_init_all()
-		if not CoverGizmo.show.is_connected(_show_all): CoverGizmo.show.connect(_show_all)
-		if not CoverGizmo.hide.is_connected(_hide_all): CoverGizmo.hide.connect(_hide_all)
-		if CoverGizmo.is_enabled: _show_all()
-	else:
+	_init_all()
+	if is_gizmo_enabled(): _show_all()
+	ProjectSettings.settings_changed.connect(_on_project_settings_changed)
+	if not Engine.is_editor_hint():
 		if type == Type.SPAWNER:
 			visible_on_screen_notifier = VisibleOnScreenNotifier3D.new()
 			add_child(visible_on_screen_notifier)
 		_init_area()
 
+func _on_project_settings_changed() -> void:
+	if is_gizmo_enabled(): _show_all()
+	else: _hide_all()
+
+func is_gizmo_enabled() -> bool: return ProjectSettings.get_setting("addons/cover_gizmo/enabled", false)
 
 func _init_area() -> void:
 	_area = Area3D.new()
@@ -156,7 +159,7 @@ func get_eye_height_from_posture(posture: Agent.Posture) -> float:
 		Agent.Posture.STAND: return 1.6
 		Agent.Posture.CROUCH: return 0.95
 		Agent.Posture.PRONE: return 0.3
-		_: 
+		_:
 			push_error("posture is not valid: ", posture)
 			return 3
 
@@ -196,8 +199,9 @@ func _init_name() -> void:
 	_label.position = Vector3(0, 0.5, 0)
 
 func _show_name() -> void:
-	add_child(_label, false, Node.INTERNAL_MODE_BACK)
-	renamed.connect(_update_name)
+	if _label.get_parent() != self:
+		add_child(_label, false, Node.INTERNAL_MODE_BACK)
+	if renamed.is_connected(_update_name): renamed.connect(_update_name)
 	_update_name()
 
 func _hide_name() -> void:
@@ -205,8 +209,7 @@ func _hide_name() -> void:
 	renamed.disconnect(_update_name)
 
 func _update_name() -> void:
-	_label.text = ("%s [%s]" % [name, Height.find_key(height)]) if type != Type.SPAWNER else str(name)
-
+	if _label: _label.text = ("%s [%s]" % [name, Height.find_key(height)]) if type != Type.SPAWNER else str(name)
 
 func _init_lines() -> void:
 	_lines = MultiMeshInstance3D.new()
@@ -271,9 +274,9 @@ func _init_point() -> void:
 
 	_point.mesh = mesh
 
-
 func _show_point() -> void:
-	add_child(_point, false, Node.INTERNAL_MODE_BACK)
+	if self != _point.get_parent():
+		add_child(_point, false, Node.INTERNAL_MODE_BACK)
 
 func _hide_point() -> void:
 	remove_child(_point)
@@ -296,7 +299,7 @@ func _hide_shoot_height() -> void:
 	remove_child(_shoot_height)
 
 func _update_gizmos() -> void:
-	if CoverGizmo.is_enabled:
+	if is_cover_available():
 		_update_color()
 		_update_lines()
 		_update_motions()

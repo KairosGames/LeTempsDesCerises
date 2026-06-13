@@ -1,4 +1,4 @@
-extends MultiMeshInstance3D
+extends MultiMeshInstance3D 
 
 const POOL_SIZE: int = 100
 const DEBUG_LINE: BoxMesh = preload("uid://dlk3762ys1jgb")
