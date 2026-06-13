@@ -209,4 +209,5 @@ func replace_with_agent() -> void:
 	get_parent().add_child(agent)
 	agent.global_position = global_position
 	agent.global_rotation = global_rotation
+	agent.global_rotation.y += PI
 	queue_free.call_deferred()

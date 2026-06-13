@@ -1,7 +1,7 @@
 class_name EventArea extends Area3D
 
 signal player_entered
-signal canon_entered
+signal cannon_entered
 signal tracked_npc_entered
 
 @export var tracked_npc: Npc.NpcName = Npc.NpcName.Random
@@ -9,7 +9,7 @@ signal tracked_npc_entered
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player: player_entered.emit()
-	if body.get_parent() and body.get_parent() is Canon: canon_entered.emit()
+	if body.get_parent() and body.get_parent() is Canon: cannon_entered.emit()
 	if body is Npc and (body as Npc).npc_name == tracked_npc: tracked_npc_entered.emit()
 
 

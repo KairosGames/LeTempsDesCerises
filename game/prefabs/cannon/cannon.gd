@@ -86,7 +86,7 @@ func _physics_process(delta: float) -> void:
 func _shoot() -> void:
 	if _is_first_shoot:
 		_is_first_shoot = false
-		await GameManager.instance.all_states[1].game_ready_canon_shoot
+		await GameManager.instance.all_states[1].game_ready_cannon_shoot
 	await get_tree().create_timer(delay_before_shoot).timeout
 	print("[Canon] shoot")
 	shoot.emit()

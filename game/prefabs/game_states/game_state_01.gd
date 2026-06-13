@@ -130,8 +130,8 @@ func can_player_die() -> bool:
 	if player.p_inputs.is_game_controlling_movement: return false
 	if player.p_inputs.is_game_controlling_view: return false
 	return first_die_area.is_player_inside()
-	
-	
+
+
 func lauch_first_battle_phase() -> void:
 	# Set spwaners ##########################################################################################
 	print("WAIT 90S")

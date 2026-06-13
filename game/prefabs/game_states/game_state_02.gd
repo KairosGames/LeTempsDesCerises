@@ -35,13 +35,14 @@ func set_player_for_debug() -> void:
 	player.is_weapon_loaded = true
 	ui_manager.hard_set_letter_box(false)
 	for i in range(0,3): game_manager.handle_cannon_shoot()
+	game_manager.cannon._is_first_shoot = false
 
 
 func lauch_first_phase() -> void:
 	for woman: Npc in woman_points.women: woman.visible = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 	# Set Spawners#############################################################################
-	await wait(0.0)#60.0)
+	await wait(60.0)
 
 
 func allies_arrival() -> void:
@@ -58,21 +59,12 @@ func allies_arrival() -> void:
 	await tween_rotate_player_to_yaw(women_arrival_point.global_rotation.y, 1.0 * time_ratio)
 	var louise: Npc = woman_points.women[0]
 	await wait_signal(louise_detection_area.tracked_npc_entered)
-	
-	print("LOUISE PASSED DETECTION")
-	
 	louise_detection_area.set_deferred("monitoring", false)
 	launch_francois_replique_on_women_arrival()
 	await wait_signal(louise.arrived_on_path_point)
-	
-	print("LOUISE PASSED FIRST POINT")
-
 	desactivable_barricade.process_mode = Node.PROCESS_MODE_INHERIT
 	lay_down_weapon(true)
 	await wait_until_or_signal(louise.is_on_all_nav_finished, louise.arrived_on_path_destination)
-	
-	print("LOUISE SECOND FIRST POINT")
-	
 	await wait(1.0)
 	take_player_move_control(false)
 	take_player_view_control(false)
@@ -128,7 +120,7 @@ func launch_dialogue_preparation() -> void:
 	var marie: Npc = woman_points.women[1]
 	louise.rotate_yaw_to_pos_tween(discussion_point.global_position, 0.5)
 	marie.rotate_yaw_to_pos_tween(discussion_point.global_position, 0.3)
-	francois.go_to_nav_point(discussion_point, 3.0)
+	francois.launch_movement_to_nav_point(discussion_point, 3.0)
 	await wait_signal(francois.arrived_on_path_destination)
 
 
@@ -161,6 +153,4 @@ func launch_last_battle_phase() -> void:
 	game_manager.cannon.enabled = true
 	# Set Spawners ############################################################################
 	await wait_signal(game_manager.second_barricade.just_destroyed)
-	print("C FINIIIIIIIIIIIIIIIIIIIIIIIII !!!")
-
-	
+	game_manager.cannon.enabled = false
