@@ -33,13 +33,14 @@ func set_player_for_debug() -> void:
 	player.give_or_drop_weapon(true)
 	player.is_weapon_loaded = true
 	ui_manager.hard_set_letter_box(false)
+	for i in range(0,3): game_manager.handle_cannon_shoot()
 
 
 func lauch_first_phase() -> void:
 	for woman: Npc in woman_points.women: woman.visible = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 	# Set Spawners#############################################################################
-	await wait(0.0)#60.0)
+	await wait(10.0)#60.0)
 
 
 func allies_arrival() -> void:
@@ -65,8 +66,11 @@ func allies_arrival() -> void:
 	francois.is_figthing = true
 	await wait_signal(louise.arrived_on_path_point)
 	desactivable_barricade.process_mode = Node.PROCESS_MODE_INHERIT
+	
+	######################### DO SOMETHING ELSE HERE WITH TEMPORISATION !
+	
 	lay_down_weapon(true)
-	await wait_signal(louise.arrived_on_path_destination)
+	await wait_until_or_signal(is_npc_on_nav_destination.bind(louise), louise.arrived_on_path_destination)
 	await wait(1.0)
 	take_player_move_control(false)
 	take_player_view_control(false)
@@ -100,10 +104,6 @@ func lauch_women() -> void:
 		woman.launch_movement_to_paths(path_points, speed, true)
 
 
-func is_there_no_enemies() -> bool:
-	return get_tree().get_nodes_in_group("Versaillais"). size() <= 0
-
-
 func launch_movement_to_nav_point() -> void:
 	francois.is_figthing = false
 	for woman: Npc in woman_points.women: woman.is_figthing = false
@@ -128,6 +128,10 @@ func launch_women_dialogue() -> void:
 	await wait_voice()
 
 
+func is_there_no_enemies() -> bool:
+	return get_tree().get_nodes_in_group("Versaillais"). size() <= 0
+
+
 func launch_last_battle_phase() -> void:
 	# Set Spawners ############################################################################
 	var louise: Npc = woman_points.women[0]
@@ -144,5 +148,7 @@ func launch_last_battle_phase() -> void:
 	game_manager.cannon.move_to_second_path()
 	game_manager.cannon.enabled = true
 	# Set Spawners ############################################################################
+	await wait_signal(game_manager.second_barricade.just_destroyed)
+	print("C FINIIIIIIIIIIIIIIIIIIIIIIIII !!!")
 
 	

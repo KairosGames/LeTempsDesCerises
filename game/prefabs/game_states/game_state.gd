@@ -292,7 +292,6 @@ func go_to_nav_destination(run: bool = true) -> void:
 		set_player_move(Vector2(0.0, 1.0))
 		if run:
 			player.is_running = true
-			print("prout")
 	else:
 		set_player_move(Vector2(0.0, 0.0))
 		player.is_running = false
@@ -300,6 +299,10 @@ func go_to_nav_destination(run: bool = true) -> void:
 
 func is_player_on_nav_destination() -> bool:
 	return is_nav_finished
+
+
+func is_npc_on_nav_destination(npc: Npc) -> bool:
+	return npc.is_nav_finished
 
 
 func is_player_on_position(pos: Node3D) -> bool:
