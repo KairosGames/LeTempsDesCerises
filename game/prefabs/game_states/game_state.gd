@@ -15,6 +15,7 @@ var steps: Array[Step] = []
 var curr_step: int = 0
 var is_active = false
 
+static var voice_line_index: int = -1
 var game_manager: GameManager
 var eff_manager: EffectsManager
 var ui_manager: UIManager
@@ -25,7 +26,6 @@ var on_physics_process: Array[Callable]
 var on_ui_process: Array[Callable]
 var delta_t: float
 var delta_ph: float
-var voice_line_index: int = -1
 var local_bool: bool
 var was_gpad: bool
 var is_nav_finished: bool = false
