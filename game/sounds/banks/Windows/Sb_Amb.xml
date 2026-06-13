@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{3ACA068B-8080-520E-BB69-FC4B34DFF143}">
+		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{5D705EE4-C1D2-5783-06AB-C8C4A7A46401}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Amb</ObjectPath>
 			<ShortName>Sb_Amb</ShortName>
 			<Path>Sb_Amb.bnk</Path>
@@ -23,6 +23,13 @@
 					<ShortName>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_007.wav</ShortName>
 					<CachePath>50/{50D2B392-A9A1-3168-4D6E-ABC7F51E2B49}.wem</CachePath>
 				</File>
+				<File Id="245803413" Language="SFX" Streaming="true" Location="Memory">
+					<ShortName>AMB\Enviro\LTDC_AMB_Street_WindBirds_Loop.wav</ShortName>
+					<Path>Media/245803413.wem</Path>
+					<CachePath>90/{9019EFA6-FF6E-F897-37E2-E838F6915DD8}.wem</CachePath>
+					<PrefetchSize>8024</PrefetchSize>
+					<ContainsPrefetch>true</ContainsPrefetch>
+				</File>
 				<File Id="289258374" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_010.wav</ShortName>
 					<CachePath>60/{60C0C07C-F02E-AAE5-DE24-3B1D7343DA6C}.wem</CachePath>
@@ -30,13 +37,6 @@
 				<File Id="306573068" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_001.wav</ShortName>
 					<CachePath>EA/{EA1F5EC0-335C-5A43-6131-130C9E18804D}.wem</CachePath>
-				</File>
-				<File Id="310481320" Language="SFX" Streaming="true" Location="Memory">
-					<ShortName>AMB\Street\LTDC_AMB_Street_WindBirds_Loop.wav</ShortName>
-					<Path>Media/310481320.wem</Path>
-					<CachePath>00/{00000000-0000-0000-0000-000000000000}.wem</CachePath>
-					<PrefetchSize>0</PrefetchSize>
-					<ContainsPrefetch>true</ContainsPrefetch>
 				</File>
 				<File Id="365568969" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_004.wav</ShortName>
@@ -108,7 +108,7 @@
 				</File>
 			</Media>
 			<Events>
-				<Event Id="3874446497" Name="Amb_Arson" ObjectPath="\Events\AMB\Amb_Arson" GUID="{EF6E0E2A-BF52-4CCA-9A70-5BAA396134FD}" Color="4" DurationType="Infinite">
+				<Event Id="3874446497" Name="Amb_Arson" ObjectPath="\Events\AMB\Amb_Arson" GUID="{EF6E0E2A-BF52-4CCA-9A70-5BAA396134FD}" Color="4" MaxAttenuation="50" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="203600813"/>
 					</MediaRefs>
@@ -118,9 +118,9 @@
 						<MediaRef Id="48146732"/>
 						<MediaRef Id="204772150"/>
 						<MediaRef Id="217321236"/>
+						<MediaRef Id="245803413"/>
 						<MediaRef Id="289258374"/>
 						<MediaRef Id="306573068"/>
-						<MediaRef Id="310481320"/>
 						<MediaRef Id="365568969"/>
 						<MediaRef Id="452551683"/>
 						<MediaRef Id="553541874"/>
@@ -143,5 +143,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{7C722C64-417A-9953-E67E-05BABA21B1B5}</FileHash>
+	<FileHash>{E86C572E-21E3-E498-41BE-E740A31B788A}</FileHash>
 </SoundBanksInfo>

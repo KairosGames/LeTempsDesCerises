@@ -7,10 +7,11 @@ extends Node3D
 var npc_name : String
 var text_duration : float
 var text_speed : float
-var valid_names : Array[String] = ["Louise, Marie, Georges, Jules, Francois"]
+var valid_names : Array[String] = ["Louise", "Marie", "Georges", "Jules", "Francois"]
 
 func _ready() -> void:
 	npc_name = get_parent().name
+	if not npc_name in valid_names: return
 	print(npc_name)
 	WwiseGlobal.narrators.append(self)
 	Wwise.set_switch("Character", npc_name, dialogue_event)

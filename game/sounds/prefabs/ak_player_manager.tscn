@@ -22,11 +22,13 @@ radius = 0.1
 [sub_resource type="Theme" id="Theme_hpeom"]
 default_font = ExtResource("15_cerox")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cerox"]
+bg_color = Color(0, 0, 0, 0.49019608)
+
 [sub_resource type="LabelSettings" id="LabelSettings_cerox"]
 font_size = 24
 outline_size = 6
 outline_color = Color(0.056291588, 0.056291603, 0.056291595, 1)
-shadow_size = 0
 
 [node name="ak_player_manager" type="Node3D" unique_id=1168469569 node_paths=PackedStringArray("subtitles", "shoot", "steps", "reload", "death", "alive", "up", "crouch", "prone", "sprint", "line")]
 script = ExtResource("1_g1o18")
@@ -179,6 +181,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme = SubResource("Theme_hpeom")
+theme_override_styles/normal = SubResource("StyleBoxFlat_cerox")
 label_settings = SubResource("LabelSettings_cerox")
 
 [connection signal="audio_marker" from="Steps" to="." method="_on_steps_audio_marker"]
