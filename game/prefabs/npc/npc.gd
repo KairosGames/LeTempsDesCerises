@@ -48,6 +48,7 @@ var delta_p: float
 var is_alive: bool = true
 var is_figthing: bool = false
 var is_nav_finished: bool = false
+var is_all_nav_finished: bool = false
 
 var rot_twn: Tween
 
@@ -159,6 +160,7 @@ func enter_in_fight_anim() -> void:
 
 
 func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: bool = false) -> void:
+	is_all_nav_finished = false
 	for point: Node3D in path_points:
 		is_nav_finished = false
 		nav.target_position = point.global_position
@@ -168,6 +170,7 @@ func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: b
 	var dest: Node3D = path_points[path_points.size() - 1]
 	var targ: Vector3 = dest.global_position + dest.basis.z
 	await rotate_yaw_to_pos_tween(targ, 0.2)
+	is_all_nav_finished = true
 	arrived_on_path_destination.emit()
 	is_figthing = fight
 
@@ -192,6 +195,10 @@ func go_to_nav_destination(speed: float) -> void:
 
 func is_on_nav_destination() -> bool:
 	return is_nav_finished
+
+
+func is_on_all_nav_finished() -> bool:
+	return is_all_nav_finished
 
 
 func replace_with_agent() -> void:

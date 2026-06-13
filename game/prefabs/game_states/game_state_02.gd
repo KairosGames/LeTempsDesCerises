@@ -13,7 +13,8 @@ class_name GameState02 extends GameState
 func enter() -> void:
 	curr_step = 0
 	steps = [
-		Step.new(lauch_first_phase, allies_arrival, launch_women_dialogue),
+		Step.new(lauch_first_phase, allies_arrival, do_nothing),
+		Step.new(launch_dialogue_preparation, launch_women_dialogue, do_nothing),
 		Step.new(launch_last_battle_phase, do_nothing, do_nothing),
 	]
 	run_steps()
@@ -40,7 +41,7 @@ func lauch_first_phase() -> void:
 	for woman: Npc in woman_points.women: woman.visible = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 	# Set Spawners#############################################################################
-	await wait(10.0)#60.0)
+	await wait(0.0)#60.0)
 
 
 func allies_arrival() -> void:
@@ -57,20 +58,21 @@ func allies_arrival() -> void:
 	await tween_rotate_player_to_yaw(women_arrival_point.global_rotation.y, 1.0 * time_ratio)
 	var louise: Npc = woman_points.women[0]
 	await wait_signal(louise_detection_area.tracked_npc_entered)
+	
+	print("LOUISE PASSED DETECTION")
+	
 	louise_detection_area.set_deferred("monitoring", false)
-	francois.is_figthing = false
-	await francois.rotate_yaw_to_pos_tween(louise.global_position, 0.4)
-	await wait_voice() # "Oh regardez là bas, on est vernis ! Allez, les frangines, avec nous !"
-	var rot_targ: Vector3 = francois_moved_pos.global_position + francois_moved_pos.basis.z
-	await francois.rotate_yaw_to_pos_tween(rot_targ, 0.4)
-	francois.is_figthing = true
+	launch_francois_replique_on_women_arrival()
 	await wait_signal(louise.arrived_on_path_point)
+	
+	print("LOUISE PASSED FIRST POINT")
+
 	desactivable_barricade.process_mode = Node.PROCESS_MODE_INHERIT
-	
-	######################### DO SOMETHING ELSE HERE WITH TEMPORISATION !
-	
 	lay_down_weapon(true)
-	await wait_until_or_signal(is_npc_on_nav_destination.bind(louise), louise.arrived_on_path_destination)
+	await wait_until_or_signal(louise.is_on_all_nav_finished, louise.arrived_on_path_destination)
+	
+	print("LOUISE SECOND FIRST POINT")
+	
 	await wait(1.0)
 	take_player_move_control(false)
 	take_player_view_control(false)
@@ -104,7 +106,21 @@ func lauch_women() -> void:
 		woman.launch_movement_to_paths(path_points, speed, true)
 
 
-func launch_movement_to_nav_point() -> void:
+func launch_francois_replique_on_women_arrival() -> void:
+	var louise: Npc = woman_points.women[0]
+	francois.is_figthing = false
+	await francois.rotate_yaw_to_pos_tween(louise.global_position, 0.4)
+	await wait_voice() # "Oh regardez là bas, on est vernis ! Allez, les frangines, avec nous !"
+	var rot_targ: Vector3 = francois_moved_pos.global_position + francois_moved_pos.basis.z
+	await francois.rotate_yaw_to_pos_tween(rot_targ, 0.4)
+	francois.is_figthing = true
+
+
+func is_there_no_enemies() -> bool:
+	return get_tree().get_nodes_in_group("Versaillais"). size() <= 0
+
+
+func launch_dialogue_preparation() -> void:
 	francois.is_figthing = false
 	for woman: Npc in woman_points.women: woman.is_figthing = false
 	await wait_voice()
@@ -126,10 +142,6 @@ func launch_women_dialogue() -> void:
 	ui_manager.objective_target.target = null
 	discussion_area.set_deferred("monitoring", false)
 	await wait_voice()
-
-
-func is_there_no_enemies() -> bool:
-	return get_tree().get_nodes_in_group("Versaillais"). size() <= 0
 
 
 func launch_last_battle_phase() -> void:

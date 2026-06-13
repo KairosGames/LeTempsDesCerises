@@ -301,10 +301,6 @@ func is_player_on_nav_destination() -> bool:
 	return is_nav_finished
 
 
-func is_npc_on_nav_destination(npc: Npc) -> bool:
-	return npc.is_nav_finished
-
-
 func is_player_on_position(pos: Node3D) -> bool:
 	return player.global_position.distance_squared_to(pos.global_position) <= 0.1
 
