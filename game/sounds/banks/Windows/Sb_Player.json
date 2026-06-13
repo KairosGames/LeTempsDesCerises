@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{49827AFC-1442-4066-AF70-C2B0B3B40C86}",
     "Language": "SFX",
-    "Hash": "{4FBC8D30-0303-CF44-2141-E9B529D44CBB}",
+    "Hash": "{C82C6944-36B2-AC7F-7A88-1E7A1AF2E881}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Player",
     "ShortName": "Sb_Player",
     "Path": "Sb_Player.bnk",
@@ -1155,6 +1155,26 @@
       "DurationMax": "0"
      },
      {
+      "Id": "3092587493",
+      "Name": "Pause",
+      "ObjectPath": "\\Events\\SFX\\Pause",
+      "GUID": "{21248D07-4D4A-441F-AA69-D40EACF392C2}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3092587493",
+        "Id": "3053630529",
+        "Name": "true",
+        "ObjectPath": "\\States\\Default Work Unit\\pause\\true",
+        "GUID": "{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}"
+       }
+      ]
+     },
+     {
       "Id": "2917189548",
       "Name": "Player_Alive",
       "ObjectPath": "\\Events\\SFX\\Player\\Player_Alive",
@@ -1819,6 +1839,26 @@
       "DurationType": "OneShot",
       "DurationMin": "0",
       "DurationMax": "0"
+     },
+     {
+      "Id": "953277036",
+      "Name": "Resume",
+      "ObjectPath": "\\Events\\SFX\\Resume",
+      "GUID": "{3536AD3D-2107-4B55-B0CF-0B8DC511FEE4}",
+      "Color": "10",
+      "MaxAttenuation": "0",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionSetState": [
+       {
+        "GroupId": "3092587493",
+        "Id": "2452206122",
+        "Name": "false",
+        "ObjectPath": "\\States\\Default Work Unit\\pause\\false",
+        "GUID": "{AE5D66E2-4A21-472D-A82F-731DE5ABE608}"
+       }
+      ]
      }
     ],
     "Busses": [
@@ -2110,6 +2150,32 @@
         "GUID": "{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"
        }
       ]
+     },
+     {
+      "Id": "3092587493",
+      "Name": "pause",
+      "ObjectPath": "\\States\\Default Work Unit\\pause",
+      "GUID": "{063211BB-9332-4406-9616-D5E2F8256E48}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\pause\\None",
+        "GUID": "{F182E372-9030-4C41-B76F-889D5C1A57E5}"
+       },
+       {
+        "Id": "2452206122",
+        "Name": "false",
+        "ObjectPath": "\\States\\Default Work Unit\\pause\\false",
+        "GUID": "{AE5D66E2-4A21-472D-A82F-731DE5ABE608}"
+       },
+       {
+        "Id": "3053630529",
+        "Name": "true",
+        "ObjectPath": "\\States\\Default Work Unit\\pause\\true",
+        "GUID": "{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}"
+       }
+      ]
      }
     ],
     "SwitchGroups": [
@@ -2188,6 +2254,6 @@
     ]
    }
   ],
-  "FileHash": "{3AFA994A-189C-D3FF-C7F9-472DBDFFB61F}"
+  "FileHash": "{A83E3DE1-DC68-235D-4D01-994516737B35}"
  }
 }

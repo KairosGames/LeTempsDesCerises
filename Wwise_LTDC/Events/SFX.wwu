@@ -1014,6 +1014,59 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="Pause" ID="{21248D07-4D4A-441F-AA69-D40EACF392C2}">
+					<ChildrenList>
+						<Action Name="" ID="{352455F2-930D-4104-9199-99FF9443960B}" ShortID="161943739">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="8"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.25"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+							<ChildrenList>
+								<EventActionException Name="" ID="{F8818C4A-9AC3-40F0-89F3-AEC65BD28749}">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="AMB" ID="{3C49B583-C63B-4CCB-A1B9-D71E082D055E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+								</EventActionException>
+							</ChildrenList>
+						</Action>
+						<Action Name="" ID="{290B78B2-26C0-4D52-83CA-815F55286EC8}" ShortID="714467815">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="true" ID="{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Resume" ID="{3536AD3D-2107-4B55-B0CF-0B8DC511FEE4}">
+					<ChildrenList>
+						<Action Name="" ID="{B9FDFCE1-4FD4-47FB-97A1-CFAD5A9C5933}" ShortID="741621900">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="10"/>
+								<Property Name="FadeTime" Type="Real64" Value="0.25"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
+						</Action>
+						<Action Name="" ID="{54F18B48-BFFF-4B75-B1DC-F5C417FA9122}" ShortID="857072342">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="22"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="false" ID="{AE5D66E2-4A21-472D-A82F-731DE5ABE608}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

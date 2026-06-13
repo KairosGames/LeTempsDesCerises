@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{C4BF3AD2-B18E-9604-D7EA-7D337626062E}">
+		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{9344716F-486E-5247-251E-694E7D1F4764}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Amb</ObjectPath>
 			<ShortName>Sb_Amb</ShortName>
 			<Path>Sb_Amb.bnk</Path>
@@ -9,6 +9,11 @@
 				<File Id="48146732" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_006.wav</ShortName>
 					<CachePath>BA/{BA69DFE4-43DD-BED9-587D-1769231C4D77}.wem</CachePath>
+				</File>
+				<File Id="203600813" Language="SFX" Streaming="true" Location="Loose">
+					<ShortName>AMB\Enviro\LTDC_AMB_Enviro_Arson_Loop.wav</ShortName>
+					<Path>Media/203600813.wem</Path>
+					<CachePath>59/{59B32620-6D1E-AAE1-E08B-3881A1CC6B82}.wem</CachePath>
 				</File>
 				<File Id="204772150" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_005.wav</ShortName>
@@ -18,6 +23,13 @@
 					<ShortName>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_007.wav</ShortName>
 					<CachePath>55/{55D0D6B1-273B-A4A6-FA2E-82716ED2A0D3}.wem</CachePath>
 				</File>
+				<File Id="245803413" Language="SFX" Streaming="true" Location="Memory">
+					<ShortName>AMB\Enviro\LTDC_AMB_Street_WindBirds_Loop.wav</ShortName>
+					<Path>Media/245803413.wem</Path>
+					<CachePath>00/{0032E8B9-9429-046E-2F2B-FB7251AD40E7}.wem</CachePath>
+					<PrefetchSize>2113</PrefetchSize>
+					<ContainsPrefetch>true</ContainsPrefetch>
+				</File>
 				<File Id="289258374" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_010.wav</ShortName>
 					<CachePath>DB/{DB552FCF-9D42-DD33-8B0E-7372B6A3D5F4}.wem</CachePath>
@@ -25,13 +37,6 @@
 				<File Id="306573068" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_001.wav</ShortName>
 					<CachePath>35/{35BCB11A-00C5-60B2-5342-AC2206F5A893}.wem</CachePath>
-				</File>
-				<File Id="310481320" Language="SFX" Streaming="true" Location="Memory">
-					<ShortName>AMB\Street\LTDC_AMB_Street_WindBirds_Loop.wav</ShortName>
-					<Path>Media/310481320.wem</Path>
-					<CachePath>69/{69A0BA15-5395-FB3E-F31B-D9C9FF01C2A2}.wem</CachePath>
-					<PrefetchSize>1394</PrefetchSize>
-					<ContainsPrefetch>true</ContainsPrefetch>
 				</File>
 				<File Id="365568969" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_004.wav</ShortName>
@@ -103,14 +108,19 @@
 				</File>
 			</Media>
 			<Events>
-				<Event Id="3265814676" Name="Amb_Cannons" ObjectPath="\Events\SFX\Amb_Cannons" GUID="{42733E42-B5F5-44F1-98EB-A729172BF973}" Color="10" DurationType="Infinite">
+				<Event Id="3874446497" Name="Amb_Arson" ObjectPath="\Events\AMB\Amb_Arson" GUID="{EF6E0E2A-BF52-4CCA-9A70-5BAA396134FD}" Color="4" MaxAttenuation="50" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="203600813"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3265814676" Name="Amb_Cannons" ObjectPath="\Events\AMB\Amb_Cannons" GUID="{42733E42-B5F5-44F1-98EB-A729172BF973}" Color="4" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="48146732"/>
 						<MediaRef Id="204772150"/>
 						<MediaRef Id="217321236"/>
+						<MediaRef Id="245803413"/>
 						<MediaRef Id="289258374"/>
 						<MediaRef Id="306573068"/>
-						<MediaRef Id="310481320"/>
 						<MediaRef Id="365568969"/>
 						<MediaRef Id="452551683"/>
 						<MediaRef Id="553541874"/>
@@ -133,5 +143,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{D352E6A8-922A-C6DB-976B-DE4D4713C892}</FileHash>
+	<FileHash>{61F3A5E9-1CFA-1D13-015E-AA3230C63674}</FileHash>
 </SoundBanksInfo>

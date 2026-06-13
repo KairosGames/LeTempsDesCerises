@@ -2,6 +2,8 @@ class_name AK
 
 class EVENTS:
 
+	const AMB_ARSON : int = 3874446497
+	const AMB_CANNONS : int = 3265814676
 	const MUSIC : int = 3991942870
 	const ALLY_SHOOT : int = 3252427803
 	const BARRICADE_DAMAGED : int = 482738278
@@ -18,11 +20,11 @@ class EVENTS:
 	const DEAFENING_RECOVER : int = 3687575925
 	const PLAYER_ALIVE : int = 2917189548
 	const PLAYER_DEATH : int = 3083087645
+	const PLAYER_DRYFIRE : int = 1960899976
 	const PLAYER_RELOAD : int = 1650679582
 	const PLAYER_SHOOT : int = 4004702906
 	const PLAYER_STEPS : int = 4272057794
 	const RESET_RELOAD : int = 1795565902
-	const AMB_CANNONS : int = 3265814676
 	const ALLY_ALLY_DEATH : int = 1707855831
 	const ALLY_BARRICADE_STATE : int = 3014529809
 	const ALLY_CANNON_ADVANCE : int = 535045682
@@ -85,7 +87,17 @@ class STATES:
 			const _19 : int = 1644366938
 			const _2 : int = 846646258
 			const _20 : int = 1661144518
+			const _21 : int = 1661144519
+			const _22 : int = 1661144516
+			const _23 : int = 1661144517
+			const _24 : int = 1661144514
+			const _25 : int = 1661144515
+			const _26 : int = 1661144512
+			const _27 : int = 1661144513
+			const _28 : int = 1661144526
+			const _29 : int = 1661144527
 			const _3 : int = 846646259
+			const _30 : int = 1677922233
 			const _4 : int = 846646260
 			const _5 : int = 846646261
 			const _6 : int = 846646262
@@ -253,6 +265,8 @@ class BANKS:
 	const FRANCOIS : int = 3484216754
 	const GEORGES : int = 2519917785
 	const JULES : int = 652153290
+	const LOUISE : int = 2926082704
+	const MARIE : int = 1274621345
 	const SB_AMB : int = 925885567
 	const SB_CANNON : int = 2061449278
 	const SB_NPC : int = 1278759826
@@ -261,10 +275,10 @@ class BANKS:
 
 class AUX_BUSSES:
 
+	const WWISE_MOTION_SEND : int = 214837138
 	const SFX_GUNSHOT_SEND : int = 3189108374
 	const REFLECT : int = 243379636
 	const STREET_REVERB : int = 2635253023
-	const WWISE_MOTION_SEND : int = 214837138
 	const MUSIC_REV : int = 2415077256
 
 class ACOUSTIC_TEXTURES:

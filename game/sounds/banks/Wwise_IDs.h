@@ -40,6 +40,7 @@ namespace AK
         static const AkUniqueID ENEMY_STEPS = 3114531655U;
         static const AkUniqueID ENEMY_VOICE_CANCEL = 2376509257U;
         static const AkUniqueID MUSIC = 3991942870U;
+        static const AkUniqueID PAUSE = 3092587493U;
         static const AkUniqueID PLAYER_ALIVE = 2917189548U;
         static const AkUniqueID PLAYER_CROUCH = 3055475155U;
         static const AkUniqueID PLAYER_DEATH = 3083087645U;
@@ -51,6 +52,7 @@ namespace AK
         static const AkUniqueID PLAYER_STEPS = 4272057794U;
         static const AkUniqueID PLAYER_UP = 4024398754U;
         static const AkUniqueID RESET_RELOAD = 1795565902U;
+        static const AkUniqueID RESUME = 953277036U;
     } // namespace EVENTS
 
     namespace STATES
@@ -145,6 +147,18 @@ namespace AK
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace NARRATIVE_STEP
+
+        namespace PAUSE
+        {
+            static const AkUniqueID GROUP = 3092587493U;
+
+            namespace STATE
+            {
+                static const AkUniqueID FALSE = 2452206122U;
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID TRUE = 3053630529U;
+            } // namespace STATE
+        } // namespace PAUSE
 
         namespace PLAYER_AIM
         {
@@ -354,6 +368,8 @@ namespace AK
         static const AkUniqueID FRANCOIS = 3484216754U;
         static const AkUniqueID GEORGES = 2519917785U;
         static const AkUniqueID JULES = 652153290U;
+        static const AkUniqueID LOUISE = 2926082704U;
+        static const AkUniqueID MARIE = 1274621345U;
         static const AkUniqueID SB_AMB = 925885567U;
         static const AkUniqueID SB_CANNON = 2061449278U;
         static const AkUniqueID SB_MUSIC = 779753582U;

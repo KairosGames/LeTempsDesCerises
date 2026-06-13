@@ -16,6 +16,7 @@ var allow_barks : bool = true
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	game_manager = GameManager.instance
+	game_manager.clicked_pause.connect(pause)
 	if game_manager and game_manager.use_narrative:
 		game_manager.curr_state.voice_line_called.connect(new_line)
 		await get_tree().create_timer(0.5).timeout
@@ -62,11 +63,11 @@ func remove(target : Node3D):
 
 func find_closest(type : Array, target : Node3D) -> Node3D : 
 	var closest : Node3D = null
-	for i : Node3D in type:
+	for agent : Node3D in type:
 		if closest == null:
-			closest = i
-		elif i.global_position.distance_squared_to(target.global_position) < closest.global_position.distance_squared_to(player.global_position):
-			closest = i
+			closest = agent
+		elif agent.global_position.distance_squared_to(target.global_position) < closest.global_position.distance_squared_to(player.global_position) and !agent.is_barking:
+			closest = agent
 	return closest
 
 func find_farthest(type : Array) -> Node3D : 
@@ -152,3 +153,10 @@ func on_reload_progress(progress):
 		cannon_workers.pick_random().post_event("Cannon_Incoming", 0)
 		find_closest(allies, barricade).post_event("Cannon_Incoming", 1)
 		find_random(allies).post_event("Cannon_Incoming", 2)
+
+func pause(new_pause : bool):
+	print(new_pause)
+	if new_pause:
+		Wwise.post_event("Pause", player)
+	elif !new_pause:
+		Wwise.post_event("Resume", player)

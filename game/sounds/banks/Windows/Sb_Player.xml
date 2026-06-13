@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{4FBC8D30-0303-CF44-2141-E9B529D44CBB}">
+		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{C82C6944-36B2-AC7F-7A88-1E7A1AF2E881}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Player</ObjectPath>
 			<ShortName>Sb_Player</ShortName>
 			<Path>Sb_Player.bnk</Path>
@@ -521,6 +521,11 @@
 					</SwitchContainers>
 				</Event>
 				<Event Id="3687575925" Name="Deafening_Recover" ObjectPath="\Events\SFX\Player\Deafening_Recover" GUID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3092587493" Name="Pause" ObjectPath="\Events\SFX\Pause" GUID="{21248D07-4D4A-441F-AA69-D40EACF392C2}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="3092587493" Id="3053630529" Name="true" ObjectPath="\States\Default Work Unit\pause\true" GUID="{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}"/>
+					</ActionSetState>
+				</Event>
 				<Event Id="2917189548" Name="Player_Alive" ObjectPath="\Events\SFX\Player\Player_Alive" GUID="{6AB802F9-F564-4477-8C4F-144112C5939D}" Color="10" DurationType="Infinite">
 					<AuxBusRefs>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
@@ -755,6 +760,11 @@
 					</ActionSetState>
 				</Event>
 				<Event Id="1795565902" Name="Reset_Reload" ObjectPath="\Events\SFX\Player\Reset_Reload" GUID="{FB9581D7-305D-4AEB-8363-F92282F7C8F3}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="953277036" Name="Resume" ObjectPath="\Events\SFX\Resume" GUID="{3536AD3D-2107-4B55-B0CF-0B8DC511FEE4}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionSetState>
+						<ActionSetStateEntry GroupId="3092587493" Id="2452206122" Name="false" ObjectPath="\States\Default Work Unit\pause\false" GUID="{AE5D66E2-4A21-472D-A82F-731DE5ABE608}"/>
+					</ActionSetState>
+				</Event>
 			</Events>
 			<Busses>
 				<Bus Id="161171466" Name="SFX_NPC" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_NPC" GUID="{C50F8E9D-E1E1-4B38-A0FA-27AA94AFC147}" Color="10">
@@ -867,6 +877,13 @@
 						<State Id="2655407367" Name="crouch" ObjectPath="\States\Default Work Unit\player_stance\crouch" GUID="{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"/>
 					</States>
 				</StateGroup>
+				<StateGroup Id="3092587493" Name="pause" ObjectPath="\States\Default Work Unit\pause" GUID="{063211BB-9332-4406-9616-D5E2F8256E48}">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\pause\None" GUID="{F182E372-9030-4C41-B76F-889D5C1A57E5}"/>
+						<State Id="2452206122" Name="false" ObjectPath="\States\Default Work Unit\pause\false" GUID="{AE5D66E2-4A21-472D-A82F-731DE5ABE608}"/>
+						<State Id="3053630529" Name="true" ObjectPath="\States\Default Work Unit\pause\true" GUID="{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}"/>
+					</States>
+				</StateGroup>
 			</StateGroups>
 			<SwitchGroups>
 				<SwitchGroup Id="1334157877" Name="Clothing" ObjectPath="\Switches\Default Work Unit\Clothing" GUID="{9911114A-D75D-42E0-98CC-D4058993900F}">
@@ -892,5 +909,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{1F93B0D7-A966-7A66-DF17-8B6E876EBF9D}</FileHash>
+	<FileHash>{A736084A-EAA3-2D91-733A-BE8DC71D2DED}</FileHash>
 </SoundBanksInfo>

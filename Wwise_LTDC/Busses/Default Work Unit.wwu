@@ -17,7 +17,6 @@
 							</PropertyList>
 							<ChildrenList>
 								<Bus Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}">
-									<ReferenceList/>
 									<ObjectLists>
 										<ObjectList Name="Effects">
 											<EffectSlot Name="" ID="{49485DA3-1285-4B49-A779-64FDF737F182}" ShortID="897651011">
@@ -345,6 +344,32 @@
 								<Property Name="Color" Type="int16" Value="4"/>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
 							</PropertyList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="pause" ID="{063211BB-9332-4406-9616-D5E2F8256E48}"/>
+										<StateGroupInfo Name="" ID="{DEFBB095-9DAC-409F-9E19-591B123A7D18}" ShortID="120673527"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="false" ID="{AE5D66E2-4A21-472D-A82F-731DE5ABE608}"/>
+										<CustomState Name="" ID="{225B89D2-961B-4D43-942B-E60377E458AB}" ShortID="226295869"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="None" ID="{F182E372-9030-4C41-B76F-889D5C1A57E5}"/>
+										<CustomState Name="" ID="{AC1425E9-E12C-4FC1-81C6-D8BC1E00C30A}" ShortID="669940009"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="true" ID="{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}"/>
+										<CustomState Name="" ID="{80F925AB-0CCD-4459-A6EE-4DA92D8F8825}" ShortID="820309281">
+											<PropertyList>
+												<Property Name="Lowpass" Type="int16" Value="100"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
 							<ObjectLists>
 								<ObjectList Name="Effects">
 									<EffectSlot Name="" ID="{EBB50148-ED6E-46AF-A7C3-51D21411DA71}" ShortID="403408491">
@@ -428,6 +453,22 @@
 												</Custom>
 											</Reference>
 										</ReferenceList>
+										<StateInfo>
+											<CustomStateList>
+												<CustomState>
+													<StateRef Name="false" ID="{AE5D66E2-4A21-472D-A82F-731DE5ABE608}"/>
+													<CustomState Name="" ID="{4762CFBF-2452-457F-BBE8-349576A24685}" ShortID="384597492"/>
+												</CustomState>
+												<CustomState>
+													<StateRef Name="None" ID="{F182E372-9030-4C41-B76F-889D5C1A57E5}"/>
+													<CustomState Name="" ID="{D5640ECB-47C3-4F4F-9585-9A6E41A15C2E}" ShortID="1072989483"/>
+												</CustomState>
+												<CustomState>
+													<StateRef Name="true" ID="{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}"/>
+													<CustomState Name="" ID="{9C55D248-EC75-404C-B8F8-725C07C9158E}" ShortID="805952702"/>
+												</CustomState>
+											</CustomStateList>
+										</StateInfo>
 									</EffectSlot>
 								</ObjectList>
 								<ObjectList Name="RTPC">

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}",
     "Language": "SFX",
-    "Hash": "{C4BF3AD2-B18E-9604-D7EA-7D337626062E}",
+    "Hash": "{9344716F-486E-5247-251E-694E7D1F4764}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Amb",
     "ShortName": "Sb_Amb",
     "Path": "Sb_Amb.bnk",
@@ -22,6 +22,15 @@
       "Location": "Memory",
       "ShortName": "AMB\\Cannons_Heavy\\LTDC_AMB_Cannon_LayerHeavy_Random_006.wav",
       "CachePath": "BA/{BA69DFE4-43DD-BED9-587D-1769231C4D77}.wem"
+     },
+     {
+      "Id": "203600813",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
+      "ShortName": "AMB\\Enviro\\LTDC_AMB_Enviro_Arson_Loop.wav",
+      "Path": "Media/203600813.wem",
+      "CachePath": "59/{59B32620-6D1E-AAE1-E08B-3881A1CC6B82}.wem"
      },
      {
       "Id": "204772150",
@@ -40,6 +49,17 @@
       "CachePath": "55/{55D0D6B1-273B-A4A6-FA2E-82716ED2A0D3}.wem"
      },
      {
+      "Id": "245803413",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Memory",
+      "ShortName": "AMB\\Enviro\\LTDC_AMB_Street_WindBirds_Loop.wav",
+      "Path": "Media/245803413.wem",
+      "CachePath": "00/{0032E8B9-9429-046E-2F2B-FB7251AD40E7}.wem",
+      "PrefetchSize": "2113",
+      "ContainsPrefetch": "true"
+     },
+     {
       "Id": "289258374",
       "Language": "SFX",
       "Streaming": "false",
@@ -54,17 +74,6 @@
       "Location": "Memory",
       "ShortName": "AMB\\Cannons_Heavy\\LTDC_AMB_Cannon_LayerHeavy_Random_001.wav",
       "CachePath": "35/{35BCB11A-00C5-60B2-5342-AC2206F5A893}.wem"
-     },
-     {
-      "Id": "310481320",
-      "Language": "SFX",
-      "Streaming": "true",
-      "Location": "Memory",
-      "ShortName": "AMB\\Street\\LTDC_AMB_Street_WindBirds_Loop.wav",
-      "Path": "Media/310481320.wem",
-      "CachePath": "69/{69A0BA15-5395-FB3E-F31B-D9C9FF01C2A2}.wem",
-      "PrefetchSize": "1394",
-      "ContainsPrefetch": "true"
      },
      {
       "Id": "365568969",
@@ -205,11 +214,25 @@
     ],
     "Events": [
      {
+      "Id": "3874446497",
+      "Name": "Amb_Arson",
+      "ObjectPath": "\\Events\\AMB\\Amb_Arson",
+      "GUID": "{EF6E0E2A-BF52-4CCA-9A70-5BAA396134FD}",
+      "Color": "4",
+      "MaxAttenuation": "50",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "203600813"
+       }
+      ]
+     },
+     {
       "Id": "3265814676",
       "Name": "Amb_Cannons",
-      "ObjectPath": "\\Events\\SFX\\Amb_Cannons",
+      "ObjectPath": "\\Events\\AMB\\Amb_Cannons",
       "GUID": "{42733E42-B5F5-44F1-98EB-A729172BF973}",
-      "Color": "10",
+      "Color": "4",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -222,13 +245,13 @@
         "Id": "217321236"
        },
        {
+        "Id": "245803413"
+       },
+       {
         "Id": "289258374"
        },
        {
         "Id": "306573068"
-       },
-       {
-        "Id": "310481320"
        },
        {
         "Id": "365568969"
@@ -286,6 +309,6 @@
     ]
    }
   ],
-  "FileHash": "{BE2FDBD8-F3F7-836D-F4C2-CCAB4FD3639B}"
+  "FileHash": "{AB2D8FDA-DE2E-1E61-015B-0E78B3DEACFE}"
  }
 }
