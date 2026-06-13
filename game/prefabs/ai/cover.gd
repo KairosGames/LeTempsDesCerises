@@ -63,8 +63,8 @@ func _validate_property(property: Dictionary) -> void:
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		_init_all()
-		CoverGizmo.show.connect(_show_all)
-		CoverGizmo.hide.connect(_hide_all)
+		if not CoverGizmo.show.is_connected(_show_all): CoverGizmo.show.connect(_show_all)
+		if not CoverGizmo.hide.is_connected(_hide_all): CoverGizmo.hide.connect(_hide_all)
 		if CoverGizmo.is_enabled: _show_all()
 	else:
 		if type == Type.SPAWNER:
