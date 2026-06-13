@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}",
     "Language": "SFX",
-    "Hash": "{98C0E8B4-2A86-BB61-E3E2-4F947A3BE906}",
+    "Hash": "{3ACA068B-8080-520E-BB69-FC4B34DFF143}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Amb",
     "ShortName": "Sb_Amb",
     "Path": "Sb_Amb.bnk",
@@ -22,6 +22,15 @@
       "Location": "Memory",
       "ShortName": "AMB\\Cannons_Heavy\\LTDC_AMB_Cannon_LayerHeavy_Random_006.wav",
       "CachePath": "15/{158DFC19-3CA0-833B-6A90-06064EB3628A}.wem"
+     },
+     {
+      "Id": "203600813",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
+      "ShortName": "AMB\\Enviro\\LTDC_AMB_Enviro_Arson_Loop.wav",
+      "Path": "Media/203600813.wem",
+      "CachePath": "E5/{E5AA0C43-B317-48E1-7CC7-D57C6B5C9FE1}.wem"
      },
      {
       "Id": "204772150",
@@ -62,8 +71,8 @@
       "Location": "Memory",
       "ShortName": "AMB\\Street\\LTDC_AMB_Street_WindBirds_Loop.wav",
       "Path": "Media/310481320.wem",
-      "CachePath": "D1/{D15832A8-0D70-6123-6A91-D815F42CED0D}.wem",
-      "PrefetchSize": "7628",
+      "CachePath": "00/{00000000-0000-0000-0000-000000000000}.wem",
+      "PrefetchSize": "0",
       "ContainsPrefetch": "true"
      },
      {
@@ -205,11 +214,24 @@
     ],
     "Events": [
      {
+      "Id": "3874446497",
+      "Name": "Amb_Arson",
+      "ObjectPath": "\\Events\\AMB\\Amb_Arson",
+      "GUID": "{EF6E0E2A-BF52-4CCA-9A70-5BAA396134FD}",
+      "Color": "4",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "203600813"
+       }
+      ]
+     },
+     {
       "Id": "3265814676",
       "Name": "Amb_Cannons",
-      "ObjectPath": "\\Events\\SFX\\Amb_Cannons",
+      "ObjectPath": "\\Events\\AMB\\Amb_Cannons",
       "GUID": "{42733E42-B5F5-44F1-98EB-A729172BF973}",
-      "Color": "10",
+      "Color": "4",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -286,6 +308,6 @@
     ]
    }
   ],
-  "FileHash": "{92EEF086-501C-C5A9-2EFF-AE4E89182FC8}"
+  "FileHash": "{3283505A-1E75-558C-1DDC-BE9E58945D2C}"
  }
 }

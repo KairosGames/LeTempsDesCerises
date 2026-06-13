@@ -2,14 +2,16 @@ extends Node3D
 
 @export var dialogue_event : AkEvent3D
 @export var label : Label3D
+@export var debug_text: bool
 
 var npc_name : String
 var text_duration : float
 var text_speed : float
+var valid_names : Array[String] = ["Louise, Marie, Georges, Jules, Francois"]
 
 func _ready() -> void:
 	npc_name = get_parent().name
-	if npc_name == "SecondBarricadeNPC" : return
+	print(npc_name)
 	WwiseGlobal.narrators.append(self)
 	Wwise.set_switch("Character", npc_name, dialogue_event)
 	await get_tree().create_timer(1).timeout
@@ -37,6 +39,7 @@ func _on_dialogue_audio_marker(data: Dictionary) -> void:
 	text = text.replace(" ", "")
 	label.text = ""
 	WwiseGlobal.player.update_line(npc_name,text)
+	if not debug_text : return
 	for i in text.length():
 		label.text = label.text + text[i]
 		await get_tree().create_timer(randf_range(0.01, 0.03)).timeout

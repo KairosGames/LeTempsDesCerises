@@ -869,7 +869,7 @@
     "Type": "User",
     "GUID": "{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}",
     "Language": "SFX",
-    "Hash": "{98C0E8B4-2A86-BB61-E3E2-4F947A3BE906}",
+    "Hash": "{3ACA068B-8080-520E-BB69-FC4B34DFF143}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Amb",
     "ShortName": "Sb_Amb",
     "Path": "Sb_Amb.bnk",
@@ -881,6 +881,15 @@
       "Location": "Memory",
       "ShortName": "AMB\\Cannons_Heavy\\LTDC_AMB_Cannon_LayerHeavy_Random_006.wav",
       "CachePath": "15/{158DFC19-3CA0-833B-6A90-06064EB3628A}.wem"
+     },
+     {
+      "Id": "203600813",
+      "Language": "SFX",
+      "Streaming": "true",
+      "Location": "Loose",
+      "ShortName": "AMB\\Enviro\\LTDC_AMB_Enviro_Arson_Loop.wav",
+      "Path": "Media/203600813.wem",
+      "CachePath": "E5/{E5AA0C43-B317-48E1-7CC7-D57C6B5C9FE1}.wem"
      },
      {
       "Id": "204772150",
@@ -921,8 +930,8 @@
       "Location": "Memory",
       "ShortName": "AMB\\Street\\LTDC_AMB_Street_WindBirds_Loop.wav",
       "Path": "Media/310481320.wem",
-      "CachePath": "D1/{D15832A8-0D70-6123-6A91-D815F42CED0D}.wem",
-      "PrefetchSize": "7628",
+      "CachePath": "00/{00000000-0000-0000-0000-000000000000}.wem",
+      "PrefetchSize": "0",
       "ContainsPrefetch": "true"
      },
      {
@@ -1064,11 +1073,24 @@
     ],
     "Events": [
      {
+      "Id": "3874446497",
+      "Name": "Amb_Arson",
+      "ObjectPath": "\\Events\\AMB\\Amb_Arson",
+      "GUID": "{EF6E0E2A-BF52-4CCA-9A70-5BAA396134FD}",
+      "Color": "4",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "203600813"
+       }
+      ]
+     },
+     {
       "Id": "3265814676",
       "Name": "Amb_Cannons",
-      "ObjectPath": "\\Events\\SFX\\Amb_Cannons",
+      "ObjectPath": "\\Events\\AMB\\Amb_Cannons",
       "GUID": "{42733E42-B5F5-44F1-98EB-A729172BF973}",
-      "Color": "10",
+      "Color": "4",
       "DurationType": "Infinite",
       "MediaRefs": [
        {
@@ -14285,7 +14307,7 @@
     "Type": "User",
     "GUID": "{2EC33D6E-768B-4BDE-BFF0-F36421A7E2FE}",
     "Language": "French(France)",
-    "Hash": "{E2398C9D-1214-C048-9A9B-704AA3AECD30}",
+    "Hash": "{5AF9655A-689E-55A0-FD64-DB73F73B8D6E}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Narrative\\Georges",
     "ShortName": "Georges",
     "Path": "French(France)/Georges.bnk",
@@ -14505,7 +14527,7 @@
       "ObjectPath": "\\Events\\VX\\Dialogue",
       "GUID": "{DFB54F67-7210-40B2-AE10-0680DD5AD124}",
       "Color": "11",
-      "MaxAttenuation": "50",
+      "MaxAttenuation": "100",
       "DurationType": "OneShot",
       "DurationMin": "0",
       "DurationMax": "11.832063",
@@ -15194,7 +15216,7 @@
     "Type": "User",
     "GUID": "{2EC33D6E-768B-4BDE-BFF0-F36421A7E2FE}",
     "Language": "English(US)",
-    "Hash": "{A05A6822-642E-4563-96EA-D9DE3397D6A2}",
+    "Hash": "{DF660D3A-6C42-C6EB-2149-447535E6CF1F}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Narrative\\Georges",
     "ShortName": "Georges",
     "Path": "English(US)/Georges.bnk",
@@ -15419,7 +15441,7 @@
       "ObjectPath": "\\Events\\VX\\Dialogue",
       "GUID": "{DFB54F67-7210-40B2-AE10-0680DD5AD124}",
       "Color": "11",
-      "MaxAttenuation": "50",
+      "MaxAttenuation": "100",
       "DurationType": "OneShot",
       "DurationMin": "0",
       "DurationMax": "11.832063",
@@ -16108,7 +16130,7 @@
     "Type": "User",
     "GUID": "{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}",
     "Language": "French(France)",
-    "Hash": "{10A281C1-2F8F-A492-29E1-CE074D3B1B92}",
+    "Hash": "{8D0B941C-6A49-91A9-77F2-F53F05EC120F}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Narrative\\Francois",
     "ShortName": "Francois",
     "Path": "French(France)/Francois.bnk",
@@ -16328,7 +16350,7 @@
       "ObjectPath": "\\Events\\VX\\Dialogue",
       "GUID": "{DFB54F67-7210-40B2-AE10-0680DD5AD124}",
       "Color": "11",
-      "MaxAttenuation": "50",
+      "MaxAttenuation": "100",
       "DurationType": "OneShot",
       "DurationMin": "0",
       "DurationMax": "11.832063",
@@ -17017,7 +17039,7 @@
     "Type": "User",
     "GUID": "{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}",
     "Language": "English(US)",
-    "Hash": "{BF74D448-3152-7800-96EA-AE62005D133E}",
+    "Hash": "{A9619012-5512-A4D5-DC44-4ED4C12CB0FF}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Narrative\\Francois",
     "ShortName": "Francois",
     "Path": "English(US)/Francois.bnk",
@@ -17242,7 +17264,7 @@
       "ObjectPath": "\\Events\\VX\\Dialogue",
       "GUID": "{DFB54F67-7210-40B2-AE10-0680DD5AD124}",
       "Color": "11",
-      "MaxAttenuation": "50",
+      "MaxAttenuation": "100",
       "DurationType": "OneShot",
       "DurationMin": "0",
       "DurationMax": "11.832063",
@@ -17927,6 +17949,6 @@
     ]
    }
   ],
-  "FileHash": "{AF123008-A28F-A894-0D36-30E2A706518C}"
+  "FileHash": "{974CA499-018A-26DE-2D41-25499F98D7EE}"
  }
 }

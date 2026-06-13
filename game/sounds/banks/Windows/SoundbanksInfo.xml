@@ -358,7 +358,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{98C0E8B4-2A86-BB61-E3E2-4F947A3BE906}">
+		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{3ACA068B-8080-520E-BB69-FC4B34DFF143}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Amb</ObjectPath>
 			<ShortName>Sb_Amb</ShortName>
 			<Path>Sb_Amb.bnk</Path>
@@ -366,6 +366,11 @@
 				<File Id="48146732" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_006.wav</ShortName>
 					<CachePath>15/{158DFC19-3CA0-833B-6A90-06064EB3628A}.wem</CachePath>
+				</File>
+				<File Id="203600813" Language="SFX" Streaming="true" Location="Loose">
+					<ShortName>AMB\Enviro\LTDC_AMB_Enviro_Arson_Loop.wav</ShortName>
+					<Path>Media/203600813.wem</Path>
+					<CachePath>E5/{E5AA0C43-B317-48E1-7CC7-D57C6B5C9FE1}.wem</CachePath>
 				</File>
 				<File Id="204772150" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_005.wav</ShortName>
@@ -386,8 +391,8 @@
 				<File Id="310481320" Language="SFX" Streaming="true" Location="Memory">
 					<ShortName>AMB\Street\LTDC_AMB_Street_WindBirds_Loop.wav</ShortName>
 					<Path>Media/310481320.wem</Path>
-					<CachePath>D1/{D15832A8-0D70-6123-6A91-D815F42CED0D}.wem</CachePath>
-					<PrefetchSize>7628</PrefetchSize>
+					<CachePath>00/{00000000-0000-0000-0000-000000000000}.wem</CachePath>
+					<PrefetchSize>0</PrefetchSize>
 					<ContainsPrefetch>true</ContainsPrefetch>
 				</File>
 				<File Id="365568969" Language="SFX" Streaming="false" Location="Memory">
@@ -460,7 +465,12 @@
 				</File>
 			</Media>
 			<Events>
-				<Event Id="3265814676" Name="Amb_Cannons" ObjectPath="\Events\SFX\Amb_Cannons" GUID="{42733E42-B5F5-44F1-98EB-A729172BF973}" Color="10" DurationType="Infinite">
+				<Event Id="3874446497" Name="Amb_Arson" ObjectPath="\Events\AMB\Amb_Arson" GUID="{EF6E0E2A-BF52-4CCA-9A70-5BAA396134FD}" Color="4" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="203600813"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3265814676" Name="Amb_Cannons" ObjectPath="\Events\AMB\Amb_Cannons" GUID="{42733E42-B5F5-44F1-98EB-A729172BF973}" Color="4" DurationType="Infinite">
 					<MediaRefs>
 						<MediaRef Id="48146732"/>
 						<MediaRef Id="204772150"/>
@@ -5996,7 +6006,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2519917785" Type="User" GUID="{2EC33D6E-768B-4BDE-BFF0-F36421A7E2FE}" Language="French(France)" Hash="{E2398C9D-1214-C048-9A9B-704AA3AECD30}">
+		<SoundBank Id="2519917785" Type="User" GUID="{2EC33D6E-768B-4BDE-BFF0-F36421A7E2FE}" Language="French(France)" Hash="{5AF9655A-689E-55A0-FD64-DB73F73B8D6E}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Georges</ObjectPath>
 			<ShortName>Georges</ShortName>
 			<Path>French(France)/Georges.bnk</Path>
@@ -6115,7 +6125,7 @@
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="0" DurationMax="11.832063">
+				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="11.832063">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="537703978"/>
@@ -6407,7 +6417,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2519917785" Type="User" GUID="{2EC33D6E-768B-4BDE-BFF0-F36421A7E2FE}" Language="English(US)" Hash="{A05A6822-642E-4563-96EA-D9DE3397D6A2}">
+		<SoundBank Id="2519917785" Type="User" GUID="{2EC33D6E-768B-4BDE-BFF0-F36421A7E2FE}" Language="English(US)" Hash="{DF660D3A-6C42-C6EB-2149-447535E6CF1F}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Georges</ObjectPath>
 			<ShortName>Georges</ShortName>
 			<Path>English(US)/Georges.bnk</Path>
@@ -6526,7 +6536,7 @@
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="0" DurationMax="11.832063">
+				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="11.832063">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="537703978"/>
@@ -6818,7 +6828,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3484216754" Type="User" GUID="{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}" Language="French(France)" Hash="{10A281C1-2F8F-A492-29E1-CE074D3B1B92}">
+		<SoundBank Id="3484216754" Type="User" GUID="{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}" Language="French(France)" Hash="{8D0B941C-6A49-91A9-77F2-F53F05EC120F}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Francois</ObjectPath>
 			<ShortName>Francois</ShortName>
 			<Path>French(France)/Francois.bnk</Path>
@@ -6937,7 +6947,7 @@
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="0" DurationMax="11.832063">
+				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="11.832063">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="537703978"/>
@@ -7229,7 +7239,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3484216754" Type="User" GUID="{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}" Language="English(US)" Hash="{BF74D448-3152-7800-96EA-AE62005D133E}">
+		<SoundBank Id="3484216754" Type="User" GUID="{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}" Language="English(US)" Hash="{A9619012-5512-A4D5-DC44-4ED4C12CB0FF}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Francois</ObjectPath>
 			<ShortName>Francois</ShortName>
 			<Path>English(US)/Francois.bnk</Path>
@@ -7348,7 +7358,7 @@
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="0" DurationMax="11.832063">
+				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0" DurationMax="11.832063">
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="537703978"/>
@@ -7641,5 +7651,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0E9A3C97-4C10-6A34-1328-B8C0470AF633}</FileHash>
+	<FileHash>{3D7D0D40-CE14-3BF9-7891-DB9969E171BA}</FileHash>
 </SoundBanksInfo>

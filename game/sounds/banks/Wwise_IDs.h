@@ -23,6 +23,7 @@ namespace AK
         static const AkUniqueID ALLY_PLAYER_KILL = 2988219764U;
         static const AkUniqueID ALLY_SHOOT = 3252427803U;
         static const AkUniqueID ALLY_VOICE_CANCEL = 243533429U;
+        static const AkUniqueID AMB_ARSON = 3874446497U;
         static const AkUniqueID AMB_CANNONS = 3265814676U;
         static const AkUniqueID BARRICADE_DAMAGED = 482738278U;
         static const AkUniqueID BRICK_FALL = 3840667520U;

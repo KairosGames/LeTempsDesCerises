@@ -5,6 +5,7 @@ extends Node3D
 @export var steps : AkEvent3D
 @export var label : Label3D
 @export var barks_parent : Node3D
+@export var debug_text : bool 
 
 var is_barking : bool = false
 var barks : Dictionary[String, int]
@@ -54,6 +55,7 @@ func _on_communard_died() -> void:
 	#Wwise.stop_all(self)
 
 func set_text(data: Dictionary): 
+	if not debug_text: return
 	var text : String = data.get("strLabel")
 	text = text.replace("Ã©", "é")
 	text = text.replace("Ã¨", "è")

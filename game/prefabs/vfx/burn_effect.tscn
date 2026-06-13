@@ -4,6 +4,7 @@
 [ext_resource type="Gradient" uid="uid://dd3sdylato54b" path="res://prefabs/vfx/vfx_fire/g_fire_smoke.tres" id="2_qtaix"]
 [ext_resource type="Shader" uid="uid://dcibu8htt8a8x" path="res://materials/shaders/shaders_vfx/sg_vfx_fire_fog.gdshader" id="2_se6r0"]
 [ext_resource type="Texture2D" uid="uid://bmu6bujmliy3d" path="res://sources/images/textures/textures_vfx/T_Fog_04.png" id="3_i5l4e"]
+[ext_resource type="WwiseEvent" uid="uid://dq8j2hobeokva" path="res://Wwise/resources/Event/{EF6E0E2A-BF52-4CCA-9A70-5BAA396134FD}.tres" id="5_qtaix"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0elex"]
 vertex_color_use_as_albedo = true
@@ -150,3 +151,8 @@ randomness = 0.3
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_1bvr6")
 draw_pass_1 = SubResource("QuadMesh_qtaix")
+
+[node name="AkEvent3D" type="AkEvent3D" parent="." unique_id=1109947930]
+event = ExtResource("5_qtaix")
+trigger_on = 1
+stop_on = 3
