@@ -23,10 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://df04oju8245ub" path="res://sandbox/barricades_proto/module_s2c_damaged.tscn" id="17_m4fmx"]
 [ext_resource type="PackedScene" uid="uid://b758fg5tqg3hh" path="res://sandbox/barricades_proto/module_c2c_damaged_left.tscn" id="18_n2eli"]
 [ext_resource type="PackedScene" uid="uid://dbawwlq5d3t2f" path="res://sandbox/barricades_proto/module_s2c_destroyed.tscn" id="19_mtrxa"]
-[ext_resource type="PackedScene" uid="uid://dkkvnuht5bsb2" path="res://sandbox/barricades_proto/module_c2c_damaged_right.tscn" id="20_4a26s"]
-[ext_resource type="PackedScene" uid="uid://c56uyajkusgti" path="res://sandbox/barricades_proto/module_c2c_destroyed.tscn" id="21_fjqpb"]
 [ext_resource type="PackedScene" uid="uid://dmtlm60wq4eqf" path="res://sandbox/barricades_proto/module_f2s_damaged.tscn" id="22_3xfs1"]
-[ext_resource type="PackedScene" uid="uid://187vl1c0h0u3" path="res://sounds/prefabs/ak_barricade_manager.tscn" id="23_o7hd0"]
 [ext_resource type="PackedScene" uid="uid://8h2see0efmmk" path="res://sandbox/covers_proto/morris_column.tscn" id="24_ovq67"]
 [ext_resource type="PackedScene" uid="uid://c0axuq34pjbmd" path="res://sandbox/covers_proto/simple_column.tscn" id="25_r83xy"]
 [ext_resource type="PackedScene" uid="uid://bwkb7is7srojf" path="res://sandbox/barricades_proto/module_s2s_damaged.tscn" id="26_hmepn"]
@@ -52,7 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://biifyrwiahnhf" path="res://prefabs/props/chair.tscn" id="42_n4jea"]
 [ext_resource type="PackedScene" uid="uid://cvgennjoefedh" path="res://sandbox/covers_proto/dirt_pile_little.tscn" id="43_3s0cs"]
 [ext_resource type="PackedScene" uid="uid://b033mr8m6mt71" path="res://prefabs/props/wood_pile.tscn" id="43_fpe7n"]
-[ext_resource type="PackedScene" uid="uid://cfpjd8gdcwbcm" path="res://prefabs/barricade/barricade_01.tscn" id="43_n2eli"]
+[ext_resource type="PackedScene" uid="uid://d06ucqfjutkoh" path="res://prefabs/barricade/barricade_01.tscn" id="43_n2eli"]
 [ext_resource type="PackedScene" uid="uid://chfbdpud1npmp" path="res://prefabs/cannon/cannon.tscn" id="43_u321f"]
 [ext_resource type="PackedScene" uid="uid://dlu1oyy1cyp1n" path="res://prefabs/props/ladder_03.tscn" id="44_o7hd0"]
 [ext_resource type="ArrayMesh" uid="uid://dfqsfdphw33rv" path="res://sources/meshes/props/shovel.obj" id="45_8bk3w"]
@@ -141,6 +138,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.560816, 0, 8.811998)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.292148, 0, 4.4349327)
 
 [node name="BuildingD" parent="Environment/NavigationRegion3D/Level/Base_map" unique_id=904898415 instance=ExtResource("5_q2fw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0038442612, 0.0123000145, -0.0015640259)
 
 [node name="BuildingG" parent="Environment/NavigationRegion3D/Level/Base_map" unique_id=458440975 instance=ExtResource("6_8bk3w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.110487, 0, -3.7938263)
@@ -807,107 +805,8 @@ transform = Transform3D(0.54447806, 0, -0.83877516, 0, 1, 0, 0.83877516, 0, 0.54
 [node name="Module_s2s_v2" parent="Environment/Barricades/BarricadeOnboarding" unique_id=1360057906 instance=ExtResource("15_lujon")]
 transform = Transform3D(-0.05059291, 0, -0.99871933, 0, 1, 0, 0.99871933, 0, -0.05059291, -34.250534, 0.1, -7.7083044)
 
-[node name="Barricade01" type="Node3D" parent="Environment/Barricades" unique_id=1510048575 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules")]
+[node name="Barricade01" parent="Environment/Barricades" unique_id=535866183 instance=ExtResource("43_n2eli")]
 transform = Transform3D(0.9980212, 0, -0.06287761, 0, 1, 0, 0.06287761, 0, 0.9980212, 1.5348637, -4.7683716e-07, 2.471998)
-script = ExtResource("11_yy57t")
-full_life_modules = NodePath("Intact")
-damages_modules_1 = NodePath("Damaged")
-damages_modules_2 = NodePath("Damaged2")
-destroyed_modules = NodePath("Destroyed")
-
-[node name="Intact" parent="Environment/Barricades/Barricade01" unique_id=1178280760 instance=ExtResource("43_n2eli")]
-
-[node name="barricade_01_damaged_01" parent="Environment/Barricades/Barricade01" unique_id=1954621849 instance=ExtResource("44_mtrxa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-
-[node name="Damaged" type="Node3D" parent="Environment/Barricades/Barricade01" unique_id=249451088]
-visible = false
-
-[node name="Module_s2c_damaged" parent="Environment/Barricades/Barricade01/Damaged" unique_id=132889434 instance=ExtResource("17_m4fmx")]
-transform = Transform3D(0.13887915, 0, -0.99030936, 0, 1, 0, 0.99030936, 0, 0.13887915, -4.788594, 0.1, -4.558055)
-
-[node name="PlankSimple5" parent="Environment/Barricades/Barricade01/Damaged/Module_s2c_damaged" unique_id=127941741 instance=ExtResource("34_xj1jx")]
-transform = Transform3D(-0.9999999, -8.742278e-08, 0, -8.742277e-08, 1, -8.742278e-08, 7.642741e-15, -8.742278e-08, -1, 0.377, 0, 1.037)
-
-[node name="PlankSimple6" parent="Environment/Barricades/Barricade01/Damaged/Module_s2c_damaged" unique_id=603946196 instance=ExtResource("34_xj1jx")]
-transform = Transform3D(0.92692214, 0, 0.37525365, 0, 1, 0, -0.37525365, 0, 0.92692214, 0.9134247, 0, 1.2491322)
-
-[node name="PlankSimple7" parent="Environment/Barricades/Barricade01/Damaged/Module_s2c_damaged" unique_id=1089731532 instance=ExtResource("34_xj1jx")]
-transform = Transform3D(0.92692214, 0, 0.37525365, 0, 1, 0, -0.37525365, 0, 0.92692214, 0.88398135, 0.0486006, 1.2275139)
-
-[node name="PlankSimple8" parent="Environment/Barricades/Barricade01/Damaged/Module_s2c_damaged" unique_id=854124127 instance=ExtResource("34_xj1jx")]
-transform = Transform3D(0.9269221, 0, 0.37525362, 0, 1, 0, -0.37525362, 0, 0.9269221, 0.8165909, 0.097137734, 1.2187462)
-
-[node name="Module_f2s" parent="Environment/Barricades/Barricade01/Damaged" unique_id=720770254 instance=ExtResource("13_md0ey")]
-transform = Transform3D(-0.44053468, 0, 0.89773566, 0, 1, 0, -0.89773566, 0, -0.44053468, -0.8351413, 0.10000048, 5.2754717)
-
-[node name="Module_c2c_damaged" parent="Environment/Barricades/Barricade01/Damaged" unique_id=1231883915 instance=ExtResource("18_n2eli")]
-transform = Transform3D(-0.6450577, 0, 0.7641343, 0, 1, 0, -0.7641343, 0, -0.6450577, -2.6769996, 0.1, 1.7299998)
-
-[node name="Module_c2c2" parent="Environment/Barricades/Barricade01/Damaged" unique_id=1596498306 instance=ExtResource("14_6c3r5")]
-transform = Transform3D(0.79676205, 0, -0.6042932, 0, 1, 0, 0.6042932, 0, 0.79676205, -7.799045, 0.1, -7.655964)
-
-[node name="Module_s2s_v2" parent="Environment/Barricades/Barricade01/Damaged" unique_id=518955583 instance=ExtResource("15_lujon")]
-transform = Transform3D(-0.87159896, 0, 0.49021956, 0, 1, 0, -0.49021956, 0, -0.87159896, -8.125616, 0.19999953, -6.0723825)
-
-[node name="Dirt_pile" parent="Environment/Barricades/Barricade01/Damaged/Module_s2s_v2" unique_id=93136575 instance=ExtResource("16_npp8f")]
-transform = Transform3D(0.49697393, 0, -0.86776537, 0, 1, 0, 0.86776537, 0, 0.49697393, 3.5628796, -0.12789723, -0.46962166)
-
-[node name="Damaged2" type="Node3D" parent="Environment/Barricades/Barricade01" unique_id=821546682]
-visible = false
-
-[node name="Module_s2c_destroyed" parent="Environment/Barricades/Barricade01/Damaged2" unique_id=145992389 instance=ExtResource("19_mtrxa")]
-transform = Transform3D(0.13887915, 0, -0.99030936, 0, 1, 0, 0.99030936, 0, 0.13887915, -4.788594, 0.1, -4.558055)
-
-[node name="PlankSimple3" parent="Environment/Barricades/Barricade01/Damaged2/Module_s2c_destroyed" unique_id=1784540267 instance=ExtResource("34_xj1jx")]
-transform = Transform3D(-0.5186688, 2.9400844e-08, 0.8549753, -8.742278e-08, 1, -8.742277e-08, -0.85497516, -1.2008778e-07, -0.51866883, 0.26531497, -2.3841858e-07, 2.291526)
-
-[node name="PlankSimple4" parent="Environment/Barricades/Barricade01/Damaged2/Module_s2c_destroyed" unique_id=381328784 instance=ExtResource("34_xj1jx")]
-transform = Transform3D(0.37619206, 0, 0.9265417, 0, 1, 0, -0.9265417, 0, 0.37619206, -0.7620608, 2.3841858e-07, -0.103918076)
-
-[node name="Module_f2s" parent="Environment/Barricades/Barricade01/Damaged2" unique_id=1784038752 instance=ExtResource("13_md0ey")]
-transform = Transform3D(-0.44053468, 0, 0.89773566, 0, 1, 0, -0.89773566, 0, -0.44053468, -0.8351413, 0.10000048, 5.2754717)
-
-[node name="Module_c2c_damaged" parent="Environment/Barricades/Barricade01/Damaged2" unique_id=1352268142 instance=ExtResource("18_n2eli")]
-transform = Transform3D(-0.6450577, 0, 0.7641343, 0, 1, 0, -0.7641343, 0, -0.6450577, -2.6769996, 0.1, 1.7299998)
-
-[node name="Module_c2c_damaged2" parent="Environment/Barricades/Barricade01/Damaged2" unique_id=1307518068 instance=ExtResource("20_4a26s")]
-transform = Transform3D(0.796762, 0, -0.6042932, 0, 1, 0, 0.6042932, 0, 0.796762, -7.799045, 0.1, -7.655964)
-
-[node name="Module_s2s_v2" parent="Environment/Barricades/Barricade01/Damaged2" unique_id=317726494 instance=ExtResource("15_lujon")]
-transform = Transform3D(-0.87159896, 0, 0.49021956, 0, 1, 0, -0.49021956, 0, -0.87159896, -8.125616, 0.19999953, -6.0723825)
-
-[node name="Dirt_pile" parent="Environment/Barricades/Barricade01/Damaged2/Module_s2s_v2" unique_id=2144706175 instance=ExtResource("16_npp8f")]
-transform = Transform3D(0.49697393, 0, -0.86776537, 0, 1, 0, 0.86776537, 0, 0.49697393, 3.5628796, -0.12789723, -0.46962166)
-
-[node name="Destroyed" type="Node3D" parent="Environment/Barricades/Barricade01" unique_id=460025749]
-visible = false
-
-[node name="Module_c2c_damaged3" parent="Environment/Barricades/Barricade01/Destroyed" unique_id=23807558 instance=ExtResource("21_fjqpb")]
-transform = Transform3D(-0.6450574, 0, 0.76413417, 0, 1, 0, -0.76413417, 0, -0.6450574, -2.6769996, 0.1, 1.7299998)
-
-[node name="Module_c2c_damaged2" parent="Environment/Barricades/Barricade01/Destroyed" unique_id=994099855 instance=ExtResource("20_4a26s")]
-transform = Transform3D(0.796762, 0, -0.6042932, 0, 1, 0, 0.6042932, 0, 0.796762, -7.799045, 0.1, -7.655964)
-
-[node name="Module_s2c_damaged" parent="Environment/Barricades/Barricade01/Destroyed" unique_id=383628878 instance=ExtResource("19_mtrxa")]
-transform = Transform3D(0.13887912, 0, -0.99030936, 0, 1, 0, 0.99030936, 0, 0.13887912, -4.788594, 0.1, -4.5580544)
-
-[node name="PlankSimple3" parent="Environment/Barricades/Barricade01/Destroyed/Module_s2c_damaged" unique_id=1748846305 instance=ExtResource("34_xj1jx")]
-transform = Transform3D(-0.5186688, 2.9400844e-08, 0.8549753, -8.742278e-08, 1, -8.742277e-08, -0.85497516, -1.2008778e-07, -0.51866883, 0.26531497, -2.3841858e-07, 2.291526)
-
-[node name="PlankSimple4" parent="Environment/Barricades/Barricade01/Destroyed/Module_s2c_damaged" unique_id=1883089498 instance=ExtResource("34_xj1jx")]
-transform = Transform3D(0.37619206, 0, 0.9265417, 0, 1, 0, -0.9265417, 0, 0.37619206, -0.7620608, 2.3841858e-07, -0.103918076)
-
-[node name="Module_f2s2" parent="Environment/Barricades/Barricade01/Destroyed" unique_id=1130356292 instance=ExtResource("22_3xfs1")]
-transform = Transform3D(-0.4405346, 0, 0.89773566, 0, 1, 0, -0.89773566, 0, -0.4405346, -0.8351419, 0.10000048, 5.2754717)
-
-[node name="Module_s2s_v2" parent="Environment/Barricades/Barricade01/Destroyed" unique_id=1756593533 instance=ExtResource("15_lujon")]
-transform = Transform3D(-0.87159896, 0, 0.49021956, 0, 1, 0, -0.49021956, 0, -0.87159896, -8.125616, 0.19999953, -6.0723825)
-
-[node name="Dirt_pile" parent="Environment/Barricades/Barricade01/Destroyed/Module_s2s_v2" unique_id=1907620943 instance=ExtResource("16_npp8f")]
-transform = Transform3D(0.49697393, 0, -0.86776537, 0, 1, 0, 0.86776537, 0, 0.49697393, 3.5628796, -0.12789723, -0.46962166)
-
-[node name="AkBarricadeManager" parent="Environment/Barricades/Barricade01" unique_id=40989191 instance=ExtResource("23_o7hd0")]
 
 [node name="Barricade2" type="Node3D" parent="Environment/Barricades" unique_id=1345238611 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01618886, -9.536743e-07, 0.049741507)
@@ -1062,6 +961,11 @@ transform = Transform3D(-0.99329436, 0.035538316, -0.110015616, 0, 0.9515837, 0.
 
 [node name="Ladder_02" parent="Environment/Barricades/BarricadeStop" unique_id=1052875120 instance=ExtResource("57_m4fmx")]
 transform = Transform3D(-0.44598573, 0.12980337, -0.8855778, 0.020326123, 0.9906416, 0.13496666, 0.8948093, 0.042192824, -0.44445035, -34.859764, 0.20000482, 40.538895)
+[node name="Flag" parent="Environment/Barricades" unique_id=822376103 instance=ExtResource("16_8bk3w")]
+transform = Transform3D(0.7858561, 0.12965342, -0.6046653, -0.25424075, 0.95905733, -0.12478245, 0.56373024, 0.25179163, 0.7866443, -6.391348, 2.8584735, -4.745941)
+
+[node name="Dirt_pile" parent="Environment/Barricades" unique_id=703671390 instance=ExtResource("16_npp8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.393403, 0.19999933, -5.739986)
 
 [node name="Flag" parent="Environment" unique_id=227307016 instance=ExtResource("16_8bk3w")]
 transform = Transform3D(-0.24677858, -0.051837977, -0.1625213, -0.06167168, 0.29359257, 0, 0.1590502, 0.033409867, -0.25216427, -13.929768, 3.9716382, 16.43373)
@@ -1676,5 +1580,3 @@ transform = Transform3D(-3.5183024e-08, 0.86343956, -0.5044523, -1, -4.3463487e-
 
 [node name="Pickaxe" parent="." unique_id=1194153775 instance=ExtResource("60_4a26s")]
 transform = Transform3D(0.9168651, -0.3991972, 0, 0.3991972, 0.9168651, 0, 0, 0, 1, -24.654484, 0.5545959, 17.924282)
-
-[connection signal="damaged" from="Environment/Barricades/Barricade01" to="Environment/Barricades/Barricade01/AkBarricadeManager" method="_on_barricade_damaged"]
