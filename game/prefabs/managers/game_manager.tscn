@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="10_83msq"]
 [ext_resource type="PackedScene" uid="uid://dxqyq6j0lps48" path="res://prefabs/game_states/gm_usables/visual_chassepot.tscn" id="12_0po2u"]
 [ext_resource type="PackedScene" uid="uid://c8dcjv8qv7lw3" path="res://prefabs/game_states/gm_usables/invisible_wall.tscn" id="15_g4ds3"]
+[ext_resource type="Script" uid="uid://b08c2hh6ud5l4" path="res://prefabs/game_states/game_state_03.gd" id="19_u75jf"]
 [ext_resource type="PackedScene" uid="uid://bt7yi0t6ueof3" path="res://prefabs/game_states/gm_usables/woman_points.tscn" id="19_uucmh"]
 [ext_resource type="Texture2D" uid="uid://xwmt30vqykl2" path="res://sources/meshes/geometry/textures/wook_planks/wood_planks_diff_2k_rotate.png" id="20_pl46k"]
 [ext_resource type="Material" uid="uid://dfrsy150v5044" path="res://prefabs/barricade/barricade_meshes/old/material.tres" id="21_u75jf"]
@@ -682,6 +683,7 @@ transform = Transform3D(0.48167723, 0, -0.8763487, 0, 1, 0, 0.8763487, 0, 0.4816
 shape = SubResource("BoxShape3D_ftpgy")
 
 [node name="GameState02" parent="States" unique_id=345645137 instance=ExtResource("5_m6g67")]
+script = ExtResource("19_u75jf")
 
 [node name="WomanPoints" parent="States/GameState02" unique_id=1055966233 node_paths=PackedStringArray("women", "first_points", "second_points") instance=ExtResource("19_uucmh")]
 unique_name_in_owner = true
