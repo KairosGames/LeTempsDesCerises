@@ -48,6 +48,60 @@ _surfaces = [{
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gqsca"]
 points = PackedVector3Array(21.578293, 38.716934, 0, 21.578293, 38.716934, -0.2, 18.810116, 37.733902, 0, 23.88054, 36.77231, 0, 23.88054, 36.77231, -0.2, 18.810116, 37.733902, -0.2, 10.372459, 21.181622, 0, 41.096493, 19.870914, 0, 41.096493, 19.870914, -0.2, 10.372459, 21.181622, -0.2, 15.317592, 18.771511, 0, 50.37204, 10.233537, 0, 50.37204, 10.233537, -0.2, 15.317592, 18.771511, -0.2, 43.386993, 8.28585, 0, 47.838787, 7.4345016, 0, 47.838787, 7.4345016, -0.2, 43.386993, 8.28585, -0.2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_df3xt"]
+size = Vector3(15.964844, 13.556641, 1.3300781)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c010q"]
+size = Vector3(2.0477295, 13.556641, 1.3300781)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gqsca"]
+size = Vector3(11.958923, 13.556641, 1.3300781)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_evgy0"]
+size = Vector3(6.051605, 16.354614, 3.9083252)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_40omj"]
+size = Vector3(7.9817314, 10.731873, 3.939331)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h35ti"]
+size = Vector3(7.9817314, 5.394745, 3.939331)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r2xub"]
+size = Vector3(7.9338484, 10.731873, 3.939331)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oknvk"]
+size = Vector3(2.0795925, 10.731873, 3.939331)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xbbf5"]
+size = Vector3(1.8895881, 5.1485443, 3.939331)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_df3xt"]
+size = Vector3(15.964844, 13.556641, 1.3300781)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_gqsca"]
+size = Vector3(2.0477295, 13.556641, 1.3300781)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_evgy0"]
+size = Vector3(11.958923, 13.556641, 1.3300781)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_40omj"]
+size = Vector3(6.051605, 16.354614, 3.9083252)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_r2xub"]
+size = Vector3(7.9817314, 10.731873, 3.939331)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_oknvk"]
+size = Vector3(7.9817314, 5.394745, 3.939331)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_xbbf5"]
+size = Vector3(7.9338484, 10.731873, 3.939331)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_h35ti"]
+size = Vector3(2.0795925, 10.731873, 3.939331)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_c010q"]
+size = Vector3(1.8895881, 5.1485443, 3.939331)
+
 [node name="BuildingE" type="Node3D" unique_id=821425328]
 
 [node name="BuildingE2" parent="." unique_id=1432521819 instance=ExtResource("1_45igy")]
@@ -1776,3 +1830,88 @@ mesh = ExtResource("33_df3xt")
 [node name="Bite4" type="MeshInstance3D" parent="." unique_id=2017623540]
 transform = Transform3D(-0.43837112, 0, -0.89879405, 0, 1, 0, 0.89879405, 0, -0.43837112, -35.815453, 0.2, 55.86353)
 mesh = ExtResource("33_df3xt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1199860377]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1374077282]
+transform = Transform3D(0.43515253, 0, 0.9003567, 0, 1, 0, -0.9003567, 0, 0.43515253, -32.181694, 7.0063686, 49.870842)
+shape = SubResource("BoxShape3D_df3xt")
+debug_color = Color(0.7, 0, 0.011666489, 1)
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D" unique_id=745483945]
+transform = Transform3D(0.94601744, 0, 0.32411557, 0, 1, 0, -0.32411557, 0, 0.94601744, -28.109062, 7.0063686, 42.62318)
+shape = SubResource("BoxShape3D_c010q")
+debug_color = Color(0.7, 0, 0.011666489, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1060422981]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -23.563776, 7.0063686, 46.383873)
+shape = SubResource("BoxShape3D_gqsca")
+debug_color = Color(0.7, 0, 0.011666489, 1)
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=513522098]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -17.407534, 8.405355, 52.981045)
+shape = SubResource("BoxShape3D_evgy0")
+debug_color = Color(0.7, 0, 0.011666489, 1)
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=278840059]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -12.414404, 5.5939846, 57.95764)
+shape = SubResource("BoxShape3D_40omj")
+debug_color = Color(0.7, 0, 0.011666489, 1)
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D" unique_id=483170644]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -13.780449, 11.0054655, 59.334267)
+shape = SubResource("BoxShape3D_h35ti")
+debug_color = Color(0.7, 0, 0.011666489, 1)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=134717985]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -7.4971423, 5.5939846, 64.31993)
+shape = SubResource("BoxShape3D_r2xub")
+debug_color = Color(0.7, 0, 0.011666489, 1)
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D" unique_id=831610767]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -2.5750253, 5.5939846, 69.20422)
+shape = SubResource("BoxShape3D_oknvk")
+debug_color = Color(0.7, 0, 0.011666489, 1)
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D" unique_id=77039729]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -3.9967318, 8.385649, 67.793434)
+shape = SubResource("BoxShape3D_xbbf5")
+debug_color = Color(0.7, 0, 0.011666489, 1)
+
+[node name="Occluders" type="Node" parent="." unique_id=429092013]
+
+[node name="@OccluderInstance3D@46781" type="OccluderInstance3D" parent="Occluders" unique_id=25674019]
+transform = Transform3D(0.43515253, 0, 0.9003567, 0, 1, 0, -0.9003567, 0, 0.43515253, -32.181694, 7.0063686, 49.870842)
+occluder = SubResource("BoxOccluder3D_df3xt")
+
+[node name="@OccluderInstance3D@46782" type="OccluderInstance3D" parent="Occluders" unique_id=839206333]
+transform = Transform3D(0.94601744, 0, 0.32411557, 0, 1, 0, -0.32411557, 0, 0.94601744, -28.109062, 7.0063686, 42.62318)
+occluder = SubResource("BoxOccluder3D_gqsca")
+
+[node name="@OccluderInstance3D@46783" type="OccluderInstance3D" parent="Occluders" unique_id=565678649]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -23.563776, 7.0063686, 46.383873)
+occluder = SubResource("BoxOccluder3D_evgy0")
+
+[node name="@OccluderInstance3D@46784" type="OccluderInstance3D" parent="Occluders" unique_id=783680914]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -17.407534, 8.405355, 52.981045)
+occluder = SubResource("BoxOccluder3D_40omj")
+
+[node name="@OccluderInstance3D@46785" type="OccluderInstance3D" parent="Occluders" unique_id=1994900058]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -12.414404, 5.5939846, 57.95764)
+occluder = SubResource("BoxOccluder3D_r2xub")
+
+[node name="@OccluderInstance3D@46786" type="OccluderInstance3D" parent="Occluders" unique_id=1079599473]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -13.780449, 11.0054655, 59.334267)
+occluder = SubResource("BoxOccluder3D_oknvk")
+
+[node name="@OccluderInstance3D@46787" type="OccluderInstance3D" parent="Occluders" unique_id=610311576]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -7.4971423, 5.5939846, 64.31993)
+occluder = SubResource("BoxOccluder3D_xbbf5")
+
+[node name="@OccluderInstance3D@46788" type="OccluderInstance3D" parent="Occluders" unique_id=881939844]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -2.5750253, 5.5939846, 69.20422)
+occluder = SubResource("BoxOccluder3D_h35ti")
+
+[node name="@OccluderInstance3D@46789" type="OccluderInstance3D" parent="Occluders" unique_id=562610706]
+transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70982885, -3.9967318, 8.385649, 67.793434)
+occluder = SubResource("BoxOccluder3D_c010q")
