@@ -1,17 +1,15 @@
 class_name BattleDirector extends Node
 
 @export_category("Covers activation")
-@export var active_covers: Array[CoverGroup]
-
-@export_category("Agent death management")
-@export var mortal_covers: Array[CoverGroup]
+@export var all_groups: Array[CoverGroup]
 
 var game_manager: GameManager
 var enemies_manager: SpawnManager
 var allies_manager: SpawnManager
 
+var curr_group: CoverGroup
+var curr_mortal_cover: Array[Cover]
 var covers_activation_index: int = -1
-var death_management_index: int = -1
 var death_timer: float = 0.0
 var death_square_dist: float = 0.0
 var last_death_cover: Cover
@@ -31,8 +29,7 @@ func _ready() -> void:
 func ready_deffered() -> void:
 	game_manager = GameManager.instance
 	if CoverGroupTransfer.instance:
-		active_covers = CoverGroupTransfer.instance.cover_group_to_transfer
-		mortal_covers = CoverGroupTransfer.instance.death_group_to_transfer
+		all_groups = CoverGroupTransfer.instance.cover_group_to_transfer
 	else: printerr("NO COVER GROUP TO TRANSFER, USING COVERS LOCAL REFERENCES")
 	for spawn_manager: SpawnManager in get_tree().get_nodes_in_group("SpawnManagers"):
 		if spawn_manager.team == Agent.Team.VERSAILLAIS: enemies_manager = spawn_manager
@@ -42,9 +39,8 @@ func ready_deffered() -> void:
 
 
 func _process(delta: float) -> void:
-	if death_on_cover_enable and death_management_index >= 0:
+	if death_on_cover_enable and covers_activation_index >= 0:
 		apply_death_on_covers(delta)
-	
 	#DEBUG
 	if Input.is_action_just_pressed("go_next_step") and not game_manager.use_narrative:
 		go_next_covers_activation()
@@ -52,41 +48,37 @@ func _process(delta: float) -> void:
 
 func go_next_covers_activation() -> void:
 	covers_activation_index += 1
-	desactivate_all_covers()
-	if covers_activation_index >= active_covers.size():
+	if covers_activation_index >= all_groups.size():
 		printerr("INCONSISTENCY: ACTIVATION INDEX IN BATTLE DIRECTOR")
 		return
-	var active_group: CoverGroup = active_covers[covers_activation_index]
-	enemies_manager.target_entity_count = active_group.max_enemies
-	enemies_manager.cooldown = active_group.enemies_spawn_cd
-	allies_manager.target_entity_count = active_group.max_allies
-	allies_manager.cooldown = active_group.allies_spawn_cd
-	for cover: Cover in active_group.covers:
+	curr_group = all_groups[covers_activation_index]
+	curr_mortal_cover = curr_group.death_covers
+	death_on_cover_enable = curr_group.is_auto_death_enable
+	enemies_manager.target_entity_count = curr_group.max_enemies
+	enemies_manager.cooldown = curr_group.enemies_spawn_cd
+	allies_manager.target_entity_count = curr_group.max_allies
+	allies_manager.cooldown = curr_group.allies_spawn_cd
+	for cover: Cover in curr_group.active_covers:
 		cover.enabled = true
+	for cover: Cover in curr_group.desactive_covers:
+		cover.enabled = false
+	
 
 
 func desactivate_all_covers() -> void:
-	for cover_group: CoverGroup in active_covers:
-		for cover: Cover in cover_group.covers:
+	for cover_group: CoverGroup in all_groups:
+		for cover: Cover in cover_group.active_covers:
+			cover.enabled = false
+		for cover: Cover in cover_group.desactive_covers:
 			cover.enabled = false
 
 
-func go_next_death_management() -> void:
-	death_on_cover_enable = true
-	death_management_index += 1
-	if death_management_index >= mortal_covers.size():
-		printerr("INCONSISTENCY: DEATH INDEX IN BATTLE DIRECTOR")
-		return
-	death_timer = mortal_covers[death_management_index].death_timer
-	death_square_dist = mortal_covers[death_management_index].death_squared_dist
-
-
 func apply_death_on_covers(delta: float) -> void:
+	if not curr_mortal_cover: return
 	death_timer -= delta
 	if death_timer >= 0.0: return
-	var curr_cover_group: CoverGroup = mortal_covers[death_management_index]
 	var possible_covers: Array[Cover]
-	for cover: Cover in curr_cover_group.covers:
+	for cover: Cover in curr_mortal_cover:
 		if not cover.holder or cover.holder is Player: continue
 		var agent: Agent = (cover.holder as Agent)
 		if is_agent_killable(agent, cover):
@@ -96,11 +88,11 @@ func apply_death_on_covers(delta: float) -> void:
 	last_death_cover = possible_covers[rnd]
 	var futur_dead: Agent = possible_covers[rnd].holder as Agent
 	futur_dead.die()
-	death_timer = mortal_covers[death_management_index].death_timer
+	death_timer = curr_group.death_timer
 
 
 func is_agent_killable(agent: Agent, cover: Cover) -> bool:
-	if last_death_cover == cover: return false
+	if last_death_cover == cover and curr_mortal_cover.size() > 1: return false
 	if cover.global_position.distance_squared_to(agent.global_position) > death_square_dist: return false
 	if agent.posture == Agent.Posture.NONE: return false
 	if float(agent.posture) / cover.get_cover_posture() < 1.01: return false

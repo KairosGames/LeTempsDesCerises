@@ -1,6 +1,7 @@
 class_name CoverGroup extends Node
 
-@export var covers: Array[Cover]
+@export var active_covers: Array[Cover]
+@export var desactive_covers: Array[Cover]
 
 @export_category("Enemies settings")
 @export var max_enemies: int = 5
@@ -12,5 +13,7 @@ class_name CoverGroup extends Node
 
 @export_category("Death Covers")
 @export var death_covers: Array[Cover]
+@export var is_auto_death_enable: bool = false
+@export var cool_down_activation: float = 0.0
 @export var death_timer: float = 0.5
 @export var death_squared_dist: float = 0.2
