@@ -5,15 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://b3m4kptha2451" path="res://prefabs/barricade/barricade_01_damaged_01.tscn" id="3_1udo1"]
 [ext_resource type="PackedScene" uid="uid://c6uks6cfft2kt" path="res://prefabs/barricade/barricade_01_damaged_02.tscn" id="4_jn8ma"]
 [ext_resource type="PackedScene" uid="uid://bfgsm6t7c4sc6" path="res://prefabs/barricade/barricade_01_destroyed.tscn" id="5_v7drl"]
+[ext_resource type="PackedScene" uid="uid://dt06rgwsgrjv8" path="res://prefabs/vfx/barricade_hit.tscn" id="7_ud3ag"]
 [ext_resource type="PackedScene" uid="uid://187vl1c0h0u3" path="res://sounds/prefabs/ak_barricade_manager.tscn" id="12_uvgh7"]
 
-[node name="Barricade01" type="Node3D" unique_id=535866183 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules")]
+[node name="Barricade01" type="Node3D" unique_id=535866183 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules", "break_effects")]
 transform = Transform3D(0.9980212, 0, -0.06287761, 0, 1, 0, 0.06287761, 0, 0.9980212, 0, 0, 0)
 script = ExtResource("1_4w12a")
 full_life_modules = NodePath("Intact")
 damages_modules_1 = NodePath("Damaged1")
 damages_modules_2 = NodePath("Damaged2")
 destroyed_modules = NodePath("Destroyed")
+break_effects = [NodePath("DestructionEffects/FirstEffect"), NodePath("DestructionEffects/SecondEffect"), NodePath("DestructionEffects/ThirdEffect")]
 
 [node name="Intact" parent="." unique_id=1178280760 instance=ExtResource("2_fwntv")]
 
@@ -21,12 +23,28 @@ destroyed_modules = NodePath("Destroyed")
 visible = false
 
 [node name="Damaged2" parent="." unique_id=658129954 instance=ExtResource("4_jn8ma")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 visible = false
 
 [node name="Destroyed" parent="." unique_id=2014136881 instance=ExtResource("5_v7drl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 visible = false
 
 [node name="AkBarricadeManager" parent="." unique_id=40989191 instance=ExtResource("12_uvgh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1884227, -9.536743e-07, -2.5178847)
+visible = false
+
+[node name="DestructionEffects" type="Node" parent="." unique_id=214109615]
+
+[node name="FirstEffect" parent="DestructionEffects" unique_id=656924349 instance=ExtResource("7_ud3ag")]
+transform = Transform3D(-0.49360794, 0, 0.8696846, 0, 1, 0, -0.8696846, 0, -0.49360794, -4.109665, 1.0967469, -2.4111323)
+amount = 100
+
+[node name="SecondEffect" parent="DestructionEffects" unique_id=474579836 instance=ExtResource("7_ud3ag")]
+transform = Transform3D(-0.14559951, 0, 0.9893436, 0, 1, 0, -0.9893436, 0, -0.14559951, -4.529605, 1.0255251, -4.502533)
+amount = 300
+
+[node name="ThirdEffect" parent="DestructionEffects" unique_id=1163721346 instance=ExtResource("7_ud3ag")]
+transform = Transform3D(-0.52383727, 0, 0.8518183, 0, 1, 0, -0.8518183, 0, -0.52383727, -2.4651628, 1.0882324, 0.4507562)
 
 [connection signal="damaged" from="." to="AkBarricadeManager" method="_on_barricade_damaged"]

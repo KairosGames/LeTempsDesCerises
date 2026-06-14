@@ -13,10 +13,19 @@ signal just_destroyed
 @export_category("Covers")
 @export var near_covers: Array[Cover]
 
+@export_category("Effects")
+@export var break_effects: Array[GPUParticles3D]
+
 @export_category("Settings")
 @export var life_btw_steps: int = 1
 
-@onready var all_steps: Array[Node3D] = [full_life_modules, damages_modules_1, damages_modules_2, destroyed_modules]
+@onready var all_steps: Array[Node3D] = [full_life_modules,
+											damages_modules_1, 
+											damages_modules_2, 
+											destroyed_modules]
+
+var game_manager: GameManager
+var player: Player
 var state: int = 0
 var max_state: int = 3
 var curr_life: int
@@ -26,6 +35,17 @@ var is_destroyed: bool = false
 func _ready() -> void:
 	curr_life = life_btw_steps
 	set_state()
+	ready_deferred.call_deferred()
+
+
+func ready_deferred() -> void:
+	game_manager = GameManager.instance
+	if Player.instance: player = Player.instance
+	else: game_manager.player_instance_loaded.connect(set_local_player, CONNECT_ONE_SHOT)
+
+
+func set_local_player() -> void:
+	player = Player.instance
 
 
 func set_state() -> void:
@@ -51,6 +71,8 @@ func go_next_step() -> void:
 		is_destroyed = true
 		just_destroyed.emit()
 	#play vfx destruction
+	player.wpn_cam_base.shake(1.0, 1.0, 1.0)
+	break_effects[state - 1].emitting = true
 	set_state()
 	await get_tree().create_timer(0.1).timeout
 	kill_all_near_covers_agents()

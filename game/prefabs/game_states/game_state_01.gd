@@ -165,8 +165,8 @@ func check_player_kill_cannon_enemy(target: Node3D) -> void:
 	var versaillais: Agent = target as Agent
 	if versaillais.team != Agent.Team.VERSAILLAIS: return
 	if not versaillais.get_parent(): return
-	if not versaillais.cannon_slot: return
-	if versaillais.get_parent() == versaillais.cannon_slot:
+	if not versaillais.canon_slot: return
+	if versaillais.get_parent() == versaillais.canon_slot:
 		ui_manager.objective_target.target = null
 		player.enemy_shot.disconnect(check_player_kill_cannon_enemy)
 
@@ -191,7 +191,6 @@ func go_to_cover_from_cannon() -> void:
 func launch_first_cannon_shoot() -> void:
 	game_ready_cannon_shoot.emit()
 	await wait_signal(game_manager.first_barricade.state_changed)
-	player.wpn_cam_base.shake(1.0, 1.0, 1.0)
 	for agent: Agent in game_manager.cannon.workers: agent.can_die = true
 	await wait_voice() # "Putain, ils ont pété la barricade"
 	take_player_move_control(false)
