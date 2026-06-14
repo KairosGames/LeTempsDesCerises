@@ -234,6 +234,9 @@ namespace AK
                 static const AkUniqueID FRANCOIS = 3484216754U;
                 static const AkUniqueID GEORGES = 2519917785U;
                 static const AkUniqueID JULES = 652153290U;
+                static const AkUniqueID LOUISE = 2926082704U;
+                static const AkUniqueID MARIE = 1274621345U;
+                static const AkUniqueID MICHEL = 918100373U;
                 static const AkUniqueID NULL = 784127654U;
             } // namespace SWITCH
         } // namespace CHARACTER
@@ -370,6 +373,7 @@ namespace AK
         static const AkUniqueID JULES = 652153290U;
         static const AkUniqueID LOUISE = 2926082704U;
         static const AkUniqueID MARIE = 1274621345U;
+        static const AkUniqueID MICHEL = 918100373U;
         static const AkUniqueID SB_AMB = 925885567U;
         static const AkUniqueID SB_CANNON = 2061449278U;
         static const AkUniqueID SB_MUSIC = 779753582U;

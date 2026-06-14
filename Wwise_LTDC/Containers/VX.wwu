@@ -10750,7 +10750,7 @@
 											<PropertyList>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
-														<Value>0.2</Value>
+														<Value>0.5</Value>
 													</ValueList>
 												</Property>
 												<Property Name="IsStreamingEnabled" Type="bool">
@@ -11878,9 +11878,9 @@
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{A5C9D19F-04FB-4872-925A-230A5DF8ABEB}">
 													<PropertyList>
-														<Property Name="FadeOutDuration" Type="Real64" Value="0.88841"/>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.46667"/>
 														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-														<Property Name="TrimEnd" Type="Real64" Value="1.50103"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.81898"/>
 													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_01.wav</AudioFile>
@@ -12212,6 +12212,83 @@
 											<ObjectRef Name="narrative_step" ID="{DC7D94F8-F1CD-4344-8D78-703A4905E20A}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
 										</Reference>
 									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="VX_Amb_M_Comm_Jules_OB_Enemy_Arrival_4_Vincent" ID="{BE23F393-0961-4AE4-9BA9-E65BCBDBF834}" ShortID="218383485">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Jules_OB_Enemy_Arrival_4_Vincent" ID="{01DD1A57-ECF7-451B-8184-40FAED0A5D01}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Jules\VX_Amb_M_Comm_Jules_OB_Enemy_Arrival_4_Vincent.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="735208448"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Jules_OB_Enemy_Arrival_4_Vincent" ID="{01DD1A57-ECF7-451B-8184-40FAED0A5D01}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-001" ID="{DEB56A83-FD80-4986-A974-C89AE1DC2CF8}" ShortID="885485708">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-001" ID="{B344610A-8C43-4ACC-B35B-A072630F62DB}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Jules\VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-001.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="630292449"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-001" ID="{B344610A-8C43-4ACC-B35B-A072630F62DB}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-002" ID="{A1E004B3-9486-4473-AADF-911E2DC395B9}" ShortID="265702156">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-002" ID="{D88D33AF-8236-40B4-AB41-5AC4AB7EB86D}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Jules\VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-002.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="734636044"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-002" ID="{D88D33AF-8236-40B4-AB41-5AC4AB7EB86D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
 									<ObjectLists>
 										<ObjectList Name="RTPC">
 											<RTPC Name="" ID="{DC4351FA-3AA3-45E2-989A-516F5D6C1D32}" ShortID="332853540">
@@ -12253,17 +12330,44 @@
 											</RTPC>
 										</ObjectList>
 									</ObjectLists>
-									<GroupingInfo/>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-001" ID="{DEB56A83-FD80-4986-A974-C89AE1DC2CF8}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Jules_OB_Enemy_Arrival_4_Vincent" ID="{BE23F393-0961-4AE4-9BA9-E65BCBDBF834}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-002" ID="{A1E004B3-9486-4473-AADF-911E2DC395B9}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="_19" ID="{121B9630-5326-42F1-BF9F-65F72A1E70F5}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-001" ID="{DEB56A83-FD80-4986-A974-C89AE1DC2CF8}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_18" ID="{9AA66387-91BA-480C-B781-3DC8A2741CCF}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Comm_Jules_OB_Enemy_Arrival_4_Vincent" ID="{BE23F393-0961-4AE4-9BA9-E65BCBDBF834}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_21" ID="{34988295-5A1A-4399-8815-9E73F372259F}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-002" ID="{A1E004B3-9486-4473-AADF-911E2DC395B9}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
 								</SwitchContainer>
 								<SwitchContainer Name="François" ID="{2EC530F3-9986-4465-9C73-95201FFA50DC}" ShortID="666625561">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
-										<Property Name="InitialDelay" Type="Real64">
-											<ValueList>
-												<Value>2</Value>
-											</ValueList>
-										</Property>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 									</PropertyList>
@@ -12384,7 +12488,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_1" ID="{A3A16A63-2197-480E-9C31-877DD8390686}" ShortID="405036082">
+										<Sound Name="VX_Amb_M_Comm_Francois_AA_Accalmie_1_Ydris" ID="{F4C399F5-CF06-4DEE-AC99-4F8C0B9B3863}" ShortID="1060419759">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
@@ -12397,31 +12501,19 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_1" ID="{20BEF53C-244C-4E45-9428-2F41F1FEB55D}">
-													<PropertyList>
-														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
-													</PropertyList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_AA_Accalmie_1_Ydris" ID="{16C69615-1F70-467D-AAD3-34CBA5995335}">
 													<Language>French(France)</Language>
-													<AudioFile>Characters\Francois\PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_1.wav</AudioFile>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_AA_Accalmie_1_Ydris.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="757278528"/>
+														<MediaID ID="386219431"/>
 													</MediaIDList>
-													<ObjectLists>
-														<ObjectList Name="Markers">
-															<Marker Name="" ID="{950C4216-8CBF-490F-909C-8652BFF8AA53}">
-																<PropertyList>
-																	<Property Name="Label" Type="string" Value="Voilà la ligne ! Ils sont sur nous, Georges rejoins-nous !"/>
-																</PropertyList>
-															</Marker>
-														</ObjectList>
-													</ObjectLists>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_1" ID="{20BEF53C-244C-4E45-9428-2F41F1FEB55D}" Platform="Linked"/>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_AA_Accalmie_1_Ydris" ID="{16C69615-1F70-467D-AAD3-34CBA5995335}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_3" ID="{0631BBCC-E6B0-4C5D-AA37-B6D8FF03A72B}" ShortID="964420946">
+										<Sound Name="VX_Amb_M_Comm_Francois_AA_Arrivee_2_Ydris" ID="{CD2DAC8F-4079-4397-9BBC-3EF45B0F693B}" ShortID="349732682">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
@@ -12434,23 +12526,148 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_3" ID="{F2A8493C-2C69-4C3F-AA76-F899C2A921FE}">
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_AA_Arrivee_2_Ydris" ID="{C872913C-50DD-436B-B71A-EC65E9A9567E}">
 													<Language>French(France)</Language>
-													<AudioFile>Characters\Francois\PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_3.wav</AudioFile>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_AA_Arrivee_2_Ydris.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="748217721"/>
+														<MediaID ID="632047778"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_3" ID="{F2A8493C-2C69-4C3F-AA76-F899C2A921FE}" Platform="Linked"/>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_AA_Arrivee_2_Ydris" ID="{C872913C-50DD-436B-B71A-EC65E9A9567E}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_1" ID="{FF87A328-7B9A-42C8-A531-27A9B47CCE7A}" ShortID="336444130">
+										<Sound Name="VX_Amb_M_Comm_Francois_AA_Foutriquet_Ydris" ID="{4A63A1B3-5095-4D3A-B882-43AEAFE5C6C2}" ShortID="469476693">
 											<PropertyList>
-												<Property Name="IsStreamingEnabled" Type="bool">
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_AA_Foutriquet_Ydris" ID="{777AE60C-FEBB-428B-82AD-031F898C9BB4}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_AA_Foutriquet_Ydris.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="846463172"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_AA_Foutriquet_Ydris" ID="{777AE60C-FEBB-428B-82AD-031F898C9BB4}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris" ID="{1DA29B88-AD4B-48AA-9E57-BF447B52C93A}" ShortID="486031089">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris" ID="{3B3A0A6B-AE4C-4A54-92CD-EA3E4EFB5267}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="975225380"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris" ID="{3B3A0A6B-AE4C-4A54-92CD-EA3E4EFB5267}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VX_Amb_M_Comm_Francois_Game_End_2_Ydris" ID="{0EADBEC9-8D60-471C-90F4-DEE115CC2A02}" ShortID="325576880">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_Game_End_2_Ydris" ID="{C13FDD3D-1165-4A3C-99C4-613162E073EC}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_Game_End_2_Ydris.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="333954270"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_Game_End_2_Ydris" ID="{C13FDD3D-1165-4A3C-99C4-613162E073EC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris" ID="{02D3E9A8-AE53-470E-80D4-76356818A256}" ShortID="178923068">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris" ID="{1CAEF1B0-FFD5-42C6-B377-A51BFE71BA8E}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="609858295"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris" ID="{1CAEF1B0-FFD5-42C6-B377-A51BFE71BA8E}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_1_Ydris" ID="{AD8612FB-BBDB-4274-8667-91B2A8D9CB66}" ShortID="721382056">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_1_Ydris" ID="{04EB922B-2365-4EAA-ACA7-67ADAA425681}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Canon_Arrival_1_Ydris.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="203011795"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_1_Ydris" ID="{04EB922B-2365-4EAA-ACA7-67ADAA425681}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_3_Ydris" ID="{6FD75AA6-7FF3-4C74-92EC-0D053168B110}" ShortID="566170847">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
-														<Value>True</Value>
+														<Value>5</Value>
 													</ValueList>
 												</Property>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
@@ -12464,19 +12681,19 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_1" ID="{6FAF79E6-A6C0-4B6D-A23C-102C4DBC8CD0}">
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_3_Ydris" ID="{8C713128-6794-454B-8346-3B254B22CAAA}">
 													<Language>French(France)</Language>
-													<AudioFile>Characters\Francois\PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_1.wav</AudioFile>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Canon_Arrival_3_Ydris.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="872907473"/>
+														<MediaID ID="15290778"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_1" ID="{6FAF79E6-A6C0-4B6D-A23C-102C4DBC8CD0}" Platform="Linked"/>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_3_Ydris" ID="{8C713128-6794-454B-8346-3B254B22CAAA}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_3" ID="{497F9B2D-C277-4A65-9CD3-AF743D15E29E}" ShortID="775896898">
+										<Sound Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_1_Ydris" ID="{F84A966D-073D-4373-B8DE-30DCA4F1CFD3}" ShortID="977681547">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
@@ -12489,19 +12706,19 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_3" ID="{C3CBEE88-1645-4EEA-9FBC-EF783F195138}">
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_1_Ydris" ID="{84E18B6E-B8E6-402F-9064-9EF04C3FF46C}">
 													<Language>French(France)</Language>
-													<AudioFile>Characters\Francois\PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_3.wav</AudioFile>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Canon_Shoot_1_Ydris.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="168650355"/>
+														<MediaID ID="812518043"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_3" ID="{C3CBEE88-1645-4EEA-9FBC-EF783F195138}" Platform="Linked"/>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_1_Ydris" ID="{84E18B6E-B8E6-402F-9064-9EF04C3FF46C}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="PH_VX_Amb_M_Comm_Military_ShoutCannon" ID="{13B4A006-F9EC-4E66-9AC1-5EDDFD5D2735}" ShortID="437279372">
+										<Sound Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_2_Ydris" ID="{AB7B9F70-30EF-4E09-86C3-F890FB0084AB}" ShortID="1063290239">
 											<PropertyList>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
@@ -12514,16 +12731,96 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="PH_VX_Amb_M_Comm_Military_ShoutCannon" ID="{4C6BB401-6694-4146-9AC7-14849016657C}">
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_2_Ydris" ID="{A754E8D8-560A-40EE-8A51-BC9BC65CB026}">
 													<Language>French(France)</Language>
-													<AudioFile>Characters\Francois\PH_VX_Amb_M_Comm_Military_ShoutCannon.wav</AudioFile>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Canon_Shoot_2_Ydris.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="43165066"/>
+														<MediaID ID="399566197"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="PH_VX_Amb_M_Comm_Military_ShoutCannon" ID="{4C6BB401-6694-4146-9AC7-14849016657C}" Platform="Linked"/>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_2_Ydris" ID="{A754E8D8-560A-40EE-8A51-BC9BC65CB026}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_3_Ydris" ID="{890C3A74-FCCD-4663-A9A8-63DA061C6731}" ShortID="562134977">
+											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_3_Ydris" ID="{51728AB8-4F3B-48E0-B954-6970128FBA9C}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Canon_Shoot_3_Ydris.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="404895938"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_3_Ydris" ID="{51728AB8-4F3B-48E0-B954-6970128FBA9C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VX_Amb_M_Comm_Francois_OB_Enemy_Arrival_3_Ydris" ID="{275A80D8-E90D-48ED-B9F1-FFB3E42168DD}" ShortID="586210707">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Enemy_Arrival_3_Ydris" ID="{59ACFCFE-D5C0-40A6-A95B-20D66196E61C}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Enemy_Arrival_3_Ydris.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="68632049"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_OB_Enemy_Arrival_3_Ydris" ID="{59ACFCFE-D5C0-40A6-A95B-20D66196E61C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="VX_Amb_M_Comm_Francois_OB_Player_Death_1_Ydris" ID="{E4BA67E6-CB85-4A4D-BDAC-65C2F32FFAA5}" ShortID="990475640">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Player_Death_1_Ydris" ID="{B380D1D9-026D-46DD-AC28-4F1C1C3CA752}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Player_Death_1_Ydris.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="129676953"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Francois_OB_Player_Death_1_Ydris" ID="{B380D1D9-026D-46DD-AC28-4F1C1C3CA752}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
@@ -12571,44 +12868,88 @@
 									<GroupingInfo>
 										<GroupingBehaviorList>
 											<GroupingBehavior>
-												<ItemRef Name="PH_VX_Amb_M_Comm_Military_ShoutCannon" ID="{13B4A006-F9EC-4E66-9AC1-5EDDFD5D2735}"/>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_1_Ydris" ID="{F84A966D-073D-4373-B8DE-30DCA4F1CFD3}"/>
 											</GroupingBehavior>
 											<GroupingBehavior>
-												<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_1" ID="{FF87A328-7B9A-42C8-A531-27A9B47CCE7A}"/>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_2_Ydris" ID="{AB7B9F70-30EF-4E09-86C3-F890FB0084AB}"/>
 											</GroupingBehavior>
 											<GroupingBehavior>
-												<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_3" ID="{497F9B2D-C277-4A65-9CD3-AF743D15E29E}"/>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_3_Ydris" ID="{890C3A74-FCCD-4663-A9A8-63DA061C6731}"/>
 											</GroupingBehavior>
 											<GroupingBehavior>
-												<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_1" ID="{A3A16A63-2197-480E-9C31-877DD8390686}"/>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris" ID="{1DA29B88-AD4B-48AA-9E57-BF447B52C93A}"/>
 											</GroupingBehavior>
 											<GroupingBehavior>
-												<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_3" ID="{0631BBCC-E6B0-4C5D-AA37-B6D8FF03A72B}"/>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_AA_Arrivee_2_Ydris" ID="{CD2DAC8F-4079-4397-9BBC-3EF45B0F693B}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_3_Ydris" ID="{6FD75AA6-7FF3-4C74-92EC-0D053168B110}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris" ID="{02D3E9A8-AE53-470E-80D4-76356818A256}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_AA_Foutriquet_Ydris" ID="{4A63A1B3-5095-4D3A-B882-43AEAFE5C6C2}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_Game_End_2_Ydris" ID="{0EADBEC9-8D60-471C-90F4-DEE115CC2A02}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Enemy_Arrival_3_Ydris" ID="{275A80D8-E90D-48ED-B9F1-FFB3E42168DD}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Player_Death_1_Ydris" ID="{E4BA67E6-CB85-4A4D-BDAC-65C2F32FFAA5}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_AA_Accalmie_1_Ydris" ID="{F4C399F5-CF06-4DEE-AC99-4F8C0B9B3863}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_1_Ydris" ID="{AD8612FB-BBDB-4274-8667-91B2A8D9CB66}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
 										<GroupingList>
 											<Grouping>
+												<SwitchRef Name="_17" ID="{99C9ED05-BF72-4D56-BF70-329AF168F02A}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Player_Death_1_Ydris" ID="{E4BA67E6-CB85-4A4D-BDAC-65C2F32FFAA5}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
 												<SwitchRef Name="_13" ID="{9C0D0D06-12EC-4967-A323-91A8D97A5BF0}"/>
 												<ItemList>
-													<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_1" ID="{A3A16A63-2197-480E-9C31-877DD8390686}"/>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris" ID="{1DA29B88-AD4B-48AA-9E57-BF447B52C93A}"/>
 												</ItemList>
 											</Grouping>
 											<Grouping>
-												<SwitchRef Name="_15" ID="{2569554C-6795-40E0-9FFB-0D136E3FA202}"/>
+												<SwitchRef Name="_16" ID="{6714C414-A328-4E80-AE94-8DAECAED293B}"/>
 												<ItemList>
-													<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Enemy_Arrival_3" ID="{0631BBCC-E6B0-4C5D-AA37-B6D8FF03A72B}"/>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Enemy_Arrival_3_Ydris" ID="{275A80D8-E90D-48ED-B9F1-FFB3E42168DD}"/>
 												</ItemList>
 											</Grouping>
 											<Grouping>
-												<SwitchRef Name="_18" ID="{9AA66387-91BA-480C-B781-3DC8A2741CCF}"/>
+												<SwitchRef Name="_22" ID="{CE318E2C-EA96-431A-8A4B-B1B5056DDD2B}"/>
 												<ItemList>
-													<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_1" ID="{FF87A328-7B9A-42C8-A531-27A9B47CCE7A}"/>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_1_Ydris" ID="{AD8612FB-BBDB-4274-8667-91B2A8D9CB66}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_24" ID="{9A34572D-A19A-4325-B3F4-8085ED5A7E52}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_2_Ydris" ID="{AB7B9F70-30EF-4E09-86C3-F890FB0084AB}"/>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_3_Ydris" ID="{890C3A74-FCCD-4663-A9A8-63DA061C6731}"/>
 												</ItemList>
 											</Grouping>
 											<Grouping>
 												<SwitchRef Name="_20" ID="{FB6739D1-8E6F-41F3-9D67-21B693E9AB8E}"/>
 												<ItemList>
-													<ItemRef Name="PH_VX_Amb_M_Comm_Military_OB_Canon_Arrival_3" ID="{497F9B2D-C277-4A65-9CD3-AF743D15E29E}"/>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Player_Death_1_Ydris" ID="{E4BA67E6-CB85-4A4D-BDAC-65C2F32FFAA5}"/>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_3_Ydris" ID="{6FD75AA6-7FF3-4C74-92EC-0D053168B110}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_23" ID="{C085F0E1-6DA2-44F8-A32A-D5FFB146DD83}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_1_Ydris" ID="{F84A966D-073D-4373-B8DE-30DCA4F1CFD3}"/>
 												</ItemList>
 											</Grouping>
 										</GroupingList>
@@ -12697,11 +13038,224 @@
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="None" ID="{C943CC8C-1A44-4F78-BDDC-B3D3EC95F41D}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="narrative_step" ID="{DC7D94F8-F1CD-4344-8D78-703A4905E20A}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
 									</ReferenceList>
 									<GroupingInfo/>
+								</SwitchContainer>
+								<SwitchContainer Name="Michel" ID="{8D61C36E-0A74-4641-AEC0-453D7EEED871}" ShortID="9135536">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<Custom>
+												<Attenuation Name="Attenuation (Custom)" ID="{B9F92AE5-0C52-4376-8981-C94935468334}" ShortID="219542385">
+													<PropertyList>
+														<Property Name="RadiusMax" Type="Real64" Value="25"/>
+													</PropertyList>
+													<CurveUsageInfoList>
+														<VolumeDryUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="VolumeDry" ID="{1D4B4D80-5502-4D6F-AC87-F1AD6C05D265}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="3"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																			<SegmentShape>SCurve</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>25</XPos>
+																			<YPos>-200</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</VolumeDryUsage>
+														<VolumeWetGameUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetGameUsage>
+														<VolumeWetUserUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetUserUsage>
+														<LowPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</LowPassFilterUsage>
+														<HighPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</HighPassFilterUsage>
+														<DualShelfUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</DualShelfUsage>
+														<SpreadUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</SpreadUsage>
+														<FocusUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</FocusUsage>
+														<ObstructionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionVolumeUsage>
+														<ObstructionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionLPFUsage>
+														<ObstructionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionHPFUsage>
+														<ObstructionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionDSFUsage>
+														<OcclusionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionVolumeUsage>
+														<OcclusionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionLPFUsage>
+														<OcclusionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionHPFUsage>
+														<OcclusionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionDSFUsage>
+														<DiffractionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionVolumeUsage>
+														<DiffractionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionLPFUsage>
+														<DiffractionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionHPFUsage>
+														<DiffractionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionDSFUsage>
+														<TransmissionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionVolumeUsage>
+														<TransmissionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionLPFUsage>
+														<TransmissionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionHPFUsage>
+														<TransmissionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionDSFUsage>
+													</CurveUsageInfoList>
+												</Attenuation>
+											</Custom>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="None" ID="{C943CC8C-1A44-4F78-BDDC-B3D3EC95F41D}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="narrative_step" ID="{DC7D94F8-F1CD-4344-8D78-703A4905E20A}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="VX_Amb_M_Comm_Michel_OB_Canon_Arrival_2_Pierric" ID="{AA05DEEE-EE2D-4410-9365-6352D0F57446}" ShortID="738950522">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Comm_Michel_OB_Canon_Arrival_2_Pierric" ID="{C580844D-74B3-4A22-B140-38B5E34EFC80}">
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Michel\VX_Amb_M_Comm_Michel_OB_Canon_Arrival_2_Pierric.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="939973152"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Comm_Michel_OB_Canon_Arrival_2_Pierric" ID="{C580844D-74B3-4A22-B140-38B5E34EFC80}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<RTPC Name="" ID="{0B83FEF4-0736-4F04-B9C1-619CCAA99594}" ShortID="58388146">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="CenterPercentage"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="Distance" ID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{710B8039-0C40-4B2D-81E8-DE71AC8EF972}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="65537"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>100</YPos>
+																		<Flags>5</Flags>
+																		<SegmentShape>Exp3</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>5</XPos>
+																		<YPos>0</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>100</XPos>
+																		<YPos>0</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</ObjectList>
+									</ObjectLists>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Comm_Michel_OB_Canon_Arrival_2_Pierric" ID="{AA05DEEE-EE2D-4410-9365-6352D0F57446}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="_23" ID="{C085F0E1-6DA2-44F8-A32A-D5FFB146DD83}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Comm_Michel_OB_Canon_Arrival_2_Pierric" ID="{AA05DEEE-EE2D-4410-9365-6352D0F57446}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
 								</SwitchContainer>
 							</ChildrenList>
 							<ObjectLists>
@@ -12731,6 +13285,9 @@
 										<ItemRef Name="Jules" ID="{A0AB775F-7CF9-4A40-A4D3-4102EEDFBF5A}"/>
 									</GroupingBehavior>
 									<GroupingBehavior>
+										<ItemRef Name="Michel" ID="{8D61C36E-0A74-4641-AEC0-453D7EEED871}"/>
+									</GroupingBehavior>
+									<GroupingBehavior>
 										<ItemRef Name="Georges" ID="{EA267C89-B50A-4122-98FA-5A205B6AF088}"/>
 									</GroupingBehavior>
 									<GroupingBehavior>
@@ -12742,9 +13299,27 @@
 								</GroupingBehaviorList>
 								<GroupingList>
 									<Grouping>
+										<SwitchRef Name="Marie" ID="{A9047D1E-D39E-4490-9901-0D474A2FA716}"/>
+										<ItemList>
+											<ItemRef Name="Marie" ID="{E0EABE2F-AD61-46C3-B1C2-F5709584888F}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Michel" ID="{35D9D25C-8AA2-4D82-BC3B-1602EA884599}"/>
+										<ItemList>
+											<ItemRef Name="Michel" ID="{8D61C36E-0A74-4641-AEC0-453D7EEED871}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
 										<SwitchRef Name="Georges" ID="{626A0164-AC07-4ABB-8C3F-48A4716786F8}"/>
 										<ItemList>
 											<ItemRef Name="Georges" ID="{EA267C89-B50A-4122-98FA-5A205B6AF088}"/>
+										</ItemList>
+									</Grouping>
+									<Grouping>
+										<SwitchRef Name="Louise" ID="{EC36307D-BD77-4582-B5D1-7C12BEB1FA68}"/>
+										<ItemList>
+											<ItemRef Name="Louise" ID="{8BA3E994-ACAA-42D5-9983-7B335A4A7713}"/>
 										</ItemList>
 									</Grouping>
 									<Grouping>

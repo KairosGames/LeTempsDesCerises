@@ -7,87 +7,52 @@
 				<Property Name="OverrideColor" Type="bool" Value="True"/>
 			</PropertyList>
 			<ChildrenList>
-				<PropertyContainer Name="Cannons" ID="{CD92F808-97F6-40BF-A7EC-21AF86E9A0C1}" ShortID="273216282">
-					<PropertyList>
-						<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
-						<Property Name="MaxSoundPerInstance" Type="int16">
-							<ValueList>
-								<Value>3</Value>
-							</ValueList>
-						</Property>
-						<Property Name="UseMaxSoundPerInstance" Type="bool">
-							<ValueList>
-								<Value>True</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
+				<PropertyContainer Name="Amb" ID="{A968FFBA-19F0-40FE-86B8-9FAAC8AA6F86}" ShortID="719934253">
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="AMB" ID="{3C49B583-C63B-4CCB-A1B9-D71E082D055E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<RandomSequenceContainer Name="Cannons_Light" ID="{BE8593A3-2955-490C-943A-F1D753BDF488}" ShortID="196989639">
-							<PropertyList>
-								<Property Name="3DPosition" Type="int16" Value="2"/>
-								<Property Name="3DSpatialization" Type="int16" Value="2"/>
-								<Property Name="HoldListenerOrientation" Type="bool" Value="True"/>
-								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-								<Property Name="Pitch" Type="int32">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{A9F4CF1A-7091-4D1E-B224-8C75316CAC90}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="200"/>
-													<Property Name="Min" Type="Real64" Value="-200"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{86802A60-C329-4064-AD0E-17AF65C457CF}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Min" Type="Real64" Value="-3"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
-								<Property Name="UserAuxSendVolume0" Type="Real64">
-									<ValueList>
-										<Value>-6</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
+						<PropertyContainer Name="Enviro" ID="{AD2FAB56-10CC-4DBA-93F4-E8F79594F030}" ShortID="798535255">
 							<ReferenceList>
-								<Reference Name="Attenuation">
-									<ObjectRef Name="Amb_Cannons" ID="{39C26137-7B5D-491A-BA29-DB889F4A5BE6}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
-								</Reference>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-								</Reference>
-								<Reference Name="UserAuxSend0">
-									<ObjectRef Name="Wwise_Motion_Send" ID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+									<ObjectRef Name="AMB" ID="{3C49B583-C63B-4CCB-A1B9-D71E082D055E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_011" ID="{3A08985A-60B2-4AB0-BC8D-D779CC78AA77}" ShortID="389588428">
+								<Sound Name="LTDC_AMB_Street_WindBirds_Loop" ID="{34497A7D-ABE1-409E-92D5-E3B8A7BC49D6}" ShortID="101547457">
+									<PropertyList>
+										<Property Name="3DPosition" Type="int16" Value="2"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="GameAuxSendVolume" Type="Real64">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+										<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+										<Property Name="HoldListenerOrientation" Type="bool" Value="True"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="IsZeroLatency" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+										<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -97,20 +62,157 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_011" ID="{3A750B0C-386F-40DB-B540-D9CE81708C2F}">
+										<AudioFileSource Name="LTDC_AMB_Street_WindBirds_Loop_01" ID="{F2EAEA26-F0BE-4365-8DB0-05996740971E}">
+											<PropertyList>
+												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+												<Property Name="TrimEnd" Type="Real64" Value="23.91823"/>
+											</PropertyList>
 											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_011.wav</AudioFile>
+											<AudioFile>AMB\Enviro\LTDC_AMB_Street_WindBirds_Loop.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="1056690897"/>
+												<MediaID ID="245803413"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
+									<PositioningInfo>
+										<Position Name="" ID="{582E383C-EFE3-45D6-8D69-B6DB1B0ED4F9}"/>
+									</PositioningInfo>
 									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_011" ID="{3A750B0C-386F-40DB-B540-D9CE81708C2F}" Platform="Linked"/>
+										<ActiveSource Name="LTDC_AMB_Street_WindBirds_Loop_01" ID="{F2EAEA26-F0BE-4365-8DB0-05996740971E}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_010" ID="{B5BB3A82-9EFF-42B8-A7EF-86C925990174}" ShortID="1030724757">
+								<Sound Name="LTDC_AMB_Enviro_Arson_Loop" ID="{8E45FCFE-3A6C-49AD-B7B4-8D6CC60AD424}" ShortID="967055264">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="IsStreamingEnabled" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<Custom>
+												<Attenuation Name="Attenuation (Custom)" ID="{D7601281-9DA7-4626-8006-A7FB98F4A482}" ShortID="138651266">
+													<PropertyList>
+														<Property Name="RadiusMax" Type="Real64" Value="50"/>
+													</PropertyList>
+													<CurveUsageInfoList>
+														<VolumeDryUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="VolumeDry" ID="{C6C100A7-C94A-4E52-B642-1F2150DB06FA}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="3"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																			<SegmentShape>SCurve</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>50</XPos>
+																			<YPos>-200</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</VolumeDryUsage>
+														<VolumeWetGameUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetGameUsage>
+														<VolumeWetUserUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetUserUsage>
+														<LowPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="LowPassFilter" ID="{3FCA6678-4900-45DF-BEE3-D3C2BB2AEE7E}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="65537"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>50</XPos>
+																			<YPos>80</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</LowPassFilterUsage>
+														<HighPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</HighPassFilterUsage>
+														<DualShelfUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</DualShelfUsage>
+														<SpreadUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</SpreadUsage>
+														<FocusUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</FocusUsage>
+														<ObstructionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionVolumeUsage>
+														<ObstructionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionLPFUsage>
+														<ObstructionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionHPFUsage>
+														<ObstructionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionDSFUsage>
+														<OcclusionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionVolumeUsage>
+														<OcclusionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionLPFUsage>
+														<OcclusionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionHPFUsage>
+														<OcclusionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionDSFUsage>
+														<DiffractionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionVolumeUsage>
+														<DiffractionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionLPFUsage>
+														<DiffractionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionHPFUsage>
+														<DiffractionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionDSFUsage>
+														<TransmissionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionVolumeUsage>
+														<TransmissionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionLPFUsage>
+														<TransmissionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionHPFUsage>
+														<TransmissionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionDSFUsage>
+													</CurveUsageInfoList>
+												</Attenuation>
+											</Custom>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 										</Reference>
@@ -119,783 +221,720 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_010" ID="{1E79CA05-48A5-427C-9215-50A43AF5CCB4}">
+										<AudioFileSource Name="LTDC_AMB_Enviro_Arson_Loop" ID="{FA4EEA52-3A3F-4134-8858-5909BC79B113}">
 											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_010.wav</AudioFile>
+											<AudioFile>AMB\Enviro\LTDC_AMB_Enviro_Arson_Loop.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="289258374"/>
+												<MediaID ID="203600813"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_010" ID="{1E79CA05-48A5-427C-9215-50A43AF5CCB4}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_003" ID="{613EF31C-56A2-42C2-9DC5-5C5DF212F1C4}" ShortID="872904055">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_003" ID="{104B24E5-6590-4278-8452-12C848CC59EF}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_003.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="1020890998"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_003" ID="{104B24E5-6590-4278-8452-12C848CC59EF}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_007" ID="{3A716B04-F39A-4632-B4AB-F6B3C7592A56}" ShortID="954086857">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_007" ID="{BEBF29A4-3F72-4E47-AB04-938D8099C65C}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_007.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="802062891"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_007" ID="{BEBF29A4-3F72-4E47-AB04-938D8099C65C}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_008" ID="{A4FA31A6-6428-43E3-93F5-6BF2E7EC336F}" ShortID="77786517">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_008" ID="{9794C286-DC14-4B40-BB2C-D86C12D1B110}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_008.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="927552990"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_008" ID="{9794C286-DC14-4B40-BB2C-D86C12D1B110}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_009" ID="{D36EC788-DA15-439F-BC57-373B616A0485}" ShortID="233927554">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_009" ID="{C1C759C4-AF7C-4E1F-A973-5FCCEC295ED7}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_009.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="908746399"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_009" ID="{C1C759C4-AF7C-4E1F-A973-5FCCEC295ED7}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_001" ID="{790372EC-619C-43B1-93C8-A534C348B372}" ShortID="127311387">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_001" ID="{22470F8D-55D8-4388-9AA0-CD053E2CB883}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_001.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="1070142580"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_001" ID="{22470F8D-55D8-4388-9AA0-CD053E2CB883}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_004" ID="{268A32F4-DC85-4C44-AA29-4CE6C1EBC4B4}" ShortID="646019039">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_004" ID="{FF8A6BC6-50B5-49B5-A5D2-D383EF6AD273}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_004.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="365568969"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_004" ID="{FF8A6BC6-50B5-49B5-A5D2-D383EF6AD273}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_006" ID="{E41C8DE5-7CE3-4DDE-88E7-D302DD2BDD2C}" ShortID="493750289">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_006" ID="{F54F1E41-74E5-445E-858A-D8B029F11506}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_006.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="774170018"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_006" ID="{F54F1E41-74E5-445E-858A-D8B029F11506}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_005" ID="{2226568A-7377-45BD-B241-09071736352C}" ShortID="937166107">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_005" ID="{40C61537-E7BC-421C-82DA-E6E89F5EA3B3}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_005.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="583909241"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_005" ID="{40C61537-E7BC-421C-82DA-E6E89F5EA3B3}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_002" ID="{609BBB5F-2975-4F19-9BFB-042F1E316DBA}" ShortID="575850436">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_002" ID="{CE38CB37-1829-4A97-99FF-F134F6A61160}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_002.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="1011832069"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_002" ID="{CE38CB37-1829-4A97-99FF-F134F6A61160}" Platform="Linked"/>
+										<ActiveSource Name="LTDC_AMB_Enviro_Arson_Loop" ID="{FA4EEA52-3A3F-4134-8858-5909BC79B113}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
-							<PositioningInfo>
-								<Position Name="" ID="{554F5BE4-68F1-4EB4-9A5D-E9615F1D2466}">
-									<PropertyList>
-										<Property Name="NewPathForEachSound" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<Path2D Name="Cannons_Light_Path" ID="{523820A1-A6CC-4130-AFDB-6C57389A2145}">
-											<PropertyList>
-												<Property Name="RandomX" Type="Real64" Value="50"/>
-												<Property Name="RandomY" Type="Real64" Value="50"/>
-											</PropertyList>
-											<PointList>
-												<Point>
-													<XPos>0</XPos>
-													<YPos>0</YPos>
-													<Flags>12</Flags>
-													<Time>0</Time>
-												</Point>
-											</PointList>
-										</Path2D>
-									</ChildrenList>
-								</Position>
-							</PositioningInfo>
-						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="Cannons_Heavy" ID="{AFA4CAE5-B7DA-4996-BD00-7E1362AC1F4E}" ShortID="795401110">
+						</PropertyContainer>
+						<PropertyContainer Name="Cannons" ID="{CD92F808-97F6-40BF-A7EC-21AF86E9A0C1}" ShortID="273216282">
 							<PropertyList>
-								<Property Name="3DPosition" Type="int16" Value="2"/>
-								<Property Name="3DSpatialization" Type="int16" Value="2"/>
-								<Property Name="HoldListenerOrientation" Type="bool" Value="True"/>
-								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-								<Property Name="Pitch" Type="int32">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{4BCCE2D4-3174-4889-AF13-E52ED5B33AD3}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Max" Type="Real64" Value="200"/>
-													<Property Name="Min" Type="Real64" Value="-200"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3">
-									<ModifierList>
-										<ModifierInfo>
-											<Modifier Name="" ID="{724F0173-3DB2-4FEF-91B4-3D4FEB036620}">
-												<PropertyList>
-													<Property Name="Enabled" Type="bool" Value="True"/>
-													<Property Name="Min" Type="Real64" Value="-3"/>
-												</PropertyList>
-											</Modifier>
-										</ModifierInfo>
-									</ModifierList>
-								</Property>
-								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-								<Property Name="UserAuxSendVolume0" Type="Real64">
-									<ValueList>
-										<Value>-6</Value>
-									</ValueList>
-								</Property>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Attenuation">
-									<ObjectRef Name="Amb_Cannons" ID="{39C26137-7B5D-491A-BA29-DB889F4A5BE6}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
-								</Reference>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-								</Reference>
-								<Reference Name="UserAuxSend0">
-									<ObjectRef Name="Wwise_Motion_Send" ID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_001" ID="{478CA5FB-D335-4174-82E1-66EEF86A30F8}" ShortID="398512562">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_001" ID="{6F3E6450-EF94-4629-AB3C-8C5423B8F942}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_001.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="306573068"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_001" ID="{6F3E6450-EF94-4629-AB3C-8C5423B8F942}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_002" ID="{1AAFA3B2-80D0-4A5E-8F48-69749209D367}" ShortID="664896429">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_002" ID="{79198F5E-9EAB-4A56-AFB0-079555A70F1B}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_002.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="802378305"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_002" ID="{79198F5E-9EAB-4A56-AFB0-079555A70F1B}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_003" ID="{33294979-ADA9-4E4E-A8C4-4F34AD9B6F08}" ShortID="930908786">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_003" ID="{1A4FE0E2-88D6-487D-865C-1B381961F2CC}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_003.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="861553087"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_003" ID="{1A4FE0E2-88D6-487D-865C-1B381961F2CC}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_004" ID="{52A51969-3057-4727-9A94-B13F56BF4709}" ShortID="534122307">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_004" ID="{4362E483-DF9E-4618-A839-ED84BB1BDE3B}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_004.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="553541874"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_004" ID="{4362E483-DF9E-4618-A839-ED84BB1BDE3B}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_005" ID="{87ECC6D9-31AB-4EF3-920C-4045ABDF5089}" ShortID="572231332">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_005" ID="{CD7ACDED-059E-4007-A41C-85CD93F8BF7D}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_005.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="204772150"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_005" ID="{CD7ACDED-059E-4007-A41C-85CD93F8BF7D}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_006" ID="{1D50931E-F81C-48C3-9918-FA5ACD61CC39}" ShortID="48556603">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_006" ID="{2498E66C-3FBE-47CC-8C79-120633C576F5}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_006.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="48146732"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_006" ID="{2498E66C-3FBE-47CC-8C79-120633C576F5}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_007" ID="{31BE6C64-3031-4165-A533-F3D377728F93}" ShortID="103572603">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_007" ID="{451FC430-CF26-4617-A6CF-011DAD350046}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_007.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="217321236"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_007" ID="{451FC430-CF26-4617-A6CF-011DAD350046}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_008" ID="{26B2BC04-BE3F-4950-A8ED-A183FC7F1DE5}" ShortID="303399588">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_008" ID="{2DDA4BE5-7CBB-4F70-9B2D-C135928C5C25}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_008.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="897804476"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_008" ID="{2DDA4BE5-7CBB-4F70-9B2D-C135928C5C25}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_009" ID="{FBCC5000-FB36-476B-96F4-64F2E5CB1093}" ShortID="790919748">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_009" ID="{164730E3-8D2C-4356-B973-3DA2C660B466}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_009.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="1015776938"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_009" ID="{164730E3-8D2C-4356-B973-3DA2C660B466}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_010" ID="{1678FE7E-5D3A-4762-A168-F982EBF700F3}" ShortID="798331406">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_010" ID="{4BD1ADD0-EDFB-49AB-BA73-65C507801C89}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_010.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="620277512"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_010" ID="{4BD1ADD0-EDFB-49AB-BA73-65C507801C89}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-								<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_011" ID="{88FCC9CA-4B0D-4F17-BBA4-75303625DC65}" ShortID="186146126">
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_011" ID="{62BA3D84-C7A3-4E02-AFC6-B4C5BE672C3A}">
-											<Language>SFX</Language>
-											<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_011.wav</AudioFile>
-											<MediaIDList>
-												<MediaID ID="452551683"/>
-											</MediaIDList>
-										</AudioFileSource>
-									</ChildrenList>
-									<ActiveSourceList>
-										<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_011" ID="{62BA3D84-C7A3-4E02-AFC6-B4C5BE672C3A}" Platform="Linked"/>
-									</ActiveSourceList>
-								</Sound>
-							</ChildrenList>
-							<PositioningInfo>
-								<Position Name="" ID="{A2DFFF44-15E4-4BBB-9B70-DD660ADD8B5E}">
-									<PropertyList>
-										<Property Name="NewPathForEachSound" Type="bool" Value="True"/>
-									</PropertyList>
-									<ChildrenList>
-										<Path2D Name="Cannons_Light_Path" ID="{FB0F181A-5E77-49D5-BD77-8556DAF59CF1}">
-											<PropertyList>
-												<Property Name="RandomX" Type="Real64" Value="50"/>
-												<Property Name="RandomY" Type="Real64" Value="50"/>
-											</PropertyList>
-											<PointList>
-												<Point>
-													<XPos>0</XPos>
-													<YPos>0</YPos>
-													<Flags>12</Flags>
-													<Time>0</Time>
-												</Point>
-											</PointList>
-										</Path2D>
-									</ChildrenList>
-								</Position>
-							</PositioningInfo>
-						</RandomSequenceContainer>
-					</ChildrenList>
-				</PropertyContainer>
-				<PropertyContainer Name="Enviro" ID="{AD2FAB56-10CC-4DBA-93F4-E8F79594F030}" ShortID="798535255">
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="AMB" ID="{3C49B583-C63B-4CCB-A1B9-D71E082D055E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<Sound Name="LTDC_AMB_Street_WindBirds_Loop" ID="{34497A7D-ABE1-409E-92D5-E3B8A7BC49D6}" ShortID="101547457">
-							<PropertyList>
-								<Property Name="3DPosition" Type="int16" Value="2"/>
-								<Property Name="3DSpatialization" Type="int16" Value="2"/>
-								<Property Name="GameAuxSendVolume" Type="Real64">
+								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>3</Value>
 									</ValueList>
 								</Property>
-								<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
-								<Property Name="HoldListenerOrientation" Type="bool" Value="True"/>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-								<Property Name="IsStreamingEnabled" Type="bool">
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
 										<Value>True</Value>
 									</ValueList>
 								</Property>
-								<Property Name="IsZeroLatency" Type="bool">
-									<ValueList>
-										<Value>True</Value>
-									</ValueList>
-								</Property>
-								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-								<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
-								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+									<ObjectRef Name="AMB" ID="{3C49B583-C63B-4CCB-A1B9-D71E082D055E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<AudioFileSource Name="LTDC_AMB_Street_WindBirds_Loop_01" ID="{F2EAEA26-F0BE-4365-8DB0-05996740971E}">
+								<RandomSequenceContainer Name="Cannons_Light" ID="{BE8593A3-2955-490C-943A-F1D753BDF488}" ShortID="196989639">
 									<PropertyList>
-										<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-										<Property Name="TrimEnd" Type="Real64" Value="23.91823"/>
+										<Property Name="3DPosition" Type="int16" Value="2"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="HoldListenerOrientation" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{A9F4CF1A-7091-4D1E-B224-8C75316CAC90}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{86802A60-C329-4064-AD0E-17AF65C457CF}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Min" Type="Real64" Value="-3"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+										<Property Name="UserAuxSendVolume0" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
-									<Language>SFX</Language>
-									<AudioFile>AMB\Enviro\LTDC_AMB_Street_WindBirds_Loop.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="245803413"/>
-									</MediaIDList>
-								</AudioFileSource>
-							</ChildrenList>
-							<PositioningInfo>
-								<Position Name="" ID="{582E383C-EFE3-45D6-8D69-B6DB1B0ED4F9}"/>
-							</PositioningInfo>
-							<ActiveSourceList>
-								<ActiveSource Name="LTDC_AMB_Street_WindBirds_Loop_01" ID="{F2EAEA26-F0BE-4365-8DB0-05996740971E}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="LTDC_AMB_Enviro_Arson_Loop" ID="{8E45FCFE-3A6C-49AD-B7B4-8D6CC60AD424}" ShortID="967055264">
-							<PropertyList>
-								<Property Name="3DSpatialization" Type="int16" Value="2"/>
-								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
-								<Property Name="IsStreamingEnabled" Type="bool">
-									<ValueList>
-										<Value>True</Value>
-									</ValueList>
-								</Property>
-								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Attenuation">
-									<Custom>
-										<Attenuation Name="Attenuation (Custom)" ID="{D7601281-9DA7-4626-8006-A7FB98F4A482}" ShortID="138651266">
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Amb_Cannons" ID="{39C26137-7B5D-491A-BA29-DB889F4A5BE6}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Wwise_Motion_Send" ID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_011" ID="{3A08985A-60B2-4AB0-BC8D-D779CC78AA77}" ShortID="389588428">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_011" ID="{3A750B0C-386F-40DB-B540-D9CE81708C2F}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_011.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1056690897"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_011" ID="{3A750B0C-386F-40DB-B540-D9CE81708C2F}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_010" ID="{B5BB3A82-9EFF-42B8-A7EF-86C925990174}" ShortID="1030724757">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_010" ID="{1E79CA05-48A5-427C-9215-50A43AF5CCB4}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_010.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="289258374"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_010" ID="{1E79CA05-48A5-427C-9215-50A43AF5CCB4}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_003" ID="{613EF31C-56A2-42C2-9DC5-5C5DF212F1C4}" ShortID="872904055">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_003" ID="{104B24E5-6590-4278-8452-12C848CC59EF}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_003.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1020890998"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_003" ID="{104B24E5-6590-4278-8452-12C848CC59EF}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_007" ID="{3A716B04-F39A-4632-B4AB-F6B3C7592A56}" ShortID="954086857">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_007" ID="{BEBF29A4-3F72-4E47-AB04-938D8099C65C}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_007.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="802062891"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_007" ID="{BEBF29A4-3F72-4E47-AB04-938D8099C65C}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_008" ID="{A4FA31A6-6428-43E3-93F5-6BF2E7EC336F}" ShortID="77786517">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_008" ID="{9794C286-DC14-4B40-BB2C-D86C12D1B110}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_008.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="927552990"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_008" ID="{9794C286-DC14-4B40-BB2C-D86C12D1B110}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_009" ID="{D36EC788-DA15-439F-BC57-373B616A0485}" ShortID="233927554">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_009" ID="{C1C759C4-AF7C-4E1F-A973-5FCCEC295ED7}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_009.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="908746399"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_009" ID="{C1C759C4-AF7C-4E1F-A973-5FCCEC295ED7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_001" ID="{790372EC-619C-43B1-93C8-A534C348B372}" ShortID="127311387">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_001" ID="{22470F8D-55D8-4388-9AA0-CD053E2CB883}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_001.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1070142580"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_001" ID="{22470F8D-55D8-4388-9AA0-CD053E2CB883}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_004" ID="{268A32F4-DC85-4C44-AA29-4CE6C1EBC4B4}" ShortID="646019039">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_004" ID="{FF8A6BC6-50B5-49B5-A5D2-D383EF6AD273}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_004.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="365568969"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_004" ID="{FF8A6BC6-50B5-49B5-A5D2-D383EF6AD273}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_006" ID="{E41C8DE5-7CE3-4DDE-88E7-D302DD2BDD2C}" ShortID="493750289">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_006" ID="{F54F1E41-74E5-445E-858A-D8B029F11506}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_006.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="774170018"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_006" ID="{F54F1E41-74E5-445E-858A-D8B029F11506}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_005" ID="{2226568A-7377-45BD-B241-09071736352C}" ShortID="937166107">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_005" ID="{40C61537-E7BC-421C-82DA-E6E89F5EA3B3}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_005.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="583909241"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_005" ID="{40C61537-E7BC-421C-82DA-E6E89F5EA3B3}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerLight_Random_002" ID="{609BBB5F-2975-4F19-9BFB-042F1E316DBA}" ShortID="575850436">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerLight_Random_002" ID="{CE38CB37-1829-4A97-99FF-F134F6A61160}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_002.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1011832069"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerLight_Random_002" ID="{CE38CB37-1829-4A97-99FF-F134F6A61160}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<PositioningInfo>
+										<Position Name="" ID="{554F5BE4-68F1-4EB4-9A5D-E9615F1D2466}">
 											<PropertyList>
-												<Property Name="RadiusMax" Type="Real64" Value="50"/>
+												<Property Name="NewPathForEachSound" Type="bool" Value="True"/>
 											</PropertyList>
-											<CurveUsageInfoList>
-												<VolumeDryUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
-														<Curve Name="VolumeDry" ID="{C6C100A7-C94A-4E52-B642-1F2150DB06FA}">
-															<PropertyList>
-																<Property Name="Flags" Type="int32" Value="3"/>
-															</PropertyList>
-															<PointList>
-																<Point>
-																	<XPos>0</XPos>
-																	<YPos>0</YPos>
-																	<Flags>5</Flags>
-																	<SegmentShape>SCurve</SegmentShape>
-																</Point>
-																<Point>
-																	<XPos>50</XPos>
-																	<YPos>-200</YPos>
-																	<Flags>37</Flags>
-																</Point>
-															</PointList>
-														</Curve>
-													</CurveUsageInfo>
-												</VolumeDryUsage>
-												<VolumeWetGameUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
-												</VolumeWetGameUsage>
-												<VolumeWetUserUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
-												</VolumeWetUserUsage>
-												<LowPassFilterUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
-														<Curve Name="LowPassFilter" ID="{3FCA6678-4900-45DF-BEE3-D3C2BB2AEE7E}">
-															<PropertyList>
-																<Property Name="Flags" Type="int32" Value="65537"/>
-															</PropertyList>
-															<PointList>
-																<Point>
-																	<XPos>0</XPos>
-																	<YPos>0</YPos>
-																	<Flags>5</Flags>
-																</Point>
-																<Point>
-																	<XPos>50</XPos>
-																	<YPos>80</YPos>
-																	<Flags>37</Flags>
-																</Point>
-															</PointList>
-														</Curve>
-													</CurveUsageInfo>
-												</LowPassFilterUsage>
-												<HighPassFilterUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-												</HighPassFilterUsage>
-												<DualShelfUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-												</DualShelfUsage>
-												<SpreadUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-												</SpreadUsage>
-												<FocusUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-												</FocusUsage>
-												<ObstructionVolumeUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</ObstructionVolumeUsage>
-												<ObstructionLPFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</ObstructionLPFUsage>
-												<ObstructionHPFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</ObstructionHPFUsage>
-												<ObstructionDSFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</ObstructionDSFUsage>
-												<OcclusionVolumeUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</OcclusionVolumeUsage>
-												<OcclusionLPFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</OcclusionLPFUsage>
-												<OcclusionHPFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</OcclusionHPFUsage>
-												<OcclusionDSFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</OcclusionDSFUsage>
-												<DiffractionVolumeUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</DiffractionVolumeUsage>
-												<DiffractionLPFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</DiffractionLPFUsage>
-												<DiffractionHPFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</DiffractionHPFUsage>
-												<DiffractionDSFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</DiffractionDSFUsage>
-												<TransmissionVolumeUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</TransmissionVolumeUsage>
-												<TransmissionLPFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</TransmissionLPFUsage>
-												<TransmissionHPFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</TransmissionHPFUsage>
-												<TransmissionDSFUsage>
-													<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
-												</TransmissionDSFUsage>
-											</CurveUsageInfoList>
-										</Attenuation>
-									</Custom>
-								</Reference>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="LTDC_AMB_Enviro_Arson_Loop" ID="{FA4EEA52-3A3F-4134-8858-5909BC79B113}">
-									<Language>SFX</Language>
-									<AudioFile>AMB\Enviro\LTDC_AMB_Enviro_Arson_Loop.wav</AudioFile>
-									<MediaIDList>
-										<MediaID ID="203600813"/>
-									</MediaIDList>
-								</AudioFileSource>
+											<ChildrenList>
+												<Path2D Name="Cannons_Light_Path" ID="{523820A1-A6CC-4130-AFDB-6C57389A2145}">
+													<PropertyList>
+														<Property Name="RandomX" Type="Real64" Value="50"/>
+														<Property Name="RandomY" Type="Real64" Value="50"/>
+													</PropertyList>
+													<PointList>
+														<Point>
+															<XPos>0</XPos>
+															<YPos>0</YPos>
+															<Flags>12</Flags>
+															<Time>0</Time>
+														</Point>
+													</PointList>
+												</Path2D>
+											</ChildrenList>
+										</Position>
+									</PositioningInfo>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="Cannons_Heavy" ID="{AFA4CAE5-B7DA-4996-BD00-7E1362AC1F4E}" ShortID="795401110">
+									<PropertyList>
+										<Property Name="3DPosition" Type="int16" Value="2"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="HoldListenerOrientation" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{4BCCE2D4-3174-4889-AF13-E52ED5B33AD3}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="200"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
+										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{724F0173-3DB2-4FEF-91B4-3D4FEB036620}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Min" Type="Real64" Value="-3"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
+										<Property Name="UserAuxSendVolume0" Type="Real64">
+											<ValueList>
+												<Value>-6</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Amb_Cannons" ID="{39C26137-7B5D-491A-BA29-DB889F4A5BE6}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Wwise_Motion_Send" ID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_001" ID="{478CA5FB-D335-4174-82E1-66EEF86A30F8}" ShortID="398512562">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_001" ID="{6F3E6450-EF94-4629-AB3C-8C5423B8F942}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_001.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="306573068"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_001" ID="{6F3E6450-EF94-4629-AB3C-8C5423B8F942}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_002" ID="{1AAFA3B2-80D0-4A5E-8F48-69749209D367}" ShortID="664896429">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_002" ID="{79198F5E-9EAB-4A56-AFB0-079555A70F1B}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_002.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="802378305"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_002" ID="{79198F5E-9EAB-4A56-AFB0-079555A70F1B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_003" ID="{33294979-ADA9-4E4E-A8C4-4F34AD9B6F08}" ShortID="930908786">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_003" ID="{1A4FE0E2-88D6-487D-865C-1B381961F2CC}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_003.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="861553087"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_003" ID="{1A4FE0E2-88D6-487D-865C-1B381961F2CC}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_004" ID="{52A51969-3057-4727-9A94-B13F56BF4709}" ShortID="534122307">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_004" ID="{4362E483-DF9E-4618-A839-ED84BB1BDE3B}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_004.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="553541874"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_004" ID="{4362E483-DF9E-4618-A839-ED84BB1BDE3B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_005" ID="{87ECC6D9-31AB-4EF3-920C-4045ABDF5089}" ShortID="572231332">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_005" ID="{CD7ACDED-059E-4007-A41C-85CD93F8BF7D}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_005.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="204772150"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_005" ID="{CD7ACDED-059E-4007-A41C-85CD93F8BF7D}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_006" ID="{1D50931E-F81C-48C3-9918-FA5ACD61CC39}" ShortID="48556603">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_006" ID="{2498E66C-3FBE-47CC-8C79-120633C576F5}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_006.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="48146732"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_006" ID="{2498E66C-3FBE-47CC-8C79-120633C576F5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_007" ID="{31BE6C64-3031-4165-A533-F3D377728F93}" ShortID="103572603">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_007" ID="{451FC430-CF26-4617-A6CF-011DAD350046}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_007.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="217321236"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_007" ID="{451FC430-CF26-4617-A6CF-011DAD350046}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_008" ID="{26B2BC04-BE3F-4950-A8ED-A183FC7F1DE5}" ShortID="303399588">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_008" ID="{2DDA4BE5-7CBB-4F70-9B2D-C135928C5C25}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_008.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="897804476"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_008" ID="{2DDA4BE5-7CBB-4F70-9B2D-C135928C5C25}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_009" ID="{FBCC5000-FB36-476B-96F4-64F2E5CB1093}" ShortID="790919748">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_009" ID="{164730E3-8D2C-4356-B973-3DA2C660B466}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_009.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1015776938"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_009" ID="{164730E3-8D2C-4356-B973-3DA2C660B466}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_010" ID="{1678FE7E-5D3A-4762-A168-F982EBF700F3}" ShortID="798331406">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_010" ID="{4BD1ADD0-EDFB-49AB-BA73-65C507801C89}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_010.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="620277512"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_010" ID="{4BD1ADD0-EDFB-49AB-BA73-65C507801C89}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_AMB_Cannon_LayerHeavy_Random_011" ID="{88FCC9CA-4B0D-4F17-BBA4-75303625DC65}" ShortID="186146126">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_011" ID="{62BA3D84-C7A3-4E02-AFC6-B4C5BE672C3A}">
+													<Language>SFX</Language>
+													<AudioFile>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_011.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="452551683"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_AMB_Cannon_LayerHeavy_Random_011" ID="{62BA3D84-C7A3-4E02-AFC6-B4C5BE672C3A}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<PositioningInfo>
+										<Position Name="" ID="{A2DFFF44-15E4-4BBB-9B70-DD660ADD8B5E}">
+											<PropertyList>
+												<Property Name="NewPathForEachSound" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<Path2D Name="Cannons_Light_Path" ID="{FB0F181A-5E77-49D5-BD77-8556DAF59CF1}">
+													<PropertyList>
+														<Property Name="RandomX" Type="Real64" Value="50"/>
+														<Property Name="RandomY" Type="Real64" Value="50"/>
+													</PropertyList>
+													<PointList>
+														<Point>
+															<XPos>0</XPos>
+															<YPos>0</YPos>
+															<Flags>12</Flags>
+															<Time>0</Time>
+														</Point>
+													</PointList>
+												</Path2D>
+											</ChildrenList>
+										</Position>
+									</PositioningInfo>
+								</RandomSequenceContainer>
 							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="LTDC_AMB_Enviro_Arson_Loop" ID="{FA4EEA52-3A3F-4134-8858-5909BC79B113}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
+						</PropertyContainer>
 					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="pause" ID="{063211BB-9332-4406-9616-D5E2F8256E48}"/>
+								<StateGroupInfo Name="" ID="{6BCC717B-02EC-4572-8C0E-7F761A1162E4}" ShortID="528390580"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="false" ID="{AE5D66E2-4A21-472D-A82F-731DE5ABE608}"/>
+								<CustomState Name="" ID="{C7F6EAEA-A76F-4D0F-AB3B-D758613BA2AE}" ShortID="804669338"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="None" ID="{F182E372-9030-4C41-B76F-889D5C1A57E5}"/>
+								<CustomState Name="" ID="{EC42A24B-A618-4CDC-A897-ECB5F27C563D}" ShortID="624709864"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="true" ID="{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}"/>
+								<CustomState Name="" ID="{5CDB2209-2843-4A05-A2C5-9ADFE2883540}" ShortID="846405607">
+									<PropertyList>
+										<Property Name="Lowpass" Type="int16" Value="50"/>
+										<Property Name="Volume" Type="Real64" Value="-6"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
 				</PropertyContainer>
 			</ChildrenList>
 		</WorkUnit>

@@ -28,6 +28,7 @@ func _process(_delta: float) -> void:
 		pass
 
 func new_line(step : int):
+	print("step is ", step)
 	line_count = 0
 	Wwise.set_state("narrative_step", String("_" + str(step)))
 	for i in narrators:
@@ -155,7 +156,6 @@ func on_reload_progress(progress):
 		find_random(allies).post_event("Cannon_Incoming", 2)
 
 func pause(new_pause : bool):
-	print(new_pause)
 	if new_pause:
 		Wwise.post_event("Pause", player)
 	elif !new_pause:

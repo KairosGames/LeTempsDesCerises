@@ -26,15 +26,15 @@ func _enter_tree() -> void:
 		i.audio_marker.connect(set_text)
 
 func _ready() -> void:
-	match gender:
-		gender_type.MALE:
-			var random = String("Type" + str(randi_range(1, 3)))
-			for i in barks_parent.get_children():
-				Wwise.set_switch("Character_Type", random, i)
-		gender_type.FEMALE:
-			var random = String("Type" + str(randi_range(1, 3)))
-			for i in barks_parent.get_children():
-				Wwise.set_switch("Character_Type", random, i)
+	#match gender:
+		#gender_type.MALE:
+			#var random = String("Type" + str(randi_range(1, 3)))
+			#for i in barks_parent.get_children():
+				#Wwise.set_switch("Character_Type", random, i)
+		#gender_type.FEMALE:
+			#var random = String("Type" + str(randi_range(1, 3)))
+			#for i in barks_parent.get_children():
+				#Wwise.set_switch("Character_Type", random, i)
 	var random : String = str("Type" + str(rand_array.pick_random()))
 	for i in barks_parent.get_children():
 		Wwise.set_switch("Character_Type", random, i)
@@ -73,7 +73,7 @@ func reset_text(_data):
 func trigg_bark():
 	return
 	if !is_barking:
-		post_event("Barricade_State", randf_range(1, 1))
+		post_event("Barricade_State", randf_range(1, 2))
 	await get_tree().create_timer(1).timeout
 	trigg_bark()
 
