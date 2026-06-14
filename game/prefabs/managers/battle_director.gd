@@ -5,11 +5,8 @@ class_name BattleDirector extends Node
 
 @export_category("Agent death management")
 @export var mortal_covers: Array[CoverGroup]
-@export var death_timers: Array[float]
-@export var death_square_dists: Array[float]
 
 var game_manager: GameManager
-
 var covers_activation_index: int = -1
 var death_management_index: int = -1
 var death_timer: float = 0.0
@@ -30,7 +27,9 @@ func _ready() -> void:
 
 func ready_deffered() -> void:
 	game_manager = GameManager.instance
-	if CoverGroupTransfer.instance: active_covers = CoverGroupTransfer.instance.cover_group_to_transfer
+	if CoverGroupTransfer.instance:
+		active_covers = CoverGroupTransfer.instance.cover_group_to_transfer
+		mortal_covers = CoverGroupTransfer.instance.death_group_to_transfer
 	else: printerr("NO COVER GROUP TO TRANSFER, USING COVERS LOCAL REFERENCES")
 
 
@@ -62,21 +61,11 @@ func desactivate_all_covers() -> void:
 func go_next_death_management() -> void:
 	death_on_cover_enable = true
 	death_management_index += 1
-	if not are_death_lists_consistents():
-		printerr("INCONSISTENCY: DEATH LIST SIZES IN BATTLE DIRECTOR")
-		return
 	if death_management_index >= mortal_covers.size():
 		printerr("INCONSISTENCY: DEATH INDEX IN BATTLE DIRECTOR")
 		return
-	death_timer = death_timers[death_management_index]
-	death_square_dist = death_square_dists[death_management_index]
-
-
-func are_death_lists_consistents() -> bool:
-	if death_square_dists.size() != death_timers.size(): return false
-	if death_timers.size() != mortal_covers.size(): return false
-	if mortal_covers.size() != death_square_dists.size(): return false
-	return true
+	death_timer = mortal_covers[death_management_index].death_timer
+	death_square_dist = mortal_covers[death_management_index].death_squared_dist
 
 
 func apply_death_on_covers(delta: float) -> void:
@@ -94,7 +83,7 @@ func apply_death_on_covers(delta: float) -> void:
 	last_death_cover = possible_covers[rnd]
 	var futur_dead: Agent = possible_covers[rnd].holder as Agent
 	futur_dead.die()
-	death_timer = death_timers[death_management_index]
+	death_timer = mortal_covers[death_management_index].death_timer
 
 
 func is_agent_killable(agent: Agent, cover: Cover) -> bool:

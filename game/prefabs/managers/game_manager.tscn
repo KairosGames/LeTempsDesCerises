@@ -15,16 +15,15 @@
 [ext_resource type="PackedScene" uid="uid://x6umueunebab" path="res://prefabs/game_states/gm_usables/shoot_target.tscn" id="5_vkqci"]
 [ext_resource type="PackedScene" uid="uid://dn5y2en06sd76" path="res://prefabs/npc/npc.tscn" id="6_2cgp0"]
 [ext_resource type="Script" uid="uid://xileblfnbaed" path="res://prefabs/managers/battle_director.gd" id="8_r74ma"]
-[ext_resource type="Script" uid="uid://jn3qgxouvero" path="res://scripts/cover_group.gd" id="9_ol0j6"]
 [ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="10_83msq"]
 [ext_resource type="PackedScene" uid="uid://dxqyq6j0lps48" path="res://prefabs/game_states/gm_usables/visual_chassepot.tscn" id="12_0po2u"]
 [ext_resource type="PackedScene" uid="uid://c8dcjv8qv7lw3" path="res://prefabs/game_states/gm_usables/invisible_wall.tscn" id="15_g4ds3"]
 [ext_resource type="Script" uid="uid://cajf45kj4rgnv" path="res://prefabs/game_states/gm_usables/woman_points.gd" id="19_u75jf"]
 [ext_resource type="Texture2D" uid="uid://xwmt30vqykl2" path="res://sources/meshes/geometry/textures/wook_planks/wood_planks_diff_2k_rotate.png" id="20_pl46k"]
-[ext_resource type="Script" uid="uid://hj475csp20x" path="res://prefabs/game_states/gm_usables/versaillais_points.gd" id="24_6kj28"]
-[ext_resource type="PackedScene" uid="uid://cq3iqolfkxyxg" path="res://prefabs/game_states/game_state_03.tscn" id="24_kkeqv"]
 [ext_resource type="Material" uid="uid://dfrsy150v5044" path="res://prefabs/barricade/barricade_meshes/old/material.tres" id="21_u75jf"]
 [ext_resource type="ArrayMesh" uid="uid://d1we637hyqvrr" path="res://prefabs/barricade/barricade_meshes/old/c2c.obj" id="22_kkeqv"]
+[ext_resource type="Script" uid="uid://hj475csp20x" path="res://prefabs/game_states/gm_usables/versaillais_points.gd" id="24_6kj28"]
+[ext_resource type="PackedScene" uid="uid://cq3iqolfkxyxg" path="res://prefabs/game_states/game_state_03.tscn" id="24_kkeqv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvqlx"]
 content_margin_left = 20.0
@@ -595,16 +594,6 @@ vertical_alignment = 1
 
 [node name="BattleDirector" type="Node" parent="." unique_id=952621406]
 script = ExtResource("8_r74ma")
-
-[node name="CoverGroupActivations" type="Node" parent="BattleDirector" unique_id=1536081756]
-
-[node name="ActivationGroup00" type="Node" parent="BattleDirector/CoverGroupActivations" unique_id=1345656321]
-script = ExtResource("9_ol0j6")
-
-[node name="CoverGroupDeath" type="Node" parent="BattleDirector" unique_id=1770760575]
-
-[node name="DeathGroup00" type="Node" parent="BattleDirector/CoverGroupDeath" unique_id=1206889462]
-script = ExtResource("9_ol0j6")
 
 [node name="States" type="Node" parent="." unique_id=103955825]
 
