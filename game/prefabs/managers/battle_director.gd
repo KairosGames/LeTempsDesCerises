@@ -7,6 +7,9 @@ class_name BattleDirector extends Node
 @export var mortal_covers: Array[CoverGroup]
 
 var game_manager: GameManager
+var enemies_manager: SpawnManager
+var allies_manager: SpawnManager
+
 var covers_activation_index: int = -1
 var death_management_index: int = -1
 var death_timer: float = 0.0
@@ -31,6 +34,11 @@ func ready_deffered() -> void:
 		active_covers = CoverGroupTransfer.instance.cover_group_to_transfer
 		mortal_covers = CoverGroupTransfer.instance.death_group_to_transfer
 	else: printerr("NO COVER GROUP TO TRANSFER, USING COVERS LOCAL REFERENCES")
+	for spawn_manager: SpawnManager in get_tree().get_nodes_in_group("SpawnManagers"):
+		if spawn_manager.team == Agent.Team.VERSAILLAIS: enemies_manager = spawn_manager
+		if spawn_manager.team == Agent.Team.COMMUNARD: allies_manager = spawn_manager
+	if not enemies_manager: printerr("ENEMIES SPAWN MANAGER NOT FOUND")
+	if not allies_manager: printerr("ALLIES SPAWN MANAGER NOT FOUND")
 
 
 func _process(delta: float) -> void:
@@ -48,7 +56,12 @@ func go_next_covers_activation() -> void:
 	if covers_activation_index >= active_covers.size():
 		printerr("INCONSISTENCY: ACTIVATION INDEX IN BATTLE DIRECTOR")
 		return
-	for cover: Cover in active_covers[covers_activation_index].covers:
+	var active_group: CoverGroup = active_covers[covers_activation_index]
+	enemies_manager.target_entity_count = active_group.max_enemies
+	enemies_manager.cooldown = active_group.enemies_spawn_cd
+	allies_manager.target_entity_count = active_group.max_allies
+	allies_manager.cooldown = active_group.allies_spawn_cd
+	for cover: Cover in active_group.covers:
 		cover.enabled = true
 
 
