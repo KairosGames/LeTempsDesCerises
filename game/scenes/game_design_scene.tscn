@@ -552,22 +552,30 @@ point_count = 3
 
 [node name="ActivationGroups" type="Node" parent="." unique_id=1173955416 node_paths=PackedStringArray("cover_group_to_transfer")]
 script = ExtResource("1_lujon")
-cover_group_to_transfer = [NodePath("Beat0"), NodePath("Beat0bis"), NodePath("Beat1"), NodePath("Beat1bis")]
+cover_group_to_transfer = [NodePath("Beat0"), NodePath("Beat0bis"), NodePath("Beat1"), NodePath("Beat1bis"), NodePath("Beat2")]
 
-[node name="Beat0" type="Node" parent="ActivationGroups" unique_id=1371116934]
+[node name="Beat0" type="Node" parent="ActivationGroups" unique_id=1371116934 node_paths=PackedStringArray("active_covers")]
 script = ExtResource("2_hmepn")
+active_covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_direct/L3S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_direct/L2S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_Direct/L1S_direct"), NodePath("../../Allies/Zone1/Spawners/SpawnerCommunard"), NodePath("../../Allies/Zone1/Spawners/SpawnerCommunard2"), NodePath("../../Allies/Zone1/Spawners/SpawnerCommunard3"), NodePath("../../Allies/Zone1/Spawners/SpawnerCommunard4"), NodePath("../../Allies/Zone1/Spawners/SpawnerCommunard5")]
 
-[node name="Beat0bis" type="Node" parent="ActivationGroups" unique_id=799918922]
+[node name="Beat0bis" type="Node" parent="ActivationGroups" unique_id=799918922 node_paths=PackedStringArray("active_covers")]
 script = ExtResource("2_hmepn")
+active_covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_back1/L3S_back1"), NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_back2/L3S_back2"), NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_back1/L2S_back1"), NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_back2/L2S_back2")]
 
-[node name="Beat1" type="Node" parent="ActivationGroups" unique_id=611431965]
+[node name="Beat1" type="Node" parent="ActivationGroups" unique_id=611431965 node_paths=PackedStringArray("active_covers", "desactive_covers")]
 script = ExtResource("2_hmepn")
+active_covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_back1/L1S_back1"), NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_back2/L1S_back2"), NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_mid1/L2S_mid1"), NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_side1/L3S_side1"), NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_mid2/L1S_mid2")]
+desactive_covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L2/L2_direct/L2S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_direct/L3S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_Direct/L1S_direct")]
 
-[node name="Beat1bis" type="Node" parent="ActivationGroups" unique_id=1980013026]
+[node name="Beat1bis" type="Node" parent="ActivationGroups" unique_id=1980013026 node_paths=PackedStringArray("active_covers", "desactive_covers")]
 script = ExtResource("2_hmepn")
+active_covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_mid/L1S_mid"), NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_Direct/L1S_direct"), NodePath("../../Ennemies/CoverPointsVersaillais/L1/L1_Direct/L1S_direct2")]
+desactive_covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_back1/L3S_back1"), NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_back2/L3S_back2")]
 
-[node name="Beat2" type="Node" parent="ActivationGroups" unique_id=323631646]
+[node name="Beat2" type="Node" parent="ActivationGroups" unique_id=323631646 node_paths=PackedStringArray("active_covers", "desactive_covers")]
 script = ExtResource("2_hmepn")
+active_covers = [NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_back1/L3S_back1"), NodePath("../../Ennemies/CoverPointsVersaillais/L3/L3_back2/L3S_back2")]
+desactive_covers = [NodePath("../../Allies/Zone1/Spawners/SpawnerCommunard5")]
 
 [node name="Beat2bis" type="Node" parent="ActivationGroups" unique_id=1153193609]
 script = ExtResource("2_hmepn")
@@ -1503,7 +1511,7 @@ curve = SubResource("Curve3D_6c3r5")
 
 [node name="CoverPointsVersaillais" type="Node3D" parent="Ennemies" unique_id=1945716246]
 
-[node name="SpawnManager" type="Node" parent="Ennemies/CoverPointsVersaillais" unique_id=286616100 node_paths=PackedStringArray("spawners")]
+[node name="SpawnManager" type="Node" parent="Ennemies/CoverPointsVersaillais" unique_id=286616100 node_paths=PackedStringArray("spawners") groups=["SpawnManagers"]]
 script = ExtResource("39_rkq34")
 spawners = [NodePath("../L3/L3_back2/L3S_back2"), NodePath("../L3/L3_back1/L3S_back1"), NodePath("../L3/L3_side2/L3S_side2"), NodePath("../L3/L3_side1/L3S_side1"), NodePath("../L2/L2_back1/L2S_back1"), NodePath("../L2/L2_back2/L2S_back2"), NodePath("../L2/L2_mid1/L2S_mid1"), NodePath("../L2/L2_mid2/L2S_mid2"), NodePath("../L1/L1_back1/L1S_back1"), NodePath("../L1/L1_back2/L1S_back2"), NodePath("../L1/L1_mid/L1S_mid"), NodePath("../L1/L1_mid2/L1S_mid2"), NodePath("../L1/L1_Direct/L1S_direct"), NodePath("../L1/L1_Direct/L1S_direct2"), NodePath("../L2/L2_direct/L2S_direct"), NodePath("../L3/L3_direct/L3S_direct")]
 cooldown = 2.0
@@ -1877,7 +1885,7 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 transform = Transform3D(-0.88763875, 0, 0.4605406, 0, 1, 0, -0.4605406, 0, -0.88763875, 26.961609, 0.29999954, -23.084818)
 script = ExtResource("40_aese6")
 enabled = false
-next_covers = [NodePath("../../L2_mid2/BarrelPile")]
+next_covers = [NodePath("../../L2_back2/MasoPoint")]
 type = 2
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
@@ -2013,7 +2021,7 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 transform = Transform3D(-0.12356691, 0, 0.99233633, 0, 1, 0, -0.99233633, 0, -0.12356691, 13.637916, 0.3, -32.655174)
 script = ExtResource("40_aese6")
 enabled = false
-next_covers = [NodePath("../../L1_mid/DestroyedCart2")]
+next_covers = [NodePath("../../L1_back1/MasoPoint2")]
 type = 2
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
@@ -2021,13 +2029,13 @@ metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 transform = Transform3D(-0.9947513, 0, -0.10232386, 0, 1, 0, 0.10232386, 0, -0.9947513, 10.483603, 0.3000005, -42.397816)
 script = ExtResource("40_aese6")
 enabled = false
-next_covers = [NodePath("../../L1_mid2/Bagpile")]
+next_covers = [NodePath("../../L1_back2/MasoPoint3")]
 type = 2
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
 
 [node name="Allies" type="Node3D" parent="." unique_id=264397879]
 
-[node name="SpawnManager" type="Node" parent="Allies" unique_id=1463769913 node_paths=PackedStringArray("spawners")]
+[node name="SpawnManager" type="Node" parent="Allies" unique_id=1463769913 node_paths=PackedStringArray("spawners") groups=["SpawnManagers"]]
 script = ExtResource("39_rkq34")
 spawners = [NodePath("../Zone1/Spawners/SpawnerCommunard"), NodePath("../Zone1/Spawners/SpawnerCommunard2"), NodePath("../Zone1/Spawners/SpawnerCommunard3"), NodePath("../Zone1/Spawners/SpawnerCommunard4"), NodePath("../Zone1/Spawners/SpawnerCommunard5")]
 cooldown = 2.0
