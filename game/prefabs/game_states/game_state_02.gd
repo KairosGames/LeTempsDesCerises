@@ -42,7 +42,7 @@ func lauch_first_phase() -> void:
 	for woman: Npc in woman_points.women: woman.visible = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 	# Set Spawners#############################################################################
-	await wait(60.0)
+	await wait(0.0)#60.0)
 
 
 func allies_arrival() -> void:
@@ -115,7 +115,7 @@ func is_there_no_enemies() -> bool:
 func launch_dialogue_preparation() -> void:
 	francois.is_figthing = false
 	for woman: Npc in woman_points.women: woman.is_figthing = false
-	await wait_voice()
+	await wait_voice() #"On les a rétamés !"
 	var louise: Npc = woman_points.women[0]
 	var marie: Npc = woman_points.women[1]
 	louise.rotate_yaw_to_pos_tween(discussion_point.global_position, 0.5)
@@ -133,7 +133,7 @@ func launch_women_dialogue() -> void:
 		woman.rotate_yaw_to_pos_tween(discussion_point.global_position, t)
 	ui_manager.objective_target.target = null
 	discussion_area.set_deferred("monitoring", false)
-	await wait_voice()
+	await wait_voice() # "Vous arrivez d'où comme ça ?"
 
 
 func launch_last_battle_phase() -> void:
@@ -151,6 +151,7 @@ func launch_last_battle_phase() -> void:
 	louise.is_figthing = true
 	game_manager.cannon.move_to_second_path()
 	game_manager.cannon.enabled = true
+	player.can_die = true
 	# Set Spawners ############################################################################
 	await wait_signal(game_manager.second_barricade.just_destroyed)
 	game_manager.cannon.enabled = false

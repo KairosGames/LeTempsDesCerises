@@ -240,6 +240,7 @@ func is_player_alive() -> bool:
 
 func kill_player() -> void:
 	player.can_die = true
+	player.is_immortal = false
 	player.die()
 
 
@@ -302,7 +303,7 @@ func is_player_on_nav_destination() -> bool:
 
 
 func is_player_on_position(pos: Node3D) -> bool:
-	return player.global_position.distance_squared_to(pos.global_position) <= 0.1
+	return player.global_position.distance_squared_to(pos.global_position) <= 0.05
 
 
 func is_npc_out_of_screen(npc: Npc) -> bool:

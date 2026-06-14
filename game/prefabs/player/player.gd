@@ -73,6 +73,7 @@ var can_change_posture: bool = true
 var can_use_jump: bool = true
 var can_quit_aim: bool = true
 var can_die: bool = true
+var is_immortal: bool = false
 
 @export_category("Smoothness settings")
 @export_range(0.01, 0.5, 0.01) var acc_time: float = 0.1
@@ -1171,7 +1172,7 @@ func miss_by_versaillais() -> void:
 
 
 func die(is_scripted: bool = false) -> void:
-	if not is_alive or will_die or not can_die: return
+	if not is_alive or will_die or not can_die or is_immortal: return
 	if is_next_death_scripted:
 		is_scripted = true
 		is_next_death_scripted = false
@@ -1265,13 +1266,13 @@ func revive(pos: Vector3, rot: Vector3) -> void:
 	initiate(pos, rot)
 	blur_effect.hard_set_blur(0.0)
 	player_camera.current = true
-	can_die = false
+	is_immortal = true
 	launch_killable_timer()
 
 
 func launch_killable_timer() -> void:
 	await get_tree().create_timer(immortal_timer).timeout
-	can_die = true
+	is_immortal = false
 
 
 func set_is_free(free: bool) -> void:

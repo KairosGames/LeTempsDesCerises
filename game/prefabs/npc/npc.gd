@@ -2,6 +2,7 @@ class_name Npc extends CharacterBody3D
 
 signal arrived_on_path_point
 signal arrived_on_path_destination
+signal shot
 
 @onready var animator: AnimationPlayer = %AnimationPlayer
 @onready var collider: CollisionShape3D = %Collider
@@ -17,6 +18,7 @@ enum NpcName{
 	Woman1,
 	Woman2,
 	Woman3,
+	Versaillais,
 	Random
 }
 
@@ -110,13 +112,14 @@ func rotate_yaw_to_pos(pos: Vector3, speed: float, delta: float) -> void:
 	global_rotation.y = rotate_toward(global_rotation.y, target_angle, speed * delta)
 
 
-func rotate_yaw_to_pos_tween(pos: Vector3, time: float) -> void:
-	var dir = global_position - pos
+func rotate_yaw_to_pos_tween(pos: Vector3, time: float, fight: bool = false) -> void:
+	var dir = pos.direction_to(global_position)
 	var target_angle = atan2(-dir.x, -dir.z)
 	if rot_twn: rot_twn.kill()
 	rot_twn = create_tween()
 	var delta: float = wrapf(target_angle - global_rotation.y, -PI, PI)
 	await rot_twn.tween_property(self, "global_rotation:y", delta, time).as_relative().finished
+	is_figthing = fight
 
 
 func is_at_point(pos: Vector3) -> bool:
@@ -157,6 +160,18 @@ func enter_in_walk_anim() -> void:
 
 func enter_in_fight_anim() -> void:
 	pass
+
+
+func enter_in_crouch_anim() -> void:
+	pass
+
+
+func enter_in_aim() -> void:
+	pass
+
+
+func shoot() -> void:
+	shot.emit()
 
 
 func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: bool = false) -> void:
@@ -211,3 +226,9 @@ func replace_with_agent() -> void:
 	agent.global_rotation = global_rotation
 	agent.global_rotation.y += PI
 	queue_free.call_deferred()
+
+
+func wait_nav_to_aim() -> void:
+	await get_tree().create_timer(0.1).timeout
+	await wait_until(is_on_all_nav_finished)
+	enter_in_aim()

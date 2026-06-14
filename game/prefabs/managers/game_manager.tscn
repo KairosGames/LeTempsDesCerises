@@ -19,9 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="10_83msq"]
 [ext_resource type="PackedScene" uid="uid://dxqyq6j0lps48" path="res://prefabs/game_states/gm_usables/visual_chassepot.tscn" id="12_0po2u"]
 [ext_resource type="PackedScene" uid="uid://c8dcjv8qv7lw3" path="res://prefabs/game_states/gm_usables/invisible_wall.tscn" id="15_g4ds3"]
-[ext_resource type="Script" uid="uid://b08c2hh6ud5l4" path="res://prefabs/game_states/game_state_03.gd" id="19_u75jf"]
-[ext_resource type="PackedScene" uid="uid://bt7yi0t6ueof3" path="res://prefabs/game_states/gm_usables/woman_points.tscn" id="19_uucmh"]
+[ext_resource type="Script" uid="uid://cajf45kj4rgnv" path="res://prefabs/game_states/gm_usables/woman_points.gd" id="19_u75jf"]
 [ext_resource type="Texture2D" uid="uid://xwmt30vqykl2" path="res://sources/meshes/geometry/textures/wook_planks/wood_planks_diff_2k_rotate.png" id="20_pl46k"]
+[ext_resource type="Script" uid="uid://hj475csp20x" path="res://prefabs/game_states/gm_usables/versaillais_points.gd" id="24_6kj28"]
+[ext_resource type="PackedScene" uid="uid://cq3iqolfkxyxg" path="res://prefabs/game_states/game_state_03.tscn" id="24_kkeqv"]
 [ext_resource type="Material" uid="uid://dfrsy150v5044" path="res://prefabs/barricade/barricade_meshes/old/material.tres" id="21_u75jf"]
 [ext_resource type="ArrayMesh" uid="uid://d1we637hyqvrr" path="res://prefabs/barricade/barricade_meshes/old/c2c.obj" id="22_kkeqv"]
 
@@ -300,6 +301,15 @@ albedo_texture = ExtResource("20_pl46k")
 roughness = 0.54
 uv1_scale = Vector3(2, 2, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u75jf"]
+albedo_color = Color(0.9110892, 0.1364511, 3.85046e-07, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kkeqv"]
+material = SubResource("StandardMaterial3D_u75jf")
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.25
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4ds3"]
 size = Vector3(9.191589, 0.7286377, 20.975586)
 
@@ -307,7 +317,7 @@ size = Vector3(9.191589, 0.7286377, 20.975586)
 script = ExtResource("1_utpm8")
 use_narrative = false
 player_prefab = ExtResource("2_oroiu")
-all_states = [NodePath("States/GameState00"), NodePath("States/GameState01"), NodePath("States/GameState02")]
+all_states = [NodePath("States/GameState00"), NodePath("States/GameState01"), NodePath("States/GameState02"), NodePath("States/GameState03")]
 
 [node name="EffectsManager" parent="." unique_id=1116254742 instance=ExtResource("3_g4ds3")]
 
@@ -683,11 +693,11 @@ transform = Transform3D(0.48167723, 0, -0.8763487, 0, 1, 0, 0.8763487, 0, 0.4816
 shape = SubResource("BoxShape3D_ftpgy")
 
 [node name="GameState02" parent="States" unique_id=345645137 instance=ExtResource("5_m6g67")]
-script = ExtResource("19_u75jf")
 
-[node name="WomanPoints" parent="States/GameState02" unique_id=1055966233 node_paths=PackedStringArray("women", "first_points", "second_points") instance=ExtResource("19_uucmh")]
+[node name="WomanPoints" type="Node" parent="States/GameState02" unique_id=1055966233 node_paths=PackedStringArray("women", "first_points", "second_points")]
 unique_name_in_owner = true
-women = [NodePath("../../../NPC/Louise"), NodePath("../../../NPC/Marie"), NodePath("../../../NPC/Woman1"), NodePath("../../../NPC/Woman2"), NodePath("../../../NPC/Woman3")]
+script = ExtResource("19_u75jf")
+women = [NodePath("../../../NPC/Communards/Louise"), NodePath("../../../NPC/Communards/Marie"), NodePath("../../../NPC/Communards/Woman1"), NodePath("../../../NPC/Communards/Woman2"), NodePath("../../../NPC/Communards/Woman3")]
 first_points = {
 "Louise": NodePath("First/Louise01"),
 "Marie": NodePath("First/Marie01"),
@@ -703,43 +713,48 @@ second_points = {
 "Woman3": NodePath("Second/Woman302")
 }
 
-[node name="Louise01" parent="States/GameState02/WomanPoints/First" parent_id_path=PackedInt32Array(1055966233, 1197697371) index="0" unique_id=1090379721]
-transform = Transform3D(-0.8651253, 0, 0.50155616, 0, 1, 0, -0.50155616, 0, -0.8651253, -31.52078, 4.7683716e-07, 26.580017)
+[node name="First" type="Node" parent="States/GameState02/WomanPoints" unique_id=1197697371]
 
-[node name="Marie01" parent="States/GameState02/WomanPoints/First" parent_id_path=PackedInt32Array(1055966233, 1197697371) index="1" unique_id=929494906]
-transform = Transform3D(-0.8864461, 0, 0.46283185, 0, 1, 0, -0.46283185, 0, -0.8864461, -31.278357, -4.7683716e-07, 28.909075)
+[node name="Louise01" parent="States/GameState02/WomanPoints/First" unique_id=1302806485 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(-0.8651253, 0, 0.50155616, 0, 1, 0, -0.50155616, 0, -0.8651253, -29.681, 0.1, 25.705)
 
-[node name="Woman101" parent="States/GameState02/WomanPoints/First" parent_id_path=PackedInt32Array(1055966233, 1197697371) index="2" unique_id=1016163170]
-transform = Transform3D(-0.88760656, 0, 0.46060252, 0, 1, 0, -0.46060252, 0, -0.88760656, -28.627144, -9.536743e-07, 29.509258)
+[node name="Marie01" parent="States/GameState02/WomanPoints/First" unique_id=929494906 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(-0.8864461, 0, 0.46283185, 0, 1, 0, -0.46283185, 0, -0.8864461, -29.201, 0.1, 26.81)
 
-[node name="Woman201" parent="States/GameState02/WomanPoints/First" parent_id_path=PackedInt32Array(1055966233, 1197697371) index="3" unique_id=1390585531]
-transform = Transform3D(-0.91719925, 0, 0.3984288, 0, 1, 0, -0.3984288, 0, -0.91719925, -29.459333, 0, 34.868652)
+[node name="Woman101" parent="States/GameState02/WomanPoints/First" unique_id=1016163170 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(-0.88760656, 0, 0.46060252, 0, 1, 0, -0.46060252, 0, -0.88760656, -27.348, 0.1, 28.912)
 
-[node name="Woman301" parent="States/GameState02/WomanPoints/First" parent_id_path=PackedInt32Array(1055966233, 1197697371) index="4" unique_id=1617451167]
-transform = Transform3D(-0.89137065, 0, 0.45327514, 0, 1, 0, -0.45327514, 0, -0.89137065, -27.088789, 0, 32.24537)
+[node name="Woman201" parent="States/GameState02/WomanPoints/First" unique_id=1390585531 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(-0.91719925, 0, 0.3984288, 0, 1, 0, -0.3984288, 0, -0.91719925, -27.655, 0.1, 30.531)
 
-[node name="Louise02" parent="States/GameState02/WomanPoints/Second" parent_id_path=PackedInt32Array(1055966233, 2141392399) index="0" unique_id=1498333937]
-transform = Transform3D(-0.7043369, 0, 0.70986587, 0, 1, 0, -0.70986587, 0, -0.7043369, -27.109114, -1.3113022e-06, 20.152952)
+[node name="Woman301" parent="States/GameState02/WomanPoints/First" unique_id=1617451167 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(-0.89137065, 0, 0.45327514, 0, 1, 0, -0.45327514, 0, -0.89137065, -27.616, 0.1, 32.834)
 
-[node name="Marie02" parent="States/GameState02/WomanPoints/Second" parent_id_path=PackedInt32Array(1055966233, 2141392399) index="1" unique_id=1583228931]
-transform = Transform3D(-0.6299169, 0, 0.7766625, 0, 1, 0, -0.7766625, 0, -0.6299169, -29.292612, 0, 19.962751)
+[node name="Second" type="Node" parent="States/GameState02/WomanPoints" unique_id=2141392399]
 
-[node name="Woman102" parent="States/GameState02/WomanPoints/Second" parent_id_path=PackedInt32Array(1055966233, 2141392399) index="2" unique_id=1123522988]
-transform = Transform3D(-0.73399067, 0, 0.6791596, 0, 1, 0, -0.6791596, 0, -0.73399067, -25.653934, 0, 22.125626)
+[node name="Louise02" parent="States/GameState02/WomanPoints/Second" unique_id=1498333937 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.7043369, 0, 0.70986587, 0, 1, 0, -0.70986587, 0, -0.7043369, -27.109, 0.1, 20.153)
 
-[node name="Woman202" parent="States/GameState02/WomanPoints/Second" parent_id_path=PackedInt32Array(1055966233, 2141392399) index="3" unique_id=1704509268]
-transform = Transform3D(-0.8172555, 0, 0.5762755, 0, 1, 0, -0.5762755, 0, -0.8172555, -25.24353, 0, 24.27265)
+[node name="Marie02" parent="States/GameState02/WomanPoints/Second" unique_id=1583228931 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(-0.6299169, 0, 0.7766625, 0, 1, 0, -0.7766625, 0, -0.6299169, -29.293, 0.1, 19.963)
 
-[node name="Woman302" parent="States/GameState02/WomanPoints/Second" parent_id_path=PackedInt32Array(1055966233, 2141392399) index="4" unique_id=599936581]
-transform = Transform3D(-0.8809898, 0, 0.47313523, 0, 1, 0, -0.47313523, 0, -0.8809898, -23.069202, 0, 23.704365)
+[node name="Woman102" parent="States/GameState02/WomanPoints/Second" unique_id=1123522988 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(-0.73399067, 0, 0.6791596, 0, 1, 0, -0.6791596, 0, -0.73399067, -25.654, 0.1, 22.126)
+
+[node name="Woman202" parent="States/GameState02/WomanPoints/Second" unique_id=1704509268 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(-0.8172555, 0, 0.5762755, 0, 1, 0, -0.5762755, 0, -0.8172555, -25.244, 0.1, 24.273)
+
+[node name="Woman302" parent="States/GameState02/WomanPoints/Second" unique_id=599936581 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(-0.8809898, 0, 0.47313523, 0, 1, 0, -0.47313523, 0, -0.8809898, -23.069, 0.1, 23.704)
 
 [node name="WomenArrivalPoint" parent="States/GameState02" unique_id=180129999 instance=ExtResource("4_ruyh4")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.974026, -1.1920929e-07, 15.736973)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.974, 0.2, 15.737)
 
 [node name="DiscussionPoint" parent="States/GameState02" unique_id=692784511 instance=ExtResource("4_ruyh4")]
 unique_name_in_owner = true
-transform = Transform3D(0.95298463, 0, 0.30301863, 0, 1, 0, -0.30301863, 0, 0.95298463, -28.532661, 0, 17.75655)
+transform = Transform3D(0.95298463, 0, 0.30301863, 0, 1, 0, -0.30301863, 0, 0.95298463, -28.533, 0.1, 17.757)
 
 [node name="LouiseDetectionArea" parent="States/GameState02" unique_id=395173706 instance=ExtResource("10_83msq")]
 unique_name_in_owner = true
@@ -778,57 +793,241 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rrm32")
 material_override = ExtResource("21_u75jf")
 mesh = ExtResource("22_kkeqv")
 
+[node name="GameState03" parent="States" unique_id=1978350815 instance=ExtResource("24_kkeqv")]
+
+[node name="FrancoisCover" parent="States/GameState03" unique_id=1414152471 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.60824907, 0, 0.79374635, 0, 1, 0, -0.79374635, 0, -0.60824907, -32.175278, 0.1, 23.505596)
+
+[node name="LouiseCover" parent="States/GameState03" unique_id=273581804 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.899451, 0, 0.4370216, 0, 1, 0, -0.4370216, 0, -0.899451, -27.638517, 0.1, 27.03338)
+
+[node name="PlayerCover" parent="States/GameState03" unique_id=900910434 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.89743555, 0, 0.44114557, 0, 1, 0, -0.44114557, 0, -0.89743555, -31.49065, 0.1, 28.321827)
+
+[node name="VersaillaisPoints" type="Node" parent="States/GameState03" unique_id=629590944 node_paths=PackedStringArray("all_versaillais", "spawn_points", "dialogue_points")]
+unique_name_in_owner = true
+script = ExtResource("24_6kj28")
+all_versaillais = [NodePath("../../../NPC/Versaillais/Officier"), NodePath("../../../NPC/Versaillais/Versaillais1"), NodePath("../../../NPC/Versaillais/Versaillais2"), NodePath("../../../NPC/Versaillais/Versaillais3"), NodePath("../../../NPC/Versaillais/Versaillais4"), NodePath("../../../NPC/Versaillais/Versaillais5"), NodePath("../../../NPC/Versaillais/Versaillais6"), NodePath("../../../NPC/Versaillais/Versaillais7"), NodePath("../../../NPC/Versaillais/Versaillais8")]
+spawn_points = [NodePath("SpawnPos/OfficierPoint"), NodePath("SpawnPos/VersaillaisPoint1"), NodePath("SpawnPos/VersaillaisPoint2"), NodePath("SpawnPos/VersaillaisPoint3"), NodePath("SpawnPos/VersaillaisPoint4"), NodePath("SpawnPos/VersaillaisPoint5"), NodePath("SpawnPos/VersaillaisPoint6"), NodePath("SpawnPos/VersaillaisPoint7"), NodePath("SpawnPos/VersaillaisPoint8")]
+dialogue_points = [NodePath("DialoguebPos/OfficierPoint"), NodePath("DialoguebPos/VersaillaisPoint1"), NodePath("DialoguebPos/VersaillaisPoint2"), NodePath("DialoguebPos/VersaillaisPoint3"), NodePath("DialoguebPos/VersaillaisPoint4"), NodePath("DialoguebPos/VersaillaisPoint5"), NodePath("DialoguebPos/VersaillaisPoint6"), NodePath("DialoguebPos/VersaillaisPoint7"), NodePath("DialoguebPos/VersaillaisPoint8")]
+
+[node name="SpawnPos" type="Node" parent="States/GameState03/VersaillaisPoints" unique_id=491265111]
+
+[node name="OfficierPoint" parent="States/GameState03/VersaillaisPoints/SpawnPos" unique_id=1677386719 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.85433185, 0, -0.51972795, 0, 1, 0, 0.51972795, 0, 0.85433185, -18.184408, 0, 7.2474947)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/SpawnPos/OfficierPoint" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint1" parent="States/GameState03/VersaillaisPoints/SpawnPos" unique_id=283044557 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.8141864, 0, -0.5806036, 0, 1, 0, 0.5806036, 0, 0.8141864, -14.346857, 0.1, 5.5945005)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint1" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint2" parent="States/GameState03/VersaillaisPoints/SpawnPos" unique_id=87244571 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.77143586, 0, -0.6363072, 0, 1, 0, 0.6363072, 0, 0.77143586, -12.45137, 0.1, 2.9756513)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint2" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint3" parent="States/GameState03/VersaillaisPoints/SpawnPos" unique_id=1584425808 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.6174753, 0, -0.7865903, 0, 1, 0, 0.7865903, 0, 0.6174753, -10.113403, 0.2, 1.2983985)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint3" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint4" parent="States/GameState03/VersaillaisPoints/SpawnPos" unique_id=991215397 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.85433185, 0, -0.51972795, 0, 1, 0, 0.51972795, 0, 0.85433185, -18.887703, 0.1, 2.6405923)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint4" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint5" parent="States/GameState03/VersaillaisPoints/SpawnPos" unique_id=659505829 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.85433185, 0, -0.51972795, 0, 1, 0, 0.51972795, 0, 0.85433185, -19.344963, 0.1, 0.09661031)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint5" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint6" parent="States/GameState03/VersaillaisPoints/SpawnPos" unique_id=1445030666 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.85433185, 0, -0.51972795, 0, 1, 0, 0.51972795, 0, 0.85433185, -19.795242, 0.2, -2.9905622)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint6" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint7" parent="States/GameState03/VersaillaisPoints/SpawnPos" unique_id=192820046 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.753242, 0, -0.6577435, 0, 1, 0, 0.6577435, 0, 0.753242, -9.078992, 0.1, -1.2228777)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint7" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint8" parent="States/GameState03/VersaillaisPoints/SpawnPos" unique_id=333811647 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.8638882, 0, -0.50368357, 0, 1, 0, 0.50368357, 0, 0.8638882, -14.0811205, 0.1, -4.2590847)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint8" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="DialoguebPos" type="Node" parent="States/GameState03/VersaillaisPoints" unique_id=1676671274]
+
+[node name="OfficierPoint" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=227105851 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.88084114, 0, -0.47341198, 0, 1, 0, 0.47341198, 0, 0.88084114, -26.67466, 0, 19.473045)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/OfficierPoint" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint1" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=492824420 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.8440004, 0, -0.53634256, 0, 1, 0, 0.53634256, 0, 0.8440004, -24.873253, 0.1, 19.67811)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint1" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint2" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=194956154 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.8042823, 0, -0.59424746, 0, 1, 0, 0.59424746, 0, 0.8042823, -23.364943, 0.1, 20.638876)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint2" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint3" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=403551710 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.6585581, 0, -0.75252986, 0, 1, 0, 0.75252986, 0, 0.6585581, -22.105, 0.2, 21.942)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint3" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint4" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=2115492190 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.88084114, 0, -0.47341198, 0, 1, 0, 0.47341198, 0, 0.88084114, -27.29115, 0.1, 17.885036)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint4" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint5" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=427551322 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.88084114, 0, -0.47341198, 0, 1, 0, 0.47341198, 0, 0.88084114, -28.220787, 0.1, 16.595612)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint5" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint6" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=2035301596 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.88084114, 0, -0.47341198, 0, 1, 0, 0.47341198, 0, 0.88084114, -29.205, 0.2, 15.59)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint6" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint7" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=542310357 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.78725797, 0, -0.6166238, 0, 1, 0, 0.6166238, 0, 0.78725797, -22.815218, 0.1, 18.342463)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint7" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint8" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=1596999133 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.88952804, 0, -0.4568807, 0, 1, 0, 0.4568807, 0, 0.88952804, -25.347248, 0.1, 15.878401)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint8" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="FinalPos" type="Node" parent="States/GameState03/VersaillaisPoints" unique_id=1679356276]
+
 [node name="NPC" type="Node" parent="." unique_id=2013234831]
 
-[node name="Georges" parent="NPC" unique_id=1296143105 instance=ExtResource("6_2cgp0")]
+[node name="Communards" type="Node" parent="NPC" unique_id=412628850]
+
+[node name="Georges" parent="NPC/Communards" unique_id=1296143105 instance=ExtResource("6_2cgp0")]
 unique_name_in_owner = true
 transform = Transform3D(0.99984705, 0, 0.017487377, 0, 1, 0, -0.017487377, 0, 0.99984705, -32.25105, 0.099999525, -1.2975082)
 
-[node name="Jules" parent="NPC" unique_id=1463923211 instance=ExtResource("6_2cgp0")]
+[node name="Jules" parent="NPC/Communards" unique_id=1463923211 instance=ExtResource("6_2cgp0")]
 unique_name_in_owner = true
 transform = Transform3D(0.002146914, 0, -0.9999977, 0, 1, 0, 0.9999977, 0, 0.002146914, -3.285318, 0.1, 2.6076605)
 npc_name = 1
 
-[node name="Francois" parent="NPC" unique_id=1437456092 instance=ExtResource("6_2cgp0")]
+[node name="Francois" parent="NPC/Communards" unique_id=1437456092 instance=ExtResource("6_2cgp0")]
 unique_name_in_owner = true
 transform = Transform3D(-0.25110638, 0, -0.9679595, 0, 1, 0, 0.9679595, 0, -0.25110638, -10.116035, 0.1, 4.705014)
 npc_name = 2
 
-[node name="SecondBarricadeNPC" parent="NPC" unique_id=617198207 instance=ExtResource("6_2cgp0")]
+[node name="SecondBarricadeNPC" parent="NPC/Communards" unique_id=617198207 instance=ExtResource("6_2cgp0")]
 unique_name_in_owner = true
 transform = Transform3D(-0.57678884, 0, 0.8168933, 0, 1, 0, -0.8168933, 0, -0.57678884, -26.31, 0.2, 14.651)
 npc_name = 8
 
-[node name="Louise" parent="NPC" unique_id=1520388921 instance=ExtResource("6_2cgp0")]
+[node name="Louise" parent="NPC/Communards" unique_id=1520388921 instance=ExtResource("6_2cgp0")]
 unique_name_in_owner = true
-transform = Transform3D(-0.7295538, 0, -0.6839234, 0, 1, 0, 0.6839234, 0, -0.7295538, -11.907373, 0.099999525, 49.60464)
+transform = Transform3D(-0.7295538, 0, -0.6839234, 0, 1, 0, 0.6839234, 0, -0.7295538, -13.082895, 0.099999525, 48.380123)
 collision_layer = 9
 npc_name = 3
 gender = 1
 
-[node name="Marie" parent="NPC" unique_id=2013721036 instance=ExtResource("6_2cgp0")]
+[node name="Marie" parent="NPC/Communards" unique_id=2013721036 instance=ExtResource("6_2cgp0")]
 unique_name_in_owner = true
-transform = Transform3D(-0.8352512, 0, -0.5498686, 0, 1, 0, 0.5498686, 0, -0.8352512, -11.983794, 0.099999525, 50.99719)
+transform = Transform3D(-0.8352512, 0, -0.5498686, 0, 1, 0, 0.5498686, 0, -0.8352512, -11.36398, 0.099999525, 50.031025)
 npc_name = 4
 gender = 1
 
-[node name="Woman1" parent="NPC" unique_id=1804693784 instance=ExtResource("6_2cgp0")]
+[node name="Woman1" parent="NPC/Communards" unique_id=1804693784 instance=ExtResource("6_2cgp0")]
 unique_name_in_owner = true
-transform = Transform3D(-0.72790444, 0, -0.68567854, 0, 1, 0, 0.68567854, 0, -0.72790444, -10.091662, 0.099999525, 50.682705)
+transform = Transform3D(-0.72790444, 0, -0.68567854, 0, 1, 0, 0.68567854, 0, -0.72790444, -9.487943, 0.099999525, 51.895454)
 npc_name = 5
 gender = 1
 
-[node name="Woman2" parent="NPC" unique_id=303901857 instance=ExtResource("6_2cgp0")]
+[node name="Woman2" parent="NPC/Communards" unique_id=303901857 instance=ExtResource("6_2cgp0")]
 unique_name_in_owner = true
-transform = Transform3D(-0.7713693, 0, -0.6363878, 0, 1, 0, 0.6363878, 0, -0.7713693, -10.299367, 0.099999525, 52.053635)
+transform = Transform3D(-0.7713693, 0, -0.6363878, 0, 1, 0, 0.6363878, 0, -0.7713693, -7.624713, 0.099999525, 53.87652)
 npc_name = 6
 gender = 1
 
-[node name="Woman3" parent="NPC" unique_id=515559934 instance=ExtResource("6_2cgp0")]
+[node name="Woman3" parent="NPC/Communards" unique_id=515559934 instance=ExtResource("6_2cgp0")]
 unique_name_in_owner = true
-transform = Transform3D(-0.6803373, 0, -0.7328991, 0, 1, 0, 0.7328991, 0, -0.6803373, -8.433597, 0.099999525, 52.594193)
+transform = Transform3D(-0.6803373, 0, -0.7328991, 0, 1, 0, 0.7328991, 0, -0.6803373, -6.1793823, 0.099999525, 55.435947)
 npc_name = 7
 gender = 1
+
+[node name="Versaillais" type="Node" parent="NPC" unique_id=1675653364]
+
+[node name="Officier" parent="NPC/Versaillais" unique_id=907265758 instance=ExtResource("6_2cgp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 8
+team = 1
+
+[node name="Versaillais1" parent="NPC/Versaillais" unique_id=910647116 instance=ExtResource("6_2cgp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 8
+team = 1
+
+[node name="Versaillais2" parent="NPC/Versaillais" unique_id=535393517 instance=ExtResource("6_2cgp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 8
+team = 1
+
+[node name="Versaillais3" parent="NPC/Versaillais" unique_id=940054698 instance=ExtResource("6_2cgp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 8
+team = 1
+
+[node name="Versaillais4" parent="NPC/Versaillais" unique_id=715024895 instance=ExtResource("6_2cgp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 8
+team = 1
+
+[node name="Versaillais5" parent="NPC/Versaillais" unique_id=1246567990 instance=ExtResource("6_2cgp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 8
+team = 1
+
+[node name="Versaillais6" parent="NPC/Versaillais" unique_id=806315742 instance=ExtResource("6_2cgp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 8
+team = 1
+
+[node name="Versaillais7" parent="NPC/Versaillais" unique_id=512175655 instance=ExtResource("6_2cgp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 8
+team = 1
+
+[node name="Versaillais8" parent="NPC/Versaillais" unique_id=1416493828 instance=ExtResource("6_2cgp0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 8
+team = 1
 
 [node name="DeathZone" parent="." unique_id=2032830456 instance=ExtResource("10_83msq")]
 unique_name_in_owner = true
@@ -843,7 +1042,24 @@ shape = SubResource("BoxShape3D_g4ds3")
 [editable path="States/GameState01/FirstDieArea"]
 [editable path="States/GameState01/CanonDetectionArea"]
 [editable path="States/GameState01/DeathZoneSecondBarricade"]
-[editable path="States/GameState02/WomanPoints"]
 [editable path="States/GameState02/LouiseDetectionArea"]
 [editable path="States/GameState02/DiscussionArea"]
+[editable path="States/GameState03/VersaillaisPoints/SpawnPos/OfficierPoint"]
+[editable path="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint1"]
+[editable path="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint2"]
+[editable path="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint3"]
+[editable path="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint4"]
+[editable path="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint5"]
+[editable path="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint6"]
+[editable path="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint7"]
+[editable path="States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint8"]
+[editable path="States/GameState03/VersaillaisPoints/DialoguebPos/OfficierPoint"]
+[editable path="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint1"]
+[editable path="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint2"]
+[editable path="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint3"]
+[editable path="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint4"]
+[editable path="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint5"]
+[editable path="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint6"]
+[editable path="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint7"]
+[editable path="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint8"]
 [editable path="DeathZone"]
