@@ -70,9 +70,8 @@ func go_next_step() -> void:
 	if state >= max_state:
 		is_destroyed = true
 		just_destroyed.emit()
-	#play vfx destruction
-	player.wpn_cam_base.shake(1.0, 1.0, 1.0)
-	break_effects[state - 1].emitting = true
+	if player: player.wpn_cam_base.shake(1.0, 1.0, 1.0)
+	#break_effects[state - 1].emitting = true
 	set_state()
 	await get_tree().create_timer(0.1).timeout
 	kill_all_near_covers_agents()

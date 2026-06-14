@@ -49,10 +49,6 @@ func wait_no_more_allies() -> void:
 	louise.launch_movement_to_nav_point(louise_cover, 5.0, true)
 	francois.launch_movement_to_nav_point(francois_cover, 5.0, true)
 	await wait_until(are_louise_and_francois_on_covers)
-	#var pos: Vector3 = versaillais_points.points[0].global_position
-	#louise.rotate_yaw_to_pos_tween(pos, 0.5, true)
-	#await francois.rotate_yaw_to_pos_tween(pos, 0.5, true)
-	
 	await wait_until(is_there_one_ally)
 	await wait_until(is_player_alive)
 	player.can_die = false
@@ -73,6 +69,7 @@ func is_there_no_allies() -> bool:
 
 func player_go_to_cover() -> void:
 	player.can_play = false
+	ui_manager.set_objective(false)
 	await run_to_destination(player_cover)
 	louise.is_figthing = false
 	louise.enter_in_crouch_anim()
@@ -81,29 +78,20 @@ func player_go_to_cover() -> void:
 	var target: Vector3 = player_cover.global_position + player_cover.basis.z
 	var time_ratio: float = get_yaw_diff_ratio(target)
 	await tween_rotate_player_to_pos(versaillais_points.dialogue_points[0].global_position, 1.0 * time_ratio)
-	
-	#await player.prone_to_stand(true)
 	await player.crouch_to_stand(true)
-	
 	versaillais_points.set_all_versaillais_spwan_pos()
 	army_foot_steps.emit()
 	versaillais_points.all_versaillais_go_to_dialogue_pos()
-	
 	await wait_until(are_all_versaillais_in_pos)
-	#await wait(2.0)
-	#launch_player_crouch()
-	#await
-	
 	await wait_voice() # "Rendez vous, racailles rouges"
 	await francois.rotate_yaw_to_pos_tween(player_cover.global_position, 0.6)
 	await wait_voice() # "C'en est fini citoyens, rendons-nous"
 	await louise.rotate_yaw_to_pos_tween(player_cover.global_position, 0.6)
 	await wait_voice() # "Jamais. Puisqu'il semble que tout cœur qui bat pour la liberté"
-
-
-func launch_player_crouch() -> void:
-	await wait(1.0)
-	player.prone_to_crouch()
+	await ui_manager.dark_fade.fade(true)
+	await wait(2.0)
+	await ui_manager.dark_fade.fade(false)
+	print("C FINIII !")
 
 
 func are_all_versaillais_in_pos() -> bool:

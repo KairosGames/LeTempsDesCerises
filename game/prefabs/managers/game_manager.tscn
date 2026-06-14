@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="5_rmfoy"]
 [ext_resource type="PackedScene" uid="uid://x6umueunebab" path="res://prefabs/game_states/gm_usables/shoot_target.tscn" id="5_vkqci"]
 [ext_resource type="PackedScene" uid="uid://dn5y2en06sd76" path="res://prefabs/npc/npc.tscn" id="6_2cgp0"]
+[ext_resource type="Script" uid="uid://mmnkjdka5ak0" path="res://scripts/dark_fade.gd" id="8_kkeqv"]
 [ext_resource type="Script" uid="uid://xileblfnbaed" path="res://prefabs/managers/battle_director.gd" id="8_r74ma"]
 [ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="10_83msq"]
 [ext_resource type="PackedScene" uid="uid://dxqyq6j0lps48" path="res://prefabs/game_states/gm_usables/visual_chassepot.tscn" id="12_0po2u"]
@@ -410,6 +411,17 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
+
+[node name="DarkFade" type="ColorRect" parent="UIManager" unique_id=546504817]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("8_kkeqv")
 
 [node name="CenterContainer" type="CenterContainer" parent="UIManager" unique_id=49054125]
 z_index = 2
