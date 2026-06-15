@@ -143,6 +143,9 @@ func lauch_first_battle_phase() -> void:
 
 
 func launch_cannon_arrival() -> void:
+	############Debug
+	add_on_process(add_worker_on_cannon)
+	
 	print("CANON ACTIVATED")
 	game_manager.cannon.enabled = true
 	cannon_detection_area.monitoring = true
@@ -153,11 +156,6 @@ func launch_cannon_arrival() -> void:
 	ui_manager.set_objective(true, game_manager.cannon.objective_point, "Stop the cannon from destroying the barricade")
 	player.enemy_shot.connect(check_player_kill_cannon_enemy)
 	battle_director.go_next_covers_activation()################################################ Canon visible
-	
-	############Debug
-	add_on_process(add_worker_on_cannon)
-	
-	
 	await wait_until_or_signal(is_cannon_ready_to_shoot, game_manager.cannon.reloaded)
 	for agent: Agent in game_manager.cannon.workers: agent.can_die = false
 	print("CANNON INVINSIBLE")
