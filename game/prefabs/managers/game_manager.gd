@@ -1,6 +1,7 @@
 class_name GameManager extends Node
 
 @warning_ignore("unused_signal") signal player_instance_loaded
+@warning_ignore("unused_signal") signal voice_line_called(index: int)
 signal clicked_pause(is_pause: bool)
 
 @onready var player_spawner: CustomMarker = %PlayerSpawner

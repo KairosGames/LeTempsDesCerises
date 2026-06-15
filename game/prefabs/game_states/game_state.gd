@@ -3,7 +3,6 @@
 @onready var francois: Npc = %Francois
 @onready var death_zone: EventArea = %DeathZone
 
-signal voice_line_called(index: int)
 @warning_ignore("unused_signal") signal completed
 @warning_ignore("unused_signal") signal voice_line_finished
 
@@ -136,14 +135,14 @@ func set_local_bool() -> void:
 
 func wait_voice() -> void:
 	voice_line_index += 1
-	voice_line_called.emit(voice_line_index)
+	game_manager.voice_line_called.emit(voice_line_index)
 	print("WAIT VOICE")
 	await voice_line_finished
 
 
 func call_voice() -> void:
 	voice_line_index += 1
-	voice_line_called.emit(voice_line_index)
+	game_manager.voice_line_called.emit(voice_line_index)
 
 
 func take_player_move_control(is_taken: bool) -> void:

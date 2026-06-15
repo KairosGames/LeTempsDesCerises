@@ -71,12 +71,12 @@ func stay_into_barricade_area() -> void:
 	invisible_wall_barricade.process_mode = Node.PROCESS_MODE_INHERIT
 	return_to_barricade.monitoring = true
 	return_to_barricade.player_entered.connect(on_player_exit_barricade_zone)
-	call_voice()
+	call_voice() # "Ils avancent, soyez pas flubard !"
 	player.enemy_shot.connect(on_enemy_shot)
 	launch_first_die_timer()
 	await wait_until(is_it_time_to_die)
 	player.enemy_shot.disconnect(on_enemy_shot)
-	await wait_voice()
+	await wait_voice() # "Allez Gomeux rétame_en _un !"
 
 
 func on_player_exit_barricade_zone() -> void:

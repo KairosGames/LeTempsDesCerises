@@ -45,6 +45,7 @@ signal landed
 @onready var death_camera: DeathCamera = %DeathCamera
 @onready var nav: NavigationAgent3D = %PlayerNav
 @onready var weapon_shake: Shake = %WeaponShake
+@onready var muzzle_light: OmniLight3D = %MuzzleLight
 
 @export_category("Gameplay Settings")
 @export var immortal_timer: float = 10.0
@@ -1010,9 +1011,12 @@ func can_shoot() -> bool:
 
 func play_shoot_effects() -> void:
 	if is_aiming: ads_timer += 10.0
+	muzzle_light.visible = true
 	play_shoot_vfx()
 	play_recoil_effect()
 	wpn_cam_base.shake(1.0, 5.0, 0.15)
+	await get_tree().create_timer(0.05).timeout
+	muzzle_light.visible = false
 
 
 func play_shoot_vfx() -> void:
@@ -1020,8 +1024,10 @@ func play_shoot_vfx() -> void:
 		printerr("EFFECT MANAGER NOT IN SCENE !")
 		return
 	var eff: EffectsManager.EffectType = EffectsManager.EffectType.PlayerShoot
-	var pos: Vector3 = weapon_ray_cast.global_position
-	var rot: Vector3 = weapon_ray_cast.global_rotation
+	#var pos: Vector3 = weapon_ray_cast.global_position
+	#var rot: Vector3 = weapon_ray_cast.global_rotation
+	var pos: Vector3 = muzzle_light.global_position - (muzzle_light.global_basis.z * 0.4)
+	var rot: Vector3 = muzzle_light.global_rotation
 	EffectsManager.instance.play_effect(eff, pos, rot)
 
 

@@ -184,7 +184,7 @@ func launch_execution() -> void:
 	set_player_before_execution()
 	ui_manager.launch_letter_box(false)
 	await wait(10.0)
-	wait_voice() ########################### "Soldats en joug !"
+	call_voice() ########################### "Soldats en joug !"
 	ui_manager.launch_letter_box(true)
 	take_player_view_control(true)
 	player.can_play = false

@@ -19,13 +19,13 @@ func enter() -> void:
 	curr_step = 0
 	steps = [
 		Step.new(set_game_for_onboarding, get_up, do_nothing),
-		Step.new(go_for_georges, wait_voice, take_weapon),
-		Step.new(wait_voice, wait_player_crouch, do_nothing),
-		Step.new(wait_voice, wait_player_prone, do_nothing),
-		Step.new(wait_voice, wait_player_stand, do_nothing),
-		Step.new(wait_voice, wait_player_aim, free_changing_posture),
+		Step.new(go_for_georges, wait_voice, take_weapon), # "Les lignards sont pas loin"
+		Step.new(wait_voice, wait_player_crouch, do_nothing), #"Quand t'es derrière un mur"
+		Step.new(wait_voice, wait_player_prone, do_nothing), #Si ta couverture est trop basse"
+		Step.new(wait_voice, wait_player_stand, do_nothing), #"Bon relève toi"
+		Step.new(wait_voice, wait_player_aim, free_changing_posture), #"Tiens essaye de viser"
 		Step.new(open_player_view, wait_player_shoot, free_player_view),
-		Step.new(wait_voice, wait_player_enter_reload, wait_voice),
+		Step.new(wait_voice, wait_player_enter_reload, wait_voice), # "Ah mais il est vide celui là" / # "Voilà la ligne, ils sont sur nous !"
 		Step.new(enter_fight_begin, georges_death, free_player)
 	]
 	run_steps()
@@ -52,7 +52,7 @@ func set_game_for_onboarding() -> void:
 
 func get_up() -> void:
 	if not game_manager.use_debug:
-		await wait_voice()
+		await wait_voice() # "Hé Hé ! Réveille toi !"
 		await wait(1.0)
 		await player.blink_effect.open_eyes_from_sleep()
 		await wait(1.5)
@@ -126,9 +126,9 @@ func wait_player_aim() -> void:
 	free_tool_tip()
 	player.can_quit_aim = false
 	add_on_process(block_ads_concentration.bind(2.5))
-	await wait_voice()
+	await wait_voice() #"Quand tu te mets en joue"
 	clean_process()
-	await wait_voice()
+	await wait_voice() #"Ces pétoires sont lourdes"
 	await wait(0.5)
 
 
@@ -147,7 +147,7 @@ func open_player_view() -> void:
 		player.is_aiming = false
 		player.switch_aim_state()
 	add_on_process(clamp_view.bind(player.aim_target, 30.0, 30.0))
-	await wait_voice()
+	await wait_voice() #"Allez maintenant essaye de tirer sur ce panneau"
 	free_tool_tip()
 
 
@@ -184,7 +184,7 @@ func wait_player_enter_reload() -> void:
 	free_tool_tip()
 	player.reload_ui.is_tutorial = true
 	player.reload_ui.is_playing_qte = false
-	await wait_voice()
+	await wait_voice() # "Bien ensuite il faut que tu ouvres la cullase"
 	handle_action_tooltip("open_bolt")
 	player.reload_ui.is_playing_qte = true
 	add_on_process(func(): if Input.is_action_just_pressed("reload"): player.reload_ui.try_qte())
@@ -192,7 +192,7 @@ func wait_player_enter_reload() -> void:
 	free_tool_tip()
 	clean_process()
 	player.reload_ui.is_playing_qte = false
-	await wait_voice()
+	await wait_voice() # "Voilà maintenant tu peux y mettre ton pruneau"
 	handle_action_tooltip("close_bolt")
 	player.reload_ui.is_playing_qte = true
 	add_on_process(func(): if Input.is_action_just_pressed("reload"): player.reload_ui.try_qte())
@@ -233,7 +233,7 @@ func enter_fight_begin() -> void:
 	await francois.rotate_yaw_to_pos_tween(player.global_position, 0.4)
 	jules.is_figthing = true
 	second_barricade_npc.is_figthing = true
-	await wait_voice()
+	await wait_voice() # "Terimné te voilà enfin près pour expédier du plomb"
 	take_player_view_control(false)
 	clean_process()
 
@@ -244,18 +244,18 @@ func georges_death() -> void:
 	var george_targ: Vector3 = (player.global_position + (player.basis.x * 1.0)) + player.basis.z * 2.0
 	await georges.move_to(george_targ, 4.0)
 	await georges.rotate_yaw_to_pos_tween(player.global_position, 0.2)
-	await wait_voice()
+	await wait_voice() #"Au mur citoyen !"
 	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.2)
 	call_georges_death()
 	await georges.move_to(barricade_point.global_position, 4.0)
-	await wait_voice()
+	await wait_voice() #Nooooon ! Ils ont tué Georges !"
 	await francois.rotate_yaw_to_pos_tween(versaillais_coming_point.global_position, 0.4)
 	francois.is_figthing = true
 
 
 func call_georges_death() -> void:
 	await wait(1.0)
-	fire_kill_georges.emit()
+	call_voice() # "Pan ! Argh!"
 	await wait(0.1)
 	georges.die()
 
