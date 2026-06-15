@@ -28,15 +28,18 @@ func _ready() -> void:
 	first_rot = player.global_rotation
 
 
-func handle_death(is_scripted: bool) -> void:
+func handle_death(is_scripted: bool, is_last_death: bool) -> void:
 	var p_cam: Camera3D = player.player_camera
 	fov = p_cam.fov
 	global_position = p_cam.global_position
 	global_rotation = p_cam.global_rotation
 	current = true
 	is_active = true
-	if is_scripted:
+	if is_scripted and not is_last_death:
 		play_scripted_death()
+		return
+	if is_last_death:
+		play_last_death()
 		return
 	play_death_effect()
 
@@ -112,7 +115,7 @@ func handle_camera_simple_move() -> void:
 	revive_rot = Vector3(0.0, first_rot.y, 0.0)
 
 
-func play_eyes_effect_and_revive(is_on_communard: bool) -> void:
+func play_eyes_effect_and_revive(is_on_communard: bool, is_last_death: bool = false) -> void:
 	blink_effect.blur_effect.set_blur_enable(true)
 	blink_effect.blur_effect.hard_set_blur(0.5)
 	
@@ -132,6 +135,8 @@ func play_eyes_effect_and_revive(is_on_communard: bool) -> void:
 	blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.2, true, 10.0)
 	
 	await get_tree().create_timer(0.5).timeout
+	if is_last_death: return
+	
 	player.revive(revive_pos, revive_rot)
 	if is_on_communard:
 		if target_communard is Agent: 
@@ -188,3 +193,17 @@ func play_scripted_death() -> void:
 func delete_npc(communard: Node3D) -> void:
 	communard.queue_free()
 	GameManager.instance.curr_state.next_respawn = null
+
+
+func play_last_death() -> void:
+	death_ground_cast.force_raycast_update()
+	var ground_y: float = death_ground_cast.get_collision_point().y
+	fall_twn = create_tween()
+	fall_rot_twn = create_tween()
+	fov_twn = create_tween()
+	fall_twn.tween_property(self, "global_position:y", ground_y + 0.3, fall_time_1).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	fall_twn.tween_property(self, "global_position:y", ground_y + 0.1, fall_time_2).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	fov_twn.tween_property(self, "fov", player.default_fov, fall_time_1)
+
+	play_eyes_effect_and_revive(false, true)
+	handle_camera_simple_move()

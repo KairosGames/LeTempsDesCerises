@@ -174,6 +174,14 @@ func shoot() -> void:
 	shot.emit()
 
 
+func enter_in_stand_no_weapon() -> void:
+	pass
+
+
+func enter_reload() -> void:
+	pass
+
+
 func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: bool = false) -> void:
 	is_all_nav_finished = false
 	for point: Node3D in path_points:
@@ -232,3 +240,9 @@ func wait_nav_to_aim() -> void:
 	await get_tree().create_timer(0.1).timeout
 	await wait_until(is_on_all_nav_finished)
 	enter_in_aim()
+
+
+func delay_shoot(rdn_min: float = 0.0, rnd_max: float = 1.0) -> void:
+	var rnd: float = randf_range(0.0, 1.0)
+	await get_tree().create_timer(rnd).timeout
+	shoot()

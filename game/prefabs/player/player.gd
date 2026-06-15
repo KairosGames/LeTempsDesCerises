@@ -1171,20 +1171,20 @@ func miss_by_versaillais() -> void:
 	missed_by_enemy.emit()
 
 
-func die(is_scripted: bool = false) -> void:
+func die(is_scripted: bool = false, is_last_death: bool = false) -> void:
 	if not is_alive or will_die or not can_die or is_immortal: return
 	if is_next_death_scripted:
 		is_scripted = true
 		is_next_death_scripted = false
 	will_die = true
 	die_called.emit()
-	death_camera.handle_death(is_scripted)
 	await get_tree().create_timer(0.1).timeout
+	death_camera.handle_death(is_scripted, is_last_death)
 	is_alive = false
 	if is_reloading: exit_reload(false, true)
 	weapon_container.visible = false
 	died.emit()
-	reset_player_controller()
+	if not is_last_death: reset_player_controller()
 
 
 func reset_player_controller() -> void:

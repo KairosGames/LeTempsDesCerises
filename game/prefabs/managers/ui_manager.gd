@@ -12,6 +12,7 @@ class_name UIManager extends Control
 @onready var top_strip: ColorRect = %TopStrip
 @onready var bottom_strip: ColorRect = %BottomStrip
 @onready var dark_fade: DarkFade = %DarkFade
+@onready var choice_tooltip: ChoiceTooltip = %ChoiceTooltip
 
 @export_category("Letter box")
 @export var time_to_open_letter_box: float = 0.35

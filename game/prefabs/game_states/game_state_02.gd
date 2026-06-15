@@ -120,7 +120,7 @@ func launch_dialogue_preparation() -> void:
 	var marie: Npc = woman_points.women[1]
 	louise.rotate_yaw_to_pos_tween(discussion_point.global_position, 0.5)
 	marie.rotate_yaw_to_pos_tween(discussion_point.global_position, 0.3)
-	francois.launch_movement_to_nav_point(discussion_point, 3.0)
+	francois.launch_movement_to_nav_point(discussion_point, 2.0)
 	await wait_signal(francois.arrived_on_path_destination)
 
 

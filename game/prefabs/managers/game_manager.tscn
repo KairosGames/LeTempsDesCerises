@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="5_rmfoy"]
 [ext_resource type="PackedScene" uid="uid://x6umueunebab" path="res://prefabs/game_states/gm_usables/shoot_target.tscn" id="5_vkqci"]
 [ext_resource type="PackedScene" uid="uid://dn5y2en06sd76" path="res://prefabs/npc/npc.tscn" id="6_2cgp0"]
+[ext_resource type="Script" uid="uid://dvhvr278rs18d" path="res://prefabs/ui/choice_tooltip.gd" id="8_6kj28"]
 [ext_resource type="Script" uid="uid://mmnkjdka5ak0" path="res://scripts/dark_fade.gd" id="8_kkeqv"]
 [ext_resource type="Script" uid="uid://xileblfnbaed" path="res://prefabs/managers/battle_director.gd" id="8_r74ma"]
 [ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="10_83msq"]
@@ -382,6 +383,74 @@ text = "PRESS [color=#f9ee00]INPUT[/color]  TO ACTION
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChoiceTooltip" type="HBoxContainer" parent="UIManager" unique_id=2019465799]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 102.0
+offset_right = 350.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+script = ExtResource("8_6kj28")
+
+[node name="FrancoisChoice" type="PanelContainer" parent="UIManager/ChoiceTooltip" unique_id=876262811]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+tooltip_text = "
+"
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvqlx")
+
+[node name="FrancoisLabel" type="RichTextLabel" parent="UIManager/ChoiceTooltip/FrancoisChoice" unique_id=78435820]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "PRESS [color=#f9ee00]A[/color]  TO SURRENDER
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LouiseChoice" type="PanelContainer" parent="UIManager/ChoiceTooltip" unique_id=82936910]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+tooltip_text = "
+"
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvqlx")
+
+[node name="LouiseLabel" type="RichTextLabel" parent="UIManager/ChoiceTooltip/LouiseChoice" unique_id=344421289]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "PRESS [color=#f9ee00]E[/color] TO FIGHT TO THE DEATH"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -808,12 +877,16 @@ transform = Transform3D(-0.899451, 0, 0.4370216, 0, 1, 0, -0.4370216, 0, -0.8994
 unique_name_in_owner = true
 transform = Transform3D(-0.89743555, 0, 0.44114557, 0, 1, 0, -0.44114557, 0, -0.89743555, -31.49065, 0.1, 28.321827)
 
-[node name="VersaillaisPoints" type="Node" parent="States/GameState03" unique_id=629590944 node_paths=PackedStringArray("all_versaillais", "spawn_points", "dialogue_points")]
+[node name="VersaillaisPoints" type="Node" parent="States/GameState03" unique_id=629590944 node_paths=PackedStringArray("all_versaillais", "spawn_points", "dialogue_points", "final_points")]
 unique_name_in_owner = true
 script = ExtResource("24_6kj28")
 all_versaillais = [NodePath("../../../NPC/Versaillais/Officier"), NodePath("../../../NPC/Versaillais/Versaillais1"), NodePath("../../../NPC/Versaillais/Versaillais2"), NodePath("../../../NPC/Versaillais/Versaillais3"), NodePath("../../../NPC/Versaillais/Versaillais4"), NodePath("../../../NPC/Versaillais/Versaillais5"), NodePath("../../../NPC/Versaillais/Versaillais6"), NodePath("../../../NPC/Versaillais/Versaillais7"), NodePath("../../../NPC/Versaillais/Versaillais8")]
 spawn_points = [NodePath("SpawnPos/OfficierPoint"), NodePath("SpawnPos/VersaillaisPoint1"), NodePath("SpawnPos/VersaillaisPoint2"), NodePath("SpawnPos/VersaillaisPoint3"), NodePath("SpawnPos/VersaillaisPoint4"), NodePath("SpawnPos/VersaillaisPoint5"), NodePath("SpawnPos/VersaillaisPoint6"), NodePath("SpawnPos/VersaillaisPoint7"), NodePath("SpawnPos/VersaillaisPoint8")]
 dialogue_points = [NodePath("DialoguebPos/OfficierPoint"), NodePath("DialoguebPos/VersaillaisPoint1"), NodePath("DialoguebPos/VersaillaisPoint2"), NodePath("DialoguebPos/VersaillaisPoint3"), NodePath("DialoguebPos/VersaillaisPoint4"), NodePath("DialoguebPos/VersaillaisPoint5"), NodePath("DialoguebPos/VersaillaisPoint6"), NodePath("DialoguebPos/VersaillaisPoint7"), NodePath("DialoguebPos/VersaillaisPoint8")]
+final_points = [NodePath("FinalPos/OfficierPoint"), NodePath("FinalPos/VersaillaisPoint1"), NodePath("FinalPos/VersaillaisPoint2"), NodePath("FinalPos/VersaillaisPoint3"), NodePath("FinalPos/VersaillaisPoint4"), NodePath("FinalPos/VersaillaisPoint5"), NodePath("FinalPos/VersaillaisPoint6"), NodePath("FinalPos/VersaillaisPoint7"), NodePath("FinalPos/VersaillaisPoint8")]
+louise_killers = Array[int]([2, 3, 7])
+francois_killers = Array[int]([5, 6, 8])
+player_killers = Array[int]([1, 2, 4])
 
 [node name="SpawnPos" type="Node" parent="States/GameState03/VersaillaisPoints" unique_id=491265111]
 
@@ -880,54 +953,120 @@ transform = Transform3D(0.88084114, 0, -0.47341198, 0, 1, 0, 0.47341198, 0, 0.88
 mesh = SubResource("CylinderMesh_kkeqv")
 
 [node name="VersaillaisPoint1" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=492824420 instance=ExtResource("4_ruyh4")]
-transform = Transform3D(0.8440004, 0, -0.53634256, 0, 1, 0, 0.53634256, 0, 0.8440004, -24.873253, 0.1, 19.67811)
+transform = Transform3D(0.7861158, 0, -0.6180793, 0, 1, 0, 0.6180793, 0, 0.7861158, -24.873253, 0.1, 19.67811)
 
 [node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint1" index="0" unique_id=1596071723]
 mesh = SubResource("CylinderMesh_kkeqv")
 
 [node name="VersaillaisPoint2" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=194956154 instance=ExtResource("4_ruyh4")]
-transform = Transform3D(0.8042823, 0, -0.59424746, 0, 1, 0, 0.59424746, 0, 0.8042823, -23.364943, 0.1, 20.638876)
+transform = Transform3D(0.68913907, 0, -0.72462916, 0, 1, 0, 0.72462916, 0, 0.68913907, -23.364943, 0.1, 20.638876)
 
 [node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint2" index="0" unique_id=1596071723]
 mesh = SubResource("CylinderMesh_kkeqv")
 
 [node name="VersaillaisPoint3" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=403551710 instance=ExtResource("4_ruyh4")]
-transform = Transform3D(0.6585581, 0, -0.75252986, 0, 1, 0, 0.75252986, 0, 0.6585581, -22.105, 0.2, 21.942)
+transform = Transform3D(0.56150573, 0, -0.82747275, 0, 1, 0, 0.82747275, 0, 0.56150573, -22.105, 0.2, 21.942)
 
 [node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint3" index="0" unique_id=1596071723]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.10000001, 0)
 mesh = SubResource("CylinderMesh_kkeqv")
 
 [node name="VersaillaisPoint4" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=2115492190 instance=ExtResource("4_ruyh4")]
-transform = Transform3D(0.88084114, 0, -0.47341198, 0, 1, 0, 0.47341198, 0, 0.88084114, -27.29115, 0.1, 17.885036)
+transform = Transform3D(0.9262459, 0, -0.3769196, 0, 1, 0, 0.3769196, 0, 0.9262459, -27.29115, 0.1, 17.885036)
 
 [node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint4" index="0" unique_id=1596071723]
 mesh = SubResource("CylinderMesh_kkeqv")
 
 [node name="VersaillaisPoint5" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=427551322 instance=ExtResource("4_ruyh4")]
-transform = Transform3D(0.88084114, 0, -0.47341198, 0, 1, 0, 0.47341198, 0, 0.88084114, -28.220787, 0.1, 16.595612)
+transform = Transform3D(0.9610207, 0, -0.27647617, 0, 1, 0, 0.27647617, 0, 0.9610207, -28.220787, 0.1, 16.595612)
 
 [node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint5" index="0" unique_id=1596071723]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.1, 0)
 mesh = SubResource("CylinderMesh_kkeqv")
 
 [node name="VersaillaisPoint6" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=2035301596 instance=ExtResource("4_ruyh4")]
-transform = Transform3D(0.88084114, 0, -0.47341198, 0, 1, 0, 0.47341198, 0, 0.88084114, -29.205, 0.2, 15.59)
+transform = Transform3D(0.98182315, 0, -0.18979813, 0, 1, 0, 0.18979813, 0, 0.98182315, -29.205, 0.2, 15.59)
 
 [node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint6" index="0" unique_id=1596071723]
 mesh = SubResource("CylinderMesh_kkeqv")
 
 [node name="VersaillaisPoint7" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=542310357 instance=ExtResource("4_ruyh4")]
-transform = Transform3D(0.78725797, 0, -0.6166238, 0, 1, 0, 0.6166238, 0, 0.78725797, -22.815218, 0.1, 18.342463)
+transform = Transform3D(0.7494412, 0, -0.66207093, 0, 1, 0, 0.66207093, 0, 0.7494412, -22.815218, 0.1, 18.342463)
 
 [node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint7" index="0" unique_id=1596071723]
 mesh = SubResource("CylinderMesh_kkeqv")
 
 [node name="VersaillaisPoint8" parent="States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=1596999133 instance=ExtResource("4_ruyh4")]
-transform = Transform3D(0.88952804, 0, -0.4568807, 0, 1, 0, 0.4568807, 0, 0.88952804, -25.347248, 0.1, 15.878401)
+transform = Transform3D(0.89406824, 0, -0.44793084, 0, 1, 0, 0.44793084, 0, 0.89406824, -25.347248, 0.1, 15.878401)
 
 [node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint8" index="0" unique_id=1596071723]
 mesh = SubResource("CylinderMesh_kkeqv")
 
 [node name="FinalPos" type="Node" parent="States/GameState03/VersaillaisPoints" unique_id=1679356276]
+
+[node name="OfficierPoint" parent="States/GameState03/VersaillaisPoints/FinalPos" unique_id=753392039 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.8786839, 0, 0.47740412, 0, 1, 0, -0.47740412, 0, 0.8786839, -31.826462, 0.2, -0.92283154)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/FinalPos/OfficierPoint" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint1" parent="States/GameState03/VersaillaisPoints/FinalPos" unique_id=356524896 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.99999917, 0, 0.0013612434, 0, 1, 0, -0.0013612434, 0, 0.99999917, -28.40769, 0.1, -1.7885365)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint1" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint2" parent="States/GameState03/VersaillaisPoints/FinalPos" unique_id=1353998340 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.9684877, 0, -0.24906188, 0, 1, 0, 0.24906188, 0, 0.9684877, -27.058851, 0.1, -1.7709544)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint2" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint3" parent="States/GameState03/VersaillaisPoints/FinalPos" unique_id=519150772 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.8409351, 0, -0.541136, 0, 1, 0, 0.541136, 0, 0.8409351, -25.50854, 0.1, -1.4321814)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint3" index="0" unique_id=1596071723]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.10000001, 0)
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint4" parent="States/GameState03/VersaillaisPoints/FinalPos" unique_id=1873724183 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.99884593, 0, 0.048030335, 0, 1, 0, -0.048030335, 0, 0.99884593, -29.89037, 0.1, -1.6523514)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint4" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint5" parent="States/GameState03/VersaillaisPoints/FinalPos" unique_id=1892064062 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.98072064, 0, 0.19541557, 0, 1, 0, -0.19541557, 0, 0.98072064, -30.782885, 0.1, -1.8589789)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint5" index="0" unique_id=1596071723]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.1, 0)
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint6" parent="States/GameState03/VersaillaisPoints/FinalPos" unique_id=427302508 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.9992882, 0, 0.03772497, 0, 1, 0, -0.03772497, 0, 0.9992882, -29.211653, 0.1, -2.1959047)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint6" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint7" parent="States/GameState03/VersaillaisPoints/FinalPos" unique_id=413188522 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.9998224, 0, -0.018848509, 0, 1, 0, 0.018848509, 0, 0.9998224, -27.736118, 0.1, -2.2711287)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint7" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint8" parent="States/GameState03/VersaillaisPoints/FinalPos" unique_id=368683864 instance=ExtResource("4_ruyh4")]
+transform = Transform3D(0.92232907, 0, -0.38640526, 0, 1, 0, 0.38640526, 0, 0.92232907, -26.170046, 0.1, -2.0113606)
+
+[node name="MeshMarker" parent="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint8" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="ExecutionPoint" parent="States/GameState03" unique_id=419960042 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.9999978, 0, -0.0020944183, 0, 1, 0, 0.0020944183, 0, -0.9999978, -28.770704, 0, 2.4428315)
+
+[node name="FrancoisDeath" parent="States/GameState03" unique_id=1846709864 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.76393116, 0, 0.64529765, 0, 1, 0, -0.64529765, 0, -0.76393116, -29.864477, 0, 23.449066)
 
 [node name="NPC" type="Node" parent="." unique_id=2013234831]
 
@@ -1063,4 +1202,13 @@ shape = SubResource("BoxShape3D_g4ds3")
 [editable path="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint6"]
 [editable path="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint7"]
 [editable path="States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint8"]
+[editable path="States/GameState03/VersaillaisPoints/FinalPos/OfficierPoint"]
+[editable path="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint1"]
+[editable path="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint2"]
+[editable path="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint3"]
+[editable path="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint4"]
+[editable path="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint5"]
+[editable path="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint6"]
+[editable path="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint7"]
+[editable path="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint8"]
 [editable path="DeathZone"]
