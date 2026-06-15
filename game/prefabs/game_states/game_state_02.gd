@@ -41,11 +41,11 @@ func set_player_for_debug() -> void:
 func lauch_first_phase() -> void:
 	for woman: Npc in woman_points.women: woman.visible = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
-	# Set Spawners#############################################################################
 	await wait(60.0)
 
 
 func allies_arrival() -> void:
+	battle_director.go_next_covers_activation() ####################################### Arrivée des alliées
 	await wait_until(is_player_alive)
 	player.can_die = false
 	await wait_voice() # "Faites place ! Faites place !"
@@ -72,7 +72,6 @@ func allies_arrival() -> void:
 	ui_manager.launch_letter_box(false)
 	lay_down_weapon(false)
 	await wait(ui_manager.time_to_open_letter_box)
-	# Cut Enemy Spawners ############################################################################
 	await wait_until(is_there_no_enemies)
 	
 	#############################################################################FOR DEBUG
@@ -137,7 +136,7 @@ func launch_women_dialogue() -> void:
 
 
 func launch_last_battle_phase() -> void:
-	# Set Spawners ############################################################################
+	battle_director.go_next_covers_activation() ####################################### Fin de l'accalmie
 	var louise: Npc = woman_points.women[0]
 	for woman: Npc in woman_points.women:
 		var t: float = randf_range(0.5, 0.8)
@@ -152,6 +151,19 @@ func launch_last_battle_phase() -> void:
 	game_manager.cannon.move_to_second_path()
 	game_manager.cannon.enabled = true
 	player.can_die = true
-	# Set Spawners ############################################################################
+	await wait_until(is_barricade_damaged)
+	battle_director.go_next_covers_activation() ####################################### Barricade 2 endommagée
+	await wait_until(is_barricade_very_damaged)
+	battle_director.go_next_covers_activation() ####################################### Barricade 2 très endommagée
 	await wait_signal(game_manager.second_barricade.just_destroyed)
 	game_manager.cannon.enabled = false
+	await wait(10.0)
+	battle_director.go_next_covers_activation() ####################################### 10s après barricade 2 détruite
+
+
+func is_barricade_damaged() -> bool:
+	return game_manager.curr_barricade.state >= 1
+
+
+func is_barricade_very_damaged() -> bool:
+	return game_manager.curr_barricade.state >= 2

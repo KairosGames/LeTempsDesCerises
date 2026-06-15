@@ -239,7 +239,7 @@ func enter_fight_begin() -> void:
 
 
 func georges_death() -> void:
-	# Set spwaners ##########################################################################################
+	battle_director.go_next_covers_activation() ################################## Arrivée ennemis
 	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.2)
 	var george_targ: Vector3 = (player.global_position + (player.basis.x * 1.0)) + player.basis.z * 2.0
 	await georges.move_to(george_targ, 4.0)

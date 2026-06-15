@@ -19,6 +19,7 @@ static var voice_line_index: int = -1
 var game_manager: GameManager
 var eff_manager: EffectsManager
 var ui_manager: UIManager
+var battle_director: BattleDirector
 var player: Player
 var next_respawn: Npc
 var on_process: Array[Callable]
@@ -43,6 +44,7 @@ func ready_deffered() -> void:
 	else: game_manager.player_instance_loaded.connect(set_local_player, CONNECT_ONE_SHOT)
 	eff_manager = EffectsManager.instance
 	ui_manager = UIManager.instance
+	battle_director = BattleDirector.instance
 	death_zone.monitoring = true
 	death_zone.player_entered.connect(kill_player)
 

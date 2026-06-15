@@ -57,6 +57,7 @@ func go_to_barricade() -> void:
 	clean_ui_process()
 	go_to_barricade_area.set_deferred("monitoring", false)
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
+	battle_director.go_next_covers_activation() ################################## Entrée zone barricade
 
 
 func check_run() -> void:
@@ -133,7 +134,7 @@ func can_player_die() -> bool:
 
 
 func lauch_first_battle_phase() -> void:
-	# Set spwaners ##########################################################################################
+	battle_director.go_next_covers_activation() ########################################### Première mort
 	print("WAIT 90S")
 	await wait(5.0)
 	jules = null
@@ -150,6 +151,7 @@ func launch_cannon_arrival() -> void:
 	await wait_voice() # "Ils ont un bronze!"
 	ui_manager.set_objective(true, game_manager.cannon.objective_point, "Stop the cannon from destroying the barricade")
 	player.enemy_shot.connect(check_player_kill_cannon_enemy)
+	battle_director.go_next_covers_activation()################################################ Canon visible
 	await wait_until_or_signal(is_cannon_ready_to_shoot, game_manager.cannon.reloaded)
 	for agent: Agent in game_manager.cannon.workers: agent.can_die = false
 	if player.enemy_shot.is_connected(check_player_kill_cannon_enemy): player.enemy_shot.disconnect(check_player_kill_cannon_enemy)
@@ -202,7 +204,7 @@ func launch_first_cannon_shoot() -> void:
 
 func lauch_second_battle_phase() -> void:
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
-	# Set spwaners ##########################################################################################
+	battle_director.go_next_covers_activation() ############################################## Premier tir canon
 
 
 func wait_francois_move() -> void:
@@ -212,8 +214,16 @@ func wait_francois_move() -> void:
 
 
 func wait_barricade_destruction() -> void:
+	await wait_until(is_barricade_very_damaged)
+	battle_director.go_next_covers_activation() ############################################ Barricade très endommagée
 	await wait_until_or_signal(is_first_barricade_destroyed, game_manager.first_barricade.just_destroyed)
 	game_manager.cannon.enabled = false
+	await wait_until_or_signal(is_first_barricade_destroyed, game_manager.first_barricade.just_destroyed)
+	battle_director.go_next_covers_activation() ####################################### Barricade détruite
+
+
+func is_barricade_very_damaged() -> bool:
+	return game_manager.curr_barricade.state >= 2
 
 
 func is_first_barricade_destroyed() -> bool:
@@ -223,7 +233,7 @@ func is_first_barricade_destroyed() -> bool:
 func enemies_enter_first_zone() -> void:
 	ui_manager.set_objective(true, go_to_second_barricade, "Go to the backup barricade") # give second baricade target
 	await wait(20.0)
-	# Set spwaners #################################################################################################
+	battle_director.go_next_covers_activation() ####################################### Passage barricade 2
 	player.is_next_death_scripted = true
 	next_respawn = second_barricade_npc
 	death_zone_second_barricade.player_entered.connect(kill_player, CONNECT_ONE_SHOT)
