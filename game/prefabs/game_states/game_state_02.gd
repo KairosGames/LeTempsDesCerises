@@ -42,7 +42,7 @@ func lauch_first_phase() -> void:
 	for woman: Npc in woman_points.women: woman.visible = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 	# Set Spawners#############################################################################
-	await wait(0.0)#60.0)
+	await wait(60.0)
 
 
 func allies_arrival() -> void:
