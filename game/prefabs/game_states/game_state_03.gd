@@ -70,11 +70,17 @@ func are_louise_and_francois_on_covers() -> bool:
 
 
 func is_there_one_ally() -> bool:
-	return get_tree().get_nodes_in_group("Communard").size() <= 1
+	var list: Array[Node] = get_tree().get_nodes_in_group("Communard")
+	if list.size() == 2 and (list[0] is Player or list[1] is Player):
+		if list[0] is Player: list.remove_at(0)
+		if list[1] is Player: list.remove_at(1)
+	return list.size() <= 1
 
 
 func is_there_no_allies() -> bool:
-	return get_tree().get_nodes_in_group("Communard").size() <= 0
+	var list: Array[Node] = get_tree().get_nodes_in_group("Communard")
+	if list.size() == 1 and list[0] is Player: list.remove_at(0)
+	return list.size() <= 0
 
 
 func player_go_to_cover() -> void:

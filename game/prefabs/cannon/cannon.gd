@@ -122,8 +122,8 @@ func _restore(slot: Marker3D) -> void:
 	available_slots.push_back(slot)
 	if not move_speeds[holded_slots.size()]: stop_move.emit()
 
-func _create_workers() -> void:
-	for i in range(2):
+func _create_workers(n: int = 2) -> void:
+	for i in range(n):
 		var new_worker: Agent = WORKER_PREFAB.instantiate()
 		add_child(new_worker)
 		new_worker.global_transform = global_transform

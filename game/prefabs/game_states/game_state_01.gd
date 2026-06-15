@@ -152,10 +152,23 @@ func launch_cannon_arrival() -> void:
 	ui_manager.set_objective(true, game_manager.cannon.objective_point, "Stop the cannon from destroying the barricade")
 	player.enemy_shot.connect(check_player_kill_cannon_enemy)
 	battle_director.go_next_covers_activation()################################################ Canon visible
+	
+	############Debug
+	add_on_process(add_worker_on_cannon)
+	
+	
 	await wait_until_or_signal(is_cannon_ready_to_shoot, game_manager.cannon.reloaded)
 	for agent: Agent in game_manager.cannon.workers: agent.can_die = false
+	print("CANNON INVINSIBLE")
 	if player.enemy_shot.is_connected(check_player_kill_cannon_enemy): player.enemy_shot.disconnect(check_player_kill_cannon_enemy)
 	ui_manager.objective_target.target = null
+
+
+#####################DEBUG ##############################
+func add_worker_on_cannon() -> void:
+	if Input.is_action_just_pressed("choice_surrender"):
+		game_manager.cannon._create_workers(1)
+#####################DEBUG ##############################
 
 
 func is_cannon_ready_to_shoot() -> bool:
@@ -174,6 +187,10 @@ func check_player_kill_cannon_enemy(target: Node3D) -> void:
 
 
 func go_to_cover_from_cannon() -> void:
+	
+	#FOR DEBUG###########################
+	clean_process()
+	
 	await wait_until(is_player_alive)
 	player.can_die = false
 	await wait_voice() # "Attention, ils vont tirer au cannon !"
@@ -204,6 +221,7 @@ func launch_first_cannon_shoot() -> void:
 
 func lauch_second_battle_phase() -> void:
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
+	player.can_die = true
 	battle_director.go_next_covers_activation() ############################################## Premier tir canon
 
 
