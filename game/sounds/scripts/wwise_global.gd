@@ -18,7 +18,7 @@ func _ready() -> void:
 	game_manager = GameManager.instance
 	game_manager.clicked_pause.connect(pause)
 	if game_manager and game_manager.use_narrative:
-		game_manager.curr_state.voice_line_called.connect(new_line)
+		game_manager.voice_line_called.connect(new_line)
 		await get_tree().create_timer(0.5).timeout
 		new_line(0)
 	if game_manager: game_manager.all_states[1].player_tried_to_exit.connect(player_far)
@@ -32,7 +32,8 @@ func new_line(step : int):
 	line_count = 0
 	Wwise.set_state("narrative_step", String("_" + str(step)))
 	for i in narrators:
-		i.voiceline()
+		if is_instance_valid(i):
+			i.voiceline()
 
 func line_ended():
 	line_count += 1
@@ -138,8 +139,11 @@ func localize():
 	print("change language")
 	Wwise.set_current_language("English(US)")
 
-func unload(bank_name : String):
-	Wwise.unload_bank(bank_name)
+func unload(remove : String):
+	for name in narrators:
+		if name.name == remove:
+			narrators.erase(name)
+	Wwise.unload_bank(remove)
 
 func on_move_progress(progress):
 	progress /= 25
