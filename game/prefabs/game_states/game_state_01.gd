@@ -40,6 +40,7 @@ func exit() -> void:
 
 
 func set_player_for_debug() -> void:
+	voice_line_index = 16
 	ui_manager.set_objective(true, game_manager.all_states[0].objective_point_barricade, "Go to the barricade")
 	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
 	player.give_or_drop_weapon(true)
