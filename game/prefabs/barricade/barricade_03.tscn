@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dvoxibc2b3rln"]
+
+[ext_resource type="Script" uid="uid://dexhveoh7rgj3" path="res://prefabs/barricade/barricade.gd" id="1_pvjo0"]
+[ext_resource type="PackedScene" uid="uid://bl5i24eay57al" path="res://prefabs/barricade/barricade_03_intact.tscn" id="2_77k22"]
+[ext_resource type="PackedScene" uid="uid://dl1uuaxubetr3" path="res://prefabs/barricade/barricade_03_damage_01.tscn" id="3_a3acv"]
+[ext_resource type="PackedScene" uid="uid://sx6r847gocu7" path="res://prefabs/barricade/barricade_03_damage_02.tscn" id="4_68am2"]
+[ext_resource type="PackedScene" uid="uid://ciigxgp4nxd8t" path="res://sandbox/covers_proto/dirt_pile_medium.tscn" id="5_7k3v3"]
+[ext_resource type="PackedScene" uid="uid://b7g43nok0jfas" path="res://prefabs/barricade/barricade_03_destroyed.tscn" id="5_24ljc"]
+[ext_resource type="PackedScene" uid="uid://cvgennjoefedh" path="res://sandbox/covers_proto/dirt_pile_little.tscn" id="6_a2ttd"]
+
+[node name="Barricade03" type="Node3D" unique_id=504355432]
+script = ExtResource("1_pvjo0")
+
+[node name="Intacte" parent="." unique_id=2127946876 instance=ExtResource("2_77k22")]
+
+[node name="Damage01" parent="." unique_id=1841857413 instance=ExtResource("3_a3acv")]
+visible = false
+
+[node name="Damage02" parent="." unique_id=1577627335 instance=ExtResource("4_68am2")]
+visible = false
+
+[node name="Destroyed" parent="." unique_id=1989816985 instance=ExtResource("5_24ljc")]
+visible = false
+
+[node name="Dirt_pile" parent="." unique_id=703671390 instance=ExtResource("5_7k3v3")]
+transform = Transform3D(0.98468024, 0, 0.17437007, 0, 1, 0, -0.17437007, 0, 0.98468024, 1.7502499, 0.100004435, 3.3495178)
+
+[node name="Dirt_pile_little" parent="." unique_id=958166927 instance=ExtResource("6_a2ttd")]
+transform = Transform3D(0.9909059, 0, -0.13455692, 0, 1, 0, 0.13455692, 0, 0.9909059, -2.2144775, 0.10000348, 1.3306904)
+
+[node name="Dirt_pile2" parent="." unique_id=1488625197 instance=ExtResource("5_7k3v3")]
+transform = Transform3D(0.8451592, 0, -0.53451467, 0, 1, 0, 0.53451467, 0, 0.8451592, -1.2633209, 0.100004435, 1.1800861)

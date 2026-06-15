@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bl5i24eay57al"]
+
+[ext_resource type="PackedScene" uid="uid://cbgib1n4tspd7" path="res://sandbox/covers_proto/plank_simple.tscn" id="3_mpha1"]
+[ext_resource type="PackedScene" uid="uid://bb8fxuc1b4vfl" path="res://sandbox/covers_proto/bag_simple.tscn" id="5_rcpqd"]
+[ext_resource type="PackedScene" uid="uid://7qe2h1uftjbl" path="res://sandbox/barricades_proto/ramp.tscn" id="6_mpha1"]
+[ext_resource type="PackedScene" uid="uid://dlbfo6n0j4rn1" path="res://sandbox/covers_proto/barrel_big.tscn" id="7_7vtuh"]
+[ext_resource type="PackedScene" uid="uid://8ks6t3j0qdte" path="res://prefabs/barricade/barricade_meshes/barricade_03_intact.blend" id="10_7vtuh"]
+
+[node name="Intacte" type="Node3D" unique_id=2127946876]
+
+[node name="barricade_03" parent="." unique_id=1844521644 instance=ExtResource("10_7vtuh")]
+
+[node name="PlankSimple" parent="barricade_03" unique_id=248912036 instance=ExtResource("3_mpha1")]
+transform = Transform3D(0.48817313, -0.09341047, 0.8677335, 0.10453738, 0.99335605, 0.048122495, -0.8664633, 0.06721848, 0.49469468, 1.3460444, 1.4077138, 2.3570065)
+
+[node name="PlankSimple2" parent="barricade_03" unique_id=1884867715 instance=ExtResource("3_mpha1")]
+transform = Transform3D(0.4890076, -0.08411273, 0.8682146, -0.040317073, 0.99209666, 0.11882237, -0.87134737, -0.093108915, 0.48175162, 1.4160855, 1.3510003, 2.1183422)
+visible = false
+
+[node name="BagSimple3" parent="barricade_03" unique_id=2080931740 instance=ExtResource("5_rcpqd")]
+transform = Transform3D(0.2599225, -0.79707, -0.54508686, 0.96446794, 0.24197203, 0.10607172, 0.0473492, -0.5532893, 0.8316424, 1.3482754, 1.0676917, 1.979182)
+visible = false
+
+[node name="BagSimple4" parent="barricade_03" unique_id=1174401849 instance=ExtResource("5_rcpqd")]
+transform = Transform3D(-0.43406, -0.7243684, -0.53561395, 0.84066975, -0.53939795, 0.048209544, -0.32383054, -0.42934862, 0.84308565, 0.9329022, 1.0370002, 1.5342368)
+
+[node name="Ramp" parent="barricade_03" unique_id=2091033369 instance=ExtResource("6_mpha1")]
+transform = Transform3D(0.49671865, -0.017583933, 0.8677335, -0.048749648, 0.9976511, 0.048122477, -0.8665414, -0.06620504, 0.4946947, 1.584192, 1.3945105, 1.940562)
+
+[node name="Barrel_big" parent="barricade_03" unique_id=1356934924 instance=ExtResource("7_7vtuh")]
+transform = Transform3D(0.052594107, -0.29931453, 0.952704, -0.9849106, -0.17306374, 0, 0.16487852, -0.93832827, -0.3039002, 3.57371, 1.2820493, 4.9713397)
+
+[node name="PlankSimple5" parent="barricade_03" unique_id=853332865 instance=ExtResource("3_mpha1")]
+transform = Transform3D(0.5178479, 0.85230523, 0.07354787, 0, -0.085973375, 0.9962974, 0.8554727, -0.51593053, -0.04452113, -0.95020294, 1.722, -1.1232448)
+
+[node name="BagSimple5" parent="." unique_id=1377916917 instance=ExtResource("5_rcpqd")]
+transform = Transform3D(0.82831216, -0.06742765, -0.55619466, 0.055261865, 0.9977234, -0.038655736, 0.5575348, 0.0012826547, 0.8301526, 1.1156634, 0.52743345, 1.7670531)
