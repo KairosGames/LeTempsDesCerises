@@ -175,12 +175,12 @@ var is_immortal: bool = false
 @export_range(0.0, 1.0, 0.01) var aiming_speed_ratio: float = 0.3
 
 @export_category("Air settings")
-@export var jump_strength: float = 4.5
+@export var jump_strength: float = 3.5
 @export var gravity_multiplier: float = 2.0
 
 @export_category("Camera effects settings")
-@export var land_max_y_offset: float = -0.1
-@export var land_max_pitch_offset: float = 1.0
+@export var land_max_y_offset: float = -0.05
+@export var land_max_pitch_offset: float = 0.5
 @export var land_effect_time: float = 0.2
 
 var game_manager: GameManager
