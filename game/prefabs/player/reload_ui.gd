@@ -66,6 +66,7 @@ func activation(active: bool):
 
 
 func handle_reload_phase(delta: float) -> void:
+	if not focus.visible: focus.visible = true
 	var dist_vec: Vector2 = curr_target.global_position - focus.global_position
 	var move_vec: Vector2 = dist_vec.normalized()
 	focus.global_position += move_vec * delta * speed_px_sec
