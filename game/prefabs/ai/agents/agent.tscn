@@ -258,11 +258,11 @@ states/stand-reload/position = Vector2(485.65015, 119.375)
 states/stand-shoot/node = SubResource("AnimationNodeAnimation_8bes1")
 states/stand-shoot/position = Vector2(485.63184, -237)
 transitions = ["Start", "stand-idle", SubResource("AnimationNodeStateMachineTransition_tiy8a"), "stand-idle", "stand-moving", SubResource("AnimationNodeStateMachineTransition_ettbl"), "stand-moving", "stand-idle", SubResource("AnimationNodeStateMachineTransition_fyimo"), "stand-idle", "stand-aiming", SubResource("AnimationNodeStateMachineTransition_q4ugu"), "crouch-idle", "stand-idle", SubResource("AnimationNodeStateMachineTransition_gvyxx"), "prone-idle", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_sbwer"), "stand-idle", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_m61uk"), "crouch-idle", "prone-idle", SubResource("AnimationNodeStateMachineTransition_4g52g"), "prone-idle", "prone-reload", SubResource("AnimationNodeStateMachineTransition_g06vu"), "prone-reload", "prone-idle", SubResource("AnimationNodeStateMachineTransition_niv30"), "prone-idle", "prone-die", SubResource("AnimationNodeStateMachineTransition_bhv7o"), "prone-idle", "prone-shoot", SubResource("AnimationNodeStateMachineTransition_6g6v6"), "prone-shoot", "prone-idle", SubResource("AnimationNodeStateMachineTransition_xwwb6"), "crouch-idle", "crouch-aiming", SubResource("AnimationNodeStateMachineTransition_ri6wh"), "crouch-aiming", "crouch-shoot", SubResource("AnimationNodeStateMachineTransition_rvkq6"), "crouch-shoot", "crouch-aiming", SubResource("AnimationNodeStateMachineTransition_btduq"), "crouch-aiming", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_p71j7"), "crouch-idle", "crouch-reload", SubResource("AnimationNodeStateMachineTransition_f0kng"), "crouch-reload", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_ldw4k"), "crouch-reload", "crouch-die", SubResource("AnimationNodeStateMachineTransition_xoguh"), "crouch-aiming", "crouch-die", SubResource("AnimationNodeStateMachineTransition_mkxas"), "crouch-shoot", "crouch-die", SubResource("AnimationNodeStateMachineTransition_j27nn"), "prone-shoot", "prone-die", SubResource("AnimationNodeStateMachineTransition_21eml"), "prone-reload", "prone-die", SubResource("AnimationNodeStateMachineTransition_dl64i"), "stand-aiming", "stand-idle", SubResource("AnimationNodeStateMachineTransition_qmajf"), "stand-idle", "stand-reload", SubResource("AnimationNodeStateMachineTransition_g2ncj"), "stand-reload", "stand-idle", SubResource("AnimationNodeStateMachineTransition_6gv33"), "stand-aiming", "stand-shoot", SubResource("AnimationNodeStateMachineTransition_1ec0m"), "stand-shoot", "stand-aiming", SubResource("AnimationNodeStateMachineTransition_2aw1y"), "stand-aiming", "stand-die", SubResource("AnimationNodeStateMachineTransition_o5j7l"), "stand-shoot", "stand-die", SubResource("AnimationNodeStateMachineTransition_6kbgm"), "stand-reload", "stand-die", SubResource("AnimationNodeStateMachineTransition_ues8j"), "stand-idle", "stand-die", SubResource("AnimationNodeStateMachineTransition_sm080"), "crouch-idle", "crouch-die", SubResource("AnimationNodeStateMachineTransition_1vahk")]
-graph_offset = Vector2(-324, -448.24548)
+graph_offset = Vector2(5.1000295, 468.4191)
 
 [node name="Agent" type="CharacterBody3D" unique_id=1349390169 groups=["Entities"]]
-collision_layer = 5
-collision_mask = 0
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_3m1mu")
 
 [node name="Name" type="Label3D" parent="." unique_id=591017363]
@@ -278,10 +278,10 @@ shape = SubResource("CapsuleShape3D_otrs2")
 [node name="ShootTargets" type="Node3D" parent="." unique_id=1640117776]
 
 [node name="Chest" type="Marker3D" parent="ShootTargets" unique_id=1612085666]
-transform = Transform3D(-0.9675097, -0.0038711189, 0.25231847, 0.019906433, 0.9954032, 0.09159414, -0.25157648, 0.09365063, -0.9631156, -0.02292581, 1.2600249, -0.012663186)
+transform = Transform3D(-0.9740658, -0.00350365, 0.22563931, 0.021932816, 0.9934823, 0.11009916, -0.22460993, 0.11220637, -0.96777904, -0.004862273, 1.2641394, 0.0011142408)
 
 [node name="Head" type="Marker3D" parent="ShootTargets" unique_id=2138124691]
-transform = Transform3D(-0.9984648, -0.014387438, 0.052110232, -0.017348468, 0.99802876, -0.056769475, -0.051206734, -0.057588622, -0.9968508, -0.016292496, 1.6110957, -0.026552321)
+transform = Transform3D(-0.9995265, -0.013179146, 0.025054367, -0.014011606, 0.9991447, -0.03326675, -0.024602236, -0.033603683, -0.9989532, 0.0008215378, 1.6154209, -0.0066152313)
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=2136817593]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
@@ -294,13 +294,13 @@ collide_with_areas = true
 [node name="Body" parent="." unique_id=1904847892 instance=ExtResource("2_f5m6n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Ch49_body1" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1460539898) index="0" unique_id=1260142895]
+[node name="Ch49_body1" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1365592556) index="0" unique_id=213557982]
 material_override = SubResource("StandardMaterial3D_1vahk")
 
-[node name="Ch49_body2" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1460539898) index="1" unique_id=973976741]
+[node name="Ch49_body2" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1365592556) index="1" unique_id=620547993]
 material_override = SubResource("StandardMaterial3D_1vahk")
 
-[node name="Weapon" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1460539898) index="2" unique_id=1039528541]
+[node name="Weapon" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1365592556) index="2" unique_id=1039528541]
 transform = Transform3D(-0.098535545, -0.9945377, 0.034431607, 0.99505264, -0.098028034, 0.016132727, -0.012669392, 0.035850953, 0.99927676, -69.828865, -5.1362824, -143.44972)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
@@ -308,7 +308,7 @@ bone_idx = 34
 [node name="sk_chassepot" parent="Body/Armature/Skeleton3D/Weapon" unique_id=1025414177 instance=ExtResource("3_sm080")]
 transform = Transform3D(-10.55309, 95.53138, 27.611444, 11.808159, 28.773891, -95.04016, -98.73802, -6.7692723, -14.317036, 3.4706862, 18.70045, 6.007675)
 
-[node name="Chest" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1460539898) index="3" unique_id=1462148920]
+[node name="Chest" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1365592556) index="3" unique_id=1462148920]
 transform = Transform3D(0.99999994, -1.1254992e-11, -8.367351e-11, 7.912604e-11, -0.11468208, 0.9934021, -7.558503e-11, -0.9934022, -0.114682086, 0.0039569456, -1.7613636, -119.754326)
 bone_name = "mixamorig_Spine1"
 bone_idx = 2
@@ -318,7 +318,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 8.170787, 0)
 remote_path = NodePath("../../../../../ShootTargets/Chest")
 update_scale = false
 
-[node name="Head" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1460539898) index="4" unique_id=1753585876]
+[node name="Head" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1904847892, 1365592556) index="4" unique_id=1753585876]
 transform = Transform3D(0.99999994, -2.077659e-11, -8.183071e-11, 7.9126046e-11, 1.4901161e-08, 0.9999998, -7.558503e-11, -0.9999998, 1.4901163e-08, 0.0039569447, -2.9954135, -154.90862)
 bone_name = "mixamorig_Head"
 bone_idx = 5
