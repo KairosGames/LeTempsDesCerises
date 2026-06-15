@@ -13,6 +13,7 @@ enum NpcName{
 	Georges,
 	Jules,
 	François,
+	Michel,
 	Louise,
 	Marie,
 	Woman1,
