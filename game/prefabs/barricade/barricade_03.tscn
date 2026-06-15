@@ -8,8 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://b7g43nok0jfas" path="res://prefabs/barricade/barricade_03_destroyed.tscn" id="5_24ljc"]
 [ext_resource type="PackedScene" uid="uid://cvgennjoefedh" path="res://sandbox/covers_proto/dirt_pile_little.tscn" id="6_a2ttd"]
 
-[node name="Barricade03" type="Node3D" unique_id=504355432]
+[node name="Barricade03" type="Node3D" unique_id=504355432 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules")]
 script = ExtResource("1_pvjo0")
+full_life_modules = NodePath("Intacte")
+damages_modules_1 = NodePath("Damage01")
+damages_modules_2 = NodePath("Damage02")
+destroyed_modules = NodePath("Destroyed")
 
 [node name="Intacte" parent="." unique_id=2127946876 instance=ExtResource("2_77k22")]
 
