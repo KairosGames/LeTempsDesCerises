@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/managers/game_manager.tscn" id="1_124fr"]
 [ext_resource type="PackedScene" uid="uid://cowhe7krsng37" path="res://scenes/game_design_scene.tscn" id="3_vgclv"]
 [ext_resource type="Shader" uid="uid://ccs46yyijk1tk" path="res://materials/shaders/sg_custom_sky.gdshader" id="4_3ivn4"]
+[ext_resource type="Shader" uid="uid://dbacxpivv71g2" path="res://materials/shaders/kuwahara.gdshader" id="5_3ivn4"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="7_vj5vi"]
 
 [sub_resource type="Gradient" id="Gradient_3ivn4"]
@@ -408,6 +409,11 @@ _data = {
 &"RESET": SubResource("Animation_3ivn4")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gedxo"]
+shader = ExtResource("5_3ivn4")
+shader_parameter/radius = 5
+shader_parameter/offset = Vector3(0, 0, 0)
+
 [node name="GreyBlockScene" type="Node3D" unique_id=111111966]
 
 [node name="GameManager" parent="." unique_id=1070764289 node_paths=PackedStringArray("first_barricade", "second_barricade", "cannon") instance=ExtResource("1_124fr")]
@@ -541,3 +547,12 @@ spot_angle_attenuation = 0.2414844
 
 [node name="GameDesignScene" parent="." unique_id=1256367080 instance=ExtResource("3_vgclv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010229111, -3.33786e-06, 0.014831543)
+
+[node name="Kuwahara" type="ColorRect" parent="." unique_id=325385908]
+visible = false
+material = SubResource("ShaderMaterial_gedxo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
