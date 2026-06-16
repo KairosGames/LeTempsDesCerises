@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://225rykh58g4a"]
 
-[ext_resource type="Texture2D" uid="uid://8po0fn5prpxf" path="res://sources/images/textures/affiches/concert.png" id="1_chvp2"]
+[ext_resource type="Script" uid="uid://cu7xnp7nmsk05" path="res://scripts/affiches.gd" id="1_chvp2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ybj5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47dh8"]
+resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("1_chvp2")
 
 [sub_resource type="QuadMesh" id="QuadMesh_6hj1e"]
-material = SubResource("StandardMaterial3D_2ybj5")
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_47dh8")
 size = Vector2(0.4, 0.6)
 subdivide_width = 20
 subdivide_depth = 1
 
-[node name="Grand_concert" type="MeshInstance3D" unique_id=1455655155]
+[node name="Affiche" type="MeshInstance3D" unique_id=1455655155]
 mesh = SubResource("QuadMesh_6hj1e")
+script = ExtResource("1_chvp2")

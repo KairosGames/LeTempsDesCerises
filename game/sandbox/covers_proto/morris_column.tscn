@@ -4,6 +4,10 @@
 [ext_resource type="Material" uid="uid://c6jwmpwhck58r" path="res://sandbox/chassepot_proto/steel_proto.tres" id="2_eg2yi"]
 [ext_resource type="Texture2D" uid="uid://rb2o7wtmp0bw" path="res://sources/images/textures/affiches/394_25_mai_5_prairial_79_soldats_de_Versailles.png" id="3_8aefd"]
 [ext_resource type="Shader" uid="uid://cchm8fe2okm1d" path="res://sandbox/covers_proto/affiche.gdshader" id="4_enxkv"]
+[ext_resource type="Texture2D" uid="uid://bkpb11bb6chae" path="res://sources/images/textures/affiches/soldats_versailles.png" id="5_t4jab"]
+[ext_resource type="Texture2D" uid="uid://clwivtte1vwf4" path="res://sources/images/textures/affiches/la_sociale.png" id="6_6l513"]
+[ext_resource type="Texture2D" uid="uid://u8bwchhrkds8" path="res://sources/images/textures/affiches/affiche_rouge.png" id="6_qg6i7"]
+[ext_resource type="Texture2D" uid="uid://dksvsc7p2phkc" path="res://sources/images/textures/affiches/cantines_municipales.png" id="7_qg6i7"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3tikv"]
 height = 4.5294
@@ -35,11 +39,62 @@ size = Vector2(1, 1.42)
 subdivide_width = 10
 subdivide_depth = 20
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2354l"]
+render_priority = 0
+shader = ExtResource("4_enxkv")
+shader_parameter/affiche_texture = ExtResource("5_t4jab")
+shader_parameter/width = 0.8
+shader_parameter/radius = -0.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_6l513"]
+material = SubResource("ShaderMaterial_2354l")
+subdivide_width = 10
+subdivide_depth = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dq5t"]
+render_priority = 0
+shader = ExtResource("4_enxkv")
+shader_parameter/affiche_texture = ExtResource("6_qg6i7")
+shader_parameter/width = 1.1
+shader_parameter/radius = -0.53
+
+[sub_resource type="QuadMesh" id="QuadMesh_ft5rj"]
+material = SubResource("ShaderMaterial_5dq5t")
+size = Vector2(1, 0.575)
+subdivide_width = 10
+subdivide_depth = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ejfay"]
+render_priority = 0
+shader = ExtResource("4_enxkv")
+shader_parameter/affiche_texture = ExtResource("6_6l513")
+shader_parameter/width = 0.8
+shader_parameter/radius = -0.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_5dq5t"]
+material = SubResource("ShaderMaterial_ejfay")
+size = Vector2(1, 0.49)
+subdivide_width = 10
+subdivide_depth = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ft5rj"]
+render_priority = 0
+shader = ExtResource("4_enxkv")
+shader_parameter/affiche_texture = ExtResource("7_qg6i7")
+shader_parameter/width = 1.0
+shader_parameter/radius = -0.54
+
+[sub_resource type="QuadMesh" id="QuadMesh_v252m"]
+material = SubResource("ShaderMaterial_ft5rj")
+size = Vector2(1, 0.84)
+subdivide_width = 10
+subdivide_depth = 20
+
 [node name="MorrisColumn" type="StaticBody3D" unique_id=1149487519]
 
 [node name="sm_morris_column_complete_c2" parent="." unique_id=760765616 instance=ExtResource("1_3tikv")]
 
-[node name="sm_morris_column_complete_c" parent="sm_morris_column_complete_c2" index="0" unique_id=1676917132]
+[node name="sm_morris_column_complete_c" parent="sm_morris_column_complete_c2" index="0" unique_id=921684208]
 surface_material_override/0 = ExtResource("2_eg2yi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1777114855]
@@ -54,5 +109,21 @@ mesh = SubResource("CylinderMesh_t4jab")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1103262837]
 transform = Transform3D(0.9848076, 0, -0.17364816, 0, 1, 0, 0.17364816, 0, 0.9848076, -0.092832215, 1.5, 0.52647763)
 mesh = SubResource("QuadMesh_2354l")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=748532912]
+transform = Transform3D(-0.26375526, 0, 0.9645895, 0, 1, 0, -0.9645895, 0, -0.26375526, 0.5078961, 1.1116573, -0.13887802)
+mesh = SubResource("QuadMesh_6l513")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=145484233]
+transform = Transform3D(-0.17638049, 0, 0.98432195, 0, 1, 0, -0.98432195, 0, -0.17638049, 0.5200753, 1.996, -0.0931922)
+mesh = SubResource("QuadMesh_ft5rj")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1690495898]
+transform = Transform3D(-0.6723279, 0, -0.7402534, 0, 1, 0, 0.7402534, 0, -0.6723279, -0.3911334, 0.808367, -0.35524315)
+mesh = SubResource("QuadMesh_5dq5t")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=422557737]
+transform = Transform3D(-0.6723279, 0, -0.7402534, 0, 1, 0, 0.7402534, 0, -0.6723279, -0.39120013, 1.78157, -0.35530376)
+mesh = SubResource("QuadMesh_v252m")
 
 [editable path="sm_morris_column_complete_c2"]
