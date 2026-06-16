@@ -19,10 +19,12 @@ func _on_canon_start_move() -> void:
 func _on_canon_stop_move() -> void:
 	pass # Replace with function body.
 
-func update_cannon_workers(workers):
+func update_cannon_workers(workers: Array[Agent]) -> void:
 	WwiseGlobal.cannon_workers.clear()
-	for agent : Agent in workers:
-		for child in agent.get_children():
-			if child.name == "ak_enemy_manager":
-				WwiseGlobal.cannon_workers.append(child)
+	for agent: Agent in workers:
+		var ak_enemy: Node = agent.get_node_or_null(^"ak_enemy_manager")
+		if not ak_enemy:
+			push_error("En même temps on aurait pas ce problème si tu utilisais des classes")
+			continue
+		WwiseGlobal.cannon_workers.append(ak_enemy)
 	print(WwiseGlobal.cannon_workers)
