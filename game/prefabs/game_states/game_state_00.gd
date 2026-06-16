@@ -28,8 +28,8 @@ func enter() -> void:
 		Step.new(wait_voice, wait_player_enter_reload, wait_voice), # "Ah mais il est vide celui là" / # "Voilà la ligne, ils sont sur nous !"
 		Step.new(enter_fight_begin, georges_death, free_player)
 	]
-	run_steps()
 	if game_manager.use_debug: set_player_for_debug()
+	run_steps()
 
 
 func exit() -> void:

@@ -10,6 +10,7 @@ signal shot
 @onready var is_on_screen: VisibleOnScreenNotifier3D = %IsOnScreen
 @onready var nav: NavigationAgent3D = %Navigation
 
+
 enum NpcName{
 	Georges,
 	Jules,
@@ -198,6 +199,7 @@ func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: b
 	await rotate_yaw_to_pos_tween(targ, 0.2)
 	is_all_nav_finished = true
 	arrived_on_path_destination.emit()
+	if collider.disabled: collider.disabled = false
 	is_figthing = fight
 
 

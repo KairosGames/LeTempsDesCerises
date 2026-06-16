@@ -28,6 +28,7 @@ func set_all_versaillais_spwan_pos() -> void:
 func all_versaillais_go_to_dialogue_pos() -> void:
 	var i: int = 0
 	for versaillais: Npc in all_versaillais:
+		versaillais.collider.disabled = true
 		versaillais.launch_movement_to_nav_point(dialogue_points[i], 5.0)
 		if i != 0: versaillais.wait_nav_to_aim()
 		i += 1

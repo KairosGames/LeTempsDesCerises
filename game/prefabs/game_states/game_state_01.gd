@@ -31,8 +31,8 @@ func enter() -> void:
 		Step.new(lauch_second_battle_phase, wait_francois_move, wait_barricade_destruction),
 		Step.new(enemies_enter_first_zone, do_nothing, do_nothing),
 	]
-	run_steps()
 	if game_manager.use_debug: set_player_for_debug()
+	run_steps()
 
 
 func exit() -> void:

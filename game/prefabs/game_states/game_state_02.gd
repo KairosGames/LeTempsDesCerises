@@ -9,6 +9,8 @@ class_name GameState02 extends GameState
 @onready var discussion_area: EventArea = %DiscussionArea
 @onready var barricade_point: CustomMarker = %BarricadePoint
 
+var first_battle_phase_time: float = 60.0
+
 
 func enter() -> void:
 	curr_step = 0
@@ -17,8 +19,8 @@ func enter() -> void:
 		Step.new(launch_dialogue_preparation, launch_women_dialogue, do_nothing),
 		Step.new(launch_last_battle_phase, do_nothing, do_nothing),
 	]
-	run_steps()
 	if game_manager.use_debug: set_player_for_debug()
+	run_steps()
 
 
 func exit() -> void:
@@ -26,6 +28,7 @@ func exit() -> void:
 
 
 func set_player_for_debug() -> void:
+	first_battle_phase_time = 0.0
 	francois.global_position = francois_moved_pos.global_position
 	francois.global_rotation = francois_moved_pos.global_rotation
 	francois.is_figthing = true
@@ -41,7 +44,10 @@ func set_player_for_debug() -> void:
 func lauch_first_phase() -> void:
 	for woman: Npc in woman_points.women: woman.visible = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
-	await wait(60.0)
+	print("ENTER WAIT")
+	print(first_battle_phase_time)
+	await wait(first_battle_phase_time)
+	print("FINISH WAITING")
 
 
 func allies_arrival() -> void:
@@ -50,7 +56,7 @@ func allies_arrival() -> void:
 	player.can_die = false
 	await wait_voice() # "Faites place ! Faites place !"
 	desactivable_barricade.process_mode = Node.PROCESS_MODE_DISABLED
-	lauch_women()
+	launch_women()
 	louise_detection_area.monitoring = true
 	player.can_play = false
 	await run_to_destination(women_arrival_point)
@@ -59,9 +65,15 @@ func allies_arrival() -> void:
 	await tween_rotate_player_to_yaw(women_arrival_point.global_rotation.y, 1.0 * time_ratio)
 	var louise: Npc = woman_points.women[0]
 	await wait_signal(louise_detection_area.tracked_npc_entered)
+	
+	print("CA PASSE ICI")
+	
 	louise_detection_area.set_deferred("monitoring", false)
 	launch_francois_replique_on_women_arrival()
 	await wait_signal(louise.arrived_on_path_point)
+	
+	print("CA PASSE ICI AUSSI")
+	
 	desactivable_barricade.process_mode = Node.PROCESS_MODE_INHERIT
 	lay_down_weapon(true)
 	await wait_until_or_signal(louise.is_on_all_nav_finished, louise.arrived_on_path_destination)
@@ -87,13 +99,14 @@ func debug() -> void:
 ############################################################################
 
 
-func lauch_women() -> void:
+func launch_women() -> void:
 	for woman: Npc in woman_points.women:
 		woman.visible = true
 		var p1: CustomMarker = woman_points.get_first_point(woman)
 		var p2: CustomMarker = woman_points.get_second_point(woman)
 		var path_points: Array[Node3D] = [p1, p2]
 		var speed: float = randf_range(3.7, 4.3)
+		if woman.npc_name != Npc.NpcName.Louise: woman.collider.disabled = true
 		woman.launch_movement_to_paths(path_points, speed, true)
 
 
