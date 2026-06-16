@@ -26,7 +26,7 @@ var path_progress: float = 0.0:
 
 
 func _ready() -> void:
-	for i in range(4): path.curve.add_point(Vector3.ZERO)
+	for i in range(4): path.curve.add_point(Vector3.FORWARD * 0.001 * i)
 
 
 func set_path(start: Vector3, end: Vector3) -> void:
