@@ -8,6 +8,9 @@
 			</PropertyList>
 			<ChildrenList>
 				<PropertyContainer Name="Player" ID="{5E9B791F-AAC8-43AE-9460-7727FA3FBF7C}" ShortID="1042608490">
+					<PropertyList>
+						<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -597,12 +600,18 @@
 					</ChildrenList>
 				</PropertyContainer>
 				<PropertyContainer Name="NPC" ID="{693B4AB7-AB42-427F-B38C-EC1D65C69AFE}" ShortID="36617065">
+					<PropertyList>
+						<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+						</Reference>
+						<Reference Name="ReflectionsAuxSend">
+							<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 						</Reference>
 						<Reference Name="UserAuxSend0">
 							<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -10450,18 +10459,25 @@
 					</ObjectLists>
 				</PropertyContainer>
 				<PropertyContainer Name="Scripted" ID="{EC6575AE-A3DC-4B64-9E38-FBE798AA3260}" ShortID="314099733">
+					<PropertyList>
+						<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+							<ObjectRef Name="VX" ID="{E8C3D5DB-24D6-472C-93CA-D6BB12427941}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+						</Reference>
+						<Reference Name="ReflectionsAuxSend">
+							<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<SwitchContainer Name="Character" ID="{71F62CB4-A443-43C3-BCD9-B5C5EFC7CEF0}" ShortID="1048524615">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 								<Property Name="OverrideEffect" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
@@ -12101,7 +12117,7 @@
 											<Custom>
 												<Attenuation Name="Attenuation (Custom)" ID="{BDFFEA30-FCAD-446D-BBFD-B65508FEB0C7}" ShortID="121242963">
 													<PropertyList>
-														<Property Name="RadiusMax" Type="Real64" Value="50"/>
+														<Property Name="RadiusMax" Type="Real64" Value="25"/>
 													</PropertyList>
 													<CurveUsageInfoList>
 														<VolumeDryUsage>
@@ -12118,7 +12134,7 @@
 																			<SegmentShape>SCurve</SegmentShape>
 																		</Point>
 																		<Point>
-																			<XPos>50</XPos>
+																			<XPos>25</XPos>
 																			<YPos>-200</YPos>
 																			<Flags>37</Flags>
 																		</Point>
@@ -12215,14 +12231,119 @@
 									<ChildrenList>
 										<Sound Name="VX_Amb_M_Comm_Jules_OB_Enemy_Arrival_4_Vincent" ID="{BE23F393-0961-4AE4-9BA9-E65BCBDBF834}" ShortID="218383485">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>6.5</Value>
 													</ValueList>
 												</Property>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<Custom>
+														<Attenuation Name="Attenuation (Custom)" ID="{77629D0D-E9C4-43FA-8463-B3902D77ED6C}" ShortID="168387909">
+															<PropertyList>
+																<Property Name="RadiusMax" Type="Real64" Value="50"/>
+															</PropertyList>
+															<CurveUsageInfoList>
+																<VolumeDryUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																		<Curve Name="VolumeDry" ID="{D555DCC0-84EE-4F0F-B51A-1C1CC4D57251}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="3"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>0</YPos>
+																					<Flags>5</Flags>
+																					<SegmentShape>SCurve</SegmentShape>
+																				</Point>
+																				<Point>
+																					<XPos>50</XPos>
+																					<YPos>-200</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</VolumeDryUsage>
+																<VolumeWetGameUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetGameUsage>
+																<VolumeWetUserUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetUserUsage>
+																<LowPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</LowPassFilterUsage>
+																<HighPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</HighPassFilterUsage>
+																<DualShelfUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</DualShelfUsage>
+																<SpreadUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</SpreadUsage>
+																<FocusUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</FocusUsage>
+																<ObstructionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionVolumeUsage>
+																<ObstructionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionLPFUsage>
+																<ObstructionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionHPFUsage>
+																<ObstructionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionDSFUsage>
+																<OcclusionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionVolumeUsage>
+																<OcclusionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionLPFUsage>
+																<OcclusionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionHPFUsage>
+																<OcclusionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionDSFUsage>
+																<DiffractionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionVolumeUsage>
+																<DiffractionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionLPFUsage>
+																<DiffractionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionHPFUsage>
+																<DiffractionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionDSFUsage>
+																<TransmissionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionVolumeUsage>
+																<TransmissionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionLPFUsage>
+																<TransmissionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionHPFUsage>
+																<TransmissionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionDSFUsage>
+															</CurveUsageInfoList>
+														</Attenuation>
+													</Custom>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 												</Reference>
@@ -12321,6 +12442,8 @@
 												<AudioFileSource Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-002" ID="{D88D33AF-8236-40B4-AB41-5AC4AB7EB86D}">
 													<PropertyList>
 														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="1.94335"/>
 													</PropertyList>
 													<Language>French(France)</Language>
 													<AudioFile>Characters\Jules\VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-002.wav</AudioFile>
@@ -12331,7 +12454,8 @@
 														<ObjectList Name="Markers">
 															<Marker Name="" ID="{37A7157F-8081-4DE5-9B21-42F6677D369A}">
 																<PropertyList>
-																	<Property Name="Label" Type="string" Value="Non, Gommeux ! Gommeux, merde !"/>
+																	<Property Name="Label" Type="string" Value="Gommeux, merde !"/>
+																	<Property Name="Time" Type="Real64" Value="1.98332016776413"/>
 																</PropertyList>
 															</Marker>
 														</ObjectList>
@@ -12423,7 +12547,6 @@
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
@@ -12674,6 +12797,11 @@
 										</Sound>
 										<Sound Name="VX_Amb_M_Comm_Francois_Game_End_2_Ydris" ID="{0EADBEC9-8D60-471C-90F4-DEE115CC2A02}" ShortID="325576880">
 											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>9</Value>
+													</ValueList>
+												</Property>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -12736,11 +12864,23 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_1_Ydris" ID="{04EB922B-2365-4EAA-ACA7-67ADAA425681}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
 													<Language>French(France)</Language>
 													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Canon_Arrival_1_Ydris.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="203011795"/>
 													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{B388525C-FA15-4831-8E09-CA9B81208C57}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Attention ! Ils ont un bronze !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
@@ -12766,11 +12906,23 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_3_Ydris" ID="{8C713128-6794-454B-8346-3B254B22CAAA}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
 													<Language>French(France)</Language>
 													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Canon_Arrival_3_Ydris.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="15290778"/>
 													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{C2BCDC75-8D14-4163-861F-2D6D28C5F79C}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Grouillez-vous, faut abattre les artilleurs !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
@@ -12791,11 +12943,23 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_1_Ydris" ID="{84E18B6E-B8E6-402F-9064-9EF04C3FF46C}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
 													<Language>French(France)</Language>
 													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Canon_Shoot_1_Ydris.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="812518043"/>
 													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{1ED2CB4E-5896-482F-B58A-3D21B853DC0E}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Faites-gaffe, le canon va faire feu !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
@@ -12816,11 +12980,23 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_2_Ydris" ID="{A754E8D8-560A-40EE-8A51-BC9BC65CB026}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
 													<Language>French(France)</Language>
 													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Canon_Shoot_2_Ydris.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="399566197"/>
 													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{B607778D-65A6-4315-BBC7-C2DA39DE2A82}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Putain !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
@@ -12846,11 +13022,23 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_3_Ydris" ID="{51728AB8-4F3B-48E0-B954-6970128FBA9C}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
 													<Language>French(France)</Language>
 													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Canon_Shoot_3_Ydris.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="404895938"/>
 													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{6A36E4DA-74CA-4EBD-86BC-8E7678A218BA}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Ils ont pété la barricade ! Empêchez-les de recharger le canon !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
@@ -12876,11 +13064,23 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Enemy_Arrival_3_Ydris" ID="{59ACFCFE-D5C0-40A6-A95B-20D66196E61C}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
 													<Language>French(France)</Language>
 													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Enemy_Arrival_3_Ydris.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="68632049"/>
 													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{723E3AF2-22FB-4B55-A759-9956A33D66E6}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Georges, non ! Ils ont refroidi Georges, les raclures !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
@@ -12901,11 +13101,23 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="VX_Amb_M_Comm_Francois_OB_Player_Death_1_Ydris" ID="{B380D1D9-026D-46DD-AC28-4F1C1C3CA752}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
 													<Language>French(France)</Language>
 													<AudioFile>Characters\Francois\VX_Amb_M_Comm_Francois_OB_Player_Death_1_Ydris.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="129676953"/>
 													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{EEA2D38A-85A6-4091-A64F-48B59139250E}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Allez Gommeux, rétame-en un !"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
@@ -13012,14 +13224,26 @@
 											<Grouping>
 												<SwitchRef Name="_22" ID="{CE318E2C-EA96-431A-8A4B-B1B5056DDD2B}"/>
 												<ItemList>
-													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_1_Ydris" ID="{AD8612FB-BBDB-4274-8667-91B2A8D9CB66}"/>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_2_Ydris" ID="{AB7B9F70-30EF-4E09-86C3-F890FB0084AB}"/>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_3_Ydris" ID="{890C3A74-FCCD-4663-A9A8-63DA061C6731}"/>
 												</ItemList>
 											</Grouping>
 											<Grouping>
 												<SwitchRef Name="_24" ID="{9A34572D-A19A-4325-B3F4-8085ED5A7E52}"/>
 												<ItemList>
-													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_2_Ydris" ID="{AB7B9F70-30EF-4E09-86C3-F890FB0084AB}"/>
-													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_3_Ydris" ID="{890C3A74-FCCD-4663-A9A8-63DA061C6731}"/>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_AA_Arrivee_2_Ydris" ID="{CD2DAC8F-4079-4397-9BBC-3EF45B0F693B}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_26" ID="{783FCA77-785C-488C-89DF-8A0527C007D8}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_AA_Accalmie_1_Ydris" ID="{F4C399F5-CF06-4DEE-AC99-4F8C0B9B3863}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_27" ID="{E778DD83-01DB-4A7B-8CFF-AE3F4DA7D1B3}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_Game_End_2_Ydris" ID="{0EADBEC9-8D60-471C-90F4-DEE115CC2A02}"/>
 												</ItemList>
 											</Grouping>
 											<Grouping>
@@ -13029,16 +13253,28 @@
 												</ItemList>
 											</Grouping>
 											<Grouping>
+												<SwitchRef Name="_21" ID="{34988295-5A1A-4399-8815-9E73F372259F}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_1_Ydris" ID="{F84A966D-073D-4373-B8DE-30DCA4F1CFD3}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
 												<SwitchRef Name="_20" ID="{FB6739D1-8E6F-41F3-9D67-21B693E9AB8E}"/>
 												<ItemList>
-													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Player_Death_1_Ydris" ID="{E4BA67E6-CB85-4A4D-BDAC-65C2F32FFAA5}"/>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_1_Ydris" ID="{AD8612FB-BBDB-4274-8667-91B2A8D9CB66}"/>
 													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_3_Ydris" ID="{6FD75AA6-7FF3-4C74-92EC-0D053168B110}"/>
 												</ItemList>
 											</Grouping>
 											<Grouping>
-												<SwitchRef Name="_23" ID="{C085F0E1-6DA2-44F8-A32A-D5FFB146DD83}"/>
+												<SwitchRef Name="_28" ID="{70D21AD5-9F52-44F9-84F3-47A5E9C66795}"/>
 												<ItemList>
-													<ItemRef Name="VX_Amb_M_Comm_Francois_OB_Canon_Shoot_1_Ydris" ID="{F84A966D-073D-4373-B8DE-30DCA4F1CFD3}"/>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris" ID="{02D3E9A8-AE53-470E-80D4-76356818A256}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_25" ID="{824DCEFA-E12E-4422-826D-22B6C2DD5B8E}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Comm_Francois_AA_Foutriquet_Ydris" ID="{4A63A1B3-5095-4D3A-B882-43AEAFE5C6C2}"/>
 												</ItemList>
 											</Grouping>
 										</GroupingList>
@@ -13062,6 +13298,11 @@
 									<ChildrenList>
 										<Sound Name="VX_Amb_F_Comm_Marie_AA_Accalmie_2_Yuna" ID="{F3942427-E94F-41F6-892E-2102DBFBC66F}" ShortID="372362443">
 											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>1.2</Value>
+													</ValueList>
+												</Property>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -13117,6 +13358,11 @@
 										</Sound>
 										<Sound Name="VX_Amb_F_Comm_Marie_AA_Accalmie_6_Yuna" ID="{25D485B7-DDFA-4713-9D36-B5D49171CDD8}" ShortID="696323123">
 											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>36.5</Value>
+													</ValueList>
+												</Property>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -13168,6 +13414,15 @@
 												<ItemRef Name="VX_Amb_F_Comm_Marie_AA_Accalmie_6_Yuna" ID="{25D485B7-DDFA-4713-9D36-B5D49171CDD8}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="_26" ID="{783FCA77-785C-488C-89DF-8A0527C007D8}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_F_Comm_Marie_AA_Accalmie_2_Yuna" ID="{F3942427-E94F-41F6-892E-2102DBFBC66F}"/>
+													<ItemRef Name="VX_Amb_F_Comm_Marie_AA_Accalmie_6_Yuna" ID="{25D485B7-DDFA-4713-9D36-B5D49171CDD8}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
 									</GroupingInfo>
 								</SwitchContainer>
 								<SwitchContainer Name="Louise" ID="{8BA3E994-ACAA-42D5-9983-7B335A4A7713}" ShortID="204748907">
@@ -13188,6 +13443,11 @@
 									<ChildrenList>
 										<Sound Name="VX_Amb_F_Comm_Louise_AA_Accalmie_4_Atea" ID="{88ACABA5-A858-46C0-8A85-07F9EEFB5D79}" ShortID="879616181">
 											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>12.5</Value>
+													</ValueList>
+												</Property>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -13213,6 +13473,11 @@
 										</Sound>
 										<Sound Name="VX_Amb_F_Comm_Louise_AA_Accalmie_5_Atea" ID="{6CA90C18-65FE-4B97-B678-45C1FF809B03}" ShortID="837080569">
 											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>27.5</Value>
+													</ValueList>
+												</Property>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -13238,9 +13503,110 @@
 										</Sound>
 										<Sound Name="VX_Amb_F_Comm_Louise_AA_Arrivee_1_Atea" ID="{862DF224-1535-4F0F-B63F-1842C56D932A}" ShortID="885883923">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<Custom>
+														<Attenuation Name="Attenuation (Custom)" ID="{5928FB33-8F93-4D1C-A1CD-AE1F1B90C11F}" ShortID="846923655">
+															<CurveUsageInfoList>
+																<VolumeDryUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																		<Curve Name="VolumeDry" ID="{0A640D5F-3758-4C58-A2E0-460A3C964F19}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="3"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>0</YPos>
+																					<Flags>5</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>100</XPos>
+																					<YPos>-0</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</VolumeDryUsage>
+																<VolumeWetGameUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetGameUsage>
+																<VolumeWetUserUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetUserUsage>
+																<LowPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</LowPassFilterUsage>
+																<HighPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</HighPassFilterUsage>
+																<DualShelfUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</DualShelfUsage>
+																<SpreadUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</SpreadUsage>
+																<FocusUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</FocusUsage>
+																<ObstructionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionVolumeUsage>
+																<ObstructionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionLPFUsage>
+																<ObstructionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionHPFUsage>
+																<ObstructionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionDSFUsage>
+																<OcclusionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionVolumeUsage>
+																<OcclusionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionLPFUsage>
+																<OcclusionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionHPFUsage>
+																<OcclusionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionDSFUsage>
+																<DiffractionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionVolumeUsage>
+																<DiffractionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionLPFUsage>
+																<DiffractionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionHPFUsage>
+																<DiffractionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionDSFUsage>
+																<TransmissionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionVolumeUsage>
+																<TransmissionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionLPFUsage>
+																<TransmissionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionHPFUsage>
+																<TransmissionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionDSFUsage>
+															</CurveUsageInfoList>
+														</Attenuation>
+													</Custom>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 												</Reference>
@@ -13275,6 +13641,11 @@
 										</Sound>
 										<Sound Name="VX_Amb_F_Comm_Louise_Game_End_3_Atea" ID="{0D5DE9C6-8715-4FB9-A1A5-300EBE9EEC96}" ShortID="747762477">
 											<PropertyList>
+												<Property Name="InitialDelay" Type="Real64">
+													<ValueList>
+														<Value>15</Value>
+													</ValueList>
+												</Property>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -13354,12 +13725,43 @@
 												<ItemRef Name="VX_Amb_F_Comm_Louise_Game_End_3_Atea" ID="{0D5DE9C6-8715-4FB9-A1A5-300EBE9EEC96}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="_26" ID="{783FCA77-785C-488C-89DF-8A0527C007D8}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_F_Comm_Louise_AA_Accalmie_4_Atea" ID="{88ACABA5-A858-46C0-8A85-07F9EEFB5D79}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_27" ID="{E778DD83-01DB-4A7B-8CFF-AE3F4DA7D1B3}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_F_Comm_Louise_Game_End_3_Atea" ID="{0D5DE9C6-8715-4FB9-A1A5-300EBE9EEC96}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_29" ID="{761FE8A0-8F81-4158-89D3-3A9B496C6088}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_F_Comm_Louise_Game_End_Choice_2_Atea" ID="{61DA6C6F-42C3-4ED5-8D36-1DF7D14B02AB}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="_23" ID="{C085F0E1-6DA2-44F8-A32A-D5FFB146DD83}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_F_Comm_Louise_AA_Arrivee_1_Atea" ID="{862DF224-1535-4F0F-B63F-1842C56D932A}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
 									</GroupingInfo>
 								</SwitchContainer>
 								<SwitchContainer Name="Michel" ID="{8D61C36E-0A74-4641-AEC0-453D7EEED871}" ShortID="9135536">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
-										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="2"/>
+										<Property Name="InitialDelay" Type="Real64">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 									</PropertyList>
@@ -13368,7 +13770,7 @@
 											<Custom>
 												<Attenuation Name="Attenuation (Custom)" ID="{B9F92AE5-0C52-4376-8981-C94935468334}" ShortID="219542385">
 													<PropertyList>
-														<Property Name="RadiusMax" Type="Real64" Value="25"/>
+														<Property Name="RadiusMax" Type="Real64" Value="50"/>
 													</PropertyList>
 													<CurveUsageInfoList>
 														<VolumeDryUsage>
@@ -13385,8 +13787,8 @@
 																			<SegmentShape>SCurve</SegmentShape>
 																		</Point>
 																		<Point>
-																			<XPos>25</XPos>
-																			<YPos>-200</YPos>
+																			<XPos>50</XPos>
+																			<YPos>-12</YPos>
 																			<Flags>37</Flags>
 																		</Point>
 																	</PointList>
@@ -13518,6 +13920,23 @@
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
+									<PositioningInfo>
+										<Position Name="" ID="{BA56FF8D-8F90-4A99-81CD-2A54520AE909}">
+											<ChildrenList>
+												<Path2D Name="Michel_Path" ID="{A270DC2F-3E5A-4FC2-80ED-C35BBDAFBCA4}">
+													<PointList>
+														<Point>
+															<XPos>25</XPos>
+															<YPos>0</YPos>
+															<ZPos>25</ZPos>
+															<Flags>12</Flags>
+															<Time>0</Time>
+														</Point>
+													</PointList>
+												</Path2D>
+											</ChildrenList>
+										</Position>
+									</PositioningInfo>
 									<ObjectLists>
 										<ObjectList Name="RTPC">
 											<RTPC Name="" ID="{0B83FEF4-0736-4F04-B9C1-619CCAA99594}" ShortID="58388146">
@@ -13567,9 +13986,196 @@
 										</GroupingBehaviorList>
 										<GroupingList>
 											<Grouping>
-												<SwitchRef Name="_23" ID="{C085F0E1-6DA2-44F8-A32A-D5FFB146DD83}"/>
+												<SwitchRef Name="_20" ID="{FB6739D1-8E6F-41F3-9D67-21B693E9AB8E}"/>
 												<ItemList>
 													<ItemRef Name="VX_Amb_M_Comm_Michel_OB_Canon_Arrival_2_Pierric" ID="{AA05DEEE-EE2D-4410-9365-6352D0F57446}"/>
+												</ItemList>
+											</Grouping>
+										</GroupingList>
+									</GroupingInfo>
+								</SwitchContainer>
+								<SwitchContainer Name="Officier" ID="{DBAB0A0E-284A-41FF-93EA-3F3DB404A1BE}" ShortID="308867265">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<Custom>
+												<Attenuation Name="Attenuation (Custom)" ID="{41A983B1-ADDE-42E9-9986-8FFBE0919FCD}" ShortID="694132892">
+													<PropertyList>
+														<Property Name="RadiusMax" Type="Real64" Value="50"/>
+													</PropertyList>
+													<CurveUsageInfoList>
+														<VolumeDryUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="VolumeDry" ID="{D0F1927B-0997-4A57-BBF9-5BD0921A3BB4}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="3"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																			<SegmentShape>SCurve</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>50</XPos>
+																			<YPos>-200</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</VolumeDryUsage>
+														<VolumeWetGameUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetGameUsage>
+														<VolumeWetUserUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetUserUsage>
+														<LowPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</LowPassFilterUsage>
+														<HighPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</HighPassFilterUsage>
+														<DualShelfUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</DualShelfUsage>
+														<SpreadUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</SpreadUsage>
+														<FocusUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</FocusUsage>
+														<ObstructionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionVolumeUsage>
+														<ObstructionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionLPFUsage>
+														<ObstructionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionHPFUsage>
+														<ObstructionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</ObstructionDSFUsage>
+														<OcclusionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionVolumeUsage>
+														<OcclusionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionLPFUsage>
+														<OcclusionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionHPFUsage>
+														<OcclusionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</OcclusionDSFUsage>
+														<DiffractionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionVolumeUsage>
+														<DiffractionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionLPFUsage>
+														<DiffractionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionHPFUsage>
+														<DiffractionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</DiffractionDSFUsage>
+														<TransmissionVolumeUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionVolumeUsage>
+														<TransmissionLPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionLPFUsage>
+														<TransmissionHPFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionHPFUsage>
+														<TransmissionDSFUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+														</TransmissionDSFUsage>
+													</CurveUsageInfoList>
+												</Attenuation>
+											</Custom>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="DefaultSwitchOrState">
+											<ObjectRef Name="None" ID="{C943CC8C-1A44-4F78-BDDC-B3D3EC95F41D}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="VX" ID="{E8C3D5DB-24D6-472C-93CA-D6BB12427941}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="ReflectionsAuxSend">
+											<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="SwitchGroupOrStateGroup">
+											<ObjectRef Name="narrative_step" ID="{DC7D94F8-F1CD-4344-8D78-703A4905E20A}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
+										</Reference>
+										<Reference Name="UserAuxSend0">
+											<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="VX_Amb_M_Vers_Military_Game_End_1_Officer" ID="{BF7014C9-7A48-4417-A5E5-5F8C6502D330}" ShortID="667758099">
+											<PropertyList>
+												<Property Name="IsVoice" Type="bool" Value="True"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="VX_Amb_M_Vers_Military_Game_End_1_Officer" ID="{9B0A0996-9C96-49AC-AC96-499496E2B2A4}">
+													<PropertyList>
+														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+													</PropertyList>
+													<Language>French(France)</Language>
+													<AudioFile>Characters\Officer\VX_Amb_M_Vers_Military_Game_End_1_Officer.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="951478521"/>
+													</MediaIDList>
+													<ObjectLists>
+														<ObjectList Name="Markers">
+															<Marker Name="" ID="{AD9BFB95-A6AD-4755-BB4D-3DEBC62C765D}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Racailles rouges ! Rendez-vous ! Vous êtes vaincus !"/>
+																</PropertyList>
+															</Marker>
+															<Marker Name="" ID="{E901E8BE-6E6C-4853-9DC9-AE480F6045DB}">
+																<PropertyList>
+																	<Property Name="Label" Type="string" Value="Votre révolution est balayé, rendez-vous à genoux et implorez notre clémence !"/>
+																	<Property Name="Time" Type="Real64" Value="3.78853716684817"/>
+																</PropertyList>
+															</Marker>
+														</ObjectList>
+													</ObjectLists>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="VX_Amb_M_Vers_Military_Game_End_1_Officer" ID="{9B0A0996-9C96-49AC-AC96-499496E2B2A4}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+									<GroupingInfo>
+										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="VX_Amb_M_Vers_Military_Game_End_1_Officer" ID="{BF7014C9-7A48-4417-A5E5-5F8C6502D330}"/>
+											</GroupingBehavior>
+										</GroupingBehaviorList>
+										<GroupingList>
+											<Grouping>
+												<SwitchRef Name="_27" ID="{E778DD83-01DB-4A7B-8CFF-AE3F4DA7D1B3}"/>
+												<ItemList>
+													<ItemRef Name="VX_Amb_M_Vers_Military_Game_End_1_Officer" ID="{BF7014C9-7A48-4417-A5E5-5F8C6502D330}"/>
 												</ItemList>
 											</Grouping>
 										</GroupingList>
@@ -13596,6 +14202,9 @@
 							</ObjectLists>
 							<GroupingInfo>
 								<GroupingBehaviorList>
+									<GroupingBehavior>
+										<ItemRef Name="Officier" ID="{DBAB0A0E-284A-41FF-93EA-3F3DB404A1BE}"/>
+									</GroupingBehavior>
 									<GroupingBehavior>
 										<ItemRef Name="Marie" ID="{E0EABE2F-AD61-46C3-B1C2-F5709584888F}"/>
 									</GroupingBehavior>

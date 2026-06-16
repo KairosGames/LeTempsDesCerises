@@ -729,37 +729,6 @@
 							</ChildrenList>
 							<ObjectLists>
 								<ObjectList Name="RTPC">
-									<RTPC Name="" ID="{4D28B8D8-9F56-41A7-A567-53D588187F17}" ShortID="1011409304">
-										<PropertyList>
-											<Property Name="PropertyName" Type="string" Value="Lowpass"/>
-										</PropertyList>
-										<ReferenceList>
-											<Reference Name="ControlInput">
-												<ObjectRef Name="Death_Filter" ID="{C73A6915-BB76-4746-95CC-A87CCED79E78}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
-											</Reference>
-											<Reference Name="Curve">
-												<Custom>
-													<Curve Name="" ID="{014F7587-F5E9-4D0F-BBE7-C2A17F9CA7C3}">
-														<PropertyList>
-															<Property Name="Flags" Type="int32" Value="65537"/>
-														</PropertyList>
-														<PointList>
-															<Point>
-																<XPos>0</XPos>
-																<YPos>-100</YPos>
-																<Flags>5</Flags>
-															</Point>
-															<Point>
-																<XPos>100</XPos>
-																<YPos>80</YPos>
-																<Flags>37</Flags>
-															</Point>
-														</PointList>
-													</Curve>
-												</Custom>
-											</Reference>
-										</ReferenceList>
-									</RTPC>
 									<RTPC Name="" ID="{51E7F624-1EF5-44C4-9B1D-5CCAE1D26952}" ShortID="647046565">
 										<PropertyList>
 											<Property Name="PropertyName" Type="string" Value="Volume"/>
@@ -798,7 +767,12 @@
 							<PropertyList>
 								<Property Name="BusChannelConfig" Type="int32">
 									<ValueList>
-										<Value>6353158</Value>
+										<Value>3840</Value>
+									</ValueList>
+								</Property>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
 									</ValueList>
 								</Property>
 								<Property Name="OutputBusHighpass" Type="int16">
@@ -837,9 +811,9 @@
 						</AuxBus>
 						<AuxBus Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}">
 							<PropertyList>
-								<Property Name="BusVolume" Type="Real64">
+								<Property Name="BusChannelConfig" Type="int32">
 									<ValueList>
-										<Value>-96</Value>
+										<Value>768</Value>
 									</ValueList>
 								</Property>
 								<Property Name="GameAuxSendVolume" Type="Real64">
@@ -862,21 +836,12 @@
 							<ObjectLists>
 								<ObjectList Name="Effects">
 									<EffectSlot Name="" ID="{D8BC7AB5-6DB8-415E-910B-F66EFE69BA51}" ShortID="571375785">
-										<PropertyList>
-											<Property Name="Bypass" Type="bool" Value="True"/>
-										</PropertyList>
 										<ReferenceList>
 											<Reference Name="Effect">
-												<Custom CreatedFrom="{37779A87-4754-4420-8175-3236FA46AA12}">
-													<Effect Name="Reflect (Custom)" ID="{C4B726EC-1419-424F-ADF7-FACE67C11922}" ShortID="695506173" PluginName="Wwise Reflect" CompanyID="0" PluginID="171" PluginType="3">
+												<Custom CreatedFrom="{C69F5865-C206-4B45-BC40-315F3F39151A}">
+													<Effect Name="Reflect_Physically_Based (Custom)" ID="{45B357FD-3DE9-45D4-8DDF-45F29FD81DA1}" ShortID="83605371" PluginName="Wwise Reflect" CompanyID="0" PluginID="171" PluginType="3">
 														<PropertyList>
-															<Property Name="CurveUsageMask" Type="Uint32" Value="511"/>
-															<Property Name="DecorrAlgorithmSelect" Type="int32" Value="1"/>
-															<Property Name="DecorrStrength" Type="Real32" Value="25"/>
-															<Property Name="FusingTime" Type="Real32" Value="50"/>
-															<Property Name="ParamFilterCutoff" Type="Real32" Value="1"/>
-															<Property Name="PitchThreshold" Type="Real32" Value="2400"/>
-															<Property Name="Wet" Type="Real32" Value="-3"/>
+															<Property Name="CurveUsageMask" Type="Uint32" Value="496"/>
 														</PropertyList>
 														<PluginData>
 	<ReflectData>
@@ -893,13 +858,19 @@
 							<Flags>5</Flags>
 						</Point>
 						<Point>
-							<XPos>20</XPos>
-							<YPos>0</YPos>
+							<XPos>17</XPos>
+							<YPos>-8.5</YPos>
+							<Flags>0</Flags>
+							<SegmentShape>Log2</SegmentShape>
+						</Point>
+						<Point>
+							<XPos>33</XPos>
+							<YPos>-12.7</YPos>
 							<Flags>0</Flags>
 						</Point>
 						<Point>
 							<XPos>100</XPos>
-							<YPos>-3</YPos>
+							<YPos>-17.2</YPos>
 							<Flags>37</Flags>
 						</Point>
 					</PointList>
@@ -915,10 +886,21 @@
 							<XPos>0</XPos>
 							<YPos>0</YPos>
 							<Flags>5</Flags>
+							<SegmentShape>Log2</SegmentShape>
+						</Point>
+						<Point>
+							<XPos>20</XPos>
+							<YPos>-16</YPos>
+							<Flags>0</Flags>
+						</Point>
+						<Point>
+							<XPos>50</XPos>
+							<YPos>-20</YPos>
+							<Flags>0</Flags>
 						</Point>
 						<Point>
 							<XPos>100</XPos>
-							<YPos>0</YPos>
+							<YPos>-22.2</YPos>
 							<Flags>37</Flags>
 						</Point>
 					</PointList>
@@ -953,16 +935,10 @@
 							<XPos>0</XPos>
 							<YPos>20000</YPos>
 							<Flags>5</Flags>
-							<SegmentShape>Log3</SegmentShape>
-						</Point>
-						<Point>
-							<XPos>8.33333333333333</XPos>
-							<YPos>1000</YPos>
-							<Flags>0</Flags>
 						</Point>
 						<Point>
 							<XPos>100</XPos>
-							<YPos>100</YPos>
+							<YPos>20000</YPos>
 							<Flags>37</Flags>
 						</Point>
 					</PointList>

@@ -1,3 +1,73 @@
 [gd_scene format=3 uid="uid://bbuh8ffycd16y"]
 
+[ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="1_kmgep"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_753n2"]
+size = Vector3(27.53, 10.975, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0hhp2"]
+size = Vector3(74.125, 16.7, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4fwws"]
+size = Vector3(74.125, 16.7, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2fkpb"]
+size = Vector2(200, 100)
+
 [node name="AkReflectCollision" type="Node3D" unique_id=1712577645]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1772308612]
+transform = Transform3D(0.82369095, 0, 0.5670389, 0, 1, 0, -0.5670389, 0, 0.82369095, -9.082688, 5.8137455, 15.088722)
+mesh = SubResource("BoxMesh_753n2")
+
+[node name="AkGeometry" type="AkGeometry" parent="MeshInstance3D" unique_id=444020650]
+acoustic_texture = ExtResource("1_kmgep")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1524472132]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.09658, 7.8828664, -7.416398)
+mesh = SubResource("BoxMesh_0hhp2")
+
+[node name="AkGeometry" type="AkGeometry" parent="MeshInstance3D2" unique_id=387283823]
+acoustic_texture = ExtResource("1_kmgep")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1516589341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.592934, 7.8828664, 3.832716)
+mesh = SubResource("BoxMesh_4fwws")
+
+[node name="AkGeometry" type="AkGeometry" parent="MeshInstance3D3" unique_id=34344484]
+acoustic_texture = ExtResource("1_kmgep")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=2070452432]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.030666, 7.8828645, 7.5598097)
+mesh = SubResource("BoxMesh_4fwws")
+
+[node name="AkGeometry" type="AkGeometry" parent="MeshInstance3D4" unique_id=1268733103]
+acoustic_texture = ExtResource("1_kmgep")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=639953868]
+transform = Transform3D(0.82369095, 0, 0.5670389, 0, 1, 0, -0.5670389, 0, 0.82369095, -9.082688, 0.06572437, 15.088722)
+mesh = SubResource("PlaneMesh_2fkpb")
+
+[node name="AkGeometry" type="AkGeometry" parent="MeshInstance3D5" unique_id=644636770]
+acoustic_texture = ExtResource("1_kmgep")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=564725603]
+transform = Transform3D(0.8260884, 0, 0.56354046, 0, 1, 0, -0.56354046, 0, 0.8260884, 40.450176, 8, -33.084095)
+mesh = SubResource("BoxMesh_4fwws")
+
+[node name="AkGeometry" type="AkGeometry" parent="MeshInstance3D6" unique_id=1806904064]
+acoustic_texture = ExtResource("1_kmgep")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="." unique_id=1095724206]
+transform = Transform3D(0.8349151, 0, 0.55037874, 0, 1, 0, -0.55037874, 0, 0.8349151, 44.12154, 7.8828645, -25.706541)
+mesh = SubResource("BoxMesh_4fwws")
+
+[node name="AkGeometry" type="AkGeometry" parent="MeshInstance3D7" unique_id=1262906087]
+acoustic_texture = ExtResource("1_kmgep")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="." unique_id=339646759]
+transform = Transform3D(0.43780637, 0, 0.89906937, 0, 1, 0, -0.89906937, 0, 0.43780637, 9.049753, 8, -41.90005)
+mesh = SubResource("BoxMesh_4fwws")
+
+[node name="AkGeometry" type="AkGeometry" parent="MeshInstance3D8" unique_id=1136022589]
+acoustic_texture = ExtResource("1_kmgep")

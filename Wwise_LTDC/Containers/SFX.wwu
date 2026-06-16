@@ -8,6 +8,9 @@
 			</PropertyList>
 			<ChildrenList>
 				<PropertyContainer Name="Characters" ID="{9F56B063-CAF4-40DB-B12A-118D8AC7B044}" ShortID="214376114">
+					<PropertyList>
+						<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -47,6 +50,7 @@
 								<PropertyContainer Name="Chassepot" ID="{2C7E86A7-AE31-4B62-932A-3CE2293EFE73}" ShortID="711613522">
 									<PropertyList>
 										<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+										<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 									</PropertyList>
@@ -62,6 +66,9 @@
 										</Reference>
 										<Reference Name="UserAuxSend0">
 											<ObjectRef Name="Wwise_Motion_Send" ID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="UserAuxSend1">
+											<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -88,7 +95,7 @@
 													<PropertyList>
 														<Property Name="MakeUpGain" Type="Real64">
 															<ValueList>
-																<Value>6</Value>
+																<Value>3</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -233,6 +240,11 @@
 														<Property Name="InitialDelay" Type="Real64">
 															<ValueList>
 																<Value>0.25</Value>
+															</ValueList>
+														</Property>
+														<Property Name="MakeUpGain" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -939,8 +951,14 @@
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
+												<Reference Name="ReflectionsAuxSend">
+													<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
 												<Reference Name="UserAuxSend0">
 													<ObjectRef Name="SFX_Gunshot_Send" ID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+												<Reference Name="UserAuxSend1">
+													<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
@@ -955,6 +973,7 @@
 																<Value>0.15</Value>
 															</ValueList>
 														</Property>
+														<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 														<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 														<Property Name="Pitch" Type="int32">
@@ -970,9 +989,6 @@
 														</Reference>
 														<Reference Name="OutputBus">
 															<ObjectRef Name="SFX_Player" ID="{1565B943-2767-465E-81AB-61E687ABF67E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-														</Reference>
-														<Reference Name="ReflectionsAuxSend">
-															<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
@@ -1145,7 +1161,6 @@
 																<Value>1</Value>
 															</ValueList>
 														</Property>
-														<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 														<Property Name="OverrideEffect" Type="bool" Value="True"/>
 														<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 														<Property Name="Pitch" Type="int32">
@@ -1303,6 +1318,11 @@
 												</Sound>
 												<RandomSequenceContainer Name="Chassepot_DryFire" ID="{9A34029C-231E-4F7B-BD9A-BC807D2CB65A}" ShortID="672480713">
 													<PropertyList>
+														<Property Name="MakeUpGain" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 													</PropertyList>
 													<ReferenceList>
@@ -1661,7 +1681,6 @@
 										</Sound>
 										<SwitchContainer Name="Bullet_Hit_Surface" ID="{3C87D3B7-C3EF-410F-82C4-EB90989F8BEC}" ShortID="957681447">
 											<PropertyList>
-												<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 												<Property Name="ReflectionsVolume" Type="Real64">
 													<ValueList>
 														<Value>-30</Value>
@@ -6173,6 +6192,7 @@
 						<PropertyContainer Name="NPC" ID="{CB1330C3-3823-4AB6-82D7-F9575070B11F}" ShortID="420998186">
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
+								<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 								<Property Name="OverrideOutput" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 							</PropertyList>
@@ -8646,6 +8666,7 @@
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="2"/>
+										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 										<Property Name="MaxSoundPerInstance" Type="int16">
@@ -8878,6 +8899,9 @@
 					</ChildrenList>
 				</PropertyContainer>
 				<PropertyContainer Name="Barricade" ID="{F7FCE1A8-0914-4545-BE09-3E8BC1082D27}" ShortID="1006033881">
+					<PropertyList>
+						<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -9034,6 +9058,11 @@
 								<Property Name="3DPosition" Type="int16" Value="1"/>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
 								<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>3</Value>
+									</ValueList>
+								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
@@ -9337,6 +9366,18 @@
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Heavy_Brick" ID="{848C0DBF-E5E1-4D70-B6A4-FC87D433DF2E}" ShortID="412767018">
 									<PropertyList>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{2E991775-9BD0-49E9-A24F-D92388F4BDA1}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 										<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
 									</PropertyList>
 									<ReferenceList>

@@ -7,17 +7,18 @@ extends Node3D
 var npc_name : String
 var text_duration : float
 var text_speed : float
-var valid_names : Array[String] = ["Louise", "Marie", "Georges", "Jules", "Francois"]
+var valid_names : Array[String] = ["Louise", "Marie", "Georges", "Jules", "Francois", "Michel"]
 
 func _ready() -> void:
 	npc_name = get_parent().name
 	if not npc_name in valid_names: return
-	print(npc_name)
+	#print(npc_name)
 	WwiseGlobal.narrators.append(self)
 	Wwise.set_switch("Character", npc_name, dialogue_event)
 	await get_tree().create_timer(1).timeout
 	WwiseGlobal.player.add_line(npc_name)
 	Wwise.load_bank(npc_name)
+	get_parent().shot.connect(shoot_event)
 
 func voiceline():
 	dialogue_event.post_event()
@@ -25,7 +26,7 @@ func voiceline():
 func _on_dialogue_end_of_event(_data: Dictionary) -> void:
 	label.text = ""
 	WwiseGlobal.player.update_line(npc_name, "")
-	WwiseGlobal.line_ended()
+	WwiseGlobal.line_ended(npc_name)
 
 func _on_dialogue_audio_marker(data: Dictionary) -> void:
 	var text : String = data.get("strLabel")
@@ -50,4 +51,9 @@ func _on_dialogue_duration(data: Dictionary) -> void:
 
 
 func _on_tree_exiting() -> void:
-	WwiseGlobal.unload(npc_name)
+	if npc_name in valid_names:
+		WwiseGlobal.unload_npc(npc_name)
+
+func shoot_event():
+	print("npc shoot")
+	Wwise.post_event("Ally_Shoot", self)

@@ -35,8 +35,9 @@ func new_line(step : int):
 		if is_instance_valid(i):
 			i.voiceline()
 
-func line_ended():
+func line_ended(_npc_name : String):
 	line_count += 1
+	#print(npc_name, " : ", line_count, " / ", narrators.size())
 	if line_count == narrators.size():
 		game_manager.curr_state.voice_line_finished.emit()
 
@@ -98,8 +99,10 @@ func cannon_incoming():
 
 func cannon_fire():
 	if !allies.is_empty():
-		find_closest(allies, barricade).post_event("Cannon_Fire", 1)
-		find_random(allies).post_event("Cannon_Fire", 3)
+		for ally in allies:
+			ally.post_event("Cannon_Fire", randf_range(1, 3))
+		#find_closest(allies, barricade).post_event("Cannon_Fire", 1)
+		#find_random(allies).post_event("Cannon_Fire", 3)
 	if !enemies.is_empty():
 		find_closest(enemies, player).post_event("Cannon_Fire", 1)
 		find_random(enemies).post_event("Cannon_Fire", randf_range(2, 5))
@@ -139,13 +142,14 @@ func localize():
 	print("change language")
 	Wwise.set_current_language("English(US)")
 
-func unload(remove : String):
-	for name in narrators:
-		if name.name == remove:
-			narrators.erase(name)
-	Wwise.unload_bank(remove)
+func unload_npc(remove_name : String):
+	for npc in narrators:
+		if npc.npc_name == remove_name:
+			narrators.erase(npc)
+	Wwise.unload_bank(remove_name)
 
 func on_move_progress(progress):
+	#print(progress)
 	progress /= 25
 	if progress == 1:
 		cannon_workers.pick_random().post_event("Cannon_Advance", 0)
