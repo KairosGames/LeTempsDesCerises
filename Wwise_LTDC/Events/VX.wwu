@@ -115,6 +115,9 @@
 						<Event Name="Ally_Ally_Death" ID="{81D6C764-2FD2-4FC5-832F-2938E40C1E3A}">
 							<ChildrenList>
 								<Action Name="" ID="{2D22247C-BE9A-451C-8F5F-46635E5C314F}" ShortID="308467446">
+									<PropertyList>
+										<Property Name="Probability" Type="Real64" Value="50"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Ally_Death" ID="{F31159D5-8643-4C80-9C52-AAEA4135BF73}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
@@ -171,9 +174,34 @@
 						<Event Name="Ally_Cannon_Fire" ID="{2FD3860B-1D80-4BB0-8D2F-554A4650D647}">
 							<ChildrenList>
 								<Action Name="" ID="{51DF54B8-2B74-48F1-B6B9-E0CA9395003A}" ShortID="398066972">
+									<PropertyList>
+										<Property Name="Probability" Type="Real64" Value="75"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Cannon_Fire" ID="{F0BDFF00-D062-4EB4-BD04-16CE2F6451F9}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Choose_Surrender" ID="{21D54443-F2A6-4D2C-A1EE-BEF015429488}">
+							<ChildrenList>
+								<Action Name="" ID="{3B172A18-5F08-4FC4-803B-29246EE4CFA8}" ShortID="9762880">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris" ID="{02D3E9A8-AE53-470E-80D4-76356818A256}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Choose_Fight" ID="{942B9A28-9902-4AB4-8844-671F2F8C55A0}">
+							<ChildrenList>
+								<Action Name="" ID="{12F74B5E-A220-4097-8961-C3990C9928C4}" ShortID="680905733">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="VX_Amb_F_Comm_Louise_Game_End_Choice_2_Atea" ID="{61DA6C6F-42C3-4ED5-8D36-1DF7D14B02AB}" WorkUnitID="{49EB0DFB-9A15-4C2F-8A83-9C967EEEA6FC}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}",
     "Language": "French(France)",
-    "Hash": "{6C53730E-CF23-4657-3D3F-341715F83F8F}",
+    "Hash": "{973C378E-75C5-FDE4-6FC8-A90B098341BC}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Narrative\\Francois",
     "ShortName": "Francois",
     "Path": "French(France)/Francois.bnk",
@@ -37,7 +37,7 @@
       "Streaming": "false",
       "Location": "OtherBank",
       "ShortName": "Characters\\Marie\\VX_Amb_F_Comm_Marie_AA_Accalmie_2_Yuna.wav",
-      "CachePath": "8A/{8A1FF11C-4AE0-AF0A-2A6B-9EE5D9DC4580}.wem"
+      "CachePath": "C1/{C13C0FD0-8025-AC7F-9771-93A7634CF977}.wem"
      },
      {
       "Id": "112659899",
@@ -128,7 +128,7 @@
       "Streaming": "false",
       "Location": "Memory",
       "ShortName": "Characters\\Francois\\VX_Amb_M_Comm_Francois_AA_Accalmie_1_Ydris.wav",
-      "CachePath": "83/{832056B6-4971-AD7B-1AD6-544A0E9DDD7E}.wem"
+      "CachePath": "3B/{3B1A7E48-A91C-F3FD-A452-CA40E77B453B}.wem"
      },
      {
       "Id": "399566197",
@@ -353,6 +353,14 @@
       "CachePath": "97/{97DD1F5D-7506-D6CF-E1DE-1DE6EA9A93C5}.wem"
      },
      {
+      "Id": "951478521",
+      "Language": "French(France)",
+      "Streaming": "false",
+      "Location": "OtherBank",
+      "ShortName": "Characters\\Officer\\VX_Amb_M_Vers_Military_Game_End_1_Officer.wav",
+      "CachePath": "94/{941CA387-52CC-60D1-A366-A51E4A12119F}.wem"
+     },
+     {
       "Id": "975225380",
       "Language": "French(France)",
       "Streaming": "false",
@@ -384,6 +392,43 @@
     },
     "Events": [
      {
+      "Id": "2467968637",
+      "Name": "Choose_Surrender",
+      "ObjectPath": "\\Events\\VX\\Ally\\Choose_Surrender",
+      "GUID": "{21D54443-F2A6-4D2C-A1EE-BEF015429488}",
+      "Color": "11",
+      "MaxAttenuation": "50",
+      "DurationType": "OneShot",
+      "DurationMin": "3.0075624",
+      "DurationMax": "3.0075624",
+      "MediaRefs": [
+       {
+        "Id": "609858295"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "537703978"
+        }
+       ]
+      },
+      "AuxBusRefs": [
+       {
+        "Id": "243379636",
+        "Name": "Reflect",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
+        "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
+       },
+       {
+        "Id": "2635253023",
+        "Name": "Street_Reverb",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb",
+        "GUID": "{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"
+       }
+      ]
+     },
+     {
       "Id": "3930136735",
       "Name": "Dialogue",
       "ObjectPath": "\\Events\\VX\\Dialogue",
@@ -393,13 +438,6 @@
       "DurationType": "OneShot",
       "DurationMin": "0.81898",
       "DurationMax": "41.307457",
-      "PluginRefs": {
-       "Custom": [
-        {
-         "Id": "537703978"
-        }
-       ]
-      },
       "AuxBusRefs": [
        {
         "Id": "243379636",
@@ -816,6 +854,26 @@
           "SwitchValue": {
            "GroupType": "State",
            "GroupId": "212893962",
+           "Id": "1677922233",
+           "GUID": "{FF656502-C138-4446-8F53-A91D0AA1BCA6}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "229724527"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "537703978"
+            }
+           ]
+          }
+         },
+         {
+          "SwitchValue": {
+           "GroupType": "State",
+           "GroupId": "212893962",
            "Id": "1661144512",
            "GUID": "{783FCA77-785C-488C-89DF-8A0527C007D8}"
           },
@@ -836,32 +894,12 @@
           "SwitchValue": {
            "GroupType": "State",
            "GroupId": "212893962",
-           "Id": "1661144513",
-           "GUID": "{E778DD83-01DB-4A7B-8CFF-AE3F4DA7D1B3}"
-          },
-          "MediaRefs": [
-           {
-            "Id": "747946280"
-           }
-          ],
-          "PluginRefs": {
-           "Custom": [
-            {
-             "Id": "537703978"
-            }
-           ]
-          }
-         },
-         {
-          "SwitchValue": {
-           "GroupType": "State",
-           "GroupId": "212893962",
            "Id": "1661144527",
            "GUID": "{761FE8A0-8F81-4158-89D3-3A9B496C6088}"
           },
           "MediaRefs": [
            {
-            "Id": "229724527"
+            "Id": "747946280"
            }
           ],
           "PluginRefs": {
@@ -898,10 +936,60 @@
         "SwitchValue": {
          "GroupType": "Switch",
          "GroupId": "436743010",
+         "Id": "3942830996",
+         "GUID": "{88E56386-6C8E-41BF-B571-1514BCEC17E5}"
+        },
+        "Children": [
+         {
+          "SwitchValue": {
+           "GroupType": "State",
+           "GroupId": "212893962",
+           "Id": "1661144513",
+           "GUID": "{E778DD83-01DB-4A7B-8CFF-AE3F4DA7D1B3}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "951478521"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "537703978"
+            }
+           ]
+          }
+         }
+        ]
+       },
+       {
+        "SwitchValue": {
+         "GroupType": "Switch",
+         "GroupId": "436743010",
          "Id": "3484216754",
          "GUID": "{E1A66299-3137-41FD-A722-76CF2B0CB501}"
         },
         "Children": [
+         {
+          "SwitchValue": {
+           "GroupType": "State",
+           "GroupId": "212893962",
+           "Id": "1677922233",
+           "GUID": "{FF656502-C138-4446-8F53-A91D0AA1BCA6}"
+          },
+          "MediaRefs": [
+           {
+            "Id": "609858295"
+           }
+          ],
+          "PluginRefs": {
+           "Custom": [
+            {
+             "Id": "537703978"
+            }
+           ]
+          }
+         },
          {
           "SwitchValue": {
            "GroupType": "State",
@@ -1012,26 +1100,6 @@
           "SwitchValue": {
            "GroupType": "State",
            "GroupId": "212893962",
-           "Id": "1661144513",
-           "GUID": "{E778DD83-01DB-4A7B-8CFF-AE3F4DA7D1B3}"
-          },
-          "MediaRefs": [
-           {
-            "Id": "333954270"
-           }
-          ],
-          "PluginRefs": {
-           "Custom": [
-            {
-             "Id": "537703978"
-            }
-           ]
-          }
-         },
-         {
-          "SwitchValue": {
-           "GroupType": "State",
-           "GroupId": "212893962",
            "Id": "1644366939",
            "GUID": "{9AA66387-91BA-480C-B781-3DC8A2741CCF}"
           },
@@ -1100,7 +1168,7 @@
           },
           "MediaRefs": [
            {
-            "Id": "609858295"
+            "Id": "333954270"
            }
           ],
           "PluginRefs": {
@@ -1408,10 +1476,40 @@
         "GUID": "{761FE8A0-8F81-4158-89D3-3A9B496C6088}"
        },
        {
+        "Id": "1677922232",
+        "Name": "_31",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_31",
+        "GUID": "{D86BD04B-BE03-4378-814E-339E39BB26A7}"
+       },
+       {
         "Id": "1677922233",
         "Name": "_30",
         "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_30",
         "GUID": "{FF656502-C138-4446-8F53-A91D0AA1BCA6}"
+       },
+       {
+        "Id": "1677922234",
+        "Name": "_33",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_33",
+        "GUID": "{8F782DC0-7438-40E9-98A7-29B907C98532}"
+       },
+       {
+        "Id": "1677922235",
+        "Name": "_32",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_32",
+        "GUID": "{E17796CE-3C20-4685-B482-01C992F0F8FF}"
+       },
+       {
+        "Id": "1677922236",
+        "Name": "_35",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_35",
+        "GUID": "{22A96738-0D4E-4ED4-A513-808CDD2255E9}"
+       },
+       {
+        "Id": "1677922237",
+        "Name": "_34",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_34",
+        "GUID": "{41C7B8E9-EED8-44E8-B6FC-E151DAC1125F}"
        }
       ]
      }
@@ -1464,12 +1562,18 @@
         "Name": "Francois",
         "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Francois",
         "GUID": "{E1A66299-3137-41FD-A722-76CF2B0CB501}"
+       },
+       {
+        "Id": "3942830996",
+        "Name": "Officier",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Officier",
+        "GUID": "{88E56386-6C8E-41BF-B571-1514BCEC17E5}"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{3169B9ED-3BEC-3A64-A99E-761CBE74D571}"
+  "FileHash": "{D578A47D-5868-79EB-4C1F-55EC6E7E8468}"
  }
 }
