@@ -1,12 +1,14 @@
 @tool
 class_name Shoot extends ActionLeaf
 
-@export var max_angle_variation: float = 2
-@export var vagueness_decrease: float = 2.0
 var _vagueness: float = 1.0
 
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
+	
+	var max_angle_variation: float = GameManager.instance.max_angle_variations[agent.team] if GameManager.instance else 2.0
+	var vagueness_decrease: float = GameManager.instance.vagueness_decreases[agent.team] if GameManager.instance else 2.0
+	
 	var raycast: RayCast3D = agent.shoot_raycast
 
 	if not agent.target_object: return FAILURE
@@ -29,7 +31,9 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	agent.is_weapon_loaded = false
 	agent.shoot_anim()
 	agent.shoot.emit()
+	@warning_ignore("untyped_declaration")
 	var shoot_debug = get_node_or_null("/root/ShootDebug")
+	@warning_ignore("unsafe_method_access")
 	if shoot_debug: shoot_debug.add_debug(
 		raycast.global_position,
 		raycast.global_rotation,
@@ -45,10 +49,10 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			if player.is_immortal: player.missed_by_enemy.emit()
 			if agent.team == Agent.Team.COMMUNARD: player.missed_by_enemy.emit()
 			else:
-				collider.die()
+				(collider as Player).die()
 				_vagueness = 1.0
 		elif collider is Agent:
-			collider.die()
+			(collider as Agent).die()
 			_vagueness = 1.0
 			var position: Vector3 = raycast.get_collision_point()
 			var direction: Vector3 = raycast.get_collision_normal()

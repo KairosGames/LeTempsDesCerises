@@ -15,12 +15,22 @@ signal clicked_pause(is_pause: bool)
 @export var debug_cannon_move_speeds: float = 3.0
 @export var debug_cannon_reload_duration: float = 3.0
 
+@export_category("Agent Settings")
+@export var max_angle_variations: Dictionary[Agent.Team, float] = {
+	Agent.Team.VERSAILLAIS: 2,
+	Agent.Team.COMMUNARD: 2
+}
+@export var vagueness_decreases: Dictionary[Agent.Team, float] = {
+	Agent.Team.VERSAILLAIS: 2,
+	Agent.Team.COMMUNARD: 2
+}
+
 @export_category("References")
 @export var first_barricade: Barricade
 @export var second_barricade: Barricade
 @export var cannon: Canon
 
-@export_category("Packed Scenes")
+@export_group("Packed Scenes")
 @export var player_prefab: PackedScene
 @export var all_states: Array[GameState]
 
@@ -41,9 +51,9 @@ static var instance: GameManager:
 
 
 func _ready() -> void:
+	instance = self
 	curr_barricade = first_barricade
 	if use_debug: game_state_index = starting_game_state - 1
-	instance = self
 	if cannon: cannon.shoot.connect(handle_cannon_shoot)
 	ready_deferred.call_deferred()
 
