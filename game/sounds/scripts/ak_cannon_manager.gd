@@ -30,4 +30,4 @@ func update_cannon_workers(workers: Array[Agent]) -> void:
 			push_error("En même temps on aurait pas ce problème si tu utilisais des classes")
 			continue
 		WwiseGlobal.cannon_workers.append(ak_enemy)
-	print(WwiseGlobal.cannon_workers)
+	#print(WwiseGlobal.cannon_workers)

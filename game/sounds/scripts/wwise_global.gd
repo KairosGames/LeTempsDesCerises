@@ -148,17 +148,17 @@ func unload_npc(remove_name : String):
 			narrators.erase(npc)
 	Wwise.unload_bank(remove_name)
 
-func on_move_progress(progress):
-	#print(progress)
-	progress /= 25
-	if progress == 1:
+func on_move_progress(progress : float):
+	progress = progress / 0.25
+	print(roundi(progress))
+	if roundf(progress) == 1:
 		cannon_workers.pick_random().post_event("Cannon_Advance", 0)
 		find_closest(enemies, player).post_event("Cannon_Advance", 0)
 		find_closest(allies, player).post_event("Cannon_Advance", 1)
 		find_farthest(allies).post_event("Cannon_Advance", 2)
 
 func on_reload_progress(progress):
-	if progress >= 95:
+	if progress >= 0.9:
 		cannon_workers.pick_random().post_event("Cannon_Incoming", 0)
 		find_closest(allies, barricade).post_event("Cannon_Incoming", 1)
 		find_random(allies).post_event("Cannon_Incoming", 2)

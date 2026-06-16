@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dlbfo6n0j4rn1" path="res://sandbox/covers_proto/barrel_big.tscn" id="2_hs7gb"]
 [ext_resource type="PackedScene" uid="uid://cbgib1n4tspd7" path="res://sandbox/covers_proto/plank_simple.tscn" id="3_tns54"]
 [ext_resource type="PackedScene" uid="uid://bb8fxuc1b4vfl" path="res://sandbox/covers_proto/bag_simple.tscn" id="4_2uf03"]
+[ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="5_hs7gb"]
 
 [node name="Barricade02" type="Node3D" unique_id=2084715087]
 
@@ -43,3 +44,8 @@ transform = Transform3D(0.9988104, 0.0487453, 0.001264602, -0.048749648, 0.99765
 
 [node name="PlankSimple7" parent="barricade_02" unique_id=617675498 instance=ExtResource("3_tns54")]
 transform = Transform3D(0.9988104, 0.0487453, 0.001264602, -0.048749648, 0.9976511, 0.048122477, 0.0010841116, -0.04812689, 0.9988407, -0.60377175, 1.0849632, -3.5205646)
+
+[node name="AkGeometry" type="AkGeometry" parent="barricade_02" unique_id=315328478]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("5_hs7gb")

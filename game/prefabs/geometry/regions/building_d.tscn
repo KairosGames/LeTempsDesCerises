@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://c85fms2wp51n8"]
 
 [ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="1_j4qk7"]
+[ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="2_8ydhy"]
 [ext_resource type="ArrayMesh" uid="uid://ckkf8euhqqlun" path="res://prefabs/geometry/wall_a.tres" id="2_valms"]
 [ext_resource type="ArrayMesh" uid="uid://dstjnv2qgt488" path="res://prefabs/geometry/wall_b.tres" id="3_3jbfb"]
 [ext_resource type="PackedScene" uid="uid://bdclgyj6yyleb" path="res://prefabs/props/headlight.tscn" id="3_022d3"]
@@ -156,6 +157,11 @@ surface_material_override/0 = ExtResource("1_j4qk7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trottoirs" unique_id=357525498]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.54703903, 0.2, 29.134796)
 shape = SubResource("ConcavePolygonShape3D_8ydhy")
+
+[node name="AkGeometry" type="AkGeometry" parent="Trottoirs" unique_id=2089239401]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("2_8ydhy")
 
 [node name="lamp" type="Node3D" parent="." unique_id=1243435333]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.32222, 3, 6.9059963)
@@ -5199,6 +5205,11 @@ debug_color = Color(0.98039216, 0, 0.3764706, 1)
 transform = Transform3D(0.43837115, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837115, -20.552565, 6.921468, 28.079277)
 shape = SubResource("BoxShape3D_3jbfb")
 debug_color = Color(0.98039216, 0, 0.3764706, 1)
+
+[node name="AkGeometry" type="AkGeometry" parent="StaticBody3D" unique_id=396734308]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("2_8ydhy")
 
 [node name="Occluders" type="Node" parent="." unique_id=1137919757]
 
