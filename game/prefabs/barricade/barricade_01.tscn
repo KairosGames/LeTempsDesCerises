@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c6uks6cfft2kt" path="res://prefabs/barricade/barricade_01_damaged_02.tscn" id="4_jn8ma"]
 [ext_resource type="PackedScene" uid="uid://bfgsm6t7c4sc6" path="res://prefabs/barricade/barricade_01_destroyed.tscn" id="5_v7drl"]
 [ext_resource type="PackedScene" uid="uid://dt06rgwsgrjv8" path="res://prefabs/vfx/barricade_hit.tscn" id="7_ud3ag"]
+[ext_resource type="PackedScene" uid="uid://cfcwqa4srjp8t" path="res://prefabs/props/metal_grid.tscn" id="8_0xlbs"]
+[ext_resource type="PackedScene" uid="uid://dc1nfamjxbhmv" path="res://prefabs/props/pave.tscn" id="9_8u7q6"]
 [ext_resource type="PackedScene" uid="uid://187vl1c0h0u3" path="res://sounds/prefabs/ak_barricade_manager.tscn" id="12_uvgh7"]
 
 [node name="Barricade01" type="Node3D" unique_id=535866183 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules", "break_effects")]
@@ -19,12 +21,57 @@ break_effects = [NodePath("DestructionEffects/FirstEffect"), NodePath("Destructi
 
 [node name="Intact" parent="." unique_id=1178280760 instance=ExtResource("2_fwntv")]
 
+[node name="Metal_grid3" type="Node3D" parent="Intact" unique_id=1106851771]
+transform = Transform3D(0.9980213, 0, 0.06287762, 0, 1, 0, -0.06287762, 0, 0.9980213, -1.687, -0.02, -2.371)
+
+[node name="Metal_grid2" parent="Intact/Metal_grid3" unique_id=1956504944 instance=ExtResource("8_0xlbs")]
+transform = Transform3D(0.40510997, 0.9141568, 0.014255963, 0.009195774, -0.019666046, 0.9997644, 0.91422194, -0.40488338, -0.0163733, -1.5887797, 0.09320649, 3.8463566)
+
+[node name="Pave4" parent="Intact/Metal_grid3" unique_id=1731116696 instance=ExtResource("9_8u7q6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9906089, 0.29606158, 3.3058472)
+
+[node name="Pave5" parent="Intact/Metal_grid3" unique_id=1573269668 instance=ExtResource("9_8u7q6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5134919, 0.29606158, 4.4785013)
+
+[node name="Pave6" parent="Intact/Metal_grid3" unique_id=684831493 instance=ExtResource("9_8u7q6")]
+transform = Transform3D(0.0082812, 0.33923236, 0.9406661, 0.9998249, 0.012980746, -0.0134831965, -0.016784506, 0.940613, -0.3390655, -1.8379244, 0.24749011, 3.6474538)
+
 [node name="Damaged1" parent="." unique_id=932398078 instance=ExtResource("3_1udo1")]
 visible = false
+
+[node name="Metal_grid3" type="Node3D" parent="Damaged1" unique_id=1439217426]
+transform = Transform3D(0.9980213, 0, 0.06287762, 0, 1, 0, -0.06287762, 0, 0.9980213, -1.687, -0.02, -2.371)
+
+[node name="Metal_grid2" parent="Damaged1/Metal_grid3" unique_id=2023688763 instance=ExtResource("8_0xlbs")]
+transform = Transform3D(0.40510997, 0.9141568, 0.014255963, 0.009195774, -0.019666046, 0.9997644, 0.91422194, -0.40488338, -0.0163733, -1.5887797, 0.09320649, 3.8463566)
+
+[node name="Pave4" parent="Damaged1/Metal_grid3" unique_id=1444080250 instance=ExtResource("9_8u7q6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9906089, 0.29606158, 3.3058472)
+
+[node name="Pave5" parent="Damaged1/Metal_grid3" unique_id=1257818849 instance=ExtResource("9_8u7q6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5134919, 0.29606158, 4.4785013)
+
+[node name="Pave6" parent="Damaged1/Metal_grid3" unique_id=1349791237 instance=ExtResource("9_8u7q6")]
+transform = Transform3D(0.0082812, 0.33923236, 0.9406661, 0.9998249, 0.012980746, -0.0134831965, -0.016784506, 0.940613, -0.3390655, -1.8379244, 0.24749011, 3.6474538)
 
 [node name="Damaged2" parent="." unique_id=658129954 instance=ExtResource("4_jn8ma")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 visible = false
+
+[node name="Metal_grid3" type="Node3D" parent="Damaged2" unique_id=728118995]
+transform = Transform3D(0.9980213, 0, 0.06287762, 0, 1, 0, -0.06287762, 0, 0.9980213, -1.687, -0.02, -2.371)
+
+[node name="Metal_grid2" parent="Damaged2/Metal_grid3" unique_id=1787870666 instance=ExtResource("8_0xlbs")]
+transform = Transform3D(0.40510997, 0.9141568, 0.014255963, 0.009195774, -0.019666046, 0.9997644, 0.91422194, -0.40488338, -0.0163733, -1.5887797, 0.09320649, 3.8463566)
+
+[node name="Pave4" parent="Damaged2/Metal_grid3" unique_id=196796706 instance=ExtResource("9_8u7q6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9906089, 0.29606158, 3.3058472)
+
+[node name="Pave5" parent="Damaged2/Metal_grid3" unique_id=1331706720 instance=ExtResource("9_8u7q6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5134919, 0.29606158, 4.4785013)
+
+[node name="Pave6" parent="Damaged2/Metal_grid3" unique_id=984457262 instance=ExtResource("9_8u7q6")]
+transform = Transform3D(0.0082812, 0.33923236, 0.9406661, 0.9998249, 0.012980746, -0.0134831965, -0.016784506, 0.940613, -0.3390655, -1.8379244, 0.24749011, 3.6474538)
 
 [node name="Destroyed" parent="." unique_id=2014136881 instance=ExtResource("5_v7drl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
