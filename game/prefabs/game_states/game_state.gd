@@ -8,7 +8,7 @@
 
 @abstract func enter() -> void
 @abstract func exit() -> void
-@abstract func set_player_for_debug() -> void
+@abstract func set_game_for_debug() -> void
 
 var steps: Array[Step] = []
 var curr_step: int = 0

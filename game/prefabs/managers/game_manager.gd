@@ -11,6 +11,10 @@ signal clicked_pause(is_pause: bool)
 @export var use_debug: bool = false
 @export var starting_game_state: int = 0
 
+@export_category("Use debug")
+@export var debug_cannon_move_speeds: float = 3.0
+@export var debug_cannon_reload_duration: float = 3.0
+
 @export_category("References")
 @export var first_barricade: Barricade
 @export var second_barricade: Barricade
@@ -114,6 +118,7 @@ func is_game_playing() -> bool:
 func handle_cannon_shoot() -> void:
 	if curr_barricade: curr_barricade.take_damage()
 	if curr_barricade.state == curr_barricade.max_state:
+		print("WE ARE TARGETTING SECOND BARRICADE")
 		curr_barricade = second_barricade
 
 

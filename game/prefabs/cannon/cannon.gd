@@ -16,7 +16,7 @@ signal reload_progress_changed(float)
 
 @export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var move_speeds: Array[float] = [0, 0, 0.5, 1]
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var reload_duration: Array[float] = [0, 15, 10, 5]
-@export_custom(PROPERTY_HINT_NONE,"suffix: s") var patience: float = 10
+@export_custom(PROPERTY_HINT_NONE,"suffix: s") var patience: float = 5.0
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var delay_before_shoot: float = 3
 @export var recruitment_range_boost: float = 4
 @export var max_recruitment_range: float = 30

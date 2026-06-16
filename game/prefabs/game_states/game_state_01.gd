@@ -19,6 +19,8 @@ signal game_ready_cannon_shoot
 
 var kill_counter: int = 0
 var it_is_time_to_die: bool = false
+var first_die_timer: float = 60.0
+var first_battle_time: float = 85.0
 
 
 func enter() -> void:
@@ -31,7 +33,7 @@ func enter() -> void:
 		Step.new(lauch_second_battle_phase, wait_francois_move, wait_barricade_destruction),
 		Step.new(enemies_enter_first_zone, do_nothing, do_nothing),
 	]
-	if game_manager.use_debug: set_player_for_debug()
+	if game_manager.use_debug: set_game_for_debug()
 	run_steps()
 
 
@@ -39,7 +41,9 @@ func exit() -> void:
 	pass
 
 
-func set_player_for_debug() -> void:
+func set_game_for_debug() -> void:
+	first_die_timer = 1.0
+	first_battle_time = 1.0
 	battle_director.go_next_covers_activation()
 	voice_line_index = 16
 	ui_manager.set_objective(true, game_manager.all_states[0].objective_point_barricade, "Go to the barricade")
@@ -105,7 +109,8 @@ func on_enemy_shot(_target: Node3D) -> void:
 
 
 func launch_first_die_timer() -> void:
-	await wait(60.0)
+	print("WAIT 60s")
+	await wait(first_die_timer)
 	it_is_time_to_die = true
 
 
@@ -137,10 +142,10 @@ func can_player_die() -> bool:
 
 func lauch_first_battle_phase() -> void:
 	battle_director.go_next_covers_activation() ########################################### Première mort
-	print("WAIT 90S")
-	await wait(5.0)
+	print("WAIT 90s")
+	await wait(3.0)
 	jules = null
-	await wait(85.0)
+	await wait(first_battle_time)
 
 
 func launch_cannon_arrival() -> void:

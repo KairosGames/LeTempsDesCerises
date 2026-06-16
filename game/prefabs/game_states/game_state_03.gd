@@ -28,14 +28,14 @@ func enter() -> void:
 		null,
 	]
 	run_steps()
-	if game_manager.use_debug: set_player_for_debug()
+	if game_manager.use_debug: set_game_for_debug()
 
 
 func exit() -> void:
 	pass
 
 
-func set_player_for_debug() -> void:
+func set_game_for_debug() -> void:
 	francois.global_position = discussion_point.global_position
 	francois.global_rotation = francois_moved_pos.global_rotation
 	francois.is_figthing = true
@@ -70,16 +70,12 @@ func are_louise_and_francois_on_covers() -> bool:
 
 
 func is_there_one_ally() -> bool:
-	var list: Array[Node] = get_tree().get_nodes_in_group("Communard")
-	if list.size() == 2 and (list[0] is Player or list[1] is Player):
-		if list[0] is Player: list.remove_at(0)
-		if list[1] is Player: list.remove_at(1)
+	var list: Array[Node] = get_tree().get_nodes_in_group("Communard").filter(func(o): return o is not Player)
 	return list.size() <= 1
 
 
 func is_there_no_allies() -> bool:
-	var list: Array[Node] = get_tree().get_nodes_in_group("Communard")
-	if list.size() == 1 and list[0] is Player: list.remove_at(0)
+	var list: Array[Node] = get_tree().get_nodes_in_group("Communard").filter(func(o): return o is not Player)
 	return list.size() <= 0
 
 

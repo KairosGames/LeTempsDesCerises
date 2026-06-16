@@ -19,7 +19,7 @@ func enter() -> void:
 		Step.new(launch_dialogue_preparation, launch_women_dialogue, do_nothing),
 		Step.new(launch_last_battle_phase, do_nothing, do_nothing),
 	]
-	if game_manager.use_debug: set_player_for_debug()
+	if game_manager.use_debug: set_game_for_debug()
 	run_steps()
 
 
@@ -27,7 +27,7 @@ func exit() -> void:
 	pass
 
 
-func set_player_for_debug() -> void:
+func set_game_for_debug() -> void:
 	first_battle_phase_time = 0.0
 	francois.global_position = francois_moved_pos.global_position
 	francois.global_rotation = francois_moved_pos.global_rotation
@@ -37,8 +37,9 @@ func set_player_for_debug() -> void:
 	player.give_or_drop_weapon(true)
 	player.is_weapon_loaded = true
 	ui_manager.hard_set_letter_box(false)
-	for i in range(0,3): game_manager.handle_cannon_shoot()
 	game_manager.cannon._is_first_shoot = false
+	if game_manager.curr_barricade == game_manager.first_barricade:
+		for i in range(0,3): game_manager.handle_cannon_shoot()
 
 
 func lauch_first_phase() -> void:

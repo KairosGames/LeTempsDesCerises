@@ -1366,14 +1366,16 @@ shape = SubResource("BoxShape3D_dnfhu")
 [node name="BarricadeOnboarding" parent="Environment/Barricades" unique_id=2084715087 instance=ExtResource("55_dnfhu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.08881, 0.1999981, -1.6943616)
 
-[node name="BarricadeFirst" parent="Environment/Barricades" unique_id=535866183 instance=ExtResource("43_n2eli")]
+[node name="BarricadeFirst" parent="Environment/Barricades" unique_id=535866183 node_paths=PackedStringArray("near_covers") instance=ExtResource("43_n2eli")]
 transform = Transform3D(0.9980212, 0, -0.06287761, 0, 1, 0, 0.06287761, 0, 0.9980212, 1.5348637, -4.7683716e-07, 2.471998)
+near_covers = [NodePath("../../../Allies/Zone1/Covers/Barricade1"), NodePath("../../../Allies/Zone1/Covers/Barricade3"), NodePath("../../../Allies/Zone1/Covers/Barricade4")]
 
 [node name="Dirt_pile" parent="Environment/Barricades/BarricadeFirst" unique_id=23898489 instance=ExtResource("16_npp8f")]
 transform = Transform3D(0.9980213, 0, 0.06287762, 0, 1, 0, -0.06287762, 0, 0.9980213, -11.422993, 0.19999981, -7.5085917)
 
-[node name="BarricadeSecond" parent="Environment/Barricades" unique_id=504355432 instance=ExtResource("57_4a26s")]
+[node name="BarricadeSecond" parent="Environment/Barricades" unique_id=504355432 node_paths=PackedStringArray("near_covers") instance=ExtResource("57_4a26s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.559504, -9.536743e-07, 16.645508)
+near_covers = [NodePath("../../../Allies/Zone2/Covers/Barricade3"), NodePath("../../../Allies/Zone2/Covers/Barricade4"), NodePath("../../../Allies/Zone2/Covers/Barricade5")]
 
 [node name="BarricadeLast" parent="Environment/Barricades" unique_id=1985447711 instance=ExtResource("58_fjqpb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.21, 0, 38.342)

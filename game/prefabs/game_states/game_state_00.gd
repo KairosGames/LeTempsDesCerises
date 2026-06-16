@@ -28,7 +28,7 @@ func enter() -> void:
 		Step.new(wait_voice, wait_player_enter_reload, wait_voice), # "Ah mais il est vide celui là" / # "Voilà la ligne, ils sont sur nous !"
 		Step.new(enter_fight_begin, georges_death, free_player)
 	]
-	if game_manager.use_debug: set_player_for_debug()
+	if game_manager.use_debug: set_game_for_debug()
 	run_steps()
 
 
@@ -36,7 +36,7 @@ func exit() -> void:
 	pass
 
 
-func set_player_for_debug() -> void:
+func set_game_for_debug() -> void:
 	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
 
 
