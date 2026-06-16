@@ -8,8 +8,8 @@ signal start_reload
 signal reloaded
 signal shoot
 signal workers_updated(workers: Array[Agent])
-signal move_progress_changed(float)
-signal reload_progress_changed(float)
+signal move_progress_changed(percent: float)
+signal reload_progress_changed(percent: float)
 
 @onready var objective_point: Marker3D = %ObjectivePoint
 @onready var second_path: Path3D = %Path3DCannon2
@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	if not enabled: return
 	
 	if is_slot_available():
-		var recruitment_range = max_recruitment_range * recruitment_range_boost if _time_without_worker > patience else max_recruitment_range
+		var recruitment_range: float = max_recruitment_range * recruitment_range_boost if _time_without_worker > patience else max_recruitment_range
 		var new_worker: Agent = _find_workers(recruitment_range)
 		if new_worker: 
 			var slot: Marker3D = _take_slot(new_worker)
@@ -76,23 +76,18 @@ func _physics_process(delta: float) -> void:
 			if move_progress == 1.0: _state = State.RELOADING
 		State.RELOADING:
 			if reload_progress < 1.0:
-				if reload_progress == 0.0:
-					start_reload.emit()
-					print("[Cannon] Start reloading at %s" % (Time.get_ticks_msec() / 1000.0))
-				reload_progress += delta / reload_duration[workers.size()]
+				if reload_progress == 0.0: start_reload.emit()
+				if workers.size(): reload_progress += delta / reload_duration[workers.size()]
 				if reload_progress == 1.0: 
 					#stop_reload.emit()
-					print("[Cannon]  Reloaded at %s" % (Time.get_ticks_msec() / 1000.0))
 					reloaded.emit()
-					@warning_ignore("missing_await")
 					_shoot()
 
 func _shoot() -> void:
 	if _is_first_shoot:
 		_is_first_shoot = false
-		await GameManager.instance.all_states[1].game_ready_cannon_shoot
+		await (GameManager.instance.all_states[1] as GameState01).game_ready_cannon_shoot
 	await get_tree().create_timer(delay_before_shoot).timeout
-	print("[Cannon] Shoot at %s" % (Time.get_ticks_msec() / 1000.0))
 	shoot.emit()
 	reload_progress = 0
 
@@ -127,7 +122,7 @@ func _restore(slot: Marker3D) -> void:
 	if not move_speeds[holded_slots.size()]: stop_move.emit()
 
 func _create_workers(n: int = 2) -> void:
-	for i in range(n):
+	for i: int in range(n):
 		var new_worker: Agent = WORKER_PREFAB.instantiate()
 		add_child(new_worker)
 		new_worker.global_transform = global_transform
