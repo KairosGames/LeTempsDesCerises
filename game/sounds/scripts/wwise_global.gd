@@ -16,8 +16,8 @@ var allow_barks : bool = true
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	game_manager = GameManager.instance
-	game_manager.clicked_pause.connect(pause)
 	if game_manager and game_manager.use_narrative:
+		game_manager.clicked_pause.connect(pause)
 		game_manager.voice_line_called.connect(new_line)
 		await get_tree().create_timer(0.5).timeout
 		new_line(0)
