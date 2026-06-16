@@ -169,13 +169,6 @@ func launch_cannon_arrival() -> void:
 	ui_manager.objective_target.target = null
 
 
-#####################DEBUG ##############################
-func add_worker_on_cannon() -> void:
-	if Input.is_action_just_pressed("choice_surrender"):
-		game_manager.cannon._create_workers(1)
-#####################DEBUG ##############################
-
-
 func is_cannon_ready_to_shoot() -> bool:
 	return game_manager.cannon.reload_progress >= 1.0
 

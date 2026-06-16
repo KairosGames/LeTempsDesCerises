@@ -329,3 +329,11 @@ func lay_down_weapon(is_down: bool) -> void:
 	twn.parallel().tween_property(player.reload_root, "rotation", targ_rot, 1.0
 					).set_trans(trans).set_ease(ea)
 	await twn.finished
+
+
+
+#####################DEBUG ##############################
+func add_worker_on_cannon() -> void:
+	if Input.is_action_just_pressed("choice_surrender"):
+		game_manager.cannon._create_workers(1)
+#####################DEBUG ##############################
