@@ -22,7 +22,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		if _is_transitioning: return RUNNING
 		else: 
 			_has_started = false
-			_on_finished(actor)
+			_on_finished(actor as Agent)
 			return SUCCESS
 	else:
 		_has_started = true
@@ -30,14 +30,14 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		var current_posture: Agent.Posture = agent.posture
 		var new_posture: Agent.Posture = get_posture(agent)
 		if current_posture == new_posture: 
-			_on_start(actor)
+			_on_start(actor as Agent)
 			_has_started = false
 			_is_transitioning = false
-			_on_finished(actor)
+			_on_finished(actor as Agent)
 			return SUCCESS
 		else: 
 			agent.posture = new_posture
-			_on_start(actor)
+			_on_start(actor as Agent)
 			_timer.start(duration)
 			return RUNNING
 
