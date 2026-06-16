@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ba0txi1b7hknx" path="res://prefabs/vfx/burn_effect.tscn" id="3_dwitp"]
 [ext_resource type="PackedScene" uid="uid://bq4r3noe6r40s" path="res://prefabs/geometry/regions/building_b.tscn" id="3_tvueo"]
 [ext_resource type="PackedScene" uid="uid://4pg403ov4jpu" path="res://prefabs/geometry/regions/building_c.tscn" id="4_q2fw7"]
+[ext_resource type="Texture2D" uid="uid://b7fch7ulxc4fo" path="res://sources/images/textures/enseignes/Boulangerie.png" id="4_wpwdt"]
 [ext_resource type="PackedScene" uid="uid://c85fms2wp51n8" path="res://prefabs/geometry/regions/building_d.tscn" id="5_q2fw7"]
 [ext_resource type="PackedScene" uid="uid://cc08vg8k342a7" path="res://prefabs/geometry/regions/building_g.tscn" id="6_8bk3w"]
 [ext_resource type="PackedScene" uid="uid://umfpya023koc" path="res://prefabs/geometry/regions/building_e.tscn" id="10_6c3r5"]
@@ -107,6 +108,30 @@ albedo_texture = ExtResource("77_xj1jx")
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_wpwdt")
 size = Vector2(3.75, 2.975)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkq34"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("4_wpwdt")
+
+[sub_resource type="QuadMesh" id="QuadMesh_aese6"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_rkq34")
+size = Vector2(3.354, 0.912)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdu2u"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("78_d8hql")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5iju0"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gdu2u")
+size = Vector2(6.708, 1.824)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -686,18 +711,6 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdu2u"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = ExtResource("78_d8hql")
-
-[sub_resource type="QuadMesh" id="QuadMesh_5iju0"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_gdu2u")
-size = Vector2(6.708, 1.824)
-subdivide_width = 20
-subdivide_depth = 1
-
 [node name="GameDesignScene" type="Node3D" unique_id=1256367080]
 
 [node name="ActivationGroups" type="Node" parent="." unique_id=1173955416 node_paths=PackedStringArray("cover_group_to_transfer")]
@@ -849,6 +862,18 @@ transform = Transform3D(0.57357645, 0, -0.81915206, 0, 1, 0, 0.81915206, 0, 0.57
 mesh = SubResource("QuadMesh_gdu2u")
 texture = ExtResource("77_xj1jx")
 ratio = 0.5
+
+[node name="Affiche3" parent="Environment/NavigationRegion3D/Level/Base_map/Enseignes" unique_id=1455655155 instance=ExtResource("67_r83xy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.223866, 0.48865485, -8.076981)
+mesh = SubResource("QuadMesh_aese6")
+texture = ExtResource("4_wpwdt")
+ratio = 0.3
+
+[node name="Affiche4" parent="Environment/NavigationRegion3D/Level/Base_map/Enseignes" unique_id=1707028849 instance=ExtResource("67_r83xy")]
+transform = Transform3D(0.5735764, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.5735764, 7.9907994, 5.0290813, -15.016575)
+mesh = SubResource("QuadMesh_5iju0")
+texture = ExtResource("78_d8hql")
+ratio = 0.6
 
 [node name="CoverObjects" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1398436869]
 
@@ -1062,7 +1087,7 @@ transform = Transform3D(0.99999976, 0, 0, 0, 1.0000002, 0, 0, 0, 1.0000002, 38.5
 [node name="BigCart" parent="Environment/NavigationRegion3D/Level/CoverObjects" unique_id=896286637 instance=ExtResource("38_5iju0")]
 transform = Transform3D(1, 0, 0, 0, 0.99939096, 0.0348995, 0, -0.0348995, 0.99939096, -16.00818, 0.13223815, -0.7448528)
 
-[node name="Affiche6" parent="Environment/NavigationRegion3D/Level/CoverObjects/BigCart" unique_id=1455655155 instance=ExtResource("67_r83xy")]
+[node name="Affiche6" parent="Environment/NavigationRegion3D/Level/CoverObjects/BigCart" unique_id=1648876685 instance=ExtResource("67_r83xy")]
 transform = Transform3D(-4.0815742e-08, -1.5644815e-08, -1, -0.3579116, 0.9337553, 0, 0.9337553, 0.3579116, -4.371139e-08, -0.78146076, 1.4930702, 0.7311425)
 mesh = SubResource("QuadMesh_rkq34")
 texture = ExtResource("27_r83xy")
@@ -1397,19 +1422,19 @@ transform = Transform3D(-4.371139e-08, -0.9254612, -0.37884244, 1, -4.045319e-08
 transform = Transform3D(0.87548137, 0, -0.48325184, 0, 1, 0, 0.48325184, 0, 0.87548137, -26.703167, 0.21238112, -5.32901)
 
 [node name="Affiche2" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1570121432 instance=ExtResource("67_r83xy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.773695, 2.2439945, -6.9390554)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.773695, 1.8422028, -6.9390554)
 mesh = SubResource("QuadMesh_l3wih")
 texture = ExtResource("64_o7hd0")
 ratio = 0.07
 
 [node name="Affiche3" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=534763996 instance=ExtResource("67_r83xy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6564455, 1.890711, -6.9390554)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6564455, 1.4889193, -6.9390554)
 mesh = SubResource("QuadMesh_c63y5")
 texture = ExtResource("65_ovq67")
 ratio = 0.07
 
 [node name="Affiche4" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1932466941 instance=ExtResource("67_r83xy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.100767, 1.5942255, -6.9390554)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.100767, 1.1924338, -6.9390554)
 sorting_offset = 2.0
 mesh = SubResource("QuadMesh_cvosb")
 texture = ExtResource("66_r83xy")
@@ -2683,9 +2708,3 @@ transform = Transform3D(0.8268057, 0, -0.5624875, 0, 1, 0, 0.5624875, 0, 0.82680
 script = ExtResource("40_aese6")
 next_covers = [NodePath("../Barricade4")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
-
-[node name="Affiche" parent="." unique_id=1707028849 instance=ExtResource("67_r83xy")]
-transform = Transform3D(0.5735764, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.5735764, 7.4195104, 7.156481, -13.828907)
-mesh = SubResource("QuadMesh_5iju0")
-texture = ExtResource("78_d8hql")
-ratio = 0.6
