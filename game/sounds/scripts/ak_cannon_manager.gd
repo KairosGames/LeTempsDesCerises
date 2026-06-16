@@ -1,12 +1,15 @@
-extends Node3D
+class_name AkCannon extends Node3D
 
-@export var cannon : Node3D
-@export var shoot : AkEvent3D
+@onready var shoot : AkEvent3D = $Cannon_Shoot
+@onready var cannon: Canon = $".."
 
 func _ready() -> void:
 	cannon.move_progress_changed.connect(WwiseGlobal.on_move_progress)
 	cannon.reload_progress_changed.connect(WwiseGlobal.on_reload_progress)
 	cannon.workers_updated.connect(update_cannon_workers)
+	cannon.shoot.connect(_on_canon_shoot)
+	cannon.start_move.connect(_on_canon_start_move)
+	cannon.stop_move.connect(_on_canon_stop_move)
 
 func _on_canon_shoot() -> void:
 	shoot.post_event()

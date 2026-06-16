@@ -16,10 +16,6 @@ reload_duration = Array[float]([0.0, 20.0, 20.0, 20.0])
 [node name="Mesh" parent="." unique_id=359011155 instance=ExtResource("2_ru8pv")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1.4412985)
 
-[node name="AkCannonManager" parent="Mesh" unique_id=1286440460 node_paths=PackedStringArray("cannon") instance=ExtResource("3_rsllv")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -1.9888745e-07, 0.84135675, 2.275007)
-cannon = NodePath("../..")
-
 [node name="Slot0" type="Marker3D" parent="." unique_id=621133641]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9202085)
@@ -47,6 +43,5 @@ radius = 1.0
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1523932, 0)
 
-[connection signal="shoot" from="." to="Mesh/AkCannonManager" method="_on_canon_shoot"]
-[connection signal="start_move" from="." to="Mesh/AkCannonManager" method="_on_canon_start_move"]
-[connection signal="stop_move" from="." to="Mesh/AkCannonManager" method="_on_canon_stop_move"]
+[node name="AkCannon" parent="." unique_id=1286440460 instance=ExtResource("3_rsllv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4210855e-14, 0.84135675, -0.8337085)
