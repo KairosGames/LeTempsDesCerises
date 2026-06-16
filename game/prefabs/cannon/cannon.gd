@@ -84,6 +84,7 @@ func _physics_process(delta: float) -> void:
 					#stop_reload.emit()
 					print("[Cannon]  Reloaded at %s" % (Time.get_ticks_msec() / 1000.0))
 					reloaded.emit()
+					@warning_ignore("missing_await")
 					_shoot()
 
 func _shoot() -> void:
@@ -140,6 +141,7 @@ func _on_worker_died(worker: Agent) -> void:
 func move_to_second_path() -> void:
 	reparent(second_path)
 	_state = State.MOVING
+	move_progress = 0
 
 
 enum State { NONE, MOVING, RELOADING }
