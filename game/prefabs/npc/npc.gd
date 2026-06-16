@@ -4,7 +4,8 @@ signal arrived_on_path_point
 signal arrived_on_path_destination
 signal shot
 
-@onready var animator: AnimationPlayer = %AnimationPlayer
+@export var animator: AnimationPlayer
+
 @onready var collider: CollisionShape3D = %Collider
 @onready var is_on_screen: VisibleOnScreenNotifier3D = %IsOnScreen
 @onready var nav: NavigationAgent3D = %Navigation
@@ -137,7 +138,7 @@ func die() -> void:
 	twn.tween_property(self, "velocity", Vector3.ZERO, 0.1)
 	is_alive = false
 	collider.disabled = true
-	animator.play("death")
+	animator.play("stand-die", 0.3)
 
 
 func handle_animations() -> void:
@@ -148,10 +149,11 @@ func handle_animations() -> void:
 	if is_figthing:
 		enter_in_fight_anim()
 		return
-	enter_in_idle_anim()
 
 
 func enter_in_idle_anim() -> void:
+	#if not animator.current_animation == "stand-moving":
+		#animator.play("stand-moving")
 	pass
 
 
@@ -244,6 +246,6 @@ func wait_nav_to_aim() -> void:
 
 
 func delay_shoot(rdn_min: float = 0.0, rnd_max: float = 1.0) -> void:
-	var rnd: float = randf_range(0.0, 1.0)
+	var rnd: float = randf_range(rdn_min, rnd_max)
 	await get_tree().create_timer(rnd).timeout
 	shoot()
