@@ -31,7 +31,7 @@ func set_game_for_debug() -> void:
 	first_battle_phase_time = 0.0
 	francois.global_position = francois_moved_pos.global_position
 	francois.global_rotation = francois_moved_pos.global_rotation
-	francois.is_figthing = true
+	francois.is_fighting = true
 	player.global_position = discussion_point.global_position
 	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
 	player.give_or_drop_weapon(true)
@@ -114,12 +114,12 @@ func launch_women() -> void:
 
 func launch_francois_replique_on_women_arrival() -> void:
 	var louise: Npc = woman_points.women[0]
-	francois.is_figthing = false
+	francois.is_fighting = false
 	await francois.rotate_yaw_to_pos_tween(louise.global_position, 0.4)
 	await wait_voice() # "Oh regardez là bas, on est vernis ! Allez, les frangines, avec nous !"
 	var rot_targ: Vector3 = francois_moved_pos.global_position + francois_moved_pos.basis.z
 	await francois.rotate_yaw_to_pos_tween(rot_targ, 0.4)
-	francois.is_figthing = true
+	francois.is_fighting = true
 
 
 func is_there_no_enemies() -> bool:
@@ -127,8 +127,8 @@ func is_there_no_enemies() -> bool:
 
 
 func launch_dialogue_preparation() -> void:
-	francois.is_figthing = false
-	for woman: Npc in woman_points.women: woman.is_figthing = false
+	francois.is_fighting = false
+	for woman: Npc in woman_points.women: woman.is_fighting = false
 	await wait_voice() #"On les a rétamés !"
 	var louise: Npc = woman_points.women[0]
 	var marie: Npc = woman_points.women[1]
@@ -161,8 +161,8 @@ func launch_last_battle_phase() -> void:
 		if woman.npc_name == Npc.NpcName.Louise: continue
 		woman.replace_with_agent()
 	woman_points.clean_delete_references()
-	francois.is_figthing = true
-	louise.is_figthing = true
+	francois.is_fighting = true
+	louise.is_fighting = true
 	game_manager.cannon.move_to_second_path()
 	game_manager.cannon.enabled = true
 	player.can_die = true

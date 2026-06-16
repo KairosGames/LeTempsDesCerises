@@ -3,6 +3,7 @@ class_name Npc extends CharacterBody3D
 signal arrived_on_path_point
 signal arrived_on_path_destination
 signal shot
+signal reloaded
 
 @export var animator: AnimationPlayer
 
@@ -45,17 +46,30 @@ enum NpcTeam{
 @export var gender: NpcGender
 @export var team: NpcTeam
 
+
 var game_manager: GameManager
+var fight_task: FightTask
 var on_process: Array[Callable]
 var on_physics_process: Array[Callable]
 var delta_t: float
 var delta_p: float
 var is_alive: bool = true
-var is_figthing: bool = false
 var is_nav_finished: bool = false
 var is_all_nav_finished: bool = false
 
 var rot_twn: Tween
+
+var is_fighting: bool:
+	set(value):
+		if is_fighting == value: return
+		is_fighting = value
+		if value:
+			fight_task = FightTask.new()
+			add_child(fight_task)
+			fight_task.enter_in_fight(self)
+			return
+		fight_task.queue_free()
+		enter_in_idle_anim()
 
 
 func _ready() -> void:
@@ -70,7 +84,6 @@ func _process(delta: float) -> void:
 	delta_t = delta
 	if is_alive: apply_gravity()
 	for callable: Callable in on_process: callable.call()
-	handle_animations()
 
 
 func _physics_process(delta: float) -> void:
@@ -122,7 +135,7 @@ func rotate_yaw_to_pos_tween(pos: Vector3, time: float, fight: bool = false) -> 
 	rot_twn = create_tween()
 	var delta: float = wrapf(target_angle - global_rotation.y, -PI, PI)
 	await rot_twn.tween_property(self, "global_rotation:y", delta, time).as_relative().finished
-	is_figthing = fight
+	is_fighting = fight
 
 
 func is_at_point(pos: Vector3) -> bool:
@@ -142,51 +155,40 @@ func die() -> void:
 	animator.play("stand-die", 0.3)
 
 
-func handle_animations() -> void:
-	var lateral_vel: float = Vector3(velocity.x, 0.0, velocity.z).length_squared()
-	if lateral_vel >= 0.1:
-		enter_in_walk_anim()
-		return
-	if is_figthing:
-		enter_in_fight_anim()
-		return
+func enter_in_idle_anim(trans: float = 0.2) -> void:
+	animator.play("stand-idle", trans)
 
 
-func enter_in_idle_anim() -> void:
-	#if not animator.current_animation == "stand-moving":
-		#animator.play("stand-moving")
-	pass
+func enter_in_walk_anim(trans: float = 0.2) -> void:
+	animator.play("stand-moving", trans)
 
 
-func enter_in_walk_anim() -> void:
-	animator.play("stand-moving")
+func enter_in_crouch_anim(trans: float = 0.4) -> void:
+	animator.play("crouch-idle", trans)
 
 
-func enter_in_fight_anim() -> void:
-	pass
+func enter_in_aim(trans: float = 0.3) -> void:
+	animator.play("stand-aiming", trans)
 
 
-func enter_in_crouch_anim() -> void:
-	pass
+func enter_in_stand_no_weapon(trans: float = 0.3) -> void:
+	animator.play("stand-gunless", trans)
 
 
-func enter_in_aim() -> void:
-	pass
-
-
-func shoot() -> void:
+func shoot(trans: float = 0.2) -> void:
 	shot.emit()
+	animator.play("stand-shoot", trans)
+	await animator.animation_finished
 
 
-func enter_in_stand_no_weapon() -> void:
-	pass
+func enter_reload(trans: float = 0.2) -> void:
+	reloaded.emit()
+	animator.play("stand-reload", trans)
+	await animator.animation_finished
 
 
-func enter_reload() -> void:
-	pass
-
-
-func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: bool = false) -> void:
+func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: bool = false, aim: bool = false) -> void:
+	enter_in_walk_anim()
 	is_all_nav_finished = false
 	for point: Node3D in path_points:
 		is_nav_finished = false
@@ -194,18 +196,21 @@ func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: b
 		on_physics_process.push_back(go_to_nav_destination.bind(speed))
 		await wait_until(is_on_nav_destination)
 		arrived_on_path_point.emit()
+	await get_tree().create_timer(0.05).timeout
+	if fight or aim: enter_in_aim()
+	else: enter_in_idle_anim()
 	var dest: Node3D = path_points[path_points.size() - 1]
 	var targ: Vector3 = dest.global_position + dest.basis.z
 	await rotate_yaw_to_pos_tween(targ, 0.2)
 	is_all_nav_finished = true
 	arrived_on_path_destination.emit()
 	if collider.disabled: collider.disabled = false
-	is_figthing = fight
+	is_fighting = fight
 
 
-func launch_movement_to_nav_point(point: Node3D, speed: float, fight: bool = false) -> void:
+func launch_movement_to_nav_point(point: Node3D, speed: float, fight: bool = false, aim: bool = false) -> void:
 	var solo: Array[Node3D] = [point]
-	launch_movement_to_paths(solo, speed, fight)
+	launch_movement_to_paths(solo, speed, fight, aim)
 
 
 func go_to_nav_destination(speed: float) -> void:

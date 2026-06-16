@@ -29,7 +29,9 @@ func all_versaillais_go_to_dialogue_pos() -> void:
 	var i: int = 0
 	for versaillais: Npc in all_versaillais:
 		versaillais.collider.disabled = true
-		versaillais.launch_movement_to_nav_point(dialogue_points[i], 5.0)
+		await get_tree().create_timer(0.05).timeout
+		var aim: bool = i != 0
+		versaillais.launch_movement_to_nav_point(dialogue_points[i], 5.0, false, aim)
 		if i != 0: versaillais.wait_nav_to_aim()
 		i += 1
 

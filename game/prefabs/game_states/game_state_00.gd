@@ -25,7 +25,7 @@ func enter() -> void:
 		Step.new(wait_voice, wait_player_stand, do_nothing), #"Bon relève toi"
 		Step.new(wait_voice, wait_player_aim, free_changing_posture), #"Tiens essaye de viser"
 		Step.new(open_player_view, wait_player_shoot, free_player_view),
-		Step.new(wait_voice, wait_player_enter_reload, wait_voice), # "Ah mais il est vide celui là" / # "Voilà la ligne, ils sont sur nous !"
+		Step.new(wait_voice, wait_player_enter_reload, wait_voice), # "Ah mais il est vide celui là" / # "Terminé te voilà enfin près pour expédier du plomb"
 		Step.new(enter_fight_begin, georges_death, free_player)
 	]
 	if game_manager.use_debug: set_game_for_debug()
@@ -231,9 +231,9 @@ func enter_fight_begin() -> void:
 	await wait(0.3)
 	jules.rotate_yaw_to_pos_tween(versaillais_coming_point.global_position, 0.4)
 	await francois.rotate_yaw_to_pos_tween(player.global_position, 0.4)
-	jules.is_figthing = true
-	second_barricade_npc.is_figthing = true
-	await wait_voice() # "Terimné te voilà enfin près pour expédier du plomb"
+	jules.is_fighting = true
+	second_barricade_npc.is_fighting = true
+	await wait_voice() # "Voilà la ligne, ils sont sur nous !"
 	take_player_view_control(false)
 	clean_process()
 
@@ -242,15 +242,18 @@ func georges_death() -> void:
 	battle_director.go_next_covers_activation() ################################## Arrivée ennemis
 	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.2)
 	var george_targ: Vector3 = (player.global_position + (player.basis.x * 1.0)) + player.basis.z * 2.0
+	georges.enter_in_walk_anim()
 	await georges.move_to(george_targ, 4.0)
-	await georges.rotate_yaw_to_pos_tween(player.global_position, 0.2)
-	await wait_voice() #"Au mur citoyen !"
-	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.2)
+	georges.enter_in_idle_anim()
+	await georges.rotate_yaw_to_pos_tween(player.global_position, 0.3)
+	await wait_voice() # "Au mur citoyen !"
+	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.3)
 	call_georges_death()
+	georges.enter_in_walk_anim()
 	await georges.move_to(barricade_point.global_position, 4.0)
-	await wait_voice() #Nooooon ! Ils ont tué Georges !"
+	await wait_voice() # "Nooooon ! Ils ont tué Georges !"
 	await francois.rotate_yaw_to_pos_tween(versaillais_coming_point.global_position, 0.4)
-	francois.is_figthing = true
+	francois.is_fighting = true
 
 
 func call_georges_death() -> void:

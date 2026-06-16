@@ -38,11 +38,11 @@ func exit() -> void:
 func set_game_for_debug() -> void:
 	francois.global_position = discussion_point.global_position
 	francois.global_rotation = francois_moved_pos.global_rotation
-	francois.is_figthing = true
+	francois.is_fighting = true
 	louise.global_position = louise_pos.global_position
 	louise.global_rotation = louise_pos.global_rotation
 	louise.visible = true
-	louise.is_figthing = true
+	louise.is_fighting = true
 	player.global_position = francois_moved_pos.global_position
 	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
 	player.give_or_drop_weapon(true)
@@ -54,8 +54,8 @@ func set_game_for_debug() -> void:
 
 
 func wait_no_more_allies() -> void:
-	louise.is_figthing = false
-	francois.is_figthing = false
+	louise.is_fighting = false
+	francois.is_fighting = false
 	louise.launch_movement_to_nav_point(louise_cover, 4.0, true)
 	francois.launch_movement_to_nav_point(francois_cover, 4.0, true)
 	await wait_until(are_louise_and_francois_on_covers)
@@ -83,10 +83,13 @@ func player_go_to_cover() -> void:
 	player.can_play = false
 	ui_manager.set_objective(false)
 	await run_to_destination(player_cover)
-	louise.is_figthing = false
+	louise.is_fighting = false
 	louise.enter_in_crouch_anim()
-	francois.is_figthing = false
+	francois.is_fighting = false
 	francois.enter_in_crouch_anim()
+	
+	print("LES DEUX CROUCH")
+	
 	var target: Vector3 = player_cover.global_position + player_cover.basis.z
 	var time_ratio: float = get_yaw_diff_ratio(target)
 	await tween_rotate_player_to_pos(versaillais_points.dialogue_points[0].global_position, 1.0 * time_ratio)
