@@ -3918,20 +3918,8 @@ metadata/_custom_type_script = "uid://bmespkxucvogk"
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -45.957, 3, -6.452)
 mesh = ExtResource("27_yjjy0")
 
-[node name="WallPropsC2" type="MeshInstance3D" parent="WallPropsC" unique_id=1161181378]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -43.957, 7.2, -6.452)
-mesh = ExtResource("27_yjjy0")
-
-[node name="WallPropsC3" type="MeshInstance3D" parent="WallPropsC" unique_id=265009320]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -47.957, 7.2, -6.452)
-mesh = ExtResource("27_yjjy0")
-
 [node name="WallPropsC4" type="MeshInstance3D" parent="WallPropsC" unique_id=48492358]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.957, 3, -7.452)
-mesh = ExtResource("27_yjjy0")
-
-[node name="WallPropsC5" type="MeshInstance3D" parent="WallPropsC" unique_id=1770792712]
-transform = Transform3D(0.89879405, 0, -0.43837115, 0, 1, 0, 0.43837115, 0, 0.89879405, 14.176, 3.8, -51.488)
 mesh = ExtResource("27_yjjy0")
 
 [node name="WallPropsGAngle" type="MultiMeshInstance3D" parent="." unique_id=1811074272]
@@ -4419,22 +4407,45 @@ mesh = ExtResource("10_b634d")
 transform = Transform3D(-0.029038072, 0, 0.9995783, 0, 1, 0, -0.9995783, 0, -0.029038072, -2.088047, 7.15, -17.942053)
 mesh = ExtResource("10_b634d")
 
+[node name="PropsLamp" type="Node3D" parent="." unique_id=716333001]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -43.957, 7.2, -6.452)
+visible = false
+
+[node name="WallPropsC5" type="MeshInstance3D" parent="PropsLamp" unique_id=1770792712]
+transform = Transform3D(0.43837112, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837112, -45.036, -3.3999999, -58.133)
+mesh = ExtResource("27_yjjy0")
+
+[node name="HeadLight5" parent="PropsLamp" unique_id=1806495090 instance=ExtResource("24_ic86n")]
+transform = Transform3D(-0.89879405, 0, 0.4383711, 0, 1, 0, -0.4383711, 0, -0.89879405, -44.46, -2.9909997, -59.315)
+
+[node name="PropsLamp2" type="Node3D" parent="." unique_id=1357953366]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -43.957, 7.2, -6.452)
+visible = false
+
+[node name="WallPropsC2" type="MeshInstance3D" parent="PropsLamp2" unique_id=1161181378]
+mesh = ExtResource("27_yjjy0")
+
+[node name="HeadLight2" parent="PropsLamp2" unique_id=232322880 instance=ExtResource("24_ic86n")]
+transform = Transform3D(-7.3513704e-08, 0, 1, 0, 1, 0, -1, 0, -7.3513704e-08, 1.3176413, 0.41395664, 4)
+
+[node name="PropsLamp3" type="Node3D" parent="." unique_id=686609252]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -43.957, 7.2, -6.452)
+visible = false
+
+[node name="WallPropsC3" type="MeshInstance3D" parent="PropsLamp3" unique_id=265009320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+mesh = ExtResource("27_yjjy0")
+
+[node name="HeadLight3" parent="PropsLamp3" unique_id=1592482521 instance=ExtResource("24_ic86n")]
+transform = Transform3D(-7.3513704e-08, 0, 1, 0, 1, 0, -1, 0, -7.3513704e-08, 1.316596, 0.42875385, 0)
+
 [node name="Lamps" type="Node3D" parent="." unique_id=1387855290]
 
 [node name="HeadLight" parent="Lamps" unique_id=1270948155 instance=ExtResource("24_ic86n")]
 transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, -45.957, 3.4157617, -5.134231)
 
-[node name="HeadLight2" parent="Lamps" unique_id=232322880 instance=ExtResource("24_ic86n")]
-transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, -47.957, 7.6139565, -5.134359)
-
-[node name="HeadLight3" parent="Lamps" unique_id=1592482521 instance=ExtResource("24_ic86n")]
-transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, -43.957, 7.6287537, -5.135404)
-
 [node name="HeadLight4" parent="Lamps" unique_id=75296691 instance=ExtResource("24_ic86n")]
 transform = Transform3D(1, 0, 2.9802319e-08, 0, 1, 0, -2.9802319e-08, 0, 1, -25.638319, 3.4254403, -7.452)
-
-[node name="HeadLight5" parent="Lamps" unique_id=1806495090 instance=ExtResource("24_ic86n")]
-transform = Transform3D(0.43837112, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837112, 15.358, 4.209, -50.912)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=104655010]
 collision_mask = 0
