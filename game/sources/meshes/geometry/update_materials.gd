@@ -9,6 +9,8 @@ const OUTPUT_DIR: String = "res://prefabs/geometry/"
 const OVERRIDES: Dictionary[StringName, StringName] = {
 	"bricks": "concrete",
 	"brick_b": "concrete",
+	"wood_a": "plank",
+	"wood_b": "plank",
 }
 
 func _run() -> void:
