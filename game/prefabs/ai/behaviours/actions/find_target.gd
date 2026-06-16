@@ -28,8 +28,9 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
 	# TODO if target is Player always do raycast
 
-	for i in range(targets_data.size() -1, -1 -1):
+	for i: int in range(targets_data.size() -1, -1 -1):
 		var data: TargetData = targets_data[i]
+		@warning_ignore("unsafe_property_access")
 		if not data.target.is_alive or data.target is Agent and not data.target.can_die:
 			targets_data.remove_at(i)
 			continue
@@ -43,11 +44,14 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	targets_data.sort_custom(best_score)
 
 	for data: TargetData in targets_data:
+		@warning_ignore("unsafe_property_access")
 		for shoot_target: Marker3D in data.target.shoot_targets:
 			raycast.global_position = agent.global_position + Vector3(0, agent.cover.get_shoot_height(), 0)
 			raycast.look_at(shoot_target.global_position)
 			raycast.force_raycast_update()
+			@warning_ignore("untyped_declaration")
 			var shoot_debug = get_node_or_null("/root/ShootDebug")
+			@warning_ignore("unsafe_method_access")
 			if shoot_debug: shoot_debug.add_debug(
 				raycast.global_position,
 				raycast.global_rotation,
@@ -67,14 +71,13 @@ static func best_score(a: TargetData, b: TargetData) -> bool: return a.score < b
 
 class TargetData:
 
-	@warning_ignore("shadowed_variable")
 	func _init(target: Node3D, agent: Agent, coefficents: TargetSelectionCoefficient) -> void:
 
 		self.target = target
 
 		is_player = target is Player
 		is_threatening = agent.threats.has(target)
-		is_pushing_canon = not is_player and target.is_pushing_canon
+		is_pushing_canon = not is_player and (target as Agent).is_pushing_canon
 		distance = target.global_position.distance_to(agent.global_position)
 
 		covering = 0.0 if is_player or not target.cover else target.cover.get_cover_posture() / float(target.posture)
