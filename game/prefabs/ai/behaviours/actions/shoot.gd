@@ -40,8 +40,9 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		var collider: Object = raycast.get_collider()
 		if collider is Player:
 			var player: Player = collider as Player
-			if not player.can_die or player.is_immortal:
-				player.missed_by_enemy.emit()
+			if not player.can_die: player.missed_by_enemy.emit()
+			if player.is_immortal: player.missed_by_enemy.emit()
+			if agent.team == Agent.Team.COMMUNARD: player.missed_by_enemy.emit()
 			else:
 				collider.die()
 				_vagueness = 1.0
