@@ -49,7 +49,7 @@ func set_local_player() -> void:
 
 
 func set_state() -> void:
-	for i in range(all_steps.size()):
+	for i: int in range(all_steps.size()):
 		all_steps[i].visible = i == state
 		var mode: Node.ProcessMode = PROCESS_MODE_INHERIT if i == state else PROCESS_MODE_DISABLED
 		all_steps[i].process_mode = mode

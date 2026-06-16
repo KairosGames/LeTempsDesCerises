@@ -110,14 +110,14 @@ func apply_gravity() -> void:
 
 
 func rotate_yaw_to_pos(pos: Vector3, speed: float, delta: float) -> void:
-	var dir = global_position - pos
-	var target_angle = atan2(-dir.x, -dir.z)
+	var dir: Vector3 = global_position - pos
+	var target_angle: float = atan2(-dir.x, -dir.z)
 	global_rotation.y = rotate_toward(global_rotation.y, target_angle, speed * delta)
 
 
 func rotate_yaw_to_pos_tween(pos: Vector3, time: float, fight: bool = false) -> void:
-	var dir = pos.direction_to(global_position)
-	var target_angle = atan2(-dir.x, -dir.z)
+	var dir: Vector3 = pos.direction_to(global_position)
+	var target_angle: float = atan2(-dir.x, -dir.z)
 	if rot_twn: rot_twn.kill()
 	rot_twn = create_tween()
 	var delta: float = wrapf(target_angle - global_rotation.y, -PI, PI)
@@ -159,7 +159,7 @@ func enter_in_idle_anim() -> void:
 
 
 func enter_in_walk_anim() -> void:
-	pass
+	animator.play("stand-moving")
 
 
 func enter_in_fight_anim() -> void:
@@ -215,8 +215,8 @@ func go_to_nav_destination(speed: float) -> void:
 		return
 	var next_pos: Vector3 = nav.get_next_path_position()
 	rotate_yaw_to_pos(next_pos, PI * 2, delta_t)
-	var dir = global_position - next_pos
-	var target_angle = atan2(-dir.x, -dir.z)
+	var dir: Vector3 = global_position - next_pos
+	var target_angle: float = atan2(-dir.x, -dir.z)
 	if abs(wrapf(global_rotation.y - target_angle, -PI, PI)) < PI * 0.1:
 		move_forward(speed)
 

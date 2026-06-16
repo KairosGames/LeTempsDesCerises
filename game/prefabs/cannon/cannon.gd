@@ -141,7 +141,8 @@ func _on_worker_died(worker: Agent) -> void:
 func move_to_second_path() -> void:
 	reparent(second_path)
 	_state = State.MOVING
-	move_progress = 0
+	progress_ratio = 0.0
+	move_progress = 0.0
 
 
 enum State { NONE, MOVING, RELOADING }

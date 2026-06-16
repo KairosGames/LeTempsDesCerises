@@ -39,7 +39,7 @@ func set_game_for_debug() -> void:
 	ui_manager.hard_set_letter_box(false)
 	game_manager.cannon._is_first_shoot = false
 	if game_manager.curr_barricade == game_manager.first_barricade:
-		for i in range(0,3): game_manager.handle_cannon_shoot()
+		for i: int in range(0,3): game_manager.handle_cannon_shoot()
 
 
 func lauch_first_phase() -> void:
@@ -108,6 +108,7 @@ func launch_women() -> void:
 		var path_points: Array[Node3D] = [p1, p2]
 		var speed: float = randf_range(3.7, 4.3)
 		if woman.npc_name != Npc.NpcName.Louise: woman.collider.disabled = true
+		await wait(0.05)
 		woman.launch_movement_to_paths(path_points, speed, true)
 
 

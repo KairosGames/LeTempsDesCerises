@@ -120,7 +120,3 @@ func handle_cannon_shoot() -> void:
 	if curr_barricade.state == curr_barricade.max_state:
 		print("WE ARE TARGETTING SECOND BARRICADE")
 		curr_barricade = second_barricade
-
-
-func get_active_barricade() -> Barricade:
-	return first_barricade
