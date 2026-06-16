@@ -76,10 +76,13 @@ func _physics_process(delta: float) -> void:
 			if move_progress == 1.0: _state = State.RELOADING
 		State.RELOADING:
 			if reload_progress < 1.0:
-				if reload_progress == 0.0: start_reload.emit()
+				if reload_progress == 0.0:
+					start_reload.emit()
+					print("[Cannon] Start reloading at %s" % (Time.get_ticks_msec() / 1000.0))
 				reload_progress += delta / reload_duration[workers.size()]
 				if reload_progress == 1.0: 
 					#stop_reload.emit()
+					print("[Cannon]  Reloaded at %s" % (Time.get_ticks_msec() / 1000.0))
 					reloaded.emit()
 					_shoot()
 
@@ -88,7 +91,7 @@ func _shoot() -> void:
 		_is_first_shoot = false
 		await GameManager.instance.all_states[1].game_ready_cannon_shoot
 	await get_tree().create_timer(delay_before_shoot).timeout
-	print("[Canon] shoot")
+	print("[Cannon] Shoot at %s" % (Time.get_ticks_msec() / 1000.0))
 	shoot.emit()
 	reload_progress = 0
 
