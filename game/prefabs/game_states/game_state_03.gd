@@ -37,6 +37,7 @@ func exit() -> void:
 
 func set_game_for_debug() -> void:
 	for i: int in range(13): battle_director.go_next_covers_activation()
+	voice_line_index = 26
 	francois.global_position = discussion_point.global_position
 	francois.global_rotation = francois_moved_pos.global_rotation
 	francois.is_fighting = true
