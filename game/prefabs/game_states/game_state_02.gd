@@ -85,7 +85,9 @@ func allies_arrival() -> void:
 	#############################################################################FOR DEBUG
 	add_on_process(kill_agents.bind(true, false))
 	
-	for agent: Agent in game_manager.cannon.workers: agent.die()
+	for agent: Agent in game_manager.cannon.workers:
+		if not agent or not is_instance_valid(agent): continue
+		agent.die()
 	await wait_until(is_there_no_enemies)
 
 

@@ -209,7 +209,9 @@ func go_to_cover_from_cannon() -> void:
 func launch_first_cannon_shoot() -> void:
 	game_ready_cannon_shoot.emit()
 	await wait_signal(game_manager.first_barricade.state_changed)
-	for agent: Agent in game_manager.cannon.workers: agent.can_die = true
+	for agent: Agent in game_manager.cannon.workers:
+		if not agent or not is_instance_valid(agent): continue
+		agent.can_die = true
 	await wait_voice() # "Putain, ils ont pété la barricade"
 	take_player_move_control(false)
 	take_player_view_control(false)

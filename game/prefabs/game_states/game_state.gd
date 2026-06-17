@@ -24,6 +24,7 @@ var next_respawn: Npc
 var on_process: Array[Callable]
 var on_physics_process: Array[Callable]
 var on_ui_process: Array[Callable]
+var on_debug_process: Array[Callable]
 var delta_t: float
 var delta_ph: float
 var local_bool: bool
@@ -57,11 +58,10 @@ func _process(delta: float) -> void:
 	delta_t = delta
 	for callable: Callable in on_process: callable.call()
 	for callable: Callable in on_ui_process: callable.call()
+	for callable: Callable in on_debug_process: callable.call()
 	
-	######################### FOR DEBUG
-	if Input.is_action_just_pressed("go_next_step") and game_manager.is_game_playing() and game_manager.use_narrative:
-		print("NEXT CALLED")
-		voice_line_finished.emit()
+	####### FOR DEBUG
+	debug_process(delta)
 
 
 func _physics_process(delta: float) -> void:
@@ -97,6 +97,9 @@ func add_on_physics_process(callable: Callable) -> void:
 	on_physics_process.push_back(callable)
 
 
+func add_on_debug_process(callable: Callable) -> void:
+	on_debug_process.push_back(callable)
+
 func clean_process() -> void:
 	on_process.clear()
 
@@ -107,6 +110,10 @@ func clean_physics_process() -> void:
 
 func clean_ui_process() -> void:
 	on_ui_process.clear()
+
+
+func clean_debug_process() -> void:
+	on_debug_process.clear()
 
 
 func wait(seconds: float) -> void:
@@ -138,7 +145,7 @@ func set_local_bool() -> void:
 func wait_voice() -> void:
 	voice_line_index += 1
 	game_manager.voice_line_called.emit(voice_line_index)
-	print("WAIT VOICE")
+	print("WAIT VOICE, i : ", voice_line_index)
 	await voice_line_finished
 
 
@@ -250,6 +257,7 @@ func kill_player() -> void:
 func run_to_destination(destination: Node3D) -> void:
 	take_player_move_control(true)
 	take_player_view_control(true)
+	add_on_debug_process(use_nav_debug) ## FOR DBUG
 	ui_manager.launch_letter_box(true)
 	player.nav.target_position = destination.global_position
 	set_player_for_cinematic()
@@ -259,6 +267,7 @@ func run_to_destination(destination: Node3D) -> void:
 	set_player_move(input_dir)
 	await wait_until(is_player_on_position.bind(destination))
 	set_player_move(Vector2.ZERO)
+	clean_debug_process() ## FOR DBUG
 
 
 func set_player_for_cinematic() -> void:
@@ -282,6 +291,11 @@ func leave_reload() -> void:
 
 
 func go_to_nav_destination(run: bool = true) -> void:
+	#######FOR DEBUG
+	if detect_input_debug():
+		set_player_move(Vector2(0.0, 0.0))
+		player.is_running = false
+		return
 	if player.nav.is_navigation_finished():
 		set_player_move(Vector2(0.0, 0.0))
 		player.is_running = false
@@ -347,10 +361,16 @@ func is_there_no_allies() -> bool:
 	return list.size() <= 0
 
 
-#####################DEBUG ##############################
+##################### FOR DEBUG ##############################
+func debug_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("go_next_step") and game_manager.is_game_playing() and game_manager.use_narrative:
+		print("NEXT CALLED")
+		voice_line_finished.emit()
+
 func add_worker_on_cannon() -> void:
 	if Input.is_action_just_pressed("choice_surrender"):
 		game_manager.cannon._create_workers(1)
+
 
 func kill_agents(kill_enemies: bool, kill_allies: bool) -> void:
 	if Input.is_action_just_pressed("go_next_step"):
@@ -363,4 +383,16 @@ func kill_agents(kill_enemies: bool, kill_allies: bool) -> void:
 		clean_process()
 	if is_there_no_enemies() and kill_enemies: clean_process()
 	if is_there_no_allies() and kill_allies: clean_process()
-#####################DEBUG ##############################
+
+
+func detect_input_debug() -> bool:
+	return Input.is_action_pressed("nav_debug_back") \
+			or Input.is_action_pressed("nav_debug_left") \
+			or Input.is_action_pressed("nav_debug_right") 
+
+
+func use_nav_debug() -> void:
+	if Input.is_action_pressed("nav_debug_back"): set_player_move(Vector2(0.0, -1.0))
+	if Input.is_action_pressed("nav_debug_left"): set_player_move(Vector2(-1.0, 0.0))
+	if Input.is_action_pressed("nav_debug_right"): set_player_move(Vector2(1.0, 0.0))
+##################### FOR DEBUG ##############################

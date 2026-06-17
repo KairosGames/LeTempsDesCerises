@@ -243,7 +243,7 @@ func replace_with_agent() -> void:
 	agent.global_position = global_position
 	agent.global_rotation = global_rotation
 	agent.global_rotation.y += PI
-	queue_free.call_deferred()
+	queue_free()
 
 
 func wait_nav_to_aim() -> void:
