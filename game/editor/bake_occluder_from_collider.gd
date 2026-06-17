@@ -13,9 +13,9 @@ func _run() -> void:
 		return
 	var body: StaticBody3D = selection[0]
 	var parent: Node = body.get_parent()
-	var occluder_container: Node = parent.get_node_or_null(OCULDER_CONTAINER_NAME)
+	var occluder_container: Node3D = parent.get_node_or_null(OCULDER_CONTAINER_NAME)
 	if not occluder_container:
-		occluder_container = Node.new()
+		occluder_container = Node3D.new()
 		parent.add_child(occluder_container)
 		occluder_container.name = OCULDER_CONTAINER_NAME
 		occluder_container.owner = body.owner
