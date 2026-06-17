@@ -13,13 +13,13 @@ const OVERRIDES: Dictionary[StringName, StringName] = {
 
 func _run() -> void:
 	var materials: Dictionary[String, Material]
-	for material_file in DirAccess.get_files_at(MATERIAL_DIR):
+	for material_file: String in DirAccess.get_files_at(MATERIAL_DIR):
 		var path: String = MATERIAL_DIR + material_file
 		var material: Material = load(path)
 		if material:
 			materials[material_file.get_basename()] = material
 
-	for mesh_file in DirAccess.get_files_at(MESH_DIR):
+	for mesh_file: String in DirAccess.get_files_at(MESH_DIR):
 		if not mesh_file.ends_with(".obj"): continue
 		var path: String = MESH_DIR + mesh_file
 		var name: String = mesh_file.get_basename()
