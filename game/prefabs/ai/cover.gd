@@ -7,6 +7,7 @@ class_name Cover extends Marker3D
 	set(value):
 		type = value
 		notify_property_list_changed()
+@export var sexe: Agent.Sexe = Agent.Sexe.BOTH
 
 @export_category("Postures")
 @export var height: Height = Height.MEDIUM:
@@ -59,6 +60,7 @@ func _validate_property(property: Dictionary) -> void:
 	match property.name:
 		"height" when type != Type.COVER: property.usage = PROPERTY_USAGE_NO_EDITOR
 		"side_distance" when type != Type.COVER or height != Height.HIGH: property.usage = PROPERTY_USAGE_NO_EDITOR
+		"sexe" when type != Type.SPAWNER: property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready() -> void:
 	_init_all()

@@ -152,3 +152,4 @@ func _update_collider(new_posture: Posture) -> void:
 			collider.rotation = Vector3.ZERO
 
 enum Posture { NONE, PRONE, CROUCH, STAND}
+enum Sexe { MAN = 1, WOMAN = 2, BOTH = 3}
