@@ -4,6 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://coqmu4xpu7ky0" path="res://prefabs/geometry/wall_props_c.tres" id="1_nmkv8"]
 [ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="2_33eri"]
 [ext_resource type="PackedScene" uid="uid://bdclgyj6yyleb" path="res://prefabs/props/headlight.tscn" id="2_x13c1"]
+[ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="3_gqsca"]
 [ext_resource type="ArrayMesh" uid="uid://ckkf8euhqqlun" path="res://prefabs/geometry/wall_a.tres" id="3_v6oru"]
 [ext_resource type="ArrayMesh" uid="uid://b4uoppjw23a88" path="res://prefabs/geometry/wall_c.tres" id="4_w4ycv"]
 [ext_resource type="ArrayMesh" uid="uid://deno2kvmgtq3b" path="res://prefabs/geometry/wall_d.tres" id="5_a47ga"]
@@ -217,6 +218,7 @@ mesh = ExtResource("5_a47ga")
 
 [node name="Lamp6" type="Node3D" parent="." unique_id=1191045436]
 transform = Transform3D(-0.70710665, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710665, -25.346626, 2.9999964, 43.710773)
+visible = false
 
 [node name="WallPropsC" type="MeshInstance3D" parent="Lamp6" unique_id=1994320981]
 transform = Transform3D(-1, 0, 4.371139e-08, 0, 1, 0, -4.371139e-08, 0, -1, 0, 0, 0)
@@ -227,6 +229,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.3
 
 [node name="Lamp7" type="Node3D" parent="." unique_id=1507866699]
 transform = Transform3D(0.8987939, 0, -0.43837106, 0, 1, 0, 0.43837106, 0, 0.8987939, -32.8543, 2.9999964, 49.463844)
+visible = false
 
 [node name="WallPropsC" type="MeshInstance3D" parent="Lamp7" unique_id=714024138]
 transform = Transform3D(-1, 0, 4.371139e-08, 0, 1, 0, -4.371139e-08, 0, -1, 0, 0, 0)
@@ -1878,7 +1881,12 @@ transform = Transform3D(0.70982885, 0, -0.70437413, 0, 1, 0, 0.70437413, 0, 0.70
 shape = SubResource("BoxShape3D_xbbf5")
 debug_color = Color(0.7, 0, 0.011666489, 1)
 
-[node name="Occluders" type="Node" parent="." unique_id=429092013]
+[node name="AkGeometry" type="AkGeometry" parent="StaticBody3D" unique_id=1153122611]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("3_gqsca")
+
+[node name="Occluders" type="Node3D" parent="." unique_id=534122349]
 
 [node name="@OccluderInstance3D@46781" type="OccluderInstance3D" parent="Occluders" unique_id=25674019]
 transform = Transform3D(0.43515253, 0, 0.9003567, 0, 1, 0, -0.9003567, 0, 0.43515253, -32.181694, 7.0063686, 49.870842)

@@ -3,6 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b8lcs04fs61t2" path="res://prefabs/geometry/window_b.tres" id="1_iuqfw"]
 [ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="1_matxu"]
 [ext_resource type="Script" uid="uid://bmespkxucvogk" path="res://addons/mesh_combiner_3d/mesh_combiner_3d.gd" id="2_4n8mr"]
+[ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="2_8g8pk"]
 [ext_resource type="ArrayMesh" uid="uid://ckkf8euhqqlun" path="res://prefabs/geometry/wall_a.tres" id="3_uw8le"]
 [ext_resource type="ArrayMesh" uid="uid://b4uoppjw23a88" path="res://prefabs/geometry/wall_c.tres" id="4_3sylf"]
 [ext_resource type="ArrayMesh" uid="uid://dstjnv2qgt488" path="res://prefabs/geometry/wall_b.tres" id="5_jve5i"]
@@ -358,6 +359,11 @@ surface_material_override/0 = ExtResource("1_matxu")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 34.564, 0.2, -41.866)
 shape = SubResource("ConcavePolygonShape3D_matxu")
 
+[node name="AkGeometry" type="AkGeometry" parent="Trottoirs" unique_id=1025346289]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("2_8g8pk")
+
 [node name="WallA" type="MultiMeshInstance3D" parent="." unique_id=1394707042]
 multimesh = SubResource("MultiMesh_4xsgd")
 script = ExtResource("2_4n8mr")
@@ -389,6 +395,7 @@ script = ExtResource("2_4n8mr")
 metadata/_custom_type_script = "uid://bmespkxucvogk"
 
 [node name="WallPropsC" type="MultiMeshInstance3D" parent="." unique_id=1775804053]
+visible = false
 multimesh = SubResource("MultiMesh_nyp5y")
 script = ExtResource("2_4n8mr")
 metadata/_custom_type_script = "uid://bmespkxucvogk"
@@ -494,6 +501,7 @@ script = ExtResource("2_4n8mr")
 metadata/_custom_type_script = "uid://bmespkxucvogk"
 
 [node name="PropsLamp" type="Node3D" parent="." unique_id=1772222671]
+visible = false
 
 [node name="HeadLight5" parent="PropsLamp" unique_id=1270948155 instance=ExtResource("30_matxu")]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 29.650978, 6.208501, -25.771446)
@@ -624,7 +632,12 @@ transform = Transform3D(-0.46947154, 0, -0.8829475, 0, 1, 0, 0.8829475, 0, -0.46
 shape = SubResource("BoxShape3D_brvnb")
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
-[node name="Occluders" type="Node" parent="." unique_id=2028649241]
+[node name="AkGeometry" type="AkGeometry" parent="StaticBody3D" unique_id=59195870]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("2_8g8pk")
+
+[node name="Occluders" type="Node3D" parent="." unique_id=380237630]
 
 [node name="@OccluderInstance3D@43218" type="OccluderInstance3D" parent="Occluders" unique_id=216542788]
 transform = Transform3D(0.57357645, 0, -0.81915206, 0, 1, 0, 0.81915206, 0, 0.57357645, 17.581259, 8.296768, -23.807999)

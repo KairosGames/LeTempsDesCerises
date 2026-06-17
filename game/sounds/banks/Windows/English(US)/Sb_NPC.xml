@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="English(US)" Hash="{01846A60-366E-586D-BD87-AE272D3FAC62}">
+		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="English(US)" Hash="{0F9A0CCF-6580-8EF8-A2E9-BF984B67BEA3}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_NPC</ObjectPath>
 			<ShortName>Sb_NPC</ShortName>
 			<Path>English(US)/Sb_NPC.bnk</Path>
@@ -193,6 +193,10 @@
 				<File Id="225940071" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-003.wav</ShortName>
 					<CachePath>57/{571ECAA4-3820-2EAB-F407-C2B0570CFB10}.wem</CachePath>
+				</File>
+				<File Id="229724527" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
+					<ShortName>Characters\Louise\VX_Amb_F_Comm_Louise_Game_End_Choice_2_Atea.wav</ShortName>
+					<CachePath>C2/{C2A558E0-BD89-413B-3824-F30973F52AF1}.wem</CachePath>
 				</File>
 				<File Id="240885231" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Zoé\VX_Bar_F_Comm_Worker_Ally_Death_Zoé-003.wav</ShortName>
@@ -589,6 +593,10 @@
 				<File Id="607437853" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Loris\VX_Bar_M_Comm_Worker_Player_Far_Loris-002.wav</ShortName>
 					<CachePath>E6/{E64C66AE-6AF7-6947-B3CB-715171777700}.wem</CachePath>
+				</File>
+				<File Id="609858295" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
+					<ShortName>Characters\Francois\VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris.wav</ShortName>
+					<CachePath>67/{6758CE8A-F240-EBEA-181A-71B8BA78BB11}.wem</CachePath>
 				</File>
 				<File Id="611884418" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Military_Barricade_Destroyed_Yuna-004.wav</ShortName>
@@ -1001,11 +1009,12 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
 					<Plugin Id="807526038" Name="Meter (Custom)" ObjectPath="\Containers\VX\NPC\Communard\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{2855D257-F711-4259-8A16-CCC31E5A8F21}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="1707855831" Name="Ally_Ally_Death" ObjectPath="\Events\VX\Ally\Ally_Ally_Death" GUID="{81D6C764-2FD2-4FC5-832F-2938E40C1E3A}" Color="11" MaxAttenuation="30" DurationType="OneShot" DurationMin="1.197" DurationMax="4.652458">
+				<Event Id="1707855831" Name="Ally_Ally_Death" ObjectPath="\Events\VX\Ally\Ally_Ally_Death" GUID="{81D6C764-2FD2-4FC5-832F-2938E40C1E3A}" Color="11" MaxAttenuation="30" DurationType="OneShot" DurationMin="0" DurationMax="4.652458">
 					<AuxBusRefs>
 						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
@@ -1324,7 +1333,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="413417616" Name="Ally_Cannon_Fire" ObjectPath="\Events\VX\Ally\Ally_Cannon_Fire" GUID="{2FD3860B-1D80-4BB0-8D2F-554A4650D647}" Color="11" MaxAttenuation="30" DurationType="OneShot" DurationMin="0.90785414" DurationMax="6.4602294">
+				<Event Id="413417616" Name="Ally_Cannon_Fire" ObjectPath="\Events\VX\Ally\Ally_Cannon_Fire" GUID="{2FD3860B-1D80-4BB0-8D2F-554A4650D647}" Color="11" MaxAttenuation="30" DurationType="OneShot" DurationMin="0" DurationMax="6.4602294">
 					<AuxBusRefs>
 						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
@@ -1698,7 +1707,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="3252427803" Name="Ally_Shoot" ObjectPath="\Events\SFX\Ally\Ally_Shoot" GUID="{0758294E-77B6-49B7-9D4C-4F0A410A33B6}" Color="10" MaxAttenuation="50" DurationType="OneShot" DurationMin="1.7817974" DurationMax="2.0586045">
+				<Event Id="3252427803" Name="Ally_Shoot" ObjectPath="\Events\SFX\Ally\Ally_Shoot" GUID="{0758294E-77B6-49B7-9D4C-4F0A410A33B6}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.7817974" DurationMax="2.0586045">
 					<MediaRefs>
 						<MediaRef Id="512603057"/>
 						<MediaRef Id="629537322"/>
@@ -1787,8 +1796,36 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="1218331013" Name="Choose_Fight" ObjectPath="\Events\VX\Ally\Choose_Fight" GUID="{942B9A28-9902-4AB4-8844-671F2F8C55A0}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="2.858354" DurationMax="2.858354">
+					<MediaRefs>
+						<MediaRef Id="229724527"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="537703978"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
+						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
+					</AuxBusRefs>
+				</Event>
+				<Event Id="2467968637" Name="Choose_Surrender" ObjectPath="\Events\VX\Ally\Choose_Surrender" GUID="{21D54443-F2A6-4D2C-A1EE-BEF015429488}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="3.0075624" DurationMax="3.0075624">
+					<MediaRefs>
+						<MediaRef Id="609858295"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="537703978"/>
+						</Custom>
+					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
+						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
+					</AuxBusRefs>
+				</Event>
 				<Event Id="3687575925" Name="Deafening_Recover" ObjectPath="\Events\SFX\Player\Deafening_Recover" GUID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="3457462997" Name="Enemy_Barricade_State" ObjectPath="\Events\VX\Enemy\Enemy_Barricade_State" GUID="{31E2C0A9-7E7A-494B-9613-C74D03464B25}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="0" DurationMax="0">
+				<Event Id="3457462997" Name="Enemy_Barricade_State" ObjectPath="\Events\VX\Enemy\Enemy_Barricade_State" GUID="{31E2C0A9-7E7A-494B-9613-C74D03464B25}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="0" DurationMax="0">
 					<AuxBusRefs>
 						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
@@ -1833,7 +1870,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="1807735670" Name="Enemy_Cannon_Advance" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Advance" GUID="{B87BEEB3-1D5D-4524-B166-879E9838F2E4}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="2.1179376" DurationMax="3.806521">
+				<Event Id="1807735670" Name="Enemy_Cannon_Advance" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Advance" GUID="{B87BEEB3-1D5D-4524-B166-879E9838F2E4}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="2.1179376" DurationMax="3.806521">
 					<AuxBusRefs>
 						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
@@ -1862,7 +1899,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="378772636" Name="Enemy_Cannon_Fire" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Fire" GUID="{2D328B0C-378F-473A-9D13-08FB635F21CB}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="1.0110208" DurationMax="2.3952708">
+				<Event Id="378772636" Name="Enemy_Cannon_Fire" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Fire" GUID="{2D328B0C-378F-473A-9D13-08FB635F21CB}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="1.0110208" DurationMax="2.3952708">
 					<AuxBusRefs>
 						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
@@ -1897,7 +1934,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="3891079404" Name="Enemy_Cannon_Incoming" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Incoming" GUID="{2E2AC514-41EC-40C2-B741-99ABD8D6FB72}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="1.7692916" DurationMax="3.5590417">
+				<Event Id="3891079404" Name="Enemy_Cannon_Incoming" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Incoming" GUID="{2E2AC514-41EC-40C2-B741-99ABD8D6FB72}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="1.7692916" DurationMax="3.5590417">
 					<AuxBusRefs>
 						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
@@ -1946,7 +1983,7 @@
 					</ActionPostEvent>
 				</Event>
 				<Event Id="3114531655" Name="Enemy_Steps" ObjectPath="\Events\SFX\Enemy\Enemy_Steps" GUID="{925872CA-03A4-4FC1-8E1A-768C93F1A808}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="2376509257" Name="Enemy_Voice_Cancel" ObjectPath="\Events\VX\Enemy\Enemy_Voice_Cancel" GUID="{2821C044-A076-4670-80B7-F83740940A72}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="0.32625" DurationMax="0.5666875">
+				<Event Id="2376509257" Name="Enemy_Voice_Cancel" ObjectPath="\Events\VX\Enemy\Enemy_Voice_Cancel" GUID="{2821C044-A076-4670-80B7-F83740940A72}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.32625" DurationMax="0.5666875">
 					<AuxBusRefs>
 						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
@@ -1984,6 +2021,47 @@
 				<GameParameter Id="2103536148" Name="Bark_Volume" ObjectPath="\Game Parameters\Default Work Unit\Bark_Volume" GUID="{310D6C14-6344-45E9-8379-034A9EEF5868}"/>
 			</GameParameters>
 			<StateGroups>
+				<StateGroup Id="212893962" Name="narrative_step" ObjectPath="\States\Default Work Unit\narrative_step" GUID="{DC7D94F8-F1CD-4344-8D78-703A4905E20A}">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\narrative_step\None" GUID="{C943CC8C-1A44-4F78-BDDC-B3D3EC95F41D}"/>
+						<State Id="846646256" Name="_0" ObjectPath="\States\Default Work Unit\narrative_step\_0" GUID="{EB35525B-54B9-4D6A-B167-53471942451F}"/>
+						<State Id="846646257" Name="_1" ObjectPath="\States\Default Work Unit\narrative_step\_1" GUID="{031667A8-7D99-4644-A81A-526A9C11C7CD}"/>
+						<State Id="846646258" Name="_2" ObjectPath="\States\Default Work Unit\narrative_step\_2" GUID="{09BF8DFE-6A5A-44EE-A0D7-571B4C8B3627}"/>
+						<State Id="846646259" Name="_3" ObjectPath="\States\Default Work Unit\narrative_step\_3" GUID="{C457F9CA-271E-4272-942C-51EEAEE06664}"/>
+						<State Id="846646260" Name="_4" ObjectPath="\States\Default Work Unit\narrative_step\_4" GUID="{DB51FE53-D417-4C2D-B0AD-AF7D47A428F6}"/>
+						<State Id="846646261" Name="_5" ObjectPath="\States\Default Work Unit\narrative_step\_5" GUID="{57D83889-9A1E-463F-B503-43B0F186EC42}"/>
+						<State Id="846646262" Name="_6" ObjectPath="\States\Default Work Unit\narrative_step\_6" GUID="{BB0BF348-3AAC-445F-9377-A559B5D27FFE}"/>
+						<State Id="846646263" Name="_7" ObjectPath="\States\Default Work Unit\narrative_step\_7" GUID="{BEEF9ABF-6A8B-4693-91ED-6D3976B6BB29}"/>
+						<State Id="846646264" Name="_8" ObjectPath="\States\Default Work Unit\narrative_step\_8" GUID="{77FB47BE-8100-4FB2-BB6B-27312CD1E536}"/>
+						<State Id="846646265" Name="_9" ObjectPath="\States\Default Work Unit\narrative_step\_9" GUID="{6C822E1A-4489-4B5D-84C3-AC69987C7C58}"/>
+						<State Id="1644366928" Name="_13" ObjectPath="\States\Default Work Unit\narrative_step\_13" GUID="{9C0D0D06-12EC-4967-A323-91A8D97A5BF0}"/>
+						<State Id="1644366929" Name="_12" ObjectPath="\States\Default Work Unit\narrative_step\_12" GUID="{1D8EE38A-7EDD-486C-BF91-4B6B081569A3}"/>
+						<State Id="1644366930" Name="_11" ObjectPath="\States\Default Work Unit\narrative_step\_11" GUID="{8991F709-169E-47F3-9D7E-E56C9BA35C8A}"/>
+						<State Id="1644366931" Name="_10" ObjectPath="\States\Default Work Unit\narrative_step\_10" GUID="{C35534AB-DCD5-4E4A-B929-F1B3F9550035}"/>
+						<State Id="1644366932" Name="_17" ObjectPath="\States\Default Work Unit\narrative_step\_17" GUID="{99C9ED05-BF72-4D56-BF70-329AF168F02A}"/>
+						<State Id="1644366933" Name="_16" ObjectPath="\States\Default Work Unit\narrative_step\_16" GUID="{6714C414-A328-4E80-AE94-8DAECAED293B}"/>
+						<State Id="1644366934" Name="_15" ObjectPath="\States\Default Work Unit\narrative_step\_15" GUID="{2569554C-6795-40E0-9FFB-0D136E3FA202}"/>
+						<State Id="1644366935" Name="_14" ObjectPath="\States\Default Work Unit\narrative_step\_14" GUID="{B521747E-93BF-44FD-B742-F21EA58755E8}"/>
+						<State Id="1644366938" Name="_19" ObjectPath="\States\Default Work Unit\narrative_step\_19" GUID="{121B9630-5326-42F1-BF9F-65F72A1E70F5}"/>
+						<State Id="1644366939" Name="_18" ObjectPath="\States\Default Work Unit\narrative_step\_18" GUID="{9AA66387-91BA-480C-B781-3DC8A2741CCF}"/>
+						<State Id="1661144512" Name="_26" ObjectPath="\States\Default Work Unit\narrative_step\_26" GUID="{783FCA77-785C-488C-89DF-8A0527C007D8}"/>
+						<State Id="1661144513" Name="_27" ObjectPath="\States\Default Work Unit\narrative_step\_27" GUID="{E778DD83-01DB-4A7B-8CFF-AE3F4DA7D1B3}"/>
+						<State Id="1661144514" Name="_24" ObjectPath="\States\Default Work Unit\narrative_step\_24" GUID="{9A34572D-A19A-4325-B3F4-8085ED5A7E52}"/>
+						<State Id="1661144515" Name="_25" ObjectPath="\States\Default Work Unit\narrative_step\_25" GUID="{824DCEFA-E12E-4422-826D-22B6C2DD5B8E}"/>
+						<State Id="1661144516" Name="_22" ObjectPath="\States\Default Work Unit\narrative_step\_22" GUID="{CE318E2C-EA96-431A-8A4B-B1B5056DDD2B}"/>
+						<State Id="1661144517" Name="_23" ObjectPath="\States\Default Work Unit\narrative_step\_23" GUID="{C085F0E1-6DA2-44F8-A32A-D5FFB146DD83}"/>
+						<State Id="1661144518" Name="_20" ObjectPath="\States\Default Work Unit\narrative_step\_20" GUID="{FB6739D1-8E6F-41F3-9D67-21B693E9AB8E}"/>
+						<State Id="1661144519" Name="_21" ObjectPath="\States\Default Work Unit\narrative_step\_21" GUID="{34988295-5A1A-4399-8815-9E73F372259F}"/>
+						<State Id="1661144526" Name="_28" ObjectPath="\States\Default Work Unit\narrative_step\_28" GUID="{70D21AD5-9F52-44F9-84F3-47A5E9C66795}"/>
+						<State Id="1661144527" Name="_29" ObjectPath="\States\Default Work Unit\narrative_step\_29" GUID="{761FE8A0-8F81-4158-89D3-3A9B496C6088}"/>
+						<State Id="1677922232" Name="_31" ObjectPath="\States\Default Work Unit\narrative_step\_31" GUID="{D86BD04B-BE03-4378-814E-339E39BB26A7}"/>
+						<State Id="1677922233" Name="_30" ObjectPath="\States\Default Work Unit\narrative_step\_30" GUID="{FF656502-C138-4446-8F53-A91D0AA1BCA6}"/>
+						<State Id="1677922234" Name="_33" ObjectPath="\States\Default Work Unit\narrative_step\_33" GUID="{8F782DC0-7438-40E9-98A7-29B907C98532}"/>
+						<State Id="1677922235" Name="_32" ObjectPath="\States\Default Work Unit\narrative_step\_32" GUID="{E17796CE-3C20-4685-B482-01C992F0F8FF}"/>
+						<State Id="1677922236" Name="_35" ObjectPath="\States\Default Work Unit\narrative_step\_35" GUID="{22A96738-0D4E-4ED4-A513-808CDD2255E9}"/>
+						<State Id="1677922237" Name="_34" ObjectPath="\States\Default Work Unit\narrative_step\_34" GUID="{41C7B8E9-EED8-44E8-B6FC-E151DAC1125F}"/>
+					</States>
+				</StateGroup>
 				<StateGroup Id="3394146252" Name="barricade_state" ObjectPath="\States\Default Work Unit\barricade_state" GUID="{53125CC4-7CB9-45A3-BFEC-E0F678A67D51}">
 					<States>
 						<State Id="231230354" Name="broken" ObjectPath="\States\Default Work Unit\barricade_state\broken" GUID="{188F5E20-5B0B-4BF1-A442-20828EB444ED}"/>
@@ -1994,6 +2072,18 @@
 				</StateGroup>
 			</StateGroups>
 			<SwitchGroups>
+				<SwitchGroup Id="436743010" Name="Character" ObjectPath="\Switches\Default Work Unit\Character" GUID="{97FF0941-0EB1-4797-A824-6C0F93352B3C}">
+					<Switches>
+						<Switch Id="652153290" Name="Jules" ObjectPath="\Switches\Default Work Unit\Character\Jules" GUID="{3F79F0D7-ACCC-4167-92F3-462BCBCD11A5}"/>
+						<Switch Id="784127654" Name="Null" ObjectPath="\Switches\Default Work Unit\Character\Null" GUID="{00F95D51-6279-4225-92C2-BC2013746037}"/>
+						<Switch Id="918100373" Name="Michel" ObjectPath="\Switches\Default Work Unit\Character\Michel" GUID="{35D9D25C-8AA2-4D82-BC3B-1602EA884599}"/>
+						<Switch Id="1274621345" Name="Marie" ObjectPath="\Switches\Default Work Unit\Character\Marie" GUID="{A9047D1E-D39E-4490-9901-0D474A2FA716}"/>
+						<Switch Id="2519917785" Name="Georges" ObjectPath="\Switches\Default Work Unit\Character\Georges" GUID="{626A0164-AC07-4ABB-8C3F-48A4716786F8}"/>
+						<Switch Id="2926082704" Name="Louise" ObjectPath="\Switches\Default Work Unit\Character\Louise" GUID="{EC36307D-BD77-4582-B5D1-7C12BEB1FA68}"/>
+						<Switch Id="3484216754" Name="Francois" ObjectPath="\Switches\Default Work Unit\Character\Francois" GUID="{E1A66299-3137-41FD-A722-76CF2B0CB501}"/>
+						<Switch Id="3942830996" Name="Officier" ObjectPath="\Switches\Default Work Unit\Character\Officier" GUID="{88E56386-6C8E-41BF-B571-1514BCEC17E5}"/>
+					</Switches>
+				</SwitchGroup>
 				<SwitchGroup Id="1117085073" Name="Character_Type" ObjectPath="\Switches\Default Work Unit\Character_Type" GUID="{C2F12799-5347-4922-A1A4-63D6CB176947}">
 					<Switches>
 						<Switch Id="408582737" Name="Type6" ObjectPath="\Switches\Default Work Unit\Character_Type\Type6" GUID="{3DA5AB17-9749-4FDA-9874-044F8624A145}"/>
@@ -2015,5 +2105,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{6FD8168F-074C-B553-12A7-C607832EEA33}</FileHash>
+	<FileHash>{9A160A9E-5ED0-6F71-1CD9-35761DCA6A83}</FileHash>
 </SoundBanksInfo>

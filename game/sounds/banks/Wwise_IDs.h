@@ -27,8 +27,11 @@ namespace AK
         static const AkUniqueID AMB_CANNONS = 3265814676U;
         static const AkUniqueID BARRICADE_DAMAGED = 482738278U;
         static const AkUniqueID BRICK_FALL = 3840667520U;
+        static const AkUniqueID BRICK_FALL_GROUP = 1055531900U;
         static const AkUniqueID BULLET_HIT = 384143791U;
         static const AkUniqueID CANNON_SHOOT = 2469499398U;
+        static const AkUniqueID CHOOSE_FIGHT = 1218331013U;
+        static const AkUniqueID CHOOSE_SURRENDER = 2467968637U;
         static const AkUniqueID DEAFENING_RECOVER = 3687575925U;
         static const AkUniqueID DIALOGUE = 3930136735U;
         static const AkUniqueID ENEMY_BARRICADE_STATE = 3457462997U;
@@ -144,6 +147,11 @@ namespace AK
                 static const AkUniqueID _28 = 1661144526U;
                 static const AkUniqueID _29 = 1661144527U;
                 static const AkUniqueID _30 = 1677922233U;
+                static const AkUniqueID _31 = 1677922232U;
+                static const AkUniqueID _32 = 1677922235U;
+                static const AkUniqueID _33 = 1677922234U;
+                static const AkUniqueID _34 = 1677922237U;
+                static const AkUniqueID _35 = 1677922236U;
                 static const AkUniqueID NONE = 748895195U;
             } // namespace STATE
         } // namespace NARRATIVE_STEP
@@ -238,6 +246,7 @@ namespace AK
                 static const AkUniqueID MARIE = 1274621345U;
                 static const AkUniqueID MICHEL = 918100373U;
                 static const AkUniqueID NULL = 784127654U;
+                static const AkUniqueID OFFICIER = 3942830996U;
             } // namespace SWITCH
         } // namespace CHARACTER
 

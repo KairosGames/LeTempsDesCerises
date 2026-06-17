@@ -3,6 +3,7 @@
 [ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="1_gs8wv"]
 [ext_resource type="Script" uid="uid://bmespkxucvogk" path="res://addons/mesh_combiner_3d/mesh_combiner_3d.gd" id="2_gs8wv"]
 [ext_resource type="ArrayMesh" uid="uid://ckkf8euhqqlun" path="res://prefabs/geometry/wall_a.tres" id="2_onroi"]
+[ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="2_q8yag"]
 [ext_resource type="ArrayMesh" uid="uid://deno2kvmgtq3b" path="res://prefabs/geometry/wall_d.tres" id="3_iq3c4"]
 [ext_resource type="ArrayMesh" uid="uid://cwofahpbfe0gp" path="res://prefabs/geometry/wall_props_a.tres" id="4_gs8wv"]
 [ext_resource type="ArrayMesh" uid="uid://dlssgdx6me10f" path="res://prefabs/geometry/wall_props_f.tres" id="5_q8yag"]
@@ -61,6 +62,9 @@ transform_format = 1
 
 [sub_resource type="MultiMesh" id="MultiMesh_y5phe"]
 transform_format = 1
+instance_count = 3
+mesh = ExtResource("28_rbr1f")
+buffer = PackedFloat32Array(-0.57357633, 0, 0.8191519, 48.13574, 0, 1, 0, 7.8477163, -0.8191519, 0, -0.57357633, -28.305946, -0.9848075, 0, 0.17364813, 45.157402, 0, 1, 0, 5.047716, -0.17364813, 0, -0.9848075, -23.63157, 0, 0, -0.99999964, 38.820778, 0, 1, 0, 3.799995, 0.99999964, 0, 0, -6.7765145)
 
 [sub_resource type="MultiMesh" id="MultiMesh_06qia"]
 transform_format = 1
@@ -188,6 +192,11 @@ surface_material_override/0 = ExtResource("1_gs8wv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trottoirs" unique_id=2084590434]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 49.149, 0.2, -15.179)
 shape = SubResource("ConcavePolygonShape3D_gs8wv")
+
+[node name="AkGeometry" type="AkGeometry" parent="Trottoirs" unique_id=917530463]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("2_q8yag")
 
 [node name="WallA" type="MultiMeshInstance3D" parent="." unique_id=2130178766]
 multimesh = SubResource("MultiMesh_q8yag")
@@ -1291,25 +1300,10 @@ mesh = ExtResource("4_gs8wv")
 
 [node name="WallPropsC" type="MultiMeshInstance3D" parent="." unique_id=2116822482]
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
+visible = false
 multimesh = SubResource("MultiMesh_y5phe")
 script = ExtResource("2_gs8wv")
 metadata/_custom_type_script = "uid://bmespkxucvogk"
-
-[node name="WallPropsC6" type="MeshInstance3D" parent="WallPropsC" unique_id=1648956185]
-transform = Transform3D(-0.57357633, 0, 0.8191519, 0, 1, 0, -0.8191519, 0, -0.57357633, 48.13574, 7.8477163, -28.305946)
-mesh = ExtResource("28_rbr1f")
-
-[node name="WallPropsC7" type="MeshInstance3D" parent="WallPropsC" unique_id=1351640013]
-transform = Transform3D(-0.8191519, 0, -0.57357633, 0, 1, 0, 0.57357633, 0, -0.8191519, 27.248035, 3.847716, -7.57775)
-mesh = ExtResource("28_rbr1f")
-
-[node name="WallPropsC8" type="MeshInstance3D" parent="WallPropsC" unique_id=1738857583]
-transform = Transform3D(-0.9848075, 0, 0.17364813, 0, 1, 0, -0.17364813, 0, -0.9848075, 45.157402, 5.047716, -23.63157)
-mesh = ExtResource("28_rbr1f")
-
-[node name="WallPropsC5" type="MeshInstance3D" parent="WallPropsC" unique_id=456620333]
-transform = Transform3D(0, 0, -0.99999964, 0, 1, 0, 0.99999964, 0, 0, 38.820778, 3.799995, -6.7765145)
-mesh = ExtResource("28_rbr1f")
 
 [node name="WallPropsD" type="MultiMeshInstance3D" parent="." unique_id=1487958241]
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
@@ -4661,12 +4655,10 @@ mesh = ExtResource("7_766td")
 
 [node name="PropsLamp" type="Node3D" parent="." unique_id=967184172]
 transform = Transform3D(0.57357657, 0, -0.81915224, 0, 1, 0, 0.81915224, 0, 0.57357657, 26.173523, 4.2710037, -6.825365)
+visible = false
 
 [node name="HeadLight" parent="PropsLamp" unique_id=1270948155 instance=ExtResource("31_gs8wv")]
 transform = Transform3D(0.7071066, 0, -0.70710665, 0, 1, 0, 0.70710665, 0, 0.7071066, -3.8056755, 1.1999998, -24.262785)
-
-[node name="HeadLight2" parent="PropsLamp" unique_id=2127139404 instance=ExtResource("31_gs8wv")]
-transform = Transform3D(0.99999976, 0, 0, 0, 1, 0, 0, 0, 0.99999976, 0, 0, 0)
 
 [node name="HeadLight3" parent="PropsLamp" unique_id=284379867 instance=ExtResource("31_gs8wv")]
 transform = Transform3D(0, 0, -0.99999976, 0, 1, 0, 0.99999976, 0, 0, -6.3105965, 4, -30.311152)
@@ -4874,7 +4866,12 @@ transform = Transform3D(0.57028353, 0, -0.8214479, 0, 1, 0, 0.8214479, 0, 0.5702
 shape = SubResource("BoxShape3D_06qia")
 debug_color = Color(0, 0.6392157, 0.38039216, 1)
 
-[node name="Occluders" type="Node" parent="." unique_id=1633203733]
+[node name="AkGeometry" type="AkGeometry" parent="StaticBody3D" unique_id=345856496]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("2_q8yag")
+
+[node name="Occluders" type="Node3D" parent="." unique_id=2053643637]
 
 [node name="@OccluderInstance3D@48410" type="OccluderInstance3D" parent="Occluders" unique_id=822256048]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 28.553125, 4.990906, -9.903199)

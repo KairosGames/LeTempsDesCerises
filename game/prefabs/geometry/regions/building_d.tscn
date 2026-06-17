@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://c85fms2wp51n8"]
 
 [ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="1_j4qk7"]
+[ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="2_8ydhy"]
 [ext_resource type="ArrayMesh" uid="uid://ckkf8euhqqlun" path="res://prefabs/geometry/wall_a.tres" id="2_valms"]
 [ext_resource type="ArrayMesh" uid="uid://dstjnv2qgt488" path="res://prefabs/geometry/wall_b.tres" id="3_3jbfb"]
 [ext_resource type="PackedScene" uid="uid://bdclgyj6yyleb" path="res://prefabs/props/headlight.tscn" id="3_022d3"]
@@ -157,14 +158,31 @@ surface_material_override/0 = ExtResource("1_j4qk7")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.54703903, 0.2, 29.134796)
 shape = SubResource("ConcavePolygonShape3D_8ydhy")
 
+[node name="AkGeometry" type="AkGeometry" parent="Trottoirs" unique_id=2089239401]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("2_8ydhy")
+
 [node name="lamp" type="Node3D" parent="." unique_id=1243435333]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.32222, 3, 6.9059963)
+visible = false
 
 [node name="WallPropsC4" type="MeshInstance3D" parent="lamp" unique_id=2026166413]
 transform = Transform3D(-8.7422784e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -8.7422784e-08, -9.1552734e-05, 0.5, 0.00034475327)
 mesh = ExtResource("7_4sbpl")
 
 [node name="HeadLight" parent="lamp" unique_id=1270948155 instance=ExtResource("3_022d3")]
+transform = Transform3D(-1, 0, -1.1722509e-07, 0, 1, 0, 1.1722509e-07, 0, -1, -0.0008010864, 0.9089999, -1.3149185)
+
+[node name="lamp4" type="Node3D" parent="." unique_id=795874141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.32222, 3, 6.9059963)
+visible = false
+
+[node name="WallPropsC4" type="MeshInstance3D" parent="lamp4" unique_id=1644587510]
+transform = Transform3D(-8.7422784e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -8.7422784e-08, -9.1552734e-05, 0.5, 0.00034475327)
+mesh = ExtResource("7_4sbpl")
+
+[node name="HeadLight" parent="lamp4" unique_id=987925125 instance=ExtResource("3_022d3")]
 transform = Transform3D(-1, 0, -1.1722509e-07, 0, 1, 0, 1.1722509e-07, 0, -1, -0.0008010864, 0.9089999, -1.3149185)
 
 [node name="lamp2" type="Node3D" parent="." unique_id=829340642]
@@ -2036,10 +2054,6 @@ mesh = ExtResource("6_022d3")
 transform = Transform3D(-1.0000001, 0, -8.8165194e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0084922, 22.322031, 3, 5.9059987)
 mesh = ExtResource("6_022d3")
 
-[node name="WallPropsC3" type="MeshInstance3D" parent="." unique_id=486807786]
-transform = Transform3D(-8.7422784e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -8.7422784e-08, 50.322136, 3.5, 6.9063435)
-mesh = ExtResource("7_4sbpl")
-
 [node name="WallPropsD3" type="MeshInstance3D" parent="." unique_id=516171115]
 transform = Transform3D(-8.7422784e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -8.7422784e-08, 31.322004, 0.2, 6.9059863)
 mesh = ExtResource("8_bwyah")
@@ -2999,9 +3013,6 @@ mesh = ExtResource("26_1e3rv")
 [node name="RoofAAngle107" type="MeshInstance3D" parent="." unique_id=1359346548]
 transform = Transform3D(-0.57357633, 0, 0.8191521, 0, 1, 0, -0.8191521, 0, -0.57357633, -12.439236, 14.2, 23.865757)
 mesh = ExtResource("26_1e3rv")
-
-[node name="HeadLight" parent="." unique_id=984653378 instance=ExtResource("3_022d3")]
-transform = Transform3D(-1, 0, -1.1722509e-07, 0, 1, 0, 1.1722509e-07, 0, -1, 50.32142, 3.909, 5.5910683)
 
 [node name="ShopA" type="MeshInstance3D" parent="." unique_id=69484770]
 transform = Transform3D(-1.0000001, 0, -8.7422784e-08, 0, 1, 0, 8.7422784e-08, 0, -1.0000001, 36.32166, 0.2, 7.8946333)
@@ -5200,7 +5211,12 @@ transform = Transform3D(0.43837115, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43
 shape = SubResource("BoxShape3D_3jbfb")
 debug_color = Color(0.98039216, 0, 0.3764706, 1)
 
-[node name="Occluders" type="Node" parent="." unique_id=1137919757]
+[node name="AkGeometry" type="AkGeometry" parent="StaticBody3D" unique_id=396734308]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("2_8ydhy")
+
+[node name="Occluders" type="Node3D" parent="." unique_id=2125782810]
 
 [node name="@OccluderInstance3D@134385" type="OccluderInstance3D" parent="Occluders" unique_id=485846369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.336422, 8.269666, 8.768612)

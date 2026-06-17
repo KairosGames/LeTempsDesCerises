@@ -63,5 +63,6 @@ func trigg_bark():
 
 
 func _on_versaillais_dying() -> void:
+	#Wwise.stop_all(self)
 	post_event("Voice_Cancel", 0)
 	WwiseGlobal.remove(self)

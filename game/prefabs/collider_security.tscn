@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cv87o6ucg6jij"]
+
+[ext_resource type="PackedScene" uid="uid://dwt8kt4627ga" path="res://prefabs/props/long_box.tscn" id="1_oo88d"]
+[ext_resource type="PackedScene" uid="uid://bb8fxuc1b4vfl" path="res://sandbox/covers_proto/bag_simple.tscn" id="2_qq2ka"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nybfu"]
+size = Vector3(1.5894623, 1.4320374, 2.553833)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xj1jx"]
+size = Vector3(1.0480042, 1.3981934, 0.4398651)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d8hql"]
+size = Vector3(1.7734375, 1.3574219, 1.0351563)
+
+[node name="ColliderSecurity" type="Node3D" unique_id=1690388670]
+
+[node name="CharetteSecurity" type="StaticBody3D" parent="." unique_id=1410882448]
+transform = Transform3D(1, 0, 0, 0, 0.99939096, 0.0348995, 0, -0.0348995, 0.99939096, -15.991992, 0.1322372, -0.6951113)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharetteSecurity" unique_id=1388221744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0027236938, 0.21601875, -0.28875715)
+shape = SubResource("BoxShape3D_nybfu")
+
+[node name="LongBox" parent="CharetteSecurity" unique_id=1673471307 instance=ExtResource("1_oo88d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026730537, -0.06438513, 0.8095555)
+
+[node name="BoxPileSecurity" type="StaticBody3D" parent="." unique_id=404601580]
+transform = Transform3D(0.9501028, 0, -0.31193697, 0, 1, 0, 0.31193697, 0, 0.9501028, -7.1254263, -9.536743e-07, 6.601589)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxPileSecurity" unique_id=1756791516]
+transform = Transform3D(0.801306, 0, -0.5982547, 0, 1, 0, 0.5982547, 0, 0.801306, 0.26036787, 0.7799971, 0.26963997)
+shape = SubResource("BoxShape3D_xj1jx")
+
+[node name="Charrette2Security" type="StaticBody3D" parent="." unique_id=1264259372]
+transform = Transform3D(0.13116638, -0.29468992, 0.946548, 7.5014195e-10, 0.95479715, 0.29725817, -0.9913604, -0.0389903, 0.12523739, -31.965263, 0.2909981, 21.683393)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Charrette2Security" unique_id=498570939]
+transform = Transform3D(0.998531, 0.05393748, 0.0051637515, -0.04733649, 0.914744, -0.4012514, -0.026365958, 0.40041754, 0.9159531, 0.022247314, 0.27853775, 0.3414173)
+shape = SubResource("BoxShape3D_d8hql")
+
+[node name="BagSimple13" parent="Charrette2Security" unique_id=2080931740 instance=ExtResource("2_qq2ka")]
+transform = Transform3D(-0.19763467, -0.005392961, 0.9802621, 0.35184404, 0.93296325, 0.07607022, -0.9149574, 0.3599334, -0.18248774, 0.19856262, -0.3226776, 0.334095)
+
+[node name="BagSimple14" parent="Charrette2Security" unique_id=1563030070 instance=ExtResource("2_qq2ka")]
+transform = Transform3D(0.09956969, -0.28979853, 0.9518951, 0.33688897, 0.90996826, 0.24179561, -0.93626493, 0.29660773, 0.18823606, -0.30702972, -0.22679806, 0.4339981)
+
+[node name="Charette3Security" parent="." unique_id=63124997 instance=ExtResource("2_qq2ka")]
+transform = Transform3D(-0.6896686, 0.26837575, 0.6725574, 0.37203485, 0.92815316, 0.01113297, -0.6212474, 0.25789267, -0.73996305, -35.19601, 0.1736927, 32.698105)
