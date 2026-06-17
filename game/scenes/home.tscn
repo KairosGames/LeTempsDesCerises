@@ -4,6 +4,40 @@
 [ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="2_u4wd2"]
 [ext_resource type="Script" uid="uid://cu1v212nu7svv" path="res://prefabs/ui/home/home_manager.gd" id="2_w18ys"]
 [ext_resource type="PackedScene" uid="uid://bqw181keq72d" path="res://scenes/grey_block_scene.tscn" id="3_reixx"]
+[ext_resource type="Texture2D" uid="uid://fjsitch45pbe" path="res://sources/images/textures/ui/splash_image.png" id="4_uhids"]
+[ext_resource type="Texture2D" uid="uid://njbg6j5w83rk" path="res://sources/images/textures/ui/Paper.png" id="5_vc333"]
+[ext_resource type="FontFile" uid="uid://0yy1ysc8tx6l" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Bold.otf" id="6_hhep5"]
+[ext_resource type="Texture2D" uid="uid://22l74488m5rp" path="res://sources/images/textures/ui/lorem_ipsum_04.png" id="7_cmjdo"]
+[ext_resource type="Texture2D" uid="uid://7mwi11doj234" path="res://sources/images/textures/ui/lorem_ipsum_01.png" id="7_hhep5"]
+[ext_resource type="Texture2D" uid="uid://mk88hreujt3a" path="res://sources/images/textures/ui/divider_01.png" id="8_cmjdo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ip4d6"]
+content_margin_left = 50.0
+content_margin_top = 50.0
+content_margin_right = 50.0
+content_margin_bottom = 50.0
+texture = ExtResource("5_vc333")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_cmjdo"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+thickness = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_gi00y"]
+font = ExtResource("6_hhep5")
+font_size = 82
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yu5fn"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+grow_begin = -100.0
+grow_end = -100.0
+thickness = 4
 
 [node name="Home" type="Control" unique_id=1340749672]
 layout_mode = 3
@@ -16,59 +50,207 @@ theme = ExtResource("1_krot7")
 script = ExtResource("2_w18ys")
 main_scene = ExtResource("3_reixx")
 
-[node name="Buttons" type="VBoxContainer" parent="." unique_id=977573993]
-unique_name_in_owner = true
+[node name="Splash" type="TextureRect" parent="." unique_id=1178373901]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 117.0
-offset_top = -211.0
-offset_right = 547.0
-offset_bottom = 464.0
-theme_override_constants/separation = 25
-alignment = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_uhids")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="Play" type="Button" parent="Buttons" unique_id=900796725]
-custom_minimum_size = Vector2(300, 150)
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1812460554]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 311.0
+offset_right = 577.0
+offset_bottom = 1071.0
+rotation = -0.13439035
+theme_override_styles/panel = SubResource("StyleBoxTexture_ip4d6")
+
+[node name="Buttons" type="VBoxContainer" parent="PanelContainer" unique_id=977573993]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_constants/separation = 4
+
+[node name="Header" type="VBoxContainer" parent="PanelContainer/Buttons" unique_id=527029583]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Lines" type="VBoxContainer" parent="PanelContainer/Buttons/Header" unique_id=206977673]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Line" type="HSeparator" parent="PanelContainer/Buttons/Header/Lines" unique_id=893937786]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_cmjdo")
+
+[node name="Line2" type="HSeparator" parent="PanelContainer/Buttons/Header/Lines" unique_id=706916934]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_cmjdo")
+
+[node name="Title" type="Label" parent="PanelContainer/Buttons/Header" unique_id=2014547310]
+layout_mode = 2
+text = "Le Temps Des
+Cerises"
+label_settings = SubResource("LabelSettings_gi00y")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Lines2" type="VBoxContainer" parent="PanelContainer/Buttons/Header" unique_id=235566243]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Line" type="HSeparator" parent="PanelContainer/Buttons/Header/Lines2" unique_id=574161721]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_cmjdo")
+
+[node name="Line2" type="HSeparator" parent="PanelContainer/Buttons/Header/Lines2" unique_id=1293747296]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_yu5fn")
+
+[node name="Lorem" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1389975926]
+visible = false
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = ExtResource("7_cmjdo")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="HSeparator" type="TextureRect" parent="PanelContainer/Buttons" unique_id=2128175970]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Play" type="Button" parent="PanelContainer/Buttons" unique_id=900796725]
+custom_minimum_size = Vector2(300, 64)
+layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Play"
 script = ExtResource("2_u4wd2")
+button_type = 0
 
-[node name="Options" type="Button" parent="Buttons" unique_id=1495270967]
-custom_minimum_size = Vector2(200, 100)
+[node name="HSeparator2" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1518427503]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
-size_flags_horizontal = 4
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lorem2" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1619436154]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = ExtResource("7_hhep5")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="HSeparator3" type="TextureRect" parent="PanelContainer/Buttons" unique_id=225612929]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Options" type="Button" parent="PanelContainer/Buttons" unique_id=1495270967]
+custom_minimum_size = Vector2(200, 64)
+layout_mode = 2
 text = "Options"
 script = ExtResource("2_u4wd2")
+button_type = 0
 
-[node name="Referecences" type="Button" parent="Buttons" unique_id=329392333]
-custom_minimum_size = Vector2(200, 100)
+[node name="HSeparator4" type="TextureRect" parent="PanelContainer/Buttons" unique_id=352602982]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
-size_flags_horizontal = 4
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lorem3" type="TextureRect" parent="PanelContainer/Buttons" unique_id=687717085]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = ExtResource("7_hhep5")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="HSeparator5" type="TextureRect" parent="PanelContainer/Buttons" unique_id=128119571]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Referecences" type="Button" parent="PanelContainer/Buttons" unique_id=329392333]
+custom_minimum_size = Vector2(200, 64)
+layout_mode = 2
 text = "References
 "
 script = ExtResource("2_u4wd2")
+button_type = 0
 
-[node name="Credits" type="Button" parent="Buttons" unique_id=2037007232]
-custom_minimum_size = Vector2(200, 100)
+[node name="HSeparator6" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1153895642]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
-size_flags_horizontal = 4
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lorem4" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1353242461]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = ExtResource("7_hhep5")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="HSeparator7" type="TextureRect" parent="PanelContainer/Buttons" unique_id=456920712]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Credits" type="Button" parent="PanelContainer/Buttons" unique_id=2037007232]
+custom_minimum_size = Vector2(200, 64)
+layout_mode = 2
 text = "Credits
 "
 script = ExtResource("2_u4wd2")
+button_type = 0
 
-[node name="Quit" type="Button" parent="Buttons" unique_id=1075831581]
-custom_minimum_size = Vector2(200, 100)
+[node name="HSeparator8" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1055409107]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
-size_flags_horizontal = 4
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lorem5" type="TextureRect" parent="PanelContainer/Buttons" unique_id=378330686]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = ExtResource("7_hhep5")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="HSeparator9" type="TextureRect" parent="PanelContainer/Buttons" unique_id=2043578641]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Quit" type="Button" parent="PanelContainer/Buttons" unique_id=1075831581]
+custom_minimum_size = Vector2(200, 64)
+layout_mode = 2
 text = "Quit"
 script = ExtResource("2_u4wd2")
+button_type = 0
 
-[connection signal="pressed" from="Buttons/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Buttons/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Buttons/Referecences" to="." method="_on_referecences_pressed"]
-[connection signal="pressed" from="Buttons/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PanelContainer/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="PanelContainer/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="PanelContainer/Buttons/Referecences" to="." method="_on_referecences_pressed"]
+[connection signal="pressed" from="PanelContainer/Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="PanelContainer/Buttons/Quit" to="." method="_on_quit_pressed"]
