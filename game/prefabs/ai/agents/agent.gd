@@ -55,6 +55,9 @@ var can_move: bool = true:
 		cover = value
 		if cover: cover.holder = self
 
+@onready var body_parts: Array[MeshInstance3D] = [$Body/Armature/Skeleton3D/Ch49_body1, $Body/Armature/Skeleton3D/Ch49_body2]
+
+
 enum Team { VERSAILLAIS = -1, NONE = 0, COMMUNARD = 1 }
 
 func _ready() -> void:
@@ -99,7 +102,7 @@ func rotating_to(new_rotation: float, duration: float = 1.0) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(self,"global_rotation:y", new_rotation, duration)
 	await tween.finished
-	
+
 #func look(target: Vector3, duration: float = 1.0) -> void:
 	#var target_angle: float = global_position.angle_to(target)
 	#var tween: Tween = create_tween()
@@ -112,7 +115,14 @@ func die() -> void:
 	is_alive = false
 	set_collision_layer_value(3, false)
 	navigation.stop()
-	await get_tree().create_timer(2.0).timeout
+	cover = null
+	var tween: Tween = create_tween()
+	tween.tween_method(
+		func(transparency: float) -> void:
+			for mesh: MeshInstance3D in body_parts:
+				mesh.transparency = transparency
+	,0.0, 1.0, 10.0)
+	await tween.finished
 	remove()
 
 func remove() -> void:
