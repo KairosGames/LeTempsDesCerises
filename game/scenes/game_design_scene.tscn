@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://cbtuvqqjpnxi1" path="res://prefabs/geometry/regions/facade.tscn" id="12_ovq67"]
 [ext_resource type="PackedScene" uid="uid://4g4gy7yer0qa" path="res://prefabs/props/flag.tscn" id="16_8bk3w"]
 [ext_resource type="PackedScene" uid="uid://ciigxgp4nxd8t" path="res://sandbox/covers_proto/dirt_pile_medium.tscn" id="16_npp8f"]
+[ext_resource type="Texture2D" uid="uid://bicj14tev3ojf" path="res://sources/images/textures/enseignes/Hotel.png" id="17_aese6"]
+[ext_resource type="Texture2D" uid="uid://dnrwcy0he2jjr" path="res://sources/images/textures/enseignes/Hotel2.png" id="18_vx7q6"]
 [ext_resource type="PackedScene" uid="uid://8h2see0efmmk" path="res://sandbox/covers_proto/morris_column.tscn" id="24_ovq67"]
 [ext_resource type="PackedScene" uid="uid://c0axuq34pjbmd" path="res://sandbox/covers_proto/simple_column.tscn" id="25_r83xy"]
 [ext_resource type="PackedScene" uid="uid://ckalu28ta4mcv" path="res://sandbox/covers_proto/plank_pile.tscn" id="26_pgn55"]
@@ -50,9 +52,6 @@
 [ext_resource type="PackedScene" uid="uid://cugrpvk51733r" path="res://prefabs/barricade/barricade_meshes/barricade_01_destroyed.blend" id="49_r83xy"]
 [ext_resource type="PackedScene" uid="uid://7qe2h1uftjbl" path="res://sandbox/barricades_proto/ramp.tscn" id="50_pgn55"]
 [ext_resource type="PackedScene" uid="uid://7cud0kva4fsn" path="res://sandbox/covers_proto/barrel_big_destroyed.tscn" id="51_1l6ss"]
-[ext_resource type="PackedScene" uid="uid://c8epryboj0vxv" path="res://sources/meshes/props/sh_timber_05.fbx" id="51_nybfu"]
-[ext_resource type="PackedScene" uid="uid://c16jykbsipb8r" path="res://sources/meshes/props/sh_timber_06.fbx" id="52_xj1jx"]
-[ext_resource type="PackedScene" uid="uid://clfeeufcsuevd" path="res://sources/meshes/props/sh_ladder_03.fbx" id="53_d8hql"]
 [ext_resource type="Material" uid="uid://31fbq7rpab56" path="res://sandbox/barricades_proto/materials/prototype_material_barricade.tres" id="53_dnfhu"]
 [ext_resource type="Material" uid="uid://cxwvwxa7l3av6" path="res://materials/m_barricade_brick_c2c.tres" id="54_dnfhu"]
 [ext_resource type="PackedScene" uid="uid://d4ksl3sqlhx21" path="res://prefabs/barricade/barricade_02.tscn" id="55_dnfhu"]
@@ -66,10 +65,14 @@
 [ext_resource type="PackedScene" uid="uid://pgs7uwdj1pe1" path="res://prefabs/props/pickaxe.tscn" id="60_4a26s"]
 [ext_resource type="PackedScene" uid="uid://8qmhuibj12df" path="res://prefabs/props/bottle_02_bottom.tscn" id="62_o7hd0"]
 [ext_resource type="PackedScene" uid="uid://dnkc7ct822vus" path="res://prefabs/props/bottle_02_top.tscn" id="63_ovq67"]
+[ext_resource type="Texture2D" uid="uid://bof8eaafsutcs" path="res://sources/images/textures/affiches/Trash2.png" id="63_vx7q6"]
+[ext_resource type="Texture2D" uid="uid://dhwhfcig0pk2c" path="res://sources/images/textures/affiches/au_peuple_trashed.png" id="64_n4jea"]
 [ext_resource type="Texture2D" uid="uid://cukgjcd2jy6rs" path="res://sources/images/textures/affiches/1520mai20aux20ouvriers20boulangers.png" id="64_o7hd0"]
 [ext_resource type="PackedScene" uid="uid://b34q33pudexe3" path="res://prefabs/props/bottle_01.tscn" id="64_r83xy"]
 [ext_resource type="Texture2D" uid="uid://bdvixhdfx6yv0" path="res://sources/images/textures/affiches/212_27_avril_Frankel_travail_nuit_boulangeries.png" id="65_ovq67"]
 [ext_resource type="ArrayMesh" uid="uid://bggssdkgj78ea" path="res://prefabs/geometry/window_props_a0.tres" id="65_pgn55"]
+[ext_resource type="Texture2D" uid="uid://b12ehuq6ryh60" path="res://sources/images/textures/affiches/Trash1.png" id="65_u321f"]
+[ext_resource type="Texture2D" uid="uid://cmlrgbierxdm" path="res://sources/images/textures/affiches/ecoles_publiques_laiques_trash.png" id="66_a1jd1"]
 [ext_resource type="Texture2D" uid="uid://csm27dgrdcaye" path="res://sources/images/textures/affiches/boulangerie_3.png" id="66_r83xy"]
 [ext_resource type="PackedScene" uid="uid://cfcwqa4srjp8t" path="res://prefabs/props/metal_grid.tscn" id="67_gdu2u"]
 [ext_resource type="Texture2D" uid="uid://u8bwchhrkds8" path="res://sources/images/textures/affiches/affiche_rouge.png" id="67_ovq67"]
@@ -88,158 +91,295 @@ geometry_parsed_geometry_type = 1
 cell_height = 0.01
 agent_radius = 0.25
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdu2u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3wih"]
 resource_local_to_scene = true
 transparency = 1
 albedo_texture = ExtResource("76_nybfu")
 
-[sub_resource type="QuadMesh" id="QuadMesh_5iju0"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_gdu2u")
-size = Vector2(5.5899997, 1.52)
-subdivide_width = 20
-subdivide_depth = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rkq34"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = ExtResource("77_xj1jx")
-
-[sub_resource type="QuadMesh" id="QuadMesh_aese6"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_rkq34")
-size = Vector2(3.75, 2.975)
-subdivide_width = 20
-subdivide_depth = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx7q6"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = ExtResource("4_wpwdt")
-
-[sub_resource type="QuadMesh" id="QuadMesh_n4jea"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_vx7q6")
-size = Vector2(3.354, 0.912)
-subdivide_width = 20
-subdivide_depth = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u321f"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = ExtResource("78_d8hql")
-
-[sub_resource type="QuadMesh" id="QuadMesh_a1jd1"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_u321f")
-size = Vector2(6.0372, 1.6416)
-subdivide_width = 20
-subdivide_depth = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l3wih"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = ExtResource("27_r83xy")
-
 [sub_resource type="QuadMesh" id="QuadMesh_kfamp"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_l3wih")
-size = Vector2(0.555, 0.3765)
+size = Vector2(5.5899997, 1.52)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c63y5"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("45_u6skg")
+albedo_texture = ExtResource("77_xj1jx")
 
 [sub_resource type="QuadMesh" id="QuadMesh_pne75"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_c63y5")
-size = Vector2(1.217, 1.536)
+size = Vector2(3.75, 2.975)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvosb"]
 resource_local_to_scene = true
-albedo_texture = ExtResource("67_ovq67")
+transparency = 1
+albedo_texture = ExtResource("4_wpwdt")
 
 [sub_resource type="QuadMesh" id="QuadMesh_2sxlw"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_cvosb")
-size = Vector2(1.19, 0.79)
+size = Vector2(3.354, 0.912)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbolr"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("64_o7hd0")
+albedo_texture = ExtResource("78_d8hql")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ae4v5"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_tbolr")
-size = Vector2(1.0752, 0.77559996)
+size = Vector2(6.0372, 1.6416)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4jea"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("17_aese6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_u321f"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_n4jea")
+size = Vector2(5.5899997, 1.52)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1jd1"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("18_vx7q6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_l3wih"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_a1jd1")
+size = Vector2(5.9254, 1.6112)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcqyk"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("65_ovq67")
+albedo_texture = ExtResource("27_r83xy")
 
 [sub_resource type="QuadMesh" id="QuadMesh_pywj1"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_lcqyk")
-size = Vector2(0.9597, 0.76019996)
+size = Vector2(0.555, 0.3765)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bumja"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("66_r83xy")
+albedo_texture = ExtResource("45_u6skg")
 
 [sub_resource type="QuadMesh" id="QuadMesh_dkyne"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_bumja")
-size = Vector2(0.536, 0.6712)
+size = Vector2(1.217, 1.536)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcdll"]
 resource_local_to_scene = true
-transparency = 1
-albedo_texture = ExtResource("27_r83xy")
+albedo_texture = ExtResource("67_ovq67")
 
 [sub_resource type="QuadMesh" id="QuadMesh_f37m2"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_lcdll")
-size = Vector2(0.555, 0.3765)
+size = Vector2(1.19, 0.79)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cevof"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("68_pgn55")
+albedo_texture = ExtResource("64_o7hd0")
 
 [sub_resource type="QuadMesh" id="QuadMesh_io1or"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_cevof")
-size = Vector2(0.97800004, 1.2540001)
+size = Vector2(1.0752, 0.77559996)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e28kf"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("58_wpwdt")
+albedo_texture = ExtResource("65_ovq67")
 
 [sub_resource type="QuadMesh" id="QuadMesh_deo81"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_e28kf")
+size = Vector2(0.9597, 0.76019996)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdqql"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("66_r83xy")
+
+[sub_resource type="QuadMesh" id="QuadMesh_b1gmb"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_bdqql")
+size = Vector2(0.536, 0.6712)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gp36t"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("27_r83xy")
+
+[sub_resource type="QuadMesh" id="QuadMesh_iigar"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gp36t")
+size = Vector2(0.555, 0.3765)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urlrm"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("68_pgn55")
+
+[sub_resource type="QuadMesh" id="QuadMesh_io5dv"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_urlrm")
+size = Vector2(0.97800004, 1.2540001)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ohv7"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("58_wpwdt")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8wbba"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_3ohv7")
 size = Vector2(0.83, 1.0239999)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpfhn"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("63_vx7q6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6x65i"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_hpfhn")
+size = Vector2(0.5094, 0.7344)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oe82g"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("64_n4jea")
+
+[sub_resource type="QuadMesh" id="QuadMesh_c0vmp"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_oe82g")
+size = Vector2(0.8964, 1.1087999)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nyjkn"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("63_vx7q6")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pgip8"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_nyjkn")
+size = Vector2(0.5094, 0.7344)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g3tgq"]
+load_path = "res://.godot/imported/Trash2.png-2831de0cabb4e9beb599b3597d0b6995.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2mye1"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("CompressedTexture2D_g3tgq")
+
+[sub_resource type="QuadMesh" id="QuadMesh_webu2"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_2mye1")
+size = Vector2(0.8207, 1.1832)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_epdpn"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("65_u321f")
+
+[sub_resource type="QuadMesh" id="QuadMesh_t774w"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_epdpn")
+size = Vector2(0.28300002, 0.40800002)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8s24y"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("65_u321f")
+
+[sub_resource type="QuadMesh" id="QuadMesh_a3xon"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_8s24y")
+size = Vector2(0.28300002, 0.40800002)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ypy7u"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("65_u321f")
+
+[sub_resource type="QuadMesh" id="QuadMesh_l8a5i"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_ypy7u")
+size = Vector2(0.28300002, 0.40800002)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpvb2"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("65_u321f")
+
+[sub_resource type="QuadMesh" id="QuadMesh_2ppn1"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_tpvb2")
+size = Vector2(0.28300002, 0.40800002)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gsn5j"]
+resource_local_to_scene = true
+transparency = 2
+alpha_scissor_threshold = 0.6
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("66_a1jd1")
+
+[sub_resource type="QuadMesh" id="QuadMesh_y2bbs"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_gsn5j")
+size = Vector2(0.73020005, 0.92160004)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -868,27 +1008,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5874779, 2.1274004, 1.1379
 
 [node name="Affiche" parent="Environment/NavigationRegion3D/Level/Base_map/Enseignes" unique_id=710078564 instance=ExtResource("67_r83xy")]
 transform = Transform3D(-0.819152, 0, -0.5735764, 0, 1, 0, 0.5735764, 0, -0.819152, -1.4586313, 1.6077919, 8.117519)
-mesh = SubResource("QuadMesh_5iju0")
+mesh = SubResource("QuadMesh_kfamp")
 texture = ExtResource("76_nybfu")
 ratio = 0.5
 
 [node name="Affiche2" parent="Environment/NavigationRegion3D/Level/Base_map/Enseignes" unique_id=436401871 instance=ExtResource("67_r83xy")]
 transform = Transform3D(0.57357645, 0, -0.81915206, 0, 1, 0, 0.81915206, 0, 0.57357645, 14.889712, 2.5189319, -5.20536)
-mesh = SubResource("QuadMesh_aese6")
+mesh = SubResource("QuadMesh_pne75")
 texture = ExtResource("77_xj1jx")
 ratio = 0.5
 
 [node name="Affiche3" parent="Environment/NavigationRegion3D/Level/Base_map/Enseignes" unique_id=1455655155 instance=ExtResource("67_r83xy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.223866, 0.48865485, -8.076981)
-mesh = SubResource("QuadMesh_n4jea")
+mesh = SubResource("QuadMesh_2sxlw")
 texture = ExtResource("4_wpwdt")
 ratio = 0.3
 
 [node name="Affiche4" parent="Environment/NavigationRegion3D/Level/Base_map/Enseignes" unique_id=1707028849 instance=ExtResource("67_r83xy")]
 transform = Transform3D(0.5735764, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.5735764, 7.9907994, 5.0290813, -15.016575)
-mesh = SubResource("QuadMesh_a1jd1")
+mesh = SubResource("QuadMesh_ae4v5")
 texture = ExtResource("78_d8hql")
 ratio = 0.54
+
+[node name="Affiche5" parent="Environment/NavigationRegion3D/Level/Base_map/Enseignes" unique_id=1825735175 instance=ExtResource("67_r83xy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.34161, 4.928038, -7.5861697)
+mesh = SubResource("QuadMesh_u321f")
+texture = ExtResource("17_aese6")
+ratio = 0.5
+
+[node name="Affiche6" parent="Environment/NavigationRegion3D/Level/Base_map/Enseignes" unique_id=1341763070 instance=ExtResource("67_r83xy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.413555, 3.8572617, -7.563266)
+mesh = SubResource("QuadMesh_l3wih")
+texture = ExtResource("18_vx7q6")
+ratio = 0.53
 
 [node name="CoverObjects" type="Node3D" parent="Environment/NavigationRegion3D/Level" unique_id=1398436869]
 
@@ -1104,7 +1256,7 @@ transform = Transform3D(1, 0, 0, 0, 0.99939096, 0.0348995, 0, -0.0348995, 0.9993
 
 [node name="Affiche6" parent="Environment/NavigationRegion3D/Level/CoverObjects/BigCart" unique_id=1648876685 instance=ExtResource("67_r83xy")]
 transform = Transform3D(-4.0815742e-08, -1.5644815e-08, -1, -0.3579116, 0.9337553, 0, 0.9337553, 0.3579116, -4.371139e-08, -0.78146076, 1.4930702, 0.7311425)
-mesh = SubResource("QuadMesh_kfamp")
+mesh = SubResource("QuadMesh_pywj1")
 texture = ExtResource("27_r83xy")
 
 [node name="Barrel_big7" parent="Environment/NavigationRegion3D/Level/CoverObjects" unique_id=2095356497 instance=ExtResource("33_nybfu")]
@@ -1318,7 +1470,7 @@ transform = Transform3D(-0.068851046, 0, 0.99762696, 0, 1, 0, -0.99762696, 0, -0
 
 [node name="Affiche" parent="Environment/NavigationRegion3D/Level/CoverObjects" unique_id=1683454706 instance=ExtResource("67_r83xy")]
 transform = Transform3D(0.9987361, 0.05026175, 0, -0.05026175, 0.9987361, 0, 0, 0, 1, -22.188293, 1.9156134, -6.9390545)
-mesh = SubResource("QuadMesh_pne75")
+mesh = SubResource("QuadMesh_dkyne")
 texture = ExtResource("45_u6skg")
 ratio = 0.1
 
@@ -1423,52 +1575,43 @@ transform = Transform3D(0.7858561, 0.12965342, -0.6046653, -0.25424075, 0.959057
 
 [node name="Affiche" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=840195833 instance=ExtResource("67_r83xy")]
 transform = Transform3D(0.99959934, -0.02830546, 0, 0.02830546, 0.99959934, 0, 0, 0, 1, -23.855568, 1.9719014, -7.9320507)
-mesh = SubResource("QuadMesh_2sxlw")
+mesh = SubResource("QuadMesh_f37m2")
 texture = ExtResource("67_ovq67")
 ratio = 0.1
 
-[node name="sh_timber_05" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1011457866 instance=ExtResource("51_nybfu")]
-transform = Transform3D(-4.371139e-08, 0.85467637, 0.51916116, -1, -3.735909e-08, -2.2693255e-08, 0, -0.51916116, 0.85467637, -26.799116, 4.4864063, -6.896578)
-
-[node name="sh_timber_06" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=225089648 instance=ExtResource("52_xj1jx")]
-transform = Transform3D(-4.371139e-08, -0.9254612, -0.37884244, 1, -4.045319e-08, -1.655973e-08, 0, -0.37884244, 0.9254612, -22.949818, 4.423332, -7.1786585)
-
-[node name="sh_ladder_03" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=460594878 instance=ExtResource("53_d8hql")]
-transform = Transform3D(0.87548137, 0, -0.48325184, 0, 1, 0, 0.48325184, 0, 0.87548137, -26.703167, 0.21238112, -5.32901)
-
 [node name="Affiche2" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1570121432 instance=ExtResource("67_r83xy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.773695, 1.8422028, -6.9390554)
-mesh = SubResource("QuadMesh_ae4v5")
+mesh = SubResource("QuadMesh_io1or")
 texture = ExtResource("64_o7hd0")
 ratio = 0.07
 
 [node name="Affiche3" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=534763996 instance=ExtResource("67_r83xy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6564455, 1.4889193, -6.9390554)
-mesh = SubResource("QuadMesh_pywj1")
+mesh = SubResource("QuadMesh_deo81")
 texture = ExtResource("65_ovq67")
 ratio = 0.07
 
 [node name="Affiche4" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1932466941 instance=ExtResource("67_r83xy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.100767, 1.1924338, -6.9390554)
 sorting_offset = 2.0
-mesh = SubResource("QuadMesh_dkyne")
+mesh = SubResource("QuadMesh_b1gmb")
 texture = ExtResource("66_r83xy")
 ratio = 0.08
 
 [node name="Affiche5" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1218982618 instance=ExtResource("67_r83xy")]
 transform = Transform3D(0.97777224, -0.20966975, 0, 0.20966975, 0.97777224, 0, 0, 0, 1, -26.436455, 1.9621223, -7.9320517)
-mesh = SubResource("QuadMesh_f37m2")
+mesh = SubResource("QuadMesh_iigar")
 texture = ExtResource("27_r83xy")
 
 [node name="Affiche6" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=6169563 instance=ExtResource("67_r83xy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.534025, 1.7808408, -7.9320517)
-mesh = SubResource("QuadMesh_io1or")
+mesh = SubResource("QuadMesh_io5dv")
 texture = ExtResource("68_pgn55")
 ratio = 0.2
 
 [node name="Affiche7" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1674059725 instance=ExtResource("67_r83xy")]
 transform = Transform3D(-0.81779283, -0.047167964, -0.57357645, -0.057581455, 0.9983408, 1.8626451e-09, 0.57262474, 0.033027366, -0.81915206, -13.7693, 1.4401629, 15.021139)
-mesh = SubResource("QuadMesh_deo81")
+mesh = SubResource("QuadMesh_8wbba")
 texture = ExtResource("58_wpwdt")
 ratio = 0.04
 
@@ -1477,6 +1620,60 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -13.109739, 0.22000095,
 
 [node name="CarteBoulangerie4" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=940903513 instance=ExtResource("57_aiyng")]
 transform = Transform3D(0.55781966, 0, 0.22099157, 0, 0.6, 0, -0.22099157, 0, 0.55781966, -20.179684, 0.22000071, 4.962471)
+
+[node name="Affiche8" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1145734716 instance=ExtResource("67_r83xy")]
+transform = Transform3D(0.46430114, 0.8856774, 0, 3.8714187e-08, -2.0295246e-08, 1, 0.8856774, -0.46430114, -4.371139e-08, -18.735, 0.1, 13.856)
+mesh = SubResource("QuadMesh_6x65i")
+texture = ExtResource("63_vx7q6")
+ratio = 0.18
+
+[node name="Affiche9" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1615489538 instance=ExtResource("67_r83xy")]
+transform = Transform3D(0.92857003, -0.37115726, 0, -1.62238e-08, -4.0589086e-08, 1, -0.37115726, -0.92857003, -4.371139e-08, -17.246, 0.1, 7.53)
+mesh = SubResource("QuadMesh_c0vmp")
+texture = ExtResource("64_n4jea")
+ratio = 0.18
+
+[node name="Affiche10" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1232632043 instance=ExtResource("67_r83xy")]
+transform = Transform3D(0.3311404, 0.9435816, 0, 4.1245258e-08, -1.4474608e-08, 1, 0.9435816, -0.3311404, -4.371139e-08, -14.384, 0.1, 4.191)
+mesh = SubResource("QuadMesh_pgip8")
+texture = ExtResource("63_vx7q6")
+ratio = 0.18
+
+[node name="Affiche15" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1179521836 instance=ExtResource("67_r83xy")]
+transform = Transform3D(0.3311404, 0.9435816, 0, 4.1245258e-08, -1.4474608e-08, 1, 0.9435816, -0.3311404, -4.371139e-08, -8.638653, 0.1, 6.0633025)
+mesh = SubResource("QuadMesh_webu2")
+texture = SubResource("CompressedTexture2D_g3tgq")
+ratio = 0.29
+
+[node name="Affiche11" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=101262305 instance=ExtResource("67_r83xy")]
+transform = Transform3D(0.8741285, -0.48569477, -1.5258195e-10, -2.1096888e-08, -3.8283243e-08, 1, -0.48569477, -0.8741285, -4.3711122e-08, -16.09274, 0.10000024, 5.149853)
+mesh = SubResource("QuadMesh_t774w")
+texture = ExtResource("65_u321f")
+ratio = 0.1
+
+[node name="Affiche12" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1739229217 instance=ExtResource("67_r83xy")]
+transform = Transform3D(0.8741285, -0.48569477, -1.5258195e-10, -2.1096888e-08, -3.8283243e-08, 1, -0.48569477, -0.8741285, -4.3711122e-08, -15.483125, 0.1, 0.29523468)
+mesh = SubResource("QuadMesh_a3xon")
+texture = ExtResource("65_u321f")
+ratio = 0.1
+
+[node name="Affiche13" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=1449669502 instance=ExtResource("67_r83xy")]
+transform = Transform3D(-0.001815021, 0.9999984, -1.5258195e-10, 4.371077e-08, 2.3192115e-10, 1, 0.9999984, 0.001815021, -4.371112e-08, -12.281096, 0.099999525, -3.0828876)
+mesh = SubResource("QuadMesh_l8a5i")
+texture = ExtResource("65_u321f")
+ratio = 0.1
+
+[node name="Affiche14" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=678027072 instance=ExtResource("67_r83xy")]
+transform = Transform3D(0.4468226, 0.8946227, -1.5258195e-10, 3.9173134e-08, -1.9394609e-08, 1, 0.8946227, -0.4468226, -4.371112e-08, -6.99341, 0.09999976, 0.7698004)
+mesh = SubResource("QuadMesh_2ppn1")
+texture = ExtResource("65_u321f")
+ratio = 0.1
+
+[node name="Affiche16" parent="Environment/NavigationRegion3D/Level/Decoration" unique_id=998006675 instance=ExtResource("67_r83xy")]
+transform = Transform3D(0.8039918, -0.5946404, 0, -2.5992556e-08, -3.5143596e-08, 1, -0.5946404, -0.8039918, -4.371139e-08, -23.88348, 0.20114645, 3.6205122)
+mesh = SubResource("QuadMesh_y2bbs")
+texture = ExtResource("66_a1jd1")
+ratio = 0.06
 
 [node name="BakedBarricades" type="Node3D" parent="Environment/NavigationRegion3D" unique_id=1630510838]
 visible = false
@@ -2725,3 +2922,6 @@ transform = Transform3D(0.8268057, 0, -0.5624875, 0, 1, 0, 0.5624875, 0, 0.82680
 script = ExtResource("40_aese6")
 next_covers = [NodePath("../Barricade4")]
 metadata/_custom_type_script = "uid://bfk1lramy1rs8"
+
+[node name="Ladder_03" parent="." unique_id=668262694 instance=ExtResource("44_o7hd0")]
+transform = Transform3D(0.8958204, 0, -0.44441628, 0, 1, 0, 0.44441628, 0, 0.8958204, -26.229471, 0.21238017, -6.263685)
