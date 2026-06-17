@@ -111,12 +111,12 @@ func _take_slot(agent: Agent) -> Marker3D:
 	var slot: Marker3D = available_slots.pop_front()
 	holded_slots.push_back(slot)
 	if move_speeds[holded_slots.size()]: start_move.emit()
-	if not agent.died.is_connected(_restore): agent.died.connect(_restore.bind(slot))
-	else: print(agent.name, "is already conected")
-	if not agent.died.is_connected(_on_worker_died): agent.died.connect(_on_worker_died.bind(agent))
+	if not agent.dying.is_connected(_restore): agent.dying.connect(_restore.bind(slot).bind(agent))
+	if not agent.dying.is_connected(_on_worker_died): agent.dying.connect(_on_worker_died.bind(agent))
 	return slot
 
-func _restore(slot: Marker3D) -> void:
+func _restore(agent: Agent ,slot: Marker3D) -> void:
+	agent.top_level = true
 	holded_slots.erase(slot)
 	available_slots.push_back(slot)
 	if not move_speeds[holded_slots.size()]: stop_move.emit()
