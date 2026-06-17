@@ -28,6 +28,7 @@ func _ready() -> void:
 		new_line(0)
 	if game_manager: game_manager.all_states[1].player_tried_to_exit.connect(player_far)
 
+
 func _process(_delta: float) -> void:
 	if barricade != null and barricade.global_position.distance_squared_to(player.global_position) > coward_distance and is_coward == false:
 		pass
@@ -38,7 +39,6 @@ func new_line(step : int):
 		return
 	else :
 		bypass_line = false
-	print("step is ", step)
 	line_count = 0
 	Wwise.set_state("narrative_step", String("_" + str(step)))
 	for i in narrators:
@@ -50,7 +50,6 @@ func line_ended(_npc_name : String):
 		game_manager.curr_state.voice_line_finished.emit()
 		return
 	line_count += 1
-	#print(npc_name, " : ", line_count, " / ", narrators.size())
 	if line_count == narrators.size():
 		game_manager.curr_state.voice_line_finished.emit()
 
@@ -113,7 +112,6 @@ func cannon_fire():
 		find_closest(enemies, player).post_event("Cannon_Fire", 1)
 		find_random(enemies).post_event("Cannon_Fire", randf_range(2, 5))
 		find_random(enemies).post_event("Cannon_Fire", randf_range(2, 5))
-		print(barricade.life, " life")
 	match barricade.life :
 		3:
 			Wwise.set_state("barricade_state", "intact")
@@ -164,9 +162,7 @@ func unload_npc(remove_name : String):
 
 func on_move_progress(progress : float):
 	progress = progress / 0.25
-	print(roundi(progress))
 	if  roundf(progress) != move_gate and !cannon_workers.is_empty() :
-		print("bark cannon advance")
 		move_gate = roundf(progress)
 		cannon_workers.filter(func(w): return is_instance_valid(w) and w).pick_random().post_event("Cannon_Advance", 0)
 		#find_closest(enemies, player).post_event("Cannon_Advance", 0)
@@ -176,12 +172,17 @@ func on_move_progress(progress : float):
 func on_reload_progress(progress):
 	if progress >= 0.9:
 		reload_gate = true
-		var valid_workers: Array = cannon_workers.filter(func(w): return is_instance_valid(w) and w)
-		if not allies.is_empty(): 
-			valid_workers.pick_random().post_event("Cannon_Incoming", 0)
-		if not allies.is_empty():
-			find_closest(allies, barricade).post_event("Cannon_Incoming", 1)
-			find_random(allies).post_event("Cannon_Incoming", 2)
+		if cannon_workers.size() > 0:
+			var rnd: int = randi_range(0, cannon_workers.size() - 1)
+			if not cannon_workers[rnd] or not is_instance_valid(cannon_workers[rnd]): return
+			cannon_workers[rnd].post_event("Cannon_Incoming", 0)
+		
+		var ally_group: Array[Node] = get_tree().get_nodes_in_group("ak_ally")
+		if ally_group.size() <= 0: return
+		var rand_ally: Node3D = find_random(ally_group)
+		var close_ally: Node3D = find_closest(ally_group, barricade)
+		if close_ally and is_instance_valid(close_ally) and barricade and is_instance_valid(barricade): close_ally.post_event("Cannon_Incoming", 1)
+		if rand_ally and is_instance_valid(rand_ally): rand_ally.post_event("Cannon_Incoming", 2)
 
 func pause(new_pause : bool):
 	if new_pause:
