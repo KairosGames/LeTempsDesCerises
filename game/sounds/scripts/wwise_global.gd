@@ -10,7 +10,7 @@ var barricade : Node3D
 var is_coward = false
 var coward_distance : int = 600
 var game_manager : GameManager
-var line_count : int = 0 
+var line_count : int = 0
 var allow_barks : bool = true
 var move_gate : int = 0
 var reload_gate : bool = false
@@ -77,7 +77,7 @@ func remove(target : Node3D):
 	elif enemies.has(target):
 		enemies.erase(target)
 
-func find_closest(type : Array, target : Node3D) -> Node3D : 
+func find_closest(type : Array, target : Node3D) -> Node3D :
 	var closest : Node3D = null
 	for agent : Node3D in type:
 		if closest == null:
@@ -86,7 +86,7 @@ func find_closest(type : Array, target : Node3D) -> Node3D :
 			closest = agent
 	return closest
 
-func find_farthest(type : Array) -> Node3D : 
+func find_farthest(type : Array) -> Node3D :
 	var farthest : Node3D = null
 	for i : Node3D in type:
 		if farthest == null:
@@ -168,7 +168,7 @@ func on_move_progress(progress : float):
 	if  roundf(progress) != move_gate and !cannon_workers.is_empty() :
 		print("bark cannon advance")
 		move_gate = roundf(progress)
-		cannon_workers.pick_random().post_event("Cannon_Advance", 0)
+		cannon_workers.filter(func(w): return is_instance_valid(w) and w).pick_random().post_event("Cannon_Advance", 0)
 		#find_closest(enemies, player).post_event("Cannon_Advance", 0)
 		#find_closest(allies, player).post_event("Cannon_Advance", 1)
 		find_farthest(allies).post_event("Cannon_Advance", 2)
@@ -176,7 +176,7 @@ func on_move_progress(progress : float):
 func on_reload_progress(progress):
 	if progress >= 0.9:
 		reload_gate = true
-		cannon_workers.pick_random().post_event("Cannon_Incoming", 0)
+		cannon_workers.filter(func(w): return is_instance_valid(w) and w).pick_random().post_event("Cannon_Incoming", 0)
 		find_closest(allies, barricade).post_event("Cannon_Incoming", 1)
 		find_random(allies).post_event("Cannon_Incoming", 2)
 

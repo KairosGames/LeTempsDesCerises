@@ -81,10 +81,10 @@ func allies_arrival() -> void:
 	ui_manager.launch_letter_box(false)
 	lay_down_weapon(false)
 	await wait(ui_manager.time_to_open_letter_box)
-	
+
 	#############################################################################FOR DEBUG
 	add_on_process(kill_agents.bind(true, false))
-	
+
 	for agent: Agent in game_manager.cannon.workers:
 		if not agent or not is_instance_valid(agent): continue
 		agent.die()
@@ -154,18 +154,18 @@ func launch_last_battle_phase() -> void:
 	game_manager.cannon.enabled = true
 	player.can_die = true
 	await wait_until(is_barricade_damaged)
-	
+
 	############ FOR DEBUG#########################
 	add_on_process(add_worker_on_cannon)
-	
+
 	battle_director.go_next_covers_activation() ####################################### Barricade 2 endommagée
 	await wait_until(is_barricade_very_damaged)
 	battle_director.go_next_covers_activation() ####################################### Barricade 2 très endommagée
 	await wait_signal(game_manager.second_barricade.just_destroyed)
-	
+
 	############ FOR DEBUG#########################
 	clean_process()
-	
+
 	game_manager.cannon.enabled = false
 	await wait(10.0)
 	battle_director.go_next_covers_activation() ####################################### 10s après barricade 2 détruite

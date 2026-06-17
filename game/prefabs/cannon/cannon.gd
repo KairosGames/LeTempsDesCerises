@@ -57,18 +57,18 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if not enabled: return
-	
+
 	if is_slot_available():
 		var recruitment_range: float = max_recruitment_range * recruitment_range_boost if _time_without_worker > patience else max_recruitment_range
 		var new_worker: Agent = _find_workers(recruitment_range)
-		if new_worker: 
+		if new_worker:
 			var slot: Marker3D = _take_slot(new_worker)
 			new_worker.canon_slot = slot
 			workers.append(new_worker)
 			workers_updated.emit(workers)
 			_time_without_worker = 0
 		else: _time_without_worker += delta
-	
+
 	match _state:
 		State.MOVING:
 			progress += move_speeds[workers.size()] * delta
@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 			if reload_progress < 1.0:
 				if reload_progress == 0.0: start_reload.emit()
 				if workers.size(): reload_progress += delta / reload_duration[workers.size()]
-				if reload_progress == 1.0: 
+				if reload_progress == 1.0:
 					#stop_reload.emit()
 					reloaded.emit()
 					_shoot()
@@ -111,8 +111,8 @@ func _take_slot(agent: Agent) -> Marker3D:
 	var slot: Marker3D = available_slots.pop_front()
 	holded_slots.push_back(slot)
 	if move_speeds[holded_slots.size()]: start_move.emit()
-	if not agent.dying.is_connected(_restore): agent.dying.connect(_restore.bind(slot).bind(agent))
-	if not agent.dying.is_connected(_on_worker_died): agent.dying.connect(_on_worker_died.bind(agent))
+	agent.dying.connect(_restore.bind(slot).bind(agent))
+	agent.dying.connect(_on_worker_died.bind(agent))
 	return slot
 
 func _restore(agent: Agent ,slot: Marker3D) -> void:
