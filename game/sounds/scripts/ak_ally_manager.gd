@@ -41,11 +41,13 @@ func _ready() -> void:
 	if WwiseGlobal.allow_barks:
 		trigg_bark()
 
-func post_event(event : String, delay : int):
+
+func post_event(event: String, delay: float):
 	if is_barking : return
 	is_barking = true
 	await get_tree().create_timer(delay).timeout
 	barks_parent.get_child(barks.get(event)).post_event()
+
 
 func _on_communard_shoot() -> void:
 	shoot.post_event()
@@ -53,6 +55,7 @@ func _on_communard_shoot() -> void:
 func _on_communard_died() -> void:
 	WwiseGlobal.remove(self)
 	#Wwise.stop_all(self)
+
 
 func set_text(data: Dictionary): 
 	if not debug_text: return

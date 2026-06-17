@@ -97,6 +97,7 @@ func _find_workers(recruitment_range: float) -> Agent:
 		var nearest_distance: float = 0
 		for agent: Agent in get_tree().get_nodes_in_group(&"Versaillais"):
 			if agent.canon_slot: continue
+			if not agent.is_alive: continue
 			var distance: float = agent.global_position.distance_squared_to(global_position)
 			if distance > recruitment_range: continue
 			if not nearest_agent or distance < nearest_distance:

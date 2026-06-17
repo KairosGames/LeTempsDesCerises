@@ -160,32 +160,40 @@ func unload_npc(remove_name : String):
 			narrators.erase(npc)
 	Wwise.unload_bank(remove_name)
 
-func on_move_progress(progress : float):
+func on_move_progress(progress: float):
 	progress = progress / 0.25
 	if  roundf(progress) != move_gate and !cannon_workers.is_empty() :
 		move_gate = roundf(progress)
-		cannon_workers.filter(func(w): return is_instance_valid(w) and w).pick_random().post_event("Cannon_Advance", 0)
+		play_secrure_random_ak_post_event_on_array(cannon_workers, "Cannon_Advance", 0.0)
+		play_secure_ak_post_event(find_farthest(allies), "Cannon_Advance", 2.0)
 		#find_closest(enemies, player).post_event("Cannon_Advance", 0)
 		#find_closest(allies, player).post_event("Cannon_Advance", 1)
-		find_farthest(allies).post_event("Cannon_Advance", 2)
 
 func on_reload_progress(progress):
 	if progress >= 0.9:
 		reload_gate = true
-		if cannon_workers.size() > 0:
-			var rnd: int = randi_range(0, cannon_workers.size() - 1)
-			if not cannon_workers[rnd] or not is_instance_valid(cannon_workers[rnd]): return
-			cannon_workers[rnd].post_event("Cannon_Incoming", 0)
-		
+		play_secrure_random_ak_post_event_on_array(cannon_workers, "Cannon_Incoming", 0.0)
 		var ally_group: Array[Node] = get_tree().get_nodes_in_group("ak_ally")
 		if ally_group.size() <= 0: return
-		var rand_ally: Node3D = find_random(ally_group)
-		var close_ally: Node3D = find_closest(ally_group, barricade)
-		if close_ally and is_instance_valid(close_ally) and barricade and is_instance_valid(barricade): close_ally.post_event("Cannon_Incoming", 1)
-		if rand_ally and is_instance_valid(rand_ally): rand_ally.post_event("Cannon_Incoming", 2)
-
+		if barricade and is_instance_valid(barricade):
+			play_secure_ak_post_event(find_closest(ally_group, barricade), "Cannon_Incoming", 1.0)
+		play_secure_ak_post_event(find_random(ally_group),"Cannon_Incoming", 2)
+		
 func pause(new_pause : bool):
 	if new_pause:
 		Wwise.post_event("Pause", player)
 	elif !new_pause:
 		Wwise.post_event("Resume", player)
+
+
+#### SECURE FUNCTIONS
+
+func play_secure_ak_post_event(ak_node: Node3D, event: String, delay: float) -> void:
+	if not ak_node or not is_instance_valid(ak_node): return
+	ak_node.post_event(event, delay)
+
+func play_secrure_random_ak_post_event_on_array(ak_nodes: Array, event: String, delay: float) -> void:
+	if ak_nodes.size() > 0:
+		var rnd: int = randi_range(0, ak_nodes.size() - 1)
+		if ak_nodes[rnd] and is_instance_valid(ak_nodes[rnd]):
+			play_secure_ak_post_event(ak_nodes[rnd], event, delay)
