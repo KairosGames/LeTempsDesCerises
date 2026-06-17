@@ -5,10 +5,10 @@ var _vagueness: float = 1.0
 
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
-	
-	var max_angle_variation: float = GameManager.instance.max_angle_variations[agent.team] if GameManager.instance else 2.0
-	var vagueness_decrease: float = GameManager.instance.vagueness_decreases[agent.team] if GameManager.instance else 2.0
-	
+
+	var max_angle_variation: float = max(0, GameManager.instance.max_angle_variations[agent.team] if GameManager.instance else 2.0)
+	var vagueness_decrease: float = max(1, GameManager.instance.vagueness_decreases[agent.team] if GameManager.instance else 2.0)
+
 	var raycast: RayCast3D = agent.shoot_raycast
 
 	if not agent.target_object: return FAILURE
