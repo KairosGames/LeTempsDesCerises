@@ -107,9 +107,6 @@
 								<Reference Name="PlaylistRoot">
 									<Custom>
 										<MusicPlaylistItem Name="" ID="{40E473D4-505E-4D83-8964-55DDBDC6E7ED}" ShortID="318263787">
-											<PropertyList>
-												<Property Name="LoopCount" Type="int16" Value="0"/>
-											</PropertyList>
 											<ChildrenList>
 												<MusicPlaylistItem Name="" ID="{15C2579E-DEC5-41B8-8EA1-E03B410F09FF}" ShortID="90880603">
 													<PropertyList>
@@ -280,6 +277,12 @@
 													<Property Name="TimeMs" Type="Real64" Value="9303.79746835444"/>
 												</PropertyList>
 											</MusicCue>
+											<MusicCue Name="R1" ID="{E8880D97-21BD-4AED-938D-0172E3B3926C}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
+													<Property Name="TimeMs" Type="Real64" Value="34746.835443038"/>
+												</PropertyList>
+											</MusicCue>
 										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
@@ -410,6 +413,12 @@
 													<Property Name="TimeMs" Type="Real64" Value="23259.4936708861"/>
 												</PropertyList>
 											</MusicCue>
+											<MusicCue Name="C2" ID="{BDC9DD30-13EC-4651-9B1B-8E8D5C4545B5}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
+													<Property Name="TimeMs" Type="Real64" Value="23069.6202531646"/>
+												</PropertyList>
+											</MusicCue>
 										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
@@ -483,6 +492,13 @@
 														<MediaID ID="345606849"/>
 													</MediaIDList>
 												</AudioFileSource>
+												<AudioFileSource Name="SmS_Concertina_C3" ID="{07208B31-B807-4B32-B383-6A72EE72B6B8}">
+													<Language>SFX</Language>
+													<AudioFile>MUSIC_Stems\Vfinale\C3\SmS_Concertina_C3.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="673965776"/>
+													</MediaIDList>
+												</AudioFileSource>
 											</ChildrenList>
 											<ObjectLists>
 												<ObjectList Name="Sequences">
@@ -543,6 +559,25 @@
 															</Reference>
 														</ReferenceList>
 													</MusicTrackSequence>
+													<MusicTrackSequence Name="" ID="{294C391D-75D5-464F-B031-315F8AF4ED08}">
+														<ObjectLists>
+															<ObjectList Name="Clips">
+																<MusicClip Name="SmS_Concertina_C3" ID="{C6F2FCAE-7BB0-43F8-956A-523A6714854B}">
+																	<PropertyList>
+																		<Property Name="EndTrimOffset" Type="Real64" Value="36056.9583333333"/>
+																		<Property Name="FadeInMode" Type="int16" Value="0"/>
+																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																	</PropertyList>
+																	<AudioSourceRef Name="SmS_Concertina_C3" ID="{07208B31-B807-4B32-B383-6A72EE72B6B8}"/>
+																</MusicClip>
+															</ObjectList>
+														</ObjectLists>
+														<ReferenceList>
+															<Reference Name="TrackSequenceSwitch">
+																<ObjectRef Name="Concertina" ID="{7D53ED57-7431-494B-A9C4-B70B622B0A9F}" WorkUnitID="{CB49BB0B-8F90-4C69-9529-E0EEF09B1523}"/>
+															</Reference>
+														</ReferenceList>
+													</MusicTrackSequence>
 												</ObjectList>
 											</ObjectLists>
 										</MusicTrack>
@@ -564,6 +599,12 @@
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
 													<Property Name="TimeMs" Type="Real64" Value="9303.79746835443"/>
+												</PropertyList>
+											</MusicCue>
+											<MusicCue Name="R2" ID="{C5C5E992-DFDA-4565-B037-0CB560FF6D0B}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
+													<Property Name="TimeMs" Type="Real64" Value="34746.835443038"/>
 												</PropertyList>
 											</MusicCue>
 										</ObjectList>
@@ -748,6 +789,12 @@
 													<Property Name="TimeMs" Type="Real64" Value="23259.4936708861"/>
 												</PropertyList>
 											</MusicCue>
+											<MusicCue Name="C3" ID="{A9761824-7738-4415-AAC8-D01D4E2484A6}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
+													<Property Name="TimeMs" Type="Real64" Value="23069.6202531646"/>
+												</PropertyList>
+											</MusicCue>
 										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
@@ -768,26 +815,6 @@
 												<Property Name="LoopCount" Type="int16" Value="0"/>
 											</PropertyList>
 											<ChildrenList>
-												<MusicPlaylistItem Name="" ID="{7D14E322-4E1D-4E49-9AAD-B9AAE41D38B8}" ShortID="1002020132">
-													<PropertyList>
-														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Segment">
-															<ObjectRef Name="C4_Voice_Sel" ID="{1B64E96B-72D0-41BB-B9FC-62DC4D28DFE5}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
-														</Reference>
-													</ReferenceList>
-												</MusicPlaylistItem>
-												<MusicPlaylistItem Name="" ID="{CBD08E79-16C2-4FFE-844E-52884AFB3DAE}" ShortID="1071685977">
-													<PropertyList>
-														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-													</PropertyList>
-													<ReferenceList>
-														<Reference Name="Segment">
-															<ObjectRef Name="R3_Voice_Sel" ID="{2E80C0D4-0C34-4F42-BEE9-FD3E09E07920}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
-														</Reference>
-													</ReferenceList>
-												</MusicPlaylistItem>
 												<MusicPlaylistItem Name="" ID="{97FE9C09-3910-412A-B785-CEBF49567DAB}" ShortID="1049351091">
 													<PropertyList>
 														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
@@ -798,13 +825,53 @@
 														</Reference>
 													</ReferenceList>
 												</MusicPlaylistItem>
-												<MusicPlaylistItem Name="" ID="{F49B9032-E8AD-4973-A686-D738E4BB900B}" ShortID="49356156">
+												<MusicPlaylistItem Name="" ID="{4F68FC6E-F2D8-4D27-86B5-375D27571251}" ShortID="1043751136">
 													<PropertyList>
 														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Segment">
 															<ObjectRef Name="R3_Voice_Sel" ID="{2E80C0D4-0C34-4F42-BEE9-FD3E09E07920}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+												<MusicPlaylistItem Name="" ID="{E6A95D98-7CE8-4050-AA29-892134274A56}" ShortID="681848938">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="C4_Voice_Sel" ID="{1B64E96B-72D0-41BB-B9FC-62DC4D28DFE5}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+												<MusicPlaylistItem Name="" ID="{856558CC-DEF2-48B4-9760-EEF1F23BCCCC}" ShortID="614976133">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="R4_Voice_Sel" ID="{E3442E60-0087-45D0-A75C-0A01454362C5}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+												<MusicPlaylistItem Name="" ID="{0772D102-11F8-4FB8-A154-7BE067811681}" ShortID="650537977">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="C5_Voice_Sel" ID="{33850BEE-A6C4-416F-92E1-213B26B8E11F}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
+														</Reference>
+													</ReferenceList>
+												</MusicPlaylistItem>
+												<MusicPlaylistItem Name="" ID="{0FC14422-4AD4-401D-A922-2045B85D00CA}" ShortID="449594630">
+													<PropertyList>
+														<Property Name="PlaylistItemType" Type="int16" Value="1"/>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Segment">
+															<ObjectRef Name="R5_Voice_Sel" ID="{CF62AC36-F9A0-4A33-A544-B8A36984BA4D}" WorkUnitID="{578B24EE-AF69-4FA9-A9BC-719417059733}"/>
 														</Reference>
 													</ReferenceList>
 												</MusicPlaylistItem>
@@ -946,6 +1013,27 @@
 													<AudioFile>MUSIC_Stems\Vfinale\C3\SmS_Percussion1_C3.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="88940114"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="SmS_Clarinette_C5" ID="{C99566D3-F4EB-404A-918F-2660B9FA6397}">
+													<Language>SFX</Language>
+													<AudioFile>MUSIC_Stems\Vfinale\C5\SmS_Clarinette_C5.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="638301425"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="SmS_Accordion_C5" ID="{1C2952AC-E38D-472E-A96B-76B9F8CD4957}">
+													<Language>SFX</Language>
+													<AudioFile>MUSIC_Stems\Vfinale\C5\SmS_Accordion_C5.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="408305319"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="SmS_VaR_C4" ID="{C1AE6672-D458-44CB-A300-6D8BBD05AE24}">
+													<Language>SFX</Language>
+													<AudioFile>MUSIC_Stems\Vfinale\C4\SmS_VaR_C4.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="335520653"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -1138,6 +1226,63 @@
 														<ReferenceList>
 															<Reference Name="TrackSequenceSwitch">
 																<ObjectRef Name="Tambour" ID="{277E7C21-E8F6-4298-AEF7-D02841647DEC}" WorkUnitID="{CB49BB0B-8F90-4C69-9529-E0EEF09B1523}"/>
+															</Reference>
+														</ReferenceList>
+													</MusicTrackSequence>
+													<MusicTrackSequence Name="" ID="{0AD1A38A-8470-4197-8B2A-4075EBBC0C0B}">
+														<ObjectLists>
+															<ObjectList Name="Clips">
+																<MusicClip Name="SmS_Accordion_C5" ID="{0E18FD0B-026E-4BC1-BCBE-725411C1644E}">
+																	<PropertyList>
+																		<Property Name="EndTrimOffset" Type="Real64" Value="36056.9583333333"/>
+																		<Property Name="FadeInMode" Type="int16" Value="0"/>
+																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																	</PropertyList>
+																	<AudioSourceRef Name="SmS_Accordion_C5" ID="{1C2952AC-E38D-472E-A96B-76B9F8CD4957}"/>
+																</MusicClip>
+															</ObjectList>
+														</ObjectLists>
+														<ReferenceList>
+															<Reference Name="TrackSequenceSwitch">
+																<ObjectRef Name="Accordeon" ID="{8D7390CA-00CA-459A-8FBB-64D1A6AAE331}" WorkUnitID="{CB49BB0B-8F90-4C69-9529-E0EEF09B1523}"/>
+															</Reference>
+														</ReferenceList>
+													</MusicTrackSequence>
+													<MusicTrackSequence Name="" ID="{B98EB3FA-45E5-4EC8-8DA0-798F1C321D9B}">
+														<ObjectLists>
+															<ObjectList Name="Clips">
+																<MusicClip Name="SmS_Clarinette_C5" ID="{44B37FFE-79B8-4C5F-8DDF-9BC7AF85752E}">
+																	<PropertyList>
+																		<Property Name="EndTrimOffset" Type="Real64" Value="36056.9583333333"/>
+																		<Property Name="FadeInMode" Type="int16" Value="0"/>
+																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																	</PropertyList>
+																	<AudioSourceRef Name="SmS_Clarinette_C5" ID="{C99566D3-F4EB-404A-918F-2660B9FA6397}"/>
+																</MusicClip>
+															</ObjectList>
+														</ObjectLists>
+														<ReferenceList>
+															<Reference Name="TrackSequenceSwitch">
+																<ObjectRef Name="Clarinette" ID="{173D4FCB-45A7-48A3-871F-701C3C37E1C1}" WorkUnitID="{CB49BB0B-8F90-4C69-9529-E0EEF09B1523}"/>
+															</Reference>
+														</ReferenceList>
+													</MusicTrackSequence>
+													<MusicTrackSequence Name="" ID="{008C6AFB-E9B2-42B8-91B9-63F74B0A10CC}">
+														<ObjectLists>
+															<ObjectList Name="Clips">
+																<MusicClip Name="SmS_VaR_C4" ID="{14159B88-DF56-4270-91D0-4523F3B68672}">
+																	<PropertyList>
+																		<Property Name="EndTrimOffset" Type="Real64" Value="36056.9583333333"/>
+																		<Property Name="FadeInMode" Type="int16" Value="0"/>
+																		<Property Name="FadeOutMode" Type="int16" Value="0"/>
+																	</PropertyList>
+																	<AudioSourceRef Name="SmS_VaR_C4" ID="{C1AE6672-D458-44CB-A300-6D8BBD05AE24}"/>
+																</MusicClip>
+															</ObjectList>
+														</ObjectLists>
+														<ReferenceList>
+															<Reference Name="TrackSequenceSwitch">
+																<ObjectRef Name="Viele" ID="{12E04AAA-8C1B-4179-B2F8-69C222758796}" WorkUnitID="{CB49BB0B-8F90-4C69-9529-E0EEF09B1523}"/>
 															</Reference>
 														</ReferenceList>
 													</MusicTrackSequence>
@@ -1881,6 +2026,12 @@
 													<Property Name="TimeMs" Type="Real64" Value="23354.4303797469"/>
 												</PropertyList>
 											</MusicCue>
+											<MusicCue Name="C4" ID="{7E9964B9-5965-44AC-8603-12BC23144CDF}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
+													<Property Name="TimeMs" Type="Real64" Value="23164.5569620253"/>
+												</PropertyList>
+											</MusicCue>
 										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
@@ -2248,12 +2399,18 @@
 													<Property Name="TimeMs" Type="Real64" Value="23354.4303797469"/>
 												</PropertyList>
 											</MusicCue>
+											<MusicCue Name="C5" ID="{DEBB2AC1-CD8C-4072-BF74-6759118B06A0}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
+													<Property Name="TimeMs" Type="Real64" Value="23164.5569620253"/>
+												</PropertyList>
+											</MusicCue>
 										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
 								<MusicSegment Name="C5_Voice_Sel" ID="{33850BEE-A6C4-416F-92E1-213B26B8E11F}" ShortID="315476614">
 									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="45364.4759864629"/>
+										<Property Name="EndPosition" Type="Real64" Value="37595.4777988944"/>
 										<Property Name="Tempo" Type="Real64" Value="158"/>
 										<Property Name="TimeSignatureLower" Type="int16" Value="8"/>
 										<Property Name="TimeSignatureUpper" Type="int16" Value="12"/>
@@ -3059,6 +3216,12 @@
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
 													<Property Name="TimeMs" Type="Real64" Value="23354.4303797469"/>
+												</PropertyList>
+											</MusicCue>
+											<MusicCue Name="C6" ID="{8F07EC6B-ADAD-40AD-8812-C81270681E2E}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
+													<Property Name="TimeMs" Type="Real64" Value="23164.5569620253"/>
 												</PropertyList>
 											</MusicCue>
 										</ObjectList>
@@ -3993,6 +4156,12 @@
 													<Property Name="TimeMs" Type="Real64" Value="23354.4303797469"/>
 												</PropertyList>
 											</MusicCue>
+											<MusicCue Name="C7" ID="{D1900055-23D9-4B33-A65C-97989D886882}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
+													<Property Name="TimeMs" Type="Real64" Value="23164.5569620253"/>
+												</PropertyList>
+											</MusicCue>
 										</ObjectList>
 									</ObjectLists>
 								</MusicSegment>
@@ -4432,13 +4601,13 @@
 													<Property Name="TimeMs" Type="Real64" Value="35126.582278481"/>
 												</PropertyList>
 											</MusicCue>
-											<MusicCue Name="C3-1" ID="{9FA2C55E-3F0F-4D3D-A936-1E90B042486C}">
+											<MusicCue Name="C7-1" ID="{9FA2C55E-3F0F-4D3D-A936-1E90B042486C}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
 													<Property Name="TimeMs" Type="Real64" Value="9303.79746835443"/>
 												</PropertyList>
 											</MusicCue>
-											<MusicCue Name="R3" ID="{64EDCBB8-DF12-4CEA-ADAF-5F18433A3146}">
+											<MusicCue Name="R7" ID="{64EDCBB8-DF12-4CEA-ADAF-5F18433A3146}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
 													<Property Name="TimeMs" Type="Real64" Value="34556.9620253165"/>
@@ -4887,6 +5056,12 @@
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
 													<Property Name="TimeMs" Type="Real64" Value="23354.4303797469"/>
+												</PropertyList>
+											</MusicCue>
+											<MusicCue Name="C8" ID="{668202F9-714E-43A2-B30A-741F4568CEE2}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="2"/>
+													<Property Name="TimeMs" Type="Real64" Value="23164.5569620253"/>
 												</PropertyList>
 											</MusicCue>
 										</ObjectList>
