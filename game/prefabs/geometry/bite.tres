@@ -1,6 +1,9 @@
 [gd_resource type="ArrayMesh" format=4 uid="uid://bsnqvmwyhr875"]
 
-[ext_resource type="Material" uid="uid://dw4gujg1e28ao" path="res://sources/meshes/geometry/materials/concrete.tres" id="1_owa8g"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ocspg"]
+resource_name = "concrete"
+albedo_color = Color(0.287709, 0.26531, 0.255713, 1)
+metallic = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_hx846"]
 _surfaces = [{
@@ -25,7 +28,7 @@ _surfaces = [{
 "index_count": 165,
 "index_data": PackedByteArray("BwAcAAgACAAcAB0AHAAeAB0AHQAeAB8AHwAIAB0AHgAZAB8AIAAIAB8AHwAZACAAGAAIACAAGQAhACAAIAAhABgAIQAiABgAGAAiACMAIgAkACMAJQATACYAFAAlACYACwAlABQAJgATACcAJQALAA0ADQALAA4ADAAlAA0AEwAlAAwACgATAAwAEwAoACcAKAATAAoAJwAoABUACQAoAAoAKAApABUAKQAoAAkAFQApABYABgApAAkAKQAqABYAKgApAAYAFgAqABcABQAqAAYAKgArABcAKwAqAAUAFwArAAAABAArAAUAKwAaAAAAGgArAAQAAwAaAAQAAAAaACwAAQAaAAMAGgABACwALAABAAIALQAPAC4ADwAvAC4ALgASAC0ALQASABsALgAvADAAMAASAC4ALwAQADAAEQASADAAMAAQABEA"),
 "lods": [0.02698077, PackedByteArray("CwATABQAFAATABUADQALAA4ADAALAA0AEwALAAwACgATAAwAFQATAAoACQAVAAoAFgAVAAkABgAWAAkAFwAWAAYABQAXAAYAFgAXABgAGQAWABgABwAZABgAGAAIAAcAFwAAABgAAAAXAAUABAAAAAUAGgAAAAQAAAAaAAIAAwAaAAQAGgABAAIAAQAaAAMAGwAPABEADwAQABEAEQASABsA"), 0.47992435, PackedByteArray("AAABAAIAAwABAAQAAQAAAAQABAAAAAUABQAAAAYAAAAHAAYAAAAIAAcABgAHAAkACQAHAAoABwALAAoACgALAAwADAALAA0ADQALAA4ADwAQABEAEQASAA8A")],
-"material": ExtResource("1_owa8g"),
+"material": SubResource("StandardMaterial3D_ocspg"),
 "name": "concrete",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

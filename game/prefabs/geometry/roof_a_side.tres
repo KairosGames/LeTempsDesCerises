@@ -1,7 +1,11 @@
 [gd_resource type="ArrayMesh" format=4 uid="uid://dxp27e1hhy1nj"]
 
 [ext_resource type="Material" uid="uid://bjrhekc2xf1f8" path="res://sources/meshes/geometry/materials/roof.tres" id="1_ut4is"]
-[ext_resource type="Material" uid="uid://dw4gujg1e28ao" path="res://sources/meshes/geometry/materials/concrete.tres" id="2_oab2i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssj27"]
+resource_name = "concrete"
+albedo_color = Color(0.287709, 0.26531, 0.255713, 1)
+metallic = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_q5pvt"]
 _surfaces = [{
@@ -46,7 +50,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 48,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABwAIAAkACgALAAwADAALAA0ADgAPABAAEAAPABEAEgATABQAFAATABUAFgAXABgAGAAXABkAGgAbABwAHAAbAB0AHgAfACAAIAAfACEA"),
-"material": ExtResource("2_oab2i"),
+"material": SubResource("StandardMaterial3D_ssj27"),
 "name": "concrete",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

@@ -1,9 +1,18 @@
 [gd_resource type="ArrayMesh" format=4 uid="uid://y611pd1kxlcc"]
 
-[ext_resource type="Material" uid="uid://dh2a0nyveyo1y" path="res://sources/meshes/geometry/materials/plank.tres" id="1_6sbh1"]
-[ext_resource type="Material" uid="uid://dw4gujg1e28ao" path="res://sources/meshes/geometry/materials/concrete.tres" id="2_l6drn"]
+[ext_resource type="Texture2D" uid="uid://cglbsrl0qebdl" path="res://sources/meshes/geometry/textures/wook_planks/ltdc-bois-texture-col.png" id="1_lkisb"]
 [ext_resource type="Material" uid="uid://cwlqdsjetpt1" path="res://sources/meshes/geometry/materials/glass.tres" id="3_qxdsy"]
 [ext_resource type="Material" uid="uid://f8j4csj5q005" path="res://sources/meshes/geometry/materials/curtains.tres" id="4_wpmwl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ut6k"]
+resource_name = "plank"
+albedo_texture = ExtResource("1_lkisb")
+metallic = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7uqv"]
+resource_name = "bricks"
+albedo_color = Color(0.800007, 0.585083, 0.215369, 1)
+metallic = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_gb4fv"]
 _surfaces = [{
@@ -58,7 +67,7 @@ _surfaces = [{
 "index_count": 138,
 "index_data": PackedByteArray("EgAgABMAEwAgACEAIgAjAB0AHQAjABwAAQAkAAAAAAAkACUAJgAnAAIAAgAnAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARACgAKAARACkAFAAVABYAFgAVABcAKgArABoAGgArABsALAAtAB4AHgAtAB8ALgAvADAAMAAvADEAMgAzADQANAAzADUANgA3ADgAOAA3ADkAOgA7ADwAPAA7AD0APgA/AEAAQAA/AEEAGQBCABgAGABCAEMARABFAEYARgBFAEcASABJAEoASgBJAEsATABNAE4ATgBNAE8AUABRAFIAUgBRAFMAVABVAFYAVgBVAFcAWABZAFoAWgBZAFsA"),
 "lods": [0.84953856, PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcAGAAZABoAGgAZABsAHAAdAB4AHgAdAB8A")],
-"material": ExtResource("1_6sbh1"),
+"material": SubResource("StandardMaterial3D_4ut6k"),
 "name": "plank",
 "primitive": 3,
 "uv_scale": Vector4(1.98619, 2.625986, 0, 0),
@@ -70,7 +79,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABAAFAAEABgAEAAAABwAGAAAACAAGAAcAAQAFAAkABQAIAAkACQAIAAcABwAKAAkACQAKAAsA"),
-"material": ExtResource("2_l6drn"),
+"material": SubResource("StandardMaterial3D_a7uqv"),
 "name": "bricks",
 "primitive": 3,
 "uv_scale": Vector4(1.996392, 1.990834, 0, 0),
