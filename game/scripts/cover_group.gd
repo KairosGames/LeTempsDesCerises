@@ -6,10 +6,14 @@ class_name CoverGroup extends Node
 @export_category("Enemies settings")
 @export var max_enemies: int = 5
 @export var enemies_spawn_cd: float = 1.0
+@export var enmy_aim_angle: float = 2.0
+@export var enmy_aim_angle_reducer: float = 2.0
 
 @export_category("Allies settings")
 @export var max_allies: int = 5
 @export var allies_spawn_cd: float = 1.0
+@export var ally_aim_angle: float = 2.0
+@export var ally_aim_angle_reducer: float = 2.0
 
 @export_category("Death Covers")
 @export var death_covers: Array[Cover]

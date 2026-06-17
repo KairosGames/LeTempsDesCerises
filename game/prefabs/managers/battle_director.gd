@@ -52,6 +52,10 @@ func go_next_covers_activation() -> void:
 		printerr("INCONSISTENCY: ACTIVATION INDEX IN BATTLE DIRECTOR")
 		return
 	curr_group = all_groups[covers_activation_index]
+	game_manager.max_angle_variations[Agent.Team.COMMUNARD] = curr_group.ally_aim_angle
+	game_manager.vagueness_decreases[Agent.Team.COMMUNARD] = curr_group.ally_aim_angle_reducer
+	game_manager.max_angle_variations[Agent.Team.VERSAILLAIS] = curr_group.enmy_aim_angle
+	game_manager.vagueness_decreases[Agent.Team.VERSAILLAIS] = curr_group.enmy_aim_angle_reducer
 	curr_mortal_cover = curr_group.death_covers
 	death_on_cover_enable = curr_group.is_auto_death_enable
 	enemies_manager.target_entity_count = curr_group.max_enemies
