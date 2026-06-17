@@ -28,6 +28,8 @@ func exit() -> void:
 
 
 func set_game_for_debug() -> void:
+	for i: int in range(8): battle_director.go_next_covers_activation()
+	voice_line_index = 22
 	first_battle_phase_time = 0.0
 	francois.global_position = francois_moved_pos.global_position
 	francois.global_rotation = francois_moved_pos.global_rotation
@@ -79,10 +81,11 @@ func allies_arrival() -> void:
 	ui_manager.launch_letter_box(false)
 	lay_down_weapon(false)
 	await wait(ui_manager.time_to_open_letter_box)
-	await wait_until(is_there_no_enemies)
 	
 	#############################################################################FOR DEBUG
 	add_on_process(debug)
+	
+	await wait_until(is_there_no_enemies)
 
 
 ############################################################################FOR DEBUG
