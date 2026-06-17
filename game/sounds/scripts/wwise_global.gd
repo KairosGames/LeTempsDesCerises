@@ -14,6 +14,7 @@ var line_count : int = 0
 var allow_barks : bool = true
 var move_gate : int = 0
 var reload_gate : bool = false
+var bypass_line : bool = false
 
 func _ready() -> void:
 	await get_tree().create_timer(1).timeout
@@ -32,7 +33,11 @@ func _process(_delta: float) -> void:
 		pass
 
 func new_line(step : int):
-	if step == 30 : return
+	if step == 30 :
+		bypass_line == true
+		return
+	else :
+		bypass_line = false
 	print("step is ", step)
 	line_count = 0
 	Wwise.set_state("narrative_step", String("_" + str(step)))
@@ -41,6 +46,9 @@ func new_line(step : int):
 			i.voiceline()
 
 func line_ended(_npc_name : String):
+	if bypass_line:
+		game_manager.curr_state.voice_line_finished.emit()
+		return
 	line_count += 1
 	#print(npc_name, " : ", line_count, " / ", narrators.size())
 	if line_count == narrators.size():
@@ -65,7 +73,7 @@ func remove(target : Node3D):
 	if allies.has(target):
 		allies.erase(target)
 		if !allies.is_empty():
-			allies.pick_random().post_event("Ally_Death", 1.5)
+			find_random(allies).post_event("Ally_Death", 1.5)
 	elif enemies.has(target):
 		enemies.erase(target)
 
@@ -125,11 +133,17 @@ func player_far():
 		is_coward = false
 
 func surrender():
-	return
+	Wwise.set_state("narrative_step", "_30")
+	for npc in narrators:
+		if npc.npc_name == "Francois":
+			npc.voiceline()
 
 
 func fight():
-	return
+	Wwise.set_state("narrative_step", "_30")
+	for npc in narrators:
+		if npc.npc_name == "Louise":
+			npc.voiceline()
 
 func enemy_killed(_target: Node3D):
 	await get_tree().create_timer(1.5).timeout
