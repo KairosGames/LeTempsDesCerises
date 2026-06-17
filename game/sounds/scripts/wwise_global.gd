@@ -177,10 +177,11 @@ func on_reload_progress(progress):
 	if progress >= 0.9:
 		reload_gate = true
 		var valid_workers: Array = cannon_workers.filter(func(w): return is_instance_valid(w) and w)
-		if valid_workers.size(): 
+		if not allies.is_empty(): 
 			valid_workers.pick_random().post_event("Cannon_Incoming", 0)
-		find_closest(allies, barricade).post_event("Cannon_Incoming", 1)
-		find_random(allies).post_event("Cannon_Incoming", 2)
+		if not allies.is_empty():
+			find_closest(allies, barricade).post_event("Cannon_Incoming", 1)
+			find_random(allies).post_event("Cannon_Incoming", 2)
 
 func pause(new_pause : bool):
 	if new_pause:
