@@ -58,8 +58,9 @@ func go_to_barricade() -> void:
 	go_to_barricade_area.monitoring = true
 	player.can_use_run = true
 	handle_action_tooltip("run")
-	add_on_process(check_run)
+	add_on_process(check_run, true)
 	await wait_signal(go_to_barricade_area.player_entered)
+	free_tool_tip()
 	clean_ui_process()
 	go_to_barricade_area.set_deferred("monitoring", false)
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
@@ -70,7 +71,6 @@ func check_run() -> void:
 	if player.is_running:
 		free_tool_tip()
 		clean_ui_process()
-		clean_process()
 
 
 func stay_into_barricade_area() -> void:
@@ -247,8 +247,8 @@ func is_first_barricade_destroyed() -> bool:
 
 
 func enemies_enter_first_zone() -> void:
+	await wait(10.0)
 	ui_manager.set_objective(true, go_to_second_barricade, "Go to the backup barricade") # give second baricade target
-	await wait(20.0)
 	battle_director.go_next_covers_activation() ####################################### Passage barricade 2
 	player.is_next_death_scripted = true
 	next_respawn = second_barricade_npc

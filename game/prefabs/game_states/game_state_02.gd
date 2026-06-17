@@ -57,24 +57,18 @@ func allies_arrival() -> void:
 	player.can_die = false
 	await wait_voice() # "Faites place ! Faites place !"
 	desactivable_barricade.process_mode = Node.PROCESS_MODE_DISABLED
-	launch_women()
-	louise_detection_area.monitoring = true
 	player.can_play = false
 	await run_to_destination(women_arrival_point)
+	launch_women()
+	louise_detection_area.monitoring = true
 	var target_point: Vector3 = women_arrival_point.global_position + women_arrival_point.basis.z
 	var time_ratio: float = get_yaw_diff_ratio(target_point)
 	await tween_rotate_player_to_yaw(women_arrival_point.global_rotation.y, 1.0 * time_ratio)
 	var louise: Npc = woman_points.women[0]
 	await wait_signal(louise_detection_area.tracked_npc_entered)
-	
-	print("CA PASSE ICI")
-	
 	louise_detection_area.set_deferred("monitoring", false)
 	launch_francois_replique_on_women_arrival()
 	await wait_signal(louise.arrived_on_path_point)
-	
-	print("CA PASSE ICI AUSSI")
-	
 	desactivable_barricade.process_mode = Node.PROCESS_MODE_INHERIT
 	lay_down_weapon(true)
 	await wait_until_or_signal(louise.is_on_all_nav_finished, louise.arrived_on_path_destination)
