@@ -9,6 +9,7 @@ signal clicked_pause(is_pause: bool)
 @export_category("Settings")
 @export var use_narrative: bool = true
 @export var use_debug: bool = false
+@export var use_short_time: bool = false
 @export var starting_game_state: int = 0
 
 @export_category("Use debug")

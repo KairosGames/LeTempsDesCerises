@@ -41,8 +41,10 @@ func ready_deffered() -> void:
 func _process(delta: float) -> void:
 	if death_on_cover_enable and covers_activation_index >= 0:
 		apply_death_on_covers(delta)
-	#DEBUG
+	
+	############ FOR DEBUG
 	if Input.is_action_just_pressed("go_next_step") and not game_manager.use_narrative:
+		print("NEXT COVERS ACTIVATION FORCED !")
 		go_next_covers_activation()
 
 
@@ -51,6 +53,7 @@ func go_next_covers_activation() -> void:
 	if covers_activation_index >= all_groups.size():
 		printerr("INCONSISTENCY: ACTIVATION INDEX IN BATTLE DIRECTOR")
 		return
+	print("ACTIVATED : ", CoverGroupTransfer.instance.cover_group_to_transfer[covers_activation_index].name)
 	curr_group = all_groups[covers_activation_index]
 	game_manager.max_angle_variations[Agent.Team.COMMUNARD] = curr_group.ally_aim_angle
 	game_manager.vagueness_decreases[Agent.Team.COMMUNARD] = curr_group.ally_aim_angle_reducer

@@ -30,7 +30,7 @@ func exit() -> void:
 func set_game_for_debug() -> void:
 	for i: int in range(8): battle_director.go_next_covers_activation()
 	voice_line_index = 22
-	first_battle_phase_time = 0.0
+	if game_manager.use_short_time: first_battle_phase_time = 0.0
 	francois.global_position = francois_moved_pos.global_position
 	francois.global_rotation = francois_moved_pos.global_rotation
 	francois.is_fighting = true
@@ -83,18 +83,9 @@ func allies_arrival() -> void:
 	await wait(ui_manager.time_to_open_letter_box)
 	
 	#############################################################################FOR DEBUG
-	add_on_process(debug)
+	add_on_process(kill_agents.bind(true, false))
 	
 	await wait_until(is_there_no_enemies)
-
-
-############################################################################FOR DEBUG
-func debug() -> void:
-	if Input.is_action_just_pressed("go_next_step"):
-		for versaillais: Agent in get_tree().get_nodes_in_group("Versaillais"):
-			versaillais.die()
-		clean_process()
-############################################################################
 
 
 func launch_women() -> void:
@@ -117,10 +108,6 @@ func launch_francois_replique_on_women_arrival() -> void:
 	var rot_targ: Vector3 = francois_moved_pos.global_position + francois_moved_pos.basis.z
 	await francois.rotate_yaw_to_pos_tween(rot_targ, 0.4)
 	francois.is_fighting = true
-
-
-func is_there_no_enemies() -> bool:
-	return get_tree().get_nodes_in_group("Versaillais"). size() <= 0
 
 
 func launch_dialogue_preparation() -> void:

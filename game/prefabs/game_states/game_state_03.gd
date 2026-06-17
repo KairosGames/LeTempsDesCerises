@@ -36,6 +36,7 @@ func exit() -> void:
 
 
 func set_game_for_debug() -> void:
+	for i: int in range(13): battle_director.go_next_covers_activation()
 	francois.global_position = discussion_point.global_position
 	francois.global_rotation = francois_moved_pos.global_rotation
 	francois.is_fighting = true
@@ -48,7 +49,7 @@ func set_game_for_debug() -> void:
 	player.give_or_drop_weapon(true)
 	player.is_weapon_loaded = true
 	ui_manager.hard_set_letter_box(false)
-	for i in range(0,6): game_manager.handle_cannon_shoot()
+	for i: int in range(0,6): game_manager.handle_cannon_shoot()
 	game_manager.cannon._is_first_shoot = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 
@@ -59,10 +60,19 @@ func wait_no_more_allies() -> void:
 	louise.launch_movement_to_nav_point(louise_cover, 4.0, true)
 	francois.launch_movement_to_nav_point(francois_cover, 4.0, true)
 	await wait_until(are_louise_and_francois_on_covers)
+	
+	############# FOR DEBUG
+	add_on_process(kill_agents.bind(false, true))
+	
 	await wait_until(is_there_one_ally)
 	await wait_until(is_player_alive)
 	player.can_die = false
+	
+	############# FOR DEBUG
+	add_on_process(kill_agents.bind(false, true))
 	await wait_until(is_there_no_allies)
+	
+	############# FOR DEBUG
 
 
 func are_louise_and_francois_on_covers() -> bool:

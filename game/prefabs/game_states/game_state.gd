@@ -57,7 +57,9 @@ func _process(delta: float) -> void:
 	delta_t = delta
 	for callable: Callable in on_process: callable.call()
 	for callable: Callable in on_ui_process: callable.call()
-	if Input.is_action_just_pressed("go_next_step") and game_manager.is_game_playing():
+	
+	######################### FOR DEBUG
+	if Input.is_action_just_pressed("go_next_step") and game_manager.is_game_playing() and game_manager.use_narrative:
 		print("NEXT CALLED")
 		voice_line_finished.emit()
 
@@ -68,7 +70,7 @@ func _physics_process(delta: float) -> void:
 
 
 func run_steps() -> void:
-	for step in steps:
+	for step: Step in steps:
 		step.curr_state = Step.StepState.ENTER
 		await step.on_enter.call()
 		step.curr_state = Step.StepState.DOING
@@ -331,9 +333,34 @@ func lay_down_weapon(is_down: bool) -> void:
 	await twn.finished
 
 
+func is_there_no_enemies() -> bool:
+	return get_tree().get_nodes_in_group("Versaillais"). size() <= 0
+
+
+func is_there_one_ally() -> bool:
+	var list: Array[Node] = get_tree().get_nodes_in_group("Communard").filter(func(o): return o is not Player)
+	return list.size() <= 1
+
+
+func is_there_no_allies() -> bool:
+	var list: Array[Node] = get_tree().get_nodes_in_group("Communard").filter(func(o): return o is not Player)
+	return list.size() <= 0
+
 
 #####################DEBUG ##############################
 func add_worker_on_cannon() -> void:
 	if Input.is_action_just_pressed("choice_surrender"):
 		game_manager.cannon._create_workers(1)
+
+func kill_agents(kill_enemies: bool, kill_allies: bool) -> void:
+	if Input.is_action_just_pressed("go_next_step"):
+		if kill_enemies:
+			for versaillais: Agent in get_tree().get_nodes_in_group("Versaillais"):
+				versaillais.die()
+		if kill_allies:
+			for communard: Agent in get_tree().get_nodes_in_group("Communard"):
+				communard.die()
+		clean_process()
+	if is_there_no_enemies() and kill_enemies: clean_process()
+	if is_there_no_allies() and kill_allies: clean_process()
 #####################DEBUG ##############################

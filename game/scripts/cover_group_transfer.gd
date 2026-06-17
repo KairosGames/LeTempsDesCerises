@@ -3,9 +3,6 @@ class_name CoverGroupTransfer extends Node
 @export_category("Activation groups")
 @export var cover_group_to_transfer: Array[CoverGroup]
 
-@export_category("Death groups")
-@export var death_group_to_transfer: Array[CoverGroup]
-
 
 static var instance: CoverGroupTransfer:
 	set(value):
