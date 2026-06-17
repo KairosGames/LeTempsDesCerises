@@ -12,9 +12,10 @@
 
 var steps: Array[Step] = []
 var curr_step: int = 0
-var is_active = false
+var is_active: bool = false
 
 static var voice_line_index: int = -1
+static var set_debug_applied: bool = false
 var game_manager: GameManager
 var eff_manager: EffectsManager
 var ui_manager: UIManager
@@ -378,7 +379,7 @@ func kill_agents(kill_enemies: bool, kill_allies: bool) -> void:
 			for versaillais: Agent in get_tree().get_nodes_in_group("Versaillais"):
 				versaillais.die()
 		if kill_allies:
-			for communard: Agent in get_tree().get_nodes_in_group("Communard"):
+			for communard: Agent in get_tree().get_nodes_in_group("Communard").filter(func(v): return v is not Player):
 				communard.die()
 		clean_process()
 	if is_there_no_enemies() and kill_enemies: clean_process()

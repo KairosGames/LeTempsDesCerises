@@ -19,7 +19,7 @@ func enter() -> void:
 		Step.new(launch_dialogue_preparation, launch_women_dialogue, do_nothing),
 		Step.new(launch_last_battle_phase, do_nothing, do_nothing),
 	]
-	if game_manager.use_debug: set_game_for_debug()
+	if game_manager.use_debug and not set_debug_applied: set_game_for_debug()
 	run_steps()
 
 
@@ -42,6 +42,7 @@ func set_game_for_debug() -> void:
 	game_manager.cannon._is_first_shoot = false
 	if game_manager.curr_barricade == game_manager.first_barricade:
 		for i: int in range(0,3): game_manager.handle_cannon_shoot()
+	set_debug_applied = true
 
 
 func lauch_first_phase() -> void:

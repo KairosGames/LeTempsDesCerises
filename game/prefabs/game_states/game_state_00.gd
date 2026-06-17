@@ -28,7 +28,7 @@ func enter() -> void:
 		Step.new(wait_voice, wait_player_enter_reload, wait_voice), # "Ah mais il est vide celui là" / # "Terminé te voilà enfin près pour expédier du plomb"
 		Step.new(enter_fight_begin, georges_death, free_player)
 	]
-	if game_manager.use_debug: set_game_for_debug()
+	if game_manager.use_debug and not set_debug_applied: set_game_for_debug()
 	run_steps()
 
 
@@ -48,6 +48,7 @@ func set_game_for_onboarding() -> void:
 	player.set_is_free(false)
 	player.aim_target.x = -70.0
 	player.can_die = false
+	set_debug_applied = true
 
 
 func get_up() -> void:
@@ -69,6 +70,7 @@ func get_up() -> void:
 	await wait(2.0)
 	await tween_rotate_player_to_yaw(deg_to_rad(player.aim_target.y) + PI/6.0, 0.4)
 	take_player_view_control(false)
+	set_debug_applied = true
 	
 
 

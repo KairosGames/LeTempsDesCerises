@@ -33,7 +33,7 @@ func enter() -> void:
 		Step.new(lauch_second_battle_phase, wait_francois_move, wait_barricade_destruction),
 		Step.new(enemies_enter_first_zone, do_nothing, do_nothing),
 	]
-	if game_manager.use_debug: set_game_for_debug()
+	if game_manager.use_debug and not set_debug_applied: set_game_for_debug()
 	run_steps()
 
 
@@ -53,6 +53,7 @@ func set_game_for_debug() -> void:
 	player.is_weapon_loaded = true
 	ui_manager.hard_set_letter_box(false)
 	player.can_die = false
+	set_debug_applied = true
 
 
 func go_to_barricade() -> void:
