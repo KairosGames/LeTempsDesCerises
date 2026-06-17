@@ -150,12 +150,12 @@ var is_immortal: bool = false
 @export var bob_run_smooth_speed: float = 50.0
 
 @export_category("Recoil settings")
-@export var recoil_strength: float = 10.0
+@export var recoil_strength: float = 20.0
 @export var recoil_time: float = 0.12
 @export var time_to_return_from_recoil: float = 1.2
 
 @export_category("Reload settings")
-@export var time_enter_reload = 0.4
+@export var time_enter_reload: float = 0.4
 
 @export_category("States settings")
 @export var state_switch_time: float = 0.2
@@ -561,7 +561,7 @@ func prone_to_crouch(inverse: bool = false, time: float = state_switch_time) -> 
 
 func prone_to_stand(inverse: bool = false, ask_run: bool = false, time: float = state_switch_time) -> void:
 	var from: Posture = Posture.STAND if inverse else Posture.PRONE
-	var to = Posture.PRONE if inverse else Posture.STAND
+	var to: Posture = Posture.PRONE if inverse else Posture.STAND
 	changed_posture.emit(from, Posture.CROUCH)
 	is_changing_posture = true
 	curr_posture = Posture.CROUCH
@@ -646,7 +646,7 @@ func apply_plane_movement(delta: float) -> void:
 	if not p_inputs.is_game_controlling_movement: set_inputs_in_context()
 	var mov_vec: Vector2 = p_inputs.move_vec
 	var dir: Vector3 = (transform.basis * Vector3(mov_vec.x, 0, mov_vec.y).normalized())
-	var ref_speed = get_used_speed()
+	var ref_speed: float = get_used_speed()
 	var run_f: float = run_speed_ratio if is_running else 1.0
 	var aim_f: float = aiming_speed_ratio if is_aiming else 1.0
 
@@ -683,7 +683,7 @@ func apply_plane_movement(delta: float) -> void:
 			lcl_vel.z = move_toward(lcl_vel.z, 0.0, z_brake_step)
 
 		velocity = global_transform.basis * lcl_vel
-		var plane_vel := Vector3(velocity.x, 0.0, velocity.z)
+		var plane_vel: Vector3 = Vector3(velocity.x, 0.0, velocity.z)
 		if plane_vel.length() > applied_speed:
 			plane_vel = plane_vel.normalized() * applied_speed
 			velocity.x = plane_vel.x
@@ -927,8 +927,8 @@ func apply_weapon_pos_lag(delta: float) -> void:
 	var dist: Vector3 = lag_target.global_position - f_targ
 	var dist_xz: Vector3 = Vector3(dist.x, 0.0, dist.z)
 	var dist_y: Vector3 = Vector3(0.0, dist.y, 0.0)
-	var max_xz = max_wpn_xz_pos_lag * concentration_sample * (ads_wpn_pos_lag_reducer if is_aiming else 1.0)
-	var max_y = max_wpn_y_pos_lag * concentration_sample
+	var max_xz: float = max_wpn_xz_pos_lag * concentration_sample * (ads_wpn_pos_lag_reducer if is_aiming else 1.0)
+	var max_y: float = max_wpn_y_pos_lag * concentration_sample
 
 	if dist_xz.length() >= max_xz:
 		var dir_xz: Vector3 = dist_xz.normalized()
@@ -942,7 +942,7 @@ func apply_weapon_pos_lag(delta: float) -> void:
 
 	lag_target.global_position = lag_target.global_position.lerp(f_targ, dt_lerp(wpn_pos_lag_close_speed, delta))
 	var s_targ: Vector3 = weapon_container.to_local(lag_target.global_position)
-	var targ = weapon_lag_root_base_pos + s_targ
+	var targ: Vector3 = weapon_lag_root_base_pos + s_targ
 	weapon_lag_root.position = weapon_lag_root.position.lerp(targ, dt_lerp(applied_pos_lag_speed, delta))
 
 
@@ -954,7 +954,7 @@ func apply_weapon_pitch_yaw_lag(delta: float) -> void:
 	var max_x: float = max_wpn_pitch_lag_deg * concentration_sample
 
 	var y_ratio: float = clampf(abs(y_diff) / deg_to_rad(max_y), 0.0, 1.0)
-	var x_ratio := clampf(abs(x_diff) / deg_to_rad(max_x), 0.0, 1.0)
+	var x_ratio: float = clampf(abs(x_diff) / deg_to_rad(max_x), 0.0, 1.0)
 	y_ratio = pow(y_ratio, 1.2)
 	x_ratio = pow(x_ratio, 1.2)
 	var y_lag: float = deg_to_rad(max_y) * y_ratio * sign(y_diff)
@@ -993,7 +993,7 @@ func handle_shoot() -> void:
 			return
 		is_weapon_loaded = false
 		shot.emit()
-		var shoot_debug = get_node_or_null("/root/ShootDebug")
+		var shoot_debug: Node = get_node_or_null("/root/ShootDebug")
 		if shoot_debug: shoot_debug.add_debug(weapon_ray_cast.global_position, weapon_ray_cast.global_rotation, Color.RED, true)
 		play_shoot_effects()
 		handle_shoot_cast()
@@ -1012,6 +1012,7 @@ func can_shoot() -> bool:
 func play_shoot_effects() -> void:
 	if is_aiming: ads_timer += 10.0
 	muzzle_light.visible = true
+	reload_ui.wpn_animator.play("shoot")
 	play_shoot_vfx()
 	play_recoil_effect()
 	wpn_cam_base.shake(1.0, 5.0, 0.15)
@@ -1128,7 +1129,7 @@ func on_reloaded() -> void:
 	exit_reload()
 
 
-func exit_reload(is_realoded: bool = true, is_from_die = false) -> void:
+func exit_reload(is_realoded: bool = true, is_from_die: bool = false) -> void:
 	reload_ui.activation(false)
 	if reload_ui.reloaded.is_connected(on_reloaded):
 		reload_ui.reloaded.disconnect(on_reloaded)

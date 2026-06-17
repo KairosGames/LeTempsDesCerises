@@ -9,7 +9,7 @@ signal reloaded
 @onready var pos1: Control = %ReloadPos1
 @onready var pos2: Control = %ReloadPos2
 @onready var pos3: Control = %ReloadPos3
-@onready var chassepot: Chassepot = %sk_chassepot
+@onready var chassepot: Chassepot = %Chassepot
 
 @export_category("References")
 @export var wpn_animator: AnimationPlayer
@@ -40,7 +40,7 @@ var counter: int = 0
 var target_i: int = 1
 var is_active: bool = false
 var can_qte: bool = true
-var is_hammer_cocked = false
+var is_hammer_cocked: bool = false
 var is_tutorial: bool = false
 var is_playing_qte: bool = true
 
@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 		capture_reload_QTE()
 
 
-func activation(active: bool):
+func activation(active: bool) -> void:
 	if active: entered_reload.emit()
 	set_step(step)
 	visible = active
@@ -84,7 +84,7 @@ func set_step(p_step: int) -> void:
 	focus.global_position = all_pos[curr_targets[0]].global_position
 	curr_target = all_pos[curr_targets[1]]
 	valid_target = all_pos[curr_targets[1]]
-	for i in range(pos_to_rect.size()):
+	for i: int in range(pos_to_rect.size()):
 		pos_to_rect[i].color = default_color
 		if i == curr_targets[1]: pos_to_rect[i].color = valid_target_color
 

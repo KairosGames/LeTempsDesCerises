@@ -16,7 +16,7 @@
 [ext_resource type="Shader" uid="uid://clrsbi4wrdvxs" path="res://prefabs/player/blur_effect.gdshader" id="11_6barq"]
 [ext_resource type="Script" uid="uid://cg463hdmyrtmx" path="res://prefabs/player/blur_effect.gd" id="12_agiw0"]
 [ext_resource type="Script" uid="uid://cyr6l5nj8dv32" path="res://prefabs/player/shake.gd" id="14_ot5ig"]
-[ext_resource type="PackedScene" uid="uid://37232b2f0mql" path="res://sources/meshes/chassepot2.blend" id="17_t13t3"]
+[ext_resource type="PackedScene" uid="uid://of0isbumqecs" path="res://prefabs/player/chassepot.tscn" id="17_8hk3c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c4n1"]
 albedo_color = Color(0.85343254, 0, 0.12842149, 1)
@@ -184,7 +184,7 @@ offset_right = 942.0
 offset_bottom = 958.0
 mouse_filter = 2
 script = ExtResource("3_klv5p")
-wpn_animator = NodePath("../../CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake/sk_chassepot/WeaponAnimator")
+wpn_animator = NodePath("../../CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake/Chassepot/WeaponAnimator")
 all_pos = [NodePath("ReloadPos1"), NodePath("ReloadPos2"), NodePath("ReloadPos3")]
 pos_to_rect = [NodePath("ReloadStep1"), NodePath("ReloadStep2"), NodePath("ReloadStep3")]
 steps = Array[Array]([[0, 1], [1, 2], [], [2, 1], [1, 0]])
@@ -403,6 +403,10 @@ unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 visible = false
 
+[node name="Chassepot" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake" unique_id=366188147 instance=ExtResource("17_8hk3c")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.001, 0.01)
+
 [node name="FrontSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake" unique_id=2022825120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029570341, 0.845)
 
@@ -423,9 +427,6 @@ visible = false
 light_color = Color(0.9999992, 0.9956941, 0.82278883, 1)
 light_energy = 3.0
 omni_range = 4.063122
-
-[node name="chassepot2" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake" unique_id=1623198227 instance=ExtResource("17_t13t3")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.001, 0.01)
 
 [node name="OutOfCamera" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot" unique_id=51978982]
 unique_name_in_owner = true
