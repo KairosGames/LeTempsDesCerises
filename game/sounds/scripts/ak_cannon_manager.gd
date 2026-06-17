@@ -25,6 +25,7 @@ func _on_canon_stop_move() -> void:
 func update_cannon_workers(workers: Array[Agent]) -> void:
 	WwiseGlobal.cannon_workers.clear()
 	for agent: Agent in workers:
+		if not agent or not is_instance_valid(agent): continue
 		var ak_enemy: Node = agent.get_node_or_null(^"ak_enemy_manager")
 		if not ak_enemy:
 			push_error("En même temps on aurait pas ce problème si tu utilisais des classes")
