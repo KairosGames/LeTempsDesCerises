@@ -86,6 +86,18 @@ namespace AK
             } // namespace STATE
         } // namespace BARRICADE_STATE
 
+        namespace BARRICADEDESTOYED
+        {
+            static const AkUniqueID GROUP = 3219843997U;
+
+            namespace STATE
+            {
+                static const AkUniqueID DESTROYED = 1359166010U;
+                static const AkUniqueID INTACT = 3094168564U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace BARRICADEDESTOYED
+
         namespace FIGHT_STATE
         {
             static const AkUniqueID GROUP = 1138488279U;
