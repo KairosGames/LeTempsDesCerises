@@ -40,6 +40,7 @@ var reload_progress: float:
 var _time_without_worker: float
 var _is_first_shoot: bool = true
 var _state: State = State.MOVING
+var _is_moving: bool = false
 
 var is_first_activation: bool = true
 var enabled: bool = false:
@@ -69,15 +70,20 @@ func _physics_process(delta: float) -> void:
 			_time_without_worker = 0
 		else: _time_without_worker += delta
 
+
+	var worker_count: int = active_worker_count()
+
 	match _state:
 		State.MOVING:
-			progress += move_speeds[workers.size()] * delta
+			var move_speed: float = move_speeds[worker_count]
+			if move_speed: _is_moving = true
+			progress += move_speed * delta
 			move_progress = progress_ratio
 			if move_progress == 1.0: _state = State.RELOADING
 		State.RELOADING:
 			if reload_progress < 1.0:
 				if reload_progress == 0.0: start_reload.emit()
-				if workers.size(): reload_progress += delta / reload_duration[workers.size()]
+				if worker_count: reload_progress += delta / reload_duration[worker_count]
 				if reload_progress == 1.0:
 					#stop_reload.emit()
 					reloaded.emit()
@@ -108,6 +114,11 @@ func _find_workers(recruitment_range: float) -> Agent:
 
 func is_slot_available() -> bool: return available_slots.size()
 
+func active_worker_count() -> int:
+	var count: int = 0
+	for worker: Agent in workers: if worker.is_pushing_canon and worker.is_alive: count += 1
+	return count
+
 func _take_slot(agent: Agent) -> Marker3D:
 	var slot: Marker3D = available_slots.pop_front()
 	holded_slots.push_back(slot)
@@ -132,6 +143,8 @@ func _create_workers(n: int = 2) -> void:
 func _on_worker_died(worker: Agent) -> void:
 	workers.erase(worker)
 	workers_updated.emit(workers)
+	var move_speed: float = move_speeds[active_worker_count()]
+	if not move_speed: _is_moving = false
 
 
 func move_to_second_path() -> void:

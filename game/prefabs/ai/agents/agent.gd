@@ -112,6 +112,7 @@ func rotating_to(new_rotation: float, duration: float = 1.0) -> void:
 func die() -> void:
 	if not can_die or not is_alive: return
 	is_alive = false
+	is_pushing_canon = false
 	dying.emit()
 	set_collision_layer_value(3, false)
 	navigation.stop()
