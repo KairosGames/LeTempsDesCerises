@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dt06rgwsgrjv8"]
+
+[ext_resource type="Shader" uid="uid://ct4cjw40i2mtu" path="res://prefabs/barricade/vfx/barricade_hit_pave.gdshader" id="1_3bc23"]
+[ext_resource type="Shader" uid="uid://bp5200x4ef7iv" path="res://prefabs/barricade/vfx/barricade_hit_process.gdshader" id="1_tt4fr"]
+[ext_resource type="ArrayMesh" uid="uid://c7klsafplch2d" path="res://sources/meshes/props/paving_stone.obj" id="2_s2ri7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rots5"]
+render_priority = 0
+shader = ExtResource("1_3bc23")
+shader_parameter/color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7i8bi"]
+shader = ExtResource("1_tt4fr")
+shader_parameter/box_size = Vector3(4, 2, 0.6)
+shader_parameter/grid_count = Vector3(12, 6, 2)
+shader_parameter/explosion_direction = Vector3(0, 0.4, 1)
+shader_parameter/explosion_force = 8.0
+shader_parameter/random_force = 4.0
+shader_parameter/upward_force = 2.0
+shader_parameter/angular_velocity = 8.0
+shader_parameter/particle_scale = 0.2
+shader_parameter/gravity = Vector3(0, -9.8, 0)
+shader_parameter/damping = 0.08
+shader_parameter/collision_friction = 0.65
+shader_parameter/collision_spin_damping = 0.5
+
+[node name="BarricadeHit" type="GPUParticles3D" unique_id=656924349]
+material_override = SubResource("ShaderMaterial_rots5")
+emitting = false
+amount = 375
+lifetime = 10.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ShaderMaterial_7i8bi")
+draw_pass_1 = ExtResource("2_s2ri7")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." unique_id=1868263785]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4898398, -6.4568048)
+size = Vector3(5.9101563, 0.46850586, 7.1118164)

@@ -17,11 +17,11 @@ uniform float particle_scale = 0.2;
 uniform vec3 gravity = vec3(0.0, -9.8, 0.0);
 uniform float damping = 0.08;
 
-uniform float collision_bounce = 0.35;
 uniform float collision_friction = 0.65;
 uniform float collision_spin_damping = 0.5;
 
 void start() {
+	CUSTOM.x = 0.0;
 	uint seed = RANDOM_SEED + uint(INDEX) * 97u + 13u;
 
 	vec3 safe_grid = max(grid_count, vec3(1.0));
@@ -36,15 +36,6 @@ void start() {
 
 	vec3 local_position = (normalized_position - vec3(0.5)) * box_size;
 
-	// do not use parent transform
-	//TRANSFORM = mat4(
-		//vec4(particle_scale, 0.0, 0.0, 0.0),
-		//vec4(0.0, particle_scale, 0.0, 0.0),
-		//vec4(0.0, 0.0, particle_scale, 0.0),
-		//vec4(local_position, 1.0)
-	//);
-	
-	// use node transform
 	mat3 emitter_basis = mat3(EMISSION_TRANSFORM);
 	TRANSFORM = mat4(
     	vec4(emitter_basis[0] * particle_scale, 0.0),
@@ -54,7 +45,6 @@ void start() {
 	);
 	
 	vec3 direction = normalize(-EMISSION_TRANSFORM[2].xyz);
-	//vec3 direction =  normalize(explosion_direction);
 	vec3 random_direction = random_unit_vector(seed);
 
 	float force_variation = mix(1.0 - 0.35, 1.0 + 0.35, random_from_seed(seed));
@@ -63,12 +53,16 @@ void start() {
 		direction * explosion_force * force_variation +
 		random_direction * random_force +
 		vec3(0.0, upward_force * random_from_seed(seed), 0.0);
-
-	CUSTOM.xyz = random_unit_vector(seed);
-	CUSTOM.w = mix(-angular_velocity, angular_velocity, random_from_seed(seed));
+	
+	USERDATA1.xyz = random_unit_vector(seed);
+	USERDATA1.w = mix(-angular_velocity, angular_velocity, random_from_seed(seed));
 }
 
 void process() {
+	CUSTOM.x += DELTA / LIFETIME;
+	
+	 if (CUSTOM.x > 1.0) { ACTIVE = false; }
+	
 	VELOCITY += gravity * DELTA;
 	VELOCITY *= max(0.0, 1.0 - damping * DELTA);
 
@@ -85,14 +79,14 @@ void process() {
 
 			VELOCITY =
 				tangent_velocity * collision_friction -
-				normal_velocity * collision_bounce;
+				normal_velocity * 0.0; //collision_bounce;
 
-			CUSTOM.w *= collision_spin_damping;
+			USERDATA1.w *= collision_spin_damping;
 		}
 	}
 
-	vec3 axis = normalize(CUSTOM.xyz);
-	float angle = CUSTOM.w * DELTA;
+	vec3 axis = normalize(USERDATA1.xyz);
+	float angle = USERDATA1.w * DELTA;
 
 	mat3 rotation = rotation_matrix(axis, angle);
 
