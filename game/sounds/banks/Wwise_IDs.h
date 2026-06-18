@@ -341,6 +341,8 @@ namespace AK
             namespace SWITCH
             {
                 static const AkUniqueID ACCORDEON = 840291561U;
+                static const AkUniqueID CLARINETTE = 411987026U;
+                static const AkUniqueID CONCERTINA = 2440095465U;
                 static const AkUniqueID G1 = 1786192857U;
                 static const AkUniqueID G2 = 1786192858U;
                 static const AkUniqueID G3 = 1786192859U;
@@ -353,6 +355,7 @@ namespace AK
                 static const AkUniqueID SOLO_YDRIS = 3476834350U;
                 static const AkUniqueID TAMBOUR = 3360712845U;
                 static const AkUniqueID VIELE = 3603862282U;
+                static const AkUniqueID VXLEAD = 2994619065U;
             } // namespace SWITCH
         } // namespace VOICE_SEL
 
@@ -366,6 +369,7 @@ namespace AK
         static const AkUniqueID CHOIR_VOLUME = 2909751391U;
         static const AkUniqueID DEAFENING = 711096812U;
         static const AkUniqueID DEATH_FILTER = 4205136178U;
+        static const AkUniqueID DIEGETICAMOUNT = 2580242767U;
         static const AkUniqueID DISTANCE = 1240670792U;
         static const AkUniqueID ISPLAYING = 728654205U;
         static const AkUniqueID PLAYER_POSITION = 2221031936U;
