@@ -1,5 +1,19 @@
 [gd_resource type="ArrayMesh" format=4 uid="uid://coqmu4xpu7ky0"]
 
+[ext_resource type="Texture2D" uid="uid://bfuttx1l483bn" path="res://sources/images/textures/ltdc-accroche-lampe-mur-textures/ltdc-accroche-lampe-mur-col.png" id="1_7rxe3"]
+[ext_resource type="Texture2D" uid="uid://bfay403e3epdu" path="res://sources/images/textures/ltdc-accroche-lampe-mur-textures/ltdc-accroche-lampe-mur-mtl.png" id="2_5unwk"]
+[ext_resource type="Texture2D" uid="uid://daqcrqmnrrq1c" path="res://sources/images/textures/ltdc-accroche-lampe-mur-textures/ltdc-accroche-lampe-mur-rgh.png" id="3_b8n0m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a66iu"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("1_7rxe3")
+metallic = 1.0
+metallic_texture = ExtResource("2_5unwk")
+roughness_texture = ExtResource("3_b8n0m")
+uv1_scale = Vector3(0.99, 0.6, 1)
+uv1_offset = Vector3(0.01, -0.05, 0)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_sco0f"]
 _surfaces = [{
 "aabb": AABB(0, -0.234442, 0.001344, 1.343104, 0.468884, 0.00527),
@@ -21,6 +35,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 24,
 "index_data": PackedByteArray("AAABAAIAAgABAAMAAQAEAAMAAwAEAAUABgAHAAgACAAHAAkABgAKAAcACwAKAAYA"),
+"material": SubResource("StandardMaterial3D_a66iu"),
 "name": "special",
 "primitive": 3,
 "uv_scale": Vector4(1.991656, 1.98857, 0, 0),
