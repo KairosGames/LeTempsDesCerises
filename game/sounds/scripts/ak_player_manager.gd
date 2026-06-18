@@ -85,7 +85,6 @@ func _process(_delta: float) -> void:
 		is_walking = false
 
 func shoot_event():
-	if !player.can_shoot() : return
 	shoot.post_event()
 	first_reload = true
 

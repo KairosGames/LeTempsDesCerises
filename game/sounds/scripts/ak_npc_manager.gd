@@ -11,6 +11,7 @@ var valid_names : Array[String] = ["Louise", "Marie", "Georges", "Jules", "Franc
 
 func _ready() -> void:
 	npc_name = get_parent().name
+	get_parent().shot.connect(shoot_event)
 	if not npc_name in valid_names: return
 	#print(npc_name)
 	WwiseGlobal.narrators.append(self)
@@ -19,7 +20,6 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	WwiseGlobal.player.add_line(npc_name)
 	Wwise.load_bank(npc_name)
-	get_parent().shot.connect(shoot_event)
 
 func voiceline():
 	dialogue_event.post_event()
@@ -57,4 +57,5 @@ func _on_tree_exiting() -> void:
 		WwiseGlobal.unload_npc(npc_name)
 
 func shoot_event():
-	Wwise.post_event("Ally_Shoot", self)
+	print("pan")
+	Wwise.post_event("Npc_Shoot", self)

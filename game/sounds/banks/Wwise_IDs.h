@@ -43,6 +43,7 @@ namespace AK
         static const AkUniqueID ENEMY_STEPS = 3114531655U;
         static const AkUniqueID ENEMY_VOICE_CANCEL = 2376509257U;
         static const AkUniqueID MUSIC = 3991942870U;
+        static const AkUniqueID NPC_SHOOT = 1192162266U;
         static const AkUniqueID PAUSE = 3092587493U;
         static const AkUniqueID PLAYER_ALIVE = 2917189548U;
         static const AkUniqueID PLAYER_CROUCH = 3055475155U;
@@ -416,7 +417,6 @@ namespace AK
     namespace AUX_BUSSES
     {
         static const AkUniqueID MUSIC_REV = 2415077256U;
-        static const AkUniqueID REFLECT = 243379636U;
         static const AkUniqueID SFX_GUNSHOT_SEND = 3189108374U;
         static const AkUniqueID STREET_REVERB = 2635253023U;
         static const AkUniqueID WWISE_MOTION_SEND = 214837138U;

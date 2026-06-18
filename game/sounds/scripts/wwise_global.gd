@@ -29,7 +29,7 @@ func _ready() -> void:
 
 func new_line(step : int):
 	if step == 30 :
-		bypass_line == true
+		bypass_line = true
 		return
 	else :
 		bypass_line = false
@@ -40,7 +40,9 @@ func new_line(step : int):
 			i.voiceline()
 
 func line_ended(_npc_name : String):
+	print("post caca")
 	if bypass_line:
+		print("caca final")
 		game_manager.curr_state.voice_line_finished.emit()
 		return
 	line_count += 1
@@ -127,6 +129,8 @@ func fight():
 	for npc in narrators:
 		if npc.npc_name == "Louise":
 			npc.voiceline()
+	await get_tree().create_timer(3.5).timeout
+	line_ended("Louise")
 
 func enemy_killed(_target: Node3D):
 	await get_tree().create_timer(1.5).timeout
