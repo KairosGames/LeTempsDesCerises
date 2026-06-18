@@ -240,10 +240,13 @@ shadow_color = Color(0, 0, 0, 1)
 size = Vector3(2.4902344, 2.6345215, 14.923035)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_83msq"]
-size = Vector3(3.2592773, 2.6088943, 21.94949)
+size = Vector3(6.478882, 2.6088943, 32.982117)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7sktv"]
 size = Vector3(6.770752, 1.5043945, 9.221161)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y7efs"]
+size = Vector3(3.4313965, 2.685913, 3.119629)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uucmh"]
 size = Vector3(1.5395508, 1.8439941, 8.786865)
@@ -720,7 +723,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4740524, 1.115611, -0.2074
 
 [node name="ReturnToBarricadeArea" parent="States/GameState01" unique_id=334245662 instance=ExtResource("10_83msq")]
 unique_name_in_owner = true
-transform = Transform3D(0.872888, 0, 0.4879206, 0, 1, 0, -0.4879206, 0, 0.872888, -11.280796, 1.3412502, 3.0036588)
+transform = Transform3D(0.872888, 0, 0.4879206, 0, 1, 0, -0.4879206, 0, 0.872888, -12.214888, 1.3412502, 3.5257905)
 
 [node name="CollisionShape3D" parent="States/GameState01/ReturnToBarricadeArea" index="0" unique_id=447369626]
 shape = SubResource("BoxShape3D_83msq")
@@ -739,6 +742,17 @@ transform = Transform3D(0.46348163, 0, 0.88610655, 0, 1, 0, -0.88610655, 0, 0.46
 [node name="CanonShootCover2" parent="States/GameState01" unique_id=1249010536 instance=ExtResource("4_ruyh4")]
 unique_name_in_owner = true
 transform = Transform3D(-0.9783612, 0, 0.20690428, 0, 1, 0, -0.20690428, 0, -0.9783612, -5.4447103, -4.7683716e-07, 8.486588)
+
+[node name="DebugNavMeshArea" parent="States/GameState01" unique_id=935600620 instance=ExtResource("10_83msq")]
+unique_name_in_owner = true
+transform = Transform3D(0.38865766, 0, -0.9213822, 0, 1, 0, 0.9213822, 0, 0.38865766, 0.2039774, 1.5654583, 6.192831)
+
+[node name="CollisionShape3D" parent="States/GameState01/DebugNavMeshArea" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_y7efs")
+
+[node name="DebugNavPoint" parent="States/GameState01" unique_id=1598561906 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.21741073, 0, -0.97608024, 0, 1, 0, 0.97608024, 0, -0.21741073, -3.296, 0.1, 6.465)
 
 [node name="CanonDetectionArea" parent="States/GameState01" unique_id=111489008 instance=ExtResource("10_83msq")]
 unique_name_in_owner = true
@@ -1185,6 +1199,7 @@ shape = SubResource("BoxShape3D_g4ds3")
 [editable path="States/GameState01/GoToBarricadeArea"]
 [editable path="States/GameState01/ReturnToBarricadeArea"]
 [editable path="States/GameState01/FirstDieArea"]
+[editable path="States/GameState01/DebugNavMeshArea"]
 [editable path="States/GameState01/CanonDetectionArea"]
 [editable path="States/GameState01/DeathZoneSecondBarricade"]
 [editable path="States/GameState02/LouiseDetectionArea"]
