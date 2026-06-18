@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cbtuvqqjpnxi1"]
+[gd_scene format=3 uid="uid://cbtuvqqjpnxi1"]
 
 [ext_resource type="ArrayMesh" uid="uid://ckkf8euhqqlun" path="res://prefabs/geometry/wall_a.tres" id="1_2cxaw"]
 [ext_resource type="ArrayMesh" uid="uid://y611pd1kxlcc" path="res://prefabs/geometry/window_a.tres" id="2_7gfqc"]
@@ -15,18 +15,6 @@
 [ext_resource type="ArrayMesh" uid="uid://5t0eqetfeoys" path="res://prefabs/geometry/roof_props_b.tres" id="13_5etx7"]
 [ext_resource type="ArrayMesh" uid="uid://ctu06gymwm3nu" path="res://prefabs/geometry/shop_a.tres" id="14_2n85l"]
 [ext_resource type="ArrayMesh" uid="uid://bggssdkgj78ea" path="res://prefabs/geometry/window_props_a0.tres" id="15_y7d3f"]
-[ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="16_52gdr"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_qllmt"]
-_surfaces = [{
-"aabb": AABB(1.0574903, 13.730492, -0.2, 21.004467, 29.558353, 0.2),
-"attribute_data": PackedByteArray("AAAAAAAAAAAAAIA/AAAAAAAAgD8AAAA+AACAPwAAAD8AAAAAAAAAPwAAAAAAAMA+AACAPwAAAD4AAAAAAAAAPgAAAAAAAAAAAAAAAAAAwD4AAIA/AADAPgAAgD8AAAA/AACAPwAAgD+hsgA/cQB4PwAAAD/BeRw/AAAAP8F5HD++mv4+cQB4PwAAAAAAAIA/AACAPwAAwD4AAAAAAADAPgAAAAAAAIA+AAAAP8F5HD8RJTg/AAAAPwAAgD8AAIA/AAAAAAAAAD4AAIA/AAAAPgAAgD8AAIA+AAAAAAAAgD4AAIA/AACAPgAAgD8AAMA+AAAAAAAAgD/etY8+AAAAPwAAAD/BeRw/AACAPwAAgD4AAAAAAACAPgAAAAAAAAA+"),
-"format": 34359738391,
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 36,
-"vertex_data": PackedByteArray("2FuHPxiwW0EAAAAA2FuHPxiwW0HNzEy+dJRNQccnLULNzEy+2FuHPxiwW0HNzEy+2FuHPxiwW0EAAAAAY5SvQWg9eUEAAAAAdJRNQccnLULNzEy+dJRNQccnLUIAAAAA2FuHPxiwW0EAAAAAY5SvQWg9eUEAAAAAY5SvQWg9eUHNzEy+2FuHPxiwW0HNzEy+2FuHPxiwW0HNzEy+Y5SvQWg9eUHNzEy+5H6wQT7aEkLNzEy+5H6wQT7aEkIAAAAAY5SvQWg9eUEAAAAA2FuHPxiwW0EAAAAAY5SvQWg9eUHNzEy+Y5SvQWg9eUEAAAAA5H6wQT7aEkIAAAAA5H6wQT7aEkLNzEy+dJRNQccnLULNzEy+2FuHPxiwW0HNzEy+dJRNQccnLUIAAAAAdJRNQccnLULNzEy+5H6wQT7aEkLNzEy+5H6wQT7aEkIAAAAA5H6wQT7aEkLNzEy+Y5SvQWg9eUHNzEy+2FuHPxiwW0EAAAAAdJRNQccnLUIAAAAA5H6wQT7aEkIAAAAA5H6wQT7aEkLNzEy+5H6wQT7aEkIAAAAAdJRNQccnLUIAAAAAfyR/pP////9/JH+k/////38kf6T/////ZYplCv////9limUK/////2WKZQr/////fyR/pP////9/JH+k/////38kf6T/////ZYplCv////9limUK/////2WKZQr//////////wAA/7//////AAD/v/////8AAP+//3//f////7//f/9/////v/9//3////+/Tv9Of/////9O/05//////07/Tn///////////wAA/7//////AAD/v/////8AAP+/TrWwyv////9OtbDK/////061sMr/////Tv9Of/////9O/05//////07/Tn///////3//f////7//f/9/////v/9//3////+/TrWwyv////9OtbDK/////061sMr/////")
-}]
 
 [node name="Facade" type="Node3D" unique_id=1215565798]
 
@@ -525,14 +513,3 @@ mesh = ExtResource("1_2cxaw")
 [node name="WallA100" type="MeshInstance3D" parent="." unique_id=876950224]
 transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 2.000008, 0, 0)
 mesh = ExtResource("1_2cxaw")
-
-[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="." unique_id=88881851]
-transform = Transform3D(-0.35051796, -0.93655604, 0, -4.093816e-08, 1.5321625e-08, 1, -0.93655604, 0.35051796, -4.371139e-08, 21.802677, 0.20000191, -1.1423159)
-visible = false
-polygon = PackedVector2Array(1.0574903, 13.730492, 12.848743, 43.288845, 22.061958, 36.713127, 21.947454, 15.577492)
-depth = 0.2
-
-[node name="CSGBakedMeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1986830452]
-transform = Transform3D(-0.35051796, -0.93655604, 0, -4.093816e-08, 1.5321625e-08, 1, -0.93655604, 0.35051796, -4.371139e-08, 21.802677, 0.20000191, -1.1423159)
-mesh = SubResource("ArrayMesh_qllmt")
-surface_material_override/0 = ExtResource("16_52gdr")

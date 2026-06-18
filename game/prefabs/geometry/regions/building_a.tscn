@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://b47bjwgwaxagl"]
 
-[ext_resource type="Material" uid="uid://bp83dcnthox5a" path="res://sandbox/barricades_proto/materials/prototype_material_light.tres" id="2_1wdow"]
 [ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="2_jrhao"]
 [ext_resource type="Script" uid="uid://bmespkxucvogk" path="res://addons/mesh_combiner_3d/mesh_combiner_3d.gd" id="2_pwqa3"]
 [ext_resource type="ArrayMesh" uid="uid://ckkf8euhqqlun" path="res://prefabs/geometry/wall_a.tres" id="3_7wvyu"]
@@ -37,23 +36,11 @@
 [ext_resource type="ArrayMesh" uid="uid://s6odx757a8bm" path="res://prefabs/geometry/roof_a_angle_90.tres" id="33_ml667"]
 [ext_resource type="ArrayMesh" uid="uid://b1ipso4k0wbck" path="res://prefabs/geometry/roof_a_angle_118.tres" id="34_ic86n"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_jrhao"]
-material = ExtResource("2_1wdow")
-size = Vector3(65.711, 0.2, 5)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_flx6a"]
 size = Vector3(65.711, 0.2, 4)
 
-[sub_resource type="BoxMesh" id="BoxMesh_v1o0o"]
-material = ExtResource("2_1wdow")
-size = Vector3(91.110275, 0.2, 4)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_6eruj"]
 size = Vector3(91.110275, 0.2, 4)
-
-[sub_resource type="BoxMesh" id="BoxMesh_otigj"]
-material = ExtResource("2_1wdow")
-size = Vector3(5.253, 0.2, 4.11)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v1o0o"]
 size = Vector3(5.253, 0.2, 4.11)
@@ -350,25 +337,13 @@ size = Vector3(6, 13.972618, 5.5)
 
 [node name="Trottoirs" type="StaticBody3D" parent="." unique_id=949531324]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Trottoirs" unique_id=1712271346]
-transform = Transform3D(0.43837115, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837115, 7.5809093, 0.1, -38.275112)
-mesh = SubResource("BoxMesh_jrhao")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Trottoirs" unique_id=1808890913]
 transform = Transform3D(0.43837115, 0, 0.89879405, 0, 1, 0, -0.89879405, 0, 0.43837115, 8.028508, 0.1, -38.056805)
 shape = SubResource("BoxShape3D_flx6a")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Trottoirs" unique_id=502385931]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.301243, 0.1, -6.4204917)
-mesh = SubResource("BoxMesh_v1o0o")
-
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Trottoirs" unique_id=871573059]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.301243, 0.1, -6.4204917)
 shape = SubResource("BoxShape3D_6eruj")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Trottoirs" unique_id=374130295]
-transform = Transform3D(0.79441464, 0, 0.6073758, 0, 1, 0, -0.6073758, 0, 0.79441464, -7.94151, 0.1, -7.662595)
-mesh = SubResource("BoxMesh_otigj")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Trottoirs" unique_id=64610054]
 transform = Transform3D(0.79441464, 0, 0.6073758, 0, 1, 0, -0.6073758, 0, 0.79441464, -7.94151, 0.1, -7.662595)
