@@ -1,18 +1,10 @@
 [gd_resource type="ArrayMesh" format=4 uid="uid://bo1kwp5apdjx3"]
 
+[ext_resource type="Material" uid="uid://dw4gujg1e28ao" path="res://sources/meshes/geometry/materials/wall.tres" id="1_stvme"]
 [ext_resource type="Material" uid="uid://f8j4csj5q005" path="res://sources/meshes/geometry/materials/curtains.tres" id="2_175xn"]
 [ext_resource type="Material" uid="uid://bjrhekc2xf1f8" path="res://sources/meshes/geometry/materials/roof.tres" id="3_bf6op"]
+[ext_resource type="Material" uid="uid://dh2a0nyveyo1y" path="res://sources/meshes/geometry/materials/wood.tres" id="4_3ax4k"]
 [ext_resource type="Material" uid="uid://cwlqdsjetpt1" path="res://sources/meshes/geometry/materials/glass.tres" id="4_11hb8"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yr4v8"]
-resource_name = "concrete"
-albedo_color = Color(0.287709, 0.26531, 0.255713, 1)
-metallic = 0.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uflq5"]
-resource_name = "wood_a"
-albedo_color = Color(0.800007, 0.08267, 0, 1)
-metallic = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_81bx0"]
 _surfaces = [{
@@ -20,7 +12,7 @@ _surfaces = [{
 "format": 34896613377,
 "index_count": 12,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcA"),
-"name": "concrete",
+"name": "wall",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -61,7 +53,7 @@ _surfaces = [{
 "index_count": 126,
 "index_data": PackedByteArray("AAABAAIAAwACAAQABAACAAUAAgAGAAUAAgABAAYABQAGAAcABgABAAgABgAIAAcACAABAAkAAQAKAAkABwAIAAsADAAKAAEACgAMAAsACwAMAAcAAAAMAAEABQAHAA0ADQAHAAwADQAMAAAADgANAAAADwANAA4AEAARABIAEwAQABIAFAAQABMAEgARABUAEQAWABUAFQAWABcAGAAZABoAGwAYABoAHAAYABsAGgAZAB0AGQAeAB0AHQAeAB8AIAAhACIAIgAhACMAIQAkACMAIwAkACUAJAAmACUAJQAmACcAJgAoACcAJwAoACkAKAAqACkAKQAqACsA"),
 "lods": [0.6721041, PackedByteArray("AAABAAIAAwACAAQABAACAAUAAgAGAAUAAgABAAYABQAGAAcABgABAAgABgAIAAcACAABAAkAAQAKAAkABwAIAAsADAAKAAEACgAMAAsACwAMAAcAAAAMAAEABQAHAA0ADQAHAAwADQAMAAAADgANAAAADwANAA4A")],
-"name": "wood_a",
+"name": "wood",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 44,
@@ -76,8 +68,8 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 12,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcA"),
-"material": SubResource("StandardMaterial3D_yr4v8"),
-"name": "concrete",
+"material": ExtResource("1_stvme"),
+"name": "wall",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -125,8 +117,8 @@ _surfaces = [{
 "index_count": 126,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACgALAAwADAALAA0ADgAPABAAEAAPABEACQAmAAgACAAmACcAEgATABQAFAATABUAFgAXABgAGAAXABkAGgAbABwAHAAbAB0AKAApACoAKgApACsALAAtAC4ALgAtAC8AMAAxADIAMgAxADMANAA1ADYANgA1ADcAOAA5ADoAOgA5ADsAPAA9AD4APgA9AD8AQABBAEIAQgBBAEMARABFAEYARgBFAEcASABJAEoASgBJAEsATABNAE4ATgBNAE8AUABRAFIAUgBRAFMAHgAfACAAIAAfACEAIgAjACQAJAAjACUA"),
 "lods": [0.6721041, PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAHAAUACQAHAAgACgALAAwADAALAA0ADgAPABAAEAAPABEAEgATABQAFAATABUAFgAXABgAGAAXABkAGgAbABwAHAAbAB0AHgAfACAAIAAfACEAIgAjACQAJAAjACUA")],
-"material": SubResource("StandardMaterial3D_uflq5"),
-"name": "wood_a",
+"material": ExtResource("4_3ax4k"),
+"name": "wood",
 "primitive": 3,
 "uv_scale": Vector4(2.002332, 1.630576, 0, 0),
 "vertex_count": 84,
