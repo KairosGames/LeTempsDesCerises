@@ -264,6 +264,7 @@ func enemies_enter_first_zone() -> void:
 	death_zone_second_barricade.player_entered.connect(kill_player, CONNECT_ONE_SHOT)
 	death_zone_second_barricade.monitoring = true
 	await wait_signal(player.died)
+	game_manager.player_passed_second_barricade.emit()
 	ui_manager.objective_target.target = null
 	cannon_detection_area.set_deferred("monitoring", false)
 	if death_zone_second_barricade.player_entered.is_connected(kill_player):

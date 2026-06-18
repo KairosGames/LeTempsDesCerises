@@ -200,7 +200,9 @@ func launch_execution() -> void:
 	set_player_before_execution()
 	ui_manager.launch_letter_box(false)
 	await wait(10.0)
-	call_voice() ########################### "Soldats en joug !"
+	await wait_voice() # "À genoux la canaille !"
+	await wait(3.0)
+	call_voice() # "À genoux !"
 	ui_manager.launch_letter_box(true)
 	take_player_view_control(true)
 	player.can_play = false
@@ -209,8 +211,10 @@ func launch_execution() -> void:
 	rot_twn = create_tween()
 	var view_targ: Vector3 = Vector3(0.0, rad_to_deg(execution_point.global_rotation.y), 0.0)
 	await rot_twn.tween_property(player, "aim_target", view_targ, 0.5).finished
+	await player.crouch_to_stand(true)
+	await wait_voice() # "En joue !"
 	await wait(1.0)
-	await wait_voice() # "Armez !"
+	await wait_voice() # "À mon commandement !"
 	await player.blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.45, true, 4.0)
 	await wait_voice() # " Feu !"
 	versaillais_points.versillais_shoot_for_execution()
@@ -268,6 +272,7 @@ func launch_francois_death() -> void:
 	await wait(0.3)
 	versaillais_points.versaillais_kill_francois()
 	await wait(0.1)
+	francois.is_fighting = false
 	francois.die()
 
 

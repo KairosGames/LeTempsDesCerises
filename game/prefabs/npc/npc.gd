@@ -10,6 +10,7 @@ signal reloaded
 @onready var collider: CollisionShape3D = %Collider
 @onready var is_on_screen: VisibleOnScreenNotifier3D = %IsOnScreen
 @onready var nav: NavigationAgent3D = %Navigation
+@onready var chassepot: Chassepot = %chassepot
 
 
 enum NpcName{
@@ -172,6 +173,7 @@ func enter_in_aim(trans: float = 0.3) -> void:
 
 
 func enter_in_stand_no_weapon(trans: float = 0.3) -> void:
+	chassepot.visible = false
 	animator.play("stand-gunless", trans)
 
 
@@ -185,6 +187,18 @@ func enter_reload(trans: float = 0.2) -> void:
 	reloaded.emit()
 	animator.play("stand-reload", trans)
 	await animator.animation_finished
+
+
+func enter_pray(trans: float = 0.2) -> void:
+	animator.play("pray-1", trans)
+	await animator.animation_finished
+	animator.play("pray-2", 0.2)
+
+
+func enter_kneeling(trans: float = 0.2) -> void:
+	animator.play("kneeling-1", trans)
+	await animator.animation_finished
+	animator.play("kneeling-2", 0.4)
 
 
 func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: bool = false, aim: bool = false) -> void:

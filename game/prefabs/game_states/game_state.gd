@@ -350,17 +350,26 @@ func lay_down_weapon(is_down: bool) -> void:
 
 
 func is_there_no_enemies() -> bool:
-	return get_tree().get_nodes_in_group("Versaillais"). size() <= 0
+	var are_all_dead: bool = true
+	for ennemy: Agent in get_tree().get_nodes_in_group("Versaillais"):
+		if ennemy.is_alive: are_all_dead = false
+	return are_all_dead
 
 
 func is_there_one_ally() -> bool:
 	var list: Array[Node] = get_tree().get_nodes_in_group("Communard").filter(func(o): return o is not Player)
-	return list.size() <= 1
+	var alive_count: int = 0
+	for ally: Agent in list:
+		if ally.is_alive: alive_count += 1
+	return alive_count <= 1
 
 
 func is_there_no_allies() -> bool:
 	var list: Array[Node] = get_tree().get_nodes_in_group("Communard").filter(func(o): return o is not Player)
-	return list.size() <= 0
+	var are_all_dead: bool = true
+	for ally: Agent in list:
+		if ally.is_alive: are_all_dead = false
+	return are_all_dead
 
 
 ##################### FOR DEBUG ##############################
