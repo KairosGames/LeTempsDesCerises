@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b56vcde62m1gw" path="res://sandbox/chassepot_proto/sk_chassepot.tscn" id="3_sm080"]
 [ext_resource type="Script" uid="uid://dcojdhvj8qcw0" path="res://addons/beehave/nodes/composites/sequence_reactive.gd" id="5_f5m6n"]
 [ext_resource type="Script" uid="uid://1nss82y33gkp" path="res://prefabs/ai/behaviours/conditions/is_alive.gd" id="6_f5m6n"]
+[ext_resource type="Script" uid="uid://bei42iybnjvvw" path="res://prefabs/ai/behaviours/conditions/is_enabled.gd" id="9_1vahk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_otrs2"]
 resource_local_to_scene = true
@@ -278,10 +279,10 @@ shape = SubResource("CapsuleShape3D_otrs2")
 [node name="ShootTargets" type="Node3D" parent="." unique_id=1640117776]
 
 [node name="Chest" type="Marker3D" parent="ShootTargets" unique_id=1612085666]
-transform = Transform3D(-0.96917474, -0.0022158837, 0.24580055, 0.02224004, 0.9948753, 0.09665136, -0.24481453, 0.09915126, -0.9642981, -0.018173827, 1.2608117, -0.009354103)
+transform = Transform3D(-0.99986434, 1.0035114e-08, -8.674626e-08, 7.557478e-11, 0.9932075, 0.11466089, 8.73318e-08, 0.1146596, -0.9932185, -3.956702e-05, 1.278712, 0.026984064)
 
 [node name="Head" type="Marker3D" parent="ShootTargets" unique_id=2138124691]
-transform = Transform3D(-0.99883103, -0.012507638, 0.045124333, -0.014827647, 0.9983601, -0.05139788, -0.04442135, -0.05200884, -0.99748427, -0.01114464, 1.6119287, -0.021651577)
+transform = Transform3D(-0.99992776, 2.0770942e-11, -8.732557e-08, 7.557958e-11, 0.9997906, -1.489854e-08, 8.733734e-08, -1.4898045e-08, -0.99982387, -3.956675e-05, 1.6307939, 0.029954134)
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=2136817593]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
@@ -294,13 +295,13 @@ collide_with_areas = true
 [node name="Body" parent="." unique_id=1750796582 instance=ExtResource("2_f5m6n")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Ch49_body1" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1750796582, 1048372004) index="0" unique_id=1626255868]
+[node name="Ch49_body1" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1750796582, 49174614) index="0" unique_id=32150393]
 material_override = SubResource("StandardMaterial3D_1vahk")
 
-[node name="Ch49_body2" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1750796582, 1048372004) index="1" unique_id=1270356075]
+[node name="Ch49_body2" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1750796582, 49174614) index="1" unique_id=1546713886]
 material_override = SubResource("StandardMaterial3D_1vahk")
 
-[node name="Weapon" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1750796582, 1048372004) index="2" unique_id=1039528541]
+[node name="Weapon" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1750796582, 49174614) index="2" unique_id=1039528541]
 transform = Transform3D(-0.098535545, -0.9945377, 0.034431607, 0.99505264, -0.098028034, 0.016132727, -0.012669392, 0.035850953, 0.99927676, -69.828865, -5.1362824, -143.44972)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
@@ -308,7 +309,7 @@ bone_idx = 34
 [node name="sk_chassepot" parent="Body/Armature/Skeleton3D/Weapon" unique_id=1025414177 instance=ExtResource("3_sm080")]
 transform = Transform3D(-10.55309, 95.53138, 27.611444, 11.808159, 28.773891, -95.04016, -98.73802, -6.7692723, -14.317036, 3.4706862, 18.70045, 6.007675)
 
-[node name="Chest" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1750796582, 1048372004) index="3" unique_id=1462148920]
+[node name="Chest" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1750796582, 49174614) index="3" unique_id=1462148920]
 transform = Transform3D(0.99999994, -1.1254992e-11, -8.367351e-11, 7.912604e-11, -0.11468208, 0.9934021, -7.558503e-11, -0.9934022, -0.114682086, 0.0039569456, -1.7613636, -119.754326)
 bone_name = "mixamorig_Spine1"
 bone_idx = 2
@@ -318,7 +319,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.450581e-09, 8.170787, 0)
 remote_path = NodePath("../../../../../ShootTargets/Chest")
 update_scale = false
 
-[node name="Head" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1750796582, 1048372004) index="4" unique_id=1753585876]
+[node name="Head" type="BoneAttachment3D" parent="Body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1750796582, 49174614) index="4" unique_id=1753585876]
 transform = Transform3D(0.99999994, -2.077659e-11, -8.183071e-11, 7.9126046e-11, 1.4901161e-08, 0.9999998, -7.558503e-11, -0.9999998, 1.4901163e-08, 0.0039569447, -2.9954135, -154.90862)
 bone_name = "mixamorig_Head"
 bone_idx = 5
@@ -351,6 +352,10 @@ metadata/_custom_type_script = "uid://dcojdhvj8qcw0"
 [node name="IsAlive" type="Node" parent="BeehaveTree/BeAlive" unique_id=2082601198]
 script = ExtResource("6_f5m6n")
 metadata/_custom_type_script = "uid://1nss82y33gkp"
+
+[node name="IsEnabled" type="Node" parent="BeehaveTree/BeAlive" unique_id=2016232535]
+script = ExtResource("9_1vahk")
+metadata/_custom_type_script = "uid://bei42iybnjvvw"
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=1094944530]
 root_node = NodePath("../Body")
