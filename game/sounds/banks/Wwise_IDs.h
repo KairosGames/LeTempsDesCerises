@@ -106,6 +106,7 @@ namespace AK
             {
                 static const AkUniqueID NONE = 748895195U;
                 static const AkUniqueID PHASE1 = 3630028971U;
+                static const AkUniqueID PHASE1_1 = 3356867611U;
                 static const AkUniqueID PHASE2 = 3630028968U;
                 static const AkUniqueID PHASE3 = 3630028969U;
                 static const AkUniqueID PHASE4 = 3630028974U;
@@ -119,15 +120,16 @@ namespace AK
             namespace STATE
             {
                 static const AkUniqueID NONE = 748895195U;
-                static const AkUniqueID PART_00 = 151272181U;
-                static const AkUniqueID PART_01 = 151272180U;
-                static const AkUniqueID PART_02 = 151272183U;
-                static const AkUniqueID PART_03 = 151272182U;
-                static const AkUniqueID PART_04 = 151272177U;
-                static const AkUniqueID PART_05 = 151272176U;
-                static const AkUniqueID PART_06 = 151272179U;
-                static const AkUniqueID PART_07 = 151272178U;
-                static const AkUniqueID PART_08 = 151272189U;
+                static const AkUniqueID P1_1_OB = 2230943412U;
+                static const AkUniqueID P1_2_OB_END = 684047543U;
+                static const AkUniqueID P1_3_PLAYERDEATH = 1343838104U;
+                static const AkUniqueID P2_1_CANON = 4215993583U;
+                static const AkUniqueID P2_2_CANNONSHOOT = 2703756389U;
+                static const AkUniqueID P3_1_RETREAT = 2260023866U;
+                static const AkUniqueID P3_2_ALLIES = 1095445258U;
+                static const AkUniqueID P3_3_DISCUSSION = 1519708847U;
+                static const AkUniqueID P4_1_FIGHT = 2179381074U;
+                static const AkUniqueID P4_2_END = 2334832916U;
             } // namespace STATE
         } // namespace MUSICVOICEPLAYING
 

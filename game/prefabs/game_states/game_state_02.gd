@@ -1,5 +1,8 @@
 class_name GameState02 extends GameState
 
+signal stop_music_for_dialogue ##### MUSIC : Stop la musique lors du dialogue
+signal start_music_after_dialogue ##### MUSIC : redémarre la musique après le dialogue
+
 @onready var francois_moved_pos: CustomMarker = %FrancoisMovedPos
 @onready var desactivable_barricade: StaticBody3D = %DesactivableBarricade
 @onready var woman_points: WomanPoints = %WomanPoints
@@ -61,6 +64,7 @@ func lauch_first_phase() -> void:
 
 
 func allies_arrival() -> void:
+	Wwise.set_state("MusicVoicePlaying", "P3_2_Allies") ######## MUSIC
 	battle_director.go_next_covers_activation() ####################################### Arrivée des alliées
 	await wait_until(is_player_alive)
 	player.can_die = false
@@ -91,12 +95,12 @@ func allies_arrival() -> void:
 
 	#############################################################################FOR DEBUG
 	add_on_process(kill_agents.bind(true, false))
-	
-	
+
+
 	for agent: Agent in game_manager.cannon.workers:
 		if not agent or not is_instance_valid(agent): continue
 		agent.die()
-	
+
 	##################################################### SECURITÉ DE TIMER A METTRE LA
 	await wait_until(is_there_no_enemies)
 	await wait(1.0)
@@ -139,6 +143,8 @@ func launch_dialogue_preparation() -> void:
 
 
 func launch_women_dialogue() -> void:
+	Wwise.set_state("MusicVoicePlaying", "P3_3_Discussion") ################ MUSIC
+	stop_music_for_dialogue.emit() ################ MUSIC
 	discussion_area.monitoring = true
 	ui_manager.set_objective(true, discussion_area, "Check out the news from your Place Blanche's comrades")
 	await wait_signal(discussion_area.player_entered)
@@ -152,6 +158,7 @@ func launch_women_dialogue() -> void:
 
 func launch_last_battle_phase() -> void:
 	set_active_agents(true, true)
+	start_music_after_dialogue.emit() ################ MUSIC
 	battle_director.go_next_covers_activation() ####################################### Fin de l'accalmie
 	var louise: Npc = woman_points.women[0]
 	for woman: Npc in woman_points.women:
