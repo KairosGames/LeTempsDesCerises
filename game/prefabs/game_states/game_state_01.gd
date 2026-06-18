@@ -135,6 +135,10 @@ func go_to_first_die() -> void:
 	player.can_die = true
 	next_respawn = jules
 	player.die(true)
+	
+	Wwise.set_state("MusicVoicePLaying","P1_3_PlayerDeath") ############# MUSIC
+	Wwise.set_state("Music_State","Phase1_1")
+	
 	return_to_barricade.player_entered.disconnect(on_player_exit_barricade_zone)
 	return_to_barricade.monitoring = false
 	first_die_area.monitoring = false
@@ -161,7 +165,6 @@ func launch_security_timer() -> void:
 func lauch_first_battle_phase() -> void:
 	battle_director.go_next_covers_activation() ########################################### Première mort
 	print("WAIT 90s")
-	Wwise.set_state("Music_State", "Phase2") ############# MUSIC
 	await wait(3.0)
 	jules = null
 	await wait(first_battle_time_1)
@@ -171,6 +174,8 @@ func lauch_first_battle_phase() -> void:
 
 
 func launch_cannon_arrival() -> void:
+	Wwise.set_state("Music_State", "Phase2") ############# MUSIC
+	Wwise.set_state("MusicVoicePLaying","P2_1_Canon") ############# MUSIC
 	############Debug
 	add_on_process(add_worker_on_cannon)
 
@@ -237,6 +242,9 @@ func go_to_cover_from_cannon() -> void:
 
 func launch_first_cannon_shoot() -> void:
 	game_ready_cannon_shoot.emit()
+	
+	Wwise.set_state("MusicVoicePlaying","P2_2_CanonShoot") ############# MUSIC
+	
 	await wait_signal(game_manager.first_barricade.state_changed)
 	for agent: Agent in game_manager.cannon.workers:
 		if not agent or not is_instance_valid(agent): continue
@@ -279,6 +287,8 @@ func is_first_barricade_destroyed() -> bool:
 
 
 func enemies_enter_first_zone() -> void:
+	Wwise.set_state("Music_State", "Phase3") ########### MUSIC
+	Wwise.set_state("MusicVoicePlaying", "P3_1_Retreat")############# MUSIC
 	await wait(10.0)
 	ui_manager.set_objective(true, go_to_second_barricade, "Go to the backup barricade") # give second baricade target
 	battle_director.go_next_covers_activation() ####################################### Passage barricade 2

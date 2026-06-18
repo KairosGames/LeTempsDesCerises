@@ -4,16 +4,21 @@ extends AkEvent3D
 @export var Distance_scale: int = 20
 @export var DistScale:WwiseRTPC
 @export var IsPlay:WwiseRTPC
-@export var Is_playing: float = 0
+var Is_playing: float = 0
 @export var Enter_at: String = "None"
+@export var Post_event: bool = false
+@export var Post_after_allies: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Wwise.set_switch("Voice_Sel", Voice_sel, self)
 	DistScale.set_value(self, Distance_scale)
-	post_event()
-	#Wwise.set_state("Music_State", "Phase1")
-	IsPlay.set_value(self, Is_playing)
+	if Post_event == true:
+		post_event()
+	# Wwise.set_state("Music_State", "Phase1")
+	# IsPlay.set_value(self, Is_playing)
+
+
 
 func _on_music_sync_user_cue(data: Dictionary) -> void:
 	
