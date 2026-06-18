@@ -108,8 +108,28 @@ namespace AK
                 static const AkUniqueID PHASE1 = 3630028971U;
                 static const AkUniqueID PHASE2 = 3630028968U;
                 static const AkUniqueID PHASE3 = 3630028969U;
+                static const AkUniqueID PHASE4 = 3630028974U;
             } // namespace STATE
         } // namespace MUSIC_STATE
+
+        namespace MUSICVOICEPLAYING
+        {
+            static const AkUniqueID GROUP = 2714575814U;
+
+            namespace STATE
+            {
+                static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID PART_00 = 151272181U;
+                static const AkUniqueID PART_01 = 151272180U;
+                static const AkUniqueID PART_02 = 151272183U;
+                static const AkUniqueID PART_03 = 151272182U;
+                static const AkUniqueID PART_04 = 151272177U;
+                static const AkUniqueID PART_05 = 151272176U;
+                static const AkUniqueID PART_06 = 151272179U;
+                static const AkUniqueID PART_07 = 151272178U;
+                static const AkUniqueID PART_08 = 151272189U;
+            } // namespace STATE
+        } // namespace MUSICVOICEPLAYING
 
         namespace NARRATIVE_STEP
         {

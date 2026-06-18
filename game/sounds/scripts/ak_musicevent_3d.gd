@@ -21,6 +21,9 @@ func _on_music_sync_user_cue(data: Dictionary) -> void:
 		var user_cue_name: String = data["pszUserCueName"]
 		
 		if user_cue_name == Enter_at: # Rendre changeable dans le préfab
-			Is_playing = 100.0
-			IsPlay.set_value(self, Is_playing)
+			#Is_playing = 100.0
+			#IsPlay.set_value(self, Is_playing)
+			
 			#print("j'ai trouvé : ", user_cue_name)
+			pass
+			
