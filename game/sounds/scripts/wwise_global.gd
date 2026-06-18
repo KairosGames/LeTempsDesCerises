@@ -40,9 +40,7 @@ func new_line(step : int):
 			i.voiceline()
 
 func line_ended(_npc_name : String):
-	print("post caca")
 	if bypass_line:
-		print("caca final")
 		game_manager.curr_state.voice_line_finished.emit()
 		return
 	line_count += 1
@@ -176,7 +174,6 @@ func pause(new_pause : bool):
 
 
 func loop():
-	print(loop)
 	if !allies.is_empty():
 		find_random(allies).post_event("Barricade_State", randf_range(0, 5))
 	if !enemies.is_empty():

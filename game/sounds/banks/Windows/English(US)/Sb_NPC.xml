@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="English(US)" Hash="{0739A7B1-E59A-E2AC-4202-4920D8BA6BD1}">
+		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="English(US)" Hash="{D3CE0869-134B-5A0C-0A92-741BD6496DBB}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_NPC</ObjectPath>
 			<ShortName>Sb_NPC</ShortName>
 			<Path>English(US)/Sb_NPC.bnk</Path>
@@ -193,10 +193,6 @@
 				<File Id="225940071" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-003.wav</ShortName>
 					<CachePath>57/{571ECAA4-3820-2EAB-F407-C2B0570CFB10}.wem</CachePath>
-				</File>
-				<File Id="229724527" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
-					<ShortName>Characters\Louise\VX_Amb_F_Comm_Louise_Game_End_Choice_2_Atea.wav</ShortName>
-					<CachePath>FE/{FEF4DE0B-9894-97FF-4C50-0427F944ED39}.wem</CachePath>
 				</File>
 				<File Id="240885231" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Zoé\VX_Bar_F_Comm_Worker_Ally_Death_Zoé-003.wav</ShortName>
@@ -554,6 +550,10 @@
 					<ShortName>Generic_AI\Atéa\VX_Bar_F_Comm_Worker_Barricade_Low_Atéa-006.wav</ShortName>
 					<CachePath>26/{265E9FFD-6C04-CCEB-7BD8-9348FAD06BDB}.wem</CachePath>
 				</File>
+				<File Id="583399786" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Characters\Louise\VX_Amb_F_Comm_Louise_Game_End_Choice_2_Atea.wav</ShortName>
+					<CachePath>C2/{C2A558E0-BD89-413B-3824-F30973F52AF1}.wem</CachePath>
+				</File>
 				<File Id="584171032" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Player_Far_Thomas-002.wav</ShortName>
 					<CachePath>0B/{0BD11D00-5FB4-1F20-9783-D782A7322064}.wem</CachePath>
@@ -593,10 +593,6 @@
 				<File Id="607437853" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Loris\VX_Bar_M_Comm_Worker_Player_Far_Loris-002.wav</ShortName>
 					<CachePath>E6/{E64C66AE-6AF7-6947-B3CB-715171777700}.wem</CachePath>
-				</File>
-				<File Id="609858295" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
-					<ShortName>Characters\Francois\VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris.wav</ShortName>
-					<CachePath>67/{6758CE8A-F240-EBEA-181A-71B8BA78BB11}.wem</CachePath>
 				</File>
 				<File Id="611884418" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Military_Barricade_Destroyed_Yuna-004.wav</ShortName>
@@ -997,6 +993,10 @@
 				<File Id="1063220628" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Armand\VX_Bar_M_Vers_Military_Cannon_Fired_Armand-002.wav</ShortName>
 					<CachePath>6B/{6B7E38F6-DC70-4019-C702-6B988AA63014}.wem</CachePath>
+				</File>
+				<File Id="1064664905" Language="English(US)" Streaming="false" Location="Memory">
+					<ShortName>Characters\Francois\VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris.wav</ShortName>
+					<CachePath>E4/{E49B2585-B364-4AB9-D090-0EEBAF2F3DD1}.wem</CachePath>
 				</File>
 				<File Id="1065225525" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Player_Hidden_Thomas-002.wav</ShortName>
@@ -1790,7 +1790,7 @@
 				</Event>
 				<Event Id="1218331013" Name="Choose_Fight" ObjectPath="\Events\VX\Ally\Choose_Fight" GUID="{942B9A28-9902-4AB4-8844-671F2F8C55A0}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="3.608354" DurationMax="3.608354">
 					<MediaRefs>
-						<MediaRef Id="229724527"/>
+						<MediaRef Id="583399786"/>
 					</MediaRefs>
 					<PluginRefs>
 						<Custom>
@@ -1804,7 +1804,7 @@
 				</Event>
 				<Event Id="2467968637" Name="Choose_Surrender" ObjectPath="\Events\VX\Ally\Choose_Surrender" GUID="{21D54443-F2A6-4D2C-A1EE-BEF015429488}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="3.0075624" DurationMax="3.0075624">
 					<MediaRefs>
-						<MediaRef Id="609858295"/>
+						<MediaRef Id="1064664905"/>
 					</MediaRefs>
 					<PluginRefs>
 						<Custom>
@@ -2092,5 +2092,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{9ACAA792-C027-EEEC-2998-F4ADE4BFB4F0}</FileHash>
+	<FileHash>{CD7486D6-20F9-92E3-4572-DCDBA1FF4D19}</FileHash>
 </SoundBanksInfo>

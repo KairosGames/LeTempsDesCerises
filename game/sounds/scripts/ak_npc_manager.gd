@@ -13,7 +13,6 @@ func _ready() -> void:
 	npc_name = get_parent().name
 	get_parent().shot.connect(shoot_event)
 	if not npc_name in valid_names: return
-	#print(npc_name)
 	WwiseGlobal.narrators.append(self)
 	label.text = npc_name
 	Wwise.set_switch("Character", npc_name, dialogue_event)
@@ -57,5 +56,4 @@ func _on_tree_exiting() -> void:
 		WwiseGlobal.unload_npc(npc_name)
 
 func shoot_event():
-	print("pan")
 	Wwise.post_event("Npc_Shoot", self)
