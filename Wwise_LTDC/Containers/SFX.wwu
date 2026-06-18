@@ -50,7 +50,6 @@
 								<PropertyContainer Name="Chassepot" ID="{2C7E86A7-AE31-4B62-932A-3CE2293EFE73}" ShortID="711613522">
 									<PropertyList>
 										<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
-										<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 									</PropertyList>
@@ -6318,7 +6317,6 @@
 												<Value>1</Value>
 											</ValueList>
 										</Property>
-										<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
@@ -8674,6 +8672,7 @@
 												<Value>1</Value>
 											</ValueList>
 										</Property>
+										<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 										<Property Name="OverrideEffect" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
@@ -8706,6 +8705,9 @@
 										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="ReflectionsAuxSend">
+											<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 										</Reference>
 										<Reference Name="UserAuxSend0">
 											<ObjectRef Name="SFX_Gunshot_Send" ID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>

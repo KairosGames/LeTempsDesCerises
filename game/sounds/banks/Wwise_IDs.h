@@ -376,6 +376,7 @@ namespace AK
         static const AkUniqueID PLAYER_VELOCITY = 1833811084U;
         static const AkUniqueID POETIC_LEVEL = 3680281974U;
         static const AkUniqueID SIDECHAIN = 1883033791U;
+        static const AkUniqueID SIDECHAIN_DIALOGUE = 2647762268U;
     } // namespace GAME_PARAMETERS
 
     namespace BANKS
@@ -387,6 +388,7 @@ namespace AK
         static const AkUniqueID LOUISE = 2926082704U;
         static const AkUniqueID MARIE = 1274621345U;
         static const AkUniqueID MICHEL = 918100373U;
+        static const AkUniqueID OFFICIER = 3942830996U;
         static const AkUniqueID SB_AMB = 925885567U;
         static const AkUniqueID SB_CANNON = 2061449278U;
         static const AkUniqueID SB_MUSIC = 779753582U;
@@ -405,6 +407,7 @@ namespace AK
         static const AkUniqueID SFX_PLAYER = 217780010U;
         static const AkUniqueID UI = 1551306167U;
         static const AkUniqueID VX = 1534528563U;
+        static const AkUniqueID VX_CHARACTERS = 1864612070U;
         static const AkUniqueID VX_NPC = 1277101407U;
         static const AkUniqueID VX_PLAYER = 1728828729U;
         static const AkUniqueID WWISE_MOTION = 1156359885U;

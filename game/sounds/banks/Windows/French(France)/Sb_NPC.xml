@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="French(France)" Hash="{40222999-86FB-99F9-033E-73B3D28E4076}">
+		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="French(France)" Hash="{62EB2AEE-BCED-9CB1-7E89-8714AB4A6159}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_NPC</ObjectPath>
 			<ShortName>Sb_NPC</ShortName>
 			<Path>French(France)/Sb_NPC.bnk</Path>
@@ -1011,6 +1011,7 @@
 				<Custom>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
 					<Plugin Id="807526038" Name="Meter (Custom)" ObjectPath="\Containers\VX\NPC\Communard\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{2855D257-F711-4259-8A16-CCC31E5A8F21}" LibName="Wwise Meter" LibId="8454147"/>
+					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
 			</Plugins>
 			<Events>
@@ -1716,6 +1717,7 @@
 						<MediaRef Id="1026693139"/>
 					</MediaRefs>
 					<AuxBusRefs>
+						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10"/>
 					</AuxBusRefs>
 					<ActionPostEvent>
@@ -1803,6 +1805,7 @@
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="537703978"/>
+							<PluginRef Id="1065011977"/>
 						</Custom>
 					</PluginRefs>
 					<AuxBusRefs>
@@ -1817,6 +1820,7 @@
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="537703978"/>
+							<PluginRef Id="1065011977"/>
 						</Custom>
 					</PluginRefs>
 					<AuxBusRefs>
@@ -1934,7 +1938,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="3891079404" Name="Enemy_Cannon_Incoming" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Incoming" GUID="{2E2AC514-41EC-40C2-B741-99ABD8D6FB72}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="1.7692916" DurationMax="3.5590417">
+				<Event Id="3891079404" Name="Enemy_Cannon_Incoming" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Incoming" GUID="{2E2AC514-41EC-40C2-B741-99ABD8D6FB72}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.7692916" DurationMax="3.5590417">
 					<AuxBusRefs>
 						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
@@ -1975,6 +1979,7 @@
 						<MediaRef Id="1026693139"/>
 					</MediaRefs>
 					<AuxBusRefs>
+						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10"/>
 					</AuxBusRefs>
 					<ActionPostEvent>
@@ -1983,7 +1988,7 @@
 					</ActionPostEvent>
 				</Event>
 				<Event Id="3114531655" Name="Enemy_Steps" ObjectPath="\Events\SFX\Enemy\Enemy_Steps" GUID="{925872CA-03A4-4FC1-8E1A-768C93F1A808}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="2376509257" Name="Enemy_Voice_Cancel" ObjectPath="\Events\VX\Enemy\Enemy_Voice_Cancel" GUID="{2821C044-A076-4670-80B7-F83740940A72}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.32625" DurationMax="0.5666875">
+				<Event Id="2376509257" Name="Enemy_Voice_Cancel" ObjectPath="\Events\VX\Enemy\Enemy_Voice_Cancel" GUID="{2821C044-A076-4670-80B7-F83740940A72}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="0.32625" DurationMax="0.5666875">
 					<AuxBusRefs>
 						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
@@ -2105,5 +2110,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{72A4C01C-CD1A-F0C4-A812-0908C93FCF50}</FileHash>
+	<FileHash>{4DB3853E-EEA0-D5C5-4A90-6E5EF961C0D6}</FileHash>
 </SoundBanksInfo>

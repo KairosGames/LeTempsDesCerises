@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://clwivtte1vwf4" path="res://sources/images/textures/affiches/la_sociale.png" id="6_6l513"]
 [ext_resource type="Texture2D" uid="uid://u8bwchhrkds8" path="res://sources/images/textures/affiches/affiche_rouge.png" id="6_qg6i7"]
 [ext_resource type="Texture2D" uid="uid://dksvsc7p2phkc" path="res://sources/images/textures/affiches/cantines_municipales.png" id="7_qg6i7"]
+[ext_resource type="WwiseAcousticTexture" uid="uid://hsxyn7qyhjg6" path="res://Wwise/resources/Acoustic Texture/{5246478E-C5DA-4E0C-A0DE-C98D1479529A}.tres" id="9_ejfay"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3tikv"]
 height = 4.5294
@@ -94,7 +95,7 @@ subdivide_depth = 20
 
 [node name="sm_morris_column_complete_c2" parent="." unique_id=760765616 instance=ExtResource("1_3tikv")]
 
-[node name="sm_morris_column_complete_c" parent="sm_morris_column_complete_c2" index="0" unique_id=921684208]
+[node name="sm_morris_column_complete_c" parent="sm_morris_column_complete_c2" index="0" unique_id=999345787]
 surface_material_override/0 = ExtResource("2_eg2yi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1777114855]
@@ -125,5 +126,10 @@ mesh = SubResource("QuadMesh_5dq5t")
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=422557737]
 transform = Transform3D(-0.6723279, 0, -0.7402534, 0, 1, 0, 0.7402534, 0, -0.6723279, -0.39120013, 1.78157, -0.35530376)
 mesh = SubResource("QuadMesh_v252m")
+
+[node name="AkGeometry" type="AkGeometry" parent="." unique_id=1572420323]
+enable_diffraction_on_boundary_edges = true
+is_solid = true
+acoustic_texture = ExtResource("9_ejfay")
 
 [editable path="sm_morris_column_complete_c2"]

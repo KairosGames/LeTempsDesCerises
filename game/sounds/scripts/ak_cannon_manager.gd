@@ -13,6 +13,7 @@ func _ready() -> void:
 
 func _on_canon_shoot() -> void:
 	shoot.post_event()
+	WwiseGlobal.reload_gate = false
 	WwiseGlobal.cannon_fire()
 
 func _on_canon_start_move() -> void:

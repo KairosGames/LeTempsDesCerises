@@ -608,7 +608,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+							<ObjectRef Name="VX_NPC" ID="{FB8A6FAE-9F55-4DF0-9203-A29D5C69BC3A}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 						</Reference>
 						<Reference Name="ReflectionsAuxSend">
 							<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -1792,13 +1792,20 @@
 								</SwitchContainer>
 								<SwitchContainer Name="Cannon_Incoming" ID="{22CDDEB0-5732-4323-971F-F5ABB40B2A46}" ShortID="534397250">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="2"/>
+										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="MakeUpGain" Type="Real64">
 											<ValueList>
 												<Value>-3</Value>
 											</ValueList>
 										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Versaillais" ID="{6D0DE6C2-4CE9-4C2D-B4A6-5E0DCBAD5A34}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 										</Reference>
@@ -2833,7 +2840,6 @@
 								<SwitchContainer Name="Voice_Cancel" ID="{9645F931-205C-44A8-8949-05D8A92EA850}" ShortID="224497492">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
-										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="2"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
@@ -3228,7 +3234,7 @@
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+											<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 										</Reference>
 										<Reference Name="UserAuxSend0">
 											<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -3618,7 +3624,7 @@
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 												</Reference>
 												<Reference Name="OutputBus">
-													<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+													<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 												<Reference Name="UserAuxSend0">
 													<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -3695,7 +3701,7 @@
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 												</Reference>
 												<Reference Name="OutputBus">
-													<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+													<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 												<Reference Name="UserAuxSend0">
 													<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -3772,7 +3778,7 @@
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 												</Reference>
 												<Reference Name="OutputBus">
-													<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+													<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
 												<Reference Name="UserAuxSend0">
 													<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -3840,7 +3846,7 @@
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 														</Reference>
 														<Reference Name="OutputBus">
-															<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+															<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 														</Reference>
 														<Reference Name="UserAuxSend0">
 															<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -4471,7 +4477,7 @@
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 																</Reference>
 																<Reference Name="OutputBus">
-																	<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																	<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 																</Reference>
 																<Reference Name="UserAuxSend0">
 																	<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -4503,7 +4509,7 @@
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 																</Reference>
 																<Reference Name="OutputBus">
-																	<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																	<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 																</Reference>
 																<Reference Name="UserAuxSend0">
 																	<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -4535,7 +4541,7 @@
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 																</Reference>
 																<Reference Name="OutputBus">
-																	<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																	<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 																</Reference>
 																<Reference Name="UserAuxSend0">
 																	<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -4567,7 +4573,7 @@
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 																</Reference>
 																<Reference Name="OutputBus">
-																	<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																	<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 																</Reference>
 																<Reference Name="UserAuxSend0">
 																	<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -4599,7 +4605,7 @@
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 																</Reference>
 																<Reference Name="OutputBus">
-																	<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																	<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 																</Reference>
 																<Reference Name="UserAuxSend0">
 																	<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -4631,7 +4637,7 @@
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 																</Reference>
 																<Reference Name="OutputBus">
-																	<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																	<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 																</Reference>
 																<Reference Name="UserAuxSend0">
 																	<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -5190,7 +5196,7 @@
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 																</Reference>
 																<Reference Name="OutputBus">
-																	<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																	<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 																</Reference>
 																<Reference Name="UserAuxSend0">
 																	<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -5222,7 +5228,7 @@
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 																</Reference>
 																<Reference Name="OutputBus">
-																	<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																	<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 																</Reference>
 																<Reference Name="UserAuxSend0">
 																	<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -5254,7 +5260,7 @@
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 																</Reference>
 																<Reference Name="OutputBus">
-																	<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																	<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 																</Reference>
 																<Reference Name="UserAuxSend0">
 																	<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -5286,7 +5292,7 @@
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 																</Reference>
 																<Reference Name="OutputBus">
-																	<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																	<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 																</Reference>
 																<Reference Name="UserAuxSend0">
 																	<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -5318,7 +5324,7 @@
 																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 																</Reference>
 																<Reference Name="OutputBus">
-																	<ObjectRef Name="VX_NPC" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																	<ObjectRef Name="VX_Characters" ID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 																</Reference>
 																<Reference Name="UserAuxSend0">
 																	<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
@@ -10642,7 +10648,13 @@
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+										<Property Name="OverrideEarlyReflections" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="ReflectionsVolume" Type="Real64">
+											<ValueList>
+												<Value>-12</Value>
+											</ValueList>
+										</Property>
 										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="25"/>
 									</PropertyList>
 									<ReferenceList>
@@ -10756,6 +10768,9 @@
 										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="ReflectionsAuxSend">
+											<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 										</Reference>
 										<Reference Name="SwitchGroupOrStateGroup">
 											<ObjectRef Name="narrative_step" ID="{DC7D94F8-F1CD-4344-8D78-703A4905E20A}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
@@ -12108,9 +12123,23 @@
 								<SwitchContainer Name="Jules" ID="{A0AB775F-7CF9-4A40-A4D3-4102EEDFBF5A}" ShortID="873706499">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="BelowThresholdBehavior" Type="int16" Value="2"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverLimitBehavior" Type="int16" Value="1"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
-										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
+										<Property Name="OverrideVirtualVoice" Type="bool" Value="True"/>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="VirtualVoiceQueueBehavior" Type="int16" Value="0"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
@@ -12235,7 +12264,7 @@
 												<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
-														<Value>6.5</Value>
+														<Value>3</Value>
 													</ValueList>
 												</Property>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
@@ -12458,6 +12487,11 @@
 																	<Property Name="Time" Type="Real64" Value="1.98332016776413"/>
 																</PropertyList>
 															</Marker>
+															<Marker Name="" ID="{68102A2B-7DD1-4A65-91FE-2920BF94E01C}">
+																<PropertyList>
+																	<Property Name="Time" Type="Real64" Value="3.85538870049026"/>
+																</PropertyList>
+															</Marker>
 														</ObjectList>
 													</ObjectLists>
 												</AudioFileSource>
@@ -12547,6 +12581,11 @@
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="ReflectionsVolume" Type="Real64">
+											<ValueList>
+												<Value>-96</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
@@ -12659,6 +12698,9 @@
 										</Reference>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+										<Reference Name="ReflectionsAuxSend">
+											<ObjectRef Name="Reflect" ID="{04F7D06B-345E-4E79-A37C-C8DFED092590}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 										</Reference>
 										<Reference Name="SwitchGroupOrStateGroup">
 											<ObjectRef Name="narrative_step" ID="{DC7D94F8-F1CD-4344-8D78-703A4905E20A}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
@@ -12811,9 +12853,114 @@
 										</Sound>
 										<Sound Name="VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris" ID="{1DA29B88-AD4B-48AA-9E57-BF447B52C93A}" ShortID="486031089">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<Custom>
+														<Attenuation Name="Attenuation (Custom)" ID="{2E779A65-FC7C-4FAB-8EAB-C6DD6568CEA0}" ShortID="416406154">
+															<PropertyList>
+																<Property Name="RadiusMax" Type="Real64" Value="40"/>
+															</PropertyList>
+															<CurveUsageInfoList>
+																<VolumeDryUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																		<Curve Name="VolumeDry" ID="{5CE83BF8-2D41-4D59-84DF-C19468188E73}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="3"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>0</YPos>
+																					<Flags>5</Flags>
+																					<SegmentShape>SCurve</SegmentShape>
+																				</Point>
+																				<Point>
+																					<XPos>40</XPos>
+																					<YPos>-200</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</VolumeDryUsage>
+																<VolumeWetGameUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetGameUsage>
+																<VolumeWetUserUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetUserUsage>
+																<LowPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</LowPassFilterUsage>
+																<HighPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</HighPassFilterUsage>
+																<DualShelfUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</DualShelfUsage>
+																<SpreadUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</SpreadUsage>
+																<FocusUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</FocusUsage>
+																<ObstructionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionVolumeUsage>
+																<ObstructionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionLPFUsage>
+																<ObstructionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionHPFUsage>
+																<ObstructionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionDSFUsage>
+																<OcclusionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionVolumeUsage>
+																<OcclusionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionLPFUsage>
+																<OcclusionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionHPFUsage>
+																<OcclusionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionDSFUsage>
+																<DiffractionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionVolumeUsage>
+																<DiffractionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionLPFUsage>
+																<DiffractionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionHPFUsage>
+																<DiffractionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionDSFUsage>
+																<TransmissionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionVolumeUsage>
+																<TransmissionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionLPFUsage>
+																<TransmissionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionHPFUsage>
+																<TransmissionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionDSFUsage>
+															</CurveUsageInfoList>
+														</Attenuation>
+													</Custom>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 												</Reference>
@@ -12971,6 +13118,8 @@
 										</Sound>
 										<Sound Name="VX_Amb_M_Comm_Francois_OB_Canon_Arrival_3_Ydris" ID="{6FD75AA6-7FF3-4C74-92EC-0D053168B110}" ShortID="566170847">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
+												<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 												<Property Name="InitialDelay" Type="Real64">
 													<ValueList>
 														<Value>5</Value>
@@ -12979,6 +13128,108 @@
 												<Property Name="IsVoice" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<Custom>
+														<Attenuation Name="Attenuation (Custom)" ID="{915BD45A-4B5A-4089-B2CF-98BE612505FD}" ShortID="1030827136">
+															<PropertyList>
+																<Property Name="RadiusMax" Type="Real64" Value="40"/>
+															</PropertyList>
+															<CurveUsageInfoList>
+																<VolumeDryUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																		<Curve Name="VolumeDry" ID="{6BEBCF61-23A5-4313-AE94-5043934E9164}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="3"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>0</YPos>
+																					<Flags>5</Flags>
+																					<SegmentShape>SCurve</SegmentShape>
+																				</Point>
+																				<Point>
+																					<XPos>40</XPos>
+																					<YPos>-200</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</VolumeDryUsage>
+																<VolumeWetGameUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetGameUsage>
+																<VolumeWetUserUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetUserUsage>
+																<LowPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</LowPassFilterUsage>
+																<HighPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</HighPassFilterUsage>
+																<DualShelfUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</DualShelfUsage>
+																<SpreadUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</SpreadUsage>
+																<FocusUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</FocusUsage>
+																<ObstructionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionVolumeUsage>
+																<ObstructionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionLPFUsage>
+																<ObstructionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionHPFUsage>
+																<ObstructionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionDSFUsage>
+																<OcclusionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionVolumeUsage>
+																<OcclusionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionLPFUsage>
+																<OcclusionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionHPFUsage>
+																<OcclusionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionDSFUsage>
+																<DiffractionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionVolumeUsage>
+																<DiffractionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionLPFUsage>
+																<DiffractionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionHPFUsage>
+																<DiffractionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionDSFUsage>
+																<TransmissionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionVolumeUsage>
+																<TransmissionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionLPFUsage>
+																<TransmissionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionHPFUsage>
+																<TransmissionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionDSFUsage>
+															</CurveUsageInfoList>
+														</Attenuation>
+													</Custom>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 												</Reference>
@@ -13940,8 +14191,12 @@
 										<Sound Name="VX_Amb_F_Comm_Louise_AA_Arrivee_1_Atea" ID="{862DF224-1535-4F0F-B63F-1842C56D932A}" ShortID="885883923">
 											<PropertyList>
 												<Property Name="3DSpatialization" Type="int16" Value="2"/>
-												<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -14325,9 +14580,113 @@
 									<ChildrenList>
 										<Sound Name="VX_Amb_M_Comm_Michel_OB_Canon_Arrival_2_Pierric" ID="{AA05DEEE-EE2D-4410-9365-6352D0F57446}" ShortID="738950522">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="2"/>
 												<Property Name="IsVoice" Type="bool" Value="True"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<Custom>
+														<Attenuation Name="Attenuation (Custom)" ID="{FFA955F3-0A2E-4C86-ABE5-50AD125E71CD}" ShortID="558482168">
+															<PropertyList>
+																<Property Name="RadiusMax" Type="Real64" Value="50"/>
+															</PropertyList>
+															<CurveUsageInfoList>
+																<VolumeDryUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																		<Curve Name="VolumeDry" ID="{FB123717-95F7-46E5-821D-49E42391CC02}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="3"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>0</YPos>
+																					<Flags>5</Flags>
+																					<SegmentShape>SCurve</SegmentShape>
+																				</Point>
+																				<Point>
+																					<XPos>50</XPos>
+																					<YPos>-200</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</CurveUsageInfo>
+																</VolumeDryUsage>
+																<VolumeWetGameUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetGameUsage>
+																<VolumeWetUserUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+																</VolumeWetUserUsage>
+																<LowPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</LowPassFilterUsage>
+																<HighPassFilterUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</HighPassFilterUsage>
+																<DualShelfUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</DualShelfUsage>
+																<SpreadUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</SpreadUsage>
+																<FocusUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+																</FocusUsage>
+																<ObstructionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionVolumeUsage>
+																<ObstructionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionLPFUsage>
+																<ObstructionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionHPFUsage>
+																<ObstructionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</ObstructionDSFUsage>
+																<OcclusionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionVolumeUsage>
+																<OcclusionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionLPFUsage>
+																<OcclusionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionHPFUsage>
+																<OcclusionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</OcclusionDSFUsage>
+																<DiffractionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionVolumeUsage>
+																<DiffractionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionLPFUsage>
+																<DiffractionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionHPFUsage>
+																<DiffractionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</DiffractionDSFUsage>
+																<TransmissionVolumeUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionVolumeUsage>
+																<TransmissionLPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionLPFUsage>
+																<TransmissionHPFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionHPFUsage>
+																<TransmissionDSFUsage>
+																	<CurveUsageInfo Platform="Linked" CurveToUse="UseProject"/>
+																</TransmissionDSFUsage>
+															</CurveUsageInfoList>
+														</Attenuation>
+													</Custom>
+												</Reference>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 												</Reference>
@@ -14634,6 +14993,25 @@
 															<Property Name="Ratio" Type="Real32" Value="6"/>
 															<Property Name="Threshold" Type="Real32" Value="-12"/>
 														</PropertyList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+									<EffectSlot Name="" ID="{96B98662-3BC4-4D96-8156-D49756B90EBD}" ShortID="347838073">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom>
+													<Effect Name="Meter (Custom)" ID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" ShortID="1065011977" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+														<PropertyList>
+															<Property Name="Hold" Type="Real32" Value="0.25"/>
+															<Property Name="ReleaseTime" Type="Real32" Value="0.5"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="GameParameter">
+																<ObjectRef Name="Sidechain_Dialogue" ID="{E3D15146-7A9C-49E2-BF9F-F7D655BB9188}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+															</Reference>
+														</ReferenceList>
 													</Effect>
 												</Custom>
 											</Reference>

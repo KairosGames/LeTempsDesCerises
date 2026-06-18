@@ -5,7 +5,6 @@ var allies : Array[Node3D]
 var enemies : Array[Node3D]
 var cannon_workers : Array[Node3D]
 var narrators : Array[Node3D]
-var allowed_switch : Array[String] = ["Zone1", "BarricadeBien"]
 var barricade : Node3D
 var is_coward = false
 var coward_distance : int = 600
@@ -24,14 +23,9 @@ func _ready() -> void:
 		game_manager.voice_line_called.connect(new_line)
 		game_manager.all_states.get(3).choose_surrender.connect(surrender)
 		game_manager.all_states.get(3).choose_fight_to_death.connect(fight)
-		await get_tree().create_timer(0.5).timeout
-		new_line(0)
 	if game_manager: game_manager.all_states[1].player_tried_to_exit.connect(player_far)
-
-
-func _process(_delta: float) -> void:
-	if barricade != null and barricade.global_position.distance_squared_to(player.global_position) > coward_distance and is_coward == false:
-		pass
+	await get_tree().create_timer(0.5).timeout
+	loop()
 
 func new_line(step : int):
 	if step == 30 :
@@ -105,22 +99,13 @@ func find_random(type : Array) -> Node3D :
 func cannon_fire():
 	if !allies.is_empty():
 		for ally in allies:
-			ally.post_event("Cannon_Fire", randf_range(1, 3))
+			ally.post_event("Cannon_Fire", randf_range(1, 5))
 		#find_closest(allies, barricade).post_event("Cannon_Fire", 1)
 		#find_random(allies).post_event("Cannon_Fire", 3)
 	if !enemies.is_empty():
 		find_closest(enemies, player).post_event("Cannon_Fire", 1)
 		find_random(enemies).post_event("Cannon_Fire", randf_range(2, 5))
 		find_random(enemies).post_event("Cannon_Fire", randf_range(2, 5))
-	match barricade.life :
-		3:
-			Wwise.set_state("barricade_state", "intact")
-		2:
-			Wwise.set_state("barricade_state", "intact")
-		1:
-			Wwise.set_state("barricade_state", "low")
-		0:
-			Wwise.set_state("barricade_state", "broken")
 
 func player_far():
 	if is_coward: return
@@ -170,7 +155,7 @@ func on_move_progress(progress: float):
 		#find_closest(allies, player).post_event("Cannon_Advance", 1)
 
 func on_reload_progress(progress):
-	if progress >= 0.9:
+	if progress >= 0.9 and not reload_gate:
 		reload_gate = true
 		play_secrure_random_ak_post_event_on_array(cannon_workers, "Cannon_Incoming", 0.0)
 		var ally_group: Array[Node] = get_tree().get_nodes_in_group("ak_ally")
@@ -185,6 +170,15 @@ func pause(new_pause : bool):
 	elif !new_pause:
 		Wwise.post_event("Resume", player)
 
+
+func loop():
+	print(loop)
+	if !allies.is_empty():
+		find_random(allies).post_event("Barricade_State", randf_range(0, 5))
+	if !enemies.is_empty():
+		find_random(enemies).post_event("Barricade_State", randf_range(0, 5))
+	await get_tree().create_timer(5).timeout
+	loop()
 
 #### SECURE FUNCTIONS
 
