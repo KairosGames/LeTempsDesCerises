@@ -18,6 +18,8 @@ signal game_ended
 
 var is_surrending: bool = false
 var is_time_to_die: bool = false
+var has_player_crouch: bool = false
+var time_waiting_passed: bool = false
 
 
 func enter() -> void:
@@ -198,8 +200,9 @@ func launch_execution() -> void:
 	ui_manager.launch_letter_box(false)
 	await wait(10.0)
 	await wait_voice() # "À genoux la canaille !"
-	await wait(3.0)
-	call_voice() # "À genoux !"
+	launch_execution_timer()
+	await wait_until(has_player_crouch_or_moment_passed)
+	if not has_player_crouch: await wait_voice() # "À genoux !"
 	ui_manager.launch_letter_box(true)
 	take_player_view_control(true)
 	player.can_play = false
@@ -208,7 +211,8 @@ func launch_execution() -> void:
 	rot_twn = create_tween()
 	var view_targ: Vector3 = Vector3(0.0, rad_to_deg(execution_point.global_rotation.y), 0.0)
 	await rot_twn.tween_property(player, "aim_target", view_targ, 0.5).finished
-	await player.crouch_to_stand(true)
+	if not has_player_crouch: await player.crouch_to_stand(true)
+	else: await wait(0.5)
 	await wait_voice() # "En joue !"
 	await wait(1.0)
 	await wait_voice() # "À mon commandement !"
@@ -237,6 +241,22 @@ func set_player_before_execution() -> void:
 	player.can_use_view = true
 	take_player_view_control(false)
 	add_on_process(clamp_view.bind(player.aim_target, 50.0, 100.0))
+
+
+func check_if_player_crouch() -> void:
+	if Input.is_action_just_pressed("crouch"):
+		player.crouch_to_stand(true)
+		has_player_crouch = true
+		voice_line_index += 1
+
+
+func launch_execution_timer() -> void:
+	await wait(5.0)
+	is_time_to_die = true
+
+
+func has_player_crouch_or_moment_passed() -> bool:
+	return is_time_to_die or has_player_crouch
 
 
 func launch_fight_to_death() -> void:
