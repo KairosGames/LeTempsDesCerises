@@ -17,8 +17,11 @@
 [ext_resource type="Script" uid="uid://cg463hdmyrtmx" path="res://prefabs/player/blur_effect.gd" id="12_agiw0"]
 [ext_resource type="Texture2D" uid="uid://dvjpnqukcvb8e" path="res://prefabs/ui/reload_p1.png" id="14_408ek"]
 [ext_resource type="Script" uid="uid://cyr6l5nj8dv32" path="res://prefabs/player/shake.gd" id="14_ot5ig"]
+[ext_resource type="Texture2D" uid="uid://c7pq1vg1fsh6s" path="res://prefabs/ui/reload_p2.png" id="15_a2w56"]
 [ext_resource type="Texture2D" uid="uid://b4txv2npkb5d1" path="res://prefabs/ui/reload_pin.png" id="15_ocyg1"]
+[ext_resource type="Texture2D" uid="uid://cl1kbcn7tixc5" path="res://prefabs/ui/reload_p3.png" id="16_qdvc2"]
 [ext_resource type="PackedScene" uid="uid://of0isbumqecs" path="res://prefabs/player/chassepot.tscn" id="17_8hk3c"]
+[ext_resource type="Texture2D" uid="uid://dnjca8p664n1b" path="res://prefabs/ui/reload_p4.png" id="17_vtpqo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c4n1"]
 albedo_color = Color(0.85343254, 0, 0.12842149, 1)
@@ -45,7 +48,7 @@ shader_parameter/effect = 8.0
 
 [sub_resource type="Curve2D" id="Curve2D_408ek"]
 _data = {
-"points": PackedVector2Array(6, -76, -6, -76, 96.5, 0, 6, -76, 0, 0, -96.5, 0)
+"points": PackedVector2Array(6, -76, -6, -76, 96.5, 0, -11.945284, -75.719604, 11.945284, 75.719604, -96.5, 0)
 }
 point_count = 2
 
@@ -154,6 +157,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="UI" unique_id=39530336]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,8 +192,9 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("12_agiw0")
 
-[node name="ReloadUI" type="Control" parent="UI" unique_id=604342347 node_paths=PackedStringArray("wpn_animator", "all_pos", "pos_to_rect")]
+[node name="ReloadUI" type="Control" parent="UI" unique_id=604342347 node_paths=PackedStringArray("step_display", "wpn_animator")]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 0
 offset_left = 1662.0
 offset_top = 558.0
@@ -197,17 +202,16 @@ offset_right = 1702.0
 offset_bottom = 598.0
 mouse_filter = 2
 script = ExtResource("3_klv5p")
+step_display = [NodePath("ReloadState1"), NodePath("ReloadState2"), null, NodePath("ReloadState3"), NodePath("ReloadState4")]
+start_progress = Array[float]([0.0, 0.0, 0.0, 1.0, 1.0])
+target_progress = Array[float]([1.0, 1.0, 1.0, 0.0, 0.0])
 wpn_animator = NodePath("../../CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake/Chassepot/WeaponAnimator")
-all_pos = [NodePath(""), NodePath(""), NodePath("")]
-pos_to_rect = [NodePath(""), NodePath(""), NodePath("")]
-steps = Array[Array]([[0, 1], [1, 2], [], [2, 1], [1, 0]])
-default_color = Color(0, 0, 0, 0.61960787)
-valid_target_color = Color(0, 0.5469833, 0.98331386, 0.63529414)
-default_focus_color = Color(0.7159255, 0.72724795, 0.7299672, 1)
+default_focus_color = Color(0.5037687, 0.50376844, 0.50376844, 1)
 fail_focus_color = Color(0.5921569, 0, 0, 1)
-sucess_focus_color = Color(0, 0.49019608, 0, 1)
+sucess_focus_color = Color(0, 0.6059047, 0, 1)
 
-[node name="TextureRect" type="TextureRect" parent="UI/ReloadUI" unique_id=540028085]
+[node name="ReloadState1" type="TextureRect" parent="UI/ReloadUI" unique_id=540028085]
+visible = false
 layout_mode = 0
 offset_left = -500.0
 offset_top = -10.0
@@ -216,20 +220,55 @@ offset_bottom = 492.0
 texture = ExtResource("14_408ek")
 expand_mode = 1
 
+[node name="ReloadState2" type="TextureRect" parent="UI/ReloadUI" unique_id=908490645]
+visible = false
+layout_mode = 0
+offset_left = -500.0
+offset_top = -10.0
+offset_right = 2.0
+offset_bottom = 492.0
+texture = ExtResource("15_a2w56")
+expand_mode = 1
+
+[node name="ReloadState3" type="TextureRect" parent="UI/ReloadUI" unique_id=1329585989]
+visible = false
+layout_mode = 0
+offset_left = -500.0
+offset_top = -10.0
+offset_right = 2.0
+offset_bottom = 492.0
+texture = ExtResource("16_qdvc2")
+expand_mode = 1
+
+[node name="ReloadState4" type="TextureRect" parent="UI/ReloadUI" unique_id=372263498]
+visible = false
+layout_mode = 0
+offset_left = -500.0
+offset_top = -10.0
+offset_right = 2.0
+offset_bottom = 492.0
+texture = ExtResource("17_vtpqo")
+expand_mode = 1
+
 [node name="Path1" type="Path2D" parent="UI/ReloadUI" unique_id=349230490]
+unique_name_in_owner = true
 position = Vector2(-245, 193)
 curve = SubResource("Curve2D_408ek")
 
 [node name="Focus" type="PathFollow2D" parent="UI/ReloadUI/Path1" unique_id=816190979]
+unique_name_in_owner = true
 position = Vector2(96.5, 0)
 rotation = -1.6495802
 loop = false
 
 [node name="FocusPin" type="Sprite2D" parent="UI/ReloadUI/Path1/Focus" unique_id=1836951511]
+unique_name_in_owner = true
+modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
 rotation = 3.1415927
 texture = ExtResource("15_ocyg1")
 
 [node name="Path2" type="Path2D" parent="UI/ReloadUI" unique_id=964860872]
+unique_name_in_owner = true
 position = Vector2(-245, 193)
 curve = SubResource("Curve2D_dxdrd")
 
@@ -362,7 +401,7 @@ visible = false
 
 [node name="Chassepot" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake" unique_id=366188147 instance=ExtResource("17_8hk3c")]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.001, 0.01)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -0.002, 0.01)
 
 [node name="FrontSight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake" unique_id=2022825120]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.029570341, 0.845)

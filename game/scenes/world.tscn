@@ -130,6 +130,22 @@ size = Vector3(0.25, 0.25, 0.1)
 [node name="PlayerSpawner" parent="GameManager/States/GameState00" parent_id_path=PackedInt32Array(1070764289, 1759019559) index="0" unique_id=1090379721]
 transform = Transform3D(-0.69127357, 0, -0.7225932, 0, 1, 0, 0.7225932, 0, -0.69127357, -3.0263557, 0, -2.2616625)
 
+[node name="WomanPoints" parent="GameManager/States/GameState02" parent_id_path=PackedInt32Array(1070764289, 345645137) index="0" unique_id=1055966233 node_paths=PackedStringArray("first_points", "second_points")]
+first_points = {
+"Louise": NodePath("First/Louise01"),
+"Marie": NodePath("First/Marie01"),
+"Woman1": NodePath("First/Woman101"),
+"Woman2": NodePath("First/Woman201"),
+"Woman3": NodePath("First/Woman301")
+}
+second_points = {
+"Louise": NodePath("Second/Louise02"),
+"Marie": NodePath("Second/Marie02"),
+"Woman1": NodePath("Second/Woman102"),
+"Woman2": NodePath("Second/Woman202"),
+"Woman3": NodePath("Second/Woman302")
+}
+
 [node name="Environment" type="Node3D" parent="." unique_id=532340216]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1839360765]
@@ -476,6 +492,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.169285, 0.0019409287, 7.29
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.304285, 0.0019409287, -17.273026)
 
 [editable path="GameManager"]
+[editable path="GameManager/States/GameState00/InvisibleWallBarricade"]
 [editable path="GameManager/States/GameState01/GoToBarricadeArea"]
 [editable path="GameManager/States/GameState01/ReturnToBarricadeArea"]
 [editable path="GameManager/States/GameState01/FirstDieArea"]
+[editable path="GameManager/States/GameState01/DebugNavMeshArea"]
+[editable path="GameManager/States/GameState01/CanonDetectionArea"]
+[editable path="GameManager/States/GameState01/DeathZoneSecondBarricade"]
+[editable path="GameManager/States/GameState02/LouiseDetectionArea"]
+[editable path="GameManager/States/GameState02/DiscussionArea"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/OfficierPoint"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint1"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint2"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint3"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint4"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint5"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint6"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint7"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint8"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/OfficierPoint"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint1"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint2"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint3"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint4"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint5"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint6"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint7"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint8"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/FinalPos/OfficierPoint"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint1"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint2"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint3"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint4"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint5"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint6"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint7"]
+[editable path="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint8"]
+[editable path="GameManager/DeathZone"]
