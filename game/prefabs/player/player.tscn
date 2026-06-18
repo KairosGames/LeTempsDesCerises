@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://bgg5b13i7sqme" path="res://sounds/prefabs/ak_player_manager.tscn" id="9_oo3uv"]
 [ext_resource type="Shader" uid="uid://clrsbi4wrdvxs" path="res://prefabs/player/blur_effect.gdshader" id="11_6barq"]
 [ext_resource type="Script" uid="uid://cg463hdmyrtmx" path="res://prefabs/player/blur_effect.gd" id="12_agiw0"]
+[ext_resource type="Texture2D" uid="uid://dvjpnqukcvb8e" path="res://prefabs/ui/reload_p1.png" id="14_408ek"]
 [ext_resource type="Script" uid="uid://cyr6l5nj8dv32" path="res://prefabs/player/shake.gd" id="14_ot5ig"]
+[ext_resource type="Texture2D" uid="uid://b4txv2npkb5d1" path="res://prefabs/ui/reload_pin.png" id="15_ocyg1"]
 [ext_resource type="PackedScene" uid="uid://of0isbumqecs" path="res://prefabs/player/chassepot.tscn" id="17_8hk3c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c4n1"]
@@ -40,6 +42,18 @@ shader = ExtResource("11_6barq")
 shader_parameter/strength = 3
 shader_parameter/blur_size = 0.0
 shader_parameter/effect = 8.0
+
+[sub_resource type="Curve2D" id="Curve2D_408ek"]
+_data = {
+"points": PackedVector2Array(6, -76, -6, -76, 96.5, 0, 6, -76, 0, 0, -96.5, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_dxdrd"]
+_data = {
+"points": PackedVector2Array(6, -76, 0, 0, -96.5, 0, 0, 0, 0, 0, -97, 151)
+}
+point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fp3wc"]
 radius = 0.35
@@ -149,7 +163,6 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Crosshairs" type="TextureRect" parent="UI/CenterContainer" unique_id=1952164863]
-visible = false
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 mouse_filter = 2
@@ -158,6 +171,7 @@ expand_mode = 1
 
 [node name="BlinkEffect" type="ColorRect" parent="UI/CenterContainer" unique_id=1580177522]
 unique_name_in_owner = true
+visible = false
 material = SubResource("ShaderMaterial_b6byk")
 custom_minimum_size = Vector2(2020, 1180)
 layout_mode = 2
@@ -176,17 +190,16 @@ script = ExtResource("12_agiw0")
 
 [node name="ReloadUI" type="Control" parent="UI" unique_id=604342347 node_paths=PackedStringArray("wpn_animator", "all_pos", "pos_to_rect")]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 0
-offset_left = 902.0
-offset_top = 918.0
-offset_right = 942.0
-offset_bottom = 958.0
+offset_left = 1662.0
+offset_top = 558.0
+offset_right = 1702.0
+offset_bottom = 598.0
 mouse_filter = 2
 script = ExtResource("3_klv5p")
 wpn_animator = NodePath("../../CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake/Chassepot/WeaponAnimator")
-all_pos = [NodePath("ReloadPos1"), NodePath("ReloadPos2"), NodePath("ReloadPos3")]
-pos_to_rect = [NodePath("ReloadStep1"), NodePath("ReloadStep2"), NodePath("ReloadStep3")]
+all_pos = [NodePath(""), NodePath(""), NodePath("")]
+pos_to_rect = [NodePath(""), NodePath(""), NodePath("")]
 steps = Array[Array]([[0, 1], [1, 2], [], [2, 1], [1, 0]])
 default_color = Color(0, 0, 0, 0.61960787)
 valid_target_color = Color(0, 0.5469833, 0.98331386, 0.63529414)
@@ -194,87 +207,31 @@ default_focus_color = Color(0.7159255, 0.72724795, 0.7299672, 1)
 fail_focus_color = Color(0.5921569, 0, 0, 1)
 sucess_focus_color = Color(0, 0.49019608, 0, 1)
 
-[node name="ReloadBar1" type="ColorRect" parent="UI/ReloadUI" unique_id=1569676977]
+[node name="TextureRect" type="TextureRect" parent="UI/ReloadUI" unique_id=540028085]
 layout_mode = 0
-offset_left = 6.0
-offset_top = 4.0
-offset_right = 106.0
-offset_bottom = 14.0
-mouse_filter = 2
-color = Color(0.8627451, 0.8627451, 0.8627451, 0.41568628)
+offset_left = -500.0
+offset_top = -10.0
+offset_right = 2.0
+offset_bottom = 492.0
+texture = ExtResource("14_408ek")
+expand_mode = 1
 
-[node name="ReloadBar2" type="ColorRect" parent="UI/ReloadUI" unique_id=20938280]
-layout_mode = 0
-offset_left = 6.0
-offset_top = 4.0
-offset_right = 16.0
-offset_bottom = 104.0
-mouse_filter = 2
-color = Color(0.8627451, 0.8627451, 0.8627451, 0.41568628)
+[node name="Path1" type="Path2D" parent="UI/ReloadUI" unique_id=349230490]
+position = Vector2(-245, 193)
+curve = SubResource("Curve2D_408ek")
 
-[node name="ReloadStep1" type="ColorRect" parent="UI/ReloadUI" unique_id=294821983]
-layout_mode = 0
-offset_left = 92.0
-offset_top = -1.0
-offset_right = 112.0
-offset_bottom = 19.0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.61960787)
+[node name="Focus" type="PathFollow2D" parent="UI/ReloadUI/Path1" unique_id=816190979]
+position = Vector2(96.5, 0)
+rotation = -1.6495802
+loop = false
 
-[node name="ReloadStep2" type="ColorRect" parent="UI/ReloadUI" unique_id=275829933]
-layout_mode = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 21.0
-offset_bottom = 19.0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.61960787)
+[node name="FocusPin" type="Sprite2D" parent="UI/ReloadUI/Path1/Focus" unique_id=1836951511]
+rotation = 3.1415927
+texture = ExtResource("15_ocyg1")
 
-[node name="ReloadStep3" type="ColorRect" parent="UI/ReloadUI" unique_id=484181448]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 90.0
-offset_right = 21.0
-offset_bottom = 110.0
-mouse_filter = 2
-color = Color(0, 0, 0, 0.61960787)
-
-[node name="ReloadPos1" type="Control" parent="UI/ReloadUI" unique_id=1707861849]
-unique_name_in_owner = true
-anchors_preset = 0
-offset_left = 95.0
-offset_top = 1.0
-offset_right = 135.0
-offset_bottom = 41.0
-mouse_filter = 2
-
-[node name="ReloadPos2" type="Control" parent="UI/ReloadUI" unique_id=203965544]
-unique_name_in_owner = true
-anchors_preset = 0
-offset_left = 4.0
-offset_top = 2.0
-offset_right = 44.0
-offset_bottom = 42.0
-mouse_filter = 2
-
-[node name="ReloadPos3" type="Control" parent="UI/ReloadUI" unique_id=1524537823]
-unique_name_in_owner = true
-anchors_preset = 0
-offset_left = 4.0
-offset_top = 93.0
-offset_right = 44.0
-offset_bottom = 133.0
-mouse_filter = 2
-
-[node name="ReloadFocus" type="ColorRect" parent="UI/ReloadUI" unique_id=566231840]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 95.0
-offset_top = 1.0
-offset_right = 110.0
-offset_bottom = 16.0
-mouse_filter = 2
-color = Color(0.7159255, 0.72724795, 0.7299672, 1)
+[node name="Path2" type="Path2D" parent="UI/ReloadUI" unique_id=964860872]
+position = Vector2(-245, 193)
+curve = SubResource("Curve2D_dxdrd")
 
 [node name="HighDynamicCollider" type="CollisionShape3D" parent="." unique_id=76721954]
 unique_name_in_owner = true

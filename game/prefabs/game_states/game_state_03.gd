@@ -104,9 +104,6 @@ func player_go_to_cover() -> void:
 	louise.enter_in_crouch_anim()
 	francois.is_fighting = false
 	francois.enter_in_crouch_anim()
-	
-	print("LES DEUX CROUCH")
-	
 	var target: Vector3 = player_cover.global_position + player_cover.basis.z
 	var time_ratio: float = get_yaw_diff_ratio(target)
 	await tween_rotate_player_to_pos(versaillais_points.dialogue_points[0].global_position, 1.0 * time_ratio)
@@ -244,7 +241,7 @@ func set_player_before_execution() -> void:
 
 func launch_fight_to_death() -> void:
 	louise.enter_in_idle_anim()
-	await wait_voice()
+	await wait_voice() #"Jamais, charognard !"
 	louise.enter_in_aim()
 	await wait(0.3)
 	versaillais_points.versaillais_kill_louise()
