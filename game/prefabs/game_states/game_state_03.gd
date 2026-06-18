@@ -27,8 +27,9 @@ func enter() -> void:
 		Step.new(launch_player_choice, do_nothing, do_nothing),
 		null,
 	]
-	run_steps()
 	if game_manager.use_debug and not set_debug_applied: set_game_for_debug()
+	if game_manager.use_short_time: set_short_timers()
+	run_steps()
 
 
 func exit() -> void:
@@ -54,6 +55,10 @@ func set_game_for_debug() -> void:
 	game_manager.cannon._is_first_shoot = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 	set_debug_applied = true
+
+
+func set_short_timers() -> void:
+	pass
 
 
 func wait_no_more_allies() -> void:

@@ -9,6 +9,7 @@
 @abstract func enter() -> void
 @abstract func exit() -> void
 @abstract func set_game_for_debug() -> void
+@abstract func set_short_timers() -> void
 
 var steps: Array[Step] = []
 var curr_step: int = 0

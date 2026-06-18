@@ -29,6 +29,7 @@ func enter() -> void:
 		Step.new(enter_fight_begin, georges_death, free_player)
 	]
 	if game_manager.use_debug and not set_debug_applied: set_game_for_debug()
+	if game_manager.use_short_time: set_short_timers()
 	run_steps()
 
 
@@ -38,6 +39,10 @@ func exit() -> void:
 
 func set_game_for_debug() -> void:
 	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.OPEN)
+
+
+func set_short_timers() -> void:
+	pass
 
 
 func set_game_for_onboarding() -> void:

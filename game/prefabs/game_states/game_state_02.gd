@@ -20,6 +20,7 @@ func enter() -> void:
 		Step.new(launch_last_battle_phase, do_nothing, do_nothing),
 	]
 	if game_manager.use_debug and not set_debug_applied: set_game_for_debug()
+	if game_manager.use_short_time: set_short_timers()
 	run_steps()
 
 
@@ -30,7 +31,6 @@ func exit() -> void:
 func set_game_for_debug() -> void:
 	for i: int in range(8): battle_director.go_next_covers_activation()
 	voice_line_index = 22
-	if game_manager.use_short_time: first_battle_phase_time = 0.0
 	francois.global_position = francois_moved_pos.global_position
 	francois.global_rotation = francois_moved_pos.global_rotation
 	francois.is_fighting = true
@@ -43,6 +43,10 @@ func set_game_for_debug() -> void:
 	if game_manager.curr_barricade == game_manager.first_barricade:
 		for i: int in range(0,3): game_manager.handle_cannon_shoot()
 	set_debug_applied = true
+
+
+func set_short_timers() -> void:
+	first_battle_phase_time = 0.0
 
 
 func lauch_first_phase() -> void:

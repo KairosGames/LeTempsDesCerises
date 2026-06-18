@@ -34,6 +34,7 @@ func enter() -> void:
 		Step.new(enemies_enter_first_zone, do_nothing, do_nothing),
 	]
 	if game_manager.use_debug and not set_debug_applied: set_game_for_debug()
+	if game_manager.use_short_time: set_short_timers()
 	run_steps()
 
 
@@ -42,9 +43,6 @@ func exit() -> void:
 
 
 func set_game_for_debug() -> void:
-	if game_manager.use_short_time:
-		first_die_timer = 1.0
-		first_battle_time = 1.0
 	battle_director.go_next_covers_activation()
 	voice_line_index = 16
 	ui_manager.set_objective(true, game_manager.all_states[0].objective_point_barricade, "Go to the barricade")
@@ -54,6 +52,11 @@ func set_game_for_debug() -> void:
 	ui_manager.hard_set_letter_box(false)
 	player.can_die = false
 	set_debug_applied = true
+
+
+func set_short_timers() -> void:
+	first_die_timer = 1.0
+	first_battle_time = 1.0
 
 
 func go_to_barricade() -> void:
