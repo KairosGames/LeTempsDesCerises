@@ -145,6 +145,7 @@ func can_player_die() -> bool:
 func lauch_first_battle_phase() -> void:
 	battle_director.go_next_covers_activation() ########################################### Première mort
 	print("WAIT 90s")
+	Wwise.set_state("Music_State", "Phase2") ############# MUSIC
 	await wait(3.0)
 	jules = null
 	await wait(first_battle_time)
