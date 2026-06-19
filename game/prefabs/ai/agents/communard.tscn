@@ -4,9 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://rg0ngp2orgpb" path="res://prefabs/ai/behaviours/communard.tscn" id="2_tcnhd"]
 [ext_resource type="PackedScene" uid="uid://1e7ymrdq6sai" path="res://sounds/prefabs/ak_ally_manager.tscn" id="3_de8u4"]
 [ext_resource type="PackedScene" uid="uid://c1i2q6l2uq4ne" path="res://sources/meshes/characters/communard.blend" id="4_2tocg"]
+[ext_resource type="Material" uid="uid://cxoxm0glp2h7s" path="res://materials/magical_material.tres" id="5_ayo2e"]
 [ext_resource type="PackedScene" uid="uid://b56vcde62m1gw" path="res://sandbox/chassepot_proto/sk_chassepot.tscn" id="5_t3nua"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ayo2e"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_84l20"]
 resource_local_to_scene = true
 radius = 0.25
 height = 1.8
@@ -15,10 +16,10 @@ height = 1.8
 team = 1
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=1662563447]
-shape = SubResource("CapsuleShape3D_ayo2e")
+shape = SubResource("CapsuleShape3D_84l20")
 
 [node name="Chest" parent="ShootTargets" parent_id_path=PackedInt32Array(1640117776) index="0" unique_id=1612085666]
-transform = Transform3D(-0.9998972, 1.0035303e-08, -8.6748436e-08, 7.557727e-11, 0.99322647, 0.11466254, 8.733467e-08, 0.114661776, -0.99323297, -3.6591784e-05, 1.2517778, 0.019299326)
+transform = Transform3D(-0.9998972, 1.0035316e-08, -8.6748436e-08, 7.557727e-11, 0.9932276, 0.11466254, 8.733467e-08, 0.11466192, -0.99323297, -3.6591784e-05, 1.2517778, 0.019299326)
 
 [node name="Head" parent="ShootTargets" parent_id_path=PackedInt32Array(1640117776) index="1" unique_id=2138124691]
 transform = Transform3D(-0.99992794, 2.066751e-11, -8.7326804e-08, 7.557959e-11, 0.99980956, -9.594514e-09, 8.7337355e-08, -9.594338e-09, -0.9998278, -3.6592508e-05, 1.6068301, 0.011054906)
@@ -34,7 +35,7 @@ communard = NodePath("..")
 [node name="communard" parent="." index="10" unique_id=738987645 instance=ExtResource("4_2tocg")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="Skeleton3D" parent="communard/Armature" parent_id_path=PackedInt32Array(738987645, 1443089303) index="0" unique_id=1220707037]
+[node name="Skeleton3D" parent="communard/Armature" parent_id_path=PackedInt32Array(738987645, 539826026) index="0" unique_id=1686565225]
 bones/0/position = Vector3(0.0014296062, 0.8016324, -97.55293)
 bones/0/rotation = Quaternion(-0.7071063, -8.474164e-05, -9.030629e-05, 0.70710737)
 bones/1/rotation = Quaternion(-0.05743657, -1.1037612e-05, 0.00012334726, 0.99834913)
@@ -141,6 +142,9 @@ bones/61/rotation = Quaternion(-0.014400354, 0.00017515331, 0.029948791, 0.99944
 bones/62/rotation = Quaternion(0.48189983, 0.017618524, -0.059708394, 0.8740121)
 bones/63/rotation = Quaternion(0.29022136, 0.029949382, -0.009087599, 0.9564476)
 bones/64/position = Vector3(-2.1867454e-06, 7.0109124, -3.725242e-08)
+
+[node name="communard" parent="communard/Armature/Skeleton3D" index="0" unique_id=73709828]
+material_override = ExtResource("5_ayo2e")
 
 [node name="Weapon" type="BoneAttachment3D" parent="communard/Armature/Skeleton3D" index="1" unique_id=2032018006]
 transform = Transform3D(-0.09853567, -0.99453753, 0.034431312, 0.99505275, -0.0980282, 0.01613269, -0.0126693025, 0.035850767, 0.99927664, -69.82918, -4.173582, -139.07373)
