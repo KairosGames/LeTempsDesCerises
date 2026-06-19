@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{0D0675C2-FB87-9806-789C-B506E9197CAA}">
+		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{71D21E27-DA5F-0D2D-FBDA-49992EB19C51}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Cannon</ObjectPath>
 			<ShortName>Sb_Cannon</ShortName>
 			<Path>Sb_Cannon.bnk</Path>
@@ -93,15 +93,15 @@
 				</Custom>
 			</Plugins>
 			<Events>
-				<Event Id="482738278" Name="Barricade_Damaged" ObjectPath="\Events\SFX\Barricade\Barricade_Damaged" GUID="{3D5106B6-DB52-4CAD-8B67-C5FA9BAE909C}" Color="10" DurationType="OneShot" DurationMin="2.8614166" DurationMax="2.8614166">
+				<Event Id="482738278" Name="Barricade_Damaged" ObjectPath="\Events\SFX\Barricade\Barricade_Damaged" GUID="{3D5106B6-DB52-4CAD-8B67-C5FA9BAE909C}" Color="10" MaxAttenuation="50" DurationType="OneShot" DurationMin="2.8614166" DurationMax="2.8614166">
 					<MediaRefs>
 						<MediaRef Id="1021233491"/>
 					</MediaRefs>
 					<ActionPostEvent>
-						<ActionPostEventEntry Id="3840667520" Name="Brick_Fall" ObjectPath="\Events\SFX\Barricade\Brick_Fall" GUID="{420BB33C-4BFB-4756-92E0-198AC47BDC12}" Color="10"/>
+						<ActionPostEventEntry Id="1055531900" Name="Brick_Fall_Group" ObjectPath="\Events\SFX\Barricade\Brick_Fall_Group" GUID="{F081660D-EA6F-4934-A40D-84D54F31538E}" Color="10"/>
 					</ActionPostEvent>
 				</Event>
-				<Event Id="3840667520" Name="Brick_Fall" ObjectPath="\Events\SFX\Barricade\Brick_Fall" GUID="{420BB33C-4BFB-4756-92E0-198AC47BDC12}" Color="10" DurationType="OneShot" DurationMin="0.078854166" DurationMax="0.46533334">
+				<Event Id="3840667520" Name="Brick_Fall" ObjectPath="\Events\SFX\Barricade\Brick_Fall" GUID="{420BB33C-4BFB-4756-92E0-198AC47BDC12}" Color="10" MaxAttenuation="25" DurationType="OneShot" DurationMin="0.078854166" DurationMax="0.46533334">
 					<SwitchContainers>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="459611840" Id="998496889" GUID="{0E917C72-AA5E-4F81-8F09-69B5A910E6E0}"/>
@@ -133,6 +133,11 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
+				<Event Id="1055531900" Name="Brick_Fall_Group" ObjectPath="\Events\SFX\Barricade\Brick_Fall_Group" GUID="{F081660D-EA6F-4934-A40D-84D54F31538E}" Color="10" MaxAttenuation="25" DurationType="OneShot" DurationMin="0" DurationMax="0">
+					<ActionPostEvent>
+						<ActionPostEventEntry Id="3840667520" Name="Brick_Fall" ObjectPath="\Events\SFX\Barricade\Brick_Fall" GUID="{420BB33C-4BFB-4756-92E0-198AC47BDC12}" Color="10"/>
+					</ActionPostEvent>
+				</Event>
 				<Event Id="2469499398" Name="Cannon_Shoot" ObjectPath="\Events\SFX\Cannon\Cannon_Shoot" GUID="{91A29903-C449-45A3-830D-63BA22BF8416}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.6793785" DurationMax="1.6793785">
 					<MediaRefs>
 						<MediaRef Id="891776346"/>
@@ -144,7 +149,6 @@
 					</PluginRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
-						<AuxBusRef Id="243379636" Name="Reflect" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Reflect" GUID="{04F7D06B-345E-4E79-A37C-C8DFED092590}"/>
 						<AuxBusRef Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10"/>
 					</AuxBusRefs>
 					<ActionPostEvent>
@@ -163,5 +167,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{A72E381A-5CAA-ECE3-87B4-66BF1427FB89}</FileHash>
+	<FileHash>{72A5D38F-B026-16F8-CD82-A2A67C2D86F4}</FileHash>
 </SoundBanksInfo>

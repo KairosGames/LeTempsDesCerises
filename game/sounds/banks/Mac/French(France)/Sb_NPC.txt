@@ -5,10 +5,12 @@ Event	ID	Name			Wwise Object Path	Notes
 	535045682	Ally_Cannon_Advance			\VX\Ally\Ally_Cannon_Advance	
 	1050776119	Enemy_Shoot			\SFX\Enemy\Enemy_Shoot	
 	1135788384	Ally_Player_Hidden			\VX\Ally\Ally_Player_Hidden	
+	1218331013	Choose_Fight			\VX\Ally\Choose_Fight	
 	1337332127	Ally_Player_Far			\VX\Ally\Ally_Player_Far	
 	1707855831	Ally_Ally_Death			\VX\Ally\Ally_Ally_Death	
 	1807735670	Enemy_Cannon_Advance			\VX\Enemy\Enemy_Cannon_Advance	
 	2376509257	Enemy_Voice_Cancel			\VX\Enemy\Enemy_Voice_Cancel	
+	2467968637	Choose_Surrender			\VX\Ally\Choose_Surrender	
 	2988219764	Ally_Player_Kill			\VX\Ally\Ally_Player_Kill	
 	3014529809	Ally_Barricade_State			\VX\Ally\Ally_Barricade_State	
 	3114531655	Enemy_Steps			\SFX\Enemy\Enemy_Steps	
@@ -20,10 +22,19 @@ Event	ID	Name			Wwise Object Path	Notes
 	3891079404	Enemy_Cannon_Incoming			\VX\Enemy\Enemy_Cannon_Incoming	
 
 Switch Group	ID	Name			Wwise Object Path	Notes
+	436743010	Character			\Default Work Unit\Character	
 	1117085073	Character_Type			\Default Work Unit\Character_Type	
 	1834394558	Surface			\Default Work Unit\Surface	
 
 Switch	ID	Name	Switch Group			Notes
+	652153290	Jules	Character			
+	784127654	Null	Character			
+	918100373	Michel	Character			
+	1274621345	Marie	Character			
+	2519917785	Georges	Character			
+	2926082704	Louise	Character			
+	3484216754	Francois	Character			
+	3942830996	Officier	Character			
 	408582737	Type6	Character_Type			
 	408582738	Type5	Character_Type			
 	408582739	Type4	Character_Type			
@@ -36,9 +47,47 @@ Switch	ID	Name	Switch Group			Notes
 	2473969246	Metal	Surface			
 
 State Group	ID	Name			Wwise Object Path	Notes
+	212893962	narrative_step			\Default Work Unit\narrative_step	
 	3394146252	barricade_state			\Default Work Unit\barricade_state	
 
 State	ID	Name	State Group			Notes
+	748895195	None	narrative_step			
+	846646256	_0	narrative_step			
+	846646257	_1	narrative_step			
+	846646258	_2	narrative_step			
+	846646259	_3	narrative_step			
+	846646260	_4	narrative_step			
+	846646261	_5	narrative_step			
+	846646262	_6	narrative_step			
+	846646263	_7	narrative_step			
+	846646264	_8	narrative_step			
+	846646265	_9	narrative_step			
+	1644366928	_13	narrative_step			
+	1644366929	_12	narrative_step			
+	1644366930	_11	narrative_step			
+	1644366931	_10	narrative_step			
+	1644366932	_17	narrative_step			
+	1644366933	_16	narrative_step			
+	1644366934	_15	narrative_step			
+	1644366935	_14	narrative_step			
+	1644366938	_19	narrative_step			
+	1644366939	_18	narrative_step			
+	1661144512	_26	narrative_step			
+	1661144513	_27	narrative_step			
+	1661144514	_24	narrative_step			
+	1661144515	_25	narrative_step			
+	1661144516	_22	narrative_step			
+	1661144517	_23	narrative_step			
+	1661144518	_20	narrative_step			
+	1661144519	_21	narrative_step			
+	1661144526	_28	narrative_step			
+	1661144527	_29	narrative_step			
+	1677922232	_31	narrative_step			
+	1677922233	_30	narrative_step			
+	1677922234	_33	narrative_step			
+	1677922235	_32	narrative_step			
+	1677922236	_35	narrative_step			
+	1677922237	_34	narrative_step			
 	231230354	broken	barricade_state			
 	545371365	low	barricade_state			
 	748895195	None	barricade_state			
@@ -49,7 +98,9 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	2103536148	Bark_Volume			\Default Work Unit\Bark_Volume	
 
 Effect plug-ins	ID	Name	Type				Notes
+	537703978	Dialog_Leveler_Hard (Custom)	Wwise Compressor			
 	807526038	Meter (Custom)	Wwise Meter			
+	1065011977	Meter (Custom)	Wwise Meter			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	60230	VX_Bar_F_Comm_Worker_Cannon_Fired_Yuna-004	.cache\84\{84FFF277-1AB6-8CB4-60FB-F24D0229D657}.wem		\Containers\VX\NPC\Communard\Cannon_Fire\Yuna\VX_Bar_F_Comm_Worker_Cannon_Fired_Yuna-004		7681
@@ -99,6 +150,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	220576500	LTDC_SFX_Bullet_Hit_LayerWood_Random_2	.cache\55\{55CE836F-C22A-3B8E-078D-D55ADF0927EA}.wem		\Containers\SFX\Characters\NPC\Bullet_Hit\Bullet_Hit_Surface\Bullet_Hit_Wood\LTDC_SFX_Bullet_Hit_LayerWood_Random_2		1665
 	222661506	VX_Bar_F_Comm_Worker_Cannon_Advance_Atéa-001	.cache\0F\{0F59F31A-8D73-E767-A79E-7A8073EE041F}.wem		\Containers\VX\NPC\Communard\Cannon_Advance\Atéa\VX_Bar_F_Comm_Worker_Cannon_Advance_Atéa-001		7713
 	225940071	VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-003	.cache\23\{235D9C01-C976-7DCE-2C09-A4C13EEBFAD8}.wem		\Containers\VX\NPC\Versaillais\Cannon_Incoming\Séverin\VX_Bar_M_Vers_Military_Cannon_Incoming_Severin-003		7733
+	229724527	VX_Amb_F_Comm_Louise_Game_End_Choice_2_Atea	.cache\95\{95801532-0367-9975-0EB2-25E2961B4369}.wem		\Containers\VX\Scripted\Character\Louise\VX_Amb_F_Comm_Louise_Game_End_Choice_2_Atea		10529
 	240885231	VX_Bar_F_Comm_Worker_Ally_Death_Zoé-003	.cache\3C\{3CBDFEC4-062E-CE6D-31D5-168C4B81D5C9}.wem		\Containers\VX\NPC\Communard\Ally_Death\Zoé\VX_Bar_F_Comm_Worker_Ally_Death_Zoé-003		10234
 	242078184	VX_Bar_M_Vers_Military_Cannon_Fired_Severin-001	.cache\91\{91247732-86CA-B1BD-7A4E-213677E0052B}.wem		\Containers\VX\NPC\Versaillais\Cannon_Fire\Séverin\VX_Bar_M_Vers_Military_Cannon_Fired_Severin-001		4573
 	243563591	VX_Bar_M_Vers_Military_Cannon_Fired_Tom-003	.cache\33\{33DA2B5C-F143-0174-B70C-363A028D8005}.wem		\Containers\VX\NPC\Versaillais\Cannon_Fire\Tom\VX_Bar_M_Vers_Military_Cannon_Fired_Tom-003		5188
@@ -198,6 +250,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	598950337	VX_Bar_F_Comm_Worker_Cannon_Fired_Atéa-001	.cache\7E\{7ECA2564-5797-744F-FCC2-59446EAC1D91}.wem		\Containers\VX\NPC\Communard\Cannon_Fire\Atéa\VX_Bar_F_Comm_Worker_Cannon_Fired_Atéa-001		6757
 	604840517	VX_Bar_F_Comm_Worker_Cannon_Incoming_Zoé-005	.cache\27\{27ACD603-7801-2716-DFE1-1AD365166205}.wem		\Containers\VX\NPC\Communard\Cannon_Incoming\Zoé\VX_Bar_F_Comm_Worker_Cannon_Incoming_Zoé-005		7590
 	607437853	VX_Bar_M_Comm_Worker_Player_Far_Loris-002	.cache\F5\{F5EC995A-9692-C5A1-9AC5-39C36CA239C4}.wem		\Containers\VX\NPC\Communard\Player_Far\Loris\VX_Bar_M_Comm_Worker_Player_Far_Loris-002		8568
+	609858295	VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris	.cache\61\{613CA299-FF18-ACFE-81BA-B494355C5FB2}.wem		\Containers\VX\Scripted\Character\François\VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris		11208
 	611884418	VX_Bar_F_Comm_Military_Barricade_Destroyed_Yuna-004	.cache\E3\{E3E91600-8E0B-F1B2-F4AD-DEF4666B03FA}.wem		\Containers\VX\NPC\Communard\Barricade_State\Barricade_Destroyed\Yuna\VX_Bar_F_Comm_Military_Barricade_Destroyed_Yuna-004		7399
 	613483839	VX_Bar_M_Comm_Worker_Cannon_Incoming_Thomas-005	.cache\0E\{0EFAC77B-D060-E3AF-1F87-0F563D81C9F6}.wem		\Containers\VX\NPC\Communard\Cannon_Incoming\Thomas\VX_Bar_M_Comm_Worker_Cannon_Incoming_Thomas-005		7491
 	616826237	VX_Bar_F_Comm_Worker_Player_Kill_Atéa-002	.cache\14\{14CBC6AC-31AB-992E-9A2A-0EB8A6ED370F}.wem		\Containers\VX\NPC\Communard\Player_Kill\Atéa\VX_Bar_F_Comm_Worker_Player_Kill_Atéa-002		6325
