@@ -8,6 +8,7 @@ class_name SpawnManager extends Node
 
 const VERSAILLAIS: PackedScene = preload("uid://d28tbnqpob3um")
 const COMMUNARD: PackedScene  = preload("uid://dydlynqmwu5n5")
+const COMMUNARDE: PackedScene = preload("uid://dyb4rmt0oj7ex")
 
 var _entity_count: int = 0
 
@@ -54,7 +55,7 @@ func _process_spawn() -> void:
 			var prefab: PackedScene
 			match team:
 				Agent.Team.VERSAILLAIS: prefab = VERSAILLAIS
-				Agent.Team.COMMUNARD: prefab = COMMUNARD
+				Agent.Team.COMMUNARD: prefab = COMMUNARD if randf() < spawner.sexe else COMMUNARDE
 			var agent: Agent = prefab.instantiate()
 			agent.cover = spawner
 			agent.position = spawner.global_position
