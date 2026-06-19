@@ -5,14 +5,16 @@ signal impact_from_shoot(position: Vector3, direction, is_body: bool)
 
 enum EffectType {
 	PlayerShoot,
-	PnjShoot
+	PnjShoot,
+	BloodImpact
 }
 
 @export var instances_per_pool: int = 20
 
 var EFFECT_PREFABS: Dictionary[EffectType, PackedScene] = {
 	EffectType.PlayerShoot: preload("uid://cbwpfvcia7dju"),
-	EffectType.PnjShoot: preload("uid://ckpkymdprs6dq")
+	EffectType.PnjShoot: preload("uid://ckpkymdprs6dq"),
+	EffectType.BloodImpact: preload("uid://darpef6scnnu0")
 }
 
 var effects_list_dic: Dictionary[EffectType, Array]

@@ -155,7 +155,8 @@ scale_curve = SubResource("CurveTexture_dig0m")
 color = Color(0.8483372, 0.7481818, 0.74633175, 1)
 alpha_curve = SubResource("CurveTexture_hkauq")
 
-[sub_resource type="Animation" id="Animation_enct5"]
+[sub_resource type="Animation" id="Animation_uaawe"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -195,7 +196,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_ee2jh"]
-resource_name = "anim_weapon_fire_other_2"
+resource_name = "play"
 length = 9.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -250,8 +251,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ee2jh"]
 _data = {
-&"RESET": SubResource("Animation_enct5"),
-&"anim_vfx_weapon_fire_self": SubResource("Animation_ee2jh")
+&"RESET": SubResource("Animation_uaawe"),
+&"play": SubResource("Animation_ee2jh")
 }
 
 [node name="vfx_player_shot" type="Node3D" unique_id=7534225 node_paths=PackedStringArray("animationPlayer")]

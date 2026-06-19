@@ -20,6 +20,7 @@ signal move_stoped
 @onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Chest, $ShootTargets/Head]
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 
+
 var is_disabled: bool = false
 var has_enemy_in_range: bool = false
 var can_die: bool = true
@@ -115,6 +116,7 @@ func die() -> void:
 	is_alive = false
 	is_pushing_canon = false
 	dying.emit()
+	collider.disabled = true
 	set_collision_layer_value(3, false)
 	navigation.stop()
 	cover = null

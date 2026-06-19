@@ -9,9 +9,6 @@ signal reloaded
 @onready var focus_pin: Sprite2D = %FocusPin
 @onready var path1: Path2D = %Path1
 @onready var path2: Path2D = %Path2
-@onready var pos1: Control = %ReloadPos1
-@onready var pos2: Control = %ReloadPos2
-@onready var pos3: Control = %ReloadPos3
 @onready var chassepot: Chassepot = %Chassepot
 
 @export_category("Reload Settings")

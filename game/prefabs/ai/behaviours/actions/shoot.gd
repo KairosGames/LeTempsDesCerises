@@ -43,23 +43,23 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
 	if raycast.is_colliding():
 		var collider: Object = raycast.get_collider()
+		var position: Vector3 = raycast.get_collision_point()
+		var direction: Vector3 = raycast.get_collision_normal()
+		var rot: Vector3 = Basis.looking_at(direction.normalized(), Vector3.UP, true).get_euler()
 		if collider is Player:
 			var player: Player = collider as Player
 			if not player.can_die: player.missed_by_enemy.emit()
 			if player.is_immortal: player.missed_by_enemy.emit()
 			if agent.team == Agent.Team.COMMUNARD: player.missed_by_enemy.emit()
 			else:
+				if player.can_die and not player.is_immortal: EffectsManager.instance.play_effect(EffectsManager.EffectType.BloodImpact, position, rot)
 				(collider as Player).die()
 				_vagueness = 1.0
 		elif collider is Agent:
+			if collider.can_die: EffectsManager.instance.play_effect(EffectsManager.EffectType.BloodImpact, position, rot)
 			(collider as Agent).die()
 			_vagueness = 1.0
-			var position: Vector3 = raycast.get_collision_point()
-			var direction: Vector3 = raycast.get_collision_normal()
-			EffectsManager.instance.impact_from_shoot.emit(position, direction, true)
 		else:
-			var position: Vector3 = raycast.get_collision_point()
-			var direction: Vector3 = raycast.get_collision_normal()
 			EffectsManager.instance.impact_from_shoot.emit(position, direction, false)
 		return SUCCESS
 

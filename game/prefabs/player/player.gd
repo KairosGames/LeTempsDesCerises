@@ -1046,6 +1046,7 @@ func handle_shoot_cast() -> void:
 	var obj: Object = weapon_ray_cast.get_collider()
 	var coll: Vector3 = weapon_ray_cast.get_collision_point()
 	var dir: Vector3 = weapon_container.global_rotation
+	var rot: Vector3 = Basis.looking_at(dir.normalized(), Vector3.UP, true).get_euler()
 	var eff_manager: EffectsManager = EffectsManager.instance
 	
 	if not obj:
@@ -1059,23 +1060,15 @@ func handle_shoot_cast() -> void:
 		pass
 	elif obj is Agent:
 		obj.die()
+		if eff_manager: eff_manager.play_effect(EffectsManager.EffectType.BloodImpact, coll, dir)
 		if obj.team == Agent.Team.COMMUNARD:
-			if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, true)
 			print("Communard touched !")
 			ally_shot.emit()
 			return
 		enemy_shot.emit(obj as Node3D)
-		if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, true)
 		print("Versaillais touched !")
 	elif obj is ShootTarget:
-		if obj.is_ally:
-			ally_shot.emit()
-			if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, false)
-			print("Communard touched !")
-			return
-		enemy_shot.emit(obj as Node3D)
-		if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, false)
-		print("Versaillais touched !")
+		print("Target shot")
 
 
 func handle_reload() -> void:
