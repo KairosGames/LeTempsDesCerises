@@ -22,12 +22,9 @@ transform = Transform3D(-0.99952567, -0.013330617, 0.025031134, -0.014193049, 0.
 
 [node name="Versaillais" parent="BeehaveTree/BeAlive" parent_id_path=PackedInt32Array(1853354031) index="2" unique_id=451543637 instance=ExtResource("2_uhkv7")]
 
-[node name="ak_enemy_manager" parent="." index="8" unique_id=1364272514 node_paths=PackedStringArray("versaillais") groups=["ak_enemy"] instance=ExtResource("3_2c3ib")]
+[node name="ak_enemy_manager" parent="." index="9" unique_id=1364272514 node_paths=PackedStringArray("versaillais") groups=["ak_enemy"] instance=ExtResource("3_2c3ib")]
 versaillais = NodePath("..")
 
 [connection signal="died" from="." to="ak_enemy_manager" method="_on_versaillais_died"]
 [connection signal="dying" from="." to="ak_enemy_manager" method="_on_versaillais_dying"]
 [connection signal="shoot" from="." to="ak_enemy_manager" method="_on_versaillais_shoot"]
-
-[editable path="Body"]
-[editable path="Body/Armature/Skeleton3D/Weapon/sk_chassepot"]
