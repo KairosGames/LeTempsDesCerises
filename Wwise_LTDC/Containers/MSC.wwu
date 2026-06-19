@@ -6379,15 +6379,20 @@
 				<MusicSwitchContainer Name="Main_GP_MusicV2" ID="{CF69614C-4F7A-4DD3-B0F4-9A286322C29A}" ShortID="898037981">
 					<PropertyList>
 						<Property Name="3DSpatialization" Type="int16" Value="2"/>
-						<Property Name="BelowThresholdBehavior" Type="int16" Value="2"/>
 						<Property Name="Priority" Type="int16">
 							<ValueList>
 								<Value>80</Value>
 							</ValueList>
 						</Property>
+						<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="70"/>
 						<Property Name="Tempo" Type="Real64" Value="158"/>
 						<Property Name="TimeSignatureLower" Type="int16" Value="8"/>
 						<Property Name="TimeSignatureUpper" Type="int16" Value="12"/>
+						<Property Name="UserAuxSendVolume1" Type="Real64">
+							<ValueList>
+								<Value>-96</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Attenuation">
@@ -6509,12 +6514,6 @@
 									<TransitionInfo/>
 								</MusicTransition>
 							</Custom>
-						</Reference>
-						<Reference Name="UserAuxSend0">
-							<ObjectRef Name="Music_Rev" ID="{A12D3D2A-E2E7-49E7-80D3-5AC252A96818}" WorkUnitID="{3EE695F8-7F6E-4BE8-B1D1-D1CCBEC0C323}"/>
-						</Reference>
-						<Reference Name="UserAuxSend1">
-							<ObjectRef Name="Music_Rev_Barricade" ID="{5EB3D779-27CC-424A-A22B-8E1056D211F3}" WorkUnitID="{3EE695F8-7F6E-4BE8-B1D1-D1CCBEC0C323}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -6784,7 +6783,7 @@
 											<MusicCue Name="Exit Cue" ID="{BDEC90F4-42CC-4950-B81E-9E038D784D22}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="35126.582278481"/>
+													<Property Name="TimeMs" Type="Real64" Value="34936.7088607595"/>
 												</PropertyList>
 											</MusicCue>
 											<MusicCue Name="C1-1" ID="{83483C0C-214D-4FE9-A79B-AB68E9975924}">
@@ -7179,6 +7178,7 @@
 									<ChildrenList>
 										<MusicTrack Name="C2_Percussion" ID="{01275E27-A29B-4318-86F3-E7FAB63F71DE}" ShortID="1039765743">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -7186,13 +7186,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -7642,7 +7641,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -7787,7 +7786,7 @@
 											<MusicCue Name="Exit Cue" ID="{8CBFE1D8-3581-4875-BA5D-8CC92B31ECD8}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="35126.582278481"/>
+													<Property Name="TimeMs" Type="Real64" Value="34936.7088607595"/>
 												</PropertyList>
 											</MusicCue>
 											<MusicCue Name="C2-1" ID="{850A92A0-F6A4-42E6-BF7B-7B9D802C8BAC}">
@@ -8145,7 +8144,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -8281,6 +8280,7 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Percussion1_R2" ID="{D04E74CF-4BDA-47BE-A9BC-43D632FA73FD}" ShortID="810166905">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -8288,13 +8288,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -8642,7 +8641,11 @@
 													</CustomState>
 													<CustomState>
 														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
-														<CustomState Name="" ID="{B9930C3B-B2D3-419F-8DE9-F879C18CED0D}" ShortID="889712569"/>
+														<CustomState Name="" ID="{B9930C3B-B2D3-419F-8DE9-F879C18CED0D}" ShortID="889712569">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
 													</CustomState>
 													<CustomState>
 														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
@@ -8875,6 +8878,7 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Percussion1_C3" ID="{22896364-340B-4E6E-917E-1F11C2FE6084}" ShortID="448146817">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -8882,13 +8886,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -9588,7 +9591,11 @@
 													</CustomState>
 													<CustomState>
 														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
-														<CustomState Name="" ID="{295B368E-678C-47D1-93E6-75FCD1CAD2D1}" ShortID="266505469"/>
+														<CustomState Name="" ID="{295B368E-678C-47D1-93E6-75FCD1CAD2D1}" ShortID="266505469">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
 													</CustomState>
 													<CustomState>
 														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
@@ -9674,7 +9681,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -10558,7 +10565,7 @@
 											<MusicCue Name="Exit Cue" ID="{886EC515-3499-469B-83D2-F4363B1857BE}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="35126.582278481"/>
+													<Property Name="TimeMs" Type="Real64" Value="34746.835443038"/>
 												</PropertyList>
 											</MusicCue>
 											<MusicCue Name="C3-1" ID="{9919BA1C-D691-43A0-86F3-1AF715B5BBAC}">
@@ -11798,7 +11805,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -11934,6 +11941,7 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Percussion1_C4" ID="{8EF4943A-D398-48BB-AD89-B62A64033822}" ShortID="301358547">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -11941,13 +11949,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -12285,7 +12292,7 @@
 											<MusicCue Name="Exit Cue" ID="{94A7A422-EAAC-4C8A-8AF6-4DF8BAAB8748}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="35126.582278481"/>
+													<Property Name="TimeMs" Type="Real64" Value="34746.835443038"/>
 												</PropertyList>
 											</MusicCue>
 											<MusicCue Name="C4-1" ID="{FDD7F606-6BDA-49BE-AC62-CBF069CEE861}">
@@ -12321,6 +12328,7 @@
 									<ChildrenList>
 										<MusicTrack Name="SmS_Percussion1_R3" ID="{071CEFBF-D631-4394-89E2-601BDA4A09A5}" ShortID="201716218">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -12328,13 +12336,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -13082,7 +13089,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -14436,7 +14443,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -15160,6 +15167,7 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Percussion1_R4" ID="{9F7DDA52-CB64-40AE-AEF2-C1060876DA52}" ShortID="545421238">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -15167,13 +15175,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -16612,7 +16619,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -17058,14 +17065,21 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Tambour_C5" ID="{17ACA581-B62C-4E74-9679-CA828B3E977D}" ShortID="904741757">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -17097,6 +17111,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{34E28245-46E3-48BB-8427-934B9307F07D}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -17643,7 +17660,7 @@
 											<MusicCue Name="Exit Cue" ID="{6B975DEA-DB32-4079-8DFA-2BAC4ED1CB59}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="35126.582278481"/>
+													<Property Name="TimeMs" Type="Real64" Value="34936.7088607595"/>
 												</PropertyList>
 											</MusicCue>
 											<MusicCue Name="C5-1" ID="{89BF6A9B-B9B0-4C8C-9F36-25C2BCEF42F2}">
@@ -18263,14 +18280,21 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Tambour_R5" ID="{67366C43-3890-48F9-BBA0-E1B38D759BF9}" ShortID="52137220">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -18302,6 +18326,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{4469484E-5DDE-44B1-AC1F-64323EBA9F35}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -19219,7 +19246,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -19660,25 +19687,25 @@
 										<ObjectList Name="Cues">
 											<MusicCue Name="Entry Cue" ID="{FEF89492-B1B2-4D51-8EE6-6F94C14FEE8F}">
 												<PropertyList>
-													<Property Name="TimeMs" Type="Real64" Value="569.620253164557"/>
+													<Property Name="TimeMs" Type="Real64" Value="379.746835443038"/>
 												</PropertyList>
 											</MusicCue>
 											<MusicCue Name="Exit Cue" ID="{9A039755-6D31-4F75-A7F6-0BF443047085}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="23354.4303797469"/>
+													<Property Name="TimeMs" Type="Real64" Value="23164.5569620254"/>
 												</PropertyList>
 											</MusicCue>
 											<MusicCue Name="EndPhase2" ID="{69C0C5B5-8DCA-40B3-B085-1600F03904B2}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
-													<Property Name="TimeMs" Type="Real64" Value="23354.4303797469"/>
+													<Property Name="TimeMs" Type="Real64" Value="23164.5569620254"/>
 												</PropertyList>
 											</MusicCue>
 											<MusicCue Name="C6" ID="{90A45BB6-36D0-4475-BA2B-EDBD8D06DA2C}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="2"/>
-													<Property Name="TimeMs" Type="Real64" Value="23164.5569620253"/>
+													<Property Name="TimeMs" Type="Real64" Value="22974.6835443038"/>
 												</PropertyList>
 											</MusicCue>
 										</ObjectList>
@@ -19958,6 +19985,8 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Tambour_C6" ID="{DC27BA39-6F34-4C7F-BF2A-27F0C0A1CFCB}" ShortID="635030759">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -19965,13 +19994,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-9</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -20003,6 +20031,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{9AED4D0C-F62C-42D0-81F9-013D9C8F2AC3}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -21413,6 +21444,11 @@
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
@@ -22077,6 +22113,11 @@
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
@@ -23317,6 +23358,8 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Tambour_R6" ID="{6BC79F87-A8E1-4F2F-AD8C-7AB2CEEB24DB}" ShortID="10077181">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -23324,13 +23367,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-9</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -23362,6 +23404,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{9F179435-6646-40C0-86BF-C5FB667BD953}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -24495,6 +24540,11 @@
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
@@ -25608,6 +25658,8 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Tambour_C7" ID="{B7442A05-29A4-4420-BB44-B93DE76686DE}" ShortID="123857335">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -25615,13 +25667,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-9</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -25653,6 +25704,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{DC6EBFCA-983E-434C-851B-B9CB51BF0E26}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -26585,6 +26639,8 @@
 									<ChildrenList>
 										<MusicTrack Name="SmS_Tambour_R7" ID="{9273E532-911D-4778-A1F2-5DBE578F3AC1}" ShortID="694222233">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -26592,13 +26648,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-9</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -26630,6 +26685,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{5724DCD3-2519-4CF8-AB8D-170F26813672}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -28189,6 +28247,11 @@
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
@@ -28843,6 +28906,7 @@
 									<ChildrenList>
 										<MusicTrack Name="SmS_Percussion1_R2" ID="{A6E39780-B81F-4E02-9C08-4F7EDD5FB97B}" ShortID="698881371">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -28850,13 +28914,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -29498,6 +29561,8 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Tambour_C6" ID="{01E0F276-E4DA-41CE-AF27-02E37E270F05}" ShortID="763629904">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -29505,13 +29570,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-9</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -29543,6 +29607,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{796DCD56-3A3D-4A84-9510-C1682D874B98}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -30511,6 +30578,11 @@
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
@@ -31428,6 +31500,8 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Tambour_R6" ID="{D1A39868-B0CC-43C0-9934-9D224556B968}" ShortID="1060067013">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -31435,13 +31509,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-9</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -31473,6 +31546,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{C2318FE3-553D-41A4-9459-99DCE9A62FEE}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -32519,6 +32595,11 @@
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
@@ -32652,6 +32733,7 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Percussion1_C3" ID="{CB03AFC1-43EC-49F5-A5BA-177AB76F5408}" ShortID="589103504">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -32659,13 +32741,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -34214,6 +34295,7 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Percussion1_C4" ID="{D2E68524-3E22-4254-9A14-6ECA24CFB6B2}" ShortID="552071167">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -34221,13 +34303,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -34500,6 +34581,11 @@
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
@@ -35801,6 +35887,7 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Percussion1_R3" ID="{5A483F66-E4CC-4CD4-BC52-6D4E6047CA2F}" ShortID="99525070">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -35808,13 +35895,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -35948,6 +36034,11 @@
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
@@ -37368,6 +37459,7 @@
 									<ChildrenList>
 										<MusicTrack Name="SmS_Percussion1_R4" ID="{9AD11103-220A-40A1-BEEE-ACDE08465F14}" ShortID="980726085">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
@@ -37375,13 +37467,12 @@
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
-												<Property Name="Volume" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -37654,6 +37745,11 @@
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="OutputBus">
@@ -38976,7 +39072,7 @@
 							<ChildrenList>
 								<MusicSegment Name="C2-1_Inst_Voice_Sel" ID="{4CC6FCB4-EF46-4F42-B9A9-BBEAE9B1FF23}" ShortID="995953252">
 									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="36246.8317510549"/>
+										<Property Name="EndPosition" Type="Real64" Value="50998.1669849176"/>
 										<Property Name="Tempo" Type="Real64" Value="158"/>
 										<Property Name="TimeSignatureLower" Type="int16" Value="8"/>
 										<Property Name="TimeSignatureUpper" Type="int16" Value="12"/>
@@ -38992,6 +39088,7 @@
 									<ChildrenList>
 										<MusicTrack Name="C2_Percussion" ID="{F0ED8B3E-FCB7-45C1-8020-C96AB2444A6C}" ShortID="28104226">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="Inclusion" Type="bool">
 													<ValueList>
 														<Value>False</Value>
@@ -39003,8 +39100,13 @@
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -39454,7 +39556,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -39590,14 +39692,21 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Tambour_C5" ID="{C3B52F3F-871D-4915-BB8E-EDB9CC281F57}" ShortID="33419828">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -39629,6 +39738,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{21A5CB97-5487-45E9-ACAD-F5C981C4E46E}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -39895,7 +40007,7 @@
 											<MusicCue Name="Exit Cue" ID="{9E4A9F41-E7C0-4BDE-86AE-B2F3982CD4CB}">
 												<PropertyList>
 													<Property Name="CueType" Type="int16" Value="1"/>
-													<Property Name="TimeMs" Type="Real64" Value="35126.582278481"/>
+													<Property Name="TimeMs" Type="Real64" Value="34936.7088607595"/>
 												</PropertyList>
 											</MusicCue>
 											<MusicCue Name="C2-1" ID="{D9EB5D04-D3B1-4BB4-90C5-F5D7AD3AADE5}">
@@ -40253,7 +40365,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -40389,6 +40501,7 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Percussion1_R2" ID="{8A58F79F-62AE-4C04-9794-63C4F0389106}" ShortID="1045978509">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
 												<Property Name="Inclusion" Type="bool">
 													<ValueList>
 														<Value>False</Value>
@@ -40400,8 +40513,13 @@
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="50"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -40529,14 +40647,21 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Tambour_R5" ID="{F85DDB2D-F92D-4D1F-974B-991D8D4B640B}" ShortID="323345392">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -40568,6 +40693,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{C4A83836-4652-4909-AD4C-8E7C83CE5D52}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -41197,7 +41325,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -41333,14 +41461,21 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Tambour_C5" ID="{7A636EC6-AA80-4358-A4C4-A237E72B6EA5}" ShortID="28440652">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -41372,6 +41507,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{0B8D936B-76CA-4071-AD87-0E8AAA853809}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -41840,7 +41978,7 @@
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
 												<Property Name="Volume" Type="Real64">
 													<ValueList>
-														<Value>3</Value>
+														<Value>6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -41976,14 +42114,21 @@
 										</MusicTrack>
 										<MusicTrack Name="SmS_Tambour_R5" ID="{223F464F-A5D5-4422-9227-59CF4B7879F9}" ShortID="856561851">
 											<PropertyList>
+												<Property Name="3DSpatialization" Type="int16" Value="1"/>
+												<Property Name="AttenuationDistanceScaling" Type="Real32" Value="1.5"/>
 												<Property Name="IsStreamingEnabled" Type="bool">
 													<ValueList>
 														<Value>True</Value>
 													</ValueList>
 												</Property>
 												<Property Name="MusicTrackType" Type="int16" Value="3"/>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
+												<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="40"/>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Attenuation">
+													<ObjectRef Name="Main_Music_Attenuation" ID="{7C4CEC2F-19FE-4970-9C4D-4EFE54B731A9}" WorkUnitID="{FF3700DA-ED93-46C7-AB32-8C6308252E45}"/>
+												</Reference>
 												<Reference Name="OutputBus">
 													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 												</Reference>
@@ -42015,6 +42160,9 @@
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
+											<PositioningInfo>
+												<Panner Name="" ID="{48F04109-F4FE-4567-8C9C-B93962967E21}"/>
+											</PositioningInfo>
 											<StateInfo>
 												<StateGroupList>
 													<StateGroupInfo>
@@ -43307,6 +43455,9 @@
 							</ChildrenList>
 						</MusicPlaylistContainer>
 					</ChildrenList>
+					<PositioningInfo>
+						<Panner Name="" ID="{62B2A1EC-127A-45A8-93AA-266D456FF241}"/>
+					</PositioningInfo>
 					<StateInfo>
 						<StatePropertyList>
 							<Property Name="Highpass"/>
@@ -43493,29 +43644,29 @@
 									</Reference>
 								</ReferenceList>
 							</RTPC>
-							<RTPC Name="" ID="{56E6B20B-C433-4329-8300-A9CF09FF335C}" ShortID="580746412">
+							<RTPC Name="" ID="{F1461D74-64D4-44AD-B1ED-180E7CA5BC71}" ShortID="971966762">
 								<PropertyList>
-									<Property Name="PropertyName" Type="string" Value="UserAuxSendVolume0"/>
+									<Property Name="PropertyName" Type="string" Value="SpeakerPanning3DSpatializationMix"/>
 								</PropertyList>
 								<ReferenceList>
 									<Reference Name="ControlInput">
-										<ObjectRef Name="Distance" ID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+										<ObjectRef Name="DiegeticAmount" ID="{16D56ABA-E648-4755-84DA-92772451D748}" WorkUnitID="{27C8EC13-A10B-4C99-B50C-AF9FB75B6D3C}"/>
 									</Reference>
 									<Reference Name="Curve">
 										<Custom>
-											<Curve Name="" ID="{8A9C3F5F-5249-466D-A41E-1398AF79EF3A}">
+											<Curve Name="" ID="{23E9DC59-2EFE-4434-9935-D7442AD00BC7}">
 												<PropertyList>
-													<Property Name="Flags" Type="int32" Value="3"/>
+													<Property Name="Flags" Type="int32" Value="65537"/>
 												</PropertyList>
 												<PointList>
 													<Point>
 														<XPos>0</XPos>
-														<YPos>-200</YPos>
+														<YPos>100</YPos>
 														<Flags>5</Flags>
 													</Point>
 													<Point>
 														<XPos>100</XPos>
-														<YPos>0</YPos>
+														<YPos>100</YPos>
 														<Flags>37</Flags>
 													</Point>
 												</PointList>
