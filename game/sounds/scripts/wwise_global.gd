@@ -16,7 +16,9 @@ var reload_gate : bool = false
 var bypass_line : bool = false
 
 func _ready() -> void:
-	await get_tree().create_timer(1).timeout
+	ready_deferred.call_deferred()
+
+func ready_deferred() -> void:
 	game_manager = GameManager.instance
 	if game_manager and game_manager.use_narrative:
 		game_manager.clicked_pause.connect(pause)
