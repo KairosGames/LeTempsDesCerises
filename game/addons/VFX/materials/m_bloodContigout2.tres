@@ -1,0 +1,32 @@
+[gd_resource type="ShaderMaterial" load_steps=10 format=3 uid="uid://ectbi2ei8bkd"]
+
+[ext_resource type="Shader" uid="uid://s5a4hvjvojyt" path="res://VFX/shaders/s_Disolver_Liquid_Treshold.tres" id="1_nvxqi"]
+[ext_resource type="Texture2D" uid="uid://nyyc5vq2e8a8" path="res://VFX/textures/T_VFX_Noise_44xainv.png" id="2_yqfw0"]
+[ext_resource type="Texture2D" uid="uid://dbq4afiw01u8h" path="res://VFX/textures/T_Gib_Red_C.PNG" id="3_a37yk"]
+[ext_resource type="Texture2D" uid="uid://bbbldf7bpkc0q" path="res://VFX/textures/T_NoiseNormal_A.PNG" id="4_bf5k2"]
+[ext_resource type="Texture2D" uid="uid://cxsmx407d722t" path="res://VFX/textures/T_NP41.PNG" id="5_lpk0n"]
+
+[sub_resource type="Gradient" id="Gradient_mpji1"]
+colors = PackedColorArray(1, 0.33, 0.352333, 1, 0.51, 0.1581, 0.163965, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f864a"]
+gradient = SubResource("Gradient_mpji1")
+
+[sub_resource type="Gradient" id="Gradient_705cy"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rn1r6"]
+gradient = SubResource("Gradient_705cy")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nvxqi")
+shader_parameter/Scale = Vector2(2, 3)
+shader_parameter/Speed_XY = Vector2(0.2, -1)
+shader_parameter/Normal_Intensity = 1.0
+shader_parameter/Disolver_Texture = ExtResource("2_yqfw0")
+shader_parameter/Multiply_Mask = ExtResource("2_yqfw0")
+shader_parameter/Color_1D_Gradient = SubResource("GradientTexture1D_f864a")
+shader_parameter/Metallic_Texture = ExtResource("3_a37yk")
+shader_parameter/Texture_Roughtness = ExtResource("5_lpk0n")
+shader_parameter/Roughtness_1D_Gradient = SubResource("GradientTexture1D_rn1r6")
+shader_parameter/Normal_Texture = ExtResource("4_bf5k2")

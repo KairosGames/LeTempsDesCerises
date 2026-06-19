@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://d2jjhr0x6kpjb"]
+
+[ext_resource type="Shader" path="res://VFX/shaders/ss_decal3double_treshold.gdshader" id="1_3x8vv"]
+[ext_resource type="Texture2D" uid="uid://p26bifwg15x4" path="res://VFX/textures/T_Blood_DECAL_g3x.png" id="2_qim2y"]
+[ext_resource type="Texture2D" uid="uid://1obs408a0g6y" path="res://VFX/textures/T_Blood_DECAL_g3.png" id="3_3ox7a"]
+[ext_resource type="Texture2D" uid="uid://drrgaul6iago4" path="res://VFX/textures/T_Blood_DECAL_g3x_N.png" id="4_ojsik"]
+[ext_resource type="Texture2D" uid="uid://cxsmx407d722t" path="res://VFX/textures/T_NP41.PNG" id="5_bhhhq"]
+
+[sub_resource type="Gradient" id="Gradient_sotjr"]
+offsets = PackedFloat32Array(0, 0.851282)
+colors = PackedColorArray(0.423912, 0.0178994, 0.0180061, 1, 0.75, 0.1425, 0.16275, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ycj77"]
+gradient = SubResource("Gradient_sotjr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ruts7"]
+render_priority = 0
+shader = ExtResource("1_3x8vv")
+shader_parameter/Scale = Vector2(1, 1)
+shader_parameter/use_textures_alpha = false
+shader_parameter/cube_half_size = 0.5
+shader_parameter/enable_y_fade = true
+shader_parameter/fade_start = 0.05
+shader_parameter/fade_end = 0.2
+shader_parameter/fade_power = 0.8
+shader_parameter/normal_intensity = 1.0
+shader_parameter/alpha_treshold = 0.0432773
+shader_parameter/blend_texture2 = 0.5
+shader_parameter/Color_1D_gradient = SubResource("GradientTexture1D_ycj77")
+shader_parameter/Albedo = ExtResource("2_qim2y")
+shader_parameter/Albedo_Dissipation = ExtResource("3_3ox7a")
+shader_parameter/Normal = ExtResource("4_ojsik")
+shader_parameter/Roughtness = ExtResource("5_bhhhq")
+
+[sub_resource type="BoxMesh" id="BoxMesh_te35w"]
+
+[sub_resource type="Animation" id="Animation_qh641"]
+resource_name = "Init"
+length = 7.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blood_Mark_J2:material_override:shader_parameter/alpha_treshold")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.433333, 0.833333, 1.26667, 1.43333, 5, 5.7, 7.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.292857, 0.184706, 0.0765546, 0.0765546, 0.0432773, 0.0432773, 0.0432773, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blood_Mark_J2:material_override:shader_parameter/blend_texture2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 1.03333, 1.26667, 1.43333, 5, 5.7, 7.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.253012, 0.0, 0.0, 0.5, 0.5, 1.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_6wygl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blood_Mark_J2:material_override:shader_parameter/alpha_treshold")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.01]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blood_Mark_J2:material_override:shader_parameter/blend_texture2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x5bv5"]
+_data = {
+"Init": SubResource("Animation_qh641"),
+"RESET": SubResource("Animation_6wygl")
+}
+
+[node name="VFX_Blood_Mark_J2" type="Node3D"]
+
+[node name="Blood_Mark_J2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.4162, 0, 0, 0, -4.37114e-08, -0.515374, 0, 1, -2.25277e-08, 0, 0.0784984, 0.395621)
+layers = 4
+material_override = SubResource("ShaderMaterial_ruts7")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_te35w")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_x5bv5")
+}
+autoplay = "Init"

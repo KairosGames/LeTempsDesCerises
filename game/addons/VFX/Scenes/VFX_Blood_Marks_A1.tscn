@@ -1,0 +1,73 @@
+[gd_scene load_steps=14 format=3 uid="uid://bbwmyoppwuboq"]
+
+[ext_resource type="Shader" path="res://VFX/shaders/ss_decal2_treshold_p.gdshader" id="1_nax3i"]
+[ext_resource type="Texture2D" uid="uid://d1487hs54xk4g" path="res://VFX/textures/T_Blood_bulb_UJ1.png" id="2_jng0u"]
+[ext_resource type="Texture2D" uid="uid://bs5888n022i54" path="res://VFX/textures/T_Blood_bulb_UJ1_N.png" id="3_xuneq"]
+[ext_resource type="Texture2D" uid="uid://cxsmx407d722t" path="res://VFX/textures/T_NP41.PNG" id="4_jh6ot"]
+
+[sub_resource type="Gradient" id="Gradient_r82we"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0, 0.862903)
+colors = PackedColorArray(0.468572, 0.0221131, 0.0222691, 1, 0.853051, 0, 0.136786, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gjw3t"]
+gradient = SubResource("Gradient_r82we")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n00ad"]
+render_priority = 0
+shader = ExtResource("1_nax3i")
+shader_parameter/Scale = Vector2(1, 1)
+shader_parameter/cube_half_size = 0.5
+shader_parameter/enable_y_fade = true
+shader_parameter/fade_start = 0.01
+shader_parameter/fade_end = 0.385
+shader_parameter/fade_power = 3.0
+shader_parameter/normal_intensity = 1.0
+shader_parameter/Color_1D_gradient = SubResource("GradientTexture1D_gjw3t")
+shader_parameter/Albedo = ExtResource("2_jng0u")
+shader_parameter/Normal = ExtResource("3_xuneq")
+shader_parameter/Roughtness = ExtResource("4_jh6ot")
+
+[sub_resource type="Curve" id="Curve_3t1m3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0595855, 0.00946212), 0.0, 0.0, 0, 0, Vector2(0.511848, 0.021978), 0.0, 0.0, 0, 0, Vector2(1, 0.978022), 4.63736, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_hv2pa"]
+texture_mode = 1
+curve = SubResource("Curve_3t1m3")
+
+[sub_resource type="Gradient" id="Gradient_ebgmh"]
+colors = PackedColorArray(1, 1, 1, 1, 0.244776, 0.244776, 0.244776, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5btab"]
+gradient = SubResource("Gradient_ebgmh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nufch"]
+lifetime_randomness = 0.3
+particle_flag_rotate_y = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.5
+emission_ring_radius = 4.0
+emission_ring_inner_radius = 0.5
+angle_min = -180.0
+angle_max = 180.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.8
+scale_max = 2.5
+color_ramp = SubResource("GradientTexture1D_5btab")
+alpha_curve = SubResource("CurveTexture_hv2pa")
+
+[sub_resource type="BoxMesh" id="BoxMesh_3t31v"]
+
+[node name="VFX_Blood_Marks_A1" type="Node3D"]
+
+[node name="Blood_Marks_A1" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523, 0)
+layers = 4
+material_override = SubResource("ShaderMaterial_n00ad")
+cast_shadow = 0
+amount = 40
+lifetime = 2.5
+process_material = SubResource("ParticleProcessMaterial_nufch")
+draw_pass_1 = SubResource("BoxMesh_3t31v")

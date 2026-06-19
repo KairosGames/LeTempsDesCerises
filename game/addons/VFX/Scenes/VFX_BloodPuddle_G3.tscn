@@ -1,0 +1,161 @@
+[gd_scene load_steps=34 format=3 uid="uid://fwsfnltjfe6h"]
+
+[ext_resource type="ArrayMesh" uid="uid://c76t0djtwb6l6" path="res://VFX/objects/sm_teardrop.obj" id="1_5hv18"]
+[ext_resource type="Shader" uid="uid://cxwh4tdds7nvc" path="res://VFX/shaders/s_Disolver_small_Liquid_p_Treshold_ds.tres" id="2_v57x1"]
+[ext_resource type="Texture2D" uid="uid://my2nfjc4tqmx" path="res://VFX/textures/T_Blood_Splatter77.png" id="3_6pnv4"]
+[ext_resource type="Texture2D" uid="uid://dbq4afiw01u8h" path="res://VFX/textures/T_Gib_Red_C.PNG" id="4_742qu"]
+[ext_resource type="Texture2D" uid="uid://yjeb1afgwlwo" path="res://VFX/textures/T_Blood_Splatter11_N.png" id="5_rme12"]
+[ext_resource type="Texture2D" uid="uid://cxsmx407d722t" path="res://VFX/textures/T_NP41.PNG" id="6_mbllu"]
+[ext_resource type="ArrayMesh" uid="uid://bcqkctdake06f" path="res://VFX/objects/sm_plane_coned_spiked_waved1.obj" id="7_fonmw"]
+[ext_resource type="Texture2D" uid="uid://be5p6j7bv2600" path="res://VFX/textures/T_Blood_Puddle_ZX1aa.png" id="8_38vyq"]
+[ext_resource type="Texture2D" uid="uid://cgjohsnbo6740" path="res://VFX/textures/T_Blood_Puddle_ZX1_N.png" id="9_bqwxc"]
+
+[sub_resource type="Gradient" id="Gradient_tr6vg"]
+offsets = PackedFloat32Array(0, 0.324232, 0.675768)
+colors = PackedColorArray(0.47, 0, 0.141, 1, 1, 0.19, 0.19, 1, 0.35, 0.049, 0.144317, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e1ghl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5sywx"]
+width = 128
+height = 128
+seamless = true
+seamless_blend_skirt = 0.305
+color_ramp = SubResource("Gradient_tr6vg")
+noise = SubResource("FastNoiseLite_e1ghl")
+
+[sub_resource type="Gradient" id="Gradient_kktc4"]
+colors = PackedColorArray(0.359069, 0.359069, 0.359069, 1, 0.201526, 0.201527, 0.201526, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hg5ob"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hm07v"]
+width = 256
+height = 256
+seamless = true
+seamless_blend_skirt = 1.0
+color_ramp = SubResource("Gradient_kktc4")
+noise = SubResource("FastNoiseLite_hg5ob")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_racna"]
+diffuse_mode = 3
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = SubResource("NoiseTexture2D_5sywx")
+metallic = 0.53
+metallic_specular = 0.38
+roughness_texture = SubResource("NoiseTexture2D_hm07v")
+
+[sub_resource type="Curve" id="Curve_c8rgl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.613195), -1.19922, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_i8d8y"]
+max_value = 3.0
+_data = [Vector2(0, 0.174644), 0.0, 0.0, 0, 0, Vector2(1, 1.03234), 2.59832, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6vmaf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.596378), -1.16241, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_h1c2n"]
+curve_x = SubResource("Curve_c8rgl")
+curve_y = SubResource("Curve_i8d8y")
+curve_z = SubResource("Curve_6vmaf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_skn00"]
+scale_min = 0.06
+scale_max = 0.09
+scale_over_velocity_max = 1.0
+scale_over_velocity_curve = SubResource("CurveXYZTexture_h1c2n")
+color = Color(1.2, 1.2, 1.2, 1)
+
+[sub_resource type="Gradient" id="Gradient_imd17"]
+colors = PackedColorArray(0.51, 0.1071, 0.113815, 1, 1, 0.24, 0.265333, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n61tj"]
+gradient = SubResource("Gradient_imd17")
+
+[sub_resource type="Gradient" id="Gradient_xgpi8"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7te3y"]
+gradient = SubResource("Gradient_xgpi8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qq04r"]
+render_priority = 0
+shader = ExtResource("2_v57x1")
+shader_parameter/Scale = Vector2(1, 1)
+shader_parameter/Speed_XY = Vector2(0, 0)
+shader_parameter/Specular = 0.5
+shader_parameter/Normal_Map_Depth = 2.0
+shader_parameter/Disolver_Texture = ExtResource("3_6pnv4")
+shader_parameter/Color_1D_Gradient = SubResource("GradientTexture1D_n61tj")
+shader_parameter/Metallic_Texture = ExtResource("4_742qu")
+shader_parameter/Texture_Roughtness = ExtResource("6_mbllu")
+shader_parameter/Roughtness_1D_Gradient = SubResource("GradientTexture1D_7te3y")
+shader_parameter/Normal_Texture = ExtResource("5_rme12")
+
+[sub_resource type="Curve" id="Curve_4t86e"]
+_data = [Vector2(0, 0.076923), 0.0, 0.141167, 0, 0, Vector2(0.868263, 1), 0.0424073, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_p6gdn"]
+texture_mode = 1
+curve = SubResource("Curve_4t86e")
+
+[sub_resource type="Curve" id="Curve_574rb"]
+_data = [Vector2(0, 0.120879), 0.0, 1.84437, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_tu4n4"]
+curve = SubResource("Curve_574rb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nyjnx"]
+particle_flag_rotate_y = true
+angle_min = -180.0
+angle_max = 180.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.7
+scale_max = 1.1
+scale_curve = SubResource("CurveTexture_tu4n4")
+alpha_curve = SubResource("CurveTexture_p6gdn")
+
+[sub_resource type="Gradient" id="Gradient_b13pl"]
+offsets = PackedFloat32Array(0.994152)
+colors = PackedColorArray(1, 0.14902, 0.2, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a6m1m"]
+gradient = SubResource("Gradient_b13pl")
+
+[node name="VFX_BloodPuddle_G3" type="Node3D"]
+
+[node name="teardrop" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.603, 0)
+layers = 4
+material_override = SubResource("StandardMaterial3D_racna")
+amount = 2
+lifetime = 1.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_skn00")
+draw_pass_1 = ExtResource("1_5hv18")
+
+[node name="splatter" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.006, 0)
+layers = 4
+material_override = SubResource("ShaderMaterial_qq04r")
+amount = 1
+lifetime = 0.6
+explosiveness = 0.7
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_nyjnx")
+draw_pass_1 = ExtResource("7_fonmw")
+
+[node name="Decal" type="Decal" parent="."]
+layers = 4
+size = Vector3(1, 0.5, 1)
+texture_albedo = ExtResource("8_38vyq")
+texture_normal = ExtResource("9_bqwxc")
+texture_orm = SubResource("GradientTexture1D_a6m1m")
+modulate = Color(1, 0.67, 0.67, 1)
+cull_mask = 1048571

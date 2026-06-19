@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://dftv0e44emnub"]
+
+[ext_resource type="Shader" uid="uid://ddeewaeivkcyw" path="res://VFX/shaders/s_Disolver_small_Liquid.tres" id="1_ny2ko"]
+[ext_resource type="Texture2D" uid="uid://dddpcue3pfje7" path="res://VFX/textures/T_Decal_BloodSplatter49k.png" id="2_tjlsb"]
+[ext_resource type="Texture2D" uid="uid://jro18r2ovkix" path="res://VFX/textures/T_Decal_BloodSplatter49k_N.png" id="3_p883u"]
+
+[sub_resource type="Gradient" id="Gradient_pjnmt"]
+interpolation_mode = 2
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0.923387, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7ikyr"]
+gradient = SubResource("Gradient_pjnmt")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_dqts0"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.118581, 0.118581, 0.118581, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dp606"]
+gradient = SubResource("Gradient_dqts0")
+
+[sub_resource type="Gradient" id="Gradient_ab1vx"]
+interpolation_color_space = 1
+colors = PackedColorArray(0.0430392, 0.0430392, 0.0430392, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m8qrt"]
+gradient = SubResource("Gradient_ab1vx")
+
+[sub_resource type="Gradient" id="Gradient_u2rsr"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0.016129)
+colors = PackedColorArray(0.000113828, 0.000113828, 0.000113828, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nrr1d"]
+gradient = SubResource("Gradient_u2rsr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uyl5t"]
+render_priority = 0
+shader = ExtResource("1_ny2ko")
+shader_parameter/Scale = Vector2(1, 1)
+shader_parameter/Speed_XY = null
+shader_parameter/ColorParameter = Color(0.99899, 0, 0.189988, 1)
+shader_parameter/Opacity = 1.0
+shader_parameter/Normal_Map_Depth = 0.5
+shader_parameter/Color_Texture = ExtResource("2_tjlsb")
+shader_parameter/Dissolver_Texture = SubResource("GradientTexture2D_7ikyr")
+shader_parameter/Metallic_Texture = SubResource("GradientTexture1D_dp606")
+shader_parameter/Texture_Roughtness = SubResource("GradientTexture1D_nrr1d")
+shader_parameter/Roughtness_1D_Gradient = SubResource("GradientTexture1D_m8qrt")
+shader_parameter/Normal_Texture = ExtResource("3_p883u")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_md82d"]
+size = Vector2(6, 6)
+
+[sub_resource type="Animation" id="Animation_8c47m"]
+resource_name = "Init"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blood_Animated_1:material_override:shader_parameter/Opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.93333, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Blood_Animated_1:material_override:shader_parameter/Dissolver_Texture:fill_to")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0.991453), Vector2(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8arw4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blood_Animated_1:material_override:shader_parameter/Dissolver_Texture:fill_to")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0.991453)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_plshp"]
+_data = {
+"Init": SubResource("Animation_8c47m"),
+"RESET": SubResource("Animation_8arw4")
+}
+
+[node name="Decal_Blood_Animated_A2" type="Node3D"]
+
+[node name="Blood_Animated_1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12, -2.582)
+layers = 4
+material_override = SubResource("ShaderMaterial_uyl5t")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_md82d")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_plshp")
+}
+autoplay = "Init"

@@ -1,0 +1,269 @@
+[gd_scene load_steps=40 format=3 uid="uid://nt0uhntt36cp"]
+
+[ext_resource type="Texture2D" uid="uid://brjjwdwx65oij" path="res://VFX/textures/T_Blood_Mist_04x_alpha.png" id="1_1j22v"]
+[ext_resource type="Texture2D" uid="uid://dbolhruq43rtu" path="res://VFX/textures/T_Blood_bulb_UJ1_testtyyxx.png" id="3_r2vd2"]
+[ext_resource type="Texture2D" uid="uid://bs5888n022i54" path="res://VFX/textures/T_Blood_bulb_UJ1_N.png" id="4_vnt6a"]
+[ext_resource type="ArrayMesh" uid="uid://b6xryu8r5hcrf" path="res://VFX/objects/sm_coneblood.obj" id="5_gn5v8"]
+[ext_resource type="Shader" uid="uid://cxwh4tdds7nvc" path="res://VFX/shaders/s_Disolver_small_Liquid_p_Treshold_ds.tres" id="6_5717c"]
+[ext_resource type="Texture2D" uid="uid://buydik1dcgll6" path="res://VFX/textures/T_Blood_Splatter11s.png" id="7_cs2d2"]
+[ext_resource type="Texture2D" uid="uid://dbq4afiw01u8h" path="res://VFX/textures/T_Gib_Red_C.PNG" id="8_iq62c"]
+[ext_resource type="Texture2D" uid="uid://yjeb1afgwlwo" path="res://VFX/textures/T_Blood_Splatter11_N.png" id="9_umvf0"]
+[ext_resource type="Texture2D" uid="uid://cxsmx407d722t" path="res://VFX/textures/T_NP41.PNG" id="10_nhdnn"]
+[ext_resource type="ArrayMesh" uid="uid://bcqkctdake06f" path="res://VFX/objects/sm_plane_coned_spiked_waved1.obj" id="11_yxruq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u1pp"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 2
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_1j22v")
+albedo_texture_msdf = true
+metallic = 0.14
+metallic_specular = 1.0
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_1pna4"]
+_data = [Vector2(0, 1), 0.0, 0.315934, 0, 0, Vector2(0.815217, 0), -0.248603, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_htgsn"]
+texture_mode = 1
+curve = SubResource("Curve_1pna4")
+
+[sub_resource type="Curve" id="Curve_g0mya"]
+_data = [Vector2(0.038835, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.032967), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2eh1j"]
+curve = SubResource("Curve_g0mya")
+
+[sub_resource type="Curve" id="Curve_s43uw"]
+_data = [Vector2(0, 0.184347), 0.0, 1.9275, 0, 0, Vector2(0.869565, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5pe4w"]
+curve = SubResource("Curve_s43uw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_08bm7"]
+lifetime_randomness = 0.19
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0, -1)
+spread = 5.0
+initial_velocity_min = 0.3
+initial_velocity_max = 1.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 0.0999776
+radial_velocity_curve = SubResource("CurveTexture_2eh1j")
+gravity = Vector3(0, 0, 0)
+scale_min = 0.22
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_5pe4w")
+color = Color(0.74, 0.0888, 0.0996532, 1)
+alpha_curve = SubResource("CurveTexture_htgsn")
+
+[sub_resource type="QuadMesh" id="QuadMesh_k8uit"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8qme"]
+transparency = 2
+alpha_scissor_threshold = 0.2
+alpha_antialiasing_mode = 0
+cull_mode = 2
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("3_r2vd2")
+metallic = 0.1
+roughness = 0.12
+normal_enabled = true
+normal_scale = 0.3
+normal_texture = ExtResource("4_vnt6a")
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_gvc1q"]
+_data = [Vector2(0, 0), 0.0, 10.7882, 0, 0, Vector2(0.17803, 1), -2.59691, -2.59691, 0, 0, Vector2(1, 0.00156748), -0.666667, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2nbjb"]
+texture_mode = 1
+curve = SubResource("Curve_gvc1q")
+
+[sub_resource type="Gradient" id="Gradient_bhg2j"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0.152542, 0.398305)
+colors = PackedColorArray(0.50791, 8.90419e-07, 0.123701, 1, 1, 0.24, 0.278, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_28vh6"]
+gradient = SubResource("Gradient_bhg2j")
+
+[sub_resource type="Curve" id="Curve_lrw2t"]
+_data = [Vector2(0, 0.062696), 0.0, 2.16908, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dls2y"]
+curve = SubResource("Curve_lrw2t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5q2p5"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 0.04
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0, -1)
+spread = 10.0
+initial_velocity_min = 0.3
+initial_velocity_max = 0.5
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 0.399978
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_dls2y")
+color_ramp = SubResource("GradientTexture1D_28vh6")
+alpha_curve = SubResource("CurveTexture_2nbjb")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_use_scale = true
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="Animation" id="Animation_ccgwc"]
+resource_name = "Init"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mist:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bloodcone2:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fc85q"]
+_data = {
+"Init": SubResource("Animation_ccgwc")
+}
+
+[sub_resource type="Gradient" id="Gradient_w1fir"]
+offsets = PackedFloat32Array(0, 0.862069)
+colors = PackedColorArray(1, 0.17, 0.197667, 1, 0.51, 0.0459, 0.0536349, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g43r3"]
+gradient = SubResource("Gradient_w1fir")
+
+[sub_resource type="Gradient" id="Gradient_xgpi8"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7te3y"]
+gradient = SubResource("Gradient_xgpi8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1e1w"]
+render_priority = 0
+shader = ExtResource("6_5717c")
+shader_parameter/Scale = Vector2(1, 1)
+shader_parameter/Speed_XY = Vector2(0, 0)
+shader_parameter/Specular = 0.5
+shader_parameter/Normal_Map_Depth = 1.0
+shader_parameter/Disolver_Texture = ExtResource("7_cs2d2")
+shader_parameter/Color_1D_Gradient = SubResource("GradientTexture1D_g43r3")
+shader_parameter/Metallic_Texture = ExtResource("8_iq62c")
+shader_parameter/Texture_Roughtness = ExtResource("10_nhdnn")
+shader_parameter/Roughtness_1D_Gradient = SubResource("GradientTexture1D_7te3y")
+shader_parameter/Normal_Texture = ExtResource("9_umvf0")
+
+[sub_resource type="Curve" id="Curve_xe5li"]
+_data = [Vector2(0, 0.076923), 0.0, 0.141167, 0, 0, Vector2(0.868263, 1), 0.0424073, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_l167i"]
+texture_mode = 1
+curve = SubResource("Curve_xe5li")
+
+[sub_resource type="Curve" id="Curve_t56jf"]
+_data = [Vector2(0, 0.120879), 0.0, 1.84437, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mlixe"]
+curve = SubResource("Curve_t56jf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ch15"]
+particle_flag_rotate_y = true
+angle_min = -180.0
+angle_max = 180.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.4
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_mlixe")
+alpha_curve = SubResource("CurveTexture_l167i")
+
+[node name="VFX_Blood_Hit_A9" type="Node3D"]
+
+[node name="mist" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0753151, -0.280931)
+layers = 4
+material_override = SubResource("StandardMaterial3D_7u1pp")
+cast_shadow = 0
+emitting = false
+amount = 5
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_08bm7")
+draw_pass_1 = SubResource("QuadMesh_k8uit")
+
+[node name="bloodcone2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056572, -0.0197873, -0.171776)
+layers = 4
+material_override = SubResource("StandardMaterial3D_q8qme")
+emitting = false
+amount = 5
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.8
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_5q2p5")
+draw_pass_1 = ExtResource("5_gn5v8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fc85q")
+}
+autoplay = "Init"
+
+[node name="Splatter" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.105691, -0.994399, 0, 0.994399, 0.105691, -0.00817871, 0.00338745, 0.0319176)
+layers = 4
+material_override = SubResource("ShaderMaterial_i1e1w")
+emitting = false
+amount = 1
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.7
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_6ch15")
+draw_pass_1 = ExtResource("11_yxruq")

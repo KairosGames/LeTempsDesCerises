@@ -1,0 +1,202 @@
+[gd_scene load_steps=20 format=3 uid="uid://cevpjpqfma7me"]
+
+[ext_resource type="Texture2D" uid="uid://brnp67jnwwro6" path="res://VFX/textures/T_smoke_K97.png" id="1_7wm5k"]
+[ext_resource type="Texture2D" uid="uid://dbolhruq43rtu" path="res://VFX/textures/T_Blood_bulb_UJ1_testtyyxx.png" id="2_6v653"]
+[ext_resource type="ArrayMesh" uid="uid://b6xryu8r5hcrf" path="res://VFX/objects/sm_coneblood.obj" id="3_rn2a5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66gcp"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("1_7wm5k")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 8
+particles_anim_loop = false
+proximity_fade_enabled = true
+proximity_fade_distance = 0.1
+
+[sub_resource type="Gradient" id="Gradient_3kxdf"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0.220339, 0.741525)
+colors = PackedColorArray(1, 1, 1, 1, 0.187176, 0.187176, 0.187176, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p3tra"]
+gradient = SubResource("Gradient_3kxdf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_02thd"]
+lifetime_randomness = 0.1
+particle_flag_rotate_y = true
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_min = 2.0
+scale_max = 3.0
+color = Color(0.7, 1.1, 0.3, 1)
+color_ramp = SubResource("GradientTexture1D_p3tra")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_ipfrt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s38kj"]
+transparency = 2
+alpha_scissor_threshold = 0.2
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("2_6v653")
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_xju05"]
+_data = [Vector2(0, 0), 0.0, 10.7882, 0, 0, Vector2(0.454545, 0.724922), -2.59691, -2.59691, 0, 0, Vector2(1, 0.00156748), -0.666667, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rkkfj"]
+texture_mode = 1
+curve = SubResource("Curve_xju05")
+
+[sub_resource type="Gradient" id="Gradient_tp4s8"]
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0, 0.622881)
+colors = PackedColorArray(0.7, 0.8, 0.5, 1, 0.18481, 0.221832, 9.62615e-08, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0s7yr"]
+gradient = SubResource("Gradient_tp4s8")
+
+[sub_resource type="Curve" id="Curve_22ipv"]
+_data = [Vector2(0, 0.062696), 0.0, 2.16908, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_w1tk1"]
+curve = SubResource("Curve_22ipv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xxog5"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(0, 0, -1)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 0.399978
+gravity = Vector3(0, -2, 0)
+scale_min = 0.8
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_w1tk1")
+color = Color(1.2, 1.7, 1, 1)
+color_ramp = SubResource("GradientTexture1D_0s7yr")
+alpha_curve = SubResource("CurveTexture_rkkfj")
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_use_scale = true
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 1
+
+[sub_resource type="Animation" id="Animation_hm18l"]
+resource_name = "Init"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VFX_Smoke_A15:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("acidcone:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_b8pnq"]
+resource_name = "End"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VFX_Smoke_A15:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("acidcone:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lrji8"]
+_data = {
+"End": SubResource("Animation_b8pnq"),
+"Init": SubResource("Animation_hm18l")
+}
+
+[node name="VFX_PoisonLiquidFountain_Anime" type="Node3D"]
+
+[node name="VFX_Smoke_A15" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.098955, 0.995092, 0, -0.995092, 0.098955, 0, 0, 0)
+layers = 4
+material_override = SubResource("StandardMaterial3D_66gcp")
+cast_shadow = 0
+amount = 5
+lifetime = 1.3
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_02thd")
+draw_pass_1 = SubResource("QuadMesh_ipfrt")
+
+[node name="acidcone" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.990085, -0.140469, 0, 0.140469, 0.990085, 0, 0, 0)
+layers = 4
+material_override = SubResource("StandardMaterial3D_s38kj")
+amount = 40
+lifetime = 2.2
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_xxog5")
+draw_pass_1 = ExtResource("3_rn2a5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lrji8")
+}
+autoplay = "Init"

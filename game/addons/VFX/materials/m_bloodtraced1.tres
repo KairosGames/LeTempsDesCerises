@@ -1,0 +1,33 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://bcnlwsqpr68b2"]
+
+[ext_resource type="Shader" path="res://VFX/shaders/ss_decal3double_treshold.gdshader" id="1_g5o4t"]
+[ext_resource type="Texture2D" uid="uid://1obs408a0g6y" path="res://VFX/textures/T_Blood_DECAL_g3.png" id="2_n67k6"]
+[ext_resource type="Texture2D" uid="uid://p26bifwg15x4" path="res://VFX/textures/T_Blood_DECAL_g3x.png" id="2_yopvx"]
+[ext_resource type="Texture2D" uid="uid://drrgaul6iago4" path="res://VFX/textures/T_Blood_DECAL_g3x_N.png" id="3_1ktp0"]
+[ext_resource type="Texture2D" uid="uid://cxsmx407d722t" path="res://VFX/textures/T_NP41.PNG" id="4_yffq4"]
+
+[sub_resource type="Gradient" id="Gradient_sotjr"]
+offsets = PackedFloat32Array(0, 0.851282)
+colors = PackedColorArray(0.423912, 0.0178994, 0.0180061, 1, 0.75, 0.1425, 0.16275, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ycj77"]
+gradient = SubResource("Gradient_sotjr")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_g5o4t")
+shader_parameter/Scale = Vector2(1, 1)
+shader_parameter/use_textures_alpha = false
+shader_parameter/cube_half_size = 0.5
+shader_parameter/enable_y_fade = true
+shader_parameter/fade_start = 0.05
+shader_parameter/fade_end = 0.2
+shader_parameter/fade_power = 0.8
+shader_parameter/normal_intensity = 1.0
+shader_parameter/alpha_treshold = 0.01
+shader_parameter/blend_texture2 = 0.0
+shader_parameter/Color_1D_gradient = SubResource("GradientTexture1D_ycj77")
+shader_parameter/Albedo = ExtResource("2_yopvx")
+shader_parameter/Albedo_Dissipation = ExtResource("2_n67k6")
+shader_parameter/Normal = ExtResource("3_1ktp0")
+shader_parameter/Roughtness = ExtResource("4_yffq4")
