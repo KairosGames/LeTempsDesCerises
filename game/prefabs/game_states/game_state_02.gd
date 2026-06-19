@@ -64,6 +64,7 @@ func lauch_first_phase() -> void:
 
 
 func allies_arrival() -> void:
+	Wwise.set_state("BarricadeDestroyed","Intact")
 	Wwise.set_state("MusicVoicePlaying", "P3_2_Allies") ######## MUSIC
 	battle_director.go_next_covers_activation() ####################################### Arrivée des alliées
 	await wait_until(is_player_alive)
@@ -140,6 +141,7 @@ func launch_francois_replique_on_women_arrival() -> void:
 
 
 func launch_dialogue_preparation() -> void:
+	Wwise.set_state("MusicVoicePlaying", "P3_3_Discussion") ################ MUSIC
 	francois.is_fighting = false
 	for woman: Npc in woman_points.women: woman.is_fighting = false
 	await wait_voice() #"On les a rétamés !"
@@ -152,7 +154,6 @@ func launch_dialogue_preparation() -> void:
 
 
 func launch_women_dialogue() -> void:
-	Wwise.set_state("MusicVoicePlaying", "P3_3_Discussion") ################ MUSIC
 	stop_music_for_dialogue.emit() ################ MUSIC
 	discussion_area.monitoring = true
 	ui_manager.set_objective(true, discussion_area, "Check out the news from your Place Blanche's comrades")
@@ -166,9 +167,14 @@ func launch_women_dialogue() -> void:
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 
 
+
 func launch_last_battle_phase() -> void:
 	set_active_agents(true, true)
+
+	Wwise.set_state("MusicVoicePlaying", "P4_1_Fight")
+	Wwise.set_state("Music_State", "Phase4")
 	start_music_after_dialogue.emit() ################ MUSIC
+
 	battle_director.go_next_covers_activation() ####################################### Fin de l'accalmie
 	var louise: Npc = woman_points.women[0]
 	for woman: Npc in woman_points.women:

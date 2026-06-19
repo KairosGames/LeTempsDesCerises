@@ -274,7 +274,7 @@ func wait_barricade_destruction() -> void:
 	game_manager.cannon.enabled = false
 	await wait_until_or_signal(is_first_barricade_destroyed, game_manager.first_barricade.just_destroyed)
 	battle_director.go_next_covers_activation() ####################################### Barricade détruite
-	Wwise.set_state("BarricadeDestoyed", "Destroyed")
+	Wwise.set_state("BarricadeDestroyed", "PudBarricade")
 
 
 func is_barricade_very_damaged() -> bool:
@@ -286,8 +286,8 @@ func is_first_barricade_destroyed() -> bool:
 
 
 func enemies_enter_first_zone() -> void:
-	Wwise.set_state("Music_State", "Phase3") ########### MUSIC
 	Wwise.set_state("MusicVoicePlaying", "P3_1_Retreat")############# MUSIC
+	Wwise.set_state("Music_State", "Phase3") ########### MUSIC
 	await wait(10.0)
 	ui_manager.set_objective(true, go_to_second_barricade, "Go to the backup barricade") # give second baricade target
 	battle_director.go_next_covers_activation() ####################################### Passage barricade 2

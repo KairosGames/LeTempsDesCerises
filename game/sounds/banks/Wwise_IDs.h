@@ -99,6 +99,18 @@ namespace AK
             } // namespace STATE
         } // namespace BARRICADEDESTROYED
 
+        namespace DIEGETICAMOUNT
+        {
+            static const AkUniqueID GROUP = 2580242767U;
+
+            namespace STATE
+            {
+                static const AkUniqueID DIEGETIC = 1316532907U;
+                static const AkUniqueID EXTRADIEGETIC = 2795865631U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace DIEGETICAMOUNT
+
         namespace ENDCHOICE
         {
             static const AkUniqueID GROUP = 3063237949U;
