@@ -148,7 +148,7 @@ func launch_dialogue() -> void:
 
 func launch_player_choice() -> void:
 	georges.visible = false
-	music_debug_choice_scene.emit() # MUSIC
+	#music_debug_choice_scene.emit() # MUSIC # ATTENTION
 	await ui_manager.launch_letter_box(false)
 	handle_choice_display()
 	await wait_until(is_choice_done)
