@@ -57,8 +57,7 @@ var can_move: bool = true:
 		cover = value
 		if cover: cover.holder = self
 
-@onready var body_parts: Array[MeshInstance3D] = [$Body/Armature/Skeleton3D/Ch49_body1, $Body/Armature/Skeleton3D/Ch49_body2]
-
+@export var body_parts: Array[MeshInstance3D]
 
 enum Team { VERSAILLAIS = -1, NONE = 0, COMMUNARD = 1 }
 
@@ -124,8 +123,7 @@ func die() -> void:
 	tween.tween_method(
 		func(transparency: float) -> void:
 			for mesh: MeshInstance3D in body_parts:
-				pass
-				#mesh.transparency = transparency
+				mesh.transparency = transparency
 	,0.0, 1.0, 10.0)
 	await tween.finished
 	remove()
