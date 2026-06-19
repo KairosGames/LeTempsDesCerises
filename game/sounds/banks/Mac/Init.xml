@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{90F2D9E2-4B23-C6C8-1A8F-F590D1A66136}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{8A9C954B-FE18-FECA-4581-46A12A7B9FFF}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -32,6 +32,7 @@
 							<MediaRef Id="702837950"/>
 						</MediaRefs>
 					</Plugin>
+					<Plugin Id="3164629247" Name="Holy" ObjectPath="\Effects\Factory Effects\RoomVerb\Cathedrals\Holy" GUID="{CC7B8638-C670-4AD5-B3FB-331EA81037F6}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="3701691487" Name="Hall_Large_Bright" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Bright" GUID="{CB602948-2D1D-4977-A8D5-378184293E80}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</ShareSets>
 				<AudioDevices>
@@ -126,6 +127,13 @@
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
+				<AuxBus Id="2726320112" Name="Music_Rev_Barricade" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Rev_Barricade" GUID="{5EB3D779-27CC-424A-A22B-8E1056D211F3}" Color="2">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3164629247"/>
+						</ShareSets>
+					</PluginRefs>
+				</AuxBus>
 				<AuxBus Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10">
 					<PluginRefs>
 						<Custom>
@@ -206,6 +214,13 @@
 						<State Id="3823044812" Name="anxious" ObjectPath="\States\Default Work Unit\player_breath\anxious" GUID="{68E47680-1106-48AB-8CD1-994A7346C657}"/>
 					</States>
 				</StateGroup>
+				<StateGroup Id="325374427" Name="BarricadeDestroyed" ObjectPath="\States\MUSIC_STATE\BarricadeDestroyed" GUID="{246198B1-DC68-4405-8CE3-12D8BEFF4C90}" Color="2">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\MUSIC_STATE\BarricadeDestroyed\None" GUID="{3D1B228D-E41D-4BB0-9E6C-1D3B912C9EAC}" Color="2"/>
+						<State Id="1446863089" Name="PudBarricade" ObjectPath="\States\MUSIC_STATE\BarricadeDestroyed\PudBarricade" GUID="{BB024012-4A26-4660-9730-A4EF7290B09B}" Color="2"/>
+						<State Id="3094168564" Name="Intact" ObjectPath="\States\MUSIC_STATE\BarricadeDestroyed\Intact" GUID="{97DD4E49-1514-4739-8B07-49F32FE11F2A}" Color="2"/>
+					</States>
+				</StateGroup>
 				<StateGroup Id="1138488279" Name="fight_state" ObjectPath="\States\Default Work Unit\fight_state" GUID="{B590F5C3-04EB-4072-9F80-947A15BE497F}">
 					<States>
 						<State Id="514064485" Name="fight" ObjectPath="\States\Default Work Unit\fight_state\fight" GUID="{59DEFC00-A9CB-408F-BA8B-8A763F416A5E}"/>
@@ -249,13 +264,6 @@
 						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\pause\None" GUID="{F182E372-9030-4C41-B76F-889D5C1A57E5}"/>
 						<State Id="2452206122" Name="false" ObjectPath="\States\Default Work Unit\pause\false" GUID="{AE5D66E2-4A21-472D-A82F-731DE5ABE608}"/>
 						<State Id="3053630529" Name="true" ObjectPath="\States\Default Work Unit\pause\true" GUID="{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}"/>
-					</States>
-				</StateGroup>
-				<StateGroup Id="3219843997" Name="BarricadeDestoyed" ObjectPath="\States\MUSIC_STATE\BarricadeDestoyed" GUID="{246198B1-DC68-4405-8CE3-12D8BEFF4C90}" Color="2">
-					<States>
-						<State Id="748895195" Name="None" ObjectPath="\States\MUSIC_STATE\BarricadeDestoyed\None" GUID="{3D1B228D-E41D-4BB0-9E6C-1D3B912C9EAC}" Color="2"/>
-						<State Id="1359166010" Name="Destroyed" ObjectPath="\States\MUSIC_STATE\BarricadeDestoyed\Destroyed" GUID="{BB024012-4A26-4660-9730-A4EF7290B09B}" Color="2"/>
-						<State Id="3094168564" Name="Intact" ObjectPath="\States\MUSIC_STATE\BarricadeDestoyed\Intact" GUID="{97DD4E49-1514-4739-8B07-49F32FE11F2A}" Color="2"/>
 					</States>
 				</StateGroup>
 				<StateGroup Id="3394146252" Name="barricade_state" ObjectPath="\States\Default Work Unit\barricade_state" GUID="{53125CC4-7CB9-45A3-BFEC-E0F678A67D51}">
@@ -504,5 +512,5 @@
 			</AcousticTextures>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{43BF55A6-41E5-2B0D-75B7-F7077A0D37B6}</FileHash>
+	<FileHash>{D78BDE84-6975-8238-CFE4-5AF60E704AE3}</FileHash>
 </SoundBanksInfo>
