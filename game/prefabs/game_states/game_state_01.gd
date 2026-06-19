@@ -165,10 +165,10 @@ func lauch_first_battle_phase() -> void:
 	print("WAIT 90s")
 	await wait(3.0)
 	jules = null
-	await wait(70.0)
+	await wait(70.0)   ######ARRANGER LA VALEUR !!!!!
 	Wwise.set_state("MusicVoicePLaying","P2_1_Canon") ############# MUSIC
 	Wwise.set_state("Music_State", "Phase2") ############# MUSIC
-	await wait(20.0)
+	await wait(20.0) ######ARRANGER LA VALEUR !!!!!
 
 
 func launch_cannon_arrival() -> void:
