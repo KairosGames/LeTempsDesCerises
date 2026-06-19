@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}",
     "Language": "SFX",
-    "Hash": "{0D0675C2-FB87-9806-789C-B506E9197CAA}",
+    "Hash": "{71D21E27-DA5F-0D2D-FBDA-49992EB19C51}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Cannon",
     "ShortName": "Sb_Cannon",
     "Path": "Sb_Cannon.bnk",
@@ -195,6 +195,7 @@
       "ObjectPath": "\\Events\\SFX\\Barricade\\Barricade_Damaged",
       "GUID": "{3D5106B6-DB52-4CAD-8B67-C5FA9BAE909C}",
       "Color": "10",
+      "MaxAttenuation": "50",
       "DurationType": "OneShot",
       "DurationMin": "2.8614166",
       "DurationMax": "2.8614166",
@@ -205,10 +206,10 @@
       ],
       "ActionPostEvent": [
        {
-        "Id": "3840667520",
-        "Name": "Brick_Fall",
-        "ObjectPath": "\\Events\\SFX\\Barricade\\Brick_Fall",
-        "GUID": "{420BB33C-4BFB-4756-92E0-198AC47BDC12}",
+        "Id": "1055531900",
+        "Name": "Brick_Fall_Group",
+        "ObjectPath": "\\Events\\SFX\\Barricade\\Brick_Fall_Group",
+        "GUID": "{F081660D-EA6F-4934-A40D-84D54F31538E}",
         "Color": "10"
        }
       ]
@@ -219,6 +220,7 @@
       "ObjectPath": "\\Events\\SFX\\Barricade\\Brick_Fall",
       "GUID": "{420BB33C-4BFB-4756-92E0-198AC47BDC12}",
       "Color": "10",
+      "MaxAttenuation": "25",
       "DurationType": "OneShot",
       "DurationMin": "0.078854166",
       "DurationMax": "0.46533334",
@@ -301,6 +303,26 @@
       ]
      },
      {
+      "Id": "1055531900",
+      "Name": "Brick_Fall_Group",
+      "ObjectPath": "\\Events\\SFX\\Barricade\\Brick_Fall_Group",
+      "GUID": "{F081660D-EA6F-4934-A40D-84D54F31538E}",
+      "Color": "10",
+      "MaxAttenuation": "25",
+      "DurationType": "OneShot",
+      "DurationMin": "0",
+      "DurationMax": "0",
+      "ActionPostEvent": [
+       {
+        "Id": "3840667520",
+        "Name": "Brick_Fall",
+        "ObjectPath": "\\Events\\SFX\\Barricade\\Brick_Fall",
+        "GUID": "{420BB33C-4BFB-4756-92E0-198AC47BDC12}",
+        "Color": "10"
+       }
+      ]
+     },
+     {
       "Id": "2469499398",
       "Name": "Cannon_Shoot",
       "ObjectPath": "\\Events\\SFX\\Cannon\\Cannon_Shoot",
@@ -328,12 +350,6 @@
         "Name": "Wwise_Motion_Send",
         "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send",
         "GUID": "{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"
-       },
-       {
-        "Id": "243379636",
-        "Name": "Reflect",
-        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
-        "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}"
        },
        {
         "Id": "3189108374",
@@ -389,6 +405,6 @@
     ]
    }
   ],
-  "FileHash": "{2ADFD558-0B13-B428-710D-3AB3135603F2}"
+  "FileHash": "{45BC12FF-8AC9-3469-CA2A-108AB54266B3}"
  }
 }

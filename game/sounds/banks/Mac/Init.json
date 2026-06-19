@@ -10,18 +10,18 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{8A9C954B-FE18-FECA-4581-46A12A7B9FFF}",
+    "Hash": "{D6471F32-7512-FCC6-32DC-9AC8F2578AD5}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
     "Media": [
      {
-      "Id": "702837950",
+      "Id": "649826922",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "OtherBank",
       "ShortName": "AudioEase\\Altiverb - Outdoor and More\\Outdoor\\Alley\\AE_NarrowShortAlley.wav",
-      "CachePath": "78/{784C7FA5-5665-2213-1594-913EBD8CB95A}.wem"
+      "CachePath": "43/{436632AA-5060-27D3-ED7C-1C07D0357C15}.wem"
      }
     ],
     "Plugins": {
@@ -51,14 +51,6 @@
        "LibId": "8454147"
       },
       {
-       "Id": "83605371",
-       "Name": "Reflect_Physically_Based (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect\\[Effect Slot [0]: (Reflect)]\\Reflect_Physically_Based (Custom)",
-       "GUID": "{45B357FD-3DE9-45D4-8DDF-45F29FD81DA1}",
-       "LibName": "Wwise Reflect",
-       "LibId": "11206659"
-      },
-      {
        "Id": "288099940",
        "Name": "Parametric EQ (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_NPC\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
@@ -75,6 +67,14 @@
        "LibId": "6881283"
       },
       {
+       "Id": "491144356",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{AFAB6BA1-7AD1-4438-9430-79801E451DBC}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
+      {
        "Id": "677203020",
        "Name": "Pitch Shifter (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Wwise_Motion\\Wwise_Motion_Send\\[Effect Slot [0]: (Pitch Shifter)]\\Pitch Shifter (Custom)",
@@ -85,7 +85,7 @@
       {
        "Id": "756484234",
        "Name": "Parametric EQ (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_Characters\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
        "GUID": "{6E305924-9336-480C-998E-A9BE51616ED9}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
@@ -121,22 +121,22 @@
        "GUID": "{F71FC67B-11E7-40D0-888F-EA74552BBC0A}",
        "LibName": "Wwise Meter",
        "LibId": "8454147"
-      }
-     ],
-     "ShareSets": [
+      },
       {
-       "Id": "2420937077",
-       "Name": "NarrowShortAlley",
-       "ObjectPath": "\\Effects\\Factory Altiverb - Outdoor and More\\Altiverb - Outdoor and More\\Outdoor Alley\\NarrowShortAlley",
-       "GUID": "{5F21B86B-F430-44FF-A9BF-37B1DEF8105B}",
+       "Id": "1050210851",
+       "Name": "NarrowShortAlley (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb\\[Effect Slot [0]: (AK Convolution Reverb)]\\NarrowShortAlley (Custom)",
+       "GUID": "{288C8CE6-FABA-47A3-886F-D9C36902B037}",
        "LibName": "Wwise Convolution Reverb",
        "LibId": "8323075",
        "MediaRefs": [
         {
-         "Id": "702837950"
+         "Id": "649826922"
         }
        ]
-      },
+      }
+     ],
+     "ShareSets": [
       {
        "Id": "3164629247",
        "Name": "Holy",
@@ -249,12 +249,12 @@
       "Id": "1277101407",
       "Name": "VX_NPC",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC",
-      "GUID": "{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}",
+      "GUID": "{FB8A6FAE-9F55-4DF0-9203-A29D5C69BC3A}",
       "Color": "11",
       "PluginRefs": {
        "Custom": [
         {
-         "Id": "756484234"
+         "Id": "491144356"
         }
        ]
       }
@@ -290,6 +290,20 @@
        "Custom": [
         {
          "Id": "781058597"
+        }
+       ]
+      }
+     },
+     {
+      "Id": "1864612070",
+      "Name": "VX_Characters",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_Characters",
+      "GUID": "{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}",
+      "Color": "11",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "756484234"
         }
        ]
       }
@@ -333,19 +347,6 @@
       }
      },
      {
-      "Id": "243379636",
-      "Name": "Reflect",
-      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Reflect",
-      "GUID": "{04F7D06B-345E-4E79-A37C-C8DFED092590}",
-      "PluginRefs": {
-       "Custom": [
-        {
-         "Id": "83605371"
-        }
-       ]
-      }
-     },
-     {
       "Id": "2415077256",
       "Name": "Music_Rev",
       "ObjectPath": "\\Busses\\Music_Bus\\Music_Bus\\Music_Rev",
@@ -368,11 +369,9 @@
        "Custom": [
         {
          "Id": "1012444785"
-        }
-       ],
-       "ShareSets": [
+        },
         {
-         "Id": "2420937077"
+         "Id": "1050210851"
         }
        ]
       }
@@ -471,6 +470,12 @@
       "ObjectPath": "\\Game Parameters\\MUSIC_RTPC\\DiegeticAmount",
       "GUID": "{16D56ABA-E648-4755-84DA-92772451D748}",
       "Color": "2"
+     },
+     {
+      "Id": "2647762268",
+      "Name": "Sidechain_Dialogue",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Sidechain_Dialogue",
+      "GUID": "{E3D15146-7A9C-49E2-BF9F-F7D655BB9188}"
      },
      {
       "Id": "2909751391",
@@ -1980,6 +1985,6 @@
     ]
    }
   ],
-  "FileHash": "{1ACBD284-6FF4-C862-AE88-45804EA56430}"
+  "FileHash": "{F1734C0B-79FA-22B0-FEA2-7306CD2BC519}"
  }
 }
