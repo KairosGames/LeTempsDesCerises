@@ -452,11 +452,7 @@ namespace AK
     namespace AUX_BUSSES
     {
         static const AkUniqueID MUSIC_REV = 2415077256U;
-<<<<<<< HEAD
-=======
         static const AkUniqueID MUSIC_REV_BARRICADE = 2726320112U;
-        static const AkUniqueID REFLECT = 243379636U;
->>>>>>> e1641e83 (WIP Systeme Music)
         static const AkUniqueID SFX_GUNSHOT_SEND = 3189108374U;
         static const AkUniqueID STREET_REVERB = 2635253023U;
         static const AkUniqueID WWISE_MOTION_SEND = 214837138U;

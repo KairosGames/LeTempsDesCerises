@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}",
     "Language": "English(US)",
-    "Hash": "{E9850001-1972-5DC9-BB26-E8272B09FE58}",
+    "Hash": "{D3CE0869-134B-5A0C-0A92-741BD6496DBB}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_NPC",
     "ShortName": "Sb_NPC",
     "Path": "English(US)/Sb_NPC.bnk",
@@ -1231,6 +1231,14 @@
       "CachePath": "26/{265E9FFD-6C04-CCEB-7BD8-9348FAD06BDB}.wem"
      },
      {
+      "Id": "583399786",
+      "Language": "English(US)",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Characters\\Louise\\VX_Amb_F_Comm_Louise_Game_End_Choice_2_Atea.wav",
+      "CachePath": "C2/{C2A558E0-BD89-413B-3824-F30973F52AF1}.wem"
+     },
+     {
       "Id": "584171032",
       "Language": "English(US)",
       "Streaming": "false",
@@ -2213,6 +2221,14 @@
       "CachePath": "6B/{6B7E38F6-DC70-4019-C702-6B988AA63014}.wem"
      },
      {
+      "Id": "1064664905",
+      "Language": "English(US)",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Characters\\Francois\\VX_Amb_M_Comm_Francois_Game_End_Choice_1_Ydris.wav",
+      "CachePath": "E4/{E49B2585-B364-4AB9-D090-0EEBAF2F3DD1}.wem"
+     },
+     {
       "Id": "1065225525",
       "Language": "English(US)",
       "Streaming": "false",
@@ -2234,10 +2250,26 @@
     "Plugins": {
      "Custom": [
       {
+       "Id": "537703978",
+       "Name": "Dialog_Leveler_Hard (Custom)",
+       "ObjectPath": "\\Containers\\VX\\Scripted\\Character\\[Effect Slot [0]: (Compressor)]\\Dialog_Leveler_Hard (Custom)",
+       "GUID": "{7F0238A1-2C13-4125-A103-3EE19E749B91}",
+       "LibName": "Wwise Compressor",
+       "LibId": "7077891"
+      },
+      {
        "Id": "807526038",
        "Name": "Meter (Custom)",
        "ObjectPath": "\\Containers\\VX\\NPC\\Communard\\[Effect Slot [0]: (Meter)]\\Meter (Custom)",
        "GUID": "{2855D257-F711-4259-8A16-CCC31E5A8F21}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      },
+      {
+       "Id": "1065011977",
+       "Name": "Meter (Custom)",
+       "ObjectPath": "\\Containers\\VX\\Scripted\\Character\\[Effect Slot [1]: (Meter)]\\Meter (Custom)",
+       "GUID": "{97BCCC38-DCA1-422F-8651-8C66DC566703}",
        "LibName": "Wwise Meter",
        "LibId": "8454147"
       }
@@ -2252,7 +2284,7 @@
       "Color": "11",
       "MaxAttenuation": "30",
       "DurationType": "OneShot",
-      "DurationMin": "1.197",
+      "DurationMin": "0",
       "DurationMax": "4.652458",
       "AuxBusRefs": [
        {
@@ -2930,7 +2962,7 @@
       "Color": "11",
       "MaxAttenuation": "30",
       "DurationType": "OneShot",
-      "DurationMin": "0.90785414",
+      "DurationMin": "0",
       "DurationMax": "6.4602294",
       "AuxBusRefs": [
        {
@@ -3723,7 +3755,7 @@
       "ObjectPath": "\\Events\\SFX\\Ally\\Ally_Shoot",
       "GUID": "{0758294E-77B6-49B7-9D4C-4F0A410A33B6}",
       "Color": "10",
-      "MaxAttenuation": "50",
+      "MaxAttenuation": "100",
       "DurationType": "OneShot",
       "DurationMin": "1.7817974",
       "DurationMax": "2.0586045",
@@ -3918,6 +3950,74 @@
       ]
      },
      {
+      "Id": "1218331013",
+      "Name": "Choose_Fight",
+      "ObjectPath": "\\Events\\VX\\Ally\\Choose_Fight",
+      "GUID": "{942B9A28-9902-4AB4-8844-671F2F8C55A0}",
+      "Color": "11",
+      "MaxAttenuation": "25",
+      "DurationType": "OneShot",
+      "DurationMin": "3.608354",
+      "DurationMax": "3.608354",
+      "MediaRefs": [
+       {
+        "Id": "583399786"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "537703978"
+        },
+        {
+         "Id": "1065011977"
+        }
+       ]
+      },
+      "AuxBusRefs": [
+       {
+        "Id": "2635253023",
+        "Name": "Street_Reverb",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb",
+        "GUID": "{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"
+       }
+      ]
+     },
+     {
+      "Id": "2467968637",
+      "Name": "Choose_Surrender",
+      "ObjectPath": "\\Events\\VX\\Ally\\Choose_Surrender",
+      "GUID": "{21D54443-F2A6-4D2C-A1EE-BEF015429488}",
+      "Color": "11",
+      "MaxAttenuation": "25",
+      "DurationType": "OneShot",
+      "DurationMin": "3.0075624",
+      "DurationMax": "3.0075624",
+      "MediaRefs": [
+       {
+        "Id": "1064664905"
+       }
+      ],
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "537703978"
+        },
+        {
+         "Id": "1065011977"
+        }
+       ]
+      },
+      "AuxBusRefs": [
+       {
+        "Id": "2635253023",
+        "Name": "Street_Reverb",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Street_Reverb",
+        "GUID": "{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"
+       }
+      ]
+     },
+     {
       "Id": "3687575925",
       "Name": "Deafening_Recover",
       "ObjectPath": "\\Events\\SFX\\Player\\Deafening_Recover",
@@ -3934,7 +4034,7 @@
       "ObjectPath": "\\Events\\VX\\Enemy\\Enemy_Barricade_State",
       "GUID": "{31E2C0A9-7E7A-494B-9613-C74D03464B25}",
       "Color": "11",
-      "MaxAttenuation": "25",
+      "MaxAttenuation": "50",
       "DurationType": "OneShot",
       "DurationMin": "0",
       "DurationMax": "0",
@@ -4051,7 +4151,7 @@
       "ObjectPath": "\\Events\\VX\\Enemy\\Enemy_Cannon_Advance",
       "GUID": "{B87BEEB3-1D5D-4524-B166-879E9838F2E4}",
       "Color": "11",
-      "MaxAttenuation": "25",
+      "MaxAttenuation": "50",
       "DurationType": "OneShot",
       "DurationMin": "2.1179376",
       "DurationMax": "3.806521",
@@ -4120,7 +4220,7 @@
       "ObjectPath": "\\Events\\VX\\Enemy\\Enemy_Cannon_Fire",
       "GUID": "{2D328B0C-378F-473A-9D13-08FB635F21CB}",
       "Color": "11",
-      "MaxAttenuation": "25",
+      "MaxAttenuation": "50",
       "DurationType": "OneShot",
       "DurationMin": "1.0110208",
       "DurationMax": "2.3952708",
@@ -4207,7 +4307,7 @@
       "ObjectPath": "\\Events\\VX\\Enemy\\Enemy_Cannon_Incoming",
       "GUID": "{2E2AC514-41EC-40C2-B741-99ABD8D6FB72}",
       "Color": "11",
-      "MaxAttenuation": "25",
+      "MaxAttenuation": "100",
       "DurationType": "OneShot",
       "DurationMin": "1.7692916",
       "DurationMax": "3.5590417",
@@ -4438,6 +4538,236 @@
     ],
     "StateGroups": [
      {
+      "Id": "212893962",
+      "Name": "narrative_step",
+      "ObjectPath": "\\States\\Default Work Unit\\narrative_step",
+      "GUID": "{DC7D94F8-F1CD-4344-8D78-703A4905E20A}",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\None",
+        "GUID": "{C943CC8C-1A44-4F78-BDDC-B3D3EC95F41D}"
+       },
+       {
+        "Id": "846646256",
+        "Name": "_0",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_0",
+        "GUID": "{EB35525B-54B9-4D6A-B167-53471942451F}"
+       },
+       {
+        "Id": "846646257",
+        "Name": "_1",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_1",
+        "GUID": "{031667A8-7D99-4644-A81A-526A9C11C7CD}"
+       },
+       {
+        "Id": "846646258",
+        "Name": "_2",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_2",
+        "GUID": "{09BF8DFE-6A5A-44EE-A0D7-571B4C8B3627}"
+       },
+       {
+        "Id": "846646259",
+        "Name": "_3",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_3",
+        "GUID": "{C457F9CA-271E-4272-942C-51EEAEE06664}"
+       },
+       {
+        "Id": "846646260",
+        "Name": "_4",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_4",
+        "GUID": "{DB51FE53-D417-4C2D-B0AD-AF7D47A428F6}"
+       },
+       {
+        "Id": "846646261",
+        "Name": "_5",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_5",
+        "GUID": "{57D83889-9A1E-463F-B503-43B0F186EC42}"
+       },
+       {
+        "Id": "846646262",
+        "Name": "_6",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_6",
+        "GUID": "{BB0BF348-3AAC-445F-9377-A559B5D27FFE}"
+       },
+       {
+        "Id": "846646263",
+        "Name": "_7",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_7",
+        "GUID": "{BEEF9ABF-6A8B-4693-91ED-6D3976B6BB29}"
+       },
+       {
+        "Id": "846646264",
+        "Name": "_8",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_8",
+        "GUID": "{77FB47BE-8100-4FB2-BB6B-27312CD1E536}"
+       },
+       {
+        "Id": "846646265",
+        "Name": "_9",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_9",
+        "GUID": "{6C822E1A-4489-4B5D-84C3-AC69987C7C58}"
+       },
+       {
+        "Id": "1644366928",
+        "Name": "_13",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_13",
+        "GUID": "{9C0D0D06-12EC-4967-A323-91A8D97A5BF0}"
+       },
+       {
+        "Id": "1644366929",
+        "Name": "_12",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_12",
+        "GUID": "{1D8EE38A-7EDD-486C-BF91-4B6B081569A3}"
+       },
+       {
+        "Id": "1644366930",
+        "Name": "_11",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_11",
+        "GUID": "{8991F709-169E-47F3-9D7E-E56C9BA35C8A}"
+       },
+       {
+        "Id": "1644366931",
+        "Name": "_10",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_10",
+        "GUID": "{C35534AB-DCD5-4E4A-B929-F1B3F9550035}"
+       },
+       {
+        "Id": "1644366932",
+        "Name": "_17",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_17",
+        "GUID": "{99C9ED05-BF72-4D56-BF70-329AF168F02A}"
+       },
+       {
+        "Id": "1644366933",
+        "Name": "_16",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_16",
+        "GUID": "{6714C414-A328-4E80-AE94-8DAECAED293B}"
+       },
+       {
+        "Id": "1644366934",
+        "Name": "_15",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_15",
+        "GUID": "{2569554C-6795-40E0-9FFB-0D136E3FA202}"
+       },
+       {
+        "Id": "1644366935",
+        "Name": "_14",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_14",
+        "GUID": "{B521747E-93BF-44FD-B742-F21EA58755E8}"
+       },
+       {
+        "Id": "1644366938",
+        "Name": "_19",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_19",
+        "GUID": "{121B9630-5326-42F1-BF9F-65F72A1E70F5}"
+       },
+       {
+        "Id": "1644366939",
+        "Name": "_18",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_18",
+        "GUID": "{9AA66387-91BA-480C-B781-3DC8A2741CCF}"
+       },
+       {
+        "Id": "1661144512",
+        "Name": "_26",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_26",
+        "GUID": "{783FCA77-785C-488C-89DF-8A0527C007D8}"
+       },
+       {
+        "Id": "1661144513",
+        "Name": "_27",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_27",
+        "GUID": "{E778DD83-01DB-4A7B-8CFF-AE3F4DA7D1B3}"
+       },
+       {
+        "Id": "1661144514",
+        "Name": "_24",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_24",
+        "GUID": "{9A34572D-A19A-4325-B3F4-8085ED5A7E52}"
+       },
+       {
+        "Id": "1661144515",
+        "Name": "_25",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_25",
+        "GUID": "{824DCEFA-E12E-4422-826D-22B6C2DD5B8E}"
+       },
+       {
+        "Id": "1661144516",
+        "Name": "_22",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_22",
+        "GUID": "{CE318E2C-EA96-431A-8A4B-B1B5056DDD2B}"
+       },
+       {
+        "Id": "1661144517",
+        "Name": "_23",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_23",
+        "GUID": "{C085F0E1-6DA2-44F8-A32A-D5FFB146DD83}"
+       },
+       {
+        "Id": "1661144518",
+        "Name": "_20",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_20",
+        "GUID": "{FB6739D1-8E6F-41F3-9D67-21B693E9AB8E}"
+       },
+       {
+        "Id": "1661144519",
+        "Name": "_21",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_21",
+        "GUID": "{34988295-5A1A-4399-8815-9E73F372259F}"
+       },
+       {
+        "Id": "1661144526",
+        "Name": "_28",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_28",
+        "GUID": "{70D21AD5-9F52-44F9-84F3-47A5E9C66795}"
+       },
+       {
+        "Id": "1661144527",
+        "Name": "_29",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_29",
+        "GUID": "{761FE8A0-8F81-4158-89D3-3A9B496C6088}"
+       },
+       {
+        "Id": "1677922232",
+        "Name": "_31",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_31",
+        "GUID": "{D86BD04B-BE03-4378-814E-339E39BB26A7}"
+       },
+       {
+        "Id": "1677922233",
+        "Name": "_30",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_30",
+        "GUID": "{FF656502-C138-4446-8F53-A91D0AA1BCA6}"
+       },
+       {
+        "Id": "1677922234",
+        "Name": "_33",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_33",
+        "GUID": "{8F782DC0-7438-40E9-98A7-29B907C98532}"
+       },
+       {
+        "Id": "1677922235",
+        "Name": "_32",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_32",
+        "GUID": "{E17796CE-3C20-4685-B482-01C992F0F8FF}"
+       },
+       {
+        "Id": "1677922236",
+        "Name": "_35",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_35",
+        "GUID": "{22A96738-0D4E-4ED4-A513-808CDD2255E9}"
+       },
+       {
+        "Id": "1677922237",
+        "Name": "_34",
+        "ObjectPath": "\\States\\Default Work Unit\\narrative_step\\_34",
+        "GUID": "{41C7B8E9-EED8-44E8-B6FC-E151DAC1125F}"
+       }
+      ]
+     },
+     {
       "Id": "3394146252",
       "Name": "barricade_state",
       "ObjectPath": "\\States\\Default Work Unit\\barricade_state",
@@ -4471,6 +4801,62 @@
      }
     ],
     "SwitchGroups": [
+     {
+      "Id": "436743010",
+      "Name": "Character",
+      "ObjectPath": "\\Switches\\Default Work Unit\\Character",
+      "GUID": "{97FF0941-0EB1-4797-A824-6C0F93352B3C}",
+      "Switches": [
+       {
+        "Id": "652153290",
+        "Name": "Jules",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Jules",
+        "GUID": "{3F79F0D7-ACCC-4167-92F3-462BCBCD11A5}"
+       },
+       {
+        "Id": "784127654",
+        "Name": "Null",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Null",
+        "GUID": "{00F95D51-6279-4225-92C2-BC2013746037}"
+       },
+       {
+        "Id": "918100373",
+        "Name": "Michel",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Michel",
+        "GUID": "{35D9D25C-8AA2-4D82-BC3B-1602EA884599}"
+       },
+       {
+        "Id": "1274621345",
+        "Name": "Marie",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Marie",
+        "GUID": "{A9047D1E-D39E-4490-9901-0D474A2FA716}"
+       },
+       {
+        "Id": "2519917785",
+        "Name": "Georges",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Georges",
+        "GUID": "{626A0164-AC07-4ABB-8C3F-48A4716786F8}"
+       },
+       {
+        "Id": "2926082704",
+        "Name": "Louise",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Louise",
+        "GUID": "{EC36307D-BD77-4582-B5D1-7C12BEB1FA68}"
+       },
+       {
+        "Id": "3484216754",
+        "Name": "Francois",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Francois",
+        "GUID": "{E1A66299-3137-41FD-A722-76CF2B0CB501}"
+       },
+       {
+        "Id": "3942830996",
+        "Name": "Officier",
+        "ObjectPath": "\\Switches\\Default Work Unit\\Character\\Officier",
+        "GUID": "{88E56386-6C8E-41BF-B571-1514BCEC17E5}"
+       }
+      ]
+     },
      {
       "Id": "1117085073",
       "Name": "Character_Type",
@@ -4550,6 +4936,6 @@
     ]
    }
   ],
-  "FileHash": "{32A2B86E-14FD-FB8F-2919-E67B4D015B94}"
+  "FileHash": "{2CF8AE07-FC97-FCB4-7770-83429B6530AA}"
  }
 }

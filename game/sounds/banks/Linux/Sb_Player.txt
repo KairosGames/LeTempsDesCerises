@@ -1,5 +1,7 @@
 Event	ID	Name			Wwise Object Path	Notes
 	384143791	Bullet_Hit			\SFX\Player\Bullet_Hit	
+	953277036	Resume			\SFX\Resume	
+	1192162266	Npc_Shoot			\SFX\Npc_Shoot	
 	1650679582	Player_Reload			\SFX\Player\Player_Reload	
 	1795565902	Reset_Reload			\SFX\Player\Reset_Reload	
 	1806823001	Player_Prone			\SFX\Player\Stance\Player_Prone	
@@ -8,6 +10,7 @@ Event	ID	Name			Wwise Object Path	Notes
 	2917189548	Player_Alive			\SFX\Player\Player_Alive	
 	3055475155	Player_Crouch			\SFX\Player\Stance\Player_Crouch	
 	3083087645	Player_Death			\SFX\Player\Player_Death	
+	3092587493	Pause			\SFX\Pause	
 	3687575925	Deafening_Recover			\SFX\Player\Deafening_Recover	
 	4004702906	Player_Shoot			\SFX\Player\Player_Shoot	
 	4024398754	Player_Up			\SFX\Player\Stance\Player_Up	
@@ -32,6 +35,7 @@ State Group	ID	Name			Wwise Object Path	Notes
 	314259375	player_breath			\Default Work Unit\player_breath	
 	1343755517	player_stance			\Default Work Unit\player_stance	
 	1608601952	player_aim			\Default Work Unit\player_aim	
+	3092587493	pause			\Default Work Unit\pause	
 
 State	ID	Name	State Group			Notes
 	748895195	None	player_breath			
@@ -45,12 +49,16 @@ State	ID	Name	State Group			Notes
 	748895195	None	player_aim			
 	2452206122	false	player_aim			
 	3053630529	true	player_aim			
+	748895195	None	pause			
+	2452206122	false	pause			
+	3053630529	true	pause			
 
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	243460359	Cannon_Sidechain			\Default Work Unit\Cannon_Sidechain	
 	711096812	Deafening			\Default Work Unit\Deafening	
 	1833811084	Player_Velocity			\Default Work Unit\Player_Velocity	
 	1883033791	Sidechain			\Default Work Unit\Sidechain	
+	2647762268	Sidechain_Dialogue			\Default Work Unit\Sidechain_Dialogue	
 	4205136178	Death_Filter			\Default Work Unit\Death_Filter	
 
 Modulator LFO	ID	Name			Wwise Object Path	Notes
@@ -67,11 +75,11 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	1541696182	SFX_Cannon			\Default Work Unit\Main Audio Bus\SFX\SFX_Cannon	
 	1551306167	UI			\Default Work Unit\Main Audio Bus\UI	
 	1728828729	VX_Player			\Default Work Unit\Main Audio Bus\VX\VX_Player	
+	1864612070	VX_Characters			\Default Work Unit\Main Audio Bus\VX\VX_Characters	
 	2246998526	Main Audio Bus			\Default Work Unit\Main Audio Bus	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 	214837138	Wwise_Motion_Send			\Default Work Unit\Wwise_Motion\Wwise_Motion_Send	
-	243379636	Reflect			\Default Work Unit\Main Audio Bus\Reflect	
 	2635253023	Street_Reverb			\Default Work Unit\Main Audio Bus\Street_Reverb	
 	3189108374	SFX_Gunshot_Send			\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send	
 
@@ -81,15 +89,15 @@ Effect plug-ins	ID	Name	Type				Notes
 	80258421	Meter (Custom)	Wwise Meter			
 	288099940	Parametric EQ (Custom)	Wwise Parametric EQ			
 	292293286	Parametric EQ (Custom)	Wwise Parametric EQ			
+	491144356	Parametric EQ (Custom)	Wwise Parametric EQ			
 	641257012	Parametric EQ (Custom)	Wwise Parametric EQ			
 	677203020	Pitch Shifter (Custom)	Wwise Pitch Shifter			
-	695506173	Reflect (Custom)	Wwise Reflect			
 	756484234	Parametric EQ (Custom)	Wwise Parametric EQ			
 	781058597	Parametric EQ (Custom)	Wwise Parametric EQ			
 	822713401	Parametric EQ (Custom)	Wwise Parametric EQ			
 	1012444785	High_Pass_60Hz (Custom)	Wwise Parametric EQ			
 	1026399686	Meter (Custom)	Wwise Meter			
-	2420937077	NarrowShortAlley	Wwise Convolution Reverb			Impulse response created by AudioEase. © 2011 AudioEase.  All rights reserved.
+	1050210851	NarrowShortAlley (Custom)	Wwise Convolution Reverb			Impulse response created by AudioEase. © 2011 AudioEase.  All rights reserved.
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	1383483	LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_04	.cache\04\{04560223-C012-13EA-4C44-DBE7EEB604DD}.wem		\Containers\SFX\Characters\Player\Chassepot\Reload\Reload_3\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_04		20401
@@ -143,7 +151,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	502651267	LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_03	.cache\F3\{F3DC344C-B07D-71C3-728E-D4331E057782}.wem		\Containers\SFX\Characters\Player\Chassepot\Reload\Reload_5\LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_03		9905
 	505734138	LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_04	.cache\6C\{6CD83573-8F54-3E0E-4CAA-C2067A87028A}.wem		\Containers\SFX\Characters\Player\Chassepot\Reload\Reload_4\LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_04		7377
 	509153447	LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_01	.cache\5A\{5AAFD676-95C2-EED4-5B9B-EF8BE67F38A4}.wem		\Containers\SFX\Characters\Player\Chassepot\Reload\Reload_1\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_01		4541
-	512603057	LTDC_SFX_NPC_Shoot_Random_05	.cache\90\{9069CED1-A130-030A-538C-46DD0A6C46F8}.wem		\Containers\SFX\Characters\NPC\NPC_Shoot\LTDC_SFX_NPC_Shoot_Random_05		52220
+	512603057	LTDC_SFX_NPC_Shoot_Random_05	.cache\90\{9069CED1-A130-030A-538C-46DD0A6C46F8}.wem		\Containers\SFX\Characters\NPC\NPC_Shoot_no_sidechain\LTDC_SFX_NPC_Shoot_Random_05		52220
 	533567872	LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_04	.cache\92\{9229BA89-9361-5E20-5778-279729597BF8}.wem		\Containers\SFX\Characters\Player\Chassepot\Reload\Reload_2\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_04		10696
 	538935591	LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_02	.cache\78\{78200181-75A1-D64C-D882-220EEE69178E}.wem		\Containers\SFX\Characters\Player\Steps\Shoe_Type\Heels\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_02		6260
 	541183654	LTDC_SFX_Player_DryShot_Oneshot_02	.cache\C5\{C5697408-BD33-0C07-189C-E12E00F076F7}.wem		\Containers\SFX\Characters\Player\Chassepot\Chassepot_Gunshot\Chassepot_DryFire\LTDC_SFX_Player_DryShot_Oneshot_02		4417
@@ -158,7 +166,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	610060490	LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003	.cache\B2\{B2419593-2917-DA23-0D02-3572ABD80B6B}.wem		\Containers\VX\Player\VX_Player_Breath_Loop\Breath_In\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003		46608
 	610176216	LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_10	.cache\0F\{0FEFD324-0E2C-ABB0-9BE1-40DDA4F2F16B}.wem		\Containers\SFX\Characters\Player\Steps\Shoe_Type\Clog_Shoes\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_10		7136
 	628560875	LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_03	.cache\17\{178F575D-0BFF-DC43-C01E-09AF2F477A07}.wem		\Containers\SFX\Characters\Player\Chassepot\Reload\Reload_4\LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_03		6965
-	629537322	LTDC_SFX_NPC_Shoot_Random_01	.cache\7F\{7F835A32-7E14-F0CD-1600-6866AFCDDF8C}.wem		\Containers\SFX\Characters\NPC\NPC_Shoot\LTDC_SFX_NPC_Shoot_Random_01		53445
+	629537322	LTDC_SFX_NPC_Shoot_Random_01	.cache\7F\{7F835A32-7E14-F0CD-1600-6866AFCDDF8C}.wem		\Containers\SFX\Characters\NPC\NPC_Shoot_no_sidechain\LTDC_SFX_NPC_Shoot_Random_01		53445
 	632494295	LTDC_SFX_Player_GunShot_LayerCrack_Oneshot	.cache\22\{22E1F0C8-6A46-6484-6BDD-8B047EF8A73F}.wem		\Containers\SFX\Characters\Player\Chassepot\Chassepot_Gunshot\LTDC_SFX_Player_GunShot_LayerCrack_Oneshot		21506
 	656421790	LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_02	.cache\92\{92EC2DB7-E047-E522-F8F2-EFCCAC998CFA}.wem		\Containers\SFX\Characters\Player\Chassepot\Reload\Reload_5\LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_02		8345
 	665368749	LTDC_SFX_Player_Cloth_Coat_Move_Random_07	.cache\AB\{AB327EE8-9F01-38B1-8603-A190A35D7938}.wem		\Containers\SFX\Characters\Player\Steps\Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_07		17097
@@ -190,11 +198,11 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	955352295	LTDC_SFX_Player_Cloth_Coat_Move_Random_05	.cache\35\{351C6D5E-B183-F995-424E-669CD19BF043}.wem		\Containers\SFX\Characters\Player\Steps\Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_05		17900
 	960862092	LTDC_SFX_Player_Access_Bandolier_Move_Random_03	.cache\B1\{B1F6935F-400B-C76D-71F8-DAF1304DB84D}.wem		\Containers\SFX\Characters\Player\Steps\Bandolier\LTDC_SFX_Player_Access_Bandolier_Move_Random_03		18085
 	974935944	LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_01	.cache\C8\{C89F1FCD-3C2C-0E23-D76C-C09834539443}.wem		\Containers\SFX\Characters\Player\Chassepot\Reload\Reload_3\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_01		20369
+	977142577	LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01	.cache\7D\{7DE6116E-EF2F-D828-5A56-AE6609CEE136}.wem		\Containers\SFX\Characters\Player\Chassepot\Reload\Reload_2\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01		16246
 	978092744	LTDC_SFX_Player_Cloth_Coat_Move_Random_04	.cache\55\{55304EF3-ACB4-3B65-B9BC-44447365B56C}.wem		\Containers\SFX\Characters\Player\Steps\Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_04		17550
 	1005098820	LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_10	.cache\80\{80C610A3-2B7B-57C0-8D44-F5B765A7EB61}.wem		\Containers\SFX\Characters\Player\Steps\Shoe_Type\Heels\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_10		13057
-	1015424545	LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01	.cache\F0\{F08561CB-4BC0-9E88-8F27-680C40181D68}.wem		\Containers\SFX\Characters\Player\Chassepot\Reload\Reload_2\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01		10301
 	1017154576	LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03	.cache\DD\{DD17DE77-D4E9-33D5-FCA1-500708EFF7EE}.wem		\Containers\SFX\Characters\Player\Chassepot\Reload\Reload_1\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03		4620
-	1026693139	LTDC_SFX_NPC_Shoot_Random_04	.cache\3C\{3CF590BC-BA8D-9690-7B12-6BCAE56E5490}.wem		\Containers\SFX\Characters\NPC\NPC_Shoot\LTDC_SFX_NPC_Shoot_Random_04		53346
+	1026693139	LTDC_SFX_NPC_Shoot_Random_04	.cache\3C\{3CF590BC-BA8D-9690-7B12-6BCAE56E5490}.wem		\Containers\SFX\Characters\NPC\NPC_Shoot_no_sidechain\LTDC_SFX_NPC_Shoot_Random_04		53346
 	1026796877	LTDC_SFX_Player_Access_Bandolier_Move_Random_06	.cache\CB\{CBDC1194-D8BC-2E6F-5C6E-FCED313029E3}.wem		\Containers\SFX\Characters\Player\Steps\Bandolier\LTDC_SFX_Player_Access_Bandolier_Move_Random_06		19438
 	1027744682	LTDC_SFX_Player_Cloth_Coat_Move_Random_06	.cache\0D\{0DF200F2-BF1D-757E-F59F-8997CB272884}.wem		\Containers\SFX\Characters\Player\Steps\Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_06		17374
 	1034913934	LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_07	.cache\52\{5229FA47-C627-85A2-1D53-310CE4571D66}.wem		\Containers\SFX\Characters\Player\Steps\Shoe_Type\Worn_Boots\LTDC_SFX_Player_Steps_WornBoots_LayerSurface_Brick_Random_07		13371
@@ -204,5 +212,5 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	1056242460	LTDC_SFX_Player_Access_Bandolier_Move_Random_07	.cache\D1\{D12FA4E5-2CFA-C6C5-EF4C-971FC5E26050}.wem		\Containers\SFX\Characters\Player\Steps\Bandolier\LTDC_SFX_Player_Access_Bandolier_Move_Random_07		21494
 
 Plug-in Media	ID	Name	Source file	Type	Wwise Object Path	Notes	Data Size
-	702837950	NarrowShortAlley	.cache\91\{918669A8-592B-5C3E-9774-A321233D58D7}.wem	Wwise Convolution Reverb (Shared)	\Effects\Factory Altiverb - Outdoor and More\Altiverb - Outdoor and More\Outdoor Alley\NarrowShortAlley	Impulse response created by AudioEase. © 2011 AudioEase.  All rights reserved.	104912
+	649826922	NarrowShortAlley (Custom)	.cache\DB\{DBB9939F-4C0E-A7ED-2C4D-ADE705423285}.wem	Wwise Convolution Reverb (Custom)	\Busses\Default Work Unit\Main Audio Bus\Street_Reverb\[Effect Slot [0]: (AK Convolution Reverb)]\NarrowShortAlley (Custom)	Impulse response created by AudioEase. © 2011 AudioEase.  All rights reserved.	105488
 
