@@ -153,52 +153,52 @@ func die() -> void:
 	twn.tween_property(self, "velocity", Vector3.ZERO, 0.1)
 	is_alive = false
 	collider.disabled = true
-	animator.play("stand-die", 0.3)
+	animator.play("solder/stand-die", 0.3)
 
 
 func enter_in_idle_anim(trans: float = 0.2) -> void:
-	animator.play("stand-idle", trans)
+	animator.play("solder/stand-idle", trans)
 
 
 func enter_in_walk_anim(trans: float = 0.2) -> void:
-	animator.play("stand-moving", trans)
+	animator.play("solder/stand-moving", trans)
 
 
 func enter_in_crouch_anim(trans: float = 0.4) -> void:
-	animator.play("crouch-idle", trans)
+	animator.play("solder/crouch-idle", trans)
 
 
 func enter_in_aim(trans: float = 0.3) -> void:
-	animator.play("stand-aiming", trans)
+	animator.play("solder/stand-aiming", trans)
 
 
 func enter_in_stand_no_weapon(trans: float = 0.3) -> void:
 	chassepot.visible = false
-	animator.play("stand-gunless", trans)
+	animator.play("solder/stand-gunless", trans)
 
 
 func shoot(trans: float = 0.2) -> void:
 	shot.emit()
-	animator.play("stand-shoot", trans)
+	animator.play("solder/stand-shoot", trans)
 	await animator.animation_finished
 
 
 func enter_reload(trans: float = 0.2) -> void:
 	reloaded.emit()
-	animator.play("stand-reload", trans)
+	animator.play("solder/stand-reload", trans)
 	await animator.animation_finished
 
 
 func enter_pray(trans: float = 0.2) -> void:
-	animator.play("pray-1", trans)
+	animator.play("solder/pray-1", trans)
 	await animator.animation_finished
-	animator.play("pray-2", 0.2)
+	animator.play("solder/pray-2", 0.2)
 
 
 func enter_kneeling(trans: float = 0.2) -> void:
-	animator.play("kneeling-1", trans)
+	animator.play("solder/kneeling-1", trans)
 	await animator.animation_finished
-	animator.play("kneeling-2", 0.4)
+	animator.play("solder/kneeling-2", 0.4)
 
 
 func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: bool = false, aim: bool = false) -> void:

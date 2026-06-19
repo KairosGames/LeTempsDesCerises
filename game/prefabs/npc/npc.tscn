@@ -4,89 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://br5nta464et5g" path="res://sounds/prefabs/ak_npc_manager.tscn" id="2_470b1"]
 [ext_resource type="PackedScene" uid="uid://d28tbnqpob3um" path="res://prefabs/ai/agents/versaillais.tscn" id="2_k08jm"]
 [ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="3_y6qhm"]
-[ext_resource type="PackedScene" uid="uid://gmycm2ey6put" path="res://sandbox/ai/agents/solder.blend" id="4_i6cg2"]
-[ext_resource type="PackedScene" uid="uid://b56vcde62m1gw" path="res://sandbox/chassepot_proto/sk_chassepot.tscn" id="5_46qkl"]
+[ext_resource type="AnimationLibrary" uid="uid://gmycm2ey6put" path="res://sandbox/ai/agents/solder.blend" id="4_i6cg2"]
+[ext_resource type="PackedScene" uid="uid://c1i2q6l2uq4ne" path="res://sources/meshes/characters/communard.blend" id="5_46qkl"]
+[ext_resource type="PackedScene" uid="uid://dnl1jyxgvhs8t" path="res://sources/meshes/characters/communarde.blend" id="6_exmrv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fdau"]
 radius = 0.25
 height = 1.8
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_cy00r"]
-radius = 0.25
-height = 1.8
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s40ew"]
-albedo_color = Color(0.022979883, 0.022979883, 0.022979883, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_470b1"]
-material = SubResource("StandardMaterial3D_s40ew")
-size = Vector3(0.5, 0.1, 0.3)
-
-[sub_resource type="Animation" id="Animation_s40ew"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.9, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_470b1"]
-resource_name = "death"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0.9, 0), Vector3(0.439, 0.2, 0.2), Vector3(0.439, 0.2, 0.2)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.20470455, -0.5230478, 1.5747987), Vector3(0.49080345, -0.5201399, 1.5752397)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_thrj0"]
-_data = {
-&"RESET": SubResource("Animation_s40ew"),
-&"death": SubResource("Animation_470b1")
-}
-
 [node name="NPC" type="CharacterBody3D" unique_id=1296143105 node_paths=PackedStringArray("animator") groups=["Npc"]]
 floor_max_angle = 1.0471976
 script = ExtResource("1_s40ew")
-animator = NodePath("body/AnimationPlayer")
+animator = NodePath("Animator")
 versaillais = ExtResource("2_k08jm")
 communard = ExtResource("3_y6qhm")
 
@@ -94,33 +23,6 @@ communard = ExtResource("3_y6qhm")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_3fdau")
-
-[node name="body" parent="." unique_id=330510315 instance=ExtResource("4_i6cg2")]
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="body/Armature/Skeleton3D" parent_id_path=PackedInt32Array(330510315, 1192783430) index="2" unique_id=897974784]
-transform = Transform3D(-0.09853558, -0.9945374, 0.034431364, 0.9950525, -0.09802793, 0.01613263, -0.012669243, 0.0358507, 0.99927676, -69.82887, -5.1362853, -143.44975)
-bone_name = "mixamorig_RightHand"
-bone_idx = 34
-
-[node name="chassepot" parent="body/Armature/Skeleton3D/BoneAttachment3D" unique_id=1025414177 instance=ExtResource("5_46qkl")]
-unique_name_in_owner = true
-transform = Transform3D(-10.553089, 95.53139, 27.611446, 11.808163, 28.773895, -95.04015, -98.738045, -6.7692714, -14.317031, 3.4706862, 18.70045, 6.007675)
-
-[node name="AnimationPlayer" parent="body" index="1" unique_id=961678393]
-autoplay = &"stand-idle"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=646011561]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_cy00r")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=81210126]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6490259, 0.15578356)
-mesh = SubResource("BoxMesh_470b1")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=844202678]
-unique_name_in_owner = true
-libraries/ = SubResource("AnimationLibrary_thrj0")
 
 [node name="AkNpcManager" parent="." unique_id=944047016 instance=ExtResource("2_470b1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -138,4 +40,11 @@ target_desired_distance = 0.15
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 radius = 0.25
 
-[editable path="body"]
+[node name="communard" parent="." unique_id=273836269 instance=ExtResource("5_46qkl")]
+
+[node name="communarde" parent="." unique_id=970354312 instance=ExtResource("6_exmrv")]
+visible = false
+
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=541819383]
+root_node = NodePath("../communard")
+libraries/solder = ExtResource("4_i6cg2")
