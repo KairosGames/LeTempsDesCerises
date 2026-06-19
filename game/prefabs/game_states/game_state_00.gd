@@ -46,6 +46,7 @@ func set_short_timers() -> void:
 
 
 func set_game_for_onboarding() -> void:
+	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.CLOSED)
 	player.blink_effect.set_blink_enable(true)
 	ui_manager.hard_set_letter_box(true)
 	var spawn: CustomMarker = game_manager.player_spawner
@@ -54,6 +55,8 @@ func set_game_for_onboarding() -> void:
 	player.aim_target.x = -70.0
 	player.can_die = false
 	set_debug_applied = true
+	await wait_until(Wwise.is_initialized)
+	await get_tree().process_frame
 
 
 func get_up() -> void:
@@ -76,7 +79,6 @@ func get_up() -> void:
 	await tween_rotate_player_to_yaw(deg_to_rad(player.aim_target.y) + PI/6.0, 0.4)
 	take_player_view_control(false)
 	set_debug_applied = true
-	
 
 
 func go_for_georges() -> void:
