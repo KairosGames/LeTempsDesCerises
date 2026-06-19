@@ -42,6 +42,7 @@ var curr_state: GameState
 var game_state_index: int = -1
 var is_in_pause: bool = false
 var curr_barricade: Barricade
+var is_wwise_ready: bool = false
 
 var pause_twn: Tween
 

@@ -1026,8 +1026,6 @@ func play_shoot_vfx() -> void:
 		printerr("EFFECT MANAGER NOT IN SCENE !")
 		return
 	var eff: EffectsManager.EffectType = EffectsManager.EffectType.PlayerShoot
-	#var pos: Vector3 = weapon_ray_cast.global_position
-	#var rot: Vector3 = weapon_ray_cast.global_rotation
 	var pos: Vector3 = muzzle_light.global_position - (muzzle_light.global_basis.z * 0.4)
 	var rot: Vector3 = muzzle_light.global_rotation
 	EffectsManager.instance.play_effect(eff, pos, rot)

@@ -146,8 +146,8 @@ func set_local_bool() -> void:
 
 func wait_voice() -> void:
 	voice_line_index += 1
-	game_manager.voice_line_called.emit(voice_line_index)
 	print("WAIT VOICE, i : ", voice_line_index)
+	game_manager.voice_line_called.emit(voice_line_index)
 	await voice_line_finished
 
 

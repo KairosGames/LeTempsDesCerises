@@ -55,8 +55,11 @@ func set_game_for_onboarding() -> void:
 	player.aim_target.x = -70.0
 	player.can_die = false
 	set_debug_applied = true
-	await wait_until(Wwise.is_initialized)
-	await get_tree().process_frame
+	await wait_until(is_wwise_ready)
+
+
+func is_wwise_ready() -> bool:
+	return game_manager.is_wwise_ready
 
 
 func get_up() -> void:

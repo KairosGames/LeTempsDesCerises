@@ -20,14 +20,21 @@ func _ready() -> void:
 
 func ready_deferred() -> void:
 	game_manager = GameManager.instance
+	await wait_until(Wwise.is_initialized)
 	if game_manager and game_manager.use_narrative:
 		game_manager.clicked_pause.connect(pause)
 		game_manager.voice_line_called.connect(new_line)
 		game_manager.all_states.get(3).choose_surrender.connect(surrender)
 		game_manager.all_states.get(3).choose_fight_to_death.connect(fight)
 	if game_manager: game_manager.all_states[1].player_tried_to_exit.connect(player_far)
-	await get_tree().create_timer(0.5).timeout
 	loop()
+	game_manager.is_wwise_ready = true
+
+
+func wait_until(condition: Callable) -> void:
+	while not condition.call() or not game_manager.is_game_playing():
+		await get_tree().process_frame
+
 
 func new_line(step : int):
 	if step == 30 :
@@ -40,6 +47,7 @@ func new_line(step : int):
 	for i in narrators:
 		if is_instance_valid(i):
 			i.voiceline()
+			print(i.get_parent().name)
 
 func line_ended(_npc_name : String):
 	if bypass_line:
