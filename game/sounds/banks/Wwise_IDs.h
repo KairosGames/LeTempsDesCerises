@@ -99,6 +99,18 @@ namespace AK
             } // namespace STATE
         } // namespace BARRICADEDESTROYED
 
+        namespace ENDCHOICE
+        {
+            static const AkUniqueID GROUP = 3063237949U;
+
+            namespace STATE
+            {
+                static const AkUniqueID FRANCOIS = 3484216754U;
+                static const AkUniqueID LOUISE = 2926082704U;
+                static const AkUniqueID NONE = 748895195U;
+            } // namespace STATE
+        } // namespace ENDCHOICE
+
         namespace FIGHT_STATE
         {
             static const AkUniqueID GROUP = 1138488279U;
@@ -123,6 +135,7 @@ namespace AK
                 static const AkUniqueID PHASE2 = 3630028968U;
                 static const AkUniqueID PHASE3 = 3630028969U;
                 static const AkUniqueID PHASE4 = 3630028974U;
+                static const AkUniqueID PHASE5 = 3630028975U;
             } // namespace STATE
         } // namespace MUSIC_STATE
 
