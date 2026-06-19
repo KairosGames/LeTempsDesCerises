@@ -7,7 +7,8 @@ class_name Cover extends Marker3D
 	set(value):
 		type = value
 		notify_property_list_changed()
-@export var sexe: Agent.Sexe = Agent.Sexe.BOTH
+
+@export_range(0.0, 1.0, 0.1) var sexe: float = 0.5
 
 @export_category("Postures")
 @export var height: Height = Height.MEDIUM:
