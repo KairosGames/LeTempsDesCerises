@@ -20,7 +20,7 @@ signal move_stoped
 @onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Chest, $ShootTargets/Head]
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 
-
+var sexe: Agent.Sexe
 var is_disabled: bool = false
 var has_enemy_in_range: bool = false
 var can_die: bool = true
@@ -124,7 +124,8 @@ func die() -> void:
 	tween.tween_method(
 		func(transparency: float) -> void:
 			for mesh: MeshInstance3D in body_parts:
-				mesh.transparency = transparency
+				pass
+				#mesh.transparency = transparency
 	,0.0, 1.0, 10.0)
 	await tween.finished
 	remove()
