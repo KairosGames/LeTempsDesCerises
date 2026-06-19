@@ -9,13 +9,11 @@ extends Node3D
 
 var is_barking : bool = false
 var barks : Dictionary[String, int]
-var gender : gender_type = gender_type.FEMALE
-var rand_array = [1, 2, 4, 5, 6]
-
-enum gender_type {
-	MALE,
-	FEMALE
+enum gender{
+	MAN,
+	WOMAN
 }
+var rand_array = [1, 2, 4, 5, 6]
 
 func _enter_tree() -> void:
 	WwiseGlobal.register(self, "ally")
@@ -26,18 +24,21 @@ func _enter_tree() -> void:
 		i.audio_marker.connect(set_text)
 
 func _ready() -> void:
-	#match gender:
-		#gender_type.MALE:
-			#var random = String("Type" + str(randi_range(1, 3)))
-			#for i in barks_parent.get_children():
-				#Wwise.set_switch("Character_Type", random, i)
-		#gender_type.FEMALE:
-			#var random = String("Type" + str(randi_range(1, 3)))
-			#for i in barks_parent.get_children():
-				#Wwise.set_switch("Character_Type", random, i)
-	var random : String = str("Type" + str(rand_array.pick_random()))
-	for i in barks_parent.get_children():
-		Wwise.set_switch("Character_Type", random, i)
+	match (get_parent() as Agent).sexe:
+		Agent.Sexe.MAN:
+			print("boy")
+			var random = String("Type" + str(randi_range(4, 6)))
+			for i in barks_parent.get_children():
+				Wwise.set_switch("Character_Type", random, i)
+		Agent.Sexe.WOMAN:
+			print("not boy")
+			var random = String("Type" + str(randi_range(1, 2)))
+			for i in barks_parent.get_children():
+				Wwise.set_switch("Character_Type", random, i)
+		Agent.Sexe.BOTH:
+			print("both")
+			for i in barks_parent.get_children():
+				Wwise.set_switch("Character_Type", "Type4", i)
 	if WwiseGlobal.allow_barks:
 		trigg_bark()
 

@@ -5,6 +5,7 @@ var is_crouched := false
 var is_prone := false
 var controller_id
 var first_reload : bool = true
+var gonext : bool = false
 
 @export_category("Nodes")
 @export var subtitles : VBoxContainer
@@ -113,6 +114,8 @@ func on_reload():
 
 func death_event():
 	self.reparent(player.player_camera)
+	if gonext:
+		change_barricade()
 	death.post_event()
 
 
@@ -159,3 +162,7 @@ func update_line(npc_name, new_text : String):
 			else:
 				node.text = str(npc_name + " : " + text)
 				node.visible = true
+
+func change_barricade():
+	WwiseGlobal.barricade = GameManager.instance.curr_barricade.get_node("ak_barricade_manager")
+	Wwise.set_state("barricade_state", "intact")

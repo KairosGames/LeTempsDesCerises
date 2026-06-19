@@ -21,3 +21,4 @@ func set_wwise_state():
 		3:
 			Wwise.set_state("barricade_state", "broken")
 			WwiseGlobal.barricade == GameManager.instance.curr_barricade
+			WwiseGlobal.player.gonext = true

@@ -8589,8 +8589,8 @@
 													<Modifier Name="" ID="{AB927DCC-D244-4219-A4C9-F0C2E8341D06}">
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Max" Type="Real64" Value="200"/>
-															<Property Name="Min" Type="Real64" Value="-50"/>
+															<Property Name="Max" Type="Real64" Value="500"/>
+															<Property Name="Min" Type="Real64" Value="-200"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -9028,6 +9028,97 @@
 											</ChildrenList>
 											<ActiveSourceList>
 												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{F77107C8-06A8-4380-9B80-CB7061E20D76}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+									</ChildrenList>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="NPC_DryFire" ID="{8BB63C8F-1F5B-43F0-8E0D-C4A665498382}" ShortID="926793267">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="0.1"/>
+										<Property Name="MakeUpGain" Type="Real64">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Gunshot" ID="{F7D8CD67-4B30-47DC-9FDB-8466261CF446}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<Sound Name="LTDC_SFX_Player_DryShot_Oneshot_01" ID="{4C9E919F-FEBF-458D-9326-70892CE65C7C}" ShortID="143646196">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Player_DryShot_Oneshot_01" ID="{910FA9F8-CE9F-440A-886D-532471EE1C51}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\LTDC_SFX_Player_DryShot_Oneshot_01.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="116372682"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Player_DryShot_Oneshot_01" ID="{910FA9F8-CE9F-440A-886D-532471EE1C51}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Player_DryShot_Oneshot_02" ID="{80B6FD7B-C483-48CD-8F5A-84EFDBE54315}" ShortID="627977747">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Player_DryShot_Oneshot_02" ID="{BEE5487D-C610-4200-AB3E-702C704D8871}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\LTDC_SFX_Player_DryShot_Oneshot_02.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="541183654"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Player_DryShot_Oneshot_02" ID="{BEE5487D-C610-4200-AB3E-702C704D8871}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_Player_DryShot_Oneshot_03" ID="{26F47670-1EE8-4769-A20F-ACC44EB5B4C0}" ShortID="404888134">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_Player_DryShot_Oneshot_03" ID="{EA985140-AD0E-4DB3-8369-B656B4E6B918}">
+													<Language>SFX</Language>
+													<AudioFile>Chassepot\LTDC_SFX_Player_DryShot_Oneshot_03.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="560147033"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_Player_DryShot_Oneshot_03" ID="{EA985140-AD0E-4DB3-8369-B656B4E6B918}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
