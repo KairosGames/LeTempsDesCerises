@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://br5nta464et5g" path="res://sounds/prefabs/ak_npc_manager.tscn" id="2_470b1"]
 [ext_resource type="PackedScene" uid="uid://d28tbnqpob3um" path="res://prefabs/ai/agents/versaillais.tscn" id="2_k08jm"]
 [ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="3_y6qhm"]
+[ext_resource type="PackedScene" uid="uid://dyb4rmt0oj7ex" path="res://prefabs/ai/agents/communarde.tscn" id="4_exmrv"]
 [ext_resource type="AnimationLibrary" uid="uid://gmycm2ey6put" path="res://sandbox/ai/agents/solder.blend" id="4_i6cg2"]
 [ext_resource type="PackedScene" uid="uid://c1i2q6l2uq4ne" path="res://sources/meshes/characters/communard.blend" id="5_46qkl"]
 [ext_resource type="PackedScene" uid="uid://dnl1jyxgvhs8t" path="res://sources/meshes/characters/communarde.blend" id="6_exmrv"]
@@ -16,8 +17,9 @@ height = 1.8
 floor_max_angle = 1.0471976
 script = ExtResource("1_s40ew")
 animator = NodePath("Animator")
-versaillais = ExtResource("2_k08jm")
-communard = ExtResource("3_y6qhm")
+versaillais_ai = ExtResource("2_k08jm")
+communard_ai = ExtResource("3_y6qhm")
+communarde_ai = ExtResource("4_exmrv")
 
 [node name="Collider" type="CollisionShape3D" parent="." unique_id=277200552]
 unique_name_in_owner = true
@@ -40,12 +42,15 @@ target_desired_distance = 0.15
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 radius = 0.25
 
-[node name="communard" parent="." unique_id=273836269 instance=ExtResource("5_46qkl")]
+[node name="Communard" parent="." unique_id=273836269 instance=ExtResource("5_46qkl")]
+unique_name_in_owner = true
+visible = false
 
-[node name="communarde" parent="." unique_id=970354312 instance=ExtResource("6_exmrv")]
+[node name="Communarde" parent="." unique_id=970354312 instance=ExtResource("6_exmrv")]
+unique_name_in_owner = true
 visible = false
 
 [node name="Animator" type="AnimationPlayer" parent="." unique_id=541819383]
-root_node = NodePath("../communard")
+root_node = NodePath("../Communard")
 libraries/solder = ExtResource("4_i6cg2")
 autoplay = &"solder/stand-idle"

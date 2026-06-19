@@ -11,7 +11,8 @@ signal reloaded
 @onready var is_on_screen: VisibleOnScreenNotifier3D = %IsOnScreen
 @onready var nav: NavigationAgent3D = %Navigation
 @onready var chassepot: Chassepot = %chassepot
-
+@onready var communard: Node3D = %Communard
+@onready var communarde: Node3D = %Communarde
 
 enum NpcName{
 	Georges,
@@ -39,8 +40,9 @@ enum NpcTeam{
 }
 
 @export_category("Packed Scenes")
-@export var versaillais: PackedScene
-@export var communard: PackedScene
+@export var versaillais_ai: PackedScene
+@export var communard_ai: PackedScene
+@export var communarde_ai: PackedScene
 
 @export_category("Settings")
 @export var npc_name: NpcName
@@ -74,11 +76,23 @@ var is_fighting: bool:
 
 
 func _ready() -> void:
+	set_gender()
 	ready_deferred.call_deferred()
 
 
 func ready_deferred() -> void:
 	if GameManager.instance: game_manager = GameManager.instance
+
+
+func set_gender() -> void:
+	communard.visible = gender == NpcGender.Male
+	communarde.visible = gender == NpcGender.Female
+	if gender == NpcGender.Male:
+		communarde.queue_free()
+		communarde = null
+	else:
+		communard.queue_free()
+		communard = null
 
 
 func _process(delta: float) -> void:
@@ -251,8 +265,14 @@ func is_on_all_nav_finished() -> bool:
 func replace_with_agent() -> void:
 	var agent: Agent
 	match team:
-		NpcTeam.Communard: agent = communard.instantiate() as Agent
-		NpcTeam.Versaillais: agent = versaillais.instantiate() as Agent
+		NpcTeam.Communard: 
+			match gender:
+				NpcGender.Male:
+					agent = communard_ai.instantiate() as Agent
+				NpcGender.Female:
+					agent = communarde_ai.instantiate() as Agent
+		NpcTeam.Versaillais:
+			agent = versaillais_ai.instantiate() as Agent
 	get_parent().add_child(agent)
 	agent.global_position = global_position
 	agent.global_rotation = global_rotation

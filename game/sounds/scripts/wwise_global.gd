@@ -19,6 +19,7 @@ func _ready() -> void:
 	ready_deferred.call_deferred()
 
 func ready_deferred() -> void:
+	await get_tree().create_timer(3.0).timeout
 	game_manager = GameManager.instance
 	await wait_until(Wwise.is_initialized)
 	if game_manager and game_manager.use_narrative:
@@ -26,9 +27,9 @@ func ready_deferred() -> void:
 		game_manager.voice_line_called.connect(new_line)
 		game_manager.all_states.get(3).choose_surrender.connect(surrender)
 		game_manager.all_states.get(3).choose_fight_to_death.connect(fight)
-	if game_manager: game_manager.all_states[1].player_tried_to_exit.connect(player_far)
+		game_manager.all_states[1].player_tried_to_exit.connect(player_far)
+		game_manager.is_wwise_ready = true
 	loop()
-	game_manager.is_wwise_ready = true
 
 
 func wait_until(condition: Callable) -> void:
@@ -47,7 +48,6 @@ func new_line(step : int):
 	for i in narrators:
 		if is_instance_valid(i):
 			i.voiceline()
-			print(i.get_parent().name)
 
 func line_ended(_npc_name : String):
 	if bypass_line:
