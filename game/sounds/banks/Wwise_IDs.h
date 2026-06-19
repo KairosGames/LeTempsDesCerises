@@ -42,6 +42,7 @@ namespace AK
         static const AkUniqueID ENEMY_SHOOT = 1050776119U;
         static const AkUniqueID ENEMY_STEPS = 3114531655U;
         static const AkUniqueID ENEMY_VOICE_CANCEL = 2376509257U;
+        static const AkUniqueID MU_STOP_ALL = 698810174U;
         static const AkUniqueID MUSIC = 3991942870U;
         static const AkUniqueID NPC_SHOOT = 1192162266U;
         static const AkUniqueID PAUSE = 3092587493U;
@@ -86,17 +87,17 @@ namespace AK
             } // namespace STATE
         } // namespace BARRICADE_STATE
 
-        namespace BARRICADEDESTOYED
+        namespace BARRICADEDESTROYED
         {
-            static const AkUniqueID GROUP = 3219843997U;
+            static const AkUniqueID GROUP = 325374427U;
 
             namespace STATE
             {
-                static const AkUniqueID DESTROYED = 1359166010U;
                 static const AkUniqueID INTACT = 3094168564U;
                 static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID PUDBARRICADE = 1446863089U;
             } // namespace STATE
-        } // namespace BARRICADEDESTOYED
+        } // namespace BARRICADEDESTROYED
 
         namespace FIGHT_STATE
         {
@@ -451,6 +452,11 @@ namespace AK
     namespace AUX_BUSSES
     {
         static const AkUniqueID MUSIC_REV = 2415077256U;
+<<<<<<< HEAD
+=======
+        static const AkUniqueID MUSIC_REV_BARRICADE = 2726320112U;
+        static const AkUniqueID REFLECT = 243379636U;
+>>>>>>> e1641e83 (WIP Systeme Music)
         static const AkUniqueID SFX_GUNSHOT_SEND = 3189108374U;
         static const AkUniqueID STREET_REVERB = 2635253023U;
         static const AkUniqueID WWISE_MOTION_SEND = 214837138U;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="779753582" Type="User" GUID="{DFB0A60C-AE39-4F70-A779-508046776C1C}" Color="2" Language="SFX" Hash="{F50F671B-D089-93DC-8024-2D624D359960}">
+		<SoundBank Id="779753582" Type="User" GUID="{DFB0A60C-AE39-4F70-A779-508046776C1C}" Color="2" Language="SFX" Hash="{68BD45C9-2B5A-43E6-BE2D-6B45B2DD050B}">
 			<ObjectPath>\SoundBanks\MUSIC_SB\Sb_Music</ObjectPath>
 			<ShortName>Sb_Music</ShortName>
 			<Path>Sb_Music.bnk</Path>
@@ -673,9 +673,11 @@
 				</File>
 			</Media>
 			<Events>
-				<Event Id="3991942870" Name="Music" ObjectPath="\Events\MUSIC\Music" GUID="{82175BA3-289F-4BFE-B1DC-56C8BFD14012}" Color="2" MaxAttenuation="30" DurationType="Infinite">
+				<Event Id="698810174" Name="Mu_Stop_All" ObjectPath="\Events\MUSIC\Mu_Stop_All" GUID="{9266537E-FD30-4DA3-81BE-471E2D094E73}" Color="2" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
+				<Event Id="3991942870" Name="Music" ObjectPath="\Events\MUSIC\Music" GUID="{82175BA3-289F-4BFE-B1DC-56C8BFD14012}" Color="2" DurationType="Infinite">
 					<AuxBusRefs>
 						<AuxBusRef Id="2415077256" Name="Music_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Rev" GUID="{A12D3D2A-E2E7-49E7-80D3-5AC252A96818}" Color="2"/>
+						<AuxBusRef Id="2726320112" Name="Music_Rev_Barricade" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Rev_Barricade" GUID="{5EB3D779-27CC-424A-A22B-8E1056D211F3}" Color="2"/>
 					</AuxBusRefs>
 					<SwitchContainers>
 						<SwitchContainer>
@@ -770,22 +772,30 @@
 							<SwitchValue GroupType="State" GroupId="3826569560" Id="3630028969" GUID="{97F554C9-80CB-4C13-A0BA-32BA139D5768}" Color="2"/>
 							<MediaRefs>
 								<MediaRef Id="7617985"/>
+								<MediaRef Id="38957999"/>
 								<MediaRef Id="88940114"/>
 								<MediaRef Id="146474647"/>
 								<MediaRef Id="157445043"/>
 								<MediaRef Id="169372579"/>
 								<MediaRef Id="214448658"/>
 								<MediaRef Id="304359661"/>
+								<MediaRef Id="323322096"/>
 								<MediaRef Id="335520653"/>
 								<MediaRef Id="343941787"/>
 								<MediaRef Id="408305319"/>
+								<MediaRef Id="416119837"/>
 								<MediaRef Id="466236339"/>
+								<MediaRef Id="485702157"/>
+								<MediaRef Id="533036120"/>
 								<MediaRef Id="638301425"/>
 								<MediaRef Id="673965776"/>
+								<MediaRef Id="685249536"/>
 								<MediaRef Id="717443688"/>
 								<MediaRef Id="760451437"/>
 								<MediaRef Id="794248691"/>
 								<MediaRef Id="836514884"/>
+								<MediaRef Id="866054140"/>
+								<MediaRef Id="917796610"/>
 								<MediaRef Id="928060302"/>
 								<MediaRef Id="937613307"/>
 								<MediaRef Id="999057792"/>
@@ -872,6 +882,7 @@
 				</Event>
 			</Events>
 			<GameParameters>
+				<GameParameter Id="728654205" Name="IsPlaying" ObjectPath="\Game Parameters\MUSIC_RTPC\IsPlaying" GUID="{6265CC32-EB32-48B5-A910-7A5CCA21E939}" Color="2"/>
 				<GameParameter Id="2909751391" Name="Choir_Volume" ObjectPath="\Game Parameters\MUSIC_RTPC\Choir_Volume" GUID="{B964DDEA-0965-4408-B8D1-10C1D71136BB}" Color="2"/>
 			</GameParameters>
 			<StateGroups>
@@ -910,5 +921,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{91005ED8-2F81-C9FC-AB87-C6D71D5BCAF0}</FileHash>
+	<FileHash>{F988B3C9-7977-CB02-A7B4-1F88619D3CA4}</FileHash>
 </SoundBanksInfo>

@@ -10,12 +10,12 @@ State Group	ID	Name			Wwise Object Path	Notes
 	212893962	narrative_step			\Default Work Unit\narrative_step	
 	219569822	player_cover			\Default Work Unit\player_cover	
 	314259375	player_breath			\Default Work Unit\player_breath	
+	325374427	BarricadeDestroyed			\MUSIC_STATE\BarricadeDestroyed	
 	1138488279	fight_state			\Default Work Unit\fight_state	
 	1343755517	player_stance			\Default Work Unit\player_stance	
 	1608601952	player_aim			\Default Work Unit\player_aim	
 	2714575814	MusicVoicePlaying			\MUSIC_STATE\MusicVoicePlaying	
 	3092587493	pause			\Default Work Unit\pause	
-	3219843997	BarricadeDestoyed			\MUSIC_STATE\BarricadeDestoyed	
 	3394146252	barricade_state			\Default Work Unit\barricade_state	
 	3826569560	Music_State			\MUSIC_STATE\Music_State	
 	4265991608	barks_player_distance			\Default Work Unit\barks_player_distance	
@@ -64,6 +64,9 @@ State	ID	Name	State Group			Notes
 	748895195	None	player_breath			
 	3753286132	calm	player_breath			
 	3823044812	anxious	player_breath			
+	748895195	None	BarricadeDestroyed			
+	1446863089	PudBarricade	BarricadeDestroyed			
+	3094168564	Intact	BarricadeDestroyed			
 	514064485	fight	fight_state			
 	748895195	None	fight_state			
 	3967984634	retreat	fight_state			
@@ -89,9 +92,6 @@ State	ID	Name	State Group			Notes
 	748895195	None	pause			
 	2452206122	false	pause			
 	3053630529	true	pause			
-	748895195	None	BarricadeDestoyed			
-	1359166010	Destroyed	BarricadeDestoyed			
-	3094168564	Intact	BarricadeDestoyed			
 	231230354	broken	barricade_state			
 	545371365	low	barricade_state			
 	748895195	None	barricade_state			
@@ -131,6 +131,7 @@ Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 	243379636	Reflect			\Default Work Unit\Main Audio Bus\Reflect	
 	2415077256	Music_Rev			\Music_Bus\Music_Bus\Music_Rev	
 	2635253023	Street_Reverb			\Default Work Unit\Main Audio Bus\Street_Reverb	
+	2726320112	Music_Rev_Barricade			\Music_Bus\Music_Bus\Music_Rev_Barricade	
 	3189108374	SFX_Gunshot_Send			\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send	
 
 Effect plug-ins	ID	Name	Type				Notes
@@ -147,6 +148,7 @@ Effect plug-ins	ID	Name	Type				Notes
 	1012444785	High_Pass_60Hz (Custom)	Wwise Parametric EQ			
 	1026399686	Meter (Custom)	Wwise Meter			
 	2420937077	NarrowShortAlley	Wwise Convolution Reverb			Impulse response created by AudioEase. © 2011 AudioEase.  All rights reserved.
+	3164629247	Holy	Wwise RoomVerb			
 	3701691487	Hall_Large_Bright	Wwise RoomVerb			
 
 Audio Devices	ID	Name	Type				Notes
