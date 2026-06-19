@@ -18,12 +18,66 @@
 							<PropertyList>
 								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="BarricadeDestroyed" ID="{246198B1-DC68-4405-8CE3-12D8BEFF4C90}"/>
+										<StateGroupInfo Name="" ID="{2721CEC0-5637-40BD-93E1-8372E8CA5CED}" ShortID="130427286"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="PudBarricade" ID="{BB024012-4A26-4660-9730-A4EF7290B09B}"/>
+										<CustomState Name="" ID="{F78DF3B0-7586-4B35-AD60-59251C709D6A}" ShortID="94794812"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Intact" ID="{97DD4E49-1514-4739-8B07-49F32FE11F2A}"/>
+										<CustomState Name="" ID="{8D05616F-BA83-418D-A3ED-57AB05958D1F}" ShortID="618817552"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="None" ID="{3D1B228D-E41D-4BB0-9E6C-1D3B912C9EAC}"/>
+										<CustomState Name="" ID="{F30F03FF-9C74-4C26-9005-4B6266E52026}" ShortID="796072148"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
 							<ObjectLists>
 								<ObjectList Name="Effects">
 									<EffectSlot Name="" ID="{5605FB8F-291E-4082-A0A5-682FD54EBB4D}" ShortID="43497330">
 										<ReferenceList>
 											<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
 												<ObjectRef Name="Hall_Large_Bright" ID="{CB602948-2D1D-4977-A8D5-378184293E80}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+											</Reference>
+										</ReferenceList>
+										<StateInfo>
+											<CustomStateList>
+												<CustomState>
+													<StateRef Name="PudBarricade" ID="{BB024012-4A26-4660-9730-A4EF7290B09B}"/>
+													<CustomState Name="" ID="{106962EF-DFD6-43C9-A153-00B31C1C3131}" ShortID="654345981"/>
+												</CustomState>
+												<CustomState>
+													<StateRef Name="Intact" ID="{97DD4E49-1514-4739-8B07-49F32FE11F2A}"/>
+													<CustomState Name="" ID="{80F6C5D5-3482-41DA-9C97-B560D4FAFD77}" ShortID="139096876"/>
+												</CustomState>
+												<CustomState>
+													<StateRef Name="None" ID="{3D1B228D-E41D-4BB0-9E6C-1D3B912C9EAC}"/>
+													<CustomState Name="" ID="{5FEFFC0D-3F15-4F2A-8F3A-A6484AC02C0E}" ShortID="477144525"/>
+												</CustomState>
+											</CustomStateList>
+										</StateInfo>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<AuxBus Name="Music_Rev_Barricade" ID="{5EB3D779-27CC-424A-A22B-8E1056D211F3}">
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{6E926449-F8EC-4768-9370-A8691BAF90D3}" ShortID="163299817">
+										<PropertyList>
+											<Property Name="Bypass" Type="bool" Value="True"/>
+										</PropertyList>
+										<ReferenceList>
+											<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+												<ObjectRef Name="Holy" ID="{CC7B8638-C670-4AD5-B3FB-331EA81037F6}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 											</Reference>
 										</ReferenceList>
 									</EffectSlot>
