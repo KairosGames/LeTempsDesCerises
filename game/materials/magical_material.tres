@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cxoxm0glp2h7s"]
+
+[ext_resource type="Shader" uid="uid://bu4hvhwal4ce" path="res://prefabs/ai/agents/test_magical_bis.gdshader" id="1_rr3s7"]
+
+[sub_resource type="Gradient" id="Gradient_r7fab"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ayo2e"]
+noise_type = 2
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_48o1v"]
+noise = SubResource("FastNoiseLite_ayo2e")
+color_ramp = SubResource("Gradient_r7fab")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rr3s7")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_48o1v")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
