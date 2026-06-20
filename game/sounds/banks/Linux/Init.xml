@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Linux" BasePlatform="Linux" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{F2545371-4812-7B73-2C9C-831B614E15F4}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{93BE0712-08B3-F91C-191B-35B24C4ABD21}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -32,7 +32,9 @@
 					</Plugin>
 				</Custom>
 				<ShareSets>
-					<Plugin Id="3164629247" Name="Holy" ObjectPath="\Effects\Factory Effects\RoomVerb\Cathedrals\Holy" GUID="{CC7B8638-C670-4AD5-B3FB-331EA81037F6}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="176439046" Name="Caught_in_a_loop" ObjectPath="\Effects\Factory Effects\Stereo Delay\Caught_in_a_loop" GUID="{8FC64215-9A75-4BE3-A33A-584C8CA49963}" LibName="Wwise Stereo Delay" LibId="8847363"/>
+					<Plugin Id="2038996943" Name="Plate_Sizzle" ObjectPath="\Effects\Factory Effects\RoomVerb\Plates\Plate_Sizzle" GUID="{D4A5BBF1-6A59-47A7-BB97-E7695900B72F}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="3036946058" Name="Inside_Your_Head" ObjectPath="\Effects\Factory Effects\RoomVerb\Claustrophobia\Inside_Your_Head" GUID="{AE2D0AE1-8963-400A-AA4A-52A7A6397F89}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="3701691487" Name="Hall_Large_Bright" ObjectPath="\Effects\Factory Effects\RoomVerb\Halls\Hall_Large_Bright" GUID="{CB602948-2D1D-4977-A8D5-378184293E80}" LibName="Wwise RoomVerb" LibId="7733251"/>
 				</ShareSets>
 				<AudioDevices>
@@ -51,6 +53,7 @@
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
 					</AuxBusRefs>
 				</Bus>
+				<Bus Id="206361915" Name="Vocals" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals" GUID="{394DB6D9-71E5-4FBB-915A-D0C2F534F82A}" Color="1"/>
 				<Bus Id="217780010" Name="SFX_Player" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Player" GUID="{1565B943-2767-465E-81AB-61E687ABF67E}" Color="10">
 					<PluginRefs>
 						<Custom>
@@ -59,6 +62,14 @@
 					</PluginRefs>
 				</Bus>
 				<Bus Id="393239870" Name="SFX" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX" GUID="{8FE46C9B-4641-43D1-B739-F2D46260CC7F}" Color="10"/>
+				<Bus Id="411987026" Name="Clarinette" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Clarinette" GUID="{F2C3B679-DB9A-4E2C-8D2D-26D071919451}" Color="3"/>
+				<Bus Id="569003821" Name="LeadVx" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\LeadVx" GUID="{B88F5454-4A6B-4B14-82FD-40365B36686C}" Color="3"/>
+				<Bus Id="697539359" Name="Guimbarde" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Guimbarde" GUID="{BB1CDC90-BBEF-42A5-A2AB-95E526B90C70}" Color="3"/>
+				<Bus Id="703172684" Name="Guitare" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Guitare" GUID="{97EEE627-6CDD-4B49-A8A1-817B6226A98A}" Color="3"/>
+				<Bus Id="828178132" Name="Instruments3D" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D" GUID="{0EE9609D-D428-4104-BF02-88E80B984F04}" Color="1"/>
+				<Bus Id="840291561" Name="Accordeon" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Accordeon" GUID="{CA1246D0-89D7-4BF7-8A6A-6752244E6A2B}" Color="3"/>
+				<Bus Id="844955687" Name="Instruments2D" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments2D" GUID="{0FADFF0D-20FE-4675-ABEE-675223A28A17}" Color="1"/>
+				<Bus Id="1064071544" Name="Sifflement" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Sifflement" GUID="{1FF7F2A3-213E-4CA3-8222-9A735C45C2E9}" Color="3"/>
 				<Bus Id="1117531639" Name="AMB" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\AMB" GUID="{3C49B583-C63B-4CCB-A1B9-D71E082D055E}" Color="4">
 					<PluginRefs>
 						<Custom>
@@ -84,6 +95,9 @@
 						</Custom>
 					</PluginRefs>
 				</Bus>
+				<Bus Id="1786192857" Name="G1" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Groupes\G1" GUID="{0B9BC81E-22CE-4720-A3E6-ED9E203BE0E0}" Color="3"/>
+				<Bus Id="1786192858" Name="G2" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Groupes\G2" GUID="{C62912B8-E4FB-4E69-A859-05AB4F370C34}" Color="3"/>
+				<Bus Id="1786192859" Name="G3" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Groupes\G3" GUID="{226839A9-9CDB-4A0E-8FE0-053FB7301603}" Color="3"/>
 				<Bus Id="1864612070" Name="VX_Characters" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_Characters" GUID="{1CAD9C10-3E44-4079-AAFA-405B5E1EF801}" Color="11">
 					<PluginRefs>
 						<Custom>
@@ -91,6 +105,8 @@
 						</Custom>
 					</PluginRefs>
 				</Bus>
+				<Bus Id="2026972522" Name="Groupes" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Groupes" GUID="{CFE535F3-E949-42FF-AF5C-027B4E30B062}" Color="3"/>
+				<Bus Id="2118850003" Name="Wania" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Wania" GUID="{7C3B46F4-BF43-41A9-A116-59FC9642CCE5}" Color="3"/>
 				<Bus Id="2246998526" Name="Main Audio Bus" ObjectPath="\Busses\Default Work Unit\Main Audio Bus" GUID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
 					<PluginRefs>
 						<Custom>
@@ -99,7 +115,31 @@
 						</Custom>
 					</PluginRefs>
 				</Bus>
+				<Bus Id="2380180443" Name="Solistes" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes" GUID="{6E2C4A49-BA71-4A11-9B5A-9CEDF7A1B3E4}" Color="3"/>
+				<Bus Id="2440095465" Name="Concertina" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Concertina" GUID="{1CC37005-7373-453D-B23C-8B3ABC04FB35}" Color="3"/>
+				<Bus Id="2596673992" Name="Music_Dry" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry" GUID="{B82FCACB-F977-44A0-A2F6-3D6E89AADC7B}" Color="2">
+					<AuxBusRefs>
+						<AuxBusRef Id="1250284926" Name="Music_Distant_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Distant_Rev" GUID="{A12D3D2A-E2E7-49E7-80D3-5AC252A96818}" Color="2"/>
+						<AuxBusRef Id="2726320112" Name="Music_Rev_Barricade" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Rev_Barricade" GUID="{5EB3D779-27CC-424A-A22B-8E1056D211F3}" Color="2"/>
+					</AuxBusRefs>
+				</Bus>
+				<Bus Id="2638766216" Name="Ydris" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Ydris" GUID="{016BB778-8377-4DCF-A3A9-4AEFCD728186}" Color="3">
+					<AuxBusRefs>
+						<AuxBusRef Id="3099563223" Name="Music_mix_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_mix_Rev" GUID="{7FB9098D-C313-4588-9265-63099263EDDC}" Color="2"/>
+						<AuxBusRef Id="4084836994" Name="Music_End_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_End_Rev" GUID="{7CE652AA-1D2A-4019-A958-EA85F43ED44C}" Color="2"/>
+					</AuxBusRefs>
+				</Bus>
 				<Bus Id="2680856269" Name="Music_Bus" ObjectPath="\Busses\Music_Bus\Music_Bus" GUID="{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}" Color="2"/>
+				<Bus Id="3009393514" Name="Hugo" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Hugo" GUID="{9B158B8B-1296-4EC4-9488-C5CF405E14EF}" Color="3"/>
+				<Bus Id="3217351932" Name="Atea" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Atea" GUID="{B2C34D4A-D78C-44C0-96FB-F2FD48E42B90}" Color="3">
+					<AuxBusRefs>
+						<AuxBusRef Id="3099563223" Name="Music_mix_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_mix_Rev" GUID="{7FB9098D-C313-4588-9265-63099263EDDC}" Color="2"/>
+						<AuxBusRef Id="4084836994" Name="Music_End_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_End_Rev" GUID="{7CE652AA-1D2A-4019-A958-EA85F43ED44C}" Color="2"/>
+					</AuxBusRefs>
+				</Bus>
+				<Bus Id="3360712845" Name="Tambour" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments2D\Tambour" GUID="{8C428FBD-5A9D-4D36-898D-80B29B7718AD}" Color="3"/>
+				<Bus Id="3603862282" Name="Viele" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Viele" GUID="{48F62A33-8E64-4F56-AB71-7F3EBF5A8DE4}" Color="3"/>
+				<Bus Id="3850444438" Name="Percussion" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments2D\Percussion" GUID="{EE778E65-CD2F-4FB1-987F-FE13828A9AA9}" Color="3"/>
 			</Busses>
 			<AuxBusses>
 				<AuxBus Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}">
@@ -109,7 +149,7 @@
 						</Custom>
 					</PluginRefs>
 				</AuxBus>
-				<AuxBus Id="2415077256" Name="Music_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Rev" GUID="{A12D3D2A-E2E7-49E7-80D3-5AC252A96818}" Color="2">
+				<AuxBus Id="1250284926" Name="Music_Distant_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Distant_Rev" GUID="{A12D3D2A-E2E7-49E7-80D3-5AC252A96818}" Color="2">
 					<PluginRefs>
 						<ShareSets>
 							<PluginRef Id="3701691487"/>
@@ -127,7 +167,14 @@
 				<AuxBus Id="2726320112" Name="Music_Rev_Barricade" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Rev_Barricade" GUID="{5EB3D779-27CC-424A-A22B-8E1056D211F3}" Color="2">
 					<PluginRefs>
 						<ShareSets>
-							<PluginRef Id="3164629247"/>
+							<PluginRef Id="176439046"/>
+						</ShareSets>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="3099563223" Name="Music_mix_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_mix_Rev" GUID="{7FB9098D-C313-4588-9265-63099263EDDC}" Color="2">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="2038996943"/>
 						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
@@ -137,6 +184,13 @@
 							<PluginRef Id="64045502"/>
 							<PluginRef Id="1026399686"/>
 						</Custom>
+					</PluginRefs>
+				</AuxBus>
+				<AuxBus Id="4084836994" Name="Music_End_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_End_Rev" GUID="{7CE652AA-1D2A-4019-A958-EA85F43ED44C}" Color="2">
+					<PluginRefs>
+						<ShareSets>
+							<PluginRef Id="3036946058"/>
+						</ShareSets>
 					</PluginRefs>
 				</AuxBus>
 			</AuxBusses>
@@ -266,9 +320,11 @@
 				</StateGroup>
 				<StateGroup Id="3063237949" Name="EndChoice" ObjectPath="\States\MUSIC_STATE\EndChoice" GUID="{F1E4CC31-DA38-49B5-B2A8-53D524E5D48A}" Color="2">
 					<States>
+						<State Id="388904761" Name="AskChoice" ObjectPath="\States\MUSIC_STATE\EndChoice\AskChoice" GUID="{4EAD2C59-63BF-4739-8913-C811215BA1E2}" Color="2"/>
 						<State Id="748895195" Name="None" ObjectPath="\States\MUSIC_STATE\EndChoice\None" GUID="{1048217B-BF09-4548-8B4B-9E0FACC9BBAF}" Color="2"/>
 						<State Id="2926082704" Name="Louise" ObjectPath="\States\MUSIC_STATE\EndChoice\Louise" GUID="{2A8B1D07-53FE-4458-BC8C-2EAAD175FE4D}" Color="2"/>
 						<State Id="3484216754" Name="Francois" ObjectPath="\States\MUSIC_STATE\EndChoice\Francois" GUID="{BD14E529-07FB-4854-8CAC-DA402B6DAAC7}" Color="2"/>
+						<State Id="3930136735" Name="Dialogue" ObjectPath="\States\MUSIC_STATE\EndChoice\Dialogue" GUID="{5ED0BEB8-8263-440D-9679-9593F067F61B}" Color="2"/>
 					</States>
 				</StateGroup>
 				<StateGroup Id="3092587493" Name="pause" ObjectPath="\States\Default Work Unit\pause" GUID="{063211BB-9332-4406-9616-D5E2F8256E48}">
@@ -525,5 +581,5 @@
 			</AcousticTextures>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{285E85D5-FDFD-99CD-477E-AD2412386213}</FileHash>
+	<FileHash>{D7266B78-003A-9383-2BB5-76AF3AEFB16A}</FileHash>
 </SoundBanksInfo>

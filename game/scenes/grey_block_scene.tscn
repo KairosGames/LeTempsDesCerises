@@ -5,7 +5,6 @@
 [ext_resource type="Shader" uid="uid://ccs46yyijk1tk" path="res://materials/shaders/sg_custom_sky.gdshader" id="4_3ivn4"]
 [ext_resource type="Shader" uid="uid://dbacxpivv71g2" path="res://materials/shaders/kuwahara.gdshader" id="5_3ivn4"]
 [ext_resource type="PackedScene" uid="uid://dxqpvtlncyyq0" path="res://sounds/prefabs/music_systeme.tscn" id="6_gedxo"]
-[ext_resource type="PackedScene" uid="uid://cfj1xeyr6n64c" path="res://sounds/prefabs/music_emitter.tscn" id="7_hmfrt"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="7_vj5vi"]
 
 [sub_resource type="Gradient" id="Gradient_3ivn4"]
@@ -561,55 +560,3 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MusicSysteme" parent="." unique_id=230278614 instance=ExtResource("6_gedxo")]
-
-[node name="Z2_G1" parent="MusicSysteme" unique_id=483744097 instance=ExtResource("7_hmfrt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.911142, 4.370658, 38.46941)
-Voice_sel = "G1"
-Distance_scale = 70
-Enter_at = "C5-Inst"
-Post_after_allies = true
-
-[node name="Z2_G3" parent="MusicSysteme" unique_id=640483651 instance=ExtResource("7_hmfrt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.550064, 9.340332, 29.327736)
-Voice_sel = "G3"
-Distance_scale = 70
-Enter_at = "C5-Inst"
-Post_after_allies = true
-
-[node name="Z2_Guitar" parent="MusicSysteme" unique_id=816903661 instance=ExtResource("7_hmfrt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.036043, 1.4157457, 14.752211)
-Voice_sel = "Guitare"
-Distance_scale = 50
-Post_event = true
-Post_after_allies = true
-
-[node name="Z2_Atea" parent="MusicSysteme" unique_id=928128690 instance=ExtResource("7_hmfrt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.273853, 3.6058302, 13.370831)
-Distance_scale = 50
-Post_after_allies = true
-Post_for_debug = true
-
-[node name="Z2_Ydris" parent="MusicSysteme" unique_id=1009298984 instance=ExtResource("7_hmfrt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.966867, 4.4138727, 24.662252)
-Voice_sel = "Solo_Ydris"
-Distance_scale = 50
-Post_after_allies = true
-Post_for_debug = true
-
-[node name="Z2_Viele" parent="MusicSysteme" unique_id=763423216 instance=ExtResource("7_hmfrt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.477615, 1.3586512, 28.418108)
-Voice_sel = "Viele"
-Distance_scale = 30
-Post_after_allies = true
-
-[node name="Z2_Concertina" parent="MusicSysteme" unique_id=1521266472 instance=ExtResource("7_hmfrt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.949474, 7.127208, 14.594925)
-Voice_sel = "Concertina"
-Distance_scale = 30
-Post_after_allies = true
-
-[node name="Z2_Accordeon" parent="MusicSysteme" unique_id=546923996 instance=ExtResource("7_hmfrt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.574825, 1.3803172, 23.414587)
-Voice_sel = "Accordeon"
-Distance_scale = 30
-Post_after_allies = true

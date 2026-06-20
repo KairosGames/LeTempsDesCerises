@@ -251,6 +251,7 @@ func launch_first_cannon_shoot() -> void:
 	take_player_move_control(false)
 	take_player_view_control(false)
 	player.can_play = true
+	Wwise.set_state("MusicVoicePlaying","P2_2_CannonShoot") ############# MUSIC
 	ui_manager.launch_letter_box(false)
 	await wait(ui_manager.time_to_open_letter_box)
 

@@ -8,15 +8,17 @@ extends AkEvent3D
 @export var Enter_at: String = "None"
 @export var Post_event: bool = false
 @export var Post_after_allies: bool = false
-@export var Post_for_debug: bool = false
+@export var Post_for_ending_choice: bool = false
+@export var Is_vocal: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
 	GameManager.instance.all_states[2].start_music_after_dialogue.connect(post_after_allies)
-	GameManager.instance.all_states[3].music_debug_choice_scene.connect(post_event_debug)
+	GameManager.instance.all_states[3].ending_music_choice_scene.connect(post_event_debug)
 	
-	GameManager.instance.all_states[2].stop_music_for_dialogue.connect(stop_event_with_signal)
+	GameManager.instance.all_states[2].stop_music_for_dialogue.connect(stop_event_with_signal_for_allies_dialogue)
+	GameManager.instance.all_states[3].stop_music_for_choice.connect(stop_event_with_signal_for_ending_choice)
 	GameManager.instance.all_states[3].stop_music_for_ending.connect(stop_event_with_signal)
 	
 	Wwise.set_switch("Voice_Sel", Voice_sel, self)
@@ -36,7 +38,7 @@ func post_after_allies():
 	pass
 
 func post_event_debug():
-	if Post_for_debug == true:
+	if Post_for_ending_choice == true:
 		Wwise.set_state("MusicVoicePlaying","P4_2_End")
 		Wwise.set_switch("Voice_Sel", Voice_sel, self)
 		post_event()
@@ -54,3 +56,13 @@ func _on_music_sync_user_cue(data: Dictionary) -> void:
 
 func stop_event_with_signal():
 	stop_event()
+
+func stop_event_with_signal_for_ending_choice():
+	Wwise.set_state("BarricadeDestroyed","None")
+	stop_event()
+
+func stop_event_with_signal_for_allies_dialogue():
+	if Is_vocal == true:
+		stop_event()
+
+	

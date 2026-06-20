@@ -94,9 +94,11 @@ State	ID	Name	State Group			Notes
 	2334832916	P4_2_End	MusicVoicePlaying			
 	2703756389	P2_2_CannonShoot	MusicVoicePlaying			
 	4215993583	P2_1_Canon	MusicVoicePlaying			
+	388904761	AskChoice	EndChoice			
 	748895195	None	EndChoice			
 	2926082704	Louise	EndChoice			
 	3484216754	Francois	EndChoice			
+	3930136735	Dialogue	EndChoice			
 	748895195	None	pause			
 	2452206122	false	pause			
 	3053630529	true	pause			
@@ -118,14 +120,25 @@ State	ID	Name	State Group			Notes
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	243460359	Cannon_Sidechain			\Default Work Unit\Cannon_Sidechain	
 	711096812	Deafening			\Default Work Unit\Deafening	
+	728654205	IsPlaying			\MUSIC_RTPC\IsPlaying	
+	1240670792	Distance			\Default Work Unit\Distance	
 	1883033791	Sidechain			\Default Work Unit\Sidechain	
 	2647762268	Sidechain_Dialogue			\Default Work Unit\Sidechain_Dialogue	
 	4205136178	Death_Filter			\Default Work Unit\Death_Filter	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
 	161171466	SFX_NPC			\Default Work Unit\Main Audio Bus\SFX\SFX_NPC	
+	206361915	Vocals			\Music_Bus\Music_Bus\Music_Dry\Vocals	
 	217780010	SFX_Player			\Default Work Unit\Main Audio Bus\SFX\SFX_Player	
 	393239870	SFX			\Default Work Unit\Main Audio Bus\SFX	
+	411987026	Clarinette			\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Clarinette	
+	569003821	LeadVx			\Music_Bus\Music_Bus\Music_Dry\Vocals\LeadVx	
+	697539359	Guimbarde			\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Guimbarde	
+	703172684	Guitare			\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Guitare	
+	828178132	Instruments3D			\Music_Bus\Music_Bus\Music_Dry\Instruments3D	
+	840291561	Accordeon			\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Accordeon	
+	844955687	Instruments2D			\Music_Bus\Music_Bus\Music_Dry\Instruments2D	
+	1064071544	Sifflement			\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Sifflement	
 	1117531639	AMB			\Default Work Unit\Main Audio Bus\AMB	
 	1156359885	Wwise_Motion			\Default Work Unit\Wwise_Motion	
 	1277101407	VX_NPC			\Default Work Unit\Main Audio Bus\VX\VX_NPC	
@@ -133,21 +146,38 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	1541696182	SFX_Cannon			\Default Work Unit\Main Audio Bus\SFX\SFX_Cannon	
 	1551306167	UI			\Default Work Unit\Main Audio Bus\UI	
 	1728828729	VX_Player			\Default Work Unit\Main Audio Bus\VX\VX_Player	
+	1786192857	G1			\Music_Bus\Music_Bus\Music_Dry\Vocals\Groupes\G1	
+	1786192858	G2			\Music_Bus\Music_Bus\Music_Dry\Vocals\Groupes\G2	
+	1786192859	G3			\Music_Bus\Music_Bus\Music_Dry\Vocals\Groupes\G3	
 	1864612070	VX_Characters			\Default Work Unit\Main Audio Bus\VX\VX_Characters	
+	2026972522	Groupes			\Music_Bus\Music_Bus\Music_Dry\Vocals\Groupes	
+	2118850003	Wania			\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Wania	
 	2246998526	Main Audio Bus			\Default Work Unit\Main Audio Bus	
+	2380180443	Solistes			\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes	
+	2440095465	Concertina			\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Concertina	
+	2596673992	Music_Dry			\Music_Bus\Music_Bus\Music_Dry	
+	2638766216	Ydris			\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Ydris	
 	2680856269	Music_Bus			\Music_Bus\Music_Bus	
+	3009393514	Hugo			\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Hugo	
+	3217351932	Atea			\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Atea	
+	3360712845	Tambour			\Music_Bus\Music_Bus\Music_Dry\Instruments2D\Tambour	
+	3603862282	Viele			\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Viele	
+	3850444438	Percussion			\Music_Bus\Music_Bus\Music_Dry\Instruments2D\Percussion	
 
 Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 	214837138	Wwise_Motion_Send			\Default Work Unit\Wwise_Motion\Wwise_Motion_Send	
-	2415077256	Music_Rev			\Music_Bus\Music_Bus\Music_Rev	
+	1250284926	Music_Distant_Rev			\Music_Bus\Music_Bus\Music_Distant_Rev	
 	2635253023	Street_Reverb			\Default Work Unit\Main Audio Bus\Street_Reverb	
 	2726320112	Music_Rev_Barricade			\Music_Bus\Music_Bus\Music_Rev_Barricade	
+	3099563223	Music_mix_Rev			\Music_Bus\Music_Bus\Music_mix_Rev	
 	3189108374	SFX_Gunshot_Send			\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send	
+	4084836994	Music_End_Rev			\Music_Bus\Music_Bus\Music_End_Rev	
 
 Effect plug-ins	ID	Name	Type				Notes
 	64045502	Gain (Custom)	Wwise Gain			
 	75143502	Compressor (Custom)	Wwise Compressor			
 	80258421	Meter (Custom)	Wwise Meter			
+	176439046	Caught_in_a_loop	Wwise Stereo Delay			
 	288099940	Parametric EQ (Custom)	Wwise Parametric EQ			
 	292293286	Parametric EQ (Custom)	Wwise Parametric EQ			
 	491144356	Parametric EQ (Custom)	Wwise Parametric EQ			
@@ -158,7 +188,8 @@ Effect plug-ins	ID	Name	Type				Notes
 	1012444785	High_Pass_60Hz (Custom)	Wwise Parametric EQ			
 	1026399686	Meter (Custom)	Wwise Meter			
 	1050210851	NarrowShortAlley (Custom)	Wwise Convolution Reverb			Impulse response created by AudioEase. © 2011 AudioEase.  All rights reserved.
-	3164629247	Holy	Wwise RoomVerb			
+	2038996943	Plate_Sizzle	Wwise RoomVerb			
+	3036946058	Inside_Your_Head	Wwise RoomVerb			
 	3701691487	Hall_Large_Bright	Wwise RoomVerb			
 
 Audio Devices	ID	Name	Type				Notes

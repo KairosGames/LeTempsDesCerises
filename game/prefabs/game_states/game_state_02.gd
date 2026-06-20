@@ -64,8 +64,7 @@ func lauch_first_phase() -> void:
 
 
 func allies_arrival() -> void:
-	Wwise.set_state("BarricadeDestroyed","Intact")
-	Wwise.set_state("MusicVoicePlaying", "P3_2_Allies") ######## MUSIC
+	Wwise.set_state("BarricadeDestroyed","Intact") ########## MUSIC
 	battle_director.go_next_covers_activation() ####################################### Arrivée des alliées
 	await wait_until(is_player_alive)
 	player.can_die = false
@@ -138,10 +137,10 @@ func launch_francois_replique_on_women_arrival() -> void:
 	var rot_targ: Vector3 = francois_moved_pos.global_position + francois_moved_pos.basis.z
 	await francois.rotate_yaw_to_pos_tween(rot_targ, 0.4)
 	francois.is_fighting = true
+	Wwise.set_state("MusicVoicePlaying", "P3_2_Allies") ######## MUSIC
 
 
 func launch_dialogue_preparation() -> void:
-	Wwise.set_state("MusicVoicePlaying", "P3_3_Discussion") ################ MUSIC
 	francois.is_fighting = false
 	for woman: Npc in woman_points.women: woman.is_fighting = false
 	await wait_voice() #"On les a rétamés !"
@@ -163,6 +162,7 @@ func launch_women_dialogue() -> void:
 		woman.rotate_yaw_to_pos_tween(discussion_point.global_position, t)
 	ui_manager.objective_target.target = null
 	discussion_area.set_deferred("monitoring", false)
+	Wwise.set_state("MusicVoicePlaying", "P3_3_Discussion") ################ MUSIC
 	await wait_voice() # "Vous arrivez d'où comme ça ?"
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 
