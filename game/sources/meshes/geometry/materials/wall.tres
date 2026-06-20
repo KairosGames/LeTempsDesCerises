@@ -2,9 +2,26 @@
 
 [ext_resource type="Texture2D" uid="uid://cm8c1qfwin2i3" path="res://sources/meshes/geometry/textures/brick_a/ltdc-briques-a-col.png" id="1_rg2ls"]
 [ext_resource type="Texture2D" uid="uid://cji8cieeq5ynp" path="res://sources/meshes/geometry/textures/brick_a/ltdc-briques-a-bmp.png" id="2_jbu3n"]
+[ext_resource type="Shader" uid="uid://ds0rjsrd31k8c" path="res://sources/meshes/geometry/materials/dirt.gdshader" id="3_1ug45"]
 [ext_resource type="Texture2D" uid="uid://bd8lv8gm70xte" path="res://sources/meshes/geometry/textures/brick_a/ltdc-briques-a-rgh.png" id="3_5lw71"]
+[ext_resource type="Texture2D" uid="uid://lo1wa52h6syg" path="res://sources/images/textures/textures_vfx/smoke_05.png" id="4_ds6jr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ds6jr"]
+render_priority = 0
+shader = ExtResource("3_1ug45")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/texture_a = ExtResource("4_ds6jr")
+shader_parameter/texture_a_scale = 0.04
+shader_parameter/texture_a_offset = Vector3(4.98, 4.59, 0)
+shader_parameter/texture_a_intensity = 1.5
+shader_parameter/texture_b = ExtResource("4_ds6jr")
+shader_parameter/texture_b_scale = 0.14
+shader_parameter/texture_b_offset = Vector3(0, -0.08, 0)
+shader_parameter/texture_b_intensity = -1.83
+shader_parameter/blend_sharpness = 4.0
 
 [resource]
+next_pass = SubResource("ShaderMaterial_ds6jr")
 albedo_texture = ExtResource("1_rg2ls")
 roughness_texture = ExtResource("3_5lw71")
 heightmap_enabled = true
