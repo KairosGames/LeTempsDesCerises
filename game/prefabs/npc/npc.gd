@@ -88,9 +88,13 @@ func set_gender() -> void:
 	communard.visible = gender == NpcGender.Male
 	communarde.visible = gender == NpcGender.Female
 	if gender == NpcGender.Male:
+		animator.root_node = ^"../Communard"
+		chassepot = (communard as GetChassepot).chassepot
 		communarde.queue_free()
 		communarde = null
 	else:
+		animator.root_node = ^"../Communarde"
+		chassepot = (communarde as GetChassepot).chassepot
 		communard.queue_free()
 		communard = null
 

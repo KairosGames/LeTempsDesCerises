@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://mmnkjdka5ak0" path="res://scripts/dark_fade.gd" id="8_kkeqv"]
 [ext_resource type="Script" uid="uid://xileblfnbaed" path="res://prefabs/managers/battle_director.gd" id="8_r74ma"]
 [ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="10_83msq"]
-[ext_resource type="PackedScene" uid="uid://dxqyq6j0lps48" path="res://prefabs/game_states/gm_usables/visual_chassepot.tscn" id="12_0po2u"]
+[ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="14_y7efs"]
 [ext_resource type="PackedScene" uid="uid://c8dcjv8qv7lw3" path="res://prefabs/game_states/gm_usables/invisible_wall.tscn" id="15_g4ds3"]
 [ext_resource type="Script" uid="uid://cajf45kj4rgnv" path="res://prefabs/game_states/gm_usables/woman_points.gd" id="19_u75jf"]
 [ext_resource type="Texture2D" uid="uid://xwmt30vqykl2" path="res://sources/meshes/geometry/textures/wook_planks/wood_planks_diff_2k_rotate.png" id="20_pl46k"]
@@ -319,7 +319,6 @@ size = Vector3(9.191589, 0.7286377, 20.975586)
 
 [node name="GameManager" type="Node" unique_id=1070764289 node_paths=PackedStringArray("all_states")]
 script = ExtResource("1_utpm8")
-use_narrative = false
 player_prefab = ExtResource("2_oroiu")
 all_states = [NodePath("States/GameState00"), NodePath("States/GameState01"), NodePath("States/GameState02"), NodePath("States/GameState03")]
 
@@ -691,9 +690,9 @@ transform = Transform3D(-0.69127357, 0, -0.7225932, 0, 1, 0, 0.7225932, 0, -0.69
 unique_name_in_owner = true
 transform = Transform3D(0.02539181, 2.9103828e-10, -0.9996775, -0.016836202, 0.9998581, -0.0004276392, 0.9995358, 0.01684163, 0.025388205, -32.428043, 0.06509536, 0.9322983)
 
-[node name="FirstChassepot" parent="States/GameState00" unique_id=1220312822 instance=ExtResource("12_0po2u")]
+[node name="FirstChassepot" parent="States/GameState00" unique_id=366188147 instance=ExtResource("14_y7efs")]
 unique_name_in_owner = true
-transform = Transform3D(-1.0180002, -0.5930656, 0.22792184, -0.5712703, 0.66599137, -0.81859976, 0.27807444, -0.8029498, -0.84731704, -32.85458, 1.3841515, -0.35157228)
+transform = Transform3D(0.70664114, -0.8376374, 0.09498386, 0.7082545, 0.52268815, -0.65967625, 0.45720237, 0.48493376, 0.8751031, -33.12742, 1.324722, 1.4333187)
 
 [node name="HotelTarget" parent="States/GameState00" unique_id=336517668 instance=ExtResource("5_vkqci")]
 transform = Transform3D(-0.042904478, 0, -0.99907917, 0, 1, 0, 0.99907917, 0, -0.042904478, -51.173187, 1.1927323, 1.7779624)
@@ -827,7 +826,7 @@ transform = Transform3D(-0.6299169, 0, 0.7766625, 0, 1, 0, -0.7766625, 0, -0.629
 transform = Transform3D(-0.73399067, 0, 0.6791596, 0, 1, 0, -0.6791596, 0, -0.73399067, -25.654, 0.1, 22.126)
 
 [node name="Woman202" parent="States/GameState02/WomanPoints/Second" unique_id=1704509268 instance=ExtResource("4_ruyh4")]
-transform = Transform3D(-0.8172555, 0, 0.5762755, 0, 1, 0, -0.5762755, 0, -0.8172555, -25.244, 0.1, 24.273)
+transform = Transform3D(-0.8172555, 0, 0.5762755, 0, 1, 0, -0.5762755, 0, -0.8172555, -25.244, 0.2, 24.273)
 
 [node name="Woman302" parent="States/GameState02/WomanPoints/Second" unique_id=599936581 instance=ExtResource("4_ruyh4")]
 transform = Transform3D(-0.8809898, 0, 0.47313523, 0, 1, 0, -0.47313523, 0, -0.8809898, -23.069, 0.2, 23.704)
