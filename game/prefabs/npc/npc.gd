@@ -10,7 +10,6 @@ signal reloaded
 @onready var collider: CollisionShape3D = %Collider
 @onready var is_on_screen: VisibleOnScreenNotifier3D = %IsOnScreen
 @onready var nav: NavigationAgent3D = %Navigation
-@onready var chassepot: Chassepot = %chassepot
 @onready var communard: GetChassepot = %Communard
 @onready var communarde: GetChassepot = %Communarde
 @onready var versaillais: GetChassepot = %Versaillais
@@ -60,6 +59,7 @@ var delta_p: float
 var is_alive: bool = true
 var is_nav_finished: bool = false
 var is_all_nav_finished: bool = false
+var chassepot: Chassepot
 
 var rot_twn: Tween
 
