@@ -7,12 +7,16 @@ class_name UIManager extends Control
 @onready var options: ButtonBehavior = %Options
 @onready var quit: ButtonBehavior = %Quit
 @onready var objective_container: VBoxContainer = %ObjectiveContainer
-@onready var objective_label: Label = %ObjectiveLabel
+@onready var objective_label: RichTextLabel = %ObjectiveLabel
 @onready var objective_target: ObjectiveTarget = %ObjectiveTarget
 @onready var top_strip: ColorRect = %TopStrip
 @onready var bottom_strip: ColorRect = %BottomStrip
 @onready var dark_fade: DarkFade = %DarkFade
 @onready var choice_tooltip: ChoiceTooltip = %ChoiceTooltip
+@onready var objective_title_label: RichTextLabel = %ObjectiveTitleLabel
+@onready var objective_text_container: HBoxContainer = %ObjectiveTextContainer
+@onready var target_title: TextureRect = %TargetTitle
+
 
 @export_category("Letter box")
 @export var time_to_open_letter_box: float = 0.35
@@ -26,7 +30,10 @@ var is_tutorial: bool = false
 var is_tutorial_skipable: bool = false
 var is_letter_box_open: bool = false
 
+var target_title_mat: ShaderMaterial
+var objectif_target_mat: ShaderMaterial
 var strip_twn: Tween
+var out_line_twn: Tween
 
 
 static var instance: UIManager:
@@ -42,6 +49,8 @@ func _ready() -> void:
 	tutorial_km.visible = false
 	tutorial_gpad.visible = false
 	set_objective(false)
+	objectif_target_mat = objective_target.material as ShaderMaterial
+	target_title_mat = target_title.material as ShaderMaterial
 	ready_deferred.call_deferred()
 
 
@@ -134,6 +143,43 @@ func set_objective(is_active: bool, target: Node3D = null, objective: String = "
 	objective_label.text = "· " + objective
 	objective_container.visible = is_active
 	objective_target.target = target
+	if is_active: launch_blink_effect(target)
+
+
+func launch_blink_effect(target: Node3D) -> void:
+	var blink_target: bool = target != null
+	var outline_color: Color = objective_label.get_theme_color("font_outline_color")
+	objective_container.visible = false
+	await get_tree().create_timer(0.1).timeout
+	objective_container.visible = true
+	outline_color.a = 1.0
+	objective_label.add_theme_color_override("font_outline_color", outline_color)
+	objective_title_label.add_theme_color_override("font_outline_color", outline_color)
+	target_title_mat.set_shader_parameter("outline_color", outline_color)
+	objectif_target_mat.set_shader_parameter("outline_color", outline_color)
+	tween_outlines(0.0, 0.4)
+	for i: int in range(5):
+		await get_tree().create_timer(0.4).timeout
+		objective_container.visible = false
+		if blink_target: objective_target.target = null
+		outline_color.a = 1.0
+		objective_label.add_theme_color_override("font_outline_color", outline_color)
+		objective_title_label.add_theme_color_override("font_outline_color", outline_color)
+		target_title_mat.set_shader_parameter("outline_color", outline_color)
+		objectif_target_mat.set_shader_parameter("outline_color", outline_color)
+		tween_outlines(0.0, 0.4)
+		await get_tree().create_timer(0.1).timeout
+		objective_container.visible = true
+		if blink_target: objective_target.target = target
+
+
+func tween_outlines(alpha: float, t: float) -> void:
+	if out_line_twn : out_line_twn.kill()
+	out_line_twn = create_tween()
+	out_line_twn.tween_property(objective_label,"theme_override_colors/font_outline_color:a", alpha, t)
+	out_line_twn.parallel().tween_property(objective_title_label,"theme_override_colors/font_outline_color:a", alpha, t)
+	out_line_twn.parallel().tween_property(target_title_mat, "shader_parameter/outline_color:a", alpha, t)
+	out_line_twn.parallel().tween_property(objectif_target_mat, "shader_parameter/outline_color:a", alpha, t)
 
 
 func hard_set_letter_box(to_open: bool) -> void:

@@ -5,11 +5,11 @@
 [ext_resource type="Script" uid="uid://c5krjyeui5vq" path="res://prefabs/managers/ui_manager.gd" id="3_eijdo"]
 [ext_resource type="PackedScene" uid="uid://ctinark3l27ws" path="res://prefabs/managers/effects_manager.tscn" id="3_g4ds3"]
 [ext_resource type="PackedScene" uid="uid://beech0hdhe6o0" path="res://prefabs/game_states/game_state_00.tscn" id="3_mvb55"]
-[ext_resource type="Texture2D" uid="uid://d0odgerepsyjj" path="res://prefabs/game_states/gm_usables/red_circle.webp" id="4_7sktv"]
 [ext_resource type="Script" uid="uid://nxby0mkl27i5" path="res://prefabs/ui/tooltip.gd" id="4_cvqlx"]
 [ext_resource type="PackedScene" uid="uid://7j15kus7g3jt" path="res://prefabs/game_states/game_state_01.tscn" id="4_ljy1t"]
 [ext_resource type="PackedScene" uid="uid://h0dft4mcr3qp" path="res://prefabs/game_states/gm_usables/custom_marker.tscn" id="4_ruyh4"]
 [ext_resource type="Script" uid="uid://dedkctoc126kq" path="res://prefabs/game_states/gm_usables/objective_target.gd" id="4_x50xo"]
+[ext_resource type="Texture2D" uid="uid://c7nkypm7s8fu6" path="res://prefabs/game_states/gm_usables/quest_point.png" id="5_6kj28"]
 [ext_resource type="PackedScene" uid="uid://qwhdtvmxif5t" path="res://prefabs/game_states/game_state_02.tscn" id="5_m6g67"]
 [ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="5_rmfoy"]
 [ext_resource type="PackedScene" uid="uid://x6umueunebab" path="res://prefabs/game_states/gm_usables/shoot_target.tscn" id="5_vkqci"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" uid="uid://mmnkjdka5ak0" path="res://scripts/dark_fade.gd" id="8_kkeqv"]
 [ext_resource type="Script" uid="uid://xileblfnbaed" path="res://prefabs/managers/battle_director.gd" id="8_r74ma"]
 [ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="10_83msq"]
+[ext_resource type="Texture2D" uid="uid://xldcsu5sm21h" path="res://prefabs/game_states/gm_usables/bgquest.png" id="11_y7efs"]
+[ext_resource type="Shader" uid="uid://c3neb6a2e0vbg" path="res://prefabs/managers/ui_out_line.gdshader" id="12_jh506"]
 [ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="14_y7efs"]
 [ext_resource type="PackedScene" uid="uid://c8dcjv8qv7lw3" path="res://prefabs/game_states/gm_usables/invisible_wall.tscn" id="15_g4ds3"]
 [ext_resource type="Script" uid="uid://cajf45kj4rgnv" path="res://prefabs/game_states/gm_usables/woman_points.gd" id="19_u75jf"]
@@ -26,6 +28,11 @@
 [ext_resource type="ArrayMesh" uid="uid://d1we637hyqvrr" path="res://prefabs/barricade/barricade_meshes/old/c2c.obj" id="22_kkeqv"]
 [ext_resource type="Script" uid="uid://hj475csp20x" path="res://prefabs/game_states/gm_usables/versaillais_points.gd" id="24_6kj28"]
 [ext_resource type="PackedScene" uid="uid://cq3iqolfkxyxg" path="res://prefabs/game_states/game_state_03.tscn" id="24_kkeqv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jh506"]
+shader = ExtResource("12_jh506")
+shader_parameter/outline_color = Color(0.99215686, 0.8039216, 0, 0)
+shader_parameter/outline_size = 50.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvqlx"]
 content_margin_left = 20.0
@@ -208,33 +215,20 @@ corner_detail = 20
 shadow_color = Color(1, 1, 1, 0.23529412)
 shadow_size = 10
 
-[sub_resource type="Gradient" id="Gradient_83msq"]
-colors = PackedColorArray(0, 0, 0, 0.49019608, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x50xo"]
-gradient = SubResource("Gradient_83msq")
-fill_from = Vector2(0.31965813, 0)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sktv"]
 content_margin_left = 20.0
-texture = SubResource("GradientTexture2D_x50xo")
+texture = ExtResource("11_y7efs")
 
-[sub_resource type="LabelSettings" id="LabelSettings_ol0j6"]
-font_size = 24
-shadow_size = 5
-shadow_color = Color(0, 0, 0, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7efs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r74ma"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aq8al"]
+shader = ExtResource("12_jh506")
+shader_parameter/outline_color = Color(0.99215686, 0.8039216, 0, 0)
+shader_parameter/outline_size = 50.0
+
 [sub_resource type="Theme" id="Theme_ol0j6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_83msq"]
-content_margin_left = 10.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_jv7w5"]
-font_size = 20
-shadow_size = 3
-shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rmfoy"]
 size = Vector3(2.4902344, 2.6345215, 14.923035)
@@ -337,11 +331,12 @@ script = ExtResource("3_eijdo")
 
 [node name="ObjectiveTarget" type="TextureRect" parent="UIManager" unique_id=554183493]
 unique_name_in_owner = true
+material = SubResource("ShaderMaterial_jh506")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = ExtResource("4_7sktv")
+texture = ExtResource("5_6kj28")
 expand_mode = 1
 script = ExtResource("4_x50xo")
 
@@ -458,6 +453,7 @@ vertical_alignment = 1
 
 [node name="LetterBoxContainer" type="VBoxContainer" parent="UIManager" unique_id=1532973952]
 unique_name_in_owner = true
+visible = false
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
@@ -636,8 +632,8 @@ unique_name_in_owner = true
 z_index = 2
 layout_mode = 0
 offset_top = 32.0
-offset_right = 619.0
-offset_bottom = 114.0
+offset_right = 695.0
+offset_bottom = 139.0
 theme_override_constants/separation = 4
 
 [node name="PanelContainer" type="PanelContainer" parent="UIManager/ObjectiveContainer" unique_id=506578922]
@@ -645,34 +641,73 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_7sktv")
 
-[node name="Label" type="Label" parent="UIManager/ObjectiveContainer/PanelContainer" unique_id=593496218]
+[node name="ObjectiveTitleLabel" type="RichTextLabel" parent="UIManager/ObjectiveContainer/PanelContainer" unique_id=201540228]
+unique_name_in_owner = true
+clip_contents = false
 layout_mode = 2
-text = "Objective"
-label_settings = SubResource("LabelSettings_ol0j6")
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0.99215686, 0.8039216, 0, 0)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Objective
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UIManager/ObjectiveContainer" unique_id=1188741627]
+[node name="HSeparator" type="HSeparator" parent="UIManager/ObjectiveContainer" unique_id=1983137391]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y7efs")
+
+[node name="ObjectiveTextContainer" type="HBoxContainer" parent="UIManager/ObjectiveContainer" unique_id=1188741627]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="UIManager/ObjectiveContainer/HBoxContainer" unique_id=1450316153]
+[node name="VSeparator" type="VSeparator" parent="UIManager/ObjectiveContainer/ObjectiveTextContainer" unique_id=1450316153]
 layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_r74ma")
 
-[node name="TextureRect" type="TextureRect" parent="UIManager/ObjectiveContainer/HBoxContainer" unique_id=274613385]
-custom_minimum_size = Vector2(26, 0)
+[node name="TargetTitle" type="TextureRect" parent="UIManager/ObjectiveContainer/ObjectiveTextContainer" unique_id=274613385]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_aq8al")
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 theme = SubResource("Theme_ol0j6")
-texture = ExtResource("4_7sktv")
+texture = ExtResource("5_6kj28")
 expand_mode = 1
 
-[node name="ObjectiveLabel" type="Label" parent="UIManager/ObjectiveContainer/HBoxContainer" unique_id=174662653]
-unique_name_in_owner = true
+[node name="VSeparator2" type="VSeparator" parent="UIManager/ObjectiveContainer/ObjectiveTextContainer" unique_id=713206862]
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_83msq")
-text = "· Go to the barricade"
-label_settings = SubResource("LabelSettings_jv7w5")
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_r74ma")
+
+[node name="ObjectiveLabel" type="RichTextLabel" parent="UIManager/ObjectiveContainer/ObjectiveTextContainer" unique_id=649088959]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0.99215686, 0.8039216, 0, 0)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "· Go to the barricade
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BattleDirector" type="Node" parent="." unique_id=952621406]
