@@ -8,6 +8,7 @@ class_name GameState02 extends GameState
 @onready var louise_detection_area: EventArea = %LouiseDetectionArea
 @onready var discussion_area: EventArea = %DiscussionArea
 @onready var barricade_point: CustomMarker = %BarricadePoint
+@onready var secure_respawn: CustomMarker = %SecureRespawn
 
 var first_battle_phase_time: float = 60.0
 
@@ -50,6 +51,8 @@ func set_short_timers() -> void:
 
 
 func lauch_first_phase() -> void:
+	player.death_camera.first_pos = secure_respawn.global_position
+	player.death_camera.first_rot = Vector3(0.0, secure_respawn.global_rotation.y, 0.0)
 	for woman: Npc in woman_points.women: woman.visible = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 	print("ENTER WAIT : ", first_battle_phase_time, "s")
@@ -169,9 +172,9 @@ func launch_last_battle_phase() -> void:
 	############ FOR DEBUG#########################
 	add_on_process(add_worker_on_cannon)
 
-	battle_director.go_next_covers_activation() ####################################### Barricade 2 endommagée
+	battle_director.go_next_covers_activation() ################################### Barricade 2 endommagée
 	await wait_until(is_barricade_very_damaged)
-	battle_director.go_next_covers_activation() ####################################### Barricade 2 très endommagée
+	battle_director.go_next_covers_activation() ################################### Barricade 2 très endommagée
 	await wait_signal(game_manager.second_barricade.just_destroyed)
 
 	############ FOR DEBUG#########################
@@ -179,7 +182,7 @@ func launch_last_battle_phase() -> void:
 
 	game_manager.cannon.enabled = false
 	await wait(10.0)
-	battle_director.go_next_covers_activation() ####################################### 10s après barricade 2 détruite
+	battle_director.go_next_covers_activation() ################################# 10s après barricade 2 détruite
 
 
 func is_barricade_damaged() -> bool:

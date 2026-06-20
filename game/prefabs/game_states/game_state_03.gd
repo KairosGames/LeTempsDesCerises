@@ -65,13 +65,13 @@ func set_short_timers() -> void:
 
 
 func wait_no_more_allies() -> void:
+	await wait_until(is_player_alive)
+	player.can_die = false
 	louise.is_fighting = false
 	francois.is_fighting = false
 	louise.launch_movement_to_nav_point(louise_cover, 4.0, true)
 	francois.launch_movement_to_nav_point(francois_cover, 4.0, true)
 	await wait_until(are_louise_and_francois_on_covers)
-	await wait_until(is_player_alive)
-	player.can_die = false
 	
 	############# FOR DEBUG
 	add_on_process(kill_agents.bind(false, true))
