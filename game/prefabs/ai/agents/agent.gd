@@ -15,7 +15,6 @@ signal move_stoped
 
 @onready var shoot_raycast: RayCast3D = $RayCast3D
 @onready var navigation: Navigation = $Navigation
-@onready var animation: AnimationPlayer = $Body/AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Chest, $ShootTargets/Head]
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
