@@ -8,8 +8,6 @@ varying vec3 world_pos;
 varying vec3 world_normal;
 
 vec4 triplanar(sampler2D tex, float blend_sharpness, float texture_scale, vec3 world_position, vec3 normal) {
-	vec3 world_pos = world_position * texture_scale;
-
     vec3 blend = abs(normal);
     blend = pow(blend, vec3(blend_sharpness));
     blend /= blend.x + blend.y + blend.z;
