@@ -243,7 +243,6 @@ func set_player_before_george_death() -> void:
 
 
 func enter_fight_begin() -> void:
-	Wwise.set_state("MusicVoicePLaying","P1_2_OB_End") ######################### MUSIC
 	first_fire_from_barricade.emit()
 	await wait(0.3)
 	clean_process()
@@ -269,6 +268,7 @@ func georges_death() -> void:
 	await wait_voice() # "Au mur citoyen !"
 	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.3)
 	call_georges_death()
+	Wwise.set_state("MusicVoicePLaying","P1_2_OB_End") ######################### MUSIC
 	georges.enter_in_walk_anim()
 	await georges.move_to(barricade_point.global_position, 4.0)
 	await wait_voice() # "Nooooon ! Ils ont tué Georges !"

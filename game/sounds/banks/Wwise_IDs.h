@@ -117,6 +117,8 @@ namespace AK
 
             namespace STATE
             {
+                static const AkUniqueID ASKCHOICE = 388904761U;
+                static const AkUniqueID DIALOGUE = 3930136735U;
                 static const AkUniqueID FRANCOIS = 3484216754U;
                 static const AkUniqueID LOUISE = 2926082704U;
                 static const AkUniqueID NONE = 748895195U;
@@ -459,24 +461,49 @@ namespace AK
 
     namespace BUSSES
     {
+        static const AkUniqueID ACCORDEON = 840291561U;
         static const AkUniqueID AMB = 1117531639U;
+        static const AkUniqueID ATEA = 3217351932U;
+        static const AkUniqueID CLARINETTE = 411987026U;
+        static const AkUniqueID CONCERTINA = 2440095465U;
+        static const AkUniqueID G1 = 1786192857U;
+        static const AkUniqueID G2 = 1786192858U;
+        static const AkUniqueID G3 = 1786192859U;
+        static const AkUniqueID GROUPES = 2026972522U;
+        static const AkUniqueID GUIMBARDE = 697539359U;
+        static const AkUniqueID GUITARE = 703172684U;
+        static const AkUniqueID HUGO = 3009393514U;
+        static const AkUniqueID INSTRUMENTS2D = 844955687U;
+        static const AkUniqueID INSTRUMENTS3D = 828178132U;
+        static const AkUniqueID LEADVX = 569003821U;
         static const AkUniqueID MAIN_AUDIO_BUS = 2246998526U;
         static const AkUniqueID MUSIC_BUS = 2680856269U;
+        static const AkUniqueID MUSIC_DRY = 2596673992U;
+        static const AkUniqueID PERCUSSION = 3850444438U;
         static const AkUniqueID SFX = 393239870U;
         static const AkUniqueID SFX_CANNON = 1541696182U;
         static const AkUniqueID SFX_NPC = 161171466U;
         static const AkUniqueID SFX_PLAYER = 217780010U;
+        static const AkUniqueID SIFFLEMENT = 1064071544U;
+        static const AkUniqueID SOLISTES = 2380180443U;
+        static const AkUniqueID TAMBOUR = 3360712845U;
         static const AkUniqueID UI = 1551306167U;
+        static const AkUniqueID VIELE = 3603862282U;
+        static const AkUniqueID VOCALS = 206361915U;
         static const AkUniqueID VX = 1534528563U;
         static const AkUniqueID VX_CHARACTERS = 1864612070U;
         static const AkUniqueID VX_NPC = 1277101407U;
         static const AkUniqueID VX_PLAYER = 1728828729U;
+        static const AkUniqueID WANIA = 2118850003U;
         static const AkUniqueID WWISE_MOTION = 1156359885U;
+        static const AkUniqueID YDRIS = 2638766216U;
     } // namespace BUSSES
 
     namespace AUX_BUSSES
     {
-        static const AkUniqueID MUSIC_REV = 2415077256U;
+        static const AkUniqueID MUSIC_DISTANT_REV = 1250284926U;
+        static const AkUniqueID MUSIC_END_REV = 4084836994U;
+        static const AkUniqueID MUSIC_MIX_REV = 3099563223U;
         static const AkUniqueID MUSIC_REV_BARRICADE = 2726320112U;
         static const AkUniqueID SFX_GUNSHOT_SEND = 3189108374U;
         static const AkUniqueID STREET_REVERB = 2635253023U;

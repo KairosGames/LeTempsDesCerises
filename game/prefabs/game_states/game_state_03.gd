@@ -5,7 +5,8 @@ signal choose_surrender
 signal choose_fight_to_death
 signal game_ended
 signal stop_music_for_ending #MUSIC
-signal music_debug_choice_scene #Debug Music
+signal stop_music_for_choice #MUSIC
+signal ending_music_choice_scene #Debug Music
 
 @onready var louise: Npc = %Louise
 @onready var discussion_point: CustomMarker = %DiscussionPoint
@@ -69,6 +70,7 @@ func set_short_timers() -> void:
 func wait_no_more_allies() -> void:
 	await wait_until(is_player_alive)
 	player.can_die = false
+	Wwise.set_state("BarricadeDestroyed","PudBarricade") # MUSIC
 	louise.is_fighting = false
 	francois.is_fighting = false
 	louise.launch_movement_to_nav_point(louise_cover, 4.0, true)
@@ -105,7 +107,7 @@ func is_there_no_allies() -> bool:
 
 
 func player_go_to_cover() -> void:
-	Wwise.set_state("MusicVoicePlaying","P4_2_End")
+	Wwise.set_state("EndChoice","Dialogue")
 	Wwise.set_state("Music_State","Phase5")
 	player.can_play = false
 	ui_manager.set_objective(false)
@@ -137,6 +139,7 @@ func launch_player_crouch() -> void:
 
 
 func launch_dialogue() -> void:
+	stop_music_for_choice.emit()
 	await wait_voice() # "Rendez vous, racailles rouges"
 	var f_targ: Vector3 = player_cover.global_position - (player_cover.basis.x * 4.0)
 	await francois.rotate_yaw_to_pos_tween(f_targ, 0.4)
@@ -148,7 +151,8 @@ func launch_dialogue() -> void:
 
 func launch_player_choice() -> void:
 	georges.visible = false
-	#music_debug_choice_scene.emit() # MUSIC # ATTENTION
+	ending_music_choice_scene.emit() # MUSIC
+	Wwise.set_state("EndChoice","AskChoice")
 	await ui_manager.launch_letter_box(false)
 	handle_choice_display()
 	await wait_until(is_choice_done)
@@ -214,13 +218,12 @@ func launch_execution() -> void:
 	set_player_before_execution()
 	ui_manager.launch_letter_box(false)
 	await wait(7.0)
+	#stop_music_for_ending.emit() ######################## MUSIC
 	await wait_voice() # "À genoux la canaille !"
 	launch_execution_timer()
 	louise.enter_kneeling()
 	francois.enter_pray()
 	add_on_process(check_if_player_crouch)
-
-	stop_music_for_ending.emit() #MUSIC
 
 	await wait_until(has_player_crouch_or_moment_passed)
 	if not has_player_crouch: await wait_voice() # "À genoux !"
@@ -243,6 +246,7 @@ func launch_execution() -> void:
 	versaillais_points.versaillais_shoot_for_execution()
 	await wait(0.1)
 	player.die_called.emit()
+	stop_music_for_ending.emit() ######################## MUSIC
 	await wait(0.1)
 	player.died.emit()
 	await wait(3.0)
