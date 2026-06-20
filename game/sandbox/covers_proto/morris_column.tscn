@@ -1,18 +1,31 @@
 [gd_scene format=3 uid="uid://8h2see0efmmk"]
 
-[ext_resource type="PackedScene" uid="uid://bkb8xv1h0cwjs" path="res://sources/meshes/props/sm_morris_column_complete_c.glb" id="1_3tikv"]
-[ext_resource type="Material" uid="uid://c6jwmpwhck58r" path="res://sandbox/chassepot_proto/steel_proto.tres" id="2_eg2yi"]
 [ext_resource type="Texture2D" uid="uid://rb2o7wtmp0bw" path="res://sources/images/textures/affiches/394_25_mai_5_prairial_79_soldats_de_Versailles.png" id="3_8aefd"]
 [ext_resource type="Shader" uid="uid://cchm8fe2okm1d" path="res://sandbox/covers_proto/affiche.gdshader" id="4_enxkv"]
 [ext_resource type="Texture2D" uid="uid://bkpb11bb6chae" path="res://sources/images/textures/affiches/soldats_versailles.png" id="5_t4jab"]
 [ext_resource type="Texture2D" uid="uid://clwivtte1vwf4" path="res://sources/images/textures/affiches/la_sociale.png" id="6_6l513"]
 [ext_resource type="Texture2D" uid="uid://u8bwchhrkds8" path="res://sources/images/textures/affiches/affiche_rouge.png" id="6_qg6i7"]
 [ext_resource type="Texture2D" uid="uid://dksvsc7p2phkc" path="res://sources/images/textures/affiches/cantines_municipales.png" id="7_qg6i7"]
+[ext_resource type="PackedScene" uid="uid://c3nkhj4h47nia" path="res://sources/meshes/props/colonne-b.fbx" id="8_ft5rj"]
 [ext_resource type="WwiseAcousticTexture" uid="uid://hsxyn7qyhjg6" path="res://Wwise/resources/Acoustic Texture/{5246478E-C5DA-4E0C-A0DE-C98D1479529A}.tres" id="9_ejfay"]
+[ext_resource type="Texture2D" uid="uid://doeclcm70y5ng" path="res://sources/meshes/geometry/textures/ltdc-colonne-b-textures/ltdc-colonne-b-col.png" id="9_v252m"]
+[ext_resource type="Texture2D" uid="uid://k2crdcc76mhe" path="res://sources/meshes/geometry/textures/ltdc-colonne-b-textures/ltdc-colonne-b-mtl.png" id="10_j0gup"]
+[ext_resource type="Texture2D" uid="uid://ci2378yhoxu6k" path="res://sources/meshes/geometry/textures/ltdc-colonne-b-textures/ltdc-colonne-b-rgh.png" id="11_6f63r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vq7ai"]
+radius = 0.5487763
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3tikv"]
-height = 4.5294
-radius = 0.6401367
+height = 3.2281833
+radius = 0.53222656
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_n3rhi"]
+height = 0.6658715
+radius = 0.0859375
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1ovso"]
+height = 0.46379513
+radius = 0.8696289
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enxkv"]
 albedo_texture = ExtResource("3_8aefd")
@@ -91,39 +104,52 @@ size = Vector2(1, 0.84)
 subdivide_width = 10
 subdivide_depth = 20
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2h5jx"]
+albedo_texture = ExtResource("9_v252m")
+metallic = 1.0
+metallic_texture = ExtResource("10_j0gup")
+roughness_texture = ExtResource("11_6f63r")
+
 [node name="MorrisColumn" type="StaticBody3D" unique_id=1149487519]
 
-[node name="sm_morris_column_complete_c2" parent="." unique_id=760765616 instance=ExtResource("1_3tikv")]
-
-[node name="sm_morris_column_complete_c" parent="sm_morris_column_complete_c2" index="0" unique_id=999345787]
-surface_material_override/0 = ExtResource("2_eg2yi")
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=91971092]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4150872, 0)
+shape = SubResource("SphereShape3D_vq7ai")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1777114855]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2647, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6140916, 0)
 shape = SubResource("CylinderShape3D_3tikv")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1255255694]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=2019689374]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.200214, 0)
+shape = SubResource("CylinderShape3D_n3rhi")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=946739344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.93693, 0)
+shape = SubResource("CylinderShape3D_1ovso")
+
+[node name="Affiche" type="MeshInstance3D" parent="." unique_id=1255255694]
 transform = Transform3D(-0.96592575, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, -0.96592575, -0.034044534, 1.4, 0.1270559)
 visible = false
 mesh = SubResource("CylinderMesh_t4jab")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1103262837]
+[node name="Affiche2" type="MeshInstance3D" parent="." unique_id=1103262837]
 transform = Transform3D(0.9848076, 0, -0.17364816, 0, 1, 0, 0.17364816, 0, 0.9848076, -0.092832215, 1.5, 0.52647763)
 mesh = SubResource("QuadMesh_2354l")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=748532912]
+[node name="Affiche3" type="MeshInstance3D" parent="." unique_id=748532912]
 transform = Transform3D(-0.26375526, 0, 0.9645895, 0, 1, 0, -0.9645895, 0, -0.26375526, 0.5078961, 1.1116573, -0.13887802)
 mesh = SubResource("QuadMesh_6l513")
 
-[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=145484233]
+[node name="Affiche4" type="MeshInstance3D" parent="." unique_id=145484233]
 transform = Transform3D(-0.17638049, 0, 0.98432195, 0, 1, 0, -0.98432195, 0, -0.17638049, 0.5200753, 1.996, -0.0931922)
 mesh = SubResource("QuadMesh_ft5rj")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=1690495898]
+[node name="Affiche5" type="MeshInstance3D" parent="." unique_id=1690495898]
 transform = Transform3D(-0.6723279, 0, -0.7402534, 0, 1, 0, 0.7402534, 0, -0.6723279, -0.3911334, 0.808367, -0.35524315)
 mesh = SubResource("QuadMesh_5dq5t")
 
-[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=422557737]
+[node name="Affiche6" type="MeshInstance3D" parent="." unique_id=422557737]
 transform = Transform3D(-0.6723279, 0, -0.7402534, 0, 1, 0, 0.7402534, 0, -0.6723279, -0.39120013, 1.78157, -0.35530376)
 mesh = SubResource("QuadMesh_v252m")
 
@@ -132,4 +158,9 @@ enable_diffraction_on_boundary_edges = true
 is_solid = true
 acoustic_texture = ExtResource("9_ejfay")
 
-[editable path="sm_morris_column_complete_c2"]
+[node name="colonne-b" parent="." unique_id=1235462390 instance=ExtResource("8_ft5rj")]
+
+[node name="column_2" parent="colonne-b" index="0" unique_id=2018803920]
+surface_material_override/0 = SubResource("StandardMaterial3D_2h5jx")
+
+[editable path="colonne-b"]
