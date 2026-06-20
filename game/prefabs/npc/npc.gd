@@ -11,8 +11,9 @@ signal reloaded
 @onready var is_on_screen: VisibleOnScreenNotifier3D = %IsOnScreen
 @onready var nav: NavigationAgent3D = %Navigation
 @onready var chassepot: Chassepot = %chassepot
-@onready var communard: Node3D = %Communard
-@onready var communarde: Node3D = %Communarde
+@onready var communard: GetChassepot = %Communard
+@onready var communarde: GetChassepot = %Communarde
+@onready var versaillais: GetChassepot = %Versaillais
 
 enum NpcName{
 	Georges,
@@ -76,7 +77,7 @@ var is_fighting: bool:
 
 
 func _ready() -> void:
-	set_gender()
+	set_npc()
 	ready_deferred.call_deferred()
 
 
@@ -84,19 +85,32 @@ func ready_deferred() -> void:
 	if GameManager.instance: game_manager = GameManager.instance
 
 
-func set_gender() -> void:
-	communard.visible = gender == NpcGender.Male
-	communarde.visible = gender == NpcGender.Female
-	if gender == NpcGender.Male:
-		animator.root_node = ^"../Communard"
-		chassepot = (communard as GetChassepot).chassepot
-		communarde.queue_free()
-		communarde = null
+func set_npc() -> void:
+	communard.visible = gender == NpcGender.Male and team == NpcTeam.Communard
+	communarde.visible = gender == NpcGender.Female and team == NpcTeam.Communard
+	versaillais.visible = gender == NpcGender.Male and team == NpcTeam.Versaillais
+	if team == NpcTeam.Communard:
+		if gender == NpcGender.Male:
+			animator.root_node = ^"../Communard"
+			chassepot = communard.chassepot
+			communarde.queue_free()
+			versaillais.queue_free()
+			communarde = null
+			versaillais = null
+		else:
+			animator.root_node = ^"../Communarde"
+			chassepot = communarde.chassepot
+			communard.queue_free()
+			versaillais.queue_free()
+			communard = null
+			versaillais = null
 	else:
-		animator.root_node = ^"../Communarde"
-		chassepot = (communarde as GetChassepot).chassepot
+		animator.root_node = ^"../Versaillais"
+		chassepot = versaillais.chassepot
 		communard.queue_free()
+		communarde.queue_free()
 		communard = null
+		communarde = null
 
 
 func _process(delta: float) -> void:
