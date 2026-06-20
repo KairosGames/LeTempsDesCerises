@@ -64,6 +64,7 @@ func _validate_property(property: Dictionary) -> void:
 		"sexe" when type != Type.SPAWNER: property.usage = PROPERTY_USAGE_NO_EDITOR
 
 func _ready() -> void:
+	if type == Type.SPAWNER: add_to_group("Spawners")
 	_init_all()
 	if is_gizmo_enabled(): _show_all()
 	ProjectSettings.settings_changed.connect(_on_project_settings_changed)

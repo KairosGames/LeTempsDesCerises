@@ -372,6 +372,29 @@ func is_there_no_allies() -> bool:
 	return are_all_dead
 
 
+func set_active_agents(are_allies: bool, enable: bool, aiming: bool = false) -> void:
+	var group: String = "Communard" if are_allies else "Versaillais"
+	var list: Array = get_tree().get_nodes_in_group(group)
+	if are_allies: list = list.filter(func(o): return o is not Player)
+	for agent: Agent in list:
+		agent.is_disabled = not enable
+		agent.posture = Agent.Posture.STAND
+		print("ALLY : ", are_allies)
+		print("DISABLE : ", agent.is_disabled)
+		if aiming and not enable: agent.is_aiming = true
+
+
+func disable_all_spawners() -> void:
+	var spawners: Array = get_tree().get_nodes_in_group("Spawners")
+	for spawner: Cover in spawners: spawner.enabled = false
+
+
+func set_visible_all_agents() -> void:
+	var agents: Array = get_tree().get_nodes_in_group("Communard").filter(func(o): return o is not Player)
+	agents.append_array(get_tree().get_nodes_in_group("Versaillais"))
+	for agent: Agent in agents: agent.visible = false
+
+
 ##################### FOR DEBUG ##############################
 func debug_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("go_next_step") and game_manager.is_game_playing() and game_manager.use_narrative:

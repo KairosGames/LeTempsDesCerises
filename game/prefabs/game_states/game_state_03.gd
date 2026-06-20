@@ -15,6 +15,7 @@ signal game_ended
 @onready var versaillais_points: VersaillaisPoints = %VersaillaisPoints
 @onready var execution_point: CustomMarker = %ExecutionPoint
 @onready var francois_death: CustomMarker = $FrancoisDeath
+@onready var georges: Npc = %Georges
 
 var is_surrending: bool = false
 var is_time_to_die: bool = false
@@ -69,19 +70,22 @@ func wait_no_more_allies() -> void:
 	louise.launch_movement_to_nav_point(louise_cover, 4.0, true)
 	francois.launch_movement_to_nav_point(francois_cover, 4.0, true)
 	await wait_until(are_louise_and_francois_on_covers)
-	
-	############# FOR DEBUG
-	add_on_process(kill_agents.bind(false, true))
-	
-	await wait_until(is_there_one_ally)
 	await wait_until(is_player_alive)
 	player.can_die = false
 	
 	############# FOR DEBUG
 	add_on_process(kill_agents.bind(false, true))
-	await wait_until(is_there_no_allies)
+	
+	await wait_until(is_there_one_ally)
 	
 	############# FOR DEBUG
+	add_on_process(kill_agents.bind(false, true))
+	
+	await wait_until(is_there_no_allies)
+	disable_all_spawners()
+	await wait(0.5)
+	set_active_agents(true, false)
+	set_active_agents(false, false, true)
 
 
 func are_louise_and_francois_on_covers() -> bool:
@@ -137,6 +141,7 @@ func launch_dialogue() -> void:
 
 
 func launch_player_choice() -> void:
+	georges.visible = false
 	await ui_manager.launch_letter_box(false)
 	handle_choice_display()
 	await wait_until(is_choice_done)

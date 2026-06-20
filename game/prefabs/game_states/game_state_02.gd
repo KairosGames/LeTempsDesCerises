@@ -46,14 +46,13 @@ func set_game_for_debug() -> void:
 
 
 func set_short_timers() -> void:
-	first_battle_phase_time = 0.0
+	first_battle_phase_time = 3.0
 
 
 func lauch_first_phase() -> void:
 	for woman: Npc in woman_points.women: woman.visible = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
-	print("ENTER WAIT")
-	print(first_battle_phase_time)
+	print("ENTER WAIT : ", first_battle_phase_time, "s")
 	await wait(first_battle_phase_time)
 	print("FINISH WAITING")
 
@@ -90,10 +89,15 @@ func allies_arrival() -> void:
 	#############################################################################FOR DEBUG
 	add_on_process(kill_agents.bind(true, false))
 	
+	
 	for agent: Agent in game_manager.cannon.workers:
 		if not agent or not is_instance_valid(agent): continue
 		agent.die()
+	
+	##################################################### SECURITÉ DE TIMER A METTRE LA
 	await wait_until(is_there_no_enemies)
+	await wait(1.0)
+	set_active_agents(true, false)
 
 
 func launch_women() -> void:
@@ -103,7 +107,8 @@ func launch_women() -> void:
 		var p2: CustomMarker = woman_points.get_second_point(woman)
 		var path_points: Array[Node3D] = [p1, p2]
 		var speed: float = randf_range(3.7, 4.3)
-		if woman.npc_name != Npc.NpcName.Louise: woman.collider.disabled = true
+		if woman.npc_name != Npc.NpcName.Louise and woman.npc_name != Npc.NpcName.Woman3:
+			woman.collider.disabled = true
 		await wait(0.05)
 		woman.launch_movement_to_paths(path_points, speed, true)
 
@@ -143,6 +148,7 @@ func launch_women_dialogue() -> void:
 
 
 func launch_last_battle_phase() -> void:
+	set_active_agents(true, true)
 	battle_director.go_next_covers_activation() ####################################### Fin de l'accalmie
 	var louise: Npc = woman_points.women[0]
 	for woman: Npc in woman_points.women:
