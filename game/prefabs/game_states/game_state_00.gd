@@ -102,7 +102,7 @@ func go_for_georges() -> void:
 func take_weapon() -> void:
 	take_player_view_control(true)
 	add_on_process(rotate_player_to_yaw.bind(georges_rdv.rotation.y, PI/1.5, delta_t))
-	await wait(0.4)
+	await wait(0.5)
 	Wwise.set_state("Music_State", "Phase1") ############# MUSIC
 	clean_process()
 	first_chassepot.visible = false
@@ -208,7 +208,7 @@ func wait_player_enter_reload() -> void:
 	await wait_voice() # "Voilà maintenant tu peux y mettre ton pruneau"
 	handle_action_tooltip("close_bolt")
 	player.reload_ui.is_playing_qte = true
-	add_on_process(func(): if Input.is_action_just_pressed("reload"): player.reload_ui.try_qte())
+	add_on_process(detect_player_input_reload)
 	await wait_until(func(): return player.is_weapon_loaded)
 	free_tool_tip()
 	player.reload_ui.is_tutorial = false
@@ -216,6 +216,11 @@ func wait_player_enter_reload() -> void:
 	player.can_use_reload = true
 	await wait(0.8)
 	set_player_before_george_death()
+
+
+func detect_player_input_reload() -> void:
+	if Input.is_action_just_pressed("reload") and player.reload_ui.can_qte:
+		player.reload_ui.try_qte()
 
 
 func set_player_before_george_death() -> void:
