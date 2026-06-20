@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://db5hoclmtj4ek" path="res://prefabs/player/chassepot.gd" id="1_5q3ae"]
 [ext_resource type="PackedScene" uid="uid://37232b2f0mql" path="res://sources/meshes/chassepot/bld_chassepot.blend" id="1_xdjnr"]
+[ext_resource type="PackedScene" uid="uid://bawwltjhdv3ex" path="res://sources/meshes/player_hands/controller_rig.blend" id="3_4wuoh"]
 
 [sub_resource type="Animation" id="Animation_tcjb3"]
 length = 0.001
@@ -846,14 +847,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.23298101)
 [node name="bld_chassepot" parent="PivotPoint/container" unique_id=454605281 instance=ExtResource("1_xdjnr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23298101)
 
-[node name="safety_mechanism" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body/barrel_body" parent_id_path=PackedInt32Array(454605281, 1980653742) index="3" unique_id=1503218528]
+[node name="safety_mechanism" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body/barrel_body" parent_id_path=PackedInt32Array(454605281, 341897981) index="3" unique_id=1604764335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067676, 0.42980325, 43.619835)
 
-[node name="bullet" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body" parent_id_path=PackedInt32Array(454605281, 1460744306) index="2" unique_id=1008304255]
+[node name="bullet" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body" parent_id_path=PackedInt32Array(454605281, 952599797) index="2" unique_id=277876369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.657606, -5.607271, 19.904123)
 visible = false
+
+[node name="controller_rig" parent="PivotPoint/container" unique_id=458534814 instance=ExtResource("3_4wuoh")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.23298101)
+
+[node name="AnimationPlayer" parent="PivotPoint/container/controller_rig" index="1" unique_id=1417634141]
+autoplay = &"reload"
 
 [node name="WeaponAnimator" type="AnimationPlayer" parent="." unique_id=1149805121]
 libraries/ = SubResource("AnimationLibrary_ocjyo")
 
 [editable path="PivotPoint/container/bld_chassepot"]
+[editable path="PivotPoint/container/controller_rig"]
