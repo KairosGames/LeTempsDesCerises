@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://biifyrwiahnhf"]
 
 [ext_resource type="PackedScene" uid="uid://dlsqlljdw3diw" path="res://sources/meshes/props/sh_chair.fbx" id="1_po2ag"]
+[ext_resource type="Texture2D" uid="uid://co726x1m38we4" path="res://sources/meshes/geometry/textures/sg_chair/sg_chair_c.png" id="2_wotoc"]
+[ext_resource type="Texture2D" uid="uid://dh4q7v7v184ak" path="res://sources/meshes/geometry/textures/sg_chair/sg_chair_n.png" id="3_i1oko"]
+[ext_resource type="Texture2D" uid="uid://dduah8wd6f4r3" path="res://sources/meshes/geometry/textures/sg_chair/sg_chair_orm.png" id="4_vcjpo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x2qe2"]
 size = Vector3(0.055725098, 0.5532532, 0.06378174)
@@ -10,6 +13,12 @@ size = Vector3(0.5341797, 0.62000275, 0.087501526)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ndpei"]
 size = Vector3(0.5341797, 0.043888092, 0.54716873)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_cqovk"]
+albedo_texture = ExtResource("2_wotoc")
+orm_texture = ExtResource("4_vcjpo")
+normal_enabled = true
+normal_texture = ExtResource("3_i1oko")
 
 [node name="Chair" type="StaticBody3D" unique_id=1625831488]
 
@@ -38,3 +47,8 @@ transform = Transform3D(1, 0, 0, 0, 0.9499611, -0.31236807, 0, 0.31236807, 0.949
 shape = SubResource("BoxShape3D_x2qe2")
 
 [node name="sh_chair" parent="." unique_id=1033124275 instance=ExtResource("1_po2ag")]
+
+[node name="sh_chair" parent="sh_chair" index="0" unique_id=974385609]
+surface_material_override/0 = SubResource("ORMMaterial3D_cqovk")
+
+[editable path="sh_chair"]
