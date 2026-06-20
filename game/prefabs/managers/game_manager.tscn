@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://c7nkypm7s8fu6" path="res://prefabs/game_states/gm_usables/quest_point.png" id="5_6kj28"]
 [ext_resource type="PackedScene" uid="uid://qwhdtvmxif5t" path="res://prefabs/game_states/game_state_02.tscn" id="5_m6g67"]
 [ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="5_rmfoy"]
-[ext_resource type="PackedScene" uid="uid://x6umueunebab" path="res://prefabs/game_states/gm_usables/shoot_target.tscn" id="5_vkqci"]
 [ext_resource type="PackedScene" uid="uid://dn5y2en06sd76" path="res://prefabs/npc/npc.tscn" id="6_2cgp0"]
 [ext_resource type="Script" uid="uid://dvhvr278rs18d" path="res://prefabs/ui/choice_tooltip.gd" id="8_6kj28"]
 [ext_resource type="Script" uid="uid://mmnkjdka5ak0" path="res://scripts/dark_fade.gd" id="8_kkeqv"]
@@ -22,6 +21,7 @@
 [ext_resource type="Shader" uid="uid://c3neb6a2e0vbg" path="res://prefabs/managers/ui_out_line.gdshader" id="12_jh506"]
 [ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="14_y7efs"]
 [ext_resource type="PackedScene" uid="uid://c8dcjv8qv7lw3" path="res://prefabs/game_states/gm_usables/invisible_wall.tscn" id="15_g4ds3"]
+[ext_resource type="Script" uid="uid://bfxqdxe6sfsl3" path="res://prefabs/game_states/gm_usables/shoot_target.gd" id="17_5gurq"]
 [ext_resource type="Script" uid="uid://cajf45kj4rgnv" path="res://prefabs/game_states/gm_usables/woman_points.gd" id="19_u75jf"]
 [ext_resource type="Texture2D" uid="uid://xwmt30vqykl2" path="res://sources/meshes/geometry/textures/wook_planks/wood_planks_diff_2k_rotate.png" id="20_pl46k"]
 [ext_resource type="Material" uid="uid://dfrsy150v5044" path="res://prefabs/barricade/barricade_meshes/old/material.tres" id="21_u75jf"]
@@ -229,6 +229,9 @@ shader_parameter/outline_color = Color(0.99215686, 0.8039216, 0, 0)
 shader_parameter/outline_size = 50.0
 
 [sub_resource type="Theme" id="Theme_ol0j6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7r4gi"]
+size = Vector3(1.4827881, 2.8202515, 0.21357422)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rmfoy"]
 size = Vector3(2.4902344, 2.6345215, 14.923035)
@@ -729,8 +732,13 @@ transform = Transform3D(0.02539181, 2.9103828e-10, -0.9996775, -0.016836202, 0.9
 unique_name_in_owner = true
 transform = Transform3D(0.70664114, -0.8376374, 0.09498386, 0.7082545, 0.52268815, -0.65967625, 0.45720237, 0.48493376, 0.8751031, -33.12742, 1.324722, 1.4333187)
 
-[node name="HotelTarget" parent="States/GameState00" unique_id=336517668 instance=ExtResource("5_vkqci")]
-transform = Transform3D(-0.042904478, 0, -0.99907917, 0, 1, 0, 0.99907917, 0, -0.042904478, -51.173187, 1.1927323, 1.7779624)
+[node name="HotelTarget" type="StaticBody3D" parent="States/GameState00" unique_id=336517668]
+transform = Transform3D(-0.042904478, 0, -0.99907917, 0, 1, 0, 0.99907917, 0, -0.042904478, -48.558113, 4.1730666, -4.88292)
+script = ExtResource("17_5gurq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="States/GameState00/HotelTarget" unique_id=1994086882]
+transform = Transform3D(1.0001035, 0, -6.7427754e-07, 0, 1, 0, 6.7427754e-07, 0, 1.0001035, -0.21734369, 0.20889282, 0.11560884)
+shape = SubResource("BoxShape3D_7r4gi")
 
 [node name="BarricadePoint" parent="States/GameState00" unique_id=1924856508 instance=ExtResource("4_ruyh4")]
 unique_name_in_owner = true

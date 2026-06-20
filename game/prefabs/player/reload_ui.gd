@@ -23,7 +23,7 @@ signal reloaded
 @export var speed: float = 1.0
 @export var max_counter: float = 5.0
 @export var qte_delay: float = 0.5
-@export var valid_off_set_ratio: float = 0.2
+@export var valid_off_set_ratio: float = 0.21
 
 @export_category("Color settings")
 @export var default_focus_color: Color
