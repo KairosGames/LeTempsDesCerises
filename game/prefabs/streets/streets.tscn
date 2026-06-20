@@ -7,8 +7,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_4v8b4"]
 size = Vector3(250, 10, 250)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_4v8b4"]
-size = Vector2(250, 250)
+[sub_resource type="BoxMesh" id="BoxMesh_4v8b4"]
+size = Vector3(250, 10, 250)
 
 [node name="Streets" type="Node3D" unique_id=76735271]
 
@@ -16,7 +16,7 @@ size = Vector2(250, 250)
 
 [node name="streets2" parent="StaticBody3D" unique_id=1600980161 instance=ExtResource("3_fa2ym")]
 
-[node name="streets" parent="StaticBody3D/streets2" index="0" unique_id=99941434]
+[node name="streets" parent="StaticBody3D/streets2" index="0" unique_id=1549473217]
 cast_shadow = 2
 surface_material_override/0 = ExtResource("2_1eocj")
 
@@ -35,7 +35,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 size = Vector3(200, 1, 200)
 
 [node name="ShadowOcculter" type="MeshInstance3D" parent="." unique_id=1790123291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.0162907, 0)
 cast_shadow = 2
-mesh = SubResource("PlaneMesh_4v8b4")
+mesh = SubResource("BoxMesh_4v8b4")
 
 [editable path="StaticBody3D/streets2"]
