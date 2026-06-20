@@ -14,7 +14,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AuxBus Name="Music_Rev" ID="{A12D3D2A-E2E7-49E7-80D3-5AC252A96818}">
+						<AuxBus Name="Music_Distant_Rev" ID="{A12D3D2A-E2E7-49E7-80D3-5AC252A96818}">
 							<PropertyList>
 								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
@@ -71,13 +71,2036 @@
 						<AuxBus Name="Music_Rev_Barricade" ID="{5EB3D779-27CC-424A-A22B-8E1056D211F3}">
 							<ObjectLists>
 								<ObjectList Name="Effects">
-									<EffectSlot Name="" ID="{6E926449-F8EC-4768-9370-A8691BAF90D3}" ShortID="163299817">
+									<EffectSlot Name="" ID="{C39CCC75-E451-4036-9D26-2F4C29BA553E}" ShortID="35577841">
+										<ReferenceList>
+											<Reference Name="Effect" PluginName="Wwise Stereo Delay" CompanyID="0" PluginID="135" PluginType="3">
+												<ObjectRef Name="Caught_in_a_loop" ID="{8FC64215-9A75-4BE3-A33A-584C8CA49963}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<Bus Name="Music_Dry" ID="{B82FCACB-F977-44A0-A2F6-3D6E89AADC7B}">
+							<PropertyList>
+								<Property Name="UserAuxSendVolume0" Type="Real64">
+									<ValueList>
+										<Value>-96</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UserAuxSendVolume1" Type="Real64">
+									<ValueList>
+										<Value>-96</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="UserAuxSend0">
+									<ObjectRef Name="Music_Distant_Rev" ID="{A12D3D2A-E2E7-49E7-80D3-5AC252A96818}" WorkUnitID="{3EE695F8-7F6E-4BE8-B1D1-D1CCBEC0C323}"/>
+								</Reference>
+								<Reference Name="UserAuxSend1">
+									<ObjectRef Name="Music_Rev_Barricade" ID="{5EB3D779-27CC-424A-A22B-8E1056D211F3}" WorkUnitID="{3EE695F8-7F6E-4BE8-B1D1-D1CCBEC0C323}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Bus Name="Instruments2D" ID="{0FADFF0D-20FE-4675-ABEE-675223A28A17}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="1"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Bus Name="Tambour" ID="{8C428FBD-5A9D-4D36-898D-80B29B7718AD}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>4</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<StateInfo>
+												<StatePropertyList>
+													<Property Name="BusVolume"/>
+													<Property Name="Highpass"/>
+													<Property Name="Lowpass"/>
+													<Property Name="MakeUpGain"/>
+													<Property Name="Pitch"/>
+													<Property Name="Volume"/>
+												</StatePropertyList>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+														<StateGroupInfo Name="" ID="{50B211F6-3EE3-48B1-8603-C1EACDA25E4C}" ShortID="833950865">
+															<PropertyList>
+																<Property Name="MusicSyncType" Type="int32" Value="5"/>
+															</PropertyList>
+														</StateGroupInfo>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+														<CustomState Name="" ID="{763EBACF-0745-4327-BA9C-CFB3F72F6095}" ShortID="138531687">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+														<CustomState Name="" ID="{026BFB64-A8AC-4932-B3B5-EACC24B62DA4}" ShortID="868212895"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+														<CustomState Name="" ID="{B77EAD9C-61FD-4C97-80F6-C6737537BD6F}" ShortID="271148369"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+														<CustomState Name="" ID="{D9836A04-8F2B-4167-A864-ABC2728179EA}" ShortID="171212415"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+														<CustomState Name="" ID="{1DE1C88F-9F4D-4D08-836D-76CD718458C6}" ShortID="243667821"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+														<CustomState Name="" ID="{44997F0C-2B48-483E-A18C-63AD0B1EF2C2}" ShortID="824716356"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+														<CustomState Name="" ID="{3465C4D3-A754-4001-8B77-C92E7499558C}" ShortID="773256810"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+														<CustomState Name="" ID="{468D25E0-B409-4E25-9D29-F67A62E823E1}" ShortID="886758041">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+														<CustomState Name="" ID="{5F41F8F9-1769-4FEC-826C-4B76ADFCABD7}" ShortID="644719869">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+														<CustomState Name="" ID="{7BFBB9B0-8482-417A-8CB0-2F2179064A4F}" ShortID="656020339"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+														<CustomState Name="" ID="{571C441C-6904-49A6-98F1-D9C865FDC316}" ShortID="577487728"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="Percussion" ID="{EE778E65-CD2F-4FB1-987F-FE13828A9AA9}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<StateInfo>
+												<StatePropertyList>
+													<Property Name="BusVolume"/>
+													<Property Name="Highpass"/>
+													<Property Name="Lowpass"/>
+													<Property Name="MakeUpGain"/>
+													<Property Name="Pitch"/>
+													<Property Name="Volume"/>
+												</StatePropertyList>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+														<StateGroupInfo Name="" ID="{16070200-7BC8-45AA-9297-7B1C93CD61BC}" ShortID="838930706">
+															<PropertyList>
+																<Property Name="MusicSyncType" Type="int32" Value="5"/>
+															</PropertyList>
+														</StateGroupInfo>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+														<CustomState Name="" ID="{6F508243-1579-4248-A169-263228703C2A}" ShortID="608046935">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+														<CustomState Name="" ID="{8CD87937-1452-485B-816B-CE964A29770B}" ShortID="708849660">
+															<PropertyList>
+																<Property Name="BusVolume" Type="Real64" Value="3"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+														<CustomState Name="" ID="{D408ADEE-C019-4401-AFF1-D143CA7A9A03}" ShortID="212326280">
+															<PropertyList>
+																<Property Name="BusVolume" Type="Real64" Value="3"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+														<CustomState Name="" ID="{2AC4AC49-00D3-4FA1-B6FF-F1D815582B82}" ShortID="955608852"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+														<CustomState Name="" ID="{01044685-086D-45BD-83B6-CF759A704B44}" ShortID="790071254"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+														<CustomState Name="" ID="{BFD19009-63DF-42A3-ABE0-69DEB3559361}" ShortID="736425889"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+														<CustomState Name="" ID="{51DE7E6F-FDC0-4157-B8AD-F66DBF41A435}" ShortID="999260610"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+														<CustomState Name="" ID="{FA08DA49-FD87-46F3-B2F8-CE4585F46A30}" ShortID="234338285">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+														<CustomState Name="" ID="{EA5E30B6-5E55-4DA7-9990-32029B79DAED}" ShortID="1045346256">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+														<CustomState Name="" ID="{042F70E4-6488-4A5C-B251-26F03F1E697C}" ShortID="230698762"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+														<CustomState Name="" ID="{C7EB1950-3207-4B0F-A5E8-CBD0E277964A}" ShortID="1066800678"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+									</ChildrenList>
+								</Bus>
+								<Bus Name="Vocals" ID="{394DB6D9-71E5-4FBB-915A-D0C2F534F82A}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="1"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Bus Name="Solistes" ID="{6E2C4A49-BA71-4A11-9B5A-9CEDF7A1B3E4}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<ChildrenList>
+												<Bus Name="Atea" ID="{B2C34D4A-D78C-44C0-96FB-F2FD48E42B90}">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="3"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+														<Property Name="UserAuxSendVolume0" Type="Real64">
+															<ValueList>
+																<Value>-96</Value>
+															</ValueList>
+														</Property>
+														<Property Name="UserAuxSendVolume1" Type="Real64">
+															<ValueList>
+																<Value>-96</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>5</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="UserAuxSend0">
+															<ObjectRef Name="Music_mix_Rev" ID="{7FB9098D-C313-4588-9265-63099263EDDC}" WorkUnitID="{3EE695F8-7F6E-4BE8-B1D1-D1CCBEC0C323}"/>
+														</Reference>
+														<Reference Name="UserAuxSend1">
+															<ObjectRef Name="Music_End_Rev" ID="{7CE652AA-1D2A-4019-A958-EA85F43ED44C}" WorkUnitID="{3EE695F8-7F6E-4BE8-B1D1-D1CCBEC0C323}"/>
+														</Reference>
+													</ReferenceList>
+													<StateInfo>
+														<StatePropertyList>
+															<Property Name="BusVolume"/>
+															<Property Name="Highpass"/>
+															<Property Name="Lowpass"/>
+															<Property Name="MakeUpGain"/>
+															<Property Name="Pitch"/>
+															<Property Name="UserAuxSendVolume0"/>
+															<Property Name="UserAuxSendVolume1"/>
+															<Property Name="Volume"/>
+														</StatePropertyList>
+														<StateGroupList>
+															<StateGroupInfo>
+																<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+																<StateGroupInfo Name="" ID="{7651CC13-A918-49CF-8AC5-DD04BF841F11}" ShortID="774171276">
+																	<PropertyList>
+																		<Property Name="MusicSyncType" Type="int32" Value="5"/>
+																	</PropertyList>
+																</StateGroupInfo>
+															</StateGroupInfo>
+															<StateGroupInfo>
+																<StateGroupRef Name="EndChoice" ID="{F1E4CC31-DA38-49B5-B2A8-53D524E5D48A}"/>
+																<StateGroupInfo Name="" ID="{AE134B57-E1CD-4146-8961-4BA8BF0A73A9}" ShortID="745083685"/>
+															</StateGroupInfo>
+														</StateGroupList>
+														<CustomStateList>
+															<CustomState>
+																<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+																<CustomState Name="" ID="{1E0B3EC8-74A0-47CF-98CA-520A6168444B}" ShortID="1008728541">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+																<CustomState Name="" ID="{3F49B8B8-5FBE-4F2D-9E11-28D1D8A198A6}" ShortID="277386554"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+																<CustomState Name="" ID="{F014D4C0-C7BD-40B3-AE14-72AF729125F2}" ShortID="688507713"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+																<CustomState Name="" ID="{861FA693-71E9-4B09-BDE7-567363BA2941}" ShortID="205601620">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="Dialogue" ID="{5ED0BEB8-8263-440D-9679-9593F067F61B}"/>
+																<CustomState Name="" ID="{582C8CC9-A987-4BE1-B2A3-7EEB57113820}" ShortID="904423605">
+																	<PropertyList>
+																		<Property Name="UserAuxSendVolume0" Type="Real64" Value="20"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="Louise" ID="{2A8B1D07-53FE-4458-BC8C-2EAAD175FE4D}"/>
+																<CustomState Name="" ID="{3CF3CB53-BA8D-48C1-B366-8DF5D30567CE}" ShortID="1070494885">
+																	<PropertyList>
+																		<Property Name="UserAuxSendVolume0" Type="Real64" Value="80"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{1048217B-BF09-4548-8B4B-9E0FACC9BBAF}"/>
+																<CustomState Name="" ID="{FF1F546A-FFDC-4353-BDBE-F93C65D3EC6D}" ShortID="314499776"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+																<CustomState Name="" ID="{A2C4B37E-BDEE-4441-B5AC-39031F612AA2}" ShortID="320014143">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+																<CustomState Name="" ID="{4EA6778F-F85F-4C27-BA28-B519317D3EA9}" ShortID="749325571">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="AskChoice" ID="{4EAD2C59-63BF-4739-8913-C811215BA1E2}"/>
+																<CustomState Name="" ID="{F979E63E-975B-4705-BCAA-F493A3358BFD}" ShortID="832497693">
+																	<PropertyList>
+																		<Property Name="UserAuxSendVolume0" Type="Real64" Value="90"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="Francois" ID="{BD14E529-07FB-4854-8CAC-DA402B6DAAC7}"/>
+																<CustomState Name="" ID="{B1A585F8-6BED-41BF-8EA9-D61DED5F9F4C}" ShortID="742429367">
+																	<PropertyList>
+																		<Property Name="Lowpass" Type="int16" Value="50"/>
+																		<Property Name="UserAuxSendVolume0" Type="Real64" Value="80"/>
+																		<Property Name="UserAuxSendVolume1" Type="Real64" Value="90"/>
+																		<Property Name="Volume" Type="Real64" Value="-12"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+																<CustomState Name="" ID="{F949968D-F9C3-4E7A-841B-883506A99912}" ShortID="629909612"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+																<CustomState Name="" ID="{0DCA3C0E-100A-4B23-B230-44EA5B23586A}" ShortID="832553011">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+																<CustomState Name="" ID="{FEBB6D74-17B8-4C05-935E-278A0B62B2AF}" ShortID="246421991">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+																<CustomState Name="" ID="{F2717EB8-FCEF-4CC2-A2CE-F5B8ED3C55AE}" ShortID="228848671">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+																<CustomState Name="" ID="{0EA9506E-2100-4EFF-856D-ADA9128DDA90}" ShortID="354240193">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+														</CustomStateList>
+													</StateInfo>
+												</Bus>
+												<Bus Name="Ydris" ID="{016BB778-8377-4DCF-A3A9-4AEFCD728186}">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="3"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+														<Property Name="UserAuxSendVolume0" Type="Real64">
+															<ValueList>
+																<Value>-96</Value>
+															</ValueList>
+														</Property>
+														<Property Name="UserAuxSendVolume1" Type="Real64">
+															<ValueList>
+																<Value>-96</Value>
+															</ValueList>
+														</Property>
+														<Property Name="Volume" Type="Real64">
+															<ValueList>
+																<Value>-3</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="UserAuxSend0">
+															<ObjectRef Name="Music_mix_Rev" ID="{7FB9098D-C313-4588-9265-63099263EDDC}" WorkUnitID="{3EE695F8-7F6E-4BE8-B1D1-D1CCBEC0C323}"/>
+														</Reference>
+														<Reference Name="UserAuxSend1">
+															<ObjectRef Name="Music_End_Rev" ID="{7CE652AA-1D2A-4019-A958-EA85F43ED44C}" WorkUnitID="{3EE695F8-7F6E-4BE8-B1D1-D1CCBEC0C323}"/>
+														</Reference>
+													</ReferenceList>
+													<StateInfo>
+														<StatePropertyList>
+															<Property Name="BusVolume"/>
+															<Property Name="Highpass"/>
+															<Property Name="Lowpass"/>
+															<Property Name="MakeUpGain"/>
+															<Property Name="Pitch"/>
+															<Property Name="UserAuxSendVolume0"/>
+															<Property Name="UserAuxSendVolume1"/>
+															<Property Name="Volume"/>
+														</StatePropertyList>
+														<StateGroupList>
+															<StateGroupInfo>
+																<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+																<StateGroupInfo Name="" ID="{31411B51-735E-4D5A-A2E0-6AB573F82D51}" ShortID="46850870">
+																	<PropertyList>
+																		<Property Name="MusicSyncType" Type="int32" Value="5"/>
+																	</PropertyList>
+																</StateGroupInfo>
+															</StateGroupInfo>
+															<StateGroupInfo>
+																<StateGroupRef Name="EndChoice" ID="{F1E4CC31-DA38-49B5-B2A8-53D524E5D48A}"/>
+																<StateGroupInfo Name="" ID="{1711457A-19E0-44DE-8C47-1AA6FC00D9E9}" ShortID="35603562"/>
+															</StateGroupInfo>
+														</StateGroupList>
+														<CustomStateList>
+															<CustomState>
+																<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+																<CustomState Name="" ID="{02ABBDB0-2436-4967-8C98-26D3710BE0EF}" ShortID="709086288">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+																<CustomState Name="" ID="{56F39217-A3DA-4E4E-8168-68C66345150B}" ShortID="908129092"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+																<CustomState Name="" ID="{9D2A4CD3-79C1-4D6A-8F07-E96B04D9F802}" ShortID="238105596"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+																<CustomState Name="" ID="{9BB726B6-3EA0-4B63-862D-2223B1EC3627}" ShortID="982338484">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="Dialogue" ID="{5ED0BEB8-8263-440D-9679-9593F067F61B}"/>
+																<CustomState Name="" ID="{961AFCD5-FF43-47DA-AF9D-1FCFE6E48B1C}" ShortID="932874196">
+																	<PropertyList>
+																		<Property Name="UserAuxSendVolume0" Type="Real64" Value="20"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="Louise" ID="{2A8B1D07-53FE-4458-BC8C-2EAAD175FE4D}"/>
+																<CustomState Name="" ID="{DE0701AE-F1C4-43B8-8A8A-E96EA400EAC8}" ShortID="1054331862">
+																	<PropertyList>
+																		<Property Name="Lowpass" Type="int16" Value="50"/>
+																		<Property Name="UserAuxSendVolume0" Type="Real64" Value="80"/>
+																		<Property Name="UserAuxSendVolume1" Type="Real64" Value="96"/>
+																		<Property Name="Volume" Type="Real64" Value="-12"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{1048217B-BF09-4548-8B4B-9E0FACC9BBAF}"/>
+																<CustomState Name="" ID="{B3F72258-25D1-434A-954D-3E24F793958B}" ShortID="442583531"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+																<CustomState Name="" ID="{328F3FA8-E202-47D9-8D19-99002023A93E}" ShortID="1015562791"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+																<CustomState Name="" ID="{12684CB7-5EBE-44CB-A395-FA422C5C1390}" ShortID="628463950"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="AskChoice" ID="{4EAD2C59-63BF-4739-8913-C811215BA1E2}"/>
+																<CustomState Name="" ID="{BCDA6A90-455C-405E-A4D6-19C0CC9F7050}" ShortID="283293753">
+																	<PropertyList>
+																		<Property Name="UserAuxSendVolume0" Type="Real64" Value="90"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="Francois" ID="{BD14E529-07FB-4854-8CAC-DA402B6DAAC7}"/>
+																<CustomState Name="" ID="{D8F2344D-3F52-488A-8843-397B6194F2CE}" ShortID="912063198">
+																	<PropertyList>
+																		<Property Name="UserAuxSendVolume0" Type="Real64" Value="96"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+																<CustomState Name="" ID="{48DFA49F-BF53-475F-80EF-278B8AEB3040}" ShortID="480725379"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+																<CustomState Name="" ID="{BC647D9F-6520-49FC-9908-61CEA31E882B}" ShortID="157568625">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+																<CustomState Name="" ID="{F1D22B2A-0F36-45DD-92F6-A3724A6E1B7A}" ShortID="242687927">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+																<CustomState Name="" ID="{F5968353-EDFC-4E27-A02F-E8582E75BC97}" ShortID="51284682"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+																<CustomState Name="" ID="{0D82C026-AFC6-4375-BDFA-567199A3F1E1}" ShortID="342113930"/>
+															</CustomState>
+														</CustomStateList>
+													</StateInfo>
+												</Bus>
+												<Bus Name="Hugo" ID="{9B158B8B-1296-4EC4-9488-C5CF405E14EF}">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="3"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<StateInfo>
+														<StatePropertyList>
+															<Property Name="BusVolume"/>
+															<Property Name="Highpass"/>
+															<Property Name="Lowpass"/>
+															<Property Name="MakeUpGain"/>
+															<Property Name="Pitch"/>
+															<Property Name="Volume"/>
+														</StatePropertyList>
+														<StateGroupList>
+															<StateGroupInfo>
+																<StateGroupRef Name="BarricadeDestroyed" ID="{246198B1-DC68-4405-8CE3-12D8BEFF4C90}"/>
+																<StateGroupInfo Name="" ID="{237772E5-E95F-4F19-BCAB-7CB2C28457B1}" ShortID="355075976"/>
+															</StateGroupInfo>
+															<StateGroupInfo>
+																<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+																<StateGroupInfo Name="" ID="{224698BE-0749-43AF-87BC-A80032107534}" ShortID="857323161">
+																	<PropertyList>
+																		<Property Name="MusicSyncType" Type="int32" Value="5"/>
+																	</PropertyList>
+																</StateGroupInfo>
+															</StateGroupInfo>
+														</StateGroupList>
+														<CustomStateList>
+															<CustomState>
+																<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+																<CustomState Name="" ID="{D280B645-9FE1-41C2-9A13-E02AB2DF2254}" ShortID="15673523">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+																<CustomState Name="" ID="{159C2AFA-BAAB-4EA7-A72C-90624BB26583}" ShortID="999401218"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+																<CustomState Name="" ID="{04E26CBE-FCAE-4FCD-ABC1-CB7CE3FEE876}" ShortID="214768744"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+																<CustomState Name="" ID="{4560DC0F-568B-43D6-BBA3-6913C19E3F70}" ShortID="958832976">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="PudBarricade" ID="{BB024012-4A26-4660-9730-A4EF7290B09B}"/>
+																<CustomState Name="" ID="{8B92CAE2-6DEE-4A0F-9403-CED98347F0A7}" ShortID="325150009">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+																<CustomState Name="" ID="{E1985267-C57B-40FA-9FB0-6C7A1FC9656F}" ShortID="359677014"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+																<CustomState Name="" ID="{2365A6AA-EE61-4FF6-ABBD-DFA9CEFBA2A4}" ShortID="1072363321"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="Intact" ID="{97DD4E49-1514-4739-8B07-49F32FE11F2A}"/>
+																<CustomState Name="" ID="{5A97306A-D50D-4A0F-9D48-6E1F207FC24A}" ShortID="599426859"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+																<CustomState Name="" ID="{C8D02CBC-529F-49D6-BA34-93F58F857D6B}" ShortID="855346461"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+																<CustomState Name="" ID="{F140013A-AF0F-4919-BC43-224BB1570C0C}" ShortID="856662021">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+																<CustomState Name="" ID="{1212A058-5FE7-4C1E-BB06-33FAA265FB07}" ShortID="561515008">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{3D1B228D-E41D-4BB0-9E6C-1D3B912C9EAC}"/>
+																<CustomState Name="" ID="{011EEE65-4BA0-4A2E-BED0-8F569E8E2127}" ShortID="482098399"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+																<CustomState Name="" ID="{512E1DC3-4E2D-40E9-9761-74E9441D50E9}" ShortID="883422937"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+																<CustomState Name="" ID="{CF4EBF7F-0854-4F1F-B734-FDF7D0267FE5}" ShortID="503390792">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+														</CustomStateList>
+													</StateInfo>
+												</Bus>
+												<Bus Name="Wania" ID="{7C3B46F4-BF43-41A9-A116-59FC9642CCE5}">
+													<PropertyList>
+														<Property Name="Color" Type="int16" Value="3"/>
+														<Property Name="OverrideColor" Type="bool" Value="True"/>
+													</PropertyList>
+													<StateInfo>
+														<StatePropertyList>
+															<Property Name="BusVolume"/>
+															<Property Name="Highpass"/>
+															<Property Name="Lowpass"/>
+															<Property Name="MakeUpGain"/>
+															<Property Name="Pitch"/>
+															<Property Name="Volume"/>
+														</StatePropertyList>
+														<StateGroupList>
+															<StateGroupInfo>
+																<StateGroupRef Name="BarricadeDestroyed" ID="{246198B1-DC68-4405-8CE3-12D8BEFF4C90}"/>
+																<StateGroupInfo Name="" ID="{EEE844B5-F349-4A4F-B6BE-9189F9228D99}" ShortID="334396915"/>
+															</StateGroupInfo>
+															<StateGroupInfo>
+																<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+																<StateGroupInfo Name="" ID="{B311CE79-0ABF-4B2B-A48B-7B81C13B260C}" ShortID="375381335">
+																	<PropertyList>
+																		<Property Name="MusicSyncType" Type="int32" Value="5"/>
+																	</PropertyList>
+																</StateGroupInfo>
+															</StateGroupInfo>
+														</StateGroupList>
+														<CustomStateList>
+															<CustomState>
+																<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+																<CustomState Name="" ID="{00E0A4AF-B13C-4AA7-A2C3-589320C38F2F}" ShortID="936276669">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+																<CustomState Name="" ID="{7328BC45-226C-4A6C-8A7C-386B920D3F8A}" ShortID="563351247"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+																<CustomState Name="" ID="{981D3C16-A452-42E6-8EF1-9CB4815612BE}" ShortID="179588632"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+																<CustomState Name="" ID="{4A7D8A37-08DC-4584-961F-16063540DDDC}" ShortID="670129517">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="PudBarricade" ID="{BB024012-4A26-4660-9730-A4EF7290B09B}"/>
+																<CustomState Name="" ID="{B85021EA-22B2-4124-88A6-8281B66F6D6C}" ShortID="572073613">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+																<CustomState Name="" ID="{FC65E853-91D7-44D6-BC41-4FEA10EB5599}" ShortID="195535227"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+																<CustomState Name="" ID="{6D0BD7B3-8A7B-48B4-9622-FBD3EEE2CD5E}" ShortID="1068634598">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="Intact" ID="{97DD4E49-1514-4739-8B07-49F32FE11F2A}"/>
+																<CustomState Name="" ID="{876DF51D-9D1D-4BDF-B9BE-4ED8E2326774}" ShortID="1043212542"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+																<CustomState Name="" ID="{D64973DC-E11E-4D48-B139-61EBA9C15CCD}" ShortID="188181932"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+																<CustomState Name="" ID="{CF5795E2-99AD-4872-94BA-53FC861B7256}" ShortID="871217207">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+																<CustomState Name="" ID="{BC68A0A2-FD36-4D58-A4EC-1C8E554D3FD9}" ShortID="774314610">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{3D1B228D-E41D-4BB0-9E6C-1D3B912C9EAC}"/>
+																<CustomState Name="" ID="{4A210F29-1889-425D-BD72-0DFC2F9BE388}" ShortID="880841279"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+																<CustomState Name="" ID="{81E1B492-AEA2-465B-AD42-8F46F0624263}" ShortID="580933946"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+																<CustomState Name="" ID="{9E948FC0-F01E-4C30-8C0B-F48508A221E1}" ShortID="676417862"/>
+															</CustomState>
+														</CustomStateList>
+													</StateInfo>
+													<ObjectLists>
+														<ObjectList Name="RTPC">
+															<RTPC Name="" ID="{E2839EAC-83EE-4707-8FE9-A55795B52EBA}" ShortID="940221142">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="IsPlaying" ID="{6265CC32-EB32-48B5-A910-7A5CCA21E939}" WorkUnitID="{27C8EC13-A10B-4C99-B50C-AF9FB75B6D3C}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{8992BC0D-3082-40E0-8EB2-D894D99419FD}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>-200</YPos>
+																						<Flags>5</Flags>
+																					</Point>
+																					<Point>
+																						<XPos>100</XPos>
+																						<YPos>0</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
+														</ObjectList>
+													</ObjectLists>
+												</Bus>
+											</ChildrenList>
+										</Bus>
+										<Bus Name="Groupes" ID="{CFE535F3-E949-42FF-AF5C-027B4E30B062}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ChildrenList>
+												<Bus Name="G1" ID="{0B9BC81E-22CE-4720-A3E6-ED9E203BE0E0}">
+													<StateInfo>
+														<StatePropertyList>
+															<Property Name="BusVolume"/>
+															<Property Name="Highpass"/>
+															<Property Name="Lowpass"/>
+															<Property Name="MakeUpGain"/>
+															<Property Name="Pitch"/>
+															<Property Name="Volume"/>
+														</StatePropertyList>
+														<StateGroupList>
+															<StateGroupInfo>
+																<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+																<StateGroupInfo Name="" ID="{00BA36BE-4D0D-4A58-85FD-91DFC27CB308}" ShortID="83171332">
+																	<PropertyList>
+																		<Property Name="MusicSyncType" Type="int32" Value="5"/>
+																	</PropertyList>
+																</StateGroupInfo>
+															</StateGroupInfo>
+														</StateGroupList>
+														<CustomStateList>
+															<CustomState>
+																<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+																<CustomState Name="" ID="{2C526F01-E874-494B-93D7-D6A28091C37E}" ShortID="650662875">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+																<CustomState Name="" ID="{F6BBD2F5-B977-4229-99FA-7647A165E436}" ShortID="61752710"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+																<CustomState Name="" ID="{202A908E-7562-4202-892A-D18A87494B04}" ShortID="139046182"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+																<CustomState Name="" ID="{23BDE3CF-2C67-4C1B-92D9-D17E590ED00E}" ShortID="901318168">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+																<CustomState Name="" ID="{D5FDE735-0836-4F25-9D37-8CBADB29A7D2}" ShortID="358929170">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+																<CustomState Name="" ID="{44F76BA4-683D-4B62-82AB-2E38AF94503D}" ShortID="122110596">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+																<CustomState Name="" ID="{60F57B46-9FFE-4CCC-8EDA-B0EAF32DB6AE}" ShortID="574735261">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+																<CustomState Name="" ID="{1C85ACEA-9C78-42C6-B96F-241286923D3C}" ShortID="255295955">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+																<CustomState Name="" ID="{E4F46723-329E-49BE-B63E-FA496F7930BA}" ShortID="31177555">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+																<CustomState Name="" ID="{B2322D12-D16E-4EC1-9F67-8F9D5B60857A}" ShortID="505979754">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+																<CustomState Name="" ID="{F8D723A4-EB80-4543-B29E-5DA392AB9C3E}" ShortID="930547406">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+														</CustomStateList>
+													</StateInfo>
+												</Bus>
+												<Bus Name="G2" ID="{C62912B8-E4FB-4E69-A859-05AB4F370C34}">
+													<StateInfo>
+														<StatePropertyList>
+															<Property Name="BusVolume"/>
+															<Property Name="Highpass"/>
+															<Property Name="Lowpass"/>
+															<Property Name="MakeUpGain"/>
+															<Property Name="Pitch"/>
+															<Property Name="Volume"/>
+														</StatePropertyList>
+														<StateGroupList>
+															<StateGroupInfo>
+																<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+																<StateGroupInfo Name="" ID="{93BC7BC9-623A-4D8D-B095-10C2AB3B9809}" ShortID="249065772">
+																	<PropertyList>
+																		<Property Name="MusicSyncType" Type="int32" Value="5"/>
+																	</PropertyList>
+																</StateGroupInfo>
+															</StateGroupInfo>
+														</StateGroupList>
+														<CustomStateList>
+															<CustomState>
+																<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+																<CustomState Name="" ID="{8A420202-05C5-4B45-8E28-EBD093868E9E}" ShortID="922927820">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+																<CustomState Name="" ID="{A7422740-7931-4BD5-BF19-16E447E548C0}" ShortID="423888795"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+																<CustomState Name="" ID="{164DE492-D2EC-467F-8E02-D92BFD62AF38}" ShortID="174234500"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+																<CustomState Name="" ID="{676C871A-46D0-48D7-ADDE-187C11D5CA03}" ShortID="389196788">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+																<CustomState Name="" ID="{C8674336-0388-4BF3-8D52-E04075904936}" ShortID="530954765">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+																<CustomState Name="" ID="{FDE5F959-C2D5-4948-8510-56E3AD87DA69}" ShortID="599332905">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+																<CustomState Name="" ID="{FEF355D0-2701-4E04-999D-8D283CBDDC7D}" ShortID="737037495"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+																<CustomState Name="" ID="{FD60A670-6DDD-402C-A42C-307443D1F278}" ShortID="367835292">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+																<CustomState Name="" ID="{A05E4785-161D-4AE8-A870-0883CA1D5540}" ShortID="304732108">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+																<CustomState Name="" ID="{F0B84103-B23D-4F19-A29F-B773A44B8D09}" ShortID="457418038">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+																<CustomState Name="" ID="{ABA40089-F99D-4EBA-B3A7-D2AA127D7D2F}" ShortID="849412280">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+														</CustomStateList>
+													</StateInfo>
+												</Bus>
+												<Bus Name="G3" ID="{226839A9-9CDB-4A0E-8FE0-053FB7301603}">
+													<StateInfo>
+														<StatePropertyList>
+															<Property Name="BusVolume"/>
+															<Property Name="Highpass"/>
+															<Property Name="Lowpass"/>
+															<Property Name="MakeUpGain"/>
+															<Property Name="Pitch"/>
+															<Property Name="Volume"/>
+														</StatePropertyList>
+														<StateGroupList>
+															<StateGroupInfo>
+																<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+																<StateGroupInfo Name="" ID="{306A8F9D-E144-4575-B96D-42FD0B8C7B56}" ShortID="1026035821">
+																	<PropertyList>
+																		<Property Name="MusicSyncType" Type="int32" Value="5"/>
+																	</PropertyList>
+																</StateGroupInfo>
+															</StateGroupInfo>
+														</StateGroupList>
+														<CustomStateList>
+															<CustomState>
+																<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+																<CustomState Name="" ID="{FAE14EAA-CCAD-44C4-AF3F-1A0DE9B5D216}" ShortID="256208397">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+																<CustomState Name="" ID="{7620DE9F-BE81-4532-ADCF-22742DE632ED}" ShortID="805841153"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+																<CustomState Name="" ID="{CF5894F1-4B4D-4832-B7FB-B199575098A9}" ShortID="466760316"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+																<CustomState Name="" ID="{C9E19127-9849-4F8F-A334-189E345AD772}" ShortID="961116076">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+																<CustomState Name="" ID="{643A6C81-2291-4814-AE10-92F1A55A791C}" ShortID="486004401">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+																<CustomState Name="" ID="{0531BC89-0F5F-4073-94B1-720CCC246754}" ShortID="1032919997">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+																<CustomState Name="" ID="{B39E296E-F0DD-48B5-AE33-F7D2219B765E}" ShortID="712420834">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+																<CustomState Name="" ID="{9AFA69A1-97A5-4C59-8A3E-B6B483491813}" ShortID="940906007">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+																<CustomState Name="" ID="{8364BA75-72F7-4AE6-9B60-1BCCE4EB4083}" ShortID="366903011">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+																<CustomState Name="" ID="{2B361831-FBC4-4A1D-92CD-E6323589F968}" ShortID="844209127">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+																<CustomState Name="" ID="{5D539A2F-11D8-4B4F-9B4A-26B86CD65C44}" ShortID="290651227">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-108"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+														</CustomStateList>
+													</StateInfo>
+												</Bus>
+											</ChildrenList>
+										</Bus>
+										<Bus Name="LeadVx" ID="{B88F5454-4A6B-4B14-82FD-40365B36686C}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+												<Property Name="Volume" Type="Real64">
+													<ValueList>
+														<Value>2</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<StateInfo>
+												<StatePropertyList>
+													<Property Name="BusVolume"/>
+													<Property Name="Highpass"/>
+													<Property Name="Lowpass"/>
+													<Property Name="MakeUpGain"/>
+													<Property Name="Pitch"/>
+													<Property Name="Volume"/>
+												</StatePropertyList>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+														<StateGroupInfo Name="" ID="{C1C25E8E-3E90-4C4E-A09F-128F15608E2B}" ShortID="677638694">
+															<PropertyList>
+																<Property Name="MusicSyncType" Type="int32" Value="5"/>
+															</PropertyList>
+														</StateGroupInfo>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+														<CustomState Name="" ID="{07A960B6-2755-4CB8-AC35-06973C33C725}" ShortID="689162083">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+														<CustomState Name="" ID="{1A644AC1-199D-45BD-8002-FF0C56C1B0A3}" ShortID="198445016"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+														<CustomState Name="" ID="{BB4F3E5B-3928-4F0F-B906-5470B7DDFD47}" ShortID="225126667"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+														<CustomState Name="" ID="{2B626833-C8C8-44BB-B974-2B4CBB7D238F}" ShortID="424252099">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+														<CustomState Name="" ID="{A595FDC3-702C-41FC-8463-50681986B3FE}" ShortID="675379159">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+														<CustomState Name="" ID="{42B57519-7739-439D-B9A8-04E410DA3EFC}" ShortID="730757">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+														<CustomState Name="" ID="{27E2AB0C-EDFB-43AD-9BE8-A8600D5B0EBE}" ShortID="555948767"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+														<CustomState Name="" ID="{2813DD29-085B-4723-94A7-30145440C061}" ShortID="380137772">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+														<CustomState Name="" ID="{292476FE-350C-4215-821A-C0E002F82C70}" ShortID="986098239">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+														<CustomState Name="" ID="{A6824BD4-95F6-480E-B5FF-344F1D493B8C}" ShortID="546063349">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+														<CustomState Name="" ID="{E6421867-D352-43E7-8FFD-2CF9A3FFFF84}" ShortID="461257227">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+									</ChildrenList>
+								</Bus>
+								<Bus Name="Instruments3D" ID="{0EE9609D-D428-4104-BF02-88E80B984F04}">
+									<PropertyList>
+										<Property Name="Color" Type="int16" Value="1"/>
+										<Property Name="OverrideColor" Type="bool" Value="True"/>
+									</PropertyList>
+									<ChildrenList>
+										<Bus Name="Concertina" ID="{1CC37005-7373-453D-B23C-8B3ABC04FB35}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<StateInfo>
+												<StatePropertyList>
+													<Property Name="BusVolume"/>
+													<Property Name="Highpass"/>
+													<Property Name="Lowpass"/>
+													<Property Name="MakeUpGain"/>
+													<Property Name="Pitch"/>
+													<Property Name="Volume"/>
+												</StatePropertyList>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+														<StateGroupInfo Name="" ID="{160A7313-3E30-4833-8332-2EBFCAD55379}" ShortID="316087655">
+															<PropertyList>
+																<Property Name="MusicSyncType" Type="int32" Value="5"/>
+															</PropertyList>
+														</StateGroupInfo>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+														<CustomState Name="" ID="{5323A4C5-37AD-4199-9978-08BF14F290FD}" ShortID="779648726">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+														<CustomState Name="" ID="{91BD963D-D6A8-439F-8EF5-03CC354DAB1F}" ShortID="734295726"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+														<CustomState Name="" ID="{FDB1E9F3-03E9-4D65-B6BA-4F8B54D35E21}" ShortID="757706129"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+														<CustomState Name="" ID="{13256A28-24AB-4CEE-B8AC-7C521840AB68}" ShortID="172837424">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+														<CustomState Name="" ID="{D07CA1CE-867C-4F01-BA6F-14BD3E653FB0}" ShortID="268230612"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+														<CustomState Name="" ID="{B065854C-4ED2-4FFB-AA8D-E610D7B55DD7}" ShortID="780424635"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+														<CustomState Name="" ID="{73E244BA-3D03-47E6-9765-8EBD6982B3C3}" ShortID="791528312"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+														<CustomState Name="" ID="{0FE1DDEE-C7F6-4494-9CEA-42576336EB94}" ShortID="669702807">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+														<CustomState Name="" ID="{8EA8FB5B-F02C-488C-B923-C6F5952243B5}" ShortID="614751350">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+														<CustomState Name="" ID="{9C45B6D1-3A4A-463D-ADE6-EA4669CB23FD}" ShortID="218388308"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+														<CustomState Name="" ID="{11E7F632-3FF6-40CC-ABAB-4D374439DD93}" ShortID="126167031"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="Viele" ID="{48F62A33-8E64-4F56-AB71-7F3EBF5A8DE4}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<StateInfo>
+												<StatePropertyList>
+													<Property Name="BusVolume"/>
+													<Property Name="Highpass"/>
+													<Property Name="Lowpass"/>
+													<Property Name="MakeUpGain"/>
+													<Property Name="Pitch"/>
+													<Property Name="Volume"/>
+												</StatePropertyList>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+														<StateGroupInfo Name="" ID="{1CCF2256-5328-4E97-AB58-DDE5EB9F52B0}" ShortID="741611595">
+															<PropertyList>
+																<Property Name="MusicSyncType" Type="int32" Value="5"/>
+															</PropertyList>
+														</StateGroupInfo>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+														<CustomState Name="" ID="{768A8B95-F257-4C65-A2CB-C3C4FBA14FBE}" ShortID="27799439">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+														<CustomState Name="" ID="{233B8C8A-09AC-4FE0-BDDF-EB33FAB89CB9}" ShortID="102015510"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+														<CustomState Name="" ID="{0EA284FF-3254-4696-A053-FCA5501925A1}" ShortID="780272484"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+														<CustomState Name="" ID="{2CADAC98-8E4B-4322-95AA-44490BE03D69}" ShortID="626316316"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+														<CustomState Name="" ID="{43026C97-3C83-4707-9C10-D11902E81924}" ShortID="135836346"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+														<CustomState Name="" ID="{91C4C993-3E77-4F98-9627-8553E57102C8}" ShortID="62100475"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+														<CustomState Name="" ID="{0A0B0980-2C82-4000-A3E8-506F284B570C}" ShortID="119123276"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+														<CustomState Name="" ID="{139FEB34-69EA-4709-AF2E-A89E61E86C93}" ShortID="475275209">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+														<CustomState Name="" ID="{3F1D12D7-4C12-4E48-8F41-8DF27D1E8CDD}" ShortID="649206995">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+														<CustomState Name="" ID="{270F599F-27A5-4820-8EC7-EF9AAEB7AE8F}" ShortID="99717183"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+														<CustomState Name="" ID="{EABAE472-239F-4308-BC82-5AF5030C86CE}" ShortID="670507760"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="Accordeon" ID="{CA1246D0-89D7-4BF7-8A6A-6752244E6A2B}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<StateInfo>
+												<StatePropertyList>
+													<Property Name="BusVolume"/>
+													<Property Name="Highpass"/>
+													<Property Name="Lowpass"/>
+													<Property Name="MakeUpGain"/>
+													<Property Name="Pitch"/>
+													<Property Name="Volume"/>
+												</StatePropertyList>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+														<StateGroupInfo Name="" ID="{8C7F0624-8FBA-4A91-891C-AA9EABD63A33}" ShortID="399573845">
+															<PropertyList>
+																<Property Name="MusicSyncType" Type="int32" Value="5"/>
+															</PropertyList>
+														</StateGroupInfo>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+														<CustomState Name="" ID="{47899B60-0FBA-4475-9928-A6688A50797B}" ShortID="167575235">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+														<CustomState Name="" ID="{4E1A23F7-D7DE-4BFE-AD9A-9F0A7AC8C421}" ShortID="773844134"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+														<CustomState Name="" ID="{891C80FF-9E38-478F-A91F-2ED444299551}" ShortID="194532714"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+														<CustomState Name="" ID="{15668718-0A3E-4AA7-BDEB-A6290DE8A66B}" ShortID="534695494">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+														<CustomState Name="" ID="{4A048710-C61E-4EC4-8DF3-2EE2617BB13F}" ShortID="412105991"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+														<CustomState Name="" ID="{A17B914E-2367-440B-9C09-083C87A9C539}" ShortID="442328914"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+														<CustomState Name="" ID="{9EFC9CEA-7B3D-43D4-AA45-92A6414E6D26}" ShortID="736809552"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+														<CustomState Name="" ID="{CC7CB51A-251A-4AED-990E-383B10387283}" ShortID="796516729">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+														<CustomState Name="" ID="{165D85C1-4102-4557-90E1-D217A91CFF0B}" ShortID="326760016">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+														<CustomState Name="" ID="{DA632558-90C7-4D19-9F47-676B6C8D729B}" ShortID="676713962">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+														<CustomState Name="" ID="{2E2F8B64-F7D4-4959-BE2B-67CCE7DD4999}" ShortID="152738794">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="Guitare" ID="{97EEE627-6CDD-4B49-A8A1-817B6226A98A}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<StateInfo>
+												<StatePropertyList>
+													<Property Name="BusVolume"/>
+													<Property Name="Highpass"/>
+													<Property Name="Lowpass"/>
+													<Property Name="MakeUpGain"/>
+													<Property Name="Pitch"/>
+													<Property Name="Volume"/>
+												</StatePropertyList>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+														<StateGroupInfo Name="" ID="{7FA44374-1259-4C5C-B31A-1088530B07C6}" ShortID="503145817">
+															<PropertyList>
+																<Property Name="MusicSyncType" Type="int32" Value="5"/>
+															</PropertyList>
+														</StateGroupInfo>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+														<CustomState Name="" ID="{432A583F-DACD-4BB8-B035-E325AEC0EF3A}" ShortID="26070871">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+														<CustomState Name="" ID="{EF7DE47E-DC94-4929-84BF-43F1B8D1C8B6}" ShortID="101738695"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+														<CustomState Name="" ID="{62BE2A90-177D-4D27-AD32-3DF018163AD3}" ShortID="152066988"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+														<CustomState Name="" ID="{3FFCA4DC-1B39-459A-8D29-BA738FF33D13}" ShortID="714503973">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+														<CustomState Name="" ID="{67C0FDD7-4341-4141-BE18-2DF654F89C41}" ShortID="762971350"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+														<CustomState Name="" ID="{A03744F0-D059-4E21-B75A-E7182B2DF9BB}" ShortID="633785753"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+														<CustomState Name="" ID="{E0DAC53E-58B3-435F-843D-A6CC8D93CB3A}" ShortID="706196062"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+														<CustomState Name="" ID="{CDFFBFDD-5625-45AA-876A-45FAFAC4942B}" ShortID="651451115">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+														<CustomState Name="" ID="{A4DED308-9E7E-4C5F-9BA7-BB8D228A1982}" ShortID="161926602">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+														<CustomState Name="" ID="{A749D871-2ED6-489F-940D-C6F47CFBA1DD}" ShortID="539358432">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+														<CustomState Name="" ID="{3B4AF766-02FB-491D-A5CA-0615D61978A6}" ShortID="850958104">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="Clarinette" ID="{F2C3B679-DB9A-4E2C-8D2D-26D071919451}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<StateInfo>
+												<StatePropertyList>
+													<Property Name="BusVolume"/>
+													<Property Name="Highpass"/>
+													<Property Name="Lowpass"/>
+													<Property Name="MakeUpGain"/>
+													<Property Name="Pitch"/>
+													<Property Name="Volume"/>
+												</StatePropertyList>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+														<StateGroupInfo Name="" ID="{EDE2802B-CE9D-4FD6-B8A8-A3FAB05556C9}" ShortID="827651991">
+															<PropertyList>
+																<Property Name="MusicSyncType" Type="int32" Value="5"/>
+															</PropertyList>
+														</StateGroupInfo>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+														<CustomState Name="" ID="{03F20943-073D-462B-9974-FB5F14187690}" ShortID="141685524">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+														<CustomState Name="" ID="{D364C121-AE4D-425D-8524-0541EAA9FC96}" ShortID="557580995"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+														<CustomState Name="" ID="{C6B4E44D-B1FC-49CE-986A-8AD53B38E414}" ShortID="961499644"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+														<CustomState Name="" ID="{D0E6FEA7-A62F-4D94-B3C7-7DD01D08C183}" ShortID="336722988">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+														<CustomState Name="" ID="{ACBB0AC9-DA0B-4669-A89E-23508B8A22C4}" ShortID="97935670"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+														<CustomState Name="" ID="{1DF09E1A-D309-4322-9E05-60E9C0924462}" ShortID="18506646"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+														<CustomState Name="" ID="{45FEB22F-B9CB-4F58-96E3-2691EF4B77A9}" ShortID="150474689"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+														<CustomState Name="" ID="{F1429581-6E93-4274-AEC8-4D6F573D60EE}" ShortID="1001959665">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+														<CustomState Name="" ID="{2D990766-4187-45D2-BFB8-EB9FCE855BA0}" ShortID="726590535">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+														<CustomState Name="" ID="{C9E02FFC-2CC5-448A-9534-8BDEE7FF65B8}" ShortID="832700805"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+														<CustomState Name="" ID="{FB269A30-BEB2-41ED-B816-D55364A3258F}" ShortID="470467221"/>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="Guimbarde" ID="{BB1CDC90-BBEF-42A5-A2AB-95E526B90C70}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<StateInfo>
+												<StatePropertyList>
+													<Property Name="BusVolume"/>
+													<Property Name="Highpass"/>
+													<Property Name="Lowpass"/>
+													<Property Name="MakeUpGain"/>
+													<Property Name="Pitch"/>
+													<Property Name="Volume"/>
+												</StatePropertyList>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+														<StateGroupInfo Name="" ID="{962082B2-3872-47D3-81F3-950BAC98D946}" ShortID="341876065">
+															<PropertyList>
+																<Property Name="MusicSyncType" Type="int32" Value="5"/>
+															</PropertyList>
+														</StateGroupInfo>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+														<CustomState Name="" ID="{97501B8E-77F4-4742-94F5-A7E0D6600498}" ShortID="865130899"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+														<CustomState Name="" ID="{1F868847-22A2-405F-8F42-40A1B6369FD5}" ShortID="834874430">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+														<CustomState Name="" ID="{1ED39EB0-343D-44E6-B86B-127B98946989}" ShortID="252690683">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+														<CustomState Name="" ID="{71CB7DF8-137A-4A79-8AD8-AEDE7E5814A3}" ShortID="516745564">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+														<CustomState Name="" ID="{662CB788-F370-42EA-B827-1E48DF25A17D}" ShortID="1038067169">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+														<CustomState Name="" ID="{41153FF7-4DAA-4460-9CDA-B31C64469351}" ShortID="442855564"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+														<CustomState Name="" ID="{6145D703-622D-4F3B-8BB6-1FCC9F8A3AD5}" ShortID="633120584"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+														<CustomState Name="" ID="{F50EF14E-6C97-4D3C-AE81-15A20D39C49E}" ShortID="448812004">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+														<CustomState Name="" ID="{A295AE45-6235-45B5-A7CF-D94F0E9C2C56}" ShortID="71537947">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+														<CustomState Name="" ID="{6364FF03-FF61-476B-9B2C-EF1DE5804A86}" ShortID="1040141846">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+														<CustomState Name="" ID="{AEDC002E-228F-4746-9303-3C1ACD63BE60}" ShortID="495416346">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+										<Bus Name="Sifflement" ID="{1FF7F2A3-213E-4CA3-8222-9A735C45C2E9}">
+											<PropertyList>
+												<Property Name="Color" Type="int16" Value="3"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
+											</PropertyList>
+											<StateInfo>
+												<StatePropertyList>
+													<Property Name="BusVolume"/>
+													<Property Name="Highpass"/>
+													<Property Name="Lowpass"/>
+													<Property Name="MakeUpGain"/>
+													<Property Name="Pitch"/>
+													<Property Name="Volume"/>
+												</StatePropertyList>
+												<StateGroupList>
+													<StateGroupInfo>
+														<StateGroupRef Name="MusicVoicePlaying" ID="{B6C46753-BE6A-47AC-8F77-58D0ACF642B7}"/>
+														<StateGroupInfo Name="" ID="{39A5C6F4-7D89-4C1E-9B1C-F06F66622EA1}" ShortID="357125905">
+															<PropertyList>
+																<Property Name="MusicSyncType" Type="int32" Value="5"/>
+															</PropertyList>
+														</StateGroupInfo>
+													</StateGroupInfo>
+												</StateGroupList>
+												<CustomStateList>
+													<CustomState>
+														<StateRef Name="P1_1_OB" ID="{C2C5550B-35C3-4194-8BAF-EFC1D7EB17FF}"/>
+														<CustomState Name="" ID="{8A98FA09-5169-43B2-BDD5-D3FEE1C53BA9}" ShortID="517134981"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_1_Fight" ID="{F1D5CCE6-8BF2-41E7-AD09-1E1D709F2B17}"/>
+														<CustomState Name="" ID="{46A9B9EB-F45B-496B-996A-E65AE05F53C6}" ShortID="195053824">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P4_2_End" ID="{4C017472-851E-4208-9B74-620305606B64}"/>
+														<CustomState Name="" ID="{830C5B4A-B1B6-40ED-B89F-DBC014020D04}" ShortID="454312985">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_2_OB_End" ID="{09053ED6-15F5-42F8-9F7C-7F26CA79CCBF}"/>
+														<CustomState Name="" ID="{5C52E55E-D9DB-41F7-9A6F-C92EFAE50DE4}" ShortID="530462176"/>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P1_3_PlayerDeath" ID="{0553A9C0-5C3A-46DF-B8C8-1D7124796C64}"/>
+														<CustomState Name="" ID="{80B5ACE6-33C8-4BD7-9EB6-7E186D4C9249}" ShortID="905900818">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_1_Retreat" ID="{D01C9F77-548D-46F4-B046-30ED74748010}"/>
+														<CustomState Name="" ID="{256FFFE7-0222-4355-88B7-CC7975980DEA}" ShortID="968278550">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_2_Allies" ID="{C44C0BDA-EA51-497D-B4BD-12D4339982D5}"/>
+														<CustomState Name="" ID="{FC22AA58-7A93-4F90-A933-61DB2DCE5B50}" ShortID="932239394">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P3_3_Discussion" ID="{13B2810A-5DF3-4B04-BA58-B55458D35306}"/>
+														<CustomState Name="" ID="{07E50FA8-F8F2-4194-85C2-0FC38BAD959B}" ShortID="975472904">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="None" ID="{F343FDC7-EFE8-4B9A-A3A2-E62EE53AC1E3}"/>
+														<CustomState Name="" ID="{F442F94F-1797-4BFE-A054-264E1633635E}" ShortID="132820473">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_2_CannonShoot" ID="{DA131EAE-CA2B-4E92-BCAA-D90EF0ACA931}"/>
+														<CustomState Name="" ID="{E941BEF8-6AD2-46DD-AD66-A9487439D365}" ShortID="301054156">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+													<CustomState>
+														<StateRef Name="P2_1_Canon" ID="{CC4E232A-74CA-4FCE-9285-8A7CB0BE3796}"/>
+														<CustomState Name="" ID="{69BE2B74-AB03-4AE7-A9E1-D51A68BDD63C}" ShortID="851082241">
+															<PropertyList>
+																<Property Name="Volume" Type="Real64" Value="-108"/>
+															</PropertyList>
+														</CustomState>
+													</CustomState>
+												</CustomStateList>
+											</StateInfo>
+										</Bus>
+									</ChildrenList>
+								</Bus>
+							</ChildrenList>
+							<StateInfo>
+								<StatePropertyList>
+									<Property Name="BusVolume"/>
+									<Property Name="Highpass"/>
+									<Property Name="Lowpass"/>
+									<Property Name="Pitch"/>
+									<Property Name="UserAuxSendVolume1"/>
+									<Property Name="Volume"/>
+								</StatePropertyList>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="BarricadeDestroyed" ID="{246198B1-DC68-4405-8CE3-12D8BEFF4C90}"/>
+										<StateGroupInfo Name="" ID="{012AE1D7-1784-4ED9-8503-C46475525313}" ShortID="1071912970"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="PudBarricade" ID="{BB024012-4A26-4660-9730-A4EF7290B09B}"/>
+										<CustomState Name="" ID="{F09051E0-5E41-4860-97B9-4021EAF3AA11}" ShortID="972129008">
+											<PropertyList>
+												<Property Name="BusVolume" Type="Real64" Value="-6"/>
+												<Property Name="Lowpass" Type="int16" Value="50"/>
+												<Property Name="UserAuxSendVolume1" Type="Real64" Value="96"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Intact" ID="{97DD4E49-1514-4739-8B07-49F32FE11F2A}"/>
+										<CustomState Name="" ID="{DB1736B1-D59A-46C3-94CB-3E75DC7FCB7A}" ShortID="957335578"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="None" ID="{3D1B228D-E41D-4BB0-9E6C-1D3B912C9EAC}"/>
+										<CustomState Name="" ID="{02396301-F5C7-4249-9866-D71496364F41}" ShortID="932867056"/>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<ObjectLists>
+								<ObjectList Name="RTPC">
+									<RTPC Name="" ID="{5E43D56E-F97A-4AA0-BD9D-7E1234AACCED}" ShortID="178312248">
 										<PropertyList>
-											<Property Name="Bypass" Type="bool" Value="True"/>
+											<Property Name="PropertyName" Type="string" Value="UserAuxSendVolume0"/>
 										</PropertyList>
 										<ReferenceList>
+											<Reference Name="ControlInput">
+												<ObjectRef Name="Distance" ID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+											</Reference>
+											<Reference Name="Curve">
+												<Custom>
+													<Curve Name="" ID="{8DA45200-FCB9-422E-9D91-021841FA5B76}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0.001</XPos>
+																<YPos>-0.13455</YPos>
+																<Flags>0</Flags>
+																<SegmentShape>Log3</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>50</XPos>
+																<YPos>96</YPos>
+																<Flags>0</Flags>
+															</Point>
+															<Point>
+																<XPos>100</XPos>
+																<YPos>200</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+									</RTPC>
+								</ObjectList>
+							</ObjectLists>
+						</Bus>
+						<AuxBus Name="Music_End_Rev" ID="{7CE652AA-1D2A-4019-A958-EA85F43ED44C}">
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{E808053A-A8D7-4102-979D-16219B4AAF37}" ShortID="111504654">
+										<ReferenceList>
 											<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-												<ObjectRef Name="Holy" ID="{CC7B8638-C670-4AD5-B3FB-331EA81037F6}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+												<ObjectRef Name="Inside_Your_Head" ID="{AE2D0AE1-8963-400A-AA4A-52A7A6397F89}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+											</Reference>
+										</ReferenceList>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
+						</AuxBus>
+						<AuxBus Name="Music_mix_Rev" ID="{7FB9098D-C313-4588-9265-63099263EDDC}">
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{6C890D25-4E61-48BB-8BE7-6DBF4298FDBD}" ShortID="660587519">
+										<ReferenceList>
+											<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+												<ObjectRef Name="Plate_Sizzle" ID="{D4A5BBF1-6A59-47A7-BB97-E7695900B72F}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
 											</Reference>
 										</ReferenceList>
 									</EffectSlot>
@@ -85,6 +2108,16 @@
 							</ObjectLists>
 						</AuxBus>
 					</ChildrenList>
+					<StateInfo>
+						<StatePropertyList>
+							<Property Name="BusVolume"/>
+							<Property Name="Highpass"/>
+							<Property Name="Lowpass"/>
+							<Property Name="Pitch"/>
+							<Property Name="UserAuxSendVolume1"/>
+							<Property Name="Volume"/>
+						</StatePropertyList>
+					</StateInfo>
 					<ObjectLists>
 						<ObjectList Name="RTPC">
 							<RTPC Name="" ID="{42DEA8E5-92D4-4F81-B477-436677CEB517}" ShortID="776058575">
