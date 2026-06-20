@@ -1,18 +1,21 @@
 shader_type spatial;
 
-render_mode cull_disabled, blend_mix;
+render_mode blend_mix;
 
+uniform vec3 color: source_color;
+global uniform float dynamic_da = 0.5;
+
+group_uniforms Noise;
 uniform sampler2D noise_tex;
-
-// Bruit principal
 uniform float noise_scale = 2.0;
 uniform float noise_speed = 0.4;
 uniform float noise_strength = 0.08;
 
-// Glitch
+group_uniforms Glitch;
 uniform float glitch_strength = 0.02;
 uniform float glitch_speed = 12.0;
 uniform float glitch_frequency = 25.0;
+
 
 float hash(vec3 p)
 {
@@ -64,13 +67,15 @@ void vertex()
 
     //----------------------------------
 
-    VERTEX += smooth_offset + glitch_offset;
+    VERTEX += (smooth_offset + glitch_offset) * dynamic_da;
 }
 
 void fragment()
 {
 	float n = texture(noise_tex, UV * 2.0 + TIME * 0.1).r;
 
-	ALBEDO = vec3(0.02 * n);
-    ALPHA = 0.6;
+	ALBEDO = mix(color, vec3(0.02 * n), dynamic_da);
+	//if (dynamic_da > .0) {
+		//ALPHA = mix(1.0, 0.6, dynamic_da);
+	//}
 }
