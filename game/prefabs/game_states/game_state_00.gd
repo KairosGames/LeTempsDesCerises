@@ -46,7 +46,7 @@ func set_short_timers() -> void:
 
 
 func set_game_for_onboarding() -> void:
-	player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.CLOSED)
+	if not game_manager.use_debug: player.blink_effect.set_eyes_to_step(BlinkEffect.EyesStep.CLOSED)
 	player.blink_effect.set_blink_enable(true)
 	ui_manager.hard_set_letter_box(true)
 	var spawn: CustomMarker = game_manager.player_spawner
@@ -63,8 +63,8 @@ func is_wwise_ready() -> bool:
 
 
 func get_up() -> void:
+	await wait_voice() # "Hé Hé ! Réveille toi !"
 	if not game_manager.use_debug:
-		await wait_voice() # "Hé Hé ! Réveille toi !"
 		await wait(1.0)
 		await player.blink_effect.open_eyes_from_sleep()
 		await wait(1.5)
@@ -102,7 +102,7 @@ func go_for_georges() -> void:
 func take_weapon() -> void:
 	take_player_view_control(true)
 	add_on_process(rotate_player_to_yaw.bind(georges_rdv.rotation.y, PI/1.5, delta_t))
-	await wait(0.5)
+	await wait(0.7)
 	Wwise.set_state("Music_State", "Phase1") ############# MUSIC
 	clean_process()
 	first_chassepot.visible = false
