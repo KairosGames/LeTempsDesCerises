@@ -1,5 +1,16 @@
 [gd_resource type="ArrayMesh" format=4 uid="uid://bj34uet0ryprp"]
 
+[ext_resource type="Texture2D" uid="uid://yrmg2j5vdgtq" path="res://sources/meshes/geometry/textures/ltdc-devanture-magasin-b-textures/ltdc-devanture-magasin-b-col.png" id="1_uhpi4"]
+[ext_resource type="Texture2D" uid="uid://chb0e1wws5sq6" path="res://sources/meshes/geometry/textures/ltdc-devanture-magasin-b-textures/ltdc-devanture-magasin-b-nrm.png" id="2_r1bsu"]
+[ext_resource type="Texture2D" uid="uid://y02qscnd6yxr" path="res://sources/meshes/geometry/textures/ltdc-devanture-magasin-b-textures/ltdc-devanture-magasin-b-rgh.png" id="3_j63rj"]
+[ext_resource type="Material" uid="uid://hcplbssyrg0f" path="res://sources/meshes/geometry/materials/glass_opaque.tres" id="4_kjkcx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fpy6n"]
+albedo_texture = ExtResource("1_uhpi4")
+roughness_texture = ExtResource("3_j63rj")
+normal_enabled = true
+normal_texture = ExtResource("2_r1bsu")
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_outjq"]
 _surfaces = [{
 "aabb": AABB(-1, 0, -0.035093, 4.000001, 2.8, 0.107383996),
@@ -31,6 +42,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 378,
 "index_data": PackedByteArray("AAABAAIAAgABAAMAAQAEAAMAAwAEAAUABAAGAAUABQAGAAcACAAJAAoACgAJAAsACAAMAAkADQAIAAoADgAMAAgADwAIAA0ADwAOAAgAEAAOAA8AEQASABMAEwASABQAFQARABMAFgARABUAFwAYABkAGQAYABoAGwAcAB0AHQAcAB4AHwAbAB0AIAAbAB8AIQAgAB8AIgAgACEAIwAkACUAJQAkACYAJwAoACkAKQAoACoAKwAsAC0ALQAsAC4ALwArAC0AMAArAC8AMQAwAC8AMgAwADEAMwA0ADUANQA0ADYANwAzADUAOAAzADcAOQA6ADsAOwA6ADwAOgA9ADwAPAA9AD4APwBAAEEAQQBAAEIAQwBEAEUARQBEAEYARwBIAEkASQBIAEoASwBMAE0ATQBMAE4ATABPAE4ATgBPAFAAUQBSAFMAUwBSAFQAUgBVAFQAVABVAFYAVwBYAFkAWQBYAFoAWwBcAF0AXQBcAF4AXABfAF4AXgBfAGAAYQBiAGMAYwBiAGQAZQBmAGcAZwBmAGgAZgBpAGgAaABpAGoAawBsAG0AbQBsAG4AbwBwAHEAcQBwAHIAcwB0AHUAdQB0AHYAdwBzAHUAdAB4AHYAeQBzAHcAdgB4AHoAeAB5AHoAegB5AHcAewB8AH0AfQB8AH4AfwB7AH0AfACAAH4AgQB7AH8AfgCAAIIAgACBAIIAggCBAH8AgwCEAIUAhQCEAIYAhwCIAIkAiQCIAIoAiwCMAI0AjQCMAI4AjwCQAJEAkQCQAJIAkwCUAJUAlQCUAJYAlwCYAJkAmQCYAJoAmwCcAJ0AnQCcAJ4AnACfAJ4AngCfAKAAnwChAKAAoAChAKIAowCkAKUApQCkAKYApwCoAKkAqQCoAKoAqwCsAK0ArgCrAK0ArwCrAK4ArQCsALAArACxALAAsACxALIAswC0ALUAtQC0ALYAtwCzALUAuACzALcAuQC4ALcAugC4ALkAuwC8AL0AvQC8AL4A"),
+"material": SubResource("StandardMaterial3D_fpy6n"),
 "name": "special",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -42,6 +54,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 30,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACwAIAAoADAAIAAsACgAJAA0ACQAOAA0ADQAOAA8A"),
+"material": ExtResource("4_kjkcx"),
 "name": "glass_opaque",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
