@@ -1,3 +1,17 @@
+vec4 triplanar(sampler2D tex, float blend_sharpness, float texture_scale, vec3 world_position, vec3 normal) {
+	vec3 world_pos = world_position * texture_scale;
+
+    vec3 blend = abs(normal);
+    blend = pow(blend, vec3(blend_sharpness));
+    blend /= blend.x + blend.y + blend.z;
+
+    vec4 x_proj = texture(tex, world_pos.zy);
+    vec4 y_proj = texture(tex, world_pos.xz);
+    vec4 z_proj = texture(tex, world_pos.xy);
+
+    return x_proj * blend.x + y_proj * blend.y + z_proj * blend.z;
+}
+
 float random_from_seed(inout uint seed) {
 	seed = seed * 747796405u + 2891336453u;
 	uint result = ((seed >> ((seed >> 28u) + 4u)) ^ seed) * 277803737u;
