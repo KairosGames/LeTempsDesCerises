@@ -26,6 +26,10 @@ shader_parameter/damping = 0.08
 shader_parameter/collision_friction = 0.65
 shader_parameter/collision_spin_damping = 0.5
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4styk"]
+radius = 4.0371094
+height = 13.409851
+
 [node name="Barricade03" type="Node3D" unique_id=504355432 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules", "break_effects")]
 script = ExtResource("1_pvjo0")
 full_life_modules = NodePath("Intacte")
@@ -36,6 +40,7 @@ break_effects = [NodePath("DestructionEffects/FirstEffect"), NodePath("Destructi
 
 [node name="Intacte" parent="." unique_id=2127946876 instance=ExtResource("2_77k22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+visible = false
 
 [node name="Damage01" parent="." unique_id=1841857413 instance=ExtResource("3_a3acv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
@@ -47,7 +52,6 @@ visible = false
 
 [node name="Destroyed" parent="." unique_id=1989816985 instance=ExtResource("5_24ljc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-visible = false
 
 [node name="Dirt_pile" parent="." unique_id=703671390 instance=ExtResource("5_7k3v3")]
 transform = Transform3D(0.98468024, 0, 0.17437007, 0, 1, 0, -0.17437007, 0, 0.98468024, 1.7502499, 0.100004435, 3.3495178)
@@ -63,16 +67,26 @@ transform = Transform3D(0.8451592, 0, -0.53451467, 0, 1, 0, 0.53451467, 0, 0.845
 [node name="DestructionEffects" type="Node3D" parent="." unique_id=1199477416]
 
 [node name="FirstEffect" parent="DestructionEffects" unique_id=656924349 instance=ExtResource("9_24ljc")]
-transform = Transform3D(-0.46064898, 0, 0.8875824, 0, 1, 0, -0.8875824, 0, -0.46064898, 0.4061634, 1.5458416, 1.3985863)
+transform = Transform3D(-0.3933641, 0, 0.91938275, 0, 1, 0, -0.91938275, 0, -0.3933641, 0.9202601, 1.3941435, 1.2997013)
 amount = 200
 
 [node name="SecondEffect" parent="DestructionEffects" unique_id=1554363369 instance=ExtResource("9_24ljc")]
-transform = Transform3D(-0.53940284, 0, 0.8420478, 0, 1, 0, -0.8420478, 0, -0.53940284, 2.3461633, 1.3537974, 2.7403154)
-amount = 300
+transform = Transform3D(-0.26853308, 0, 0.9632704, 0, 1, 0, -0.9632704, 0, -0.26853308, 1.9955156, 1.3537972, 2.1443012)
+amount = 250
 
 [node name="ThirdEffect" parent="DestructionEffects" unique_id=1402476683 instance=ExtResource("9_24ljc")]
-transform = Transform3D(-0.52383727, 0, 0.8518183, 0, 1, 0, -0.8518183, 0, -0.52383727, 0.37766147, 0.62311244, 0.4869569)
-amount = 450
+transform = Transform3D(-0.52383727, 0, 0.8518183, 0, 1, 0, -0.8518183, 0, -0.52383727, 0.37766147, 0.43683267, 0.4869569)
+amount = 300
 process_material = SubResource("ShaderMaterial_gsler")
+
+[node name="DeathZone" type="Area3D" parent="." unique_id=410311955]
+unique_name_in_owner = true
+transform = Transform3D(0.43680176, -0.89950836, -0.009420011, 0, 0.010471824, -0.99994516, 0.8995577, 0.4367778, 0.0045741117, 0.49938077, -0.00617695, 0.66923106)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone" unique_id=1104423467]
+transform = Transform3D(1.0000005, 1.4901161e-07, 6.193295e-08, 0, 1.0000007, 1.010485e-07, -3.8463622e-07, -1.7951243e-07, 1.0000473, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_4styk")
 
 [connection signal="damaged" from="." to="AkBarricadeManager" method="_on_barricade_damaged"]

@@ -7,7 +7,7 @@ uniform vec3 box_size = vec3(4.0, 2.0, 0.6);
 uniform vec3 grid_count = vec3(12.0, 6.0, 2.0);
 
 uniform vec3 explosion_direction = vec3(0.0, 0.4, 1.0);
-uniform float explosion_force = 8.0;
+uniform float explosion_force = 5.0;
 uniform float random_force = 4.0;
 uniform float upward_force = 2.0;
 

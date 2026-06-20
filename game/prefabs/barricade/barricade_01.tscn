@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://dc1nfamjxbhmv" path="res://prefabs/props/pave.tscn" id="9_8u7q6"]
 [ext_resource type="PackedScene" uid="uid://187vl1c0h0u3" path="res://sounds/prefabs/ak_barricade_manager.tscn" id="12_uvgh7"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xlbs"]
+radius = 6.0
+height = 13.409851
+
 [node name="Barricade01" type="Node3D" unique_id=535866183 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules", "break_effects")]
 transform = Transform3D(0.9980212, 0, -0.06287761, 0, 1, 0, 0.06287761, 0, 0.9980212, 0, 0, 0)
 script = ExtResource("1_4w12a")
@@ -37,7 +41,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5134919, 0.29606158, 4.478
 transform = Transform3D(0.0082812, 0.33923236, 0.9406661, 0.9998249, 0.012980746, -0.0134831965, -0.016784506, 0.940613, -0.3390655, -1.8379244, 0.24749011, 3.6474538)
 
 [node name="Damaged1" parent="." unique_id=932398078 instance=ExtResource("3_1udo1")]
-visible = false
 
 [node name="Metal_grid3" type="Node3D" parent="Damaged1" unique_id=1439217426]
 transform = Transform3D(0.9980213, 0, 0.06287762, 0, 1, 0, -0.06287762, 0, 0.9980213, -1.687, -0.02, -2.371)
@@ -56,7 +59,6 @@ transform = Transform3D(0.0082812, 0.33923236, 0.9406661, 0.9998249, 0.012980746
 
 [node name="Damaged2" parent="." unique_id=658129954 instance=ExtResource("4_jn8ma")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-visible = false
 
 [node name="Metal_grid3" type="Node3D" parent="Damaged2" unique_id=728118995]
 transform = Transform3D(0.9980213, 0, 0.06287762, 0, 1, 0, -0.06287762, 0, 0.9980213, -1.687, -0.02, -2.371)
@@ -75,7 +77,6 @@ transform = Transform3D(0.0082812, 0.33923236, 0.9406661, 0.9998249, 0.012980746
 
 [node name="Destroyed" parent="." unique_id=2014136881 instance=ExtResource("5_v7drl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-visible = false
 
 [node name="AkBarricadeManager" parent="." unique_id=40989191 instance=ExtResource("12_uvgh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1884227, -9.536743e-07, -2.5178847)
@@ -84,13 +85,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.1884227, -9.536743e-07, -2
 
 [node name="FirstEffect" parent="DestructionEffects" unique_id=656924349 instance=ExtResource("7_ud3ag")]
 transform = Transform3D(-0.49360794, 0, 0.8696846, 0, 1, 0, -0.8696846, 0, -0.49360794, -4.109665, 1.0967469, -2.4111323)
-amount = 100
+amount = 150
 
 [node name="SecondEffect" parent="DestructionEffects" unique_id=474579836 instance=ExtResource("7_ud3ag")]
-transform = Transform3D(-0.14559951, 0, 0.9893436, 0, 1, 0, -0.9893436, 0, -0.14559951, -4.529605, 1.0255251, -4.502533)
-amount = 300
+transform = Transform3D(-0.28111893, 0, 0.95967287, 0, 1, 0, -0.95967287, 0, -0.28111893, -4.529605, 1.0255251, -4.502533)
+amount = 200
 
 [node name="ThirdEffect" parent="DestructionEffects" unique_id=1163721346 instance=ExtResource("7_ud3ag")]
 transform = Transform3D(-0.52383727, 0, 0.8518183, 0, 1, 0, -0.8518183, 0, -0.52383727, -2.4651628, 1.0882324, 0.4507562)
+amount = 250
+
+[node name="DeathZone" type="Area3D" parent="." unique_id=1769999192]
+unique_name_in_owner = true
+transform = Transform3D(0.43680176, -0.89950836, -0.009420011, 0, 0.010471824, -0.99994516, 0.8995577, 0.4367778, 0.0045741117, -3.6556485, 0.02315903, -2.5332048)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone" unique_id=1855896615]
+transform = Transform3D(1.0000005, -5.9604645e-08, 4.5634806e-08, 5.9604645e-08, 1.0000005, 1.4062971e-07, -3.844034e-07, -1.2805685e-09, 1.0000358, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_0xlbs")
 
 [connection signal="damaged" from="." to="AkBarricadeManager" method="_on_barricade_damaged"]

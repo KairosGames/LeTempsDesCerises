@@ -4,6 +4,8 @@ signal damaged
 signal state_changed
 signal just_destroyed
 
+@onready var death_zone: Area3D = %DeathZone
+
 @export_category("States")
 @export var full_life_modules: Node3D
 @export var damages_modules_1: Node3D
@@ -78,5 +80,9 @@ func go_next_step() -> void:
 
 
 func kill_all_near_covers_agents() -> void:
+	var bodies: Array = death_zone.get_overlapping_bodies()
+	for body: Node3D in bodies: if body is Player:
+		player.is_immortal = false
+		player.die()
 	for cover: Cover in near_covers:
 		if cover.holder is Agent: (cover.holder as Agent).die()
