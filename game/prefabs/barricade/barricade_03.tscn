@@ -23,7 +23,6 @@ shader_parameter/angular_velocity = 8.0
 shader_parameter/particle_scale = 0.2
 shader_parameter/gravity = Vector3(0, -9.8, 0)
 shader_parameter/damping = 0.08
-shader_parameter/collision_bounce = 0.35
 shader_parameter/collision_friction = 0.65
 shader_parameter/collision_spin_damping = 0.5
 
@@ -36,14 +35,18 @@ destroyed_modules = NodePath("Destroyed")
 break_effects = [NodePath("DestructionEffects/FirstEffect"), NodePath("DestructionEffects/SecondEffect"), NodePath("DestructionEffects/ThirdEffect")]
 
 [node name="Intacte" parent="." unique_id=2127946876 instance=ExtResource("2_77k22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
 [node name="Damage01" parent="." unique_id=1841857413 instance=ExtResource("3_a3acv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 visible = false
 
 [node name="Damage02" parent="." unique_id=1577627335 instance=ExtResource("4_68am2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 visible = false
 
 [node name="Destroyed" parent="." unique_id=1989816985 instance=ExtResource("5_24ljc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 visible = false
 
 [node name="Dirt_pile" parent="." unique_id=703671390 instance=ExtResource("5_7k3v3")]
