@@ -14,10 +14,11 @@ void fragment() {
     outline += texture(TEXTURE, UV - vec2(pixel.x, 0.0)).a;
     outline += texture(TEXTURE, UV + vec2(0.0, pixel.y)).a;
     outline += texture(TEXTURE, UV - vec2(0.0, pixel.y)).a;
+    outline += texture(TEXTURE, UV + vec2(pixel.x, pixel.y) * 1.414).a;
 
     if (tex.a < 0.1 && outline > 0.0) {
         COLOR = outline_color;
     } else {
-        COLOR = tex;
+        COLOR = tex * COLOR ;
     }
 }

@@ -33,7 +33,7 @@ var is_letter_box_open: bool = false
 var target_title_mat: ShaderMaterial
 var objectif_target_mat: ShaderMaterial
 var strip_twn: Tween
-var out_line_twn: Tween
+var outline_twn: Tween
 
 
 static var instance: UIManager:
@@ -174,12 +174,12 @@ func launch_blink_effect(target: Node3D) -> void:
 
 
 func tween_outlines(alpha: float, t: float) -> void:
-	if out_line_twn : out_line_twn.kill()
-	out_line_twn = create_tween()
-	out_line_twn.tween_property(objective_label,"theme_override_colors/font_outline_color:a", alpha, t)
-	out_line_twn.parallel().tween_property(objective_title_label,"theme_override_colors/font_outline_color:a", alpha, t)
-	out_line_twn.parallel().tween_property(target_title_mat, "shader_parameter/outline_color:a", alpha, t)
-	out_line_twn.parallel().tween_property(objectif_target_mat, "shader_parameter/outline_color:a", alpha, t)
+	if outline_twn : outline_twn.kill()
+	outline_twn = create_tween()
+	outline_twn.tween_property(objective_label,"theme_override_colors/font_outline_color:a", alpha, t)
+	outline_twn.parallel().tween_property(objective_title_label,"theme_override_colors/font_outline_color:a", alpha, t)
+	outline_twn.parallel().tween_property(target_title_mat, "shader_parameter/outline_color:a", alpha, t)
+	outline_twn.parallel().tween_property(objectif_target_mat, "shader_parameter/outline_color:a", alpha, t)
 
 
 func hard_set_letter_box(to_open: bool) -> void:

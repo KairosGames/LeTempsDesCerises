@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cg463hdmyrtmx" path="res://prefabs/player/blur_effect.gd" id="12_agiw0"]
 [ext_resource type="Texture2D" uid="uid://dvjpnqukcvb8e" path="res://prefabs/ui/reload_p1.png" id="14_408ek"]
 [ext_resource type="Script" uid="uid://cyr6l5nj8dv32" path="res://prefabs/player/shake.gd" id="14_ot5ig"]
+[ext_resource type="Shader" uid="uid://c3neb6a2e0vbg" path="res://prefabs/managers/ui_out_line.gdshader" id="14_qdvc2"]
 [ext_resource type="Texture2D" uid="uid://c7pq1vg1fsh6s" path="res://prefabs/ui/reload_p2.png" id="15_a2w56"]
 [ext_resource type="Texture2D" uid="uid://b4txv2npkb5d1" path="res://prefabs/ui/reload_pin.png" id="15_ocyg1"]
 [ext_resource type="Texture2D" uid="uid://cl1kbcn7tixc5" path="res://prefabs/ui/reload_p3.png" id="16_qdvc2"]
@@ -46,11 +47,18 @@ shader_parameter/strength = 3
 shader_parameter/blur_size = 0.0
 shader_parameter/effect = 8.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtpqo"]
+
 [sub_resource type="Curve2D" id="Curve2D_408ek"]
 _data = {
 "points": PackedVector2Array(6, -76, -6, -76, 96.5, 0, -11.945284, -75.719604, 11.945284, 75.719604, -96.5, 0)
 }
 point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qdvc2"]
+shader = ExtResource("14_qdvc2")
+shader_parameter/outline_color = Color(0, 0, 0, 0)
+shader_parameter/outline_size = 3.0
 
 [sub_resource type="Curve2D" id="Curve2D_dxdrd"]
 _data = {
@@ -209,9 +217,12 @@ wpn_animator = NodePath("../../CameraPivot/WeaponCameraBase/CameraLandingRoot/We
 default_focus_color = Color(0.5037687, 0.50376844, 0.50376844, 1)
 fail_focus_color = Color(0.5921569, 0, 0, 1)
 sucess_focus_color = Color(0, 0.6059047, 0, 1)
+fail_outline_color = Color(1, 0, 0, 1)
+sucess_outline_color = Color(0, 1, 0, 1)
 
 [node name="ReloadState1" type="TextureRect" parent="UI/ReloadUI" unique_id=540028085]
 visible = false
+material = SubResource("ShaderMaterial_vtpqo")
 layout_mode = 0
 offset_left = -500.0
 offset_top = -10.0
@@ -264,6 +275,7 @@ loop = false
 [node name="FocusPin" type="Sprite2D" parent="UI/ReloadUI/Path1/Focus" unique_id=1836951511]
 unique_name_in_owner = true
 modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+material = SubResource("ShaderMaterial_qdvc2")
 rotation = 3.1415927
 texture = ExtResource("15_ocyg1")
 

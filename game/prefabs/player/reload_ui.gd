@@ -29,7 +29,11 @@ signal reloaded
 @export var default_focus_color: Color
 @export var fail_focus_color: Color
 @export var sucess_focus_color: Color
+@export var fail_outline_color: Color
+@export var sucess_outline_color: Color
 
+
+var pin_mat: ShaderMaterial
 var step: int = 0
 var counter: int = 0
 var proogress_dir: float = 1.0
@@ -40,8 +44,11 @@ var is_hammer_cocked: bool = false
 var is_tutorial: bool = false
 var is_playing_qte: bool = true
 
+var outline_tween: Tween
+
 
 func _ready() -> void:
+	pin_mat = focus_pin.material as ShaderMaterial
 	wpn_animator.play("idle")
 	chassepot.call_load_ammo = play_amo_anim
 	chassepot.call_next_step = go_next_step_after_ammo_anim
@@ -129,10 +136,19 @@ func try_qte() -> void:
 		focus_pin.modulate = sucess_focus_color
 	else:
 		focus_pin.modulate = fail_focus_color
+		print("prout")
 		try_failed.emit()
+	launch_outline_qte_tween(is_in)
 	await get_tree().create_timer(qte_delay).timeout
 	can_qte = true
 	focus_pin.modulate = default_focus_color
+
+
+func launch_outline_qte_tween(is_in: bool) -> void:
+	pin_mat.set_shader_parameter("outline_color", sucess_outline_color if is_in else fail_outline_color)
+	if outline_tween: outline_tween.kill()
+	outline_tween = create_tween()
+	outline_tween.tween_property(pin_mat, "shader_parameter/outline_color:a", 0.0, 0.35)
 
 
 func play_amo_anim() -> void:
