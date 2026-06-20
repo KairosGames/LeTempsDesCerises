@@ -23,6 +23,7 @@ var kill_counter: int = 0
 var it_is_time_to_die: bool = false
 var first_die_timer: float = 60.0
 var first_battle_time: float = 85.0
+var is_jules_voice_line_finished: bool = false
 
 
 func enter() -> void:
@@ -84,7 +85,7 @@ func stay_into_barricade_area() -> void:
 	invisible_wall_barricade.process_mode = Node.PROCESS_MODE_INHERIT
 	return_to_barricade.monitoring = true
 	return_to_barricade.player_entered.connect(on_player_exit_barricade_zone)
-	call_voice() # "Ils avancent, soyez pas flubard !"
+	await wait_voice() # "Ils avancent, soyez pas flubard !"
 	player.enemy_shot.connect(on_enemy_shot)
 	launch_first_die_timer()
 	await wait_until(is_it_time_to_die)
@@ -137,7 +138,9 @@ func go_to_first_die() -> void:
 	first_die_area.monitoring = false
 	invisible_wall_barricade.process_mode = Node.PROCESS_MODE_DISABLED
 	await wait(player.death_camera.fall_time_1 + player.death_camera.fall_time_2)
-	await wait_voice()
+	launch_security_timer()
+	await wait_voice() #"Non Gomeux ! Noooon !"
+	is_jules_voice_line_finished = true
 
 
 func can_player_die() -> bool:
@@ -145,6 +148,12 @@ func can_player_die() -> bool:
 	if player.p_inputs.is_game_controlling_movement: return false
 	if player.p_inputs.is_game_controlling_view: return false
 	return first_die_area.is_player_inside()
+
+
+func launch_security_timer() -> void:
+	await wait(5.0)
+	voice_line_finished.emit()
+	print("DEBUG USED FOR JULES VOICE LINE")
 
 
 func lauch_first_battle_phase() -> void:
