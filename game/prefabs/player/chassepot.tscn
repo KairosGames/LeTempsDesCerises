@@ -3,6 +3,143 @@
 [ext_resource type="Script" uid="uid://db5hoclmtj4ek" path="res://prefabs/player/chassepot.gd" id="1_5q3ae"]
 [ext_resource type="PackedScene" uid="uid://37232b2f0mql" path="res://sources/meshes/chassepot/bld_chassepot.blend" id="1_xdjnr"]
 [ext_resource type="PackedScene" uid="uid://bawwltjhdv3ex" path="res://sources/meshes/player_hands/controller_rig.blend" id="3_4wuoh"]
+[ext_resource type="Script" uid="uid://twxwvrjdeo00" path="res://sources/meshes/player_hands/controller_rig.gd" id="4_13t8j"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cdbf1"]
+animation = &"0"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_13t8j"]
+animation = &"1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hhxfj"]
+animation = &"2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ps2r2"]
+animation = &"3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cyh31"]
+animation = &"4"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a7m5c"]
+animation = &"5"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vqdwh"]
+animation = &"6"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_28apa"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lvgh0"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n8sk8"]
+advance_mode = 2
+advance_expression = "progress == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_13t8j"]
+advance_mode = 2
+advance_expression = "in_progress == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cdbf1"]
+advance_mode = 2
+advance_expression = "in_progress == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hhxfj"]
+advance_mode = 2
+advance_expression = "in_progress == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ps2r2"]
+advance_mode = 2
+advance_expression = "in_progress == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cyh31"]
+advance_mode = 2
+advance_expression = "in_progress == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a7m5c"]
+advance_mode = 2
+advance_expression = "in_progress == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vqdwh"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+advance_expression = "in_progress == false"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_28apa"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "progress == 1 and in_progress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_papjf"]
+advance_mode = 2
+advance_expression = "progress == 1 and in_progress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dw65g"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "progress == 2 and in_progress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wkijf"]
+advance_mode = 2
+advance_expression = "progress == 2 and in_progress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k75rd"]
+advance_mode = 2
+advance_expression = "progress == 3 and in_progress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2kw4e"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "progress == 3 and in_progress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rity6"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "progress == 4 and in_progress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nadua"]
+advance_mode = 2
+advance_expression = "progress == 4 and in_progress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6w311"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "progress == 5 and in_progress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wy4lu"]
+advance_mode = 2
+advance_expression = "progress == 5"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ivi07"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "progress == 6 and in_progress"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ypt7h"]
+advance_mode = 2
+advance_expression = "progress == 6 and in_progress"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hhxfj"]
+states/0/node = SubResource("AnimationNodeAnimation_cdbf1")
+states/0/position = Vector2(349, 38)
+states/1/node = SubResource("AnimationNodeAnimation_13t8j")
+states/1/position = Vector2(538, 43.75)
+states/2/node = SubResource("AnimationNodeAnimation_hhxfj")
+states/2/position = Vector2(648.5, 192)
+states/3/node = SubResource("AnimationNodeAnimation_ps2r2")
+states/3/position = Vector2(601, 350.5)
+states/4/node = SubResource("AnimationNodeAnimation_cyh31")
+states/4/position = Vector2(428.5, 423.5)
+states/5/node = SubResource("AnimationNodeAnimation_a7m5c")
+states/5/position = Vector2(235.5, 410.875)
+states/6/node = SubResource("AnimationNodeAnimation_vqdwh")
+states/6/position = Vector2(185.61243, 255.34503)
+states/End/position = Vector2(1219.5, 110.5)
+states/idle/node = SubResource("AnimationNodeAnimation_28apa")
+states/idle/position = Vector2(405.07495, 242.19002)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_lvgh0"), "idle", "0", SubResource("AnimationNodeStateMachineTransition_n8sk8"), "0", "idle", SubResource("AnimationNodeStateMachineTransition_13t8j"), "1", "idle", SubResource("AnimationNodeStateMachineTransition_cdbf1"), "2", "idle", SubResource("AnimationNodeStateMachineTransition_hhxfj"), "3", "idle", SubResource("AnimationNodeStateMachineTransition_ps2r2"), "4", "idle", SubResource("AnimationNodeStateMachineTransition_cyh31"), "5", "idle", SubResource("AnimationNodeStateMachineTransition_a7m5c"), "6", "idle", SubResource("AnimationNodeStateMachineTransition_vqdwh"), "0", "1", SubResource("AnimationNodeStateMachineTransition_28apa"), "idle", "1", SubResource("AnimationNodeStateMachineTransition_papjf"), "1", "2", SubResource("AnimationNodeStateMachineTransition_dw65g"), "idle", "2", SubResource("AnimationNodeStateMachineTransition_wkijf"), "idle", "3", SubResource("AnimationNodeStateMachineTransition_k75rd"), "2", "3", SubResource("AnimationNodeStateMachineTransition_2kw4e"), "3", "4", SubResource("AnimationNodeStateMachineTransition_rity6"), "idle", "4", SubResource("AnimationNodeStateMachineTransition_nadua"), "4", "5", SubResource("AnimationNodeStateMachineTransition_6w311"), "idle", "5", SubResource("AnimationNodeStateMachineTransition_wy4lu"), "5", "6", SubResource("AnimationNodeStateMachineTransition_ivi07"), "idle", "6", SubResource("AnimationNodeStateMachineTransition_ypt7h")]
+graph_offset = Vector2(-230.30276, 35.48262)
 
 [sub_resource type="Animation" id="Animation_tcjb3"]
 length = 0.001
@@ -856,9 +993,17 @@ visible = false
 
 [node name="controller_rig" parent="PivotPoint/container" unique_id=458534814 instance=ExtResource("3_4wuoh")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.23298101)
+script = ExtResource("4_13t8j")
+progress = 1
+in_progress = true
 
-[node name="AnimationPlayer" parent="PivotPoint/container/controller_rig" index="1" unique_id=1417634141]
+[node name="AnimationPlayer" parent="PivotPoint/container/controller_rig" index="1" unique_id=901439916]
 autoplay = &"reload"
+
+[node name="AnimationTree" type="AnimationTree" parent="PivotPoint/container/controller_rig" unique_id=716367287]
+tree_root = SubResource("AnimationNodeStateMachine_hhxfj")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="WeaponAnimator" type="AnimationPlayer" parent="." unique_id=1149805121]
 libraries/ = SubResource("AnimationLibrary_ocjyo")
