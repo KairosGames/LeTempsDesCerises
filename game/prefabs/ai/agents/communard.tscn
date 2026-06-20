@@ -7,23 +7,132 @@
 [ext_resource type="Script" uid="uid://drm4qhn1mjvnj" path="res://scripts/get_chassepot.gd" id="5_84l20"]
 [ext_resource type="Material" uid="uid://cxoxm0glp2h7s" path="res://materials/magical_material.tres" id="5_ayo2e"]
 [ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="6_t3nua"]
+[ext_resource type="Shader" uid="uid://bu4hvhwal4ce" path="res://prefabs/ai/agents/shader_communard_aether.gdshader" id="5_ayo2e"]
+
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_72jo2"]
+
 resource_local_to_scene = true
 radius = 0.25
 height = 1.8
+
+[sub_resource type="Gradient" id="Gradient_r7fab"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ayo2e"]
+noise_type = 2
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_48o1v"]
+noise = SubResource("FastNoiseLite_ayo2e")
+color_ramp = SubResource("Gradient_r7fab")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_84l20"]
+render_priority = 0
+shader = ExtResource("5_ayo2e")
+shader_parameter/color = Color(1, 0.7415, 0.53, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_48o1v")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_72jo2"]
+render_priority = 0
+shader = ExtResource("5_ayo2e")
+shader_parameter/color = Color(0.4, 0.2972667, 0.132, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_48o1v")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nv80g"]
+render_priority = 0
+shader = ExtResource("5_ayo2e")
+shader_parameter/color = Color(0.47, 0.3055, 0, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_48o1v")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ntjd"]
+render_priority = 0
+shader = ExtResource("5_ayo2e")
+shader_parameter/color = Color(0.32, 0.29386666, 0.20799999, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_48o1v")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7fab"]
+render_priority = 0
+shader = ExtResource("5_ayo2e")
+shader_parameter/color = Color(0.9982037, 0.99780935, 0.99652475, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_48o1v")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_idkkl"]
+render_priority = 0
+shader = ExtResource("5_ayo2e")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_48o1v")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48o1v"]
+render_priority = 0
+shader = ExtResource("5_ayo2e")
+shader_parameter/color = Color(0.57, 0.34978998, 0.2223, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_48o1v")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gmion"]
+render_priority = 0
+shader = ExtResource("5_ayo2e")
+shader_parameter/color = Color(0.19, 0.1235, 0, 1)
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_48o1v")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
 
 [node name="Communard" unique_id=1349390169 groups=["Communard"] instance=ExtResource("1_6272e")]
 team = 1
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=1662563447]
-shape = SubResource("CapsuleShape3D_72jo2")
+shape = SubResource("CapsuleShape3D_t3nua")
 
 [node name="Chest" parent="ShootTargets" parent_id_path=PackedInt32Array(1640117776) index="0" unique_id=1612085666]
-transform = Transform3D(-0.9724405, -0.0018604657, 0.23263128, 0.023458516, 0.993942, 0.106006086, -0.2314575, 0.10855383, -0.966628, -0.009299284, 1.2362056, -0.011695844)
+transform = Transform3D(-0.964975, -0.008002368, 0.26168606, 0.015428097, 0.99593836, 0.08734755, -0.26135135, 0.088338986, -0.9610547, -0.030832399, 1.23277, -0.025187712)
 
 [node name="Head" parent="ShootTargets" parent_id_path=PackedInt32Array(1640117776) index="1" unique_id=2138124691]
-transform = Transform3D(-0.9993454, -0.012207832, 0.031833086, -0.013509413, 0.99888587, -0.040945463, -0.031306405, -0.04135085, -0.9984897, 0.00026639865, 1.5897752, -0.032954358)
+transform = Transform3D(-0.9978061, -0.018893214, 0.06233806, -0.022800738, 0.99758935, -0.0625246, -0.061024018, -0.06381129, -0.995932, -0.022074109, 1.5859681, -0.052435767)
 
 [node name="Comunard" parent="BeehaveTree/BeAlive" parent_id_path=PackedInt32Array(1853354031) index="2" unique_id=546313229 instance=ExtResource("2_tcnhd")]
 
@@ -42,23 +151,23 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 script = ExtResource("5_84l20")
 chassepot = NodePath("Armature/Skeleton3D/Weapon/UChassepot")
 
-[node name="Skeleton3D" parent="communard/Armature" parent_id_path=PackedInt32Array(738987645, 1636348905) index="0" unique_id=2054203709]
-bones/0/position = Vector3(0.82378596, 4.3999467, -96.04307)
-bones/0/rotation = Quaternion(-0.7227605, -0.065162875, 0.08167181, 0.683155)
-bones/1/rotation = Quaternion(-0.03266916, -0.010183576, -0.007795895, 0.999384)
-bones/2/rotation = Quaternion(0.00592075, -0.002787034, 0.0038244112, 0.9999713)
-bones/3/rotation = Quaternion(0.016540265, -0.004016899, -0.0016806232, 0.99985373)
+[node name="Skeleton3D" parent="communard/Armature" parent_id_path=PackedInt32Array(738987645, 662262966) index="0" unique_id=1792275481]
+bones/0/position = Vector3(2.780532, 5.2731147, -95.64981)
+bones/0/rotation = Quaternion(-0.7181791, -0.07894305, 0.08996617, 0.6854873)
+bones/1/rotation = Quaternion(-0.02785955, -0.009535982, -0.0072493437, 0.99954003)
+bones/2/rotation = Quaternion(0.005973508, -0.0030259434, 0.003497316, 0.99997157)
+bones/3/rotation = Quaternion(0.014438002, -0.0048554987, -0.001318191, 0.9998832)
 bones/4/position = Vector3(-2.2351742e-07, 15.47229, -2.3110465e-07)
 bones/4/rotation = Quaternion(0.06666138, 0.009695132, 0.005474021, 0.9977135)
-bones/5/rotation = Quaternion(-0.008572339, 0.094189905, -0.027263356, 0.995144)
+bones/5/rotation = Quaternion(-0.0058871326, 0.09499461, -0.030177785, 0.99500287)
 bones/7/position = Vector3(6.584111, 13.677435, -0.19938786)
-bones/7/rotation = Quaternion(-0.68259543, -0.28648835, 0.5901909, -0.3219668)
+bones/7/rotation = Quaternion(-0.68442136, -0.28437832, 0.5891747, -0.3218224)
 bones/8/position = Vector3(3.6642366e-06, 13.782205, -1.0384749e-05)
-bones/8/rotation = Quaternion(0.32099292, 0.13447121, 0.05580307, 0.93582433)
+bones/8/rotation = Quaternion(0.32386127, 0.12647825, 0.060815856, 0.9356381)
 bones/9/position = Vector3(0.08329126, 25.861597, 0.07135926)
-bones/9/rotation = Quaternion(0.0139400335, 0.014791623, 0.46639088, 0.88434523)
+bones/9/rotation = Quaternion(0.011780706, 0.01408025, 0.44973406, 0.8929739)
 bones/10/position = Vector3(0.06807307, 24.066257, 0.015467908)
-bones/10/rotation = Quaternion(0.2284734, -0.9130918, 0.05222058, 0.3336713)
+bones/10/rotation = Quaternion(0.24022382, -0.90770376, 0.053289976, 0.33989197)
 bones/11/position = Vector3(-2.9326034, 2.8936467, 1.2201906)
 bones/11/rotation = Quaternion(0.017061442, 0.31595218, 0.47749016, 0.8196867)
 bones/12/position = Vector3(-0.6610923, 3.3732498, -1.1159695e-05)
