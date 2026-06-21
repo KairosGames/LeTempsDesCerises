@@ -9,11 +9,16 @@
 [ext_resource type="Texture2D" uid="uid://22l74488m5rp" path="res://sources/images/textures/ui/lorem_ipsum_04.png" id="7_cmjdo"]
 [ext_resource type="Texture2D" uid="uid://7mwi11doj234" path="res://sources/images/textures/ui/lorem_ipsum_01.png" id="7_hhep5"]
 [ext_resource type="Texture2D" uid="uid://mk88hreujt3a" path="res://sources/images/textures/ui/divider_01.png" id="8_cmjdo"]
+[ext_resource type="Texture2D" uid="uid://rgeqqd3p0ike" path="res://sources/images/icons/inputs/Xbox Series/xbox_lb_outline.svg" id="11_aish6"]
 [ext_resource type="Theme" uid="uid://b2cmbq2awrshk" path="res://prefabs/ui/home/option_theme.tres" id="11_yu5fn"]
 [ext_resource type="Texture2D" uid="uid://cfimnqk146jpn" path="res://sources/images/icons/inputs/Xbox Series/controller_xboxseries.svg" id="12_gi00y"]
 [ext_resource type="PackedScene" uid="uid://bqvmhyi4hni80" path="res://prefabs/ui/home/input_link.tscn" id="12_ip4d6"]
+[ext_resource type="Texture2D" uid="uid://df56u8vr06e5o" path="res://sources/images/textures/ui/slider_grabber.png" id="12_ju5sp"]
+[ext_resource type="Texture2D" uid="uid://wpk2w3xciak3" path="res://sources/images/icons/inputs/Xbox Series/xbox_rb_outline.svg" id="12_snnha"]
 [ext_resource type="FontFile" uid="uid://6al2yonhh1go" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Black.otf" id="12_yu5fn"]
+[ext_resource type="Texture2D" uid="uid://dhojlb5ou38nt" path="res://sources/images/textures/ui/slider_grabber_highlight.png" id="13_o7pnx"]
 [ext_resource type="Texture2D" uid="uid://c2ugcp65jnl3a" path="res://sources/images/icons/inputs/Keyboard & Mouse/keyboard.svg" id="13_rpgsi"]
+[ext_resource type="Script" uid="uid://c0exxiluefxe6" path="res://scenes/option.gd" id="13_snnha"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ip4d6"]
 content_margin_left = 50.0
@@ -451,7 +456,7 @@ Integer quis nisi massa. Etiam scelerisque ut diam vel aliquam. Nulla pulvinar e
 
 Sed vitae orci elementum, mattis nunc a, hendrerit tellus. Quisque est neque, consequat eu vulputate quis, lacinia at lacus. Donec ex ligula, lacinia vitae accumsan sit amet, molestie eget sem. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin id aliquet nunc. Nunc ultricies mollis lorem sit amet euismod. Mauris varius, risus nec ultricies varius, lacus ligula cursus ex, in porta dui orci sed nisi. Curabitur tristique lorem
  eu placerat luctus
-Donec a mauris 
+Donec a mauris
 id risus ullamcorpe
 r tempor. Morbi l
 acinia enim eget pharetra rhoncus. Integer et purus dictum, fermentum purus eu, pulvinar magna."
@@ -462,17 +467,28 @@ autowrap_mode = 3
 [node name="Option" type="TabContainer" parent="." unique_id=243911068]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 794.0
-offset_top = 381.0
-offset_right = 1798.0
-offset_bottom = 1545.0
+offset_left = 575.0
+offset_top = 165.0
+offset_right = 1841.0
+offset_bottom = 1329.0
 theme = ExtResource("11_yu5fn")
-current_tab = 3
+tab_alignment = 1
+current_tab = 1
+tab_0/icon = ExtResource("11_aish6")
+tab_0/disabled = true
+tab_5/icon = ExtResource("12_snnha")
+tab_5/disabled = true
+script = ExtResource("13_snnha")
 
-[node name="GAME" type="VBoxContainer" parent="Option" unique_id=489534051]
+[node name="LEFT" type="Control" parent="Option" unique_id=1481471370]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
+metadata/_tab_name = ""
+
+[node name="GAME" type="VBoxContainer" parent="Option" unique_id=489534051]
+layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="MouseSensibility" type="HBoxContainer" parent="Option/GAME" unique_id=1354528972]
 layout_mode = 2
@@ -492,7 +508,8 @@ size_flags_stretch_ratio = 3.0
 [node name="AUDIO" type="VBoxContainer" parent="Option" unique_id=1200474982]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+theme_override_constants/separation = 32
+metadata/_tab_index = 2
 
 [node name="MasterVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=1669443407]
 layout_mode = 2
@@ -508,6 +525,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 3.0
+theme_override_icons/grabber = ExtResource("12_ju5sp")
+theme_override_icons/grabber_highlight = ExtResource("13_o7pnx")
+theme_override_icons/grabber_disabled = ExtResource("12_ju5sp")
+max_value = 1.0
+step = 0.1
+value = 0.5
 
 [node name="MusicVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=570742589]
 layout_mode = 2
@@ -523,6 +546,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 3.0
+max_value = 1.0
+step = 0.1
+value = 0.5
 
 [node name="EffectVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=52846416]
 layout_mode = 2
@@ -538,6 +564,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 3.0
+max_value = 1.0
+step = 0.1
+value = 0.5
 
 [node name="VoiceVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=130079500]
 layout_mode = 2
@@ -553,20 +582,542 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 3.0
+max_value = 1.0
+step = 0.1
+value = 0.5
 
 [node name="VIDEO" type="VBoxContainer" parent="Option" unique_id=722133202]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 3
+
+[node name="Settings" type="VBoxContainer" parent="Option/VIDEO" unique_id=2107176332]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DisplayMode" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=531697444]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/DisplayMode" unique_id=1204425346]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "DISPLAY"
+
+[node name="Windowed" type="Button" parent="Option/VIDEO/Settings/DisplayMode" unique_id=932672190]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Window"
+
+[node name="Fullscreen" type="Button" parent="Option/VIDEO/Settings/DisplayMode" unique_id=1137847936]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Fullscreen"
+
+[node name="ExclusiveFullscreen" type="Button" parent="Option/VIDEO/Settings/DisplayMode" unique_id=732292399]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Exclusive Fullscreen"
+
+[node name="VSync" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=304460824]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/VSync" unique_id=1178095805]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "VSYNC"
+
+[node name="Disabled" type="Button" parent="Option/VIDEO/Settings/VSync" unique_id=232724182]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Disabled"
+
+[node name="Enabled" type="Button" parent="Option/VIDEO/Settings/VSync" unique_id=1662702774]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Enabled"
+
+[node name="Adaptive" type="Button" parent="Option/VIDEO/Settings/VSync" unique_id=726345728]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Adaptive"
+
+[node name="Mailbox" type="Button" parent="Option/VIDEO/Settings/VSync" unique_id=1746869381]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Mailbox"
+
+[node name="MaxFPS" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=413661727]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1517673670]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "FPS LIMIT"
+
+[node name="30" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=5747688]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "30"
+
+[node name="40" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1686638591]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "40"
+
+[node name="60" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1235576414]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "60"
+
+[node name="72" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1643849818]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "72"
+
+[node name="90" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1197999379]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "90"
+
+[node name="120" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1040431847]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "120"
+
+[node name="144" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1920834836]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "144"
+
+[node name="Unlimited" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1432437820]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Unlimited"
+
+[node name="ResolutionScale" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1171358084]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=1397860554]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "RESOLUTION"
+
+[node name="UltraPerformance" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=1815678676]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Ultra Performance"
+
+[node name="Performance" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=586042804]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Performance"
+
+[node name="Balanced" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=1021034889]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Balanced"
+
+[node name="Quality" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=768334625]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Quality"
+
+[node name="UltraQuality" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=1662384956]
+modulate = Color(1, 0.627451, 0.25098, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Ultra Quality"
+
+[node name="Native" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=1555607330]
+modulate = Color(1, 0.376471, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Native"
+
+[node name="ScaleFilter" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=474691538]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=1644565855]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "UPSCALE"
+
+[node name="Bilinear" type="Button" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=1061016984]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Bilinear"
+
+[node name="FSR1" type="Button" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=1696530251]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "AMD FSR 1.0"
+
+[node name="MetalFXSpatial" type="Button" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=2119036799]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "MetalFX Spatial"
+
+[node name="FSR2" type="Button" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=1758190580]
+modulate = Color(1, 0.627451, 0.25098, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "AMD FSR 2.2"
+
+[node name="MetalFXTemporal" type="Button" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=1468016062]
+modulate = Color(1, 0.627451, 0.25098, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "MetalFX Temporal"
+
+[node name="HSeparator2" type="HSeparator" parent="Option/VIDEO/Settings" unique_id=133885086]
+layout_mode = 2
+
+[node name="TAA" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1218434685]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/TAA" unique_id=88558604]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "TA"
+
+[node name="Disabled" type="Button" parent="Option/VIDEO/Settings/TAA" unique_id=801611047]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Disabled"
+
+[node name="Enabled" type="Button" parent="Option/VIDEO/Settings/TAA" unique_id=723759667]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Enabled"
+
+[node name="MSAA" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=2092376858]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/MSAA" unique_id=885300156]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "MSAA"
+
+[node name="Disabled" type="Button" parent="Option/VIDEO/Settings/MSAA" unique_id=328188779]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Disabled"
+
+[node name="2X" type="Button" parent="Option/VIDEO/Settings/MSAA" unique_id=706112449]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "2×"
+
+[node name="4X" type="Button" parent="Option/VIDEO/Settings/MSAA" unique_id=1721874954]
+modulate = Color(1, 0.627451, 0.25098, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "4×"
+
+[node name="8X" type="Button" parent="Option/VIDEO/Settings/MSAA" unique_id=1022581928]
+modulate = Color(1, 0.376471, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "8×"
+
+[node name="FXAA" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=2005316681]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/FXAA" unique_id=72382522]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "FA"
+
+[node name="Disabled" type="Button" parent="Option/VIDEO/Settings/FXAA" unique_id=132528742]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Disabled"
+
+[node name="Enabled" type="Button" parent="Option/VIDEO/Settings/FXAA" unique_id=1952316043]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+keep_pressed_outside = true
+text = "Enabled"
+
+[node name="ShadowMapping" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1414577713]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/ShadowMapping" unique_id=834625836]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "Shadow"
+
+[node name="Disabled" type="Button" parent="Option/VIDEO/Settings/ShadowMapping" unique_id=909453789]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Disabled"
+
+[node name="Enabled" type="Button" parent="Option/VIDEO/Settings/ShadowMapping" unique_id=34247016]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Enabled"
+
+[node name="GIType" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1090477393]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/GIType" unique_id=1013104559]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "GI"
+
+[node name="LightmapGI" type="Button" parent="Option/VIDEO/Settings/GIType" unique_id=1374874249]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "LightmapGI"
+
+[node name="VoxelGI" type="Button" parent="Option/VIDEO/Settings/GIType" unique_id=374690165]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "VoxelGI"
+
+[node name="SDFGI" type="Button" parent="Option/VIDEO/Settings/GIType" unique_id=576416412]
+modulate = Color(1, 0.627451, 0.25098, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "SDFGI"
+
+[node name="GIQuality" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1618382037]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/GIQuality" unique_id=36247511]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+text = "GI Quality:"
+
+[node name="Disabled" type="Button" parent="Option/VIDEO/Settings/GIQuality" unique_id=1402050173]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Disabled"
+
+[node name="Low" type="Button" parent="Option/VIDEO/Settings/GIQuality" unique_id=1963902114]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Low"
+
+[node name="High" type="Button" parent="Option/VIDEO/Settings/GIQuality" unique_id=14704853]
+modulate = Color(1, 0.376471, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "High"
+
+[node name="SSAO" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=174058910]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/SSAO" unique_id=2099336294]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "SSAO"
+
+[node name="Disabled" type="Button" parent="Option/VIDEO/Settings/SSAO" unique_id=949174439]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Disabled"
+
+[node name="Medium" type="Button" parent="Option/VIDEO/Settings/SSAO" unique_id=1665875512]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Medium"
+
+[node name="High" type="Button" parent="Option/VIDEO/Settings/SSAO" unique_id=189720808]
+modulate = Color(1, 0.376471, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "High"
+
+[node name="SSIL" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1176323903]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/SSIL" unique_id=653051909]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "SSIL"
+
+[node name="Disabled" type="Button" parent="Option/VIDEO/Settings/SSIL" unique_id=1115462980]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Disabled"
+
+[node name="Medium" type="Button" parent="Option/VIDEO/Settings/SSIL" unique_id=18027588]
+modulate = Color(1, 0.627451, 0.25098, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Medium"
+
+[node name="High" type="Button" parent="Option/VIDEO/Settings/SSIL" unique_id=564472175]
+modulate = Color(1, 0.376471, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "High"
+
+[node name="Bloom" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=442713861]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/Bloom" unique_id=1363016191]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Bloom"
+
+[node name="Disabled" type="Button" parent="Option/VIDEO/Settings/Bloom" unique_id=365352020]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Disabled"
+
+[node name="Enabled" type="Button" parent="Option/VIDEO/Settings/Bloom" unique_id=1025821468]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Enabled"
+
+[node name="VolumetricFog" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1488881654]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Option/VIDEO/Settings/VolumetricFog" unique_id=887582049]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "FOG"
+
+[node name="Disabled" type="Button" parent="Option/VIDEO/Settings/VolumetricFog" unique_id=246233233]
+modulate = Color(0.376471, 1, 0.376471, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Disabled"
+
+[node name="Enabled" type="Button" parent="Option/VIDEO/Settings/VolumetricFog" unique_id=1411794847]
+modulate = Color(1, 1, 0.313726, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Enabled"
+
+[node name="HSeparator" type="HSeparator" parent="Option/VIDEO/Settings" unique_id=534422638]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Actions" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=599296250]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Apply" type="Button" parent="Option/VIDEO/Settings/Actions" unique_id=1448262394]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply"
+
+[node name="Cancel" type="Button" parent="Option/VIDEO/Settings/Actions" unique_id=725847946]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel"
 
 [node name="KEY_MAPPING" type="VBoxContainer" parent="Option" unique_id=777015502]
+visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 4
 
 [node name="Header" type="HBoxContainer" parent="Option/KEY_MAPPING" unique_id=81773701]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="Option/KEY_MAPPING/Header" unique_id=1712482206]
+[node name="LabelSpacer" type="Control" parent="Option/KEY_MAPPING/Header" unique_id=1712482206]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -587,6 +1138,10 @@ size_flags_horizontal = 3
 texture = ExtResource("12_gi00y")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="RevertSpacer" type="Control" parent="Option/KEY_MAPPING/Header" unique_id=1362814170]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
 
 [node name="Move" type="VBoxContainer" parent="Option/KEY_MAPPING" unique_id=1685859534]
 layout_mode = 2
@@ -611,12 +1166,18 @@ label_settings = SubResource("LabelSettings_ju5sp")
 
 [node name="Keyboard" parent="Option/KEY_MAPPING/Move/Components/Foward" unique_id=823857574 instance=ExtResource("12_ip4d6")]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 
 [node name="Gamepad" parent="Option/KEY_MAPPING/Move/Components/Foward" unique_id=1999302036 instance=ExtResource("12_ip4d6")]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 gamepad = true
+
+[node name="Revert" type="Button" parent="Option/KEY_MAPPING/Move/Components/Foward" unique_id=1328144398]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+tooltip_text = "Reset to default"
+text = "↺"
 
 [node name="Backward" type="HBoxContainer" parent="Option/KEY_MAPPING/Move/Components" unique_id=317836775]
 layout_mode = 2
@@ -629,14 +1190,20 @@ label_settings = SubResource("LabelSettings_ju5sp")
 
 [node name="Keyboard" parent="Option/KEY_MAPPING/Move/Components/Backward" unique_id=328928167 instance=ExtResource("12_ip4d6")]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 action = &"move_back"
 
 [node name="Gamepad" parent="Option/KEY_MAPPING/Move/Components/Backward" unique_id=570019549 instance=ExtResource("12_ip4d6")]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 action = &"move_back"
 gamepad = true
+
+[node name="Revert" type="Button" parent="Option/KEY_MAPPING/Move/Components/Backward" unique_id=1506554636]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+tooltip_text = "Reset to default"
+text = "↺"
 
 [node name="Left" type="HBoxContainer" parent="Option/KEY_MAPPING/Move/Components" unique_id=1120201526]
 layout_mode = 2
@@ -649,14 +1216,20 @@ label_settings = SubResource("LabelSettings_ju5sp")
 
 [node name="Keyboard" parent="Option/KEY_MAPPING/Move/Components/Left" unique_id=823700491 instance=ExtResource("12_ip4d6")]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 action = &"move_left"
 
 [node name="Gamepad" parent="Option/KEY_MAPPING/Move/Components/Left" unique_id=1574339037 instance=ExtResource("12_ip4d6")]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 action = &"move_left"
 gamepad = true
+
+[node name="Revert" type="Button" parent="Option/KEY_MAPPING/Move/Components/Left" unique_id=327032693]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+tooltip_text = "Reset to default"
+text = "↺"
 
 [node name="Right" type="HBoxContainer" parent="Option/KEY_MAPPING/Move/Components" unique_id=2086713318]
 layout_mode = 2
@@ -669,14 +1242,26 @@ label_settings = SubResource("LabelSettings_ju5sp")
 
 [node name="Keyboard" parent="Option/KEY_MAPPING/Move/Components/Right" unique_id=783132788 instance=ExtResource("12_ip4d6")]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 action = &"move_right"
 
 [node name="Gamepad" parent="Option/KEY_MAPPING/Move/Components/Right" unique_id=632026422 instance=ExtResource("12_ip4d6")]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 action = &"move_right"
 gamepad = true
+
+[node name="Revert" type="Button" parent="Option/KEY_MAPPING/Move/Components/Right" unique_id=321621194]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+tooltip_text = "Reset to default"
+text = "↺"
+
+[node name="RIGHT" type="Control" parent="Option" unique_id=2014111311]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 5
+metadata/_tab_name = ""
 
 [connection signal="pressed" from="Menu/Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Options" to="." method="_on_options_pressed"]
