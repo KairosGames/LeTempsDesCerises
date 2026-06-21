@@ -1,0 +1,50 @@
+[gd_resource type="Theme" format=3 uid="uid://b2cmbq2awrshk"]
+
+[ext_resource type="FontFile" uid="uid://6al2yonhh1go" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Black.otf" id="1_flru5"]
+[ext_resource type="Texture2D" uid="uid://njbg6j5w83rk" path="res://sources/images/textures/ui/Paper.png" id="2_5f0ve"]
+[ext_resource type="Texture2D" uid="uid://bw7oaspcq64kb" path="res://sources/images/textures/ui/option_tab.png" id="3_e1xeu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hhep5"]
+content_margin_left = 100.0
+content_margin_top = 100.0
+content_margin_right = 100.0
+content_margin_bottom = 100.0
+texture = ExtResource("2_5f0ve")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ju5sp"]
+content_margin_left = 32.0
+content_margin_top = 16.0
+content_margin_right = 32.0
+content_margin_bottom = 0.0
+texture = ExtResource("3_e1xeu")
+expand_margin_bottom = 36.0
+modulate_color = Color(0.40641972, 0.40641972, 0.40641972, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gi00y"]
+content_margin_left = 32.0
+content_margin_top = 16.0
+content_margin_right = 32.0
+content_margin_bottom = 0.0
+texture = ExtResource("3_e1xeu")
+expand_margin_bottom = 32.0
+region_rect = Rect2(0, 0, 438.53, 140.06)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yu5fn"]
+content_margin_left = 32.0
+content_margin_top = 16.0
+content_margin_right = 32.0
+content_margin_bottom = 0.0
+texture = ExtResource("3_e1xeu")
+region_rect = Rect2(0, 0, 426, 95.06)
+
+[resource]
+TabContainer/colors/font_selected_color = Color(0, 0, 0, 1)
+TabContainer/colors/font_unselected_color = Color(0, 0, 0, 1)
+TabContainer/font_sizes/font_size = 32
+TabContainer/fonts/font = ExtResource("1_flru5")
+TabContainer/styles/panel = SubResource("StyleBoxTexture_hhep5")
+TabContainer/styles/tab_disabled = SubResource("StyleBoxTexture_ju5sp")
+TabContainer/styles/tab_focus = SubResource("StyleBoxTexture_gi00y")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_gi00y")
+TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_gi00y")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_yu5fn")

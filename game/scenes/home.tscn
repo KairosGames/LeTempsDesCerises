@@ -3,13 +3,14 @@
 [ext_resource type="Theme" uid="uid://cxp26janux3yv" path="res://prefabs/ui/home/home_theme.tres" id="1_krot7"]
 [ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="2_u4wd2"]
 [ext_resource type="Script" uid="uid://cu1v212nu7svv" path="res://prefabs/ui/home/home_manager.gd" id="2_w18ys"]
-[ext_resource type="PackedScene" uid="uid://bqw181keq72d" path="res://scenes/grey_block_scene.tscn" id="3_reixx"]
 [ext_resource type="Texture2D" uid="uid://c2vou5pc6huhx" path="res://sources/images/textures/ui/splash_image_02.png" id="4_hhep5"]
 [ext_resource type="Texture2D" uid="uid://njbg6j5w83rk" path="res://sources/images/textures/ui/Paper.png" id="5_vc333"]
 [ext_resource type="FontFile" uid="uid://0yy1ysc8tx6l" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Bold.otf" id="6_hhep5"]
 [ext_resource type="Texture2D" uid="uid://22l74488m5rp" path="res://sources/images/textures/ui/lorem_ipsum_04.png" id="7_cmjdo"]
 [ext_resource type="Texture2D" uid="uid://7mwi11doj234" path="res://sources/images/textures/ui/lorem_ipsum_01.png" id="7_hhep5"]
 [ext_resource type="Texture2D" uid="uid://mk88hreujt3a" path="res://sources/images/textures/ui/divider_01.png" id="8_cmjdo"]
+[ext_resource type="Theme" uid="uid://b2cmbq2awrshk" path="res://prefabs/ui/home/option_theme.tres" id="11_yu5fn"]
+[ext_resource type="FontFile" uid="uid://6al2yonhh1go" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Black.otf" id="12_yu5fn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ip4d6"]
 content_margin_left = 50.0
@@ -39,6 +40,21 @@ grow_begin = -100.0
 grow_end = -100.0
 thickness = 4
 
+[sub_resource type="LabelSettings" id="LabelSettings_hhep5"]
+font = ExtResource("6_hhep5")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cmjdo"]
+font = ExtResource("6_hhep5")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ip4d6"]
+font = ExtResource("12_yu5fn")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
 [node name="Home" type="Control" unique_id=1340749672]
 layout_mode = 3
 anchors_preset = 15
@@ -48,7 +64,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_krot7")
 script = ExtResource("2_w18ys")
-main_scene = ExtResource("3_reixx")
 
 [node name="Splash" type="TextureRect" parent="." unique_id=1178373901]
 layout_mode = 1
@@ -60,39 +75,40 @@ grow_vertical = 2
 texture = ExtResource("4_hhep5")
 expand_mode = 1
 stretch_mode = 6
+flip_h = true
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1812460554]
+[node name="Menu" type="PanelContainer" parent="." unique_id=1812460554]
 layout_mode = 0
-offset_left = 1309.0
-offset_top = 141.00002
-offset_right = 1709.0
-offset_bottom = 901.0
-rotation = -0.045378562
+offset_left = 225.0
+offset_top = 131.0
+offset_right = 625.0
+offset_bottom = 891.0
+rotation = 0.045378562
 theme_override_styles/panel = SubResource("StyleBoxTexture_ip4d6")
 
-[node name="Buttons" type="VBoxContainer" parent="PanelContainer" unique_id=977573993]
+[node name="Buttons" type="VBoxContainer" parent="Menu" unique_id=977573993]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="Header" type="VBoxContainer" parent="PanelContainer/Buttons" unique_id=527029583]
+[node name="Header" type="VBoxContainer" parent="Menu/Buttons" unique_id=527029583]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Lines" type="VBoxContainer" parent="PanelContainer/Buttons/Header" unique_id=206977673]
+[node name="Lines" type="VBoxContainer" parent="Menu/Buttons/Header" unique_id=206977673]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Line" type="HSeparator" parent="PanelContainer/Buttons/Header/Lines" unique_id=893937786]
+[node name="Line" type="HSeparator" parent="Menu/Buttons/Header/Lines" unique_id=893937786]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_cmjdo")
 
-[node name="Line2" type="HSeparator" parent="PanelContainer/Buttons/Header/Lines" unique_id=706916934]
+[node name="Line2" type="HSeparator" parent="Menu/Buttons/Header/Lines" unique_id=706916934]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_cmjdo")
 
-[node name="Title" type="Label" parent="PanelContainer/Buttons/Header" unique_id=2014547310]
+[node name="Title" type="Label" parent="Menu/Buttons/Header" unique_id=2014547310]
 layout_mode = 2
 text = "Le Temps Des
 Cerises"
@@ -100,19 +116,19 @@ label_settings = SubResource("LabelSettings_gi00y")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Lines2" type="VBoxContainer" parent="PanelContainer/Buttons/Header" unique_id=235566243]
+[node name="Lines2" type="VBoxContainer" parent="Menu/Buttons/Header" unique_id=235566243]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Line" type="HSeparator" parent="PanelContainer/Buttons/Header/Lines2" unique_id=574161721]
+[node name="Line" type="HSeparator" parent="Menu/Buttons/Header/Lines2" unique_id=574161721]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_cmjdo")
 
-[node name="Line2" type="HSeparator" parent="PanelContainer/Buttons/Header/Lines2" unique_id=1293747296]
+[node name="Line2" type="HSeparator" parent="Menu/Buttons/Header/Lines2" unique_id=1293747296]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_yu5fn")
 
-[node name="Lorem" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1389975926]
+[node name="Lorem" type="TextureRect" parent="Menu/Buttons" unique_id=1389975926]
 visible = false
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
@@ -120,14 +136,14 @@ texture = ExtResource("7_cmjdo")
 expand_mode = 2
 stretch_mode = 6
 
-[node name="HSeparator" type="TextureRect" parent="PanelContainer/Buttons" unique_id=2128175970]
+[node name="HSeparator" type="TextureRect" parent="Menu/Buttons" unique_id=2128175970]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 texture = ExtResource("8_cmjdo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Play" type="Button" parent="PanelContainer/Buttons" unique_id=900796725]
+[node name="Play" type="Button" parent="Menu/Buttons" unique_id=900796725]
 custom_minimum_size = Vector2(300, 64)
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
@@ -135,56 +151,56 @@ text = "Play"
 script = ExtResource("2_u4wd2")
 button_type = 0
 
-[node name="HSeparator2" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1518427503]
+[node name="HSeparator2" type="TextureRect" parent="Menu/Buttons" unique_id=1518427503]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 texture = ExtResource("8_cmjdo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Lorem2" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1619436154]
+[node name="Lorem2" type="TextureRect" parent="Menu/Buttons" unique_id=1619436154]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 texture = ExtResource("7_hhep5")
 expand_mode = 2
 stretch_mode = 6
 
-[node name="HSeparator3" type="TextureRect" parent="PanelContainer/Buttons" unique_id=225612929]
+[node name="HSeparator3" type="TextureRect" parent="Menu/Buttons" unique_id=225612929]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 texture = ExtResource("8_cmjdo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Options" type="Button" parent="PanelContainer/Buttons" unique_id=1495270967]
+[node name="Options" type="Button" parent="Menu/Buttons" unique_id=1495270967]
 custom_minimum_size = Vector2(200, 64)
 layout_mode = 2
 text = "Options"
 script = ExtResource("2_u4wd2")
 button_type = 0
 
-[node name="HSeparator4" type="TextureRect" parent="PanelContainer/Buttons" unique_id=352602982]
+[node name="HSeparator4" type="TextureRect" parent="Menu/Buttons" unique_id=352602982]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 texture = ExtResource("8_cmjdo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Lorem3" type="TextureRect" parent="PanelContainer/Buttons" unique_id=687717085]
+[node name="Lorem3" type="TextureRect" parent="Menu/Buttons" unique_id=687717085]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 texture = ExtResource("7_hhep5")
 expand_mode = 2
 stretch_mode = 6
 
-[node name="HSeparator5" type="TextureRect" parent="PanelContainer/Buttons" unique_id=128119571]
+[node name="HSeparator5" type="TextureRect" parent="Menu/Buttons" unique_id=128119571]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 texture = ExtResource("8_cmjdo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Referecences" type="Button" parent="PanelContainer/Buttons" unique_id=329392333]
+[node name="Referecences" type="Button" parent="Menu/Buttons" unique_id=329392333]
 custom_minimum_size = Vector2(200, 64)
 layout_mode = 2
 text = "References
@@ -192,28 +208,28 @@ text = "References
 script = ExtResource("2_u4wd2")
 button_type = 0
 
-[node name="HSeparator6" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1153895642]
+[node name="HSeparator6" type="TextureRect" parent="Menu/Buttons" unique_id=1153895642]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 texture = ExtResource("8_cmjdo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Lorem4" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1353242461]
+[node name="Lorem4" type="TextureRect" parent="Menu/Buttons" unique_id=1353242461]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 texture = ExtResource("7_hhep5")
 expand_mode = 2
 stretch_mode = 6
 
-[node name="HSeparator7" type="TextureRect" parent="PanelContainer/Buttons" unique_id=456920712]
+[node name="HSeparator7" type="TextureRect" parent="Menu/Buttons" unique_id=456920712]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 texture = ExtResource("8_cmjdo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Credits" type="Button" parent="PanelContainer/Buttons" unique_id=2037007232]
+[node name="Credits" type="Button" parent="Menu/Buttons" unique_id=2037007232]
 custom_minimum_size = Vector2(200, 64)
 layout_mode = 2
 text = "Credits
@@ -221,36 +237,301 @@ text = "Credits
 script = ExtResource("2_u4wd2")
 button_type = 0
 
-[node name="HSeparator8" type="TextureRect" parent="PanelContainer/Buttons" unique_id=1055409107]
+[node name="HSeparator8" type="TextureRect" parent="Menu/Buttons" unique_id=1055409107]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 texture = ExtResource("8_cmjdo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Lorem5" type="TextureRect" parent="PanelContainer/Buttons" unique_id=378330686]
+[node name="Lorem5" type="TextureRect" parent="Menu/Buttons" unique_id=378330686]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 texture = ExtResource("7_hhep5")
 expand_mode = 2
 stretch_mode = 6
 
-[node name="HSeparator9" type="TextureRect" parent="PanelContainer/Buttons" unique_id=2043578641]
+[node name="HSeparator9" type="TextureRect" parent="Menu/Buttons" unique_id=2043578641]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 texture = ExtResource("8_cmjdo")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Quit" type="Button" parent="PanelContainer/Buttons" unique_id=1075831581]
+[node name="Quit" type="Button" parent="Menu/Buttons" unique_id=1075831581]
 custom_minimum_size = Vector2(200, 64)
 layout_mode = 2
 text = "Quit"
 script = ExtResource("2_u4wd2")
 button_type = 0
 
-[connection signal="pressed" from="PanelContainer/Buttons/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="PanelContainer/Buttons/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="PanelContainer/Buttons/Referecences" to="." method="_on_referecences_pressed"]
-[connection signal="pressed" from="PanelContainer/Buttons/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="PanelContainer/Buttons/Quit" to="." method="_on_quit_pressed"]
+[node name="References" type="PanelContainer" parent="." unique_id=1586425005]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_right = 0.66
+anchor_bottom = 1.0
+offset_left = -343.20007
+offset_top = 42.564
+offset_right = 336.911
+offset_bottom = -37.43628
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxTexture_ip4d6")
+
+[node name="Deco" type="Control" parent="References" unique_id=1792402532]
+layout_mode = 2
+
+[node name="Deco" type="TextureRect" parent="References/Deco" unique_id=1928563637]
+layout_mode = 0
+offset_left = -34.57937
+offset_top = -53.647324
+offset_right = 614.6904
+offset_bottom = 953.64703
+rotation = 0.08726646
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_vc333")
+expand_mode = 1
+
+[node name="Deco2" type="TextureRect" parent="References/Deco" unique_id=1541812601]
+layout_mode = 0
+offset_left = -34.57937
+offset_top = -53.647324
+offset_right = 614.6904
+offset_bottom = 953.64703
+rotation = -0.12217305
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_vc333")
+expand_mode = 1
+
+[node name="Deco3" type="TextureRect" parent="References/Deco/Deco2" unique_id=254200735]
+layout_mode = 0
+offset_left = -7.760254
+offset_top = -6.2259903
+offset_right = 641.5095
+offset_bottom = 1001.06836
+rotation = 0.08726646
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_vc333")
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="References" unique_id=862607180]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="References/ScrollContainer" unique_id=2006705019]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="References/ScrollContainer/VBoxContainer" unique_id=103303181]
+layout_mode = 2
+text = "References"
+label_settings = SubResource("LabelSettings_hhep5")
+horizontal_alignment = 1
+
+[node name="Content" type="VBoxContainer" parent="References/ScrollContainer/VBoxContainer" unique_id=1751513897]
+layout_mode = 2
+
+[node name="Lorem Ipsum" type="Label" parent="References/ScrollContainer/VBoxContainer/Content" unique_id=642023144]
+custom_minimum_size = Vector2(549.61, 2.2)
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui metus, efficitur facilisis dolor condimentum, sagittis lobortis odio. Donec interdum imperdiet sapien, in hendrerit nibh varius sit amet. Praesent id varius ipsum, posuere condimentum nunc. Donec vitae urna nec erat porttitor imperdiet. Ut nec elementum mauris. Praesent eu urna pulvinar, luctus odio nec, faucibus mi. Suspendisse potenti. Vestibulum porttitor suscipit leo, non fermentum quam finibus a. Cras laoreet neque et dui bibendum, sed auctor neque ornare. Donec efficitur, ligula eget tincidunt laoreet, enim ex sollicitudin elit, in condimentum metus tellus eu urna. Fusce ut neque justo. Nulla a dictum purus, malesuada porta urna. Sed faucibus est id metus gravida consectetur. Pellentesque facilisis lectus et iaculis scelerisque. In ultricies risus neque, et maximus tellus elementum ut.
+
+Proin aliquam magna eget iaculis pharetra. Nunc nec metus orci. Sed vitae dignissim tortor. Morbi arcu arcu, pretium condimentum justo in, tempus commodo urna. Nam tortor tellus, iaculis at bibendum id, finibus sodales nunc. Suspendisse ultricies, felis faucibus sollicitudin interdum, nisi nibh fermentum tortor, eu fermentum massa magna id augue. Aliquam blandit tincidunt leo, id maximus felis maximus non. Nam vel lacus tempor, tempus massa vel, venenatis neque. Nunc ullamcorper viverra magna vitae vestibulum. Aliquam pellentesque diam sit amet vehicula rhoncus. Phasellus auctor, purus a ultrices pellentesque, quam diam maximus ligula, at tempus eros ligula et nibh. Maecenas mi nisl, feugiat nec nisl eu, porta hendrerit nibh. Curabitur vel augue sed sapien suscipit cursus. Praesent sed nulla velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer dictum sapien ullamcorper dignissim placerat.
+
+Vestibulum et nunc aliquet, posuere risus quis, vehicula lorem. Sed metus augue, congue sed libero in, auctor commodo mi. Duis tincidunt est in quam tristique pulvinar. Cras venenatis ornare placerat. Nam id lectus mi. Donec finibus, enim vel ornare tempus, ligula erat eleifend turpis, eget vulputate tellus magna et nibh. Donec ornare nulla ac venenatis blandit. Etiam non metus mauris. Sed semper rhoncus sapien. Integer pellentesque augue sit amet semper elementum.
+
+Integer quis nisi massa. Etiam scelerisque ut diam vel aliquam. Nulla pulvinar eros magna. Sed ornare ante at lectus malesuada venenatis. Suspendisse potenti. Morbi sit amet pharetra leo, a imperdiet lacus. Aenean lectus ante, viverra nec consectetur eu, scelerisque sit amet enim. Sed in sollicitudin nibh, at commodo elit. Suspendisse eu ipsum sed velit mattis vulputate. Proin mattis fringilla pharetra. Quisque laoreet tempus metus at dapibus.
+
+Sed vitae orci elementum, mattis nunc a, hendrerit tellus. Quisque est neque, consequat eu vulputate quis, lacinia at lacus. Donec ex ligula, lacinia vitae accumsan sit amet, molestie eget sem. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin id aliquet nunc. Nunc ultricies mollis lorem sit amet euismod. Mauris varius, risus nec ultricies varius, lacus ligula cursus ex, in porta dui orci sed nisi. Curabitur tristique lorem eu placerat luctus. Donec a mauris id risus ullamcorper tempor. Morbi lacinia enim eget pharetra rhoncus. Integer et purus dictum, fermentum purus eu, pulvinar magna."
+label_settings = SubResource("LabelSettings_cmjdo")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Credit" type="PanelContainer" parent="." unique_id=26156757]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_right = 0.66
+anchor_bottom = 1.0
+offset_left = -343.20007
+offset_top = 42.564
+offset_right = 336.911
+offset_bottom = -37.43628
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxTexture_ip4d6")
+
+[node name="Deco" type="Control" parent="Credit" unique_id=1526429519]
+layout_mode = 2
+
+[node name="Deco" type="TextureRect" parent="Credit/Deco" unique_id=504923445]
+layout_mode = 0
+offset_left = -34.57937
+offset_top = -53.647324
+offset_right = 614.6904
+offset_bottom = 953.64703
+rotation = 0.08726646
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_vc333")
+expand_mode = 1
+
+[node name="Deco2" type="TextureRect" parent="Credit/Deco" unique_id=774149599]
+layout_mode = 0
+offset_left = -34.57937
+offset_top = -53.647324
+offset_right = 614.6904
+offset_bottom = 953.64703
+rotation = -0.12217305
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_vc333")
+expand_mode = 1
+
+[node name="Deco3" type="TextureRect" parent="Credit/Deco/Deco2" unique_id=1685849220]
+layout_mode = 0
+offset_left = -7.760254
+offset_top = -6.2259903
+offset_right = 641.5095
+offset_bottom = 1001.06836
+rotation = 0.08726646
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("5_vc333")
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Credit" unique_id=925736611]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credit/ScrollContainer" unique_id=1378858166]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Credit/ScrollContainer/VBoxContainer" unique_id=1993056026]
+layout_mode = 2
+text = "Le Temps des
+Cerises"
+label_settings = SubResource("LabelSettings_hhep5")
+horizontal_alignment = 1
+
+[node name="Content" type="VBoxContainer" parent="Credit/ScrollContainer/VBoxContainer" unique_id=154363791]
+layout_mode = 2
+
+[node name="Lorem Ipsum" type="Label" parent="Credit/ScrollContainer/VBoxContainer/Content" unique_id=58894366]
+custom_minimum_size = Vector2(549.61, 2.2)
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui metus, efficitur facilisis dolor condimentum, sagittis lobortis odio. Donec interdum imperdiet sapien, in hendrerit nibh varius sit amet. Praesent id varius ipsum, posuere condimentum nunc. Donec vitae urna nec erat porttitor imperdiet. Ut nec elementum mauris. Praesent eu urna pulvinar, luctus odio nec, faucibus mi. Suspendisse potenti. Vestibulum porttitor suscipit leo, non fermentum quam finibus a. Cras laoreet neque et dui bibendum, sed auctor neque ornare. Donec efficitur, ligula eget tincidunt laoreet, enim ex sollicitudin elit, in condimentum metus tellus eu urna. Fusce ut neque justo. Nulla a dictum purus, malesuada porta urna. Sed faucibus est id metus gravida consectetur. Pellentesque facilisis lectus et iaculis scelerisque. In ultricies risus neque, et maximus tellus elementum ut.
+
+Proin aliquam magna eget iaculis pharetra. Nunc nec metus orci. Sed vitae dignissim tortor. Morbi arcu arcu, pretium condimentum justo in, tempus commodo urna. Nam tortor tellus, iaculis at bibendum id, finibus sodales nunc. Suspendisse ultricies, felis faucibus sollicitudin interdum, nisi nibh fermentum tortor, eu fermentum massa magna id augue. Aliquam blandit tincidunt leo, id maximus felis maximus non. Nam vel lacus tempor, tempus massa vel, venenatis neque. Nunc ullamcorper viverra magna vitae vestibulum. Aliquam pellentesque diam sit amet vehicula rhoncus. Phasellus auctor, purus a ultrices pellentesque, quam diam maximus ligula, at tempus eros ligula et nibh. Maecenas mi nisl, feugiat nec nisl eu, porta hendrerit nibh. Curabitur vel augue sed sapien suscipit cursus. Praesent sed nulla velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer dictum sapien ullamcorper dignissim placerat.
+
+Vestibulum et nunc aliquet, posuere risus quis, vehicula lorem. Sed metus augue, congue sed libero in, auctor commodo mi. Duis tincidunt est in quam tristique pulvinar. Cras venenatis ornare placerat. Nam id lectus mi. Donec finibus, enim vel ornare tempus, ligula erat eleifend turpis, eget vulputate tellus magna et nibh. Donec ornare nulla ac venenatis blandit. Etiam non metus mauris. Sed semper rhoncus sapien. Integer pellentesque augue sit amet semper elementum.
+
+Integer quis nisi massa. Etiam scelerisque ut diam vel aliquam. Nulla pulvinar eros magna. Sed ornare ante at lectus malesuada venenatis. Suspendisse potenti. Morbi sit amet pharetra leo, a imperdiet lacus. Aenean lectus ante, viverra nec consectetur eu, scelerisque sit amet enim. Sed in sollicitudin nibh, at commodo elit. Suspendisse eu ipsum sed velit mattis vulputate. Proin mattis fringilla pharetra. Quisque laoreet tempus metus at dapibus.
+
+Sed vitae orci elementum, mattis nunc a, hendrerit tellus. Quisque est neque, consequat eu vulputate quis, lacinia at lacus. Donec ex ligula, lacinia vitae accumsan sit amet, molestie eget sem. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin id aliquet nunc. Nunc ultricies mollis lorem sit amet euismod. Mauris varius, risus nec ultricies varius, lacus ligula cursus ex, in porta dui orci sed nisi. Curabitur tristique lorem
+ eu placerat luctus
+Donec a mauris 
+id risus ullamcorpe
+r tempor. Morbi l
+acinia enim eget pharetra rhoncus. Integer et purus dictum, fermentum purus eu, pulvinar magna."
+label_settings = SubResource("LabelSettings_cmjdo")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Option" type="TabContainer" parent="." unique_id=243911068]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 794.0
+offset_top = 381.0
+offset_right = 1798.0
+offset_bottom = 1545.0
+theme = ExtResource("11_yu5fn")
+current_tab = 0
+
+[node name="GAME" type="VBoxContainer" parent="Option" unique_id=489534051]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MouseSensibility" type="HSlider" parent="Option/GAME" unique_id=1849860063]
+layout_mode = 2
+
+[node name="AUDIO" type="VBoxContainer" parent="Option" unique_id=1200474982]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MasterVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=1669443407]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Option/AUDIO/MasterVolume" unique_id=1287754111]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MASTER"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="Slider" type="HSlider" parent="Option/AUDIO/MasterVolume" unique_id=1007112959]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.0
+
+[node name="MusicVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=570742589]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Option/AUDIO/MusicVolume" unique_id=1149852271]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MUSIC"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="Slider" type="HSlider" parent="Option/AUDIO/MusicVolume" unique_id=1353209001]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.0
+
+[node name="EffectVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=52846416]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Option/AUDIO/EffectVolume" unique_id=659474098]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "EFFECT"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="Slider" type="HSlider" parent="Option/AUDIO/EffectVolume" unique_id=640850177]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.0
+
+[node name="VoiceVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=130079500]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Option/AUDIO/VoiceVolume" unique_id=2056137178]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "VOICE"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="Slider" type="HSlider" parent="Option/AUDIO/VoiceVolume" unique_id=611440075]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.0
+
+[node name="VIDEO" type="VBoxContainer" parent="Option" unique_id=722133202]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[connection signal="pressed" from="Menu/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Referecences" to="." method="_on_referecences_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Menu/Buttons/Quit" to="." method="_on_quit_pressed"]
