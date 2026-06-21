@@ -49,10 +49,15 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouse or event is InputEventKey:
 		is_gamepad = false
-	if event is InputEventJoypadButton or (event is InputEventJoypadMotion and abs(event.axis_value) > gpad_detect_threshold):
+	if event is InputEventJoypadButton:
 		is_gamepad = true
+	if event is InputEventJoypadMotion:
+		var joypad_motion: InputEventJoypadMotion = event
+		if abs(joypad_motion.axis_value) > gpad_detect_threshold:
+			is_gamepad = true
 	if event is InputEventMouseMotion:
-		aim_vec_mouse = event.relative * (sensi_aiming if is_aiming else sensi_default) * mouse_aim_reducer
+		var mouse_motion: InputEventMouseMotion = event
+		aim_vec_mouse = mouse_motion.relative * (sensi_aiming if is_aiming else sensi_default) * mouse_aim_reducer
 
 
 func _process(delta: float) -> void:

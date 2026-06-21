@@ -8,7 +8,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("choice_fight_to_death"): next()
 
 func previous() -> void:
-	current_tab = clampi(current_tab - 1, 1, get_child_count() - 2)
+	current_tab = clampi(current_tab - 1, 3, get_child_count() - 2)
 
 func next() -> void:
-	current_tab = clampi(current_tab + 1, 1, get_child_count() - 2)
+	current_tab = clampi(current_tab + 1, 3, get_child_count() - 2)

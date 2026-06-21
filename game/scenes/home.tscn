@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="2_u4wd2"]
 [ext_resource type="Script" uid="uid://cu1v212nu7svv" path="res://prefabs/ui/home/home_manager.gd" id="2_w18ys"]
 [ext_resource type="Texture2D" uid="uid://c2vou5pc6huhx" path="res://sources/images/textures/ui/splash_image_02.png" id="4_hhep5"]
+[ext_resource type="Script" uid="uid://c6sw1tpfwtx8n" path="res://scripts/FocusGraber.gd" id="5_e42qu"]
 [ext_resource type="Texture2D" uid="uid://njbg6j5w83rk" path="res://sources/images/textures/ui/Paper.png" id="5_vc333"]
 [ext_resource type="FontFile" uid="uid://0yy1ysc8tx6l" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Bold.otf" id="6_hhep5"]
 [ext_resource type="Texture2D" uid="uid://22l74488m5rp" path="res://sources/images/textures/ui/lorem_ipsum_04.png" id="7_cmjdo"]
@@ -48,6 +49,13 @@ grow_begin = -100.0
 grow_end = -100.0
 thickness = 4
 
+[sub_resource type="InputEventAction" id="InputEventAction_snnha"]
+action = &"ui_cancel"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_e42qu"]
+events = [SubResource("InputEventAction_snnha")]
+
 [sub_resource type="LabelSettings" id="LabelSettings_hhep5"]
 font = ExtResource("6_hhep5")
 font_size = 64
@@ -62,6 +70,36 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("12_yu5fn")
 font_size = 32
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_e42qu"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_ppa51"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_kc6b6"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_jdxxw"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_6k6s7"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_rqor2"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_qmde4"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_wa7t7"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_vysw7"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_miq5y"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_mg211"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_sh163"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_okf6m"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_6k8sm"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_k665q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rpgsi"]
 font = ExtResource("12_yu5fn")
@@ -96,6 +134,7 @@ stretch_mode = 6
 flip_h = true
 
 [node name="Menu" type="PanelContainer" parent="." unique_id=1812460554]
+modulate = Color(1, 0.76, 0.6, 1)
 layout_mode = 0
 offset_left = 225.0
 offset_top = 131.0
@@ -103,6 +142,12 @@ offset_right = 625.0
 offset_bottom = 891.0
 rotation = 0.045378562
 theme_override_styles/panel = SubResource("StyleBoxTexture_ip4d6")
+
+[node name="FocusGraber" type="Control" parent="Menu" unique_id=1712417195 node_paths=PackedStringArray("control")]
+layout_mode = 2
+script = ExtResource("5_e42qu")
+control = NodePath("../Buttons/Play")
+metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
 
 [node name="Buttons" type="VBoxContainer" parent="Menu" unique_id=977573993]
 unique_name_in_owner = true
@@ -163,6 +208,10 @@ stretch_mode = 5
 custom_minimum_size = Vector2(300, 32)
 layout_mode = 2
 size_flags_vertical = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Options")
 theme_override_font_sizes/font_size = 48
 text = "Play"
 script = ExtResource("2_u4wd2")
@@ -193,6 +242,10 @@ stretch_mode = 5
 custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 size_flags_vertical = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Referecences")
 text = "Options"
 script = ExtResource("2_u4wd2")
 button_type = 0
@@ -222,6 +275,10 @@ stretch_mode = 5
 custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 size_flags_vertical = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Options")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Credits")
 text = "References
 "
 script = ExtResource("2_u4wd2")
@@ -252,6 +309,10 @@ stretch_mode = 5
 custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 size_flags_vertical = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Referecences")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Quit")
 text = "Credits
 "
 script = ExtResource("2_u4wd2")
@@ -282,6 +343,10 @@ stretch_mode = 5
 custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 size_flags_vertical = 4
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../Credits")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../Credits")
 text = "Quit"
 script = ExtResource("2_u4wd2")
 button_type = 0
@@ -302,6 +367,16 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxTexture_ip4d6")
+
+[node name="FocusGraber" type="Control" parent="References" unique_id=2006309116 node_paths=PackedStringArray("control")]
+layout_mode = 2
+script = ExtResource("5_e42qu")
+control = NodePath("../ScrollContainer")
+metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
+
+[node name="Quit" type="Button" parent="References" unique_id=972045099]
+layout_mode = 2
+shortcut = SubResource("Shortcut_e42qu")
 
 [node name="Deco" type="Control" parent="References" unique_id=1792402532]
 layout_mode = 2
@@ -341,6 +416,7 @@ expand_mode = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="References" unique_id=862607180]
 layout_mode = 2
+focus_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="References/ScrollContainer" unique_id=2006705019]
 layout_mode = 2
@@ -388,6 +464,16 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxTexture_ip4d6")
+
+[node name="FocusGraber" type="Control" parent="Credit" unique_id=391976796 node_paths=PackedStringArray("control")]
+layout_mode = 2
+script = ExtResource("5_e42qu")
+control = NodePath("../ScrollContainer")
+metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
+
+[node name="Quit" type="Button" parent="Credit" unique_id=1593421991]
+layout_mode = 2
+shortcut = SubResource("Shortcut_e42qu")
 
 [node name="Deco" type="Control" parent="Credit" unique_id=1526429519]
 layout_mode = 2
@@ -466,29 +552,56 @@ autowrap_mode = 3
 
 [node name="Option" type="TabContainer" parent="." unique_id=243911068]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 575.0
-offset_top = 165.0
-offset_right = 1841.0
-offset_bottom = 1329.0
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -633.0
+offset_top = 150.0
+offset_right = 633.0
+offset_bottom = 1314.0
+grow_horizontal = 2
 theme = ExtResource("11_yu5fn")
 tab_alignment = 1
-current_tab = 1
-tab_0/icon = ExtResource("11_aish6")
-tab_0/disabled = true
-tab_5/icon = ExtResource("12_snnha")
-tab_5/disabled = true
+current_tab = 6
+tab_0/hidden = true
+tab_1/hidden = true
+tab_2/icon = ExtResource("11_aish6")
+tab_2/disabled = true
+tab_7/icon = ExtResource("12_snnha")
+tab_7/disabled = true
 script = ExtResource("13_snnha")
+
+[node name="FocusGraber" type="Control" parent="Option" unique_id=158093123]
+visible = false
+layout_mode = 2
+script = ExtResource("5_e42qu")
+metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
+metadata/_tab_index = 0
+
+[node name="Quit" type="Button" parent="Option" unique_id=1430023679]
+visible = false
+layout_mode = 2
+shortcut = SubResource("Shortcut_e42qu")
+metadata/_tab_index = 1
 
 [node name="LEFT" type="Control" parent="Option" unique_id=1481471370]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 0
+metadata/_tab_index = 2
 metadata/_tab_name = ""
 
 [node name="GAME" type="VBoxContainer" parent="Option" unique_id=489534051]
+visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 3
+
+[node name="FocusGraber" type="Control" parent="Option/GAME" unique_id=694937382 node_paths=PackedStringArray("control")]
+layout_mode = 2
+script = ExtResource("5_e42qu")
+control = NodePath("../MouseSensibility/Slider")
+metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
 
 [node name="MouseSensibility" type="HBoxContainer" parent="Option/GAME" unique_id=1354528972]
 layout_mode = 2
@@ -509,7 +622,13 @@ size_flags_stretch_ratio = 3.0
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 32
-metadata/_tab_index = 2
+metadata/_tab_index = 4
+
+[node name="FocusGraber" type="Control" parent="Option/AUDIO" unique_id=466786292 node_paths=PackedStringArray("control")]
+layout_mode = 2
+script = ExtResource("5_e42qu")
+control = NodePath("../MasterVolume/Slider")
+metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
 
 [node name="MasterVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=1669443407]
 layout_mode = 2
@@ -589,11 +708,34 @@ value = 0.5
 [node name="VIDEO" type="VBoxContainer" parent="Option" unique_id=722133202]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 5
+
+[node name="FocusGraber" type="Control" parent="Option/VIDEO" unique_id=1814809277 node_paths=PackedStringArray("control")]
+layout_mode = 2
+script = ExtResource("5_e42qu")
+control = NodePath("../Settings/DisplayMode/Windowed")
+metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
 
 [node name="Settings" type="VBoxContainer" parent="Option/VIDEO" unique_id=2107176332]
 layout_mode = 2
 theme_override_constants/separation = 8
+
+[node name="Actions" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=599296250]
+layout_mode = 2
+theme = ExtResource("11_yu5fn")
+theme_override_constants/separation = 8
+
+[node name="Apply" type="Button" parent="Option/VIDEO/Settings/Actions" unique_id=1448262394]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"FlatButton"
+text = "Apply"
+
+[node name="Cancel" type="Button" parent="Option/VIDEO/Settings/Actions" unique_id=725847946]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"FlatButton"
+text = "Cancel"
 
 [node name="DisplayMode" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=531697444]
 layout_mode = 2
@@ -608,18 +750,21 @@ text = "DISPLAY"
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_e42qu")
 text = "Window"
 
 [node name="Fullscreen" type="Button" parent="Option/VIDEO/Settings/DisplayMode" unique_id=1137847936]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_e42qu")
 text = "Fullscreen"
 
 [node name="ExclusiveFullscreen" type="Button" parent="Option/VIDEO/Settings/DisplayMode" unique_id=732292399]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_e42qu")
 text = "Exclusive Fullscreen"
 
 [node name="VSync" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=304460824]
@@ -635,24 +780,28 @@ text = "VSYNC"
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_ppa51")
 text = "Disabled"
 
 [node name="Enabled" type="Button" parent="Option/VIDEO/Settings/VSync" unique_id=1662702774]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_ppa51")
 text = "Enabled"
 
 [node name="Adaptive" type="Button" parent="Option/VIDEO/Settings/VSync" unique_id=726345728]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_ppa51")
 text = "Adaptive"
 
 [node name="Mailbox" type="Button" parent="Option/VIDEO/Settings/VSync" unique_id=1746869381]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_ppa51")
 text = "Mailbox"
 
 [node name="MaxFPS" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=413661727]
@@ -668,48 +817,56 @@ text = "FPS LIMIT"
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_kc6b6")
 text = "30"
 
 [node name="40" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1686638591]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_kc6b6")
 text = "40"
 
 [node name="60" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1235576414]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_kc6b6")
 text = "60"
 
 [node name="72" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1643849818]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_kc6b6")
 text = "72"
 
 [node name="90" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1197999379]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_kc6b6")
 text = "90"
 
 [node name="120" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1040431847]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_kc6b6")
 text = "120"
 
 [node name="144" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1920834836]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_kc6b6")
 text = "144"
 
 [node name="Unlimited" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1432437820]
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_kc6b6")
 text = "Unlimited"
 
 [node name="ResolutionScale" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1171358084]
@@ -726,6 +883,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_jdxxw")
 text = "Ultra Performance"
 
 [node name="Performance" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=586042804]
@@ -733,6 +891,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_jdxxw")
 text = "Performance"
 
 [node name="Balanced" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=1021034889]
@@ -740,6 +899,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_jdxxw")
 text = "Balanced"
 
 [node name="Quality" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=768334625]
@@ -747,6 +907,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_jdxxw")
 text = "Quality"
 
 [node name="UltraQuality" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=1662384956]
@@ -754,6 +915,7 @@ modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_jdxxw")
 text = "Ultra Quality"
 
 [node name="Native" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=1555607330]
@@ -761,6 +923,7 @@ modulate = Color(1, 0.376471, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_jdxxw")
 text = "Native"
 
 [node name="ScaleFilter" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=474691538]
@@ -777,6 +940,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_6k6s7")
 text = "Bilinear"
 
 [node name="FSR1" type="Button" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=1696530251]
@@ -784,6 +948,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_6k6s7")
 text = "AMD FSR 1.0"
 
 [node name="MetalFXSpatial" type="Button" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=2119036799]
@@ -791,6 +956,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_6k6s7")
 text = "MetalFX Spatial"
 
 [node name="FSR2" type="Button" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=1758190580]
@@ -798,6 +964,7 @@ modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_6k6s7")
 text = "AMD FSR 2.2"
 
 [node name="MetalFXTemporal" type="Button" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=1468016062]
@@ -805,6 +972,7 @@ modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_6k6s7")
 text = "MetalFX Temporal"
 
 [node name="HSeparator2" type="HSeparator" parent="Option/VIDEO/Settings" unique_id=133885086]
@@ -825,6 +993,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_rqor2")
 text = "Disabled"
 
 [node name="Enabled" type="Button" parent="Option/VIDEO/Settings/TAA" unique_id=723759667]
@@ -832,6 +1001,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_rqor2")
 text = "Enabled"
 
 [node name="MSAA" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=2092376858]
@@ -856,6 +1026,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_qmde4")
 text = "2×"
 
 [node name="4X" type="Button" parent="Option/VIDEO/Settings/MSAA" unique_id=1721874954]
@@ -863,6 +1034,7 @@ modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_qmde4")
 text = "4×"
 
 [node name="8X" type="Button" parent="Option/VIDEO/Settings/MSAA" unique_id=1022581928]
@@ -870,6 +1042,7 @@ modulate = Color(1, 0.376471, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_qmde4")
 text = "8×"
 
 [node name="FXAA" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=2005316681]
@@ -887,6 +1060,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_wa7t7")
 text = "Disabled"
 
 [node name="Enabled" type="Button" parent="Option/VIDEO/Settings/FXAA" unique_id=1952316043]
@@ -895,6 +1069,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
 keep_pressed_outside = true
+button_group = SubResource("ButtonGroup_wa7t7")
 text = "Enabled"
 
 [node name="ShadowMapping" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1414577713]
@@ -911,6 +1086,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_vysw7")
 text = "Disabled"
 
 [node name="Enabled" type="Button" parent="Option/VIDEO/Settings/ShadowMapping" unique_id=34247016]
@@ -918,6 +1094,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_vysw7")
 text = "Enabled"
 
 [node name="GIType" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1090477393]
@@ -934,6 +1111,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_miq5y")
 text = "LightmapGI"
 
 [node name="VoxelGI" type="Button" parent="Option/VIDEO/Settings/GIType" unique_id=374690165]
@@ -941,6 +1119,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_miq5y")
 text = "VoxelGI"
 
 [node name="SDFGI" type="Button" parent="Option/VIDEO/Settings/GIType" unique_id=576416412]
@@ -948,6 +1127,7 @@ modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_miq5y")
 text = "SDFGI"
 
 [node name="GIQuality" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1618382037]
@@ -964,6 +1144,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_mg211")
 text = "Disabled"
 
 [node name="Low" type="Button" parent="Option/VIDEO/Settings/GIQuality" unique_id=1963902114]
@@ -971,6 +1152,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_mg211")
 text = "Low"
 
 [node name="High" type="Button" parent="Option/VIDEO/Settings/GIQuality" unique_id=14704853]
@@ -978,6 +1160,7 @@ modulate = Color(1, 0.376471, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_mg211")
 text = "High"
 
 [node name="SSAO" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=174058910]
@@ -995,6 +1178,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_sh163")
 text = "Disabled"
 
 [node name="Medium" type="Button" parent="Option/VIDEO/Settings/SSAO" unique_id=1665875512]
@@ -1002,6 +1186,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_sh163")
 text = "Medium"
 
 [node name="High" type="Button" parent="Option/VIDEO/Settings/SSAO" unique_id=189720808]
@@ -1009,6 +1194,7 @@ modulate = Color(1, 0.376471, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_sh163")
 text = "High"
 
 [node name="SSIL" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1176323903]
@@ -1026,6 +1212,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_okf6m")
 text = "Disabled"
 
 [node name="Medium" type="Button" parent="Option/VIDEO/Settings/SSIL" unique_id=18027588]
@@ -1033,6 +1220,7 @@ modulate = Color(1, 0.627451, 0.25098, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_okf6m")
 text = "Medium"
 
 [node name="High" type="Button" parent="Option/VIDEO/Settings/SSIL" unique_id=564472175]
@@ -1040,6 +1228,7 @@ modulate = Color(1, 0.376471, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_okf6m")
 text = "High"
 
 [node name="Bloom" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=442713861]
@@ -1057,6 +1246,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_6k8sm")
 text = "Disabled"
 
 [node name="Enabled" type="Button" parent="Option/VIDEO/Settings/Bloom" unique_id=1025821468]
@@ -1064,6 +1254,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_6k8sm")
 text = "Enabled"
 
 [node name="VolumetricFog" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=1488881654]
@@ -1081,6 +1272,7 @@ modulate = Color(0.376471, 1, 0.376471, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_k665q")
 text = "Disabled"
 
 [node name="Enabled" type="Button" parent="Option/VIDEO/Settings/VolumetricFog" unique_id=1411794847]
@@ -1088,6 +1280,7 @@ modulate = Color(1, 1, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
+button_group = SubResource("ButtonGroup_k665q")
 text = "Enabled"
 
 [node name="HSeparator" type="HSeparator" parent="Option/VIDEO/Settings" unique_id=534422638]
@@ -1095,24 +1288,9 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Actions" type="HBoxContainer" parent="Option/VIDEO/Settings" unique_id=599296250]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Apply" type="Button" parent="Option/VIDEO/Settings/Actions" unique_id=1448262394]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Apply"
-
-[node name="Cancel" type="Button" parent="Option/VIDEO/Settings/Actions" unique_id=725847946]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Cancel"
-
 [node name="KEY_MAPPING" type="VBoxContainer" parent="Option" unique_id=777015502]
-visible = false
 layout_mode = 2
-metadata/_tab_index = 4
+metadata/_tab_index = 6
 
 [node name="Header" type="HBoxContainer" parent="Option/KEY_MAPPING" unique_id=81773701]
 layout_mode = 2
@@ -1260,7 +1438,7 @@ text = "↺"
 [node name="RIGHT" type="Control" parent="Option" unique_id=2014111311]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 5
+metadata/_tab_index = 7
 metadata/_tab_name = ""
 
 [connection signal="pressed" from="Menu/Buttons/Play" to="." method="_on_play_pressed"]
@@ -1268,3 +1446,9 @@ metadata/_tab_name = ""
 [connection signal="pressed" from="Menu/Buttons/Referecences" to="." method="_on_referecences_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="References/Quit" to="Menu" method="show"]
+[connection signal="pressed" from="References/Quit" to="References" method="hide"]
+[connection signal="pressed" from="Credit/Quit" to="Menu" method="show"]
+[connection signal="pressed" from="Credit/Quit" to="Credit" method="hide"]
+[connection signal="pressed" from="Option/Quit" to="Menu" method="show"]
+[connection signal="pressed" from="Option/Quit" to="Option" method="hide"]

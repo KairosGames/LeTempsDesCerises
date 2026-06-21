@@ -1,8 +1,8 @@
 class_name InputLink extends Button
 
-const INPUT_CONFIG_FILE_PATH = "user://input_map.ini"
-const KEYBOARD_SECTION = "keyboard"
-const GAMEPAD_SECTION = "gamepad"
+const INPUT_CONFIG_FILE_PATH: String = "user://input_map.ini"
+const KEYBOARD_SECTION: String = "keyboard"
+const GAMEPAD_SECTION: String = "gamepad"
 
 @export var action: StringName
 @export var gamepad: bool = false
@@ -75,10 +75,10 @@ func _get_default_input_key() -> String:
 	return "%s/%s" % [_get_config_section(), action]
 
 func _connect_revert_button() -> void:
-	var parent_node := get_parent()
+	var parent_node: Control = get_parent()
 	if not parent_node: return
 	if parent_node.get_meta("input_link_revert_connected", false): return
-	var revert_button := parent_node.get_node_or_null("Revert") as Button
+	var revert_button: Button = parent_node.get_node_or_null("Revert")
 	if not revert_button: return
 	parent_node.set_meta("input_link_revert_connected", true)
 	revert_button.pressed.connect(_reset_parent_input_links.bind(parent_node))
@@ -89,7 +89,7 @@ func _reset_parent_input_links(parent_node: Node) -> void:
 			(child as InputLink).reset_to_default()
 
 func _load_input() -> void:
-	var config_file := ConfigFile.new()
+	var config_file: ConfigFile= ConfigFile.new()
 	var error: Error = config_file.load(INPUT_CONFIG_FILE_PATH)
 	if error != OK: return
 
@@ -97,8 +97,8 @@ func _load_input() -> void:
 	var key: String = str(action)
 	if not config_file.has_section_key(section, key): return
 
-	var event_data: Variant = config_file.get_value(section, key)
-	if not event_data is Dictionary: return
+	var event_data: Dictionary = (config_file.get_value(section, key) as Dictionary)
+	if not event_data: return
 
 	var event: InputEvent = _event_from_dictionary(event_data)
 	if not event: return
@@ -110,13 +110,13 @@ func _load_input() -> void:
 func _save_input() -> void:
 	if not _current_event: return
 
-	var config_file := ConfigFile.new()
+	var config_file: ConfigFile = ConfigFile.new()
 	config_file.load(INPUT_CONFIG_FILE_PATH)
 	config_file.set_value(_get_config_section(), str(action), _event_to_dictionary(_current_event))
 	_save_config_file(config_file)
 
 func _remove_saved_input() -> void:
-	var config_file := ConfigFile.new()
+	var config_file: ConfigFile = ConfigFile.new()
 	config_file.load(INPUT_CONFIG_FILE_PATH)
 	var section: String = _get_config_section()
 	var key: String = str(action)

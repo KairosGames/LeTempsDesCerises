@@ -4,7 +4,7 @@ class_name Shake extends Node3D
 @export var simple_shake_intensity: float
 @export var simple_shake_speed: float = 10.0
 
-var is_shaking := false
+var is_shaking: bool = false
 var shake_duration: float = 0.2
 var shake_intensity: float = 0.1
 var shake_speed: float = 10.0
@@ -42,7 +42,7 @@ func launch_shake() -> void:
 	shake_time = 0.0
 	var tween: Tween = create_tween()
 	var steps: int = int(shake_duration / 0.01)
-	for i in steps:
+	for i: int in steps:
 		tween.tween_callback(Callable(self, "update_shake"))
 		tween.tween_interval(0.01)
 	tween.tween_callback(Callable(self, "stop_shake"))

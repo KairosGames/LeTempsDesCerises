@@ -103,7 +103,7 @@ func _on_area_body_exited(body: Node3D) -> void:
 	if holder == body: holder = null
 
 func _check_player_overlapping() -> void:
-	for body in _area.get_overlapping_bodies():
+	for body: Node3D in _area.get_overlapping_bodies():
 		if body is Player: holder = body; break
 
 func is_cover_available() -> bool:

@@ -26,7 +26,7 @@ var path_progress: float = 0.0:
 
 
 func _ready() -> void:
-	for i in range(4): path.curve.add_point(Vector3.FORWARD * 0.001 * i)
+	for i: int in range(4): path.curve.add_point(Vector3.FORWARD * 0.001 * i)
 
 
 func set_path(start: Vector3, end: Vector3) -> void:
@@ -44,7 +44,7 @@ func set_path(start: Vector3, end: Vector3) -> void:
 	var wave_2_up_amplitude: float = randf_range(wave_2_up_amplitude_min, wave_2_up_amplitude_max)
 	var wave_2_phase: float = randf() * TAU
 	
-	for i in range(point_count):
+	for i: int in range(point_count):
 		var t: float = float(i) / float(point_count - 1)
 		var real_dist: float = t * distance
 		var base_pos: Vector3 = start + dir * t
@@ -69,5 +69,5 @@ func play_effect(start: Vector3, end: Vector3, time: float) -> void:
 
 func set_emission(activate: bool) -> void:
 	if not activate: await get_tree().create_timer(0.1).timeout
-	for particle in particles:
+	for particle: GPUParticles3D in particles:
 		particle.emitting = activate
