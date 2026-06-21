@@ -148,8 +148,14 @@ func _update_icon() -> void:
 				var joypad_motion_event: InputEventJoypadMotion = _current_event as InputEventJoypadMotion
 				text = "Axis %s %s" % [joypad_motion_event.axis, "+" if joypad_motion_event.axis_value > 0.0 else "-"]
 		else:
-			text = OS.get_keycode_string((DisplayServer.keyboard_get_keycode_from_physical((_current_event as InputEventKey).physical_keycode)))
+			text = OS.get_keycode_string(_get_display_key(_current_event as InputEventKey))
 
+func _get_display_key(event: InputEventKey) -> Key:
+	if event.key_label != KEY_NONE: return event.key_label
+	if event.keycode != KEY_NONE: return event.keycode
+	if event.physical_keycode != KEY_NONE:
+		return DisplayServer.keyboard_get_keycode_from_physical(event.physical_keycode)
+	return KEY_NONE
 
 func _event_to_dictionary(event: InputEvent) -> Dictionary:
 	if event is InputEventKey:

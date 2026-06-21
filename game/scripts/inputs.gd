@@ -74,10 +74,15 @@ static func get_icon(event: InputEvent) -> Texture2D:
 		var joypad_motion_event: InputEventJoypadMotion = event as InputEventJoypadMotion
 		return _get_gamepad_motion_icon(joypad_motion_event.axis, joypad_motion_event.axis_value)
 	if event is InputEventKey:
-		var key_event: InputEventKey = event as InputEventKey
-		var key: Key = key_event.physical_keycode if key_event.physical_keycode != KEY_NONE else key_event.keycode
-		return _get_keyboard_icon(key)
+		return _get_keyboard_icon(_get_display_key(event as InputEventKey))
 	return null
+
+static func _get_display_key(event: InputEventKey) -> Key:
+	if event.key_label != KEY_NONE: return event.key_label
+	if event.keycode != KEY_NONE: return event.keycode
+	if event.physical_keycode != KEY_NONE:
+		return DisplayServer.keyboard_get_keycode_from_physical(event.physical_keycode)
+	return KEY_NONE
 
 static func _get_keyboard_icon(key: Key) -> Texture2D:
 	match key:
