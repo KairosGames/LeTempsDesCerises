@@ -65,7 +65,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		else:
 			EffectsManager.instance.impact_from_shoot.emit(position, shoot_dir, false)
 		return SUCCESS
-	var dest: Vector3 = agent.chassepot.global_position + (agent.chassepot.shoot_light_trail.basis.z * 100.0)
+	var dest: Vector3 = agent.chassepot.global_position - (agent.chassepot.basis.z * 100.0)
 	agent.chassepot.play_light_trail(dest)
 	_vagueness /= vagueness_decrease
 	if agent.target_object is Agent: (agent.target_object as Agent).add_threat(agent)

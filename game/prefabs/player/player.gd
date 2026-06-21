@@ -16,6 +16,7 @@ signal landed
 
 @onready var p_inputs: PlayerInputs = %PlayerInputs
 @onready var reload_ui: ReloadUI = %ReloadUI
+@onready var p_targets: PlayerTargets = %ShootTargets
 @onready var camera_pivot: Node3D = %CameraPivot
 @onready var wpn_cam_base: Shake = %WeaponCameraBase
 @onready var player_camera: Camera3D = %PlayerCamera

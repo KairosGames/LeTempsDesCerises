@@ -44,17 +44,17 @@ func set_all_versaillais_final_pos() -> void:
 		i += 1
 
 
-func versillais_shoot_for_execution() -> void:
+func versaillais_shoot_for_execution() -> void:
 	for versaillais: Npc in all_versaillais: versaillais.delay_shoot()
 
 
-func versaillais_kill_louise() -> void:
-	for i: int in louise_killers: all_versaillais[i].delay_shoot(0.0, 0.3)
+func versaillais_kill_louise(louise_targ: Node3D) -> void:
+	for i: int in louise_killers: all_versaillais[i].delay_shoot(0.0, 0.3, louise_targ)
 
 
-func versaillais_kill_francois() -> void:
-	for i: int in francois_killers: all_versaillais[i].delay_shoot(0.0, 0.3)
+func versaillais_kill_francois(francois_targ: Node3D) -> void:
+	for i: int in francois_killers: all_versaillais[i].delay_shoot(0.0, 0.3, francois_targ)
 
 
-func versaillais_kill_player() -> void:
-	for i: int in player_killers: all_versaillais[i].delay_shoot(0.0, 0.3)
+func versaillais_kill_player(player_targ: Node3D) -> void:
+	for i: int in player_killers: all_versaillais[i].delay_shoot(0.0, 0.3, player_targ)

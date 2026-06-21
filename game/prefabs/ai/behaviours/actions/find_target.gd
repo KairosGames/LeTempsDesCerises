@@ -52,7 +52,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			@warning_ignore("untyped_declaration")
 			var shoot_debug = get_node_or_null("/root/ShootDebug")
 			@warning_ignore("unsafe_method_access")
-			if shoot_debug: shoot_debug.add_debug(
+			if shoot_debug and false: shoot_debug.add_debug(
 				raycast.global_position,
 				raycast.global_rotation,
 				Color.ORANGE if agent.team == Agent.Team.COMMUNARD else Color.CYAN,
@@ -64,7 +64,6 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 					agent.target_object = data.target
 					agent.target_point = shoot_target
 					return SUCCESS
-
 	return FAILURE
 
 static func best_score(a: TargetData, b: TargetData) -> bool: return a.score < b.score
@@ -72,9 +71,7 @@ static func best_score(a: TargetData, b: TargetData) -> bool: return a.score < b
 class TargetData:
 
 	func _init(target: Node3D, agent: Agent, coefficents: TargetSelectionCoefficient) -> void:
-
 		self.target = target
-
 		is_player = target is Player
 		is_threatening = agent.threats.has(target)
 		is_pushing_canon = not is_player and (target as Agent).is_pushing_canon

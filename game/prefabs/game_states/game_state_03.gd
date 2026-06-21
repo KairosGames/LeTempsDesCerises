@@ -134,9 +134,11 @@ func launch_player_crouch() -> void:
 
 func launch_dialogue() -> void:
 	await wait_voice() # "Rendez vous, racailles rouges"
-	await francois.rotate_yaw_to_pos_tween(player_cover.global_position, 0.6)
+	var f_targ: Vector3 = player_cover.global_position - (player_cover.basis.x * 4.0)
+	await francois.rotate_yaw_to_pos_tween(f_targ, 0.4)
 	await wait_voice() # "C'en est fini citoyens, rendons-nous"
-	await louise.rotate_yaw_to_pos_tween(player_cover.global_position, 0.6)
+	var l_targ: Vector3 = player_cover.global_position + (player_cover.basis.x * 5.0) + (player_cover.basis.z)
+	await louise.rotate_yaw_to_pos_tween(l_targ, 0.3)
 	await wait_voice() # "Jamais. Puisqu'il semble que tout cœur qui bat pour la liberté"
 
 
@@ -150,9 +152,9 @@ func launch_player_choice() -> void:
 	await ui_manager.launch_letter_box(true)
 	var l_targ: Vector3 = louise_cover.global_position + louise_cover.basis.z
 	var f_targ: Vector3 = francois_cover.global_position + francois_cover.basis.z
-	louise.rotate_yaw_to_pos_tween(l_targ, 0.4)
+	louise.rotate_yaw_to_pos_tween(l_targ, 0.35)
 	await wait(0.2)
-	await francois.rotate_yaw_to_pos_tween(f_targ, 0.6)
+	await francois.rotate_yaw_to_pos_tween(f_targ, 0.5)
 	await wait(0.5)
 
 
@@ -223,7 +225,7 @@ func launch_execution() -> void:
 	await wait_voice() # "À mon commandement !"
 	await player.blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.45, true, 4.0)
 	await wait_voice() # " Feu !"
-	versaillais_points.versillais_shoot_for_execution()
+	versaillais_points.versaillais_shoot_for_execution()
 	await wait(0.1)
 	player.die_called.emit()
 	await wait(0.1)
@@ -269,8 +271,10 @@ func launch_fight_to_death() -> void:
 	await wait_voice() #"Jamais, charognard !"
 	louise.enter_in_aim()
 	await wait(0.3)
-	versaillais_points.versaillais_kill_louise()
+	versaillais_points.versaillais_kill_louise(louise.shoot_target)
 	await wait(0.1)
+	var from: Vector3 = versaillais_points.all_versaillais[0].chassepot.global_position
+	play_blood_impact(louise.shoot_target, from)
 	louise.die()
 	await wait(0.3)
 	launch_francois_death()
@@ -280,9 +284,10 @@ func launch_fight_to_death() -> void:
 	launch_death_timer()
 	await wait_until(is_it_time_to_die)
 	await wait(0.5)
-	versaillais_points.versaillais_kill_player()
+	versaillais_points.versaillais_kill_player(player.p_targets.chest_target)
 	await wait(0.1)
 	set_player_to_last_death()
+	play_blood_impact(player.p_targets.chest_target, from)
 	player.die(true, true)
 	await wait(6.0)
 	game_ended.emit()
@@ -292,10 +297,19 @@ func launch_francois_death() -> void:
 	francois.launch_movement_to_nav_point(francois_death, 4.0, true)
 	await wait_until(francois.is_on_all_nav_finished)
 	await wait(0.3)
-	versaillais_points.versaillais_kill_francois()
+	versaillais_points.versaillais_kill_francois(francois.shoot_target)
 	await wait(0.1)
 	francois.is_fighting = false
+	var from: Vector3 = versaillais_points.all_versaillais[0].chassepot.global_position
+	play_blood_impact(francois.shoot_target, from)
 	francois.die()
+
+
+func play_blood_impact(target: Node3D, origin: Vector3) -> void:
+	var target_rot: Vector3 = target.global_rotation
+	target.look_at(origin)
+	eff_manager.play_effect(EffectsManager.EffectType.BloodImpact, target.global_position, target.global_rotation)
+	target.global_rotation = target_rot
 
 
 func set_player_for_fight_to_the_death() -> void:

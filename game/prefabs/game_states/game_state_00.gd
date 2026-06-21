@@ -267,7 +267,6 @@ func georges_death() -> void:
 	await wait_voice() # "Au mur citoyen !"
 	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.3)
 	call_georges_death()
-	#battle_director.go_next_covers_activation() ################################## Arrivée ennemis
 	georges.enter_in_walk_anim()
 	await georges.move_to(barricade_point.global_position, 4.0)
 	await wait_voice() # "Nooooon ! Ils ont tué Georges !"
@@ -283,9 +282,10 @@ func call_georges_death() -> void:
 	georges_shoot_light.shoot(target.global_position)
 	call_voice() # "Pan ! Argh!"
 	await wait(0.2)
-	var dir: Vector3 = target.global_position.direction_to(georges_shoot_light.global_position)
+	var target_rot: Vector3 = target.global_rotation
 	target.look_at(georges_shoot_light.global_position)
 	eff_manager.play_effect(EffectsManager.EffectType.BloodImpact, target.global_position, target.global_rotation)
+	target.global_rotation = target_rot
 	georges.die()
 
 

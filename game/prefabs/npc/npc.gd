@@ -215,9 +215,9 @@ func enter_in_stand_no_weapon(trans: float = 0.3) -> void:
 	animator.play("solder/stand-gunless", trans)
 
 
-func shoot(trans: float = 0.2) -> void:
+func shoot(trans: float = 0.2, target: Node3D = null) -> void:
 	shot.emit()
-	play_light_trail_effect()
+	play_light_trail_effect(target)
 	animator.play("solder/stand-shoot", trans)
 	await animator.animation_finished
 
@@ -240,8 +240,9 @@ func enter_kneeling(trans: float = 0.2) -> void:
 	animator.play("solder/kneeling-2", 0.4)
 
 
-func play_light_trail_effect() -> void:
-	var dest: Vector3 = chassepot.shoot_light_trail.global_position + (chassepot.shoot_light_trail.basis.z * 100.0)
+func play_light_trail_effect(target: Node3D = null) -> void:
+	var front_dest: Vector3 = chassepot.global_position - (chassepot.global_basis.z * 100.0)
+	var dest: Vector3 = target.global_position if target else front_dest
 	chassepot.play_light_trail(dest)
 
 
@@ -316,7 +317,7 @@ func wait_nav_to_aim() -> void:
 	enter_in_aim()
 
 
-func delay_shoot(rdn_min: float = 0.0, rnd_max: float = 1.0) -> void:
+func delay_shoot(rdn_min: float = 0.0, rnd_max: float = 1.0, target: Node3D = null) -> void:
 	var rnd: float = randf_range(rdn_min, rnd_max)
 	await get_tree().create_timer(rnd).timeout
-	shoot()
+	shoot(0.2, target)
