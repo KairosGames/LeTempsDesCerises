@@ -32,6 +32,7 @@ const SCROLL_SPEED: float = 650.0
 @onready var aim_smooth_check_button: CheckButton = %AimSmooth.get_node(^"CheckButton")
 @onready var movement_smooth_check_button: CheckButton = %MovementSmooth.get_node(^"CheckButton")
 @onready var blood_check_button: CheckButton = %Blood.get_node(^"CheckButton")
+@onready var game_reset_button: Button = %GameReset
 
 func _ready() -> void:
 	play.grab_focus()
@@ -53,6 +54,7 @@ func _ready() -> void:
 	aim_smooth_check_button.toggled.connect(_on_game_toggle_changed.bind("is_aim_smooth"))
 	movement_smooth_check_button.toggled.connect(_on_game_toggle_changed.bind("is_movement_smooth"))
 	blood_check_button.toggled.connect(_on_game_toggle_changed.bind("is_blood_enabled"))
+	game_reset_button.pressed.connect(_on_game_reset_pressed)
 
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("uid://bqw181keq72d")
@@ -164,3 +166,11 @@ func _on_inverted_toggled(toggled_on: bool) -> void:
 func _on_game_toggle_changed(toggled_on: bool, key: String) -> void:
 	Settings.config_file.set_value("game", key, toggled_on)
 	Settings.save_settings()
+
+
+func _on_game_reset_pressed() -> void:
+	for key: String in Settings.DEFAULTS["game"]:
+		Settings.config_file.set_value("game", key, Settings.DEFAULTS["game"][key])
+	Settings.save_settings()
+	_load_game_settings_controls()
+	game_reset_button.grab_focus()
