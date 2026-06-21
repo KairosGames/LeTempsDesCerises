@@ -552,7 +552,6 @@ autowrap_mode = 3
 
 [node name="Option" type="TabContainer" parent="." unique_id=243911068]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -560,11 +559,11 @@ anchor_right = 0.5
 offset_left = -633.0
 offset_top = 150.0
 offset_right = 633.0
-offset_bottom = 1314.0
+offset_bottom = 1114.0
 grow_horizontal = 2
 theme = ExtResource("11_yu5fn")
 tab_alignment = 1
-current_tab = 6
+current_tab = 3
 tab_0/hidden = true
 tab_1/hidden = true
 tab_2/icon = ExtResource("11_aish6")
@@ -593,31 +592,70 @@ metadata/_tab_index = 2
 metadata/_tab_name = ""
 
 [node name="GAME" type="VBoxContainer" parent="Option" unique_id=489534051]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 metadata/_tab_index = 3
 
-[node name="FocusGraber" type="Control" parent="Option/GAME" unique_id=694937382 node_paths=PackedStringArray("control")]
+[node name="ScrollContainer" type="ScrollContainer" parent="Option/GAME" unique_id=1023549566]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+follow_focus = true
+
+[node name="Settings" type="VBoxContainer" parent="Option/GAME/ScrollContainer" unique_id=245807536]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="FocusGraber" type="Control" parent="Option/GAME/ScrollContainer/Settings" unique_id=694937382 node_paths=PackedStringArray("control")]
 layout_mode = 2
 script = ExtResource("5_e42qu")
 control = NodePath("../ViewSensibility/Slider")
 metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
 
-[node name="ViewSensibility" type="HBoxContainer" parent="Option/GAME" unique_id=1354528972]
+[node name="Blood" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1845712577]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ViewSensibility" unique_id=153846610]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Blood" unique_id=867523052]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "VIEW SENSIBILITY"
+size_flags_horizontal = 10
+text = "BLOOD"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Blood" unique_id=853049446]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../MovementSmooth/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../ViewSensibility/Slider")
+button_pressed = true
+
+[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings" unique_id=1882912521]
+layout_mode = 2
+text = "COMMON"
 label_settings = SubResource("LabelSettings_ip4d6")
 
-[node name="Slider" type="HSlider" parent="Option/GAME/ViewSensibility" unique_id=1439309280]
+[node name="ViewSensibility" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1354528972]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/ViewSensibility" unique_id=153846610]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "VIEW SENSIBILITY"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/ViewSensibility" unique_id=1439309280]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../Blood/CheckButton")
 focus_neighbor_right = NodePath(".")
@@ -630,20 +668,21 @@ max_value = 20.0
 step = 0.1
 value = 7.0
 
-[node name="AimingSensibility" type="HBoxContainer" parent="Option/GAME" unique_id=1639513634]
+[node name="AimingSensibility" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1639513634]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/AimingSensibility" unique_id=1467632408]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/AimingSensibility" unique_id=1467632408]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 text = "AIMING SENSIBILITY"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
 
-[node name="Slider" type="HSlider" parent="Option/GAME/AimingSensibility" unique_id=729954672]
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/AimingSensibility" unique_id=729954672]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../ViewSensibility/Slider")
 focus_neighbor_right = NodePath(".")
@@ -656,37 +695,41 @@ max_value = 20.0
 step = 0.1
 value = 7.0
 
-[node name="Inverted" type="HBoxContainer" parent="Option/GAME" unique_id=720177552]
+[node name="Inverted" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=720177552]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/Inverted" unique_id=1556603069]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Inverted" unique_id=1556603069]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 text = "INVERTED"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/Inverted" unique_id=1931279518]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Inverted" unique_id=1931279518]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../AimingSensibility/Slider")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../HMultiplier/Slider")
 
-[node name="HMultiplier" type="HBoxContainer" parent="Option/GAME" unique_id=1124793375]
+[node name="HMultiplier" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1124793375]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/HMultiplier" unique_id=12667519]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/HMultiplier" unique_id=12667519]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 text = "H MULTIPLIER"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
 
-[node name="Slider" type="HSlider" parent="Option/GAME/HMultiplier" unique_id=738582612]
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/HMultiplier" unique_id=738582612]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../Inverted/CheckButton")
 focus_neighbor_right = NodePath(".")
@@ -699,20 +742,21 @@ max_value = 2.0
 step = 0.1
 value = 1.0
 
-[node name="VMultiplier" type="HBoxContainer" parent="Option/GAME" unique_id=2005486553]
+[node name="VMultiplier" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=2005486553]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/VMultiplier" unique_id=1655860910]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/VMultiplier" unique_id=1655860910]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 text = "V MULTIPLIER"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
 
-[node name="Slider" type="HSlider" parent="Option/GAME/VMultiplier" unique_id=397794915]
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/VMultiplier" unique_id=397794915]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../HMultiplier/Slider")
 focus_neighbor_right = NodePath(".")
@@ -725,25 +769,72 @@ max_value = 2.0
 step = 0.1
 value = 1.0
 
-[node name="GamepadTitle" type="Label" parent="Option/GAME" unique_id=1714054376]
+[node name="KeyboardTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings" unique_id=387795736]
+layout_mode = 2
+text = "KEYBOARD"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="AimToggleKM" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=275800730]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/AimToggleKM" unique_id=206077308]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "AIM TOGGLE"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/AimToggleKM" unique_id=252775551]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../DeadzoneRightStick/Slider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../RunToggleKM/CheckButton")
+button_pressed = true
+
+[node name="RunToggleKM" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1797963524]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/RunToggleKM" unique_id=737618981]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "RUN TOGGLE"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/RunToggleKM" unique_id=1141533603]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../AimToggleKM/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../AimToggleGamepad/CheckButton")
+
+[node name="GamepadTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings" unique_id=1714054376]
 layout_mode = 2
 text = "GAMEPAD"
 label_settings = SubResource("LabelSettings_ip4d6")
 
-[node name="DeadzoneLeftStick" type="HBoxContainer" parent="Option/GAME" unique_id=1591694391]
+[node name="DeadzoneLeftStick" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1591694391]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/DeadzoneLeftStick" unique_id=2031459679]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/DeadzoneLeftStick" unique_id=2031459679]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 text = "DEADZONE LEFT STICK"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
 
-[node name="Slider" type="HSlider" parent="Option/GAME/DeadzoneLeftStick" unique_id=7735842]
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/DeadzoneLeftStick" unique_id=7735842]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../VMultiplier/Slider")
 focus_neighbor_right = NodePath(".")
@@ -756,20 +847,21 @@ max_value = 0.8
 step = 0.01
 value = 0.2
 
-[node name="DeadzoneRightStick" type="HBoxContainer" parent="Option/GAME" unique_id=15454616]
+[node name="DeadzoneRightStick" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=15454616]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/DeadzoneRightStick" unique_id=1710524123]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/DeadzoneRightStick" unique_id=1710524123]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 text = "DEADZONE RIGHT STICK"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
 
-[node name="Slider" type="HSlider" parent="Option/GAME/DeadzoneRightStick" unique_id=77267365]
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/DeadzoneRightStick" unique_id=77267365]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-size_flags_stretch_ratio = 3.0
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../DeadzoneLeftStick/Slider")
 focus_neighbor_right = NodePath(".")
@@ -782,151 +874,108 @@ max_value = 0.8
 step = 0.01
 value = 0.2
 
-[node name="TogglesTitle" type="Label" parent="Option/GAME"]
+[node name="AimToggleGamepad" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1995671286]
 layout_mode = 2
-text = "TOGGLES"
+
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/AimToggleGamepad" unique_id=61024905]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "AIM TOGGLE"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
 
-[node name="AimToggleKM" type="HBoxContainer" parent="Option/GAME"]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/AimToggleGamepad" unique_id=1623773916]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="Option/GAME/AimToggleKM"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "AIM TOGGLE KM"
-label_settings = SubResource("LabelSettings_ip4d6")
-
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/AimToggleKM"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../DeadzoneRightStick/Slider")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../RunToggleKM/CheckButton")
-button_pressed = true
-
-[node name="RunToggleKM" type="HBoxContainer" parent="Option/GAME"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Option/GAME/RunToggleKM"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "RUN TOGGLE KM"
-label_settings = SubResource("LabelSettings_ip4d6")
-
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/RunToggleKM"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../AimToggleKM/CheckButton")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../AimToggleGamepad/CheckButton")
-
-[node name="AimToggleGamepad" type="HBoxContainer" parent="Option/GAME"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Option/GAME/AimToggleGamepad"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "AIM TOGGLE GAMEPAD"
-label_settings = SubResource("LabelSettings_ip4d6")
-
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/AimToggleGamepad"]
-layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../RunToggleKM/CheckButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../RunToggleGamepad/CheckButton")
 
-[node name="RunToggleGamepad" type="HBoxContainer" parent="Option/GAME"]
+[node name="RunToggleGamepad" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=483383582]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/RunToggleGamepad"]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/RunToggleGamepad" unique_id=1440884947]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "RUN TOGGLE GAMEPAD"
+size_flags_horizontal = 10
+text = "RUN TOGGLE"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/RunToggleGamepad"]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/RunToggleGamepad" unique_id=744554385]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../AimToggleGamepad/CheckButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../PostureSwitchToggleKM/CheckButton")
 button_pressed = true
 
-[node name="PostureSwitchToggleKM" type="HBoxContainer" parent="Option/GAME"]
+[node name="PostureSwitchToggleKM" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1284281277]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/PostureSwitchToggleKM"]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/PostureSwitchToggleKM" unique_id=1858453490]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "POSTURE SWITCH TOGGLE KM"
+size_flags_horizontal = 10
+text = "POSTURE SWITCH TOGGLE"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/PostureSwitchToggleKM"]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/PostureSwitchToggleKM" unique_id=2084242061]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../RunToggleGamepad/CheckButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../AimSmooth/CheckButton")
 button_pressed = true
 
-[node name="AimSmooth" type="HBoxContainer" parent="Option/GAME"]
+[node name="AimSmooth" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=716299569]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/AimSmooth"]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/AimSmooth" unique_id=2121920757]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 text = "AIM SMOOTH"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/AimSmooth"]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/AimSmooth" unique_id=270580982]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../PostureSwitchToggleKM/CheckButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../MovementSmooth/CheckButton")
 button_pressed = true
 
-[node name="MovementSmooth" type="HBoxContainer" parent="Option/GAME"]
+[node name="MovementSmooth" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1051418562]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/MovementSmooth"]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/MovementSmooth" unique_id=628734042]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 text = "MOVEMENT SMOOTH"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/MovementSmooth"]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/MovementSmooth" unique_id=1975683391]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../AimSmooth/CheckButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../Blood/CheckButton")
-button_pressed = true
-
-[node name="Blood" type="HBoxContainer" parent="Option/GAME"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Option/GAME/Blood"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "BLOOD"
-label_settings = SubResource("LabelSettings_ip4d6")
-
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/Blood"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../MovementSmooth/CheckButton")
-focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../ViewSensibility/Slider")
 button_pressed = true
 
 [node name="AUDIO" type="VBoxContainer" parent="Option" unique_id=1200474982]
@@ -949,6 +998,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "MASTER"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 2
 
 [node name="Slider" type="HSlider" parent="Option/AUDIO/MasterVolume" unique_id=1007112959]
 layout_mode = 2
@@ -970,6 +1020,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "MUSIC"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 2
 
 [node name="Slider" type="HSlider" parent="Option/AUDIO/MusicVolume" unique_id=1353209001]
 layout_mode = 2
@@ -988,6 +1039,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "EFFECT"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 2
 
 [node name="Slider" type="HSlider" parent="Option/AUDIO/EffectVolume" unique_id=640850177]
 layout_mode = 2
@@ -1006,6 +1058,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "VOICE"
 label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 2
 
 [node name="Slider" type="HSlider" parent="Option/AUDIO/VoiceVolume" unique_id=611440075]
 layout_mode = 2
@@ -1055,7 +1108,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/DisplayMode" unique_id=1204425346]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "DISPLAY"
+horizontal_alignment = 2
 
 [node name="Windowed" type="Button" parent="Option/VIDEO/Settings/DisplayMode" unique_id=932672190]
 layout_mode = 2
@@ -1085,7 +1140,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/VSync" unique_id=1178095805]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "VSYNC"
+horizontal_alignment = 2
 
 [node name="Disabled" type="Button" parent="Option/VIDEO/Settings/VSync" unique_id=232724182]
 layout_mode = 2
@@ -1122,7 +1179,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/MaxFPS" unique_id=1517673670]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "FPS LIMIT"
+horizontal_alignment = 2
 
 [node name="30" type="Button" parent="Option/VIDEO/Settings/MaxFPS" unique_id=5747688]
 layout_mode = 2
@@ -1187,7 +1246,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=1397860554]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "RESOLUTION"
+horizontal_alignment = 2
 
 [node name="UltraPerformance" type="Button" parent="Option/VIDEO/Settings/ResolutionScale" unique_id=1815678676]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1244,7 +1305,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=1644565855]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "UPSCALE"
+horizontal_alignment = 2
 
 [node name="Bilinear" type="Button" parent="Option/VIDEO/Settings/ScaleFilter" unique_id=1061016984]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1296,8 +1359,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/TAA" unique_id=88558604]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 3
 text = "TA"
+horizontal_alignment = 2
 
 [node name="Disabled" type="Button" parent="Option/VIDEO/Settings/TAA" unique_id=801611047]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1322,8 +1386,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/MSAA" unique_id=885300156]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 3
 text = "MSAA"
+horizontal_alignment = 2
 
 [node name="Disabled" type="Button" parent="Option/VIDEO/Settings/MSAA" unique_id=328188779]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1363,8 +1428,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/FXAA" unique_id=72382522]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 3
 text = "FA"
+horizontal_alignment = 2
 
 [node name="Disabled" type="Button" parent="Option/VIDEO/Settings/FXAA" unique_id=132528742]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1390,7 +1456,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/ShadowMapping" unique_id=834625836]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Shadow"
+horizontal_alignment = 2
 
 [node name="Disabled" type="Button" parent="Option/VIDEO/Settings/ShadowMapping" unique_id=909453789]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1415,7 +1483,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/GIType" unique_id=1013104559]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "GI"
+horizontal_alignment = 2
 
 [node name="LightmapGI" type="Button" parent="Option/VIDEO/Settings/GIType" unique_id=1374874249]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1448,7 +1518,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/GIQuality" unique_id=36247511]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "GI Quality:"
+horizontal_alignment = 2
 
 [node name="Disabled" type="Button" parent="Option/VIDEO/Settings/GIQuality" unique_id=1402050173]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1481,8 +1553,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/SSAO" unique_id=2099336294]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 3
 text = "SSAO"
+horizontal_alignment = 2
 
 [node name="Disabled" type="Button" parent="Option/VIDEO/Settings/SSAO" unique_id=949174439]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1515,8 +1588,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/SSIL" unique_id=653051909]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 3
 text = "SSIL"
+horizontal_alignment = 2
 
 [node name="Disabled" type="Button" parent="Option/VIDEO/Settings/SSIL" unique_id=1115462980]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1549,8 +1623,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/Bloom" unique_id=1363016191]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 3
 text = "Bloom"
+horizontal_alignment = 2
 
 [node name="Disabled" type="Button" parent="Option/VIDEO/Settings/Bloom" unique_id=365352020]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1575,8 +1650,9 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="Option/VIDEO/Settings/VolumetricFog" unique_id=887582049]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 3
 text = "FOG"
+horizontal_alignment = 2
 
 [node name="Disabled" type="Button" parent="Option/VIDEO/Settings/VolumetricFog" unique_id=246233233]
 modulate = Color(0.376471, 1, 0.376471, 1)
@@ -1600,6 +1676,7 @@ custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="KEY_MAPPING" type="VBoxContainer" parent="Option" unique_id=777015502]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 6
 
