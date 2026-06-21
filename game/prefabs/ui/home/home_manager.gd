@@ -29,6 +29,7 @@ const SCROLL_SPEED: float = 650.0
 @onready var posture_switch_toggle_km_check_button: CheckButton = option.get_node(^"GAME/PostureSwitchToggleKM/CheckButton")
 @onready var aim_smooth_check_button: CheckButton = option.get_node(^"GAME/AimSmooth/CheckButton")
 @onready var movement_smooth_check_button: CheckButton = option.get_node(^"GAME/MovementSmooth/CheckButton")
+@onready var blood_check_button: CheckButton = option.get_node(^"GAME/Blood/CheckButton")
 
 func _ready() -> void:
 	play.grab_focus()
@@ -49,6 +50,7 @@ func _ready() -> void:
 	posture_switch_toggle_km_check_button.toggled.connect(_on_game_toggle_changed.bind("is_posture_switch_toggle_km"))
 	aim_smooth_check_button.toggled.connect(_on_game_toggle_changed.bind("is_aim_smooth"))
 	movement_smooth_check_button.toggled.connect(_on_game_toggle_changed.bind("is_movement_smooth"))
+	blood_check_button.toggled.connect(_on_game_toggle_changed.bind("is_blood_enabled"))
 
 func _on_play_pressed() -> void:
 	get_tree().change_scene_to_file("uid://bqw181keq72d")
@@ -138,6 +140,7 @@ func _load_game_settings_controls() -> void:
 	posture_switch_toggle_km_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_posture_switch_toggle_km"))
 	aim_smooth_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_aim_smooth"))
 	movement_smooth_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_movement_smooth"))
+	blood_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_blood_enabled"))
 
 
 func _on_game_slider_changed(value: float, key: String) -> void:

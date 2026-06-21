@@ -51,6 +51,7 @@ var DEFAULTS: Dictionary = {
 		"is_posture_switch_toggle_km": true,
 		"is_aim_smooth": true,
 		"is_movement_smooth": true,
+		"is_blood_enabled": true,
 	},
 }
 

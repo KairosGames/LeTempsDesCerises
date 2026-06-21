@@ -38,18 +38,21 @@ func _ready() -> void:
 
 
 func play_effect(eff_type: EffectType, glb_pos: Vector3, glb_rot: Vector3 = Vector3.ZERO) -> void:
+	if eff_type == EffectType.BloodImpact and not Settings.config_file.get_value("game", "is_blood_enabled"):
+		return
+
 	var particle_player: ParticlesPlayer
 	for particle: ParticlesPlayer in effects_list_dic[eff_type]:
 		if particle.is_free:
 			particle_player = particle
 			break
-	
+
 	if not particle_player:
 		var new_vfx = EFFECT_PREFABS[eff_type].instantiate()
 		add_child(new_vfx, true)
 		effects_list_dic[eff_type].push_back(new_vfx)
 		particle_player = new_vfx
-	
+
 	particle_player.global_position = glb_pos
 	particle_player.global_rotation = glb_rot
 	particle_player.play_effect()

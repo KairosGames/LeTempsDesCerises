@@ -619,7 +619,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 3.0
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../MovementSmooth/CheckButton")
+focus_neighbor_top = NodePath("../../Blood/CheckButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../AimingSensibility/Slider")
 theme_override_icons/grabber = ExtResource("12_ju5sp")
@@ -907,6 +907,24 @@ layout_mode = 2
 size_flags_horizontal = 3
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../AimSmooth/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Blood/CheckButton")
+button_pressed = true
+
+[node name="Blood" type="HBoxContainer" parent="Option/GAME"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Option/GAME/Blood"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BLOOD"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/Blood"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../MovementSmooth/CheckButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../ViewSensibility/Slider")
 button_pressed = true
