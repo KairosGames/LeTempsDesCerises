@@ -8,6 +8,7 @@ const SCROLL_SPEED: float = 650.0
 @onready var menu: PanelContainer = $Menu
 
 @onready var play: ButtonBehavior = $Menu/Buttons/Play
+@onready var options_button: ButtonBehavior = $Menu/Buttons/Options
 @onready var references_button: ButtonBehavior = $Menu/Buttons/Referecences
 @onready var credits_button: ButtonBehavior = $Menu/Buttons/Credits
 @onready var references_scroll: ScrollContainer = references.get_node(^"ScrollContainer")
@@ -82,8 +83,8 @@ func _process(delta: float) -> void:
 	)
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if not references.visible and not credit.visible: return
+func _input(event: InputEvent) -> void:
+	if not references.visible and not credit.visible and not option.visible: return
 	if event.is_action_pressed("ui_cancel"):
 		_close_current_panel()
 		get_viewport().set_input_as_handled()
@@ -116,12 +117,18 @@ func _get_visible_scroll_container() -> ScrollContainer:
 
 
 func _close_current_panel() -> void:
-	_close_panel(references_button if references.visible else credits_button)
+	if references.visible:
+		_close_panel(references_button)
+	elif credit.visible:
+		_close_panel(credits_button)
+	elif option.visible:
+		_close_panel(options_button)
 
 
 func _close_panel(focus_target: Control) -> void:
 	references.hide()
 	credit.hide()
+	option.hide()
 	menu.show()
 	focus_target.grab_focus()
 
