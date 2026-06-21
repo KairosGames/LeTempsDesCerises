@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dhojlb5ou38nt" path="res://sources/images/textures/ui/slider_grabber_highlight.png" id="13_o7pnx"]
 [ext_resource type="Texture2D" uid="uid://c2ugcp65jnl3a" path="res://sources/images/icons/inputs/Keyboard & Mouse/keyboard.svg" id="13_rpgsi"]
 [ext_resource type="Script" uid="uid://c0exxiluefxe6" path="res://scenes/option.gd" id="13_snnha"]
+[ext_resource type="Texture2D" uid="uid://dscc3m83s7olb" path="res://sources/images/textures/ui/slider_area.png" id="15_ppa51"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ip4d6"]
 content_margin_left = 50.0
@@ -615,6 +616,30 @@ script = ExtResource("5_e42qu")
 control = NodePath("../ViewSensibility/Slider")
 metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
 
+[node name="GeneralTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1053770403]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/GeneralTitle" unique_id=1918362605]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_ppa51")
+expand_mode = 1
+
+[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/GeneralTitle" unique_id=1882912521]
+layout_mode = 2
+text = "GENERAL"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/GeneralTitle" unique_id=2022281155]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_ppa51")
+expand_mode = 1
+flip_h = true
+
 [node name="Blood" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1845712577]
 layout_mode = 2
 
@@ -636,10 +661,29 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../ViewSensibility/Slider")
 button_pressed = true
 
-[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings" unique_id=1882912521]
+[node name="CommonTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=979601741]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/CommonTitle" unique_id=2041652804]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_ppa51")
+expand_mode = 1
+
+[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/CommonTitle" unique_id=315621920]
 layout_mode = 2
 text = "COMMON"
 label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/CommonTitle" unique_id=1819708681]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_ppa51")
+expand_mode = 1
+flip_h = true
 
 [node name="ViewSensibility" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1354528972]
 layout_mode = 2
@@ -769,10 +813,29 @@ max_value = 2.0
 step = 0.1
 value = 1.0
 
-[node name="KeyboardTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings" unique_id=387795736]
+[node name="KeyboardTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=369295408]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/KeyboardTitle" unique_id=701385933]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_ppa51")
+expand_mode = 1
+
+[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/KeyboardTitle" unique_id=1004443894]
 layout_mode = 2
 text = "KEYBOARD"
 label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/KeyboardTitle" unique_id=1119911424]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_ppa51")
+expand_mode = 1
+flip_h = true
 
 [node name="AimToggleKM" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=275800730]
 layout_mode = 2
@@ -815,10 +878,29 @@ focus_neighbor_top = NodePath("../../AimToggleKM/CheckButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../DeadzoneLeftStick/Slider")
 
-[node name="GamepadTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings" unique_id=1714054376]
+[node name="GamepadTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=211779930]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/GamepadTitle" unique_id=494019419]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_ppa51")
+expand_mode = 1
+
+[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/GamepadTitle" unique_id=496052936]
 layout_mode = 2
 text = "GAMEPAD"
 label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/GamepadTitle" unique_id=210094681]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_ppa51")
+expand_mode = 1
+flip_h = true
 
 [node name="DeadzoneLeftStick" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1591694391]
 layout_mode = 2
