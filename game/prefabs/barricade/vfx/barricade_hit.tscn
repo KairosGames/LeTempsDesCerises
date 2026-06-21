@@ -2,12 +2,25 @@
 
 [ext_resource type="Shader" uid="uid://ct4cjw40i2mtu" path="res://prefabs/barricade/vfx/barricade_hit_pave.gdshader" id="1_3bc23"]
 [ext_resource type="Shader" uid="uid://bp5200x4ef7iv" path="res://prefabs/barricade/vfx/barricade_hit_process.gdshader" id="1_tt4fr"]
-[ext_resource type="ArrayMesh" uid="uid://c7klsafplch2d" path="res://sources/meshes/props/paving_stone.obj" id="2_s2ri7"]
+[ext_resource type="Texture2D" uid="uid://cms8y1bjylhl0" path="res://sources/meshes/geometry/textures/pave_stone/pave_stone_c.png" id="2_h4vxq"]
+[ext_resource type="Texture2D" uid="uid://dns357cie088n" path="res://sources/meshes/geometry/textures/pave_stone/pave_stone_n.png" id="3_1yj4o"]
+[ext_resource type="ArrayMesh" uid="uid://iaot7afb6661" path="res://sources/meshes/props/paving_stone_sized.obj" id="3_aarxb"]
+[ext_resource type="Texture2D" uid="uid://b3w7cc6h0u2eo" path="res://sources/meshes/geometry/textures/pave_stone/pave_stone_orm.png" id="4_emmqd"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rots5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hk8im"]
 render_priority = 0
 shader = ExtResource("1_3bc23")
-shader_parameter/color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/albedo = Color(0.82819706, 0.828197, 0.828197, 1)
+shader_parameter/texture_albedo = ExtResource("2_h4vxq")
+shader_parameter/albedo_texture_size = Vector2i(2048, 2048)
+shader_parameter/point_size = 1.0
+shader_parameter/texture_orm = ExtResource("4_emmqd")
+shader_parameter/texture_normal = ExtResource("3_1yj4o")
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7i8bi"]
 shader = ExtResource("1_tt4fr")
@@ -18,18 +31,18 @@ shader_parameter/explosion_force = 5.0
 shader_parameter/random_force = 4.0
 shader_parameter/upward_force = 2.0
 shader_parameter/angular_velocity = 8.0
-shader_parameter/particle_scale = 0.2
+shader_parameter/particle_scale = 1.0
 shader_parameter/gravity = Vector3(0, -9.8, 0)
 shader_parameter/damping = 0.08
 shader_parameter/collision_friction = 0.65
 shader_parameter/collision_spin_damping = 0.5
 
 [node name="BarricadeHit" type="GPUParticles3D" unique_id=656924349]
-material_override = SubResource("ShaderMaterial_rots5")
+material_override = SubResource("ShaderMaterial_hk8im")
 emitting = false
 amount = 375
 lifetime = 10.0
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ShaderMaterial_7i8bi")
-draw_pass_1 = ExtResource("2_s2ri7")
+draw_pass_1 = ExtResource("3_aarxb")
