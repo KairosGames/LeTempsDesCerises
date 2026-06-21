@@ -58,8 +58,9 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 				(collider as Player).die()
 				_vagueness = 1.0
 		elif collider is Agent:
-			if collider.can_die: EffectsManager.instance.play_effect(EffectsManager.EffectType.BloodImpact, position, coll_rot)
-			(collider as Agent).die()
+			var other_agent: Agent = collider
+			if other_agent.can_die: EffectsManager.instance.play_effect(EffectsManager.EffectType.BloodImpact, position, coll_rot)
+			if agent.team != other_agent.team: other_agent.die()
 			_vagueness = 1.0
 		else:
 			EffectsManager.instance.impact_from_shoot.emit(position, shoot_dir, false)
