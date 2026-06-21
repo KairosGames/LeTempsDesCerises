@@ -553,6 +553,7 @@ autowrap_mode = 3
 
 [node name="Option" type="TabContainer" parent="." unique_id=243911068]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -608,31 +609,35 @@ follow_focus = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 16
+theme_override_constants/separation = 64
 
 [node name="FocusGraber" type="Control" parent="Option/GAME/ScrollContainer/Settings" unique_id=694937382 node_paths=PackedStringArray("control")]
 layout_mode = 2
 script = ExtResource("5_e42qu")
-control = NodePath("../ViewSensibility/Slider")
+control = NodePath("../Common/ViewSensibility/Slider")
 metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
 
-[node name="GeneralTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1053770403]
+[node name="General" type="VBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=830574780]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="GeneralTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/General" unique_id=1053770403]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/GeneralTitle" unique_id=1918362605]
+[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/General/GeneralTitle" unique_id=1918362605]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("15_ppa51")
 expand_mode = 1
 
-[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/GeneralTitle" unique_id=1882912521]
+[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/General/GeneralTitle" unique_id=1882912521]
 layout_mode = 2
 text = "GENERAL"
 label_settings = SubResource("LabelSettings_ip4d6")
 
-[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/GeneralTitle" unique_id=2022281155]
+[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/General/GeneralTitle" unique_id=2022281155]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -640,44 +645,49 @@ texture = ExtResource("15_ppa51")
 expand_mode = 1
 flip_h = true
 
-[node name="Blood" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1845712577]
+[node name="Blood" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/General" unique_id=1845712577]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Blood" unique_id=867523052]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/General/Blood" unique_id=867523052]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "BLOOD"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Blood" unique_id=853049446]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/General/Blood" unique_id=853049446]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../MovementSmooth/CheckButton")
+focus_neighbor_top = NodePath("../../Gameplay/MovementSmooth/CheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../ViewSensibility/Slider")
+focus_neighbor_bottom = NodePath("../../Common/ViewSensibility/Slider")
 button_pressed = true
 
-[node name="CommonTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=979601741]
+[node name="Common" type="VBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=740332018]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CommonTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Common" unique_id=979601741]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/CommonTitle" unique_id=2041652804]
+[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/Common/CommonTitle" unique_id=2041652804]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("15_ppa51")
 expand_mode = 1
 
-[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/CommonTitle" unique_id=315621920]
+[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/Common/CommonTitle" unique_id=315621920]
 layout_mode = 2
 text = "COMMON"
 label_settings = SubResource("LabelSettings_ip4d6")
 
-[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/CommonTitle" unique_id=1819708681]
+[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/Common/CommonTitle" unique_id=1819708681]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -685,25 +695,26 @@ texture = ExtResource("15_ppa51")
 expand_mode = 1
 flip_h = true
 
-[node name="ViewSensibility" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1354528972]
+[node name="ViewSensibility" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Common" unique_id=1354528972]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/ViewSensibility" unique_id=153846610]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Common/ViewSensibility" unique_id=153846610]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "VIEW SENSIBILITY"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/ViewSensibility" unique_id=1439309280]
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/Common/ViewSensibility" unique_id=1439309280]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../Blood/CheckButton")
+focus_neighbor_top = NodePath("../../General/Blood/CheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../AimingSensibility/Slider")
+focus_neighbor_bottom = NodePath("../AimingSensibility/Slider")
 theme_override_icons/grabber = ExtResource("12_ju5sp")
 theme_override_icons/grabber_highlight = ExtResource("13_o7pnx")
 theme_override_icons/grabber_disabled = ExtResource("12_ju5sp")
@@ -712,25 +723,26 @@ max_value = 20.0
 step = 0.1
 value = 7.0
 
-[node name="AimingSensibility" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1639513634]
+[node name="AimingSensibility" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Common" unique_id=1639513634]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/AimingSensibility" unique_id=1467632408]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Common/AimingSensibility" unique_id=1467632408]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "AIMING SENSIBILITY"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/AimingSensibility" unique_id=729954672]
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/Common/AimingSensibility" unique_id=729954672]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../ViewSensibility/Slider")
+focus_neighbor_top = NodePath("../ViewSensibility/Slider")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../Inverted/CheckButton")
+focus_neighbor_bottom = NodePath("../Inverted/CheckButton")
 theme_override_icons/grabber = ExtResource("12_ju5sp")
 theme_override_icons/grabber_highlight = ExtResource("13_o7pnx")
 theme_override_icons/grabber_disabled = ExtResource("12_ju5sp")
@@ -739,45 +751,47 @@ max_value = 20.0
 step = 0.1
 value = 7.0
 
-[node name="Inverted" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=720177552]
+[node name="Inverted" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Common" unique_id=720177552]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Inverted" unique_id=1556603069]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Common/Inverted" unique_id=1556603069]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "INVERTED"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Inverted" unique_id=1931279518]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Common/Inverted" unique_id=1931279518]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../AimingSensibility/Slider")
+focus_neighbor_top = NodePath("../AimingSensibility/Slider")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../HMultiplier/Slider")
+focus_neighbor_bottom = NodePath("../HMultiplier/Slider")
 
-[node name="HMultiplier" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1124793375]
+[node name="HMultiplier" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Common" unique_id=1124793375]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/HMultiplier" unique_id=12667519]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Common/HMultiplier" unique_id=12667519]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "H MULTIPLIER"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/HMultiplier" unique_id=738582612]
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/Common/HMultiplier" unique_id=738582612]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../Inverted/CheckButton")
+focus_neighbor_top = NodePath("../Inverted/CheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../VMultiplier/Slider")
+focus_neighbor_bottom = NodePath("../VMultiplier/Slider")
 theme_override_icons/grabber = ExtResource("12_ju5sp")
 theme_override_icons/grabber_highlight = ExtResource("13_o7pnx")
 theme_override_icons/grabber_disabled = ExtResource("12_ju5sp")
@@ -786,25 +800,26 @@ max_value = 2.0
 step = 0.1
 value = 1.0
 
-[node name="VMultiplier" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=2005486553]
+[node name="VMultiplier" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Common" unique_id=2005486553]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/VMultiplier" unique_id=1655860910]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Common/VMultiplier" unique_id=1655860910]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "V MULTIPLIER"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/VMultiplier" unique_id=397794915]
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/Common/VMultiplier" unique_id=397794915]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../HMultiplier/Slider")
+focus_neighbor_top = NodePath("../HMultiplier/Slider")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../AimToggleKM/CheckButton")
+focus_neighbor_bottom = NodePath("../../Keyboard/AimToggleKM/CheckButton")
 theme_override_icons/grabber = ExtResource("12_ju5sp")
 theme_override_icons/grabber_highlight = ExtResource("13_o7pnx")
 theme_override_icons/grabber_disabled = ExtResource("12_ju5sp")
@@ -813,23 +828,27 @@ max_value = 2.0
 step = 0.1
 value = 1.0
 
-[node name="KeyboardTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=369295408]
+[node name="Keyboard" type="VBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=950104110]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="KeyboardTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Keyboard" unique_id=369295408]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/KeyboardTitle" unique_id=701385933]
+[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/Keyboard/KeyboardTitle" unique_id=701385933]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("15_ppa51")
 expand_mode = 1
 
-[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/KeyboardTitle" unique_id=1004443894]
+[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/Keyboard/KeyboardTitle" unique_id=1004443894]
 layout_mode = 2
 text = "KEYBOARD"
 label_settings = SubResource("LabelSettings_ip4d6")
 
-[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/KeyboardTitle" unique_id=1119911424]
+[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/Keyboard/KeyboardTitle" unique_id=1119911424]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -837,64 +856,70 @@ texture = ExtResource("15_ppa51")
 expand_mode = 1
 flip_h = true
 
-[node name="AimToggleKM" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=275800730]
+[node name="AimToggleKM" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Keyboard" unique_id=275800730]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/AimToggleKM" unique_id=206077308]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Keyboard/AimToggleKM" unique_id=206077308]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "AIM TOGGLE"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/AimToggleKM" unique_id=252775551]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Keyboard/AimToggleKM" unique_id=252775551]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../VMultiplier/Slider")
+focus_neighbor_top = NodePath("../../Common/VMultiplier/Slider")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../RunToggleKM/CheckButton")
+focus_neighbor_bottom = NodePath("../RunToggleKM/CheckButton")
 button_pressed = true
 
-[node name="RunToggleKM" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1797963524]
+[node name="RunToggleKM" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Keyboard" unique_id=1797963524]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/RunToggleKM" unique_id=737618981]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Keyboard/RunToggleKM" unique_id=737618981]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "RUN TOGGLE"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/RunToggleKM" unique_id=1141533603]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Keyboard/RunToggleKM" unique_id=1141533603]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../AimToggleKM/CheckButton")
+focus_neighbor_top = NodePath("../AimToggleKM/CheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../DeadzoneLeftStick/Slider")
+focus_neighbor_bottom = NodePath("../../Gamepad/DeadzoneLeftStick/Slider")
 
-[node name="GamepadTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=211779930]
+[node name="Gamepad" type="VBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=956197716]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="GamepadTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Gamepad" unique_id=211779930]
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/GamepadTitle" unique_id=494019419]
+[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/Gamepad/GamepadTitle" unique_id=494019419]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("15_ppa51")
 expand_mode = 1
 
-[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/GamepadTitle" unique_id=496052936]
+[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/Gamepad/GamepadTitle" unique_id=496052936]
 layout_mode = 2
 text = "GAMEPAD"
 label_settings = SubResource("LabelSettings_ip4d6")
 
-[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/GamepadTitle" unique_id=210094681]
+[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/Gamepad/GamepadTitle" unique_id=210094681]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -902,25 +927,26 @@ texture = ExtResource("15_ppa51")
 expand_mode = 1
 flip_h = true
 
-[node name="DeadzoneLeftStick" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1591694391]
+[node name="DeadzoneLeftStick" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Gamepad" unique_id=1591694391]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/DeadzoneLeftStick" unique_id=2031459679]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Gamepad/DeadzoneLeftStick" unique_id=2031459679]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "DEADZONE LEFT STICK"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/DeadzoneLeftStick" unique_id=7735842]
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/Gamepad/DeadzoneLeftStick" unique_id=7735842]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../RunToggleKM/CheckButton")
+focus_neighbor_top = NodePath("../../Keyboard/RunToggleKM/CheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../DeadzoneRightStick/Slider")
+focus_neighbor_bottom = NodePath("../DeadzoneRightStick/Slider")
 theme_override_icons/grabber = ExtResource("12_ju5sp")
 theme_override_icons/grabber_highlight = ExtResource("13_o7pnx")
 theme_override_icons/grabber_disabled = ExtResource("12_ju5sp")
@@ -929,25 +955,26 @@ max_value = 0.8
 step = 0.01
 value = 0.2
 
-[node name="DeadzoneRightStick" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=15454616]
+[node name="DeadzoneRightStick" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Gamepad" unique_id=15454616]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/DeadzoneRightStick" unique_id=1710524123]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Gamepad/DeadzoneRightStick" unique_id=1710524123]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "DEADZONE RIGHT STICK"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/DeadzoneRightStick" unique_id=77267365]
+[node name="Slider" type="HSlider" parent="Option/GAME/ScrollContainer/Settings/Gamepad/DeadzoneRightStick" unique_id=77267365]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../DeadzoneLeftStick/Slider")
+focus_neighbor_top = NodePath("../DeadzoneLeftStick/Slider")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../AimToggleGamepad/CheckButton")
+focus_neighbor_bottom = NodePath("../AimToggleGamepad/CheckButton")
 theme_override_icons/grabber = ExtResource("12_ju5sp")
 theme_override_icons/grabber_highlight = ExtResource("13_o7pnx")
 theme_override_icons/grabber_disabled = ExtResource("12_ju5sp")
@@ -956,108 +983,141 @@ max_value = 0.8
 step = 0.01
 value = 0.2
 
-[node name="AimToggleGamepad" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1995671286]
+[node name="AimToggleGamepad" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Gamepad" unique_id=1995671286]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/AimToggleGamepad" unique_id=61024905]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Gamepad/AimToggleGamepad" unique_id=61024905]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "AIM TOGGLE"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/AimToggleGamepad" unique_id=1623773916]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Gamepad/AimToggleGamepad" unique_id=1623773916]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../DeadzoneRightStick/Slider")
+focus_neighbor_top = NodePath("../DeadzoneRightStick/Slider")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../RunToggleGamepad/CheckButton")
+focus_neighbor_bottom = NodePath("../RunToggleGamepad/CheckButton")
 
-[node name="RunToggleGamepad" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=483383582]
+[node name="RunToggleGamepad" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Gamepad" unique_id=483383582]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/RunToggleGamepad" unique_id=1440884947]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Gamepad/RunToggleGamepad" unique_id=1440884947]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "RUN TOGGLE"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/RunToggleGamepad" unique_id=744554385]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Gamepad/RunToggleGamepad" unique_id=744554385]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../AimToggleGamepad/CheckButton")
+focus_neighbor_top = NodePath("../AimToggleGamepad/CheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../PostureSwitchToggleKM/CheckButton")
+focus_neighbor_bottom = NodePath("../../Gameplay/PostureSwitchToggleKM/CheckButton")
 button_pressed = true
 
-[node name="PostureSwitchToggleKM" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1284281277]
+[node name="Gameplay" type="VBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=628096822]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="GameplayTitle" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Gameplay" unique_id=72938419]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextureRect2" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/Gameplay/GameplayTitle" unique_id=325739816]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_ppa51")
+expand_mode = 1
+
+[node name="CommonTitle" type="Label" parent="Option/GAME/ScrollContainer/Settings/Gameplay/GameplayTitle" unique_id=1493797486]
+layout_mode = 2
+text = "GAMEPLAY"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="TextureRect" type="TextureRect" parent="Option/GAME/ScrollContainer/Settings/Gameplay/GameplayTitle" unique_id=1267169236]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("15_ppa51")
+expand_mode = 1
+flip_h = true
+
+[node name="PostureSwitchToggleKM" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Gameplay" unique_id=1284281277]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/PostureSwitchToggleKM" unique_id=1858453490]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Gameplay/PostureSwitchToggleKM" unique_id=1858453490]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "POSTURE SWITCH TOGGLE"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/PostureSwitchToggleKM" unique_id=2084242061]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Gameplay/PostureSwitchToggleKM" unique_id=2084242061]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../RunToggleGamepad/CheckButton")
+focus_neighbor_top = NodePath("../../Gamepad/RunToggleGamepad/CheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../AimSmooth/CheckButton")
+focus_neighbor_bottom = NodePath("../AimSmooth/CheckButton")
 button_pressed = true
 
-[node name="AimSmooth" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=716299569]
+[node name="AimSmooth" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Gameplay" unique_id=716299569]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/AimSmooth" unique_id=2121920757]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Gameplay/AimSmooth" unique_id=2121920757]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "AIM SMOOTH"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/AimSmooth" unique_id=270580982]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Gameplay/AimSmooth" unique_id=270580982]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../PostureSwitchToggleKM/CheckButton")
+focus_neighbor_top = NodePath("../PostureSwitchToggleKM/CheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../MovementSmooth/CheckButton")
+focus_neighbor_bottom = NodePath("../MovementSmooth/CheckButton")
 button_pressed = true
 
-[node name="MovementSmooth" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings" unique_id=1051418562]
+[node name="MovementSmooth" type="HBoxContainer" parent="Option/GAME/ScrollContainer/Settings/Gameplay" unique_id=1051418562]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/MovementSmooth" unique_id=628734042]
+[node name="Label" type="Label" parent="Option/GAME/ScrollContainer/Settings/Gameplay/MovementSmooth" unique_id=628734042]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "MOVEMENT SMOOTH"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/MovementSmooth" unique_id=1975683391]
+[node name="CheckButton" type="CheckButton" parent="Option/GAME/ScrollContainer/Settings/Gameplay/MovementSmooth" unique_id=1975683391]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../AimSmooth/CheckButton")
+focus_neighbor_top = NodePath("../AimSmooth/CheckButton")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../../Blood/CheckButton")
+focus_neighbor_bottom = NodePath("../../General/Blood/CheckButton")
 button_pressed = true
 
 [node name="AUDIO" type="VBoxContainer" parent="Option" unique_id=1200474982]
