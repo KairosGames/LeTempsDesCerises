@@ -1,6 +1,7 @@
 class_name HomeManager extends Control
 
 const SCROLL_SPEED: float = 650.0
+const MAIN_SCENE_PATH: String = "uid://bqw181keq72d"
 
 @onready var references: PanelContainer = %References
 @onready var credit: PanelContainer = %Credit
@@ -34,8 +35,12 @@ const SCROLL_SPEED: float = 650.0
 @onready var blood_check_button: CheckButton = %Blood.get_node(^"CheckButton")
 @onready var game_reset_button: Button = %GameReset
 
+var is_main_scene_loaded: bool = false
+
 func _ready() -> void:
-	play.grab_focus()
+	play.disabled = true
+	ResourceLoader.load_threaded_request(MAIN_SCENE_PATH, "PackedScene")
+	options_button.grab_focus()
 	references_quit_button.pressed.connect(_close_panel.bind(references_button))
 	credit_quit_button.pressed.connect(_close_panel.bind(credits_button))
 	_load_game_settings_controls()
@@ -57,7 +62,10 @@ func _ready() -> void:
 	game_reset_button.pressed.connect(_on_game_reset_pressed)
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("uid://bqw181keq72d")
+	if not is_main_scene_loaded: return
+	play.disabled = true
+	var main_scene: PackedScene = ResourceLoader.load_threaded_get(MAIN_SCENE_PATH) as PackedScene
+	get_tree().change_scene_to_packed(main_scene)
 
 
 func _on_options_pressed() -> void:
@@ -69,6 +77,7 @@ func _on_options_pressed() -> void:
 
 
 func _process(delta: float) -> void:
+	_update_main_scene_load_state()
 	var scroll_container: ScrollContainer = _get_visible_scroll_container()
 	if not scroll_container: return
 
@@ -83,6 +92,14 @@ func _process(delta: float) -> void:
 		scroll_bar.min_value,
 		scroll_bar.max_value
 	)
+
+
+func _update_main_scene_load_state() -> void:
+	if is_main_scene_loaded: return
+	var load_status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(MAIN_SCENE_PATH)
+	if load_status == ResourceLoader.THREAD_LOAD_LOADED:
+		is_main_scene_loaded = true
+		play.disabled = false
 
 
 func _input(event: InputEvent) -> void:
