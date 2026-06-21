@@ -64,8 +64,14 @@ func _process(delta: float) -> void:
 func activation(active: bool) -> void:
 	if active: entered_reload.emit()
 	set_step(step)
-	visible = active
+	if active: visible = active
+	else: delay_desactivation()
 	is_active = active
+
+
+func delay_desactivation() -> void:
+	await get_tree().create_timer(0.2).timeout
+	visible = false
 
 
 func handle_reload_phase(delta: float) -> void:
@@ -130,7 +136,7 @@ func try_qte() -> void:
 		var anim_name: String = "go_step_" + str(step + 1)
 		wpn_animator.play(anim_name)
 		if step == 1:
-			focus.visible = false
+			unvisible_focus()
 		go_next_step()
 		try_succeeded.emit()
 		focus_pin.modulate = sucess_focus_color
@@ -142,6 +148,12 @@ func try_qte() -> void:
 	await get_tree().create_timer(qte_delay).timeout
 	can_qte = true
 	focus_pin.modulate = default_focus_color
+
+
+func unvisible_focus() -> void:
+	await get_tree().create_timer(0.2).timeout
+	focus.visible = false
+	pass
 
 
 func launch_outline_qte_tween(is_in: bool) -> void:
