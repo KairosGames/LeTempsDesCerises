@@ -30,9 +30,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		disabled = false
 		return
 
-	if event is InputEventKey or event is InputEventJoypadButton:
+	if event is InputEventKey or event is InputEventJoypadButton or event is InputEventJoypadMotion:
 		if event is InputEventKey and gamepad: return
-		if event is InputEventJoypadButton and not gamepad: return
+		if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and not gamepad: return
+		if event is InputEventJoypadMotion and absf((event as InputEventJoypadMotion).axis_value) < 0.5: return
 		if _current_event: InputMap.action_erase_event(action, _current_event)
 		InputMap.action_add_event(action, event)
 		_current_event = event
@@ -45,7 +46,7 @@ func _get_current_input_map_event() -> InputEvent:
 	var events: Array[InputEvent] = InputMap.action_get_events(action)
 	for event: InputEvent in events:
 		if event is InputEventKey and not gamepad: return event
-		if event is InputEventJoypadButton and gamepad: return event
+		if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and gamepad: return event
 	return null
 
 func _load_input() -> void:
@@ -81,16 +82,20 @@ func _get_config_section() -> String:
 	return GAMEPAD_SECTION if gamepad else KEYBOARD_SECTION
 
 func _update_icon() -> void:
-	if not _current_event: 
+	if not _current_event:
 		icon = null
 		text = ""
 		return
-		
+
 	icon = Inputs.get_icon(_current_event)
 	if icon: text = ""
 	else:
 		if gamepad:
-			text = str((_current_event as InputEventJoypadButton).button_index)
+			if _current_event is InputEventJoypadButton:
+				text = str((_current_event as InputEventJoypadButton).button_index)
+			elif _current_event is InputEventJoypadMotion:
+				var joypad_motion_event: InputEventJoypadMotion = _current_event as InputEventJoypadMotion
+				text = "Axis %s %s" % [joypad_motion_event.axis, "+" if joypad_motion_event.axis_value > 0.0 else "-"]
 		else:
 			text = OS.get_keycode_string((DisplayServer.keyboard_get_keycode_from_physical((_current_event as InputEventKey).physical_keycode)))
 
@@ -115,6 +120,13 @@ func _event_to_dictionary(event: InputEvent) -> Dictionary:
 			"type": "joypad_button",
 			"button_index": joypad_event.button_index,
 		}
+	if event is InputEventJoypadMotion:
+		var joypad_motion_event: InputEventJoypadMotion = event as InputEventJoypadMotion
+		return {
+			"type": "joypad_motion",
+			"axis": joypad_motion_event.axis,
+			"axis_value": 1.0 if joypad_motion_event.axis_value > 0.0 else -1.0,
+		}
 	return {}
 
 func _event_from_dictionary(event_data: Dictionary) -> InputEvent:
@@ -136,4 +148,10 @@ func _event_from_dictionary(event_data: Dictionary) -> InputEvent:
 			var joypad_event: InputEventJoypadButton = InputEventJoypadButton.new()
 			joypad_event.button_index = event_data.get("button_index", JOY_BUTTON_INVALID)
 			return joypad_event
+		"joypad_motion":
+			if not gamepad: return null
+			var joypad_motion_event: InputEventJoypadMotion = InputEventJoypadMotion.new()
+			joypad_motion_event.axis = event_data.get("axis", JOY_AXIS_LEFT_X)
+			joypad_motion_event.axis_value = event_data.get("axis_value", 1.0)
+			return joypad_motion_event
 	return null
