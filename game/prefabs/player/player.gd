@@ -46,6 +46,7 @@ signal landed
 @onready var nav: NavigationAgent3D = %PlayerNav
 @onready var weapon_shake: Shake = %WeaponShake
 @onready var muzzle_light: OmniLight3D = %MuzzleLight
+@onready var light_trail: ShootLightTrail = %ShootLightTrail
 
 @export_category("Gameplay Settings")
 @export var immortal_timer: float = 10.0
@@ -1014,12 +1015,18 @@ func play_shoot_effects() -> void:
 	if is_aiming: ads_timer += 10.0
 	muzzle_light.visible = true
 	reload_ui.wpn_animator.play("shoot")
+	play_light_trail_effect()
 	play_shoot_vfx()
 	play_recoil_effect()
 	wpn_cam_base.shake(1.0, 5.0, 0.15)
 	await get_tree().create_timer(0.05).timeout
 	muzzle_light.visible = false
 
+
+func play_light_trail_effect() -> void:
+	var point: Node3D = weapon_ray_cast
+	var dest: Vector3 = point.global_position + (point.global_transform.basis.z * 100.0)
+	light_trail.shoot(dest)
 
 func play_shoot_vfx() -> void:
 	if not EffectsManager.instance:
@@ -1043,7 +1050,7 @@ func play_recoil_effect() -> void:
 func handle_shoot_cast() -> void:
 	var obj: Object = weapon_ray_cast.get_collider()
 	var coll: Vector3 = weapon_ray_cast.get_collision_point()
-	var dir: Vector3 = weapon_container.global_rotation
+	var dir: Vector3 = weapon_ray_cast.global_transform.basis.z.normalized()
 	var rot: Vector3 = Basis.looking_at(dir.normalized(), Vector3.UP, true).get_euler()
 	var eff_manager: EffectsManager = EffectsManager.instance
 	

@@ -1,11 +1,319 @@
-[gd_scene format=3 uid="uid://dwp51gcdjh3l6"]
+[gd_scene format=4 uid="uid://dwp51gcdjh3l6"]
 
-[ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/managers/game_manager.tscn" id="1_71j4m"]
+[ext_resource type="Script" uid="uid://bho08aptyf7f" path="res://prefabs/managers/game_manager.gd" id="1_fh13f"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://bfxqdxe6sfsl3" path="res://prefabs/game_states/gm_usables/shoot_target.gd" id="1_rwgxs"]
 [ext_resource type="Texture2D" uid="uid://bka3ud42srojy" path="res://sandbox/textures_proto/dark/texture_04.png" id="2_k0juu"]
+[ext_resource type="PackedScene" uid="uid://ctinark3l27ws" path="res://prefabs/managers/effects_manager.tscn" id="3_rup4s"]
+[ext_resource type="Script" uid="uid://c5krjyeui5vq" path="res://prefabs/managers/ui_manager.gd" id="4_4kbfs"]
 [ext_resource type="PackedScene" uid="uid://x6umueunebab" path="res://prefabs/game_states/gm_usables/shoot_target.tscn" id="4_qfnet"]
 [ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="5_71j4m"]
+[ext_resource type="Shader" uid="uid://c3neb6a2e0vbg" path="res://prefabs/managers/ui_out_line.gdshader" id="5_f17e3"]
+[ext_resource type="Texture2D" uid="uid://c7nkypm7s8fu6" path="res://prefabs/game_states/gm_usables/quest_point.png" id="6_x2olw"]
+[ext_resource type="Script" uid="uid://dedkctoc126kq" path="res://prefabs/game_states/gm_usables/objective_target.gd" id="7_817gm"]
+[ext_resource type="Script" uid="uid://nxby0mkl27i5" path="res://prefabs/ui/tooltip.gd" id="8_ggc52"]
+[ext_resource type="Script" uid="uid://dvhvr278rs18d" path="res://prefabs/ui/choice_tooltip.gd" id="9_l8ah6"]
+[ext_resource type="Script" uid="uid://mmnkjdka5ak0" path="res://scripts/dark_fade.gd" id="10_e75v4"]
+[ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="11_8u370"]
+[ext_resource type="Texture2D" uid="uid://xldcsu5sm21h" path="res://prefabs/game_states/gm_usables/bgquest.png" id="12_rga7q"]
+[ext_resource type="Script" uid="uid://xileblfnbaed" path="res://prefabs/managers/battle_director.gd" id="13_6oujy"]
+[ext_resource type="PackedScene" uid="uid://beech0hdhe6o0" path="res://prefabs/game_states/game_state_00.tscn" id="14_hi6a0"]
+[ext_resource type="PackedScene" uid="uid://h0dft4mcr3qp" path="res://prefabs/game_states/gm_usables/custom_marker.tscn" id="15_eo1xk"]
+[ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="16_18clu"]
+[ext_resource type="PackedScene" uid="uid://c8dcjv8qv7lw3" path="res://prefabs/game_states/gm_usables/invisible_wall.tscn" id="18_4wdv8"]
+[ext_resource type="PackedScene" uid="uid://7j15kus7g3jt" path="res://prefabs/game_states/game_state_01.tscn" id="19_d46x8"]
+[ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="20_3l05q"]
+[ext_resource type="PackedScene" uid="uid://qwhdtvmxif5t" path="res://prefabs/game_states/game_state_02.tscn" id="21_x28ej"]
+[ext_resource type="Script" uid="uid://cajf45kj4rgnv" path="res://prefabs/game_states/gm_usables/woman_points.gd" id="22_1jxku"]
+[ext_resource type="Texture2D" uid="uid://xwmt30vqykl2" path="res://sources/meshes/geometry/textures/wook_planks/wood_planks_diff_2k_rotate.png" id="23_1dgkn"]
+[ext_resource type="Material" uid="uid://dfrsy150v5044" path="res://prefabs/barricade/barricade_meshes/old/material.tres" id="24_e68xj"]
+[ext_resource type="ArrayMesh" uid="uid://d1we637hyqvrr" path="res://prefabs/barricade/barricade_meshes/old/c2c.obj" id="25_5hglh"]
+[ext_resource type="PackedScene" uid="uid://cq3iqolfkxyxg" path="res://prefabs/game_states/game_state_03.tscn" id="26_qg546"]
+[ext_resource type="Script" uid="uid://hj475csp20x" path="res://prefabs/game_states/gm_usables/versaillais_points.gd" id="27_pf35h"]
+[ext_resource type="PackedScene" uid="uid://dn5y2en06sd76" path="res://prefabs/npc/npc.tscn" id="28_iexy4"]
+[ext_resource type="PackedScene" uid="uid://d28tbnqpob3um" path="res://prefabs/ai/agents/versaillais.tscn" id="32_npbic"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jh506"]
+shader = ExtResource("5_f17e3")
+shader_parameter/outline_color = Color(0.99215686, 0.8039216, 0, 0)
+shader_parameter/outline_size = 50.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvqlx"]
+content_margin_left = 20.0
+content_margin_top = 15.0
+content_margin_right = 20.0
+content_margin_bottom = 15.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.84313726)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 20
+shadow_color = Color(1, 1, 1, 0.23529412)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83msq"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 0.84313726)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+corner_detail = 20
+expand_margin_left = 40.0
+expand_margin_top = 40.0
+expand_margin_right = 40.0
+expand_margin_bottom = 60.0
+shadow_color = Color(1, 1, 1, 0.23529412)
+shadow_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_x50xo"]
+font_size = 48
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7sktv"]
+line_spacing = 30.0
+font_size = 24
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r74ma"]
+line_spacing = 30.0
+font_size = 24
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmfoy"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.13464907, 0.1346491, 0.1346491, 0.827451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+shadow_color = Color(1, 1, 1, 0.23529412)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x50xo"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.14333999, 0.14333999, 0.14333999, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+shadow_color = Color(1, 1, 1, 0.23529412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sktv"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.29072073, 0.2907207, 0.2907207, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+shadow_color = Color(1, 1, 1, 0.23529412)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r74ma"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.29072073, 0.2907207, 0.2907207, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+shadow_color = Color(1, 1, 1, 0.23529412)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ol0j6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.14333999, 0.14333999, 0.14333999, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+shadow_color = Color(1, 1, 1, 0.23529412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jv7w5"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.29072073, 0.2907207, 0.2907207, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+shadow_color = Color(1, 1, 1, 0.23529412)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0po2u"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.29072073, 0.2907207, 0.2907207, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 20
+shadow_color = Color(1, 1, 1, 0.23529412)
+shadow_size = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sktv"]
+content_margin_left = 20.0
+texture = ExtResource("12_rga7q")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y7efs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r74ma"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aq8al"]
+shader = ExtResource("5_f17e3")
+shader_parameter/outline_color = Color(0.99215686, 0.8039216, 0, 0)
+shader_parameter/outline_size = 50.0
+
+[sub_resource type="Theme" id="Theme_ol0j6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7r4gi"]
+size = Vector3(1.4827881, 2.8202515, 0.21357422)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rmfoy"]
+size = Vector3(2.4902344, 2.6345215, 14.923035)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83msq"]
+size = Vector3(6.478882, 2.6088943, 32.982117)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y7efs"]
+size = Vector3(3.4313965, 2.685913, 3.119629)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uucmh"]
+size = Vector3(1.5395508, 1.8439941, 8.786865)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ftpgy"]
+size = Vector3(10.876129, 2.4041748, 4.619095)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fs5fe"]
+size = Vector3(1, 2.694336, 8.290947)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pl46k"]
+size = Vector3(1, 1.4350586, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fxuy6"]
+points = PackedVector3Array(0.5023457, 1.3375916, 0.18402483, -0.60251933, 0.38195467, -0.028137892, -0.58433527, 0.25187668, -0.0068333363, 0.29128584, 0.42393377, -0.53970635, 0.27309105, 0.011115597, 0.46710068, -0.47641045, 1.3838333, 0.24906327, -0.24244882, 1.385834, -0.47781697, -0.24244805, 0.016068168, -0.47781545, -0.028159643, 0.97762835, 0.6102673, 0.5247045, 0.020397266, -0.07061471, -0.28287202, 0.021584596, 0.45994908, 0.46000773, 1.3802263, -0.28283444, 0.27309087, 1.3907839, 0.46710035, -0.5381526, 0.998207, -0.28313, 0.522807, 0.38315243, 0.3108237, 0.01440655, 1.0215795, -0.6058795, 0.6102685, 0.9776289, -0.028159706, -0.51361364, 0.42642325, 0.33088475, -0.47781748, 0.016065288, -0.24244907, 0.46000835, 0.021672703, -0.28283486, -0.28317738, 0.40351072, -0.5381235, -0.3042081, 1.0406463, 0.52390164, 0.5209981, 0.42645866, -0.32350916, -0.006944288, 0.01716152, -0.54118955, -0.5412149, 1.3847702, -0.0068255505, 0.31082746, 1.0186187, 0.5228134, 0.0144148255, 0.42271388, 0.6136825, 0.26966858, 1.360688, -0.47513673, -0.22042562, 1.3842227, 0.4840177, -0.5396918, 0.97795874, 0.29127815, -0.47640872, 0.018069154, 0.24906237, 0.5228134, 1.0186187, 0.31082746)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6kj28"]
+size = Vector3(4.6399574, 1.157959, 1.4277954)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n60e"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qc88o"]
+_surfaces = [{
+"aabb": AABB(-0.6194373, 0, -0.6194375, 1.2388749, 1.4018576, 1.238875),
+"format": 34896613377,
+"index_count": 720,
+"index_data": PackedByteArray("PgA/AAEAIgABAD8AQAA+AAEAPgBBAD8AQAABAEIAQwA+AEAARAABACIARABCAAEAIgA/AEUAIwBCAEQAHABEACIALAAjAEQALABEABwAHAAiADAAMAAiAEUALQAsABwALgAcADAALQAcAC4ALgAwAC8AGwAtAC4AGwAuAC8AKwAsAC0AGwArAC0AKwAoACwAKAAjACwAKQAoACsAGwApACsAKABGACMAKQAeACgAHgBGACgAJwAeACkAGwAnACkAHgADAEYARgACACMAIwACAEIARgBHAAIAAwBHAEYASABCAAIASABAAEIASQACAEcASQBIAAIASgBAAEgASwBIAEkASwBKAEgASgBDAEAATABLAEkATQBJAEcATABJAE0ATQBHAAUAAwAFAEcATgBMAE0ATwBNAAUATgBNAE8ATwAFAFAAUQAFAAMAUQBQAAUAJgBRAAMAJgADAB4AJwAmAB4AJQAmACcAGwAlACcAHwBRACYAJQAfACYADQBQAFEAHwANAFEAHQAfACUAGwAdACUAGAANAB8AHQAYAB8ADQAWAFAAUgAYAB0AGwBSAB0AGABTAA0AUwAWAA0AUgBUABgAVABTABgAGwBVAFIAVQBUAFIAVgBQABYAVgBPAFAAUwBXABYAWABPAFYAVAAXAFMAFwBXAFMAWABOAE8AGQAXAFQAVQAZAFQAWQAWAFcAWQBWABYAWgAZAFUAGwBaAFUAWwBWAFkAWwBYAFYAGwBcAFoAGwAvAFwAWgAaABkAXAAaAFoALwBdAFwAXABdABoALwAwAF0AMABFAF0AXQAJABoAXQBFAAkAGgBeABkAGgAJAF4AGQBeABcARQAIAAkARQA/AAgAQQAIAD8ACQAIAF8ACQBfAF4AXgALABcAXgBfAAsAFwALAFcAYABfAAgAQQBgAAgAYQALAF8AYABhAF8AYgBXAAsAYQBiAAsAYgBZAFcAYwBZAGIAYwBbAFkAZABiAGEAZABjAGIAZQBhAGAAZQBkAGEAZgBlAGAAZgBgAEEAZwBkAGUAIQBlAGYAIQBnAGUAaABmAEEAaABBAD4AQwBoAD4ABgBmAGgABgAhAGYAAABoAEMAAAAGAGgAaQAAAEMAaQBDAEoAagAGAAAADwAAAGkAagAAAA8AJABpAEoAJABKAEsADwBpAGsAawBpACQAIAAGAGoAIAAhAAYAbAAkAEsAbABLAEwAawAkACoAKgAkAGwAbQAhACAAbQBnACEABABsAEwABABMAE4AKgBsAG4AbgBsAAQAbwAEAE4AbwBOAFgAbgAEABUAFQAEAG8AMgAqAG4AMQBuABUAMgBuADEADABvAFgADABYAFsAFQBvAHAAcABvAAwAMQAVADYANgAVAHAAcQAMAFsAcQBbAGMAcAAMAA4ADgAMAHEANgBwAHIAcgBwAA4ACgBxAGMACgBjAGQAZwAKAGQAcwBxAAoADgBxAHMABwAKAGcAcwAKAAcABwBnAG0AFAAOAHMAcgAOABQAOABzAAcAFABzADgAEAAHAG0AOAAHABAAEABtADoAOgBtACAAOQA4ABAAOwAQADoAOQAQADsAOgAgAD0APQAgAGoAOwA6ADwAPAA6AD0AOwASADkAPAASADsAdAA4ADkAdAAUADgAOQASAHQAdQAUAHQAdAASAHUAdQByABQANwByAHUAdQASADcANwA2AHIANQA2ADcANwASADUANQAxADYANAAxADUANQASADQANAAyADEAMwAyADQANAASADMAMwATADIAEwAqADIAEwBrACoAdgATADMAMwASAHYAdwBrABMAdgB3ABMAdwAPAGsAdgASAHgAeAB3AHYAEQAPAHcAeAARAHcAEQBqAA8APQBqABEAeQARAHgAeQA9ABEAeAASAHkAPAA9AHkAeQASADwA"),
+"lods": [0.18218097, PackedByteArray("AAABAAIAAAAGAAEAIAAGAAAABgAhAAEAIAAhAAYAIQAIAAEAIgABAAgAIQAKAAgAIwABACIAIwACAAEABwAKACEABwAhACAACgALAAgAIgAIAAkACQAIAAsACgAMAAsAGgAiAAkADgAKAAcADgAMAAoACQALABcAFQAMAA4ADAAWAAsAFwALABYADAAEABYAFQAEAAwAFwAWAA0AGQAJABcAGgAJABkAGQAXABgAGAAXAA0AGwAaABkAGwAZABgABAAFABYADQAWAAUABAAkAAUAGAANAB8AHQAYAB8AGwAYAB0AHQAfACUAGwAdACUAJQAfACYAHwANACYAJQAmACcAGwAlACcAJgANAAMADQAFAAMAJwAmAB4AJgADAB4AAwAFAAIAJAACAAUAJAAAAAIAAwACACMADwAAACQAHgADACgAKAADACMAJwAeACkAKQAeACgAGwAnACkAIAAAAA8ADwAkACoAKgAkAAQAKQAoACsAGwApACsAKwAoACwAKAAjACwAGwArAC0AKwAsAC0ALAAjABwALQAsABwAHAAjACIAGwAtAC4ALQAcAC4AGwAuAC8ALwAaABsALgAcADAALgAwAC8AHAAiADAALwAwABoAMAAiABoAKgAEABUAMQAqABUAMgAqADEAEwAqADIAEwAPACoAMwATADIAEQAPABMAEQAgAA8AEgATADMAEgARABMAMwAyADQANAAyADEANAASADMANAAxADUANQASADQANQAxADYAMQAVADYANQA2ADcANwASADUANgAVABQANwA2ABQANwAUABIAFAAVAA4AFAAOADgAEgAUADgAOAAOAAcAEgA4ADkAOAAHABAAOQA4ABAAEAAHADoAOQAQADsAOwASADkAOwAQADoAOgAHACAAPAASADsAOwA6ADwAPAA9ABIAPAA6AD0AOgAgAD0AEgA9ABEAPQAgABEA"), 0.6800017, PackedByteArray("AAABAAIAAwACAAEABAAAAAIAAwAFAAIABAACAAUAAAAGAAEABwAGAAAABgAIAAEACQABAAgAAwABAAkABgAKAAgABwAKAAYACgALAAgACQAIAAsACgAMAAsADQAFAAMADgAKAAcADgAMAAoABwAAAA8ADwAAAAQAEAAOAAcAEQAHAA8AEAAHABEAEgAQABEAEQAPABMAEgARABMAEgAUABAAFAAOABAAEgATABQAFAAVAA4AEwAVABQAEwAPABUAFQAMAA4ADwAEABUAFQAEAAwADAAEABYABAAFABYADAAWAAsADQAWAAUAFwALABYAFwAWAA0ACQALABcAGAAXAA0AGQAJABcAGQAXABgAGgAJABkAGwAZABgAGwAaABkAHAAJABoAGwAcABoAHAADAAkAGwAYAB0AHgADABwAGwAeABwAHgANAAMAHQAfABsAGwAfAB4AHQAYAB8AHwANAB4AGAANAB8A")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 122,
+"vertex_data": PackedByteArray("OEgAAGMfAAD/f///cRAAAGMf//84SAAAIyn//yWyAAA4SAAAm+AAAGMf///GtwAA/38AAHEQAABL5AAA/38AAJvg//84SAAA29b//9lNAACN7wAA/38AAJvg///GtwAAxrcAAJvgAAD/f///S+QAACWyAADb1gAA2U0AACMpAADv4QUJ/38AAP9/BQkPHgAA/38FCf9/AAAuKwUJB08AAPewBQnQ1AAA2U0AANvWAAD/f///je8AANvW//8lsgAA97D59tDUAADv4fn2/38AANDU+fYHTwAA/3/59v9/AAAHT/n2LisAAN6s+fa2zQAALiv59vewAAD/f/n27+EAACWyAAAjKQAAxrcAAGMfAAD/f///sxsAACMp///ZTQAAcRAAAP9/AAD/f/n2vNkAAAdP+fbQ1AAAIFP59rbNAAAPHvn2/38AAEgy+fberAAAsxsAAP9/AABCJvn2/38AAC4r+fYHTwAASDL59iBTAAAgU/n2SDIAAP9/+fZCJgAA/3/59g8eAAAuKwUJ97AAAA8eBQn/fwAAvDMFCfdTAADvJwUJ/38AALwzBQkHrAAAB08FCdDUAAD3UwUJQswAANDUBQn3sAAAQswFCQesAADQ1AUJB08AAA/YBQn/fwAAQswFCfdTAAD3sAUJLisAAP9/87AAAAAAxrf//2MfAAD/P/OwJhEAAP+/87AmEQAAOEj//2MfAAD/PwtPJhEAANlN//8jKQAAJbL//yMpAACzG////38AAHEQ////fwAAJhHzsP8/AAAAAPOw/38AACYRC0//PwAAAAALT/9/AAAmEQtP/78AACYR87D/vwAA/z8LT9juAAD/P/Ow2O4AADhI//+b4AAA2U3//9vWAAC2zfn23qwAACWy///b1gAA0NT59vewAAC82fn2/38AAP9/87D//wAAxrf//5vgAAD/fwtP//8AAP+/87DY7gAAts359iBTAAD/vwtP2O4AAN6s+fZIMgAA97D59i4rAABL5P///38AAI3v////fwAA2O7zsP8/AAD///Ow/38AANju87D/vwAA2O4LT/+/AAD//wtP/38AANjuC0//PwAA/78LTyYRAACb4AAAOEgAAP9/C08AAAAAYx8AADhIAAD/fwAAsxsAACMpAADZTQAAYx8AAMa3AADb1gAA2U0AACMpAAAlsgAA/38AAI3vAAD/fwAAS+QAAJvgAADGtwAA/38FCe/hAADb1gAAJbIAAAesBQlCzAAA/38FCQ/YAAD3UwUJvDMAAAdPBQkuKwAA/38FCe8nAAAHrAUJvDMAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wx4yd"]
+resource_name = "sm_barrel_stand_c_Cylinder_008"
+_surfaces = [{
+"aabb": AABB(-0.6194373, 0, -0.6194375, 1.2388749, 1.4018576, 1.238875),
+"attribute_data": PackedByteArray("VRX/fwAAAACqKgAAAAD/f6pq/39VVQAA/38AAFSV/3+qqgAA/7//f1TVAAD///9///8AADz3/79v/f+//7+Ogkehyoqd29XvYKQokLfeNPVHoTT1YKTV79ZvYKT/P46CNHVHoTR1t94pEJ3b1m+d28oKR6H/P2/9ygq33v8/PPfv9f+/PPf/v/+/DopgpCiQndvV70iRBqX32rXuYKTV77ZuBqXWb2Ck8HX/vwclSJHWb53bKRCd2/hate5JEffa/z889/8/7/U/2P6V7/X/v/+/Doo/2P/p99q17v+/f49IkQalf4//v7pmo6m2bgal8HX/v/8/RpMHJUiRoylEmUkR99q4bP+/+Fq17qMpueb/P+/1tljM6rpmW9b/P/9/qer/f53bKJC33sqKjoL/v8KI/7//P8KIKRBgpPfaSJGd2yiQte4GpcKI/7+17vfaDor/v0iR99oGpbXu/z8Oiv8/wogpEGCkSREGpQ8K/78HJbXu99pIkf/pv6e17galf/D/v//pv6f/6T/Yf/D/v7Xu99q/p//p/79/8Aalte7+lT/Yv6f/6UiR99p/j/+//pU/2A6K/7/+lb+nv6f+lf8/ko5bVkSZ/z8OikknMZUyFUinSREGpZMO/79FGaOpDwr/vzIVtdhHE/+/SSfM6kUZW9YHJbXu/z9r8f8/t+z//6oqqeoAAKnqqir//1VVVNWqKqnqVVX/vwAAVNVVVVTV/3//v6oq/79VVaqqqipUlQAAqqpVVaqq/39UlaoqVJVVVf9/qiqqagAA/39VVf9//3+qaqoqqmpVVVVVqir/PwAAVVVVVVVV/3//P6oq/z9VVaoqqipVFQAAqipVVaoq/39VFaoqAACqKlUVVVUAAFVV/7/CiNXvYKTKikehNPVHoSiQYKTV753byoq33jT1t94okJ3b/7889/+/b/23XsqKnlsokGEkKJBwff+/RyHKijx3/7/CCP+/t1409Y8C/7+eW9XvYSTV70chNPX/v8KIBqVIkSiQYKTV72CkKJCd29Xvndv/v+/1/788955bKJD4WkiRPHf/v2EkKJC2bvfanlvV78II/79hJNXvP9j+lf+/f48GpUiRv6f+lf6Vv6c/2P/p/+k/2P+/f/D/v+/1+FpIkbZYMZXNakinbHH/v7Zu99rNarXYW1a55g=="),
+"format": 34896613399,
+"index_count": 720,
+"index_data": PackedByteArray("gACBAAwAgACCAIEAggAKAIEAgwCCAIAAggCEAAoAgwCFAIIAhQCEAIIACwCFAIMAhACGAAoACwBIAIUASACHAIUAhQCHAIQASACIAIcAhACJAIYAhwCJAIQAiQAIAIYAiACKAIcAhwCKAIkAiAAJAIoAiQCLAAgAigCLAIkAiwCMAAgACQCNAIoAigCNAIsACQCOAI0AiwCPAIwAjQCPAIsAjwAGAIwAjgCQAI0AjQCQAI8AjgAHAJAAjwCRAAYAkACRAI8AkQCSAAYABwCTAJAAkACTAJEABwCUAJMAkQCVAJIAkwCVAJEAlQAFAJIAlACWAJMAkwCWAJUAlAAEAJYAlQCXAAUAlgCXAJUAlwCYAAUABACZAJYAlgCZAJcABACaAJkAlwCbAJgAmQCbAJcAmwACAJgAmgCcAJkAmQCcAJsAmgBHAJwAmwCdAAIAnACdAJsAnQCeAAIARwCfAJwAnACfAJ0ARwCgAJ8AnQChAJ4AnwChAJ0AoQABAJ4AoQCiAAEAnwCjAKEAowCiAKEAoACjAJ8AowCkAKIAoAAAAKMAAACkAKMAAAADAKQASQAPAKUApQAPABAASQBKAA8ApQAQABIApgBKAEkAEgAQAKcApgCoAEoAEgCnAKkADQCoAKYAqQCnAEsADQAOAKgAqQBLAEwAqgAOAA0ATABLAKsAqgCsAA4ATACrAK0AEQCsAKoArQCrABQAEQATAKwArQAUABUArgATABEAFQAUAK8ArgCvABMAFQCvAK4ATQCwALEAsQCwABgATQAXALAAsQAYABYAsgAXAE0AFgAYALMAsgC0ABcAFgCzALUATgC0ALIAtQCzABkATgAcALQAtQAZABsAtgAcAE4AGwAZALcAtgC4ABwAGwC3ALkAGgC4ALYAuQC3AB0AGgAeALgAuQAdAB8AugAeABoAHwAdALsAugC7AB4AHwC7ALoATwC8ACIAIgC8ACMATwBQALwAIgAjAL0AUQBQAE8AvQAjAL4AUQC/AFAAvQC+ACUAIAC/AFEAJQC+AFIAIAAhAL8AJQBSAFQAUwAhACAAVABSAMAAUwDBACEAVADAAFUAJgDBAFMAVQDAACcAJgAkAMEAVQAnAFYAwgAkACYAVgAnAMMAwgDDACQAVgDDAMIAVwDEAMUAxQDEACkAVwBYAMQAxQApACgAKwBYAFcAKAApAMYAKwDHAFgAKADGACoAWgDHACsAKgDGACwAWgBZAMcAKgAsAMgAWwBZAFoAyAAsAMkAWwDKAFkAyADJAC4ALwDKAFsALgDJADAALwAtAMoALgAwADEAXAAtAC8AMQAwAMsAXADLAC0AMQDLAFwAzAA0AM0AzQA3AMwAzABdADQAzQA0AM4AXgBdAMwAzAAyAF4AXgBfAF0AzQDOAM8AzwBvAM0AzwDOADgAYABfAF4AXgBhAGAAYAAzAF8AzwA4AG4AbgDQAM8AbgA4AG0AYgAzAGAAYABjAGIAYgBkADMAbgBtAGsAawA5AG4AawBtAGoA0QBkAGIAYgDSANEA0QA2AGQAawBqAGgAaABsAGsAaABqAGcA0wA2ANEA0QA1ANMA0wDUADYAZQBnANQAZQDUANMAaABnAGUA0wBmAGUAZQBpAGgAcADVANYAcQBwANYAcAByANUA1gDVADsAcwByAHAAPQBzAHAAcwA+AHIA1gA7ANcAOgDWANcA1wA7ADwAdAA+AHMAPwB0AHMAdAB1AD4A1wA8ANgAQQDXANgA2AA8ANkAdgB1AHQAdwB2AHQAdgB4AHUA2ADZANoARgDYANoA2gDZAEIAeQB4AHYAegB5AHYAeQBAAHgA2gBCAEUA2wDaAEUARQBCAEQAewBAAHkAfAB7AHkAewB9AEAAfgBEAH0AfgB9AHsARQBEAH4AQwB+AHsAfwBFAH4A"),
+"lods": [0.18218097, PackedByteArray("AAABAAIAAAADAAEARwAAAAIARwACAAUABABHAAUABAAFAAYABwAEAAYABwAGAAgACQAHAAgACQAIAAoASAAJAAoASAAKAAwACwBIAAwASQBKAA8ASQAPABAADQBKAEkASQAQABIADQAOAEoAEgAQAEsAEQAOAA0AEgBLAEwAEQATAA4ATABLABQAFQATABEATAAUABUAFQAUABMATQAYABYAFgAYABkATQAXABgAFgAZABsATgAXAE0AGwAZAB0ATgAcABcAGwAdAB8AGgAcAE4AHwAdAB4AGgAeABwAHwAeABoATwBQACIAUQBQAE8AIgBQACMAUQAhAFAAIgAjACUAIAAhAFEAJQAjAFIAUwAhACAAJQBSAFQAUwAkACEAVABSAFUAJgAkAFMAVQBSACcAJgAnACQAVQAnAFYAVgAnACYAVwBYACgAKwBYAFcAKABYACkAKwBZAFgAKAApACoAWgBZACsAKgApACwAWwBZAFoAKgAsAC4AWwAtAFkALgAsADAALwAtAFsALgAwADEAXAAtAC8AXAAwAC0AMQAwAFwAMgBdADQAXgBdADIAXgBfAF0ANwA0ADgAYABfAF4AXgBhAGAAYAAzAF8AYgAzAGAAYABjAGIAYgBkADMANQBkAGIANQA2AGQAZQA2AGYAZQBnADYAaABnAGUAZQBpAGgAaABqAGcAawBqAGgAaABsAGsAawBtAGoAbgBtAGsAawA5AG4AbgA4AG0AbwA4AG4AcAA7AHEAOgA7ADwAcAByADsAQQA8AEIAcwByAHAAPQBzAHAAcwA+AHIAdAA+AHMAPwB0AHMAdAB1AD4AdgB1AHQAdwB2AHQAdgB4AHUAeQB4AHYAegB5AHYAeQBAAHgAewBAAHkAfAB7AHkAewB9AEAAfgB9AHsAQwB+AHsAfgBEAH0ARQBEAH4AfwBFAH4ARQBCAEQARgBCAEUA"), 0.6800017, PackedByteArray("AAABAAIAAAADAAEABAAAAAIABAACAAUABAAFAAYABwAEAAYABwAGAAgACQAHAAgACQAIAAoACwAJAAoACwAKAAwADQAOAA8ADQAPABAAEQAOAA0ADQAQABIAEQATAA4AEgAQABQAFQATABEAEgAUABUAFQAUABMAFgAXABgAFgAYABkAGgAXABYAFgAZABsAGgAcABcAGwAZAB0AGgAeABwAGwAdAB8AHwAeABoAHwAdAB4AIAAhACIAIgAhACMAIAAkACEAIgAjACUAJgAkACAAJQAjACcAJgAnACQAJQAnACYAKAApACoAKwApACgAKgApACwAKwAtACkAKgAsAC4ALwAtACsALgAsADAALwAwAC0ALgAwADEAMQAwAC8AMgAzADQANQA2ADMANwA0ADgAOQA4ADYAOgA7ADwAPQA+ADsAPwBAAD4AQQA8AEIAQwBEAEAARQBEAEMARQBCAEQARgBCAEUA")],
+"material": SubResource("StandardMaterial3D_7n60e"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 220,
+"vertex_data": PackedByteArray("OEgAAGMfwOr/f///cRDR/2Mf//84SIbV/38AAHEQ0f84SAAAm+CNlmMf///Gtz6r/3///43vZ4fGtwAAm+CNlpvg///Gtz6rje8AAP9/VcCb4P//OEiG1f9/AABxENH//3///3EQ0f9L5AAA/3//P43vAAD/f/8//38AAHEQ/z84SAAAYx//PyWyAADb1v8/2U0AACMp/z/GtwAAm+D/PzhIAACb4P8/2U0AANvW/z/b1v//2U3/v/9///9xEP+/m+D//zhI/7+b4P//xrf/vyMp//8lsv+/29b//yWy/79jH///OEj/v/9///+N7/+/Yx///8a3/7//f///S+T/v+/hBQn/f8kvS+QAAP9/yS//fwUJDx6/dtlNAAAjKRVPJbIAANvW8hIuKwUJB09wPfewBQnQ1PIS2U0AANvW8hLQ1Pn2B0+OwtvW///ZTY7C7+H59v9/NdAHT/n2LivpsNvW//8lslzeIyn//yWyXN73sPn20NQM7S4r+fb3sFze/3///0vkvvb/f/n27+G+9v9/BQn/f/+/7+EFCf9//z//fwUJDx7/P/9/BQn/f/+/97AFCdDU/z//fwUJ/3//vy4rBQkHT/8//38FCf9//7//f/n2/38dwtDU+fYHT/+/7+H59v9//7//f/n2/38mzQdP+fYuK/+//3/59v9/RcguK/n297D/v/9/+fb/f/+/97D59tDU/7//f/n2/3/Exf9/+fbv4f+/3qz59rbN3sH/f/n2/39BwnEQAAD/f1XAxrcAAGMfwOolsgAAIyn/P8a3AABjH/8/cRAAAP9//z+zGwAA/3//P/9///+zG/+/Iyn//9lN/7/3sAUJLisVTyWyAAAjKRVP0NQFCQdPcD2zGwAA/3/JL9DUBQn3sKIhDx4FCf9/yS8uKwUJ97CiIQdPBQnQ1PIS/3/59g8eP4n/f///sxs/iSMp///ZTY7CLiv59gdPjsIPHvn2/3810AdP+fbQ1Azt97AFCS4r/z9CzAUJ91P/P9DUBQkHT/8/D9gFCf9//z//fwUJ/3//v0LMBQkHrP8//38FCf9//7/Q1AUJ97D/P/dTBQlCzP8//38FCf9//78HTwUJ0NT/P7wzBQkHrP8//38FCf9//78uKwUJ97D/P+8nBQn/f/8//38FCf9//78PHgUJ/3//P7wzBQn3U/8//38FCf9//7//f/n2QiYIwP9/+fb/f8TF/3/59g8e/78gU/n2SDLewUgy+fYgU9PALiv59gdP/79CJvn2/38XwP9/+fb/f0HCDx759v9//79IMvn23qwWwP9/+fb/f/+/IFP59rbNpMD/f/n2/38dwgdP+fbQ1P+//3/59rzZCMD/f/n2/38mzf9/87AAAPP/xrf//2MfwOr/v/OwJhGv6v9/C08AAPP/2O7zsP8/YNX/vwtPJhGv6o3v////f1XA2O4LT/8/YNWb4AAAOEiG1f//87D/fxTA//8LT/9/FMDY7vOw/7/Oqsa3//+b4I2W2O4LT/+/zqqb4AAAxrc+q/+/87DY7qKV/78LT9juopX/f/Ow//+mgzhI//+b4I2W/38LT///poP/fwAAje9nh/8/87DY7qKV/z8LT9juopUmEfOw/7/OqnEQ////f1XAJhELT/+/zqpjHwAAxrc+qwAA87D/fxTAAAALT/9/FMAmEfOw/z9g1ThI//9jH8DqJhELT/8/YNVjHwAAOEiG1f8/87AmEa/q/3/zsAAA8///PwtPJhGv6v9/C08AAPP//38AALMb/z/b1gAA2U3/P2MfAAA4SP8/m+AAADhI/z8jKQAA2U3/P9vWAAAlsv8/Yx8AAMa3/z+b4AAAxrf/PyMpAAAlsv8//38AAEvk/z//fwAAje//P8a3//9jH/+/JbL//yMp/7/ZTf//Iyn/v43v////f/+/OEj//2Mf/79L5P///3//v7Mb////f/+/xrf//5vg/79xEP///3//vyWy///b1v+/2U3//9vW/784SP//m+D/v/9/AACzG792B08FCS4rFU8jKQAA2U1wPdvWAADZTXA9IykAACWyoiHb1gAAJbKiIf9/BQnv4UAJ/38AAEvkQAklsv//IynpsPew+fYuK+mwS+T///9/NdDZTf//IynpsNDU+fb3sFzeJbL//9vWDO2zG////3810NlN///b1gztB6wFCbwz/z//fwUJ7yf/PwdPBQkuK/8/91MFCbwz/z//fwUJ/3//vwesBQlCzP8//38FCf9//7//fwUJD9j/P/9/BQnv4f8/97D59i4r/7/erPn2SDKkwLbN+fYgUxbAvNn59v9/F8DQ1Pn297D/v7bN+fberNPA/3/59v9/Rci8cjH9xoLB8uOF6O/Ccjf9bVmT4S2Qeub///9/lGGRJoSZLRAhdrwTFpDjBTh9PQ08jccCAAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9//v//f////3/+//9//v//f/7//3/+//9//v//f////3/+//9/////f5ZOSqeWTkqnAAD/fwMXiiFZOJ6qCiCWKVk4nqqeKqVH9N9o1vTfaNaz2JbOiaH8aMfTRca4ucdTYNVZuLi5x1P///9//v//fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/l+swV/7//3/+//9/J7brpP7//3/TvxWg/v//f////3/+//9/V+OvRv7//3/42IKTN9bjlEJsIPYyfUINAAD/fwAA/38AAP9/AAD/f////3/+//9/dV4Cl3VeApdoVgmgSydoMUZGN6xLJ2gxNyy5OZ4qpUf+//9//v//f5ap9V+WqfVfaLG0WKXHYFUAAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/tvijg1fjr0b+//9/+NiCk2DjTo7+//9/o/SthTfW45T+//9/e/r4dP7//38H8w9ml+swV/7//3+2+KODJ7brpOGGcwFCjc0C4oZ0AYt+4gZziBgDin7iBryT3gnnfHQIG3oWEIiKRAW7eogK943bCJGmax4kd/cN0W+EGWeWqxFTbmcW////f2qebdkAAP9/AAD/f6uRl+mXaVPu2ogH8t2JQuwHciP3embR70OFdvV2dbr6F4OK98yCvPKLd+b86G8b+nSBHPlzgRz5HHmK/h15i/4AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f/7//3/+//9//v//f////3/+//9/////f/7//3/+//9//v//f/7//3/+//9//v//fwAA/38DF4ohCiCWKWhWCaA3LLk5RkY3rAAA/38AAP9/++h03vvodN6z2JbOiaH8aMfTRcZg1Vm4aLG0WKXHYFUAAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3/+//9/B/MPZnv6+HSj9K2F/v//f2DjTo7TvxWg")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qc88o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrm32"]
+albedo_texture = ExtResource("23_1dgkn")
+roughness = 0.54
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u75jf"]
+albedo_color = Color(0.9110892, 0.1364511, 3.85046e-07, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kkeqv"]
+material = SubResource("StandardMaterial3D_u75jf")
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.25
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g4ds3"]
+size = Vector3(9.191589, 0.7286377, 20.975586)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nnsk1"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -125,12 +433,510 @@ size = Vector3(0.25, 0.25, 0.1)
 
 [node name="World" type="Node3D" unique_id=1121832902]
 
-[node name="GameManager" parent="." unique_id=1070764289 instance=ExtResource("1_71j4m")]
+[node name="GameManager" type="Node" parent="." unique_id=1070764289 node_paths=PackedStringArray("all_states")]
+script = ExtResource("1_fh13f")
+use_narrative = false
+player_prefab = ExtResource("1_nnsk1")
+all_states = [NodePath("States/GameState00"), NodePath("States/GameState01"), NodePath("States/GameState02"), NodePath("States/GameState03")]
 
-[node name="PlayerSpawner" parent="GameManager/States/GameState00" parent_id_path=PackedInt32Array(1070764289, 1759019559) index="0" unique_id=1090379721]
+[node name="EffectsManager" parent="GameManager" unique_id=1116254742 instance=ExtResource("3_rup4s")]
+
+[node name="UIManager" type="Control" parent="GameManager" unique_id=430990409]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_4kbfs")
+
+[node name="ObjectiveTarget" type="TextureRect" parent="GameManager/UIManager" unique_id=554183493]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_jh506")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("6_x2olw")
+expand_mode = 1
+script = ExtResource("7_817gm")
+
+[node name="TooltipContainer" type="CenterContainer" parent="GameManager/UIManager" unique_id=156249013]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -192.0
+offset_top = -272.0
+offset_right = 192.0
+offset_bottom = -218.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Tooltip" type="PanelContainer" parent="GameManager/UIManager/TooltipContainer" unique_id=876765785]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "
+"
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvqlx")
+script = ExtResource("8_ggc52")
+input_color = Color(0.9764706, 0.93333334, 0, 1)
+action_color = Color(0.56954795, 0.714388, 0.8659134, 1)
+
+[node name="TipLabel" type="RichTextLabel" parent="GameManager/UIManager/TooltipContainer/Tooltip" unique_id=2022870588]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "PRESS [color=#f9ee00]INPUT[/color]  TO ACTION
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChoiceTooltip" type="HBoxContainer" parent="GameManager/UIManager" unique_id=2019465799]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = 102.0
+offset_right = 350.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+script = ExtResource("9_l8ah6")
+
+[node name="FrancoisChoice" type="PanelContainer" parent="GameManager/UIManager/ChoiceTooltip" unique_id=876262811]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+tooltip_text = "
+"
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvqlx")
+
+[node name="FrancoisLabel" type="RichTextLabel" parent="GameManager/UIManager/ChoiceTooltip/FrancoisChoice" unique_id=78435820]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "PRESS [color=#f9ee00]A[/color]  TO SURRENDER
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LouiseChoice" type="PanelContainer" parent="GameManager/UIManager/ChoiceTooltip" unique_id=82936910]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+tooltip_text = "
+"
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvqlx")
+
+[node name="LouiseLabel" type="RichTextLabel" parent="GameManager/UIManager/ChoiceTooltip/LouiseChoice" unique_id=344421289]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "PRESS [color=#f9ee00]E[/color] TO FIGHT TO THE DEATH"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LetterBoxContainer" type="VBoxContainer" parent="GameManager/UIManager" unique_id=1532973952]
+unique_name_in_owner = true
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopStrip" type="ColorRect" parent="GameManager/UIManager/LetterBoxContainer" unique_id=2028525904]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="GameManager/UIManager/LetterBoxContainer" unique_id=1864974758]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="BottomStrip" type="ColorRect" parent="GameManager/UIManager/LetterBoxContainer" unique_id=712892285]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)
+
+[node name="DarkFade" type="ColorRect" parent="GameManager/UIManager" unique_id=546504817]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("10_e75v4")
+
+[node name="CenterContainer" type="CenterContainer" parent="GameManager/UIManager" unique_id=49054125]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TutorialKeyboardMouse" type="PanelContainer" parent="GameManager/UIManager/CenterContainer" unique_id=978923551]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_83msq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/UIManager/CenterContainer/TutorialKeyboardMouse" unique_id=1648012508]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Title" type="Label" parent="GameManager/UIManager/CenterContainer/TutorialKeyboardMouse/VBoxContainer" unique_id=562012604]
+layout_mode = 2
+text = "Keyboard and Mouse"
+label_settings = SubResource("LabelSettings_x50xo")
+horizontal_alignment = 1
+
+[node name="SeparationLine" type="ColorRect" parent="GameManager/UIManager/CenterContainer/TutorialKeyboardMouse/VBoxContainer" unique_id=306147121]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameManager/UIManager/CenterContainer/TutorialKeyboardMouse/VBoxContainer" unique_id=578294681]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Actions" type="Label" parent="GameManager/UIManager/CenterContainer/TutorialKeyboardMouse/VBoxContainer/HBoxContainer" unique_id=2023676911]
+layout_mode = 2
+text = "Move  :
+Run  :
+Jump  :
+Pause  :"
+label_settings = SubResource("LabelSettings_7sktv")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Inputs" type="Label" parent="GameManager/UIManager/CenterContainer/TutorialKeyboardMouse/VBoxContainer/HBoxContainer" unique_id=502527433]
+layout_mode = 2
+text = "ZQSD
+SHIFT
+SPACE
+ESCAPE"
+label_settings = SubResource("LabelSettings_r74ma")
+vertical_alignment = 1
+
+[node name="TutorialGamepad" type="PanelContainer" parent="GameManager/UIManager/CenterContainer" unique_id=1831936992]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_83msq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameManager/UIManager/CenterContainer/TutorialGamepad" unique_id=1299865804]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Title" type="Label" parent="GameManager/UIManager/CenterContainer/TutorialGamepad/VBoxContainer" unique_id=405071537]
+layout_mode = 2
+text = "   Gamepad   "
+label_settings = SubResource("LabelSettings_x50xo")
+horizontal_alignment = 1
+
+[node name="SeparationLine" type="ColorRect" parent="GameManager/UIManager/CenterContainer/TutorialGamepad/VBoxContainer" unique_id=817351665]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+color = Color(0.8, 0.8, 0.8, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameManager/UIManager/CenterContainer/TutorialGamepad/VBoxContainer" unique_id=724013509]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Actions" type="Label" parent="GameManager/UIManager/CenterContainer/TutorialGamepad/VBoxContainer/HBoxContainer" unique_id=1684422315]
+layout_mode = 2
+text = "       Move  :
+Run  :
+Jump  :
+Pause  :"
+label_settings = SubResource("LabelSettings_7sktv")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Inputs" type="Label" parent="GameManager/UIManager/CenterContainer/TutorialGamepad/VBoxContainer/HBoxContainer" unique_id=1050550994]
+layout_mode = 2
+text = "LEFT STICK
+L3
+A
+START"
+label_settings = SubResource("LabelSettings_r74ma")
+vertical_alignment = 1
+
+[node name="PauseContainer" type="PanelContainer" parent="GameManager/UIManager/CenterContainer" unique_id=456973355]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rmfoy")
+
+[node name="Buttons" type="VBoxContainer" parent="GameManager/UIManager/CenterContainer/PauseContainer" unique_id=2052351423]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Options" type="Button" parent="GameManager/UIManager/CenterContainer/PauseContainer/Buttons" unique_id=923722221]
+unique_name_in_owner = true
+z_index = 3
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_x50xo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7sktv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_r74ma")
+text = "Options"
+script = ExtResource("11_8u370")
+
+[node name="Quit" type="Button" parent="GameManager/UIManager/CenterContainer/PauseContainer/Buttons" unique_id=621774024]
+unique_name_in_owner = true
+z_index = 3
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ol0j6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jv7w5")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0po2u")
+text = "Quit"
+script = ExtResource("11_8u370")
+
+[node name="ObjectiveContainer" type="VBoxContainer" parent="GameManager/UIManager" unique_id=812492473]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_top = 32.0
+offset_right = 695.0
+offset_bottom = 139.0
+theme_override_constants/separation = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="GameManager/UIManager/ObjectiveContainer" unique_id=506578922]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7sktv")
+
+[node name="ObjectiveTitleLabel" type="RichTextLabel" parent="GameManager/UIManager/ObjectiveContainer/PanelContainer" unique_id=201540228]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0.99215686, 0.8039216, 0, 0)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Objective
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="GameManager/UIManager/ObjectiveContainer" unique_id=1983137391]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_y7efs")
+
+[node name="ObjectiveTextContainer" type="HBoxContainer" parent="GameManager/UIManager/ObjectiveContainer" unique_id=1188741627]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="GameManager/UIManager/ObjectiveContainer/ObjectiveTextContainer" unique_id=1450316153]
+layout_mode = 2
+theme_override_constants/separation = 20
+theme_override_styles/separator = SubResource("StyleBoxEmpty_r74ma")
+
+[node name="TargetTitle" type="TextureRect" parent="GameManager/UIManager/ObjectiveContainer/ObjectiveTextContainer" unique_id=274613385]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_aq8al")
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+theme = SubResource("Theme_ol0j6")
+texture = ExtResource("6_x2olw")
+expand_mode = 1
+
+[node name="VSeparator2" type="VSeparator" parent="GameManager/UIManager/ObjectiveContainer/ObjectiveTextContainer" unique_id=713206862]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_r74ma")
+
+[node name="ObjectiveLabel" type="RichTextLabel" parent="GameManager/UIManager/ObjectiveContainer/ObjectiveTextContainer" unique_id=649088959]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0.99215686, 0.8039216, 0, 0)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "· Go to the barricade
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BattleDirector" type="Node" parent="GameManager" unique_id=952621406]
+script = ExtResource("13_6oujy")
+
+[node name="States" type="Node" parent="GameManager" unique_id=103955825]
+
+[node name="GameState00" parent="GameManager/States" unique_id=1759019559 instance=ExtResource("14_hi6a0")]
+
+[node name="PlayerSpawner" parent="GameManager/States/GameState00" unique_id=1090379721 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
 transform = Transform3D(-0.69127357, 0, -0.7225932, 0, 1, 0, 0.7225932, 0, -0.69127357, -3.0263557, 0, -2.2616625)
 
-[node name="WomanPoints" parent="GameManager/States/GameState02" parent_id_path=PackedInt32Array(1070764289, 345645137) index="0" unique_id=1055966233 node_paths=PackedStringArray("first_points", "second_points")]
+[node name="GeorgesRDV" parent="GameManager/States/GameState00" unique_id=1327558998 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(0.02539181, 2.9103828e-10, -0.9996775, -0.016836202, 0.9998581, -0.0004276392, 0.9995358, 0.01684163, 0.025388205, -32.428043, 0.06509536, 0.9322983)
+
+[node name="FirstChassepot" parent="GameManager/States/GameState00" unique_id=366188147 instance=ExtResource("16_18clu")]
+unique_name_in_owner = true
+transform = Transform3D(0.70664114, -0.8376374, 0.09498386, 0.7082545, 0.52268815, -0.65967625, 0.45720237, 0.48493376, 0.8751031, -33.12742, 1.324722, 1.4333187)
+
+[node name="HotelTarget" type="StaticBody3D" parent="GameManager/States/GameState00" unique_id=336517668]
+transform = Transform3D(-0.042904478, 0, -0.99907917, 0, 1, 0, 0.99907917, 0, -0.042904478, -48.558113, 4.1730666, -4.88292)
+script = ExtResource("1_rwgxs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/States/GameState00/HotelTarget" unique_id=1994086882]
+transform = Transform3D(1.0001035, 0, -6.7427754e-07, 0, 1, 0, 6.7427754e-07, 0, 1.0001035, -0.21734369, 0.20889282, 0.11560884)
+shape = SubResource("BoxShape3D_7r4gi")
+
+[node name="BarricadePoint" parent="GameManager/States/GameState00" unique_id=1924856508 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+
+[node name="VersaillaisComingPoint" parent="GameManager/States/GameState00" unique_id=1987850955 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.242138, -4.7683716e-07, -24.56768)
+
+[node name="InvisibleWallBarricade" parent="GameManager/States/GameState00" unique_id=207561140 instance=ExtResource("18_4wdv8")]
+unique_name_in_owner = true
+transform = Transform3D(0.8941777, 0, 0.44771227, 0, 1, 0, -0.44771227, 0, 0.8941777, 0.56978023, 2.8360798, 6.3059683)
+
+[node name="GameState01" parent="GameManager/States" unique_id=443097567 instance=ExtResource("19_d46x8")]
+
+[node name="GoToBarricadeArea" parent="GameManager/States/GameState01" unique_id=1458560722 instance=ExtResource("20_3l05q")]
+unique_name_in_owner = true
+transform = Transform3D(0.872888, 0, 0.4879206, 0, 1, 0, -0.4879206, 0, 0.872888, -4.462287, 1.3473175, 1.8657641)
+
+[node name="CollisionShape3D" parent="GameManager/States/GameState01/GoToBarricadeArea" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_rmfoy")
+
+[node name="ObjectivePointBarricade" parent="GameManager/States/GameState01" unique_id=1773407459 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4740524, 1.115611, -0.20744711)
+
+[node name="ReturnToBarricadeArea" parent="GameManager/States/GameState01" unique_id=334245662 instance=ExtResource("20_3l05q")]
+unique_name_in_owner = true
+transform = Transform3D(0.872888, 0, 0.4879206, 0, 1, 0, -0.4879206, 0, 0.872888, -12.214888, 1.3412502, 3.5257905)
+
+[node name="CollisionShape3D" parent="GameManager/States/GameState01/ReturnToBarricadeArea" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_83msq")
+
+[node name="CanonShootCover1" parent="GameManager/States/GameState01" unique_id=931972946 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(0.46348163, 0, 0.88610655, 0, 1, 0, -0.88610655, 0, 0.46348163, -13.000165, -4.7683716e-07, -4.1102962)
+
+[node name="CanonShootCover2" parent="GameManager/States/GameState01" unique_id=1249010536 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(-0.9783612, 0, 0.20690428, 0, 1, 0, -0.20690428, 0, -0.9783612, -5.4447103, -4.7683716e-07, 8.486588)
+
+[node name="DebugNavMeshArea" parent="GameManager/States/GameState01" unique_id=935600620 instance=ExtResource("20_3l05q")]
+unique_name_in_owner = true
+transform = Transform3D(0.38865766, 0, -0.9213822, 0, 1, 0, 0.9213822, 0, 0.38865766, 0.2039774, 1.5654583, 6.192831)
+
+[node name="CollisionShape3D" parent="GameManager/States/GameState01/DebugNavMeshArea" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_y7efs")
+
+[node name="DebugNavPoint" parent="GameManager/States/GameState01" unique_id=1598561906 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(-0.21741073, 0, -0.97608024, 0, 1, 0, 0.97608024, 0, -0.21741073, -3.296, 0.1, 6.465)
+
+[node name="CanonDetectionArea" parent="GameManager/States/GameState01" unique_id=111489008 instance=ExtResource("20_3l05q")]
+unique_name_in_owner = true
+transform = Transform3D(0.49821526, 0, 0.8670534, 0, 1, 0, -0.8670534, 0, 0.49821526, 6.195838, 1.0049603, -25.543251)
+
+[node name="CollisionShape3D" parent="GameManager/States/GameState01/CanonDetectionArea" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_uucmh")
+
+[node name="FrancoisMovedPos" parent="GameManager/States/GameState01" unique_id=1376444919 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(-0.50226545, 0, 0.8647135, 0, 1, 0, -0.8647135, 0, -0.50226545, -30.512, 0.1, 17.801)
+
+[node name="GoToSecondBarricade" parent="GameManager/States/GameState01" unique_id=1366697800 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.114056, 1.1159999, 16.07647)
+
+[node name="DeathZoneSecondBarricade" parent="GameManager/States/GameState01" unique_id=685588361 instance=ExtResource("20_3l05q")]
+unique_name_in_owner = true
+transform = Transform3D(0.48167723, 0, -0.8763487, 0, 1, 0, 0.8763487, 0, 0.48167723, -20.369764, 0.503556, 16.570147)
+
+[node name="CollisionShape3D" parent="GameManager/States/GameState01/DeathZoneSecondBarricade" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_ftpgy")
+
+[node name="GameState02" parent="GameManager/States" unique_id=345645137 instance=ExtResource("21_x28ej")]
+
+[node name="WomanPoints" type="Node" parent="GameManager/States/GameState02" unique_id=1055966233 node_paths=PackedStringArray("women", "first_points", "second_points")]
+unique_name_in_owner = true
+script = ExtResource("22_1jxku")
+women = [NodePath("../../../NPC/Communards/Louise"), NodePath("../../../NPC/Communards/Marie"), NodePath("../../../NPC/Communards/Woman1"), NodePath("../../../NPC/Communards/Woman2"), NodePath("../../../NPC/Communards/Woman3")]
 first_points = {
 "Louise": NodePath("First/Louise01"),
 "Marie": NodePath("First/Marie01"),
@@ -145,6 +951,408 @@ second_points = {
 "Woman2": NodePath("Second/Woman202"),
 "Woman3": NodePath("Second/Woman302")
 }
+
+[node name="First" type="Node" parent="GameManager/States/GameState02/WomanPoints" unique_id=1197697371]
+
+[node name="Louise01" parent="GameManager/States/GameState02/WomanPoints/First" unique_id=1302806485 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(-0.8651253, 0, 0.50155616, 0, 1, 0, -0.50155616, 0, -0.8651253, -29.681, 0.1, 25.705)
+
+[node name="Marie01" parent="GameManager/States/GameState02/WomanPoints/First" unique_id=929494906 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(-0.8864461, 0, 0.46283185, 0, 1, 0, -0.46283185, 0, -0.8864461, -29.201, 0.1, 26.81)
+
+[node name="Woman101" parent="GameManager/States/GameState02/WomanPoints/First" unique_id=1016163170 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(-0.88760656, 0, 0.46060252, 0, 1, 0, -0.46060252, 0, -0.88760656, -27.348, 0.1, 28.912)
+
+[node name="Woman201" parent="GameManager/States/GameState02/WomanPoints/First" unique_id=1390585531 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(-0.91719925, 0, 0.3984288, 0, 1, 0, -0.3984288, 0, -0.91719925, -27.655, 0.1, 30.531)
+
+[node name="Woman301" parent="GameManager/States/GameState02/WomanPoints/First" unique_id=1617451167 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(-0.89137065, 0, 0.45327514, 0, 1, 0, -0.45327514, 0, -0.89137065, -27.616, 0.1, 32.834)
+
+[node name="Second" type="Node" parent="GameManager/States/GameState02/WomanPoints" unique_id=2141392399]
+
+[node name="Louise02" parent="GameManager/States/GameState02/WomanPoints/Second" unique_id=1498333937 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(-0.7043369, 0, 0.70986587, 0, 1, 0, -0.70986587, 0, -0.7043369, -27.109, 0.1, 20.153)
+
+[node name="Marie02" parent="GameManager/States/GameState02/WomanPoints/Second" unique_id=1583228931 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(-0.6299169, 0, 0.7766625, 0, 1, 0, -0.7766625, 0, -0.6299169, -29.293, 0.1, 19.963)
+
+[node name="Woman102" parent="GameManager/States/GameState02/WomanPoints/Second" unique_id=1123522988 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(-0.73399067, 0, 0.6791596, 0, 1, 0, -0.6791596, 0, -0.73399067, -25.654, 0.1, 22.126)
+
+[node name="Woman202" parent="GameManager/States/GameState02/WomanPoints/Second" unique_id=1704509268 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(-0.8172555, 0, 0.5762755, 0, 1, 0, -0.5762755, 0, -0.8172555, -25.244, 0.2, 24.273)
+
+[node name="Woman302" parent="GameManager/States/GameState02/WomanPoints/Second" unique_id=599936581 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(-0.8809898, 0, 0.47313523, 0, 1, 0, -0.47313523, 0, -0.8809898, -23.069, 0.2, 23.704)
+
+[node name="WomenArrivalPoint" parent="GameManager/States/GameState02" unique_id=180129999 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.974, 0.2, 15.737)
+
+[node name="DiscussionPoint" parent="GameManager/States/GameState02" unique_id=692784511 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(0.95298463, 0, 0.30301863, 0, 1, 0, -0.30301863, 0, 0.95298463, -28.533, 0.1, 17.757)
+
+[node name="LouiseDetectionArea" parent="GameManager/States/GameState02" unique_id=395173706 instance=ExtResource("20_3l05q")]
+unique_name_in_owner = true
+transform = Transform3D(0.77703613, 0, -0.62945604, 0, 1, 0, 0.62945604, 0, 0.77703613, -24.238295, 1.3694732, 39.02879)
+tracked_npc = 4
+
+[node name="CollisionShape3D" parent="GameManager/States/GameState02/LouiseDetectionArea" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_fs5fe")
+
+[node name="DiscussionArea" parent="GameManager/States/GameState02" unique_id=1298678243 instance=ExtResource("20_3l05q")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.233511, 1.3005116, 18.713589)
+
+[node name="CollisionShape3D" parent="GameManager/States/GameState02/DiscussionArea" index="0" unique_id=447369626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38698435, 0)
+shape = SubResource("BoxShape3D_pl46k")
+
+[node name="DesactivableBarricade" type="StaticBody3D" parent="GameManager/States/GameState02" unique_id=1675915066]
+unique_name_in_owner = true
+transform = Transform3D(0.676876, 0, 0.7360971, 0, 1, 0, -0.7360971, 0, 0.676876, -21.544157, 0.1, 42.892845)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GameManager/States/GameState02/DesactivableBarricade" unique_id=1543329784]
+transform = Transform3D(-0.17306373, 0.9849105, 0, -0.9849106, -0.17306374, 0, 0, 2.9802322e-08, 1, 1.2658768, 1.0820493, 0.68407154)
+shape = SubResource("ConvexPolygonShape3D_fxuy6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="GameManager/States/GameState02/DesactivableBarricade" unique_id=1747991147]
+transform = Transform3D(0.9999999, 5.925582e-09, 0, -1.4901161e-08, 1.0000001, 5.1577014e-09, 5.9604645e-08, -8.120007e-09, 1, 2.2482529, 0.47595218, 0.7698841)
+shape = SubResource("BoxShape3D_6kj28")
+
+[node name="sm_barrel_stand_c" type="MeshInstance3D" parent="GameManager/States/GameState02/DesactivableBarricade" unique_id=661449627]
+transform = Transform3D(-0.17306373, 0.98491055, 0, -0.9849106, -0.17306374, 5.1577014e-09, 7.450581e-09, 0, 1, 1.2658768, 1.0820493, 0.68407154)
+mesh = SubResource("ArrayMesh_wx4yd")
+surface_material_override/0 = SubResource("StandardMaterial3D_rrm32")
+
+[node name="C2c" type="MeshInstance3D" parent="GameManager/States/GameState02/DesactivableBarricade" unique_id=2058673209]
+material_override = ExtResource("24_e68xj")
+mesh = ExtResource("25_5hglh")
+
+[node name="GameState03" parent="GameManager/States" unique_id=1978350815 instance=ExtResource("26_qg546")]
+
+[node name="SecureRespawn" parent="GameManager/States/GameState03" unique_id=556244651 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(-0.93830603, 0, -0.34580594, 0, 1, 0, 0.34580594, 0, -0.93830603, -24.367, 0.1, 37.618)
+
+[node name="FrancoisCover" parent="GameManager/States/GameState03" unique_id=1414152471 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(-0.60824907, 0, 0.79374635, 0, 1, 0, -0.79374635, 0, -0.60824907, -32.175278, 0.1, 23.505596)
+
+[node name="LouiseCover" parent="GameManager/States/GameState03" unique_id=273581804 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(-0.899451, 0, 0.4370216, 0, 1, 0, -0.4370216, 0, -0.899451, -27.638517, 0.1, 27.03338)
+
+[node name="PlayerCover" parent="GameManager/States/GameState03" unique_id=900910434 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(-0.89743555, 0, 0.44114557, 0, 1, 0, -0.44114557, 0, -0.89743555, -31.49065, 0.1, 28.321827)
+
+[node name="VersaillaisPoints" type="Node" parent="GameManager/States/GameState03" unique_id=629590944 node_paths=PackedStringArray("all_versaillais", "spawn_points", "dialogue_points", "final_points")]
+unique_name_in_owner = true
+script = ExtResource("27_pf35h")
+all_versaillais = [NodePath("../../../NPC/Versaillais/Officier"), NodePath("../../../NPC/Versaillais/Versaillais1"), NodePath("../../../NPC/Versaillais/Versaillais2"), NodePath("../../../NPC/Versaillais/Versaillais3"), NodePath("../../../NPC/Versaillais/Versaillais4"), NodePath("../../../NPC/Versaillais/Versaillais5"), NodePath("../../../NPC/Versaillais/Versaillais6"), NodePath("../../../NPC/Versaillais/Versaillais7"), NodePath("../../../NPC/Versaillais/Versaillais8")]
+spawn_points = [NodePath("SpawnPos/OfficierPoint"), NodePath("SpawnPos/VersaillaisPoint1"), NodePath("SpawnPos/VersaillaisPoint2"), NodePath("SpawnPos/VersaillaisPoint3"), NodePath("SpawnPos/VersaillaisPoint4"), NodePath("SpawnPos/VersaillaisPoint5"), NodePath("SpawnPos/VersaillaisPoint6"), NodePath("SpawnPos/VersaillaisPoint7"), NodePath("SpawnPos/VersaillaisPoint8")]
+dialogue_points = [NodePath("DialoguebPos/OfficierPoint"), NodePath("DialoguebPos/VersaillaisPoint1"), NodePath("DialoguebPos/VersaillaisPoint2"), NodePath("DialoguebPos/VersaillaisPoint3"), NodePath("DialoguebPos/VersaillaisPoint4"), NodePath("DialoguebPos/VersaillaisPoint5"), NodePath("DialoguebPos/VersaillaisPoint6"), NodePath("DialoguebPos/VersaillaisPoint7"), NodePath("DialoguebPos/VersaillaisPoint8")]
+final_points = [NodePath("FinalPos/OfficierPoint"), NodePath("FinalPos/VersaillaisPoint1"), NodePath("FinalPos/VersaillaisPoint2"), NodePath("FinalPos/VersaillaisPoint3"), NodePath("FinalPos/VersaillaisPoint4"), NodePath("FinalPos/VersaillaisPoint5"), NodePath("FinalPos/VersaillaisPoint6"), NodePath("FinalPos/VersaillaisPoint7"), NodePath("FinalPos/VersaillaisPoint8")]
+louise_killers = Array[int]([2, 3, 7])
+francois_killers = Array[int]([5, 6, 8])
+player_killers = Array[int]([1, 2, 4])
+
+[node name="SpawnPos" type="Node" parent="GameManager/States/GameState03/VersaillaisPoints" unique_id=491265111]
+
+[node name="OfficierPoint" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos" unique_id=1677386719 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.85433185, 0, -0.51972795, 0, 1, 0, 0.51972795, 0, 0.85433185, -18.184408, 0, 7.2474947)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/OfficierPoint" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint1" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos" unique_id=283044557 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.8141864, 0, -0.5806036, 0, 1, 0, 0.5806036, 0, 0.8141864, -14.346857, 0.1, 5.5945005)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint1" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint2" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos" unique_id=87244571 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.77143586, 0, -0.6363072, 0, 1, 0, 0.6363072, 0, 0.77143586, -12.45137, 0.1, 2.9756513)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint2" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint3" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos" unique_id=1584425808 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.6174753, 0, -0.7865903, 0, 1, 0, 0.7865903, 0, 0.6174753, -10.113403, 0.2, 1.2983985)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint3" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint4" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos" unique_id=991215397 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.85433185, 0, -0.51972795, 0, 1, 0, 0.51972795, 0, 0.85433185, -18.887703, 0.1, 2.6405923)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint4" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint5" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos" unique_id=659505829 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.85433185, 0, -0.51972795, 0, 1, 0, 0.51972795, 0, 0.85433185, -19.344963, 0.1, 0.09661031)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint5" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint6" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos" unique_id=1445030666 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.85433185, 0, -0.51972795, 0, 1, 0, 0.51972795, 0, 0.85433185, -19.795242, 0.2, -2.9905622)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint6" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint7" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos" unique_id=192820046 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.753242, 0, -0.6577435, 0, 1, 0, 0.6577435, 0, 0.753242, -9.078992, 0.1, -1.2228777)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint7" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint8" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos" unique_id=333811647 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.8638882, 0, -0.50368357, 0, 1, 0, 0.50368357, 0, 0.8638882, -14.0811205, 0.1, -4.2590847)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/SpawnPos/VersaillaisPoint8" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="DialoguebPos" type="Node" parent="GameManager/States/GameState03/VersaillaisPoints" unique_id=1676671274]
+
+[node name="OfficierPoint" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=227105851 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.88084114, 0, -0.47341198, 0, 1, 0, 0.47341198, 0, 0.88084114, -26.67466, 0, 19.473045)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/OfficierPoint" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint1" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=492824420 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.7861158, 0, -0.6180793, 0, 1, 0, 0.6180793, 0, 0.7861158, -24.873253, 0.1, 19.67811)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint1" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint2" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=194956154 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.68913907, 0, -0.72462916, 0, 1, 0, 0.72462916, 0, 0.68913907, -23.364943, 0.1, 20.638876)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint2" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint3" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=403551710 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.56150573, 0, -0.82747275, 0, 1, 0, 0.82747275, 0, 0.56150573, -22.105, 0.2, 21.942)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint3" index="0" unique_id=1596071723]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.10000001, 0)
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint4" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=2115492190 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.9262459, 0, -0.3769196, 0, 1, 0, 0.3769196, 0, 0.9262459, -27.29115, 0.1, 17.885036)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint4" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint5" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=427551322 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.9610207, 0, -0.27647617, 0, 1, 0, 0.27647617, 0, 0.9610207, -28.220787, 0.1, 16.595612)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint5" index="0" unique_id=1596071723]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.1, 0)
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint6" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=2035301596 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.98182315, 0, -0.18979813, 0, 1, 0, 0.18979813, 0, 0.98182315, -29.205, 0.2, 15.59)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint6" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint7" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=542310357 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.7494412, 0, -0.66207093, 0, 1, 0, 0.66207093, 0, 0.7494412, -22.815218, 0.1, 18.342463)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint7" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint8" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos" unique_id=1596999133 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.89406824, 0, -0.44793084, 0, 1, 0, 0.44793084, 0, 0.89406824, -25.347248, 0.1, 15.878401)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/DialoguebPos/VersaillaisPoint8" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="FinalPos" type="Node" parent="GameManager/States/GameState03/VersaillaisPoints" unique_id=1679356276]
+
+[node name="OfficierPoint" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos" unique_id=753392039 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.8786839, 0, 0.47740412, 0, 1, 0, -0.47740412, 0, 0.8786839, -31.826462, 0.2, -0.92283154)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos/OfficierPoint" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint1" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos" unique_id=356524896 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.99999917, 0, 0.0013612434, 0, 1, 0, -0.0013612434, 0, 0.99999917, -28.40769, 0.1, -1.7885365)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint1" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint2" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos" unique_id=1353998340 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.9684877, 0, -0.24906188, 0, 1, 0, 0.24906188, 0, 0.9684877, -27.058851, 0.1, -1.7709544)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint2" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint3" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos" unique_id=519150772 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.8409351, 0, -0.541136, 0, 1, 0, 0.541136, 0, 0.8409351, -25.50854, 0.1, -1.4321814)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint3" index="0" unique_id=1596071723]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 0, 0.10000001, 0)
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint4" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos" unique_id=1873724183 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.99884593, 0, 0.048030335, 0, 1, 0, -0.048030335, 0, 0.99884593, -29.89037, 0.1, -1.6523514)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint4" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint5" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos" unique_id=1892064062 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.98072064, 0, 0.19541557, 0, 1, 0, -0.19541557, 0, 0.98072064, -30.782885, 0.1, -1.8589789)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint5" index="0" unique_id=1596071723]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0.1, 0)
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint6" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos" unique_id=427302508 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.9992882, 0, 0.03772497, 0, 1, 0, -0.03772497, 0, 0.9992882, -29.211653, 0.1, -2.1959047)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint6" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint7" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos" unique_id=413188522 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.9998224, 0, -0.018848509, 0, 1, 0, 0.018848509, 0, 0.9998224, -27.736118, 0.1, -2.2711287)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint7" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="VersaillaisPoint8" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos" unique_id=368683864 instance=ExtResource("15_eo1xk")]
+transform = Transform3D(0.92232907, 0, -0.38640526, 0, 1, 0, 0.38640526, 0, 0.92232907, -26.170046, 0.1, -2.0113606)
+
+[node name="MeshMarker" parent="GameManager/States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint8" index="0" unique_id=1596071723]
+mesh = SubResource("CylinderMesh_kkeqv")
+
+[node name="ExecutionPoint" parent="GameManager/States/GameState03" unique_id=419960042 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(-0.9999978, 0, -0.0020944183, 0, 1, 0, 0.0020944183, 0, -0.9999978, -28.770704, 0, 2.4428315)
+
+[node name="FrancoisDeath" parent="GameManager/States/GameState03" unique_id=1846709864 instance=ExtResource("15_eo1xk")]
+unique_name_in_owner = true
+transform = Transform3D(-0.76393116, 0, 0.64529765, 0, 1, 0, -0.64529765, 0, -0.76393116, -29.864477, 0, 23.449066)
+
+[node name="NPC" type="Node" parent="GameManager" unique_id=2013234831]
+
+[node name="Communards" type="Node" parent="GameManager/NPC" unique_id=412628850]
+
+[node name="Georges" parent="GameManager/NPC/Communards" unique_id=1296143105 instance=ExtResource("28_iexy4")]
+unique_name_in_owner = true
+transform = Transform3D(0.99984705, 0, 0.017487377, 0, 1, 0, -0.017487377, 0, 0.99984705, -32.25105, 0.099999525, -1.2975082)
+
+[node name="Jules" parent="GameManager/NPC/Communards" unique_id=1463923211 instance=ExtResource("28_iexy4")]
+unique_name_in_owner = true
+transform = Transform3D(0.002146914, 0, -0.9999977, 0, 1, 0, 0.9999977, 0, 0.002146914, -3.285318, 0.1, 2.6076605)
+npc_name = 1
+
+[node name="Francois" parent="GameManager/NPC/Communards" unique_id=1437456092 instance=ExtResource("28_iexy4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.25110638, 0, -0.9679595, 0, 1, 0, 0.9679595, 0, -0.25110638, -10.116035, 0.1, 4.705014)
+npc_name = 2
+
+[node name="Michel" parent="GameManager/NPC/Communards" unique_id=737588779 instance=ExtResource("28_iexy4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.9048345, 0, -0.4257634, 0, 1, 0, 0.4257634, 0, -0.9048345, 1.0261722, 5.9376273, 8.16327)
+npc_name = 3
+
+[node name="SecondBarricadeNPC" parent="GameManager/NPC/Communards" unique_id=617198207 instance=ExtResource("28_iexy4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.57678884, 0, 0.8168933, 0, 1, 0, -0.8168933, 0, -0.57678884, -26.31, 0.2, 14.651)
+npc_name = 10
+
+[node name="Louise" parent="GameManager/NPC/Communards" unique_id=1520388921 instance=ExtResource("28_iexy4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.7295538, 0, -0.6839234, 0, 1, 0, 0.6839234, 0, -0.7295538, -18.994305, 0.099999525, 42.38104)
+collision_layer = 9
+npc_name = 4
+gender = 1
+
+[node name="Marie" parent="GameManager/NPC/Communards" unique_id=2013721036 instance=ExtResource("28_iexy4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.8352512, 0, -0.5498686, 0, 1, 0, 0.5498686, 0, -0.8352512, -17.275389, 0.099999525, 44.03194)
+npc_name = 5
+gender = 1
+
+[node name="Woman1" parent="GameManager/NPC/Communards" unique_id=1804693784 instance=ExtResource("28_iexy4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.72790444, 0, -0.68567854, 0, 1, 0, 0.68567854, 0, -0.72790444, -15.399351, 0.099999525, 45.89637)
+npc_name = 6
+gender = 1
+
+[node name="Woman2" parent="GameManager/NPC/Communards" unique_id=303901857 instance=ExtResource("28_iexy4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.7713693, 0, -0.6363878, 0, 1, 0, 0.6363878, 0, -0.7713693, -13.536121, 0.099999525, 47.877434)
+npc_name = 7
+gender = 1
+
+[node name="Woman3" parent="GameManager/NPC/Communards" unique_id=515559934 instance=ExtResource("28_iexy4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.6803373, 0, -0.7328991, 0, 1, 0, 0.7328991, 0, -0.6803373, -12.090791, 0.099999525, 49.436863)
+npc_name = 8
+gender = 1
+
+[node name="Versaillais" type="Node" parent="GameManager/NPC" unique_id=1675653364]
+
+[node name="Officier" parent="GameManager/NPC/Versaillais" unique_id=907265758 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 9
+team = 1
+
+[node name="Versaillais1" parent="GameManager/NPC/Versaillais" unique_id=910647116 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 9
+team = 1
+
+[node name="Versaillais2" parent="GameManager/NPC/Versaillais" unique_id=535393517 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 9
+team = 1
+
+[node name="Versaillais3" parent="GameManager/NPC/Versaillais" unique_id=940054698 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 9
+team = 1
+
+[node name="Versaillais4" parent="GameManager/NPC/Versaillais" unique_id=715024895 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 9
+team = 1
+
+[node name="Versaillais5" parent="GameManager/NPC/Versaillais" unique_id=1246567990 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 9
+team = 1
+
+[node name="Versaillais6" parent="GameManager/NPC/Versaillais" unique_id=806315742 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 9
+team = 1
+
+[node name="Versaillais7" parent="GameManager/NPC/Versaillais" unique_id=512175655 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 9
+team = 1
+
+[node name="Versaillais8" parent="GameManager/NPC/Versaillais" unique_id=1416493828 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
+npc_name = 9
+team = 1
+
+[node name="DeathZone" parent="GameManager" unique_id=2032830456 instance=ExtResource("20_3l05q")]
+unique_name_in_owner = true
+transform = Transform3D(0.87926644, 0, 0.47633028, 0, 1, 0, -0.47633028, 0, 0.87926644, 1.981, 14.424392, -3.372)
+
+[node name="CollisionShape3D" parent="GameManager/DeathZone" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_g4ds3")
 
 [node name="Environment" type="Node3D" parent="." unique_id=532340216]
 
@@ -388,7 +1596,7 @@ mesh = SubResource("BoxMesh_qfnet")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Elements/Targets/EnemiesTargets/StaticBody3D2" unique_id=1903292694]
 shape = SubResource("BoxShape3D_i7141")
 
-[node name="StaticBody3D3" parent="Environment/Elements/Targets/EnemiesTargets" unique_id=336517668 instance=ExtResource("4_qfnet")]
+[node name="StaticBody3D3" parent="Environment/Elements/Targets/EnemiesTargets" unique_id=1053370244 instance=ExtResource("4_qfnet")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1.401712, 99.9)
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Environment/Elements/Targets/EnemiesTargets" unique_id=45019788]
@@ -470,32 +1678,101 @@ shape = SubResource("BoxShape3D_xo05s")
 
 [node name="Player" parent="." unique_id=1368497348 instance=ExtResource("1_nnsk1")]
 
-[node name="Communard" parent="." unique_id=1349390169 instance=ExtResource("5_71j4m")]
+[node name="Agents" type="Node3D" parent="." unique_id=1537785090]
+
+[node name="Communard" parent="Agents" unique_id=1349390169 instance=ExtResource("5_71j4m")]
 transform = Transform3D(0.55184966, 0, -0.8339436, 0, 1, 0, 0.8339436, 0, 0.55184966, -4.0074487, 0.0019399751, 3.695386)
 
-[node name="Communard2" parent="." unique_id=1812123796 instance=ExtResource("5_71j4m")]
+[node name="Communard2" parent="Agents" unique_id=1812123796 instance=ExtResource("5_71j4m")]
 transform = Transform3D(-0.009965656, 0, 0.99995035, 0, 1, 0, -0.99995035, 0, -0.009965656, 4.7938313, 0.0019399751, 3.695386)
 
-[node name="Communard4" parent="." unique_id=1058965319 instance=ExtResource("5_71j4m")]
+[node name="Communard4" parent="Agents" unique_id=1058965319 instance=ExtResource("5_71j4m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65369, 0.0019409287, -4.72339)
 
-[node name="Communard5" parent="." unique_id=30527046 instance=ExtResource("5_71j4m")]
+[node name="Communard5" parent="Agents" unique_id=30527046 instance=ExtResource("5_71j4m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4022737, 0.0019409287, 6.5623403)
 
-[node name="Communard6" parent="." unique_id=291449605 instance=ExtResource("5_71j4m")]
+[node name="Communard6" parent="Agents" unique_id=291449605 instance=ExtResource("5_71j4m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.36615, 0.0019409287, -1.8377051)
 
-[node name="Communard7" parent="." unique_id=2119361903 instance=ExtResource("5_71j4m")]
+[node name="Communard7" parent="Agents" unique_id=2119361903 instance=ExtResource("5_71j4m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.169285, 0.0019409287, 7.2967453)
 
-[node name="Communard8" parent="." unique_id=1733032661 instance=ExtResource("5_71j4m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.304285, 0.0019409287, -17.273026)
+[node name="Communard8" parent="Agents" unique_id=1733032661 instance=ExtResource("5_71j4m")]
+transform = Transform3D(-0.9286931, 0, -0.3708492, 0, 1, 0, 0.3708492, 0, -0.9286931, 2.304285, 0.0019409287, -17.273026)
 
-[editable path="GameManager"]
+[node name="Versaillais" parent="Agents" unique_id=1688711584 instance=ExtResource("32_npbic")]
+transform = Transform3D(-0.977294, 0, -0.21188772, 0, 1, 0, 0.21188772, 0, -0.977294, -6.234236, 0.002043634, -8.741631)
+
+[node name="Versaillais2" parent="Agents" unique_id=1934246396 instance=ExtResource("32_npbic")]
+transform = Transform3D(-0.9992862, 0, -0.037777405, 0, 1, 0, 0.037777405, 0, -0.9992862, -3.2492983, 0.0020445876, -8.451184)
+
+[node name="Versaillais3" parent="Agents" unique_id=985179087 instance=ExtResource("32_npbic")]
+transform = Transform3D(-0.99922353, 0, -0.03939935, 0, 1, 0, 0.03939935, 0, -0.99922353, 2.99397, 0.0020441108, -7.3561254)
+
+[node name="Versaillais4" parent="Agents" unique_id=1668072474 instance=ExtResource("32_npbic")]
+transform = Transform3D(-0.9954612, 0, 0.09516826, 0, 1, 0, -0.09516826, 0, -0.9954612, -1.5307425, 0.0020445876, -8.634739)
+
+[node name="Versaillais5" parent="Agents" unique_id=796182956 instance=ExtResource("32_npbic")]
+transform = Transform3D(0.99999976, 0, 0.0006981316, 0, 1, 0, -0.0006981316, 0, 0.99999976, 1.6562877, 0.0020441108, -10.255161)
+
+[node name="Npc" type="Node3D" parent="." unique_id=2037889372]
+
+[node name="NPC2" parent="Npc" unique_id=947832054 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6821227, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC3" parent="Npc" unique_id=593361526 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.091505, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC4" parent="Npc" unique_id=1504399680 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35487115, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC5" parent="Npc" unique_id=1472883691 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7322999, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC6" parent="Npc" unique_id=1908899781 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1976933, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC7" parent="Npc" unique_id=542309857 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.658678, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC8" parent="Npc" unique_id=893376073 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.145421, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC9" parent="Npc" unique_id=627372215 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.76679, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC10" parent="Npc" unique_id=1047124287 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.354879, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC11" parent="Npc" unique_id=966984709 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1435966, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC12" parent="Npc" unique_id=1366738675 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5020795, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC13" parent="Npc" unique_id=2078684591 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8212924, 0.041110396, 20.859587)
+fight_at_pop = true
+
+[node name="NPC14" parent="Npc" unique_id=1019633190 instance=ExtResource("28_iexy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.227415, 0.041110396, 20.859587)
+fight_at_pop = true
+
 [editable path="GameManager/States/GameState00/InvisibleWallBarricade"]
 [editable path="GameManager/States/GameState01/GoToBarricadeArea"]
 [editable path="GameManager/States/GameState01/ReturnToBarricadeArea"]
-[editable path="GameManager/States/GameState01/FirstDieArea"]
 [editable path="GameManager/States/GameState01/DebugNavMeshArea"]
 [editable path="GameManager/States/GameState01/CanonDetectionArea"]
 [editable path="GameManager/States/GameState01/DeathZoneSecondBarricade"]

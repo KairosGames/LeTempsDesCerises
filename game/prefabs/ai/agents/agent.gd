@@ -11,6 +11,10 @@ signal move_started
 signal move_stoped
 @warning_ignore_restore("unused_signal")
 
+@export_category("References")
+@export var chassepot: Chassepot
+
+@export_category("Settings")
 @export var team: Team = Team.VERSAILLAIS
 
 @onready var shoot_raycast: RayCast3D = $RayCast3D
@@ -154,6 +158,12 @@ func _update_collider(new_posture: Posture) -> void:
 			collider_shape.height = 1.8
 			collider_shape.radius = 0.25
 			collider.rotation = Vector3.ZERO
+
+func get_shoot_height() -> float:
+	return cover.get_shoot_height() if cover else 1.6
+
+func get_shoot_posture() -> Agent.Posture:
+	return cover.get_shoot_posture() if cover else Posture.STAND
 
 enum Posture { NONE, PRONE, CROUCH, STAND}
 enum Sexe { MAN = 1, WOMAN = 2, BOTH = 3}

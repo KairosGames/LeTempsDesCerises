@@ -46,7 +46,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	for data: TargetData in targets_data:
 		@warning_ignore("unsafe_property_access")
 		for shoot_target: Marker3D in data.target.shoot_targets:
-			raycast.global_position = agent.global_position + Vector3(0, agent.cover.get_shoot_height(), 0)
+			raycast.global_position = agent.global_position + Vector3(0, agent.get_shoot_height(), 0)
 			raycast.look_at(shoot_target.global_position)
 			raycast.force_raycast_update()
 			@warning_ignore("untyped_declaration")

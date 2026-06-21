@@ -4,8 +4,11 @@ signal arrived_on_path_point
 signal arrived_on_path_destination
 signal shot
 signal reloaded
-
+@export_category("References")
 @export var animator: AnimationPlayer
+
+@export_category("Debug settings")
+@export var fight_at_pop: bool = false
 
 @onready var collider: CollisionShape3D = %Collider
 @onready var is_on_screen: VisibleOnScreenNotifier3D = %IsOnScreen
@@ -83,6 +86,7 @@ func _ready() -> void:
 
 func ready_deferred() -> void:
 	if GameManager.instance: game_manager = GameManager.instance
+	if fight_at_pop: is_fighting = true
 
 
 func set_npc() -> void:
@@ -211,6 +215,7 @@ func enter_in_stand_no_weapon(trans: float = 0.3) -> void:
 
 func shoot(trans: float = 0.2) -> void:
 	shot.emit()
+	play_light_trail_effect()
 	animator.play("solder/stand-shoot", trans)
 	await animator.animation_finished
 
@@ -231,6 +236,11 @@ func enter_kneeling(trans: float = 0.2) -> void:
 	animator.play("solder/kneeling-1", trans)
 	await animator.animation_finished
 	animator.play("solder/kneeling-2", 0.4)
+
+
+func play_light_trail_effect() -> void:
+	var dest: Vector3 = chassepot.shoot_light_trail.global_position + (chassepot.shoot_light_trail.basis.z * 100.0)
+	chassepot.play_light_trail(dest)
 
 
 func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: bool = false, aim: bool = false) -> void:

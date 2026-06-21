@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b3b4cifuiri8f"]
 
 [ext_resource type="Script" uid="uid://db5hoclmtj4ek" path="res://prefabs/player/chassepot.gd" id="1_t8kss"]
+[ext_resource type="PackedScene" uid="uid://cn7x6vluolkny" path="res://prefabs/player/shoot_light_trail.tscn" id="2_2e57g"]
 [ext_resource type="PackedScene" uid="uid://37232b2f0mql" path="res://sources/meshes/chassepot/bld_chassepot.blend" id="2_y3m73"]
 
 [sub_resource type="Animation" id="Animation_tcjb3"]
@@ -837,6 +838,10 @@ _data = {
 
 [node name="UChassepot" type="Node3D" unique_id=366188147]
 script = ExtResource("1_t8kss")
+
+[node name="ShootLightTrail" parent="." unique_id=1621701777 instance=ExtResource("2_2e57g")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.62287116)
 
 [node name="PivotPoint" type="Node3D" parent="." unique_id=1641933578]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.23298101)

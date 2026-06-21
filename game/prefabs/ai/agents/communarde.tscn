@@ -12,17 +12,18 @@ resource_local_to_scene = true
 radius = 0.25
 height = 1.8
 
-[node name="Communard" unique_id=1349390169 groups=["Communard"] instance=ExtResource("1_8hdkl")]
+[node name="Communard" unique_id=1349390169 node_paths=PackedStringArray("chassepot") groups=["Communard"] instance=ExtResource("1_8hdkl")]
+chassepot = NodePath("communarde/Armature/Skeleton3D/Weapon/UChassepot")
 team = 1
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=1662563447]
 shape = SubResource("CapsuleShape3D_j48so")
 
 [node name="Chest" parent="ShootTargets" parent_id_path=PackedInt32Array(1640117776) index="0" unique_id=1612085666]
-transform = Transform3D(-0.974171, -0.00943251, 0.22503467, 0.014134437, 0.99441785, 0.102865346, -0.22479731, 0.10340164, -0.968732, -0.002081693, 1.2043757, -0.007819361)
+transform = Transform3D(-0.97413075, -0.015437356, 0.22483829, 0.0054975655, 0.9955531, 0.09217234, -0.22530773, 0.091036156, -0.96985227, 0.00012251805, 1.2035586, -0.007122378)
 
 [node name="Head" parent="ShootTargets" parent_id_path=PackedInt32Array(1640117776) index="1" unique_id=2138124691]
-transform = Transform3D(-0.999452, -0.018179901, 0.024987342, -0.019106615, 0.99892306, -0.037255798, -0.024290835, -0.03771494, -0.99880755, 0.0011994165, 1.5320301, -0.017880661)
+transform = Transform3D(-0.99933153, -0.023321524, 0.025450272, -0.0243906, 0.99860287, -0.042403776, -0.024433514, -0.04299862, -0.99858975, 0.0012204677, 1.5311662, -0.01951952)
 
 [node name="Comunard" parent="BeehaveTree/BeAlive" parent_id_path=PackedInt32Array(1853354031) index="2" unique_id=546313229 instance=ExtResource("2_j48so")]
 
@@ -40,23 +41,23 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 script = ExtResource("5_j48so")
 chassepot = NodePath("Armature/Skeleton3D/Weapon/UChassepot")
 
-[node name="Skeleton3D" parent="communarde/Armature" parent_id_path=PackedInt32Array(266893082, 86403371) index="0" unique_id=592450207]
-bones/0/position = Vector3(-0.008622631, 3.9106593, -96.135765)
-bones/0/rotation = Quaternion(-0.725527, -0.062376954, 0.079225555, 0.68076664)
-bones/1/rotation = Quaternion(-0.03055378, -0.0100291725, -0.009337004, 0.99943924)
-bones/2/rotation = Quaternion(0.009064935, -0.0026891606, 0.00013791017, 0.9999553)
-bones/3/rotation = Quaternion(0.015119651, -0.003189127, -0.0021561016, 0.9998783)
+[node name="Skeleton3D" parent="communarde/Armature" parent_id_path=PackedInt32Array(266893082, 222369916) index="0" unique_id=2101765469]
+bones/0/position = Vector3(-0.27949056, 3.723618, -96.04372)
+bones/0/rotation = Quaternion(-0.7264616, -0.06251871, 0.07912699, 0.67976755)
+bones/1/rotation = Quaternion(-0.027106263, -0.0099841235, -0.009571958, 0.99953693)
+bones/2/rotation = Quaternion(0.012384682, -0.0025316724, -0.003889916, 0.99991256)
+bones/3/rotation = Quaternion(0.012509249, -0.002992588, -0.0021774482, 0.9999149)
 bones/4/position = Vector3(-2.2351742e-07, 15.47229, -2.3110465e-07)
 bones/4/rotation = Quaternion(0.06666139, 0.009695134, 0.005474022, 0.9977136)
-bones/5/rotation = Quaternion(-0.011391024, 0.09364528, -0.024676992, 0.99523467)
+bones/5/rotation = Quaternion(-0.012293055, 0.093601905, -0.023506248, 0.9952563)
 bones/7/position = Vector3(6.584111, 13.677435, -0.19938785)
-bones/7/rotation = Quaternion(-0.68200105, -0.28701827, 0.590681, -0.32185555)
+bones/7/rotation = Quaternion(-0.68170047, -0.2873518, 0.59087354, -0.3218416)
 bones/8/position = Vector3(3.6642368e-06, 13.782205, -1.038475e-05)
-bones/8/rotation = Quaternion(0.32004413, 0.12955087, 0.059778858, 0.9365975)
+bones/8/rotation = Quaternion(0.3188128, 0.12582056, 0.06325921, 0.9372972)
 bones/9/position = Vector3(0.08329126, 25.861597, 0.07135926)
-bones/9/rotation = Quaternion(0.013008956, 0.014485208, 0.4592234, 0.88810754)
+bones/9/rotation = Quaternion(0.01210711, 0.014188018, 0.45225987, 0.89169127)
 bones/10/position = Vector3(0.06807307, 24.066257, 0.015467908)
-bones/10/rotation = Quaternion(0.2352623, -0.91139597, 0.045941647, 0.33451217)
+bones/10/rotation = Quaternion(0.24108714, -0.9096815, 0.042786337, 0.3354488)
 bones/11/position = Vector3(-2.9326034, 2.8936467, 1.2201906)
 bones/11/rotation = Quaternion(0.017061457, 0.31595215, 0.4774901, 0.8196867)
 bones/12/position = Vector3(-0.6610923, 3.3732498, -1.1159695e-05)
@@ -95,11 +96,11 @@ bones/30/position = Vector3(-0.007001877, 2.0018768, -1.0073185e-05)
 bones/31/position = Vector3(-6.5841155, 13.679209, -0.21481797)
 bones/31/rotation = Quaternion(0.64896786, -0.35957855, 0.5316231, 0.40855944)
 bones/32/position = Vector3(7.132959e-07, 13.782197, 4.903545e-06)
-bones/32/rotation = Quaternion(0.2337581, -0.27056268, -0.18598382, 0.91518474)
+bones/32/rotation = Quaternion(0.23336184, -0.27197167, -0.19110772, 0.91381156)
 bones/33/position = Vector3(-0.071122594, 25.995697, 0.06367968)
-bones/33/rotation = Quaternion(0.051273715, -0.026275411, -0.72668666, 0.68454885)
+bones/33/rotation = Quaternion(0.050856493, -0.026152201, -0.7239719, 0.68745506)
 bones/34/position = Vector3(-0.06366644, 23.93067, 0.0132953795)
-bones/34/rotation = Quaternion(0.23996699, 0.14539573, 0.1622773, 0.94601375)
+bones/34/rotation = Quaternion(0.23526682, 0.14817345, 0.16025205, 0.94710803)
 bones/35/position = Vector3(2.9431577, 2.8686101, 1.1500057)
 bones/35/rotation = Quaternion(0.10006578, -0.5611728, -0.34172845, 0.74719054)
 bones/36/position = Vector3(0.6208518, 3.357275, -2.0799016e-06)
@@ -135,21 +136,21 @@ bones/52/rotation = Quaternion(0.6121485, -0.010016356, 0.0531339, 0.7888921)
 bones/53/position = Vector3(0.016587079, 2.261785, 9.305177e-08)
 bones/53/rotation = Quaternion(0.39266598, 0.005825417, 0.04950496, 0.9183293)
 bones/54/position = Vector3(-0.0041094422, 1.9545321, 1.3113026e-06)
-bones/55/rotation = Quaternion(0.092416644, 0.06925927, 0.9896125, -0.08561294)
+bones/55/rotation = Quaternion(0.09256325, 0.07249499, 0.9891558, -0.08801949)
 bones/56/position = Vector3(-8.5709695e-07, 42.893566, -1.8499819e-06)
-bones/56/rotation = Quaternion(-0.086299144, -0.08021738, -0.007953578, 0.9930027)
-bones/57/rotation = Quaternion(0.44722566, -0.065501645, -0.01116697, 0.8919496)
+bones/56/rotation = Quaternion(-0.094559655, -0.08701007, -0.006841543, 0.9916859)
+bones/57/rotation = Quaternion(0.4506762, -0.060096003, -0.016442822, 0.8905106)
 bones/58/position = Vector3(5.1377833e-07, 18.217531, 4.6556403e-07)
-bones/58/rotation = Quaternion(0.27096802, -0.026118234, 0.008597469, 0.9621956)
+bones/58/rotation = Quaternion(0.27064732, -0.026082765, 0.008596896, 0.9622868)
 bones/59/position = Vector3(-2.5501938e-06, 7.0376287, -3.2597995e-09)
-bones/60/rotation = Quaternion(-0.118002, 0.011693744, 0.9884732, 0.09412629)
-bones/61/rotation = Quaternion(-0.17688271, 0.083727844, -0.0047915336, 0.98065245)
-bones/62/rotation = Quaternion(0.56901807, 0.085514665, 0.01053752, 0.81779873)
-bones/63/rotation = Quaternion(0.30007693, 0.031035764, -0.009106329, 0.9533666)
+bones/60/rotation = Quaternion(-0.117977805, 0.013758604, 0.98858637, 0.09267724)
+bones/61/rotation = Quaternion(-0.18345654, 0.08283372, -0.0052808844, 0.9795175)
+bones/62/rotation = Quaternion(0.57211477, 0.08590638, 0.009808226, 0.81560326)
+bones/63/rotation = Quaternion(0.3003056, 0.031060984, -0.009106755, 0.9532937)
 bones/64/position = Vector3(-3.0577648e-06, 7.0109124, 1.043083e-07)
 
 [node name="Weapon" type="BoneAttachment3D" parent="communarde/Armature/Skeleton3D" index="1" unique_id=2032018006]
-transform = Transform3D(0.57354164, 0.7124495, 0.40430808, 0.18346295, 0.36930194, -0.91101956, -0.79836756, 0.5966834, 0.081101924, -17.521908, 20.791555, -105.33686)
+transform = Transform3D(0.57570314, 0.7088908, 0.4074791, 0.18911809, 0.36939263, -0.9098257, -0.7954871, 0.6008514, 0.078596324, -17.683886, 20.75975, -105.17868)
 bone_name = "mixamorig_RightHand"
 bone_idx = 34
 
@@ -157,7 +158,7 @@ bone_idx = 34
 transform = Transform3D(-5.0762324, 96.52951, 25.618092, 18.762585, 26.116177, -94.68849, -98.092804, 5.9604645e-06, -19.437147, 5.1372523, 15.464023, 2.8222206)
 
 [node name="Chest" type="BoneAttachment3D" parent="communarde/Armature/Skeleton3D" index="2" unique_id=656248657]
-transform = Transform3D(0.97429633, 0.0094341785, -0.22507262, 0.22482632, -0.10341985, 0.9688949, -0.014136255, -0.99459296, -0.102882646, 0.13108456, 1.6269575, -112.31097)
+transform = Transform3D(0.9742649, 0.0154400505, -0.22487643, 0.22533885, -0.09105201, 0.9700165, -0.0054983227, -0.99572647, -0.09218794, -0.13840923, 1.4562044, -112.219986)
 bone_name = "mixamorig_Spine1"
 bone_idx = 2
 
@@ -167,7 +168,7 @@ remote_path = NodePath("../../../../../ShootTargets/Chest")
 update_scale = false
 
 [node name="Head" type="BoneAttachment3D" parent="communarde/Armature/Skeleton3D" index="3" unique_id=1874949610]
-transform = Transform3D(0.9995223, 0.018183526, -0.024992064, 0.024292633, 0.03772247, 0.9989928, 0.01910796, -0.99912244, 0.037262708, -0.2685155, 1.479844, -145.0394)
+transform = Transform3D(0.99940383, 0.023326173, -0.025455102, 0.024435371, 0.043007202, 0.99877584, 0.024392366, -0.9988021, 0.042411678, -0.31264013, 1.6005493, -144.95563)
 bone_name = "mixamorig_Head"
 bone_idx = 5
 

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cn7x6vluolkny"]
+
+[ext_resource type="Script" uid="uid://b5hsgjs1ljs65" path="res://prefabs/player/shoot_light_trail.gd" id="1_nagjv"]
+
+[sub_resource type="Gradient" id="Gradient_n1fhn"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.25219297, 0.6644737)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nhata"]
+gradient = SubResource("Gradient_n1fhn")
+fill = 1
+fill_from = Vector2(0.50769234, 0.50427353)
+fill_to = Vector2(0.9692308, 0.03931624)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8awvp"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1.803834, 1.8247963, 0, 1)
+albedo_texture = SubResource("GradientTexture2D_nhata")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ymjrk"]
+material = SubResource("StandardMaterial3D_8awvp")
+size = Vector2(2, 0.02)
+
+[node name="ShootLightTrail" type="Node3D" unique_id=1621701777]
+script = ExtResource("1_nagjv")
+
+[node name="Trail" type="MeshInstance3D" parent="." unique_id=955070079]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+top_level = true
+visible = false
+mesh = SubResource("QuadMesh_ymjrk")

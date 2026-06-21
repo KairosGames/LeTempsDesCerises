@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cl1kbcn7tixc5" path="res://prefabs/ui/reload_p3.png" id="16_qdvc2"]
 [ext_resource type="PackedScene" uid="uid://of0isbumqecs" path="res://prefabs/player/chassepot.tscn" id="17_8hk3c"]
 [ext_resource type="Texture2D" uid="uid://dnjca8p664n1b" path="res://prefabs/ui/reload_p4.png" id="17_vtpqo"]
+[ext_resource type="PackedScene" uid="uid://cn7x6vluolkny" path="res://prefabs/player/shoot_light_trail.tscn" id="24_vtpqo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c4n1"]
 albedo_color = Color(0.85343254, 0, 0.12842149, 1)
@@ -427,6 +428,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013229132, 0.31301522)
 target_position = Vector3(0, 0, 300)
 collision_mask = 5
 debug_shape_custom_color = Color(0, 0, 0, 0)
+
+[node name="ShootLightTrail" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake" unique_id=1621701777 instance=ExtResource("24_vtpqo")]
+unique_name_in_owner = true
 
 [node name="MuzzleLight" type="OmniLight3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake" unique_id=1332341225]
 unique_name_in_owner = true
