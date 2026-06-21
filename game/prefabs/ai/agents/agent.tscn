@@ -41,6 +41,21 @@ animation = &"solder/prone-reload"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0hmfr"]
 animation = &"solder/prone-shoot"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q4ugu"]
+animation = &"solder/cannon-pull-idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gvyxx"]
+animation = &"solder/cannon-pull"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tiy8a"]
+animation = &"solder/cannon-work"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ettbl"]
+animation = &"solder/cannon_idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fyimo"]
+animation = &"solder/cannon_push"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jfkeb"]
 animation = &"solder/stand-aiming"
 
@@ -220,9 +235,53 @@ xfade_time = 0.2
 advance_mode = 2
 advance_expression = "not is_alive"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7rtao"]
+advance_mode = 2
+advance_expression = "is_moving and is_pushing_canon"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7a7ou"]
+advance_mode = 2
+advance_expression = "not is_pushing_canon or not is_moving or not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sualp"]
+advance_mode = 2
+advance_expression = "is_pushing_canon"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qpxoc"]
+advance_mode = 2
+advance_expression = "is_pushing_canon and canon_slot.position.z > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mbdy5"]
+advance_mode = 2
+advance_expression = "not is_pushing_canon or not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8pr0c"]
+advance_mode = 2
+advance_expression = "is_moving and is_pushing_canon"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bbv2m"]
+advance_mode = 2
+advance_expression = "not is_pushing_canon or not is_moving or not is_alive or is_reloading_canon"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t83y1"]
+advance_mode = 2
+advance_expression = "not is_pushing_canon or not is_alive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1maqd"]
+advance_mode = 2
+advance_expression = "is_pushing_canon and canon_slot.position.z < 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8chkj"]
+advance_mode = 2
+advance_expression = "is_reloading_canon"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7hc28"]
+advance_mode = 2
+advance_expression = "not is_reloading_canon"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hrer8"]
-states/End/position = Vector2(-167.0625, 249.71875)
-states/Start/position = Vector2(64.95752, 8.75)
+states/End/position = Vector2(-132.0625, 338.71875)
+states/Start/position = Vector2(-130.30249, 205.21875)
 states/crouch-aiming/node = SubResource("AnimationNodeAnimation_sm080")
 states/crouch-aiming/position = Vector2(471.6931, 388.5)
 states/crouch-die/node = SubResource("AnimationNodeAnimation_1vahk")
@@ -241,6 +300,16 @@ states/prone-reload/node = SubResource("AnimationNodeAnimation_hrer8")
 states/prone-reload/position = Vector2(474.56396, 1004.25)
 states/prone-shoot/node = SubResource("AnimationNodeAnimation_0hmfr")
 states/prone-shoot/position = Vector2(485.66846, 841)
+states/solder_cannon-pull/node = SubResource("AnimationNodeAnimation_gvyxx")
+states/solder_cannon-pull/position = Vector2(-402.89996, 28.294067)
+states/solder_cannon-pull-idle/node = SubResource("AnimationNodeAnimation_q4ugu")
+states/solder_cannon-pull-idle/position = Vector2(-121.89996, 26.919067)
+states/solder_cannon-work/node = SubResource("AnimationNodeAnimation_tiy8a")
+states/solder_cannon-work/position = Vector2(-121.39996, -117.03735)
+states/solder_cannon_idle/node = SubResource("AnimationNodeAnimation_ettbl")
+states/solder_cannon_idle/position = Vector2(-17.899963, -245.43109)
+states/solder_cannon_push/node = SubResource("AnimationNodeAnimation_fyimo")
+states/solder_cannon_push/position = Vector2(-17.649963, -386.58093)
 states/stand-aiming/node = SubResource("AnimationNodeAnimation_jfkeb")
 states/stand-aiming/position = Vector2(485.70508, -128.75)
 states/stand-die/node = SubResource("AnimationNodeAnimation_m23y6")
@@ -248,13 +317,13 @@ states/stand-die/position = Vector2(709.9575, 7.34375)
 states/stand-idle/node = SubResource("AnimationNodeAnimation_o53c3")
 states/stand-idle/position = Vector2(259.61377, 1.4375)
 states/stand-moving/node = SubResource("AnimationNodeAnimation_r8u3h")
-states/stand-moving/position = Vector2(260.03174, -246.28125)
+states/stand-moving/position = Vector2(260.24072, -245.85617)
 states/stand-reload/node = SubResource("AnimationNodeAnimation_d4tat")
 states/stand-reload/position = Vector2(485.65015, 119.375)
 states/stand-shoot/node = SubResource("AnimationNodeAnimation_8bes1")
 states/stand-shoot/position = Vector2(485.63184, -237)
-transitions = ["Start", "stand-idle", SubResource("AnimationNodeStateMachineTransition_tiy8a"), "stand-idle", "stand-moving", SubResource("AnimationNodeStateMachineTransition_ettbl"), "stand-moving", "stand-idle", SubResource("AnimationNodeStateMachineTransition_fyimo"), "stand-idle", "stand-aiming", SubResource("AnimationNodeStateMachineTransition_q4ugu"), "crouch-idle", "stand-idle", SubResource("AnimationNodeStateMachineTransition_gvyxx"), "prone-idle", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_sbwer"), "stand-idle", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_m61uk"), "crouch-idle", "prone-idle", SubResource("AnimationNodeStateMachineTransition_4g52g"), "prone-idle", "prone-reload", SubResource("AnimationNodeStateMachineTransition_g06vu"), "prone-reload", "prone-idle", SubResource("AnimationNodeStateMachineTransition_niv30"), "prone-idle", "prone-die", SubResource("AnimationNodeStateMachineTransition_bhv7o"), "prone-idle", "prone-shoot", SubResource("AnimationNodeStateMachineTransition_6g6v6"), "prone-shoot", "prone-idle", SubResource("AnimationNodeStateMachineTransition_xwwb6"), "crouch-idle", "crouch-aiming", SubResource("AnimationNodeStateMachineTransition_ri6wh"), "crouch-aiming", "crouch-shoot", SubResource("AnimationNodeStateMachineTransition_rvkq6"), "crouch-shoot", "crouch-aiming", SubResource("AnimationNodeStateMachineTransition_btduq"), "crouch-aiming", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_p71j7"), "crouch-idle", "crouch-reload", SubResource("AnimationNodeStateMachineTransition_f0kng"), "crouch-reload", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_ldw4k"), "crouch-reload", "crouch-die", SubResource("AnimationNodeStateMachineTransition_xoguh"), "crouch-aiming", "crouch-die", SubResource("AnimationNodeStateMachineTransition_mkxas"), "crouch-shoot", "crouch-die", SubResource("AnimationNodeStateMachineTransition_j27nn"), "prone-shoot", "prone-die", SubResource("AnimationNodeStateMachineTransition_21eml"), "prone-reload", "prone-die", SubResource("AnimationNodeStateMachineTransition_dl64i"), "stand-aiming", "stand-idle", SubResource("AnimationNodeStateMachineTransition_qmajf"), "stand-idle", "stand-reload", SubResource("AnimationNodeStateMachineTransition_g2ncj"), "stand-reload", "stand-idle", SubResource("AnimationNodeStateMachineTransition_6gv33"), "stand-aiming", "stand-shoot", SubResource("AnimationNodeStateMachineTransition_1ec0m"), "stand-shoot", "stand-aiming", SubResource("AnimationNodeStateMachineTransition_2aw1y"), "stand-aiming", "stand-die", SubResource("AnimationNodeStateMachineTransition_o5j7l"), "stand-shoot", "stand-die", SubResource("AnimationNodeStateMachineTransition_6kbgm"), "stand-reload", "stand-die", SubResource("AnimationNodeStateMachineTransition_ues8j"), "stand-idle", "stand-die", SubResource("AnimationNodeStateMachineTransition_sm080"), "crouch-idle", "crouch-die", SubResource("AnimationNodeStateMachineTransition_1vahk")]
-graph_offset = Vector2(-85.89996, 391.41907)
+transitions = ["Start", "stand-idle", SubResource("AnimationNodeStateMachineTransition_tiy8a"), "stand-idle", "stand-moving", SubResource("AnimationNodeStateMachineTransition_ettbl"), "stand-moving", "stand-idle", SubResource("AnimationNodeStateMachineTransition_fyimo"), "stand-idle", "stand-aiming", SubResource("AnimationNodeStateMachineTransition_q4ugu"), "crouch-idle", "stand-idle", SubResource("AnimationNodeStateMachineTransition_gvyxx"), "prone-idle", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_sbwer"), "stand-idle", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_m61uk"), "crouch-idle", "prone-idle", SubResource("AnimationNodeStateMachineTransition_4g52g"), "prone-idle", "prone-reload", SubResource("AnimationNodeStateMachineTransition_g06vu"), "prone-reload", "prone-idle", SubResource("AnimationNodeStateMachineTransition_niv30"), "prone-idle", "prone-die", SubResource("AnimationNodeStateMachineTransition_bhv7o"), "prone-idle", "prone-shoot", SubResource("AnimationNodeStateMachineTransition_6g6v6"), "prone-shoot", "prone-idle", SubResource("AnimationNodeStateMachineTransition_xwwb6"), "crouch-idle", "crouch-aiming", SubResource("AnimationNodeStateMachineTransition_ri6wh"), "crouch-aiming", "crouch-shoot", SubResource("AnimationNodeStateMachineTransition_rvkq6"), "crouch-shoot", "crouch-aiming", SubResource("AnimationNodeStateMachineTransition_btduq"), "crouch-aiming", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_p71j7"), "crouch-idle", "crouch-reload", SubResource("AnimationNodeStateMachineTransition_f0kng"), "crouch-reload", "crouch-idle", SubResource("AnimationNodeStateMachineTransition_ldw4k"), "crouch-reload", "crouch-die", SubResource("AnimationNodeStateMachineTransition_xoguh"), "crouch-aiming", "crouch-die", SubResource("AnimationNodeStateMachineTransition_mkxas"), "crouch-shoot", "crouch-die", SubResource("AnimationNodeStateMachineTransition_j27nn"), "prone-shoot", "prone-die", SubResource("AnimationNodeStateMachineTransition_21eml"), "prone-reload", "prone-die", SubResource("AnimationNodeStateMachineTransition_dl64i"), "stand-aiming", "stand-idle", SubResource("AnimationNodeStateMachineTransition_qmajf"), "stand-idle", "stand-reload", SubResource("AnimationNodeStateMachineTransition_g2ncj"), "stand-reload", "stand-idle", SubResource("AnimationNodeStateMachineTransition_6gv33"), "stand-aiming", "stand-shoot", SubResource("AnimationNodeStateMachineTransition_1ec0m"), "stand-shoot", "stand-aiming", SubResource("AnimationNodeStateMachineTransition_2aw1y"), "stand-aiming", "stand-die", SubResource("AnimationNodeStateMachineTransition_o5j7l"), "stand-shoot", "stand-die", SubResource("AnimationNodeStateMachineTransition_6kbgm"), "stand-reload", "stand-die", SubResource("AnimationNodeStateMachineTransition_ues8j"), "stand-idle", "stand-die", SubResource("AnimationNodeStateMachineTransition_sm080"), "crouch-idle", "crouch-die", SubResource("AnimationNodeStateMachineTransition_1vahk"), "solder_cannon_idle", "solder_cannon_push", SubResource("AnimationNodeStateMachineTransition_7rtao"), "solder_cannon_push", "solder_cannon_idle", SubResource("AnimationNodeStateMachineTransition_7a7ou"), "stand-moving", "solder_cannon_idle", SubResource("AnimationNodeStateMachineTransition_sualp"), "stand-idle", "solder_cannon_idle", SubResource("AnimationNodeStateMachineTransition_qpxoc"), "solder_cannon_idle", "stand-idle", SubResource("AnimationNodeStateMachineTransition_mbdy5"), "solder_cannon-pull-idle", "solder_cannon-pull", SubResource("AnimationNodeStateMachineTransition_8pr0c"), "solder_cannon-pull", "solder_cannon-pull-idle", SubResource("AnimationNodeStateMachineTransition_bbv2m"), "solder_cannon-pull-idle", "stand-idle", SubResource("AnimationNodeStateMachineTransition_t83y1"), "stand-idle", "solder_cannon-pull-idle", SubResource("AnimationNodeStateMachineTransition_1maqd"), "solder_cannon-pull-idle", "solder_cannon-work", SubResource("AnimationNodeStateMachineTransition_8chkj"), "solder_cannon-work", "solder_cannon-pull-idle", SubResource("AnimationNodeStateMachineTransition_7hc28")]
+graph_offset = Vector2(-607.89996, -212.58093)
 
 [node name="Agent" type="CharacterBody3D" unique_id=1349390169 groups=["Entities"]]
 collision_layer = 4

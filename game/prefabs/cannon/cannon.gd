@@ -80,7 +80,10 @@ func _physics_process(delta: float) -> void:
 			progress += move_speed * delta
 			move_progress = progress_ratio
 			if move_progress == 1.0: _state = State.RELOADING
+			for worker: Agent in workers: worker.is_reloading_canon = false
+			for worker: Agent in workers: worker.is_moving = _is_moving
 		State.RELOADING:
+			for worker: Agent in workers: worker.is_reloading_canon = true
 			if reload_progress < 1.0:
 				if reload_progress == 0.0: start_reload.emit()
 				if worker_count: reload_progress += delta / reload_duration[worker_count]

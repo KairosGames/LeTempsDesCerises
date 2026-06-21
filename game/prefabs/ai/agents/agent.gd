@@ -31,7 +31,9 @@ var is_weapon_loaded: bool = true
 var target_object: Node3D = null
 var target_point: Node3D = null
 var threats: Array
+var is_reloading_canon: bool = false
 var is_pushing_canon: bool = false
+
 var posture: Posture = Posture.STAND:
 	set(value):
 		posture = value;
@@ -41,7 +43,7 @@ var canon_slot: Marker3D = null:
 	set(value):
 		canon_slot = value
 		if cover: cover = null
-var is_reloading = false:
+var is_reloading: bool = false:
 	set(value):
 		is_reloading = value
 		if value: reload_started.emit()
