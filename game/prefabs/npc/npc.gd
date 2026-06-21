@@ -240,6 +240,10 @@ func enter_kneeling(trans: float = 0.2) -> void:
 	animator.play("solder/kneeling-2", 0.4)
 
 
+func enter_idle_execution(trans: float = 0.2) -> void:
+	animator.play("solder/idle-execution", trans)
+
+
 func play_light_trail_effect(target: Node3D = null) -> void:
 	var front_dest: Vector3 = chassepot.global_position - (chassepot.global_basis.z * 100.0)
 	var dest: Vector3 = target.global_position if target else front_dest
@@ -320,4 +324,4 @@ func wait_nav_to_aim() -> void:
 func delay_shoot(rdn_min: float = 0.0, rnd_max: float = 1.0, target: Node3D = null) -> void:
 	var rnd: float = randf_range(rdn_min, rnd_max)
 	await get_tree().create_timer(rnd).timeout
-	shoot(0.2, target)
+	shoot(0.0, target)

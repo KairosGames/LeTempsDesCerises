@@ -389,10 +389,10 @@ func disable_all_spawners() -> void:
 	for spawner: Cover in spawners: spawner.enabled = false
 
 
-func set_visible_all_agents() -> void:
+func set_visible_all_agents(is_visible: bool) -> void:
 	var agents: Array = get_tree().get_nodes_in_group("Communard").filter(func(o): return o is not Player)
 	agents.append_array(get_tree().get_nodes_in_group("Versaillais"))
-	for agent: Agent in agents: agent.visible = false
+	for agent: Agent in agents: agent.visible = is_visible
 
 
 ##################### FOR DEBUG ##############################

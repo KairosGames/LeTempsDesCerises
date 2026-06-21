@@ -175,7 +175,6 @@ func is_choice_done() -> bool:
 	if Input.is_action_just_pressed("choice_surrender"):
 		steps[2] = Step.new(launch_execution, do_nothing, do_nothing)
 		is_surrending = true
-		choose_surrender.emit()
 		return true
 	if Input.is_action_just_pressed("choice_fight_to_death"):
 		steps[2] = Step.new(launch_fight_to_death, do_nothing, do_nothing)
@@ -187,10 +186,12 @@ func is_choice_done() -> bool:
 
 func launch_execution() -> void:
 	francois.enter_in_idle_anim()
+	choose_surrender.emit()
 	launch_louise_and_player_surrender()
 	await wait_voice() # "Arrêtez, nous nous rendons !"
 	await wait(1.0)
 	await ui_manager.dark_fade.fade(true, 0.6)
+	set_visible_all_agents(false)
 	versaillais_points.set_all_versaillais_final_pos()
 	player.global_position = execution_point.global_position
 	take_player_move_control(false)
@@ -199,15 +200,18 @@ func launch_execution() -> void:
 	francois.global_position = player.global_position + (player.basis.x * 2.0)
 	francois.global_rotation.y = player.global_rotation.y
 	louise.enter_in_stand_no_weapon()
-	louise.global_position = player.global_position - (player.basis.x * 2.0)
+	louise.global_position = player.global_position - (player.basis.x * 2.0) + (player.basis.z * 0.5)
 	louise.global_rotation.y = player.global_rotation.y
 	await wait(1.0)
 	await ui_manager.dark_fade.fade(false, 0.6)
 	set_player_before_execution()
 	ui_manager.launch_letter_box(false)
-	await wait(10.0)
+	await wait(7.0)
 	await wait_voice() # "À genoux la canaille !"
 	launch_execution_timer()
+	louise.enter_kneeling()
+	francois.enter_pray()
+	add_on_process(check_if_player_crouch)
 	await wait_until(has_player_crouch_or_moment_passed)
 	if not has_player_crouch: await wait_voice() # "À genoux !"
 	ui_manager.launch_letter_box(true)
@@ -221,6 +225,7 @@ func launch_execution() -> void:
 	if not has_player_crouch: await player.crouch_to_stand(true)
 	else: await wait(0.5)
 	await wait_voice() # "En joue !"
+	versaillais_points.versaillais_enter_aiming()
 	await wait(1.0)
 	await wait_voice() # "À mon commandement !"
 	await player.blink_effect.move_eyes(BlinkEffect.EyesStep.CLOSED, 0.45, true, 4.0)
@@ -258,7 +263,7 @@ func check_if_player_crouch() -> void:
 
 
 func launch_execution_timer() -> void:
-	await wait(5.0)
+	await wait(7.0)
 	is_time_to_die = true
 
 
@@ -283,7 +288,7 @@ func launch_fight_to_death() -> void:
 	set_player_for_fight_to_the_death()
 	launch_death_timer()
 	await wait_until(is_it_time_to_die)
-	await wait(0.5)
+	await wait(0.15)
 	versaillais_points.versaillais_kill_player(player.p_targets.chest_target)
 	await wait(0.1)
 	set_player_to_last_death()

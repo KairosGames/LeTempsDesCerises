@@ -39,13 +39,21 @@ func all_versaillais_go_to_dialogue_pos() -> void:
 func set_all_versaillais_final_pos() -> void:
 	var i: int = 0
 	for versaillais: Npc in all_versaillais:
+		if i != 0: versaillais.enter_idle_execution(0.0)
 		versaillais.global_position = final_points[i].global_position
 		versaillais.global_rotation = final_points[i].global_rotation
 		i += 1
 
 
+func versaillais_enter_aiming() -> void:
+	var i: int = 0
+	for versaillais: Npc in all_versaillais:
+		if i != 0: versaillais.enter_in_aim(0.35)
+		i += 1
+
+
 func versaillais_shoot_for_execution() -> void:
-	for versaillais: Npc in all_versaillais: versaillais.delay_shoot()
+	for versaillais: Npc in all_versaillais: versaillais.delay_shoot(0.0, 1.0)
 
 
 func versaillais_kill_louise(louise_targ: Node3D) -> void:
@@ -57,4 +65,4 @@ func versaillais_kill_francois(francois_targ: Node3D) -> void:
 
 
 func versaillais_kill_player(player_targ: Node3D) -> void:
-	for i: int in player_killers: all_versaillais[i].delay_shoot(0.0, 0.3, player_targ)
+	for i: int in player_killers: all_versaillais[i].delay_shoot(0.0, 0.2, player_targ)
