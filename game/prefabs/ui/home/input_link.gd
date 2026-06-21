@@ -7,6 +7,8 @@ const GAMEPAD_SECTION = "gamepad"
 @export var action: StringName
 @export var gamepad: bool = false
 
+static var _default_events: Dictionary = {}
+
 var _current_event: InputEvent = null
 var _is_waiting_for_new_input: bool = false
 
@@ -15,7 +17,9 @@ func _ready() -> void:
 	var events: Array[InputEvent] = InputMap.action_get_events(action)
 	assert(events.size(), "There is not event linked to %s action" % action)
 	_current_event = _get_current_input_map_event()
+	_save_default_input()
 	_load_input()
+	_connect_revert_button()
 	_update_icon()
 
 func _wait_for_input() -> void:
@@ -42,12 +46,47 @@ func _unhandled_input(event: InputEvent) -> void:
 		_update_icon()
 		_is_waiting_for_new_input = false
 
+func reset_to_default() -> void:
+	var default_event: InputEvent = _get_default_input()
+	if _current_event: InputMap.action_erase_event(action, _current_event)
+	if default_event:
+		InputMap.action_add_event(action, default_event)
+	_current_event = default_event
+	_remove_saved_input()
+	_update_icon()
+
 func _get_current_input_map_event() -> InputEvent:
 	var events: Array[InputEvent] = InputMap.action_get_events(action)
 	for event: InputEvent in events:
 		if event is InputEventKey and not gamepad: return event
 		if (event is InputEventJoypadButton or event is InputEventJoypadMotion) and gamepad: return event
 	return null
+
+func _save_default_input() -> void:
+	var key: String = _get_default_input_key()
+	if _default_events.has(key): return
+	_default_events[key] = _current_event.duplicate() if _current_event else null
+
+func _get_default_input() -> InputEvent:
+	var default_event: InputEvent = _default_events.get(_get_default_input_key(), null)
+	return default_event.duplicate() if default_event else null
+
+func _get_default_input_key() -> String:
+	return "%s/%s" % [_get_config_section(), action]
+
+func _connect_revert_button() -> void:
+	var parent_node := get_parent()
+	if not parent_node: return
+	if parent_node.get_meta("input_link_revert_connected", false): return
+	var revert_button := parent_node.get_node_or_null("Revert") as Button
+	if not revert_button: return
+	parent_node.set_meta("input_link_revert_connected", true)
+	revert_button.pressed.connect(_reset_parent_input_links.bind(parent_node))
+
+func _reset_parent_input_links(parent_node: Node) -> void:
+	for child: Node in parent_node.get_children():
+		if child is InputLink:
+			(child as InputLink).reset_to_default()
 
 func _load_input() -> void:
 	var config_file := ConfigFile.new()
@@ -74,6 +113,18 @@ func _save_input() -> void:
 	var config_file := ConfigFile.new()
 	config_file.load(INPUT_CONFIG_FILE_PATH)
 	config_file.set_value(_get_config_section(), str(action), _event_to_dictionary(_current_event))
+	_save_config_file(config_file)
+
+func _remove_saved_input() -> void:
+	var config_file := ConfigFile.new()
+	config_file.load(INPUT_CONFIG_FILE_PATH)
+	var section: String = _get_config_section()
+	var key: String = str(action)
+	if config_file.has_section_key(section, key):
+		config_file.erase_section_key(section, key)
+		_save_config_file(config_file)
+
+func _save_config_file(config_file: ConfigFile) -> void:
 	var error: Error = config_file.save(INPUT_CONFIG_FILE_PATH)
 	if error != OK:
 		push_warning("Failed to save input map to %s: %s" % [INPUT_CONFIG_FILE_PATH, error])
