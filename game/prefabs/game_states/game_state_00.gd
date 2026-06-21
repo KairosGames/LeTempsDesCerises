@@ -11,6 +11,7 @@ signal fire_kill_georges
 @onready var versaillais_coming_point: CustomMarker = $VersaillaisComingPoint
 @onready var objective_point_barricade: CustomMarker = %ObjectivePointBarricade
 @onready var second_barricade_npc: Npc = %SecondBarricadeNPC
+@onready var georges_shoot_light: ShootLightTrail = %GeorgesShootLight
 
 var recorded_pos: Vector3
 
@@ -257,7 +258,6 @@ func enter_fight_begin() -> void:
 
 
 func georges_death() -> void:
-	battle_director.go_next_covers_activation() ################################## Arrivée ennemis
 	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.2)
 	var george_targ: Vector3 = (player.global_position + (player.basis.x * 1.0)) + player.basis.z * 2.0
 	georges.enter_in_walk_anim()
@@ -267,17 +267,25 @@ func georges_death() -> void:
 	await wait_voice() # "Au mur citoyen !"
 	await georges.rotate_yaw_to_pos_tween(barricade_point.global_position, 0.3)
 	call_georges_death()
+	#battle_director.go_next_covers_activation() ################################## Arrivée ennemis
 	georges.enter_in_walk_anim()
 	await georges.move_to(barricade_point.global_position, 4.0)
 	await wait_voice() # "Nooooon ! Ils ont tué Georges !"
+	battle_director.go_next_covers_activation() ################################## Arrivée ennemis
 	await francois.rotate_yaw_to_pos_tween(versaillais_coming_point.global_position, 0.4)
 	francois.is_fighting = true
 
 
 func call_georges_death() -> void:
-	await wait(1.0)
+	var target: Marker3D = georges.shoot_target
+	await wait(0.8)
+	georges_shoot_light.speed = 140.0
+	georges_shoot_light.shoot(target.global_position)
 	call_voice() # "Pan ! Argh!"
-	await wait(0.1)
+	await wait(0.2)
+	var dir: Vector3 = target.global_position.direction_to(georges_shoot_light.global_position)
+	target.look_at(georges_shoot_light.global_position)
+	eff_manager.play_effect(EffectsManager.EffectType.BloodImpact, target.global_position, target.global_rotation)
 	georges.die()
 
 

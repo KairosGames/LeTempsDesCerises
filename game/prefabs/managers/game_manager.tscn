@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="14_y7efs"]
 [ext_resource type="PackedScene" uid="uid://c8dcjv8qv7lw3" path="res://prefabs/game_states/gm_usables/invisible_wall.tscn" id="15_g4ds3"]
 [ext_resource type="Script" uid="uid://bfxqdxe6sfsl3" path="res://prefabs/game_states/gm_usables/shoot_target.gd" id="17_5gurq"]
+[ext_resource type="PackedScene" uid="uid://cn7x6vluolkny" path="res://prefabs/player/shoot_light_trail.tscn" id="19_aq8al"]
 [ext_resource type="Script" uid="uid://cajf45kj4rgnv" path="res://prefabs/game_states/gm_usables/woman_points.gd" id="19_u75jf"]
 [ext_resource type="Texture2D" uid="uid://xwmt30vqykl2" path="res://sources/meshes/geometry/textures/wook_planks/wood_planks_diff_2k_rotate.png" id="20_pl46k"]
 [ext_resource type="Material" uid="uid://dfrsy150v5044" path="res://prefabs/barricade/barricade_meshes/old/material.tres" id="21_u75jf"]
@@ -749,6 +750,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.242138, -4.7683716e-07, -2
 [node name="InvisibleWallBarricade" parent="States/GameState00" unique_id=207561140 instance=ExtResource("15_g4ds3")]
 unique_name_in_owner = true
 transform = Transform3D(0.8941777, 0, 0.44771227, 0, 1, 0, -0.44771227, 0, 0.8941777, 0.56978023, 2.8360798, 6.3059683)
+
+[node name="GeorgesShootLight" parent="States/GameState00" unique_id=1621701777 instance=ExtResource("19_aq8al")]
+unique_name_in_owner = true
+transform = Transform3D(-0.047020014, 0.02670036, -0.99853706, 0.0012558982, 0.9996435, 0.026670808, 0.99889314, 1.0477379e-09, -0.047036786, 14.15966, 1.7564052, 2.4457195)
 
 [node name="GameState01" parent="States" unique_id=443097567 instance=ExtResource("4_ljy1t")]
 

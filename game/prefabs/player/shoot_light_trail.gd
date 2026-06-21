@@ -7,7 +7,7 @@ var twn: Tween
 
 
 func shoot(destination: Vector3) -> void:
-	trail.global_position = get_parent().global_position
+	trail.global_position = global_position
 	var dir: Vector3 = trail.global_position.direction_to(destination)
 	var x_axis: Vector3 = dir.normalized()
 	var y_axis: Vector3 = Vector3.UP

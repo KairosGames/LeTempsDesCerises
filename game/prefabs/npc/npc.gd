@@ -16,6 +16,8 @@ signal reloaded
 @onready var communard: GetChassepot = %Communard
 @onready var communarde: GetChassepot = %Communarde
 @onready var versaillais: GetChassepot = %Versaillais
+@onready var shoot_target: Marker3D = %ShootTarget
+
 
 enum NpcName{
 	Georges,
