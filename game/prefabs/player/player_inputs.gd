@@ -6,6 +6,7 @@ signal gpad_ask_prone
 
 @export_category("Exposed settings")
 @export var is_inverted: bool = false
+@export var is_aim_acc_on: bool = true
 @export_range(1.0, 20.0, 0.1) var sensi_default: float = 7.0
 @export_range(1.0, 20.0, 0.1) var sensi_aiming: float = 7.0
 @export_range(0.1, 2.0, 0.1) var h_sensi_multiplier: float = 1.0
@@ -23,7 +24,6 @@ signal gpad_ask_prone
 @export_category("Gamepad aim settings")
 @export var gpad_aim_max_speed: float = 25.0
 @export var gpad_speed_aiming_curve: Curve
-@export var is_aim_acc_on: bool = true
 @export var gpad_aim_acc_speed: float = 50.0
 @export_range(0.8, 1.0, 0.01) var acc_threshold: float = 0.95
 @export var gpad_aim_time_before_acc: float = 0.2

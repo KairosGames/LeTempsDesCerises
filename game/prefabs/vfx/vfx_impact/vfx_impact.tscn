@@ -1,0 +1,272 @@
+[gd_scene format=3 uid="uid://clb63nitubney"]
+
+[ext_resource type="Script" uid="uid://ctjtqdteggxy7" path="res://prefabs/vfx/particles_player.gd" id="1_j56vv"]
+[ext_resource type="Texture2D" uid="uid://ceg8wibdb7ypy" path="res://prefabs/vfx/vfx_impact/Smoke.png" id="1_w3amj"]
+[ext_resource type="ArrayMesh" uid="uid://dq73srl8311bd" path="res://prefabs/vfx/vfx_impact/rock1.obj" id="1_wtorl"]
+
+[sub_resource type="Curve" id="Curve_0lq6s"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.76009506, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_w3amj"]
+curve = SubResource("Curve_0lq6s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0lq6s"]
+emission_shape = 1
+emission_sphere_radius = 0.01
+direction = Vector3(0, 0, -1)
+spread = 80.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+color = Color(4.415934, 4.415934, 2.122508, 1)
+alpha_curve = SubResource("CurveTexture_w3amj")
+
+[sub_resource type="Gradient" id="Gradient_w3amj"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.011450382, 0.6662437)
+colors = PackedColorArray(3.2944162, 3.2944162, 3.2944162, 0.8235294, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qlrju"]
+gradient = SubResource("Gradient_w3amj")
+fill = 1
+fill_from = Vector2(0.50427353, 0.50769234)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wtorl"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_qlrju")
+
+[sub_resource type="QuadMesh" id="QuadMesh_j56vv"]
+material = SubResource("StandardMaterial3D_wtorl")
+size = Vector2(0.004, 0.03)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxr2n"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.27571848, 0.27678868, 0.27191955, 1)
+roughness = 0.55
+
+[sub_resource type="CurveTexture" id="CurveTexture_qlrju"]
+curve = SubResource("Curve_0lq6s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlrju"]
+emission_shape = 1
+emission_sphere_radius = 0.06
+angle_min = 1.0728835e-05
+angle_max = 180.00002
+direction = Vector3(0, 0, -1)
+spread = 80.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.79999995
+angular_velocity_min = -180.00002
+angular_velocity_max = 179.99998
+gravity = Vector3(0, -2, 0)
+scale_min = 0.59999996
+scale_max = 3.0
+alpha_curve = SubResource("CurveTexture_qlrju")
+
+[sub_resource type="Curve" id="Curve_qlrju"]
+_limits = [0.0, 1.0, 0.0, 0.783848]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.290452, 0.14035088), 0.0, 0.0, 0, 0, Vector2(0.7391631, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_0lq6s"]
+curve = SubResource("Curve_qlrju")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w3amj"]
+emission_shape = 1
+emission_sphere_radius = 0.01
+direction = Vector3(0, 0, -1)
+spread = 80.0
+initial_velocity_min = 0.12
+initial_velocity_max = 0.19999999
+gravity = Vector3(0, 0, 0)
+damping_min = 0.1
+damping_max = 0.2
+color = Color(0.41062298, 0.41062263, 0.41062272, 1)
+alpha_curve = SubResource("CurveTexture_0lq6s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlrju"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_w3amj")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_wtorl"]
+material = SubResource("StandardMaterial3D_qlrju")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Animation" id="Animation_wtorl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sparkles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocks:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Smoke:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_j56vv"]
+resource_name = "play"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sparkles:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocks:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.099999994),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Smoke:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.099999994, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.2666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"free_animation"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxr2n"]
+_data = {
+&"RESET": SubResource("Animation_wtorl"),
+&"play": SubResource("Animation_j56vv")
+}
+
+[node name="VfxImpact" type="Node3D" unique_id=943012161 node_paths=PackedStringArray("animationPlayer")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_j56vv")
+worksWithAnimation = true
+animationPlayer = NodePath("AnimationPlayer")
+
+[node name="Sparkles" type="GPUParticles3D" parent="." unique_id=1186869988]
+emitting = false
+amount = 20
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_0lq6s")
+draw_pass_1 = SubResource("QuadMesh_j56vv")
+
+[node name="Rocks" type="GPUParticles3D" parent="." unique_id=1308361794]
+material_override = SubResource("StandardMaterial3D_rxr2n")
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_qlrju")
+draw_pass_1 = ExtResource("1_wtorl")
+
+[node name="Smoke" type="GPUParticles3D" parent="." unique_id=1889662872]
+emitting = false
+amount = 20
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+transform_align = 2
+process_material = SubResource("ParticleProcessMaterial_w3amj")
+draw_pass_1 = SubResource("QuadMesh_wtorl")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1175219536]
+visible = false
+light_color = Color(0.81540096, 0.7578016, 0, 1)
+light_energy = 2.0
+omni_range = 0.1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1848825754]
+libraries/ = SubResource("AnimationLibrary_rxr2n")

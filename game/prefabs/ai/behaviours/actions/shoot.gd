@@ -63,7 +63,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 			if agent.team != other_agent.team: other_agent.die()
 			_vagueness = 1.0
 		else:
-			EffectsManager.instance.impact_from_shoot.emit(position, shoot_dir, false)
+			EffectsManager.instance.play_effect(EffectsManager.EffectType.Impact, position, coll_dir)
 		return SUCCESS
 	var dest: Vector3 = agent.chassepot.global_position - (agent.chassepot.basis.z * 100.0)
 	agent.chassepot.play_light_trail(dest)

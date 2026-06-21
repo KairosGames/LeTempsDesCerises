@@ -1,12 +1,10 @@
 class_name EffectsManager extends Node
 
-@warning_ignore("unused_signal")
-signal impact_from_shoot(position: Vector3, direction, is_body: bool)
-
 enum EffectType {
 	PlayerShoot,
 	PnjShoot,
-	BloodImpact
+	BloodImpact,
+	Impact
 }
 
 @export var instances_per_pool: int = 20
@@ -14,7 +12,9 @@ enum EffectType {
 var EFFECT_PREFABS: Dictionary[EffectType, PackedScene] = {
 	EffectType.PlayerShoot: preload("uid://cbwpfvcia7dju"),
 	EffectType.PnjShoot: preload("uid://ckpkymdprs6dq"),
-	EffectType.BloodImpact: preload("uid://darpef6scnnu0")
+	EffectType.BloodImpact: preload("uid://darpef6scnnu0"),
+	EffectType.Impact: preload("uid://clb63nitubney")
+
 }
 
 var effects_list_dic: Dictionary[EffectType, Array]

@@ -1063,7 +1063,7 @@ func handle_shoot_cast() -> void:
 		return
 	elif obj is not Agent and obj is not ShootTarget:
 		shoot_missed.emit()
-		if eff_manager: eff_manager.impact_from_shoot.emit(coll,dir, false)
+		EffectsManager.instance.play_effect(EffectsManager.EffectType.Impact, coll, rot)
 		print("MISS !")
 		pass
 	elif obj is Agent:
