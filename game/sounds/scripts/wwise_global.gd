@@ -21,7 +21,7 @@ func _ready() -> void:
 func ready_deferred() -> void:
 	await get_tree().create_timer(3.0).timeout
 	game_manager = GameManager.instance
-	await wait_until(Wwise.is_initialized)
+	while not Wwise.is_initialized(): await get_tree().process_frame
 	if game_manager and game_manager.use_narrative:
 		game_manager.clicked_pause.connect(pause)
 		game_manager.voice_line_called.connect(new_line)
@@ -30,12 +30,6 @@ func ready_deferred() -> void:
 		game_manager.all_states[1].player_tried_to_exit.connect(player_far)
 		game_manager.is_wwise_ready = true
 	loop()
-
-
-func wait_until(condition: Callable) -> void:
-	while not condition.call() or not game_manager.is_game_playing():
-		await get_tree().process_frame
-
 
 func new_line(step : int):
 	if step == 30 :
