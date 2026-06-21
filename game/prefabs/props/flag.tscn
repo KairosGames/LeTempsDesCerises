@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://4g4gy7yer0qa"]
 
+[ext_resource type="Texture2D" uid="uid://dxxv8gq1up7oc" path="res://sources/images/textures/affiches/vive_la_commune.png" id="1_p4oow"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs7tn"]
+transparency = 2
+alpha_scissor_threshold = 0.2
+alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_color = Color(0.7294118, 0, 0, 1)
+albedo_texture = ExtResource("1_p4oow")
 
 [sub_resource type="QuadMesh" id="QuadMesh_p4oow"]
 material = SubResource("StandardMaterial3D_fs7tn")
