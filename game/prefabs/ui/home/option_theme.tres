@@ -1,8 +1,20 @@
 [gd_resource type="Theme" format=3 uid="uid://b2cmbq2awrshk"]
 
+[ext_resource type="Texture2D" uid="uid://df56u8vr06e5o" path="res://sources/images/textures/ui/slider_grabber.png" id="1_5p4ag"]
 [ext_resource type="FontFile" uid="uid://6al2yonhh1go" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Black.otf" id="1_flru5"]
 [ext_resource type="Texture2D" uid="uid://njbg6j5w83rk" path="res://sources/images/textures/ui/Paper.png" id="2_5f0ve"]
+[ext_resource type="Texture2D" uid="uid://dhojlb5ou38nt" path="res://sources/images/textures/ui/slider_grabber_highlight.png" id="2_n0q0v"]
 [ext_resource type="Texture2D" uid="uid://bw7oaspcq64kb" path="res://sources/images/textures/ui/option_tab.png" id="3_e1xeu"]
+[ext_resource type="Texture2D" uid="uid://dscc3m83s7olb" path="res://sources/images/textures/ui/slider_area.png" id="3_kmuun"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2garu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_igkd3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h51dl"]
+content_margin_top = 16.0
+content_margin_bottom = 16.0
+texture = ExtResource("3_kmuun")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hhep5"]
 content_margin_left = 100.0
@@ -38,6 +50,12 @@ texture = ExtResource("3_e1xeu")
 region_rect = Rect2(0, 0, 426, 95.06)
 
 [resource]
+HSlider/icons/grabber = ExtResource("1_5p4ag")
+HSlider/icons/grabber_disabled = ExtResource("1_5p4ag")
+HSlider/icons/grabber_highlight = ExtResource("2_n0q0v")
+HSlider/styles/grabber_area = SubResource("StyleBoxEmpty_2garu")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxEmpty_igkd3")
+HSlider/styles/slider = SubResource("StyleBoxTexture_h51dl")
 TabContainer/colors/font_selected_color = Color(0, 0, 0, 1)
 TabContainer/colors/font_unselected_color = Color(0, 0, 0, 1)
 TabContainer/font_sizes/font_size = 32
