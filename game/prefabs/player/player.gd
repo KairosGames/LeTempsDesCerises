@@ -276,6 +276,8 @@ func _ready() -> void:
 	if GameManager.instance:
 		game_manager = GameManager.instance
 		game_manager.player_instance_loaded.emit()
+	Settings.apply_game_settings(p_inputs)
+	Settings.apply_player_settings(self)
 	p_inputs.gpad_crouch_pressed.connect(crouch_pressed_from_gpad)
 	p_inputs.gpad_crouch_released.connect(crouch_released_from_gpad)
 	p_inputs.gpad_ask_prone.connect(prone_from_gpad)
@@ -306,7 +308,7 @@ func _process(delta: float) -> void:
 	handle_shoot()
 	handle_reload()
 	late_process(delta)
-	
+
 	##DEBUG
 	if Input.is_action_just_pressed("TEST"):
 		if is_alive: die()
@@ -831,7 +833,7 @@ func handle_weapon_bob(delta: float) -> void:
 	var target_amount: float = clampf(tweak, 0.0, 1.0)
 
 	if not is_grounded: target_amount = 0.0
-	
+
 	if curr_posture == Posture.PRONE:
 		target_amount *= prone_bob_freq_factor
 	elif curr_posture == Posture.CROUCH:
@@ -841,17 +843,17 @@ func handle_weapon_bob(delta: float) -> void:
 	if is_pulling_back: target_amount *= pull_bob_freq_factor
 
 	var freq: float = run_bob_freq if is_running else walk_bob_freq
-	
+
 	var targ_bob_pos: Vector3 = walk_bob_pos if curr_posture == Posture.STAND else (crouch_bob_pos if curr_posture == Posture.CROUCH else prone_bob_pos)
 	var pos_amp: Vector3 = run_bob_pos if is_running else targ_bob_pos
-	
+
 	var targ_bob_rot: Vector3 = walk_bob_rot_deg if curr_posture == Posture.STAND else (crouch_bob_rot_deg if curr_posture == Posture.CROUCH else prone_bob_rot_deg)
 	var rot_amp: Vector3 = run_bob_rot_deg if is_running else targ_bob_rot
-	
+
 	if is_aiming:
 		rot_amp *= ads_bob_amp_factor
 		pos_amp *= ads_bob_amp_factor
-	
+
 	var targ_smooth: float = bob_default_smooth_speed if not is_running else bob_run_smooth_speed
 	bob_amount = lerp(bob_amount, target_amount, dt_lerp(targ_smooth, delta))
 	bob_timer += delta * freq * max(bob_amount, 0.05)
@@ -1054,7 +1056,7 @@ func handle_shoot_cast() -> void:
 	var dir: Vector3 = weapon_ray_cast.global_transform.basis.z.normalized()
 	var rot: Vector3 = Basis.looking_at(dir.normalized(), Vector3.UP, true).get_euler()
 	var eff_manager: EffectsManager = EffectsManager.instance
-	
+
 	if not obj:
 		shoot_missed.emit()
 		print("MISS !")

@@ -36,6 +36,22 @@ var DEFAULTS: Dictionary = {
 		"bloom": true,
 		"volumetric_fog": true,
 	},
+	"game" = {
+		"sensi_default": 7.0,
+		"sensi_aiming": 7.0,
+		"is_inverted": false,
+		"h_sensi_multiplier": 1.0,
+		"v_sensi_multiplier": 1.0,
+		"l_jstick_threshold": 0.2,
+		"r_jstick_threshold": 0.2,
+		"is_aim_toggle_km": true,
+		"is_run_toggle_km": false,
+		"is_aim_toggle_gpad": false,
+		"is_run_toggle_gpad": true,
+		"is_posture_switch_toggle_km": true,
+		"is_aim_smooth": true,
+		"is_movement_smooth": true,
+	},
 }
 
 var config_file: ConfigFile = ConfigFile.new()
@@ -60,6 +76,26 @@ func load_settings() -> void:
 
 func save_settings() -> void:
 	config_file.save(CONFIG_FILE_PATH)
+
+
+func apply_game_settings(player_inputs: PlayerInputs) -> void:
+	player_inputs.sensi_default = config_file.get_value("game", "sensi_default")
+	player_inputs.sensi_aiming = config_file.get_value("game", "sensi_aiming")
+	player_inputs.is_inverted = config_file.get_value("game", "is_inverted")
+	player_inputs.h_sensi_multiplier = config_file.get_value("game", "h_sensi_multiplier")
+	player_inputs.v_sensi_multiplier = config_file.get_value("game", "v_sensi_multiplier")
+	player_inputs.l_jstick_threshold = config_file.get_value("game", "l_jstick_threshold")
+	player_inputs.r_jstick_threshold = config_file.get_value("game", "r_jstick_threshold")
+
+
+func apply_player_settings(player: Player) -> void:
+	player.is_aim_toggle_km = config_file.get_value("game", "is_aim_toggle_km")
+	player.is_run_toggle_km = config_file.get_value("game", "is_run_toggle_km")
+	player.is_aim_toggle_gpad = config_file.get_value("game", "is_aim_toggle_gpad")
+	player.is_run_toggle_gpad = config_file.get_value("game", "is_run_toggle_gpad")
+	player.is_posture_switch_toggle_km = config_file.get_value("game", "is_posture_switch_toggle_km")
+	player.is_aim_smooth = config_file.get_value("game", "is_aim_smooth")
+	player.is_movement_smooth = config_file.get_value("game", "is_movement_smooth")
 
 
 func apply_graphics_settings(window: Window, environment: Environment, scene_root: Node) -> void:
