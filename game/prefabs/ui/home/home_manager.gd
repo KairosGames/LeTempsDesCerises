@@ -1,11 +1,19 @@
 class_name HomeManager extends Control
 
+const SCROLL_SPEED: float = 650.0
+
 @onready var references: PanelContainer = %References
 @onready var credit: PanelContainer = %Credit
 @onready var option: TabContainer = %Option
 @onready var menu: PanelContainer = $Menu
 
 @onready var play: ButtonBehavior = $Menu/Buttons/Play
+@onready var references_button: ButtonBehavior = $Menu/Buttons/Referecences
+@onready var credits_button: ButtonBehavior = $Menu/Buttons/Credits
+@onready var references_scroll: ScrollContainer = references.get_node(^"ScrollContainer")
+@onready var credit_scroll: ScrollContainer = credit.get_node(^"ScrollContainer")
+@onready var references_quit_button: Button = references.get_node(^"Quit")
+@onready var credit_quit_button: Button = credit.get_node(^"Quit")
 
 @onready var view_sensibility_slider: HSlider = option.get_node(^"GAME/ViewSensibility/Slider")
 @onready var aiming_sensibility_slider: HSlider = option.get_node(^"GAME/AimingSensibility/Slider")
@@ -24,6 +32,8 @@ class_name HomeManager extends Control
 
 func _ready() -> void:
 	play.grab_focus()
+	references_quit_button.pressed.connect(_close_panel.bind(references_button))
+	credit_quit_button.pressed.connect(_close_panel.bind(credits_button))
 	_load_game_settings_controls()
 	view_sensibility_slider.value_changed.connect(_on_game_slider_changed.bind("sensi_default"))
 	aiming_sensibility_slider.value_changed.connect(_on_game_slider_changed.bind("sensi_aiming"))
@@ -52,11 +62,36 @@ func _on_options_pressed() -> void:
 	credit.hide()
 
 
+func _process(delta: float) -> void:
+	var scroll_container: ScrollContainer = _get_visible_scroll_container()
+	if not scroll_container: return
+
+	var scroll_direction: float = Input.get_axis("ui_up", "ui_down")
+	scroll_direction += Input.get_axis("move_forward", "move_back")
+	scroll_direction += Input.get_axis("aim_top", "aim_down")
+	if is_zero_approx(scroll_direction): return
+
+	var scroll_bar: VScrollBar = scroll_container.get_v_scroll_bar()
+	scroll_bar.value = clampf(
+		scroll_bar.value + scroll_direction * SCROLL_SPEED * delta,
+		scroll_bar.min_value,
+		scroll_bar.max_value
+	)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not references.visible and not credit.visible: return
+	if event.is_action_pressed("ui_cancel"):
+		_close_current_panel()
+		get_viewport().set_input_as_handled()
+
+
 func _on_referecences_pressed() -> void:
 	menu.hide()
 	references.show()
 	option.hide()
 	credit.hide()
+	references_scroll.grab_focus()
 
 
 func _on_credits_pressed() -> void:
@@ -64,10 +99,28 @@ func _on_credits_pressed() -> void:
 	credit.show()
 	option.hide()
 	references.hide()
+	credit_scroll.grab_focus()
 
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _get_visible_scroll_container() -> ScrollContainer:
+	if references.visible: return references_scroll
+	if credit.visible: return credit_scroll
+	return null
+
+
+func _close_current_panel() -> void:
+	_close_panel(references_button if references.visible else credits_button)
+
+
+func _close_panel(focus_target: Control) -> void:
+	references.hide()
+	credit.hide()
+	menu.show()
+	focus_target.grab_focus()
 
 
 func _load_game_settings_controls() -> void:
