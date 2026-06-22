@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://bn5o014xcmfed"]
+
+[ext_resource type="Shader" uid="uid://dcibu8htt8a8x" path="res://materials/shaders/shaders_vfx/sg_vfx_fire_fog.gdshader" id="3_be300"]
+[ext_resource type="Texture2D" uid="uid://bmu6bujmliy3d" path="res://sources/images/textures/textures_vfx/T_Fog_04.png" id="4_5o4eg"]
+[ext_resource type="WwiseEvent" uid="uid://dq8j2hobeokva" path="res://Wwise/resources/Event/{EF6E0E2A-BF52-4CCA-9A70-5BAA396134FD}.tres" id="5_3kyq8"]
+
+[sub_resource type="Curve" id="Curve_o1wrc"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.80038023, 0.51376146), -1.8096342, -1.8096342, 0, 0, Vector2(1, 0.008764267), -0.65062976, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_a43y4"]
+curve = SubResource("Curve_o1wrc")
+
+[sub_resource type="Gradient" id="Gradient_ckp6j"]
+offsets = PackedFloat32Array(0, 0.2829787, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.12435544, 0.10996245, 0.109386735, 1, 0.84705883, 0.7490196, 0.74509805, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_se6r0"]
+gradient = SubResource("Gradient_ckp6j")
+
+[sub_resource type="Curve" id="Curve_nynx1"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.059907828, 98.86065), 0.0, 0.0, 0, 0, Vector2(0.14746542, 0.8764267), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_p8vfx"]
+curve = SubResource("Curve_nynx1")
+
+[sub_resource type="Curve" id="Curve_4k34c"]
+_data = [Vector2(0, 0.0030674934), 0.0, 0.0, 0, 0, Vector2(0.32258067, 0.35626644), 0.0, 0.0, 0, 0, Vector2(0.95622116, 0.025854588), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xfuyf"]
+curve = SubResource("Curve_4k34c")
+
+[sub_resource type="Curve" id="Curve_jdibm"]
+_limits = [1.0, 50.0, 0.0, 3.0]
+_data = [Vector2(0.038961023, 4.5), -0.016619686, 0.0, 0, 0, Vector2(2.1623378, 35.389908), -0.22999078, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_g4k8p"]
+curve = SubResource("Curve_jdibm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1bvr6"]
+emission_shape = 1
+emission_sphere_radius = 1.5
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_min = 15.0
+initial_velocity_max = 25.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.29999775
+linear_accel_max = 0.29999775
+linear_accel_curve = SubResource("CurveTexture_xfuyf")
+damping_curve = SubResource("CurveTexture_p8vfx")
+scale_min = 2.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_g4k8p")
+color = Color(0.8483372, 0.7481818, 0.74633175, 1)
+color_ramp = SubResource("GradientTexture1D_se6r0")
+alpha_curve = SubResource("CurveTexture_a43y4")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yiou4"]
+render_priority = 0
+shader = ExtResource("3_be300")
+shader_parameter/fog_texture = ExtResource("4_5o4eg")
+shader_parameter/alpha_mul = 1.0
+shader_parameter/rotation_speed = 0.05
+
+[sub_resource type="QuadMesh" id="QuadMesh_hxrhv"]
+material = SubResource("ShaderMaterial_yiou4")
+size = Vector2(5, 5)
+
+[node name="BurnEffect" type="Node3D" unique_id=7534225]
+
+[node name="Smoke1" type="GPUParticles3D" parent="." unique_id=1001879862]
+amount = 30
+lifetime = 10.0
+randomness = 0.3
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_1bvr6")
+draw_pass_1 = SubResource("QuadMesh_hxrhv")
+
+[node name="AkEvent3D" type="AkEvent3D" parent="." unique_id=1109947930]
+event = ExtResource("5_3kyq8")
+trigger_on = 1
+stop_on = 3
