@@ -8,13 +8,13 @@ global uniform float dynamic_da = 0.5;
 group_uniforms Noise;
 uniform sampler2D noise_tex;
 uniform float noise_scale = 2.0;
-uniform float noise_speed = 0.4;
-uniform float noise_strength = 0.08;
+uniform float noise_speed = 5.0;
+uniform float noise_strength = 2.0;
 
 group_uniforms Glitch;
-uniform float glitch_strength = 0.02;
-uniform float glitch_speed = 12.0;
-uniform float glitch_frequency = 25.0;
+uniform float glitch_strength = 3.0;
+uniform float glitch_speed = 4.0;
+uniform float glitch_frequency = 0.5;
 
 
 float hash(vec3 p)
