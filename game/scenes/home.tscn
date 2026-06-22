@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ugcp65jnl3a" path="res://sources/images/icons/inputs/Keyboard & Mouse/keyboard.svg" id="13_rpgsi"]
 [ext_resource type="Script" uid="uid://c0exxiluefxe6" path="res://scenes/option.gd" id="13_snnha"]
 [ext_resource type="Texture2D" uid="uid://dscc3m83s7olb" path="res://sources/images/textures/ui/slider_area.png" id="15_ppa51"]
+[ext_resource type="Script" uid="uid://bn2k5bb507wqd" path="res://sounds/scripts/audio_options.gd" id="19_kc6b6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ip4d6"]
 content_margin_left = 50.0
@@ -1168,12 +1169,13 @@ text = "RESET"
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 32
+script = ExtResource("19_kc6b6")
 metadata/_tab_index = 4
 
 [node name="FocusGraber" type="Control" parent="Option/AUDIO" unique_id=466786292 node_paths=PackedStringArray("control")]
 layout_mode = 2
 script = ExtResource("5_e42qu")
-control = NodePath("../MasterVolume/Slider")
+control = NodePath("../MasterVolume/Master_Slider")
 metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
 
 [node name="MasterVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=1669443407]
@@ -1186,7 +1188,7 @@ text = "MASTER"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 2
 
-[node name="Slider" type="HSlider" parent="Option/AUDIO/MasterVolume" unique_id=1007112959]
+[node name="Master_Slider" type="HSlider" parent="Option/AUDIO/MasterVolume" unique_id=1007112959]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -1196,7 +1198,7 @@ theme_override_icons/grabber_highlight = ExtResource("13_o7pnx")
 theme_override_icons/grabber_disabled = ExtResource("12_ju5sp")
 max_value = 1.0
 step = 0.1
-value = 0.5
+value = 1.0
 
 [node name="MusicVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=570742589]
 layout_mode = 2
@@ -1208,14 +1210,14 @@ text = "MUSIC"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 2
 
-[node name="Slider" type="HSlider" parent="Option/AUDIO/MusicVolume" unique_id=1353209001]
+[node name="Music_Slider" type="HSlider" parent="Option/AUDIO/MusicVolume" unique_id=1353209001]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 3.0
 max_value = 1.0
 step = 0.1
-value = 0.5
+value = 1.0
 
 [node name="EffectVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=52846416]
 layout_mode = 2
@@ -1227,14 +1229,14 @@ text = "EFFECT"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 2
 
-[node name="Slider" type="HSlider" parent="Option/AUDIO/EffectVolume" unique_id=640850177]
+[node name="Effect_Slider" type="HSlider" parent="Option/AUDIO/EffectVolume" unique_id=640850177]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 3.0
 max_value = 1.0
 step = 0.1
-value = 0.5
+value = 1.0
 
 [node name="VoiceVolume" type="HBoxContainer" parent="Option/AUDIO" unique_id=130079500]
 layout_mode = 2
@@ -1246,14 +1248,14 @@ text = "VOICE"
 label_settings = SubResource("LabelSettings_ip4d6")
 horizontal_alignment = 2
 
-[node name="Slider" type="HSlider" parent="Option/AUDIO/VoiceVolume" unique_id=611440075]
+[node name="Voice_Slider" type="HSlider" parent="Option/AUDIO/VoiceVolume" unique_id=611440075]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 size_flags_stretch_ratio = 3.0
 max_value = 1.0
 step = 0.1
-value = 0.5
+value = 1.0
 
 [node name="VIDEO" type="VBoxContainer" parent="Option" unique_id=722133202]
 visible = false
@@ -2026,3 +2028,8 @@ metadata/_tab_name = ""
 [connection signal="pressed" from="Credit/Quit" to="Credit" method="hide"]
 [connection signal="pressed" from="Option/Quit" to="Menu" method="show"]
 [connection signal="pressed" from="Option/Quit" to="Option" method="hide"]
+[connection signal="value_changed" from="Option/AUDIO/MasterVolume/Master_Slider" to="Option/AUDIO" method="_on_slider_value_changed"]
+[connection signal="value_changed" from="Option/AUDIO/MasterVolume/Master_Slider" to="Option/AUDIO" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Option/AUDIO/MusicVolume/Music_Slider" to="Option/AUDIO" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Option/AUDIO/EffectVolume/Effect_Slider" to="Option/AUDIO" method="_on_effect_slider_value_changed"]
+[connection signal="value_changed" from="Option/AUDIO/VoiceVolume/Voice_Slider" to="Option/AUDIO" method="_on_voice_slider_value_changed"]

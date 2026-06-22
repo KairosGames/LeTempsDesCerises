@@ -17,6 +17,7 @@ var reload_gate : bool = false
 var bypass_line : bool = false
 var is_looping : bool = false
 var ready_narrators : Dictionary = {}
+var relevant_narrators : int = 0
 
 func on_game_manager_ready(gm: GameManager) -> void:
 	game_manager = gm
@@ -31,6 +32,8 @@ func on_game_manager_ready(gm: GameManager) -> void:
 		loop()
 
 func _connect_game_manager_signals() -> void:
+	if not game_manager.all_states[0].first_fire_from_barricade.is_connected(pan):
+			game_manager.all_states[0].first_fire_from_barricade.connect(pan)
 	if not game_manager.clicked_pause.is_connected(pause):
 		game_manager.clicked_pause.connect(pause)
 	if not game_manager.voice_line_called.is_connected(new_line):
@@ -45,6 +48,7 @@ func _connect_game_manager_signals() -> void:
 			game_manager.all_states[1].player_tried_to_exit.connect(player_far)
 
 func new_line(step : int):
+	relevant_narrators = 0
 	if step == 30 :
 		bypass_line = true
 		return
@@ -61,7 +65,7 @@ func line_ended(_npc_name : String):
 		game_manager.curr_state.voice_line_finished.emit()
 		return
 	line_count += 1
-	if line_count == narrators.size():
+	if line_count == relevant_narrators:
 		print("a fini")
 		game_manager.curr_state.voice_line_finished.emit()
 
@@ -73,6 +77,9 @@ func flip_barks_system():
 		for i in enemies:
 			i.delay = randf_range(0.5, 5)
 			i.trigg_bark()
+
+func pan():
+	Wwise.post_event("Npc_Shoot", self)
 
 func register(target : Node3D, type : String):
 	if type == "ally":

@@ -36,6 +36,7 @@ func _ready() -> void:
 	player.shot.connect(shoot_event)
 	player.shoot_missed.connect(bullet)
 	player.tried_shoot_no_reload.connect(no_ammo)
+	player.changed_posture.connect(new_stance)
 	await get_tree().create_timer(7).timeout
 	alive.post_event()
 
@@ -43,28 +44,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("aim"):
 		Wwise.set_state("player_aim", str(!player.is_aiming))
-
-	if Input.is_action_just_pressed("crouch"):
-		match player.curr_posture:
-			player.Posture.STAND:
-				crouch.post_event()
-			player.Posture.CROUCH:
-				up.post_event()
-			player.Posture.PRONE:
-				crouch.post_event()
-
-	if Input.is_action_just_pressed("prone"):
-		match player.curr_posture:
-			player.Posture.STAND:
-				crouch.post_event()
-				await get_tree().create_timer(0.25).timeout
-				prone.post_event()
-			player.Posture.CROUCH:
-				prone.post_event()
-			player.Posture.PRONE:
-				crouch.post_event()
-				await get_tree().create_timer(0.25).timeout
-				up.post_event()
 
 func _process(_delta: float) -> void:
 	
@@ -88,6 +67,30 @@ func _process(_delta: float) -> void:
 func shoot_event():
 	shoot.post_event()
 	first_reload = true
+
+func new_stance(from, to) -> void:
+	if from == player.Posture.STAND:
+		match to:
+			player.Posture.CROUCH:
+				crouch.post_event()
+			player.Posture.PRONE:
+				crouch.post_event()
+				await get_tree().create_timer(0.25).timeout
+				prone.post_event()
+	elif from == player.Posture.CROUCH:
+			match to:
+				player.Posture.STAND:
+					crouch.post_event()
+				player.Posture.PRONE:
+					prone.post_event()
+	elif from == player.Posture.PRONE:
+			match to:
+				player.Posture.CROUCH:
+					crouch.post_event()
+				player.Posture.STAND:
+					crouch.post_event()
+					await get_tree().create_timer(0.25).timeout
+					up.post_event()
 
 func bullet():
 	var target : Node3D = player.weapon_ray_cast.get_collider()

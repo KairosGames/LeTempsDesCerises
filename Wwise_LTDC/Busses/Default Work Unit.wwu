@@ -266,11 +266,6 @@
 													</Reference>
 												</ReferenceList>
 											</RTPC>
-											<RTPC Name="" ID="{1A7EEA1F-E690-4411-A4D3-C589BF2C853A}" ShortID="935519570">
-												<PropertyList>
-													<Property Name="PropertyName" Type="string" Value="OutputBusLowpass"/>
-												</PropertyList>
-											</RTPC>
 										</ObjectList>
 									</ObjectLists>
 								</Bus>
@@ -1290,6 +1285,39 @@
 									</Reference>
 								</ReferenceList>
 							</EffectSlot>
+						</ObjectList>
+						<ObjectList Name="RTPC">
+							<RTPC Name="" ID="{FB9E01E8-4B56-4911-8EA0-724C52F5236A}" ShortID="897850416">
+								<PropertyList>
+									<Property Name="PropertyName" Type="string" Value="BusVolume"/>
+								</PropertyList>
+								<ReferenceList>
+									<Reference Name="ControlInput">
+										<ObjectRef Name="Master" ID="{6C99D459-7B11-4003-993D-29CE5FF12571}" WorkUnitID="{47620E23-1EB6-4F17-BA97-7B97E9572625}"/>
+									</Reference>
+									<Reference Name="Curve">
+										<Custom>
+											<Curve Name="" ID="{0B64CDB4-0D54-4E47-BBD2-08523881F925}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>1</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</RTPC>
 						</ObjectList>
 					</ObjectLists>
 				</Bus>
