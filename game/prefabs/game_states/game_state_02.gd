@@ -93,14 +93,19 @@ func allies_arrival() -> void:
 	add_on_process(kill_agents.bind(true, false))
 
 
-	for agent: Agent in game_manager.cannon.workers:
-		if not agent or not is_instance_valid(agent): continue
-		agent.die()
-
+	kill_versaillais_on_cannon()
+	await wait(1.0)
+	kill_versaillais_on_cannon()
+	launch_kill_all_versaillais()
 	##################################################### SECURITÉ DE TIMER A METTRE LA
 	await wait_until(is_there_no_enemies)
 	await wait(1.0)
 	set_active_agents(true, false)
+
+
+func launch_kill_all_versaillais() -> void:
+	await wait(20.0)
+	kill_agents(true, false)
 
 
 func launch_women() -> void:

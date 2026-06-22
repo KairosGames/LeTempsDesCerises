@@ -280,6 +280,7 @@ func set_player_for_cinematic() -> void:
 	await wait(player.state_switch_time + 0.1)
 	if player.curr_posture == Player.Posture.CROUCH: player.crouch_to_stand()
 	if player.curr_posture == Player.Posture.PRONE: player.prone_to_stand()
+	if player.is_reloading: player.exit_reload()
 
 
 func leave_aim() -> void:
@@ -423,6 +424,12 @@ func detect_input_debug() -> bool:
 	return Input.is_action_pressed("nav_debug_back") \
 			or Input.is_action_pressed("nav_debug_left") \
 			or Input.is_action_pressed("nav_debug_right") 
+
+
+func kill_versaillais_on_cannon() -> void:
+	for agent: Agent in game_manager.cannon.workers:
+			if not agent or not is_instance_valid(agent): continue
+			agent.die()
 
 
 func use_nav_debug() -> void:
