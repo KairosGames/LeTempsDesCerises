@@ -2,7 +2,7 @@ class_name ShootLightTrail extends Node3D
 
 @onready var trail: MeshInstance3D = %Trail
 
-var speed: float = 80.0
+var speed: float = 120.0
 var twn: Tween
 
 
