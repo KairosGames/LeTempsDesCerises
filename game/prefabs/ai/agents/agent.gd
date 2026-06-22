@@ -34,7 +34,7 @@ var is_shooting: bool = false
 var is_weapon_loaded: bool = true
 var target_object: Node3D = null
 var target_point: Node3D = null
-var threats: Array
+var threats: Array = []
 var is_reloading_canon: bool = false
 var is_pushing_canon: bool = false
 
