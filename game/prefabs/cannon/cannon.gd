@@ -77,6 +77,7 @@ func _physics_process(delta: float) -> void:
 	match _state:
 		State.MOVING:
 			var move_speed: float = move_speeds[worker_count]
+			animation.speed_scale = move_speed
 			if move_speed: _is_moving = true
 			progress += move_speed * delta
 			move_progress = progress_ratio
@@ -84,6 +85,7 @@ func _physics_process(delta: float) -> void:
 			for worker: Agent in workers: worker.is_reloading_canon = false
 			for worker: Agent in workers: worker.is_moving = _is_moving
 		State.RELOADING:
+			animation.speed_scale = 1.0
 			for worker: Agent in workers: worker.is_reloading_canon = true
 			if reload_progress < 1.0:
 				if reload_progress == 0.0: start_reload.emit()
@@ -128,7 +130,9 @@ func active_worker_count() -> int:
 func _take_slot(agent: Agent) -> Marker3D:
 	var slot: Marker3D = available_slots.pop_front()
 	holded_slots.push_back(slot)
-	if move_speeds[holded_slots.size()]: start_move.emit()
+	if move_speeds[holded_slots.size()]: 
+		start_move.emit()
+		animation.play("moving")
 	agent.dying.connect(_restore.bind(slot).bind(agent))
 	agent.dying.connect(_on_worker_died.bind(agent))
 	return slot
@@ -137,7 +141,9 @@ func _restore(agent: Agent ,slot: Marker3D) -> void:
 	agent.top_level = true
 	holded_slots.erase(slot)
 	available_slots.push_back(slot)
-	if not move_speeds[holded_slots.size()]: stop_move.emit()
+	if not move_speeds[holded_slots.size()]: 
+		stop_move.emit()
+		animation.pause()
 
 func _create_workers(n: int = 2) -> void:
 	for i: int in range(n):

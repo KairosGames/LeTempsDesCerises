@@ -68,6 +68,23 @@ tracks/3/keys = {
 "values": [Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_85cv1"]
+resource_name = "moving"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sh_canon/sh_canon/wheels:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.2831855, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_scdqi"]
 resource_name = "shoot"
 length = 5.0
@@ -123,6 +140,7 @@ tracks/3/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_85cv1"]
 _data = {
 &"RESET": SubResource("Animation_tx7lf"),
+&"moving": SubResource("Animation_85cv1"),
 &"shoot": SubResource("Animation_scdqi")
 }
 
@@ -148,14 +166,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32104933, 0, 0.86229044)
 [node name="sh_canon" parent="." unique_id=651980159 instance=ExtResource("2_tx7lf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1.441)
 
-[node name="sh_canon" parent="sh_canon" index="0" unique_id=243481077]
+[node name="sh_canon" parent="sh_canon" index="0" unique_id=1412423799]
 surface_material_override/0 = SubResource("ORMMaterial3D_uixbo")
 
-[node name="mobile" parent="sh_canon/sh_canon" index="0" unique_id=659750829]
+[node name="mobile" parent="sh_canon/sh_canon" index="0" unique_id=485363691]
 transform = Transform3D(1.0000005, 0, 0, 0, 1.000001, 0, 0, 0, 1.000001, 0, 0, 0)
 surface_material_override/0 = SubResource("ORMMaterial3D_uixbo")
 
-[node name="wheels" parent="sh_canon/sh_canon" index="1" unique_id=1313367860]
+[node name="wheels" parent="sh_canon/sh_canon" index="1" unique_id=1493510721]
 surface_material_override/0 = SubResource("ORMMaterial3D_uixbo")
 
 [node name="Collider" type="CharacterBody3D" parent="." unique_id=2024285788]
@@ -175,5 +193,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4210855e-14, 0.84135675, -0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1016132150]
 libraries/ = SubResource("AnimationLibrary_85cv1")
+speed_scale = 5.0
 
 [editable path="sh_canon"]
