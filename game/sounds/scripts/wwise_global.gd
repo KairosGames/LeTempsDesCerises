@@ -65,7 +65,7 @@ func line_ended(_npc_name : String):
 		game_manager.curr_state.voice_line_finished.emit()
 		return
 	line_count += 1
-	if line_count == relevant_narrators:
+	if line_count == narrators.size():
 		print("a fini")
 		game_manager.curr_state.voice_line_finished.emit()
 

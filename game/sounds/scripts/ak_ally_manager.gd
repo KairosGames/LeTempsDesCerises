@@ -26,12 +26,10 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	match (get_parent() as Agent).sexe:
 		Agent.Sexe.MAN:
-			print("boy")
 			var random = String("Type" + str(randi_range(4, 6)))
 			for i in barks_parent.get_children():
 				Wwise.set_switch("Character_Type", random, i)
 		Agent.Sexe.WOMAN:
-			print("not boy")
 			var random = String("Type" + str(randi_range(1, 2)))
 			for i in barks_parent.get_children():
 				Wwise.set_switch("Character_Type", random, i)

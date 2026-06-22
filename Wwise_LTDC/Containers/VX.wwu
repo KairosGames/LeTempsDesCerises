@@ -10577,7 +10577,6 @@
 								<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 								<Property Name="OverrideEffect" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
-								<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Attenuation">
@@ -15826,6 +15825,7 @@
 								<SwitchContainer Name="Officier" ID="{DBAB0A0E-284A-41FF-93EA-3F3DB404A1BE}" ShortID="308867265">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
@@ -16029,7 +16029,10 @@
 											<ChildrenList>
 												<AudioFileSource Name="VX_Amb_M_Vers_Military_Game_Execution_Officer_001" ID="{084CCED7-FE03-4162-AD10-DF95A83107E4}">
 													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.04987"/>
 														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="1.19103"/>
 													</PropertyList>
 													<Language>French(France)</Language>
 													<AudioFile>Characters\Officer\VX_Amb_M_Vers_Military_Game_Execution_Officer_001.wav</AudioFile>
@@ -16087,7 +16090,10 @@
 											<ChildrenList>
 												<AudioFileSource Name="VX_Amb_M_Vers_Military_Game_Execution_Officer_002" ID="{B61B2670-3460-4FD8-9F5B-C364934CEAA4}">
 													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.03287"/>
 														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimEnd" Type="Real64" Value="0.94518"/>
 													</PropertyList>
 													<Language>French(France)</Language>
 													<AudioFile>Characters\Officer\VX_Amb_M_Vers_Military_Game_Execution_Officer_002.wav</AudioFile>
@@ -16406,8 +16412,7 @@
 												<Custom>
 													<Effect Name="Meter (Custom)" ID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" ShortID="1065011977" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 														<PropertyList>
-															<Property Name="Hold" Type="Real32" Value="0.25"/>
-															<Property Name="ReleaseTime" Type="Real32" Value="0.5"/>
+															<Property Name="ReleaseTime" Type="Real32" Value="0.15"/>
 														</PropertyList>
 														<ReferenceList>
 															<Reference Name="GameParameter">

@@ -30,7 +30,11 @@ func voiceline():
 	dialogue_event.post_event()
 
 func _on_dialogue_end_of_event(_data: Dictionary) -> void:
-	pass
+	WwiseGlobal.line_ended(npc_name)
+	print(npc_name, " a fini")
+	WwiseGlobal.player.call_deferred("update_line", npc_name, "")
+	if !debug_text : return
+	label.text = ""
 
 func _on_dialogue_audio_marker(data: Dictionary) -> void:
 	var text : String = data.get("strLabel")
@@ -53,16 +57,6 @@ func _on_dialogue_audio_marker(data: Dictionary) -> void:
 func _on_dialogue_duration(data: Dictionary) -> void:
 	WwiseGlobal.relevant_narrators += 1
 	text_duration = data.get("fDuration")
-	wait_line(text_duration / 1000)
-
-func wait_line(timer : float):
-	print(timer)
-	await get_tree().create_timer(timer).timeout
-	WwiseGlobal.line_ended(npc_name)
-	print(npc_name, " a fini")
-	WwiseGlobal.player.update_line(npc_name, "")
-	if !debug_text : return
-	label.text = ""
 
 func _on_tree_exiting() -> void:
 	if npc_name in valid_names:
