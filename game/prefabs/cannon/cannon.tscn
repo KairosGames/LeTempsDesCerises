@@ -17,6 +17,116 @@ normal_texture = ExtResource("4_85cv1")
 radius = 0.3
 height = 2.050828
 
+[sub_resource type="Animation" id="Animation_tx7lf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sh_canon/sh_canon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sh_canon/sh_canon/mobile:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sh_canon/sh_canon/mobile:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sh_canon/sh_canon/wheels:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_scdqi"]
+resource_name = "shoot"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sh_canon/sh_canon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.8666667, 2.9666667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, -0.25), Vector3(0, 0, -0.25), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sh_canon/sh_canon/mobile:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.46666667, 1.5000001, 2.966667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(9.799279e-10, 0.0043910984, -0.0077374163), Vector3(1.1104413e-09, 0.0058839954, -0.007737416), Vector3(1.1104413e-09, 0.0058839954, -0.007737416), Vector3(6.5308314e-10, 0.0034605525, -0.0040023485), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sh_canon/sh_canon/mobile:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.46666667, 1.5000001, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.5235988, 0, 0), Vector3(-0.38397244, 0, 0), Vector3(-0.38397244, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sh_canon/sh_canon/wheels:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5000001, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.43633232, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_85cv1"]
+_data = {
+&"RESET": SubResource("Animation_tx7lf"),
+&"shoot": SubResource("Animation_scdqi")
+}
+
 [node name="Cannon" type="PathFollow3D" unique_id=1666123749]
 loop = false
 script = ExtResource("1_lvh4v")
@@ -39,7 +149,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32104933, 0, 0.86229044)
 [node name="sh_canon" parent="." unique_id=651980159 instance=ExtResource("2_tx7lf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1.441)
 
-[node name="sh_canon" parent="sh_canon" index="0" unique_id=1170575810]
+[node name="sh_canon" parent="sh_canon" index="0" unique_id=243481077]
+surface_material_override/0 = SubResource("ORMMaterial3D_uixbo")
+
+[node name="mobile" parent="sh_canon/sh_canon" index="0" unique_id=659750829]
+transform = Transform3D(1.0000005, 0, 0, 0, 1.000001, 0, 0, 0, 1.000001, 0, 0, 0)
+surface_material_override/0 = SubResource("ORMMaterial3D_uixbo")
+
+[node name="wheels" parent="sh_canon/sh_canon" index="1" unique_id=1313367860]
 surface_material_override/0 = SubResource("ORMMaterial3D_uixbo")
 
 [node name="Collider" type="CharacterBody3D" parent="." unique_id=2024285788]
@@ -60,5 +177,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1523932, 0)
 
 [node name="AkCannon" parent="." unique_id=1286440460 instance=ExtResource("3_rsllv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4210855e-14, 0.84135675, -0.8337085)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1016132150]
+libraries/ = SubResource("AnimationLibrary_85cv1")
 
 [editable path="sh_canon"]
