@@ -9,6 +9,12 @@ var text_duration : float
 var text_speed : float
 var valid_names : Array[String] = ["Louise", "Marie", "Georges", "Jules", "Francois", "Michel", "Officier"]
 
+signal bank_loaded
+var is_bank_loaded: bool = false
+func on_bank_load() -> void:
+	is_bank_loaded = true
+	
+
 func _ready() -> void:
 	npc_name = get_parent().name
 	get_parent().shot.connect(shoot_event)
@@ -18,12 +24,15 @@ func _ready() -> void:
 	while not Wwise.is_initialized():
 		await get_tree().process_frame
 	Wwise.set_switch("Character", npc_name, dialogue_event)
-	Wwise.load_bank(npc_name)
-	await get_tree().process_frame
+	Wwise.load_bank_async(npc_name, on_bank_load)
+	if not is_bank_loaded: await bank_loaded
+	is_bank_loaded = false
 	WwiseGlobal.mark_narrator_ready(self)
 	while not WwiseGlobal.player or not is_instance_valid(WwiseGlobal.player):
 		await get_tree().process_frame
 	WwiseGlobal.player.add_line(npc_name)
+
+
 
 func voiceline():
 	if not WwiseGlobal.is_narrator_ready(self): return
