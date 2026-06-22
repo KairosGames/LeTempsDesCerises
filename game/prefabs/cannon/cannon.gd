@@ -13,6 +13,7 @@ signal reload_progress_changed(percent: float)
 
 @onready var objective_point: Marker3D = %ObjectivePoint
 @onready var second_path: Path3D = %Path3DCannon2
+@onready var animation: AnimationPlayer = $AnimationPlayer
 
 @export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var move_speeds: Array[float] = [0, 0, 0.5, 1]
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var reload_duration: Array[float] = [0, 15, 10, 5]
@@ -98,7 +99,9 @@ func _shoot() -> void:
 		await (GameManager.instance.all_states[1] as GameState01).game_ready_cannon_shoot
 	await get_tree().create_timer(delay_before_shoot).timeout
 	shoot.emit()
+	animation.play("shoot")
 	reload_progress = 0
+
 
 func _find_workers(recruitment_range: float) -> Agent:
 	if available_slots.size():
