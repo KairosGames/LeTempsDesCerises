@@ -154,7 +154,10 @@ func launch_women_dialogue() -> void:
 	ui_manager.objective_target.target = null
 	discussion_area.set_deferred("monitoring", false)
 	Wwise.set_state("MusicVoicePlaying", "P3_3_Discussion") ################ MUSIC
+	await wait(3.5)
+	ui_manager.objective_target.target = null
 	await wait_voice() # "Vous arrivez d'où comme ça ?"
+	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 
 
 

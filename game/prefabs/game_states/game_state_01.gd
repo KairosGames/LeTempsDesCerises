@@ -22,7 +22,8 @@ signal game_ready_cannon_shoot
 var kill_counter: int = 0
 var it_is_time_to_die: bool = false
 var first_die_timer: float = 60.0
-var first_battle_time: float = 85.0
+var first_battle_time_1: float = 70.0
+var first_battle_time_2: float = 20.0
 var is_jules_voice_line_finished: bool = false
 
 
@@ -59,7 +60,8 @@ func set_game_for_debug() -> void:
 
 func set_short_timers() -> void:
 	first_die_timer = 1.0
-	first_battle_time = 1.0
+	first_battle_time_1 = 1.0
+	first_battle_time_2 = 1.0
 
 
 func go_to_barricade() -> void:
@@ -165,10 +167,10 @@ func lauch_first_battle_phase() -> void:
 	print("WAIT 90s")
 	await wait(3.0)
 	jules = null
-	await wait(70.0)   ######ARRANGER LA VALEUR !!!!!
+	await wait(first_battle_time_1)
 	Wwise.set_state("MusicVoicePLaying","P2_1_Canon") ############# MUSIC
-	Wwise.set_state("Music_State", "Phase2") ############# MUSIC
-	await wait(20.0) ######ARRANGER LA VALEUR !!!!!
+	Wwise.set_state("Music_State", "Phase2")
+	await wait(first_battle_time_2)
 
 
 func launch_cannon_arrival() -> void:
