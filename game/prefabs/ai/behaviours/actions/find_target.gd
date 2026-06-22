@@ -16,6 +16,8 @@ func get_targets(team : Agent.Team) -> Array[Node]:
 
 func tick(actor: Node, _blackboard: Blackboard) -> int:
 	var agent: Agent = actor
+	agent.target_object = null
+	agent.target_point = null
 	var raycast: RayCast3D = agent.shoot_raycast
 	var coefficents: TargetSelectionCoefficient
 	match agent.team:
