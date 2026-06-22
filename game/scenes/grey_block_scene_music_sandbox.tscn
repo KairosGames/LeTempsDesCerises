@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://nx5kmjw8laiy"]
 
-[ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/Managers/game_manager.tscn" id="1_cppqq"]
-[ext_resource type="PackedScene" uid="uid://ctinark3l27ws" path="res://prefabs/Managers/effects_manager.tscn" id="2_yb0o8"]
+[ext_resource type="PackedScene" uid="uid://c7t14wpqn81yh" path="res://prefabs/managers/game_manager.tscn" id="1_cppqq"]
+[ext_resource type="PackedScene" uid="uid://ctinark3l27ws" path="res://prefabs/managers/effects_manager.tscn" id="2_yb0o8"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="3_wvsj3"]
 [ext_resource type="PackedScene" uid="uid://cowhe7krsng37" path="res://scenes/game_design_scene.tscn" id="4_v5jej"]
 [ext_resource type="PackedScene" uid="uid://cfj1xeyr6n64c" path="res://sounds/prefabs/music_emitter.tscn" id="6_wvsj3"]
@@ -21,9 +21,10 @@ glow_enabled = true
 
 [node name="GreyBlockScene" type="Node3D" unique_id=111111966]
 
-[node name="GameManager" parent="." unique_id=1070764289 node_paths=PackedStringArray("first_barricade", "canon") instance=ExtResource("1_cppqq")]
-first_barricade = NodePath("../GameDesignScene/Environment/NavigationRegion3D/Level/Barricade")
-canon = NodePath("../GameDesignScene/Ennemies/Path3DCanon/Canon")
+[node name="GameManager" parent="." unique_id=1070764289 instance=ExtResource("1_cppqq")]
+use_debug = true
+use_short_time = true
+starting_game_state = 1
 
 [node name="EffectsManager" parent="." unique_id=1116254742 instance=ExtResource("2_yb0o8")]
 

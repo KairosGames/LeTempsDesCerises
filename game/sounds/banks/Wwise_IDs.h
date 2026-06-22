@@ -426,6 +426,7 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
+        static const AkUniqueID AMB = 1117531639U;
         static const AkUniqueID BARK_VOLUME = 2103536148U;
         static const AkUniqueID CANNON_SIDECHAIN = 243460359U;
         static const AkUniqueID CANNONS_PROBABILITY = 2576556105U;
@@ -435,11 +436,15 @@ namespace AK
         static const AkUniqueID DIEGETICAMOUNT = 2580242767U;
         static const AkUniqueID DISTANCE = 1240670792U;
         static const AkUniqueID ISPLAYING = 728654205U;
+        static const AkUniqueID MASTER = 4056684167U;
+        static const AkUniqueID MSC = 746452412U;
         static const AkUniqueID PLAYER_POSITION = 2221031936U;
         static const AkUniqueID PLAYER_VELOCITY = 1833811084U;
         static const AkUniqueID POETIC_LEVEL = 3680281974U;
+        static const AkUniqueID SFX = 393239870U;
         static const AkUniqueID SIDECHAIN = 1883033791U;
         static const AkUniqueID SIDECHAIN_DIALOGUE = 2647762268U;
+        static const AkUniqueID VX = 1534528563U;
     } // namespace GAME_PARAMETERS
 
     namespace BANKS
@@ -454,6 +459,7 @@ namespace AK
         static const AkUniqueID OFFICIER = 3942830996U;
         static const AkUniqueID SB_AMB = 925885567U;
         static const AkUniqueID SB_CANNON = 2061449278U;
+        static const AkUniqueID SB_MENU = 135602584U;
         static const AkUniqueID SB_MUSIC = 779753582U;
         static const AkUniqueID SB_NPC = 1278759826U;
         static const AkUniqueID SB_PLAYER = 2103316850U;

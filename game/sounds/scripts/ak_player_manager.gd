@@ -144,6 +144,7 @@ func add_line(new_name):
 	new_line.name = new_name
 
 func update_line(npc_name, new_text : String):
+	if !WwiseGlobal.allow_subtitles : return
 	var text : String = new_text
 	text = text.replace("Ã©", "é")
 	text = text.replace("Ã¨", "è")
