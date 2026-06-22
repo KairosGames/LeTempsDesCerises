@@ -16,6 +16,7 @@ signal move_stoped
 
 @export_category("Settings")
 @export var team: Team = Team.VERSAILLAIS
+@export var sexe: Sexe
 
 @onready var shoot_raycast: RayCast3D = $RayCast3D
 @onready var navigation: Navigation = $Navigation
@@ -23,7 +24,6 @@ signal move_stoped
 @onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Chest, $ShootTargets/Head]
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 
-var sexe: Sexe = Sexe.MAN
 var is_disabled: bool = false
 var has_enemy_in_range: bool = false
 var can_die: bool = true
