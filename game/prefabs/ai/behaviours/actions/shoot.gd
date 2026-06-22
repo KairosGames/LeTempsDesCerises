@@ -11,7 +11,14 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
 	var raycast: RayCast3D = agent.shoot_raycast
 
-	if not agent.target_object: return FAILURE
+	if not agent.target_object or not agent.target_point:
+		agent.target_object = null
+		agent.target_point = null
+		return FAILURE
+	if not is_instance_valid(agent.target_object) or not is_instance_valid(agent.target_point):
+		agent.target_object = null
+		agent.target_point = null
+		return FAILURE
 
 	# TODO USE a change posture action
 	agent.posture = agent.get_shoot_posture()
