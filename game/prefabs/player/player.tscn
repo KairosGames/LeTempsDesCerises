@@ -202,7 +202,7 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("12_agiw0")
 
-[node name="ReloadUI" type="Control" parent="UI" unique_id=604342347 node_paths=PackedStringArray("step_display", "wpn_animator")]
+[node name="ReloadUI" type="Control" parent="UI" unique_id=604342347 node_paths=PackedStringArray("step_display", "wpn_animator", "hands_animator")]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 0
@@ -216,6 +216,7 @@ step_display = [NodePath("ReloadState1"), NodePath("ReloadState2"), null, NodePa
 start_progress = Array[float]([0.0, 0.0, 0.0, 1.0, 1.0])
 target_progress = Array[float]([1.0, 1.0, 1.0, 0.0, 0.0])
 wpn_animator = NodePath("../../CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake/Chassepot/WeaponAnimator")
+hands_animator = NodePath("../../CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake/Chassepot/PivotPoint/container/controller_rig/AnimationPlayer")
 default_focus_color = Color(0.5037687, 0.50376844, 0.50376844, 1)
 fail_focus_color = Color(0.5921569, 0, 0, 1)
 sucess_focus_color = Color(0, 0.6059047, 0, 1)

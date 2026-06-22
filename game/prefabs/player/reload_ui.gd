@@ -18,6 +18,7 @@ signal reloaded
 
 @export_category("References")
 @export var wpn_animator: AnimationPlayer
+@export var hands_animator: AnimationPlayer
 
 @export_category("QTE settings")
 @export var speed: float = 1.0
@@ -50,6 +51,7 @@ var outline_tween: Tween
 func _ready() -> void:
 	pin_mat = focus_pin.material as ShaderMaterial
 	wpn_animator.play("idle")
+	hands_animator.play("idle")
 	chassepot.call_load_ammo = play_amo_anim
 	chassepot.call_next_step = go_next_step_after_ammo_anim
 	set_step(0)
@@ -62,11 +64,15 @@ func _process(delta: float) -> void:
 
 
 func activation(active: bool) -> void:
-	if active: entered_reload.emit()
 	set_step(step)
-	if active: visible = active
-	else: delay_desactivation()
 	is_active = active
+	if active:
+		entered_reload.emit()
+		visible = active
+		reset_hands_position()
+		return
+	return_hands_to_idle()
+	delay_desactivation()
 
 
 func delay_desactivation() -> void:
@@ -102,6 +108,7 @@ func switch_target() -> void:
 	if counter >= max_counter:
 		var anim_name: String = "go_step_" + str(step + 1)
 		wpn_animator.play(anim_name)
+		hands_animator.play(str(step + 1))
 		if step == 1:
 			focus.visible = false
 		go_next_step()
@@ -113,6 +120,7 @@ func go_next_step() -> void:
 	step += 1
 	if step >= 5:
 		reloaded.emit()
+		return_hands_to_idle()
 		return
 	if step != 2:
 		set_step(step)
@@ -134,6 +142,7 @@ func try_qte() -> void:
 	var is_in: bool = abs(focus.progress_ratio - target_progress[step]) <= valid_off_set_ratio
 	if is_in:
 		var anim_name: String = "go_step_" + str(step + 1)
+		hands_animator.play(str(step + 1))
 		wpn_animator.play(anim_name)
 		if step == 1:
 			unvisible_focus()
@@ -142,7 +151,6 @@ func try_qte() -> void:
 		focus_pin.modulate = sucess_focus_color
 	else:
 		focus_pin.modulate = fail_focus_color
-		print("prout")
 		try_failed.emit()
 	launch_outline_qte_tween(is_in)
 	await get_tree().create_timer(qte_delay).timeout
@@ -165,6 +173,7 @@ func launch_outline_qte_tween(is_in: bool) -> void:
 
 func play_amo_anim() -> void:
 	wpn_animator.play("go_step_3")
+	hands_animator.play("3")
 
 
 func go_next_step_after_ammo_anim() -> void:
@@ -176,3 +185,14 @@ func cock_hammer(time_to_wait: float) -> void:
 	await get_tree().create_timer(time_to_wait).timeout
 	is_hammer_cocked = true
 	wpn_animator.play("go_step_0")
+	hands_animator.play("0")
+
+
+func reset_hands_position() -> void:
+	if hands_animator.is_playing(): await hands_animator.animation_finished
+	hands_animator.play(str(step + 1) + "-reset", 0.3)
+
+
+func return_hands_to_idle() -> void:
+	if hands_animator.is_playing(): await hands_animator.animation_finished
+	hands_animator.play("idle", 0.3)
