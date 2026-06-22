@@ -11,12 +11,16 @@ signal move_started
 signal move_stoped
 @warning_ignore_restore("unused_signal")
 
+@export_category("Colors")
+@export var color_sets: Array[ColorSet]
+@export var body: MeshInstance3D
+
 @export_category("References")
 @export var chassepot: Chassepot
 
 @export_category("Settings")
 @export var team: Team = Team.VERSAILLAIS
-@export var sexe: Sexe
+@export var sexe: Sexe = Sexe.MAN
 
 @onready var shoot_raycast: RayCast3D = $RayCast3D
 @onready var navigation: Navigation = $Navigation
@@ -64,11 +68,10 @@ var can_move: bool = true:
 		cover = value
 		if cover: cover.holder = self
 
-@export var body_parts: Array[MeshInstance3D]
-
 enum Team { VERSAILLAIS = -1, NONE = 0, COMMUNARD = 1 }
 
 func _ready() -> void:
+	randomize_color()
 	shoot_raycast.debug_shape_custom_color = Color.RED if team == Team.COMMUNARD else Color.BLUE
 
 
@@ -129,11 +132,7 @@ func die() -> void:
 	navigation.stop()
 	cover = null
 	var tween: Tween = create_tween()
-	tween.tween_method(
-		func(transparency: float) -> void:
-			for mesh: MeshInstance3D in body_parts:
-				mesh.transparency = transparency
-	,0.0, 1.0, 10.0)
+	tween.tween_method(func(transparency: float) -> void: pass, 0.0, 1.0, 10.0)
 	await tween.finished
 	remove()
 
@@ -168,6 +167,16 @@ func get_shoot_height() -> float:
 
 func get_shoot_posture() -> Agent.Posture:
 	return cover.get_shoot_posture() if cover else Posture.STAND
+
+func randomize_color() -> void: 
+	if not color_sets.size(): push_error("No color_set to pick"); return
+	if not body: push_error("No mesh is assigned while trying to randomize color"); return
+	var slot_count: int = body.get_surface_override_material_count()
+	var color_set: ColorSet = color_sets.pick_random()
+	for i: int in range(slot_count):
+		if i >= slot_count: continue
+		var material: ShaderMaterial = body.get_surface_override_material(i)
+		material.set_shader_parameter("color", color_set.colors[i])
 
 enum Posture { NONE, PRONE, CROUCH, STAND}
 enum Sexe { MAN = 1, WOMAN = 2, BOTH = 3}
