@@ -65,6 +65,7 @@ func ready_deferred() -> void:
 	if UIManager.instance: ui_manager = UIManager.instance
 	spawn_player_if_needed()
 	set_run()
+	WwiseGlobal.on_game_manager_ready(self)
 
 
 func _process(_delta: float) -> void:
@@ -99,13 +100,13 @@ func go_next_state() -> void:
 		curr_state.completed.disconnect(go_next_state)
 		curr_state.exit()
 		curr_state.is_active = false
-	
+
 	game_state_index += 1
-	
+
 	if game_state_index >= all_states.size():
 		print("GAME IS FINISHED !")
 		return
-	
+
 	curr_state = all_states[game_state_index]
 	curr_state.completed.connect(go_next_state)
 	curr_state.is_active = true
