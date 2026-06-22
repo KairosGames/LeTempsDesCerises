@@ -1,13 +1,26 @@
 [gd_scene format=3 uid="uid://dag8afibg1clb"]
 
+[ext_resource type="Shader" uid="uid://cp0mrxsa3l1h6" path="res://prefabs/props/flag.gdshader" id="1_e5tfo"]
 [ext_resource type="Texture2D" uid="uid://du3hrlxcugtlh" path="res://sources/images/textures/affiches/la_commune_ou_la_mort.png" id="1_kj6mp"]
+[ext_resource type="Texture2D" uid="uid://blyh7u53wot60" path="res://sources/images/textures/affiches/france_test_rotate.png" id="3_jux0u"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs7tn"]
-cull_mode = 2
-albedo_texture = ExtResource("1_kj6mp")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2ki6p"]
+noise_type = 3
+frequency = 0.0061
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4qp2"]
+noise = SubResource("FastNoiseLite_2ki6p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22ufn"]
+render_priority = 0
+shader = ExtResource("1_e5tfo")
+shader_parameter/texture1 = ExtResource("1_kj6mp")
+shader_parameter/texture2 = ExtResource("3_jux0u")
+shader_parameter/factor = 0.0
+shader_parameter/dissolve_map = SubResource("NoiseTexture2D_g4qp2")
 
 [sub_resource type="QuadMesh" id="QuadMesh_p4oow"]
-material = SubResource("StandardMaterial3D_fs7tn")
+material = SubResource("ShaderMaterial_22ufn")
 subdivide_width = 10
 subdivide_depth = 7
 

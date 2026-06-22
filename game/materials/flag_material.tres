@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://qjp7baoew2i1"]
+
+[ext_resource type="Shader" uid="uid://cp0mrxsa3l1h6" path="res://prefabs/props/flag.gdshader" id="1_16mfh"]
+[ext_resource type="Texture2D" uid="uid://dxxv8gq1up7oc" path="res://sources/images/textures/affiches/vive_la_commune.png" id="2_qnekr"]
+[ext_resource type="Texture2D" uid="uid://btplouhrfub1k" path="res://sources/images/textures/affiches/france_test.png" id="3_2tpdk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2ki6p"]
+noise_type = 3
+frequency = 0.0061
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4qp2"]
+noise = SubResource("FastNoiseLite_2ki6p")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_16mfh")
+shader_parameter/texture1 = ExtResource("2_qnekr")
+shader_parameter/texture2 = ExtResource("3_2tpdk")
+shader_parameter/factor = 0.0
+shader_parameter/dissolve_map = SubResource("NoiseTexture2D_g4qp2")

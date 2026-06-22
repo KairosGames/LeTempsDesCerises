@@ -1,14 +1,27 @@
 [gd_scene format=3 uid="uid://bjwiptgot6sun"]
 
-[ext_resource type="Texture2D" uid="uid://dir5f2v3hepou" path="res://sources/images/textures/affiches/red_simple_2.png" id="1_x8fta"]
+[ext_resource type="Shader" uid="uid://cp0mrxsa3l1h6" path="res://prefabs/props/flag.gdshader" id="1_bof0j"]
+[ext_resource type="Texture2D" uid="uid://de2xlik77x467" path="res://sources/images/textures/affiches/commune_de_paris.png" id="2_bof0j"]
+[ext_resource type="Texture2D" uid="uid://btplouhrfub1k" path="res://sources/images/textures/affiches/france_test.png" id="3_bof0j"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fs7tn"]
-cull_mode = 2
-albedo_texture = ExtResource("1_x8fta")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2ki6p"]
+noise_type = 3
+frequency = 0.0061
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4qp2"]
+noise = SubResource("FastNoiseLite_2ki6p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uivjt"]
+render_priority = 0
+shader = ExtResource("1_bof0j")
+shader_parameter/texture1 = ExtResource("2_bof0j")
+shader_parameter/texture2 = ExtResource("3_bof0j")
+shader_parameter/factor = 0.0
+shader_parameter/dissolve_map = SubResource("NoiseTexture2D_g4qp2")
 
 [sub_resource type="QuadMesh" id="QuadMesh_p4oow"]
-material = SubResource("StandardMaterial3D_fs7tn")
-size = Vector2(1.5, 1)
+material = SubResource("ShaderMaterial_uivjt")
+size = Vector2(4, 2.5)
 subdivide_width = 10
 subdivide_depth = 7
 
@@ -19,10 +32,16 @@ transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -3.1
 mesh = SubResource("QuadMesh_p4oow")
 total_mass = 0.3
 ray_pickable = false
-pinned_points = [94, 85]
-attachments/0/point_index = 94
+pinned_points = [107, 96, 101, 102]
+attachments/0/point_index = 107
 attachments/0/spatial_attachment_path = NodePath("")
 attachments/0/offset = Vector3(0, 0, 0)
-attachments/1/point_index = 85
+attachments/1/point_index = 96
 attachments/1/spatial_attachment_path = NodePath("")
 attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 101
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 102
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
