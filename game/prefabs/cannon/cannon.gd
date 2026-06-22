@@ -14,6 +14,7 @@ signal reload_progress_changed(percent: float)
 @onready var objective_point: Marker3D = %ObjectivePoint
 @onready var second_path: Path3D = %Path3DCannon2
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var cannon_shoot_effect: ParticlesPlayer = %CannonShootEffect
 
 @export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var move_speeds: Array[float] = [0, 0, 0.5, 1]
 @export_custom(PROPERTY_HINT_NONE,"suffix: s") var reload_duration: Array[float] = [0, 15, 10, 5]
@@ -108,6 +109,7 @@ func _shoot() -> void:
 	await get_tree().create_timer(delay_before_shoot).timeout
 	shoot.emit()
 	animation.play("shoot")
+	cannon_shoot_effect.play_effect()
 	reload_progress = 0
 
 
