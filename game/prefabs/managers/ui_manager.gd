@@ -48,7 +48,6 @@ func _ready() -> void:
 	pause_container.visible = false
 	tutorial_km.visible = false
 	tutorial_gpad.visible = false
-	set_objective(false)
 	objectif_target_mat = objective_target.material as ShaderMaterial
 	target_title_mat = target_title.material as ShaderMaterial
 	ready_deferred.call_deferred()
@@ -58,6 +57,8 @@ func ready_deferred() -> void:
 	game_manager = GameManager.instance
 	if Player.instance: player = Player.instance
 	else: game_manager.player_instance_loaded.connect(set_local_player, CONNECT_ONE_SHOT)
+	if (game_manager.use_narrative and not game_manager.use_debug) or not game_manager.use_narrative:
+		set_objective(false)
 
 
 func set_local_player() -> void:

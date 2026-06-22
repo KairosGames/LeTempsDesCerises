@@ -91,12 +91,12 @@ func allies_arrival() -> void:
 
 	#############################################################################FOR DEBUG
 	add_on_process(kill_agents.bind(true, false))
-	
-	
+
+
 	for agent: Agent in game_manager.cannon.workers:
 		if not agent or not is_instance_valid(agent): continue
 		agent.die()
-	
+
 	##################################################### SECURITÉ DE TIMER A METTRE LA
 	await wait_until(is_there_no_enemies)
 	await wait(1.0)
@@ -148,6 +148,7 @@ func launch_women_dialogue() -> void:
 	ui_manager.objective_target.target = null
 	discussion_area.set_deferred("monitoring", false)
 	await wait_voice() # "Vous arrivez d'où comme ça ?"
+	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 
 
 func launch_last_battle_phase() -> void:
