@@ -395,11 +395,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02699995, -0.44525743)
 
 [node name="ReloadPosRight" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot" unique_id=1480498438]
 unique_name_in_owner = true
-transform = Transform3D(0.9784322, 0.18789192, 0.08583164, -0.17101006, 0.96984625, -0.17364818, -0.11587059, 0.15522489, 0.98106027, 0.02, -0.005, 0)
+transform = Transform3D(0.8847623, 0.3933135, 0.25, -0.33036605, 0.9076733, -0.25881904, -0.32871535, 0.14640181, 0.93301266, 0, -0.03, 0.05)
 
 [node name="ReloadPosLeft" type="Marker3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot" unique_id=1488468438]
 unique_name_in_owner = true
-transform = Transform3D(0.98368835, -0.15808289, 0.08583164, 0.17101006, 0.96984625, -0.17364818, -0.055792697, 0.18549377, 0.98106027, -0.02, -0.005, 0)
+transform = Transform3D(0.9305844, -0.2674186, 0.25, 0.33036608, 0.9076733, -0.25881904, -0.1577053, 0.32344446, 0.93301266, 0, -0.03, 0.05)
 
 [node name="ReloadRoot" type="Node3D" parent="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot" unique_id=604600782]
 unique_name_in_owner = true
@@ -449,3 +449,7 @@ transform = Transform3D(1, 0, 0, 0, 0.34202015, -0.9396926, 0, 0.9396926, 0.3420
 [connection signal="entered_reload" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/CameraLandingRoot/PlayerCamera/ak_player_manager" method="_on_reload_ui_entered_reload"]
 [connection signal="try_failed" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/CameraLandingRoot/PlayerCamera/ak_player_manager" method="_on_reload_ui_try_failed"]
 [connection signal="try_succeeded" from="UI/ReloadUI" to="CameraPivot/WeaponCameraBase/CameraLandingRoot/PlayerCamera/ak_player_manager" method="_on_reload_ui_try_succeeded"]
+
+[editable path="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake/Chassepot"]
+[editable path="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake/Chassepot/PivotPoint/container/bld_chassepot"]
+[editable path="CameraPivot/WeaponCameraBase/CameraLandingRoot/WeaponContainer/SubWeaponContainer/WeaponLagRoot/WeaponBobRoot/WeaponSwayRoot/ReloadRoot/WeaponShake/Chassepot/PivotPoint/container/controller_rig"]
