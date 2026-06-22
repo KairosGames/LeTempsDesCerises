@@ -27,5 +27,6 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
 	return SUCCESS
 
-func interrupt(_actor: Node, _blackboard: Blackboard) -> void:
+func interrupt(actor: Node, _blackboard: Blackboard) -> void:
+	var agent: Agent = actor
 	agent.is_reloading = false
