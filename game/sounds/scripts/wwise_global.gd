@@ -15,8 +15,9 @@ var move_gate : int = 0
 var reload_gate : bool = false
 var bypass_line : bool = false
 
-func on_game_manager_ready(gm: GameManager) -> void:
-	game_manager = gm
+func _ready() -> void:
+	await  get_tree().create_timer(5).timeout
+	game_manager = GameManager.instance
 	while not Wwise.is_initialized(): await get_tree().process_frame
 	if game_manager and game_manager.use_narrative:
 		game_manager.clicked_pause.connect(pause)
