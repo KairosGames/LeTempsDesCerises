@@ -19,12 +19,18 @@ const MAIN_SCENE_PATH: String = "uid://bqw181keq72d"
 
 @onready var game_settings: VBoxContainer = option.get_node(^"GAME/ScrollContainer/Settings")
 @onready var view_sensibility_slider: HSlider = %ViewSensibility.get_node(^"Slider")
+@onready var view_sensibility_value_label: Label = %ViewSensibility.get_node(^"Value")
 @onready var aiming_sensibility_slider: HSlider = %AimingSensibility.get_node(^"Slider")
+@onready var aiming_sensibility_value_label: Label = %AimingSensibility.get_node(^"Value")
 @onready var inverted_check_button: CheckButton = %Inverted.get_node(^"CheckButton")
 @onready var h_multiplier_slider: HSlider = %HMultiplier.get_node(^"Slider")
+@onready var h_multiplier_value_label: Label = %HMultiplier.get_node(^"Value")
 @onready var v_multiplier_slider: HSlider = %VMultiplier.get_node(^"Slider")
+@onready var v_multiplier_value_label: Label = %VMultiplier.get_node(^"Value")
 @onready var left_stick_deadzone_slider: HSlider = %DeadzoneLeftStick.get_node(^"Slider")
+@onready var left_stick_deadzone_value_label: Label = %DeadzoneLeftStick.get_node(^"Value")
 @onready var right_stick_deadzone_slider: HSlider = %DeadzoneRightStick.get_node(^"Slider")
+@onready var right_stick_deadzone_value_label: Label = %DeadzoneRightStick.get_node(^"Value")
 @onready var aim_toggle_km_check_button: CheckButton = %AimToggleKM.get_node(^"CheckButton")
 @onready var run_toggle_km_check_button: CheckButton = %RunToggleKM.get_node(^"CheckButton")
 @onready var aim_toggle_gpad_check_button: CheckButton = %AimToggleGamepad.get_node(^"CheckButton")
@@ -153,26 +159,58 @@ func _close_panel(focus_target: Control) -> void:
 
 
 func _load_game_settings_controls() -> void:
-	view_sensibility_slider.set_value_no_signal(Settings.config_file.get_value("game", "sensi_default"))
-	aiming_sensibility_slider.set_value_no_signal(Settings.config_file.get_value("game", "sensi_aiming"))
-	inverted_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_inverted"))
-	h_multiplier_slider.set_value_no_signal(Settings.config_file.get_value("game", "h_sensi_multiplier"))
-	v_multiplier_slider.set_value_no_signal(Settings.config_file.get_value("game", "v_sensi_multiplier"))
-	left_stick_deadzone_slider.set_value_no_signal(Settings.config_file.get_value("game", "l_jstick_threshold"))
-	right_stick_deadzone_slider.set_value_no_signal(Settings.config_file.get_value("game", "r_jstick_threshold"))
-	aim_toggle_km_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_aim_toggle_km"))
-	run_toggle_km_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_run_toggle_km"))
-	aim_toggle_gpad_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_aim_toggle_gpad"))
-	run_toggle_gpad_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_run_toggle_gpad"))
-	posture_switch_toggle_km_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_posture_switch_toggle_km"))
-	aim_smooth_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_aim_smooth"))
-	movement_smooth_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_movement_smooth"))
-	blood_check_button.set_pressed_no_signal(Settings.config_file.get_value("game", "is_blood_enabled"))
+	_set_slider_value(view_sensibility_slider, view_sensibility_value_label, float(Settings.config_file.get_value("game", "sensi_default")))
+	_set_slider_value(aiming_sensibility_slider, aiming_sensibility_value_label, float(Settings.config_file.get_value("game", "sensi_aiming")))
+	inverted_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_inverted")))
+	_set_slider_value(h_multiplier_slider, h_multiplier_value_label, float(Settings.config_file.get_value("game", "h_sensi_multiplier")))
+	_set_slider_value(v_multiplier_slider, v_multiplier_value_label, float(Settings.config_file.get_value("game", "v_sensi_multiplier")))
+	_set_slider_value(left_stick_deadzone_slider, left_stick_deadzone_value_label, float(Settings.config_file.get_value("game", "l_jstick_threshold")))
+	_set_slider_value(right_stick_deadzone_slider, right_stick_deadzone_value_label, float(Settings.config_file.get_value("game", "r_jstick_threshold")))
+	aim_toggle_km_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_aim_toggle_km")))
+	run_toggle_km_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_run_toggle_km")))
+	aim_toggle_gpad_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_aim_toggle_gpad")))
+	run_toggle_gpad_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_run_toggle_gpad")))
+	posture_switch_toggle_km_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_posture_switch_toggle_km")))
+	aim_smooth_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_aim_smooth")))
+	movement_smooth_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_movement_smooth")))
+	blood_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_blood_enabled")))
 
 
 func _on_game_slider_changed(value: float, key: String) -> void:
+	_update_slider_value_label(key, value)
 	Settings.config_file.set_value("game", key, value)
 	Settings.save_settings()
+
+
+func _set_slider_value(slider: HSlider, label: Label, value: float) -> void:
+	slider.set_value_no_signal(value)
+	label.text = _format_slider_value(slider, value)
+
+
+func _update_slider_value_label(key: String, value: float) -> void:
+	match key:
+		"sensi_default":
+			view_sensibility_value_label.text = _format_slider_value(view_sensibility_slider, value)
+		"sensi_aiming":
+			aiming_sensibility_value_label.text = _format_slider_value(aiming_sensibility_slider, value)
+		"h_sensi_multiplier":
+			h_multiplier_value_label.text = _format_slider_value(h_multiplier_slider, value)
+		"v_sensi_multiplier":
+			v_multiplier_value_label.text = _format_slider_value(v_multiplier_slider, value)
+		"l_jstick_threshold":
+			left_stick_deadzone_value_label.text = _format_slider_value(left_stick_deadzone_slider, value)
+		"r_jstick_threshold":
+			right_stick_deadzone_value_label.text = _format_slider_value(right_stick_deadzone_slider, value)
+
+
+func _format_slider_value(slider: Range, value: float) -> String:
+	var decimals: int = 0
+	if not is_zero_approx(slider.step):
+		var step_text: String = String.num(slider.step, 4).rstrip("0")
+		var separator_index: int = step_text.find(".")
+		if separator_index >= 0:
+			decimals = step_text.length() - separator_index - 1
+	return String.num(value, decimals)
 
 
 func _on_inverted_toggled(toggled_on: bool) -> void:
