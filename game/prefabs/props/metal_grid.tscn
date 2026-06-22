@@ -1,7 +1,21 @@
 [gd_scene format=3 uid="uid://cfcwqa4srjp8t"]
 
 [ext_resource type="PackedScene" uid="uid://ckundvb3e8mdo" path="res://sources/meshes/props/sh_metal_grid_extrude.fbx" id="1_kl6ak"]
+[ext_resource type="Texture2D" uid="uid://bhv14rdu7dm3c" path="res://sources/images/textures/sh_metal_grid/sg_metal_grid_extrtude_c.png" id="2_8a2ig"]
+[ext_resource type="Texture2D" uid="uid://cc8ta84dqeevb" path="res://sources/images/textures/sh_metal_grid/sg_metal_grid_extrude_n.png" id="3_kfodc"]
+[ext_resource type="Texture2D" uid="uid://ctm6rbebf2ay2" path="res://sources/images/textures/sh_metal_grid/sg_metal_grid_extrude_orm.png" id="4_uwgye"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_so1rf"]
+albedo_texture = ExtResource("2_8a2ig")
+orm_texture = ExtResource("4_uwgye")
+normal_enabled = true
+normal_texture = ExtResource("3_kfodc")
 
 [node name="Metal_grid" type="Node3D" unique_id=1956504944]
 
-[node name="sh_metal_grid_extrude" parent="." unique_id=442114506 instance=ExtResource("1_kl6ak")]
+[node name="sh_metal_grid_extrude" parent="." unique_id=1620620650 instance=ExtResource("1_kl6ak")]
+
+[node name="sh_metal_grid_extrude" parent="sh_metal_grid_extrude" index="0" unique_id=486907548]
+surface_material_override/0 = SubResource("ORMMaterial3D_so1rf")
+
+[editable path="sh_metal_grid_extrude"]

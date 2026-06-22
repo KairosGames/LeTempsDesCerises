@@ -1,8 +1,17 @@
 [gd_scene format=3 uid="uid://chfbdpud1npmp"]
 
 [ext_resource type="Script" uid="uid://hngppffli8f3" path="res://prefabs/cannon/cannon.gd" id="1_lvh4v"]
-[ext_resource type="PackedScene" uid="uid://dap0o4uyp2p3g" path="res://prefabs/cannon/cannon.glb" id="2_ru8pv"]
+[ext_resource type="PackedScene" uid="uid://cx4ayhfhl54v8" path="res://sources/meshes/props/sh_canon.fbx" id="2_tx7lf"]
 [ext_resource type="PackedScene" uid="uid://bipkjq8ss0hjs" path="res://sounds/prefabs/ak_cannon_manager.tscn" id="3_rsllv"]
+[ext_resource type="Texture2D" uid="uid://ctjnb2nw318du" path="res://sources/images/textures/sh_canon/sg_canon_c.png" id="3_scdqi"]
+[ext_resource type="Texture2D" uid="uid://dquhjoy0u3fcx" path="res://sources/images/textures/sh_canon/sg_canon_n.png" id="4_85cv1"]
+[ext_resource type="Texture2D" uid="uid://bpa4pwe65yvtc" path="res://sources/images/textures/sh_canon/sg_canon_orm.png" id="5_jvsvv"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_uixbo"]
+albedo_texture = ExtResource("3_scdqi")
+orm_texture = ExtResource("5_jvsvv")
+normal_enabled = true
+normal_texture = ExtResource("4_85cv1")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fpedu"]
 radius = 0.3
@@ -27,8 +36,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.32104933, 0, 0.86229044)
 
 [node name="DO_NOT_CHANGE_SLOT_ORDER" type="Node" parent="." unique_id=1601772311]
 
-[node name="Mesh" parent="." unique_id=359011155 instance=ExtResource("2_ru8pv")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1.4412985)
+[node name="sh_canon" parent="." unique_id=651980159 instance=ExtResource("2_tx7lf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 1.441)
+
+[node name="sh_canon" parent="sh_canon" index="0" unique_id=1170575810]
+surface_material_override/0 = SubResource("ORMMaterial3D_uixbo")
 
 [node name="Collider" type="CharacterBody3D" parent="." unique_id=2024285788]
 collision_layer = 9
@@ -39,6 +51,7 @@ shape = SubResource("CapsuleShape3D_fpedu")
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=1645258515]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61, 0)
+visible = false
 radius = 0.75
 
 [node name="ObjectivePoint" type="Marker3D" parent="." unique_id=968513193]
@@ -47,3 +60,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1523932, 0)
 
 [node name="AkCannon" parent="." unique_id=1286440460 instance=ExtResource("3_rsllv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4210855e-14, 0.84135675, -0.8337085)
+
+[editable path="sh_canon"]
