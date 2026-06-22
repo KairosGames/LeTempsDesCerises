@@ -76,7 +76,7 @@ class TargetData:
 		self.target = target
 		is_player = target is Player
 		is_threatening = agent.threats.has(target)
-		is_pushing_canon = not is_player and (target as Agent).is_pushing_canon
+		is_working_on_cannon = not is_player and (target as Agent).is_working_on_cannon
 		distance = target.global_position.distance_to(agent.global_position)
 
 		covering = 0.0 if is_player or not target.cover else target.cover.get_cover_posture() / float(target.posture)
@@ -85,7 +85,7 @@ class TargetData:
 			distance * coefficents.distance + \
 			covering * coefficents.covering + \
 			int(is_player) * coefficents.player + \
-			int(is_pushing_canon) * coefficents.canon + \
+			int(is_working_on_cannon) * coefficents.canon + \
 			int(is_threatening) * coefficents.threatening
 
 	var target: Node3D
@@ -94,7 +94,7 @@ class TargetData:
 
 	var covering: float
 	var is_player: bool
-	var is_pushing_canon: bool
+	var is_working_on_cannon: bool
 
 	var distance: float
 	var is_threatening: bool

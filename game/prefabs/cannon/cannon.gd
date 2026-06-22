@@ -119,7 +119,7 @@ func is_slot_available() -> bool: return available_slots.size()
 
 func active_worker_count() -> int:
 	var count: int = 0
-	for worker: Agent in workers: if worker.is_pushing_canon and worker.is_alive: count += 1
+	for worker: Agent in workers: if worker.is_working_on_cannon and worker.is_alive: count += 1
 	return count
 
 func _take_slot(agent: Agent) -> Marker3D:
