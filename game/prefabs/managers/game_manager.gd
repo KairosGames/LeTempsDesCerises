@@ -64,8 +64,8 @@ func _ready() -> void:
 func ready_deferred() -> void:
 	if UIManager.instance: ui_manager = UIManager.instance
 	spawn_player_if_needed()
+	await WwiseGlobal.on_game_manager_ready(self)
 	set_run()
-	#WwiseGlobal.on_game_manager_ready(self)
 
 
 func _process(_delta: float) -> void:

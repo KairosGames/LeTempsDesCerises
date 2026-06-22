@@ -14,19 +14,34 @@ var allow_barks : bool = true
 var move_gate : int = 0
 var reload_gate : bool = false
 var bypass_line : bool = false
+var is_looping : bool = false
+var ready_narrators : Dictionary = {}
 
-func _ready() -> void:
-	await  get_tree().create_timer(5).timeout
-	game_manager = GameManager.instance
+func on_game_manager_ready(gm: GameManager) -> void:
+	game_manager = gm
+	if not game_manager or not game_manager.use_narrative:
+		return
 	while not Wwise.is_initialized(): await get_tree().process_frame
-	if game_manager and game_manager.use_narrative:
+	await get_tree().process_frame
+	await _wait_for_narrators_ready()
+	_connect_game_manager_signals()
+	game_manager.is_wwise_ready = true
+	if not is_looping:
+		loop()
+
+func _connect_game_manager_signals() -> void:
+	if not game_manager.clicked_pause.is_connected(pause):
 		game_manager.clicked_pause.connect(pause)
+	if not game_manager.voice_line_called.is_connected(new_line):
 		game_manager.voice_line_called.connect(new_line)
-		game_manager.all_states.get(3).choose_surrender.connect(surrender)
-		game_manager.all_states.get(3).choose_fight_to_death.connect(fight)
-		game_manager.all_states[1].player_tried_to_exit.connect(player_far)
-		game_manager.is_wwise_ready = true
-	loop()
+	if game_manager.all_states.size() > 3:
+		if not game_manager.all_states[3].choose_surrender.is_connected(surrender):
+			game_manager.all_states[3].choose_surrender.connect(surrender)
+		if not game_manager.all_states[3].choose_fight_to_death.is_connected(fight):
+			game_manager.all_states[3].choose_fight_to_death.connect(fight)
+	if game_manager.all_states.size() > 1:
+		if not game_manager.all_states[1].player_tried_to_exit.is_connected(player_far):
+			game_manager.all_states[1].player_tried_to_exit.connect(player_far)
 
 func new_line(step : int):
 	if step == 30 :
@@ -37,7 +52,7 @@ func new_line(step : int):
 	line_count = 0
 	Wwise.set_state("narrative_step", String("_" + str(step)))
 	for i in narrators:
-		if is_instance_valid(i):
+		if is_instance_valid(i) and is_narrator_ready(i):
 			i.voiceline()
 
 func line_ended(_npc_name : String):
@@ -146,6 +161,7 @@ func unload_npc(remove_name : String):
 	for npc in narrators:
 		if npc.npc_name == remove_name:
 			narrators.erase(npc)
+			ready_narrators.erase(npc)
 	Wwise.unload_bank(remove_name)
 
 func on_move_progress(progress: float):
@@ -166,21 +182,45 @@ func on_reload_progress(progress):
 		if barricade and is_instance_valid(barricade):
 			play_secure_ak_post_event(find_closest(ally_group, barricade), "Cannon_Incoming", 1.0)
 		play_secure_ak_post_event(find_random(ally_group),"Cannon_Incoming", 2)
-		
+
 func pause(new_pause : bool):
 	if new_pause:
-		Wwise.post_event("Pause", player)
+		Wwise.post_event("Pause", self)
 	elif !new_pause:
-		Wwise.post_event("Resume", player)
+		Wwise.post_event("Resume", self)
 
 
 func loop():
+	is_looping = true
 	if !allies.is_empty():
 		find_random(allies).post_event("Barricade_State", randf_range(0, 5))
 	if !enemies.is_empty():
 		find_random(enemies).post_event("Barricade_State", randf_range(0, 5))
 	await get_tree().create_timer(5).timeout
 	loop()
+
+func register_narrator(narrator: Node3D) -> void:
+	if not narrators.has(narrator):
+		narrators.append(narrator)
+		ready_narrators[narrator] = false
+
+func mark_narrator_ready(narrator: Node3D) -> void:
+	if narrators.has(narrator):
+		ready_narrators[narrator] = true
+
+func is_narrator_ready(narrator: Node3D) -> bool:
+	return ready_narrators.get(narrator, false)
+
+func _wait_for_narrators_ready() -> void:
+	while true:
+		var has_pending_narrators := false
+		for narrator in narrators:
+			if is_instance_valid(narrator) and not is_narrator_ready(narrator):
+				has_pending_narrators = true
+				break
+		if not has_pending_narrators:
+			return
+		await get_tree().process_frame
 
 #### SECURE FUNCTIONS
 

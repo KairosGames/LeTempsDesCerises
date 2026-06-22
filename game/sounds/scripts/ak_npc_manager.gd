@@ -13,14 +13,20 @@ func _ready() -> void:
 	npc_name = get_parent().name
 	get_parent().shot.connect(shoot_event)
 	if not npc_name in valid_names: return
-	WwiseGlobal.narrators.append(self)
 	label.text = npc_name
+	WwiseGlobal.register_narrator(self)
+	while not Wwise.is_initialized():
+		await get_tree().process_frame
 	Wwise.set_switch("Character", npc_name, dialogue_event)
-	await get_tree().create_timer(1).timeout
-	WwiseGlobal.player.add_line(npc_name)
 	Wwise.load_bank(npc_name)
+	await get_tree().process_frame
+	WwiseGlobal.mark_narrator_ready(self)
+	while not WwiseGlobal.player or not is_instance_valid(WwiseGlobal.player):
+		await get_tree().process_frame
+	WwiseGlobal.player.add_line(npc_name)
 
 func voiceline():
+	if not WwiseGlobal.is_narrator_ready(self): return
 	dialogue_event.post_event()
 
 func _on_dialogue_end_of_event(_data: Dictionary) -> void:
