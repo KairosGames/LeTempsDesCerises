@@ -51,8 +51,13 @@ var posture: Posture = Posture.STAND:
 		_update_collider(posture)
 var canon_slot: Marker3D = null:
 	set(value):
+		var was_assigned: bool = canon_slot != null
 		canon_slot = value
 		if cover: cover = null
+		if canon_slot and not is_working_on_cannon and not is_moving:
+			on_start_moving()
+		elif not canon_slot and was_assigned and not is_working_on_cannon and is_moving:
+			on_stop_moving()
 var is_reloading: bool = false:
 	set(value):
 		is_reloading = value

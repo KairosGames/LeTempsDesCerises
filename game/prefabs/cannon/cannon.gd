@@ -78,15 +78,21 @@ func _physics_process(delta: float) -> void:
 		State.MOVING:
 			var move_speed: float = move_speeds[worker_count]
 			animation.speed_scale = move_speed
-			if move_speed: _is_moving = true
+			_is_moving = move_speed > 0.0
 			progress += move_speed * delta
 			move_progress = progress_ratio
-			if move_progress == 1.0: _state = State.RELOADING
-			for worker: Agent in workers: worker.is_reloading_canon = false
-			for worker: Agent in workers: worker.is_moving = _is_moving
+			if move_progress == 1.0:
+				_state = State.RELOADING
+				_is_moving = false
+			for worker: Agent in workers:
+				worker.is_reloading_canon = false
+				worker.is_moving = _is_moving
 		State.RELOADING:
 			animation.speed_scale = 1.0
-			for worker: Agent in workers: worker.is_reloading_canon = true
+			_is_moving = false
+			for worker: Agent in workers:
+				worker.is_reloading_canon = true
+				worker.is_moving = false
 			if reload_progress < 1.0:
 				if reload_progress == 0.0: start_reload.emit()
 				if worker_count: reload_progress += delta / reload_duration[worker_count]

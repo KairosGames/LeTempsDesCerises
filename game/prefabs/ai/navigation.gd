@@ -25,6 +25,12 @@ func _physics_process(_delta: float) -> void:
 
 func _on_velocity_computed(safe_velocity: Vector3) -> void:
 	if not _agent.can_move: return
+	if not _agent.is_working_on_cannon:
+		var is_actually_moving: bool = safe_velocity.length_squared() > 0.0001
+		if is_actually_moving and not _agent.is_moving:
+			_agent.on_start_moving()
+		elif not is_actually_moving and _agent.is_moving:
+			_agent.on_stop_moving()
 	_agent.velocity = safe_velocity
 	_agent.move_and_slide()
 
