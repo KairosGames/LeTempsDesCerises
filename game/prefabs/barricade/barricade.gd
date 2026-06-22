@@ -17,6 +17,7 @@ signal just_destroyed
 
 @export_category("Effects")
 @export var break_effects: Array[GPUParticles3D]
+@export var dirt_explosion_effects: Array[ParticlesPlayer]
 
 @export_category("Settings")
 @export var life_btw_steps: int = 1
@@ -74,6 +75,7 @@ func go_next_step() -> void:
 		just_destroyed.emit()
 	if player: player.wpn_cam_base.shake(1.0, 1.0, 1.0)
 	break_effects[state - 1].emitting = true
+	dirt_explosion_effects[state - 1].play_effect()
 	set_state()
 	await get_tree().create_timer(0.1).timeout
 	kill_all_near_covers_agents()

@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://bdb3n8i4u4olc"]
 
 [ext_resource type="Texture2D" uid="uid://ceg8wibdb7ypy" path="res://prefabs/vfx/vfx_impact/Smoke.png" id="1_k4au2"]
+[ext_resource type="Script" uid="uid://ctjtqdteggxy7" path="res://prefabs/vfx/particles_player.gd" id="1_vdc5s"]
 
 [sub_resource type="Curve" id="Curve_k4au2"]
-_data = [Vector2(0, 0.862733), 0.0, 0.0, 0, 0, Vector2(0.8538961, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.9775008), 0.0, 0.0, 0, 0, Vector2(0.8686131, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_qfpm2"]
@@ -19,8 +20,8 @@ spread = 60.0
 flatness = 0.5
 initial_velocity_min = 2.0
 initial_velocity_max = 6.0
-angular_velocity_min = -720.0
-angular_velocity_max = 719.99994
+angular_velocity_min = -250.00002
+angular_velocity_max = 249.99998
 gravity = Vector3(0, -8, 0)
 scale_min = 0.049999997
 scale_max = 1.5
@@ -30,7 +31,7 @@ alpha_curve = SubResource("CurveTexture_qfpm2")
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.122043766, 0.046597973, 0, 1)
+albedo_color = Color(0.16298255, 0.095624484, 0, 1)
 albedo_texture = ExtResource("1_k4au2")
 billboard_mode = 3
 billboard_keep_scale = true
@@ -42,22 +43,57 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_scol7")
 size = Vector2(0.5, 0.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k4au2"]
-transparency = 1
-albedo_color = Color(0.99215686, 1, 0.23529412, 1)
-emission_enabled = true
-emission = Color(1, 1, 0.3372549, 1)
-emission_energy_multiplier = 5.88
+[sub_resource type="CurveTexture" id="CurveTexture_epulk"]
+curve = SubResource("Curve_k4au2")
 
-[sub_resource type="SphereMesh" id="SphereMesh_qfpm2"]
-material = SubResource("StandardMaterial3D_k4au2")
+[sub_resource type="Curve" id="Curve_vdc5s"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0, 0.16431952), 0.0, 0.0, 0, 0, Vector2(0.17761558, 1.5555557), 3.2854962, 3.2854962, 0, 0, Vector2(1, 1.7464789), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7oatd"]
+curve = SubResource("Curve_vdc5s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3osmd"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = 1.0728835e-05
+angle_max = 1.0728835e-05
+direction = Vector3(0, 1, 0)
+spread = 60.0
+flatness = 0.5
+initial_velocity_max = 0.099999994
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+gravity = Vector3(0, 0.1, 0)
+scale_curve = SubResource("CurveTexture_7oatd")
+alpha_curve = SubResource("CurveTexture_epulk")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mh72r"]
+load_path = "res://.godot/imported/T_Fog_04.png-bb4b4002606ec1aca583837e6128a0df.bptc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bt4ed"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.87889576, 0.73166126, 0.6815047, 1)
+albedo_texture = SubResource("CompressedTexture2D_mh72r")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ilp0q"]
+material = SubResource("StandardMaterial3D_bt4ed")
+size = Vector2(3, 3)
 
 [sub_resource type="Animation" id="Animation_scol7"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/path = NodePath("Dirt:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,40 +112,28 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
+tracks/2/path = NodePath("Smoke:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.99215686, 1, 0.23529412, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_hokiw"]
 resource_name = "play"
-length = 0.56666666
+length = 5.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/path = NodePath("Dirt:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -133,26 +157,28 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D:mesh:material:albedo_color")
+tracks/2/path = NodePath("Smoke:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.099999994),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.99215686, 1, 0.23529412, 0.03137255), Color(0.99215686, 1, 0.23529412, 0)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D:scale")
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.001, 0.001, 0.001), Vector3(10, 10, 10)]
+"times": PackedFloat32Array(5.133333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"free_animation"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hkhrd"]
@@ -161,9 +187,12 @@ _data = {
 &"play": SubResource("Animation_hokiw")
 }
 
-[node name="VfxExplosion" type="Node3D" unique_id=1941831660]
+[node name="VfxExplosion" type="Node3D" unique_id=1941831660 node_paths=PackedStringArray("animationPlayer")]
+script = ExtResource("1_vdc5s")
+worksWithAnimation = true
+animationPlayer = NodePath("AnimationPlayer")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=835488819]
+[node name="Dirt" type="GPUParticles3D" parent="." unique_id=835488819]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 emitting = false
 amount = 400
@@ -173,11 +202,20 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_qfpm2")
 draw_pass_1 = SubResource("QuadMesh_hokiw")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1607926101]
-light_color = Color(1, 1, 0.42745098, 1)
+[node name="Smoke" type="GPUParticles3D" parent="." unique_id=252803824]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0.5063627, 0)
+emitting = false
+amount = 3
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_3osmd")
+draw_pass_1 = SubResource("QuadMesh_ilp0q")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=916428646]
-mesh = SubResource("SphereMesh_qfpm2")
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1607926101]
+visible = false
+light_color = Color(1, 1, 0.42745098, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2030815454]
 libraries/ = SubResource("AnimationLibrary_hkhrd")

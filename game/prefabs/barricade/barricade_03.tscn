@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cvgennjoefedh" path="res://sandbox/covers_proto/dirt_pile_little.tscn" id="6_a2ttd"]
 [ext_resource type="PackedScene" uid="uid://187vl1c0h0u3" path="res://sounds/prefabs/ak_barricade_manager.tscn" id="8_68am2"]
 [ext_resource type="PackedScene" uid="uid://dt06rgwsgrjv8" path="res://prefabs/barricade/vfx/barricade_hit.tscn" id="9_24ljc"]
+[ext_resource type="PackedScene" uid="uid://bdb3n8i4u4olc" path="res://prefabs/vfx/vfx_dirt_explosion.tscn" id="9_gsler"]
 [ext_resource type="Shader" uid="uid://bp5200x4ef7iv" path="res://prefabs/barricade/vfx/barricade_hit_process.gdshader" id="10_4styk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gsler"]
@@ -30,16 +31,18 @@ shader_parameter/collision_spin_damping = 0.5
 radius = 4.0371094
 height = 13.409851
 
-[node name="Barricade03" type="Node3D" unique_id=504355432 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules", "break_effects")]
+[node name="Barricade03" type="Node3D" unique_id=504355432 node_paths=PackedStringArray("full_life_modules", "damages_modules_1", "damages_modules_2", "destroyed_modules", "break_effects", "dirt_explosion_effects")]
 script = ExtResource("1_pvjo0")
 full_life_modules = NodePath("Intacte")
 damages_modules_1 = NodePath("Damage01")
 damages_modules_2 = NodePath("Damage02")
 destroyed_modules = NodePath("Destroyed")
 break_effects = [NodePath("DestructionEffects/FirstEffect"), NodePath("DestructionEffects/SecondEffect"), NodePath("DestructionEffects/ThirdEffect")]
+dirt_explosion_effects = [NodePath("DestructionEffects/DirtExplosions/DirtExplosion1"), NodePath("DestructionEffects/DirtExplosions/DirtExplosion2"), NodePath("DestructionEffects/DirtExplosions/DirtExplosion3")]
 
 [node name="Intacte" parent="." unique_id=2127946876 instance=ExtResource("2_77k22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+visible = false
 
 [node name="Damage01" parent="." unique_id=1841857413 instance=ExtResource("3_a3acv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
@@ -47,11 +50,9 @@ visible = false
 
 [node name="Damage02" parent="." unique_id=1577627335 instance=ExtResource("4_68am2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-visible = false
 
 [node name="Destroyed" parent="." unique_id=1989816985 instance=ExtResource("5_24ljc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-visible = false
 
 [node name="Dirt_pile" parent="." unique_id=703671390 instance=ExtResource("5_7k3v3")]
 transform = Transform3D(0.98468024, 0, 0.17437007, 0, 1, 0, -0.17437007, 0, 0.98468024, 1.7502499, 0.100004435, 3.3495178)
@@ -65,6 +66,17 @@ transform = Transform3D(0.8451592, 0, -0.53451467, 0, 1, 0, 0.53451467, 0, 0.845
 [node name="AkBarricadeManager" parent="." unique_id=40989191 instance=ExtResource("8_68am2")]
 
 [node name="DestructionEffects" type="Node3D" parent="." unique_id=1199477416]
+
+[node name="DirtExplosions" type="Node3D" parent="DestructionEffects" unique_id=19435138]
+
+[node name="DirtExplosion1" parent="DestructionEffects/DirtExplosions" unique_id=1941831660 instance=ExtResource("9_gsler")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627251, 1.3281722, 1.1478662)
+
+[node name="DirtExplosion2" parent="DestructionEffects/DirtExplosions" unique_id=295273989 instance=ExtResource("9_gsler")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3574848, 1.3281724, 2.6258094)
+
+[node name="DirtExplosion3" parent="DestructionEffects/DirtExplosions" unique_id=88386560 instance=ExtResource("9_gsler")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45854074, 0.49758077, 0.51817966)
 
 [node name="FirstEffect" parent="DestructionEffects" unique_id=656924349 instance=ExtResource("9_24ljc")]
 transform = Transform3D(-0.3933641, 0, 0.91938275, 0, 1, 0, -0.91938275, 0, -0.3933641, 0.9202601, 1.3941435, 1.2997013)
