@@ -30,7 +30,6 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 	raycast.force_raycast_update()
 	agent.is_weapon_loaded = false
 	agent.shoot_anim()
-	agent.shoot.emit()
 	@warning_ignore("untyped_declaration")
 	var shoot_debug = get_node_or_null("/root/ShootDebug")
 	@warning_ignore("unsafe_method_access")
