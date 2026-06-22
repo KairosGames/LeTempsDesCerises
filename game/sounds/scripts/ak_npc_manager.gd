@@ -9,10 +9,12 @@ var text_duration : float
 var text_speed : float
 var valid_names : Array[String] = ["Louise", "Marie", "Georges", "Jules", "Francois", "Michel", "Officier"]
 
-signal bank_loaded
+#signal bank_loaded
 var is_bank_loaded: bool = false
-func on_bank_load() -> void:
+func on_bank_load(data: Dictionary) -> void:
+	print("bank loaded")
 	is_bank_loaded = true
+	#bank_loaded.emit()
 	
 
 func _ready() -> void:
@@ -24,9 +26,12 @@ func _ready() -> void:
 	while not Wwise.is_initialized():
 		await get_tree().process_frame
 	Wwise.set_switch("Character", npc_name, dialogue_event)
+	print("Start async load of %s" % npc_name)
 	Wwise.load_bank_async(npc_name, on_bank_load)
-	if not is_bank_loaded: await bank_loaded
-	is_bank_loaded = false
+	while not is_bank_loaded: 
+		print("Wait for %s bank" % npc_name)
+		await get_tree().process_frame
+	print("Finished async load of %s" % npc_name)
 	WwiseGlobal.mark_narrator_ready(self)
 	while not WwiseGlobal.player or not is_instance_valid(WwiseGlobal.player):
 		await get_tree().process_frame

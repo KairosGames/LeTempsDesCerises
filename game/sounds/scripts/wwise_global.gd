@@ -19,10 +19,8 @@ var ready_narrators : Dictionary = {}
 
 func on_game_manager_ready(gm: GameManager) -> void:
 	game_manager = gm
-	if not game_manager or not game_manager.use_narrative:
-		return
+	if not game_manager or not game_manager.use_narrative: return
 	while not Wwise.is_initialized(): await get_tree().process_frame
-	await get_tree().process_frame
 	await _wait_for_narrators_ready()
 	_connect_game_manager_signals()
 	game_manager.is_wwise_ready = true
