@@ -46,15 +46,14 @@ emission_shape = 1
 emission_sphere_radius = 1.5
 direction = Vector3(0, 1, 0)
 spread = 5.0
-initial_velocity_min = 15.0
-initial_velocity_max = 25.0
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
 gravity = Vector3(0, 0, 0)
 linear_accel_min = 0.29999775
 linear_accel_max = 0.29999775
 linear_accel_curve = SubResource("CurveTexture_xfuyf")
 damping_curve = SubResource("CurveTexture_p8vfx")
-scale_min = 2.0
-scale_max = 3.0
+scale_max = 2.0
 scale_curve = SubResource("CurveTexture_g4k8p")
 color = Color(0.8483372, 0.7481818, 0.74633175, 1)
 color_ramp = SubResource("GradientTexture1D_se6r0")
@@ -69,13 +68,13 @@ shader_parameter/rotation_speed = 0.05
 
 [sub_resource type="QuadMesh" id="QuadMesh_hxrhv"]
 material = SubResource("ShaderMaterial_yiou4")
-size = Vector2(5, 5)
+size = Vector2(3, 3)
 
 [node name="BurnEffect" type="Node3D" unique_id=7534225]
 
 [node name="Smoke1" type="GPUParticles3D" parent="." unique_id=1001879862]
 amount = 30
-lifetime = 10.0
+lifetime = 5.0
 randomness = 0.3
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_1bvr6")
