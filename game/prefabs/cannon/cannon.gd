@@ -108,7 +108,7 @@ func _find_workers(recruitment_range: float) -> Agent:
 			if agent.canon_slot: continue
 			if not agent.is_alive: continue
 			var distance: float = agent.global_position.distance_squared_to(global_position)
-			if distance > recruitment_range: continue
+			if distance > recruitment_range * recruitment_range: continue
 			if not nearest_agent or distance < nearest_distance:
 				nearest_agent = agent
 				nearest_distance = distance
