@@ -11,6 +11,7 @@ var coward_distance : int = 600
 var game_manager : GameManager
 var line_count : int = 0
 var allow_barks : bool = true
+var allow_subtitles : bool = true
 var move_gate : int = 0
 var reload_gate : bool = false
 var bypass_line : bool = false
@@ -61,6 +62,7 @@ func line_ended(_npc_name : String):
 		return
 	line_count += 1
 	if line_count == narrators.size():
+		print("a fini")
 		game_manager.curr_state.voice_line_finished.emit()
 
 func flip_barks_system():
@@ -153,9 +155,9 @@ func enemy_killed(_target: Node3D):
 			closest.post_event("Player_Kill", 0.5)
 			#find_farthest(allies).post_event("Player_Kill", randf_range(1, 2))
 
-func localize():
+func localize(language : String):
 	print("change language")
-	Wwise.set_current_language("English(US)")
+	Wwise.set_current_language(language)
 
 func unload_npc(remove_name : String):
 	for npc in narrators:

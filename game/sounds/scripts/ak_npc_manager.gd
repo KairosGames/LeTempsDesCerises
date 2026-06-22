@@ -30,6 +30,7 @@ func voiceline():
 	dialogue_event.post_event()
 
 func _on_dialogue_end_of_event(_data: Dictionary) -> void:
+	print(npc_name, " a fini")
 	WwiseGlobal.player.update_line(npc_name, "")
 	WwiseGlobal.line_ended(npc_name)
 	if !debug_text : return
@@ -54,7 +55,7 @@ func _on_dialogue_audio_marker(data: Dictionary) -> void:
 		await get_tree().create_timer(randf_range(0.01, 0.03)).timeout
 
 func _on_dialogue_duration(data: Dictionary) -> void:
-	text_duration = data.get("fDuration") / 2
+	text_duration = data.get("fDuration")
 
 
 func _on_tree_exiting() -> void:
