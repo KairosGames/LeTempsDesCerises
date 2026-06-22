@@ -30,7 +30,11 @@ func on_success(actor: Node, _blackboard: Blackboard) -> void:
 	var agent: Agent = actor
 	_is_rotating_to_cover = true
 	_rotation_finished = false
-	agent.rotating_to(agent.cover.global_rotation.y, 0.5).finished.connect(_on_rotation_finished, CONNECT_ONE_SHOT)
+	_rotate_to_cover(agent)
+
+func _rotate_to_cover(agent: Agent) -> void:
+	await agent.rotating_to(agent.cover.global_rotation.y, 0.5)
+	_on_rotation_finished()
 
 func interrupt(actor: Node, blackboard: Blackboard) -> void:
 	_is_rotating_to_cover = false
