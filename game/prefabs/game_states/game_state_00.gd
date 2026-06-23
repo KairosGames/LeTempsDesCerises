@@ -173,6 +173,7 @@ func wait_player_shoot()-> void:
 	add_on_process(process_shoot_tooltip, true)
 	await wait_until(is_player_shooting_target)
 	ui_manager.objective_target.target = null
+	delay_null_objective_target()
 	free_tool_tip()
 	player.tried_shoot_no_reload.emit()
 	if not player.p_inputs.is_gamepad: leave_aim()
@@ -189,6 +190,11 @@ func is_player_shooting_target() -> bool:
 func process_shoot_tooltip() -> void:
 	var obj: Object = player.weapon_ray_cast.get_collider()
 	ui_manager.tooltip.display(obj and obj is ShootTarget and player.is_aiming)
+
+
+func delay_null_objective_target() -> void:
+	await wait(4.0)
+	ui_manager.objective_target.target = null
 
 
 func free_player_view() -> void:
