@@ -1008,7 +1008,6 @@ func can_shoot() -> bool:
 	if not can_use_shoot: return false
 	if not can_play: return false
 	if not has_weapon: return false
-	if not is_weapon_loaded: return false
 	if is_running: return false
 	if is_pulling_back: return false
 	return true
