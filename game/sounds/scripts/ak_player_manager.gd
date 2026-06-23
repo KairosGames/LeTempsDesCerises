@@ -42,12 +42,12 @@ func _ready() -> void:
 	alive.post_event()
 
 func _unhandled_input(_event: InputEvent) -> void:
-	
+
 	if Input.is_action_just_pressed("aim"):
 		Wwise.set_state("player_aim", str(!player.is_aiming))
 
 func _process(_delta: float) -> void:
-	
+
 	if player.is_running:
 		Wwise.set_state("player_stance", "sprint")
 	elif player.curr_posture == player.Posture.STAND:
@@ -170,6 +170,20 @@ func update_line(npc_name, new_text : String):
 				node.visible = true
 
 func change_barricade():
-	if WwiseGlobal.barricade.get_parent().name == "SecondBarricade": return
-	WwiseGlobal.barricade = GameManager.instance.curr_barricade.get_node("ak_barricade_manager")
+	var curr_barricade: Barricade = GameManager.instance.curr_barricade if GameManager.instance else null
+	if not is_instance_valid(curr_barricade):
+		return
+
+	if is_instance_valid(WwiseGlobal.barricade):
+		var current_parent: Node = WwiseGlobal.barricade.get_parent()
+		if is_instance_valid(current_parent) and current_parent.name == "SecondBarricade":
+			gonext = false
+			return
+
+	var next_barricade_manager: Node = curr_barricade.get_node_or_null("ak_barricade_manager")
+	if not is_instance_valid(next_barricade_manager):
+		return
+
+	WwiseGlobal.barricade = next_barricade_manager
 	Wwise.set_state("barricade_state", "intact")
+	gonext = false

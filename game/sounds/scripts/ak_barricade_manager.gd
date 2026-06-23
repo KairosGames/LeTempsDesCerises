@@ -5,21 +5,28 @@ extends Node3D
 var life : int
 
 func _ready() -> void:
-	if GameManager.instance.curr_barricade == get_parent():
+	var barricade: Barricade = get_parent() as Barricade
+	if not barricade:
+		return
+	if GameManager.instance.curr_barricade == barricade:
 		WwiseGlobal.barricade = self
-	get_parent().state_changed.connect(set_wwise_state)
+	barricade.state_changed.connect(set_wwise_state)
 
 func _on_barricade_damaged() -> void:
 	damaged.post_event()
 
-func set_wwise_state():
-	life = get_parent().state
+func set_wwise_state() -> void:
+	var barricade: Barricade = get_parent() as Barricade
+	if not barricade:
+		return
+	life = barricade.state
 	match life:
 		2:
 			Wwise.set_state("barricade_state", "low")
 			print("low")
 		3:
 			Wwise.set_state("barricade_state", "broken")
-			WwiseGlobal.barricade == GameManager.instance.curr_barricade
-			WwiseGlobal.player.gonext = true
+			WwiseGlobal.barricade = self
+			if WwiseGlobal.player is Node:
+				(WwiseGlobal.player as Node).set("gonext", true)
 			print(GameManager.instance.curr_barricade)
