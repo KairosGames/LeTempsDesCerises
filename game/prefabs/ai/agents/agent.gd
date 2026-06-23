@@ -27,6 +27,7 @@ signal move_stoped
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var shoot_targets: Array[Marker3D] = [$ShootTargets/Chest, $ShootTargets/Head]
 @onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+var body_materials: Array = []
 
 var is_disabled: bool = false
 var has_enemy_in_range: bool = false
@@ -43,6 +44,12 @@ var is_reloading_canon: bool = false
 var is_working_on_cannon: bool = false
 var is_pushing_canon: bool = false
 var is_pulling_canon: bool = false
+
+var dynamic_da_override: float:
+	set(value):
+		dynamic_da_override = value
+		for body_material: ShaderMaterial in body_materials:
+			body_material.set_shader_parameter("dynamic_da", dynamic_da_override)
 
 var posture: Posture = Posture.STAND:
 	set(value):
@@ -84,7 +91,11 @@ var cover_destination: Cover = null:
 enum Team { VERSAILLAIS = -1, NONE = 0, COMMUNARD = 1 }
 
 func _ready() -> void:
-	randomize_color()
+	if body: 
+		body_materials = range(body.get_surface_override_material_count()).map(
+			func(i: int) -> ShaderMaterial:
+				return body.get_surface_override_material(i))
+		randomize_color()
 	shoot_raycast.debug_shape_custom_color = Color.RED if team == Team.COMMUNARD else Color.BLUE
 
 
@@ -186,12 +197,9 @@ func get_shoot_posture() -> Agent.Posture:
 func randomize_color() -> void:
 	if not color_sets.size(): push_error("No color_set to pick"); return
 	if not body: push_error("No mesh is assigned while trying to randomize color"); return
-	var slot_count: int = body.get_surface_override_material_count()
 	var color_set: ColorSet = color_sets.pick_random()
-	for i: int in range(slot_count):
-		if i >= slot_count: continue
-		var material: ShaderMaterial = body.get_surface_override_material(i)
-		material.set_shader_parameter("color", color_set.colors[i])
+	for i: int in range(body.get_surface_override_material_count()):
+		body_materials[i].set_shader_parameter("color", color_set.colors[i])
 
 enum Posture { NONE, PRONE, CROUCH, STAND}
 enum Sexe { MAN = 1, WOMAN = 2, BOTH = 3}
