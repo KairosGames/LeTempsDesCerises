@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://7mwi11doj234" path="res://sources/images/textures/ui/lorem_ipsum_01.png" id="7_hhep5"]
 [ext_resource type="Texture2D" uid="uid://mk88hreujt3a" path="res://sources/images/textures/ui/divider_01.png" id="8_cmjdo"]
 [ext_resource type="Texture2D" uid="uid://rgeqqd3p0ike" path="res://sources/images/icons/inputs/Xbox Series/xbox_lb_outline.svg" id="11_aish6"]
+[ext_resource type="Texture2D" uid="uid://d2gdri2w54pfo" path="res://sources/images/icons/close.svg" id="11_jdxxw"]
 [ext_resource type="Theme" uid="uid://b2cmbq2awrshk" path="res://prefabs/ui/home/option_theme.tres" id="11_yu5fn"]
 [ext_resource type="Texture2D" uid="uid://cfimnqk146jpn" path="res://sources/images/icons/inputs/Xbox Series/controller_xboxseries.svg" id="12_gi00y"]
 [ext_resource type="PackedScene" uid="uid://bqvmhyi4hni80" path="res://prefabs/ui/home/input_link.tscn" id="12_ip4d6"]
@@ -286,6 +287,7 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../Options")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../Credits")
+disabled = true
 text = "References
 "
 script = ExtResource("2_u4wd2")
@@ -430,11 +432,20 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 
-[node name="Title" type="Label" parent="References/ScrollContainer/VBoxContainer" unique_id=103303181]
+[node name="Header" type="HBoxContainer" parent="References/ScrollContainer/VBoxContainer" unique_id=350603390]
 layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="References/ScrollContainer/VBoxContainer/Header" unique_id=103303181]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "References"
 label_settings = SubResource("LabelSettings_hhep5")
-horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="References/ScrollContainer/VBoxContainer/Header" unique_id=456967301]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+icon = ExtResource("11_jdxxw")
 
 [node name="Content" type="VBoxContainer" parent="References/ScrollContainer/VBoxContainer" unique_id=1751513897]
 layout_mode = 2
@@ -526,12 +537,22 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 
-[node name="Title" type="Label" parent="Credit/ScrollContainer/VBoxContainer" unique_id=1993056026]
+[node name="Header" type="HBoxContainer" parent="Credit/ScrollContainer/VBoxContainer" unique_id=1323033783]
 layout_mode = 2
+
+[node name="Title" type="Label" parent="Credit/ScrollContainer/VBoxContainer/Header" unique_id=1993056026]
+layout_mode = 2
+size_flags_horizontal = 3
 text = "Le Temps des
 Cerises"
 label_settings = SubResource("LabelSettings_hhep5")
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Credit/ScrollContainer/VBoxContainer/Header" unique_id=1102197824]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_vertical = 4
+icon = ExtResource("11_jdxxw")
 
 [node name="Content" type="VBoxContainer" parent="Credit/ScrollContainer/VBoxContainer" unique_id=154363791]
 layout_mode = 2
@@ -2165,6 +2186,8 @@ metadata/_tab_name = ""
 [connection signal="pressed" from="References/Quit" to="References" method="hide"]
 [connection signal="pressed" from="Credit/Quit" to="Menu" method="show"]
 [connection signal="pressed" from="Credit/Quit" to="Credit" method="hide"]
+[connection signal="pressed" from="Credit/ScrollContainer/VBoxContainer/Header/Button" to="Menu" method="show"]
+[connection signal="pressed" from="Credit/ScrollContainer/VBoxContainer/Header/Button" to="Credit" method="hide"]
 [connection signal="pressed" from="Option/Quit" to="Menu" method="show"]
 [connection signal="pressed" from="Option/Quit" to="Option" method="hide"]
 [connection signal="value_changed" from="Option/AUDIO/MasterVolume/Master_Slider" to="Option/AUDIO" method="_on_slider_value_changed"]
