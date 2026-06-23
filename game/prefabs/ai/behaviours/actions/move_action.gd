@@ -8,7 +8,11 @@ class_name MoveAction extends ActionLeaf
 func tick(actor: Node, blackboard: Blackboard) -> int:
 	var agent: Agent = actor
 
-	if not pre_condition(actor, blackboard): return FAILURE
+	if not pre_condition(actor, blackboard):
+		if agent:
+			agent.on_stop_moving()
+			agent.navigation.stop()
+		return FAILURE
 
 	var destination: Vector3 = get_destination(actor, blackboard)
 	var stop_distance: float = get_stop_distance()

@@ -7,15 +7,13 @@ var _is_rotating_to_cover: bool = false
 var _rotation_finished: bool = false
 
 func pre_condition(actor: Node, _blackboard: Blackboard) -> bool:
-	return _get_target_cover(actor as Agent) != null
+	return _get_cover_destination(actor as Agent) != null
 
 func get_stop_distance() -> float: return stop_distance
 func get_destination(actor: Node, _blackboard: Blackboard) -> Vector3:
-	return _get_target_cover(actor as Agent).global_position
+	return _get_cover_destination(actor as Agent).global_position
 
 func tick(actor: Node, blackboard: Blackboard) -> int:
-	var agent: Agent = actor
-
 	if _is_rotating_to_cover:
 		if _rotation_finished:
 			_is_rotating_to_cover = false
@@ -27,7 +25,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 
 func on_success(actor: Node, _blackboard: Blackboard) -> void:
 	var agent: Agent = actor
-	var target_cover: Cover = _get_target_cover(agent)
+	var target_cover: Cover = _get_cover_destination(agent)
 	if agent.cover_destination and target_cover:
 		agent.cover = target_cover
 		agent.cover_destination = null
@@ -55,8 +53,6 @@ func interrupt(actor: Node, blackboard: Blackboard) -> void:
 func _on_rotation_finished() -> void:
 	_rotation_finished = true
 
-func _get_target_cover(agent: Agent) -> Cover:
+func _get_cover_destination(agent: Agent) -> Cover:
 	if not agent: return null
-	if agent.cover_destination and is_instance_valid(agent.cover_destination):
-		return agent.cover_destination
-	return agent.cover if is_instance_valid(agent.cover) else null
+	return agent.cover_destination if is_instance_valid(agent.cover_destination) else null
