@@ -59,6 +59,7 @@ func play_death_effect() -> void:
 		play_eyes_effect_and_revive(true)
 		communard.can_die = false
 		communard.can_move = false
+		player.gender = Player.Gender.Male if communard.sexe == Agent.Sexe.MAN else Player.Gender.Female
 		handle_camera_on_communard(communard, ground_y)
 		fall_twn.tween_callback(play_death_petals_effect.bind(self, communard))
 		return
@@ -177,6 +178,7 @@ func delete_swaped_communard(communard: Agent) -> void:
 
 func play_scripted_death() -> void:
 	var communard: Npc = GameManager.instance.curr_state.next_respawn
+	player.gender = Player.Gender.Male if communard.gender == Npc.NpcGender.Male else Player.Gender.Female
 	var ground_y: float = player.global_position.y
 	fall_twn = create_tween()
 	fall_rot_twn = create_tween()

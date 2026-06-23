@@ -13,6 +13,7 @@ signal changed_aim_state
 signal changed_posture(from: Posture, to: Posture)
 signal jumped
 signal landed
+signal just_revive
 
 @onready var p_inputs: PlayerInputs = %PlayerInputs
 @onready var reload_ui: ReloadUI = %ReloadUI
@@ -245,6 +246,8 @@ var bob_amount: float = 0.0
 var bob_phase: float
 var last_y_air_vel: float
 
+enum Gender { Male, Female, NoBinary}
+var gender: Gender = Gender.Male
 var is_next_death_scripted: bool = false
 
 var wpn_x_aim_twn: Tween
@@ -1201,7 +1204,7 @@ func reset_player_controller() -> void:
 	kill_all_tweens()
 	reload_ui.step = 0
 	reload_ui.activation(false)
-	reload_ui.wpn_animator.play("idle")
+	delay_reset_animation()
 	velocity = Vector3.ZERO
 	local_velocity = Vector3.ZERO
 	aim_vel = Vector3.ZERO
@@ -1244,6 +1247,12 @@ func reset_player_controller() -> void:
 	synchronise_after_pop()
 
 
+func delay_reset_animation() -> void:
+	await get_tree().create_timer(0.2)
+	reload_ui.wpn_animator.play("idle", 0.1)
+	reload_ui.hands_animator.play("idle", 0.1)
+
+
 func synchronise_after_pop() -> void:
 	aim_target = Vector3(camera_pivot.rotation_degrees.x, rotation_degrees.y, 0.0)
 	weapon_lag_root.position = weapon_lag_root_base_pos
@@ -1277,6 +1286,7 @@ func revive(pos: Vector3, rot: Vector3) -> void:
 	blur_effect.hard_set_blur(0.0)
 	player_camera.current = true
 	is_immortal = true
+	just_revive.emit()
 	launch_killable_timer()
 
 
