@@ -847,20 +847,46 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.23298101)
 [node name="bld_chassepot" parent="PivotPoint/container" unique_id=454605281 instance=ExtResource("1_xdjnr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.23298101)
 
-[node name="sk_chassepot_body" parent="PivotPoint/container/bld_chassepot" index="0" unique_id=697152273]
+[node name="sk_chassepot_body" parent="PivotPoint/container/bld_chassepot" index="0" unique_id=986717738]
 cast_shadow = 0
 
-[node name="safety_mechanism" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body/barrel_body" parent_id_path=PackedInt32Array(454605281, 1463495357) index="3" unique_id=436007347]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067676, 0.42980325, 43.619835)
+[node name="bagette" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body" index="0" unique_id=1985852875]
+cast_shadow = 0
 
-[node name="bullet" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body" index="2" unique_id=1664046089]
+[node name="barrel_body" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body" index="1" unique_id=1904166666]
+cast_shadow = 0
+
+[node name="bolt_handle" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body/barrel_body" index="0" unique_id=1342505474]
+cast_shadow = 0
+
+[node name="rear_sight" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body/barrel_body" index="1" unique_id=306984577]
+cast_shadow = 0
+
+[node name="rear_sight_slider" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body/barrel_body/rear_sight" index="0" unique_id=711887453]
+cast_shadow = 0
+
+[node name="rear_sight_body" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body/barrel_body" index="2" unique_id=131506732]
+cast_shadow = 0
+
+[node name="safety_mechanism" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body/barrel_body" index="3" unique_id=936936648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067676, 0.42980325, 43.619835)
+cast_shadow = 0
+
+[node name="bullet" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body" index="2" unique_id=1642137815]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.657606, -5.607271, 19.904123)
 visible = false
+cast_shadow = 0
+
+[node name="weapon_trigger" parent="PivotPoint/container/bld_chassepot/sk_chassepot_body" index="3" unique_id=1806594546]
+cast_shadow = 0
 
 [node name="controller_rig" parent="PivotPoint/container" unique_id=93195171 instance=ExtResource("3_4wuoh")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.23298101)
 
-[node name="AnimationPlayer" parent="PivotPoint/container/controller_rig" index="1" unique_id=1734422312]
+[node name="arms" parent="PivotPoint/container/controller_rig/Armature/Skeleton3D" parent_id_path=PackedInt32Array(93195171, 1909108388) index="0" unique_id=520865150]
+cast_shadow = 0
+
+[node name="AnimationPlayer" parent="PivotPoint/container/controller_rig" index="1" unique_id=853507655]
 autoplay = &"idle"
 
 [node name="WeaponAnimator" type="AnimationPlayer" parent="." unique_id=1149805121]
