@@ -100,11 +100,11 @@ func handle_camera_on_communard(communard: Node3D, ground: float) -> void:
 	revive_rot = Vector3(0, communard.global_rotation.y, 0) + offset_rot
 	target_communard = communard
 	
-	#fov_twn = create_tween()
-	#fov_twn.tween_property(self, "fov", 120.0, 0.2
-				#).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	#await fov_twn.tween_property(self, "fov", 1.0, 0.25
-				#).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).finished
+	fov_twn = create_tween()
+	fov_twn.tween_property(self, "fov", 120.0, 0.2
+				).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	await fov_twn.tween_property(self, "fov", 1.0, 0.25
+				).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).finished
 
 
 func handle_camera_simple_move() -> void:
