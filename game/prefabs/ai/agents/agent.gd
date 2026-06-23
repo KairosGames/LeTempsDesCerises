@@ -49,7 +49,7 @@ var dynamic_da_override: float:
 	set(value):
 		dynamic_da_override = value
 		for body_material: ShaderMaterial in body_materials:
-			body_material.set_shader_parameter("dynamic_da", dynamic_da_override)
+			body_material.set_shader_parameter("dynamic_da_override", dynamic_da_override)
 
 var posture: Posture = Posture.STAND:
 	set(value):
@@ -93,8 +93,7 @@ enum Team { VERSAILLAIS = -1, NONE = 0, COMMUNARD = 1 }
 func _ready() -> void:
 	if body: 
 		body_materials = range(body.get_surface_override_material_count()).map(
-			func(i: int) -> ShaderMaterial:
-				return body.get_surface_override_material(i))
+			func(i: int) -> ShaderMaterial: return body.get_surface_override_material(i))
 		randomize_color()
 	shoot_raycast.debug_shape_custom_color = Color.RED if team == Team.COMMUNARD else Color.BLUE
 
@@ -156,11 +155,16 @@ func die() -> void:
 	navigation.stop()
 	cover_destination = null
 	cover = null
-	var tween: Tween = create_tween()
-	tween.tween_method(func(transparency: float) -> void: pass, 0.0, 1.0, 10.0)
-	await tween.finished
+	await create_tween().tween_method(transition_to_dark, dynamic_da_override, 1.0, 5.0 * (1 - dynamic_da_override)).finished
+	await create_tween().tween_method(fadeout, 1.0, 0.0, 5.0).finished
 	remove()
 
+func transition_to_dark(progress: float) -> void:  dynamic_da_override = progress
+func fadeout(alpha: float) -> void: 
+	for body_material: ShaderMaterial in body_materials: 
+		var new_color: Color = Color(body_material.get_shader_parameter("color") as Color,  alpha)
+		body_material.set_shader_parameter("color", new_color)
+	
 func remove() -> void:
 	cover_destination = null
 	cover = null

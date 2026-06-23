@@ -2,7 +2,7 @@ shader_type spatial;
 
 render_mode cull_disabled, blend_mix, depth_prepass_alpha;
 
-uniform vec3 color: source_color;
+uniform vec4 color: source_color;
 global uniform float dynamic_da = 0.5;
 uniform float dynamic_da_override = 0.0;
 
@@ -44,6 +44,6 @@ void fragment()
 {
 	float n = texture(noise_tex, UV * 2.0 + TIME * 0.1).r;
 
-	ALBEDO = mix(color, vec3(0.02 * n),  max(dynamic_da_override, dynamic_da));
-	ALPHA = mix(1.0, 0.6,  max(dynamic_da_override, dynamic_da));
+	ALBEDO = mix(color.rgb, vec3(0.02 * n),  max(dynamic_da_override, dynamic_da));
+	ALPHA = min(color.a, mix(1.0, 0.6,  max(dynamic_da_override, dynamic_da)));
 }
