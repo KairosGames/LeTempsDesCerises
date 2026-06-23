@@ -38,13 +38,9 @@ func _ready() -> void:
 	player.shoot_missed.connect(bullet)
 	player.tried_shoot_no_reload.connect(no_ammo)
 	player.changed_posture.connect(new_stance)
+	player.changed_aim_state.connect(aim)
 	await get_tree().create_timer(7).timeout
 	alive.post_event()
-
-func _unhandled_input(_event: InputEvent) -> void:
-
-	if Input.is_action_just_pressed("aim"):
-		Wwise.set_state("player_aim", str(!player.is_aiming))
 
 func _process(_delta: float) -> void:
 
@@ -93,6 +89,11 @@ func new_stance(from, to) -> void:
 					await get_tree().create_timer(0.25).timeout
 					up.post_event()
 
+func aim():
+	Wwise.post_event("Player_Aim", self)
+	print(player.is_aiming)
+	Wwise.set_state("player_aim", str(player.is_aiming))	
+
 func bullet():
 	var target : Node3D = player.weapon_ray_cast.get_collider()
 	var hit_position : Vector3 = player.weapon_ray_cast.get_collision_point()
@@ -118,8 +119,6 @@ func on_reload():
 
 func death_event():
 	self.reparent(player.player_camera)
-	if gonext:
-		change_barricade()
 	death.post_event()
 	Wwise.set_switch("Shoe_Type", shoe_type.pick_random(), steps)
 

@@ -46,6 +46,7 @@ func _connect_game_manager_signals() -> void:
 	if game_manager.all_states.size() > 1:
 		if not game_manager.all_states[1].player_tried_to_exit.is_connected(player_far):
 			game_manager.all_states[1].player_tried_to_exit.connect(player_far)
+	game_manager.all_states[2].player_passed_behind_second_barricade.connect(stop_barks)
 
 func new_line(step : int):
 	relevant_narrators = 0
@@ -183,6 +184,7 @@ func on_move_progress(progress: float):
 		#find_closest(allies, player).post_event("Cannon_Advance", 1)
 
 func on_reload_progress(progress):
+	if game_manager.cannon.is_first_activation : return
 	if progress >= 0.9 and not reload_gate:
 		reload_gate = true
 		play_secrure_random_ak_post_event_on_array(cannon_workers, "Cannon_Incoming", 0.0)

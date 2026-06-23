@@ -46,6 +46,7 @@ namespace AK
         static const AkUniqueID MUSIC = 3991942870U;
         static const AkUniqueID NPC_SHOOT = 1192162266U;
         static const AkUniqueID PAUSE = 3092587493U;
+        static const AkUniqueID PLAYER_AIM = 1608601952U;
         static const AkUniqueID PLAYER_ALIVE = 2917189548U;
         static const AkUniqueID PLAYER_CROUCH = 3055475155U;
         static const AkUniqueID PLAYER_DEATH = 3083087645U;

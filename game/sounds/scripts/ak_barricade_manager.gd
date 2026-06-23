@@ -24,9 +24,8 @@ func set_wwise_state() -> void:
 		2:
 			Wwise.set_state("barricade_state", "low")
 			print("low")
+			if !WwiseGlobal.is_looping:
+				WwiseGlobal.is_looping = true
 		3:
 			Wwise.set_state("barricade_state", "broken")
 			WwiseGlobal.barricade = self
-			if WwiseGlobal.player is Node:
-				(WwiseGlobal.player as Node).set("gonext", true)
-			print(GameManager.instance.curr_barricade)

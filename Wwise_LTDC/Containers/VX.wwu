@@ -27,7 +27,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-35</Value>
+										<Value>-20</Value>
 									</ValueList>
 								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
@@ -55,6 +55,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<SwitchContainer Name="Breath_In" ID="{F4F3F0A7-519D-41AA-AA28-EA035C654C4A}" ShortID="187930683">
+									<PropertyList>
+										<Property Name="SwitchBehavior" Type="int16" Value="1"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -170,9 +173,112 @@
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="F" ID="{A67B9376-DF81-4758-821B-043BC33477FC}" ShortID="1048246680">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Player_Breath_Idle_In_F-001" ID="{D4C66E6F-0BF2-4E92-87DD-22236BAE8B0E}" ShortID="836601758">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_F-001" ID="{30B57D23-3651-415A-BE34-7B4747FCF89D}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Idle_In_F-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="322647281"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Idle_In_F-001" ID="{30B57D23-3651-415A-BE34-7B4747FCF89D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Player_Breath_Idle_In_F-002" ID="{A0452FB1-51BF-4A21-AE3A-11BC3B26BC5B}" ShortID="581021299">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_F-002" ID="{C2B755F1-6A9F-42EC-914E-E9E5D174D39C}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Idle_In_F-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="680673829"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Idle_In_F-002" ID="{C2B755F1-6A9F-42EC-914E-E9E5D174D39C}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Player_Breath_Idle_In_F-003" ID="{C9D190F8-87F7-4B7E-A440-61FD4ABE5318}" ShortID="228298543">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_F-003" ID="{A33CEAD8-D80B-4D40-A4B9-4841677270D6}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Idle_In_F-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="146397456"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Idle_In_F-003" ID="{A33CEAD8-D80B-4D40-A4B9-4841677270D6}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Player_Breath_Idle_In_F-004" ID="{0DA3ABF8-1C25-4052-BA4B-05D323C4E4F1}" ShortID="379023804">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_F-004" ID="{E47D049B-0306-45D7-A0CC-14EF3F8765DE}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Idle_In_F-004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="892683508"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Idle_In_F-004" ID="{E47D049B-0306-45D7-A0CC-14EF3F8765DE}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 									<GroupingInfo>
 										<GroupingBehaviorList>
+											<GroupingBehavior>
+												<ItemRef Name="F" ID="{A67B9376-DF81-4758-821B-043BC33477FC}"/>
+											</GroupingBehavior>
 											<GroupingBehavior>
 												<ItemRef Name="M" ID="{8604D5FE-D75F-4041-8637-02F5DFC4DA9F}"/>
 											</GroupingBehavior>
@@ -184,10 +290,19 @@
 													<ItemRef Name="M" ID="{8604D5FE-D75F-4041-8637-02F5DFC4DA9F}"/>
 												</ItemList>
 											</Grouping>
+											<Grouping>
+												<SwitchRef Name="F" ID="{4B9C2AE0-C367-4049-8334-5C086DF453DF}"/>
+												<ItemList>
+													<ItemRef Name="F" ID="{A67B9376-DF81-4758-821B-043BC33477FC}"/>
+												</ItemList>
+											</Grouping>
 										</GroupingList>
 									</GroupingInfo>
 								</SwitchContainer>
 								<SwitchContainer Name="Breath_Out" ID="{B9691230-934A-4F7F-9A24-C985EAC513DC}" ShortID="1069597462">
+									<PropertyList>
+										<Property Name="SwitchBehavior" Type="int16" Value="1"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -303,11 +418,114 @@
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="F" ID="{7CCA206F-2172-44E3-9D0C-15B7F9FCD490}" ShortID="269351235">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Player_Breath_Idle_Out_F-004" ID="{C2506DAB-B62B-4BBD-A4C1-DAE12DEBF688}" ShortID="460522512">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Idle_Out_F-004" ID="{8C40080E-46A7-4A7D-83B9-6EB64E76781B}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Idle_Out_F-004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="169831255"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Idle_Out_F-004" ID="{8C40080E-46A7-4A7D-83B9-6EB64E76781B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Player_Breath_Idle_Out_F-001" ID="{567E70E0-C184-4F97-A0DF-94C332C27876}" ShortID="105907497">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Idle_Out_F-001" ID="{EBD0D84E-C119-4441-9D74-5436F78C63BC}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Idle_Out_F-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="797763112"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Idle_Out_F-001" ID="{EBD0D84E-C119-4441-9D74-5436F78C63BC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Player_Breath_Idle_Out_F-002" ID="{1EC2B9F8-C318-4156-A09E-94269E0F082C}" ShortID="617133606">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Idle_Out_F-002" ID="{3837C609-12FD-4DF5-999B-E329391348F7}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Idle_Out_F-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="480846424"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Idle_Out_F-002" ID="{3837C609-12FD-4DF5-999B-E329391348F7}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Player_Breath_Idle_Out_F-003" ID="{B17ACD37-3C2F-4375-A874-ADA3EC6DFA9C}" ShortID="639932909">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Idle_Out_F-003" ID="{ABA5551B-B1F7-4A3D-AAA1-5FA8A6BB62EC}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Idle_Out_F-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="753990671"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Idle_Out_F-003" ID="{ABA5551B-B1F7-4A3D-AAA1-5FA8A6BB62EC}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 									<GroupingInfo>
 										<GroupingBehaviorList>
 											<GroupingBehavior>
 												<ItemRef Name="M" ID="{1FD44503-E271-40F6-BD1E-16F1749355CA}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="F" ID="{7CCA206F-2172-44E3-9D0C-15B7F9FCD490}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
 										<GroupingList>
@@ -315,6 +533,12 @@
 												<SwitchRef Name="M" ID="{3E890A4A-45D3-40C9-BF3B-93425183CC09}"/>
 												<ItemList>
 													<ItemRef Name="M" ID="{1FD44503-E271-40F6-BD1E-16F1749355CA}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="F" ID="{4B9C2AE0-C367-4049-8334-5C086DF453DF}"/>
+												<ItemList>
+													<ItemRef Name="F" ID="{7CCA206F-2172-44E3-9D0C-15B7F9FCD490}"/>
 												</ItemList>
 											</Grouping>
 										</GroupingList>
@@ -368,8 +592,18 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="VX_Player_Breath_Aim" ID="{B13942D2-2149-4616-8859-55D1851D58B0}" ShortID="542427640">
 							<PropertyList>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
 								<Property Name="OverrideEffect" Type="bool" Value="True"/>
 								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -381,6 +615,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<SwitchContainer Name="Breath_In" ID="{808C0761-FE1F-4763-9311-E9AC850B5729}" ShortID="291819761">
+									<PropertyList>
+										<Property Name="SwitchBehavior" Type="int16" Value="1"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -397,6 +634,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="M" ID="{4FCBE6A3-418D-43D4-927F-86ED2287CB4A}" ShortID="339740370">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-12</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -496,11 +740,92 @@
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="F" ID="{712B43FC-95F4-4CCD-8625-98C56E993E6F}" ShortID="267318916">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Player_Breath_Aim_In_F-001" ID="{FC347F53-D2D6-42BA-A18B-396D27EA3D91}" ShortID="829012102">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Aim_In_F-001" ID="{0DC161B9-A508-4F0B-B3A3-C29F2E615B9B}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Aim_In_F-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1016312194"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Aim_In_F-001" ID="{0DC161B9-A508-4F0B-B3A3-C29F2E615B9B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Player_Breath_Aim_In_F-002" ID="{7D3F4266-C40B-45F0-AF10-EBAC85DFEA06}" ShortID="481871569">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Aim_In_F-002" ID="{B6F6BB04-1DDB-4ACB-AA3E-73FC23E3907B}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Aim_In_F-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="792005538"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Aim_In_F-002" ID="{B6F6BB04-1DDB-4ACB-AA3E-73FC23E3907B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Player_Breath_Aim_In_F-003" ID="{1B7ADFCE-4196-4602-907D-0DBA0B3C79C2}" ShortID="734332500">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Aim_In_F-003" ID="{E14A9CE0-5CDC-48BD-9419-9F713E333262}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Aim_In_F-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="800861561"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Aim_In_F-003" ID="{E14A9CE0-5CDC-48BD-9419-9F713E333262}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 									<GroupingInfo>
 										<GroupingBehaviorList>
 											<GroupingBehavior>
 												<ItemRef Name="M" ID="{4FCBE6A3-418D-43D4-927F-86ED2287CB4A}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="F" ID="{712B43FC-95F4-4CCD-8625-98C56E993E6F}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
 										<GroupingList>
@@ -510,10 +835,19 @@
 													<ItemRef Name="M" ID="{4FCBE6A3-418D-43D4-927F-86ED2287CB4A}"/>
 												</ItemList>
 											</Grouping>
+											<Grouping>
+												<SwitchRef Name="F" ID="{4B9C2AE0-C367-4049-8334-5C086DF453DF}"/>
+												<ItemList>
+													<ItemRef Name="F" ID="{712B43FC-95F4-4CCD-8625-98C56E993E6F}"/>
+												</ItemList>
+											</Grouping>
 										</GroupingList>
 									</GroupingInfo>
 								</SwitchContainer>
 								<SwitchContainer Name="Breath_Out" ID="{ECBA60D7-FE60-4881-86E7-C89E3C731347}" ShortID="798440503">
+									<PropertyList>
+										<Property Name="SwitchBehavior" Type="int16" Value="1"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -530,6 +864,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="M" ID="{4D307D1F-4B28-41A8-9430-41F492950186}" ShortID="812216049">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>-12</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -629,11 +970,92 @@
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
+										<RandomSequenceContainer Name="F" ID="{14BC5E3C-AAC1-45D5-B756-379E0251F63A}" ShortID="478486807">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="VX_Player" ID="{46D92596-0E19-4482-83A1-FAABFE94F255}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="VX_Player_Breath_Aim_Out_F-001" ID="{A71DF178-ACE6-44CA-8E60-12DBC3901449}" ShortID="450056421">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Aim_Out_F-001" ID="{2E341184-195A-4B16-AA77-121582CFFA27}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Aim_Out_F-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="244406690"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Aim_Out_F-001" ID="{2E341184-195A-4B16-AA77-121582CFFA27}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Player_Breath_Aim_Out_F-002" ID="{8884CAFA-0CE2-48D3-B0A8-423AA05019A1}" ShortID="153551889">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Aim_Out_F-002" ID="{7774D91F-FAF2-4605-AF7F-5B98D7D38B42}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Aim_Out_F-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="666440375"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Aim_Out_F-002" ID="{7774D91F-FAF2-4605-AF7F-5B98D7D38B42}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="VX_Player_Breath_Aim_Out_F-003" ID="{00E76D85-1D78-497A-A371-3E761576DE5C}" ShortID="544759169">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="VX_Player_Breath_Aim_Out_F-003" ID="{DB4A2176-3B13-43C8-A4AD-CB2F4E57091D}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Female\VX_Player_Breath_Aim_Out_F-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="47884815"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ActiveSourceList>
+														<ActiveSource Name="VX_Player_Breath_Aim_Out_F-003" ID="{DB4A2176-3B13-43C8-A4AD-CB2F4E57091D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+										</RandomSequenceContainer>
 									</ChildrenList>
 									<GroupingInfo>
 										<GroupingBehaviorList>
 											<GroupingBehavior>
 												<ItemRef Name="M" ID="{4D307D1F-4B28-41A8-9430-41F492950186}"/>
+											</GroupingBehavior>
+											<GroupingBehavior>
+												<ItemRef Name="F" ID="{14BC5E3C-AAC1-45D5-B756-379E0251F63A}"/>
 											</GroupingBehavior>
 										</GroupingBehaviorList>
 										<GroupingList>
@@ -641,6 +1063,12 @@
 												<SwitchRef Name="M" ID="{3E890A4A-45D3-40C9-BF3B-93425183CC09}"/>
 												<ItemList>
 													<ItemRef Name="M" ID="{4D307D1F-4B28-41A8-9430-41F492950186}"/>
+												</ItemList>
+											</Grouping>
+											<Grouping>
+												<SwitchRef Name="F" ID="{4B9C2AE0-C367-4049-8334-5C086DF453DF}"/>
+												<ItemList>
+													<ItemRef Name="F" ID="{14BC5E3C-AAC1-45D5-B756-379E0251F63A}"/>
 												</ItemList>
 											</Grouping>
 										</GroupingList>
@@ -12274,11 +12702,6 @@
 																	<Property Name="Label" Type="string" Value="The &quot;lignards&quot; are close by... they sneezed the brutal on Clichy's pals."/>
 																</PropertyList>
 															</Marker>
-															<Marker Name="" ID="{20ED3A94-463A-4C0D-8A36-BE5105D3B731}">
-																<PropertyList>
-																	<Property Name="Time" Type="Real64" Value="0.00990836980730988"/>
-																</PropertyList>
-															</Marker>
 															<Marker Name="" ID="{88D76CCB-05C8-493F-B37A-E966F2DA1C30}">
 																<PropertyList>
 																	<Property Name="Label" Type="string" Value="We must ready ourselves for battle stations. Here, grab that chassepot."/>
@@ -12958,6 +13381,11 @@
 																<PropertyList>
 																	<Property Name="Label" Type="string" Value="Kiddo ! Shit !"/>
 																	<Property Name="Time" Type="Real64" Value="1.94867956001721"/>
+																</PropertyList>
+															</Marker>
+															<Marker Name="" ID="{46C63A55-3DC1-42FE-AEAF-C6A7549E9455}">
+																<PropertyList>
+																	<Property Name="Time" Type="Real64" Value="3.76215257547622"/>
 																</PropertyList>
 															</Marker>
 														</ObjectList>
@@ -13753,6 +14181,11 @@
 															<Marker Name="" ID="{292BE75A-85E0-471E-A491-BF7D44660D05}">
 																<PropertyList>
 																	<Property Name="Label" Type="string" Value="Watch out ! They got a bronze !"/>
+																</PropertyList>
+															</Marker>
+															<Marker Name="" ID="{C3536705-D988-4336-A21C-56DA21D0F419}">
+																<PropertyList>
+																	<Property Name="Time" Type="Real64" Value="2.54453906001047"/>
 																</PropertyList>
 															</Marker>
 														</ObjectList>
@@ -14760,7 +15193,7 @@
 															</Marker>
 															<Marker Name="" ID="{8549EB2B-17FC-4B63-BECD-75B8739BCFD1}">
 																<PropertyList>
-																	<Property Name="Time" Type="Real64" Value="11.4423356741007"/>
+																	<Property Name="Time" Type="Real64" Value="11.5009581327472"/>
 																</PropertyList>
 															</Marker>
 														</ObjectList>
@@ -14792,6 +15225,11 @@
 																<PropertyList>
 																	<Property Name="Label" Type="string" Value="The lasses stayin' behind got pelleted against the wall to the last..."/>
 																	<Property Name="Time" Type="Real64" Value="6.85045302468677"/>
+																</PropertyList>
+															</Marker>
+															<Marker Name="" ID="{7AFCC9E5-32FA-4CD9-AE3C-D18D4C1C5F4D}">
+																<PropertyList>
+																	<Property Name="Time" Type="Real64" Value="11.4900018947069"/>
 																</PropertyList>
 															</Marker>
 														</ObjectList>
