@@ -140,6 +140,7 @@ func launch_player_crouch() -> void:
 
 func launch_dialogue() -> void:
 	stop_music_for_choice.emit()
+	switch_all_flags(5.0)
 	await wait_voice() # "Rendez vous, racailles rouges"
 	var f_targ: Vector3 = player_cover.global_position - (player_cover.basis.x * 4.0)
 	await francois.rotate_yaw_to_pos_tween(f_targ, 0.4)
@@ -147,6 +148,12 @@ func launch_dialogue() -> void:
 	var l_targ: Vector3 = player_cover.global_position + (player_cover.basis.x * 5.0) + (player_cover.basis.z)
 	await louise.rotate_yaw_to_pos_tween(l_targ, 0.3)
 	await wait_voice() # "Jamais. Puisqu'il semble que tout cœur qui bat pour la liberté"
+
+
+func switch_all_flags(time: float) -> void:
+	var flags: Array = get_tree().get_nodes_in_group("Flags")
+	for flag: Flag in flags:
+		flag.fade_to_final_state(time)
 
 
 func launch_player_choice() -> void:

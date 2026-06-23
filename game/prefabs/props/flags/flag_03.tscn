@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://dag8afibg1clb"]
+
+[ext_resource type="Script" uid="uid://b1qumxlgeogni" path="res://prefabs/props/flags/flag.gd" id="1_36s1c"]
+[ext_resource type="Shader" uid="uid://cp0mrxsa3l1h6" path="res://prefabs/props/flags/flag.gdshader" id="1_e5tfo"]
+[ext_resource type="Texture2D" uid="uid://du3hrlxcugtlh" path="res://sources/images/textures/affiches/la_commune_ou_la_mort.png" id="1_kj6mp"]
+[ext_resource type="Texture2D" uid="uid://blyh7u53wot60" path="res://sources/images/textures/affiches/france_test_rotate.png" id="3_jux0u"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_p4oow"]
+subdivide_width = 10
+subdivide_depth = 7
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2ki6p"]
+noise_type = 3
+frequency = 0.0061
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g4qp2"]
+noise = SubResource("FastNoiseLite_2ki6p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22ufn"]
+render_priority = 0
+shader = ExtResource("1_e5tfo")
+shader_parameter/texture1 = ExtResource("1_kj6mp")
+shader_parameter/texture2 = ExtResource("3_jux0u")
+shader_parameter/factor = 0.0
+shader_parameter/dissolve_map = SubResource("NoiseTexture2D_g4qp2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_36s1c"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_36s1c"]
+radius = 0.25556028
+
+[sub_resource type="Animation" id="Animation_36s1c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.79903316, -0.4768421, -0.15771745)]
+}
+
+[sub_resource type="Animation" id="Animation_sbqqd"]
+resource_name = "play"
+length = 5.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.79903316, -0.4768421, -0.15771745), Vector3(0.85985255, -0.4768421, -0.15771745)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fv012"]
+_data = {
+&"RESET": SubResource("Animation_36s1c"),
+&"play": SubResource("Animation_sbqqd")
+}
+
+[node name="Flag" type="Node3D" unique_id=822376103 groups=["Flags"]]
+script = ExtResource("1_36s1c")
+
+[node name="SoftFlag" type="SoftBody3D" parent="." unique_id=360545320]
+unique_name_in_owner = true
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("QuadMesh_p4oow")
+surface_material_override/0 = SubResource("ShaderMaterial_22ufn")
+collision_layer = 32
+collision_mask = 32
+total_mass = 0.3
+ray_pickable = false
+pinned_points = [107, 95, 83, 71, 59, 47, 35, 23, 11]
+attachments/0/point_index = 107
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 95
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 83
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 71
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 59
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 47
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+attachments/6/point_index = 35
+attachments/6/spatial_attachment_path = NodePath("")
+attachments/6/offset = Vector3(0, 0, 0)
+attachments/7/point_index = 23
+attachments/7/spatial_attachment_path = NodePath("")
+attachments/7/offset = Vector3(0, 0, 0)
+attachments/8/point_index = 11
+attachments/8/spatial_attachment_path = NodePath("")
+attachments/8/offset = Vector3(0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=373234689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.66807026)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1781581977]
+shape = SubResource("BoxShape3D_36s1c")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=650885173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.79903316, -0.4768421, -0.15771745)
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=634252416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.04089065)
+shape = SubResource("SphereShape3D_36s1c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D" unique_id=1247670465]
+libraries/ = SubResource("AnimationLibrary_fv012")
+autoplay = &"play"

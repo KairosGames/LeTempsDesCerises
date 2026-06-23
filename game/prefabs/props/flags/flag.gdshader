@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode blend_mix;
+render_mode blend_mix, cull_disabled;
 uniform sampler2D texture1: filter_nearest;
 uniform sampler2D texture2: filter_nearest;
 uniform float factor: hint_range(0.0, 1.0);
