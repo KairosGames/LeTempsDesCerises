@@ -507,6 +507,7 @@ namespace AK
 
     namespace AUX_BUSSES
     {
+        static const AkUniqueID LFE_SEND = 3766993829U;
         static const AkUniqueID MUSIC_DISTANT_REV = 1250284926U;
         static const AkUniqueID MUSIC_END_REV = 4084836994U;
         static const AkUniqueID MUSIC_MIX_REV = 3099563223U;

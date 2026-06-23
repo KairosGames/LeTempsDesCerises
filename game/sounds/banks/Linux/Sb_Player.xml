@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Linux" BasePlatform="Linux" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{6ECE1F57-5B60-8B89-03AB-A33C20906315}">
+		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{63D0D9B2-76FD-2CD1-EDF1-2B2D497ADBF2}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Player</ObjectPath>
 			<ShortName>Sb_Player</ShortName>
 			<Path>Sb_Player.bnk</Path>
@@ -378,10 +378,6 @@
 					<ShortName>Chassepot\Reload\New\LTDC_SFX_Player_Reload_3_LayerGun_Oneshot_01.wav</ShortName>
 					<CachePath>C8/{C89F1FCD-3C2C-0E23-D76C-C09834539443}.wem</CachePath>
 				</File>
-				<File Id="977142577" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Reload\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01.wav</ShortName>
-					<CachePath>7D/{7DE6116E-EF2F-D828-5A56-AE6609CEE136}.wem</CachePath>
-				</File>
 				<File Id="978092744" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_04.wav</ShortName>
 					<CachePath>55/{55304EF3-ACB4-3B65-B9BC-44447365B56C}.wem</CachePath>
@@ -389,6 +385,10 @@
 				<File Id="1005098820" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_10.wav</ShortName>
 					<CachePath>80/{80C610A3-2B7B-57C0-8D44-F5B765A7EB61}.wem</CachePath>
+				</File>
+				<File Id="1015424545" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Chassepot\Reload\New\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01.wav</ShortName>
+					<CachePath>F0/{F08561CB-4BC0-9E88-8F27-680C40181D68}.wem</CachePath>
 				</File>
 				<File Id="1017154576" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Reload\New\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03.wav</ShortName>
@@ -486,7 +486,7 @@
 					</SwitchContainers>
 				</Event>
 				<Event Id="3687575925" Name="Deafening_Recover" ObjectPath="\Events\SFX\Player\Deafening_Recover" GUID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="1192162266" Name="Npc_Shoot" ObjectPath="\Events\SFX\Npc_Shoot" GUID="{7650D5C3-0FE3-4EB0-8986-5DB3F54D48A3}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.7817974" DurationMax="2.0586045">
+				<Event Id="1192162266" Name="Npc_Shoot" ObjectPath="\Events\SFX\Npc_Shoot" GUID="{7650D5C3-0FE3-4EB0-8986-5DB3F54D48A3}" Color="10" MaxAttenuation="150" DurationType="OneShot" DurationMin="1.7817974" DurationMax="2.0586045">
 					<MediaRefs>
 						<MediaRef Id="116372682"/>
 						<MediaRef Id="512603057"/>
@@ -597,7 +597,7 @@
 						<MediaRef Id="819014235"/>
 						<MediaRef Id="861982477"/>
 						<MediaRef Id="974935944"/>
-						<MediaRef Id="977142577"/>
+						<MediaRef Id="1015424545"/>
 						<MediaRef Id="1017154576"/>
 					</MediaRefs>
 					<AuxBusRefs>
@@ -812,7 +812,11 @@
 							<PluginRef Id="1026399686"/>
 						</Custom>
 					</PluginRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="3766993829" Name="Lfe_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Lfe_Send" GUID="{FC775A8A-F39D-4F94-9E27-F3D5FF91505E}"/>
+					</AuxBusRefs>
 				</AuxBus>
+				<AuxBus Id="3766993829" Name="Lfe_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Lfe_Send" GUID="{FC775A8A-F39D-4F94-9E27-F3D5FF91505E}"/>
 			</AuxBusses>
 			<GameParameters>
 				<GameParameter Id="243460359" Name="Cannon_Sidechain" ObjectPath="\Game Parameters\Default Work Unit\Cannon_Sidechain" GUID="{79978E96-EE44-4536-A821-0932926129B4}"/>
@@ -874,5 +878,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F176FDB2-8BE0-6540-4197-846C1A47C1F5}</FileHash>
+	<FileHash>{D816BB56-DD62-5470-3452-68AD9F2DF852}</FileHash>
 </SoundBanksInfo>

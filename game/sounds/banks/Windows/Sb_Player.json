@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{49827AFC-1442-4066-AF70-C2B0B3B40C86}",
     "Language": "SFX",
-    "Hash": "{C41FC17F-E8F3-D0B3-0C9B-DBDBC48B4C55}",
+    "Hash": "{90EF3EAE-898B-FF9D-CB89-44344012B53E}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Player",
     "ShortName": "Sb_Player",
     "Path": "Sb_Player.bnk",
@@ -760,14 +760,6 @@
       "CachePath": "C8/{C89F1FCD-3C2C-0E23-D76C-C09834539443}.wem"
      },
      {
-      "Id": "977142577",
-      "Language": "SFX",
-      "Streaming": "false",
-      "Location": "Memory",
-      "ShortName": "Chassepot\\Reload\\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01.wav",
-      "CachePath": "7D/{7DE6116E-EF2F-D828-5A56-AE6609CEE136}.wem"
-     },
-     {
       "Id": "978092744",
       "Language": "SFX",
       "Streaming": "false",
@@ -782,6 +774,14 @@
       "Location": "Memory",
       "ShortName": "SFX_Player_Steps\\Surface\\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_10.wav",
       "CachePath": "80/{80C610A3-2B7B-57C0-8D44-F5B765A7EB61}.wem"
+     },
+     {
+      "Id": "1015424545",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Chassepot\\Reload\\New\\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01.wav",
+      "CachePath": "F0/{F08561CB-4BC0-9E88-8F27-680C40181D68}.wem"
      },
      {
       "Id": "1017154576",
@@ -1088,7 +1088,7 @@
       "ObjectPath": "\\Events\\SFX\\Npc_Shoot",
       "GUID": "{7650D5C3-0FE3-4EB0-8986-5DB3F54D48A3}",
       "Color": "10",
-      "MaxAttenuation": "100",
+      "MaxAttenuation": "150",
       "DurationType": "OneShot",
       "DurationMin": "1.7817974",
       "DurationMax": "2.0586045",
@@ -1415,7 +1415,7 @@
         "Id": "974935944"
        },
        {
-        "Id": "977142577"
+        "Id": "1015424545"
        },
        {
         "Id": "1017154576"
@@ -1986,7 +1986,21 @@
          "Id": "1026399686"
         }
        ]
-      }
+      },
+      "AuxBusRefs": [
+       {
+        "Id": "3766993829",
+        "Name": "Lfe_Send",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Lfe_Send",
+        "GUID": "{FC775A8A-F39D-4F94-9E27-F3D5FF91505E}"
+       }
+      ]
+     },
+     {
+      "Id": "3766993829",
+      "Name": "Lfe_Send",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Lfe_Send",
+      "GUID": "{FC775A8A-F39D-4F94-9E27-F3D5FF91505E}"
      }
     ],
     "GameParameters": [
@@ -2213,6 +2227,6 @@
     ]
    }
   ],
-  "FileHash": "{439E00E5-4B5E-C086-136D-5024DBA51F48}"
+  "FileHash": "{BE6B6D6F-8B76-A037-EE92-82B647D62478}"
  }
 }

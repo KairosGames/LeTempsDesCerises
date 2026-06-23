@@ -31,7 +31,7 @@ func voiceline():
 
 func _on_dialogue_end_of_event(_data: Dictionary) -> void:
 	WwiseGlobal.line_ended(npc_name)
-	print(npc_name, " a fini")
+	#print(npc_name, " a fini")
 	WwiseGlobal.player.call_deferred("update_line", npc_name, "")
 	if !debug_text : return
 	label.text = ""

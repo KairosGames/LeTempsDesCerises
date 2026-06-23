@@ -73,8 +73,23 @@
 								<ObjectList Name="Effects">
 									<EffectSlot Name="" ID="{C39CCC75-E451-4036-9D26-2F4C29BA553E}" ShortID="35577841">
 										<ReferenceList>
-											<Reference Name="Effect" PluginName="Wwise Stereo Delay" CompanyID="0" PluginID="135" PluginType="3">
-												<ObjectRef Name="Caught_in_a_loop" ID="{8FC64215-9A75-4BE3-A33A-584C8CA49963}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+											<Reference Name="Effect">
+												<Custom CreatedFrom="{8FC64215-9A75-4BE3-A33A-584C8CA49963}">
+													<Effect Name="Caught_in_a_loop (Custom)" ID="{EE8512F0-1D4C-4F9E-87FC-26DBFFB03C4A}" ShortID="805464425" PluginName="Wwise Stereo Delay" CompanyID="0" PluginID="135" PluginType="3">
+														<PropertyList>
+															<Property Name="DryLevel" Type="Real32" Value="-96"/>
+															<Property Name="EnableFeedback" Type="bool" Value="True"/>
+															<Property Name="FilterFrequency" Type="Real32" Value="2364"/>
+															<Property Name="FilterGain" Type="Real32" Value="-24"/>
+															<Property Name="LeftCrossfeed" Type="Real32" Value="-15"/>
+															<Property Name="LeftDelayTime" Type="Real32" Value="0.37"/>
+															<Property Name="LeftFeedback" Type="Real32" Value="-18.5"/>
+															<Property Name="RightCrossfeed" Type="Real32" Value="-6"/>
+															<Property Name="RightDelayTime" Type="Real32" Value="0.31"/>
+															<Property Name="RightFeedback" Type="Real32" Value="-6"/>
+														</PropertyList>
+													</Effect>
+												</Custom>
 											</Reference>
 										</ReferenceList>
 									</EffectSlot>
@@ -2086,8 +2101,31 @@
 								<ObjectList Name="Effects">
 									<EffectSlot Name="" ID="{E808053A-A8D7-4102-979D-16219B4AAF37}" ShortID="111504654">
 										<ReferenceList>
-											<Reference Name="Effect" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
-												<ObjectRef Name="Inside_Your_Head" ID="{AE2D0AE1-8963-400A-AA4A-52A7A6397F89}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+											<Reference Name="Effect">
+												<Custom CreatedFrom="{AE2D0AE1-8963-400A-AA4A-52A7A6397F89}">
+													<Effect Name="Inside_Your_Head (Custom)" ID="{45AB06C6-2526-4497-BF02-90D80BB6911D}" ShortID="990899838" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+														<PropertyList>
+															<Property Name="DecayTime" Type="Real32" Value="1"/>
+															<Property Name="Density" Type="Real32" Value="82"/>
+															<Property Name="Diffusion" Type="Real32" Value="0"/>
+															<Property Name="DryLevel" Type="Real32" Value="-96"/>
+															<Property Name="ERLevel" Type="Real32" Value="-3"/>
+															<Property Name="ERPattern" Type="int32" Value="24"/>
+															<Property Name="Filter1Freq" Type="Real32" Value="590"/>
+															<Property Name="Filter1Gain" Type="Real32" Value="-8"/>
+															<Property Name="Filter2Freq" Type="Real32" Value="490"/>
+															<Property Name="Filter2Gain" Type="Real32" Value="9"/>
+															<Property Name="Filter3Freq" Type="Real32" Value="6930"/>
+															<Property Name="Filter3Gain" Type="Real32" Value="-24"/>
+															<Property Name="HFDamping" Type="Real32" Value="0.5"/>
+															<Property Name="PreDelay" Type="Real32" Value="200"/>
+															<Property Name="Quality" Type="int32" Value="4"/>
+															<Property Name="ReverbLevel" Type="Real32" Value="-14"/>
+															<Property Name="RoomSize" Type="Real32" Value="-100"/>
+															<Property Name="StereoWidth" Type="Real32" Value="0"/>
+														</PropertyList>
+													</Effect>
+												</Custom>
 											</Reference>
 										</ReferenceList>
 									</EffectSlot>
@@ -2119,6 +2157,24 @@
 						</StatePropertyList>
 					</StateInfo>
 					<ObjectLists>
+						<ObjectList Name="Effects">
+							<EffectSlot Name="" ID="{1055735F-83F5-44C1-BBF7-51CD2F707EB5}" ShortID="350244969">
+								<ReferenceList>
+									<Reference Name="Effect">
+										<Custom>
+											<Effect Name="Compressor (Custom)" ID="{AC753ED3-10F5-4099-8C70-F0D4CFA93E14}" ShortID="41507213" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+												<PropertyList>
+													<Property Name="AttackTime" Type="Real32" Value="0"/>
+													<Property Name="Ratio" Type="Real32" Value="15"/>
+													<Property Name="ReleaseTime" Type="Real32" Value="1"/>
+													<Property Name="Threshold" Type="Real32" Value="-20"/>
+												</PropertyList>
+											</Effect>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</EffectSlot>
+						</ObjectList>
 						<ObjectList Name="RTPC">
 							<RTPC Name="" ID="{42DEA8E5-92D4-4F81-B477-436677CEB517}" ShortID="776058575">
 								<PropertyList>
@@ -2173,7 +2229,38 @@
 													</Point>
 													<Point>
 														<XPos>0</XPos>
-														<YPos>-12</YPos>
+														<YPos>-18</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</RTPC>
+							<RTPC Name="" ID="{052E8D19-75CF-4019-9261-658F9DCFD2BC}" ShortID="75627687">
+								<PropertyList>
+									<Property Name="PropertyName" Type="string" Value="Lowpass"/>
+								</PropertyList>
+								<ReferenceList>
+									<Reference Name="ControlInput">
+										<ObjectRef Name="Death_Filter" ID="{C73A6915-BB76-4746-95CC-A87CCED79E78}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+									</Reference>
+									<Reference Name="Curve">
+										<Custom>
+											<Curve Name="" ID="{0CED1CD4-6FB4-47C8-B03E-78668B27A901}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>50</YPos>
 														<Flags>37</Flags>
 													</Point>
 												</PointList>

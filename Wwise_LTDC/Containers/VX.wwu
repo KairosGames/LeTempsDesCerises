@@ -1219,6 +1219,7 @@
 									</ValueList>
 								</Property>
 								<Property Name="OverrideColor" Type="bool" Value="True"/>
+								<Property Name="OverrideEffect" Type="bool" Value="True"/>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 								<Property Name="UseMaxSoundPerInstance" Type="bool">
 									<ValueList>
@@ -2920,6 +2921,7 @@
 								<SwitchContainer Name="Voice_Cancel" ID="{9645F931-205C-44A8-8949-05D8A92EA850}" ShortID="224497492">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
@@ -3234,6 +3236,99 @@
 									</GroupingInfo>
 								</SwitchContainer>
 							</ChildrenList>
+							<StateInfo>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="EndChoice" ID="{F1E4CC31-DA38-49B5-B2A8-53D524E5D48A}"/>
+										<StateGroupInfo Name="" ID="{F725FC90-3962-48E6-9777-C3EC1DB7DFA6}" ShortID="93522433"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="Dialogue" ID="{5ED0BEB8-8263-440D-9679-9593F067F61B}"/>
+										<CustomState Name="" ID="{43C36287-AF74-466D-9C1F-F45E8193A52F}" ShortID="66274743">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-108"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Louise" ID="{2A8B1D07-53FE-4458-BC8C-2EAAD175FE4D}"/>
+										<CustomState Name="" ID="{BE2C6332-8A95-4DD9-9E00-CEBAF121A5F7}" ShortID="762322158">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-108"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="None" ID="{1048217B-BF09-4548-8B4B-9E0FACC9BBAF}"/>
+										<CustomState Name="" ID="{E871AC5C-4A06-4D56-998A-C320E7AF1914}" ShortID="588996695"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="AskChoice" ID="{4EAD2C59-63BF-4739-8913-C811215BA1E2}"/>
+										<CustomState Name="" ID="{78A08AB8-0F52-4335-BF65-C060A98B3F6C}" ShortID="160636829">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-108"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="Francois" ID="{BD14E529-07FB-4854-8CAC-DA402B6DAAC7}"/>
+										<CustomState Name="" ID="{F404DCFB-4143-4C8A-A3E6-EEEE9F430DC1}" ShortID="844732776">
+											<PropertyList>
+												<Property Name="Volume" Type="Real64" Value="-108"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
+							<ObjectLists>
+								<ObjectList Name="Effects">
+									<EffectSlot Name="" ID="{B2E11A68-9AE0-4749-934E-674D07BC878B}" ShortID="585352125">
+										<ReferenceList>
+											<Reference Name="Effect">
+												<Custom>
+													<Effect Name="Meter (Custom)" ID="{C19A5AF3-D5F8-4A75-909F-D2278B84D1F9}" ShortID="989880554" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+														<PropertyList>
+															<Property Name="ApplyDownstreamVolume" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real32" Value="-3"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="GameParameter">
+																<ObjectRef Name="Sidechain_Dialogue" ID="{E3D15146-7A9C-49E2-BF9F-F7D655BB9188}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+															</Reference>
+														</ReferenceList>
+													</Effect>
+												</Custom>
+											</Reference>
+										</ReferenceList>
+										<StateInfo>
+											<CustomStateList>
+												<CustomState>
+													<StateRef Name="Dialogue" ID="{5ED0BEB8-8263-440D-9679-9593F067F61B}"/>
+													<CustomState Name="" ID="{7E581C6C-E91E-4B2C-8EB4-F4075254672C}" ShortID="460396026"/>
+												</CustomState>
+												<CustomState>
+													<StateRef Name="Louise" ID="{2A8B1D07-53FE-4458-BC8C-2EAAD175FE4D}"/>
+													<CustomState Name="" ID="{146730DF-D095-4F85-A471-35C1BA236699}" ShortID="237864431"/>
+												</CustomState>
+												<CustomState>
+													<StateRef Name="None" ID="{1048217B-BF09-4548-8B4B-9E0FACC9BBAF}"/>
+													<CustomState Name="" ID="{AB9B77F7-3981-42F7-88D7-78795F63ABE3}" ShortID="912439385"/>
+												</CustomState>
+												<CustomState>
+													<StateRef Name="AskChoice" ID="{4EAD2C59-63BF-4739-8913-C811215BA1E2}"/>
+													<CustomState Name="" ID="{723C7E51-225C-4897-8F42-CCF7125E0DD2}" ShortID="700443240"/>
+												</CustomState>
+												<CustomState>
+													<StateRef Name="Francois" ID="{BD14E529-07FB-4854-8CAC-DA402B6DAAC7}"/>
+													<CustomState Name="" ID="{09773F27-44EE-4F5D-814D-17E4BD49896F}" ShortID="489900530"/>
+												</CustomState>
+											</CustomStateList>
+										</StateInfo>
+									</EffectSlot>
+								</ObjectList>
+							</ObjectLists>
 						</PropertyContainer>
 						<PropertyContainer Name="Communard" ID="{89C20E2E-7626-4FF8-AD21-803CF5C14C71}" ShortID="16358675">
 							<PropertyList>
@@ -12846,7 +12941,11 @@
 												</AudioFileSource>
 												<AudioFileSource Name="VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-002" ID="{D943A74F-3B4F-41C9-898B-A37491A35813}">
 													<PropertyList>
+														<Property Name="FadeOutDuration" Type="Real64" Value="0.05265"/>
 														<Property Name="MarkerInputMode" Type="int16" Value="2"/>
+														<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+														<Property Name="TrimBegin" Type="Real64" Value="1.93229"/>
+														<Property Name="TrimEnd" Type="Real64" Value="3.77585"/>
 													</PropertyList>
 													<Language>English(US)</Language>
 													<AudioFile>Characters\Jules\VX_Amb_M_Comm_Jules_OB_Player_Death_2_Vincent-002.wav</AudioFile>
@@ -12857,7 +12956,8 @@
 														<ObjectList Name="Markers">
 															<Marker Name="" ID="{64037AE1-A733-49EF-9D2D-1EA321A66525}">
 																<PropertyList>
-																	<Property Name="Label" Type="string" Value="Nooo!!! Kiddo! Kiddo! Shit!"/>
+																	<Property Name="Label" Type="string" Value="Kiddo ! Shit !"/>
+																	<Property Name="Time" Type="Real64" Value="1.94867956001721"/>
 																</PropertyList>
 															</Marker>
 														</ObjectList>

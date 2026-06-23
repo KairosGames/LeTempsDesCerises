@@ -15,7 +15,7 @@ var allow_subtitles : bool = true
 var move_gate : int = 0
 var reload_gate : bool = false
 var bypass_line : bool = false
-var is_looping : bool = false
+var is_looping : bool = true
 var ready_narrators : Dictionary = {}
 var relevant_narrators : int = 0
 
@@ -28,8 +28,7 @@ func on_game_manager_ready(gm: GameManager) -> void:
 	await _wait_for_narrators_ready()
 	_connect_game_manager_signals()
 	game_manager.is_wwise_ready = true
-	if not is_looping:
-		loop()
+	loop()
 
 func _connect_game_manager_signals() -> void:
 	if not game_manager.all_states[0].first_fire_from_barricade.is_connected(pan):
@@ -43,6 +42,7 @@ func _connect_game_manager_signals() -> void:
 			game_manager.all_states[3].choose_surrender.connect(surrender)
 		if not game_manager.all_states[3].choose_fight_to_death.is_connected(fight):
 			game_manager.all_states[3].choose_fight_to_death.connect(fight)
+		game_manager.all_states[3].ending_music_choice_scene.connect(stop_barks)
 	if game_manager.all_states.size() > 1:
 		if not game_manager.all_states[1].player_tried_to_exit.is_connected(player_far):
 			game_manager.all_states[1].player_tried_to_exit.connect(player_far)
@@ -200,13 +200,17 @@ func pause(new_pause : bool):
 
 
 func loop():
-	is_looping = true
+	print("loop")
+	if !is_looping : return
 	if !allies.is_empty():
 		find_random(allies).post_event("Barricade_State", randf_range(0, 5))
 	if !enemies.is_empty():
 		find_random(enemies).post_event("Barricade_State", randf_range(0, 5))
 	await get_tree().create_timer(5).timeout
 	loop()
+
+func stop_barks():
+	is_looping = false
 
 func register_narrator(narrator: Node3D) -> void:
 	if not narrators.has(narrator):

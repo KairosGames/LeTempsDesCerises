@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{9337D38C-C9C6-2F22-DC0A-1F9BD2C04CBC}",
+    "Hash": "{6F8548BC-7218-CE34-B1FC-9E23A2AF9B92}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -26,6 +26,14 @@
     ],
     "Plugins": {
      "Custom": [
+      {
+       "Id": "41507213",
+       "Name": "Compressor (Custom)",
+       "ObjectPath": "\\Busses\\Music_Bus\\Music_Bus\\[Effect Slot [0]: (Compressor)]\\Compressor (Custom)",
+       "GUID": "{AC753ED3-10F5-4099-8C70-F0D4CFA93E14}",
+       "LibName": "Wwise Compressor",
+       "LibId": "7077891"
+      },
       {
        "Id": "64045502",
        "Name": "Gain (Custom)",
@@ -99,12 +107,28 @@
        "LibId": "6881283"
       },
       {
+       "Id": "805464425",
+       "Name": "Caught_in_a_loop (Custom)",
+       "ObjectPath": "\\Busses\\Music_Bus\\Music_Bus\\Music_Rev_Barricade\\[Effect Slot [0]: (Stereo Delay)]\\Caught_in_a_loop (Custom)",
+       "GUID": "{EE8512F0-1D4C-4F9E-87FC-26DBFFB03C4A}",
+       "LibName": "Wwise Stereo Delay",
+       "LibId": "8847363"
+      },
+      {
        "Id": "822713401",
        "Name": "Parametric EQ (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Player\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
        "GUID": "{7B3679D9-8791-4078-B349-B04B1359B269}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
+      },
+      {
+       "Id": "990899838",
+       "Name": "Inside_Your_Head (Custom)",
+       "ObjectPath": "\\Busses\\Music_Bus\\Music_Bus\\Music_End_Rev\\[Effect Slot [0]: (RoomVerb)]\\Inside_Your_Head (Custom)",
+       "GUID": "{45AB06C6-2526-4497-BF02-90D80BB6911D}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
       },
       {
        "Id": "1012444785",
@@ -138,26 +162,10 @@
      ],
      "ShareSets": [
       {
-       "Id": "176439046",
-       "Name": "Caught_in_a_loop",
-       "ObjectPath": "\\Effects\\Factory Effects\\Stereo Delay\\Caught_in_a_loop",
-       "GUID": "{8FC64215-9A75-4BE3-A33A-584C8CA49963}",
-       "LibName": "Wwise Stereo Delay",
-       "LibId": "8847363"
-      },
-      {
        "Id": "2038996943",
        "Name": "Plate_Sizzle",
        "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Plates\\Plate_Sizzle",
        "GUID": "{D4A5BBF1-6A59-47A7-BB97-E7695900B72F}",
-       "LibName": "Wwise RoomVerb",
-       "LibId": "7733251"
-      },
-      {
-       "Id": "3036946058",
-       "Name": "Inside_Your_Head",
-       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Claustrophobia\\Inside_Your_Head",
-       "GUID": "{AE2D0AE1-8963-400A-AA4A-52A7A6397F89}",
        "LibName": "Wwise RoomVerb",
        "LibId": "7733251"
       },
@@ -495,7 +503,14 @@
       "Name": "Music_Bus",
       "ObjectPath": "\\Busses\\Music_Bus\\Music_Bus",
       "GUID": "{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}",
-      "Color": "2"
+      "Color": "2",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "41507213"
+        }
+       ]
+      }
      },
      {
       "Id": "3009393514",
@@ -600,9 +615,9 @@
       "GUID": "{5EB3D779-27CC-424A-A22B-8E1056D211F3}",
       "Color": "2",
       "PluginRefs": {
-       "ShareSets": [
+       "Custom": [
         {
-         "Id": "176439046"
+         "Id": "805464425"
         }
        ]
       }
@@ -636,7 +651,21 @@
          "Id": "1026399686"
         }
        ]
-      }
+      },
+      "AuxBusRefs": [
+       {
+        "Id": "3766993829",
+        "Name": "Lfe_Send",
+        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Lfe_Send",
+        "GUID": "{FC775A8A-F39D-4F94-9E27-F3D5FF91505E}"
+       }
+      ]
+     },
+     {
+      "Id": "3766993829",
+      "Name": "Lfe_Send",
+      "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\Lfe_Send",
+      "GUID": "{FC775A8A-F39D-4F94-9E27-F3D5FF91505E}"
      },
      {
       "Id": "4084836994",
@@ -645,9 +674,9 @@
       "GUID": "{7CE652AA-1D2A-4019-A958-EA85F43ED44C}",
       "Color": "2",
       "PluginRefs": {
-       "ShareSets": [
+       "Custom": [
         {
-         "Id": "3036946058"
+         "Id": "990899838"
         }
        ]
       }
@@ -2341,6 +2370,6 @@
     ]
    }
   ],
-  "FileHash": "{8A991FBA-9D15-13B7-F24F-9D732A767AC9}"
+  "FileHash": "{36A970F1-027F-DE1F-E50B-530F3552FA2E}"
  }
 }

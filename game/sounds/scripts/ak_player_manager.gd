@@ -6,6 +6,7 @@ var is_prone := false
 var controller_id
 var first_reload : bool = true
 var gonext : bool = false
+var shoe_type : Array[String] = ["Clog_Shoes", "Heels", "Worn_Boots"]
 
 @export_category("Nodes")
 @export var subtitles : VBoxContainer
@@ -120,6 +121,7 @@ func death_event():
 	if gonext:
 		change_barricade()
 	death.post_event()
+	Wwise.set_switch("Shoe_Type", shoe_type.pick_random(), steps)
 
 
 func _on_reload_ui_try_failed() -> void:
@@ -168,5 +170,6 @@ func update_line(npc_name, new_text : String):
 				node.visible = true
 
 func change_barricade():
+	if WwiseGlobal.barricade.get_parent().name == "SecondBarricade": return
 	WwiseGlobal.barricade = GameManager.instance.curr_barricade.get_node("ak_barricade_manager")
 	Wwise.set_state("barricade_state", "intact")

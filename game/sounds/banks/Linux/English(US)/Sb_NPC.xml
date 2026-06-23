@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Linux" BasePlatform="Linux" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="English(US)" Hash="{A5E360A3-F271-4C7E-A499-F37182545BCD}">
+		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="English(US)" Hash="{8E860962-ACBA-BA8C-4EC9-77EF1685D9BE}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_NPC</ObjectPath>
 			<ShortName>Sb_NPC</ShortName>
 			<Path>English(US)/Sb_NPC.bnk</Path>
@@ -1107,6 +1107,7 @@
 				<Custom>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
 					<Plugin Id="807526038" Name="Meter (Custom)" ObjectPath="\Containers\VX\NPC\Communard\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{2855D257-F711-4259-8A16-CCC31E5A8F21}" LibName="Wwise Meter" LibId="8454147"/>
+					<Plugin Id="989880554" Name="Meter (Custom)" ObjectPath="\Containers\VX\NPC\Versaillais\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{C19A5AF3-D5F8-4A75-909F-D2278B84D1F9}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
 			</Plugins>
@@ -1796,7 +1797,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="3252427803" Name="Ally_Shoot" ObjectPath="\Events\SFX\Ally\Ally_Shoot" GUID="{0758294E-77B6-49B7-9D4C-4F0A410A33B6}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.4983071" DurationMax="2.244924">
+				<Event Id="3252427803" Name="Ally_Shoot" ObjectPath="\Events\SFX\Ally\Ally_Shoot" GUID="{0758294E-77B6-49B7-9D4C-4F0A410A33B6}" Color="10" MaxAttenuation="150" DurationType="OneShot" DurationMin="1.4983071" DurationMax="2.244924">
 					<MediaRefs>
 						<MediaRef Id="116372682"/>
 						<MediaRef Id="512603057"/>
@@ -1897,9 +1898,6 @@
 							<PluginRef Id="1065011977"/>
 						</Custom>
 					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="2467968637" Name="Choose_Surrender" ObjectPath="\Events\VX\Ally\Choose_Surrender" GUID="{21D54443-F2A6-4D2C-A1EE-BEF015429488}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="3.0075624" DurationMax="3.0075624">
 					<MediaRefs>
@@ -1911,12 +1909,9 @@
 							<PluginRef Id="1065011977"/>
 						</Custom>
 					</PluginRefs>
-					<AuxBusRefs>
-						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
-					</AuxBusRefs>
 				</Event>
 				<Event Id="3687575925" Name="Deafening_Recover" ObjectPath="\Events\SFX\Player\Deafening_Recover" GUID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="3457462997" Name="Enemy_Barricade_State" ObjectPath="\Events\VX\Enemy\Enemy_Barricade_State" GUID="{31E2C0A9-7E7A-494B-9613-C74D03464B25}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="0.93310416" DurationMax="3.4728124">
+				<Event Id="3457462997" Name="Enemy_Barricade_State" ObjectPath="\Events\VX\Enemy\Enemy_Barricade_State" GUID="{31E2C0A9-7E7A-494B-9613-C74D03464B25}" Color="11" MaxAttenuation="75" DurationType="OneShot" DurationMin="0.93310416" DurationMax="3.4728124">
 					<AuxBusRefs>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
 					</AuxBusRefs>
@@ -1931,6 +1926,11 @@
 										<MediaRef Id="847602554"/>
 										<MediaRef Id="900751040"/>
 									</MediaRefs>
+									<PluginRefs>
+										<Custom>
+											<PluginRef Id="989880554"/>
+										</Custom>
+									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
 									<SwitchValue GroupType="Switch" GroupId="1117085073" Id="408582742" GUID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
@@ -1939,6 +1939,11 @@
 										<MediaRef Id="300283779"/>
 										<MediaRef Id="910777881"/>
 									</MediaRefs>
+									<PluginRefs>
+										<Custom>
+											<PluginRef Id="989880554"/>
+										</Custom>
+									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
 									<SwitchValue GroupType="Switch" GroupId="1117085073" Id="408582740" GUID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
@@ -1947,6 +1952,11 @@
 										<MediaRef Id="488516412"/>
 										<MediaRef Id="816256588"/>
 									</MediaRefs>
+									<PluginRefs>
+										<Custom>
+											<PluginRef Id="989880554"/>
+										</Custom>
+									</PluginRefs>
 								</SwitchContainer>
 							</Children>
 						</SwitchContainer>
@@ -1961,6 +1971,11 @@
 										<MediaRef Id="635532246"/>
 										<MediaRef Id="1056965559"/>
 									</MediaRefs>
+									<PluginRefs>
+										<Custom>
+											<PluginRef Id="989880554"/>
+										</Custom>
+									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
 									<SwitchValue GroupType="Switch" GroupId="1117085073" Id="408582742" GUID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
@@ -1970,6 +1985,11 @@
 										<MediaRef Id="773355330"/>
 										<MediaRef Id="1047236829"/>
 									</MediaRefs>
+									<PluginRefs>
+										<Custom>
+											<PluginRef Id="989880554"/>
+										</Custom>
+									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
 									<SwitchValue GroupType="Switch" GroupId="1117085073" Id="408582740" GUID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
@@ -1979,6 +1999,11 @@
 										<MediaRef Id="581276456"/>
 										<MediaRef Id="859835724"/>
 									</MediaRefs>
+									<PluginRefs>
+										<Custom>
+											<PluginRef Id="989880554"/>
+										</Custom>
+									</PluginRefs>
 								</SwitchContainer>
 							</Children>
 						</SwitchContainer>
@@ -2023,7 +2048,7 @@
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="1807735670" Name="Enemy_Cannon_Advance" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Advance" GUID="{B87BEEB3-1D5D-4524-B166-879E9838F2E4}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="2.1179376" DurationMax="3.806521">
+				<Event Id="1807735670" Name="Enemy_Cannon_Advance" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Advance" GUID="{B87BEEB3-1D5D-4524-B166-879E9838F2E4}" Color="11" MaxAttenuation="75" DurationType="OneShot" DurationMin="2.1179376" DurationMax="3.806521">
 					<AuxBusRefs>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
 					</AuxBusRefs>
@@ -2034,6 +2059,11 @@
 								<MediaRef Id="118407607"/>
 								<MediaRef Id="927981779"/>
 							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="989880554"/>
+								</Custom>
+							</PluginRefs>
 						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="1117085073" Id="408582742" GUID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
@@ -2041,6 +2071,11 @@
 								<MediaRef Id="123033365"/>
 								<MediaRef Id="925324916"/>
 							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="989880554"/>
+								</Custom>
+							</PluginRefs>
 						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="1117085073" Id="408582740" GUID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
@@ -2048,10 +2083,15 @@
 								<MediaRef Id="572441028"/>
 								<MediaRef Id="872896647"/>
 							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="989880554"/>
+								</Custom>
+							</PluginRefs>
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="378772636" Name="Enemy_Cannon_Fire" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Fire" GUID="{2D328B0C-378F-473A-9D13-08FB635F21CB}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="1.0110208" DurationMax="2.3952708">
+				<Event Id="378772636" Name="Enemy_Cannon_Fire" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Fire" GUID="{2D328B0C-378F-473A-9D13-08FB635F21CB}" Color="11" MaxAttenuation="75" DurationType="OneShot" DurationMin="1.0110208" DurationMax="2.3952708">
 					<AuxBusRefs>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
 					</AuxBusRefs>
@@ -2064,6 +2104,11 @@
 								<MediaRef Id="554315864"/>
 								<MediaRef Id="705811275"/>
 							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="989880554"/>
+								</Custom>
+							</PluginRefs>
 						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="1117085073" Id="408582742" GUID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
@@ -2073,6 +2118,11 @@
 								<MediaRef Id="547321116"/>
 								<MediaRef Id="771829144"/>
 							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="989880554"/>
+								</Custom>
+							</PluginRefs>
 						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="1117085073" Id="408582740" GUID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
@@ -2082,10 +2132,15 @@
 								<MediaRef Id="401514120"/>
 								<MediaRef Id="1063220628"/>
 							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="989880554"/>
+								</Custom>
+							</PluginRefs>
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="3891079404" Name="Enemy_Cannon_Incoming" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Incoming" GUID="{2E2AC514-41EC-40C2-B741-99ABD8D6FB72}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.7692916" DurationMax="3.5590417">
+				<Event Id="3891079404" Name="Enemy_Cannon_Incoming" ObjectPath="\Events\VX\Enemy\Enemy_Cannon_Incoming" GUID="{2E2AC514-41EC-40C2-B741-99ABD8D6FB72}" Color="11" MaxAttenuation="150" DurationType="OneShot" DurationMin="1.7692916" DurationMax="3.5590417">
 					<AuxBusRefs>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
 					</AuxBusRefs>
@@ -2097,6 +2152,11 @@
 								<MediaRef Id="441138940"/>
 								<MediaRef Id="848064909"/>
 							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="989880554"/>
+								</Custom>
+							</PluginRefs>
 						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="1117085073" Id="408582742" GUID="{359F7CB3-1A76-41B6-86DA-F3C2D505FFEB}"/>
@@ -2105,6 +2165,11 @@
 								<MediaRef Id="718681860"/>
 								<MediaRef Id="886403759"/>
 							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="989880554"/>
+								</Custom>
+							</PluginRefs>
 						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="1117085073" Id="408582740" GUID="{03AE98BC-258C-431C-8422-8B99B0D571BF}"/>
@@ -2113,10 +2178,15 @@
 								<MediaRef Id="793456538"/>
 								<MediaRef Id="854674203"/>
 							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="989880554"/>
+								</Custom>
+							</PluginRefs>
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
-				<Event Id="1050776119" Name="Enemy_Shoot" ObjectPath="\Events\SFX\Enemy\Enemy_Shoot" GUID="{3FDD584B-7295-4A08-9570-8775D7B756E9}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="1.4983071" DurationMax="2.244924">
+				<Event Id="1050776119" Name="Enemy_Shoot" ObjectPath="\Events\SFX\Enemy\Enemy_Shoot" GUID="{3FDD584B-7295-4A08-9570-8775D7B756E9}" Color="10" MaxAttenuation="150" DurationType="OneShot" DurationMin="1.4983071" DurationMax="2.244924">
 					<MediaRefs>
 						<MediaRef Id="116372682"/>
 						<MediaRef Id="512603057"/>
@@ -2136,7 +2206,7 @@
 					</ActionPostEvent>
 				</Event>
 				<Event Id="3114531655" Name="Enemy_Steps" ObjectPath="\Events\SFX\Enemy\Enemy_Steps" GUID="{925872CA-03A4-4FC1-8E1A-768C93F1A808}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="2376509257" Name="Enemy_Voice_Cancel" ObjectPath="\Events\VX\Enemy\Enemy_Voice_Cancel" GUID="{2821C044-A076-4670-80B7-F83740940A72}" Color="11" MaxAttenuation="50" DurationType="OneShot" DurationMin="0.32625" DurationMax="0.5666875">
+				<Event Id="2376509257" Name="Enemy_Voice_Cancel" ObjectPath="\Events\VX\Enemy\Enemy_Voice_Cancel" GUID="{2821C044-A076-4670-80B7-F83740940A72}" Color="11" MaxAttenuation="75" DurationType="OneShot" DurationMin="0.32625" DurationMax="0.5666875">
 					<AuxBusRefs>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
 					</AuxBusRefs>
@@ -2257,5 +2327,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{E29750ED-BD3F-F582-F46F-BBA16A6B7EE2}</FileHash>
+	<FileHash>{285B8DA0-3849-5556-F07B-7BD292F9F34F}</FileHash>
 </SoundBanksInfo>
