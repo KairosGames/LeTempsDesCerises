@@ -19,6 +19,9 @@ var is_looping : bool = true
 var ready_narrators : Dictionary = {}
 var relevant_narrators : int = 0
 
+func _process(delta: float) -> void:
+	new_line(0)
+
 func on_game_manager_ready(gm: GameManager) -> void:
 	game_manager = gm
 	if not game_manager or not game_manager.use_narrative:
@@ -67,7 +70,6 @@ func line_ended(_npc_name : String):
 		return
 	line_count += 1
 	if line_count == narrators.size():
-		print("a fini")
 		game_manager.curr_state.voice_line_finished.emit()
 
 func flip_barks_system():
@@ -202,7 +204,6 @@ func pause(new_pause : bool):
 
 
 func loop():
-	print("loop")
 	if !is_looping : return
 	if !allies.is_empty():
 		find_random(allies).post_event("Barricade_State", randf_range(0, 5))

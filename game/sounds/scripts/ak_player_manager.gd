@@ -161,12 +161,14 @@ func update_line(npc_name, new_text : String):
 	text = text.replace(" ", "")
 	for node : Label in subtitles.get_children():
 		if node.name == npc_name:
-			if new_text == "":
+			if new_text == "":	
 				node.visible = false
 				node.text = ""
+				break
 			else:
-				node.text = str(npc_name + " : " + text)
 				node.visible = true
+				node.text = npc_name + " : " + text
+				break
 
 func change_barricade():
 	var curr_barricade: Barricade = GameManager.instance.curr_barricade if GameManager.instance else null
