@@ -1,30 +1,28 @@
 [gd_scene format=3 uid="uid://bb8fxuc1b4vfl"]
 
-[ext_resource type="PackedScene" uid="uid://b3bb3315b88kf" path="res://sources/meshes/props/sm_bag.glb" id="1_4r81n"]
-[ext_resource type="Texture2D" uid="uid://dih1mdlirikv6" path="res://sources/meshes/geometry/textures/fabric/hessian_380_diff_2k.png" id="2_ykbu2"]
-[ext_resource type="Texture2D" uid="uid://qt3e3oxm0hmv" path="res://sources/meshes/geometry/textures/fabric/hessian_380_nor_gl_2k.png" id="3_4qqdd"]
-[ext_resource type="Texture2D" uid="uid://df7diqtmi5lki" path="res://sources/meshes/geometry/textures/fabric/hessian_380_arm_2k.png" id="4_8tvc8"]
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_rlttn"]
-albedo_texture = ExtResource("2_ykbu2")
-orm_texture = ExtResource("4_8tvc8")
-normal_enabled = true
-normal_scale = -0.2
-normal_texture = ExtResource("3_4qqdd")
+[ext_resource type="PackedScene" uid="uid://d4htu0uxcgoim" path="res://sources/meshes/props/sh_bag.fbx" id="1_ykbu2"]
+[ext_resource type="Texture2D" uid="uid://h74meoe6ctjt" path="res://sources/images/textures/sh_bag/sg_bag_c.png" id="2_4qqdd"]
+[ext_resource type="Texture2D" uid="uid://cdyuhv3fgkeu6" path="res://sources/images/textures/sh_bag/sg_bag_n.png" id="3_8tvc8"]
+[ext_resource type="Texture2D" uid="uid://dmnpx6qvil5mq" path="res://sources/images/textures/sh_bag/sg_bag_orm.png" id="4_rlttn"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8cm8n"]
 points = PackedVector3Array(-0.32757026, 0.20727193, 0.098249935, 0.34654394, 0.15687856, -0.06996148, 0.34447825, 0.14011559, -0.069549315, -0.2145014, 0.10538254, -0.55198437, -0.20530283, -0.007743418, 0.4418391, 0.17127597, 0.30322245, 0.25768486, 0.20972726, 0.006020727, 0.4499513, 0.222051, 0.025546625, -0.4456458, 0.18768443, 0.28707454, -0.3279985, -0.20692386, 0.256374, 0.44520536, -0.1853143, 0.3185934, -0.18024638, -0.25329927, 0.04226502, -0.42820063, 0.2295238, 0.17384508, 0.49023768, 0.31630763, 0.15687856, -0.4810262, -0.25987682, 0.22402099, -0.47243518, -0.29946414, 0.08840295, 0.49393338, 0.25089148, 0.3021598, 0.029717855, -0.32798424, 0.12323062, -0.37271026, 0.16373037, 0.087931745, 0.54907846, -0.18611936, 0.31926447, 0.15981047, 0.32813376, 0.07283769, -0.3891446, 0.1969388, 0.17397355, -0.53317827, -0.3119022, 0.055651926, 0.3855471, -0.2882026, 0.27232358, -0.18380028, -0.2716658, 0.27232227, 0.31075937, 0.2774102, 0.056101337, 0.36698404, 0.20252211, 0.31849787, -0.08324575, 0.27574888, 0.20692295, 0.3646994, 0.1602466, 0.24113373, 0.46922618, -0.23164447, 0.122559056, 0.54688466, 0.29140574, 0.25667492, -0.335135, 0.0922782, -0.010423126, 0.4658423)
 
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_8kob1"]
+albedo_texture = ExtResource("2_4qqdd")
+orm_texture = ExtResource("4_rlttn")
+normal_enabled = true
+normal_texture = ExtResource("3_8tvc8")
+
 [node name="BagSimple" type="StaticBody3D" unique_id=2080931740]
-
-[node name="sm_bag2" parent="." unique_id=1255301820 instance=ExtResource("1_4r81n")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
-
-[node name="sm_bag" parent="sm_bag2" index="0" unique_id=1560838395]
-surface_material_override/0 = SubResource("ORMMaterial3D_rlttn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=454204321]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_8cm8n")
 
-[editable path="sm_bag2"]
+[node name="sh_bag" parent="." unique_id=1408691356 instance=ExtResource("1_ykbu2")]
+
+[node name="sm_bag" parent="sh_bag" index="0" unique_id=1945928820]
+surface_material_override/0 = SubResource("ORMMaterial3D_8kob1")
+
+[editable path="sh_bag"]
