@@ -89,7 +89,7 @@ func _physics_process(delta: float) -> void:
 				worker.is_reloading_canon = false
 				worker.is_moving = _is_moving
 		State.RELOADING:
-			animation.speed_scale = 1.0
+			animation.speed_scale = 0.0
 			_is_moving = false
 			for worker: Agent in workers:
 				worker.is_reloading_canon = true
@@ -151,7 +151,6 @@ func _restore(agent: Agent ,slot: Marker3D) -> void:
 	available_slots.push_back(slot)
 	if not move_speeds[holded_slots.size()]: 
 		stop_move.emit()
-		animation.pause()
 
 func _create_workers(n: int = 2) -> void:
 	for i: int in range(n):
