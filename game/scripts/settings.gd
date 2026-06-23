@@ -58,6 +58,7 @@ var DEFAULTS: Dictionary = {
 		"is_aim_smooth": true,
 		"is_movement_smooth": true,
 		"is_blood_enabled": true,
+		"allow_subtitles": true,
 	},
 }
 
@@ -79,6 +80,7 @@ func load_settings() -> void:
 		for key: String in DEFAULTS[section]:
 			if not config_file.has_section_key(section, key):
 				config_file.set_value(section, key, DEFAULTS[section][key])
+	WwiseGlobal.allow_subtitles = config_file.get_value("game", "allow_subtitles") == true
 
 
 func save_settings() -> void:

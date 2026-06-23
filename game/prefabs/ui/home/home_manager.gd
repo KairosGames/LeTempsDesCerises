@@ -38,6 +38,7 @@ const MAIN_SCENE_PATH: String = "uid://bqw181keq72d"
 @onready var posture_switch_toggle_km_check_button: CheckButton = %PostureSwitchToggleKM.get_node(^"CheckButton")
 @onready var aim_smooth_check_button: CheckButton = %AimSmooth.get_node(^"CheckButton")
 @onready var movement_smooth_check_button: CheckButton = %MovementSmooth.get_node(^"CheckButton")
+@onready var subtitle_check_button: CheckButton = %Subtitles.get_node(^"CheckButton")
 @onready var blood_check_button: CheckButton = %Blood.get_node(^"CheckButton")
 @onready var game_reset_button: Button = %GameReset
 
@@ -64,6 +65,7 @@ func _ready() -> void:
 	posture_switch_toggle_km_check_button.toggled.connect(_on_game_toggle_changed.bind("is_posture_switch_toggle_km"))
 	aim_smooth_check_button.toggled.connect(_on_game_toggle_changed.bind("is_aim_smooth"))
 	movement_smooth_check_button.toggled.connect(_on_game_toggle_changed.bind("is_movement_smooth"))
+	subtitle_check_button.toggled.connect(_on_subtitle_toggled)
 	blood_check_button.toggled.connect(_on_game_toggle_changed.bind("is_blood_enabled"))
 	game_reset_button.pressed.connect(_on_game_reset_pressed)
 
@@ -159,21 +161,23 @@ func _close_panel(focus_target: Control) -> void:
 
 
 func _load_game_settings_controls() -> void:
-	_set_slider_value(view_sensibility_slider, view_sensibility_value_label, float(Settings.config_file.get_value("game", "sensi_default")))
-	_set_slider_value(aiming_sensibility_slider, aiming_sensibility_value_label, float(Settings.config_file.get_value("game", "sensi_aiming")))
-	inverted_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_inverted")))
-	_set_slider_value(h_multiplier_slider, h_multiplier_value_label, float(Settings.config_file.get_value("game", "h_sensi_multiplier")))
-	_set_slider_value(v_multiplier_slider, v_multiplier_value_label, float(Settings.config_file.get_value("game", "v_sensi_multiplier")))
-	_set_slider_value(left_stick_deadzone_slider, left_stick_deadzone_value_label, float(Settings.config_file.get_value("game", "l_jstick_threshold")))
-	_set_slider_value(right_stick_deadzone_slider, right_stick_deadzone_value_label, float(Settings.config_file.get_value("game", "r_jstick_threshold")))
-	aim_toggle_km_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_aim_toggle_km")))
-	run_toggle_km_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_run_toggle_km")))
-	aim_toggle_gpad_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_aim_toggle_gpad")))
-	run_toggle_gpad_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_run_toggle_gpad")))
-	posture_switch_toggle_km_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_posture_switch_toggle_km")))
-	aim_smooth_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_aim_smooth")))
-	movement_smooth_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_movement_smooth")))
-	blood_check_button.set_pressed_no_signal(bool(Settings.config_file.get_value("game", "is_blood_enabled")))
+	_set_slider_value(view_sensibility_slider, view_sensibility_value_label, _game_setting_float("sensi_default"))
+	_set_slider_value(aiming_sensibility_slider, aiming_sensibility_value_label, _game_setting_float("sensi_aiming"))
+	inverted_check_button.set_pressed_no_signal(_game_setting_bool("is_inverted"))
+	_set_slider_value(h_multiplier_slider, h_multiplier_value_label, _game_setting_float("h_sensi_multiplier"))
+	_set_slider_value(v_multiplier_slider, v_multiplier_value_label, _game_setting_float("v_sensi_multiplier"))
+	_set_slider_value(left_stick_deadzone_slider, left_stick_deadzone_value_label, _game_setting_float("l_jstick_threshold"))
+	_set_slider_value(right_stick_deadzone_slider, right_stick_deadzone_value_label, _game_setting_float("r_jstick_threshold"))
+	aim_toggle_km_check_button.set_pressed_no_signal(_game_setting_bool("is_aim_toggle_km"))
+	run_toggle_km_check_button.set_pressed_no_signal(_game_setting_bool("is_run_toggle_km"))
+	aim_toggle_gpad_check_button.set_pressed_no_signal(_game_setting_bool("is_aim_toggle_gpad"))
+	run_toggle_gpad_check_button.set_pressed_no_signal(_game_setting_bool("is_run_toggle_gpad"))
+	posture_switch_toggle_km_check_button.set_pressed_no_signal(_game_setting_bool("is_posture_switch_toggle_km"))
+	aim_smooth_check_button.set_pressed_no_signal(_game_setting_bool("is_aim_smooth"))
+	movement_smooth_check_button.set_pressed_no_signal(_game_setting_bool("is_movement_smooth"))
+	subtitle_check_button.set_pressed_no_signal(_game_setting_bool("allow_subtitles"))
+	WwiseGlobal.allow_subtitles = _game_setting_bool("allow_subtitles")
+	blood_check_button.set_pressed_no_signal(_game_setting_bool("is_blood_enabled"))
 
 
 func _on_game_slider_changed(value: float, key: String) -> void:
@@ -220,6 +224,34 @@ func _on_inverted_toggled(toggled_on: bool) -> void:
 
 func _on_game_toggle_changed(toggled_on: bool, key: String) -> void:
 	Settings.config_file.set_value("game", key, toggled_on)
+	Settings.save_settings()
+
+
+func _game_setting_float(key: String) -> float:
+	var value: Variant = Settings.config_file.get_value("game", key)
+	if value is int:
+		return float(value)
+	if value is float:
+		return value
+	if value is bool:
+		return 1.0 if value else 0.0
+	return 0.0
+
+
+func _game_setting_bool(key: String) -> bool:
+	var value: Variant = Settings.config_file.get_value("game", key)
+	if value is bool:
+		return value
+	if value is int:
+		return value != 0
+	if value is float:
+		return not is_zero_approx(value)
+	return false
+
+
+func _on_subtitle_toggled(toggled_on: bool) -> void:
+	WwiseGlobal.allow_subtitles = toggled_on
+	Settings.config_file.set_value("game", "allow_subtitles", toggled_on)
 	Settings.save_settings()
 
 

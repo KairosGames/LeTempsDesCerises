@@ -10,7 +10,6 @@ extends VBoxContainer
 
 func _ready() -> void:
 	_load_audio_settings()
-	reset_button.pressed.connect(_on_reset_pressed)
 
 
 func _on_music_slider_value_changed(value: float) -> void:
