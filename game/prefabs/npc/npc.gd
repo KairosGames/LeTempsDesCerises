@@ -218,6 +218,7 @@ func enter_in_stand_no_weapon(trans: float = 0.3) -> void:
 func shoot(trans: float = 0.2, target: Node3D = null) -> void:
 	shot.emit()
 	play_light_trail_effect(target)
+	play_shoot_effect()
 	animator.play("solder/stand-shoot", trans)
 	await animator.animation_finished
 
@@ -248,6 +249,14 @@ func play_light_trail_effect(target: Node3D = null) -> void:
 	var front_dest: Vector3 = chassepot.global_position - (chassepot.global_basis.z * 100.0)
 	var dest: Vector3 = target.global_position if target else front_dest
 	chassepot.play_light_trail(dest)
+
+
+func play_shoot_effect() -> void:
+	if not EffectsManager.instance: return
+	var eff: EffectsManager.EffectType = EffectsManager.EffectType.PnjShoot
+	var pos: Vector3 = chassepot.shoot_effect_point.global_position
+	var rot: Vector3 = chassepot.shoot_effect_point.global_rotation
+	EffectsManager.instance.play_effect(eff, pos, rot)
 
 
 func launch_movement_to_paths(path_points: Array[Node3D], speed: float, fight: bool = false, aim: bool = false) -> void:

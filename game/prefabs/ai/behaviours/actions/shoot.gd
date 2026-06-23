@@ -54,6 +54,7 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 		var coll_rot: Vector3 = Basis.looking_at(coll_dir.normalized(), Vector3.UP, true).get_euler()
 		var shoot_dir: Vector3 = -raycast.global_transform.basis.z.normalized()
 		agent.chassepot.play_light_trail(position)
+		agent.play_shoot_effect()
 		if collider is Player:
 			var player: Player = collider as Player
 			if not player.can_die: player.missed_by_enemy.emit()

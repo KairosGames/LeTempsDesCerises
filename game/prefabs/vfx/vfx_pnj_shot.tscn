@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ctjtqdteggxy7" path="res://prefabs/vfx/particles_player.gd" id="1_53x7b"]
 [ext_resource type="Material" uid="uid://cvwjj1evahaj0" path="res://materials/materials_vfx/m_vfx_fire_fog.tres" id="2_6uud1"]
-[ext_resource type="Material" uid="uid://rsa8wfwgptvu" path="res://materials/materials_vfx/m_vfx_fire_muzzle.tres" id="3_woc4a"]
+[ext_resource type="Texture2D" uid="uid://dmf3lmob4wr6y" path="res://prefabs/vfx/vfx_cannon_shoot/T_VFX_Glo31.png" id="3_53x7b"]
 
 [sub_resource type="Curve" id="Curve_hxrhv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.008764267), -0.65062976, 0.0, 0, 0]
@@ -90,36 +90,6 @@ scale_curve = SubResource("CurveTexture_g4k8p")
 color = Color(0.8483372, 0.7481818, 0.74633175, 1)
 alpha_curve = SubResource("CurveTexture_a43y4")
 
-[sub_resource type="Curve" id="Curve_dig0m"]
-_data = [Vector2(0, 0.79491675), 0.0, 0.0, 0, 0, Vector2(1, 0.008764267), -0.041206658, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_4k34c"]
-curve = SubResource("Curve_dig0m")
-
-[sub_resource type="Curve" id="Curve_g4k8p"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0, 0.12007022), 0.0, 31.31697, 0, 0, Vector2(0.009216592, 1.3619633), -0.016619686, 0.0, 0, 0, Vector2(0.6751152, 1.9658195), -0.19779198, -0.19779198, 0, 0, Vector2(0.99539167, 1.9088519), -0.22999078, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_1bvr6"]
-curve = SubResource("Curve_g4k8p")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m3isd"]
-direction = Vector3(0, 0, 1)
-spread = 30.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.39999998
-scale_max = 0.5
-scale_curve = SubResource("CurveTexture_1bvr6")
-color = Color(2.4216094, 2.165436, 1.7598283, 1)
-alpha_curve = SubResource("CurveTexture_4k34c")
-
-[sub_resource type="QuadMesh" id="QuadMesh_a43y4"]
-orientation = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_o1wrc"]
-
 [sub_resource type="Curve" id="Curve_a43y4"]
 _data = [Vector2(0, 0.79491675), 0.0, 0.0, 0, 0, Vector2(1, 0.008764267), -0.041206658, 0.0, 0, 0]
 point_count = 2
@@ -186,13 +156,100 @@ scale_curve = SubResource("CurveTexture_dig0m")
 color = Color(0.8483372, 0.7481818, 0.74633175, 1)
 alpha_curve = SubResource("CurveTexture_hkauq")
 
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_5or0d"]
+parameter_name = "Alpha_Texture"
+texture_type = 1
+texture_filter = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_fcvq7"]
+expanded_output_ports = [0]
+source = 5
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_rjth3"]
+expanded_output_ports = [0]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_n28su"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeProximityFade" id="VisualShaderNodeProximityFade_dhj1y"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_ml3sw"]
+parameter_name = "ProximityFade"
+default_value_enabled = true
+default_value = 0.5
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_atdt5"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeBillboard" id="VisualShaderNodeBillboard_0p05p"]
+billboard_type = 3
+keep_scale = true
+
+[sub_resource type="VisualShader" id="VisualShader_4ha0f"]
+flags/unshaded = true
+flags/shadows_disabled = true
+flags/ambient_light_disabled = true
+flags/fog_disabled = true
+nodes/vertex/2/node = SubResource("VisualShaderNodeBillboard_0p05p")
+nodes/vertex/2/position = Vector2(-20.0464, 308.174)
+nodes/vertex/connections = PackedInt32Array(2, 0, 0, 10)
+nodes/fragment/0/position = Vector2(820, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_5or0d")
+nodes/fragment/2/position = Vector2(-620, 460)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_fcvq7")
+nodes/fragment/3/position = Vector2(-220, 420)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_rjth3")
+nodes/fragment/4/position = Vector2(-320, 80)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatOp_n28su")
+nodes/fragment/5/position = Vector2(460, 380)
+nodes/fragment/6/node = SubResource("VisualShaderNodeProximityFade_dhj1y")
+nodes/fragment/6/position = Vector2(340, 620)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatParameter_ml3sw")
+nodes/fragment/7/position = Vector2(300, 740)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatOp_atdt5")
+nodes/fragment/8/position = Vector2(180, 380)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 0, 0, 7, 0, 6, 0, 6, 0, 5, 1, 5, 0, 0, 1, 4, 4, 8, 0, 3, 1, 8, 1, 8, 0, 5, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6uud1"]
+render_priority = 0
+shader = SubResource("VisualShader_4ha0f")
+shader_parameter/Alpha_Texture = ExtResource("3_53x7b")
+shader_parameter/ProximityFade = 0.5
+
+[sub_resource type="Curve" id="Curve_woc4a"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.631746, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ayxlg"]
+texture_mode = 1
+curve = SubResource("Curve_woc4a")
+
+[sub_resource type="Curve" id="Curve_5c1gd"]
+_data = [Vector2(0, 1), 0.0, -3.38496, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_neyhw"]
+curve = SubResource("Curve_5c1gd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e7j2l"]
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_neyhw")
+color = Color(2, 1.2, 0.5, 1)
+alpha_curve = SubResource("CurveTexture_ayxlg")
+
+[sub_resource type="QuadMesh" id="QuadMesh_7lpgh"]
+
 [sub_resource type="Animation" id="Animation_53x7b"]
 resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("vfx_ps_player_fire_muzzle:emitting")
+tracks/0/path = NodePath("vfx_ps_player_fire_main_fog:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -204,7 +261,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("vfx_ps_player_fire_main_fog:emitting")
+tracks/1/path = NodePath("vfx_ps_fog_add_layer:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -216,10 +273,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("vfx_ps_fog_add_layer:emitting")
+tracks/2/path = NodePath("more_fog:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("muzzle:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -232,11 +301,11 @@ length = 9.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("vfx_ps_player_fire_muzzle:emitting")
+tracks/0/path = NodePath("vfx_ps_player_fire_main_fog:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.1999998),
+"times": PackedFloat32Array(0, 8.033334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -244,40 +313,52 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("vfx_ps_player_fire_main_fog:emitting")
+tracks/1/path = NodePath("vfx_ps_fog_add_layer:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 8.033334),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("vfx_ps_fog_add_layer:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 2.7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(9),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"free_animation"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("more_fog:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("muzzle:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ee2jh"]
@@ -314,19 +395,6 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_1bvr6")
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
 
-[node name="vfx_ps_player_fire_muzzle" type="GPUParticles3D" parent="." unique_id=1777595371]
-material_override = ExtResource("3_woc4a")
-emitting = false
-amount = 1
-one_shot = true
-explosiveness = 1.0
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_m3isd")
-draw_passes = 3
-draw_pass_1 = SubResource("QuadMesh_hxrhv")
-draw_pass_2 = SubResource("QuadMesh_a43y4")
-draw_pass_3 = SubResource("QuadMesh_o1wrc")
-
 [node name="vfx_ps_fog_add_layer" type="GPUParticles3D" parent="." unique_id=1976703905]
 material_override = ExtResource("2_6uud1")
 emitting = false
@@ -339,8 +407,7 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_dig0m")
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
 
-[node name="GPUParticles3D3" type="GPUParticles3D" parent="." unique_id=78775754]
-visible = false
+[node name="more_fog" type="GPUParticles3D" parent="." unique_id=78775754]
 material_override = ExtResource("2_6uud1")
 emitting = false
 amount = 2
@@ -351,6 +418,19 @@ local_coords = true
 transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_dag3l")
 draw_pass_1 = SubResource("QuadMesh_hxrhv")
+
+[node name="muzzle" type="GPUParticles3D" parent="." unique_id=1730737654]
+material_override = SubResource("ShaderMaterial_6uud1")
+cast_shadow = 0
+emitting = false
+amount = 1
+lifetime = 0.05
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_e7j2l")
+draw_pass_1 = SubResource("QuadMesh_7lpgh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1137087610]
 libraries/ = SubResource("AnimationLibrary_ee2jh")

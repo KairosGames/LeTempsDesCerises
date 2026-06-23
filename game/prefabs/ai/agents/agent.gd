@@ -207,3 +207,11 @@ func randomize_color() -> void:
 
 enum Posture { NONE, PRONE, CROUCH, STAND}
 enum Sexe { MAN = 1, WOMAN = 2, BOTH = 3}
+
+
+func play_shoot_effect() -> void:
+	if not EffectsManager.instance: return
+	var eff: EffectsManager.EffectType = EffectsManager.EffectType.PnjShoot
+	var pos: Vector3 = chassepot.shoot_effect_point.global_position
+	var rot: Vector3 = chassepot.shoot_effect_point.global_rotation
+	EffectsManager.instance.play_effect(eff, pos, rot)

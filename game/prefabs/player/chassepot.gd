@@ -1,6 +1,7 @@
 class_name Chassepot extends Node3D
 
 @onready var shoot_light_trail: ShootLightTrail = %ShootLightTrail
+@onready var shoot_effect_point: Marker3D = %ShootEffectPoint
 
 var call_load_ammo: Callable
 var call_next_step: Callable
