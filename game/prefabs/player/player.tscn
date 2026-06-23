@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://cl1kbcn7tixc5" path="res://prefabs/ui/reload_p3.png" id="16_qdvc2"]
 [ext_resource type="PackedScene" uid="uid://of0isbumqecs" path="res://prefabs/player/chassepot.tscn" id="17_8hk3c"]
 [ext_resource type="Texture2D" uid="uid://dnjca8p664n1b" path="res://prefabs/ui/reload_p4.png" id="17_vtpqo"]
+[ext_resource type="Texture2D" uid="uid://cidv14oem3sdc" path="res://sources/images/icons/inputs/Xbox Series/xbox_button_x.svg" id="18_ag4y2"]
 [ext_resource type="PackedScene" uid="uid://cn7x6vluolkny" path="res://prefabs/player/shoot_light_trail.tscn" id="24_vtpqo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c4n1"]
@@ -49,6 +50,37 @@ shader_parameter/blur_size = 0.0
 shader_parameter/effect = 8.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtpqo"]
+
+[sub_resource type="GDScript" id="GDScript_dmwb1"]
+resource_name = "ReloadHint"
+script/source = "extends TextureRect
+
+const XBOX_BUTTON_X: Texture2D = preload(\"uid://cidv14oem3sdc\")
+const KEYBOARD_R: Texture2D = preload(\"uid://crgngp83cu34k\")
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouse or event is InputEventKey: 
+		update_hint(false)
+	if event is InputEventJoypadButton: 
+		update_hint(true)
+	if event is InputEventJoypadMotion:
+		var joypad_motion: InputEventJoypadMotion = event
+		if abs(joypad_motion.axis_value) > 0.5: update_hint(true)
+	if event.is_action_pressed(\"reload\"):
+		press_feedback()
+		
+	
+var tween: Tween
+func press_feedback() -> void:
+	if tween: tween.kill()
+	tween = create_tween()
+	tween.tween_property(self, \"scale\", Vector2.ONE * 0.8, 0.1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property(self, \"scale\", Vector2.ONE * 1.0, 0.1)
+
+
+func update_hint(is_gamepad: bool) -> void:
+	texture = XBOX_BUTTON_X if is_gamepad else KEYBOARD_R
+"
 
 [sub_resource type="Curve2D" id="Curve2D_408ek"]
 _data = {
@@ -263,6 +295,24 @@ offset_right = 2.0
 offset_bottom = 492.0
 texture = ExtResource("17_vtpqo")
 expand_mode = 1
+
+[node name="Hint" type="TextureRect" parent="UI/ReloadUI" unique_id=101839770]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -6.13
+anchor_top = 6.267
+anchor_right = -6.13
+anchor_bottom = 6.267
+offset_left = -31.799988
+offset_top = -31.680008
+offset_right = 32.200012
+offset_bottom = 32.319992
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("18_ag4y2")
+expand_mode = 1
+script = SubResource("GDScript_dmwb1")
 
 [node name="Path1" type="Path2D" parent="UI/ReloadUI" unique_id=349230490]
 unique_name_in_owner = true
