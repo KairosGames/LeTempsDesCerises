@@ -158,9 +158,9 @@ func launch_blink_effect(target: Node3D) -> void:
 	objective_title_label.add_theme_color_override("font_outline_color", outline_color)
 	target_title_mat.set_shader_parameter("outline_color", outline_color)
 	objectif_target_mat.set_shader_parameter("outline_color", outline_color)
-	tween_outlines(0.0, 0.4)
-	for i: int in range(5):
-		await get_tree().create_timer(0.4).timeout
+	tween_outlines(0.0, 0.6)
+	for i: int in range(3):
+		await get_tree().create_timer(0.6).timeout
 		objective_container.visible = false
 		if blink_target: objective_target.target = null
 		outline_color.a = 1.0
@@ -168,10 +168,10 @@ func launch_blink_effect(target: Node3D) -> void:
 		objective_title_label.add_theme_color_override("font_outline_color", outline_color)
 		target_title_mat.set_shader_parameter("outline_color", outline_color)
 		objectif_target_mat.set_shader_parameter("outline_color", outline_color)
-		tween_outlines(0.0, 0.4)
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.2).timeout
 		objective_container.visible = true
 		if blink_target: objective_target.target = target
+		tween_outlines(0.0, 0.6)
 
 
 func tween_outlines(alpha: float, t: float) -> void:
@@ -180,6 +180,29 @@ func tween_outlines(alpha: float, t: float) -> void:
 	outline_twn.tween_property(objective_label,"theme_override_colors/font_outline_color:a", alpha, t)
 	outline_twn.parallel().tween_property(objective_title_label,"theme_override_colors/font_outline_color:a", alpha, t)
 	outline_twn.parallel().tween_property(target_title_mat, "shader_parameter/outline_color:a", alpha, t)
+	outline_twn.parallel().tween_property(objectif_target_mat, "shader_parameter/outline_color:a", alpha, t)
+
+
+func launch_target_blink_effect(target: Node3D) -> void:
+	var blink_target: bool = target != null
+	var outline_color: Color = objective_label.get_theme_color("font_outline_color")
+	await get_tree().create_timer(0.1).timeout
+	outline_color.a = 1.0
+	objectif_target_mat.set_shader_parameter("outline_color", outline_color)
+	tween_target_outlines(0.0, 0.6)
+	for i: int in range(3):
+		await get_tree().create_timer(0.6).timeout
+		if blink_target: objective_target.target = null
+		outline_color.a = 1.0
+		objectif_target_mat.set_shader_parameter("outline_color", outline_color)
+		await get_tree().create_timer(0.2).timeout
+		if blink_target: objective_target.target = target
+		tween_target_outlines(0.0, 0.6)
+
+
+func tween_target_outlines(alpha: float, t: float) -> void:
+	if outline_twn : outline_twn.kill()
+	outline_twn = create_tween()
 	outline_twn.parallel().tween_property(objectif_target_mat, "shader_parameter/outline_color:a", alpha, t)
 
 

@@ -12,6 +12,7 @@ signal fire_kill_georges
 @onready var objective_point_barricade: CustomMarker = %ObjectivePointBarricade
 @onready var second_barricade_npc: Npc = %SecondBarricadeNPC
 @onready var georges_shoot_light: ShootLightTrail = %GeorgesShootLight
+@onready var hotel_target: ShootTarget = %HotelTarget
 
 var recorded_pos: Vector3
 
@@ -167,9 +168,11 @@ func open_player_view() -> void:
 
 
 func wait_player_shoot()-> void:
+	ui_manager.launch_target_blink_effect(hotel_target)
 	handle_action_tooltip("shoot")
 	add_on_process(process_shoot_tooltip, true)
 	await wait_until(is_player_shooting_target)
+	ui_manager.objective_target.target = null
 	free_tool_tip()
 	player.tried_shoot_no_reload.emit()
 	if not player.p_inputs.is_gamepad: leave_aim()
