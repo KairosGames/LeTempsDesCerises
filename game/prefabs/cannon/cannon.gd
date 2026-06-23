@@ -84,13 +84,15 @@ func _physics_process(delta: float) -> void:
 			progress += move_speed * delta
 			move_progress = progress_ratio
 			if move_progress == 1.0:
+				animation.stop()
+				animation.play("RESET", 0.2)
 				_state = State.RELOADING
 				_is_moving = false
 			for worker: Agent in workers:
 				worker.is_reloading_canon = false
 				worker.is_moving = _is_moving
 		State.RELOADING:
-			animation.speed_scale = 0.0
+			animation.speed_scale = 1.0
 			_is_moving = false
 			for worker: Agent in workers:
 				worker.is_reloading_canon = true
