@@ -109,6 +109,7 @@ func allies_arrival() -> void:
 
 func launch_kill_all_versaillais() -> void:
 	await wait(20.0)
+	print("KILL ALL VERSAILLAIS DEBUG CALLDED")
 	kill_all_versaillais()
 
 

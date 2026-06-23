@@ -78,12 +78,12 @@ func wait_no_more_allies() -> void:
 	await wait_until(are_louise_and_francois_on_covers)
 
 	############# FOR DEBUG
-	add_on_process(kill_agents.bind(false, true))
+	add_on_process(next_input_kill_agents.bind(false, true))
 
 	await wait_until(is_there_one_ally)
 
 	############# FOR DEBUG
-	add_on_process(kill_agents.bind(false, true))
+	add_on_process(next_input_kill_agents.bind(false, true))
 
 	await wait_until(is_there_no_allies)
 	disable_all_spawners()
