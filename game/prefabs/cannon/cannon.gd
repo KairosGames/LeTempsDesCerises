@@ -10,6 +10,7 @@ signal shoot
 signal workers_updated(workers: Array[Agent])
 signal move_progress_changed(percent: float)
 signal reload_progress_changed(percent: float)
+signal is_ready_to_shoot_in_cinematic
 
 @onready var objective_point: Marker3D = %ObjectivePoint
 @onready var second_path: Path3D = %Path3DCannon2
@@ -107,7 +108,9 @@ func _physics_process(delta: float) -> void:
 
 func _shoot() -> void:
 	if _is_first_shoot:
+		is_ready_to_shoot_in_cinematic.emit()
 		_is_first_shoot = false
+		reload_progress = 0
 		await (GameManager.instance.all_states[1] as GameState01).game_ready_cannon_shoot
 	await get_tree().create_timer(delay_before_shoot).timeout
 	shoot.emit()
