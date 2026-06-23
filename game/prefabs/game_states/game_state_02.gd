@@ -2,6 +2,7 @@ class_name GameState02 extends GameState
 
 signal stop_music_for_dialogue ##### MUSIC : Stop la musique lors du dialogue
 signal start_music_after_dialogue ##### MUSIC : redémarre la musique après le dialogue
+signal player_passed_behind_second_barricade
 
 @onready var francois_moved_pos: CustomMarker = %FrancoisMovedPos
 @onready var desactivable_barricade: StaticBody3D = %DesactivableBarricade
@@ -54,6 +55,7 @@ func set_short_timers() -> void:
 
 
 func lauch_first_phase() -> void:
+	player_passed_behind_second_barricade.emit()
 	player.death_camera.first_pos = secure_respawn.global_position
 	player.death_camera.first_rot = Vector3(0.0, secure_respawn.global_rotation.y, 0.0)
 	for woman: Npc in woman_points.women: woman.visible = false
