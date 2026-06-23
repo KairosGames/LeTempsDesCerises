@@ -1031,6 +1031,7 @@ func play_light_trail_effect() -> void:
 	var dest: Vector3 = point.global_position + (point.global_transform.basis.z * 100.0)
 	light_trail.shoot(dest)
 
+
 func play_shoot_vfx() -> void:
 	if not EffectsManager.instance:
 		printerr("EFFECT MANAGER NOT IN SCENE !")

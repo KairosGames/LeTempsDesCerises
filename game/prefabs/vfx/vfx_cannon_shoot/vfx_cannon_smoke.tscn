@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://c8ppcpjgdk3s"]
+
+[ext_resource type="Script" uid="uid://ctjtqdteggxy7" path="res://prefabs/vfx/particles_player.gd" id="1_n40pj"]
+[ext_resource type="Texture2D" uid="uid://bmu6bujmliy3d" path="res://sources/images/textures/textures_vfx/T_Fog_04.png" id="2_sgnae"]
+
+[sub_resource type="Curve" id="Curve_unhwd"]
+_data = [Vector2(0, 0.65279514), 0.0, 0.14629133, 0, 0, Vector2(0.9967532, 0.031055927), -1.5987586, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_sgnae"]
+curve = SubResource("Curve_unhwd")
+
+[sub_resource type="Curve" id="Curve_4vw8m"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1.3602495), 0.0, 15.436286, 0, 0, Vector2(1, 6.6894417), -0.72085613, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c8auk"]
+curve = SubResource("Curve_4vw8m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4vw8m"]
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, 1)
+spread = 5.0
+initial_velocity_min = 2.0
+initial_velocity_max = 3.0
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = -2.2351742e-05
+gravity = Vector3(0, 0, 0)
+damping_min = 1.5000001
+damping_max = 2.5
+scale_min = 0.59999996
+scale_max = 1.4
+scale_curve = SubResource("CurveTexture_c8auk")
+alpha_curve = SubResource("CurveTexture_sgnae")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c8auk"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.84705883, 0.7490196, 0.74509805, 1)
+albedo_texture = ExtResource("2_sgnae")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_mjiql"]
+material = SubResource("StandardMaterial3D_c8auk")
+size = Vector2(1.5, 1.5)
+
+[sub_resource type="Animation" id="Animation_uaawe"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Smoke:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ee2jh"]
+resource_name = "play"
+length = 15.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(14.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"free_animation"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Smoke:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ee2jh"]
+_data = {
+&"RESET": SubResource("Animation_uaawe"),
+&"play": SubResource("Animation_ee2jh")
+}
+
+[node name="vfx_player_shot" type="Node3D" unique_id=7534225 node_paths=PackedStringArray("particles", "animationPlayer")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_n40pj")
+particles = [NodePath("Smoke")]
+animationPlayer = NodePath("AnimationPlayer")
+
+[node name="Smoke" type="GPUParticles3D" parent="." unique_id=1858517560]
+emitting = false
+amount = 3
+lifetime = 10.0
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_4vw8m")
+draw_pass_1 = SubResource("QuadMesh_mjiql")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1137087610]
+libraries/ = SubResource("AnimationLibrary_ee2jh")

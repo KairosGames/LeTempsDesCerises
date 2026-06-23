@@ -4,7 +4,8 @@ enum EffectType {
 	PlayerShoot,
 	PnjShoot,
 	BloodImpact,
-	Impact
+	Impact,
+	CannonSmoke
 }
 
 @export var instances_per_pool: int = 20
@@ -13,7 +14,8 @@ var EFFECT_PREFABS: Dictionary[EffectType, PackedScene] = {
 	EffectType.PlayerShoot: preload("uid://cbwpfvcia7dju"),
 	EffectType.PnjShoot: preload("uid://ckpkymdprs6dq"),
 	EffectType.BloodImpact: preload("uid://darpef6scnnu0"),
-	EffectType.Impact: preload("uid://clb63nitubney")
+	EffectType.Impact: preload("uid://clb63nitubney"),
+	EffectType.CannonSmoke: preload("uid://c8ppcpjgdk3s"),
 
 }
 

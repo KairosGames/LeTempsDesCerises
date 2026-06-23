@@ -58,6 +58,7 @@ func _ready() -> void:
 	singleton = self
 	available_slots = _slots.duplicate()
 
+
 func _physics_process(delta: float) -> void:
 	if not enabled: return
 
@@ -109,9 +110,17 @@ func _shoot() -> void:
 	await get_tree().create_timer(delay_before_shoot).timeout
 	shoot.emit()
 	animation.play("shoot")
+	play_smoke_effect()
 	cannon_shoot_effect.play_effect()
+	
 	reload_progress = 0
 
+func play_smoke_effect() -> void:
+	if not EffectsManager.instance: return
+	var eff: EffectsManager.EffectType = EffectsManager.EffectType.CannonSmoke
+	var pos: Vector3 = cannon_shoot_effect.global_position
+	var rot: Vector3 = cannon_shoot_effect.global_rotation
+	EffectsManager.instance.play_effect(eff, pos, rot)
 
 func _find_workers(recruitment_range: float) -> Agent:
 	if available_slots.size():
