@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://rdm5cpygke5k"]
 
+[ext_resource type="PackedScene" uid="uid://1j2maclg6ntp" path="res://sources/meshes/props/sh_cart_big.fbx" id="1_81n0d"]
 [ext_resource type="PackedScene" uid="uid://cu8rmi6igqtt4" path="res://sources/meshes/props/sm_cart_big.glb" id="1_acc31"]
+[ext_resource type="Texture2D" uid="uid://jwecrxjf6v6h" path="res://sources/images/textures/sh_cart_medium/sg_cart_medium_c.png" id="2_0ckbj"]
 [ext_resource type="Material" uid="uid://cx5n0bf3yck8x" path="res://sandbox/chassepot_proto/wood_proto.tres" id="2_t1k4y"]
 [ext_resource type="WwiseAcousticTexture" uid="uid://u8tyoux1u7mp" path="res://Wwise/resources/Acoustic Texture/{B086A5A9-F204-4C53-A838-BDB18B18F6D6}.tres" id="3_o6g4p"]
+[ext_resource type="Texture2D" uid="uid://by56vvaeb2m6f" path="res://sources/images/textures/sh_cart_medium/sg_cart_medium_n.png" id="3_ymitc"]
+[ext_resource type="Texture2D" uid="uid://b0chfqnaju7uq" path="res://sources/images/textures/sh_cart_medium/sg_cart_medium_orm.png" id="4_0emxx"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_onjja"]
+albedo_texture = ExtResource("2_0ckbj")
+orm_texture = ExtResource("4_0emxx")
+normal_enabled = true
+normal_texture = ExtResource("3_ymitc")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8rrd"]
 albedo_color = Color(0.5626927, 0.3911549, 0.2024546, 1)
@@ -16,34 +26,44 @@ radius = 0.72265625
 size = Vector3(2.7283936, 0.12820435, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6g4p"]
-size = Vector3(0.08786011, 1.2822266, 0.6497803)
+size = Vector3(0.08786011, 1.4716797, 0.18609619)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ckbj"]
+size = Vector3(2.529419, 1.2822266, 0.085235596)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_81n0d"]
-size = Vector3(0.08786011, 1.2822266, 0.33554077)
+size = Vector3(0.08786011, 1.2822266, 0.17802429)
 
 [sub_resource type="BoxOccluder3D" id="BoxOccluder3D_t1k4y"]
-size = Vector3(0.09609815, 1, 2.7035267)
+size = Vector3(0.09609815, 0.9413665, 2.7035267)
 
 [node name="BigCart" type="StaticBody3D" unique_id=896286637]
 
-[node name="sm_cart_big2" parent="." unique_id=561521716 instance=ExtResource("1_acc31")]
+[node name="sh_cart_big" parent="." unique_id=472392883 instance=ExtResource("1_81n0d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.087688684, -0.18038642)
 
-[node name="sm_cart_big" parent="sm_cart_big2" index="0" unique_id=1973692313]
+[node name="sm_cart_medium" parent="sh_cart_big" index="0" unique_id=523513680]
+surface_material_override/0 = SubResource("ORMMaterial3D_onjja")
+
+[node name="sm_cart_big2" parent="." unique_id=561521716 instance=ExtResource("1_acc31")]
+visible = false
+
+[node name="sm_cart_big" parent="sm_cart_big2" index="0" unique_id=1890939746]
 surface_material_override/0 = ExtResource("2_t1k4y")
 
-[node name="BézierCircle_006" parent="sm_cart_big2/sm_cart_big" index="0" unique_id=902777629]
+[node name="BézierCircle_006" parent="sm_cart_big2/sm_cart_big" index="0" unique_id=1798214310]
 surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
 
-[node name="Cube_008" parent="sm_cart_big2/sm_cart_big" index="1" unique_id=1358819421]
+[node name="Cube_008" parent="sm_cart_big2/sm_cart_big" index="1" unique_id=190864704]
 surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
 
-[node name="Cube_009" parent="sm_cart_big2/sm_cart_big" index="2" unique_id=165860428]
+[node name="Cube_009" parent="sm_cart_big2/sm_cart_big" index="2" unique_id=1908563820]
 surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
 
-[node name="Cube_010" parent="sm_cart_big2/sm_cart_big" index="3" unique_id=960727277]
+[node name="Cube_010" parent="sm_cart_big2/sm_cart_big" index="3" unique_id=647278576]
 surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
 
-[node name="Cube_011" parent="sm_cart_big2/sm_cart_big" index="4" unique_id=1704233846]
+[node name="Cube_011" parent="sm_cart_big2/sm_cart_big" index="4" unique_id=29099801]
 surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1689165993]
@@ -51,19 +71,23 @@ transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, 5.9604645e-08, -4.7683
 shape = SubResource("CylinderShape3D_t1k4y")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="." unique_id=1456275849]
-transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, 5.9604645e-08, -4.7683716e-07, -1, -1, -5.364418e-07, -1.1920929e-07, -0.7158442, 1.2975678, -0.28158283)
+transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, 5.9604645e-08, -4.7683716e-07, -1, -1, -5.364418e-07, -1.1920929e-07, -0.7618398, 1.2975678, -0.28158283)
 shape = SubResource("BoxShape3D_t1k4y")
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="." unique_id=1871639308]
-transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, -0.08379951, -5.2011353e-07, -0.9964826, -0.9964826, -4.945961e-07, 0.08379945, -0.0124088405, 1.1946588, -1.489888)
+transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, -0.08379951, -5.2011353e-07, -0.9964826, -0.9964826, -4.945961e-07, 0.08379945, -0.012408937, 0.9636322, -1.4704597)
 shape = SubResource("BoxShape3D_o6g4p")
 
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="." unique_id=305574828]
+transform = Transform3D(-4.371139e-08, 1, 0, 4.371139e-08, 1.9106855e-15, -0.99999994, -1, -4.371139e-08, -4.3711385e-08, -0.012408938, 0.80655026, -0.29013276)
+shape = SubResource("BoxShape3D_0ckbj")
+
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="." unique_id=867464249]
-transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, 0.0326145, -4.5908777e-07, -0.99946797, -0.99946797, -5.517082e-07, -0.03261456, -0.012408906, 1.0380762, 0.91154563)
+transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, 0.0326145, -4.5908777e-07, -0.99946797, -0.99946797, -5.517082e-07, -0.03261456, -0.012408938, 0.9593598, 0.908977)
 shape = SubResource("BoxShape3D_81n0d")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="." unique_id=233315066]
-transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, 5.9604645e-08, -4.7683716e-07, -1, -1, -5.364418e-07, -1.1920929e-07, 0.716, 1.298, -0.282)
+transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, 5.9604645e-08, -4.7683716e-07, -1, -1, -5.364418e-07, -1.1920929e-07, 0.7815235, 1.298, -0.282)
 shape = SubResource("BoxShape3D_t1k4y")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=312610683]
@@ -71,11 +95,11 @@ transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, 5.9604645e-08, -4.7683
 shape = SubResource("CylinderShape3D_t1k4y")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="." unique_id=549183400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.73062134, 1.304836, -0.28272167)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.78484577, 1.304836, -0.28272167)
 occluder = SubResource("BoxOccluder3D_t1k4y")
 
 [node name="OccluderInstance3D2" type="OccluderInstance3D" parent="." unique_id=781826960]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73099315, 1.304836, -0.28272167)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7771293, 1.304836, -0.28272167)
 occluder = SubResource("BoxOccluder3D_t1k4y")
 
 [node name="AkGeometry" type="AkGeometry" parent="." unique_id=1387396932]
@@ -83,4 +107,5 @@ enable_diffraction_on_boundary_edges = true
 is_solid = true
 acoustic_texture = ExtResource("3_o6g4p")
 
+[editable path="sh_cart_big"]
 [editable path="sm_cart_big2"]

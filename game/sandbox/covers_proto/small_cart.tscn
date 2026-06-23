@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://d00e7jguxugoy"]
 
-[ext_resource type="PackedScene" uid="uid://dhbhb00fnm2gk" path="res://sources/meshes/props/sm_cart_small.glb" id="1_3v5vq"]
-[ext_resource type="Material" uid="uid://cx5n0bf3yck8x" path="res://sandbox/chassepot_proto/wood_proto.tres" id="2_onnpc"]
+[ext_resource type="PackedScene" uid="uid://bynyebg0hi5mk" path="res://sources/meshes/props/sm_cart_small.fbx" id="1_cxh2l"]
+[ext_resource type="Texture2D" uid="uid://7ltpx5cpwnc3" path="res://sources/images/textures/sh_cart_small/sg_cart_small_c.png" id="2_ugvij"]
+[ext_resource type="Texture2D" uid="uid://dhhr2u7u8ybjh" path="res://sources/images/textures/sh_cart_small/sg_cart_small_n.png" id="3_erg1n"]
+[ext_resource type="Texture2D" uid="uid://kohbqlluewmy" path="res://sources/images/textures/sh_cart_small/sg_cart_small_orm.png" id="4_5jgay"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f8rrd"]
-albedo_color = Color(0.5626927, 0.3911549, 0.2024546, 1)
-roughness = 0.54
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_lv7tp"]
+albedo_texture = ExtResource("2_ugvij")
+orm_texture = ExtResource("4_5jgay")
+normal_enabled = true
+normal_texture = ExtResource("3_erg1n")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_onnpc"]
 points = PackedVector3Array(0.5302493, 0.5036528, 0.8646413, 0.52516276, 0.688444, 0.8453443, -0.5302493, 0.5036528, 0.8646413, 0.52858835, 0.44400185, 0.85990167, 0.5302493, 0.5036528, -0.8646414, -0.5252665, 0.688444, 0.8453443, 0.52516276, 0.688444, -0.8455137, -0.5302493, 0.5036528, -0.8646414, -0.5286922, 0.44400185, 0.85990167, 0.52858835, 0.44400185, -0.86007106, -0.5252665, 0.688444, -0.8455137, -0.5286922, 0.44400185, -0.86007106)
@@ -18,28 +22,11 @@ points = PackedVector3Array(0.45265248, -0.042920634, 0.12562817, -0.46712065, -
 
 [node name="SmallCart" type="StaticBody3D" unique_id=1624389762]
 
-[node name="sm_cart_small2" parent="." unique_id=381537412 instance=ExtResource("1_3v5vq")]
+[node name="sm_cart_small" parent="." unique_id=205383100 instance=ExtResource("1_cxh2l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.019095778, 0.123082936)
 
-[node name="sm_cart_small" parent="sm_cart_small2" index="0" unique_id=2078954842]
-surface_material_override/0 = ExtResource("2_onnpc")
-
-[node name="BézierCircle_004" parent="sm_cart_small2/sm_cart_small" index="0" unique_id=148511642]
-surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
-
-[node name="Cube_001" parent="sm_cart_small2/sm_cart_small" index="1" unique_id=855025785]
-surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
-
-[node name="Cube_002" parent="sm_cart_small2/sm_cart_small" index="2" unique_id=1376846883]
-surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
-
-[node name="Cube_003" parent="sm_cart_small2/sm_cart_small" index="3" unique_id=1512953665]
-surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
-
-[node name="Cube_004" parent="sm_cart_small2/sm_cart_small" index="4" unique_id=1609391055]
-surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
-
-[node name="Cube_005" parent="sm_cart_small2/sm_cart_small" index="5" unique_id=58199247]
-surface_material_override/0 = SubResource("StandardMaterial3D_f8rrd")
+[node name="sm_cart_small" parent="sm_cart_small" index="0" unique_id=1107157775]
+surface_material_override/0 = SubResource("ORMMaterial3D_lv7tp")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=274967311]
 shape = SubResource("ConvexPolygonShape3D_onnpc")
@@ -52,4 +39,4 @@ shape = SubResource("ConvexPolygonShape3D_qtrng")
 transform = Transform3D(-5.9604645e-07, 1, -4.172325e-07, 5.9604645e-08, -4.7683716e-07, -1, -1, -5.364418e-07, -1.1920929e-07, -0.61120796, 0.43716598, 0.12120572)
 shape = SubResource("ConvexPolygonShape3D_cxh2l")
 
-[editable path="sm_cart_small2"]
+[editable path="sm_cart_small"]
