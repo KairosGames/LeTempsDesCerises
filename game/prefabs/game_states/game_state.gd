@@ -291,6 +291,8 @@ func leave_aim() -> void:
 
 func leave_reload() -> void:
 	if player.is_reloading: player.exit_reload(false)
+	await wait(0.5)
+	player.reload_ui.hands_animator.play("idle", 0.3)
 
 
 func go_to_nav_destination(run: bool = true) -> void:
