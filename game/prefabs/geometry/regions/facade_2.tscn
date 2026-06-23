@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dhb83fqtgsjnh"]
 
 [ext_resource type="ArrayMesh" uid="uid://ckkf8euhqqlun" path="res://prefabs/geometry/wall_a.tres" id="2_0y8p8"]
+[ext_resource type="Script" uid="uid://bmespkxucvogk" path="res://addons/mesh_combiner_3d/mesh_combiner_3d.gd" id="2_whmv3"]
 [ext_resource type="ArrayMesh" uid="uid://b4uoppjw23a88" path="res://prefabs/geometry/wall_c.tres" id="3_m85d0"]
 [ext_resource type="ArrayMesh" uid="uid://deno2kvmgtq3b" path="res://prefabs/geometry/wall_d.tres" id="4_b05dm"]
 [ext_resource type="ArrayMesh" uid="uid://y611pd1kxlcc" path="res://prefabs/geometry/window_a.tres" id="5_iq7t2"]
@@ -15,487 +16,175 @@
 [ext_resource type="ArrayMesh" uid="uid://cwtfcw04fjjun" path="res://prefabs/geometry/window_props_f.tres" id="14_pt5vu"]
 [ext_resource type="ArrayMesh" uid="uid://bo1kwp5apdjx3" path="res://prefabs/geometry/roof_props_a.tres" id="15_siuh3"]
 [ext_resource type="ArrayMesh" uid="uid://5t0eqetfeoys" path="res://prefabs/geometry/roof_props_b.tres" id="16_c87xg"]
-[ext_resource type="ArrayMesh" uid="uid://coqmu4xpu7ky0" path="res://prefabs/geometry/wall_props_c.tres" id="17_yvuig"]
-[ext_resource type="PackedScene" uid="uid://bdclgyj6yyleb" path="res://prefabs/props/headlight.tscn" id="18_pj6r7"]
 [ext_resource type="ArrayMesh" uid="uid://s6odx757a8bm" path="res://prefabs/geometry/roof_a_angle_90.tres" id="19_hpwse"]
 [ext_resource type="ArrayMesh" uid="uid://ctu06gymwm3nu" path="res://prefabs/geometry/shop_a.tres" id="20_hpanf"]
 [ext_resource type="ArrayMesh" uid="uid://jr1bk0740af1" path="res://prefabs/geometry/wall_door_a.tres" id="21_m85d0"]
 [ext_resource type="ArrayMesh" uid="uid://bsnqvmwyhr875" path="res://prefabs/geometry/bite.tres" id="22_b05dm"]
 
+[sub_resource type="MultiMesh" id="MultiMesh_0y8p8"]
+transform_format = 1
+instance_count = 21
+mesh = ExtResource("2_0y8p8")
+buffer = PackedFloat32Array(1.0000001, 0, 0, -10.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5497208e-05, 1.0000001, 0, 0, -10.0000725, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, -1.5497208e-05, 1.0000001, 0, 0, -6.0000725, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, -1.3589859e-05, 1.0000001, 0, 0, 6.0000005, 0, 1, 0, 0, 0, 0, 1.0000001, 0, -2.9802322e-08, 0, -1.0000001, 7.000001, 0, 1, 0, 0, 1.0000001, 0, -2.9802322e-08, 1, -2.9802322e-08, 0, -1.0000001, 7, 0, 1, 0, 2.8, 1.0000001, 0, -2.9802322e-08, 1.0000001, -2.9802322e-08, 0, -1.0000001, 7, 0, 1, 0, 5.6, 1.0000001, 0, -2.9802322e-08, 1.0000001, 1.0000001, 0, 0, 12, 0, 1, 0, 0, 0, 0, 1.0000001, 2.0000002, 1.0000001, 0, 0, 14.000001, 0, 1, 0, 0, 0, 0, 1.0000001, 2.0000005, 1.0000001, 0, 0, 2.0000002, 0, 1, 0, 0, 0, 0, 1.0000001, 0, 1.0000001, 0, 0, -12.000001, 0, 1, 0, 0, 0, 0, 1.0000001, 0, 1.0000001, 0, 0, 4.0000005, 0, 1, 0, 0, 0, 0, 1.0000001, 0, 1.0000001, 0, 0, -6.866455e-05, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.6212463e-05, 1.0000001, 0, 0, 3.9999318, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.6212463e-05, 1.0000001, 0, 0, 12, 0, 1, 0, 5.6, 0, 0, 1.0000001, 2.0000005, 1.0000001, 0, 0, 10, 0, 1, 0, 5.6, 0, 0, 1.0000001, 1.9999998, 1.0000001, 0, 0, 11.999933, 0, 1, 0, 2.8, 0, 0, 1.0000001, 1.999984, 1.0000001, 0, 0, 9.999933, 0, 1, 0, 2.8, 0, 0, 1.0000001, 1.9999839, 1.0000001, 0, 0, -6.866455e-05, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, -1.6212463e-05, 1.0000001, 0, 0, 3.9999318, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, -1.6212463e-05, 1.0000002, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1.0000002, 0)
+
+[sub_resource type="MultiMesh" id="MultiMesh_m85d0"]
+transform_format = 1
+instance_count = 17
+mesh = ExtResource("5_iq7t2")
+buffer = PackedFloat32Array(1.0000001, 0, 0, -8.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.2636185e-05, 1.0000001, 0, 0, -12.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.2397766e-05, 1.0000001, 0, 0, -7.999588, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 4.196167e-05, 1.0000001, 0, 0, -11.999588, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 4.196167e-05, 1.0000001, 0, 0, -3.9995918, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 3.516674e-05, 1.0000001, 0, 0, -1.9995842, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 3.916025e-05, 1.0000001, 0, 0, 2.0004163, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 3.9100647e-05, 1.0000001, 0, 0, 6.0004168, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 3.9100647e-05, 1.0000001, 0, 0, 6.0004168, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 3.9100647e-05, 1.0000001, 0, 0, -4.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -9.417534e-06, 1.0000001, 0, 0, -2.0000687, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5199184e-05, 1.0000001, 0, 0, 1.9999318, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5258789e-05, 1.0000001, 0, 0, 5.9999323, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.50203705e-05, 1.0000001, 0, 0, 13.999933, 0, 1, 0, 2.8, 0, 0, 1.0000001, 1.999985, 1.0000001, 0, 0, 7.999932, 0, 1, 0, 2.8, 0, 0, 1.0000001, 1.9999849, 1.0000001, 0, 0, 8, 0, 1, 0, 5.6, 0, 0, 1.0000001, 1.9999999, 1.0000001, 0, 0, 14, 0, 1, 0, 5.6, 0, 0, 1.0000001, 2.0000002)
+
+[sub_resource type="MultiMesh" id="MultiMesh_b05dm"]
+transform_format = 1
+instance_count = 4
+mesh = ExtResource("6_okrk5")
+buffer = PackedFloat32Array(1.0000001, 0, -0.00022685528, -8.000003, 0, 1, 0, 0, 0.00022685528, 0, 1.0000001, 5.722046e-06, 1.0000001, 0, -0.00022685528, -6.0000033, 0, 1, 0, 0, 0.00022685528, 0, 1.0000001, 0.00045394897, 1.0000001, 0, -0.00022685528, -4.000004, 0, 1, 0, 0, 0.00022685528, 0, 1.0000001, 0.0009087324, 1.0000001, 0, -0.00022685528, -1.9999961, 0, 1, 0, 0, 0.00022685528, 0, 1.0000001, 0.0013618469)
+
+[sub_resource type="MultiMesh" id="MultiMesh_iq7t2"]
+transform_format = 1
+instance_count = 15
+mesh = ExtResource("7_0ngn8")
+buffer = PackedFloat32Array(1.0000001, 0, -0.00022685528, -8.0000725, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, 0.0004389286, 1.0000001, 0, -0.00022685528, -10.0000725, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, -1.5258789e-05, 1.0000001, 0, -0.00022685528, -12.0000725, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, -0.00046873093, 1.0000001, 0, -0.00022685528, -6.0000687, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, 0.0008933544, 1.0000001, 0, -0.00022685528, -4.0000687, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, 0.0013484955, 1.0000001, 0, -0.00022685528, -2.0000687, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, 0.0017948151, 1.0000001, 0, -0.00022685528, -6.484985e-05, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, 0.0022497175, 1.0000001, 0, -0.00022685528, 1.9999353, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, 0.0027034283, 1.0000001, 0, -0.00022685528, 3.9999356, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, 0.0031571388, 1.0000001, 0, -0.00022685528, 9.999482, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, 2.0045185, 1.0000001, 0, -0.00022685528, 11.999483, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, 2.0049725, 1.0000001, 0, -0.00022685528, 13.999483, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, 2.0054255, 1.0000001, 0, -0.00022685528, 5.9999356, 0, 1, 0, 8.400001, 0.00022685528, 0, 1.0000001, 0.0036110878, -2.9802322e-08, 0, -1.0000001, 6.9997087, 0, 1, 0, 8.400001, 1.0000001, 0, -2.9802322e-08, -0.9961624, 1.0000002, 0, -0.00022688508, 7.999935, 0, 1, 0, 8.400001, 0.00022688508, 0, 1.0000002, 0.0040667057)
+
+[sub_resource type="MultiMesh" id="MultiMesh_okrk5"]
+transform_format = 1
+instance_count = 4
+mesh = ExtResource("8_0nnyq")
+buffer = PackedFloat32Array(1.0000001, 0, 0, -6.000004, 0, 1, 0, 2.8, 0, 0, 1.0000001, 0.00052928925, 1.0000001, 0, 0, -8.000004, 0, 1, 0, 2.8, 0, 0, 1.0000001, 0.00052571297, 1.0000001, 0, 0, -4.000004, 0, 1, 0, 2.8, 0, 0, 1.0000001, 0.000526309, 1.0000001, 0, 0, -2, 0, 1, 0, 2.8, 0, 0, 1.0000001, 0.0005226135)
+
+[sub_resource type="MultiMesh" id="MultiMesh_0ngn8"]
+transform_format = 1
+instance_count = 15
+mesh = ExtResource("9_afrba")
+buffer = PackedFloat32Array(1.0000001, 0, 0, -6.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.3589859e-05, 1.0000001, 0, 0, -8.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.2636185e-05, 1.0000001, 0, 0, -10.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5497208e-05, 1.0000001, 0, 0, -12.000072, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5735626e-05, 1.0000001, 0, 0, -4.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -9.417534e-06, 1.0000001, 0, 0, -2.0000687, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5199184e-05, 1.0000001, 0, 0, -6.866455e-05, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.6212463e-05, 1.0000001, 0, 0, 1.9999316, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.6152859e-05, 1.0000001, 0, 0, 3.9999318, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.6212463e-05, 1.0000001, 0, 0, 5.9999323, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.6212463e-05, 1.0000001, 0, 0, 7.9999323, 0, 1, 0, 2.8, 0, 0, 1.0000001, 1.9999841, -2.9802322e-08, 0, -1.0000001, 6.9999323, 0, 1, 0, 2.8, 1.0000001, 0, -2.9802322e-08, 0.9999838, 1.0000001, 0, 0, 9.999933, 0, 1, 0, 2.8, 0, 0, 1.0000001, 1.9999844, 1.0000001, 0, 0, 11.999932, 0, 1, 0, 2.8, 0, 0, 1.0000001, 1.9999845, 1.0000001, 0, 0, 13.999932, 0, 1, 0, 2.8, 0, 0, 1.0000001, 1.9999838)
+
+[sub_resource type="MultiMesh" id="MultiMesh_0nnyq"]
+transform_format = 1
+instance_count = 6
+mesh = ExtResource("10_4m1jt")
+buffer = PackedFloat32Array(1.0000001, 0, 0, 1.9923289, 0, 1, 0, 0, 0, 0, 1.0000001, 0.015498221, 1.0000001, 0, 0, 3.9923291, 0, 1, 0, 0, 0, 0, 1.0000001, 0.015498161, 1.0000001, 0, 0, -2.007671, 0, 1, 0, 0, 0, 0, 1.0000001, 0.015494406, 1.0000001, 0, 0, -4.007675, 0, 1, 0, 0, 0, 0, 1.0000001, 0.015497208, 1.0000001, 0, 0, -6.007675, 0, 1, 0, 0, 0, 0, 1.0000001, 0.015494108, 1.0000001, 0, 0, -8.007675, 0, 1, 0, 0, 0, 0, 1.0000001, 0.015496969)
+
+[sub_resource type="MultiMesh" id="MultiMesh_afrba"]
+transform_format = 1
+instance_count = 8
+mesh = ExtResource("11_0j1cx")
+buffer = PackedFloat32Array(1.0000001, 0, 0, -8.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.2636185e-05, 1.0000001, 0, 0, -12.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.2397766e-05, 1.0000001, 0, 0, -4.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -9.417534e-06, 1.0000001, 0, 0, -2.0000687, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5199184e-05, 1.0000001, 0, 0, 1.9999318, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5258789e-05, 1.0000001, 0, 0, 5.9999323, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.50203705e-05, 1.0000001, 0, 0, 7.999933, 0, 1, 0, 2.8, 0, 0, 1.0000001, 1.9999849, 1.0000001, 0, 0, 13.999933, 0, 1, 0, 2.8, 0, 0, 1.0000001, 1.999985)
+
+[sub_resource type="MultiMesh" id="MultiMesh_4m1jt"]
+transform_format = 1
+instance_count = 4
+mesh = ExtResource("12_6qihj")
+buffer = PackedFloat32Array(1.0000001, 0, 0, -8.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.2636185e-05, 1.0000001, 0, 0, -4.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -9.417534e-06, 1.0000001, 0, 0, -2.0000687, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5199184e-05, 1.0000001, 0, 0, 1.9999318, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5258789e-05)
+
+[sub_resource type="MultiMesh" id="MultiMesh_0j1cx"]
+transform_format = 1
+instance_count = 6
+mesh = ExtResource("13_vqal0")
+buffer = PackedFloat32Array(1.0000001, 0, 0, -7.999588, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 4.196167e-05, 1.0000001, 0, 0, -3.9995918, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 3.516674e-05, 1.0000001, 0, 0, -1.9995842, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 3.916025e-05, 1.0000001, 0, 0, 6.0004168, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 3.9100647e-05, 1.0000001, 0, 0, 8.000418, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 2.0000396, 1.0000001, 0, 0, 14.000418, 0, 1, 0, 5.6000004, 0, 0, 1.0000001, 2.0000396)
+
+[sub_resource type="MultiMesh" id="MultiMesh_6qihj"]
+transform_format = 1
+instance_count = 4
+mesh = ExtResource("14_pt5vu")
+buffer = PackedFloat32Array(1.0000001, 0, 0, -8.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.2636185e-05, 1.0000001, 0, 0, -4.0000725, 0, 1, 0, 2.8, 0, 0, 1.0000001, -9.417534e-06, 1.0000001, 0, 0, -2.0000687, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5199184e-05, 1.0000001, 0, 0, 1.9999318, 0, 1, 0, 2.8, 0, 0, 1.0000001, -1.5258789e-05)
+
+[sub_resource type="MultiMesh" id="MultiMesh_vqal0"]
+transform_format = 1
+instance_count = 7
+mesh = ExtResource("15_siuh3")
+buffer = PackedFloat32Array(1.0000001, 0, 0, -6.0000725, 0, 1, 0, 8.400001, 0, 0, 1.0000001, 0.0013430119, 1.0000001, 0, 0, -12.000073, 0, 1, 0, 8.400001, 0, 0, 1.0000001, 0.0013427734, 1.0000001, 0, 0, 1.4896892, 0, 1, 0, 8.400001, 0, 0, 1.0000001, 0.0013476014, 1.0000001, 0, 0, 2.4896894, 0, 1, 0, 8.400001, 0, 0, 1.0000001, 0.0013475418, 1.0000001, 0, 0, 6, 0, 1, 0, 8.4, 0, 0, 1.0000001, 0, 1.0000001, 0, 0, 10.000001, 0, 1, 0, 8.4, 0, 0, 1.0000001, 2.0000002, 1.0000001, 0, 0, 14.000002, 0, 1, 0, 8.4, 0, 0, 1.0000001, 2)
+
+[sub_resource type="MultiMesh" id="MultiMesh_pt5vu"]
+transform_format = 1
+instance_count = 3
+mesh = ExtResource("16_c87xg")
+buffer = PackedFloat32Array(0.9999999, 0, 0.0008203685, -2.0008888, 0, 1, 0, 8.400001, -0.0008203685, 0, 0.9999999, -1.0002947, 0.9999999, 0, 0.0008203685, 9.00157, 0, 1, 0, 8.400001, -0.0008203685, 0, 0.9999999, 1.9906809, 0.9999999, 0, 0.0008203685, -4.0000687, 0, 1, 0, 8.400001, -0.0008203685, 0, 0.9999999, 0.0013484955)
+
+[sub_resource type="MultiMesh" id="MultiMesh_siuh3"]
+transform_format = 1
+instance_count = 4
+mesh = ExtResource("22_b05dm")
+buffer = PackedFloat32Array(1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, -5, 0, 1, 0, 0, 0, 0, 1, 1.1920929e-07, 1, 0, 0, 5, 0, 1, 0, 0, 0, 0, 1, -1.1920929e-07)
+
 [node name="Facade2" type="Node3D" unique_id=787277448]
 transform = Transform3D(0.3777761, 0, -0.92589676, 0, 1, 0, 0.92589676, 0, 0.3777761, 0, 0, 0)
 
-[node name="WallA148" type="MeshInstance3D" parent="." unique_id=277529109]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -10.0000725, 2.8, -1.5258789e-05)
-mesh = ExtResource("2_0y8p8")
+[node name="WallA" type="MultiMeshInstance3D" parent="." unique_id=2058046444]
+multimesh = SubResource("MultiMesh_0y8p8")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA149" type="MeshInstance3D" parent="." unique_id=1730033102]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -10.0000725, 5.6000004, -1.5258789e-05)
-mesh = ExtResource("2_0y8p8")
+[node name="WindowA" type="MultiMeshInstance3D" parent="." unique_id=2130034596]
+multimesh = SubResource("MultiMesh_m85d0")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA154" type="MeshInstance3D" parent="." unique_id=1725015457]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -6.0000725, 5.6000004, -1.335144e-05)
-mesh = ExtResource("2_0y8p8")
+[node name="WindowB" type="MultiMeshInstance3D" parent="." unique_id=2026382620]
+multimesh = SubResource("MultiMesh_b05dm")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA155" type="MeshInstance3D" parent="." unique_id=482435282]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 6.000001, 0, 0)
-mesh = ExtResource("2_0y8p8")
+[node name="RoofA" type="MultiMeshInstance3D" parent="." unique_id=1406662363]
+multimesh = SubResource("MultiMesh_iq7t2")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA169" type="MeshInstance3D" parent="." unique_id=490256702]
-transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, 7.000001, 0, 1.0000001)
-mesh = ExtResource("2_0y8p8")
+[node name="WallPropsE" type="MultiMeshInstance3D" parent="." unique_id=1473887913]
+multimesh = SubResource("MultiMesh_okrk5")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA170" type="MeshInstance3D" parent="." unique_id=1759184281]
-transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, 7, 2.8, 1)
-mesh = ExtResource("2_0y8p8")
+[node name="WallPropsF" type="MultiMeshInstance3D" parent="." unique_id=332628041]
+multimesh = SubResource("MultiMesh_0ngn8")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA171" type="MeshInstance3D" parent="." unique_id=1757349095]
-transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, 7, 5.6, 1)
-mesh = ExtResource("2_0y8p8")
+[node name="WallPropsG" type="MultiMeshInstance3D" parent="." unique_id=2055433593]
+multimesh = SubResource("MultiMesh_0nnyq")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA165" type="MeshInstance3D" parent="." unique_id=903700012]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 12.000001, 0, 2.0000002)
-mesh = ExtResource("2_0y8p8")
+[node name="WindowPropsA" type="MultiMeshInstance3D" parent="." unique_id=467170122]
+multimesh = SubResource("MultiMesh_afrba")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA166" type="MeshInstance3D" parent="." unique_id=868761575]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 14.000001, 0, 2.0000002)
-mesh = ExtResource("2_0y8p8")
+[node name="WindowPropsB" type="MultiMeshInstance3D" parent="." unique_id=712402311]
+multimesh = SubResource("MultiMesh_4m1jt")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA158" type="MeshInstance3D" parent="." unique_id=1469470288]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 2.0000002, 0, 0)
-mesh = ExtResource("2_0y8p8")
+[node name="WindowPropsE" type="MultiMeshInstance3D" parent="." unique_id=947150594]
+multimesh = SubResource("MultiMesh_0j1cx")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA163" type="MeshInstance3D" parent="." unique_id=111325585]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -12.000002, 0, 0)
-mesh = ExtResource("2_0y8p8")
+[node name="WindowPropsF" type="MultiMeshInstance3D" parent="." unique_id=1557019541]
+multimesh = SubResource("MultiMesh_6qihj")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA159" type="MeshInstance3D" parent="." unique_id=549938088]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 4.0000005, 0, 0)
-mesh = ExtResource("2_0y8p8")
+[node name="RoofPropsA" type="MultiMeshInstance3D" parent="." unique_id=1732008715]
+multimesh = SubResource("MultiMesh_vqal0")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA156" type="MeshInstance3D" parent="." unique_id=1618903136]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -6.866455e-05, 2.8, -1.6212463e-05)
-mesh = ExtResource("2_0y8p8")
+[node name="RoofPropsB" type="MultiMeshInstance3D" parent="." unique_id=683685704]
+multimesh = SubResource("MultiMesh_pt5vu")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
-[node name="WallA162" type="MeshInstance3D" parent="." unique_id=1840970107]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 3.9999318, 2.8, -1.6212463e-05)
-mesh = ExtResource("2_0y8p8")
-
-[node name="WallA173" type="MeshInstance3D" parent="." unique_id=1460243480]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 12, 5.6, 2)
-mesh = ExtResource("2_0y8p8")
-
-[node name="WallA174" type="MeshInstance3D" parent="." unique_id=995546149]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 10, 5.6, 2)
-mesh = ExtResource("2_0y8p8")
-
-[node name="WallA168" type="MeshInstance3D" parent="." unique_id=1477246414]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 11.999933, 2.8, 1.999984)
-mesh = ExtResource("2_0y8p8")
-
-[node name="WallA172" type="MeshInstance3D" parent="." unique_id=80436221]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 9.999933, 2.8, 1.999984)
-mesh = ExtResource("2_0y8p8")
-
-[node name="WallA157" type="MeshInstance3D" parent="." unique_id=884735865]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -6.866455e-05, 5.6000004, -1.6212463e-05)
-mesh = ExtResource("2_0y8p8")
-
-[node name="WallA161" type="MeshInstance3D" parent="." unique_id=45090583]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 3.9999318, 5.6000004, -1.6212463e-05)
-mesh = ExtResource("2_0y8p8")
+[node name="Bite" type="MultiMeshInstance3D" parent="." unique_id=603406553]
+multimesh = SubResource("MultiMesh_siuh3")
+script = ExtResource("2_whmv3")
+metadata/_custom_type_script = "uid://bmespkxucvogk"
 
 [node name="WallC3" type="MeshInstance3D" parent="." unique_id=1112026119]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -10.000004, 0, 2.861023e-06)
 mesh = ExtResource("3_m85d0")
 
 [node name="WallD12" type="MeshInstance3D" parent="." unique_id=243790335]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -6.0000725, 2.8, -1.335144e-05)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -6.0000725, 2.8, -1.3589859e-05)
 mesh = ExtResource("4_b05dm")
-
-[node name="WindowA62" type="MeshInstance3D" parent="." unique_id=702726763]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -8.0000725, 2.8, -1.2397766e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA69" type="MeshInstance3D" parent="." unique_id=1912495685]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -12.0000725, 2.8, -1.2397766e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA63" type="MeshInstance3D" parent="." unique_id=830428228]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -7.999588, 5.6000004, 4.196167e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA70" type="MeshInstance3D" parent="." unique_id=205177157]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -11.999588, 5.6000004, 4.196167e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA64" type="MeshInstance3D" parent="." unique_id=1836650366]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -3.9995918, 5.6000004, 3.528595e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA65" type="MeshInstance3D" parent="." unique_id=532552674]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -1.9995842, 5.6000004, 3.9100647e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA66" type="MeshInstance3D" parent="." unique_id=428496576]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 2.0004163, 5.6000004, 3.9100647e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA67" type="MeshInstance3D" parent="." unique_id=644358269]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 6.0004168, 5.6000004, 3.9100647e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA68" type="MeshInstance3D" parent="." unique_id=1813855244]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 6.0004168, 5.6000004, 3.9100647e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA79" type="MeshInstance3D" parent="." unique_id=1113293627]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -4.0000725, 2.8, -9.536743e-06)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA82" type="MeshInstance3D" parent="." unique_id=199546111]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -2.0000687, 2.8, -1.5258789e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA83" type="MeshInstance3D" parent="." unique_id=1922645614]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1.9999318, 2.8, -1.5258789e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA84" type="MeshInstance3D" parent="." unique_id=2114474189]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 5.9999323, 2.8, -1.5258789e-05)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA85" type="MeshInstance3D" parent="." unique_id=413884942]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 13.999933, 2.8, 1.999985)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA86" type="MeshInstance3D" parent="." unique_id=333325680]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 7.9999323, 2.8, 1.999985)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA87" type="MeshInstance3D" parent="." unique_id=1081183075]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 8, 5.6, 2)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowA88" type="MeshInstance3D" parent="." unique_id=1732340559]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 14, 5.6, 2)
-mesh = ExtResource("5_iq7t2")
-
-[node name="WindowB16" type="MeshInstance3D" parent="." unique_id=466531911]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, -8.000004, 0, 5.722046e-06)
-mesh = ExtResource("6_okrk5")
-
-[node name="WindowB17" type="MeshInstance3D" parent="." unique_id=2113188284]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, -6.000004, 0, 0.00045394897)
-mesh = ExtResource("6_okrk5")
-
-[node name="WindowB20" type="MeshInstance3D" parent="." unique_id=231423147]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, -4.000004, 0, 0.0009088516)
-mesh = ExtResource("6_okrk5")
-
-[node name="WindowB21" type="MeshInstance3D" parent="." unique_id=1928391009]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, -1.9999962, 0, 0.0013618469)
-mesh = ExtResource("6_okrk5")
-
-[node name="RoofA21" type="MeshInstance3D" parent="." unique_id=487807502]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, -8.0000725, 8.400001, 0.0004386902)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA22" type="MeshInstance3D" parent="." unique_id=133936106]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, -10.0000725, 8.400001, -1.50203705e-05)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA23" type="MeshInstance3D" parent="." unique_id=1173974797]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, -12.0000725, 8.400001, -0.00046873093)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA40" type="MeshInstance3D" parent="." unique_id=1098484598]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, -6.0000687, 8.400001, 0.00089359283)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA41" type="MeshInstance3D" parent="." unique_id=1092275225]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, -4.0000687, 8.400001, 0.0013484955)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA42" type="MeshInstance3D" parent="." unique_id=295440648]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, -2.0000687, 8.400001, 0.0017948151)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA43" type="MeshInstance3D" parent="." unique_id=221636470]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, -6.484985e-05, 8.400001, 0.0022497177)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA44" type="MeshInstance3D" parent="." unique_id=1739833001]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, 1.9999354, 8.400001, 0.0027034283)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA45" type="MeshInstance3D" parent="." unique_id=1194283362]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, 3.9999356, 8.400001, 0.0031571388)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA48" type="MeshInstance3D" parent="." unique_id=1557473009]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, 9.999483, 8.400001, 2.0045185)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA50" type="MeshInstance3D" parent="." unique_id=248805129]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, 11.999483, 8.400001, 2.0049722)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA51" type="MeshInstance3D" parent="." unique_id=141083539]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, 13.999483, 8.400001, 2.005426)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA46" type="MeshInstance3D" parent="." unique_id=767982450]
-transform = Transform3D(1.0000001, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000001, 5.999936, 8.400001, 0.0036108494)
-mesh = ExtResource("7_0ngn8")
-
-[node name="RoofA49" type="MeshInstance3D" parent="." unique_id=641567753]
-transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, 6.999709, 8.400001, -0.9961624)
-mesh = ExtResource("7_0ngn8")
-
-[node name="WallPropsE3" type="MeshInstance3D" parent="." unique_id=326733456]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -6.000004, 2.8, 0.00052928925)
-mesh = ExtResource("8_0nnyq")
-
-[node name="WallPropsE4" type="MeshInstance3D" parent="." unique_id=636300613]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -8.000004, 2.8, 0.00052547455)
-mesh = ExtResource("8_0nnyq")
-
-[node name="WallPropsE5" type="MeshInstance3D" parent="." unique_id=198261314]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -4.000004, 2.8, 0.0005264282)
-mesh = ExtResource("8_0nnyq")
-
-[node name="WallPropsE6" type="MeshInstance3D" parent="." unique_id=575912180]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -2, 2.8, 0.0005226135)
-mesh = ExtResource("8_0nnyq")
-
-[node name="WallPropsF92" type="MeshInstance3D" parent="." unique_id=963956941]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -6.0000725, 2.8, -1.335144e-05)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF93" type="MeshInstance3D" parent="." unique_id=2041039497]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -8.0000725, 2.8, -1.2397766e-05)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF94" type="MeshInstance3D" parent="." unique_id=522221759]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -10.0000725, 2.8, -1.5258789e-05)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF105" type="MeshInstance3D" parent="." unique_id=1886708941]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -12.0000725, 2.8, -1.5258789e-05)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF95" type="MeshInstance3D" parent="." unique_id=1539701505]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -4.0000725, 2.8, -9.536743e-06)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF96" type="MeshInstance3D" parent="." unique_id=554695121]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -2.0000687, 2.8, -1.5258789e-05)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF97" type="MeshInstance3D" parent="." unique_id=1387412118]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -6.866455e-05, 2.8, -1.6212463e-05)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF98" type="MeshInstance3D" parent="." unique_id=1547848203]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1.9999316, 2.8, -1.6212463e-05)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF99" type="MeshInstance3D" parent="." unique_id=1930511612]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 3.9999318, 2.8, -1.6212463e-05)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF100" type="MeshInstance3D" parent="." unique_id=235225405]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 5.9999323, 2.8, -1.6212463e-05)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF101" type="MeshInstance3D" parent="." unique_id=2040776195]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 7.9999323, 2.8, 1.999984)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF106" type="MeshInstance3D" parent="." unique_id=1248464649]
-transform = Transform3D(-4.3711392e-08, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, -4.3711392e-08, 6.9999323, 2.8, 0.9999839)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF102" type="MeshInstance3D" parent="." unique_id=636898168]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 9.999932, 2.8, 1.999984)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF103" type="MeshInstance3D" parent="." unique_id=2052194609]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 11.999932, 2.8, 1.999984)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsF104" type="MeshInstance3D" parent="." unique_id=143701024]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 13.999932, 2.8, 1.999984)
-mesh = ExtResource("9_afrba")
-
-[node name="WallPropsG76" type="MeshInstance3D" parent="." unique_id=2109525503]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1.9923289, 0, 0.015498161)
-mesh = ExtResource("10_4m1jt")
-
-[node name="WallPropsG77" type="MeshInstance3D" parent="." unique_id=490206614]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 3.9923291, 0, 0.015498161)
-mesh = ExtResource("10_4m1jt")
-
-[node name="WallPropsG72" type="MeshInstance3D" parent="." unique_id=205529541]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -2.0076714, 0, 0.015494347)
-mesh = ExtResource("10_4m1jt")
-
-[node name="WallPropsG73" type="MeshInstance3D" parent="." unique_id=1878931472]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -4.007675, 0, 0.015497208)
-mesh = ExtResource("10_4m1jt")
-
-[node name="WallPropsG74" type="MeshInstance3D" parent="." unique_id=791553888]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -6.007675, 0, 0.015494347)
-mesh = ExtResource("10_4m1jt")
-
-[node name="WallPropsG75" type="MeshInstance3D" parent="." unique_id=417751402]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -8.007675, 0, 0.015497208)
-mesh = ExtResource("10_4m1jt")
-
-[node name="WindowPropsA43" type="MeshInstance3D" parent="." unique_id=738928728]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -8.0000725, 2.8, -1.2397766e-05)
-mesh = ExtResource("11_0j1cx")
-
-[node name="WindowPropsA44" type="MeshInstance3D" parent="." unique_id=1500007861]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -12.0000725, 2.8, -1.2397766e-05)
-mesh = ExtResource("11_0j1cx")
-
-[node name="WindowPropsA48" type="MeshInstance3D" parent="." unique_id=1275751515]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -4.0000725, 2.8, -9.536743e-06)
-mesh = ExtResource("11_0j1cx")
-
-[node name="WindowPropsA49" type="MeshInstance3D" parent="." unique_id=226150617]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -2.0000687, 2.8, -1.5258789e-05)
-mesh = ExtResource("11_0j1cx")
-
-[node name="WindowPropsA50" type="MeshInstance3D" parent="." unique_id=767568511]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1.9999318, 2.8, -1.5258789e-05)
-mesh = ExtResource("11_0j1cx")
-
-[node name="WindowPropsA51" type="MeshInstance3D" parent="." unique_id=265117543]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 5.9999323, 2.8, -1.5258789e-05)
-mesh = ExtResource("11_0j1cx")
-
-[node name="WindowPropsA52" type="MeshInstance3D" parent="." unique_id=374488669]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 7.9999332, 2.8, 1.999985)
-mesh = ExtResource("11_0j1cx")
-
-[node name="WindowPropsA53" type="MeshInstance3D" parent="." unique_id=1057313415]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 13.999933, 2.8, 1.999985)
-mesh = ExtResource("11_0j1cx")
-
-[node name="WindowPropsB30" type="MeshInstance3D" parent="." unique_id=73000119]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -8.0000725, 2.8, -1.2397766e-05)
-mesh = ExtResource("12_6qihj")
-
-[node name="WindowPropsB35" type="MeshInstance3D" parent="." unique_id=2117615580]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -4.0000725, 2.8, -9.536743e-06)
-mesh = ExtResource("12_6qihj")
-
-[node name="WindowPropsB36" type="MeshInstance3D" parent="." unique_id=1506732127]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -2.0000687, 2.8, -1.5258789e-05)
-mesh = ExtResource("12_6qihj")
-
-[node name="WindowPropsB37" type="MeshInstance3D" parent="." unique_id=181947929]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1.9999318, 2.8, -1.5258789e-05)
-mesh = ExtResource("12_6qihj")
-
-[node name="WindowPropsE21" type="MeshInstance3D" parent="." unique_id=814615244]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -7.999588, 5.6000004, 4.196167e-05)
-mesh = ExtResource("13_vqal0")
-
-[node name="WindowPropsE22" type="MeshInstance3D" parent="." unique_id=1949860704]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -3.9995918, 5.6000004, 3.528595e-05)
-mesh = ExtResource("13_vqal0")
-
-[node name="WindowPropsE23" type="MeshInstance3D" parent="." unique_id=589709730]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -1.9995842, 5.6000004, 3.9100647e-05)
-mesh = ExtResource("13_vqal0")
-
-[node name="WindowPropsE24" type="MeshInstance3D" parent="." unique_id=1956398889]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 6.0004168, 5.6000004, 3.9100647e-05)
-mesh = ExtResource("13_vqal0")
-
-[node name="WindowPropsE25" type="MeshInstance3D" parent="." unique_id=822573187]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 8.000418, 5.6000004, 2.0000396)
-mesh = ExtResource("13_vqal0")
-
-[node name="WindowPropsE26" type="MeshInstance3D" parent="." unique_id=701117706]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 14.000418, 5.6000004, 2.0000396)
-mesh = ExtResource("13_vqal0")
-
-[node name="WindowPropsF11" type="MeshInstance3D" parent="." unique_id=118785383]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -8.0000725, 2.8, -1.2397766e-05)
-mesh = ExtResource("14_pt5vu")
-
-[node name="WindowPropsF12" type="MeshInstance3D" parent="." unique_id=2136499024]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -4.0000725, 2.8, -9.536743e-06)
-mesh = ExtResource("14_pt5vu")
-
-[node name="WindowPropsF28" type="MeshInstance3D" parent="." unique_id=2069040493]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -2.0000687, 2.8, -1.5258789e-05)
-mesh = ExtResource("14_pt5vu")
-
-[node name="WindowPropsF29" type="MeshInstance3D" parent="." unique_id=1986055857]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1.9999318, 2.8, -1.5258789e-05)
-mesh = ExtResource("14_pt5vu")
-
-[node name="RoofPropsA23" type="MeshInstance3D" parent="." unique_id=234908596]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -6.0000725, 8.400001, 0.0013427734)
-mesh = ExtResource("15_siuh3")
-
-[node name="RoofPropsA27" type="MeshInstance3D" parent="." unique_id=2104500760]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -12.000073, 8.400001, 0.0013427734)
-mesh = ExtResource("15_siuh3")
-
-[node name="RoofPropsA24" type="MeshInstance3D" parent="." unique_id=1788496115]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 1.4896894, 8.400001, 0.0013475418)
-mesh = ExtResource("15_siuh3")
-
-[node name="RoofPropsA25" type="MeshInstance3D" parent="." unique_id=672739175]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 2.4896894, 8.400001, 0.0013475418)
-mesh = ExtResource("15_siuh3")
-
-[node name="RoofPropsA26" type="MeshInstance3D" parent="." unique_id=1373359226]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 6, 8.4, 0)
-mesh = ExtResource("15_siuh3")
-
-[node name="RoofPropsA28" type="MeshInstance3D" parent="." unique_id=71056397]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 10.000001, 8.4, 2.0000002)
-mesh = ExtResource("15_siuh3")
-
-[node name="RoofPropsA29" type="MeshInstance3D" parent="." unique_id=529766771]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 14.000002, 8.4, 2.0000002)
-mesh = ExtResource("15_siuh3")
-
-[node name="RoofPropsB18" type="MeshInstance3D" parent="." unique_id=1237507984]
-transform = Transform3D(0.99999994, 0, 0.0008203685, 0, 1, 0, -0.0008203685, 0, 0.99999994, -2.000889, 8.400001, -1.0002947)
-mesh = ExtResource("16_c87xg")
-
-[node name="RoofPropsB19" type="MeshInstance3D" parent="." unique_id=2145349923]
-transform = Transform3D(0.99999994, 0, 0.0008203685, 0, 1, 0, -0.0008203685, 0, 0.99999994, 9.001571, 8.400001, 1.9906812)
-mesh = ExtResource("16_c87xg")
-
-[node name="RoofPropsB22" type="MeshInstance3D" parent="." unique_id=1286358622]
-transform = Transform3D(0.99999994, 0, 0.0008203685, 0, 1, 0, -0.0008203685, 0, 0.99999994, -4.0000687, 8.400001, 0.0013484955)
-mesh = ExtResource("16_c87xg")
-
-[node name="WallPropsC5" type="MeshInstance3D" parent="." unique_id=1740222688]
-transform = Transform3D(0, 0, -1.0000001, 0, 1, 0, 1.0000001, 0, 0, -0.0001487732, 3.6, -0.018566132)
-mesh = ExtResource("17_yvuig")
-
-[node name="HeadLight5" parent="." unique_id=1270948155 instance=ExtResource("18_pj6r7")]
-transform = Transform3D(1.0000001, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1.0000001, 0.0002975464, 4.009001, 1.2963104)
-visible = false
-
-[node name="WallA160" type="MeshInstance3D" parent="." unique_id=380498742]
-transform = Transform3D(1.0000002, 0, 0, 0, 1, 0, 0, 0, 1.0000002, 0, 0, 0)
-mesh = ExtResource("2_0y8p8")
-
-[node name="RoofA47" type="MeshInstance3D" parent="." unique_id=1866822699]
-transform = Transform3D(1.0000002, 0, -0.00022685528, 0, 1, 0, 0.00022685528, 0, 1.0000002, 7.999935, 8.400001, 0.0040664673)
-mesh = ExtResource("7_0ngn8")
 
 [node name="RoofAAngle91" type="MeshInstance3D" parent="." unique_id=1118994236]
 transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 6.999709, 8.400001, 2.003838)
@@ -507,19 +196,3 @@ mesh = ExtResource("20_hpanf")
 
 [node name="WallDoorA2" type="MeshInstance3D" parent="." unique_id=1258399364]
 mesh = ExtResource("21_m85d0")
-
-[node name="Bite11" type="MeshInstance3D" parent="." unique_id=130501869]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
-mesh = ExtResource("22_b05dm")
-
-[node name="Bite12" type="MeshInstance3D" parent="." unique_id=1296050457]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-mesh = ExtResource("22_b05dm")
-
-[node name="Bite13" type="MeshInstance3D" parent="." unique_id=740565931]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 0)
-mesh = ExtResource("22_b05dm")
-
-[node name="Bite14" type="MeshInstance3D" parent="." unique_id=1652892092]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
-mesh = ExtResource("22_b05dm")
