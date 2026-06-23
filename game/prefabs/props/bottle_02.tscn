@@ -1,12 +1,7 @@
 [gd_scene format=3 uid="uid://cxct7a72umot2"]
 
 [ext_resource type="PackedScene" uid="uid://cpbufas2ywmte" path="res://sources/meshes/props/sh_bottle_02.fbx" id="1_8p3nb"]
-[ext_resource type="Texture2D" uid="uid://dm12jai4sixgt" path="res://sources/images/textures/sh_bottle/sh_bottle_02/sg_bottle_02_c.png" id="2_orrmg"]
-[ext_resource type="Texture2D" uid="uid://ypa72gtwe0pa" path="res://sources/images/textures/sh_bottle/sh_bottle_02/sg_bottle_02_orm.png" id="3_42hkp"]
-
-[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_5e255"]
-albedo_texture = ExtResource("2_orrmg")
-orm_texture = ExtResource("3_42hkp")
+[ext_resource type="Material" uid="uid://dvo6jksskbpyo" path="res://sources/images/textures/sh_bottle/bottle_02.tres" id="2_kf745"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kf745"]
 size = Vector3(0.06941223, 0.25199127, 0.07505226)
@@ -15,8 +10,8 @@ size = Vector3(0.06941223, 0.25199127, 0.07505226)
 
 [node name="sh_bottle_02" parent="." unique_id=1623351743 instance=ExtResource("1_8p3nb")]
 
-[node name="sh_bottle_02" parent="sh_bottle_02" index="0" unique_id=1096129642]
-surface_material_override/0 = SubResource("ORMMaterial3D_5e255")
+[node name="sh_bottle_02" parent="sh_bottle_02" index="0" unique_id=59107837]
+surface_material_override/0 = ExtResource("2_kf745")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1265654707]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00078278035, 0.12394649, 0.00335633)

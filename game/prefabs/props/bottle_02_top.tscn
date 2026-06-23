@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dnkc7ct822vus"]
 
 [ext_resource type="PackedScene" uid="uid://cgceb3e7il2o1" path="res://sources/meshes/props/sh_bottle_02_broken_top.fbx" id="1_xmf0k"]
+[ext_resource type="Material" uid="uid://kdxa2tk8c7ws" path="res://sources/images/textures/sh_bottle/bottle_02_broken.tres" id="2_ra2sd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ra2sd"]
 size = Vector3(0.06941223, 0.19635963, 0.07505226)
@@ -9,6 +10,11 @@ size = Vector3(0.06941223, 0.19635963, 0.07505226)
 
 [node name="sh_bottle_02_broken_top" parent="." unique_id=159816692 instance=ExtResource("1_xmf0k")]
 
+[node name="sh_bottle_broken_02_top" parent="sh_bottle_02_broken_top" index="0" unique_id=568971825]
+surface_material_override/0 = ExtResource("2_ra2sd")
+
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1192477269]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00078278035, 0.13331062, 0.00335633)
 shape = SubResource("BoxShape3D_ra2sd")
+
+[editable path="sh_bottle_02_broken_top"]
