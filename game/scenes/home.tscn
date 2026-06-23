@@ -64,8 +64,13 @@ font_size = 64
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_cmjdo"]
-font = ExtResource("6_hhep5")
+font = ExtResource("12_yu5fn")
 font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kc6b6"]
+font = ExtResource("12_yu5fn")
+font_size = 48
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ip4d6"]
@@ -355,7 +360,6 @@ button_type = 0
 
 [node name="References" type="PanelContainer" parent="." unique_id=1586425005]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.66
@@ -531,23 +535,157 @@ horizontal_alignment = 1
 [node name="Content" type="VBoxContainer" parent="Credit/ScrollContainer/VBoxContainer" unique_id=154363791]
 layout_mode = 2
 
-[node name="Lorem Ipsum" type="Label" parent="Credit/ScrollContainer/VBoxContainer/Content" unique_id=58894366]
+[node name="Team" type="VBoxContainer" parent="Credit/ScrollContainer/VBoxContainer/Content" unique_id=981119311]
+layout_mode = 2
+
+[node name="HSeparator" type="TextureRect" parent="Credit/ScrollContainer/VBoxContainer/Content/Team" unique_id=166765041]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Credit/ScrollContainer/VBoxContainer/Content/Team" unique_id=58894366]
 custom_minimum_size = Vector2(549.61, 2.2)
 layout_mode = 2
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dui metus, efficitur facilisis dolor condimentum, sagittis lobortis odio. Donec interdum imperdiet sapien, in hendrerit nibh varius sit amet. Praesent id varius ipsum, posuere condimentum nunc. Donec vitae urna nec erat porttitor imperdiet. Ut nec elementum mauris. Praesent eu urna pulvinar, luctus odio nec, faucibus mi. Suspendisse potenti. Vestibulum porttitor suscipit leo, non fermentum quam finibus a. Cras laoreet neque et dui bibendum, sed auctor neque ornare. Donec efficitur, ligula eget tincidunt laoreet, enim ex sollicitudin elit, in condimentum metus tellus eu urna. Fusce ut neque justo. Nulla a dictum purus, malesuada porta urna. Sed faucibus est id metus gravida consectetur. Pellentesque facilisis lectus et iaculis scelerisque. In ultricies risus neque, et maximus tellus elementum ut.
+text = "TEAM"
+label_settings = SubResource("LabelSettings_kc6b6")
+horizontal_alignment = 1
+autowrap_mode = 3
 
-Proin aliquam magna eget iaculis pharetra. Nunc nec metus orci. Sed vitae dignissim tortor. Morbi arcu arcu, pretium condimentum justo in, tempus commodo urna. Nam tortor tellus, iaculis at bibendum id, finibus sodales nunc. Suspendisse ultricies, felis faucibus sollicitudin interdum, nisi nibh fermentum tortor, eu fermentum massa magna id augue. Aliquam blandit tincidunt leo, id maximus felis maximus non. Nam vel lacus tempor, tempus massa vel, venenatis neque. Nunc ullamcorper viverra magna vitae vestibulum. Aliquam pellentesque diam sit amet vehicula rhoncus. Phasellus auctor, purus a ultrices pellentesque, quam diam maximus ligula, at tempus eros ligula et nibh. Maecenas mi nisl, feugiat nec nisl eu, porta hendrerit nibh. Curabitur vel augue sed sapien suscipit cursus. Praesent sed nulla velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer dictum sapien ullamcorper dignissim placerat.
+[node name="HSeparator2" type="TextureRect" parent="Credit/ScrollContainer/VBoxContainer/Content/Team" unique_id=671894798]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
 
-Vestibulum et nunc aliquet, posuere risus quis, vehicula lorem. Sed metus augue, congue sed libero in, auctor commodo mi. Duis tincidunt est in quam tristique pulvinar. Cras venenatis ornare placerat. Nam id lectus mi. Donec finibus, enim vel ornare tempus, ligula erat eleifend turpis, eget vulputate tellus magna et nibh. Donec ornare nulla ac venenatis blandit. Etiam non metus mauris. Sed semper rhoncus sapien. Integer pellentesque augue sit amet semper elementum.
+[node name="Content" type="Label" parent="Credit/ScrollContainer/VBoxContainer/Content/Team" unique_id=2136529673]
+custom_minimum_size = Vector2(549.61, 2.2)
+layout_mode = 2
+text = "BARTHELEMI Vincent - Sound Designer
+BENMANSOUR Ydris - Gameplay Programmer
+GUILLON Orlane - Game Artist
+INGRASSIA Ferréol - Sound Designer
+JAOUEN Celia - Game Artist
+LE DEUNFF Adrien - Producer
+SAILLARD Pierric - Game Designer
+SUARES Enzo - Programmer
+TRITTER Vassili - Game Designer"
+label_settings = SubResource("LabelSettings_cmjdo")
+horizontal_alignment = 1
+autowrap_mode = 3
 
-Integer quis nisi massa. Etiam scelerisque ut diam vel aliquam. Nulla pulvinar eros magna. Sed ornare ante at lectus malesuada venenatis. Suspendisse potenti. Morbi sit amet pharetra leo, a imperdiet lacus. Aenean lectus ante, viverra nec consectetur eu, scelerisque sit amet enim. Sed in sollicitudin nibh, at commodo elit. Suspendisse eu ipsum sed velit mattis vulputate. Proin mattis fringilla pharetra. Quisque laoreet tempus metus at dapibus.
+[node name="Son" type="VBoxContainer" parent="Credit/ScrollContainer/VBoxContainer/Content" unique_id=1282960902]
+layout_mode = 2
 
-Sed vitae orci elementum, mattis nunc a, hendrerit tellus. Quisque est neque, consequat eu vulputate quis, lacinia at lacus. Donec ex ligula, lacinia vitae accumsan sit amet, molestie eget sem. In hac habitasse platea dictumst. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin id aliquet nunc. Nunc ultricies mollis lorem sit amet euismod. Mauris varius, risus nec ultricies varius, lacus ligula cursus ex, in porta dui orci sed nisi. Curabitur tristique lorem
- eu placerat luctus
-Donec a mauris
-id risus ullamcorpe
-r tempor. Morbi l
-acinia enim eget pharetra rhoncus. Integer et purus dictum, fermentum purus eu, pulvinar magna."
+[node name="HSeparator" type="TextureRect" parent="Credit/ScrollContainer/VBoxContainer/Content/Son" unique_id=1157567622]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Credit/ScrollContainer/VBoxContainer/Content/Son" unique_id=965641911]
+custom_minimum_size = Vector2(549.61, 2.2)
+layout_mode = 2
+text = "CREDITS SONORE"
+label_settings = SubResource("LabelSettings_kc6b6")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator2" type="TextureRect" parent="Credit/ScrollContainer/VBoxContainer/Content/Son" unique_id=1400884940]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Content" type="Label" parent="Credit/ScrollContainer/VBoxContainer/Content/Son" unique_id=675700039]
+custom_minimum_size = Vector2(549.61, 2.2)
+layout_mode = 2
+text = "Personnages par ordre d’apparition :
+
+Georges : TRITTER Vassili
+François : BENMANSOUR Ydris
+Jules : BARTHELEMI Vincent
+Michel : SAILLARD Pierric
+Louise : LELAISANT Atea
+Marie : BONNIFET Yuna
+Officier : PROT Tom
+
+Les communard.e.s :
+
+BONNIFET Yuna
+BRAND Loris
+COLLET Thomas
+GENOT Zoé
+LELAISANT Atea
+
+Les versaillais :
+
+ALLEAUME Armand
+PROT Tom
+RICHARD Séverin
+
+La chorale :
+
+BENMANSOUR Ydris
+BONNIFET Yuna
+BRUNON Catherine
+DUFOUR Etienne
+GHANDOUR Maria Christy
+GICQUEL Henri 
+HADET Hugo
+JEAN-PIERRE Wania
+LELAISANT Atea
+PINEDA Joris
+RONCIN Alice
+TER Angela
+VETTU Adèle
+Hermine onapassonnom
+
+Remerciements armes à feu:
+Jean pour nous avoir permis d’effectuer une séance d’enregistrement de tir
+Armurerie Durand pour nous avoir permis de voir et manipuler un vrai chassepot d’époque"
+label_settings = SubResource("LabelSettings_cmjdo")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Renfort" type="VBoxContainer" parent="Credit/ScrollContainer/VBoxContainer/Content" unique_id=731410342]
+layout_mode = 2
+
+[node name="HSeparator" type="TextureRect" parent="Credit/ScrollContainer/VBoxContainer/Content/Renfort" unique_id=632381527]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Credit/ScrollContainer/VBoxContainer/Content/Renfort" unique_id=1037266967]
+custom_minimum_size = Vector2(549.61, 2.2)
+layout_mode = 2
+text = "RENFORT CONCEPTION VISUEL"
+label_settings = SubResource("LabelSettings_kc6b6")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator2" type="TextureRect" parent="Credit/ScrollContainer/VBoxContainer/Content/Renfort" unique_id=865007438]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("8_cmjdo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Content" type="Label" parent="Credit/ScrollContainer/VBoxContainer/Content/Renfort" unique_id=959211950]
+custom_minimum_size = Vector2(549.61, 2.2)
+layout_mode = 2
+text = "Arthur Riboulet - 3D Artist
+Adèle Cavillac - 2D artist
+Nalowale - UI Artist
+Guillem Lafois - 3D artist
+Maël Deschamps–Brouillaud - 3D artist
+Adrien Pochon - Animator"
 label_settings = SubResource("LabelSettings_cmjdo")
 horizontal_alignment = 1
 autowrap_mode = 3
