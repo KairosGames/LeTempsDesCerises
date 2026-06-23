@@ -1,26 +1,28 @@
 [gd_scene format=3 uid="uid://brs2nt4ityueq"]
 
-[ext_resource type="PackedScene" uid="uid://nd16yuv0ymbg" path="res://sources/meshes/props/sm_barrel_crouch_c.glb" id="1_jngdt"]
-[ext_resource type="Texture2D" uid="uid://xwmt30vqykl2" path="res://sources/meshes/geometry/textures/wook_planks/wood_planks_diff_2k_rotate.png" id="2_rkffl"]
+[ext_resource type="PackedScene" uid="uid://b5uwe7j2fncps" path="res://sources/meshes/props/sh_barrel_crouch_c.fbx" id="1_7w5lf"]
+[ext_resource type="Texture2D" uid="uid://cfwwbnpu6dly4" path="res://sources/images/textures/sh_barrel_crouch_c/sg_barrel_crouch_c_c.png" id="2_g1mdm"]
+[ext_resource type="Texture2D" uid="uid://dk8aiga54clj6" path="res://sources/images/textures/sh_barrel_crouch_c/sg_barrel_crouch_c_n.png" id="3_x6vl3"]
+[ext_resource type="Texture2D" uid="uid://d4dm1362vjomo" path="res://sources/images/textures/sh_barrel_crouch_c/sg_barrel_crouch_c_orm.png" id="4_f4gof"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_daoh3"]
-albedo_texture = ExtResource("2_rkffl")
-roughness = 0.54
-uv1_scale = Vector3(2, 2, 2)
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_arlpr"]
+albedo_texture = ExtResource("2_g1mdm")
+orm_texture = ExtResource("4_f4gof")
+normal_enabled = true
+normal_texture = ExtResource("3_x6vl3")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_daoh3"]
 points = PackedVector3Array(-0.43830478, 0.30624118, -8.5800886e-05, -0.37961242, 0.30624118, 0.21906665, -0.43830478, 0.68559575, -8.5800886e-05, -0.37961242, 0.30624118, -0.21923827, -0.38201505, 0, -8.5800886e-05, -0.33087373, 0, 0.19092181, -0.21923812, 0.30624118, 0.37952676, -0.37961242, 0.68559575, 0.21906665, -0.37961242, 0.68559575, -0.21923827, -0.33087373, 0.991934, 0.19092181, -0.38201505, 0.991934, -8.5800886e-05, -0.21923812, 0.30624118, -0.37961257, -0.33087373, 0, -0.19100758, -0.19100744, 0, 0.3307881, -8.5651875e-05, 0.30624118, 0.43830493, -0.21923812, 0.68559575, 0.37952676, -0.21923812, 0.68559575, -0.37961257, -0.33087373, 0.991934, -0.19100758, -0.19100744, 0.991934, 0.3307881, -8.5651875e-05, 0.30624118, -0.43830493, -8.5651875e-05, 0, -0.38201517, -0.19100744, 0, -0.33087388, -8.5651875e-05, 0, 0.38192937, 0.2190668, 0.30624118, 0.37952676, -8.5651875e-05, 0.68559575, 0.43830493, 0.19092196, 0, 0.3307881, -8.5651875e-05, 0.68559575, -0.43830493, -0.19100744, 0.991934, -0.33087388, -8.5651875e-05, 0.991934, -0.38201517, -8.5651875e-05, 0.991934, 0.38192937, 0.2190668, 0.30624118, -0.37961257, 0.19092196, 0, -0.33087388, 0.3795269, 0.30624118, 0.21906665, 0.2190668, 0.68559575, 0.37952676, 0.19092196, 0.991934, 0.3307881, 0.33078825, 0, 0.19092181, 0.2190668, 0.68559575, -0.37961257, 0.19092196, 0.991934, -0.33087388, 0.3795269, 0.30624118, -0.21923827, 0.33078825, 0, -0.19100758, 0.43830508, 0.30624118, -8.5800886e-05, 0.3795269, 0.68559575, 0.21906665, 0.33078825, 0.991934, 0.19092181, 0.38192952, 0, -8.5800886e-05, 0.3795269, 0.68559575, -0.21923827, 0.33078825, 0.991934, -0.19100758, 0.43830508, 0.68559575, -8.5800886e-05, 0.38192952, 0.991934, -8.5800886e-05)
 
 [node name="BarrelLittle2" type="StaticBody3D" unique_id=2134668753]
 
-[node name="sm_barrel_crouch_c2" parent="." unique_id=1706581065 instance=ExtResource("1_jngdt")]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="sh_barrel_crouch_c" parent="." unique_id=1687074681 instance=ExtResource("1_7w5lf")]
 
-[node name="sm_barrel_crouch_c" parent="sm_barrel_crouch_c2" index="0" unique_id=907210823]
-surface_material_override/0 = SubResource("StandardMaterial3D_daoh3")
+[node name="sm_barrel_crouch_c" parent="sh_barrel_crouch_c" index="0" unique_id=326697009]
+surface_material_override/0 = SubResource("ORMMaterial3D_arlpr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=327959976]
 transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_daoh3")
 
-[editable path="sm_barrel_crouch_c2"]
+[editable path="sh_barrel_crouch_c"]
