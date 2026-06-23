@@ -53,6 +53,7 @@ var canon_slot: Marker3D = null:
 	set(value):
 		var was_assigned: bool = canon_slot != null
 		canon_slot = value
+		if cover_destination: cover_destination = null
 		if cover: cover = null
 		if canon_slot and not is_working_on_cannon and not is_moving:
 			on_start_moving()
@@ -67,6 +68,13 @@ var can_move: bool = true:
 	set(value):
 		can_move = value
 		if not can_move: navigation.stop()
+var cover_destination: Cover = null:
+	set(value):
+		if cover_destination and cover_destination != cover:
+			cover_destination.holder = null
+		cover_destination = value
+		if cover_destination and cover_destination != cover:
+			cover_destination.holder = self
 @export var cover: Cover = null:
 	set(value):
 		if cover: cover.holder = null
@@ -135,6 +143,7 @@ func die() -> void:
 	collider.disabled = true
 	set_collision_layer_value(3, false)
 	navigation.stop()
+	cover_destination = null
 	cover = null
 	var tween: Tween = create_tween()
 	tween.tween_method(func(transparency: float) -> void: pass, 0.0, 1.0, 10.0)
@@ -142,6 +151,7 @@ func die() -> void:
 	remove()
 
 func remove() -> void:
+	cover_destination = null
 	cover = null
 	died.emit()
 	queue_free()
@@ -173,7 +183,7 @@ func get_shoot_height() -> float:
 func get_shoot_posture() -> Agent.Posture:
 	return cover.get_shoot_posture() if cover else Posture.STAND
 
-func randomize_color() -> void: 
+func randomize_color() -> void:
 	if not color_sets.size(): push_error("No color_set to pick"); return
 	if not body: push_error("No mesh is assigned while trying to randomize color"); return
 	var slot_count: int = body.get_surface_override_material_count()

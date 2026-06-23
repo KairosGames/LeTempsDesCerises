@@ -19,6 +19,7 @@ func tick(actor: Node, blackboard: Blackboard) -> int:
 		agent.navigation.move_to(destination, stop_distance)
 		agent.on_start_moving()
 		on_start(actor, blackboard)
+		return RUNNING
 	if agent.navigation.is_navigation_finished():
 		agent.on_stop_moving()
 		var is_target_reached: bool = agent.navigation.is_target_reached()

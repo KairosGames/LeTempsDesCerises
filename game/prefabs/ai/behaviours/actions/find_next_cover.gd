@@ -16,5 +16,5 @@ func tick(actor: Node, _blackboard: Blackboard) -> int:
 
 	var next_cover: Cover = covers.pick_random()
 
-	agent.cover = next_cover
+	agent.cover_destination = next_cover
 	return SUCCESS
