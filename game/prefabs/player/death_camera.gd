@@ -21,6 +21,7 @@ var is_active: bool
 var fall_twn: Tween
 var fall_rot_twn: Tween
 var fov_twn: Tween
+var impact_twn: Tween
 
 
 func _ready() -> void:
@@ -35,6 +36,7 @@ func handle_death(is_scripted: bool, is_last_death: bool) -> void:
 	global_rotation = p_cam.global_rotation
 	current = true
 	is_active = true
+	await play_view_impact()
 	if is_scripted and not is_last_death:
 		play_scripted_death()
 		return
@@ -42,6 +44,13 @@ func handle_death(is_scripted: bool, is_last_death: bool) -> void:
 		play_last_death()
 		return
 	play_death_effect()
+
+
+func play_view_impact() -> void:
+	if impact_twn: impact_twn.kill()
+	impact_twn = create_tween()
+	impact_twn.tween_property(self, "rotation:x", rotation.x + (PI * 0.2), 0.05)
+	await impact_twn.finished
 
 
 func play_death_effect() -> void:

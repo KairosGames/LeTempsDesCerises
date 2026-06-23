@@ -19,8 +19,6 @@ var is_looping : bool = true
 var ready_narrators : Dictionary = {}
 var relevant_narrators : int = 0
 
-func _process(delta: float) -> void:
-	new_line(0)
 
 func on_game_manager_ready(gm: GameManager) -> void:
 	game_manager = gm

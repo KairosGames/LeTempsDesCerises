@@ -165,8 +165,8 @@ func update_line(npc_name, new_text : String):
 				node.visible = false
 				node.text = ""
 			else:
-				node.text = str(npc_name + " : " + text)
 				node.visible = true
+				node.text = str(npc_name + " : " + text)
 
 func change_barricade():
 	var curr_barricade: Barricade = GameManager.instance.curr_barricade if GameManager.instance else null

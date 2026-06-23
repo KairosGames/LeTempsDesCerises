@@ -11,9 +11,11 @@
 [ext_resource type="Curve" uid="uid://chdf25t3wnct4" path="res://prefabs/player/gpad_aiming_speed_curve.tres" id="4_ev8v4"]
 [ext_resource type="PackedScene" uid="uid://b56vcde62m1gw" path="res://sandbox/chassepot_proto/sk_chassepot.tscn" id="4_klv5p"]
 [ext_resource type="Shader" uid="uid://d17gvn18namde" path="res://prefabs/player/blink_shader.gdshader" id="8_hvqk4"]
+[ext_resource type="Texture2D" uid="uid://c0v7kfgmn2qxv" path="res://prefabs/player/blood_screen.png" id="9_8ris0"]
 [ext_resource type="Script" uid="uid://8an16l3kykwh" path="res://scripts/blink_effect.gd" id="9_b6byk"]
 [ext_resource type="PackedScene" uid="uid://bgg5b13i7sqme" path="res://sounds/prefabs/ak_player_manager.tscn" id="9_oo3uv"]
 [ext_resource type="Shader" uid="uid://clrsbi4wrdvxs" path="res://prefabs/player/blur_effect.gdshader" id="11_6barq"]
+[ext_resource type="Script" uid="uid://80pfq66rkjcw" path="res://scripts/flash_screen_effect.gd" id="11_dmwb1"]
 [ext_resource type="Script" uid="uid://cg463hdmyrtmx" path="res://prefabs/player/blur_effect.gd" id="12_agiw0"]
 [ext_resource type="Texture2D" uid="uid://dvjpnqukcvb8e" path="res://prefabs/ui/reload_p1.png" id="14_408ek"]
 [ext_resource type="Script" uid="uid://cyr6l5nj8dv32" path="res://prefabs/player/shake.gd" id="14_ot5ig"]
@@ -215,6 +217,15 @@ mouse_filter = 2
 texture = ExtResource("2_r66lb")
 expand_mode = 1
 
+[node name="BloodScreen" type="TextureRect" parent="UI/CenterContainer" unique_id=2064496469]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.41960785, 0.41960785, 0.41960785, 0.6156863)
+custom_minimum_size = Vector2(2020, 1180)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("9_8ris0")
+
 [node name="BlinkEffect" type="ColorRect" parent="UI/CenterContainer" unique_id=1580177522]
 unique_name_in_owner = true
 visible = false
@@ -224,6 +235,14 @@ layout_mode = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("9_b6byk")
+
+[node name="FlashScreenEffect" type="ColorRect" parent="UI/CenterContainer" unique_id=476050686]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(2020, 1180)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.9137255, 0.9137255, 0.9137255, 0)
+script = ExtResource("11_dmwb1")
 
 [node name="BlurEffect" type="ColorRect" parent="UI/CenterContainer" unique_id=700880816]
 unique_name_in_owner = true

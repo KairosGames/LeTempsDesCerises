@@ -49,9 +49,11 @@ signal just_revive
 @onready var weapon_shake: Shake = %WeaponShake
 @onready var muzzle_light: OmniLight3D = %MuzzleLight
 @onready var light_trail: ShootLightTrail = %ShootLightTrail
+@onready var flash_screen_effect: FlashScreenEffect = %FlashScreenEffect
+@onready var blood_screen: TextureRect = %BloodScreen
 
 @export_category("Gameplay Settings")
-@export var immortal_timer: float = 10.0
+@export var immortal_timer: float = 0.0#10.0
 
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
@@ -1192,6 +1194,8 @@ func die(is_scripted: bool = false, is_last_death: bool = false) -> void:
 	will_die = true
 	die_called.emit()
 	await get_tree().create_timer(0.1).timeout
+	flash_screen_effect.play_flash_effect()
+	blood_screen.visible = true
 	death_camera.handle_death(is_scripted, is_last_death)
 	is_alive = false
 	if is_reloading: exit_reload(false, true)
@@ -1283,6 +1287,7 @@ func kill_all_tweens() -> void:
 
 func revive(pos: Vector3, rot: Vector3) -> void:
 	initiate(pos, rot)
+	blood_screen.visible = false
 	blur_effect.hard_set_blur(0.0)
 	player_camera.current = true
 	is_immortal = true
