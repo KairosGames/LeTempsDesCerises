@@ -94,7 +94,7 @@ func allies_arrival() -> void:
 	await wait(ui_manager.time_to_open_letter_box)
 
 	#############################################################################FOR DEBUG
-	add_on_process(kill_agents.bind(true, false))
+	add_on_process(next_input_kill_agents.bind(true, false))
 
 
 	kill_versaillais_on_cannon()
@@ -109,7 +109,7 @@ func allies_arrival() -> void:
 
 func launch_kill_all_versaillais() -> void:
 	await wait(20.0)
-	kill_agents(true, false)
+	kill_all_versaillais()
 
 
 func launch_women() -> void:

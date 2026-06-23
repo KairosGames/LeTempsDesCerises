@@ -407,17 +407,25 @@ func add_worker_on_cannon() -> void:
 		game_manager.cannon._create_workers(1)
 
 
-func kill_agents(kill_enemies: bool, kill_allies: bool) -> void:
+func next_input_kill_agents(kill_enemies: bool, kill_allies: bool) -> void:
 	if Input.is_action_just_pressed("go_next_step"):
 		if kill_enemies:
-			for versaillais: Agent in get_tree().get_nodes_in_group("Versaillais"):
-				versaillais.die()
+			kill_all_versaillais()
 		if kill_allies:
-			for communard: Agent in get_tree().get_nodes_in_group("Communard").filter(func(v): return v is not Player):
-				communard.die()
+			kill_all_communards()
 		clean_process()
 	if is_there_no_enemies() and kill_enemies: clean_process()
 	if is_there_no_allies() and kill_allies: clean_process()
+
+
+func kill_all_communards() -> void:
+	for communard: Agent in get_tree().get_nodes_in_group("Communard").filter(func(v): return v is not Player):
+		communard.die()
+
+
+func kill_all_versaillais() -> void:
+	for versaillais: Agent in get_tree().get_nodes_in_group("Versaillais"):
+		versaillais.die()
 
 
 func detect_input_debug() -> bool:
