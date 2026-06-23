@@ -36,6 +36,12 @@ var DEFAULTS: Dictionary = {
 		"bloom": true,
 		"volumetric_fog": true,
 	},
+	"audio" = {
+		"master": 1.0,
+		"music": 1.0,
+		"effect": 1.0,
+		"voice": 1.0,
+	},
 	"game" = {
 		"sensi_default": 7.0,
 		"sensi_aiming": 7.0,
