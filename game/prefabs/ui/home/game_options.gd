@@ -1,5 +1,8 @@
 extends VBoxContainer
 
+const LANGUAGE_LABELS: Array[String] = ["French", "English"]
+const LANGUAGE_VALUES: Array[String] = ["French(France)", "English(US)"]
+
 const SLIDERS: Dictionary = {
 	"sensi_default": {
 		"slider_path": ^"ScrollContainer/Settings/Common/ViewSensibility/Slider",
@@ -41,6 +44,11 @@ const TOGGLES: Dictionary = {
 }
 
 @onready var reset_button: Button = %GameReset
+@onready var language_previous_button: Button = get_node(^"ScrollContainer/Settings/General/Language/Previous")
+@onready var language_value_label: Label = get_node(^"ScrollContainer/Settings/General/Language/Value")
+@onready var language_next_button: Button = get_node(^"ScrollContainer/Settings/General/Language/Next")
+
+var _language_index: int = 0
 
 
 func _ready() -> void:
@@ -49,6 +57,10 @@ func _ready() -> void:
 
 
 func load_game_settings() -> void:
+	var current_language: String = str(Settings.call("get_language"))
+	_language_index = _find_language_index(current_language)
+	_apply_language_label()
+
 	for key_variant: Variant in SLIDERS.keys():
 		var key: String = key_variant as String
 		var row: Dictionary = SLIDERS[key] as Dictionary
@@ -76,6 +88,8 @@ func _connect_controls() -> void:
 		var button: CheckButton = get_node(TOGGLES[key] as NodePath)
 		button.toggled.connect(_on_toggle_changed.bind(key))
 
+	language_previous_button.pressed.connect(_on_language_step_pressed.bind(-1))
+	language_next_button.pressed.connect(_on_language_step_pressed.bind(1))
 	reset_button.pressed.connect(_on_reset_pressed)
 
 
@@ -84,21 +98,34 @@ func _on_slider_changed(value: float, key: String) -> void:
 	var slider: HSlider = get_node(row["slider_path"] as NodePath)
 	var label: Label = get_node(row["label_path"] as NodePath)
 	label.text = _format_slider_value(slider, value)
-	Settings.config_file.set_value("game", key, value)
-	Settings.save_settings()
+	var settings_config: ConfigFile = Settings.get("config_file") as ConfigFile
+	settings_config.set_value("game", key, value)
+	Settings.call("save_settings")
 
 
 func _on_toggle_changed(toggled_on: bool, key: String) -> void:
 	if key == "allow_subtitles":
 		WwiseGlobal.allow_subtitles = toggled_on
-	Settings.config_file.set_value("game", key, toggled_on)
-	Settings.save_settings()
+	var settings_config: ConfigFile = Settings.get("config_file") as ConfigFile
+	settings_config.set_value("game", key, toggled_on)
+	Settings.call("save_settings")
+
+
+func _on_language_step_pressed(direction: int) -> void:
+	_language_index = wrapi(_language_index + direction, 0, LANGUAGE_VALUES.size())
+	_apply_language_label()
+	Settings.call("set_language", LANGUAGE_VALUES[_language_index])
 
 
 func _on_reset_pressed() -> void:
-	for key: String in Settings.DEFAULTS["game"]:
-		Settings.config_file.set_value("game", key, Settings.DEFAULTS["game"][key])
-	Settings.save_settings()
+	var defaults: Dictionary = Settings.get("DEFAULTS") as Dictionary
+	var game_defaults: Dictionary = defaults.get("game", {}) as Dictionary
+	var settings_config: ConfigFile = Settings.get("config_file") as ConfigFile
+	for key_variant: Variant in game_defaults.keys():
+		var key: String = str(key_variant)
+		settings_config.set_value("game", key, game_defaults[key])
+	Settings.call("save_settings")
+	Settings.language_changed.emit(str(Settings.call("get_language")))
 	load_game_settings()
 	reset_button.grab_focus()
 
@@ -119,9 +146,10 @@ func _format_slider_value(slider: Range, value: float) -> String:
 
 
 func _game_setting_float(key: String) -> float:
-	var value: Variant = Settings.config_file.get_value("game", key)
+	var settings_config: ConfigFile = Settings.get("config_file") as ConfigFile
+	var value: Variant = settings_config.get_value("game", key)
 	if value is int:
-		return float(value)
+		return value as float
 	if value is float:
 		return value
 	if value is bool:
@@ -130,11 +158,23 @@ func _game_setting_float(key: String) -> float:
 
 
 func _game_setting_bool(key: String) -> bool:
-	var value: Variant = Settings.config_file.get_value("game", key)
+	var settings_config: ConfigFile = Settings.get("config_file") as ConfigFile
+	var value: Variant = settings_config.get_value("game", key)
 	if value is bool:
 		return value
 	if value is int:
 		return value != 0
 	if value is float:
-		return not is_zero_approx(value)
+		return not is_zero_approx(value as float)
 	return false
+
+
+func _find_language_index(language: String) -> int:
+	var language_index: int = LANGUAGE_VALUES.find(language)
+	if language_index == -1:
+		return 0
+	return language_index
+
+
+func _apply_language_label() -> void:
+	language_value_label.text = LANGUAGE_LABELS[_language_index]

@@ -1,5 +1,7 @@
 extends Node
 
+signal language_changed(language: String)
+
 enum GIType {
 	SDFGI = 0,
 	VOXEL_GI = 1,
@@ -43,6 +45,7 @@ var DEFAULTS: Dictionary = {
 		"voice": 1.0,
 	},
 	"game" = {
+		"language": "French(France)",
 		"sensi_default": 7.0,
 		"sensi_aiming": 7.0,
 		"is_inverted": false,
@@ -91,6 +94,18 @@ func load_settings() -> void:
 	WwiseGlobal.allow_subtitles = config_file.get_value("game", "allow_subtitles") == true
 
 
+func get_language() -> String:
+	var language_value: Variant = config_file.get_value("game", "language", DEFAULTS["game"]["language"])
+	return str(language_value)
+
+
+func set_language(language: String) -> void:
+	if language == "" or get_language() == language: return
+	config_file.set_value("game", "language", language)
+	save_settings()
+	language_changed.emit(language)
+
+
 func save_settings() -> void:
 	config_file.save(CONFIG_FILE_PATH)
 
@@ -130,14 +145,14 @@ func get_video_scale_filter() -> int:
 
 
 func apply_graphics_settings(window: Window, environment: Environment, scene_root: Node) -> void:
-	var display_mode: int = Settings.config_file.get_value("video", "display_mode")
-	var vsync_mode: DisplayServer.VSyncMode = Settings.config_file.get_value("video", "vsync") as DisplayServer.VSyncMode
-	var max_fps: int = Settings.config_file.get_value("video", "max_fps")
-	var resolution_scale: float = Settings.config_file.get_value("video", "resolution_scale")
+	var display_mode: int = config_file.get_value("video", "display_mode")
+	var vsync_mode: DisplayServer.VSyncMode = config_file.get_value("video", "vsync") as DisplayServer.VSyncMode
+	var max_fps: int = config_file.get_value("video", "max_fps")
+	var resolution_scale: float = config_file.get_value("video", "resolution_scale")
 	var scale_filter: int = get_video_scale_filter()
-	var taa_enabled: bool = Settings.config_file.get_value("rendering", "taa")
-	var msaa: Viewport.MSAA = Settings.config_file.get_value("rendering", "msaa") as Viewport.MSAA
-	var fxaa_enabled: bool = Settings.config_file.get_value("rendering", "fxaa")
+	var taa_enabled: bool = config_file.get_value("rendering", "taa")
+	var msaa: Viewport.MSAA = config_file.get_value("rendering", "msaa") as Viewport.MSAA
+	var fxaa_enabled: bool = config_file.get_value("rendering", "fxaa")
 
 	get_window().mode = display_mode as Window.Mode
 	DisplayServer.window_set_vsync_mode(vsync_mode)
@@ -150,11 +165,11 @@ func apply_graphics_settings(window: Window, environment: Environment, scene_roo
 
 
 
-	var shadow_mapping_enabled: bool = Settings.config_file.get_value("rendering", "shadow_mapping")
-	var ssao_quality: int = Settings.config_file.get_value("rendering", "ssao_quality")
-	var ssil_quality: int = Settings.config_file.get_value("rendering", "ssil_quality")
-	var bloom_enabled: bool = Settings.config_file.get_value("rendering", "bloom")
-	var volumetric_fog_enabled: bool = Settings.config_file.get_value("rendering", "volumetric_fog")
+	var shadow_mapping_enabled: bool = config_file.get_value("rendering", "shadow_mapping")
+	var ssao_quality: int = config_file.get_value("rendering", "ssao_quality")
+	var ssil_quality: int = config_file.get_value("rendering", "ssil_quality")
+	var bloom_enabled: bool = config_file.get_value("rendering", "bloom")
+	var volumetric_fog_enabled: bool = config_file.get_value("rendering", "volumetric_fog")
 
 	if not shadow_mapping_enabled:
 		# Disable shadows for all lights present during level load,

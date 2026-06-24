@@ -31,9 +31,9 @@ resource_name = "GamepadOnly"
 script/source = "extends TextureRect
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouse or event is InputEventKey: 
+	if event is InputEventMouse or event is InputEventKey:
 		hide()
-	if event is InputEventJoypadButton: 
+	if event is InputEventJoypadButton:
 		show()
 	if event is InputEventJoypadMotion:
 		var joypad_motion: InputEventJoypadMotion = event
@@ -194,6 +194,43 @@ texture = ExtResource("5_ewthg")
 expand_mode = 1
 flip_h = true
 
+[node name="Language" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/General" unique_id=1919173001]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/General/Language" unique_id=77563711]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "LANGUAGE"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="Previous" type="Button" parent="TabContainer/GAME/ScrollContainer/Settings/General/Language" unique_id=351706822]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../Actions/GameReset")
+focus_neighbor_right = NodePath("../Value")
+focus_neighbor_bottom = NodePath("../../Subtitles/CheckButton")
+text = "◀"
+
+[node name="Value" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/General/Language" unique_id=1259177455]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "French"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next" type="Button" parent="TabContainer/GAME/ScrollContainer/Settings/General/Language" unique_id=315887947]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+focus_neighbor_left = NodePath("../Value")
+focus_neighbor_top = NodePath("../../../Actions/GameReset")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Subtitles/CheckButton")
+text = "▶"
+
 [node name="Subtitles" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/General" unique_id=292926302]
 unique_name_in_owner = true
 layout_mode = 2
@@ -211,7 +248,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 4
 size_flags_stretch_ratio = 1.5
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../../Actions/GameReset")
+focus_neighbor_top = NodePath("../../Language/Previous")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../Blood/CheckButton")
 button_pressed = true
