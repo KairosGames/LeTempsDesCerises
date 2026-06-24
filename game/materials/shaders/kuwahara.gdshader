@@ -6,7 +6,7 @@ global uniform float dynamic_da;
 
 void fragment() 
  {
-	int radius = int(clamp(dynamic_da * 5.0,  0.0, 1.0));
+	int radius = int(clamp(dynamic_da,  0.0, 1.0) * 5.0);
 	vec2 src_size = vec2 ( SCREEN_PIXEL_SIZE.x,  SCREEN_PIXEL_SIZE.y);
 	vec2 uv = UV.xy;
 	float n = float((radius + 1) * (radius + 1));

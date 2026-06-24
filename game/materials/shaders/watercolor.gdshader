@@ -11,7 +11,7 @@ uniform float uv_scale = 0.5;
 uniform float time_offset = 0.0;
 uniform float triplanar_sharpness = 4.0;
 
-global uniform float dynamic_art_progress;
+global uniform float dynamic_da;
 
 varying vec3 world_pos;
 varying vec3 world_normal;
@@ -115,5 +115,5 @@ void fragment() {
 	         + col_y * blend.y
 	         + col_z * blend.z;
 	
-	ALBEDO = mix(col, texture(sceen_texture, SCREEN_UV).rgb, 1.0 - dynamic_art_progress * 0.8);
+	ALBEDO = mix(col, texture(sceen_texture, SCREEN_UV).rgb, 1.0 - dynamic_da * 0.8);
 }
