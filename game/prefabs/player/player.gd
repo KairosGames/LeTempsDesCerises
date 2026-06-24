@@ -51,9 +51,10 @@ signal just_revive
 @onready var light_trail: ShootLightTrail = %ShootLightTrail
 @onready var flash_screen_effect: FlashScreenEffect = %FlashScreenEffect
 @onready var blood_screen: TextureRect = %BloodScreen
+@onready var profiles: ProfileManager = %Profiles
 
 @export_category("Gameplay Settings")
-@export var immortal_timer: float = 0.0#10.0
+@export var immortal_timer: float = 10.0
 
 @export_category("Exposed settings")
 @export var is_aim_toggle_km: bool = true
@@ -1285,14 +1286,23 @@ func kill_all_tweens() -> void:
 	if cam_land_pitch_twn: cam_land_pitch_twn.kill()
 
 
-func revive(pos: Vector3, rot: Vector3) -> void:
+func revive(pos: Vector3,
+			rot: Vector3,
+			gend: ProfileManager.Gender = ProfileManager.Gender.NoBinary,
+			is_jules: bool = false) -> void:
 	initiate(pos, rot)
 	blood_screen.visible = false
 	blur_effect.hard_set_blur(0.0)
 	player_camera.current = true
 	is_immortal = true
 	just_revive.emit()
+	reveal_identity(gend, is_jules)
 	launch_killable_timer()
+
+
+func reveal_identity(gend: ProfileManager.Gender, is_jules: bool = false) -> void:
+	await get_tree().create_timer(0.2).timeout
+	profiles.launch_new_random_profile(gend, is_jules)
 
 
 func launch_killable_timer() -> void:

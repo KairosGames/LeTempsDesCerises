@@ -26,7 +26,32 @@
 [ext_resource type="PackedScene" uid="uid://of0isbumqecs" path="res://prefabs/player/chassepot.tscn" id="17_8hk3c"]
 [ext_resource type="Texture2D" uid="uid://dnjca8p664n1b" path="res://prefabs/ui/reload_p4.png" id="17_vtpqo"]
 [ext_resource type="Texture2D" uid="uid://cidv14oem3sdc" path="res://sources/images/icons/inputs/Xbox Series/xbox_button_x.svg" id="18_ag4y2"]
+[ext_resource type="Texture2D" uid="uid://dr1ahlvgxjoym" path="res://sources/images/portraits/hommes/communard_2.png" id="23_4jdxe"]
+[ext_resource type="Script" uid="uid://cdf0n1wt7jmhg" path="res://prefabs/player/profile_manager.gd" id="23_y6e23"]
+[ext_resource type="FontFile" uid="uid://6al2yonhh1go" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Black.otf" id="24_4jdxe"]
+[ext_resource type="Texture2D" uid="uid://c3uwtma3ov21d" path="res://sources/images/portraits/hommes/communard_1.png" id="24_psfat"]
 [ext_resource type="PackedScene" uid="uid://cn7x6vluolkny" path="res://prefabs/player/shoot_light_trail.tscn" id="24_vtpqo"]
+[ext_resource type="Texture2D" uid="uid://44o84uiwgeh3" path="res://sources/images/portraits/hommes/communard_3.png" id="26_ixlro"]
+[ext_resource type="Texture2D" uid="uid://cylauy2yf38e8" path="res://sources/images/portraits/hommes/communard_4.png" id="27_5vnk2"]
+[ext_resource type="Texture2D" uid="uid://cuiw23fbt68nx" path="res://sources/images/portraits/hommes/communard_5.png" id="28_7fnds"]
+[ext_resource type="Texture2D" uid="uid://lto38a1cwd04" path="res://sources/images/portraits/hommes/communard_6.png" id="29_5rpgk"]
+[ext_resource type="Texture2D" uid="uid://cevbh248nsxl5" path="res://sources/images/portraits/hommes/communard_7.png" id="30_78s5d"]
+[ext_resource type="Texture2D" uid="uid://ex7f5m1tc70i" path="res://sources/images/portraits/hommes/communard_8.png" id="31_mnp77"]
+[ext_resource type="Texture2D" uid="uid://bmblx6oykciuc" path="res://sources/images/portraits/hommes/communard_9.png" id="32_jp5d8"]
+[ext_resource type="Texture2D" uid="uid://ccvx1f3h67yuu" path="res://sources/images/portraits/hommes/communard_10.png" id="33_cp71r"]
+[ext_resource type="Texture2D" uid="uid://ijc6q0wbriyx" path="res://sources/images/portraits/femmes/communarde_1.png" id="34_ye6ax"]
+[ext_resource type="Texture2D" uid="uid://djlj12cejswqv" path="res://sources/images/portraits/femmes/communarde_2.png" id="35_n52rn"]
+[ext_resource type="Texture2D" uid="uid://bjjru3s7qxr6q" path="res://sources/images/portraits/femmes/communarde_3.png" id="36_xp448"]
+[ext_resource type="Texture2D" uid="uid://dqbfild1bgw5k" path="res://sources/images/portraits/femmes/communarde_4.png" id="37_81h04"]
+[ext_resource type="Texture2D" uid="uid://6amcs6ju57gu" path="res://sources/images/portraits/femmes/communarde_5.png" id="38_hdjk5"]
+[ext_resource type="Texture2D" uid="uid://bc2sht3u3j3w1" path="res://sources/images/portraits/femmes/communarde_6.png" id="39_6127o"]
+[ext_resource type="Texture2D" uid="uid://8p7nrigrfi5w" path="res://sources/images/portraits/femmes/communarde_7.png" id="40_ujjup"]
+[ext_resource type="Texture2D" uid="uid://du53fe13benee" path="res://sources/images/portraits/femmes/communarde_8.png" id="41_fot78"]
+[ext_resource type="Texture2D" uid="uid://bgp0hyl8alsah" path="res://sources/images/portraits/femmes/communarde_9.png" id="42_kpwmt"]
+[ext_resource type="Texture2D" uid="uid://dt0fpr7wgf7t3" path="res://sources/images/portraits/femmes/communarde_10.png" id="43_vibfe"]
+[ext_resource type="Shader" uid="uid://dofxtvo6304hv" path="res://prefabs/player/profile.gdshader" id="44_psfat"]
+[ext_resource type="Texture2D" uid="uid://cn0thsh0lfyw6" path="res://sources/images/portraits/EmptyProfile.png" id="45_5vnk2"]
+[ext_resource type="Shader" uid="uid://bviit7nokudj4" path="res://prefabs/player/text_profile.gdshader" id="46_7fnds"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2c4n1"]
 albedo_color = Color(0.85343254, 0, 0.12842149, 1)
@@ -100,6 +125,57 @@ _data = {
 "points": PackedVector2Array(6, -76, 0, 0, -96.5, 0, 0, 0, 0, 0, -97, 151)
 }
 point_count = 2
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5vnk2"]
+noise_type = 3
+frequency = 0.0061
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7fnds"]
+noise = SubResource("FastNoiseLite_5vnk2")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5rpgk"]
+load_path = "res://.godot/imported/EmptyProfile.png-4ce6b2594a777dc2e8e6373c0aa4bc87.ctex"
+
+[sub_resource type="Gradient" id="Gradient_4jdxe"]
+colors = PackedColorArray(0, 0, 0, 0.5803922, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a0po4"]
+gradient = SubResource("Gradient_4jdxe")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0.48034188, 0.5760684)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_78s5d"]
+shader = ExtResource("44_psfat")
+shader_parameter/texture1 = SubResource("CompressedTexture2D_5rpgk")
+shader_parameter/texture2 = SubResource("GradientTexture2D_a0po4")
+shader_parameter/factor = 0.0
+shader_parameter/dissolve_map = SubResource("NoiseTexture2D_7fnds")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2ki6p"]
+noise_type = 3
+frequency = 0.0061
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_78s5d"]
+noise = SubResource("FastNoiseLite_2ki6p")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ixlro"]
+shader = ExtResource("44_psfat")
+shader_parameter/texture1 = ExtResource("45_5vnk2")
+shader_parameter/texture2 = ExtResource("36_xp448")
+shader_parameter/factor = 0.0
+shader_parameter/dissolve_map = SubResource("NoiseTexture2D_78s5d")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4jdxe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mnp77"]
+shader = ExtResource("46_7fnds")
+shader_parameter/factor = 0.0
+shader_parameter/dissolve_map = SubResource("NoiseTexture2D_78s5d")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jp5d8"]
+shader = ExtResource("46_7fnds")
+shader_parameter/factor = 0.0
+shader_parameter/dissolve_map = SubResource("NoiseTexture2D_78s5d")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fp3wc"]
 radius = 0.35
@@ -256,11 +332,18 @@ script = ExtResource("12_agiw0")
 [node name="ReloadUI" type="Control" parent="UI" unique_id=604342347 node_paths=PackedStringArray("step_display", "wpn_animator", "hands_animator")]
 unique_name_in_owner = true
 visible = false
-anchors_preset = 0
-offset_left = 1662.0
-offset_top = 558.0
-offset_right = 1702.0
-offset_bottom = 598.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -1080.0
+offset_right = -960.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("3_klv5p")
 step_display = [NodePath("ReloadState1"), NodePath("ReloadState2"), null, NodePath("ReloadState3"), NodePath("ReloadState4")]
@@ -278,40 +361,40 @@ sucess_outline_color = Color(0, 1, 0, 1)
 visible = false
 material = SubResource("ShaderMaterial_vtpqo")
 layout_mode = 0
-offset_left = -500.0
-offset_top = -10.0
-offset_right = 2.0
-offset_bottom = 492.0
+offset_left = 1162.0
+offset_top = 548.0
+offset_right = 1664.0
+offset_bottom = 1050.0
 texture = ExtResource("14_408ek")
 expand_mode = 1
 
 [node name="ReloadState2" type="TextureRect" parent="UI/ReloadUI" unique_id=908490645]
 visible = false
 layout_mode = 0
-offset_left = -500.0
-offset_top = -10.0
-offset_right = 2.0
-offset_bottom = 492.0
+offset_left = 1162.0
+offset_top = 548.0
+offset_right = 1664.0
+offset_bottom = 1050.0
 texture = ExtResource("15_a2w56")
 expand_mode = 1
 
 [node name="ReloadState3" type="TextureRect" parent="UI/ReloadUI" unique_id=1329585989]
 visible = false
 layout_mode = 0
-offset_left = -500.0
-offset_top = -10.0
-offset_right = 2.0
-offset_bottom = 492.0
+offset_left = 1162.0
+offset_top = 548.0
+offset_right = 1664.0
+offset_bottom = 1050.0
 texture = ExtResource("16_qdvc2")
 expand_mode = 1
 
 [node name="ReloadState4" type="TextureRect" parent="UI/ReloadUI" unique_id=372263498]
 visible = false
 layout_mode = 0
-offset_left = -500.0
-offset_top = -10.0
-offset_right = 2.0
-offset_bottom = 492.0
+offset_left = 1162.0
+offset_top = 548.0
+offset_right = 1664.0
+offset_bottom = 1050.0
 texture = ExtResource("17_vtpqo")
 expand_mode = 1
 
@@ -322,10 +405,10 @@ anchor_left = -6.13
 anchor_top = 6.267
 anchor_right = -6.13
 anchor_bottom = 6.267
-offset_left = -31.799988
-offset_top = -31.680008
-offset_right = 32.200012
-offset_bottom = 32.319992
+offset_left = 1385.0
+offset_top = 777.0
+offset_right = 1449.0
+offset_bottom = 841.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
@@ -335,7 +418,7 @@ script = SubResource("GDScript_dmwb1")
 
 [node name="Path1" type="Path2D" parent="UI/ReloadUI" unique_id=349230490]
 unique_name_in_owner = true
-position = Vector2(-245, 193)
+position = Vector2(1417, 751)
 curve = SubResource("Curve2D_408ek")
 
 [node name="Focus" type="PathFollow2D" parent="UI/ReloadUI/Path1" unique_id=816190979]
@@ -353,8 +436,90 @@ texture = ExtResource("15_ocyg1")
 
 [node name="Path2" type="Path2D" parent="UI/ReloadUI" unique_id=964860872]
 unique_name_in_owner = true
-position = Vector2(-245, 193)
+position = Vector2(1417, 751)
 curve = SubResource("Curve2D_dxdrd")
+
+[node name="Profiles" type="Control" parent="UI" unique_id=944552967]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+grow_vertical = 0
+script = ExtResource("23_y6e23")
+men_pics = Array[Texture2D]([ExtResource("24_psfat"), ExtResource("23_4jdxe"), ExtResource("26_ixlro"), ExtResource("27_5vnk2"), ExtResource("28_7fnds"), ExtResource("29_5rpgk"), ExtResource("30_78s5d"), ExtResource("31_mnp77"), ExtResource("32_jp5d8"), ExtResource("33_cp71r")])
+men_names = Array[String](["Achille", "Adrien", "Albert", "Alexandre", "André", "Aristide", "Auguste", "Casimir", "Charles", "Claude", "Constant", "Édouard", "Élie", "Émile", "Eugène", "Félix", "Gaston", "Germain", "Gustave", "Henry", "Jean", "Joseph", "Julien", "Léon", "Olivier", "Paul", "Pierre", "Robert", "Théophile", "Victor"])
+men_jobs = Array[String](["Bronzier", "Brossier", "Cordonnier", "Enseignant", "Gardien", "Géographe", "Politique", "Imprimeur", "Instituteur", "Journaliste", "Couvreur", "Militaire", "Mécanicien", "Médecin", "Ouvrier", "Peintre", "Sertisseur", "Boulanger", "Serrurier", "Ébéniste"])
+women_pics = Array[Texture2D]([ExtResource("34_ye6ax"), ExtResource("35_n52rn"), ExtResource("36_xp448"), ExtResource("37_81h04"), ExtResource("38_hdjk5"), ExtResource("39_6127o"), ExtResource("40_ujjup"), ExtResource("41_fot78"), ExtResource("42_kpwmt"), ExtResource("43_vibfe")])
+women_names = Array[String](["Adèle", "Adélaïde", "Alix", "Anna", "Anne-Marie", "Blanche", "Béatrix", "Camille", "Céleste", "Élisabeth", "Émilie", "Eulalie", "Florence", "Herminie", "Hortence", "Isaure", "Lucienne", "Malvina", "Marguerite", "Maria", "Mina", "Nathalie", "Noémie", "Octavie", "Paule", "Rosa", "Sofia", "Victoire", "Victorine", "Virginie"])
+women_jobs = Array[String](["Infirmière", "Cartonière", "Chansonnière", "Commerçante", "Confectionneuse", "Cordonière", "Couturière", "Enseignante", "Gouvernante", "Journaliste", "Lavandière", "Cantinière", "Mathématicienne", "Maïtresse d'école", "Ouvrière", "Piqueuse", "Prostituée", "Vivandière", "Concierge", "Laborantine"])
+
+[node name="ProfileBackground" type="TextureRect" parent="UI/Profiles" unique_id=1548931373]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_78s5d")
+layout_mode = 0
+offset_top = -953.0
+offset_right = 826.0
+texture = SubResource("GradientTexture2D_a0po4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Profiles" unique_id=1316859418]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -542.0
+offset_right = 425.0
+offset_bottom = 2.0
+
+[node name="Picture" type="TextureRect" parent="UI/Profiles/VBoxContainer" unique_id=1063315856]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_ixlro")
+custom_minimum_size = Vector2(284, 395)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("23_4jdxe")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HSeparator" type="HSeparator" parent="UI/Profiles/VBoxContainer" unique_id=2041083965]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4jdxe")
+
+[node name="Surname" type="RichTextLabel" parent="UI/Profiles/VBoxContainer" unique_id=50984361]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_mnp77")
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("24_4jdxe")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Marie"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Job" type="RichTextLabel" parent="UI/Profiles/VBoxContainer" unique_id=1561283440]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_jp5d8")
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 3
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("24_4jdxe")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Infirmière"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HighDynamicCollider" type="CollisionShape3D" parent="." unique_id=76721954]
 unique_name_in_owner = true

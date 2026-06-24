@@ -14,7 +14,6 @@ var first_pos: Vector3
 var first_rot: Vector3
 var revive_pos: Vector3
 var revive_rot: Vector3
-var is_repop_on_communard: Vector3
 var target_communard: Node3D
 var is_active: bool
 
@@ -147,12 +146,18 @@ func play_eyes_effect_and_revive(is_on_communard: bool, is_last_death: bool = fa
 	await get_tree().create_timer(0.5).timeout
 	if is_last_death: return
 	
-	player.revive(revive_pos, revive_rot)
+	var profile_gender: ProfileManager.Gender = ProfileManager.Gender.NoBinary
+	var is_jules: bool = false
 	if is_on_communard:
 		if target_communard is Agent: 
+			profile_gender = get_profile_gender((target_communard as Agent).sexe - 1)
 			delete_swaped_communard(target_communard)
 		elif target_communard is Npc:
+			is_jules = target_communard.npc_name == Npc.NpcName.Jules
+			profile_gender = get_profile_gender((target_communard as Npc).gender)
 			delete_npc(target_communard)
+	
+	player.revive(revive_pos, revive_rot, profile_gender, is_jules)
 	is_active = false
 	if fall_twn: fall_twn.kill()
 	if fall_rot_twn: fall_rot_twn.kill()
@@ -218,3 +223,11 @@ func play_last_death() -> void:
 
 	play_eyes_effect_and_revive(false, true)
 	handle_camera_simple_move()
+
+
+func get_profile_gender(gend: int) -> ProfileManager.Gender:
+	match gend:
+		0: return ProfileManager.Gender.Male
+		1: return ProfileManager.Gender.Female
+		2: return ProfileManager.Gender.NoBinary
+	return ProfileManager.Gender.NoBinary
