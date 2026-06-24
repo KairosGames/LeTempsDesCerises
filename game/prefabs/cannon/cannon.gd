@@ -108,10 +108,10 @@ func _physics_process(delta: float) -> void:
 
 func _shoot() -> void:
 	if _is_first_shoot:
-		is_ready_to_shoot_in_cinematic.emit()
 		_is_first_shoot = false
 		reload_progress = 0
 		await (GameManager.instance.all_states[1] as GameState01).game_ready_cannon_shoot
+		is_ready_to_shoot_in_cinematic.emit()
 	await get_tree().create_timer(delay_before_shoot).timeout
 	shoot.emit()
 	animation.play("shoot")
