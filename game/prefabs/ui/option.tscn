@@ -18,10 +18,26 @@
 [sub_resource type="GDScript" id="GDScript_8buk6"]
 script/source = "extends Control
 
+@export var to_restore: PanelContainer
 
 func _input(event: InputEvent) -> void:
 	if visible and event.is_action(\"ui_cancel\"):
 		hide()
+		if to_restore: to_restore.show()
+"
+
+[sub_resource type="GDScript" id="GDScript_pjeai"]
+resource_name = "GamepadOnly"
+script/source = "extends TextureRect
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouse or event is InputEventKey: 
+		hide()
+	if event is InputEventJoypadButton: 
+		show()
+	if event is InputEventJoypadMotion:
+		var joypad_motion: InputEventJoypadMotion = event
+		if abs(joypad_motion.axis_value) > 0.5: show()
 "
 
 [sub_resource type="GDScript" id="GDScript_6k6s7"]
@@ -75,7 +91,6 @@ font_size = 24
 font_color = Color(0, 0, 0, 1)
 
 [node name="Option" type="Control" unique_id=1520904555]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -98,18 +113,22 @@ script = ExtResource("4_srh7j")
 metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
 
 [node name="LEFT" type="TextureRect" parent="." unique_id=835914478]
+visible = false
 layout_mode = 1
 offset_right = 64.0
 offset_bottom = 64.0
 texture = ExtResource("3_8buk6")
+script = SubResource("GDScript_pjeai")
 
 [node name="RIGHT" type="TextureRect" parent="." unique_id=482949590]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 grow_horizontal = 0
 texture = ExtResource("4_pjeai")
+script = SubResource("GDScript_pjeai")
 
 [node name="TabContainer" type="TabContainer" parent="." unique_id=1554205668]
 layout_mode = 1

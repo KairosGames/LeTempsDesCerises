@@ -165,6 +165,28 @@ default_font = ExtResource("14_d52jd")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d52jd"]
 
+[sub_resource type="GDScript" id="GDScript_option_tabs"]
+script/source = "extends TabContainer
+
+func _ready() -> void:
+	tab_changed.connect(_on_tab_changed)
+	call_deferred(\"_focus_current_tab\")
+
+func _on_tab_changed(_tab: int) -> void:
+	call_deferred(\"_focus_current_tab\")
+
+func _focus_current_tab() -> void:
+	var tab_control := get_current_tab_control()
+	if tab_control == null:
+		return
+	var focus_grabber := tab_control.get_node_or_null(\"FocusGraber\")
+	if focus_grabber != null:
+		focus_grabber.grab_focus()
+
+func _process(delta: float) -> void:
+	print(get_viewport().gui_get_hovered_control())
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_7r4gi"]
 size = Vector3(1.4827881, 2.8202515, 0.21357422)
 
@@ -248,13 +270,6 @@ height = 0.25
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4ds3"]
 size = Vector3(9.191589, 0.7286377, 20.975586)
-
-[sub_resource type="GDScript" id="GDScript_ophos"]
-script/source = "extends Node
-
-func _process(delta: float) -> void:
-	print(get_viewport().gui_get_hovered_control())
-"
 
 [node name="GameManager" type="Node" unique_id=1070764289 node_paths=PackedStringArray("all_states")]
 script = ExtResource("1_utpm8")
@@ -840,6 +855,13 @@ vertical_alignment = 1
 [node name="Option" parent="UIManager" unique_id=1520904555 instance=ExtResource("16_o0w5l")]
 z_index = 5
 layout_mode = 1
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 150.0
+offset_bottom = 1114.0
+grow_vertical = 1
+script = SubResource("GDScript_option_tabs")
 
 [node name="BattleDirector" type="Node" parent="." unique_id=952621406]
 script = ExtResource("8_r74ma")
@@ -1373,9 +1395,6 @@ transform = Transform3D(0.87926644, 0, 0.47633028, 0, 1, 0, -0.47633028, 0, 0.87
 
 [node name="CollisionShape3D" parent="DeathZone" index="0" unique_id=447369626]
 shape = SubResource("BoxShape3D_g4ds3")
-
-[node name="Node" type="Node" parent="." unique_id=704946625]
-script = SubResource("GDScript_ophos")
 
 [editable path="States/GameState00/InvisibleWallBarricade"]
 [editable path="States/GameState01/GoToBarricadeArea"]

@@ -658,9 +658,17 @@ label_settings = SubResource("LabelSettings_cmjdo")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="Option" parent="." unique_id=1520904555 instance=ExtResource("13_ip4d6")]
+[node name="Option" parent="." unique_id=1520904555 node_paths=PackedStringArray("to_restore") instance=ExtResource("13_ip4d6")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_top = 150.0
+offset_bottom = 1114.0
+grow_vertical = 1
+to_restore = NodePath("../Menu")
 
 [connection signal="pressed" from="Menu/Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Options" to="." method="_on_options_pressed"]
