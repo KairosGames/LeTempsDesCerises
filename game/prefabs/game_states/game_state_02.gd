@@ -48,6 +48,8 @@ func set_game_for_debug() -> void:
 	if game_manager.curr_barricade == game_manager.first_barricade:
 		for i: int in range(0,3): game_manager.handle_cannon_shoot()
 	set_debug_applied = true
+	set_dynamic_da(0.0, 0.8, 0.0)################### KUWAHARA
+
 
 
 func set_short_timers() -> void:
@@ -74,6 +76,7 @@ func allies_arrival() -> void:
 	desactivable_barricade.process_mode = Node.PROCESS_MODE_DISABLED
 	player.can_play = false
 	await run_to_destination(women_arrival_point)
+	set_dynamic_da(0.8, 0.2, 8.0)################### KUWAHARA
 	launch_women()
 	louise_detection_area.monitoring = true
 	var target_point: Vector3 = women_arrival_point.global_position + women_arrival_point.basis.z
@@ -105,6 +108,7 @@ func allies_arrival() -> void:
 	launch_kill_all_versaillais()
 	##################################################### SECURITÉ DE TIMER A METTRE LA
 	await wait_until(is_there_no_enemies)
+	set_dynamic_da(0.2, 0.0, 1.0)################### KUWAHARA
 	await wait(1.0)
 	set_active_agents(true, false)
 
@@ -171,6 +175,7 @@ func launch_women_dialogue() -> void:
 
 func launch_last_battle_phase() -> void:
 	set_active_agents(true, true)
+	set_dynamic_da(0.0, 0.2, 0.0)################### KUWAHARA
 
 	Wwise.set_state("MusicVoicePlaying", "P4_1_Fight")
 	Wwise.set_state("Music_State", "Phase4")
@@ -191,22 +196,32 @@ func launch_last_battle_phase() -> void:
 	game_manager.cannon.move_to_second_path()
 	game_manager.cannon.enabled = true
 	player.can_die = true
+	await wait(5.0)
+	await wait_until(is_canon_in_position)
+	set_dynamic_da(0.2, 0.4, 2.0)################### KUWAHARA
 	await wait_until(is_barricade_damaged)
+	set_dynamic_da(0.4, 0.6, 0.0)################### KUWAHARA
 
 	############ FOR DEBUG#########################
 	add_on_process(add_worker_on_cannon)
 
 	battle_director.go_next_covers_activation() ################################### Barricade 2 endommagée
 	await wait_until(is_barricade_very_damaged)
+	set_dynamic_da(0.6, 0.8, 0.0)################### KUWAHARA
 	battle_director.go_next_covers_activation() ################################### Barricade 2 très endommagée
 	await wait_signal(game_manager.second_barricade.just_destroyed)
-
+	set_dynamic_da(0.8, 1.0, 0.0)################### KUWAHARA
+	
 	############ FOR DEBUG#########################
 	clean_process()
 
 	game_manager.cannon.enabled = false
 	await wait(10.0)
 	battle_director.go_next_covers_activation() ################################# 10s après barricade 2 détruite
+
+
+func is_canon_in_position() -> bool:
+	return game_manager.cannon.move_progress > 0.95
 
 
 func is_barricade_damaged() -> bool:

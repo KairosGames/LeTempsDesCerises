@@ -3,7 +3,7 @@ shader_type spatial;
 render_mode cull_disabled, blend_mix, depth_prepass_alpha;
 
 uniform vec4 color: source_color;
-global uniform float dynamic_da = 0.5;
+//global uniform float dynamic_da = 0.5;
 uniform float dynamic_da_override = 0.0;
 
 group_uniforms Noise;
@@ -37,13 +37,13 @@ void vertex()
     float pulse = sin(t * glitch_speed + phase);
     pulse = sign(pulse) * pow(abs(pulse), 8.0);
     vec3 glitch_offset = random_dir * pulse * glitch_strength;
-    VERTEX += (smooth_offset + glitch_offset) * max(dynamic_da_override, dynamic_da);
+    VERTEX += (smooth_offset + glitch_offset) * dynamic_da_override;//max(dynamic_da_override, dynamic_da);
 }
 
 void fragment()
 {
 	float n = texture(noise_tex, UV * 2.0 + TIME * 0.1).r;
 
-	ALBEDO = mix(color.rgb, vec3(0.02 * n),  max(dynamic_da_override, dynamic_da));
+	ALBEDO = mix(color.rgb, vec3(0.02 * n), dynamic_da_override); //max(dynamic_da_override, dynamic_da));
 	ALPHA = color.a; //min(color.a, mix(1.0, 0.6,  max(dynamic_da_override, dynamic_da)));
 }

@@ -218,6 +218,7 @@ func go_to_cover_from_cannon() -> void:
 	await wait_until(is_player_alive)
 	player.can_die = false
 	await wait_voice() # "Attention, ils vont tirer au cannon !"
+	set_dynamic_da(0.0, 0.2, 2.0)################### KUWAHARA
 	ui_manager.set_objective(true, null, "Take cover from the cannon fire")
 	player.can_play = false
 	var dist1: float = player.global_position.distance_squared_to(cannon_shoot_cover1.global_position)
@@ -241,6 +242,7 @@ func go_to_cover_from_cannon() -> void:
 func launch_first_cannon_shoot() -> void:
 	game_ready_cannon_shoot.emit()
 	await wait_signal(game_manager.first_barricade.state_changed)
+	set_dynamic_da(0.2, 0.4, 0.0)################### KUWAHARA
 	for agent: Agent in game_manager.cannon.workers:
 		if not agent or not is_instance_valid(agent): continue
 		agent.can_die = true
@@ -267,10 +269,12 @@ func wait_francois_move() -> void:
 
 func wait_barricade_destruction() -> void:
 	await wait_until(is_barricade_very_damaged)
+	set_dynamic_da(0.4, 0.6, 0.0)################### KUWAHARA
 	battle_director.go_next_covers_activation() ############################################ Barricade très endommagée
 	await wait_until_or_signal(is_first_barricade_destroyed, game_manager.first_barricade.just_destroyed)
 	game_manager.cannon.enabled = false
 	await wait_until_or_signal(is_first_barricade_destroyed, game_manager.first_barricade.just_destroyed)
+	set_dynamic_da(0.6, 0.8, 0.0)################### KUWAHARA
 	battle_director.go_next_covers_activation() ####################################### Barricade détruite
 	Wwise.set_state("BarricadeDestroyed", "PudBarricade")
 

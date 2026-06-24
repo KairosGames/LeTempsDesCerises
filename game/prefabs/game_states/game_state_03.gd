@@ -61,6 +61,8 @@ func set_game_for_debug() -> void:
 	game_manager.cannon._is_first_shoot = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 	set_debug_applied = true
+	set_dynamic_da(0.0, 1.0, 0.0)################### KUWAHARA
+
 
 
 func set_short_timers() -> void:

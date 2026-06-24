@@ -398,6 +398,19 @@ func set_visible_all_agents(is_visible: bool) -> void:
 	for agent: Agent in agents: agent.visible = is_visible
 
 
+func set_dynamic_da(from: float, to: float, time: float) -> void:
+	var adder: float = 0.2 if to - from > 0 else -0.2
+	var steps: int = abs(to - from) / 0.2
+	var t: float = time / steps
+	var cursor: float = from
+	for i: int in range(steps):
+		await wait(t)
+		cursor += adder
+		RenderingServer.global_shader_parameter_set("dynamic_da", cursor)
+	if cursor != to: printerr("INCONSISTENCY ON SET DYNAMIC DA !")
+	RenderingServer.global_shader_parameter_set("dynamic_da", to)
+
+
 ##################### FOR DEBUG ##############################
 func debug_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("go_next_step") and game_manager.is_game_playing() and game_manager.use_narrative:
