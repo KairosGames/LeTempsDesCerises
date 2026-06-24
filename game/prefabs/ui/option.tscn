@@ -1,0 +1,1489 @@
+[gd_scene format=3 uid="uid://bac3gborw4s1l"]
+
+[ext_resource type="Theme" uid="uid://b2cmbq2awrshk" path="res://prefabs/ui/home/option_theme.tres" id="1_vl0u7"]
+[ext_resource type="Texture2D" uid="uid://dk6x2xw8d4xon" path="res://sources/images/icons/inputs/Xbox Series/xbox_lb.svg" id="3_8buk6"]
+[ext_resource type="Texture2D" uid="uid://du2iid4r0lkrx" path="res://sources/images/icons/inputs/Xbox Series/xbox_rb.svg" id="4_pjeai"]
+[ext_resource type="Script" uid="uid://c6sw1tpfwtx8n" path="res://scripts/FocusGraber.gd" id="4_srh7j"]
+[ext_resource type="Texture2D" uid="uid://dscc3m83s7olb" path="res://sources/images/textures/ui/slider_area.png" id="5_ewthg"]
+[ext_resource type="FontFile" uid="uid://6al2yonhh1go" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Black.otf" id="6_fucih"]
+[ext_resource type="Texture2D" uid="uid://df56u8vr06e5o" path="res://sources/images/textures/ui/slider_grabber.png" id="7_71xgv"]
+[ext_resource type="Texture2D" uid="uid://dhojlb5ou38nt" path="res://sources/images/textures/ui/slider_grabber_highlight.png" id="8_rdxtg"]
+[ext_resource type="Script" uid="uid://bn2k5bb507wqd" path="res://sounds/scripts/audio_options.gd" id="9_77rmo"]
+[ext_resource type="Script" uid="uid://0ajdf8gn4dyo" path="res://prefabs/ui/home/video_options.gd" id="10_0le64"]
+[ext_resource type="Texture2D" uid="uid://c2ugcp65jnl3a" path="res://sources/images/icons/inputs/Keyboard & Mouse/keyboard.svg" id="11_ypldv"]
+[ext_resource type="Texture2D" uid="uid://cfimnqk146jpn" path="res://sources/images/icons/inputs/Xbox Series/controller_xboxseries.svg" id="12_8c601"]
+[ext_resource type="PackedScene" uid="uid://bqvmhyi4hni80" path="res://prefabs/ui/home/input_link.tscn" id="13_qngj8"]
+[ext_resource type="Script" uid="uid://cu6sadsjd2uxg" path="res://prefabs/ui/home/game_options.gd" id="14_gameo"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_okf6m"]
+action = &"ui_cancel"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_6k8sm"]
+events = [SubResource("InputEventAction_okf6m")]
+
+[sub_resource type="GDScript" id="GDScript_6k6s7"]
+script/source = "extends TabContainer
+
+func _ready() -> void:
+	tab_changed.connect(_on_tab_changed)
+	call_deferred(\"_focus_current_tab\")
+
+func _on_tab_changed(_tab: int) -> void:
+	call_deferred(\"_focus_current_tab\")
+
+func _focus_current_tab() -> void:
+	var tab_control := get_current_tab_control()
+	if tab_control == null:
+		return
+	var focus_grabber := tab_control.get_node_or_null(\"FocusGraber\")
+	if focus_grabber != null:
+		focus_grabber.grab_focus()
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_ip4d6"]
+font = ExtResource("6_fucih")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_key_mapping_options"]
+script/source = "extends VBoxContainer
+
+func _ready() -> void:
+	var components := get_node(\"ScrollContainer/Components\")
+	for component in components.get_children():
+		var revert_button := component.get_node_or_null(\"Revert\") as Button
+		if revert_button != null:
+			revert_button.pressed.connect(_on_revert_pressed.bind(component))
+
+func _on_revert_pressed(component: Node) -> void:
+	for input_name in [\"Keyboard\", \"Gamepad\"]:
+		var input_link := component.get_node_or_null(input_name)
+		if input_link == null:
+			continue
+		if input_link.has_method(\"reset_to_default\"):
+			input_link.reset_to_default()
+		elif input_link.has_method(\"reset_binding\"):
+			input_link.reset_binding()
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_ju5sp"]
+font = ExtResource("6_fucih")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
+
+[node name="Option" type="Control" unique_id=1520904555]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -633.0
+offset_top = -482.0
+offset_right = 633.0
+offset_bottom = 482.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_vl0u7")
+
+[node name="FocusGraber" type="Control" parent="." unique_id=1717495998]
+visible = false
+anchors_preset = 0
+script = ExtResource("4_srh7j")
+metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
+
+[node name="Quit" type="Button" parent="." unique_id=966053759]
+visible = false
+layout_mode = 0
+shortcut = SubResource("Shortcut_6k8sm")
+
+[node name="LEFT" type="TextureRect" parent="." unique_id=835914478]
+layout_mode = 1
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("3_8buk6")
+
+[node name="RIGHT" type="TextureRect" parent="." unique_id=482949590]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+texture = ExtResource("4_pjeai")
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1554205668]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+script = SubResource("GDScript_6k6s7")
+
+[node name="GAME" type="VBoxContainer" parent="TabContainer" unique_id=1777303269]
+layout_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("14_gameo")
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/GAME" unique_id=1069249731]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 2
+follow_focus = true
+
+[node name="Settings" type="VBoxContainer" parent="TabContainer/GAME/ScrollContainer" unique_id=2045795866]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 64
+
+[node name="FocusGraber" type="Control" parent="TabContainer/GAME/ScrollContainer/Settings" unique_id=177550572 node_paths=PackedStringArray("control")]
+layout_mode = 2
+script = ExtResource("4_srh7j")
+control = NodePath("../Common/ViewSensibility/Slider")
+metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
+
+[node name="General" type="VBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings" unique_id=1592566275]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="GeneralTitle" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/General" unique_id=557287450]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/GAME/ScrollContainer/Settings/General/GeneralTitle" unique_id=2031057104]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ewthg")
+expand_mode = 1
+
+[node name="CommonTitle" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/General/GeneralTitle" unique_id=983661516]
+layout_mode = 2
+text = "GENERAL"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/GAME/ScrollContainer/Settings/General/GeneralTitle" unique_id=1809592677]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ewthg")
+expand_mode = 1
+flip_h = true
+
+[node name="Subtitles" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/General" unique_id=292926302]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/General/Subtitles" unique_id=1142001805]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "SUBTITLES"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/GAME/ScrollContainer/Settings/General/Subtitles" unique_id=761126026]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../Actions/GameReset")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Blood/CheckButton")
+button_pressed = true
+
+[node name="Blood" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/General" unique_id=366884736]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/General/Blood" unique_id=441295489]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "BLOOD"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/GAME/ScrollContainer/Settings/General/Blood" unique_id=1669097617]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../Subtitles/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../Common/ViewSensibility/Slider")
+button_pressed = true
+
+[node name="Common" type="VBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings" unique_id=775283948]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="CommonTitle" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Common" unique_id=2067978296]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/GAME/ScrollContainer/Settings/Common/CommonTitle" unique_id=1053447893]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ewthg")
+expand_mode = 1
+
+[node name="CommonTitle" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Common/CommonTitle" unique_id=1828888767]
+layout_mode = 2
+text = "COMMON"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/GAME/ScrollContainer/Settings/Common/CommonTitle" unique_id=634221407]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ewthg")
+expand_mode = 1
+flip_h = true
+
+[node name="ViewSensibility" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Common" unique_id=1378317247]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Common/ViewSensibility" unique_id=588014117]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "VIEW SENSIBILITY"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="TabContainer/GAME/ScrollContainer/Settings/Common/ViewSensibility" unique_id=949075423]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../General/Blood/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../AimingSensibility/Slider")
+theme_override_icons/grabber = ExtResource("7_71xgv")
+theme_override_icons/grabber_highlight = ExtResource("8_rdxtg")
+theme_override_icons/grabber_disabled = ExtResource("7_71xgv")
+min_value = 1.0
+max_value = 20.0
+step = 0.1
+value = 7.0
+
+[node name="Value" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Common/ViewSensibility" unique_id=2018687081]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="AimingSensibility" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Common" unique_id=1381729446]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Common/AimingSensibility" unique_id=1601524095]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "AIMING SENSIBILITY"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="TabContainer/GAME/ScrollContainer/Settings/Common/AimingSensibility" unique_id=709372684]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../ViewSensibility/Slider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Inverted/CheckButton")
+theme_override_icons/grabber = ExtResource("7_71xgv")
+theme_override_icons/grabber_highlight = ExtResource("8_rdxtg")
+theme_override_icons/grabber_disabled = ExtResource("7_71xgv")
+min_value = 1.0
+max_value = 20.0
+step = 0.1
+value = 7.0
+
+[node name="Value" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Common/AimingSensibility" unique_id=287079600]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Inverted" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Common" unique_id=2061015953]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Common/Inverted" unique_id=1767174265]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "INVERTED"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/GAME/ScrollContainer/Settings/Common/Inverted" unique_id=1620740740]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../AimingSensibility/Slider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../HMultiplier/Slider")
+
+[node name="HMultiplier" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Common" unique_id=1435482395]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Common/HMultiplier" unique_id=119964138]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "H MULTIPLIER"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="TabContainer/GAME/ScrollContainer/Settings/Common/HMultiplier" unique_id=622725427]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../Inverted/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../VMultiplier/Slider")
+theme_override_icons/grabber = ExtResource("7_71xgv")
+theme_override_icons/grabber_highlight = ExtResource("8_rdxtg")
+theme_override_icons/grabber_disabled = ExtResource("7_71xgv")
+min_value = 0.1
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Value" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Common/HMultiplier" unique_id=156683237]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="VMultiplier" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Common" unique_id=2115410991]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Common/VMultiplier" unique_id=53770386]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "V MULTIPLIER"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="TabContainer/GAME/ScrollContainer/Settings/Common/VMultiplier" unique_id=580591821]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../HMultiplier/Slider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../Keyboard/AimToggleKM/CheckButton")
+theme_override_icons/grabber = ExtResource("7_71xgv")
+theme_override_icons/grabber_highlight = ExtResource("8_rdxtg")
+theme_override_icons/grabber_disabled = ExtResource("7_71xgv")
+min_value = 0.1
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="Value" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Common/VMultiplier" unique_id=2071083302]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="Keyboard" type="VBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings" unique_id=1711668732]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="KeyboardTitle" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Keyboard" unique_id=1909021502]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/GAME/ScrollContainer/Settings/Keyboard/KeyboardTitle" unique_id=1845927137]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ewthg")
+expand_mode = 1
+
+[node name="CommonTitle" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Keyboard/KeyboardTitle" unique_id=2002997425]
+layout_mode = 2
+text = "KEYBOARD"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/GAME/ScrollContainer/Settings/Keyboard/KeyboardTitle" unique_id=1884111923]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ewthg")
+expand_mode = 1
+flip_h = true
+
+[node name="AimToggleKM" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Keyboard" unique_id=347343709]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Keyboard/AimToggleKM" unique_id=729239447]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "AIM TOGGLE"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/GAME/ScrollContainer/Settings/Keyboard/AimToggleKM" unique_id=1754338631]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../Common/VMultiplier/Slider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../RunToggleKM/CheckButton")
+button_pressed = true
+
+[node name="RunToggleKM" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Keyboard" unique_id=1452464206]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Keyboard/RunToggleKM" unique_id=461440098]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "RUN TOGGLE"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/GAME/ScrollContainer/Settings/Keyboard/RunToggleKM" unique_id=1652110249]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../AimToggleKM/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../Gamepad/DeadzoneLeftStick/Slider")
+
+[node name="Gamepad" type="VBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings" unique_id=1462901807]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="GamepadTitle" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad" unique_id=245744891]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/GamepadTitle" unique_id=821799411]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ewthg")
+expand_mode = 1
+
+[node name="CommonTitle" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/GamepadTitle" unique_id=445855267]
+layout_mode = 2
+text = "GAMEPAD"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/GamepadTitle" unique_id=357824910]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ewthg")
+expand_mode = 1
+flip_h = true
+
+[node name="DeadzoneLeftStick" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad" unique_id=178624653]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/DeadzoneLeftStick" unique_id=342704305]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "DEADZONE LEFT STICK"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/DeadzoneLeftStick" unique_id=437367343]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../Keyboard/RunToggleKM/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../DeadzoneRightStick/Slider")
+theme_override_icons/grabber = ExtResource("7_71xgv")
+theme_override_icons/grabber_highlight = ExtResource("8_rdxtg")
+theme_override_icons/grabber_disabled = ExtResource("7_71xgv")
+min_value = 0.05
+max_value = 0.8
+step = 0.01
+value = 0.2
+
+[node name="Value" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/DeadzoneLeftStick" unique_id=458181101]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="DeadzoneRightStick" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad" unique_id=1902102147]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/DeadzoneRightStick" unique_id=506479226]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "DEADZONE RIGHT STICK"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="Slider" type="HSlider" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/DeadzoneRightStick" unique_id=1492240712]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../DeadzoneLeftStick/Slider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../AimToggleGamepad/CheckButton")
+theme_override_icons/grabber = ExtResource("7_71xgv")
+theme_override_icons/grabber_highlight = ExtResource("8_rdxtg")
+theme_override_icons/grabber_disabled = ExtResource("7_71xgv")
+min_value = 0.05
+max_value = 0.8
+step = 0.01
+value = 0.2
+
+[node name="Value" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/DeadzoneRightStick" unique_id=1084128874]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="AimToggleGamepad" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad" unique_id=1752606872]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/AimToggleGamepad" unique_id=686137989]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "AIM TOGGLE"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/AimToggleGamepad" unique_id=812806613]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../DeadzoneRightStick/Slider")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../RunToggleGamepad/CheckButton")
+
+[node name="RunToggleGamepad" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad" unique_id=553205507]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/RunToggleGamepad" unique_id=497239162]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "RUN TOGGLE"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/GAME/ScrollContainer/Settings/Gamepad/RunToggleGamepad" unique_id=676885117]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../AimToggleGamepad/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../Gameplay/PostureSwitchToggleKM/CheckButton")
+button_pressed = true
+
+[node name="Gameplay" type="VBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings" unique_id=1321755802]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="GameplayTitle" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay" unique_id=946466378]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay/GameplayTitle" unique_id=1347343032]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ewthg")
+expand_mode = 1
+
+[node name="CommonTitle" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay/GameplayTitle" unique_id=217745184]
+layout_mode = 2
+text = "GAMEPLAY"
+label_settings = SubResource("LabelSettings_ip4d6")
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay/GameplayTitle" unique_id=65043916]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_ewthg")
+expand_mode = 1
+flip_h = true
+
+[node name="PostureSwitchToggleKM" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay" unique_id=2106709475]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay/PostureSwitchToggleKM" unique_id=1824154019]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "POSTURE SWITCH TOGGLE"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay/PostureSwitchToggleKM" unique_id=1094243095]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../Gamepad/RunToggleGamepad/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../AimSmooth/CheckButton")
+button_pressed = true
+
+[node name="AimSmooth" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay" unique_id=1952277604]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay/AimSmooth" unique_id=20483805]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "AIM SMOOTH"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay/AimSmooth" unique_id=32745113]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../PostureSwitchToggleKM/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../MovementSmooth/CheckButton")
+button_pressed = true
+
+[node name="MovementSmooth" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay" unique_id=1833337121]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay/MovementSmooth" unique_id=2102820588]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "MOVEMENT SMOOTH"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="TabContainer/GAME/ScrollContainer/Settings/Gameplay/MovementSmooth" unique_id=1789721001]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 1.5
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../AimSmooth/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../Actions/GameReset")
+button_pressed = true
+
+[node name="Actions" type="HBoxContainer" parent="TabContainer/GAME/ScrollContainer/Settings" unique_id=2028963671]
+layout_mode = 2
+
+[node name="GameReset" type="Button" parent="TabContainer/GAME/ScrollContainer/Settings/Actions" unique_id=1575313768]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../Gameplay/MovementSmooth/CheckButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../General/Blood/CheckButton")
+theme_type_variation = &"FlatButton"
+text = "RESET"
+
+[node name="AUDIO" type="VBoxContainer" parent="TabContainer" unique_id=1380944744]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 32
+script = ExtResource("9_77rmo")
+metadata/_tab_index = 1
+
+[node name="FocusGraber" type="Control" parent="TabContainer/AUDIO" unique_id=1684722482 node_paths=PackedStringArray("control")]
+layout_mode = 2
+script = ExtResource("4_srh7j")
+control = NodePath("../MasterVolume/Slider")
+metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
+
+[node name="MasterVolume" type="HBoxContainer" parent="TabContainer/AUDIO" unique_id=1606071266]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/AUDIO/MasterVolume" unique_id=307058513]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MASTER"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 2
+
+[node name="Slider" type="HSlider" parent="TabContainer/AUDIO/MasterVolume" unique_id=1030331098]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.0
+theme_override_icons/grabber = ExtResource("7_71xgv")
+theme_override_icons/grabber_highlight = ExtResource("8_rdxtg")
+theme_override_icons/grabber_disabled = ExtResource("7_71xgv")
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="MusicVolume" type="HBoxContainer" parent="TabContainer/AUDIO" unique_id=1313227375]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/AUDIO/MusicVolume" unique_id=18312870]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MUSIC"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 2
+
+[node name="Slider" type="HSlider" parent="TabContainer/AUDIO/MusicVolume" unique_id=196690901]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.0
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="EffectVolume" type="HBoxContainer" parent="TabContainer/AUDIO" unique_id=13574019]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/AUDIO/EffectVolume" unique_id=1306774148]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "EFFECT"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 2
+
+[node name="Slider" type="HSlider" parent="TabContainer/AUDIO/EffectVolume" unique_id=1060337457]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.0
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="VoiceVolume" type="HBoxContainer" parent="TabContainer/AUDIO" unique_id=1342124228]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/AUDIO/VoiceVolume" unique_id=1482638539]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "VOICE"
+label_settings = SubResource("LabelSettings_ip4d6")
+horizontal_alignment = 2
+
+[node name="Slider" type="HSlider" parent="TabContainer/AUDIO/VoiceVolume" unique_id=230475850]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 3.0
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="Actions" type="HBoxContainer" parent="TabContainer/AUDIO" unique_id=1761221495]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Reset" type="Button" parent="TabContainer/AUDIO/Actions" unique_id=56653983]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"FlatButton"
+text = "Reset"
+
+[node name="VIDEO" type="VBoxContainer" parent="TabContainer" unique_id=150864868]
+visible = false
+layout_mode = 2
+script = ExtResource("10_0le64")
+metadata/_tab_index = 2
+
+[node name="FocusGraber" type="Control" parent="TabContainer/VIDEO" unique_id=2081555608 node_paths=PackedStringArray("control")]
+layout_mode = 2
+script = ExtResource("4_srh7j")
+control = NodePath("../Settings/DisplayMode/Windowed")
+metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
+
+[node name="Actions" type="HBoxContainer" parent="TabContainer/VIDEO" unique_id=1194194821]
+layout_mode = 2
+theme = ExtResource("1_vl0u7")
+theme_override_constants/separation = 8
+
+[node name="Apply" type="Button" parent="TabContainer/VIDEO/Actions" unique_id=1805161647]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"FlatButton"
+text = "Apply"
+
+[node name="Cancel" type="Button" parent="TabContainer/VIDEO/Actions" unique_id=1741892222]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"FlatButton"
+text = "Cancel"
+
+[node name="Settings" type="VBoxContainer" parent="TabContainer/VIDEO" unique_id=462777296]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="DisplayMode" type="HBoxContainer" parent="TabContainer/VIDEO/Settings" unique_id=999931449]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/VIDEO/Settings/DisplayMode" unique_id=474934441]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DISPLAY"
+horizontal_alignment = 2
+
+[node name="Windowed" type="Button" parent="TabContainer/VIDEO/Settings/DisplayMode" unique_id=1220389734]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "◀"
+
+[node name="Fullscreen" type="Label" parent="TabContainer/VIDEO/Settings/DisplayMode" unique_id=2071723664]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Window"
+horizontal_alignment = 1
+
+[node name="ExclusiveFullscreen" type="Button" parent="TabContainer/VIDEO/Settings/DisplayMode" unique_id=2138138200]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "▶"
+
+[node name="VSync" type="HBoxContainer" parent="TabContainer/VIDEO/Settings" unique_id=298928358]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/VIDEO/Settings/VSync" unique_id=2129691073]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "VSYNC"
+horizontal_alignment = 2
+
+[node name="Disabled" type="Button" parent="TabContainer/VIDEO/Settings/VSync" unique_id=1206548999]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "◀"
+
+[node name="Enabled" type="Label" parent="TabContainer/VIDEO/Settings/VSync" unique_id=2022735158]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Disabled"
+horizontal_alignment = 1
+
+[node name="Adaptive" type="Button" parent="TabContainer/VIDEO/Settings/VSync" unique_id=965698685]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "▶"
+
+[node name="MaxFPS" type="HBoxContainer" parent="TabContainer/VIDEO/Settings" unique_id=1503347387]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/VIDEO/Settings/MaxFPS" unique_id=783501977]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FPS LIMIT"
+horizontal_alignment = 2
+
+[node name="Previous" type="Button" parent="TabContainer/VIDEO/Settings/MaxFPS" unique_id=1418001486]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "◀"
+
+[node name="Value" type="Label" parent="TabContainer/VIDEO/Settings/MaxFPS" unique_id=1873085536]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "30"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="TabContainer/VIDEO/Settings/MaxFPS" unique_id=173737418]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "▶"
+
+[node name="ResolutionScale" type="HBoxContainer" parent="TabContainer/VIDEO/Settings" unique_id=1177515181]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/VIDEO/Settings/ResolutionScale" unique_id=1751154666]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RESOLUTION"
+horizontal_alignment = 2
+
+[node name="Previous" type="Button" parent="TabContainer/VIDEO/Settings/ResolutionScale" unique_id=445519169]
+modulate = Color(0.376471, 1, 0.376471, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "◀"
+
+[node name="Value" type="Label" parent="TabContainer/VIDEO/Settings/ResolutionScale" unique_id=2024380000]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Native"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="TabContainer/VIDEO/Settings/ResolutionScale" unique_id=1497287575]
+modulate = Color(1, 0.376471, 0.376471, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "▶"
+
+[node name="ScaleFilter" type="HBoxContainer" parent="TabContainer/VIDEO/Settings" unique_id=2069050989]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/VIDEO/Settings/ScaleFilter" unique_id=597624659]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "UPSCALE"
+horizontal_alignment = 2
+
+[node name="Previous" type="Button" parent="TabContainer/VIDEO/Settings/ScaleFilter" unique_id=1697358132]
+modulate = Color(0.376471, 1, 0.376471, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "◀"
+
+[node name="Value" type="Label" parent="TabContainer/VIDEO/Settings/ScaleFilter" unique_id=194317937]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bilinear"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="TabContainer/VIDEO/Settings/ScaleFilter" unique_id=2041771124]
+modulate = Color(1, 1, 0.313726, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "▶"
+
+[node name="TAA" type="HBoxContainer" parent="TabContainer/VIDEO/Settings" unique_id=137896278]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/VIDEO/Settings/TAA" unique_id=1062870976]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TA"
+horizontal_alignment = 2
+
+[node name="Previous" type="Button" parent="TabContainer/VIDEO/Settings/TAA" unique_id=1501019905]
+modulate = Color(0.376471, 1, 0.376471, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "◀"
+
+[node name="Value" type="Label" parent="TabContainer/VIDEO/Settings/TAA" unique_id=1772606784]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Disabled"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="TabContainer/VIDEO/Settings/TAA" unique_id=93306193]
+modulate = Color(1, 1, 0.313726, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "▶"
+
+[node name="MSAA" type="HBoxContainer" parent="TabContainer/VIDEO/Settings" unique_id=1740534426]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/VIDEO/Settings/MSAA" unique_id=1898321916]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MSAA"
+horizontal_alignment = 2
+
+[node name="Previous" type="Button" parent="TabContainer/VIDEO/Settings/MSAA" unique_id=1807919086]
+modulate = Color(0.376471, 1, 0.376471, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "◀"
+
+[node name="Value" type="Label" parent="TabContainer/VIDEO/Settings/MSAA" unique_id=2067806546]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Disabled"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="TabContainer/VIDEO/Settings/MSAA" unique_id=852885549]
+modulate = Color(1, 1, 0.313726, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "▶"
+
+[node name="FXAA" type="HBoxContainer" parent="TabContainer/VIDEO/Settings" unique_id=90128273]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/VIDEO/Settings/FXAA" unique_id=693873110]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FA"
+horizontal_alignment = 2
+
+[node name="Previous" type="Button" parent="TabContainer/VIDEO/Settings/FXAA" unique_id=103629503]
+modulate = Color(0.376471, 1, 0.376471, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "◀"
+
+[node name="Value" type="Label" parent="TabContainer/VIDEO/Settings/FXAA" unique_id=437773241]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Disabled"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="TabContainer/VIDEO/Settings/FXAA" unique_id=261529363]
+modulate = Color(0.376471, 1, 0.376471, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "▶"
+
+[node name="SSAO" type="HBoxContainer" parent="TabContainer/VIDEO/Settings" unique_id=1623988551]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/VIDEO/Settings/SSAO" unique_id=1795262027]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SSAO"
+horizontal_alignment = 2
+
+[node name="Previous" type="Button" parent="TabContainer/VIDEO/Settings/SSAO" unique_id=817978090]
+modulate = Color(0.376471, 1, 0.376471, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "◀"
+
+[node name="Value" type="Label" parent="TabContainer/VIDEO/Settings/SSAO" unique_id=1298443380]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Disabled"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="TabContainer/VIDEO/Settings/SSAO" unique_id=1437355709]
+modulate = Color(1, 1, 0.313726, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "▶"
+
+[node name="SSIL" type="HBoxContainer" parent="TabContainer/VIDEO/Settings" unique_id=330259265]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TabContainer/VIDEO/Settings/SSIL" unique_id=1579306847]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SSIL"
+horizontal_alignment = 2
+
+[node name="Previous" type="Button" parent="TabContainer/VIDEO/Settings/SSIL" unique_id=1868486991]
+modulate = Color(0.376471, 1, 0.376471, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "◀"
+
+[node name="Value" type="Label" parent="TabContainer/VIDEO/Settings/SSIL" unique_id=1717129370]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Disabled"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="TabContainer/VIDEO/Settings/SSIL" unique_id=518769769]
+modulate = Color(1, 0.627451, 0.25098, 1)
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "▶"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/VIDEO/Settings" unique_id=2102504633]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="KEY_MAPPING" type="VBoxContainer" parent="TabContainer" unique_id=64057496]
+visible = false
+layout_mode = 2
+script = SubResource("GDScript_key_mapping_options")
+metadata/_tab_index = 3
+
+[node name="Header" type="HBoxContainer" parent="TabContainer/KEY_MAPPING" unique_id=1051273902]
+layout_mode = 2
+
+[node name="LabelSpacer" type="Control" parent="TabContainer/KEY_MAPPING/Header" unique_id=968024465]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Keyboard" type="TextureRect" parent="TabContainer/KEY_MAPPING/Header" unique_id=582785311]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("11_ypldv")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Gamepad" type="TextureRect" parent="TabContainer/KEY_MAPPING/Header" unique_id=1617492885]
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("12_8c601")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RevertSpacer" type="Control" parent="TabContainer/KEY_MAPPING/Header" unique_id=779149856]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/KEY_MAPPING" unique_id=748531876]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Components" type="VBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer" unique_id=203080743]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Foward" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=1720139946]
+layout_mode = 2
+
+[node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Foward" unique_id=184272557]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "FORWARD"
+label_settings = SubResource("LabelSettings_ju5sp")
+
+[node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Foward" unique_id=1999302036 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Foward" unique_id=1225472867 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+gamepad = true
+
+[node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Foward" unique_id=576378843]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Reset to default"
+theme_override_font_sizes/font_size = 48
+text = "↺"
+
+[node name="Backward" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=1963359160]
+layout_mode = 2
+
+[node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Backward" unique_id=1752034891]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BACKWARD"
+label_settings = SubResource("LabelSettings_ju5sp")
+
+[node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Backward" unique_id=986551863 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"move_back"
+
+[node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Backward" unique_id=1797803937 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"move_back"
+gamepad = true
+
+[node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Backward" unique_id=324696364]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Reset to default"
+theme_override_font_sizes/font_size = 48
+text = "↺"
+
+[node name="Left" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=2102227228]
+layout_mode = 2
+
+[node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Left" unique_id=1216377529]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LEFT"
+label_settings = SubResource("LabelSettings_ju5sp")
+
+[node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Left" unique_id=1184765602 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"move_left"
+
+[node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Left" unique_id=602374067 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"move_left"
+gamepad = true
+
+[node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Left" unique_id=693575830]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Reset to default"
+theme_override_font_sizes/font_size = 48
+text = "↺"
+
+[node name="Right" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=1261764775]
+layout_mode = 2
+
+[node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Right" unique_id=1684044619]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RIGHT"
+label_settings = SubResource("LabelSettings_ju5sp")
+
+[node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Right" unique_id=1971548744 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"move_right"
+
+[node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Right" unique_id=754772890 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"move_right"
+gamepad = true
+
+[node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Right" unique_id=2031913790]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Reset to default"
+theme_override_font_sizes/font_size = 48
+text = "↺"
+
+[node name="Crouch" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=680961489]
+layout_mode = 2
+
+[node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Crouch" unique_id=369217562]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CROUCH"
+label_settings = SubResource("LabelSettings_ju5sp")
+
+[node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Crouch" unique_id=2081608135 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"crouch"
+
+[node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Crouch" unique_id=371400213 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"crouch"
+gamepad = true
+
+[node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Crouch" unique_id=694819394]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Reset to default"
+theme_override_font_sizes/font_size = 48
+text = "↺"
+
+[node name="Prone" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=640130632]
+layout_mode = 2
+
+[node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Prone" unique_id=1531375157]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PRONE"
+label_settings = SubResource("LabelSettings_ju5sp")
+
+[node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Prone" unique_id=1038824623 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"prone"
+
+[node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Prone" unique_id=45400799 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"prone"
+gamepad = true
+
+[node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Prone" unique_id=364524657]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Reset to default"
+theme_override_font_sizes/font_size = 48
+text = "↺"
+
+[node name="Jump" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=395882469]
+layout_mode = 2
+
+[node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Jump" unique_id=1724323015]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "JUMP"
+label_settings = SubResource("LabelSettings_ju5sp")
+
+[node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Jump" unique_id=1663985582 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"jump"
+
+[node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Jump" unique_id=2041283501 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"jump"
+gamepad = true
+
+[node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Jump" unique_id=349187476]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Reset to default"
+theme_override_font_sizes/font_size = 48
+text = "↺"
+
+[node name="Run" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=475659430]
+layout_mode = 2
+
+[node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Run" unique_id=256531125]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RUN"
+label_settings = SubResource("LabelSettings_ju5sp")
+
+[node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Run" unique_id=1175634648 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"run"
+
+[node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Run" unique_id=2104959017 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"run"
+gamepad = true
+
+[node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Run" unique_id=1147380395]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Reset to default"
+theme_override_font_sizes/font_size = 48
+text = "↺"
+
+[node name="Reload" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=97522736]
+layout_mode = 2
+
+[node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Reload" unique_id=274073521]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "RELOAD"
+label_settings = SubResource("LabelSettings_ju5sp")
+
+[node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Reload" unique_id=583679055 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"reload"
+
+[node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Reload" unique_id=123066690 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"reload"
+gamepad = true
+
+[node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Reload" unique_id=2142687483]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Reset to default"
+theme_override_font_sizes/font_size = 48
+text = "↺"
+
+[node name="Previous" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=815204684]
+layout_mode = 2
+
+[node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Previous" unique_id=1992655001]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PREVIOUS"
+label_settings = SubResource("LabelSettings_ju5sp")
+
+[node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Previous" unique_id=897459061 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"choice_surrender"
+
+[node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Previous" unique_id=648207519 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"choice_surrender"
+gamepad = true
+
+[node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Previous" unique_id=1499289453]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Reset to default"
+theme_override_font_sizes/font_size = 48
+text = "↺"
+
+[node name="Next" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=231743293]
+layout_mode = 2
+
+[node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Next" unique_id=1834169140]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "NEXT"
+label_settings = SubResource("LabelSettings_ju5sp")
+
+[node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Next" unique_id=2128480442 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"choice_fight_to_death"
+
+[node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Next" unique_id=1165920797 instance=ExtResource("13_qngj8")]
+layout_mode = 2
+size_flags_horizontal = 6
+action = &"choice_fight_to_death"
+gamepad = true
+
+[node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Next" unique_id=336400494]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "Reset to default"
+theme_override_font_sizes/font_size = 48
+text = "↺"
+
+[connection signal="pressed" from="Quit" to="." method="hide"]
+[connection signal="value_changed" from="TabContainer/AUDIO/MasterVolume/Slider" to="TabContainer/AUDIO" method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/AUDIO/MusicVolume/Slider" to="TabContainer/AUDIO" method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/AUDIO/EffectVolume/Slider" to="TabContainer/AUDIO" method="_on_effect_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/AUDIO/VoiceVolume/Slider" to="TabContainer/AUDIO" method="_on_voice_slider_value_changed"]
+[connection signal="pressed" from="TabContainer/AUDIO/Actions/Reset" to="TabContainer/AUDIO" method="_on_reset_pressed"]

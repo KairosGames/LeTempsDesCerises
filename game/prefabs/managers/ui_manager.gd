@@ -4,8 +4,8 @@ class_name UIManager extends Control
 @onready var pause_container: PanelContainer = %PauseContainer
 @onready var tutorial_km: PanelContainer = %TutorialKeyboardMouse
 @onready var tutorial_gpad: PanelContainer = %TutorialGamepad
-@onready var options: ButtonBehavior = %Options
-@onready var quit: ButtonBehavior = %Quit
+@onready var options: Button = %Options
+@onready var quit: Button = %Quit
 @onready var objective_container: VBoxContainer = %ObjectiveContainer
 @onready var objective_label: RichTextLabel = %ObjectiveLabel
 @onready var objective_target: ObjectiveTarget = %ObjectiveTarget
