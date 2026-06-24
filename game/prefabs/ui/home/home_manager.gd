@@ -78,6 +78,9 @@ func _on_play_pressed() -> void:
 
 func _on_options_pressed() -> void:
 	_load_game_settings_controls()
+	var video_options: Node = option.get_node(^"VIDEO")
+	if video_options.has_method("load_video_settings"):
+		video_options.call("load_video_settings")
 	menu.hide()
 	option.show()
 	references.hide()

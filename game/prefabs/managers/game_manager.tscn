@@ -17,12 +17,17 @@
 [ext_resource type="Script" uid="uid://mmnkjdka5ak0" path="res://scripts/dark_fade.gd" id="8_kkeqv"]
 [ext_resource type="Script" uid="uid://xileblfnbaed" path="res://prefabs/managers/battle_director.gd" id="8_r74ma"]
 [ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="10_83msq"]
+[ext_resource type="Theme" uid="uid://cxp26janux3yv" path="res://prefabs/ui/home/home_theme.tres" id="11_nre8i"]
 [ext_resource type="Texture2D" uid="uid://xldcsu5sm21h" path="res://prefabs/game_states/gm_usables/bgquest.png" id="11_y7efs"]
 [ext_resource type="Shader" uid="uid://c3neb6a2e0vbg" path="res://prefabs/managers/ui_out_line.gdshader" id="12_jh506"]
 [ext_resource type="Script" uid="uid://dyoxltkd86h4w" path="res://prefabs/managers/credits.gd" id="13_5gurq"]
 [ext_resource type="FontFile" uid="uid://lemtkmvsvwbl" path="res://sources/fonts/BodoniModa-VariableFont_opsz,wght.ttf" id="14_d52jd"]
+[ext_resource type="FontFile" uid="uid://0yy1ysc8tx6l" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Bold.otf" id="12_vrkal"]
+[ext_resource type="Texture2D" uid="uid://22l74488m5rp" path="res://sources/images/textures/ui/lorem_ipsum_04.png" id="13_o0w5l"]
+[ext_resource type="Texture2D" uid="uid://mk88hreujt3a" path="res://sources/images/textures/ui/divider_01.png" id="14_ophos"]
 [ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="14_y7efs"]
 [ext_resource type="PackedScene" uid="uid://c8dcjv8qv7lw3" path="res://prefabs/game_states/gm_usables/invisible_wall.tscn" id="15_g4ds3"]
+[ext_resource type="PackedScene" uid="uid://bac3gborw4s1l" path="res://prefabs/ui/option.tscn" id="16_o0w5l"]
 [ext_resource type="Script" uid="uid://bfxqdxe6sfsl3" path="res://prefabs/game_states/gm_usables/shoot_target.gd" id="17_5gurq"]
 [ext_resource type="PackedScene" uid="uid://cn7x6vluolkny" path="res://prefabs/player/shoot_light_trail.tscn" id="19_aq8al"]
 [ext_resource type="Script" uid="uid://cajf45kj4rgnv" path="res://prefabs/game_states/gm_usables/woman_points.gd" id="19_u75jf"]
@@ -94,129 +99,33 @@ font_size = 24
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmfoy"]
-content_margin_left = 0.0
+[sub_resource type="LabelSettings" id="LabelSettings_27np0"]
+font = ExtResource("12_vrkal")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_vrkal"]
+content_margin_left = 4.0
 content_margin_top = 0.0
-content_margin_right = 0.0
+content_margin_right = 4.0
 content_margin_bottom = 0.0
-bg_color = Color(0.13464907, 0.1346491, 0.1346491, 0.827451)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-corner_detail = 20
-shadow_color = Color(1, 1, 1, 0.23529412)
-shadow_size = 5
+thickness = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x50xo"]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_o0w5l"]
 content_margin_left = 4.0
-content_margin_top = 4.0
+content_margin_top = 0.0
 content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.14333999, 0.14333999, 0.14333999, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-corner_detail = 20
-shadow_color = Color(1, 1, 1, 0.23529412)
+content_margin_bottom = 0.0
+grow_begin = -24.0
+grow_end = -24.0
+thickness = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sktv"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.29072073, 0.2907207, 0.2907207, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-corner_detail = 20
-shadow_color = Color(1, 1, 1, 0.23529412)
-shadow_size = 10
+[sub_resource type="GDScript" id="GDScript_o0w5l"]
+script/source = "extends Node
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r74ma"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.29072073, 0.2907207, 0.2907207, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-corner_detail = 20
-shadow_color = Color(1, 1, 1, 0.23529412)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ol0j6"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.14333999, 0.14333999, 0.14333999, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-corner_detail = 20
-shadow_color = Color(1, 1, 1, 0.23529412)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jv7w5"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.29072073, 0.2907207, 0.2907207, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-corner_detail = 20
-shadow_color = Color(1, 1, 1, 0.23529412)
-shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0po2u"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.29072073, 0.2907207, 0.2907207, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-corner_radius_bottom_right = 30
-corner_radius_bottom_left = 30
-corner_detail = 20
-shadow_color = Color(1, 1, 1, 0.23529412)
-shadow_size = 10
+func _ready() -> void:
+	(get_parent() as Button).pressed.connect(get_tree().quit, CONNECT_ONE_SHOT)
+"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sktv"]
 content_margin_left = 20.0
@@ -514,6 +423,7 @@ grow_vertical = 2
 
 [node name="TutorialKeyboardMouse" type="PanelContainer" parent="UIManager/CenterContainer" unique_id=978923551]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_83msq")
 
@@ -558,6 +468,7 @@ vertical_alignment = 1
 
 [node name="TutorialGamepad" type="PanelContainer" parent="UIManager/CenterContainer" unique_id=1831936992]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_83msq")
 
@@ -602,43 +513,99 @@ vertical_alignment = 1
 
 [node name="PauseContainer" type="PanelContainer" parent="UIManager/CenterContainer" unique_id=456973355]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 300)
+visible = false
+custom_minimum_size = Vector2(303.22, 300)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_rmfoy")
+theme = ExtResource("11_nre8i")
 
 [node name="Buttons" type="VBoxContainer" parent="UIManager/CenterContainer/PauseContainer" unique_id=2052351423]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 25
 alignment = 1
+
+[node name="Label" type="Label" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=996201340]
+layout_mode = 2
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_27np0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lines2" type="VBoxContainer" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=1309241301]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Line" type="HSeparator" parent="UIManager/CenterContainer/PauseContainer/Buttons/Lines2" unique_id=65453682]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_vrkal")
+
+[node name="Line2" type="HSeparator" parent="UIManager/CenterContainer/PauseContainer/Buttons/Lines2" unique_id=1119341763]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_o0w5l")
+
+[node name="Lorem" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=67725079]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = ExtResource("13_o0w5l")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="HSeparator2" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=1853666562]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("14_ophos")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Options" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=923722221]
 unique_name_in_owner = true
 z_index = 3
-custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_x50xo")
-theme_override_styles/hover = SubResource("StyleBoxFlat_7sktv")
-theme_override_styles/focus = SubResource("StyleBoxFlat_r74ma")
-text = "Options"
+text = "OPTIONS"
 script = ExtResource("5_rmfoy")
+
+[node name="HSeparator4" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=250910759]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("14_ophos")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Lorem2" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=95785536]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = ExtResource("13_o0w5l")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="HSeparator3" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=1429274708]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("14_ophos")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Quit" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=621774024]
 unique_name_in_owner = true
 z_index = 3
-custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_ol0j6")
-theme_override_styles/hover = SubResource("StyleBoxFlat_jv7w5")
-theme_override_styles/focus = SubResource("StyleBoxFlat_0po2u")
-text = "Quit"
+text = "QUIT"
 script = ExtResource("5_rmfoy")
+
+[node name="Action" type="Node" parent="UIManager/CenterContainer/PauseContainer/Buttons/Quit" unique_id=1744710055]
+script = SubResource("GDScript_o0w5l")
+
+[node name="Lorem3" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=881274789]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = ExtResource("13_o0w5l")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Option" parent="UIManager/CenterContainer" unique_id=1148027767 instance=ExtResource("16_o0w5l")]
+custom_minimum_size = Vector2(1200, 800)
+layout_mode = 2
 
 [node name="ObjectiveContainer" type="VBoxContainer" parent="UIManager" unique_id=812492473]
 unique_name_in_owner = true
@@ -807,7 +774,7 @@ BONNIFET Yuna
 BRUNON Catherine
 DUFOUR Etienne
 GHANDOUR Maria Christy
-GICQUEL Henri 
+GICQUEL Henri
 HADET Hugo
 JEAN-PIERRE Wania
 LELAISANT Atea
@@ -1369,6 +1336,8 @@ transform = Transform3D(0.87926644, 0, 0.47633028, 0, 1, 0, -0.47633028, 0, 0.87
 
 [node name="CollisionShape3D" parent="DeathZone" index="0" unique_id=447369626]
 shape = SubResource("BoxShape3D_g4ds3")
+
+[connection signal="pressed" from="UIManager/CenterContainer/PauseContainer/Buttons/Options" to="UIManager/CenterContainer/Option" method="show"]
 
 [editable path="States/GameState00/InvisibleWallBarricade"]
 [editable path="States/GameState01/GoToBarricadeArea"]

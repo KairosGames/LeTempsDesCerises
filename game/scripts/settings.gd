@@ -75,11 +75,19 @@ func _input(input_event: InputEvent) -> void:
 
 
 func load_settings() -> void:
-	config_file.load(CONFIG_FILE_PATH)
+	var load_result: Error = config_file.load(CONFIG_FILE_PATH)
+	if load_result != OK and load_result != ERR_FILE_NOT_FOUND:
+		push_warning("Failed to load settings file: %s" % error_string(load_result))
+
 	for section: String in DEFAULTS:
 		for key: String in DEFAULTS[section]:
 			if not config_file.has_section_key(section, key):
 				config_file.set_value(section, key, DEFAULTS[section][key])
+
+	var scale_filter: int = get_video_scale_filter()
+	if config_file.get_value("video", "scale_filter") != scale_filter:
+		config_file.set_value("video", "scale_filter", scale_filter)
+
 	WwiseGlobal.allow_subtitles = config_file.get_value("game", "allow_subtitles") == true
 
 
@@ -107,17 +115,48 @@ func apply_player_settings(player: Player) -> void:
 	player.is_movement_smooth = config_file.get_value("game", "is_movement_smooth")
 
 
-func apply_graphics_settings(window: Window, environment: Environment, scene_root: Node) -> void:
-	get_window().mode = Settings.config_file.get_value("video", "display_mode")
-	DisplayServer.window_set_vsync_mode(Settings.config_file.get_value("video", "vsync") as DisplayServer.VSyncMode)
-	Engine.max_fps = Settings.config_file.get_value("video", "max_fps")
-	window.scaling_3d_scale = Settings.config_file.get_value("video", "resolution_scale")
-	window.scaling_3d_mode = Settings.config_file.get_value("video", "scale_filter")
-	window.use_taa = Settings.config_file.get_value("rendering", "taa")
-	window.msaa_3d = Settings.config_file.get_value("rendering", "msaa")
-	window.screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA if Settings.config_file.get_value("rendering", "fxaa") else Viewport.SCREEN_SPACE_AA_DISABLED
+func get_video_scale_filter() -> int:
+	var scale_filter: int = config_file.get_value("video", "scale_filter")
+	if METAL_FX_SUPPORT:
+		return scale_filter
 
-	if not Settings.config_file.get_value("rendering", "shadow_mapping"):
+	if (
+		scale_filter == Viewport.SCALING_3D_MODE_METALFX_SPATIAL
+		or scale_filter == Viewport.SCALING_3D_MODE_METALFX_TEMPORAL
+	):
+		return Viewport.SCALING_3D_MODE_FSR2
+
+	return scale_filter
+
+
+func apply_graphics_settings(window: Window, environment: Environment, scene_root: Node) -> void:
+	var display_mode: int = Settings.config_file.get_value("video", "display_mode")
+	var vsync_mode: DisplayServer.VSyncMode = Settings.config_file.get_value("video", "vsync") as DisplayServer.VSyncMode
+	var max_fps: int = Settings.config_file.get_value("video", "max_fps")
+	var resolution_scale: float = Settings.config_file.get_value("video", "resolution_scale")
+	var scale_filter: int = get_video_scale_filter()
+	var taa_enabled: bool = Settings.config_file.get_value("rendering", "taa")
+	var msaa: Viewport.MSAA = Settings.config_file.get_value("rendering", "msaa") as Viewport.MSAA
+	var fxaa_enabled: bool = Settings.config_file.get_value("rendering", "fxaa")
+
+	get_window().mode = display_mode as Window.Mode
+	DisplayServer.window_set_vsync_mode(vsync_mode)
+	Engine.max_fps = max_fps
+	window.scaling_3d_scale = resolution_scale
+	window.scaling_3d_mode = scale_filter as Viewport.Scaling3DMode
+	window.use_taa = taa_enabled
+	window.msaa_3d = msaa
+	window.screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA if fxaa_enabled else Viewport.SCREEN_SPACE_AA_DISABLED
+
+
+
+	var shadow_mapping_enabled: bool = Settings.config_file.get_value("rendering", "shadow_mapping")
+	var ssao_quality: int = Settings.config_file.get_value("rendering", "ssao_quality")
+	var ssil_quality: int = Settings.config_file.get_value("rendering", "ssil_quality")
+	var bloom_enabled: bool = Settings.config_file.get_value("rendering", "bloom")
+	var volumetric_fog_enabled: bool = Settings.config_file.get_value("rendering", "volumetric_fog")
+
+	if not shadow_mapping_enabled:
 		# Disable shadows for all lights present during level load,
 		# reducing the number of draw calls significantly.
 		# FIXME: In the main menu, shadows aren't enabled again after enabling shadows
@@ -125,7 +164,7 @@ func apply_graphics_settings(window: Window, environment: Environment, scene_roo
 		# as this would negatively affect the level's performance.
 		scene_root.propagate_call("set", ["shadow_enabled", false])
 
-	match Settings.config_file.get_value("rendering", "ssao_quality"):
+	match ssao_quality:
 		-1:
 			environment.ssao_enabled = false
 		RenderingServer.ENV_SSAO_QUALITY_MEDIUM:
@@ -135,8 +174,8 @@ func apply_graphics_settings(window: Window, environment: Environment, scene_roo
 			environment.ssao_enabled = true
 			RenderingServer.environment_set_ssao_quality(RenderingServer.ENV_SSAO_QUALITY_MEDIUM, true, 0.5, 2, 50, 300)
 
-	match Settings.config_file.get_value("rendering", "ssil_quality"):
-		1:
+	match ssil_quality:
+		-1:
 			environment.ssil_enabled = false
 		RenderingServer.ENV_SSIL_QUALITY_MEDIUM:
 			environment.ssil_enabled = true
@@ -145,5 +184,5 @@ func apply_graphics_settings(window: Window, environment: Environment, scene_roo
 			environment.ssil_enabled = true
 			RenderingServer.environment_set_ssil_quality(RenderingServer.ENV_SSIL_QUALITY_HIGH, true, 0.5, 2, 50, 300)
 
-	environment.glow_enabled = Settings.config_file.get_value("rendering", "bloom")
-	environment.volumetric_fog_enabled = Settings.config_file.get_value("rendering", "volumetric_fog")
+	environment.glow_enabled = bloom_enabled
+	environment.volumetric_fog_enabled = volumetric_fog_enabled

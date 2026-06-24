@@ -154,6 +154,8 @@ func _get_display_key(event: InputEventKey) -> Key:
 	if event.key_label != KEY_NONE: return event.key_label
 	if event.keycode != KEY_NONE: return event.keycode
 	if event.physical_keycode != KEY_NONE:
+		if DisplayServer.get_name() == "headless":
+			return event.physical_keycode
 		return DisplayServer.keyboard_get_keycode_from_physical(event.physical_keycode)
 	return KEY_NONE
 

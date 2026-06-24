@@ -1,6 +1,7 @@
 [gd_resource type="Theme" format=3 uid="uid://cxp26janux3yv"]
 
 [ext_resource type="FontFile" uid="uid://bfa00rtt5d3d3" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Black.woff2" id="1_0tse6"]
+[ext_resource type="Texture2D" uid="uid://njbg6j5w83rk" path="res://sources/images/textures/ui/Paper.png" id="2_sf437"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fixmo"]
 
@@ -11,6 +12,13 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8j0gi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0leva"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8j0gi"]
+content_margin_left = 64.0
+content_margin_top = 64.0
+content_margin_right = 64.0
+content_margin_bottom = 64.0
+texture = ExtResource("2_sf437")
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
@@ -26,4 +34,5 @@ Button/styles/focus = SubResource("StyleBoxEmpty_0tse6")
 Button/styles/hover = SubResource("StyleBoxEmpty_sf437")
 Button/styles/normal = SubResource("StyleBoxEmpty_8j0gi")
 Button/styles/pressed = SubResource("StyleBoxEmpty_0leva")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_8j0gi")
 VBoxContainer/constants/separation = 15

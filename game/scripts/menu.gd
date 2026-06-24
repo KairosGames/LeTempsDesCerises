@@ -126,17 +126,18 @@ func _ready() -> void:
 		scale_filter_metalfx_spatial.hide()
 		scale_filter_metalfx_temporal.hide()
 
-	for menu in [
+	var setting_menus: Array[Node] = [
 		display_mode_menu, vsync_menu, max_fps_menu, resolution_scale_menu, scale_filter_menu,
 		taa_menu, msaa_menu, fxaa_menu, shadow_mapping_menu, gi_type_menu, gi_quality_menu,
 		ssao_menu, ssil_menu, bloom_menu, volumetric_fog_menu,
-	]:
+	]
+	for menu: Node in setting_menus:
 		_make_button_group(menu)
 
 
 func _process(_delta: float) -> void:
 	if loading.visible:
-		var progress: Array = []
+		var progress: Array[float] = []
 		var status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(LEVEL_PATH, progress)
 		if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 			loading_progress.value = progress[0] * 100.0
@@ -151,11 +152,12 @@ func _process(_delta: float) -> void:
 
 
 func _make_button_group(common_parent: Node) -> void:
-	var group = ButtonGroup.new()
-	for btn in common_parent.get_children():
-		if not btn is BaseButton:
+	var group: ButtonGroup = ButtonGroup.new()
+	for child: Node in common_parent.get_children():
+		if not child is BaseButton:
 			continue
-		btn.button_group = group
+		var button: BaseButton = child
+		button.button_group = group
 
 
 func _on_loading_done_timer_timeout() -> void:
@@ -174,64 +176,80 @@ func _on_settings_pressed() -> void:
 	settings_menu.show()
 	settings_action_cancel.grab_focus()
 
+	var display_mode: int = Settings.config_file.get_value("video", "display_mode")
+	var vsync_mode: int = Settings.config_file.get_value("video", "vsync")
+	var max_fps: int = Settings.config_file.get_value("video", "max_fps")
+	var resolution_scale: float = Settings.config_file.get_value("video", "resolution_scale")
+	var scale_filter: int = Settings.get_video_scale_filter()
+	var gi_type: int = Settings.config_file.get_value("rendering", "gi_type")
+	var gi_quality: int = Settings.config_file.get_value("rendering", "gi_quality")
+	var taa_enabled_value: bool = Settings.config_file.get_value("rendering", "taa")
+	var msaa: int = Settings.config_file.get_value("rendering", "msaa")
+	var fxaa_enabled_value: bool = Settings.config_file.get_value("rendering", "fxaa")
+	var shadow_mapping_enabled_value: bool = Settings.config_file.get_value("rendering", "shadow_mapping")
+	var ssao_quality: int = Settings.config_file.get_value("rendering", "ssao_quality")
+	var ssil_quality: int = Settings.config_file.get_value("rendering", "ssil_quality")
+	var bloom_enabled_value: bool = Settings.config_file.get_value("rendering", "bloom")
+	var volumetric_fog_enabled_value: bool = Settings.config_file.get_value("rendering", "volumetric_fog")
+
 	if (
-			Settings.config_file.get_value("video", "display_mode") == Window.MODE_WINDOWED
-			or Settings.config_file.get_value("video", "display_mode") == Window.MODE_MAXIMIZED
+			display_mode == Window.MODE_WINDOWED
+			or display_mode == Window.MODE_MAXIMIZED
 	):
 		display_mode_windowed.button_pressed = true
-	elif Settings.config_file.get_value("video", "display_mode") == Window.MODE_FULLSCREEN:
+	elif display_mode == Window.MODE_FULLSCREEN:
 		display_mode_fullscreen.button_pressed = true
 	else:
 		display_mode_exclusive_fullscreen.button_pressed = true
 
-	if Settings.config_file.get_value("video", "vsync") == DisplayServer.VSYNC_DISABLED:
+	if vsync_mode == DisplayServer.VSYNC_DISABLED:
 		vsync_disabled.button_pressed = true
-	elif Settings.config_file.get_value("video", "vsync") == DisplayServer.VSYNC_ENABLED:
+	elif vsync_mode == DisplayServer.VSYNC_ENABLED:
 		vsync_enabled.button_pressed = true
-	elif Settings.config_file.get_value("video", "vsync") == DisplayServer.VSYNC_ADAPTIVE:
+	elif vsync_mode == DisplayServer.VSYNC_ADAPTIVE:
 		vsync_adaptive.button_pressed = true
 	else:
 		vsync_mailbox.button_pressed = true
 
-	if Settings.config_file.get_value("video", "max_fps") == 30:
+	if max_fps == 30:
 		max_fps_30.button_pressed = true
-	elif Settings.config_file.get_value("video", "max_fps") == 40:
+	elif max_fps == 40:
 		max_fps_40.button_pressed = true
-	elif Settings.config_file.get_value("video", "max_fps") == 60:
+	elif max_fps == 60:
 		max_fps_60.button_pressed = true
-	elif Settings.config_file.get_value("video", "max_fps") == 72:
+	elif max_fps == 72:
 		max_fps_72.button_pressed = true
-	elif Settings.config_file.get_value("video", "max_fps") == 90:
+	elif max_fps == 90:
 		max_fps_90.button_pressed = true
-	elif Settings.config_file.get_value("video", "max_fps") == 120:
+	elif max_fps == 120:
 		max_fps_120.button_pressed = true
-	elif Settings.config_file.get_value("video", "max_fps") == 144:
+	elif max_fps == 144:
 		max_fps_144.button_pressed = true
 	else:
 		max_fps_unlimited.button_pressed = true
 
-	if is_equal_approx(Settings.config_file.get_value("video", "resolution_scale"), 1.0 / 3.0):
+	if is_equal_approx(resolution_scale, 1.0 / 3.0):
 		resolution_scale_ultra_performance.button_pressed = true
-	elif is_equal_approx(Settings.config_file.get_value("video", "resolution_scale"), 1.0 / 2.0):
+	elif is_equal_approx(resolution_scale, 1.0 / 2.0):
 		resolution_scale_performance.button_pressed = true
-	elif is_equal_approx(Settings.config_file.get_value("video", "resolution_scale"), 1.0 / 1.7):
+	elif is_equal_approx(resolution_scale, 1.0 / 1.7):
 		resolution_scale_balanced.button_pressed = true
-	elif is_equal_approx(Settings.config_file.get_value("video", "resolution_scale"), 1.0 / 1.5):
+	elif is_equal_approx(resolution_scale, 1.0 / 1.5):
 		resolution_scale_quality.button_pressed = true
-	elif is_equal_approx(Settings.config_file.get_value("video", "resolution_scale"), 1.0 / 1.3):
+	elif is_equal_approx(resolution_scale, 1.0 / 1.3):
 		resolution_scale_ultra_quality.button_pressed = true
 	else:
 		resolution_scale_native.button_pressed = true
 
-	if Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_BILINEAR:
+	if scale_filter == Viewport.SCALING_3D_MODE_BILINEAR:
 		scale_filter_bilinear.button_pressed = true
-	elif Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_FSR:
+	elif scale_filter == Viewport.SCALING_3D_MODE_FSR:
 		scale_filter_fsr1.button_pressed = true
-	elif Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_FSR2:
+	elif scale_filter == Viewport.SCALING_3D_MODE_FSR2:
 		scale_filter_fsr2.button_pressed = true
-	elif Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_METALFX_SPATIAL:
+	elif scale_filter == Viewport.SCALING_3D_MODE_METALFX_SPATIAL:
 		scale_filter_metalfx_spatial.button_pressed = true
-	elif Settings.config_file.get_value("video", "scale_filter") == Viewport.SCALING_3D_MODE_METALFX_TEMPORAL:
+	elif scale_filter == Viewport.SCALING_3D_MODE_METALFX_TEMPORAL:
 		scale_filter_metalfx_temporal.button_pressed = true
 	else:
 		if metalfx_supported:
@@ -239,64 +257,64 @@ func _on_settings_pressed() -> void:
 		else:
 			scale_filter_fsr2.button_pressed = true
 
-	if Settings.config_file.get_value("rendering", "gi_type") == Settings.GIType.LIGHTMAP_GI:
+	if gi_type == Settings.GIType.LIGHTMAP_GI:
 		gi_lightmapgi.button_pressed = true
-	elif Settings.config_file.get_value("rendering", "gi_type") == Settings.GIType.VOXEL_GI:
+	elif gi_type == Settings.GIType.VOXEL_GI:
 		gi_voxelgi.button_pressed = true
-	elif Settings.config_file.get_value("rendering", "gi_type") == Settings.GIType.SDFGI:
+	elif gi_type == Settings.GIType.SDFGI:
 		gi_sdfgi.button_pressed = true
 
-	if Settings.config_file.get_value("rendering", "gi_quality") == Settings.GIQuality.DISABLED:
+	if gi_quality == Settings.GIQuality.DISABLED:
 		gi_disabled.button_pressed = true
-	elif Settings.config_file.get_value("rendering", "gi_quality") == Settings.GIQuality.LOW:
+	elif gi_quality == Settings.GIQuality.LOW:
 		gi_low.button_pressed = true
-	elif Settings.config_file.get_value("rendering", "gi_quality") == Settings.GIQuality.HIGH:
+	elif gi_quality == Settings.GIQuality.HIGH:
 		gi_high.button_pressed = true
 
-	if not Settings.config_file.get_value("rendering", "taa"):
+	if not taa_enabled_value:
 		taa_disabled.button_pressed = true
 	else:
 		taa_enabled.button_pressed = true
 
-	if Settings.config_file.get_value("rendering", "msaa") == Viewport.MSAA_DISABLED:
+	if msaa == Viewport.MSAA_DISABLED:
 		msaa_disabled.button_pressed = true
-	elif Settings.config_file.get_value("rendering", "msaa") == Viewport.MSAA_2X:
+	elif msaa == Viewport.MSAA_2X:
 		msaa_2x.button_pressed = true
-	elif Settings.config_file.get_value("rendering", "msaa") == Viewport.MSAA_4X:
+	elif msaa == Viewport.MSAA_4X:
 		msaa_4x.button_pressed = true
-	elif Settings.config_file.get_value("rendering", "msaa") == Viewport.MSAA_8X:
+	elif msaa == Viewport.MSAA_8X:
 		msaa_8x.button_pressed = true
 
-	if not Settings.config_file.get_value("rendering", "fxaa"):
+	if not fxaa_enabled_value:
 		fxaa_disabled.button_pressed = true
 	else:
 		fxaa_enabled.button_pressed = true
 
-	if not Settings.config_file.get_value("rendering", "shadow_mapping"):
+	if not shadow_mapping_enabled_value:
 		shadow_mapping_disabled.button_pressed = true
 	else:
 		shadow_mapping_enabled.button_pressed = true
 
-	if Settings.config_file.get_value("rendering", "ssao_quality") == -1:
+	if ssao_quality == -1:
 		ssao_disabled.button_pressed = true
-	elif Settings.config_file.get_value("rendering", "ssao_quality") == RenderingServer.ENV_SSAO_QUALITY_MEDIUM:
+	elif ssao_quality == RenderingServer.ENV_SSAO_QUALITY_MEDIUM:
 		ssao_medium.button_pressed = true
-	elif Settings.config_file.get_value("rendering", "ssao_quality") == RenderingServer.ENV_SSAO_QUALITY_HIGH:
+	elif ssao_quality == RenderingServer.ENV_SSAO_QUALITY_HIGH:
 		ssao_high.button_pressed = true
 
-	if Settings.config_file.get_value("rendering", "ssil_quality") == -1:
+	if ssil_quality == -1:
 		ssil_disabled.button_pressed = true
-	elif Settings.config_file.get_value("rendering", "ssil_quality") == RenderingServer.ENV_SSIL_QUALITY_MEDIUM:
+	elif ssil_quality == RenderingServer.ENV_SSIL_QUALITY_MEDIUM:
 		ssil_medium.button_pressed = true
-	elif Settings.config_file.get_value("rendering", "ssil_quality") == RenderingServer.ENV_SSIL_QUALITY_HIGH:
+	elif ssil_quality == RenderingServer.ENV_SSIL_QUALITY_HIGH:
 		ssil_high.button_pressed = true
 
-	if not Settings.config_file.get_value("rendering", "bloom"):
+	if not bloom_enabled_value:
 		bloom_disabled.button_pressed = true
 	else:
 		bloom_enabled.button_pressed = true
 
-	if not Settings.config_file.get_value("rendering", "volumetric_fog"):
+	if not volumetric_fog_enabled_value:
 		volumetric_fog_disabled.button_pressed = true
 	else:
 		volumetric_fog_enabled.button_pressed = true
@@ -432,14 +450,16 @@ func _on_play_online_pressed() -> void:
 
 
 func _on_host_pressed() -> void:
-	peer = ENetMultiplayerPeer.new()
-	peer.create_server(int(online_port.value))
+	var server_peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+	server_peer.create_server(int(online_port.value))
+	peer = server_peer
 	_on_play_pressed()
 	online.hide()
 
 
 func _on_connect_pressed() -> void:
-	peer = ENetMultiplayerPeer.new()
-	peer.create_client(online_address.text, int(online_port.value))
+	var client_peer: ENetMultiplayerPeer = ENetMultiplayerPeer.new()
+	client_peer.create_client(online_address.text, int(online_port.value))
+	peer = client_peer
 	_on_play_pressed()
 	online.hide()
