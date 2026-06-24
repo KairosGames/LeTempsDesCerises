@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bgx2gwuvhauml"]
 
 [ext_resource type="PackedScene" uid="uid://cxpxlri3ojlbw" path="res://sources/meshes/props/sh_ladder_02.fbx" id="1_q4b45"]
+[ext_resource type="Material" uid="uid://dh2a0nyveyo1y" path="res://sources/meshes/geometry/materials/wood.tres" id="2_2b4eb"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q4b45"]
 radius = 0.028320313
@@ -48,3 +49,8 @@ transform = Transform3D(0.037759904, -0.99928683, 0, 0.99928683, 0.037759904, 0,
 shape = SubResource("CylinderShape3D_2b4eb")
 
 [node name="sh_ladder_02" parent="." unique_id=1583813718 instance=ExtResource("1_q4b45")]
+
+[node name="sh_ladder_02" parent="sh_ladder_02" index="0" unique_id=443405299]
+surface_material_override/0 = ExtResource("2_2b4eb")
+
+[editable path="sh_ladder_02"]

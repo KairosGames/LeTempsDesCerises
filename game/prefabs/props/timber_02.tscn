@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://w37rgmogub21"]
 
 [ext_resource type="ArrayMesh" uid="uid://jx170cjbcidx" path="res://sources/meshes/props/timber_02.obj" id="1_8864o"]
+[ext_resource type="Material" uid="uid://c4l24dn2o0q78" path="res://sources/meshes/geometry/materials/wood_light.tres" id="2_j41ro"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2q8p2"]
 height = 1.6802368
@@ -10,6 +11,7 @@ radius = 0.10986328
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=388340992]
 mesh = ExtResource("1_8864o")
+surface_material_override/0 = ExtResource("2_j41ro")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1254623963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8423157, 0)
