@@ -201,7 +201,7 @@ func on_reload_progress(progress):
 
 func first_cannon():
 	if !cannon_workers.is_empty():
-		find_closest(cannon_workers, player).post_event("Cannon_Incoming", 1)
+		find_closest(cannon_workers, player).post_event("Cannon_Incoming", 0)
 	reload_gate = false
 
 func pause(new_pause : bool):
