@@ -1,17 +1,18 @@
 shader_type canvas_item;
 
-uniform int radius = 5;
 uniform vec3 offset=vec3(0.0);
 uniform sampler2D screen_texture : hint_screen_texture, filter_linear;
+global uniform float dynamic_da;
 
 void fragment() 
  {
-     vec2 src_size = vec2 ( SCREEN_PIXEL_SIZE.x,  SCREEN_PIXEL_SIZE.y);
-     vec2 uv = UV.xy;
-     float n = float((radius + 1) * (radius + 1));
-     vec3 m0 = offset; vec3 m1 = offset; vec3 m2 = offset; vec3 m3 = offset;
-     vec3 s0 = offset; vec3 s1 = offset; vec3 s2 = offset; vec3 s3 = offset;
-     vec3 c;
+	int radius = int(clamp(dynamic_da * 5.0,  0.0, 1.0));
+	vec2 src_size = vec2 ( SCREEN_PIXEL_SIZE.x,  SCREEN_PIXEL_SIZE.y);
+	vec2 uv = UV.xy;
+	float n = float((radius + 1) * (radius + 1));
+	vec3 m0 = offset; vec3 m1 = offset; vec3 m2 = offset; vec3 m3 = offset;
+	vec3 s0 = offset; vec3 s1 = offset; vec3 s2 = offset; vec3 s3 = offset;
+	vec3 c;
 
      for (int j = -radius; j <= 0; ++j)  {
          for (int i = -radius; i <= 0; ++i)  {
