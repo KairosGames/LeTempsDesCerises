@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://mk88hreujt3a" path="res://sources/images/textures/ui/divider_01.png" id="14_ophos"]
 [ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="14_y7efs"]
 [ext_resource type="PackedScene" uid="uid://c8dcjv8qv7lw3" path="res://prefabs/game_states/gm_usables/invisible_wall.tscn" id="15_g4ds3"]
-[ext_resource type="PackedScene" uid="uid://bac3gborw4s1l" path="res://prefabs/ui/option.tscn" id="16_o0w5l"]
 [ext_resource type="Script" uid="uid://bfxqdxe6sfsl3" path="res://prefabs/game_states/gm_usables/shoot_target.gd" id="17_5gurq"]
 [ext_resource type="PackedScene" uid="uid://cn7x6vluolkny" path="res://prefabs/player/shoot_light_trail.tscn" id="19_aq8al"]
 [ext_resource type="Script" uid="uid://cajf45kj4rgnv" path="res://prefabs/game_states/gm_usables/woman_points.gd" id="19_u75jf"]
@@ -593,10 +592,6 @@ layout_mode = 2
 texture = ExtResource("13_o0w5l")
 expand_mode = 2
 stretch_mode = 6
-
-[node name="Option" parent="UIManager/CenterContainer" unique_id=1148027767 instance=ExtResource("16_o0w5l")]
-custom_minimum_size = Vector2(1200, 800)
-layout_mode = 2
 
 [node name="ObjectiveContainer" type="VBoxContainer" parent="UIManager" unique_id=812492473]
 unique_name_in_owner = true
@@ -1327,8 +1322,6 @@ transform = Transform3D(0.87926644, 0, 0.47633028, 0, 1, 0, -0.47633028, 0, 0.87
 
 [node name="CollisionShape3D" parent="DeathZone" index="0" unique_id=447369626]
 shape = SubResource("BoxShape3D_g4ds3")
-
-[connection signal="pressed" from="UIManager/CenterContainer/PauseContainer/Buttons/Options" to="UIManager/CenterContainer/Option" method="show"]
 
 [editable path="States/GameState00/InvisibleWallBarricade"]
 [editable path="States/GameState01/GoToBarricadeArea"]

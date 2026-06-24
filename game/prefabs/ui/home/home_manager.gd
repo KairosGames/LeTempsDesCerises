@@ -5,7 +5,7 @@ const MAIN_SCENE_PATH: String = "uid://bqw181keq72d"
 
 @onready var references: PanelContainer = %References
 @onready var credit: PanelContainer = %Credit
-@onready var option: TabContainer = %Option
+@onready var option: Control = %Option
 @onready var menu: PanelContainer = $Menu
 
 @onready var play: ButtonBehavior = $Menu/Buttons/Play
@@ -35,8 +35,8 @@ func _on_play_pressed() -> void:
 
 
 func _on_options_pressed() -> void:
-	_reload_option_sub_manager(^"GAME", "load_game_settings")
-	_reload_option_sub_manager(^"VIDEO", "load_video_settings")
+	_reload_option_sub_manager(^"TabContainer/GAME", "load_game_settings")
+	_reload_option_sub_manager(^"TabContainer/VIDEO", "load_video_settings")
 	menu.hide()
 	option.show()
 	references.hide()
