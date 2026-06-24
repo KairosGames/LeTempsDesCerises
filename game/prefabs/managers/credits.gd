@@ -17,7 +17,7 @@ func start_credits():
 	await get_tree().create_timer(5).timeout
 	allow_credits = true
 	await get_tree().create_timer(35).timeout
-	get_tree().change_scene_to_file("res://scenes/home.tscn")
+	get_tree().quit()
 
 func fade_in():
 	var tween = get_tree().create_tween()
