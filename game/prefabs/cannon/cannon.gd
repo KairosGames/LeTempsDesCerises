@@ -14,7 +14,7 @@ signal is_ready_to_shoot_in_cinematic
 
 @onready var objective_point: Marker3D = %ObjectivePoint
 @onready var second_path: Path3D = %Path3DCannon2
-@onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var animation: AnimationTree = $AnimationTree
 @onready var cannon_shoot_effect: ParticlesPlayer = %CannonShootEffect
 
 @export_custom(PROPERTY_HINT_NONE,"suffix: m/s") var move_speeds: Array[float] = [0, 0, 0.5, 1]
@@ -76,24 +76,20 @@ func _physics_process(delta: float) -> void:
 
 
 	var worker_count: int = active_worker_count()
-
+	var move_speed: float = move_speeds[worker_count] if _state == State.MOVING else 0.0
+	animation.set("animation", move_speed)
 	match _state:
 		State.MOVING:
-			var move_speed: float = move_speeds[worker_count]
-			animation.speed_scale = move_speed
 			_is_moving = move_speed > 0.0
 			progress += move_speed * delta
 			move_progress = progress_ratio
 			if move_progress == 1.0:
-				animation.stop()
-				animation.play("RESET", 0.2)
 				_state = State.RELOADING
 				_is_moving = false
 			for worker: Agent in workers:
 				worker.is_reloading_canon = false
 				worker.is_moving = _is_moving
 		State.RELOADING:
-			animation.speed_scale = 1.0
 			_is_moving = false
 			for worker: Agent in workers:
 				worker.is_reloading_canon = true
@@ -114,7 +110,7 @@ func _shoot() -> void:
 		is_ready_to_shoot_in_cinematic.emit()
 	await get_tree().create_timer(delay_before_shoot).timeout
 	shoot.emit()
-	animation.play("shoot")
+	animation.set("parameters/Shoot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	play_smoke_effect()
 	cannon_shoot_effect.play_effect()
 	
