@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://cxp26janux3yv" path="res://prefabs/ui/home/home_theme.tres" id="1_krot7"]
 [ext_resource type="Script" uid="uid://so3bjhti76tw" path="res://prefabs/ui/home/button_behavior.gd" id="2_u4wd2"]
 [ext_resource type="Script" uid="uid://cu1v212nu7svv" path="res://prefabs/ui/home/home_manager.gd" id="2_w18ys"]
-[ext_resource type="Texture2D" uid="uid://c2vou5pc6huhx" path="res://sources/images/textures/ui/splash_image_02.png" id="4_hhep5"]
+[ext_resource type="VideoStream" uid="uid://bef0qwquqahev" path="res://sources/splash screen.ogv" id="3_ip4d6"]
 [ext_resource type="Script" uid="uid://c6sw1tpfwtx8n" path="res://scripts/FocusGraber.gd" id="5_e42qu"]
 [ext_resource type="Texture2D" uid="uid://njbg6j5w83rk" path="res://sources/images/textures/ui/Paper.png" id="5_vc333"]
 [ext_resource type="FontFile" uid="uid://0yy1ysc8tx6l" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Bold.otf" id="6_hhep5"]
@@ -74,26 +74,27 @@ grow_vertical = 2
 theme = ExtResource("1_krot7")
 script = ExtResource("2_w18ys")
 
-[node name="Splash" type="TextureRect" parent="." unique_id=1178373901]
+[node name="Splash" type="VideoStreamPlayer" parent="." unique_id=1765129963]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_hhep5")
-expand_mode = 1
-stretch_mode = 6
-flip_h = true
+localize_numeral_system = false
+stream = ExtResource("3_ip4d6")
+autoplay = true
+expand = true
+loop = true
 
 [node name="Menu" type="PanelContainer" parent="." unique_id=1812460554]
 modulate = Color(1, 0.76, 0.6, 1)
 layout_mode = 0
-offset_left = 225.0
+offset_left = 171.37
 offset_top = 131.0
-offset_right = 625.0
-offset_bottom = 891.0
-rotation = 0.045378562
+offset_right = 595.8002
+offset_bottom = 921.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ip4d6")
 
 [node name="FocusGraber" type="Control" parent="Menu" unique_id=1712417195 node_paths=PackedStringArray("control")]
@@ -660,6 +661,7 @@ autowrap_mode = 3
 
 [node name="Option" parent="." unique_id=1148027767 instance=ExtResource("13_ip4d6")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_top = 0.5
