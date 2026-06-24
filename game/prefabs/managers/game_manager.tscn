@@ -119,10 +119,28 @@ grow_begin = -24.0
 grow_end = -24.0
 thickness = 4
 
+[sub_resource type="GDScript" id="GDScript_27np0"]
+script/source = "extends Button
+
+@export var option: Control
+@export var pause_container: PanelContainer
+
+func _gui_input(event: InputEvent) -> void: 
+	if event is InputEventMouseButton:
+		pause_container.hide()
+		option.show()
+		option.visibility_changed.connect(_option_visibility_changed)
+
+func _option_visibility_changed() -> void: if not option.visible: pause_container.show()
+"
+
 [sub_resource type="GDScript" id="GDScript_o0w5l"]
 script/source = "extends Button
 
-func _ready() -> void: pressed.connect(get_tree().quit)
+func _gui_input(event: InputEvent) -> void: 
+	if event is InputEventMouseButton: 
+		print(\"67\");
+		get_tree().quit()
 "
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sktv"]
@@ -230,6 +248,13 @@ height = 0.25
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4ds3"]
 size = Vector3(9.191589, 0.7286377, 20.975586)
+
+[sub_resource type="GDScript" id="GDScript_ophos"]
+script/source = "extends Node
+
+func _process(delta: float) -> void:
+	print(get_viewport().gui_get_hovered_control())
+"
 
 [node name="GameManager" type="Node" unique_id=1070764289 node_paths=PackedStringArray("all_states")]
 script = ExtResource("1_utpm8")
@@ -554,12 +579,14 @@ texture = ExtResource("14_ophos")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Options" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=923722221]
+[node name="Options" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=923722221 node_paths=PackedStringArray("option", "pause_container")]
 unique_name_in_owner = true
-z_index = 3
 layout_mode = 2
 size_flags_horizontal = 4
 text = "OPTIONS"
+script = SubResource("GDScript_27np0")
+option = NodePath("../../../../Option")
+pause_container = NodePath("../..")
 
 [node name="HSeparator4" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=250910759]
 custom_minimum_size = Vector2(0, 16)
@@ -597,11 +624,9 @@ texture = ExtResource("13_o0w5l")
 expand_mode = 2
 stretch_mode = 6
 
-[node name="Option" parent="UIManager" unique_id=1520904555 instance=ExtResource("16_o0w5l")]
-layout_mode = 1
-
 [node name="ObjectiveContainer" type="VBoxContainer" parent="UIManager" unique_id=812492473]
 unique_name_in_owner = true
+visible = false
 z_index = 2
 layout_mode = 0
 offset_top = 32.0
@@ -693,6 +718,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Credits" type="PanelContainer" parent="UIManager" unique_id=128648840 node_paths=PackedStringArray("text_box")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -810,6 +836,10 @@ scroll_active = false
 scroll_following = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Option" parent="UIManager" unique_id=1520904555 instance=ExtResource("16_o0w5l")]
+z_index = 5
+layout_mode = 1
 
 [node name="BattleDirector" type="Node" parent="." unique_id=952621406]
 script = ExtResource("8_r74ma")
@@ -1344,7 +1374,8 @@ transform = Transform3D(0.87926644, 0, 0.47633028, 0, 1, 0, -0.47633028, 0, 0.87
 [node name="CollisionShape3D" parent="DeathZone" index="0" unique_id=447369626]
 shape = SubResource("BoxShape3D_g4ds3")
 
-[connection signal="pressed" from="UIManager/CenterContainer/PauseContainer/Buttons/Options" to="UIManager/Option" method="show"]
+[node name="Node" type="Node" parent="." unique_id=704946625]
+script = SubResource("GDScript_ophos")
 
 [editable path="States/GameState00/InvisibleWallBarricade"]
 [editable path="States/GameState01/GoToBarricadeArea"]

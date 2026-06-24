@@ -15,12 +15,14 @@
 [ext_resource type="PackedScene" uid="uid://bqvmhyi4hni80" path="res://prefabs/ui/home/input_link.tscn" id="13_qngj8"]
 [ext_resource type="Script" uid="uid://cu6sadsjd2uxg" path="res://prefabs/ui/home/game_options.gd" id="14_gameo"]
 
-[sub_resource type="InputEventAction" id="InputEventAction_okf6m"]
-action = &"ui_cancel"
-pressed = true
+[sub_resource type="GDScript" id="GDScript_8buk6"]
+script/source = "extends Control
 
-[sub_resource type="Shortcut" id="Shortcut_6k8sm"]
-events = [SubResource("InputEventAction_okf6m")]
+
+func _input(event: InputEvent) -> void:
+	if visible and event.is_action(\"ui_cancel\"):
+		hide()
+"
 
 [sub_resource type="GDScript" id="GDScript_6k6s7"]
 script/source = "extends TabContainer
@@ -87,17 +89,13 @@ offset_bottom = 482.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_vl0u7")
+script = SubResource("GDScript_8buk6")
 
 [node name="FocusGraber" type="Control" parent="." unique_id=1717495998]
 visible = false
 anchors_preset = 0
 script = ExtResource("4_srh7j")
 metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
-
-[node name="Quit" type="Button" parent="." unique_id=966053759]
-visible = false
-layout_mode = 0
-shortcut = SubResource("Shortcut_6k8sm")
 
 [node name="LEFT" type="TextureRect" parent="." unique_id=835914478]
 layout_mode = 1
@@ -1481,7 +1479,6 @@ tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48
 text = "↺"
 
-[connection signal="pressed" from="Quit" to="." method="hide"]
 [connection signal="value_changed" from="TabContainer/AUDIO/MasterVolume/Slider" to="TabContainer/AUDIO" method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/AUDIO/MusicVolume/Slider" to="TabContainer/AUDIO" method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/AUDIO/EffectVolume/Slider" to="TabContainer/AUDIO" method="_on_effect_slider_value_changed"]
