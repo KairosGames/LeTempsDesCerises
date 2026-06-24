@@ -39,8 +39,10 @@ func _ready() -> void:
 	player.tried_shoot_no_reload.connect(no_ammo)
 	player.changed_posture.connect(new_stance)
 	player.changed_aim_state.connect(aim)
+	player.just_revive.connect(alive_event)
+	Wwise.set_switch("Shoe_Type", shoe_type.pick_random(), steps)
 	await get_tree().create_timer(7).timeout
-	alive.post_event()
+	Wwise.post_event("Player_Alive", self)
 
 func _process(_delta: float) -> void:
 
@@ -91,10 +93,11 @@ func new_stance(from, to) -> void:
 
 func aim():
 	Wwise.post_event("Player_Aim", self)
-	print(player.is_aiming)
-	Wwise.set_state("player_aim", str(player.is_aiming))	
+	if !player.is_aiming:
+		await get_tree().create_timer(1).timeout
+	Wwise.set_state("player_aim", str(player.is_aiming))
 
-func bullet():
+func bullet(): 
 	var target : Node3D = player.weapon_ray_cast.get_collider()
 	var hit_position : Vector3 = player.weapon_ray_cast.get_collision_point()
 	var hit = bullet_prefab.instantiate()
@@ -120,8 +123,13 @@ func on_reload():
 func death_event():
 	self.reparent(player.player_camera)
 	death.post_event()
-	Wwise.set_switch("Shoe_Type", shoe_type.pick_random(), steps)
 
+func alive_event():
+	if player.gender == player.Gender.Male:
+		Wwise.set_switch("Gender", "M", self)
+	else:
+		Wwise.set_switch("Gender", "F", self)
+	Wwise.set_switch("Shoe_Type", shoe_type.pick_random(), steps)
 
 func _on_reload_ui_try_failed() -> void:
 	pass # Replace with function body.

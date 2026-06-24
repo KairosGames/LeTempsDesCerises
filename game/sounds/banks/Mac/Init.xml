@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{8265C9C8-43B9-1ED1-6CA5-7F92C8BAA546}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{9BFBC942-CCD2-5B04-36C1-3C91A361F1E3}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -13,7 +13,6 @@
 			</Media>
 			<Plugins>
 				<Custom>
-					<Plugin Id="41507213" Name="Compressor (Custom)" ObjectPath="\Busses\Music_Bus\Music_Bus\[Effect Slot [0]: (Compressor)]\Compressor (Custom)" GUID="{AC753ED3-10F5-4099-8C70-F0D4CFA93E14}" LibName="Wwise Compressor" LibId="7077891"/>
 					<Plugin Id="64045502" Name="Gain (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send\[Effect Slot [1]: (Gain)]\Gain (Custom)" GUID="{7FEA6803-5F2F-4DC7-9B38-F57620C75B4B}" LibName="Wwise Gain" LibId="9109507"/>
 					<Plugin Id="75143502" Name="Compressor (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\[Effect Slot [0]: (Compressor)]\Compressor (Custom)" GUID="{A26D26DC-6631-4E48-AA7C-BFF94ADEBECE}" LibName="Wwise Compressor" LibId="7077891"/>
 					<Plugin Id="80258421" Name="Meter (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{8908185C-5E26-46E0-AFC3-C890C86B4246}" LibName="Wwise Meter" LibId="8454147"/>
@@ -21,6 +20,7 @@
 					<Plugin Id="292293286" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\AMB\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{0A47A387-8368-497D-A884-F854DF248E43}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="491144356" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_NPC\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{AFAB6BA1-7AD1-4438-9430-79801E451DBC}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="677203020" Name="Pitch Shifter (Custom)" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send\[Effect Slot [0]: (Pitch Shifter)]\Pitch Shifter (Custom)" GUID="{E1388689-6B51-40C1-B6CC-61D3D1660DA2}" LibName="Wwise Pitch Shifter" LibId="8912899"/>
+					<Plugin Id="709122841" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{A3028C14-CC80-4EB1-8BBC-A7DFF27E2768}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="756484234" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_Characters\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{6E305924-9336-480C-998E-A9BE51616ED9}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="781058597" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_Player\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{0C25AD9E-4355-4060-B199-A712931C05E7}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="805464425" Name="Caught_in_a_loop (Custom)" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Rev_Barricade\[Effect Slot [0]: (Stereo Delay)]\Caught_in_a_loop (Custom)" GUID="{EE8512F0-1D4C-4F9E-87FC-26DBFFB03C4A}" LibName="Wwise Stereo Delay" LibId="8847363"/>
@@ -87,7 +87,13 @@
 						</Custom>
 					</PluginRefs>
 				</Bus>
-				<Bus Id="1534528563" Name="VX" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX" GUID="{E8C3D5DB-24D6-472C-93CA-D6BB12427941}" Color="11"/>
+				<Bus Id="1534528563" Name="VX" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX" GUID="{E8C3D5DB-24D6-472C-93CA-D6BB12427941}" Color="11">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="709122841"/>
+						</Custom>
+					</PluginRefs>
+				</Bus>
 				<Bus Id="1541696182" Name="SFX_Cannon" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Cannon" GUID="{A00DBD55-36EA-44AA-ADF0-55DEE40480F9}" Color="10"/>
 				<Bus Id="1551306167" Name="UI" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\UI" GUID="{D7CABC36-B31D-4789-A7B2-46175473A0AA}" Color="19"/>
 				<Bus Id="1728828729" Name="VX_Player" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_Player" GUID="{46D92596-0E19-4482-83A1-FAABFE94F255}" Color="11">
@@ -131,13 +137,7 @@
 						<AuxBusRef Id="4084836994" Name="Music_End_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_End_Rev" GUID="{7CE652AA-1D2A-4019-A958-EA85F43ED44C}" Color="2"/>
 					</AuxBusRefs>
 				</Bus>
-				<Bus Id="2680856269" Name="Music_Bus" ObjectPath="\Busses\Music_Bus\Music_Bus" GUID="{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}" Color="2">
-					<PluginRefs>
-						<Custom>
-							<PluginRef Id="41507213"/>
-						</Custom>
-					</PluginRefs>
-				</Bus>
+				<Bus Id="2680856269" Name="Music_Bus" ObjectPath="\Busses\Music_Bus\Music_Bus" GUID="{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}" Color="2"/>
 				<Bus Id="3009393514" Name="Hugo" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Hugo" GUID="{9B158B8B-1296-4EC4-9488-C5CF405E14EF}" Color="3"/>
 				<Bus Id="3217351932" Name="Atea" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Atea" GUID="{B2C34D4A-D78C-44C0-96FB-F2FD48E42B90}" Color="3">
 					<AuxBusRefs>
@@ -598,5 +598,5 @@
 			</AcousticTextures>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{94242CA2-EF4B-9FAC-31A2-8C747F259C4D}</FileHash>
+	<FileHash>{3051CACF-CC6B-DAA2-66CC-52DFB7715298}</FileHash>
 </SoundBanksInfo>

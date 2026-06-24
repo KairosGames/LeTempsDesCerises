@@ -21,21 +21,14 @@
 								<Action Name="" ID="{EDE24413-AD02-4D03-BE3C-E6BCF78AB722}" ShortID="804408190">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerCrack_Oneshot" ID="{D9D474F4-91F3-48CC-AE2C-7F9A03CF6129}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+											<ObjectRef Name="Chassepot_Core" ID="{96A89D31-334C-4948-8B4E-7692CE778834}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
-								<Action Name="" ID="{3BF36D4F-E6DB-48A1-9452-7A61A03E4672}" ShortID="153425534">
-									<PropertyList>
-										<Property Name="AbsoluteOrRelative" Type="int16" Value="1"/>
-										<Property Name="ActionType" Type="int16" Value="38"/>
-										<Property Name="Delay" Type="Real64" Value="0.2"/>
-										<Property Name="GameParameterValue" Type="Real64" Value="10"/>
-										<Property Name="Scope" Type="int16" Value="1"/>
-									</PropertyList>
+								<Action Name="" ID="{4CB8B1A1-A339-44BB-9723-5BAD5950D72F}" ShortID="202808852">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Deafening" ID="{8C42D3C2-EEFE-4828-8CAF-2452FFE4D454}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+											<ObjectRef Name="Chassepot_DryFire" ID="{9A34029C-231E-4F7B-BD9A-BC807D2CB65A}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -50,24 +43,13 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
-								<Action Name="" ID="{646521E4-7892-4AC3-8496-596853C3CCC6}" ShortID="1035917101">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="LTDC_SFX_Player_GunShot_LayerTail_Oneshot_01" ID="{C9254587-A041-4AA2-B76B-4B04BE084D24}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
 								<Action Name="" ID="{62422980-1511-4F52-88BA-CBA20117063A}" ShortID="904498895">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.2"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="NPC_Shoot" ID="{9892C910-23AC-4551-A381-3CB9993A7506}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-								<Action Name="" ID="{4CB8B1A1-A339-44BB-9723-5BAD5950D72F}" ShortID="202808852">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Chassepot_DryFire" ID="{9A34029C-231E-4F7B-BD9A-BC807D2CB65A}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
+											<ObjectRef Name="Chassepot_Tail" ID="{F5195145-381E-4597-B1A6-47D12B699907}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -331,6 +313,7 @@
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="38"/>
 										<Property Name="GameParameterValue" Type="Real64" Value="-48"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
@@ -341,6 +324,7 @@
 								<Action Name="" ID="{6C543782-6951-47EC-BD77-EFBDB2C4B89C}" ShortID="623701932">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="42"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
@@ -385,13 +369,13 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
-								<Action Name="" ID="{590FA394-5767-4906-92E7-DE04B7551E7E}" ShortID="36953792">
+								<Action Name="" ID="{658CF3B8-1BE8-406F-99C5-6BE2FCB5BA9E}" ShortID="730169890">
 									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="ActionType" Type="int16" Value="22"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Reset_Reload" ID="{FB9581D7-305D-4AEB-8363-F92282F7C8F3}" WorkUnitID="{23E59525-27DD-4789-9862-5F2910D25BAE}"/>
+											<ObjectRef Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}" WorkUnitID="{DA1E31F8-74B4-45DA-A5C6-84A4C7E399B4}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -551,6 +535,9 @@
 						<Event Name="Barricade_Damaged" ID="{3D5106B6-DB52-4CAD-8B67-C5FA9BAE909C}">
 							<ChildrenList>
 								<Action Name="" ID="{29F238FB-946A-497E-8E97-F84FB35CD571}" ShortID="298145276">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.1"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="LTDC_SFX_Barricade_Damage_LayerCore_Oneshot" ID="{6B0D95F7-CF42-4B8D-BE1D-F18197FD9E90}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
@@ -560,6 +547,7 @@
 								<Action Name="" ID="{5A963790-9B24-4BAB-BAD6-E769DAFE13F5}" ShortID="722564597">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="0.4"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
@@ -1141,6 +1129,18 @@
 									<ObjectRef Name="NPC_DryFire" ID="{8BB63C8F-1F5B-43F0-8E0D-C4A665498382}" WorkUnitID="{0AF67B91-AD3E-4711-9924-F843659CEDAB}"/>
 								</Reference>
 							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="End" ID="{72B738EE-DA6A-4347-B025-D7D4A68FE1AD}">
+					<ChildrenList>
+						<Action Name="" ID="{728469B2-957B-4B83-9177-567C704870BB}" ShortID="439403312">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="3"/>
+								<Property Name="FadeTime" Type="Real64" Value="3"/>
+								<Property Name="Scope" Type="int16" Value="1"/>
+							</PropertyList>
+							<ReferenceList/>
 						</Action>
 					</ChildrenList>
 				</Event>

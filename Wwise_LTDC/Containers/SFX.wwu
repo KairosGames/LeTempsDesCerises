@@ -70,10 +70,9 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="Reload" ID="{4A012FB1-B8C0-4113-8824-13C41B4C8EE6}" ShortID="443224131">
 											<PropertyList>
-												<Property Name="GlobalOrPerObject" Type="int16" Value="0"/>
 												<Property Name="MakeUpGain" Type="Real64">
 													<ValueList>
-														<Value>-3</Value>
+														<Value>3</Value>
 													</ValueList>
 												</Property>
 												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
@@ -88,13 +87,6 @@
 											</ReferenceList>
 											<ChildrenList>
 												<RandomSequenceContainer Name="Reload_1" ID="{D39F167A-1037-473A-BC27-8C463F5BDC11}" ShortID="816093986">
-													<PropertyList>
-														<Property Name="MakeUpGain" Type="Real64">
-															<ValueList>
-																<Value>3</Value>
-															</ValueList>
-														</Property>
-													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -238,11 +230,6 @@
 																<Value>0.25</Value>
 															</ValueList>
 														</Property>
-														<Property Name="MakeUpGain" Type="Real64">
-															<ValueList>
-																<Value>3</Value>
-															</ValueList>
-														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
@@ -276,20 +263,6 @@
 																</Reference>
 															</ReferenceList>
 															<ChildrenList>
-																<AudioFileSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01" ID="{92F469A5-AE69-48F2-BB50-03F4E96B933B}">
-																	<Language>SFX</Language>
-																	<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="977142577"/>
-																	</MediaIDList>
-																</AudioFileSource>
-																<AudioFileSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_03" ID="{68630224-A709-4BB3-A2C1-14666AE95E91}">
-																	<Language>SFX</Language>
-																	<AudioFile>Chassepot\Reload\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01.wav</AudioFile>
-																	<MediaIDList>
-																		<MediaID ID="977142577"/>
-																	</MediaIDList>
-																</AudioFileSource>
 																<AudioFileSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_02" ID="{073B81E3-F4FF-4C48-B636-11559C6EAF1C}">
 																	<Language>SFX</Language>
 																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01.wav</AudioFile>
@@ -299,7 +272,7 @@
 																</AudioFileSource>
 															</ChildrenList>
 															<ActiveSourceList>
-																<ActiveSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_01" ID="{92F469A5-AE69-48F2-BB50-03F4E96B933B}" Platform="Linked"/>
+																<ActiveSource Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_02" ID="{073B81E3-F4FF-4C48-B636-11559C6EAF1C}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 														<Sound Name="LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_02" ID="{63E35D97-8C53-4709-B7A0-CB6162D092CE}" ShortID="795085157">
@@ -441,11 +414,6 @@
 														<Property Name="InitialDelay" Type="Real64">
 															<ValueList>
 																<Value>0.2</Value>
-															</ValueList>
-														</Property>
-														<Property Name="MakeUpGain" Type="Real64">
-															<ValueList>
-																<Value>3</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -634,11 +602,6 @@
 																<Value>0.3</Value>
 															</ValueList>
 														</Property>
-														<Property Name="MakeUpGain" Type="Real64">
-															<ValueList>
-																<Value>3</Value>
-															</ValueList>
-														</Property>
 													</PropertyList>
 													<ReferenceList>
 														<Reference Name="Conversion">
@@ -772,11 +735,6 @@
 														<Property Name="InitialDelay" Type="Real64">
 															<ValueList>
 																<Value>0.5</Value>
-															</ValueList>
-														</Property>
-														<Property Name="MakeUpGain" Type="Real64">
-															<ValueList>
-																<Value>3</Value>
 															</ValueList>
 														</Property>
 													</PropertyList>
@@ -938,6 +896,7 @@
 										</RandomSequenceContainer>
 										<PropertyContainer Name="Chassepot_Gunshot" ID="{9EF17397-3747-48A0-A85E-5FD14E654F45}" ShortID="76595978">
 											<PropertyList>
+												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
@@ -1385,6 +1344,390 @@
 															</ChildrenList>
 															<ActiveSourceList>
 																<ActiveSource Name="LTDC_SFX_Player_DryShot_Oneshot_03" ID="{71620994-ACDF-48BD-BC9C-F218A225552B}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Chassepot_Core" ID="{96A89D31-334C-4948-8B4E-7692CE778834}" ShortID="486041543">
+													<PropertyList>
+														<Property Name="MakeUpGain" Type="Real64">
+															<ValueList>
+																<Value>3</Value>
+															</ValueList>
+														</Property>
+														<Property Name="OverrideEffect" Type="bool" Value="True"/>
+														<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
+														<Property Name="UserAuxSendVolume0" Type="Real64">
+															<ValueList>
+																<Value>36</Value>
+															</ValueList>
+														</Property>
+														<Property Name="UserAuxSendVolume1" Type="Real64">
+															<ValueList>
+																<Value>12</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+														<Reference Name="UserAuxSend0">
+															<ObjectRef Name="SFX_Gunshot_Send" ID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+														<Reference Name="UserAuxSend1">
+															<ObjectRef Name="Wwise_Motion_Send" ID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="LTDC_SFX_Player_GunShot_LayerCore_Random_01" ID="{6E8B8368-1155-477C-B17D-CB001F515B8A}" ShortID="66632832">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerCore_Random_01" ID="{BF7E24AD-D498-478C-B3F9-BA8D81907107}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerCore_Random_01.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="827402103"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerCore_Random_01" ID="{BF7E24AD-D498-478C-B3F9-BA8D81907107}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_GunShot_LayerCore_Random_02" ID="{C3C108BD-9836-414F-9979-9B53A30162D2}" ShortID="1065751189">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerCore_Random_02" ID="{C9838078-F315-4F9E-8BA8-AE760DAE931A}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerCore_Random_02.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="741029002"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerCore_Random_02" ID="{C9838078-F315-4F9E-8BA8-AE760DAE931A}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_GunShot_LayerCore_Random_03" ID="{D103CB68-E970-4FF0-8AEB-785CBB1DA55E}" ShortID="644510350">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerCore_Random_03" ID="{9636DEAD-13A4-4348-9B0C-763F99289CD5}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerCore_Random_03.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="982791653"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerCore_Random_03" ID="{9636DEAD-13A4-4348-9B0C-763F99289CD5}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_GunShot_LayerCore_Random_04" ID="{0418F264-34E5-4BAA-9196-209253263B76}" ShortID="568039006">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerCore_Random_04" ID="{6D0B8A85-FBEA-4C6E-959C-E4D443EB42F9}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerCore_Random_04.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="84795096"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerCore_Random_04" ID="{6D0B8A85-FBEA-4C6E-959C-E4D443EB42F9}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_GunShot_LayerCore_Random_05" ID="{D1B67D3F-5772-416C-862F-77B2ADC75AE3}" ShortID="750795797">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerCore_Random_05" ID="{59DDCA45-0848-45B1-83E0-CB1F31763361}">
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerCore_Random_05.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="596122725"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerCore_Random_05" ID="{59DDCA45-0848-45B1-83E0-CB1F31763361}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+													</ChildrenList>
+													<StateInfo>
+														<StateGroupList>
+															<StateGroupInfo>
+																<StateGroupRef Name="player_aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
+																<StateGroupInfo Name="" ID="{975F6DA7-BF2E-4573-A23B-579914C63683}" ShortID="51021855"/>
+															</StateGroupInfo>
+														</StateGroupList>
+														<CustomStateList>
+															<CustomState>
+																<StateRef Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+																<CustomState Name="" ID="{69DB408A-4B3C-477D-9CBF-DDCBA5A9D684}" ShortID="919399716">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="-3"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="None" ID="{3F4E19DC-A92B-410B-A80A-BE5560C10551}"/>
+																<CustomState Name="" ID="{B45B9850-4CB1-472F-8A2D-80DC5D5983B2}" ShortID="519661713"/>
+															</CustomState>
+															<CustomState>
+																<StateRef Name="true" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+																<CustomState Name="" ID="{4AC8BF43-C48F-45CF-8309-6CFE8DB2E713}" ShortID="712971962">
+																	<PropertyList>
+																		<Property Name="Volume" Type="Real64" Value="3"/>
+																	</PropertyList>
+																</CustomState>
+															</CustomState>
+														</CustomStateList>
+													</StateInfo>
+													<ObjectLists>
+														<ObjectList Name="Effects">
+															<EffectSlot Name="" ID="{132B8F8D-05A7-4E70-BD7E-7E2E207E1BB1}" ShortID="73362673">
+																<ReferenceList>
+																	<Reference Name="Effect">
+																		<Custom>
+																			<Effect Name="Parametric EQ (Custom)" ID="{38C53F2E-1972-4646-8CC8-F05AE9026171}" ShortID="251558646" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																				<PropertyList>
+																					<Property Name="FilterTypeBand1" Type="int32" Value="6"/>
+																					<Property Name="GainBand1" Type="Real32" Value="3"/>
+																					<Property Name="OnOffBand2" Type="bool" Value="False"/>
+																					<Property Name="QFactorBand1" Type="Real32" Value="3"/>
+																				</PropertyList>
+																				<StateInfo>
+																					<StatePropertyList>
+																						<Property Name="GainBand1"/>
+																					</StatePropertyList>
+																					<StateGroupList>
+																						<StateGroupInfo>
+																							<StateGroupRef Name="player_aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
+																							<StateGroupInfo Name="" ID="{2A807746-717E-41F3-9224-1E46BFD95714}" ShortID="217099622"/>
+																						</StateGroupInfo>
+																					</StateGroupList>
+																					<CustomStateList>
+																						<CustomState>
+																							<StateRef Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+																							<CustomState Name="" ID="{AE515AEB-B4E9-4A0F-A5A9-062AABC079C7}" ShortID="719337434">
+																								<PropertyList>
+																									<Property Name="GainBand1" Type="Real32" Value="-3"/>
+																								</PropertyList>
+																							</CustomState>
+																						</CustomState>
+																						<CustomState>
+																							<StateRef Name="None" ID="{3F4E19DC-A92B-410B-A80A-BE5560C10551}"/>
+																							<CustomState Name="" ID="{8E804AEA-C5EB-47EC-A09A-A8774F8E7861}" ShortID="431385167"/>
+																						</CustomState>
+																						<CustomState>
+																							<StateRef Name="true" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+																							<CustomState Name="" ID="{52273E31-511A-4459-AA85-E79A8A17F907}" ShortID="1070131776"/>
+																						</CustomState>
+																					</CustomStateList>
+																				</StateInfo>
+																			</Effect>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+																<StateInfo>
+																	<CustomStateList>
+																		<CustomState>
+																			<StateRef Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+																			<CustomState Name="" ID="{090F9697-A26F-40C1-895F-260E23241970}" ShortID="340036231"/>
+																		</CustomState>
+																		<CustomState>
+																			<StateRef Name="None" ID="{3F4E19DC-A92B-410B-A80A-BE5560C10551}"/>
+																			<CustomState Name="" ID="{F135D5F3-BCCA-435F-8802-CF06AAC20972}" ShortID="520719043"/>
+																		</CustomState>
+																		<CustomState>
+																			<StateRef Name="true" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+																			<CustomState Name="" ID="{9F2B571A-2F9E-4AB2-B8E5-6B826935616D}" ShortID="891074996"/>
+																		</CustomState>
+																	</CustomStateList>
+																</StateInfo>
+															</EffectSlot>
+														</ObjectList>
+													</ObjectLists>
+												</RandomSequenceContainer>
+												<RandomSequenceContainer Name="Chassepot_Tail" ID="{F5195145-381E-4597-B1A6-47D12B699907}" ShortID="223169065">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<Sound Name="LTDC_SFX_Player_GunShot_LayerTail_Random__001" ID="{12811FB1-F193-413C-B90F-9A587DF0E3C5}" ShortID="385358300">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Random__001" ID="{D6E80936-B414-4529-9680-D7FF84AF2F01}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.07482"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Random__001.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="573106524"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerTail_Random__001" ID="{D6E80936-B414-4529-9680-D7FF84AF2F01}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_GunShot_LayerTail_Random__002" ID="{3C2380C8-6329-4987-BD38-BA1618BE80D4}" ShortID="288598733">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Random__002" ID="{E2810707-7327-4E99-942E-0C43E0A839DF}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.05792"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Random__002.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="1056103218"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerTail_Random__002" ID="{E2810707-7327-4E99-942E-0C43E0A839DF}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_GunShot_LayerTail_Random__003" ID="{2D401FB8-D997-4159-B029-DDC371709017}" ShortID="979329636">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Random__003" ID="{9B3AB3E6-EE45-4C61-9286-246641D1FC88}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.07073"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Random__003.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="668093395"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerTail_Random__003" ID="{9B3AB3E6-EE45-4C61-9286-246641D1FC88}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_GunShot_LayerTail_Random__004" ID="{E2D84390-A7C9-49DB-BE50-32C026E3D82B}" ShortID="38164005">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Random__004" ID="{6EE62F67-73C2-4465-9D22-75F140C96A32}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.07598"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Random__004.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="846461925"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerTail_Random__004" ID="{6EE62F67-73C2-4465-9D22-75F140C96A32}" Platform="Linked"/>
+															</ActiveSourceList>
+														</Sound>
+														<Sound Name="LTDC_SFX_Player_GunShot_LayerTail_Random__005" ID="{9DC63F45-C10A-4E9E-BB61-8AD3257C53DF}" ShortID="1049463509">
+															<ReferenceList>
+																<Reference Name="Conversion">
+																	<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+																</Reference>
+																<Reference Name="OutputBus">
+																	<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+																</Reference>
+															</ReferenceList>
+															<ChildrenList>
+																<AudioFileSource Name="LTDC_SFX_Player_GunShot_LayerTail_Random__005" ID="{E640026C-D1FB-4C02-92AC-BC5E45AD5DCD}">
+																	<PropertyList>
+																		<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+																		<Property Name="TrimBegin" Type="Real64" Value="0.05862"/>
+																	</PropertyList>
+																	<Language>SFX</Language>
+																	<AudioFile>Chassepot\LTDC_SFX_Player_GunShot_LayerTail_Random__005.wav</AudioFile>
+																	<MediaIDList>
+																		<MediaID ID="254115369"/>
+																	</MediaIDList>
+																</AudioFileSource>
+															</ChildrenList>
+															<ActiveSourceList>
+																<ActiveSource Name="LTDC_SFX_Player_GunShot_LayerTail_Random__005" ID="{E640026C-D1FB-4C02-92AC-BC5E45AD5DCD}" Platform="Linked"/>
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
@@ -6125,21 +6468,16 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="LTDC_SFX_Player_Death_Oneshot" ID="{08803DEC-5B52-4F83-B03E-9360B0DFC5FE}">
-											<PropertyList>
-												<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
-												<Property Name="TrimBegin" Type="Real64" Value="0.06467"/>
-												<Property Name="TrimEnd" Type="Real64" Value="0.91668"/>
-											</PropertyList>
+										<AudioFileSource Name="LTDC_SFX_Player_Death_Oneshot" ID="{3893ECA4-E4CF-4A60-8AFF-441D5AB3B91D}">
 											<Language>SFX</Language>
-											<AudioFile>Vx_Barks\Vx_Communard\LTDC_SFX_Player_Death_Oneshot.wav</AudioFile>
+											<AudioFile>VX_Player_Breath\LTDC_SFX_Player_Death_Oneshot.wav</AudioFile>
 											<MediaIDList>
-												<MediaID ID="49496949"/>
+												<MediaID ID="501154010"/>
 											</MediaIDList>
 										</AudioFileSource>
 									</ChildrenList>
 									<ActiveSourceList>
-										<ActiveSource Name="LTDC_SFX_Player_Death_Oneshot" ID="{08803DEC-5B52-4F83-B03E-9360B0DFC5FE}" Platform="Linked"/>
+										<ActiveSource Name="LTDC_SFX_Player_Death_Oneshot" ID="{3893ECA4-E4CF-4A60-8AFF-441D5AB3B91D}" Platform="Linked"/>
 									</ActiveSourceList>
 								</Sound>
 							</ChildrenList>
@@ -8580,8 +8918,12 @@
 								<RandomSequenceContainer Name="NPC_Shoot" ID="{9892C910-23AC-4551-A381-3CB9993A7506}" ShortID="698306408">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
-										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="2"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
+										<Property Name="Highpass" Type="int16">
+											<ValueList>
+												<Value>15</Value>
+											</ValueList>
+										</Property>
 										<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 										<Property Name="MaxSoundPerInstance" Type="int16">
@@ -8594,13 +8936,16 @@
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
+											<ValueList>
+												<Value>300</Value>
+											</ValueList>
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{AB927DCC-D244-4219-A4C9-F0C2E8341D06}">
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
 															<Property Name="Max" Type="Real64" Value="500"/>
-															<Property Name="Min" Type="Real64" Value="-200"/>
+															<Property Name="Min" Type="Real64" Value="-100"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -8615,7 +8960,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="Versaillais" ID="{6D0DE6C2-4CE9-4C2D-B4A6-5E0DCBAD5A34}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+											<ObjectRef Name="Gunshot" ID="{F7D8CD67-4B30-47DC-9FDB-8466261CF446}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -8808,12 +9153,121 @@
 												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{428BB293-7F3C-4609-A73A-864D5A13ED53}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random" ID="{0653C811-49C8-47DB-94FF-185DB7BFA49C}" ShortID="1069877248">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random" ID="{58E49E39-EFC2-4193-8744-881E97470F75}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1018639944"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random" ID="{58E49E39-EFC2-4193-8744-881E97470F75}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_001" ID="{B0BD16EE-0ABC-4276-AB96-4F9EE07CAA91}" ShortID="512995689">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_001" ID="{E60A32F3-5422-4E9E-90C8-2A06295012A7}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_001.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="803409758"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_001" ID="{E60A32F3-5422-4E9E-90C8-2A06295012A7}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_002" ID="{C54E86A1-6297-4190-912A-4DE0749FB7F6}" ShortID="1042205089">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_002" ID="{5F35CFB5-D19E-4C6F-8F24-58BDC16CEAF1}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_002.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="558518109"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_002" ID="{5F35CFB5-D19E-4C6F-8F24-58BDC16CEAF1}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_003" ID="{C64BCBF0-B7D9-459C-AE5E-7779B4595483}" ShortID="382480647">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_003" ID="{74F27711-2152-4242-8421-D017D9236A55}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_003.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="612558186"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_003" ID="{74F27711-2152-4242-8421-D017D9236A55}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_004" ID="{AC374877-52CE-48B3-85FD-4B94EEDB34D6}" ShortID="456136160">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_004" ID="{21D946CD-47AF-4FC0-886E-2F36F85E1723}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_004.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="376843141"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_004" ID="{21D946CD-47AF-4FC0-886E-2F36F85E1723}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
 									</ChildrenList>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="NPC_Shoot_no_sidechain" ID="{9C3AD0FF-F2F0-4810-9838-E94466788838}" ShortID="520398858">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
-										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="2"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
@@ -8847,7 +9301,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<ObjectRef Name="Versaillais" ID="{6D0DE6C2-4CE9-4C2D-B4A6-5E0DCBAD5A34}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
+											<ObjectRef Name="Gunshot" ID="{F7D8CD67-4B30-47DC-9FDB-8466261CF446}" WorkUnitID="{5B70FABA-7599-47A4-82E4-D137C32F248B}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -8860,7 +9314,7 @@
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<Sound Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{23C104D9-1EEC-4C7B-A30C-25BABA41E221}" ShortID="241470114">
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random" ID="{643434A4-8992-4492-A416-BF3337A5BB90}" ShortID="453362631">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -8870,21 +9324,65 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{0271DAAB-D67F-42D9-929E-271CE67D4142}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random" ID="{6992131D-274A-4D91-9C1C-0F7F84CFE0CD}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1018639944"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random" ID="{6992131D-274A-4D91-9C1C-0F7F84CFE0CD}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_001" ID="{D0DE53A2-25D1-4C06-A585-28F2F7FEA1E9}" ShortID="1069345652">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_001" ID="{7CF45A83-3C7C-435C-9984-F07A0E0A5B4B}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_001.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="803409758"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_001" ID="{7CF45A83-3C7C-435C-9984-F07A0E0A5B4B}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{B5DB4831-0480-4810-9057-AD53B203B228}" ShortID="183174716">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{EBAD755C-4F58-4130-AED9-269E321736B2}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_01.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="629537322"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{9679FC42-F461-46F6-93A5-BD48FD7122F9}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{709D8CD8-A540-4F4B-951A-5FEEE3FFB97E}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_01.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="629537322"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{0CDB462F-48ED-4125-871D-094FE4F65659}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{62F28723-D6B7-4C49-9523-A0B68680C652}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_01.wav</AudioFile>
 													<MediaIDList>
@@ -8893,10 +9391,10 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{0CDB462F-48ED-4125-871D-094FE4F65659}" Platform="Linked"/>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{62F28723-D6B7-4C49-9523-A0B68680C652}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{435C119E-929E-4482-A42E-B4318E04A00E}" ShortID="563666096">
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_002" ID="{98ABCACD-AE10-4CFB-BDD8-AA8E8CCEB887}" ShortID="691906225">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -8906,21 +9404,43 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{564475CE-3C3C-4CE7-9C21-DD757981123E}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_002" ID="{8CC5C529-284E-46FF-869D-245011C29DC8}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_002.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="558518109"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_002" ID="{8CC5C529-284E-46FF-869D-245011C29DC8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{C5EAB91A-0B16-4872-8953-68D079E1E68D}" ShortID="1033003986">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{62442CAB-3A1E-4891-8E55-A5932242FD3B}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="948386357"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{8942794D-68FC-44BF-AE56-9550B5900589}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{D617D5B7-0087-4B2B-806A-65315E795CCE}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="948386357"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{1D17B4F9-C2D5-4A99-9822-BCB409DA1BB6}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{48A13D73-A2A3-4181-BAA2-9EC0923192B8}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
@@ -8929,10 +9449,10 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{1D17B4F9-C2D5-4A99-9822-BCB409DA1BB6}" Platform="Linked"/>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{48A13D73-A2A3-4181-BAA2-9EC0923192B8}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{7878264C-408E-4A1F-B816-D5C161A16869}" ShortID="385552625">
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_003" ID="{0B6DD44B-C2E2-4869-8873-01194BF5E134}" ShortID="1068954480">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -8942,33 +9462,19 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{7DD7DC15-A30D-49E4-A8F5-D6D8ABAEF5A7}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_003" ID="{357F8349-2C20-4AD3-B95C-5819AFD6BD21}">
 													<Language>SFX</Language>
-													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_003.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="916788496"/>
-													</MediaIDList>
-												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{C7F4F2AF-CB4A-428D-9C14-0F54FA7135AC}">
-													<Language>SFX</Language>
-													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="916788496"/>
-													</MediaIDList>
-												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{70436587-2FE9-4CA1-A7BE-8ED4DA6A370A}">
-													<Language>SFX</Language>
-													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
-													<MediaIDList>
-														<MediaID ID="916788496"/>
+														<MediaID ID="612558186"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{70436587-2FE9-4CA1-A7BE-8ED4DA6A370A}" Platform="Linked"/>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_003" ID="{357F8349-2C20-4AD3-B95C-5819AFD6BD21}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="LTDC_SFX_NPC_Shoot_Random_04" ID="{62805050-28E3-46A4-B066-64DCEBE021BC}" ShortID="771118557">
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{7C088C94-E413-4C4C-B71B-ACF7CC9A22DE}" ShortID="163038515">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -8978,33 +9484,33 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_04" ID="{5037ADAD-1581-4106-AF96-29F36ED9845B}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{AFF21C57-BE1D-4DA6-B230-394774CA7A72}">
 													<Language>SFX</Language>
-													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="916788496"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{8879B70D-E7F7-4423-AA9A-49FE1A237535}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{B2D2F1C9-4975-4448-9C79-2200A5F6281E}">
 													<Language>SFX</Language>
-													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="916788496"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{5248250B-AB37-4365-BDE6-A4AC040E80B5}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{039117F4-6FAF-4C26-97F4-362ED0CD7D2D}">
 													<Language>SFX</Language>
-													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="916788496"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{5248250B-AB37-4365-BDE6-A4AC040E80B5}" Platform="Linked"/>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{039117F4-6FAF-4C26-97F4-362ED0CD7D2D}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
-										<Sound Name="LTDC_SFX_NPC_Shoot_Random_05" ID="{38BB9A0A-9462-439C-AE4C-D3237F51CE53}" ShortID="681039060">
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_004" ID="{83E363EA-A187-44F4-B53C-555D37DF6C78}" ShortID="307023893">
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -9014,21 +9520,79 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_05" ID="{E6FA8E8A-E8AA-4D5A-8843-CBF63DF52F7C}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_004" ID="{354E4822-01CE-4641-B7C8-EDB1B82A4DC8}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_004.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="376843141"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_004" ID="{354E4822-01CE-4641-B7C8-EDB1B82A4DC8}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_04" ID="{5B355E39-A346-426A-87F5-0083AFE311FD}" ShortID="71412247">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_04" ID="{DE8268FA-56DE-4C4E-A004-B5880648C5AE}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1026693139"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{5F626CBE-A76F-4CA7-9119-A767EF0A7B59}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1026693139"/>
+													</MediaIDList>
+												</AudioFileSource>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{784B9552-6D91-4AEA-AE23-5E7E55BE7DC5}">
+													<Language>SFX</Language>
+													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
+													<MediaIDList>
+														<MediaID ID="1026693139"/>
+													</MediaIDList>
+												</AudioFileSource>
+											</ChildrenList>
+											<ActiveSourceList>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{784B9552-6D91-4AEA-AE23-5E7E55BE7DC5}" Platform="Linked"/>
+											</ActiveSourceList>
+										</Sound>
+										<Sound Name="LTDC_SFX_NPC_Shoot_Random_05" ID="{4F1E8264-6E78-46C1-8EC7-9E9DC3FD9AB9}" ShortID="1043797029">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_05" ID="{36D92152-BE59-4799-B952-B9672FE6F10C}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_05.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="512603057"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{31212E7F-5273-4A72-AF75-6C392A602DB7}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{2C9B00F9-14C9-43DD-A262-DD69AE8A57A6}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_05.wav</AudioFile>
 													<MediaIDList>
 														<MediaID ID="512603057"/>
 													</MediaIDList>
 												</AudioFileSource>
-												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{F77107C8-06A8-4380-9B80-CB7061E20D76}">
+												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{3EB1D324-EAEA-4C30-BCD5-E39A9C939E64}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_05.wav</AudioFile>
 													<MediaIDList>
@@ -9037,7 +9601,7 @@
 												</AudioFileSource>
 											</ChildrenList>
 											<ActiveSourceList>
-												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{F77107C8-06A8-4380-9B80-CB7061E20D76}" Platform="Linked"/>
+												<ActiveSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{3EB1D324-EAEA-4C30-BCD5-E39A9C939E64}" Platform="Linked"/>
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
@@ -9168,6 +9732,11 @@
 							<PropertyList>
 								<Property Name="3DSpatialization" Type="int16" Value="2"/>
 								<Property Name="HoldEmitterPositionOrientation" Type="bool" Value="True"/>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
 								<Property Name="OverridePositioning" Type="bool" Value="True"/>
 							</PropertyList>
 							<ReferenceList>

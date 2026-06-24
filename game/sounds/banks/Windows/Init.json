@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{63158F4A-5EAA-7484-3032-DD20DDF81FA0}",
+    "Hash": "{107020CC-3B42-705A-E84B-E7044B720430}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -26,14 +26,6 @@
     ],
     "Plugins": {
      "Custom": [
-      {
-       "Id": "41507213",
-       "Name": "Compressor (Custom)",
-       "ObjectPath": "\\Busses\\Music_Bus\\Music_Bus\\[Effect Slot [0]: (Compressor)]\\Compressor (Custom)",
-       "GUID": "{AC753ED3-10F5-4099-8C70-F0D4CFA93E14}",
-       "LibName": "Wwise Compressor",
-       "LibId": "7077891"
-      },
       {
        "Id": "64045502",
        "Name": "Gain (Custom)",
@@ -89,6 +81,14 @@
        "GUID": "{E1388689-6B51-40C1-B6CC-61D3D1660DA2}",
        "LibName": "Wwise Pitch Shifter",
        "LibId": "8912899"
+      },
+      {
+       "Id": "709122841",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{A3028C14-CC80-4EB1-8BBC-A7DFF27E2768}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
       },
       {
        "Id": "756484234",
@@ -351,7 +351,14 @@
       "Name": "VX",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX",
       "GUID": "{E8C3D5DB-24D6-472C-93CA-D6BB12427941}",
-      "Color": "11"
+      "Color": "11",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "709122841"
+        }
+       ]
+      }
      },
      {
       "Id": "1541696182",
@@ -511,14 +518,7 @@
       "Name": "Music_Bus",
       "ObjectPath": "\\Busses\\Music_Bus\\Music_Bus",
       "GUID": "{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}",
-      "Color": "2",
-      "PluginRefs": {
-       "Custom": [
-        {
-         "Id": "41507213"
-        }
-       ]
-      }
+      "Color": "2"
      },
      {
       "Id": "3009393514",
@@ -2378,6 +2378,6 @@
     ]
    }
   ],
-  "FileHash": "{EBAEC16A-63C0-2DDD-9AF9-873B98F6FEFE}"
+  "FileHash": "{46EF2193-0200-5BD8-E29A-8290D00E6D7C}"
  }
 }

@@ -27,5 +27,7 @@ func set_wwise_state() -> void:
 			if !WwiseGlobal.is_looping:
 				WwiseGlobal.is_looping = true
 		3:
+			if !WwiseGlobal.is_looping:
+				WwiseGlobal.is_looping = true
 			Wwise.set_state("barricade_state", "broken")
 			WwiseGlobal.barricade = self

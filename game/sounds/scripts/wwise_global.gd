@@ -13,12 +13,11 @@ var line_count : int = 0
 var allow_barks : bool = true
 var allow_subtitles : bool = true
 var move_gate : int = 0
-var reload_gate : bool = false
+var reload_gate : bool = true
 var bypass_line : bool = false
 var is_looping : bool = true
 var ready_narrators : Dictionary = {}
 var relevant_narrators : int = 0
-
 
 func on_game_manager_ready(gm: GameManager) -> void:
 	game_manager = gm
@@ -44,10 +43,15 @@ func _connect_game_manager_signals() -> void:
 		if not game_manager.all_states[3].choose_fight_to_death.is_connected(fight):
 			game_manager.all_states[3].choose_fight_to_death.connect(fight)
 		game_manager.all_states[3].ending_music_choice_scene.connect(stop_barks)
+		game_manager.all_states[3].game_ended.connect(end)
 	if game_manager.all_states.size() > 1:
 		if not game_manager.all_states[1].player_tried_to_exit.is_connected(player_far):
 			game_manager.all_states[1].player_tried_to_exit.connect(player_far)
 	game_manager.all_states[2].player_passed_behind_second_barricade.connect(stop_barks)
+	game_manager.cannon.is_ready_to_shoot_in_cinematic.connect(first_cannon)
+
+func end():
+	Wwise.post_event("End", self)
 
 func new_line(step : int):
 	relevant_narrators = 0
@@ -184,7 +188,6 @@ func on_move_progress(progress: float):
 		#find_closest(allies, player).post_event("Cannon_Advance", 1)
 
 func on_reload_progress(progress):
-	if game_manager.cannon.is_first_activation : return
 	if progress >= 0.9 and not reload_gate:
 		reload_gate = true
 		play_secrure_random_ak_post_event_on_array(cannon_workers, "Cannon_Incoming", 0.0)
@@ -193,6 +196,11 @@ func on_reload_progress(progress):
 		if barricade and is_instance_valid(barricade):
 			play_secure_ak_post_event(find_closest(ally_group, barricade), "Cannon_Incoming", 1.0)
 		play_secure_ak_post_event(find_random(ally_group),"Cannon_Incoming", 2)
+
+func first_cannon():
+	if !cannon_workers.is_empty():
+		find_closest(cannon_workers, player).post_event("Cannon_Incoming", 0)
+		reload_gate = false
 
 func pause(new_pause : bool):
 	if new_pause:

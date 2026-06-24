@@ -27,7 +27,7 @@
 							<PropertyList>
 								<Property Name="MakeUpGain" Type="Real64">
 									<ValueList>
-										<Value>-20</Value>
+										<Value>-30</Value>
 									</ValueList>
 								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
@@ -37,8 +37,8 @@
 								</Property>
 								<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 								<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.25"/>
+								<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
+								<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="2"/>
 								<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 								<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 							</PropertyList>
@@ -55,9 +55,6 @@
 							</ReferenceList>
 							<ChildrenList>
 								<SwitchContainer Name="Breath_In" ID="{F4F3F0A7-519D-41AA-AA28-EA035C654C4A}" ShortID="187930683">
-									<PropertyList>
-										<Property Name="SwitchBehavior" Type="int16" Value="1"/>
-									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -74,6 +71,14 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="M" ID="{8604D5FE-D75F-4041-8637-02F5DFC4DA9F}" ShortID="357938351">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>15</Value>
+													</ValueList>
+												</Property>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -83,7 +88,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{C23C0B3C-EFF4-4309-9640-C8BF3FB3B9FC}" ShortID="792659449">
+												<Sound Name="VX_Player_Breath_Idle_In_M_01" ID="{1195951C-2E2A-407F-88DB-AECBE0CF93D0}" ShortID="512487242">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -93,19 +98,26 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{23D7CDB0-3B33-4F64-A75F-CBD99996C55F}">
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_M_01" ID="{E00779A5-6BE2-4CAE-B68C-5584DD496FD5}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_In_M_01.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="747448429"/>
+																<MediaID ID="404454970"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_M_01" ID="{CD3B4483-C274-432A-8DCC-8D018074857B}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_In_M_01.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="404454970"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{23D7CDB0-3B33-4F64-A75F-CBD99996C55F}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Idle_In_M_01" ID="{CD3B4483-C274-432A-8DCC-8D018074857B}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{707CE81F-358C-4DCF-9B39-34115957FB28}" ShortID="921666340">
+												<Sound Name="VX_Player_Breath_Idle_In_M_02" ID="{544BA1CB-03AF-4468-B37D-1706F9CED366}" ShortID="544927120">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -115,19 +127,26 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{02673F13-13C5-4A1F-8EDD-4E9437DB37C5}">
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_M_02" ID="{6E81677B-2ECF-42FC-AD76-497DC27978FE}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_In_M_02.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="67108238"/>
+																<MediaID ID="361268660"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_M_02" ID="{DEE04DE7-E2AB-4165-82FC-6AA7E52315DC}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_In_M_02.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="361268660"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{02673F13-13C5-4A1F-8EDD-4E9437DB37C5}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Idle_In_M_02" ID="{DEE04DE7-E2AB-4165-82FC-6AA7E52315DC}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{5801B36E-9796-4608-B408-20A083980A6D}" ShortID="919728542">
+												<Sound Name="VX_Player_Breath_Idle_In_M_03" ID="{6638F0ED-B5F0-4D34-BAD8-549473E4FBA7}" ShortID="305910307">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -137,19 +156,26 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{213323E5-3D71-453A-8748-6391596D7191}">
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_M_03" ID="{1502C73E-EE2C-41D3-9FCA-9ED07A149182}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_In_M_03.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="610060490"/>
+																<MediaID ID="405265316"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_M_03" ID="{30B422AB-C46F-49AF-90CB-D5A0F3E75F56}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_In_M_03.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="405265316"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{213323E5-3D71-453A-8748-6391596D7191}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Idle_In_M_03" ID="{30B422AB-C46F-49AF-90CB-D5A0F3E75F56}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{52BAE057-DF5D-41DD-A48B-5FAB5CDAEFBA}" ShortID="92743281">
+												<Sound Name="VX_Player_Breath_Idle_In_M_04" ID="{E901F217-279D-420E-A44F-776E8577FFEC}" ShortID="282831984">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -159,21 +185,35 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{26C5584B-8DE7-4583-9C7D-8D7742C58CD4}">
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_M_04" ID="{4B0DF87F-8DF8-46DC-86C2-485196811424}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_In_M_04.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="108476024"/>
+																<MediaID ID="89147583"/>
+															</MediaIDList>
+														</AudioFileSource>
+														<AudioFileSource Name="VX_Player_Breath_Idle_In_M_04" ID="{93080888-4C9A-4954-ABB8-BEF03F36710E}">
+															<Language>SFX</Language>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_In_M_04.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="89147583"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{26C5584B-8DE7-4583-9C7D-8D7742C58CD4}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Idle_In_M_04" ID="{93080888-4C9A-4954-ABB8-BEF03F36710E}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="F" ID="{A67B9376-DF81-4758-821B-043BC33477FC}" ShortID="1048246680">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>12</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -300,9 +340,6 @@
 									</GroupingInfo>
 								</SwitchContainer>
 								<SwitchContainer Name="Breath_Out" ID="{B9691230-934A-4F7F-9A24-C985EAC513DC}" ShortID="1069597462">
-									<PropertyList>
-										<Property Name="SwitchBehavior" Type="int16" Value="1"/>
-									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -319,6 +356,14 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="M" ID="{1FD44503-E271-40F6-BD1E-16F1749355CA}" ShortID="490026317">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>15</Value>
+													</ValueList>
+												</Property>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -328,7 +373,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{AC75D9F4-3F0A-4BB6-AC98-4589C2B4771A}" ShortID="1000661201">
+												<Sound Name="VX_Player_Breath_Idle_Out_M_01" ID="{8909D394-F838-4A4C-BF76-E37B8BD1F62A}" ShortID="565892502">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -338,19 +383,19 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{14CD3B23-F370-4C51-9FC0-5C53DCD8F3F2}">
+														<AudioFileSource Name="VX_Player_Breath_Idle_Out_M_01" ID="{E2047F2E-CBAF-4BB9-9B25-0F04DBC8BD6A}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_Out_M_01.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="794092549"/>
+																<MediaID ID="241880192"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{14CD3B23-F370-4C51-9FC0-5C53DCD8F3F2}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Idle_Out_M_01" ID="{E2047F2E-CBAF-4BB9-9B25-0F04DBC8BD6A}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{1B7AF25F-A752-4966-8BA1-43FB08448213}" ShortID="128880982">
+												<Sound Name="VX_Player_Breath_Idle_Out_M_02" ID="{12A28697-AEF8-4028-8CD9-D732D759B406}" ShortID="451267877">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -360,19 +405,19 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{50EB2FC0-C4FA-4BC5-94CB-8854010F8760}">
+														<AudioFileSource Name="VX_Player_Breath_Idle_Out_M_02" ID="{3E344274-FA53-4D66-A7BD-E26FBF733652}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_Out_M_02.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="571217104"/>
+																<MediaID ID="641724117"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{50EB2FC0-C4FA-4BC5-94CB-8854010F8760}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Idle_Out_M_02" ID="{3E344274-FA53-4D66-A7BD-E26FBF733652}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{4298AF1D-2A2B-41A5-B15F-EA398EABD2A1}" ShortID="832492791">
+												<Sound Name="VX_Player_Breath_Idle_Out_M_03" ID="{A44BE753-8134-4DE4-B542-CD4AC7507BC0}" ShortID="553392861">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -382,19 +427,19 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{88BD8049-1474-4AB8-A019-7AD94AA187AB}">
+														<AudioFileSource Name="VX_Player_Breath_Idle_Out_M_03" ID="{D75A63EE-ACC4-4F01-9E17-75C2C98446C8}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_Out_M_03.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="454630269"/>
+																<MediaID ID="699768196"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{88BD8049-1474-4AB8-A019-7AD94AA187AB}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Idle_Out_M_03" ID="{D75A63EE-ACC4-4F01-9E17-75C2C98446C8}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{5BCC66B0-A25F-4BB0-9307-4D38AD2F1A76}" ShortID="529193452">
+												<Sound Name="VX_Player_Breath_Idle_Out_M_04" ID="{145D631C-88C3-4F70-8B7F-8BAFF5E54324}" ShortID="937492482">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -404,21 +449,29 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{5B92C43C-72FC-4EE9-8823-53D953949B81}">
+														<AudioFileSource Name="VX_Player_Breath_Idle_Out_M_04" ID="{631B5526-5F68-45BC-9937-0A0AD80C580A}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Idle_Out_M_04.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="297652126"/>
+																<MediaID ID="503974575"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{5B92C43C-72FC-4EE9-8823-53D953949B81}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Idle_Out_M_04" ID="{631B5526-5F68-45BC-9937-0A0AD80C580A}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="F" ID="{7CCA206F-2172-44E3-9D0C-15B7F9FCD490}" ShortID="269351235">
+											<PropertyList>
+												<Property Name="MakeUpGain" Type="Real64">
+													<ValueList>
+														<Value>12</Value>
+													</ValueList>
+												</Property>
+												<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -546,25 +599,116 @@
 								</SwitchContainer>
 							</ChildrenList>
 							<StateInfo>
+								<StatePropertyList>
+									<Property Name="Highpass"/>
+									<Property Name="Lowpass"/>
+									<Property Name="MakeUpGain"/>
+									<Property Name="Pitch"/>
+									<Property Name="PlayMechanismSpecialTransitionsValue"/>
+									<Property Name="Volume"/>
+								</StatePropertyList>
 								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="pause" ID="{063211BB-9332-4406-9616-D5E2F8256E48}"/>
+										<StateGroupInfo Name="" ID="{4F0C7C99-FF04-4BD0-BF42-5A7CC192A5FF}" ShortID="824281950"/>
+									</StateGroupInfo>
 									<StateGroupInfo>
 										<StateGroupRef Name="player_aim" ID="{7362EAF4-693E-48B0-8152-B407DED80E5E}"/>
 										<StateGroupInfo Name="" ID="{0DE1D69E-D5EF-41E4-BE00-697A88DF96AA}" ShortID="709004809"/>
+									</StateGroupInfo>
+									<StateGroupInfo>
+										<StateGroupRef Name="player_stance" ID="{02DC436E-58FA-4CBB-9770-4451633B92C8}"/>
+										<StateGroupInfo Name="" ID="{AD078232-43E2-4442-8AA4-CABC816FE927}" ShortID="985547100"/>
 									</StateGroupInfo>
 								</StateGroupList>
 								<CustomStateList>
 									<CustomState>
 										<StateRef Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
-										<CustomState Name="" ID="{05857FC6-23A9-46BE-99CD-FD6E552E4957}" ShortID="104880062"/>
+										<CustomState Name="" ID="{05857FC6-23A9-46BE-99CD-FD6E552E4957}" ShortID="104880062">
+											<PropertyList>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+											</PropertyList>
+										</CustomState>
 									</CustomState>
 									<CustomState>
 										<StateRef Name="None" ID="{3F4E19DC-A92B-410B-A80A-BE5560C10551}"/>
-										<CustomState Name="" ID="{0114ABD5-76ED-4ACC-8889-B151C61C8EBD}" ShortID="906199826"/>
+										<CustomState Name="" ID="{0114ABD5-76ED-4ACC-8889-B151C61C8EBD}" ShortID="906199826">
+											<PropertyList>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="stand" ID="{A9DDDCF7-4E3F-4207-98B3-2E6520A1E15E}"/>
+										<CustomState Name="" ID="{EBE7820D-0264-4382-B0AC-159E729FE36D}" ShortID="748665687">
+											<PropertyList>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+											</PropertyList>
+										</CustomState>
 									</CustomState>
 									<CustomState>
 										<StateRef Name="true" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
 										<CustomState Name="" ID="{B4E05E17-7871-4F05-8FBA-65E884C9D2B3}" ShortID="197430">
 											<PropertyList>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+												<Property Name="Volume" Type="Real64" Value="-108"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="false" ID="{AE5D66E2-4A21-472D-A82F-731DE5ABE608}"/>
+										<CustomState Name="" ID="{22F2491E-3976-43D8-B245-3D2A51F9E722}" ShortID="274174846">
+											<PropertyList>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="prone" ID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
+										<CustomState Name="" ID="{A946772E-2929-4DBC-876A-CC407721CD0B}" ShortID="850286216">
+											<PropertyList>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="crouch" ID="{A48E2FBF-CCA9-4B0B-967C-367263A876A4}"/>
+										<CustomState Name="" ID="{D3EB8762-05C2-4178-B4A8-13A079D10102}" ShortID="183178330">
+											<PropertyList>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="sprint" ID="{A55EE69E-41C3-4B69-9732-3DA8627F23FD}"/>
+										<CustomState Name="" ID="{994B376A-7E19-415D-ADC9-E593585E63DA}" ShortID="75515714">
+											<PropertyList>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="-1.25"/>
+												<Property Name="Volume" Type="Real64" Value="6"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="None" ID="{1DDBDC63-7073-4B7E-A290-B582E49C0F09}"/>
+										<CustomState Name="" ID="{3426B1DD-7DAE-43E2-B00B-63BC1CBE3B57}" ShortID="1055089100">
+											<PropertyList>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="None" ID="{F182E372-9030-4C41-B76F-889D5C1A57E5}"/>
+										<CustomState Name="" ID="{40AC2F3A-C8CE-4A8B-BBC5-976CF2FE4786}" ShortID="953523703">
+											<PropertyList>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="true" ID="{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}"/>
+										<CustomState Name="" ID="{B5B4B072-C4AE-4C6F-BAEC-812D2DE0BB70}" ShortID="308095343">
+											<PropertyList>
+												<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0"/>
 												<Property Name="Volume" Type="Real64" Value="-108"/>
 											</PropertyList>
 										</CustomState>
@@ -592,6 +736,11 @@
 						</RandomSequenceContainer>
 						<RandomSequenceContainer Name="VX_Player_Breath_Aim" ID="{B13942D2-2149-4616-8859-55D1851D58B0}" ShortID="542427640">
 							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
 								<Property Name="MaxSoundPerInstance" Type="int16">
 									<ValueList>
 										<Value>1</Value>
@@ -634,13 +783,6 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="M" ID="{4FCBE6A3-418D-43D4-927F-86ED2287CB4A}" ShortID="339740370">
-											<PropertyList>
-												<Property Name="MakeUpGain" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -650,7 +792,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{1DCE7A8C-8C92-457D-9CDC-B9CB89817972}" ShortID="643079474">
+												<Sound Name="VX_Player_Breath_Aim_In_M_01" ID="{485B8153-1314-42D5-ABB5-63229B273FBF}" ShortID="721185816">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -660,19 +802,19 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{CF23973F-6E40-4F32-8A6B-EE9EA98C8020}">
+														<AudioFileSource Name="VX_Player_Breath_Aim_In_M_01" ID="{5B14B310-E898-4FC8-B584-C90258098500}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Aim_In_M_01.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="747448429"/>
+																<MediaID ID="173448838"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_001" ID="{CF23973F-6E40-4F32-8A6B-EE9EA98C8020}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Aim_In_M_01" ID="{5B14B310-E898-4FC8-B584-C90258098500}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{7D6A8873-2E01-4051-8C40-A238CC77171F}" ShortID="608705314">
+												<Sound Name="VX_Player_Breath_Aim_In_M_02" ID="{CB7A3F80-65A1-42AE-B831-EA2EF1779849}" ShortID="251055979">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -682,19 +824,19 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{A271E0EC-8589-4DBD-90B2-18207EBAD741}">
+														<AudioFileSource Name="VX_Player_Breath_Aim_In_M_02" ID="{08B8A40B-A2E6-4EAC-81FB-DA1CDE3742E7}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Aim_In_M_02.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="67108238"/>
+																<MediaID ID="775708797"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_002" ID="{A271E0EC-8589-4DBD-90B2-18207EBAD741}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Aim_In_M_02" ID="{08B8A40B-A2E6-4EAC-81FB-DA1CDE3742E7}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{AC7FC599-0E97-4801-BD51-533F83CDF07A}" ShortID="665098285">
+												<Sound Name="VX_Player_Breath_Aim_In_M_03" ID="{7E70D105-2649-485C-9B4B-1B6A87F14B07}" ShortID="579795857">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -704,38 +846,16 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{042DECC4-493F-4A97-BF8C-F9D2DC742DF2}">
+														<AudioFileSource Name="VX_Player_Breath_Aim_In_M_03" ID="{D933E995-F738-4FED-B7C5-8B4A9EDDF9CA}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Aim_In_M_03.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="610060490"/>
+																<MediaID ID="188931734"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_003" ID="{042DECC4-493F-4A97-BF8C-F9D2DC742DF2}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{CDAA298D-A4E3-4AB3-9F05-C4EC1C71D633}" ShortID="436566451">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{DA37A9AF-AEE8-45BA-A69D-0D307EB5E515}">
-															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="108476024"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_In_LayerCalm_Random_004" ID="{DA37A9AF-AEE8-45BA-A69D-0D307EB5E515}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Aim_In_M_03" ID="{D933E995-F738-4FED-B7C5-8B4A9EDDF9CA}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
@@ -864,13 +984,6 @@
 									</ReferenceList>
 									<ChildrenList>
 										<RandomSequenceContainer Name="M" ID="{4D307D1F-4B28-41A8-9430-41F492950186}" ShortID="812216049">
-											<PropertyList>
-												<Property Name="MakeUpGain" Type="Real64">
-													<ValueList>
-														<Value>-12</Value>
-													</ValueList>
-												</Property>
-											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -880,7 +993,7 @@
 												</Reference>
 											</ReferenceList>
 											<ChildrenList>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{0D5B4B77-417E-44AB-94C5-7331DCDD7FDA}" ShortID="49839252">
+												<Sound Name="VX_Player_Breath_Aim_Out_M_01" ID="{E2E2E278-D379-40DB-81F4-4A965B397D07}" ShortID="809894131">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -890,19 +1003,19 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{CA1A86E5-F416-41AC-BBC0-EF1A5DF8C682}">
+														<AudioFileSource Name="VX_Player_Breath_Aim_Out_M_01" ID="{DFBAC0C9-E791-4390-8DB6-B67B34FF5883}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Aim_Out_M_01.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="794092549"/>
+																<MediaID ID="551929001"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_001" ID="{CA1A86E5-F416-41AC-BBC0-EF1A5DF8C682}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Aim_Out_M_01" ID="{DFBAC0C9-E791-4390-8DB6-B67B34FF5883}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{AC38C5E7-CB17-4517-BA68-E83A19D47ED1}" ShortID="474211038">
+												<Sound Name="VX_Player_Breath_Aim_Out_M_02" ID="{242F7CE8-4A1D-4876-BA74-D48C3EA60AEB}" ShortID="1020951508">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -912,19 +1025,19 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{4CEA29CB-9619-458C-A69D-8A9C88D50801}">
+														<AudioFileSource Name="VX_Player_Breath_Aim_Out_M_02" ID="{2DE6A95C-75BB-4340-8178-17CAE592B627}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Aim_Out_M_02.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="571217104"/>
+																<MediaID ID="718370011"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_002" ID="{4CEA29CB-9619-458C-A69D-8A9C88D50801}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Aim_Out_M_02" ID="{2DE6A95C-75BB-4340-8178-17CAE592B627}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{D492E114-0C0A-465C-99A2-32F6783D7670}" ShortID="354216375">
+												<Sound Name="VX_Player_Breath_Aim_Out_M_03" ID="{1E7D626F-4565-46F7-81C8-9B0CE9CE77CE}" ShortID="816113347">
 													<ReferenceList>
 														<Reference Name="Conversion">
 															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -934,38 +1047,16 @@
 														</Reference>
 													</ReferenceList>
 													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{F3A1164D-13D5-4908-8AA9-05CC0247D84D}">
+														<AudioFileSource Name="VX_Player_Breath_Aim_Out_M_03" ID="{630CAF62-A7DD-4825-B6C7-C55AC0A69F14}">
 															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003.wav</AudioFile>
+															<AudioFile>VX_Player_Breath\Male\VX_Player_Breath_Aim_Out_M_03.wav</AudioFile>
 															<MediaIDList>
-																<MediaID ID="454630269"/>
+																<MediaID ID="889564023"/>
 															</MediaIDList>
 														</AudioFileSource>
 													</ChildrenList>
 													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_003" ID="{F3A1164D-13D5-4908-8AA9-05CC0247D84D}" Platform="Linked"/>
-													</ActiveSourceList>
-												</Sound>
-												<Sound Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{17807DEA-81AD-44D0-B899-FA5DF2DED9AC}" ShortID="729202733">
-													<ReferenceList>
-														<Reference Name="Conversion">
-															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
-														</Reference>
-														<Reference Name="OutputBus">
-															<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-														</Reference>
-													</ReferenceList>
-													<ChildrenList>
-														<AudioFileSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{B69F92F3-05F9-48ED-B168-9EB085B6DA4D}">
-															<Language>SFX</Language>
-															<AudioFile>VX_Player_Breath\Calm\LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004.wav</AudioFile>
-															<MediaIDList>
-																<MediaID ID="297652126"/>
-															</MediaIDList>
-														</AudioFileSource>
-													</ChildrenList>
-													<ActiveSourceList>
-														<ActiveSource Name="LTDC_SFX_Player_Type1_Breath_Out_LayerCalm_Random_004" ID="{B69F92F3-05F9-48ED-B168-9EB085B6DA4D}" Platform="Linked"/>
+														<ActiveSource Name="VX_Player_Breath_Aim_Out_M_03" ID="{630CAF62-A7DD-4825-B6C7-C55AC0A69F14}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
@@ -1095,6 +1186,32 @@
 							</ObjectLists>
 						</RandomSequenceContainer>
 					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="pause" ID="{063211BB-9332-4406-9616-D5E2F8256E48}"/>
+								<StateGroupInfo Name="" ID="{67C8E8AC-2899-4C94-BCF0-F373EB5109E1}" ShortID="480260800"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="false" ID="{AE5D66E2-4A21-472D-A82F-731DE5ABE608}"/>
+								<CustomState Name="" ID="{26765EDA-DC4C-491D-A6C7-BE01414DD76F}" ShortID="742756455"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="None" ID="{F182E372-9030-4C41-B76F-889D5C1A57E5}"/>
+								<CustomState Name="" ID="{0EBE087A-B76F-4AC7-9F57-44A8F1393116}" ShortID="968303941"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="true" ID="{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}"/>
+								<CustomState Name="" ID="{9762E1DA-F512-4FE1-AFAD-44E0A7849CF8}" ShortID="898013231">
+									<PropertyList>
+										<Property Name="Volume" Type="Real64" Value="-108"/>
+									</PropertyList>
+								</CustomState>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
 				</PropertyContainer>
 				<PropertyContainer Name="NPC" ID="{693B4AB7-AB42-427F-B38C-EC1D65C69AFE}" ShortID="36617065">
 					<PropertyList>
@@ -1106,9 +1223,6 @@
 						</Reference>
 						<Reference Name="OutputBus">
 							<ObjectRef Name="VX_NPC" ID="{FB8A6FAE-9F55-4DF0-9203-A29D5C69BC3A}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
-						</Reference>
-						<Reference Name="UserAuxSend0">
-							<ObjectRef Name="Street_Reverb" ID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
@@ -2288,7 +2402,7 @@
 								<SwitchContainer Name="Cannon_Incoming" ID="{22CDDEB0-5732-4323-971F-F5ABB40B2A46}" ShortID="534397250">
 									<PropertyList>
 										<Property Name="3DSpatialization" Type="int16" Value="2"/>
-										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="2"/>
+										<Property Name="AttenuationDistanceScaling" Type="Real32" Value="3"/>
 										<Property Name="EnableDiffraction" Type="bool" Value="True"/>
 										<Property Name="MakeUpGain" Type="Real64">
 											<ValueList>
@@ -13645,6 +13759,11 @@
 																	<Property Name="Time" Type="Real64" Value="1.09716636967982"/>
 																</PropertyList>
 															</Marker>
+															<Marker Name="" ID="{2B9D2C3A-0B42-4DB6-B01F-424A9A06CF09}">
+																<PropertyList>
+																	<Property Name="Time" Type="Real64" Value="1.09163368205585"/>
+																</PropertyList>
+															</Marker>
 														</ObjectList>
 													</ObjectLists>
 												</AudioFileSource>
@@ -13662,6 +13781,11 @@
 															<Marker Name="" ID="{21530DA3-92A6-41E6-A364-26ABEA3AACAE}">
 																<PropertyList>
 																	<Property Name="Label" Type="string" Value="Where do ya come hurtling like that ?"/>
+																</PropertyList>
+															</Marker>
+															<Marker Name="" ID="{A487885D-250F-448E-A37D-B3DB7F354EAA}">
+																<PropertyList>
+																	<Property Name="Time" Type="Real64" Value="1.09586482035839"/>
 																</PropertyList>
 															</Marker>
 														</ObjectList>
