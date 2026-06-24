@@ -43,6 +43,7 @@ namespace AK
         static const AkUniqueID ENEMY_SHOOT = 1050776119U;
         static const AkUniqueID ENEMY_STEPS = 3114531655U;
         static const AkUniqueID ENEMY_VOICE_CANCEL = 2376509257U;
+        static const AkUniqueID FIRST_SHOOT = 174670969U;
         static const AkUniqueID MU_STOP_ALL = 698810174U;
         static const AkUniqueID MUSIC = 3991942870U;
         static const AkUniqueID NPC_SHOOT = 1192162266U;

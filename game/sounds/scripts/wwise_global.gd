@@ -84,7 +84,8 @@ func flip_barks_system():
 			i.trigg_bark()
 
 func pan():
-	Wwise.post_event("Npc_Shoot", self)
+	print("nique")
+	Wwise.post_event("First_Shoot", barricade)
 
 func register(target : Node3D, type : String):
 	if type == "ally":
