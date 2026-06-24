@@ -188,9 +188,10 @@ func on_move_progress(progress: float):
 		#find_closest(allies, player).post_event("Cannon_Advance", 1)
 
 func on_reload_progress(progress):
-	if progress >= 0.9 and not reload_gate:
+	if progress >= 0.95 and not reload_gate:
+		print("pan pan le cannon")
 		reload_gate = true
-		play_secrure_random_ak_post_event_on_array(cannon_workers, "Cannon_Incoming", 0.0)
+		play_secrure_random_ak_post_event_on_array(cannon_workers, "Cannon_Incoming", 1.0)
 		var ally_group: Array[Node] = get_tree().get_nodes_in_group("ak_ally")
 		if ally_group.size() <= 0: return
 		if barricade and is_instance_valid(barricade):
@@ -199,8 +200,8 @@ func on_reload_progress(progress):
 
 func first_cannon():
 	if !cannon_workers.is_empty():
-		find_closest(cannon_workers, player).post_event("Cannon_Incoming", 0)
-		reload_gate = false
+		find_closest(cannon_workers, player).post_event("Cannon_Incoming", 1)
+	reload_gate = false
 
 func pause(new_pause : bool):
 	if new_pause:

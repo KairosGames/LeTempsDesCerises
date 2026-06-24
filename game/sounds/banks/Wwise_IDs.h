@@ -34,6 +34,7 @@ namespace AK
         static const AkUniqueID CHOOSE_SURRENDER = 2467968637U;
         static const AkUniqueID DEAFENING_RECOVER = 3687575925U;
         static const AkUniqueID DIALOGUE = 3930136735U;
+        static const AkUniqueID END = 529726532U;
         static const AkUniqueID ENEMY_BARRICADE_STATE = 3457462997U;
         static const AkUniqueID ENEMY_BULLET_MISS = 3787232089U;
         static const AkUniqueID ENEMY_CANNON_ADVANCE = 1807735670U;

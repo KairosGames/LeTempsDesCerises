@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://dg02fdnf8mxre" path="res://prefabs/game_states/gm_usables/event_area.tscn" id="10_83msq"]
 [ext_resource type="Texture2D" uid="uid://xldcsu5sm21h" path="res://prefabs/game_states/gm_usables/bgquest.png" id="11_y7efs"]
 [ext_resource type="Shader" uid="uid://c3neb6a2e0vbg" path="res://prefabs/managers/ui_out_line.gdshader" id="12_jh506"]
+[ext_resource type="Script" uid="uid://dyoxltkd86h4w" path="res://prefabs/managers/credits.gd" id="13_5gurq"]
+[ext_resource type="FontFile" uid="uid://lemtkmvsvwbl" path="res://sources/fonts/BodoniModa-VariableFont_opsz,wght.ttf" id="14_d52jd"]
 [ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="14_y7efs"]
 [ext_resource type="PackedScene" uid="uid://c8dcjv8qv7lw3" path="res://prefabs/game_states/gm_usables/invisible_wall.tscn" id="15_g4ds3"]
 [ext_resource type="Script" uid="uid://bfxqdxe6sfsl3" path="res://prefabs/game_states/gm_usables/shoot_target.gd" id="17_5gurq"]
@@ -230,6 +232,13 @@ shader_parameter/outline_color = Color(0.99215686, 0.8039216, 0, 0)
 shader_parameter/outline_size = 50.0
 
 [sub_resource type="Theme" id="Theme_ol0j6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5gurq"]
+
+[sub_resource type="Theme" id="Theme_vrkal"]
+default_font = ExtResource("14_d52jd")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d52jd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7r4gi"]
 size = Vector3(1.4827881, 2.8202515, 0.21357422)
@@ -494,6 +503,7 @@ color = Color(0, 0, 0, 0)
 script = ExtResource("8_kkeqv")
 
 [node name="CenterContainer" type="CenterContainer" parent="UIManager" unique_id=49054125]
+visible = false
 z_index = 2
 layout_mode = 1
 anchors_preset = 15
@@ -710,6 +720,120 @@ text = "· Go to the barricade
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="PanelContainer" parent="UIManager" unique_id=128648840 node_paths=PackedStringArray("text_box")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 300.0
+offset_bottom = 3364.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5gurq")
+script = ExtResource("13_5gurq")
+text_box = NodePath("VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIManager/Credits" unique_id=415489439]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Credits" type="RichTextLabel" parent="UIManager/Credits/VBoxContainer" unique_id=1470927185]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_vrkal")
+theme_override_font_sizes/normal_font_size = 64
+text = "Le Temps des Cerises"
+scroll_active = false
+scroll_following = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="UIManager/Credits/VBoxContainer" unique_id=303377037]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_d52jd")
+
+[node name="Credits2" type="RichTextLabel" parent="UIManager/Credits/VBoxContainer" unique_id=1559777694]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_vrkal")
+theme_override_font_sizes/normal_font_size = 32
+text = "L’équipe :
+
+BARTHELEMI Vincent - Sound Designer
+BENMANSOUR Ydris - Gameplay Programmer
+GUILLON Orlane - Game Artist
+INGRASSIA Ferréol - Sound Designer
+JAOUEN Celia - Game Artist
+LE DEUNFF Adrien - Producer
+SAILLARD Pierric - Game Designer
+SUARES Enzo - Programmer
+TRITTER Vassili - Game Designer
+
+Crédits sonores
+Personnages par ordre d’apparition :
+
+Georges : TRITTER Vassili
+François : BENMANSOUR Ydris
+Jules : BARTHELEMI Vincent
+Michel : SAILLARD Pierric
+Louise : LELAISANT Atea
+Marie : BONNIFET Yuna
+Officier : PROT Tom
+
+Les communard.e.s :
+
+BONNIFET Yuna
+BRAND Loris
+COLLET Thomas
+GENOT Zoé
+LELAISANT Atea
+
+Les versaillais :
+
+ALLEAUME Armand
+PROT Tom
+RICHARD Séverin
+
+La chorale :
+
+BENMANSOUR Ydris
+BONNIFET Yuna
+BRUNON Catherine
+DUFOUR Etienne
+GHANDOUR Maria Christy
+GICQUEL Henri 
+HADET Hugo
+JEAN-PIERRE Wania
+LELAISANT Atea
+PINEDA Joris
+RONCIN Alice
+TER Angela
+VETTU Adèle
+Hermine onapassonnom
+
+
+Remerciements armes à feu:
+Jean pour nous avoir permis d’effectuer une séance d’enregistrement de tir
+Armurerie Durand pour nous avoir permis de voir et manipuler un vrai chassepot d’époque.
+
+
+Renforts conception visuelle
+Arthur Riboulet - 3D Artist
+Adèle Cavillac - 2D artist
+Nalowale - UI Artist
+Guillem Lafois - 3D artist
+Maël Deschamps–Brouillaud - 3D artist
+Adrien Pochon - Animator
+"
+fit_content = true
+scroll_active = false
+scroll_following = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
