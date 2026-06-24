@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ugcp65jnl3a" path="res://sources/images/icons/inputs/Keyboard & Mouse/keyboard.svg" id="11_ypldv"]
 [ext_resource type="Texture2D" uid="uid://cfimnqk146jpn" path="res://sources/images/icons/inputs/Xbox Series/controller_xboxseries.svg" id="12_8c601"]
 [ext_resource type="PackedScene" uid="uid://bqvmhyi4hni80" path="res://prefabs/ui/home/input_link.tscn" id="13_qngj8"]
+[ext_resource type="Script" path="res://prefabs/ui/home/game_options.gd" id="14_gameo"]
 
 [sub_resource type="GDScript" id="GDScript_option_tabs"]
 script/source = "extends TabContainer
@@ -40,78 +41,7 @@ pressed = true
 [sub_resource type="Shortcut" id="Shortcut_e42qu"]
 events = [SubResource("InputEventAction_snnha")]
 
-[sub_resource type="GDScript" id="GDScript_game_options"]
-script/source = "extends VBoxContainer
 
-const SLIDER_BINDINGS := {
-	\"ScrollContainer/Settings/Common/ViewSensibility/Value\": \"ScrollContainer/Settings/Common/ViewSensibility/Slider\",
-	\"ScrollContainer/Settings/Common/AimingSensibility/Value\": \"ScrollContainer/Settings/Common/AimingSensibility/Slider\",
-	\"ScrollContainer/Settings/Common/HMultiplier/Value\": \"ScrollContainer/Settings/Common/HMultiplier/Slider\",
-	\"ScrollContainer/Settings/Common/VMultiplier/Value\": \"ScrollContainer/Settings/Common/VMultiplier/Slider\",
-	\"ScrollContainer/Settings/Gamepad/DeadzoneLeftStick/Value\": \"ScrollContainer/Settings/Gamepad/DeadzoneLeftStick/Slider\",
-	\"ScrollContainer/Settings/Gamepad/DeadzoneRightStick/Value\": \"ScrollContainer/Settings/Gamepad/DeadzoneRightStick/Slider\"
-}
-
-const TOGGLE_PATHS := [
-	\"ScrollContainer/Settings/General/Subtitles/CheckButton\",
-	\"ScrollContainer/Settings/General/Blood/CheckButton\",
-	\"ScrollContainer/Settings/Common/Inverted/CheckButton\",
-	\"ScrollContainer/Settings/Keyboard/AimToggleKM/CheckButton\",
-	\"ScrollContainer/Settings/Keyboard/RunToggleKM/CheckButton\",
-	\"ScrollContainer/Settings/Gamepad/AimToggleGamepad/CheckButton\",
-	\"ScrollContainer/Settings/Gamepad/RunToggleGamepad/CheckButton\",
-	\"ScrollContainer/Settings/Gameplay/PostureSwitchToggleKM/CheckButton\",
-	\"ScrollContainer/Settings/Gameplay/AimSmooth/CheckButton\",
-	\"ScrollContainer/Settings/Gameplay/MovementSmooth/CheckButton\"
-]
-
-var _defaults := {}
-
-func _ready() -> void:
-	_capture_defaults()
-	_connect_sliders()
-	_update_value_labels()
-	%GameReset.pressed.connect(_on_reset_pressed)
-
-func _capture_defaults() -> void:
-	for label_path in SLIDER_BINDINGS.keys():
-		var slider := get_node(SLIDER_BINDINGS[label_path]) as Range
-		_defaults[label_path] = slider.value
-	for toggle_path in TOGGLE_PATHS:
-		var button := get_node(toggle_path) as BaseButton
-		_defaults[toggle_path] = button.button_pressed
-
-func _connect_sliders() -> void:
-	for slider_path in SLIDER_BINDINGS.values():
-		var slider := get_node(slider_path) as Range
-		slider.value_changed.connect(_on_slider_value_changed)
-
-func _on_slider_value_changed(_value: float) -> void:
-	_update_value_labels()
-
-func _update_value_labels() -> void:
-	for label_path in SLIDER_BINDINGS.keys():
-		var slider := get_node(SLIDER_BINDINGS[label_path]) as Range
-		var label := get_node(label_path) as Label
-		label.text = _format_value(slider.value)
-
-func _format_value(value: float) -> String:
-	var text := \"%.2f\" % value
-	while text.contains(\".\") and text.ends_with(\"0\"):
-		text = text.left(text.length() - 1)
-	if text.ends_with(\".\"):
-		text = text.left(text.length() - 1)
-	return text
-
-func _on_reset_pressed() -> void:
-	for label_path in SLIDER_BINDINGS.keys():
-		var slider := get_node(SLIDER_BINDINGS[label_path]) as Range
-		slider.value = _defaults[label_path]
-	for toggle_path in TOGGLE_PATHS:
-		var button := get_node(toggle_path) as BaseButton
-		button.button_pressed = _defaults[toggle_path]
-	_update_value_labels()
-"
 
 [sub_resource type="LabelSettings" id="LabelSettings_ip4d6"]
 font = ExtResource("6_fucih")
@@ -188,7 +118,7 @@ metadata/_tab_name = ""
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
-script = SubResource("GDScript_game_options")
+script = ExtResource("14_gameo")
 metadata/_tab_index = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="GAME" unique_id=1041347528]
