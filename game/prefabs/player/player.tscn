@@ -293,38 +293,67 @@ mouse_filter = 2
 texture = ExtResource("2_r66lb")
 expand_mode = 1
 
-[node name="BloodScreen" type="TextureRect" parent="UI/CenterContainer" unique_id=2064496469]
+[node name="FullScreenEffects" type="Control" parent="UI" unique_id=459169022]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="BloodScreen" type="TextureRect" parent="UI/FullScreenEffects" unique_id=2064496469]
 unique_name_in_owner = true
 visible = false
 modulate = Color(0.41960785, 0.41960785, 0.41960785, 0.6156863)
 custom_minimum_size = Vector2(2020, 1180)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("9_8ris0")
 
-[node name="BlinkEffect" type="ColorRect" parent="UI/CenterContainer" unique_id=1580177522]
+[node name="BlinkEffect" type="ColorRect" parent="UI/FullScreenEffects" unique_id=1580177522]
 unique_name_in_owner = true
-visible = false
 material = SubResource("ShaderMaterial_b6byk")
 custom_minimum_size = Vector2(2020, 1180)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 script = ExtResource("9_b6byk")
 
-[node name="FlashScreenEffect" type="ColorRect" parent="UI/CenterContainer" unique_id=476050686]
+[node name="FlashScreenEffect" type="ColorRect" parent="UI/FullScreenEffects" unique_id=476050686]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(2020, 1180)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0.9137255, 0.9137255, 0.9137255, 0)
 script = ExtResource("11_dmwb1")
 
-[node name="BlurEffect" type="ColorRect" parent="UI/CenterContainer" unique_id=700880816]
+[node name="BlurEffect" type="ColorRect" parent="UI/FullScreenEffects" unique_id=700880816]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_agiw0")
 custom_minimum_size = Vector2(2020, 1180)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 script = ExtResource("12_agiw0")
