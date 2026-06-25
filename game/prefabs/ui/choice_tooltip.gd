@@ -5,7 +5,7 @@ class_name ChoiceTooltip extends HBoxContainer
 
 var start: String = "PRESS [color=#f9ee00]"
 var francois_end: String = "[/color] TO [color=#ffaf77]SURRENDER[/color]"
-var louise_end: String = "[/color] TO [color=#ffaf77]FIGHT TO THE DEATH[/color]"
+var louise_end: String = "[/color] TO [color=#ffaf77]FIGHT[/color]"
 
 
 func _ready() -> void:
