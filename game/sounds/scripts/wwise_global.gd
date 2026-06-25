@@ -19,6 +19,9 @@ var is_looping : bool = true
 var ready_narrators : Dictionary = {}
 var relevant_narrators : int = 0
 
+func _ready() -> void:
+	Settings.language_changed.connect(localize)
+
 func on_game_manager_ready(gm: GameManager) -> void:
 	game_manager = gm
 	if not game_manager or not game_manager.use_narrative:
@@ -84,7 +87,6 @@ func flip_barks_system():
 			i.trigg_bark()
 
 func pan():
-	print("nique")
 	Wwise.post_event("First_Shoot", barricade)
 
 func register(target : Node3D, type : String):
@@ -169,7 +171,7 @@ func enemy_killed(_target: Node3D):
 			#find_farthest(allies).post_event("Player_Kill", randf_range(1, 2))
 
 func localize(language : String):
-	print("change language")
+	print("change language ", language)
 	Wwise.set_current_language(language)
 
 func unload_npc(remove_name : String):
@@ -190,7 +192,6 @@ func on_move_progress(progress: float):
 
 func on_reload_progress(progress):
 	if progress >= 0.95 and not reload_gate:
-		print("pan pan le cannon")
 		reload_gate = true
 		play_secrure_random_ak_post_event_on_array(cannon_workers, "Cannon_Incoming", 1.0)
 		var ally_group: Array[Node] = get_tree().get_nodes_in_group("ak_ally")
