@@ -217,10 +217,10 @@ func launch_execution() -> void:
 	take_player_move_control(false)
 	await tween_rotate_player_to_yaw(execution_point.global_rotation.y, 0.1)
 	francois.enter_in_stand_no_weapon()
-	francois.global_position = player.global_position + (player.basis.x * 2.0)
+	francois.global_position = player.global_position - (player.basis.x * 2.0) + (player.basis.z * 0.5)
 	francois.global_rotation.y = player.global_rotation.y
 	louise.enter_in_stand_no_weapon()
-	louise.global_position = player.global_position - (player.basis.x * 2.0) + (player.basis.z * 0.5)
+	louise.global_position = player.global_position + (player.basis.x * 2.0)
 	louise.global_rotation.y = player.global_rotation.y
 	await wait(1.0)
 	await ui_manager.dark_fade.fade(false, 0.6)
