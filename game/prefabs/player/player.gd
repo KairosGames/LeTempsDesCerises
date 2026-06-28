@@ -221,6 +221,7 @@ var is_reload_interruped: bool = false
 var is_alive: bool = true
 var can_play: bool = false
 var will_die: bool = false
+var is_in_cinematic: bool = false
 
 var aim_noise_x: FastNoiseLite = FastNoiseLite.new()
 var aim_noise_y: FastNoiseLite = FastNoiseLite.new()
@@ -306,7 +307,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	set_context(delta)
-	set_dynamic_collider()
+	if not is_in_cinematic: set_dynamic_collider()
 	capture_states()
 	process_movement(delta)
 	capture_jump()
@@ -350,7 +351,7 @@ func late_process(delta: float) -> void:
 
 
 func set_context(delta: float) -> void:
-	is_grounded = is_on_floor()
+	is_grounded = is_on_floor() or is_in_cinematic
 	if not is_grounded: last_y_air_vel = velocity.y
 	set_input_context()
 	var input_dir: Vector2 = p_inputs.move_vec
@@ -649,6 +650,9 @@ func process_movement(delta: float) -> void:
 	apply_plane_movement(delta)
 	if not is_on_floor():
 		velocity += get_gravity() * gravity_multiplier * delta
+	if is_in_cinematic:
+		velocity.y = 0.0
+		global_position.y = 0.1
 	move_and_slide()
 
 

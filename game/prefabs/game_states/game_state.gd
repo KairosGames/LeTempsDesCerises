@@ -259,6 +259,8 @@ func kill_player() -> void:
 func run_to_destination(destination: Node3D) -> void:
 	take_player_move_control(true)
 	take_player_view_control(true)
+	player.is_in_cinematic = true
+	player.high_collider.disabled = true
 	add_on_debug_process(use_nav_debug) ## FOR DBUG
 	ui_manager.launch_letter_box(true)
 	player.nav.target_position = destination.global_position
@@ -269,6 +271,8 @@ func run_to_destination(destination: Node3D) -> void:
 	set_player_move(input_dir)
 	await wait_until(is_player_on_position.bind(destination))
 	set_player_move(Vector2.ZERO)
+	player.is_in_cinematic = false
+	player.high_collider.disabled = false
 	clean_debug_process() ## FOR DBUG
 
 
