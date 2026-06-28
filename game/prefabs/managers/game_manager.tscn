@@ -125,22 +125,29 @@ script/source = "extends Button
 @export var option: Control
 @export var pause_container: PanelContainer
 
-func _gui_input(event: InputEvent) -> void: 
+func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		pause_container.hide()
-		option.show()
-		option.visibility_changed.connect(_option_visibility_changed)
+		var mouse_button: InputEventMouseButton = event
+		if mouse_button.pressed: _on_pressed()
 
-func _option_visibility_changed() -> void: if not option.visible: pause_container.show()
+func _on_pressed() -> void:
+	pause_container.hide()
+	option.show()
+	option.visibility_changed.connect(_option_visibility_changed, CONNECT_ONE_SHOT)
+
+func _option_visibility_changed() -> void: 
+	if not option.visible:
+		pause_container.show()
+		option.visibility_changed.disconnect(_option_visibility_changed)
 "
 
 [sub_resource type="GDScript" id="GDScript_o0w5l"]
 script/source = "extends Button
 
-func _gui_input(event: InputEvent) -> void: 
-	if event is InputEventMouseButton: 
-		print(\"67\");
-		get_tree().quit()
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mouse_button: InputEventMouseButton = event
+		if mouse_button.pressed: get_tree().quit()
 "
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7sktv"]
@@ -273,6 +280,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("3_eijdo")
 
 [node name="ObjectiveTarget" type="TextureRect" parent="UIManager" unique_id=554183493]
@@ -282,6 +290,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 texture = ExtResource("5_6kj28")
 expand_mode = 1
 script = ExtResource("4_x50xo")
@@ -299,12 +308,12 @@ offset_right = 192.0
 offset_bottom = -218.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="Tooltip" type="PanelContainer" parent="UIManager/TooltipContainer" unique_id=876765785]
 unique_name_in_owner = true
 layout_mode = 2
-tooltip_text = "
-"
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cvqlx")
 script = ExtResource("4_cvqlx")
 input_color = Color(0.9764706, 0.93333334, 0, 1)
@@ -315,6 +324,7 @@ unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 3
 theme_override_constants/shadow_offset_x = 1
