@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cg016dbe7gs1x" path="res://addons/beehave/nodes/composites/sequence.gd" id="1_y8s13"]
 [ext_resource type="Script" uid="uid://dfvnt62bk2jix" path="res://prefabs/ai/behaviours/actions/push_canon.gd" id="2_gpedi"]
 [ext_resource type="Script" uid="uid://buihc54c8r0wx" path="res://prefabs/ai/behaviours/conditions/has_canon_slot.gd" id="2_yl5yd"]
+[ext_resource type="Script" uid="uid://bqa4rx6h1jbh1" path="res://prefabs/ai/behaviours/actions/change_posture.gd" id="3_rmxoq"]
 [ext_resource type="Script" uid="uid://clp32jsbpxe8y" path="res://prefabs/ai/behaviours/actions/move_to_canon.gd" id="4_6e11o"]
 
 [node name="ManageCanon" type="Node" unique_id=1467262418]
@@ -12,6 +13,11 @@ metadata/_custom_type_script = "uid://cg016dbe7gs1x"
 [node name="HasCanonSlot" type="Node" parent="." unique_id=522130645]
 script = ExtResource("2_yl5yd")
 metadata/_custom_type_script = "uid://buihc54c8r0wx"
+
+[node name="GetMovePosture" type="Node" parent="." unique_id=1565053431]
+script = ExtResource("3_rmxoq")
+posture = 3
+metadata/_custom_type_script = "uid://bqa4rx6h1jbh1"
 
 [node name="MoveToCanon" type="Node" parent="." unique_id=2143693052]
 script = ExtResource("4_6e11o")
