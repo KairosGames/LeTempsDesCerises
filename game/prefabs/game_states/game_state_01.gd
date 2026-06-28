@@ -16,8 +16,6 @@ signal game_ready_cannon_shoot
 @onready var second_barricade_npc: Npc = %SecondBarricadeNPC
 @onready var go_to_second_barricade: CustomMarker = %GoToSecondBarricade
 @onready var death_zone_second_barricade: EventArea = %DeathZoneSecondBarricade
-@onready var debug_nav_mesh_area: EventArea = %DebugNavMeshArea
-@onready var debug_nav_point: CustomMarker = %DebugNavPoint
 
 var kill_counter: int = 0
 var it_is_time_to_die: bool = false
@@ -224,13 +222,6 @@ func go_to_cover_from_cannon() -> void:
 	var dist1: float = player.global_position.distance_squared_to(cannon_shoot_cover1.global_position)
 	var dist2: float = player.global_position.distance_squared_to(cannon_shoot_cover2.global_position)
 	var cover: CustomMarker = cannon_shoot_cover1 if dist1 < dist2 else cannon_shoot_cover2
-	debug_nav_mesh_area.monitoring = true
-	await wait(0.05)
-	if debug_nav_mesh_area.is_player_inside():
-		var twn: Tween = create_tween()
-		tween_rotate_player_to_yaw(debug_nav_point.global_rotation.y, 0.5)
-		await twn.tween_property(player, "global_position", debug_nav_point.global_position, 0.5).finished
-	debug_nav_mesh_area.set_deferred("monitoring", false)
 	await run_to_destination(cover)
 	var target_point: Vector3 = cover.global_position + cover.basis.z
 	var time_ratio: float = get_yaw_diff_ratio(target_point)

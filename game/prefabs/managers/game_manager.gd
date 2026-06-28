@@ -32,7 +32,11 @@ signal player_passed_second_barricade
 @export var second_barricade: Barricade
 @export var cannon: Canon
 
-@export_group("Packed Scenes")
+@export_category("Navmesh securities")
+@export var navmesh_danger_areas: Array[EventArea]
+@export var navmesh_secure_points: Array[CustomMarker]
+
+@export_category("Packed Scenes")
 @export var player_prefab: PackedScene
 @export var all_states: Array[GameState]
 

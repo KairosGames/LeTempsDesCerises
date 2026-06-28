@@ -177,9 +177,6 @@ size = Vector3(6.478882, 2.6088943, 32.982117)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7sktv"]
 size = Vector3(6.770752, 1.5043945, 17.036003)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y7efs"]
-size = Vector3(3.4313965, 2.685913, 3.119629)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_uucmh"]
 size = Vector3(1.5395508, 1.8439941, 8.786865)
 
@@ -249,8 +246,19 @@ height = 0.25
 [sub_resource type="BoxShape3D" id="BoxShape3D_g4ds3"]
 size = Vector3(9.191589, 0.7286377, 20.975586)
 
-[node name="GameManager" type="Node" unique_id=1070764289 node_paths=PackedStringArray("all_states")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_y7efs"]
+size = Vector3(3.4313965, 2.685913, 3.119629)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ophos"]
+size = Vector3(2.760788, 3.020546, 4.524246)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_27np0"]
+size = Vector3(3.5856934, 1.8547974, 1.8964844)
+
+[node name="GameManager" type="Node" unique_id=1070764289 node_paths=PackedStringArray("navmesh_danger_areas", "navmesh_secure_points", "all_states")]
 script = ExtResource("1_utpm8")
+navmesh_danger_areas = [NodePath("SpecialEvents/DebugNavMeshArea1"), NodePath("SpecialEvents/DebugNavMeshArea2"), NodePath("SpecialEvents/DebugNavMeshArea3")]
+navmesh_secure_points = [NodePath("SpecialEvents/DebugNavPoint1"), NodePath("SpecialEvents/DebugNavPoint2"), NodePath("SpecialEvents/DebugNavPoint3")]
 player_prefab = ExtResource("2_oroiu")
 all_states = [NodePath("States/GameState00"), NodePath("States/GameState01"), NodePath("States/GameState02"), NodePath("States/GameState03")]
 
@@ -931,17 +939,6 @@ transform = Transform3D(0.46348163, 0, 0.88610655, 0, 1, 0, -0.88610655, 0, 0.46
 unique_name_in_owner = true
 transform = Transform3D(-0.9783612, 0, 0.20690428, 0, 1, 0, -0.20690428, 0, -0.9783612, -5.4447103, -4.7683716e-07, 8.486588)
 
-[node name="DebugNavMeshArea" parent="States/GameState01" unique_id=935600620 instance=ExtResource("10_83msq")]
-unique_name_in_owner = true
-transform = Transform3D(0.38865766, 0, -0.9213822, 0, 1, 0, 0.9213822, 0, 0.38865766, 0.2039774, 1.5654583, 6.192831)
-
-[node name="CollisionShape3D" parent="States/GameState01/DebugNavMeshArea" index="0" unique_id=447369626]
-shape = SubResource("BoxShape3D_y7efs")
-
-[node name="DebugNavPoint" parent="States/GameState01" unique_id=1598561906 instance=ExtResource("4_ruyh4")]
-unique_name_in_owner = true
-transform = Transform3D(-0.21741073, 0, -0.97608024, 0, 1, 0, 0.97608024, 0, -0.21741073, -3.296, 0.1, 6.465)
-
 [node name="CanonDetectionArea" parent="States/GameState01" unique_id=111489008 instance=ExtResource("10_83msq")]
 unique_name_in_owner = true
 transform = Transform3D(0.49821526, 0, 0.8670534, 0, 1, 0, -0.8670534, 0, 0.49821526, 6.195838, 1.0049603, -25.543251)
@@ -1380,18 +1377,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.768883, 0, 52.106743)
 npc_name = 9
 team = 1
 
-[node name="DeathZone" parent="." unique_id=2032830456 instance=ExtResource("10_83msq")]
+[node name="SpecialEvents" type="Node" parent="." unique_id=900598021]
+
+[node name="DeathZone" parent="SpecialEvents" unique_id=2032830456 instance=ExtResource("10_83msq")]
 unique_name_in_owner = true
 transform = Transform3D(0.87926644, 0, 0.47633028, 0, 1, 0, -0.47633028, 0, 0.87926644, 1.981, 0.731, -3.372)
 
-[node name="CollisionShape3D" parent="DeathZone" index="0" unique_id=447369626]
+[node name="CollisionShape3D" parent="SpecialEvents/DeathZone" index="0" unique_id=447369626]
 shape = SubResource("BoxShape3D_g4ds3")
+
+[node name="DebugNavMeshArea1" parent="SpecialEvents" unique_id=935600620 instance=ExtResource("10_83msq")]
+unique_name_in_owner = true
+transform = Transform3D(0.38865766, 0, -0.9213822, 0, 1, 0, 0.9213822, 0, 0.38865766, 0.2039774, 1.5654583, 6.192831)
+
+[node name="CollisionShape3D" parent="SpecialEvents/DebugNavMeshArea1" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_y7efs")
+
+[node name="DebugNavPoint1" parent="SpecialEvents" unique_id=1598561906 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.21741073, 0, -0.97608024, 0, 1, 0, 0.97608024, 0, -0.21741073, -3.296, 0.1, 6.465)
+
+[node name="DebugNavMeshArea2" parent="SpecialEvents" unique_id=204461577 instance=ExtResource("10_83msq")]
+unique_name_in_owner = true
+transform = Transform3D(0.48054498, 0, -0.87697, 0, 1, 0, 0.87697, 0, 0.48054498, -23.605646, 1.5654583, -2.993678)
+
+[node name="CollisionShape3D" parent="SpecialEvents/DebugNavMeshArea2" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_ophos")
+
+[node name="DebugNavPoint2" parent="SpecialEvents" unique_id=323449302 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(0.8539052, 0, 0.5204286, 0, 1, 0, -0.5204286, 0, 0.8539052, -21.20646, 0.1, -1.0665642)
+
+[node name="DebugNavMeshArea3" parent="SpecialEvents" unique_id=2008469365 instance=ExtResource("10_83msq")]
+unique_name_in_owner = true
+transform = Transform3D(0.029352218, 0, -0.99956906, 0, 1, 0, 0.99956906, 0, 0.029352218, -30.972692, 1.5654583, 32.02794)
+
+[node name="CollisionShape3D" parent="SpecialEvents/DebugNavMeshArea3" index="0" unique_id=447369626]
+shape = SubResource("BoxShape3D_27np0")
+
+[node name="DebugNavPoint3" parent="SpecialEvents" unique_id=717973263 instance=ExtResource("4_ruyh4")]
+unique_name_in_owner = true
+transform = Transform3D(-0.9966116, 0, -0.08225165, 0, 1, 0, 0.08225165, 0, -0.9966116, -29.662664, 0.09999976, 29.861277)
 
 [editable path="States/GameState00/InvisibleWallBarricade"]
 [editable path="States/GameState01/GoToBarricadeArea"]
 [editable path="States/GameState01/ReturnToBarricadeArea"]
 [editable path="States/GameState01/FirstDieArea"]
-[editable path="States/GameState01/DebugNavMeshArea"]
 [editable path="States/GameState01/CanonDetectionArea"]
 [editable path="States/GameState01/DeathZoneSecondBarricade"]
 [editable path="States/GameState02/LouiseDetectionArea"]
@@ -1423,4 +1454,7 @@ shape = SubResource("BoxShape3D_g4ds3")
 [editable path="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint6"]
 [editable path="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint7"]
 [editable path="States/GameState03/VersaillaisPoints/FinalPos/VersaillaisPoint8"]
-[editable path="DeathZone"]
+[editable path="SpecialEvents/DeathZone"]
+[editable path="SpecialEvents/DebugNavMeshArea1"]
+[editable path="SpecialEvents/DebugNavMeshArea2"]
+[editable path="SpecialEvents/DebugNavMeshArea3"]

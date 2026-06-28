@@ -259,12 +259,13 @@ func kill_player() -> void:
 func run_to_destination(destination: Node3D) -> void:
 	take_player_move_control(true)
 	take_player_view_control(true)
+	ui_manager.launch_letter_box(true)
+	set_player_for_cinematic()
+	await place_player_in_navmesh_secure_zone()
 	player.is_in_cinematic = true
 	player.high_collider.disabled = true
 	add_on_debug_process(use_nav_debug) ## FOR DBUG
-	ui_manager.launch_letter_box(true)
 	player.nav.target_position = destination.global_position
-	set_player_for_cinematic()
 	add_on_physics_process(go_to_nav_destination)
 	await wait_until(is_player_on_nav_destination)
 	var input_dir: Vector2 = get_input_dir_to_pos(destination.global_position)
@@ -274,6 +275,23 @@ func run_to_destination(destination: Node3D) -> void:
 	player.is_in_cinematic = false
 	player.high_collider.disabled = false
 	clean_debug_process() ## FOR DBUG
+
+
+func place_player_in_navmesh_secure_zone() -> void:
+	for area: EventArea in game_manager.navmesh_danger_areas:
+		area.monitoring = true
+	await wait(0.05)
+	for i: int in range(game_manager.navmesh_danger_areas.size()):
+		var area: EventArea = game_manager.navmesh_danger_areas[i]
+		var point: CustomMarker = game_manager.navmesh_secure_points[i]
+		if area.is_player_inside():
+			print("SECRUTITY DONE")
+			var twn: Tween = create_tween()
+			tween_rotate_player_to_yaw(point.global_rotation.y, 0.5)
+			await twn.tween_property(player, "global_position", point.global_position, 0.5).finished
+			break
+	for area: EventArea in game_manager.navmesh_danger_areas:
+		area.monitoring = false
 
 
 func set_player_for_cinematic() -> void:
