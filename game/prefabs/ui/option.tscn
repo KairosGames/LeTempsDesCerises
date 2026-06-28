@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://0ajdf8gn4dyo" path="res://prefabs/ui/home/video_options.gd" id="10_0le64"]
 [ext_resource type="Texture2D" uid="uid://c2ugcp65jnl3a" path="res://sources/images/icons/inputs/Keyboard & Mouse/keyboard.svg" id="11_ypldv"]
 [ext_resource type="Texture2D" uid="uid://cfimnqk146jpn" path="res://sources/images/icons/inputs/Xbox Series/controller_xboxseries.svg" id="12_8c601"]
+[ext_resource type="Texture2D" uid="uid://mk88hreujt3a" path="res://sources/images/textures/ui/divider_01.png" id="12_pjeai"]
 [ext_resource type="PackedScene" uid="uid://bqvmhyi4hni80" path="res://prefabs/ui/home/input_link.tscn" id="13_qngj8"]
 [ext_resource type="Script" uid="uid://cu6sadsjd2uxg" path="res://prefabs/ui/home/game_options.gd" id="14_gameo"]
 
@@ -323,6 +324,7 @@ focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath("../../../General/Blood/CheckButton")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../AimingSensibility/Slider")
+mouse_force_pass_scroll_events = false
 theme_override_icons/grabber = ExtResource("7_71xgv")
 theme_override_icons/grabber_highlight = ExtResource("8_rdxtg")
 theme_override_icons/grabber_disabled = ExtResource("7_71xgv")
@@ -888,20 +890,32 @@ metadata/_custom_type_script = "uid://c6sw1tpfwtx8n"
 
 [node name="Actions" type="HBoxContainer" parent="TabContainer/VIDEO" unique_id=1194194821]
 layout_mode = 2
+size_flags_horizontal = 4
 theme = ExtResource("1_vl0u7")
-theme_override_constants/separation = 8
 
-[node name="Apply" type="Button" parent="TabContainer/VIDEO/Actions" unique_id=1805161647]
+[node name="Cancel" type="Button" parent="TabContainer/VIDEO/Actions" unique_id=1741892222]
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_type_variation = &"FlatButton"
+text = "Cancel"
+
+[node name="Apply" type="Button" parent="TabContainer/VIDEO/Actions" unique_id=1805161647]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 theme_type_variation = &"FlatButton"
 text = "Apply"
 
-[node name="Cancel" type="Button" parent="TabContainer/VIDEO/Actions" unique_id=1741892222]
+[node name="HSeparator" type="TextureRect" parent="TabContainer/VIDEO" unique_id=1359809571]
+custom_minimum_size = Vector2(512, 128)
 layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"FlatButton"
-text = "Cancel"
+size_flags_horizontal = 4
+texture = ExtResource("12_pjeai")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Settings" type="VBoxContainer" parent="TabContainer/VIDEO" unique_id=462777296]
 layout_mode = 2
@@ -1192,11 +1206,6 @@ custom_minimum_size = Vector2(48, 32)
 layout_mode = 2
 text = "▶"
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/VIDEO/Settings" unique_id=2102504633]
-modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
 [node name="KEY_MAPPING" type="VBoxContainer" parent="TabContainer" unique_id=64057496]
 visible = false
 layout_mode = 2
@@ -1204,15 +1213,19 @@ script = SubResource("GDScript_key_mapping_options")
 metadata/_tab_index = 3
 
 [node name="Header" type="HBoxContainer" parent="TabContainer/KEY_MAPPING" unique_id=1051273902]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
 
 [node name="LabelSpacer" type="Control" parent="TabContainer/KEY_MAPPING/Header" unique_id=968024465]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 
 [node name="Keyboard" type="TextureRect" parent="TabContainer/KEY_MAPPING/Header" unique_id=582785311]
 self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("11_ypldv")
@@ -1221,7 +1234,7 @@ stretch_mode = 5
 
 [node name="Gamepad" type="TextureRect" parent="TabContainer/KEY_MAPPING/Header" unique_id=1617492885]
 self_modulate = Color(0, 0, 0, 1)
-custom_minimum_size = Vector2(0, 64)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("12_8c601")
@@ -1229,11 +1242,13 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="RevertSpacer" type="Control" parent="TabContainer/KEY_MAPPING/Header" unique_id=779149856]
-custom_minimum_size = Vector2(48, 0)
+custom_minimum_size = Vector2(74, 64)
 layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/KEY_MAPPING" unique_id=748531876]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 
 [node name="Components" type="VBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer" unique_id=203080743]
@@ -1242,24 +1257,29 @@ size_flags_horizontal = 3
 
 [node name="Foward" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=1720139946]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Foward" unique_id=184272557]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 text = "FORWARD"
 label_settings = SubResource("LabelSettings_ju5sp")
+horizontal_alignment = 2
 
 [node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Foward" unique_id=1999302036 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 
 [node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Foward" unique_id=1225472867 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 gamepad = true
 
 [node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Foward" unique_id=576378843]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48
@@ -1267,26 +1287,31 @@ text = "↺"
 
 [node name="Backward" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=1963359160]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Backward" unique_id=1752034891]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 text = "BACKWARD"
 label_settings = SubResource("LabelSettings_ju5sp")
+horizontal_alignment = 2
 
 [node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Backward" unique_id=986551863 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"move_back"
 
 [node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Backward" unique_id=1797803937 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"move_back"
 gamepad = true
 
 [node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Backward" unique_id=324696364]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48
@@ -1294,26 +1319,31 @@ text = "↺"
 
 [node name="Left" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=2102227228]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Left" unique_id=1216377529]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 text = "LEFT"
 label_settings = SubResource("LabelSettings_ju5sp")
+horizontal_alignment = 2
 
 [node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Left" unique_id=1184765602 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"move_left"
 
 [node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Left" unique_id=602374067 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"move_left"
 gamepad = true
 
 [node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Left" unique_id=693575830]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48
@@ -1321,26 +1351,31 @@ text = "↺"
 
 [node name="Right" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=1261764775]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Right" unique_id=1684044619]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 text = "RIGHT"
 label_settings = SubResource("LabelSettings_ju5sp")
+horizontal_alignment = 2
 
 [node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Right" unique_id=1971548744 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"move_right"
 
 [node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Right" unique_id=754772890 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"move_right"
 gamepad = true
 
 [node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Right" unique_id=2031913790]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48
@@ -1348,26 +1383,31 @@ text = "↺"
 
 [node name="Crouch" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=680961489]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Crouch" unique_id=369217562]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 text = "CROUCH"
 label_settings = SubResource("LabelSettings_ju5sp")
+horizontal_alignment = 2
 
 [node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Crouch" unique_id=2081608135 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"crouch"
 
 [node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Crouch" unique_id=371400213 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"crouch"
 gamepad = true
 
 [node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Crouch" unique_id=694819394]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48
@@ -1375,26 +1415,31 @@ text = "↺"
 
 [node name="Prone" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=640130632]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Prone" unique_id=1531375157]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 text = "PRONE"
 label_settings = SubResource("LabelSettings_ju5sp")
+horizontal_alignment = 2
 
 [node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Prone" unique_id=1038824623 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"prone"
 
 [node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Prone" unique_id=45400799 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"prone"
 gamepad = true
 
 [node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Prone" unique_id=364524657]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48
@@ -1402,26 +1447,31 @@ text = "↺"
 
 [node name="Jump" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=395882469]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Jump" unique_id=1724323015]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 text = "JUMP"
 label_settings = SubResource("LabelSettings_ju5sp")
+horizontal_alignment = 2
 
 [node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Jump" unique_id=1663985582 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"jump"
 
 [node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Jump" unique_id=2041283501 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"jump"
 gamepad = true
 
 [node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Jump" unique_id=349187476]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48
@@ -1429,26 +1479,31 @@ text = "↺"
 
 [node name="Run" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=475659430]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Run" unique_id=256531125]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 text = "RUN"
 label_settings = SubResource("LabelSettings_ju5sp")
+horizontal_alignment = 2
 
 [node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Run" unique_id=1175634648 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"run"
 
 [node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Run" unique_id=2104959017 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"run"
 gamepad = true
 
 [node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Run" unique_id=1147380395]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48
@@ -1456,26 +1511,31 @@ text = "↺"
 
 [node name="Reload" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=97522736]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Reload" unique_id=274073521]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 text = "RELOAD"
 label_settings = SubResource("LabelSettings_ju5sp")
+horizontal_alignment = 2
 
 [node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Reload" unique_id=583679055 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"reload"
 
 [node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Reload" unique_id=123066690 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"reload"
 gamepad = true
 
 [node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Reload" unique_id=2142687483]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48
@@ -1483,26 +1543,31 @@ text = "↺"
 
 [node name="Previous" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=815204684]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Previous" unique_id=1992655001]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 text = "PREVIOUS"
 label_settings = SubResource("LabelSettings_ju5sp")
+horizontal_alignment = 2
 
 [node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Previous" unique_id=897459061 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"choice_surrender"
 
 [node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Previous" unique_id=648207519 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"choice_surrender"
 gamepad = true
 
 [node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Previous" unique_id=1499289453]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48
@@ -1510,26 +1575,31 @@ text = "↺"
 
 [node name="Next" type="HBoxContainer" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components" unique_id=231743293]
 layout_mode = 2
+theme_override_constants/separation = 32
 
 [node name="Action" type="Label" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Next" unique_id=1834169140]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 text = "NEXT"
 label_settings = SubResource("LabelSettings_ju5sp")
+horizontal_alignment = 2
 
 [node name="Keyboard" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Next" unique_id=2128480442 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"choice_fight_to_death"
 
 [node name="Gamepad" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Next" unique_id=1165920797 instance=ExtResource("13_qngj8")]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 6
 action = &"choice_fight_to_death"
 gamepad = true
 
 [node name="Revert" type="Button" parent="TabContainer/KEY_MAPPING/ScrollContainer/Components/Next" unique_id=336400494]
-custom_minimum_size = Vector2(48, 48)
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Reset to default"
 theme_override_font_sizes/font_size = 48

@@ -1,25 +1,21 @@
 extends VBoxContainer
 
-
 @onready var master_slider: HSlider = $MasterVolume/Slider
 @onready var music_slider: HSlider = $MusicVolume/Slider
 @onready var effect_slider: HSlider = $EffectVolume/Slider
 @onready var voice_slider: HSlider = $VoiceVolume/Slider
-@onready var reset_button: Button = $Actions/Reset
-
 
 func _ready() -> void:
 	_load_audio_settings()
 
+func _on_master_slider_value_changed(value: float) -> void:
+	Wwise.set_rtpc_value("Master", value, null)
+	Settings.config_file.set_value("audio", "master", value)
+	Settings.save_settings()
 
 func _on_music_slider_value_changed(value: float) -> void:
 	Wwise.set_rtpc_value("MSC", value, null)
 	Settings.config_file.set_value("audio", "music", value)
-	Settings.save_settings()
-
-func _on_master_slider_value_changed(value: float) -> void:
-	Wwise.set_rtpc_value("Master", value, null)
-	Settings.config_file.set_value("audio", "master", value)
 	Settings.save_settings()
 
 func _on_effect_slider_value_changed(value: float) -> void:
@@ -32,14 +28,12 @@ func _on_voice_slider_value_changed(value: float) -> void:
 	Settings.config_file.set_value("audio", "voice", value)
 	Settings.save_settings()
 
-
 func _load_audio_settings() -> void:
 	var master_value: float = Settings.config_file.get_value("audio", "master")
 	var music_value: float = Settings.config_file.get_value("audio", "music")
 	var effect_value: float = Settings.config_file.get_value("audio", "effect")
 	var voice_value: float = Settings.config_file.get_value("audio", "voice")
 	_apply_audio_values(master_value, music_value, effect_value, voice_value, false)
-
 
 func _on_reset_pressed() -> void:
 	var audio_defaults: Dictionary = Settings.DEFAULTS["audio"]
@@ -48,8 +42,6 @@ func _on_reset_pressed() -> void:
 	var effect_value: float = audio_defaults["effect"] as float
 	var voice_value: float = audio_defaults["voice"] as float
 	_apply_audio_values(master_value, music_value, effect_value, voice_value, true)
-	reset_button.grab_focus()
-
 
 func _apply_audio_values(master_value: float, music_value: float, effect_value: float, voice_value: float, persist: bool) -> void:
 	master_slider.set_value_no_signal(master_value)

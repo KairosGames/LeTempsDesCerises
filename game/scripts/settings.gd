@@ -1,19 +1,5 @@
 extends Node
 
-signal language_changed(language: String)
-
-enum GIType {
-	SDFGI = 0,
-	VOXEL_GI = 1,
-	LIGHTMAP_GI = 2,
-}
-
-enum GIQuality {
-	DISABLED = 0,
-	LOW = 1,
-	HIGH = 2,
-}
-
 const CONFIG_FILE_PATH: String = "user://settings.ini"
 
 var METAL_FX_SUPPORT: bool = RenderingServer.get_current_rendering_driver_name() == "metal"
@@ -22,7 +8,7 @@ var DEFAULTS: Dictionary = {
 	"video" = {
 		"display_mode": Window.MODE_EXCLUSIVE_FULLSCREEN,
 		"vsync": DisplayServer.VSYNC_ENABLED,
-		"max_fps": 0,
+		"max_fps": 60,
 		"resolution_scale": 1.0,
 		"scale_filter": Viewport.SCALING_3D_MODE_METALFX_TEMPORAL if METAL_FX_SUPPORT else Viewport.SCALING_3D_MODE_FSR2,
 	},
@@ -30,13 +16,6 @@ var DEFAULTS: Dictionary = {
 		"taa": false,
 		"msaa": Viewport.MSAA_DISABLED,
 		"fxaa": false,
-		"shadow_mapping": true,
-		"gi_type": GIType.VOXEL_GI,
-		"gi_quality": GIQuality.LOW,
-		"ssao_quality": RenderingServer.ENV_SSAO_QUALITY_MEDIUM,
-		"ssil_quality": -1,  # Disabled
-		"bloom": true,
-		"volumetric_fog": true,
 	},
 	"audio" = {
 		"master": 1.0,
@@ -67,7 +46,6 @@ var DEFAULTS: Dictionary = {
 
 var config_file: ConfigFile = ConfigFile.new()
 
-
 func _ready() -> void:
 	load_settings()
 
@@ -93,6 +71,8 @@ func load_settings() -> void:
 
 	WwiseGlobal.allow_subtitles = config_file.get_value("game", "allow_subtitles") == true
 
+func save_settings() -> void:
+	config_file.save(CONFIG_FILE_PATH)
 
 func get_language() -> String:
 	var language_value: Variant = config_file.get_value("game", "language", DEFAULTS["game"]["language"])
@@ -102,12 +82,8 @@ func get_language() -> String:
 func set_language(language: String) -> void:
 	if language == "" or get_language() == language: return
 	config_file.set_value("game", "language", language)
+	Wwise.set_current_language(language)
 	save_settings()
-	language_changed.emit(language)
-
-
-func save_settings() -> void:
-	config_file.save(CONFIG_FILE_PATH)
 
 
 func apply_game_settings(player_inputs: PlayerInputs) -> void:
@@ -132,13 +108,11 @@ func apply_player_settings(player: Player) -> void:
 
 func get_video_scale_filter() -> int:
 	var scale_filter: int = config_file.get_value("video", "scale_filter")
+
 	if METAL_FX_SUPPORT:
 		return scale_filter
 
-	if (
-		scale_filter == Viewport.SCALING_3D_MODE_METALFX_SPATIAL
-		or scale_filter == Viewport.SCALING_3D_MODE_METALFX_TEMPORAL
-	):
+	elif scale_filter == Viewport.SCALING_3D_MODE_METALFX_SPATIAL or scale_filter == Viewport.SCALING_3D_MODE_METALFX_TEMPORAL:
 		return Viewport.SCALING_3D_MODE_FSR2
 
 	return scale_filter
@@ -201,3 +175,15 @@ func apply_graphics_settings(window: Window, environment: Environment, scene_roo
 
 	environment.glow_enabled = bloom_enabled
 	environment.volumetric_fog_enabled = volumetric_fog_enabled
+
+enum GIType {
+	SDFGI = 0,
+	VOXEL_GI = 1,
+	LIGHTMAP_GI = 2,
+}
+
+enum GIQuality {
+	DISABLED = 0,
+	LOW = 1,
+	HIGH = 2,
+}

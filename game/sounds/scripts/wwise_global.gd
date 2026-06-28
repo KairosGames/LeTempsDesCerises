@@ -19,9 +19,6 @@ var is_looping : bool = true
 var ready_narrators : Dictionary = {}
 var relevant_narrators : int = 0
 
-func _ready() -> void:
-	Settings.language_changed.connect(localize)
-
 func on_game_manager_ready(gm: GameManager) -> void:
 	game_manager = gm
 	if not game_manager or not game_manager.use_narrative:
@@ -169,10 +166,6 @@ func enemy_killed(_target: Node3D):
 			var closest = find_closest(allies, player)
 			closest.post_event("Player_Kill", 0.5)
 			#find_farthest(allies).post_event("Player_Kill", randf_range(1, 2))
-
-func localize(language : String):
-	print("change language ", language)
-	Wwise.set_current_language(language)
 
 func unload_npc(remove_name : String):
 	for npc in narrators:
