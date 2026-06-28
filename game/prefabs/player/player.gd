@@ -1258,8 +1258,8 @@ func reset_player_controller() -> void:
 
 func delay_reset_animation() -> void:
 	await get_tree().create_timer(0.2)
-	reload_ui.wpn_animator.play("idle", 0.1)
-	reload_ui.hands_animator.play("idle", 0.1)
+	reload_ui.wpn_animator.play("idle", 0.0)
+	reload_ui.hands_animator.play("idle", 0.0)
 
 
 func synchronise_after_pop() -> void:
@@ -1270,6 +1270,11 @@ func synchronise_after_pop() -> void:
 	lag_target.global_rotation = weapon_container.global_rotation
 	applied_pos_lag_speed = wpn_pos_lag_close_speed
 	applied_rot_lag_speed = wpn_rot_lag_close_speed
+	reload_ui.activation(false)
+	if is_reloading: exit_reload()
+	delay_reset_animation()
+	reload_ui.wpn_animator.play("idle", 0.0)
+	reload_ui.hands_animator.play("idle", 0.0)
 
 
 func kill_all_tweens() -> void:
@@ -1296,6 +1301,8 @@ func revive(pos: Vector3,
 			is_jules: bool = false) -> void:
 	initiate(pos, rot)
 	blood_screen.visible = false
+	reload_ui.wpn_animator.play("idle", 0.0)
+	reload_ui.hands_animator.play("idle", 0.0)
 	blur_effect.hard_set_blur(0.0)
 	player_camera.current = true
 	is_immortal = true
