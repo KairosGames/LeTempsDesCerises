@@ -4,11 +4,20 @@ signal arrived_on_path_point
 signal arrived_on_path_destination
 signal shot
 signal reloaded
+
+@onready var communard_mesh: MeshInstance3D = $Communard/Armature/Skeleton3D/communard
+@onready var communarde_mesh: MeshInstance3D = $Communarde/Armature/Skeleton3D/comunarde_geo
+
 @export_category("References")
 @export var animator: AnimationPlayer
 
 @export_category("Debug settings")
 @export var fight_at_pop: bool = false
+
+@export_category("Colors")
+@export var is_random_color: bool = false
+@export var male_color_set: Array[ColorSet]
+@export var female_color_set: Array[ColorSet]
 
 @onready var collider: CollisionShape3D = %Collider
 @onready var is_on_screen: VisibleOnScreenNotifier3D = %IsOnScreen
@@ -18,6 +27,7 @@ signal reloaded
 @onready var versaillais: GetChassepot = %Versaillais
 @onready var shoot_target: Marker3D = %ShootTarget
 
+var body_materials: Array
 
 enum NpcName{
 	Georges,
@@ -103,6 +113,10 @@ func set_npc() -> void:
 			versaillais.queue_free()
 			communarde = null
 			versaillais = null
+			if is_random_color:
+				body_materials = range(communard_mesh.get_surface_override_material_count()).map(
+					func(i: int) -> ShaderMaterial: return communard_mesh.get_surface_override_material(i))
+				randomize_color(true)
 		else:
 			animator.root_node = ^"../Communarde"
 			chassepot = communarde.chassepot
@@ -110,6 +124,10 @@ func set_npc() -> void:
 			versaillais.queue_free()
 			communard = null
 			versaillais = null
+			if is_random_color:
+				body_materials = range(communarde_mesh.get_surface_override_material_count()).map(
+					func(i: int) -> ShaderMaterial: return communarde_mesh.get_surface_override_material(i))
+				randomize_color(false)
 	else:
 		animator.root_node = ^"../Versaillais"
 		chassepot = versaillais.chassepot
@@ -334,3 +352,11 @@ func delay_shoot(rdn_min: float = 0.0, rnd_max: float = 1.0, target: Node3D = nu
 	var rnd: float = randf_range(rdn_min, rnd_max)
 	await get_tree().create_timer(rnd).timeout
 	shoot(0.0, target)
+
+
+func randomize_color(is_male: bool) -> void:
+	var array_set: Array[ColorSet] = male_color_set if is_male else female_color_set
+	var target: MeshInstance3D = communard_mesh if is_male else communarde_mesh
+	var color_set: ColorSet = array_set.pick_random()
+	for i: int in range(target.get_surface_override_material_count()):
+		body_materials[i].set_shader_parameter("color", color_set.colors[i])

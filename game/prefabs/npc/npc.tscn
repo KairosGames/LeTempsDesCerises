@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://twx4wqiu4ang" path="res://prefabs/npc/npc.gd" id="1_s40ew"]
 [ext_resource type="PackedScene" uid="uid://br5nta464et5g" path="res://sounds/prefabs/ak_npc_manager.tscn" id="2_470b1"]
 [ext_resource type="PackedScene" uid="uid://d28tbnqpob3um" path="res://prefabs/ai/agents/versaillais.tscn" id="2_k08jm"]
+[ext_resource type="Script" uid="uid://ynb1621dwma" path="res://scripts/color_set.gd" id="2_xebxf"]
 [ext_resource type="PackedScene" uid="uid://dydlynqmwu5n5" path="res://prefabs/ai/agents/communard.tscn" id="3_y6qhm"]
 [ext_resource type="PackedScene" uid="uid://dyb4rmt0oj7ex" path="res://prefabs/ai/agents/communarde.tscn" id="4_exmrv"]
 [ext_resource type="AnimationLibrary" uid="uid://gmycm2ey6put" path="res://sandbox/ai/agents/solder.blend" id="4_i6cg2"]
@@ -10,16 +11,336 @@
 [ext_resource type="PackedScene" uid="uid://dnl1jyxgvhs8t" path="res://sources/meshes/characters/communarde.blend" id="6_exmrv"]
 [ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="7_8pvy2"]
 [ext_resource type="Script" uid="uid://drm4qhn1mjvnj" path="res://scripts/get_chassepot.gd" id="7_aq0bc"]
+[ext_resource type="Shader" uid="uid://bu4hvhwal4ce" path="res://prefabs/ai/agents/shader_communard_aether.gdshader" id="9_frvnd"]
 [ext_resource type="PackedScene" uid="uid://bgmi4jjbpoewd" path="res://sources/meshes/characters/versaillais.blend" id="10_3iyml"]
+
+[sub_resource type="Resource" id="Resource_72jo2"]
+script = ExtResource("2_xebxf")
+colors = Array[Color]([Color(1, 0.77066666, 0.57, 1), Color(0.44, 0.24302667, 0.09239999, 1), Color(0.35442188, 0.24595228, 0.04191886, 1), Color(0.50634193, 0.44261745, 0.31519088, 1), Color(0.9063318, 0.9063318, 0.9063318, 1), Color(0, 0, 0, 1), Color(0.5854461, 0.26073733, 0.018013595, 1), Color(0.44, 0.24302667, 0.09239999, 1)])
+metadata/_custom_type_script = "uid://ynb1621dwma"
+
+[sub_resource type="Resource" id="Resource_84l20"]
+script = ExtResource("2_xebxf")
+colors = Array[Color]([Color(0.88235295, 0.7607843, 0.7411765, 1), Color(0.021280132, 0.16954571, 0.3260252, 1), Color(0.70980394, 0.5764706, 0.39607844, 1), Color(0.57254905, 0.46666667, 0.21176471, 1), Color(0.85882354, 0.85882354, 0.85882354, 1), Color(0, 0, 0, 1), Color(0.26796448, 0.11182604, 0.0046836273, 1), Color(0.18039216, 0.105882354, 0, 1)])
+metadata/_custom_type_script = "uid://ynb1621dwma"
+
+[sub_resource type="Resource" id="Resource_nv80g"]
+script = ExtResource("2_xebxf")
+colors = Array[Color]([Color(0.79607844, 0.54901963, 0.3882353, 1), Color(0.3529412, 0.32156864, 0.34117648, 1), Color(0.24705882, 0.21960784, 0.20392157, 1), Color(0.11372549, 0.11372549, 0.101960786, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0.33333334, 0.23137255, 0.007843138, 1), Color(0.30588236, 0.22745098, 0.20392157, 1)])
+metadata/_custom_type_script = "uid://ynb1621dwma"
+
+[sub_resource type="Resource" id="Resource_4ntjd"]
+script = ExtResource("2_xebxf")
+colors = Array[Color]([Color(0.99607843, 0.83137256, 0.7176471, 1), Color(0.30588236, 0.31764707, 0.20392157, 1), Color(0.4, 0.1882353, 0.09803922, 1), Color(0.8666667, 0.78039217, 0.6, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(0.30980393, 0.43529412, 0.21176471, 1), Color(0.5647059, 0.5372549, 0.4509804, 1)])
+metadata/_custom_type_script = "uid://ynb1621dwma"
+
+[sub_resource type="Resource" id="Resource_1ppao"]
+script = ExtResource("2_xebxf")
+colors = Array[Color]([Color(0.6, 0.52156866, 0.32941177, 1), Color(0.5647059, 0.70980394, 0.8156863, 1), Color(1, 1, 1, 1), Color(0.6117647, 0.4745098, 0.1764706, 1), Color(0, 0, 0, 1), Color(0.39215687, 0.3019608, 0.1254902, 1), Color(0.7294118, 0.18431373, 0.11372549, 1), Color(0.3019608, 0.3019608, 0.3019608, 1), Color(0.50980395, 0.15686275, 0.08235294, 1), Color(0.05490196, 0.023529412, 0.007843138, 1), Color(0.6784314, 0.4509804, 0.28627452, 1)])
+metadata/_custom_type_script = "uid://ynb1621dwma"
+
+[sub_resource type="Resource" id="Resource_1t63m"]
+script = ExtResource("2_xebxf")
+colors = Array[Color]([Color(0.8352941, 0.7490196, 0.2784314, 1), Color(0.5294118, 0.43529412, 0.3254902, 1), Color(1, 1, 1, 1), Color(0.49019608, 0.5568628, 0.78431374, 1), Color(0, 0, 0, 1), Color(0.8980392, 0.85490197, 0.8039216, 1), Color(0.19607843, 0.043137256, 0.011764706, 1), Color(0.6627451, 0.2, 0.07450981, 1), Color(0.23921569, 0.1254902, 0.015686275, 1), Color(1, 0.9137255, 0.4862745, 1), Color(0.8745098, 0.7921569, 0.69411767, 1)])
+metadata/_custom_type_script = "uid://ynb1621dwma"
+
+[sub_resource type="Resource" id="Resource_qbd3x"]
+script = ExtResource("2_xebxf")
+colors = Array[Color]([Color(0.12941177, 0.21568628, 0.21960784, 1), Color(0.73333335, 0.69803923, 0.62352943, 1), Color(1, 1, 1, 1), Color(0.5058824, 0.36862746, 0.039215688, 1), Color(0, 0, 0, 1), Color(0.76862746, 0.26666668, 0.09019608, 1), Color(1, 1, 1, 1), Color(0.50980395, 0.69411767, 0.7058824, 1), Color(0.5568628, 0.39215687, 0.1882353, 1), Color(0.20392157, 0.14901961, 0.03137255, 1), Color(0.8117647, 0.627451, 0.4862745, 1)])
+metadata/_custom_type_script = "uid://ynb1621dwma"
+
+[sub_resource type="Resource" id="Resource_qhjs5"]
+script = ExtResource("2_xebxf")
+colors = Array[Color]([Color(0.6392157, 0.36078432, 0.23921569, 1), Color(0.28235295, 0.36862746, 0.21568628, 1), Color(1, 1, 1, 1), Color(0.41960785, 0.5647059, 0.3019608, 1), Color(0, 0, 0, 1), Color(0.22745098, 0.30980393, 0.16078432, 1), Color(0, 0, 0, 1), Color(0.7176471, 0.6117647, 0.45490196, 1), Color(0.6745098, 0.6627451, 0.65882355, 1), Color(0.6862745, 0.3254902, 0.08627451, 1), Color(0.8509804, 0.68235296, 0.5372549, 1)])
+metadata/_custom_type_script = "uid://ynb1621dwma"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fdau"]
 radius = 0.25
 height = 1.8
 
+[sub_resource type="Gradient" id="Gradient_84l20"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_72jo2"]
+noise_type = 2
+frequency = 0.005
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nv80g"]
+noise = SubResource("FastNoiseLite_72jo2")
+color_ramp = SubResource("Gradient_84l20")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_11mlb"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hk1l1"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_acptb"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0hyl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jusq2"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vryew"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fetp7"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_56xvl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frvnd"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ea31p"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n2tat"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_428no"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ph5a8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hbig"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dojr"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_btf7t"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1hxl"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3xa0"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0vq8l"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_frvnd")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
+
 [node name="NPC" type="CharacterBody3D" unique_id=1296143105 node_paths=PackedStringArray("animator") groups=["Npc"]]
 floor_max_angle = 1.0471976
 script = ExtResource("1_s40ew")
 animator = NodePath("Animator")
+male_color_set = Array[ExtResource("2_xebxf")]([SubResource("Resource_72jo2"), SubResource("Resource_84l20"), SubResource("Resource_nv80g"), SubResource("Resource_4ntjd")])
+female_color_set = Array[ExtResource("2_xebxf")]([SubResource("Resource_1ppao"), SubResource("Resource_1t63m"), SubResource("Resource_qbd3x"), SubResource("Resource_qhjs5")])
 versaillais_ai = ExtResource("2_k08jm")
 communard_ai = ExtResource("3_y6qhm")
 communarde_ai = ExtResource("4_exmrv")
@@ -51,7 +372,7 @@ visible = false
 script = ExtResource("7_aq0bc")
 chassepot = NodePath("Armature/Skeleton3D/BoneAttachment3D/UChassepot")
 
-[node name="Skeleton3D" parent="Communard/Armature" parent_id_path=PackedInt32Array(273836269, 1636348905) index="0" unique_id=2054203709]
+[node name="Skeleton3D" parent="Communard/Armature" parent_id_path=PackedInt32Array(273836269, 1704078310) index="0" unique_id=807977572]
 bones/0/position = Vector3(-1.1295888, 3.566151, -89.69183)
 bones/0/rotation = Quaternion(-0.52770674, 0.014568195, 0.0717966, 0.8462616)
 bones/1/rotation = Quaternion(0.0512282, 0.09044732, -0.05768289, 0.9929087)
@@ -163,6 +484,16 @@ bones/62/rotation = Quaternion(0.46030912, 0.010804935, -0.00858749, 0.88765144)
 bones/63/rotation = Quaternion(0.5889403, 0.06184535, -0.009126042, 0.8057551)
 bones/64/position = Vector3(-1.721317e-06, 7.010912, -8.94063e-08)
 
+[node name="communard" parent="Communard/Armature/Skeleton3D" index="0" unique_id=55323640]
+surface_material_override/0 = SubResource("ShaderMaterial_11mlb")
+surface_material_override/1 = SubResource("ShaderMaterial_hk1l1")
+surface_material_override/2 = SubResource("ShaderMaterial_acptb")
+surface_material_override/3 = SubResource("ShaderMaterial_s0hyl")
+surface_material_override/4 = SubResource("ShaderMaterial_jusq2")
+surface_material_override/5 = SubResource("ShaderMaterial_vryew")
+surface_material_override/6 = SubResource("ShaderMaterial_fetp7")
+surface_material_override/7 = SubResource("ShaderMaterial_56xvl")
+
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Communard/Armature/Skeleton3D" index="1" unique_id=1424991803]
 transform = Transform3D(-0.16970098, 0.9853802, 0.015062898, -0.020758122, 0.011706978, -0.9997157, -0.98527694, -0.16996557, 0.018467903, -3.785797, 49.759365, -104.40501)
 bone_name = "mixamorig_RightHand"
@@ -173,11 +504,10 @@ transform = Transform3D(-5.0762367, 96.52953, 25.61808, 18.762571, 26.116169, -9
 
 [node name="Communarde" parent="." unique_id=970354312 node_paths=PackedStringArray("chassepot") instance=ExtResource("6_exmrv")]
 unique_name_in_owner = true
-visible = false
 script = ExtResource("7_aq0bc")
 chassepot = NodePath("Armature/Skeleton3D/BoneAttachment3D/UChassepot")
 
-[node name="Skeleton3D" parent="Communarde/Armature" parent_id_path=PackedInt32Array(970354312, 222369916) index="0" unique_id=2101765469]
+[node name="Skeleton3D" parent="Communarde/Armature" parent_id_path=PackedInt32Array(970354312, 297211549) index="0" unique_id=2095648582]
 bones/0/position = Vector3(-0.27369925, 3.193959, -93.96279)
 bones/0/rotation = Quaternion(-0.73866665, -0.25960463, 0.22171347, 0.581223)
 bones/1/rotation = Quaternion(0.012305934, -0.00014630197, -0.0019848126, 0.99992234)
@@ -289,6 +619,19 @@ bones/62/rotation = Quaternion(0.61708903, 0.20138195, -0.024398971, 0.7602968)
 bones/63/rotation = Quaternion(0.2903915, 0.0299682, -0.009088038, 0.95639545)
 bones/64/position = Vector3(-2.0165462e-06, 7.0109124, -4.4702972e-08)
 
+[node name="comunarde_geo" parent="Communarde/Armature/Skeleton3D" index="0" unique_id=26483649]
+surface_material_override/0 = SubResource("ShaderMaterial_frvnd")
+surface_material_override/1 = SubResource("ShaderMaterial_ea31p")
+surface_material_override/2 = SubResource("ShaderMaterial_n2tat")
+surface_material_override/3 = SubResource("ShaderMaterial_428no")
+surface_material_override/4 = SubResource("ShaderMaterial_ph5a8")
+surface_material_override/5 = SubResource("ShaderMaterial_5hbig")
+surface_material_override/6 = SubResource("ShaderMaterial_5dojr")
+surface_material_override/7 = SubResource("ShaderMaterial_btf7t")
+surface_material_override/8 = SubResource("ShaderMaterial_j1hxl")
+surface_material_override/9 = SubResource("ShaderMaterial_e3xa0")
+surface_material_override/10 = SubResource("ShaderMaterial_0vq8l")
+
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Communarde/Armature/Skeleton3D" index="1" unique_id=1488282624]
 transform = Transform3D(0.021574706, 0.12320191, 0.99214685, -0.29255116, 0.9497186, -0.11157162, -0.95600617, -0.2878466, 0.05653274, -19.334385, 19.233635, -130.73814)
 bone_name = "mixamorig_RightHand"
@@ -303,7 +646,7 @@ visible = false
 script = ExtResource("7_aq0bc")
 chassepot = NodePath("Armature/Skeleton3D/BoneAttachment3D/UChassepot")
 
-[node name="Skeleton3D" parent="Versaillais/Armature" parent_id_path=PackedInt32Array(483334823, 405910758) index="0" unique_id=1290009569]
+[node name="Skeleton3D" parent="Versaillais/Armature" parent_id_path=PackedInt32Array(483334823, 1494951211) index="0" unique_id=1607599066]
 bones/0/position = Vector3(0.0014296062, 0.8016324, -97.55293)
 bones/0/rotation = Quaternion(-0.7071063, -8.474164e-05, -9.030629e-05, 0.70710737)
 bones/1/rotation = Quaternion(-0.05743657, -1.1037612e-05, 0.00012334726, 0.99834913)
