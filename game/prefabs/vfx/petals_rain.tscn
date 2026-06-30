@@ -1,0 +1,138 @@
+[gd_scene format=4 uid="uid://b4k47vwyhfhsq"]
+
+[ext_resource type="Material" uid="uid://urm6wlxs12b4" path="res://prefabs/vfx/death_petals/MATTT.tres" id="2_rjl8e"]
+[ext_resource type="Texture2D" uid="uid://xw8lerpa41fo" path="res://prefabs/vfx/death_petals/death-petals.png" id="3_ajjqp"]
+
+[sub_resource type="Curve" id="Curve_ur01c"]
+_data = [Vector2(0.0020920504, 0.99759877), 0.0, 0.0, 0, 0, Vector2(0.6161088, 0.8319172), -0.69561416, -0.69561416, 0, 0, Vector2(0.8138075, 0.25803477), -1.4714943, -1.4714943, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ure6d"]
+curve = SubResource("Curve_ur01c")
+
+[sub_resource type="Curve" id="Curve_34bdw"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_34bdw"]
+curve = SubResource("Curve_34bdw")
+
+[sub_resource type="Gradient" id="Gradient_kx0yg"]
+offsets = PackedFloat32Array(0.15268818, 1)
+colors = PackedColorArray(0.2987908, 3.549643e-07, 0.037614785, 1, 0.99536175, 0.84646326, 0.8817848, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nolme"]
+gradient = SubResource("Gradient_kx0yg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kx0yg"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(7.5, 0.1, 7.5)
+angle_min = -179.99998
+angle_max = 180.00002
+angle_curve = SubResource("CurveTexture_34bdw")
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+angular_velocity_min = -720.0
+angular_velocity_max = 719.99994
+gravity = Vector3(0, -2.5, 0)
+damping_min = 0.1
+damping_max = 0.70000005
+scale_min = 0.59999996
+scale_max = 1.3
+color_initial_ramp = SubResource("GradientTexture1D_nolme")
+alpha_curve = SubResource("CurveTexture_ure6d")
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 20.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_28wdn"]
+_surfaces = [{
+"aabb": AABB(-0.0375, -0.0375, -0.004868925, 0.075, 0.075, 0.011638275),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABQAEAAAABQAGAAQABwAGAAUABwAIAAYACQAIAAcACQAKAAgACwAKAAkACwAMAAoADQAMAAsA"),
+"name": "curve",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("//9U1U2WAAAAAFTVTZYAAP////8AAAAAAAD//wAAAAAAAKqqiuYAAP//qqqK5gAAAAD/f///AAD///9///8AAAAAVFWK5gAA//9UVYrmAAAAAKoqTZYAAP//qipNlgAAAAAAAAAAAAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_nolme"]
+_surfaces = [{
+"aabb": AABB(-0.0375, -0.0375, -0.004868925, 0.075, 0.075, 0.011638275),
+"attribute_data": PackedByteArray("//+qKgAAqir//wAAAAAAAAAAVFX//1RVAAD/f////38AAKqq//+qqgAAVNX//1TVAAD///////8="),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEABQAEAAAABQAGAAQABwAGAAUABwAIAAYACQAIAAcACQAKAAgACwAKAAkACwAMAAoADQAMAAsA"),
+"material": ExtResource("2_rjl8e"),
+"name": "curve",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("//9U1U2W+I8AAFTVTZb4j/////8AAGKUAAD//wAAYpQAAKqqiuaph///qqqK5qmHAAD/f///AID///9///8AgAAAVFWK5qmH//9UVYrmqYcAAKoqTZb4j///qipNlviPAAAAAAAAYpT//wAAAABilP///3////9/////f////3////9/////f/9/////f///AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_28wdn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5nyeg"]
+particle_flag_rotate_y = true
+emission_shape = 3
+emission_box_extents = Vector3(7.5, 0.1, 7.5)
+angle_min = -179.99998
+angle_max = 180.00002
+angle_curve = SubResource("CurveTexture_34bdw")
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+angular_velocity_min = -720.0
+angular_velocity_max = 719.99994
+gravity = Vector3(0, -2.5, 0)
+damping_min = 0.1
+damping_max = 0.70000005
+scale_min = 0.59999996
+scale_max = 1.3
+color_initial_ramp = SubResource("GradientTexture1D_nolme")
+alpha_curve = SubResource("CurveTexture_ure6d")
+anim_offset_max = 1.0
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+turbulence_noise_scale = 20.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73x4e"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_ajjqp")
+texture_filter = 1
+texture_repeat = false
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_hnivp"]
+material = SubResource("StandardMaterial3D_73x4e")
+size = Vector2(0.075, 0.075)
+
+[node name="PetalsRain" type="Node3D" unique_id=220248233]
+
+[node name="SimplePetalsYaw" type="GPUParticles3D" parent="." unique_id=1051774605]
+amount = 300
+lifetime = 30.0
+process_material = SubResource("ParticleProcessMaterial_kx0yg")
+draw_pass_1 = SubResource("ArrayMesh_nolme")
+
+[node name="AtlasPetalsRoll" type="GPUParticles3D" parent="." unique_id=18912087]
+amount = 300
+lifetime = 30.0
+process_material = SubResource("ParticleProcessMaterial_5nyeg")
+draw_pass_1 = SubResource("QuadMesh_hnivp")

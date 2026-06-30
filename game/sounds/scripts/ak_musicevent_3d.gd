@@ -14,12 +14,14 @@ extends AkEvent3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	GameManager.instance.all_states[2].start_music_after_dialogue.connect(post_after_allies)
-	GameManager.instance.all_states[3].ending_music_choice_scene.connect(post_event_debug)
-	
-	GameManager.instance.all_states[2].stop_music_for_dialogue.connect(stop_event_with_signal_for_allies_dialogue)
-	GameManager.instance.all_states[3].stop_music_for_choice.connect(stop_event_with_signal_for_ending_choice)
-	GameManager.instance.all_states[3].stop_music_for_ending.connect(stop_event_with_signal)
+	if GameManager.instance:
+		GameManager.instance.all_states[2].start_music_after_dialogue.connect(post_after_allies)
+		GameManager.instance.all_states[3].ending_music_choice_scene.connect(post_event_debug)
+		GameManager.instance.all_states[2].stop_music_for_dialogue.connect(stop_event_with_signal_for_allies_dialogue)
+		GameManager.instance.all_states[3].stop_music_for_choice.connect(stop_event_with_signal_for_ending_choice)
+		GameManager.instance.all_states[3].stop_music_for_ending.connect(stop_event_with_signal)
+	else:
+		printerr("NO GAME MANAGER FOUND AK_MUSICEVENT")
 	
 	Wwise.set_switch("Voice_Sel", Voice_sel, self)
 	DistScale.set_value(self, Distance_scale)

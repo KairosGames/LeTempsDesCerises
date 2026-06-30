@@ -44,7 +44,9 @@ func _ready() -> void:
 func ready_deferred() -> void:
 	game_manager = GameManager.instance
 	if Player.instance: player = Player.instance
-	else: game_manager.player_instance_loaded.connect(set_local_player, CONNECT_ONE_SHOT)
+	else:
+		if game_manager: game_manager.player_instance_loaded.connect(set_local_player, CONNECT_ONE_SHOT)
+		else: printerr("NO GAMEMANAGER FOUND, BARRICADE")
 
 
 func set_local_player() -> void:

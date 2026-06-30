@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://d2gdri2w54pfo" path="res://sources/images/icons/close.svg" id="11_jdxxw"]
 [ext_resource type="FontFile" uid="uid://6al2yonhh1go" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Black.otf" id="12_yu5fn"]
 [ext_resource type="PackedScene" uid="uid://bac3gborw4s1l" path="res://prefabs/ui/option.tscn" id="13_ip4d6"]
+[ext_resource type="PackedScene" uid="uid://c72mtiob4n7mp" path="res://scenes/menu_scene.tscn" id="14_gi00y"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ip4d6"]
 content_margin_left = 50.0
@@ -77,6 +78,7 @@ theme = ExtResource("1_krot7")
 script = ExtResource("2_w18ys")
 
 [node name="Splash" type="VideoStreamPlayer" parent="." unique_id=1765129963]
+visible = false
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15
@@ -665,7 +667,8 @@ Adèle Cavillac - 3D artist
 Nalowale - UI Artist
 Guillem Lafois - 3D artist
 Maël Deschamps–Brouillaud - 3D artist
-Adrien Pochon - Animator"
+Adrien Pochon - Animator
+Balthazar Brillault-Dutertre - UI Artist"
 label_settings = SubResource("LabelSettings_cmjdo")
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -681,6 +684,8 @@ offset_top = 150.0
 offset_bottom = 1114.0
 grow_vertical = 1
 to_restore = NodePath("../Menu")
+
+[node name="MenuScene" parent="." unique_id=111111966 instance=ExtResource("14_gi00y")]
 
 [connection signal="pressed" from="Menu/Buttons/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Menu/Buttons/Options" to="." method="_on_options_pressed"]
