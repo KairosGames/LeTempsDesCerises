@@ -72,6 +72,7 @@ func go_to_barricade() -> void:
 	clean_ui_process()
 	go_to_barricade_area.set_deferred("monitoring", false)
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
+	delay_null_objective_target()
 	battle_director.go_next_covers_activation() ################################## Entrée zone barricade
 
 
@@ -205,6 +206,7 @@ func check_player_kill_cannon_enemy(target: Node3D) -> void:
 	if not versaillais.canon_slot: return
 	if versaillais.get_parent() == versaillais.canon_slot:
 		ui_manager.objective_target.target = null
+		delay_null_objective_target()
 		player.enemy_shot.disconnect(check_player_kill_cannon_enemy)
 
 

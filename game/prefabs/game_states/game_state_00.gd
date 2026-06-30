@@ -192,11 +192,6 @@ func process_shoot_tooltip() -> void:
 	ui_manager.tooltip.display(obj and obj is ShootTarget and player.is_aiming)
 
 
-func delay_null_objective_target() -> void:
-	await wait(4.0)
-	ui_manager.objective_target.target = null
-
-
 func free_player_view() -> void:
 	clean_process()
 

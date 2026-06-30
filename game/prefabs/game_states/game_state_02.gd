@@ -62,6 +62,7 @@ func lauch_first_phase() -> void:
 	player.death_camera.first_rot = Vector3(0.0, secure_respawn.global_rotation.y, 0.0)
 	for woman: Npc in woman_points.women: woman.visible = false
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
+	delay_null_objective_target()
 	print("ENTER WAIT : ", first_battle_phase_time, "s")
 	await wait(first_battle_phase_time)
 	print("FINISH WAITING")
@@ -166,11 +167,10 @@ func launch_women_dialogue() -> void:
 	ui_manager.objective_target.target = null
 	discussion_area.set_deferred("monitoring", false)
 	Wwise.set_state("MusicVoicePlaying", "P3_3_Discussion") ################ MUSIC
-	await wait(3.5)
 	ui_manager.objective_target.target = null
+	delay_null_objective_target()
 	await wait_voice() # "Vous arrivez d'où comme ça ?"
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
-
 
 
 func launch_last_battle_phase() -> void:

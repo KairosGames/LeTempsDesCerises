@@ -433,6 +433,11 @@ func set_dynamic_da(from: float, to: float, time: float) -> void:
 	RenderingServer.global_shader_parameter_set("dynamic_da", to)
 
 
+func delay_null_objective_target() -> void:
+	await wait(4.0)
+	ui_manager.objective_target.target = null
+
+
 ##################### FOR DEBUG ##############################
 func debug_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("go_next_step") and game_manager.is_game_playing() and game_manager.use_narrative:
