@@ -152,14 +152,14 @@ func _take_slot(agent: Agent) -> Marker3D:
 	holded_slots.push_back(slot)
 	if move_speeds[holded_slots.size()]: 
 		start_move.emit()
-	agent.dying.connect(_restore.bind(slot).bind(agent))
+	agent.dying.connect(_on_agent_died.bind(slot).bind(agent))
 	agent.dying.connect(_on_worker_died.bind(agent))
 	return slot
 
-func _restore(agent: Agent ,slot: Marker3D) -> void:
+func _on_agent_died(agent: Agent, slot: Marker3D) -> void:
 	agent.top_level = true
 	holded_slots.erase(slot)
-	available_slots.push_back(slot)
+	get_tree().create_timer(2.0).timeout.connect(available_slots.push_back.bind(slot),CONNECT_ONE_SHOT)
 	if not move_speeds[holded_slots.size()]: 
 		stop_move.emit()
 
