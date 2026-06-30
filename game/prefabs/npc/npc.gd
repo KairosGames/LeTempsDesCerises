@@ -339,6 +339,12 @@ func replace_with_agent() -> void:
 	agent.global_position = global_position
 	agent.global_rotation = global_rotation
 	agent.global_rotation.y += PI
+	if not agent.is_node_ready(): await agent.ready
+	for i: int in range(body_materials.size()):
+		var npc_mat: ShaderMaterial = body_materials[i]
+		var npc_color: Color = npc_mat.get_shader_parameter("color")
+		var agent_mat: ShaderMaterial = agent.body_materials[i]
+		agent_mat.set_shader_parameter("color", npc_color)
 	queue_free()
 
 

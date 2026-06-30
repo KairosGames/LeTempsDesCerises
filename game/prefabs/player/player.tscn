@@ -82,13 +82,13 @@ shader_parameter/effect = 8.0
 resource_name = "ReloadHint"
 script/source = "extends TextureRect
 
-const XBOX_BUTTON_X: Texture2D = preload(\"uid://cidv14oem3sdc\")
-const KEYBOARD_R: Texture2D = preload(\"uid://crgngp83cu34k\")
+const XBOX_BUTTON_X: Texture2D = preload(\"uid://dovahv8ks5muh\")
+const KEYBOARD_R: Texture2D = preload(\"uid://cof0t0o0dts1d\")
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouse or event is InputEventKey: 
+	if event is InputEventMouse or event is InputEventKey:
 		update_hint(false)
-	if event is InputEventJoypadButton: 
+	if event is InputEventJoypadButton:
 		update_hint(true)
 	if event is InputEventJoypadMotion:
 		var joypad_motion: InputEventJoypadMotion = event
