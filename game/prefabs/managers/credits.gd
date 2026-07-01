@@ -16,7 +16,7 @@ func start_credits():
 	text_box.show()
 	await get_tree().create_timer(5).timeout
 	allow_credits = true
-	await get_tree().create_timer(40).timeout
+	await get_tree().create_timer(55).timeout
 	self.hide()
 	get_tree().quit()
 
