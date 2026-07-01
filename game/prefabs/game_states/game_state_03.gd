@@ -153,6 +153,7 @@ func launch_dialogue() -> void:
 
 
 func switch_all_flags(time: float) -> void:
+	await wait(3.0)
 	var flags: Array = get_tree().get_nodes_in_group("Flags")
 	for flag: Flag in flags:
 		flag.fade_to_final_state(time)
@@ -191,12 +192,12 @@ func process_choice_display() -> void:
 
 func is_choice_done() -> bool:
 	if Input.is_action_just_pressed("choice_surrender"):
-		Wwise.set_state("EndChoice","Francois")
+		Wwise.set_state("EndChoice","Francois") #MUSIC
 		steps[2] = Step.new(launch_execution, do_nothing, do_nothing)
 		is_surrending = true
 		return true
 	if Input.is_action_just_pressed("choice_fight_to_death"):
-		Wwise.set_state("EndChoice","Louise")
+		Wwise.set_state("EndChoice","Louise") #MUSIC
 		steps[2] = Step.new(launch_fight_to_death, do_nothing, do_nothing)
 		is_surrending = false
 		choose_fight_to_death.emit()
