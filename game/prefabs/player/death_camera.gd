@@ -115,8 +115,9 @@ func handle_camera_on_communard(communard: Node3D, ground: float) -> void:
 				).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC).finished
 
 
-func handle_camera_simple_move() -> void:
+func handle_camera_simple_move(is_last_death: bool = false) -> void:
 	var z_rot: float = 90.0 if randi() % 2 else -90.0
+	if is_last_death: z_rot = 90.0
 	var fall_rot: Vector3 = Vector3(0.0, -z_rot, global_rotation_degrees.z + z_rot)
 	fall_rot_twn.tween_property(self, "global_rotation_degrees", fall_rot, 0.3)
 	await get_tree().create_timer(time_to_swap).timeout
@@ -222,7 +223,7 @@ func play_last_death() -> void:
 	fov_twn.tween_property(self, "fov", player.default_fov, fall_time_1)
 
 	play_eyes_effect_and_revive(false, true)
-	handle_camera_simple_move()
+	handle_camera_simple_move(true)
 
 
 func get_profile_gender(gend: int) -> ProfileManager.Gender:
