@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://b4k47vwyhfhsq"]
 
 [ext_resource type="Material" uid="uid://urm6wlxs12b4" path="res://prefabs/vfx/death_petals/MATTT.tres" id="2_rjl8e"]
-[ext_resource type="Texture2D" uid="uid://xw8lerpa41fo" path="res://prefabs/vfx/death_petals/death-petals.png" id="3_ajjqp"]
 
 [sub_resource type="Curve" id="Curve_ur01c"]
 _data = [Vector2(0.0020920504, 0.99759877), 0.0, 0.0, 0, 0, Vector2(0.6161088, 0.8319172), -0.69561416, -0.69561416, 0, 0, Vector2(0.8138075, 0.25803477), -1.4714943, -1.4714943, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -105,12 +104,15 @@ turbulence_enabled = true
 turbulence_noise_strength = 20.0
 turbulence_noise_scale = 20.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7dwmy"]
+load_path = "res://.godot/imported/death-petals.png-80542b1a8b0c2d6c450f39fd745d3896.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73x4e"]
 transparency = 1
 cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_ajjqp")
+albedo_texture = SubResource("CompressedTexture2D_7dwmy")
 texture_filter = 1
 texture_repeat = false
 billboard_mode = 3
