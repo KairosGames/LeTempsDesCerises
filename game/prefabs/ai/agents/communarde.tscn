@@ -29,7 +29,7 @@ script = ExtResource("2_qbd3x")
 colors = Array[Color]([Color(0.6392157, 0.36078432, 0.23921569, 1), Color(0.28235295, 0.36862746, 0.21568628, 1), Color(1, 1, 1, 1), Color(0.41960785, 0.5647059, 0.3019608, 1), Color(0, 0, 0, 1), Color(0.22745098, 0.30980393, 0.16078432, 1), Color(0, 0, 0, 1), Color(0.7176471, 0.6117647, 0.45490196, 1), Color(0.6745098, 0.6627451, 0.65882355, 1), Color(0.6862745, 0.3254902, 0.08627451, 1), Color(0.8509804, 0.68235296, 0.5372549, 1)])
 metadata/_custom_type_script = "uid://ynb1621dwma"
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qhjs5"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qbd3x"]
 resource_local_to_scene = true
 radius = 0.25
 height = 1.8
@@ -44,6 +44,20 @@ fractal_octaves = 1
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nv80g"]
 noise = SubResource("FastNoiseLite_72jo2")
 color_ramp = SubResource("Gradient_84l20")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qhjs5"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_hd3th")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/dynamic_da_override = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
+shader_parameter/noise_scale = 2.0
+shader_parameter/noise_speed = 5.0
+shader_parameter/noise_strength = 2.0
+shader_parameter/glitch_strength = 3.0
+shader_parameter/glitch_speed = 4.0
+shader_parameter/glitch_frequency = 0.5
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1ppao"]
 resource_local_to_scene = true
@@ -185,20 +199,6 @@ shader_parameter/glitch_strength = 3.0
 shader_parameter/glitch_speed = 4.0
 shader_parameter/glitch_frequency = 0.5
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m7n7d"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("6_hd3th")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/dynamic_da_override = 0.0
-shader_parameter/noise_tex = SubResource("NoiseTexture2D_nv80g")
-shader_parameter/noise_scale = 2.0
-shader_parameter/noise_speed = 5.0
-shader_parameter/noise_strength = 2.0
-shader_parameter/glitch_strength = 3.0
-shader_parameter/glitch_speed = 4.0
-shader_parameter/glitch_frequency = 0.5
-
 [node name="Communarde" unique_id=1349390169 node_paths=PackedStringArray("body", "chassepot") groups=["Communard"] instance=ExtResource("1_8hdkl")]
 color_sets = Array[ExtResource("2_qbd3x")]([SubResource("Resource_1ppao"), SubResource("Resource_1t63m"), SubResource("Resource_qbd3x"), SubResource("Resource_qhjs5")])
 body = NodePath("communarde/Armature/Skeleton3D/comunarde_geo")
@@ -207,13 +207,13 @@ team = 1
 sexe = 2
 
 [node name="CollisionShape3D" parent="." index="1" unique_id=1662563447]
-shape = SubResource("CapsuleShape3D_qhjs5")
+shape = SubResource("CapsuleShape3D_qbd3x")
 
 [node name="Chest" parent="ShootTargets" parent_id_path=PackedInt32Array(1640117776) index="0" unique_id=1612085666]
 transform = Transform3D(-0.9641469, -0.010187307, 0.2646186, 0.013167005, 0.9960149, 0.086316474, -0.26449344, 0.08671894, -0.96030647, -0.037433233, 1.2325957, -0.026062045)
 
 [node name="Head" parent="ShootTargets" parent_id_path=PackedInt32Array(1640117776) index="1" unique_id=2138124691]
-transform = Transform3D(-0.9975747, -0.021545183, 0.0650856, -0.025835667, 0.99730104, -0.0657503, -0.06351426, -0.06727714, -0.9955102, -0.032266628, 1.5467424, -0.045643706)
+transform = Transform3D(-0.99757457, -0.021545183, 0.0650856, -0.025835663, 0.99730104, -0.0657503, -0.063514255, -0.06727714, -0.9955102, -0.032266628, 1.5467424, -0.045643706)
 
 [node name="Comunard" parent="BeehaveTree/BeAlive" parent_id_path=PackedInt32Array(1853354031) index="2" unique_id=546313229 instance=ExtResource("2_j48so")]
 
@@ -231,7 +231,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 script = ExtResource("5_j48so")
 chassepot = NodePath("Armature/Skeleton3D/Weapon/UChassepot")
 
-[node name="Skeleton3D" parent="communarde/Armature" parent_id_path=PackedInt32Array(266893082, 1836566356) index="0" unique_id=1272323504]
+[node name="Skeleton3D" parent="communarde/Armature" parent_id_path=PackedInt32Array(266893082, 1520251413) index="0" unique_id=835520803]
 bones/0/position = Vector3(3.3125455, 5.545031, -95.680405)
 bones/0/rotation = Quaternion(-0.7179706, -0.078689516, 0.08974984, 0.6857631)
 bones/1/rotation = Quaternion(-0.027461816, -0.011502654, -0.0087620625, 0.9995183)
@@ -343,18 +343,18 @@ bones/62/rotation = Quaternion(0.57047987, 0.07391538, 0.035977535, 0.81718713)
 bones/63/rotation = Quaternion(0.29869214, 0.030883078, -0.009103681, 0.9538062)
 bones/64/position = Vector3(-3.0577648e-06, 7.0109124, 1.043083e-07)
 
-[node name="comunarde_geo" parent="communarde/Armature/Skeleton3D" index="0" unique_id=1977092443]
-surface_material_override/0 = SubResource("ShaderMaterial_1ppao")
-surface_material_override/1 = SubResource("ShaderMaterial_1t63m")
-surface_material_override/2 = SubResource("ShaderMaterial_41naq")
-surface_material_override/3 = SubResource("ShaderMaterial_t07vh")
-surface_material_override/4 = SubResource("ShaderMaterial_53t2p")
-surface_material_override/5 = SubResource("ShaderMaterial_an83g")
-surface_material_override/6 = SubResource("ShaderMaterial_yxglp")
-surface_material_override/7 = SubResource("ShaderMaterial_i37na")
-surface_material_override/8 = SubResource("ShaderMaterial_qag5t")
-surface_material_override/9 = SubResource("ShaderMaterial_2ltgm")
-surface_material_override/10 = SubResource("ShaderMaterial_m7n7d")
+[node name="comunarde_geo" parent="communarde/Armature/Skeleton3D" index="0" unique_id=1217803520]
+surface_material_override/0 = SubResource("ShaderMaterial_qhjs5")
+surface_material_override/1 = SubResource("ShaderMaterial_1ppao")
+surface_material_override/2 = SubResource("ShaderMaterial_1t63m")
+surface_material_override/3 = SubResource("ShaderMaterial_41naq")
+surface_material_override/4 = SubResource("ShaderMaterial_t07vh")
+surface_material_override/5 = SubResource("ShaderMaterial_53t2p")
+surface_material_override/6 = SubResource("ShaderMaterial_an83g")
+surface_material_override/7 = SubResource("ShaderMaterial_yxglp")
+surface_material_override/8 = SubResource("ShaderMaterial_i37na")
+surface_material_override/9 = SubResource("ShaderMaterial_qag5t")
+surface_material_override/10 = SubResource("ShaderMaterial_2ltgm")
 
 [node name="Weapon" type="BoneAttachment3D" parent="communarde/Armature/Skeleton3D" index="1" unique_id=2032018006]
 transform = Transform3D(0.55236375, 0.70768654, 0.44053787, 0.20990148, 0.3933701, -0.8950981, -0.80674374, 0.5868894, 0.06873888, -15.115067, 21.44459, -107.150795)

@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcgkakrwauumy"]
+[gd_scene format=3 uid="uid://bcgkakrwauumy"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ut85n"]
 
-[node name="MyFirstPlugin" type="Control"]
+[node name="MyFirstPlugin" type="Control" unique_id=1375488206]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=187589202]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -25,72 +25,72 @@ grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1762525982]
 visible = false
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=33917289]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer"]
+[node name="Panel" type="Panel" parent="VBoxContainer/MarginContainer" unique_id=695284320]
 self_modulate = Color(1, 1, 1, 0.352941)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer" unique_id=282230706]
 layout_mode = 2
 text = "Particle Controls"
 horizontal_alignment = 1
 clip_text = true
 text_overrun_behavior = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1271104510]
 layout_mode = 2
 alignment = 2
 
-[node name="StartButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="StartButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=877803542]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Play Particles from Start"
 text = "S"
 
-[node name="PauseButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="PauseButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=2112784874]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Pause Particles"
 toggle_mode = true
 text = "P"
 
-[node name="StopButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="StopButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1358789636]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Stop Particles"
 text = "X"
 
-[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer" unique_id=1368256891]
 layout_mode = 2
 
-[node name="LoopButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="LoopButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=546844069]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Loop Particles"
 toggle_mode = true
 text = "L"
 
-[node name="AffectNeighborsButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="AffectNeighborsButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1035399617]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Affect Neighboring Particles"
 toggle_mode = true
 text = "AN"
 
-[node name="AffectChildrenButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="AffectChildrenButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=1750966770]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Affect Child Particles"
 toggle_mode = true
 text = "AC"
 
-[node name="Scrub" type="HSlider" parent="VBoxContainer"]
+[node name="Scrub" type="HSlider" parent="VBoxContainer" unique_id=2025131658]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_icons/grabber_disabled = SubResource("ImageTexture_ut85n")
