@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://dbacxpivv71g2" path="res://materials/shaders/kuwahara.gdshader" id="5_3ivn4"]
 [ext_resource type="PackedScene" uid="uid://dxqpvtlncyyq0" path="res://sounds/prefabs/music_systeme.tscn" id="6_gedxo"]
 [ext_resource type="PackedScene" uid="uid://beucpa8otln0h" path="res://prefabs/player/player.tscn" id="7_vj5vi"]
+[ext_resource type="Script" uid="uid://b14nvf01wvyom" path="res://scripts/kuwahara_compositor_effect.gd" id="8_kuwahara"]
 
 [sub_resource type="Gradient" id="Gradient_3ivn4"]
 offsets = PackedFloat32Array(0.47007042, 0.8257042)
@@ -84,6 +85,21 @@ volumetric_fog_gi_inject = 0.0
 volumetric_fog_length = 15.3
 volumetric_fog_ambient_inject = 1.0
 adjustment_enabled = true
+
+[sub_resource type="CompositorEffect" id="CompositorEffect_kuwahara"]
+resource_local_to_scene = false
+resource_name = ""
+enabled = true
+effect_callback_type = 4
+needs_motion_vectors = false
+needs_normal_roughness = false
+script = ExtResource("8_kuwahara")
+distance_fade_start = 0.0
+distance_fade_end = 10.0
+far_effect_strength = 0.5
+
+[sub_resource type="Compositor" id="Compositor_kuwahara"]
+compositor_effects = Array[CompositorEffect]([SubResource("CompositorEffect_kuwahara")])
 
 [sub_resource type="Animation" id="Animation_124fr"]
 resource_name = "Phase1"
@@ -478,6 +494,8 @@ shader_parameter/offset = Vector3(0, 0, 0)
 [node name="GreyBlockScene" type="Node3D" unique_id=111111966]
 
 [node name="GameManager" parent="." unique_id=1070764289 node_paths=PackedStringArray("first_barricade", "second_barricade", "cannon") instance=ExtResource("1_124fr")]
+use_debug = true
+starting_game_state = 1
 first_barricade = NodePath("../GameDesignScene/Environment/Barricades/BarricadeFirst")
 second_barricade = NodePath("../GameDesignScene/Environment/Barricades/BarricadeSecond")
 cannon = NodePath("../GameDesignScene/Ennemies/Path3DCannon1/Canon")
@@ -489,6 +507,7 @@ transform = Transform3D(-0.82015204, 0, 0.57214576, 0, 0.9999999, 0, -0.5721458,
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lightning" unique_id=1512237811]
 environment = SubResource("Environment_g3y20")
+compositor = SubResource("Compositor_kuwahara")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lightning" unique_id=1755602407]
 transform = Transform3D(-0.8660254, 0.24999996, 0.43301275, 0, 0.86602515, -0.5, -0.50000006, -0.43301257, -0.75, 0, 0, 0)
@@ -562,6 +581,7 @@ spot_angle_attenuation = 0.2414844
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010229111, -3.33786e-06, 0.014831543)
 
 [node name="Kuwahara" type="ColorRect" parent="." unique_id=325385908]
+visible = false
 material = SubResource("ShaderMaterial_gedxo")
 anchors_preset = 15
 anchor_right = 1.0
