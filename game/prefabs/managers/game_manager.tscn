@@ -21,7 +21,6 @@
 [ext_resource type="Shader" uid="uid://c3neb6a2e0vbg" path="res://prefabs/managers/ui_out_line.gdshader" id="12_jh506"]
 [ext_resource type="FontFile" uid="uid://0yy1ysc8tx6l" path="res://sources/fonts/Bauer_Bodoni/Bauer Bodoni Bold.otf" id="12_vrkal"]
 [ext_resource type="Script" uid="uid://dyoxltkd86h4w" path="res://prefabs/managers/credits.gd" id="13_5gurq"]
-[ext_resource type="Texture2D" uid="uid://22l74488m5rp" path="res://sources/images/textures/ui/lorem_ipsum_04.png" id="13_o0w5l"]
 [ext_resource type="FontFile" uid="uid://lemtkmvsvwbl" path="res://sources/fonts/BodoniModa-VariableFont_opsz,wght.ttf" id="14_d52jd"]
 [ext_resource type="Texture2D" uid="uid://mk88hreujt3a" path="res://sources/images/textures/ui/divider_01.png" id="14_ophos"]
 [ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="14_y7efs"]
@@ -110,16 +109,26 @@ content_margin_right = 4.0
 content_margin_bottom = 0.0
 thickness = 4
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_o0w5l"]
-content_margin_left = 4.0
-content_margin_top = 0.0
-content_margin_right = 4.0
-content_margin_bottom = 0.0
-grow_begin = -24.0
-grow_end = -24.0
-thickness = 4
+[sub_resource type="GDScript" id="GDScript_252ic"]
+resource_name = "integrated_resume_button"
+script/source = "extends Button
+
+@export var pause_container: Control
+@export var game_manager: GameManager
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mouse_button: InputEventMouseButton = event
+		if mouse_button.pressed:
+			resume_game()
+
+func resume_game() -> void:
+	game_manager.is_in_pause = true
+	game_manager.set_pause()
+"
 
 [sub_resource type="GDScript" id="GDScript_27np0"]
+resource_name = "integrated_options_button"
 script/source = "extends Button
 
 @export var option: Control
@@ -141,7 +150,13 @@ func _option_visibility_changed() -> void:
 		option.visibility_changed.disconnect(_option_visibility_changed)
 "
 
+[sub_resource type="GDScript" id="GDScript_uue68"]
+resource_name = "integrated_menu_button"
+script/source = "extends Button
+"
+
 [sub_resource type="GDScript" id="GDScript_o0w5l"]
+resource_name = "integrated_quit_button"
 script/source = "extends Button
 
 func _gui_input(event: InputEvent) -> void:
@@ -547,7 +562,6 @@ vertical_alignment = 1
 
 [node name="PauseContainer" type="PanelContainer" parent="UIManager/CenterContainer" unique_id=456973355]
 unique_name_in_owner = true
-visible = false
 z_index = 25
 custom_minimum_size = Vector2(303.22, 300)
 layout_mode = 2
@@ -573,25 +587,27 @@ theme_override_constants/separation = 11
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_vrkal")
 
-[node name="Line2" type="HSeparator" parent="UIManager/CenterContainer/PauseContainer/Buttons/Lines2" unique_id=1119341763]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_o0w5l")
-
-[node name="Lorem" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=67725079]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-texture = ExtResource("13_o0w5l")
-expand_mode = 2
-stretch_mode = 6
-
 [node name="HSeparator2" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=1853666562]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Resume" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=923722221]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "RESUME"
+script = SubResource("GDScript_252ic")
+
+[node name="HSeparator7" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=711241053]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 texture = ExtResource("14_ophos")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Options" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=923722221 node_paths=PackedStringArray("option", "pause_container")]
+[node name="Options" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=1606571212 node_paths=PackedStringArray("option", "pause_container")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
@@ -607,14 +623,15 @@ texture = ExtResource("14_ophos")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Lorem2" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=95785536]
-custom_minimum_size = Vector2(0, 32)
+[node name="Menu" type="Button" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=1376915003]
+unique_name_in_owner = true
+z_index = 3
 layout_mode = 2
-texture = ExtResource("13_o0w5l")
-expand_mode = 2
-stretch_mode = 6
+size_flags_horizontal = 4
+text = "MENU"
+script = SubResource("GDScript_uue68")
 
-[node name="HSeparator3" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=1429274708]
+[node name="HSeparator6" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=74402991]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 texture = ExtResource("14_ophos")
@@ -628,13 +645,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "QUIT"
 script = SubResource("GDScript_o0w5l")
-
-[node name="Lorem3" type="TextureRect" parent="UIManager/CenterContainer/PauseContainer/Buttons" unique_id=881274789]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-texture = ExtResource("13_o0w5l")
-expand_mode = 2
-stretch_mode = 6
 
 [node name="ObjectiveContainer" type="VBoxContainer" parent="UIManager" unique_id=812492473]
 unique_name_in_owner = true

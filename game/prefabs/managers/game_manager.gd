@@ -119,14 +119,18 @@ func go_next_state() -> void:
 
 func handle_pause_menu() -> void:
 	if Input.is_action_just_pressed("pause") and not ui_manager.is_tutorial:
-		is_in_pause = not is_in_pause
-		clicked_pause.emit(is_in_pause)
-		ui_manager.set_pause(is_in_pause)
-		var targ: float = 0.0 if is_in_pause else 1.0
-		if pause_twn: pause_twn.kill()
-		pause_twn = create_tween()
-		pause_twn.set_ignore_time_scale(true)
-		pause_twn.tween_property(Engine, "time_scale", targ, 0.37)
+		set_pause()
+
+
+func set_pause() -> void:
+	is_in_pause = not is_in_pause
+	clicked_pause.emit(is_in_pause)
+	ui_manager.set_pause(is_in_pause)
+	var targ: float = 0.0 if is_in_pause else 1.0
+	if pause_twn: pause_twn.kill()
+	pause_twn = create_tween()
+	pause_twn.set_ignore_time_scale(true)
+	pause_twn.tween_property(Engine, "time_scale", targ, 0.37)
 
 
 func is_game_playing() -> bool:
