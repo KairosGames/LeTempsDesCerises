@@ -16,11 +16,8 @@ class_name FightArea extends Marker3D
 var _gizmo: SphereMesh = create_gizmo()
 var _gizmo_handler: MeshInstance3D = null
 
+
 func _enter_tree() -> void:
-	if GameManager.active_fight_area:
-		push_error("There must be only one FightArea !")
-		return
-	GameManager.active_fight_area = self
 	update_debug()
 
 

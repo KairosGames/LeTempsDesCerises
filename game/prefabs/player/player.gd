@@ -305,6 +305,10 @@ func _ready() -> void:
 	initiate(global_position, global_rotation, has_weapon, is_weapon_loaded, Posture.STAND, is_right_handed)
 
 
+func _exit_tree() -> void:
+	instance = null
+
+
 func _process(delta: float) -> void:
 	set_context(delta)
 	if not is_in_cinematic: set_dynamic_collider()

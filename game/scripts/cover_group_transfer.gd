@@ -12,3 +12,7 @@ static var instance: CoverGroupTransfer:
 
 func _init() -> void:
 	instance = self
+
+
+func _exit_tree() -> void:
+	instance = null

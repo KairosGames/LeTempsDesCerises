@@ -53,6 +53,10 @@ func _ready() -> void:
 	ready_deferred.call_deferred()
 
 
+func _exit_tree() -> void:
+	instance = null
+
+
 func ready_deferred() -> void:
 	game_manager = GameManager.instance
 	if Player.instance: player = Player.instance

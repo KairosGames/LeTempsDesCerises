@@ -1,6 +1,6 @@
 class_name Canon extends PathFollow3D
 
-static var singleton: Canon
+static var instance: Canon
 
 signal start_move
 signal stop_move
@@ -56,8 +56,12 @@ var enabled: bool = false:
 const WORKER_PREFAB: PackedScene = preload("uid://d28tbnqpob3um")
 
 func _ready() -> void:
-	singleton = self
+	instance = self
 	available_slots = _slots.duplicate()
+
+
+func _exit_tree() -> void:
+	instance = null
 
 
 func _physics_process(delta: float) -> void:

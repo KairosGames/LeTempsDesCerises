@@ -13,7 +13,7 @@ signal player_passed_second_barricade
 @export var use_short_time: bool = false
 @export var starting_game_state: int = 0
 
-@export_category("Use debug")
+@export_category("Use Debug")
 @export var debug_cannon_move_speeds: float = 3.0
 @export var debug_cannon_reload_duration: float = 3.0
 
@@ -45,12 +45,12 @@ var ui_manager: UIManager
 var curr_state: GameState
 var game_state_index: int = -1
 var is_in_pause: bool = false
+var is_in_option_menu: bool = false
 var curr_barricade: Barricade
 var is_wwise_ready: bool = false
 
 var pause_twn: Tween
 
-static var active_fight_area: FightArea
 static var instance: GameManager:
 	set(value):
 		if not instance: instance = value
@@ -63,6 +63,10 @@ func _ready() -> void:
 	if use_debug: game_state_index = starting_game_state - 1
 	if cannon: cannon.shoot.connect(handle_cannon_shoot)
 	ready_deferred.call_deferred()
+
+
+func _exit_tree() -> void:
+	instance = null
 
 
 func ready_deferred() -> void:
@@ -123,6 +127,9 @@ func handle_pause_menu() -> void:
 
 
 func set_pause() -> void:
+	if is_in_option_menu:
+		is_in_option_menu = false
+		return
 	is_in_pause = not is_in_pause
 	clicked_pause.emit(is_in_pause)
 	ui_manager.set_pause(is_in_pause)

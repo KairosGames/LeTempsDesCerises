@@ -37,6 +37,8 @@ var rot_twn: Tween
 
 
 func _ready() -> void:
+	voice_line_index = -1
+	set_debug_applied = false
 	ready_deffered.call_deferred()
 
 

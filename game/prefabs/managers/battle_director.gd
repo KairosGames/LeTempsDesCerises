@@ -26,6 +26,10 @@ func _ready() -> void:
 	ready_deffered.call_deferred()
 
 
+func _exit_tree() -> void:
+	instance = null
+
+
 func ready_deffered() -> void:
 	game_manager = GameManager.instance
 	if CoverGroupTransfer.instance:

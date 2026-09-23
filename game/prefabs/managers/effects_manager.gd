@@ -39,6 +39,10 @@ func _ready() -> void:
 		effects_list_dic[effect_type][0].play_effect()
 
 
+func _exit_tree() -> void:
+	instance = null
+
+
 func play_effect(eff_type: EffectType, glb_pos: Vector3, glb_rot: Vector3 = Vector3.ZERO) -> void:
 	if eff_type == EffectType.BloodImpact and not Settings.config_file.get_value("game", "is_blood_enabled"):
 		return
