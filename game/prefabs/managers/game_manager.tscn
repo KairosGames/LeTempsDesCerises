@@ -167,6 +167,7 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func launch_home() -> void:
+	GameManager.instance.is_leaving_the_game = true
 	get_tree().change_scene_to_packed(home_scene)
 "
 

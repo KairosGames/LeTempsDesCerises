@@ -46,6 +46,7 @@ var curr_state: GameState
 var game_state_index: int = -1
 var is_in_pause: bool = false
 var is_in_option_menu: bool = false
+var is_leaving_the_game: bool = false
 var curr_barricade: Barricade
 var is_wwise_ready: bool = false
 

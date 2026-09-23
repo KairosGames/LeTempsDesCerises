@@ -125,7 +125,7 @@ func wait(seconds: float) -> void:
 
 
 func wait_until(condition: Callable) -> void:
-	while not condition.call() or not game_manager.is_game_playing():
+	while (not condition.call() or not game_manager.is_game_playing()) and (not game_manager.is_leaving_the_game) and get_tree():
 		await get_tree().process_frame
 
 
