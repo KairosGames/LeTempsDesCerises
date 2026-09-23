@@ -6,7 +6,7 @@ class_name CoverGroupTransfer extends Node
 
 static var instance: CoverGroupTransfer:
 	set(value):
-		if not instance: instance = value
+		if value == null or not is_instance_valid(instance): instance = value
 		else: push_error("MORE THAN ONE COVER_GROUP_TRANSFER IN SCENE")
 
 

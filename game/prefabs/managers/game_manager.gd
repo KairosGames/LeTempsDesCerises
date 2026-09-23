@@ -54,7 +54,7 @@ var pause_twn: Tween
 
 static var instance: GameManager:
 	set(value):
-		if not instance: instance = value
+		if value == null or not is_instance_valid(instance): instance = value
 		else: push_error("MORE THAN ONE GAME_MANAGER IN SCENE")
 
 
@@ -142,7 +142,7 @@ func set_pause() -> void:
 
 
 func is_game_playing() -> bool:
-	return not is_in_pause
+	return not is_in_pause and not is_leaving_the_game
 
 
 func handle_cannon_shoot() -> void:

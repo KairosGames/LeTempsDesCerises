@@ -4,6 +4,7 @@ signal arrived_on_path_point
 signal arrived_on_path_destination
 signal shot
 signal reloaded
+signal wait_frame
 
 @onready var communard_mesh: MeshInstance3D = $Communard/Armature/Skeleton3D/communard
 @onready var communarde_mesh: MeshInstance3D = $Communarde/Armature/Skeleton3D/comunarde_geo
@@ -138,6 +139,8 @@ func set_npc() -> void:
 
 
 func _process(delta: float) -> void:
+	if is_instance_valid(game_manager) and not game_manager.is_leaving_the_game:
+		wait_frame.emit()
 	delta_t = delta
 	if is_alive: apply_gravity()
 	for callable: Callable in on_process: callable.call()
@@ -158,7 +161,7 @@ func clean_physics_process() -> void:
 
 func wait_until(condition: Callable) -> void:
 	while not condition.call() or not game_manager.is_game_playing():
-		await get_tree().process_frame
+		await wait_frame
 
 
 func move_to(pos: Vector3, speed: float) -> void:
@@ -167,7 +170,7 @@ func move_to(pos: Vector3, speed: float) -> void:
 	while not is_at_point(pos):
 		move_and_slide()
 		if not is_alive: break
-		await get_tree().process_frame
+		await wait_frame
 	velocity = Vector3.ZERO
 
 

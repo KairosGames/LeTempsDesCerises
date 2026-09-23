@@ -274,7 +274,7 @@ var cam_land_pitch_twn: Tween
 
 static var instance: Player:
 	set(value):
-		if not instance: instance = value
+		if value == null or not is_instance_valid(instance): instance = value
 		else: push_error("MORE THAN ONE PLAYER IN SCENE")
 
 

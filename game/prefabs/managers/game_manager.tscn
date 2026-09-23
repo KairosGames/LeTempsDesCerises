@@ -167,7 +167,15 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func launch_home() -> void:
-	GameManager.instance.is_leaving_the_game = true
+	if disabled: return
+	disabled = true
+	return_to_home.call_deferred()
+
+
+func return_to_home() -> void:
+	if GameManager.instance.pause_twn:
+		GameManager.instance.pause_twn.kill()
+	Engine.time_scale = 1.0
 	get_tree().change_scene_to_packed(home_scene)
 "
 

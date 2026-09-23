@@ -5,6 +5,7 @@
 
 @warning_ignore("unused_signal") signal completed
 @warning_ignore("unused_signal") signal voice_line_finished
+signal wait_frame
 
 @abstract func enter() -> void
 @abstract func exit() -> void
@@ -58,6 +59,8 @@ func set_local_player() -> void:
 
 
 func _process(delta: float) -> void:
+	if is_instance_valid(game_manager) and not game_manager.is_leaving_the_game:
+		wait_frame.emit()
 	if not is_active: return
 	delta_t = delta
 	for callable: Callable in on_process: callable.call()
@@ -125,8 +128,8 @@ func wait(seconds: float) -> void:
 
 
 func wait_until(condition: Callable) -> void:
-	while (not condition.call() or not game_manager.is_game_playing()) and (not game_manager.is_leaving_the_game) and get_tree():
-		await get_tree().process_frame
+	while not condition.call() or not game_manager.is_game_playing():
+		await wait_frame
 
 
 func wait_signal(signal_to_wait: Signal) -> void:
@@ -138,7 +141,7 @@ func wait_until_or_signal(condition: Callable, signal_to_wait: Signal) -> void:
 	signal_to_wait.connect(set_local_bool)
 	while not local_bool:
 		local_bool = condition.call() and game_manager.is_game_playing()
-		await get_tree().process_frame
+		await wait_frame
 	signal_to_wait.disconnect(set_local_bool)
 
 

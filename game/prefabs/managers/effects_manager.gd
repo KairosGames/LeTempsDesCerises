@@ -23,7 +23,7 @@ var effects_list_dic: Dictionary[EffectType, Array]
 
 static var instance: EffectsManager:
 	set(value):
-		if not instance: instance = value
+		if value == null or not is_instance_valid(instance): instance = value
 		else: push_error("MORE THAN ONE EFF_MANAGER IN SCENE")
 
 

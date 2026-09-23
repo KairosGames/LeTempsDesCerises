@@ -17,7 +17,7 @@ var death_on_cover_enable: bool = false
 
 static var instance: BattleDirector:
 	set(value):
-		if not instance: instance = value
+		if value == null or not is_instance_valid(instance): instance = value
 		else: push_error("MORE THAN ONE BATTLE_DIRECTOR IN SCENE")
 
 

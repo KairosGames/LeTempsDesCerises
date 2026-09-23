@@ -38,7 +38,7 @@ var outline_twn: Tween
 
 static var instance: UIManager:
 	set(value):
-		if not instance: instance = value
+		if value == null or not is_instance_valid(instance): instance = value
 		else: push_error("MORE THAN ONE UI_MANAGER IN SCENE")
 
 
