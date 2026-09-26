@@ -242,9 +242,7 @@ func launch_execution() -> void:
 	player.can_play = false
 	player.can_use_view = false
 	clean_process()
-	rot_twn = create_tween()
-	var view_targ: Vector3 = Vector3(0.0, rad_to_deg(execution_point.global_rotation.y), 0.0)
-	await rot_twn.tween_property(player, "aim_target", view_targ, 0.5).finished
+	await tween_rotate_player_to_yaw(execution_point.global_rotation.y, 0.5, true)
 	if not has_player_crouch: await player.crouch_to_stand(true)
 	else: await wait(0.5)
 	await wait_voice() # "En joue !"

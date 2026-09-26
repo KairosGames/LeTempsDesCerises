@@ -177,38 +177,40 @@ func set_player_move(dir: Vector2) -> void:
 
 
 func rotate_yaw_player_to_pos(pos: Vector3, speed: float, delta: float) -> void:
-	var dir = player.global_position - pos
-	var target_angle = atan2(-dir.x, -dir.z)
-	var arg1 = deg_to_rad(player.aim_target.y)
+	var dir: Vector3 = player.global_position - pos
+	var target_angle: float = atan2(-dir.x, -dir.z)
+	var arg1: float = deg_to_rad(player.aim_target.y)
 	player.aim_target.y = rad_to_deg(rotate_toward(arg1, target_angle, speed * delta))
 
 
 func yaw_player_look_dest(destination: Node3D, speed: float, delta: float) -> void:
-	var dir = player.global_position - destination.global_position
-	var target_angle = atan2(-dir.x, -dir.z)
-	var arg1 = deg_to_rad(player.aim_target.y)
+	var dir: Vector3 = player.global_position - destination.global_position
+	var target_angle: float = atan2(-dir.x, -dir.z)
+	var arg1: float = deg_to_rad(player.aim_target.y)
 	player.aim_target.y = rad_to_deg(rotate_toward(arg1, target_angle, speed * delta))
 
 
 func rotate_player_to_yaw(yaw: float, speed: float, delta: float) -> void:
-	var arg1 = deg_to_rad(player.aim_target.y)
+	var arg1: float = deg_to_rad(player.aim_target.y)
 	player.aim_target.y = rad_to_deg(rotate_toward(arg1, yaw, speed * delta))
 
 
 func tween_rotate_player_to_pos(pos: Vector3, time: float) -> void:
-	var dir = player.global_position - pos
-	var target_angle = atan2(-dir.x, -dir.z)
+	var dir: Vector3 = player.global_position - pos
+	var target_angle: float = atan2(-dir.x, -dir.z)
 	if rot_twn: rot_twn.kill()
 	rot_twn = create_tween()
 	var delta: float = wrapf(rad_to_deg(target_angle) - player.aim_target.y, -180.0, 180.0)
 	await rot_twn.tween_property(player, "aim_target:y", delta, time).as_relative().finished
 
 
-func tween_rotate_player_to_yaw(yaw: float, time: float) -> void:
+func tween_rotate_player_to_yaw(yaw: float, time: float, do_recenter_pitch: bool = false) -> void:
 	if rot_twn: rot_twn.kill()
 	rot_twn = create_tween()
 	var delta: float = wrapf(rad_to_deg(yaw) - player.aim_target.y, -180.0, 180.0)
-	await rot_twn.tween_property(player, "aim_target:y", delta, time).as_relative().finished
+	rot_twn.tween_property(player, "aim_target:y", delta, time).as_relative()
+	if do_recenter_pitch: rot_twn.parallel().tween_property(player, "aim_target:x", 0.0, time)
+	await rot_twn.finished
 
 
 func get_input_dir_to_pos(pos: Vector3) -> Vector2:
@@ -219,8 +221,8 @@ func get_input_dir_to_pos(pos: Vector3) -> Vector2:
 
 
 func get_yaw_diff_ratio(target_point: Vector3) -> float:
-	var dir = player.global_position - target_point
-	var target_angle = atan2(-dir.x, -dir.z)
+	var dir: Vector3 = player.global_position - target_point
+	var target_angle: float = atan2(-dir.x, -dir.z)
 	return inverse_lerp(0.0, PI, abs(wrapf(target_angle - player.global_rotation.y, -PI, PI)))
 
 
@@ -228,7 +230,7 @@ func block_ads_concentration(t: float) -> void:
 	if player.ads_timer >= t: player.ads_timer = t
 
 
-func clamp_view(center: Vector3, pitch_max: float, yaw_max) -> void:
+func clamp_view(center: Vector3, pitch_max: float, yaw_max: float) -> void:
 	player.aim_target.y = clamp(player.aim_target.y, center.y - pitch_max, center.y + pitch_max)
 	player.aim_target.x = clamp(player.aim_target.x, center.x - yaw_max, center.x + yaw_max)
 
@@ -336,8 +338,8 @@ func go_to_nav_destination(run: bool = true) -> void:
 		return
 	var next_pos: Vector3 = player.nav.get_next_path_position()
 	rotate_yaw_player_to_pos(next_pos, PI * 2, delta_ph)
-	var dir = player.global_position - next_pos
-	var target_angle = atan2(-dir.x, -dir.z)
+	var dir: Vector3 = player.global_position - next_pos
+	var target_angle: float = atan2(-dir.x, -dir.z)
 	if abs(wrapf(player.global_rotation.y - target_angle, -PI, PI)) < PI * 0.1:
 		set_player_move(Vector2(0.0, 1.0))
 		if run:
