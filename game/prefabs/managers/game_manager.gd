@@ -31,6 +31,7 @@ signal player_passed_second_barricade
 @export var first_barricade: Barricade
 @export var second_barricade: Barricade
 @export var cannon: Canon
+@export var lighting_animator: AnimationPlayer
 
 @export_category("Navmesh securities")
 @export var navmesh_danger_areas: Array[EventArea]

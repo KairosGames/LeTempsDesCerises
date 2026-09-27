@@ -62,7 +62,7 @@ func set_game_for_debug() -> void:
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 	set_debug_applied = true
 	set_dynamic_da(0.0, 1.0, 0.0)################### KUWAHARA
-
+	game_manager.lighting_animator.advance(999.0)
 
 
 func set_short_timers() -> void:
