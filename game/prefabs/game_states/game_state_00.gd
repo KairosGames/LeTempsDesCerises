@@ -109,6 +109,7 @@ func take_weapon() -> void:
 	Wwise.set_state("Music_State", "Phase1") ############# MUSIC
 	clean_process()
 	first_chassepot.visible = false
+	Wwise.post_event("Player_Equip", player)
 	take_player_view_control(false)
 	player.give_or_drop_weapon(true)
 

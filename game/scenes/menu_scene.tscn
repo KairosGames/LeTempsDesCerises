@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://c72mtiob4n7mp"]
 
+[ext_resource type="WwiseBank" uid="uid://bhbjixvb1i4wo" path="res://Wwise/resources/SoundBank/{C848A44F-4C9D-44A4-8FFE-F4CBA703BC3F}.tres" id="2_ladfw"]
 [ext_resource type="PackedScene" uid="uid://d4ksl3sqlhx21" path="res://prefabs/barricade/barricade_02.tscn" id="2_u82gr"]
 [ext_resource type="Shader" uid="uid://ccs46yyijk1tk" path="res://materials/shaders/sg_custom_sky.gdshader" id="3_vjll7"]
 [ext_resource type="ArrayMesh" uid="uid://cwtfcw04fjjun" path="res://prefabs/geometry/window_props_f.tres" id="3_wt8s0"]
@@ -121,6 +122,7 @@
 [ext_resource type="Shader" uid="uid://cewi3vqfax6x1" path="res://materials/shaders/kuwahara_menu.gdshader" id="118_ec4al"]
 [ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="120_exgre"]
 [ext_resource type="PackedScene" uid="uid://b4k47vwyhfhsq" path="res://prefabs/vfx/petals_rain.tscn" id="121_1vn3b"]
+[ext_resource type="WwiseEvent" uid="uid://uaaa6txgnrk3" path="res://Wwise/resources/Event/{7932C793-6401-4619-A083-2D5FDB7947B7}.tres" id="122_f7acr"]
 
 [sub_resource type="Gradient" id="Gradient_3ivn4"]
 offsets = PackedFloat32Array(0.47007042, 0.8257042)
@@ -461,18 +463,6 @@ shader_parameter/collision_spin_damping = 0.5
 radius = 4.0371094
 height = 13.409851
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vn3b"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = ExtResource("14_ouxrs")
-
-[sub_resource type="QuadMesh" id="QuadMesh_f7acr"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_1vn3b")
-size = Vector2(1, 0.56)
-subdivide_width = 20
-subdivide_depth = 1
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ladfw"]
 resource_local_to_scene = true
 transparency = 1
@@ -481,152 +471,151 @@ albedo_texture = ExtResource("14_ouxrs")
 [sub_resource type="QuadMesh" id="QuadMesh_17wss"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ladfw")
-size = Vector2(1.25, 0.7)
+size = Vector2(1, 0.56)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1xo3"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("26_7n1kg")
+albedo_texture = ExtResource("14_ouxrs")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qvh1w"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_u1xo3")
-size = Vector2(5.5899997, 1.52)
+size = Vector2(1.25, 0.7)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aeyq4"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("27_fm3qk")
+albedo_texture = ExtResource("26_7n1kg")
 
 [sub_resource type="QuadMesh" id="QuadMesh_icbn6"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_aeyq4")
-size = Vector2(3.75, 2.975)
+size = Vector2(5.5899997, 1.52)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n1kg"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("28_0ly1b")
+albedo_texture = ExtResource("27_fm3qk")
 
 [sub_resource type="QuadMesh" id="QuadMesh_fm3qk"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_7n1kg")
-size = Vector2(3.354, 0.912)
+size = Vector2(3.75, 2.975)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ly1b"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("29_m6aeq")
+albedo_texture = ExtResource("28_0ly1b")
 
 [sub_resource type="QuadMesh" id="QuadMesh_m6aeq"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_0ly1b")
-size = Vector2(6.0372, 1.6416)
+size = Vector2(3.354, 0.912)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pij81"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("30_pij81")
+albedo_texture = ExtResource("29_m6aeq")
 
 [sub_resource type="QuadMesh" id="QuadMesh_kq2do"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_pij81")
-size = Vector2(5.5899997, 1.52)
+size = Vector2(6.0372, 1.6416)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aefwu"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("31_kq2do")
+albedo_texture = ExtResource("30_pij81")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qiudf"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_aefwu")
-size = Vector2(5.9254, 1.6112)
+size = Vector2(5.5899997, 1.52)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vp86"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("32_aefwu")
+albedo_texture = ExtResource("31_kq2do")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ky4ec"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_4vp86")
-size = Vector2(1.875, 1.4875)
+size = Vector2(5.9254, 1.6112)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efync"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("33_qiudf")
+albedo_texture = ExtResource("32_aefwu")
 
 [sub_resource type="QuadMesh" id="QuadMesh_7mlqx"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_efync")
-size = Vector2(2.618, 0.476)
+size = Vector2(1.875, 1.4875)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jntik"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("34_4vp86")
+albedo_texture = ExtResource("33_qiudf")
 
 [sub_resource type="QuadMesh" id="QuadMesh_en4in"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_jntik")
-size = Vector2(2.2, 1.694)
+size = Vector2(2.618, 0.476)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82iy6"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("35_ky4ec")
+albedo_texture = ExtResource("34_4vp86")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qcrxj"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_82iy6")
-size = Vector2(5.984, 1.088)
+size = Vector2(2.2, 1.694)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02ye7"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("36_efync")
+albedo_texture = ExtResource("35_ky4ec")
 
 [sub_resource type="QuadMesh" id="QuadMesh_mhyn3"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_02ye7")
-size = Vector2(6.3750005, 1.8445001)
+size = Vector2(5.984, 1.088)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5d6l"]
 resource_local_to_scene = true
 transparency = 1
-albedo_color = Color(1, 1, 1, 0.84313726)
-albedo_texture = ExtResource("37_7mlqx")
+albedo_texture = ExtResource("36_efync")
 
 [sub_resource type="QuadMesh" id="QuadMesh_b4eu0"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_v5d6l")
-size = Vector2(1.804, 1.3508)
+size = Vector2(6.3750005, 1.8445001)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -646,26 +635,26 @@ subdivide_depth = 1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uqfun"]
 resource_local_to_scene = true
 transparency = 1
-albedo_color = Color(0.81832796, 0.7583138, 0.6695406, 1)
+albedo_color = Color(1, 1, 1, 0.84313726)
 albedo_texture = ExtResource("37_7mlqx")
 
 [sub_resource type="QuadMesh" id="QuadMesh_wi5v5"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_uqfun")
-size = Vector2(0.492, 0.3684)
+size = Vector2(1.804, 1.3508)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpoq6"]
 resource_local_to_scene = true
 transparency = 1
-albedo_color = Color(1, 1, 1, 0.84313726)
-albedo_texture = ExtResource("38_jntik")
+albedo_color = Color(0.81832796, 0.7583138, 0.6695406, 1)
+albedo_texture = ExtResource("37_7mlqx")
 
 [sub_resource type="QuadMesh" id="QuadMesh_64wrx"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_lpoq6")
-size = Vector2(2.236, 2.8704)
+size = Vector2(0.492, 0.3684)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -673,12 +662,12 @@ subdivide_depth = 1
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.84313726)
-albedo_texture = ExtResource("39_en4in")
+albedo_texture = ExtResource("38_jntik")
 
 [sub_resource type="QuadMesh" id="QuadMesh_0c1dt"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_rxusl")
-size = Vector2(1.3239, 1.62)
+size = Vector2(2.236, 2.8704)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -686,12 +675,12 @@ subdivide_depth = 1
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.84313726)
-albedo_texture = ExtResource("14_ouxrs")
+albedo_texture = ExtResource("39_en4in")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ayasw"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_iec08")
-size = Vector2(0.45, 0.252)
+size = Vector2(1.3239, 1.62)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -743,6 +732,19 @@ albedo_texture = ExtResource("14_ouxrs")
 [sub_resource type="QuadMesh" id="QuadMesh_wriuk"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_0p7do")
+size = Vector2(0.45, 0.252)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6f7s"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.84313726)
+albedo_texture = ExtResource("14_ouxrs")
+
+[sub_resource type="QuadMesh" id="QuadMesh_r73l7"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_y6f7s")
 size = Vector2(0.45, 0.252)
 subdivide_width = 20
 subdivide_depth = 1
@@ -884,158 +886,158 @@ metallic = 1.0
 metallic_texture = ExtResource("49_pi8ch")
 roughness_texture = ExtResource("50_2rnds")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6f7s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7kkg"]
 resource_local_to_scene = true
 transparency = 1
 albedo_texture = ExtResource("54_iec08")
 
-[sub_resource type="QuadMesh" id="QuadMesh_r73l7"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_y6f7s")
-size = Vector2(0.555, 0.3765)
-subdivide_width = 20
-subdivide_depth = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7kkg"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = ExtResource("67_x0f1s")
-
 [sub_resource type="QuadMesh" id="QuadMesh_x0f1s"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_t7kkg")
-size = Vector2(1.217, 1.536)
+size = Vector2(0.555, 0.3765)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbgnm"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("68_vbgnm")
+albedo_texture = ExtResource("67_x0f1s")
 
 [sub_resource type="QuadMesh" id="QuadMesh_c5gnc"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_vbgnm")
-size = Vector2(1.752, 3.0180001)
+size = Vector2(1.217, 1.536)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ot1qc"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("72_pnh55")
+albedo_texture = ExtResource("68_vbgnm")
 
 [sub_resource type="QuadMesh" id="QuadMesh_0t8kr"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ot1qc")
-size = Vector2(1.19, 0.79)
+size = Vector2(1.752, 3.0180001)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnh55"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("73_j8f8h")
+albedo_texture = ExtResource("72_pnh55")
 
 [sub_resource type="QuadMesh" id="QuadMesh_j8f8h"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_pnh55")
-size = Vector2(1.0752, 0.77559996)
+size = Vector2(1.19, 0.79)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks5sp"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("74_ks5sp")
+albedo_texture = ExtResource("73_j8f8h")
 
 [sub_resource type="QuadMesh" id="QuadMesh_j487u"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ks5sp")
-size = Vector2(0.9597, 0.76019996)
+size = Vector2(1.0752, 0.77559996)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lg1k4"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("75_j487u")
+albedo_texture = ExtResource("74_ks5sp")
 
 [sub_resource type="QuadMesh" id="QuadMesh_cn5dt"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_lg1k4")
-size = Vector2(0.536, 0.6712)
+size = Vector2(0.9597, 0.76019996)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8rnif"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("54_iec08")
+albedo_texture = ExtResource("75_j487u")
 
 [sub_resource type="QuadMesh" id="QuadMesh_0yva6"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_8rnif")
-size = Vector2(0.555, 0.3765)
+size = Vector2(0.536, 0.6712)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjxs8"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("76_lg1k4")
+albedo_texture = ExtResource("54_iec08")
 
 [sub_resource type="QuadMesh" id="QuadMesh_6dnr2"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_qjxs8")
-size = Vector2(0.97800004, 1.2540001)
+size = Vector2(0.555, 0.3765)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u26m6"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("77_cn5dt")
+albedo_texture = ExtResource("76_lg1k4")
 
 [sub_resource type="QuadMesh" id="QuadMesh_tcbrb"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_u26m6")
-size = Vector2(0.83, 1.0239999)
+size = Vector2(0.97800004, 1.2540001)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1i7q"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("78_8rnif")
+albedo_texture = ExtResource("77_cn5dt")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qkwyv"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_g1i7q")
-size = Vector2(0.5094, 0.7344)
+size = Vector2(0.83, 1.0239999)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7s7b"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("79_0yva6")
+albedo_texture = ExtResource("78_8rnif")
 
 [sub_resource type="QuadMesh" id="QuadMesh_xw245"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_k7s7b")
-size = Vector2(0.8964, 1.1087999)
+size = Vector2(0.5094, 0.7344)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfeki"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("78_8rnif")
+albedo_texture = ExtResource("79_0yva6")
 
 [sub_resource type="QuadMesh" id="QuadMesh_8fpod"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_bfeki")
+size = Vector2(0.8964, 1.1087999)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrd6w"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("78_8rnif")
+
+[sub_resource type="QuadMesh" id="QuadMesh_80gki"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_lrd6w")
 size = Vector2(0.5094, 0.7344)
 subdivide_width = 20
 subdivide_depth = 1
@@ -1043,27 +1045,15 @@ subdivide_depth = 1
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g3tgq"]
 load_path = "res://.godot/imported/Trash2.png-2831de0cabb4e9beb599b3597d0b6995.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrd6w"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmfdl"]
 resource_local_to_scene = true
 transparency = 1
 albedo_texture = SubResource("CompressedTexture2D_g3tgq")
 
-[sub_resource type="QuadMesh" id="QuadMesh_80gki"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_lrd6w")
-size = Vector2(0.8207, 1.1832)
-subdivide_width = 20
-subdivide_depth = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmfdl"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = ExtResource("80_qjxs8")
-
 [sub_resource type="QuadMesh" id="QuadMesh_x5oki"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_bmfdl")
-size = Vector2(0.28300002, 0.40800002)
+size = Vector2(0.8207, 1.1832)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1105,14 +1095,26 @@ subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ptvu"]
 resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("80_qjxs8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_em8fe"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_2ptvu")
+size = Vector2(0.28300002, 0.40800002)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20odj"]
+resource_local_to_scene = true
 transparency = 2
 alpha_scissor_threshold = 0.6
 alpha_antialiasing_mode = 0
 albedo_texture = ExtResource("81_6dnr2")
 
-[sub_resource type="QuadMesh" id="QuadMesh_em8fe"]
+[sub_resource type="QuadMesh" id="QuadMesh_6ulrq"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_2ptvu")
+material = SubResource("StandardMaterial3D_20odj")
 size = Vector2(0.73020005, 0.92160004)
 subdivide_width = 20
 subdivide_depth = 1
@@ -1219,38 +1221,38 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fkfcb")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20odj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_seolh"]
 resource_local_to_scene = true
 transparency = 1
 albedo_texture = ExtResource("91_80gki")
 
-[sub_resource type="QuadMesh" id="QuadMesh_6ulrq"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_20odj")
-size = Vector2(0.94900006, 0.753)
-subdivide_width = 20
-subdivide_depth = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_seolh"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = ExtResource("92_bmfdl")
-
 [sub_resource type="QuadMesh" id="QuadMesh_ekpn0"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_seolh")
-size = Vector2(1.386, 1.054)
+size = Vector2(0.94900006, 0.753)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igcs8"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("93_x5oki")
+albedo_texture = ExtResource("92_bmfdl")
 
 [sub_resource type="QuadMesh" id="QuadMesh_evvq4"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_igcs8")
+size = Vector2(1.386, 1.054)
+subdivide_width = 20
+subdivide_depth = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpvjl"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("93_x5oki")
+
+[sub_resource type="QuadMesh" id="QuadMesh_a8rip"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_mpvjl")
 size = Vector2(0.753, 1.2)
 subdivide_width = 20
 subdivide_depth = 1
@@ -1258,39 +1260,27 @@ subdivide_depth = 1
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_c0vmp"]
 load_path = "res://.godot/imported/la_sociale.png-eced025a81cc56364fd591701254fe13.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpvjl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6eg62"]
 resource_local_to_scene = true
 transparency = 1
 albedo_texture = SubResource("CompressedTexture2D_c0vmp")
 
-[sub_resource type="QuadMesh" id="QuadMesh_a8rip"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_mpvjl")
-size = Vector2(0.666, 0.45180002)
-subdivide_width = 20
-subdivide_depth = 1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6eg62"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = ExtResource("14_ouxrs")
-
 [sub_resource type="QuadMesh" id="QuadMesh_lwkhn"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_6eg62")
-size = Vector2(0.3, 0.16800001)
+size = Vector2(0.666, 0.45180002)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bt5a"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("37_7mlqx")
+albedo_texture = ExtResource("14_ouxrs")
 
 [sub_resource type="QuadMesh" id="QuadMesh_mj6xe"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_5bt5a")
-size = Vector2(1.148, 0.85959995)
+size = Vector2(0.3, 0.16800001)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1314,7 +1304,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_2s00j"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ou7em")
-size = Vector2(0.738, 0.55259997)
+size = Vector2(1.148, 0.85959995)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1350,7 +1340,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_71du6"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_g4n55")
-size = Vector2(0.41000003, 0.307)
+size = Vector2(0.738, 0.55259997)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1374,7 +1364,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_osepu"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_qpdkw")
-size = Vector2(0.82000005, 0.614)
+size = Vector2(0.41000003, 0.307)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1386,7 +1376,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_7hpxw"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_x4hjg")
-size = Vector2(1.804, 1.3508)
+size = Vector2(0.82000005, 0.614)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1398,7 +1388,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_3dcaq"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ayylu")
-size = Vector2(0.902, 0.6754)
+size = Vector2(1.804, 1.3508)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1410,7 +1400,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_ex1bm"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_60eol")
-size = Vector2(0.574, 0.42979997)
+size = Vector2(0.902, 0.6754)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1470,7 +1460,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_t71i4"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_fc8qy")
-size = Vector2(1.066, 0.7982)
+size = Vector2(0.574, 0.42979997)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1489,60 +1479,60 @@ subdivide_depth = 1
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07s4j"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("77_cn5dt")
+albedo_texture = ExtResource("37_7mlqx")
 
 [sub_resource type="QuadMesh" id="QuadMesh_x11dq"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_07s4j")
-size = Vector2(1.0375, 1.2800001)
+size = Vector2(1.066, 0.7982)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbcmr"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("94_7cfor")
+albedo_texture = ExtResource("77_cn5dt")
 
 [sub_resource type="QuadMesh" id="QuadMesh_mws3o"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_tbcmr")
-size = Vector2(1, 1.223)
+size = Vector2(1.0375, 1.2800001)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25d01"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("79_0yva6")
+albedo_texture = ExtResource("94_7cfor")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qrwmt"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_25d01")
-size = Vector2(0.49800003, 0.61600006)
+size = Vector2(1, 1.223)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1fru"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("95_clavr")
+albedo_texture = ExtResource("79_0yva6")
 
 [sub_resource type="QuadMesh" id="QuadMesh_3ws30"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_a1fru")
-size = Vector2(1.1087999, 0.84319997)
+size = Vector2(0.49800003, 0.61600006)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m7ggt"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("96_is534")
+albedo_texture = ExtResource("95_clavr")
 
 [sub_resource type="QuadMesh" id="QuadMesh_eltaa"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_m7ggt")
-size = Vector2(0.5, 0.28)
+size = Vector2(1.1087999, 0.84319997)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1566,7 +1556,7 @@ albedo_texture = ExtResource("96_is534")
 [sub_resource type="QuadMesh" id="QuadMesh_ajxjh"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_f8sy6")
-size = Vector2(1.25, 0.7)
+size = Vector2(0.5, 0.28)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1578,14 +1568,14 @@ albedo_texture = ExtResource("96_is534")
 [sub_resource type="QuadMesh" id="QuadMesh_k272x"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_6uieg")
-size = Vector2(1, 0.56)
+size = Vector2(1.25, 0.7)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpef3"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("14_ouxrs")
+albedo_texture = ExtResource("96_is534")
 
 [sub_resource type="QuadMesh" id="QuadMesh_h6rkm"]
 resource_local_to_scene = true
@@ -1602,7 +1592,7 @@ albedo_texture = ExtResource("14_ouxrs")
 [sub_resource type="QuadMesh" id="QuadMesh_rj7cn"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_mfdat")
-size = Vector2(1.25, 0.7)
+size = Vector2(1, 0.56)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1626,127 +1616,127 @@ albedo_texture = ExtResource("14_ouxrs")
 [sub_resource type="QuadMesh" id="QuadMesh_phoh3"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_v5pc4")
-size = Vector2(1, 0.56)
+size = Vector2(1.25, 0.7)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hbn0e"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("54_iec08")
+albedo_texture = ExtResource("14_ouxrs")
 
 [sub_resource type="QuadMesh" id="QuadMesh_sfmb0"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_hbn0e")
-size = Vector2(0.555, 0.3765)
+size = Vector2(1, 0.56)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wfy8s"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("81_6dnr2")
+albedo_texture = ExtResource("54_iec08")
 
 [sub_resource type="QuadMesh" id="QuadMesh_2qehi"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_wfy8s")
-size = Vector2(1.217, 1.536)
+size = Vector2(0.555, 0.3765)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52ktw"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("97_edm2y")
+albedo_texture = ExtResource("81_6dnr2")
 
 [sub_resource type="QuadMesh" id="QuadMesh_kp2vh"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_52ktw")
-size = Vector2(0.9684, 1.4274)
+size = Vector2(1.217, 1.536)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sp14e"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("76_lg1k4")
+albedo_texture = ExtResource("97_edm2y")
 
 [sub_resource type="QuadMesh" id="QuadMesh_1j7be"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_sp14e")
-size = Vector2(0.97800004, 1.2540001)
+size = Vector2(0.9684, 1.4274)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jo5ae"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("73_j8f8h")
+albedo_texture = ExtResource("76_lg1k4")
 
 [sub_resource type="QuadMesh" id="QuadMesh_idvwp"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_jo5ae")
-size = Vector2(0.768, 0.554)
+size = Vector2(0.97800004, 1.2540001)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eo0vs"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("74_ks5sp")
+albedo_texture = ExtResource("73_j8f8h")
 
 [sub_resource type="QuadMesh" id="QuadMesh_f3a5m"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_eo0vs")
-size = Vector2(0.6855, 0.54300004)
+size = Vector2(0.768, 0.554)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3q2uh"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("75_j487u")
+albedo_texture = ExtResource("74_ks5sp")
 
 [sub_resource type="QuadMesh" id="QuadMesh_fn7bl"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_3q2uh")
-size = Vector2(0.804, 1.0068)
+size = Vector2(0.6855, 0.54300004)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrrfs"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("97_edm2y")
+albedo_texture = ExtResource("75_j487u")
 
 [sub_resource type="QuadMesh" id="QuadMesh_sjtkn"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_jrrfs")
-size = Vector2(0.807, 1.1895)
+size = Vector2(0.804, 1.0068)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oocua"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("98_lirnu")
+albedo_texture = ExtResource("97_edm2y")
 
 [sub_resource type="QuadMesh" id="QuadMesh_28m15"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_oocua")
-size = Vector2(0.86, 0.72)
+size = Vector2(0.807, 1.1895)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsqyb"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("37_7mlqx")
+albedo_texture = ExtResource("98_lirnu")
 
 [sub_resource type="QuadMesh" id="QuadMesh_twj25"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_qsqyb")
-size = Vector2(0.82000005, 0.614)
+size = Vector2(0.86, 0.72)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1758,7 +1748,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_jdvvi"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_5y8rk")
-size = Vector2(0.41000003, 0.307)
+size = Vector2(0.82000005, 0.614)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1806,7 +1796,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_v6pn6"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_cmqaf")
-size = Vector2(0.65599996, 0.4912)
+size = Vector2(0.41000003, 0.307)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1818,7 +1808,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_a3vay"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_7m8j1")
-size = Vector2(1.23, 0.921)
+size = Vector2(0.65599996, 0.4912)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1830,7 +1820,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_5u4qu"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_wtjjf")
-size = Vector2(1.6400001, 1.228)
+size = Vector2(1.23, 0.921)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1842,7 +1832,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_dyuh0"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_88olu")
-size = Vector2(0.65599996, 0.4912)
+size = Vector2(1.6400001, 1.228)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1878,31 +1868,31 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_ru3au"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_02kge")
-size = Vector2(0.82000005, 0.614)
+size = Vector2(0.65599996, 0.4912)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwl56"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("99_c5rwu")
+albedo_texture = ExtResource("37_7mlqx")
 
 [sub_resource type="QuadMesh" id="QuadMesh_tvrlt"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_lwl56")
-size = Vector2(1.3499999, 5.3999996)
+size = Vector2(0.82000005, 0.614)
 subdivide_width = 20
 subdivide_depth = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gjcu"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = ExtResource("37_7mlqx")
+albedo_texture = ExtResource("99_c5rwu")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ncxit"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_4gjcu")
-size = Vector2(0.492, 0.3684)
+size = Vector2(1.3499999, 5.3999996)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1914,7 +1904,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_56635"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_43ij2")
-size = Vector2(0.82000005, 0.614)
+size = Vector2(0.492, 0.3684)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1926,7 +1916,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_bwa0p"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_cuu7v")
-size = Vector2(0.65599996, 0.4912)
+size = Vector2(0.82000005, 0.614)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1938,7 +1928,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_jyjyx"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_neuw3")
-size = Vector2(1.476, 1.1051999)
+size = Vector2(0.65599996, 0.4912)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1950,7 +1940,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_7dq4n"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_igp2r")
-size = Vector2(1.066, 0.7982)
+size = Vector2(1.476, 1.1051999)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1962,7 +1952,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_xln26"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_x4y1f")
-size = Vector2(0.738, 0.55259997)
+size = Vector2(1.066, 0.7982)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1974,7 +1964,7 @@ albedo_texture = ExtResource("37_7mlqx")
 [sub_resource type="QuadMesh" id="QuadMesh_8284l"]
 resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_ha2hr")
-size = Vector2(0.492, 0.3684)
+size = Vector2(0.738, 0.55259997)
 subdivide_width = 20
 subdivide_depth = 1
 
@@ -1990,6 +1980,18 @@ size = Vector2(0.492, 0.3684)
 subdivide_width = 20
 subdivide_depth = 1
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02do4"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = ExtResource("37_7mlqx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_chlr3"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_02do4")
+size = Vector2(0.492, 0.3684)
+subdivide_width = 20
+subdivide_depth = 1
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gedxo"]
 shader = ExtResource("118_ec4al")
 shader_parameter/offset = Vector3(0, 0, 0)
@@ -1999,6 +2001,20 @@ shader_parameter/dynamic_da = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1123457506]
 transform = Transform3D(0.6091352, 0, -0.7930664, 0, 1, 0, 0.7930664, 0, 0.6091352, -16.890297, 1.8176656, 6.882322)
+
+[node name="AkListener3D" type="AkListener3D" parent="Camera3D" unique_id=1288635841]
+
+[node name="AkEvent3D" type="AkEvent3D" parent="Camera3D/AkListener3D" unique_id=923778106]
+event = ExtResource("122_f7acr")
+trigger_on = 2
+stop_on = 3
+stop_fade_time = 2
+transform = Transform3D(0.6091352, 0, 0.7930664, 0, 1, 0, -0.7930664, 0, 0.6091352, 0, 0, 0)
+
+[node name="AkBank" type="AkBank" parent="Camera3D/AkListener3D" unique_id=863102021]
+bank = ExtResource("2_ladfw")
+load_on = 1
+unload_on = 3
 
 [node name="Lightning" type="Node3D" parent="." unique_id=1080471342]
 
@@ -2301,13 +2317,13 @@ transform = Transform3D(-0.44598573, 0.12980337, -0.8855778, 0.020326123, 0.9906
 
 [node name="Affiche" parent="GameDesignScene/Environment/Barricades/BarricadeLast" unique_id=755388570 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 4.376541, 0.32379335, -21.892694)
-mesh = SubResource("QuadMesh_f7acr")
+mesh = SubResource("QuadMesh_17wss")
 texture = ExtResource("14_ouxrs")
 ratio = 0.2
 
 [node name="Affiche2" parent="GameDesignScene/Environment/Barricades/BarricadeLast" unique_id=1644892852 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.81915206, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.81915206, 4.982666, 0.39305907, -22.317108)
-mesh = SubResource("QuadMesh_17wss")
+mesh = SubResource("QuadMesh_qvh1w")
 texture = ExtResource("14_ouxrs")
 ratio = 0.25
 
@@ -2365,67 +2381,67 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5874779, 2.1274004, 1.1379
 
 [node name="Affiche" parent="GameDesignScene/Environment/Level/Base_map/Enseignes" unique_id=710078564 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.819152, 0, -0.5735764, 0, 1, 0, 0.5735764, 0, -0.819152, -1.4586313, 1.6077919, 8.117519)
-mesh = SubResource("QuadMesh_qvh1w")
+mesh = SubResource("QuadMesh_icbn6")
 texture = ExtResource("26_7n1kg")
 ratio = 0.5
 
 [node name="Affiche2" parent="GameDesignScene/Environment/Level/Base_map/Enseignes" unique_id=436401871 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.57357645, 0, -0.81915206, 0, 1, 0, 0.81915206, 0, 0.57357645, 14.889712, 2.5189319, -5.20536)
-mesh = SubResource("QuadMesh_icbn6")
+mesh = SubResource("QuadMesh_fm3qk")
 texture = ExtResource("27_fm3qk")
 ratio = 0.5
 
 [node name="Affiche3" parent="GameDesignScene/Environment/Level/Base_map/Enseignes" unique_id=1455655155 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.223866, 0.48865485, -8.076981)
-mesh = SubResource("QuadMesh_fm3qk")
+mesh = SubResource("QuadMesh_m6aeq")
 texture = ExtResource("28_0ly1b")
 ratio = 0.3
 
 [node name="Affiche4" parent="GameDesignScene/Environment/Level/Base_map/Enseignes" unique_id=1707028849 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.5735764, 0, -0.819152, 0, 1, 0, 0.819152, 0, 0.5735764, 7.9907994, 5.0290813, -15.016575)
-mesh = SubResource("QuadMesh_m6aeq")
+mesh = SubResource("QuadMesh_kq2do")
 texture = ExtResource("29_m6aeq")
 ratio = 0.54
 
 [node name="Affiche5" parent="GameDesignScene/Environment/Level/Base_map/Enseignes" unique_id=1825735175 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.34161, 4.928038, -7.5861697)
-mesh = SubResource("QuadMesh_kq2do")
+mesh = SubResource("QuadMesh_qiudf")
 texture = ExtResource("30_pij81")
 ratio = 0.5
 
 [node name="Affiche6" parent="GameDesignScene/Environment/Level/Base_map/Enseignes" unique_id=1341763070 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.413555, 3.8572617, -7.563266)
-mesh = SubResource("QuadMesh_qiudf")
+mesh = SubResource("QuadMesh_ky4ec")
 texture = ExtResource("31_kq2do")
 ratio = 0.53
 
 [node name="Affiche7" parent="GameDesignScene/Environment/Level/Base_map/Enseignes" unique_id=1718802657 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -30.212643, 0.94982433, 2.0082304)
-mesh = SubResource("QuadMesh_ky4ec")
+mesh = SubResource("QuadMesh_7mlqx")
 texture = ExtResource("32_aefwu")
 ratio = 0.25
 
 [node name="Affiche8" parent="GameDesignScene/Environment/Level/Base_map/Enseignes" unique_id=1567458370 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.206137, 3.3483143, 7.0231805)
-mesh = SubResource("QuadMesh_7mlqx")
+mesh = SubResource("QuadMesh_en4in")
 texture = ExtResource("33_qiudf")
 ratio = 0.35
 
 [node name="Affiche9" parent="GameDesignScene/Environment/Level/Base_map/Enseignes" unique_id=1270019428 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.206137, 2.1279016, 7.0231805)
-mesh = SubResource("QuadMesh_en4in")
+mesh = SubResource("QuadMesh_qcrxj")
 texture = ExtResource("34_4vp86")
 ratio = 0.55
 
 [node name="Affiche10" parent="GameDesignScene/Environment/Level/Base_map/Enseignes" unique_id=1154887135 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.189444, 4.613771, 7.0231805)
-mesh = SubResource("QuadMesh_qcrxj")
+mesh = SubResource("QuadMesh_mhyn3")
 texture = ExtResource("35_ky4ec")
 ratio = 0.8
 
 [node name="Affiche11" parent="GameDesignScene/Environment/Level/Base_map/Enseignes" unique_id=126674986 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.255371, 5.2073593, 6.938934)
-mesh = SubResource("QuadMesh_mhyn3")
+mesh = SubResource("QuadMesh_b4eu0")
 texture = ExtResource("36_efync")
 ratio = 0.85
 
@@ -2433,61 +2449,61 @@ ratio = 0.85
 
 [node name="Affiche6" parent="GameDesignScene/Environment/Level/Base_map/Leaks" unique_id=1183408138 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -47.80513, 5.2532744, 3.0664454)
-mesh = SubResource("QuadMesh_b4eu0")
+mesh = SubResource("QuadMesh_smkxj")
 texture = ExtResource("37_7mlqx")
 ratio = 0.22
 
 [node name="Affiche7" parent="GameDesignScene/Environment/Level/Base_map/Leaks" unique_id=1750720078 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.804909, 5.2532744, 4.224966)
-mesh = SubResource("QuadMesh_smkxj")
+mesh = SubResource("QuadMesh_wi5v5")
 texture = ExtResource("37_7mlqx")
 ratio = 0.22
 
 [node name="Affiche8" parent="GameDesignScene/Environment/Level/Base_map/Leaks" unique_id=2053488354 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25.804909, 5.6391163, 3.390174)
-mesh = SubResource("QuadMesh_wi5v5")
+mesh = SubResource("QuadMesh_64wrx")
 texture = ExtResource("37_7mlqx")
 ratio = 0.06
 
 [node name="Affiche9" parent="GameDesignScene/Environment/Level/Base_map/Leaks" unique_id=1574212114 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -6.4917784, 1.4427648, 14.81479)
-mesh = SubResource("QuadMesh_64wrx")
+mesh = SubResource("QuadMesh_0c1dt")
 texture = ExtResource("38_jntik")
 ratio = 0.26
 
 [node name="Affiche10" parent="GameDesignScene/Environment/Level/Base_map/Leaks" unique_id=994912567 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81877124, -0.024972817, -0.5735764, -0.030486183, 0.9995352, 0, 0.57330984, 0.017486155, -0.81915206, -5.8905406, 1.8786238, 11.949148)
-mesh = SubResource("QuadMesh_0c1dt")
+mesh = SubResource("QuadMesh_ayasw")
 texture = ExtResource("39_en4in")
 ratio = 0.09
 
 [node name="Affiche11" parent="GameDesignScene/Environment/Level/Base_map/Leaks" unique_id=310158332 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.5735764, 0, 1, 0, 0.57357645, 0, -0.819152, -5.6861877, 0.28474706, 11.806059)
-mesh = SubResource("QuadMesh_ayasw")
+mesh = SubResource("QuadMesh_77yms")
 texture = ExtResource("14_ouxrs")
 ratio = 0.09
 
 [node name="Affiche14" parent="GameDesignScene/Environment/Level/Base_map/Leaks" unique_id=1069279135 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.5735764, 0, 1, 0, 0.57357645, 0, -0.819152, -6.4144335, 0.28474706, 12.315982)
-mesh = SubResource("QuadMesh_77yms")
+mesh = SubResource("QuadMesh_t4xvv")
 texture = ExtResource("14_ouxrs")
 ratio = 0.09
 
 [node name="Affiche15" parent="GameDesignScene/Environment/Level/Base_map/Leaks" unique_id=1022072290 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.5735764, 0, 1, 0, 0.57357645, 0, -0.819152, -6.715763, 0.28474706, 12.526976)
-mesh = SubResource("QuadMesh_t4xvv")
+mesh = SubResource("QuadMesh_e5knn")
 texture = ExtResource("14_ouxrs")
 ratio = 0.09
 
 [node name="Affiche12" parent="GameDesignScene/Environment/Level/Base_map/Leaks" unique_id=1212187480 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.5735764, 0, 1, 0, 0.57357645, 0, -0.819152, -5.3839946, 0.28474706, 11.594461)
-mesh = SubResource("QuadMesh_e5knn")
+mesh = SubResource("QuadMesh_wriuk")
 texture = ExtResource("14_ouxrs")
 ratio = 0.09
 
 [node name="Affiche13" parent="GameDesignScene/Environment/Level/Base_map/Leaks" unique_id=1821537099 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.5735764, 0, 1, 0, 0.57357645, 0, -0.819152, -5.0649548, 0.28474706, 11.371067)
-mesh = SubResource("QuadMesh_wriuk")
+mesh = SubResource("QuadMesh_r73l7")
 texture = ExtResource("14_ouxrs")
 ratio = 0.09
 
@@ -2768,7 +2784,7 @@ transform = Transform3D(1, 0, 0, 0, 0.99939096, 0.0348995, 0, -0.0348995, 0.9993
 
 [node name="Affiche6" parent="GameDesignScene/Environment/Level/CoverObjects/BigCart" unique_id=1648876685 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-4.0815742e-08, -1.5644815e-08, -1, -0.3579116, 0.9337553, 0, 0.9337553, 0.3579116, -4.371139e-08, -0.78146076, 1.4930702, 0.7311425)
-mesh = SubResource("QuadMesh_r73l7")
+mesh = SubResource("QuadMesh_x0f1s")
 texture = ExtResource("54_iec08")
 
 [node name="Barrel_big7" parent="GameDesignScene/Environment/Level/CoverObjects" unique_id=2095356497 instance=ExtResource("46_muiuq")]
@@ -2974,7 +2990,7 @@ transform = Transform3D(-0.068851046, 0, 0.99762696, 0, 1, 0, -0.99762696, 0, -0
 
 [node name="Affiche" parent="GameDesignScene/Environment/Level/CoverObjects" unique_id=1683454706 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.9987361, 0.05026175, 0, -0.05026175, 0.9987361, 0, 0, 0, 1, -22.188293, 1.9156134, -6.9390545)
-mesh = SubResource("QuadMesh_x0f1s")
+mesh = SubResource("QuadMesh_c5gnc")
 texture = ExtResource("67_x0f1s")
 ratio = 0.1
 
@@ -3043,7 +3059,7 @@ transform = Transform3D(0.48816127, -0.60709286, 0.6270062, 0.86674136, 0.421409
 [node name="PannelHotel" parent="GameDesignScene/Environment/Level" unique_id=938415821 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -48.698696, 4.380315, -5.08702)
 sorting_offset = 10.0
-mesh = SubResource("QuadMesh_c5gnc")
+mesh = SubResource("QuadMesh_0t8kr")
 texture = ExtResource("68_vbgnm")
 ratio = 0.6
 
@@ -3087,43 +3103,43 @@ transform = Transform3D(0.9780277, 0.19759881, 0.06645712, -0.20847504, 0.927003
 
 [node name="Affiche" parent="GameDesignScene/Environment/Level/Decoration" unique_id=840195833 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.99959934, -0.02830546, 0, 0.02830546, 0.99959934, 0, 0, 0, 1, -23.855568, 1.9719014, -7.9320507)
-mesh = SubResource("QuadMesh_0t8kr")
+mesh = SubResource("QuadMesh_j8f8h")
 texture = ExtResource("72_pnh55")
 ratio = 0.1
 
 [node name="Affiche2" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1570121432 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.773695, 1.8422028, -6.9390554)
-mesh = SubResource("QuadMesh_j8f8h")
+mesh = SubResource("QuadMesh_j487u")
 texture = ExtResource("73_j8f8h")
 ratio = 0.07
 
 [node name="Affiche3" parent="GameDesignScene/Environment/Level/Decoration" unique_id=534763996 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6564455, 1.4889193, -6.9390554)
-mesh = SubResource("QuadMesh_j487u")
+mesh = SubResource("QuadMesh_cn5dt")
 texture = ExtResource("74_ks5sp")
 ratio = 0.07
 
 [node name="Affiche4" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1932466941 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.100767, 1.1924338, -6.9390554)
 sorting_offset = 2.0
-mesh = SubResource("QuadMesh_cn5dt")
+mesh = SubResource("QuadMesh_0yva6")
 texture = ExtResource("75_j487u")
 ratio = 0.08
 
 [node name="Affiche5" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1218982618 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.97777224, -0.20966975, 0, 0.20966975, 0.97777224, 0, 0, 0, 1, -26.436455, 1.9621223, -7.9320517)
-mesh = SubResource("QuadMesh_0yva6")
+mesh = SubResource("QuadMesh_6dnr2")
 texture = ExtResource("54_iec08")
 
 [node name="Affiche6" parent="GameDesignScene/Environment/Level/Decoration" unique_id=6169563 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.534025, 1.7808408, -7.9320517)
-mesh = SubResource("QuadMesh_6dnr2")
+mesh = SubResource("QuadMesh_tcbrb")
 texture = ExtResource("76_lg1k4")
 ratio = 0.2
 
 [node name="Affiche7" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1674059725 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81779283, -0.047167964, -0.57357645, -0.057581455, 0.9983408, 1.8626451e-09, 0.57262474, 0.033027366, -0.81915206, -13.7693, 1.4401629, 15.021139)
-mesh = SubResource("QuadMesh_tcbrb")
+mesh = SubResource("QuadMesh_qkwyv")
 texture = ExtResource("77_cn5dt")
 ratio = 0.04
 
@@ -3135,55 +3151,55 @@ transform = Transform3D(0.55781966, 0, 0.22099157, 0, 0.6, 0, -0.22099157, 0, 0.
 
 [node name="Affiche8" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1145734716 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.46430114, 0.8856774, 0, 3.8714187e-08, -2.0295246e-08, 1, 0.8856774, -0.46430114, -4.371139e-08, -18.735, 0.1, 13.856)
-mesh = SubResource("QuadMesh_qkwyv")
+mesh = SubResource("QuadMesh_xw245")
 texture = ExtResource("78_8rnif")
 ratio = 0.18
 
 [node name="Affiche9" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1615489538 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.92857003, -0.37115726, 0, -1.62238e-08, -4.0589086e-08, 1, -0.37115726, -0.92857003, -4.371139e-08, -17.246, 0.1, 7.53)
-mesh = SubResource("QuadMesh_xw245")
+mesh = SubResource("QuadMesh_8fpod")
 texture = ExtResource("79_0yva6")
 ratio = 0.18
 
 [node name="Affiche10" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1232632043 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.3311404, 0.9435816, 0, 4.1245258e-08, -1.4474608e-08, 1, 0.9435816, -0.3311404, -4.371139e-08, -14.384, 0.1, 4.191)
-mesh = SubResource("QuadMesh_8fpod")
+mesh = SubResource("QuadMesh_80gki")
 texture = ExtResource("78_8rnif")
 ratio = 0.18
 
 [node name="Affiche15" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1179521836 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.3311404, 0.9435816, 0, 4.1245258e-08, -1.4474608e-08, 1, 0.9435816, -0.3311404, -4.371139e-08, -8.638653, 0.1, 6.0633025)
-mesh = SubResource("QuadMesh_80gki")
+mesh = SubResource("QuadMesh_x5oki")
 texture = SubResource("CompressedTexture2D_g3tgq")
 ratio = 0.29
 
 [node name="Affiche11" parent="GameDesignScene/Environment/Level/Decoration" unique_id=101262305 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.8741285, -0.48569477, -1.5258195e-10, -2.1096888e-08, -3.8283243e-08, 1, -0.48569477, -0.8741285, -4.3711122e-08, -16.09274, 0.10000024, 5.149853)
-mesh = SubResource("QuadMesh_x5oki")
+mesh = SubResource("QuadMesh_clavr")
 texture = ExtResource("80_qjxs8")
 ratio = 0.1
 
 [node name="Affiche12" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1739229217 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.8741285, -0.48569477, -1.5258195e-10, -2.1096888e-08, -3.8283243e-08, 1, -0.48569477, -0.8741285, -4.3711122e-08, -15.483125, 0.1, 0.29523468)
-mesh = SubResource("QuadMesh_clavr")
+mesh = SubResource("QuadMesh_edm2y")
 texture = ExtResource("80_qjxs8")
 ratio = 0.1
 
 [node name="Affiche13" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1449669502 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.001815021, 0.9999984, -1.5258195e-10, 4.371077e-08, 2.3192115e-10, 1, 0.9999984, 0.001815021, -4.371112e-08, -12.281096, 0.099999525, -3.0828876)
-mesh = SubResource("QuadMesh_edm2y")
+mesh = SubResource("QuadMesh_c5rwu")
 texture = ExtResource("80_qjxs8")
 ratio = 0.1
 
 [node name="Affiche14" parent="GameDesignScene/Environment/Level/Decoration" unique_id=678027072 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.4468226, 0.8946227, -1.5258195e-10, 3.9173134e-08, -1.9394609e-08, 1, 0.8946227, -0.4468226, -4.371112e-08, -6.99341, 0.09999976, 0.7698004)
-mesh = SubResource("QuadMesh_c5rwu")
+mesh = SubResource("QuadMesh_em8fe")
 texture = ExtResource("80_qjxs8")
 ratio = 0.1
 
 [node name="Affiche16" parent="GameDesignScene/Environment/Level/Decoration" unique_id=998006675 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.8039918, -0.5946404, 0, -2.5992556e-08, -3.5143596e-08, 1, -0.5946404, -0.8039918, -4.371139e-08, -23.88348, 0.20114645, 3.6205122)
-mesh = SubResource("QuadMesh_em8fe")
+mesh = SubResource("QuadMesh_6ulrq")
 texture = ExtResource("81_6dnr2")
 ratio = 0.06
 
@@ -3259,7 +3275,7 @@ transform = Transform3D(-0.799129, 0, 0.6011596, 0, 1, 0, -0.6011596, 0, -0.7991
 [node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=1011427794 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(0.9776881, 0, 0.2100622, 0, 1, 0, -0.2100622, 0, 0.9776881, -73.17267, -0.47042158, 77.36)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_02" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_02" index="0" unique_id=396782531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.09640002, 0)
 surface_material_override/0 = ExtResource("84_g1i7q")
 
@@ -3271,151 +3287,151 @@ surface_material_override/0 = ExtResource("84_g1i7q")
 [node name="sm_dirt_cluster_03" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=78655654 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(0.9776881, 0, 0.2100622, 0, 1, 0, -0.2100622, 0, 0.9776881, -13.545429, -0.47042158, 17.418304)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_03" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_03" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_04" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=1522382422 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(0.9776881, 0, 0.2100622, 0, 1, 0, -0.2100622, 0, 0.9776881, -12.666298, -0.47042158, 15.282013)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_04" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_04" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_05" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=211578858 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(-0.29784146, 0, -0.95461535, 0, 1, 0, 0.95461535, 0, -0.29784146, -11.0544815, -0.47042158, 15.59734)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_05" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_05" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_06" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=1043879396 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(-0.29784146, 0, -0.95461535, 0, 1, 0, 0.95461535, 0, -0.29784146, -11.841057, -0.47042158, 16.787586)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_06" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_06" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_07" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=91817907 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(0.91505826, 0, 0.4033218, 0, 1, 0, -0.4033218, 0, 0.91505826, -9.682575, -0.47042158, 14.21899)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_07" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_07" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_08" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=558796865 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(0.8519829, 0, -0.5235695, 0, 1, 0, 0.5235695, 0, 0.8519829, -10.062683, -0.47042158, 15.331688)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_08" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_08" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_09" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=1614482186 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(0.8519829, 0, -0.5235695, 0, 1, 0, 0.5235695, 0, 0.8519829, -7.5635147, -0.47042158, 13.631958)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_09" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_09" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_10" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=2043527094 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(0.9419696, 0, 0.3356983, 0, 1, 0, -0.3356983, 0, 0.9419696, -5.2846603, -0.47042158, 11.689873)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_10" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_10" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_11" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=2123206090 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(-0.8933165, 0, 0.44942814, 0, 1, 0, -0.44942814, 0, -0.8933165, -4.245674, -0.47042158, 11.317024)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_11" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_11" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_12" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=772115692 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(-0.8933165, 0, 0.44942814, 0, 1, 0, -0.44942814, 0, -0.8933165, -2.408249, -0.47042158, 10.486744)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_12" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_12" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_13" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=313328005 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(0.054950207, 0, 0.998489, 0, 1, 0, -0.998489, 0, 0.054950207, -1.4443207, -0.47042158, 9.705917)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_13" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_13" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_14" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=612399024 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(0.99117863, 0, -0.1325332, 0, 1, 0, 0.1325332, 0, 0.99117863, -0.14729309, -0.47042158, 7.851795)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_14" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_14" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_15" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=259984536 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(0.30308518, 0, -0.95296353, 0, 1, 0, 0.95296353, 0, 0.30308518, 1.119957, -0.47042158, 5.436638)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_15" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_15" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_16" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=8838389 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(-0.44216347, 0, -0.89693457, 0, 1, 0, 0.89693457, 0, -0.44216347, 1.3875046, -0.47042158, 7.324211)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_16" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_16" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_17" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=175746758 instance=ExtResource("85_qkwyv")]
 transform = Transform3D(-0.23965192, 0, -0.9708588, 0, 1, 0, 0.9708588, 0, -0.23965192, -11.418308, -0.47042158, 14.364876)
 
-[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_17" index="0" unique_id=1334080149]
+[node name="sm_dirt_cluster_02" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_17" index="0" unique_id=396782531]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_012" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=1293474448 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-0.799129, 0, -0.6011596, 0, 1, 0, 0.6011596, 0, -0.799129, -3.4299316, -0.47042158, 9.934719)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_012" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_012" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_013" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=29582605 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-0.799129, 0, -0.6011596, 0, 1, 0, 0.6011596, 0, -0.799129, -0.2334137, -0.47042158, 7.530079)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_013" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_013" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_014" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=1408635145 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-0.799129, 0, -0.6011596, 0, 1, 0, 0.6011596, 0, -0.799129, 3.4069977, -0.47042158, 5.628334)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_014" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_014" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_015" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=311256390 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-1.598258, 0, -1.2023191, 0, 2, 0, 1.2023191, 0, -1.598258, -2.8068314, -0.47042158, 7.840477)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_015" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_015" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_016" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=315551584 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-1.598258, 0, -1.2023191, 0, 2, 0, 1.2023191, 0, -1.598258, -0.43650055, -0.47042158, 4.761036)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_016" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_016" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_017" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=1613511317 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-1.598258, 0, -1.2023191, 0, 2, 0, 1.2023191, 0, -1.598258, 2.650154, -0.47042158, 3.414547)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_017" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_017" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_018" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=1398347093 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(0.5534551, 0, -1.9218968, 0, 2, 0, 1.9218968, 0, 0.5534551, 4.2903137, -0.47042158, 4.115135)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_018" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_018" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_019" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=215366121 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-1.8943983, 0, -0.6412918, 0, 2, 0, 0.6412918, 0, -1.8943983, 2.0190964, -0.47042158, 5.9291573)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_019" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_019" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_020" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=4515662 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-1.598258, 0, -1.2023191, 0, 2, 0, 1.2023191, 0, -1.598258, -5.581581, -0.47042158, 9.927837)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_020" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_020" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_021" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=1690269160 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-1.598258, 0, -1.2023191, 0, 2, 0, 1.2023191, 0, -1.598258, -8.792316, -0.47042158, 11.722305)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_021" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_021" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_02" type="MeshInstance3D" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_021" unique_id=105182115]
@@ -3446,49 +3462,49 @@ surface_material_override/0 = ExtResource("84_g1i7q")
 [node name="sm_dirt_cluster_022" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=1610899130 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-1.7045867, 0, 1.046128, 0, 2, 0, -1.046128, 0, -1.7045867, -9.350258, -0.47042158, 14.322556)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_022" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_022" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_023" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=649997959 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-1.7045867, 0, 1.046128, 0, 2, 0, -1.046128, 0, -1.7045867, -11.908073, -0.47042158, 16.330017)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_023" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_023" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_024" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=90902891 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-0.2002716, 0, 1.9899478, 0, 2, 0, -1.9899478, 0, -0.2002716, -12.8461685, -0.47042158, 16.93483)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_024" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_024" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_025" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=307494744 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-0.2002716, 0, 1.9899478, 0, 2, 0, -1.9899478, 0, -0.2002716, -6.7373886, -0.47042158, 12.235287)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_025" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_025" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_026" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=1266322978 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-0.2002716, 0, 1.9899478, 0, 2, 0, -1.9899478, 0, -0.2002716, -4.53006, -0.47042134, 10.457909)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_026" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_026" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_027" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=289943166 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-1.598258, 0, -1.2023191, 0, 2, 0, 1.2023191, 0, -1.598258, -12.203026, -0.47042158, 13.678982)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_027" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_027" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_028" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=191280932 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-1.598258, 0, -1.2023191, 0, 2, 0, 1.2023191, 0, -1.598258, -13.200123, -0.47042158, 15.680431)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_028" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_028" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="sm_dirt_cluster_029" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt" unique_id=2141870251 instance=ExtResource("86_k7s7b")]
 transform = Transform3D(-0.799129, 0, -0.6011596, 0, 1, 0, 0.6011596, 0, -0.799129, 2.4700165, -0.47042158, 4.2704124)
 
-[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_029" index="0" unique_id=1438445770]
+[node name="sm_dirt_cluster_01" parent="GameDesignScene/Environment/Level/Decoration/Garden_dirt/sm_dirt_cluster_029" index="0" unique_id=1673854286]
 surface_material_override/0 = ExtResource("84_g1i7q")
 
 [node name="Fence20" type="MeshInstance3D" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1765039180]
@@ -3694,350 +3710,350 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.909176, 0.948963, 27.1843
 
 [node name="Affiche17" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1673085803 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43822977, 0.011131037, -0.898794, 0.025391812, 0.9996776, 0, 0.89850426, -0.02282201, -0.43837112, -22.194208, 1.725358, 25.240644)
-mesh = SubResource("QuadMesh_6ulrq")
+mesh = SubResource("QuadMesh_ekpn0")
 texture = ExtResource("91_80gki")
 ratio = 0.1
 
 [node name="Affiche51" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1541032190 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43822977, 0.011131037, -0.898794, 0.025391812, 0.9996776, 0, 0.89850426, -0.02282201, -0.43837112, -21.816628, 2.4257293, 24.46649)
 sorting_offset = 0.2
-mesh = SubResource("QuadMesh_ekpn0")
+mesh = SubResource("QuadMesh_evvq4")
 texture = ExtResource("92_bmfdl")
 ratio = 0.1
 
 [node name="Affiche18" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1613944989 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43822977, 0.011131037, -0.898794, 0.025391812, 0.9996776, 0, 0.89850426, -0.02282201, -0.43837112, -21.35014, 1.6764511, 23.510044)
-mesh = SubResource("QuadMesh_evvq4")
+mesh = SubResource("QuadMesh_a8rip")
 texture = ExtResource("93_x5oki")
 ratio = 0.1
 
 [node name="Affiche19" parent="GameDesignScene/Environment/Level/Decoration" unique_id=2067788740 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.4359239, -0.046255957, -0.898794, -0.1055178, 0.9944175, 0, 0.8937765, 0.09483877, -0.4383711, -21.05787, 2.1117706, 22.910803)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_a8rip")
+mesh = SubResource("QuadMesh_lwkhn")
 texture = SubResource("CompressedTexture2D_c0vmp")
 ratio = 0.06
 
 [node name="Affiche55" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1687682955 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.43837112, 3.832362e-08, -0.898794, 8.742278e-08, -1, 0, -0.89879405, -7.857507e-08, -0.4383711, -20.854897, 8.565336, 22.518375)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_lwkhn")
+mesh = SubResource("QuadMesh_mj6xe")
 texture = ExtResource("14_ouxrs")
 ratio = 0.06
 
 [node name="Affiche56" parent="GameDesignScene/Environment/Level/Decoration" unique_id=712836576 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -21.057558, 8.277175, 22.933895)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_mj6xe")
+mesh = SubResource("QuadMesh_a1jax")
 texture = ExtResource("37_7mlqx")
 ratio = 0.14
 
 [node name="Affiche57" parent="GameDesignScene/Environment/Level/Decoration" unique_id=741921230 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -21.138958, 8.384283, 23.100788)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_a1jax")
+mesh = SubResource("QuadMesh_2s00j")
 texture = ExtResource("37_7mlqx")
 ratio = 0.14
 
 [node name="Affiche58" parent="GameDesignScene/Environment/Level/Decoration" unique_id=816235423 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -21.51355, 8.384283, 23.868818)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_2s00j")
+mesh = SubResource("QuadMesh_7ik6w")
 texture = ExtResource("37_7mlqx")
 ratio = 0.09
 
 [node name="Affiche59" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1477966131 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -21.843315, 8.384283, 24.544937)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_7ik6w")
+mesh = SubResource("QuadMesh_pcruq")
 texture = ExtResource("37_7mlqx")
 ratio = 0.09
 
 [node name="Affiche60" parent="GameDesignScene/Environment/Level/Decoration" unique_id=299698886 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -21.991076, 8.384283, 24.847893)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_pcruq")
+mesh = SubResource("QuadMesh_71du6")
 texture = ExtResource("37_7mlqx")
 ratio = 0.09
 
 [node name="Affiche61" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1094231472 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -22.22435, 8.484055, 25.32618)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_71du6")
+mesh = SubResource("QuadMesh_qie3e")
 texture = ExtResource("37_7mlqx")
 
 [node name="Affiche62" parent="GameDesignScene/Environment/Level/Decoration" unique_id=822549170 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -22.375515, 8.484055, 25.636114)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_qie3e")
+mesh = SubResource("QuadMesh_osepu")
 texture = ExtResource("37_7mlqx")
 
 [node name="Affiche63" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1242407183 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -22.540043, 8.484055, 25.973446)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_osepu")
+mesh = SubResource("QuadMesh_7hpxw")
 texture = ExtResource("37_7mlqx")
 ratio = 0.1
 
 [node name="Affiche64" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1772528659 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -22.916853, 8.106701, 26.746023)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_7hpxw")
+mesh = SubResource("QuadMesh_3dcaq")
 texture = ExtResource("37_7mlqx")
 ratio = 0.22
 
 [node name="Affiche65" parent="GameDesignScene/Environment/Level/Decoration" unique_id=298204668 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -23.39354, 8.355637, 27.723375)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_3dcaq")
+mesh = SubResource("QuadMesh_ex1bm")
 texture = ExtResource("37_7mlqx")
 ratio = 0.11
 
 [node name="Affiche66" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1098477717 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -23.690348, 8.440293, 28.33192)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_ex1bm")
+mesh = SubResource("QuadMesh_f3u4r")
 texture = ExtResource("37_7mlqx")
 ratio = 0.07
 
 [node name="Affiche67" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1903706280 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -23.739784, 8.440293, 28.43328)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_f3u4r")
+mesh = SubResource("QuadMesh_p0nuf")
 texture = ExtResource("37_7mlqx")
 ratio = 0.07
 
 [node name="Affiche68" parent="GameDesignScene/Environment/Level/Decoration" unique_id=593792685 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -23.959646, 8.440293, 28.884068)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_p0nuf")
+mesh = SubResource("QuadMesh_5u0k5")
 texture = ExtResource("37_7mlqx")
 ratio = 0.07
 
 [node name="Affiche70" parent="GameDesignScene/Environment/Level/Decoration" unique_id=787386903 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -23.959646, 8.440293, 28.884068)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_5u0k5")
+mesh = SubResource("QuadMesh_3n0yu")
 texture = ExtResource("37_7mlqx")
 ratio = 0.07
 
 [node name="Affiche69" parent="GameDesignScene/Environment/Level/Decoration" unique_id=562123235 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -24.195698, 8.440293, 29.368042)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_3n0yu")
+mesh = SubResource("QuadMesh_t71i4")
 texture = ExtResource("37_7mlqx")
 ratio = 0.07
 
 [node name="Affiche71" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1394979259 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -24.447657, 8.440293, 29.884636)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_t71i4")
+mesh = SubResource("QuadMesh_a7f4w")
 texture = ExtResource("37_7mlqx")
 ratio = 0.13
 
 [node name="Affiche72" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1923100769 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.43837112, 0, -0.898794, 0, 1, 0, 0.89879405, 0, -0.4383711, -24.8591, 8.287397, 30.728218)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_a7f4w")
+mesh = SubResource("QuadMesh_x11dq")
 texture = ExtResource("37_7mlqx")
 ratio = 0.13
 
 [node name="Affiche20" parent="GameDesignScene/Environment/Level/Decoration" unique_id=788174133 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.8187034, 0.027101979, 0.5735764, -0.0330854, 0.9994526, 0, -0.5732624, -0.018977009, 0.81915206, -35.88553, 1.7128915, 18.534058)
-mesh = SubResource("QuadMesh_x11dq")
+mesh = SubResource("QuadMesh_mws3o")
 texture = ExtResource("77_cn5dt")
 
 [node name="Affiche21" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1784217881 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17364822, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, 0.17364822, -37.21662, 1.6405652, 22.15814)
-mesh = SubResource("QuadMesh_mws3o")
+mesh = SubResource("QuadMesh_qrwmt")
 texture = ExtResource("94_7cfor")
 ratio = 0.1
 
 [node name="Affiche54" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1705575982 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17326021, -0.011602092, 0.9848077, 0.06681376, 0.9977655, 9.313226e-10, -0.9826071, 0.06579871, 0.17364821, -36.865505, 1.6405652, 20.16685)
-mesh = SubResource("QuadMesh_qrwmt")
+mesh = SubResource("QuadMesh_3ws30")
 texture = ExtResource("79_0yva6")
 ratio = 0.1
 
 [node name="Affiche52" parent="GameDesignScene/Environment/Level/Decoration" unique_id=167113021 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17333134, 0.010486016, 0.9848077, -0.06038654, 0.9981751, 0, -0.98301053, -0.059469134, 0.17364822, -37.42916, 1.6405652, 23.363522)
-mesh = SubResource("QuadMesh_3ws30")
+mesh = SubResource("QuadMesh_eltaa")
 texture = ExtResource("95_clavr")
 ratio = 0.08
 
 [node name="Affiche42" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1147136598 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17364822, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, 0.17364822, -37.221016, 0.31154358, 22.375494)
-mesh = SubResource("QuadMesh_eltaa")
+mesh = SubResource("QuadMesh_fremr")
 texture = ExtResource("96_is534")
 ratio = 0.1
 
 [node name="Affiche46" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1903761515 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17364822, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, 0.17364822, -36.900707, 0.31154358, 20.599068)
-mesh = SubResource("QuadMesh_fremr")
+mesh = SubResource("QuadMesh_ajxjh")
 texture = ExtResource("96_is534")
 ratio = 0.1
 
 [node name="Affiche48" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1487575610 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17364822, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, 0.17364822, -36.66898, 0.31154358, 19.284878)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_ajxjh")
+mesh = SubResource("QuadMesh_k272x")
 texture = ExtResource("96_is534")
 ratio = 0.25
 
 [node name="Affiche43" parent="GameDesignScene/Environment/Level/Decoration" unique_id=647223312 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17364822, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, 0.17364822, -37.475887, 0.41368008, 23.826374)
-mesh = SubResource("QuadMesh_k272x")
+mesh = SubResource("QuadMesh_h6rkm")
 texture = ExtResource("96_is534")
 ratio = 0.2
 
 [node name="Affiche44" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1667521003 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17364822, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, 0.17364822, -37.329796, 0.35423344, 22.975456)
-mesh = SubResource("QuadMesh_h6rkm")
+mesh = SubResource("QuadMesh_rj7cn")
 texture = ExtResource("14_ouxrs")
 ratio = 0.2
 
 [node name="Affiche47" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1438194938 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17364822, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, 0.17364822, -37.113148, 0.3843385, 21.767603)
-mesh = SubResource("QuadMesh_rj7cn")
+mesh = SubResource("QuadMesh_jedmd")
 texture = ExtResource("14_ouxrs")
 ratio = 0.25
 
 [node name="Affiche49" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1811682679 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17364822, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, 0.17364822, -36.784916, 0.3398568, 19.906101)
-mesh = SubResource("QuadMesh_jedmd")
+mesh = SubResource("QuadMesh_phoh3")
 texture = ExtResource("14_ouxrs")
 ratio = 0.25
 
 [node name="Affiche45" parent="GameDesignScene/Environment/Level/Decoration" unique_id=604460148 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17364822, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, 0.17364822, -37.599022, 0.35423344, 24.509718)
-mesh = SubResource("QuadMesh_phoh3")
+mesh = SubResource("QuadMesh_sfmb0")
 texture = ExtResource("14_ouxrs")
 ratio = 0.2
 
 [node name="Affiche22" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1239583885 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.16956939, -0.0374157, 0.98480785, 0.21546832, 0.9765109, 4.1909516e-09, -0.9616754, 0.21219485, 0.17364822, -37.67753, 1.2590355, 24.772062)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_sfmb0")
+mesh = SubResource("QuadMesh_2qehi")
 texture = ExtResource("54_iec08")
 
 [node name="Affiche23" parent="GameDesignScene/Environment/Level/Decoration" unique_id=941413708 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.17364822, 0, 0.9848077, 0, 1, 0, -0.9848077, 0, 0.17364822, -37.76655, 1.6405652, 25.27693)
-mesh = SubResource("QuadMesh_2qehi")
+mesh = SubResource("QuadMesh_kp2vh")
 texture = ExtResource("81_6dnr2")
 ratio = 0.1
 
 [node name="Affiche24" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1564392570 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.8186978, 0.027273443, 0.5735764, -0.033294722, 0.99944556, 1.8626451e-09, -0.5732584, -0.019097071, 0.819152, -31.230965, 1.59497, 15.28056)
-mesh = SubResource("QuadMesh_kp2vh")
+mesh = SubResource("QuadMesh_1j7be")
 texture = ExtResource("97_edm2y")
 ratio = 0.18
 
 [node name="Affiche53" parent="GameDesignScene/Environment/Level/Decoration" unique_id=819298837 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.819152, 0, 0.5735764, 0, 1, 0, -0.5735764, 0, 0.819152, -27.834637, 1.6405652, 12.902425)
-mesh = SubResource("QuadMesh_1j7be")
+mesh = SubResource("QuadMesh_idvwp")
 texture = ExtResource("76_lg1k4")
 ratio = 0.2
 
 [node name="Affiche25" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1084858720 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, -28.761042, 1.7671084, 36.973724)
-mesh = SubResource("QuadMesh_idvwp")
+mesh = SubResource("QuadMesh_f3a5m")
 texture = ExtResource("73_j8f8h")
 
 [node name="Affiche26" parent="GameDesignScene/Environment/Level/Decoration" unique_id=825855938 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, -28.5777, 2.3969407, 37.157066)
-mesh = SubResource("QuadMesh_f3a5m")
+mesh = SubResource("QuadMesh_fn7bl")
 texture = ExtResource("74_ks5sp")
 
 [node name="Affiche27" parent="GameDesignScene/Environment/Level/Decoration" unique_id=963021620 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, -28.027393, 1.8403115, 37.707375)
-mesh = SubResource("QuadMesh_fn7bl")
+mesh = SubResource("QuadMesh_sjtkn")
 texture = ExtResource("75_j487u")
 ratio = 0.12
 
 [node name="Affiche28" parent="GameDesignScene/Environment/Level/Decoration" unique_id=575145319 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(0.7071067, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, 0.7071067, -24.468817, 1.8403115, 32.095554)
-mesh = SubResource("QuadMesh_sjtkn")
+mesh = SubResource("QuadMesh_28m15")
 texture = ExtResource("97_edm2y")
 ratio = 0.15
 
 [node name="Affiche29" parent="GameDesignScene/Environment/Level/Decoration" unique_id=268548159 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.889422, 2.0919192, -6.948392)
-mesh = SubResource("QuadMesh_28m15")
+mesh = SubResource("QuadMesh_twj25")
 texture = ExtResource("98_lirnu")
 ratio = 0.1
 
 [node name="Affiche30" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1261774761 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0651, 8.341254, -6.9512215)
-mesh = SubResource("QuadMesh_twj25")
+mesh = SubResource("QuadMesh_jdvvi")
 texture = ExtResource("37_7mlqx")
 ratio = 0.1
 
 [node name="Affiche31" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1390398265 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.640164, 8.476925, -6.9512215)
-mesh = SubResource("QuadMesh_jdvvi")
+mesh = SubResource("QuadMesh_ms7y3")
 texture = ExtResource("37_7mlqx")
 
 [node name="Affiche32" parent="GameDesignScene/Environment/Level/Decoration" unique_id=249817540 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.029881, 8.476925, -6.9512215)
-mesh = SubResource("QuadMesh_ms7y3")
+mesh = SubResource("QuadMesh_p8abp")
 texture = ExtResource("37_7mlqx")
 
 [node name="Affiche33" parent="GameDesignScene/Environment/Level/Decoration" unique_id=785478075 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.452948, 8.476925, -6.9512215)
-mesh = SubResource("QuadMesh_p8abp")
+mesh = SubResource("QuadMesh_aygfr")
 texture = ExtResource("37_7mlqx")
 
 [node name="Affiche34" parent="GameDesignScene/Environment/Level/Decoration" unique_id=671814993 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.839234, 8.476925, -6.9512215)
-mesh = SubResource("QuadMesh_aygfr")
+mesh = SubResource("QuadMesh_v6pn6")
 texture = ExtResource("37_7mlqx")
 
 [node name="Affiche35" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1398440760 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.230614, 8.476925, -6.9512215)
-mesh = SubResource("QuadMesh_v6pn6")
+mesh = SubResource("QuadMesh_a3vay")
 texture = ExtResource("37_7mlqx")
 ratio = 0.08
 
 [node name="Affiche36" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1647230301 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.066595, 8.255387, -6.9512215)
-mesh = SubResource("QuadMesh_a3vay")
+mesh = SubResource("QuadMesh_5u4qu")
 texture = ExtResource("37_7mlqx")
 ratio = 0.15
 
 [node name="Affiche37" parent="GameDesignScene/Environment/Level/Decoration" unique_id=2031347587 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.248644, 8.139703, -6.9512215)
-mesh = SubResource("QuadMesh_5u4qu")
+mesh = SubResource("QuadMesh_dyuh0")
 texture = ExtResource("37_7mlqx")
 ratio = 0.2
 
 [node name="Affiche38" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1651719564 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.317291, 8.393737, -6.9512215)
-mesh = SubResource("QuadMesh_dyuh0")
+mesh = SubResource("QuadMesh_xkkh8")
 texture = ExtResource("37_7mlqx")
 ratio = 0.08
 
 [node name="Affiche39" parent="GameDesignScene/Environment/Level/Decoration" unique_id=877637248 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.94039, 8.393737, -6.9512215)
-mesh = SubResource("QuadMesh_xkkh8")
+mesh = SubResource("QuadMesh_missc")
 texture = ExtResource("37_7mlqx")
 ratio = 0.08
 
 [node name="Affiche40" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1344089513 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.597109, 8.393737, -6.9512215)
-mesh = SubResource("QuadMesh_missc")
+mesh = SubResource("QuadMesh_ru3au")
 texture = ExtResource("37_7mlqx")
 ratio = 0.08
 
 [node name="Affiche41" parent="GameDesignScene/Environment/Level/Decoration" unique_id=672842287 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.360557, 8.341254, -6.9512215)
-mesh = SubResource("QuadMesh_ru3au")
+mesh = SubResource("QuadMesh_tvrlt")
 texture = ExtResource("37_7mlqx")
 ratio = 0.1
 
 [node name="Affiche50" parent="GameDesignScene/Environment/Level/Decoration" unique_id=1541343492 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -47.771652, 2.6663375, 2.9503627)
 sorting_offset = 3.0
-mesh = SubResource("QuadMesh_tvrlt")
+mesh = SubResource("QuadMesh_ncxit")
 texture = ExtResource("99_c5rwu")
 ratio = 0.45
 
@@ -4074,49 +4090,49 @@ mesh = ExtResource("69_c5gnc")
 
 [node name="Affiche" parent="GameDesignScene/Affiches" unique_id=1665977739 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -16.064857, 8.457581, 19.140045)
-mesh = SubResource("QuadMesh_ncxit")
+mesh = SubResource("QuadMesh_56635")
 texture = ExtResource("37_7mlqx")
 ratio = 0.06
 
 [node name="Affiche2" parent="GameDesignScene/Affiches" unique_id=1933010382 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -16.457758, 8.457581, 19.415157)
-mesh = SubResource("QuadMesh_56635")
+mesh = SubResource("QuadMesh_bwa0p")
 texture = ExtResource("37_7mlqx")
 ratio = 0.1
 
 [node name="Affiche3" parent="GameDesignScene/Affiches" unique_id=1501390140 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -17.109304, 8.407835, 19.871374)
-mesh = SubResource("QuadMesh_bwa0p")
+mesh = SubResource("QuadMesh_jyjyx")
 texture = ExtResource("37_7mlqx")
 ratio = 0.08
 
 [node name="Affiche4" parent="GameDesignScene/Affiches" unique_id=1970574788 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -17.933104, 8.281441, 20.448206)
-mesh = SubResource("QuadMesh_jyjyx")
+mesh = SubResource("QuadMesh_7dq4n")
 texture = ExtResource("37_7mlqx")
 ratio = 0.18
 
 [node name="Affiche5" parent="GameDesignScene/Affiches" unique_id=237465819 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -19.017494, 8.329943, 21.207504)
-mesh = SubResource("QuadMesh_7dq4n")
+mesh = SubResource("QuadMesh_xln26")
 texture = ExtResource("37_7mlqx")
 ratio = 0.13
 
 [node name="Affiche6" parent="GameDesignScene/Affiches" unique_id=217820428 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -19.747461, 8.398223, 21.718634)
-mesh = SubResource("QuadMesh_xln26")
+mesh = SubResource("QuadMesh_8284l")
 texture = ExtResource("37_7mlqx")
 ratio = 0.09
 
 [node name="Affiche7" parent="GameDesignScene/Affiches" unique_id=1680888101 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -20.194412, 8.458776, 22.031591)
-mesh = SubResource("QuadMesh_8284l")
+mesh = SubResource("QuadMesh_uyres")
 texture = ExtResource("37_7mlqx")
 ratio = 0.06
 
 [node name="Affiche8" parent="GameDesignScene/Affiches" unique_id=1549815347 instance=ExtResource("13_8ii5v")]
 transform = Transform3D(-0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, -0.81915206, -20.584787, 8.458776, 22.304935)
-mesh = SubResource("QuadMesh_uyres")
+mesh = SubResource("QuadMesh_chlr3")
 texture = ExtResource("37_7mlqx")
 ratio = 0.06
 

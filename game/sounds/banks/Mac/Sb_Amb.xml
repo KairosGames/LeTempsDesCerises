@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{BC632EC7-BE75-BE6F-4439-669BCD1572FF}">
+		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{C078A2ED-CBA5-AFF1-17F8-3ACA2463E590}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Amb</ObjectPath>
 			<ShortName>Sb_Amb</ShortName>
 			<Path>Sb_Amb.bnk</Path>
@@ -46,6 +46,10 @@
 					<ShortName>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_011.wav</ShortName>
 					<CachePath>7A/{7A4C15D6-2C30-6B25-6AE7-505E47B72801}.wem</CachePath>
 				</File>
+				<File Id="467894374" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\LTDC_MSC_MainMenu_Loop.wav</ShortName>
+					<CachePath>D1/{D1A45DC3-E8E7-8BBB-9DFA-1C7B5362D2F5}.wem</CachePath>
+				</File>
 				<File Id="553541874" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_004.wav</ShortName>
 					<CachePath>24/{246207D5-0622-079D-604D-681862545220}.wem</CachePath>
@@ -57,6 +61,10 @@
 				<File Id="620277512" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Heavy\LTDC_AMB_Cannon_LayerHeavy_Random_010.wav</ShortName>
 					<CachePath>01/{018AA2B4-06B9-7ACC-628F-EA20F815675D}.wem</CachePath>
+				</File>
+				<File Id="764011030" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\LTDC_AMB_MainMenu_Wind_Loop.wav</ShortName>
+					<CachePath>88/{8806C29B-663E-2A83-B582-7584CF65752C}.wem</CachePath>
 				</File>
 				<File Id="774170018" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>AMB\Cannons_Light\LTDC_AMB_Cannon_LayerLight_Random_006.wav</ShortName>
@@ -107,6 +115,11 @@
 					<CachePath>E4/{E4A4F999-DEDF-3D4E-9796-B9CED80BD887}.wem</CachePath>
 				</File>
 			</Media>
+			<Plugins>
+				<Custom>
+					<Plugin Id="755335767" Name="Parametric EQ (Custom)" ObjectPath="\Containers\AMB\Amb\Main_Menu\LTDC_AMB_Enviro_Arson_Loop\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{E578E8BF-70C8-4768-802B-129263B37AE6}" LibName="Wwise Parametric EQ" LibId="6881283"/>
+				</Custom>
+			</Plugins>
 			<Events>
 				<Event Id="3874446497" Name="Amb_Arson" ObjectPath="\Events\AMB\Amb_Arson" GUID="{EF6E0E2A-BF52-4CCA-9A70-5BAA396134FD}" Color="4" MaxAttenuation="60" DurationType="Infinite">
 					<MediaRefs>
@@ -140,8 +153,31 @@
 						<MediaRef Id="1070142580"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="2552542987" Name="Amb_Menu" ObjectPath="\Events\AMB\Amb_Menu" GUID="{7932C793-6401-4619-A083-2D5FDB7947B7}" Color="4" DurationType="Infinite">
+					<MediaRefs>
+						<MediaRef Id="48146732"/>
+						<MediaRef Id="203600813"/>
+						<MediaRef Id="204772150"/>
+						<MediaRef Id="217321236"/>
+						<MediaRef Id="306573068"/>
+						<MediaRef Id="452551683"/>
+						<MediaRef Id="467894374"/>
+						<MediaRef Id="553541874"/>
+						<MediaRef Id="620277512"/>
+						<MediaRef Id="764011030"/>
+						<MediaRef Id="802378305"/>
+						<MediaRef Id="861553087"/>
+						<MediaRef Id="897804476"/>
+						<MediaRef Id="1015776938"/>
+					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="755335767"/>
+						</Custom>
+					</PluginRefs>
+				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{571788FD-CA0D-4AA5-1058-6E79335832A1}</FileHash>
+	<FileHash>{7386F50C-C37D-3F10-5E5F-609967F35469}</FileHash>
 </SoundBanksInfo>

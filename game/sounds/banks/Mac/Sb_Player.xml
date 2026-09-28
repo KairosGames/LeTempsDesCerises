@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{B771C370-FB40-DBCA-4437-25BB937767BB}">
+		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{3C9FD55F-4B28-1074-B404-69D89DE753E6}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Player</ObjectPath>
 			<ShortName>Sb_Player</ShortName>
 			<Path>Sb_Player.bnk</Path>
@@ -73,6 +73,10 @@
 				<File Id="146397456" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Female\VX_Player_Breath_Idle_In_F-003.wav</ShortName>
 					<CachePath>42/{4247473B-643E-4976-6C82-4EFF7FE95144}.wem</CachePath>
+				</File>
+				<File Id="147754998" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AMB\LTDC_SFX_Chassepot_Equip_Oneshot.wav</ShortName>
+					<CachePath>97/{977DC792-D3C8-325B-8E53-AF25DC939082}.wem</CachePath>
 				</File>
 				<File Id="162843046" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\LTDC_SFX_Player_DryShot_Oneshot_02.wav</ShortName>
@@ -646,6 +650,15 @@
 						<MediaRef Id="1026693139"/>
 					</MediaRefs>
 				</Event>
+				<Event Id="2816398425" Name="LTDC_SFX_Chassepot_Equip_Oneshot" ObjectPath="\Events\SFX\Player\LTDC_SFX_Chassepot_Equip_Oneshot" GUID="{FC3BB2F2-2866-475A-BD2B-B1B547DEF6EA}" Color="10" DurationType="OneShot" DurationMin="1.1201667" DurationMax="1.1201667">
+					<MediaRefs>
+						<MediaRef Id="147754998"/>
+					</MediaRefs>
+					<AuxBusRefs>
+						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
+						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
+					</AuxBusRefs>
+				</Event>
 				<Event Id="1192162266" Name="Npc_Shoot" ObjectPath="\Events\SFX\Npc_Shoot" GUID="{7650D5C3-0FE3-4EB0-8986-5DB3F54D48A3}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.71271896" DurationMax="2.0586045">
 					<MediaRefs>
 						<MediaRef Id="162843046"/>
@@ -1116,5 +1129,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{3507D429-A2C9-31AA-8A85-C9003800FE65}</FileHash>
+	<FileHash>{454D2460-BB27-34AD-D96E-0569573BA542}</FileHash>
 </SoundBanksInfo>

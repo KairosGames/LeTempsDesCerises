@@ -25,6 +25,7 @@ namespace AK
         static const AkUniqueID ALLY_VOICE_CANCEL = 243533429U;
         static const AkUniqueID AMB_ARSON = 3874446497U;
         static const AkUniqueID AMB_CANNONS = 3265814676U;
+        static const AkUniqueID AMB_MENU = 2552542987U;
         static const AkUniqueID BARRICADE_DAMAGED = 482738278U;
         static const AkUniqueID BRICK_FALL = 3840667520U;
         static const AkUniqueID BRICK_FALL_GROUP = 1055531900U;
@@ -53,6 +54,7 @@ namespace AK
         static const AkUniqueID PLAYER_CROUCH = 3055475155U;
         static const AkUniqueID PLAYER_DEATH = 3083087645U;
         static const AkUniqueID PLAYER_DRYFIRE = 1960899976U;
+        static const AkUniqueID PLAYER_EQUIP = 1909790487U;
         static const AkUniqueID PLAYER_PRONE = 1806823001U;
         static const AkUniqueID PLAYER_RELOAD = 1650679582U;
         static const AkUniqueID PLAYER_SHOOT = 4004702906U;
