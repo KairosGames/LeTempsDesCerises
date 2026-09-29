@@ -89,13 +89,15 @@ func pan():
 func register(target : Node3D, type : String):
 	if type == "ally":
 		allies.append(target)
+		target.tree_exiting.connect(remove.bind(target, false))
 	elif type == "enemy":
 		enemies.append(target)
+		target.tree_exiting.connect(remove.bind(target, false))
 
-func remove(target : Node3D):
-	if allies.has(target):
+func remove(target : Node3D, is_dead: bool = true):
+	if allies.has(target): # FIXME: duplicated verification: must not check is present
 		allies.erase(target)
-		if !allies.is_empty():
+		if is_dead and not allies.is_empty():
 			find_random(allies).post_event("Ally_Death", 1.5)
 	elif enemies.has(target):
 		enemies.erase(target)
@@ -122,6 +124,7 @@ func find_random(type : Array) -> Node3D :
 	var random : Array = type
 	random.shuffle()
 	for i in random:
+		if not is_instance_valid(i): printerr("OK1"); return
 		if !i.is_barking:
 			return i
 	return find_closest(type, player)
