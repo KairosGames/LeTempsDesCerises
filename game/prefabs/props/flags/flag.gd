@@ -15,3 +15,7 @@ func fade_to_final_state(time: float) -> void:
 	twn = create_tween()
 	print("ça passe ici")
 	twn.tween_property(shader_mat, "shader_parameter/factor", 1.0, time)
+
+
+func reset_for_new_game() -> void:
+	shader_mat.set_shader_parameter("factor", 0.0)

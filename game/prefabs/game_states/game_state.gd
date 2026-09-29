@@ -38,8 +38,7 @@ var rot_twn: Tween
 
 
 func _ready() -> void:
-	voice_line_index = -1
-	set_debug_applied = false
+	reset_static_values_for_new_game()
 	ready_deffered.call_deferred()
 
 
@@ -52,6 +51,11 @@ func ready_deffered() -> void:
 	battle_director = BattleDirector.instance
 	death_zone.monitoring = true
 	death_zone.player_entered.connect(kill_player)
+
+
+func reset_static_values_for_new_game() -> void:
+	voice_line_index = -1
+	set_debug_applied = false
 
 
 func set_local_player() -> void:

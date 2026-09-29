@@ -75,11 +75,21 @@ func ready_deferred() -> void:
 	if UIManager.instance: ui_manager = UIManager.instance
 	spawn_player_if_needed()
 	await WwiseGlobal.on_game_manager_ready(self)
+	reset_game_for_new_game()
 	set_run()
 
 
 func _process(_delta: float) -> void:
 	handle_pause_menu()
+
+
+func reset_game_for_new_game() -> void:
+	all_states[0].reset_static_values_for_new_game()
+	Wwise.set_state("MusicVoicePLaying","None") ############# MUSIC
+	Wwise.set_state("Music_State", "None") ############# MUSIC
+	var flags: Array = get_tree().get_nodes_in_group("Flags")
+	for flag: Flag in flags:
+		flag.reset_for_new_game()
 
 
 func spawn_player_if_needed() -> void:
