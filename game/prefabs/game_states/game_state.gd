@@ -439,9 +439,9 @@ func set_dynamic_da(from: float, to: float, time: float) -> void:
 	for i: int in range(steps):
 		await wait(t)
 		cursor += adder
-		RenderingServer.global_shader_parameter_set("dynamic_da", cursor)
+		KuwaharaCompositorEffect.set_dynamic_da(cursor)
 	if cursor != to: printerr("INCONSISTENCY ON SET DYNAMIC DA !")
-	RenderingServer.global_shader_parameter_set("dynamic_da", to)
+	KuwaharaCompositorEffect.set_dynamic_da(to)
 
 
 func delay_null_objective_target() -> void:
