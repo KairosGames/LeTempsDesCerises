@@ -119,7 +119,6 @@
 [ext_resource type="PackedScene" uid="uid://4g4gy7yer0qa" path="res://prefabs/props/flags/flag.tscn" id="101_em8fe"]
 [ext_resource type="PackedScene" uid="uid://dag8afibg1clb" path="res://prefabs/props/flags/flag_03.tscn" id="102_20odj"]
 [ext_resource type="PackedScene" uid="uid://bn5o014xcmfed" path="res://prefabs/vfx/far_smoke_effect.tscn" id="103_6ulrq"]
-[ext_resource type="Shader" uid="uid://cewi3vqfax6x1" path="res://materials/shaders/kuwahara_menu.gdshader" id="118_ec4al"]
 [ext_resource type="PackedScene" uid="uid://b3b4cifuiri8f" path="res://prefabs/player/usable_chassepot.tscn" id="120_exgre"]
 [ext_resource type="PackedScene" uid="uid://b4k47vwyhfhsq" path="res://prefabs/vfx/petals_rain.tscn" id="121_1vn3b"]
 [ext_resource type="WwiseEvent" uid="uid://uaaa6txgnrk3" path="res://Wwise/resources/Event/{7932C793-6401-4619-A083-2D5FDB7947B7}.tres" id="122_f7acr"]
@@ -1991,11 +1990,6 @@ material = SubResource("StandardMaterial3D_02do4")
 size = Vector2(0.492, 0.3684)
 subdivide_width = 20
 subdivide_depth = 1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gedxo"]
-shader = ExtResource("118_ec4al")
-shader_parameter/offset = Vector3(0, 0, 0)
-shader_parameter/dynamic_da = 0.0
 
 [node name="MenuScene" type="Node3D" unique_id=111111966]
 
@@ -4152,16 +4146,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.817184, 77.32944, -153.4
 
 [node name="FarSmokeEffect5" parent="GameDesignScene/FarSmokeEffects" unique_id=712663686 instance=ExtResource("103_6ulrq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 59.4055, 100)
-
-[node name="Kuwahara" type="ColorRect" parent="." unique_id=325385908]
-z_index = -10
-material = SubResource("ShaderMaterial_gedxo")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="MusicSysteme" parent="." unique_id=230278614 instance=ExtResource("6_1iahe")]
 
