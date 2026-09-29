@@ -33,6 +33,8 @@ namespace AK
         static const AkUniqueID CANNON_SHOOT = 2469499398U;
         static const AkUniqueID CHOOSE_FIGHT = 1218331013U;
         static const AkUniqueID CHOOSE_SURRENDER = 2467968637U;
+        static const AkUniqueID CLIC = 3602831952U;
+        static const AkUniqueID CLOSE = 1451272583U;
         static const AkUniqueID DEAFENING_RECOVER = 3687575925U;
         static const AkUniqueID DIALOGUE = 3930136735U;
         static const AkUniqueID END = 529726532U;
@@ -45,9 +47,11 @@ namespace AK
         static const AkUniqueID ENEMY_STEPS = 3114531655U;
         static const AkUniqueID ENEMY_VOICE_CANCEL = 2376509257U;
         static const AkUniqueID FIRST_SHOOT = 174670969U;
+        static const AkUniqueID HOVER = 3753593413U;
         static const AkUniqueID MU_STOP_ALL = 698810174U;
         static const AkUniqueID MUSIC = 3991942870U;
         static const AkUniqueID NPC_SHOOT = 1192162266U;
+        static const AkUniqueID OPEN = 3072142513U;
         static const AkUniqueID PAUSE = 3092587493U;
         static const AkUniqueID PLAYER_AIM = 1608601952U;
         static const AkUniqueID PLAYER_ALIVE = 2917189548U;
@@ -63,6 +67,8 @@ namespace AK
         static const AkUniqueID PLAYER_UP = 4024398754U;
         static const AkUniqueID RESET_RELOAD = 1795565902U;
         static const AkUniqueID RESUME = 953277036U;
+        static const AkUniqueID TOGGLE_OFF = 1567216595U;
+        static const AkUniqueID TOGGLE_ON = 647709343U;
     } // namespace EVENTS
 
     namespace STATES

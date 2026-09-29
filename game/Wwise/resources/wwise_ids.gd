@@ -4,10 +4,13 @@ class EVENTS:
 
 	const AMB_ARSON : int = 3874446497
 	const AMB_CANNONS : int = 3265814676
+	const AMB_MENU : int = 2552542987
+	const MU_STOP_ALL : int = 698810174
 	const MUSIC : int = 3991942870
 	const ALLY_SHOOT : int = 3252427803
 	const BARRICADE_DAMAGED : int = 482738278
 	const BRICK_FALL : int = 3840667520
+	const BRICK_FALL_GROUP : int = 1055531900
 	const CANNON_SHOOT : int = 2469499398
 	const ENEMY_BULLET_MISS : int = 3787232089
 	const ENEMY_SHOOT : int = 1050776119
@@ -18,13 +21,26 @@ class EVENTS:
 	const PLAYER_UP : int = 4024398754
 	const BULLET_HIT : int = 384143791
 	const DEAFENING_RECOVER : int = 3687575925
+	const PLAYER_AIM : int = 1608601952
 	const PLAYER_ALIVE : int = 2917189548
 	const PLAYER_DEATH : int = 3083087645
 	const PLAYER_DRYFIRE : int = 1960899976
+	const PLAYER_EQUIP : int = 1909790487
 	const PLAYER_RELOAD : int = 1650679582
 	const PLAYER_SHOOT : int = 4004702906
 	const PLAYER_STEPS : int = 4272057794
 	const RESET_RELOAD : int = 1795565902
+	const END : int = 529726532
+	const FIRST_SHOOT : int = 174670969
+	const NPC_SHOOT : int = 1192162266
+	const PAUSE : int = 3092587493
+	const RESUME : int = 953277036
+	const CLIC : int = 3602831952
+	const CLOSE : int = 1451272583
+	const HOVER : int = 3753593413
+	const OPEN : int = 3072142513
+	const TOGGLE_OFF : int = 1567216595
+	const TOGGLE_ON : int = 647709343
 	const ALLY_ALLY_DEATH : int = 1707855831
 	const ALLY_BARRICADE_STATE : int = 3014529809
 	const ALLY_CANNON_ADVANCE : int = 535045682
@@ -34,6 +50,8 @@ class EVENTS:
 	const ALLY_PLAYER_HIDDEN : int = 1135788384
 	const ALLY_PLAYER_KILL : int = 2988219764
 	const ALLY_VOICE_CANCEL : int = 243533429
+	const CHOOSE_FIGHT : int = 1218331013
+	const CHOOSE_SURRENDER : int = 2467968637
 	const ENEMY_BARRICADE_STATE : int = 3457462997
 	const ENEMY_CANNON_ADVANCE : int = 1807735670
 	const ENEMY_CANNON_FIRE : int = 378772636
@@ -98,12 +116,25 @@ class STATES:
 			const _29 : int = 1661144527
 			const _3 : int = 846646259
 			const _30 : int = 1677922233
+			const _31 : int = 1677922232
+			const _32 : int = 1677922235
+			const _33 : int = 1677922234
+			const _34 : int = 1677922237
+			const _35 : int = 1677922236
 			const _4 : int = 846646260
 			const _5 : int = 846646261
 			const _6 : int = 846646262
 			const _7 : int = 846646263
 			const _8 : int = 846646264
 			const _9 : int = 846646265
+
+	class PAUSE:
+		const GROUP : int = 3092587493
+	
+		class STATE:
+			const NONE : int = 748895195
+			const FALSE : int = 2452206122
+			const TRUE : int = 3053630529
 
 	class PLAYER_AIM:
 		const GROUP : int = 1608601952
@@ -139,14 +170,59 @@ class STATES:
 			const SPRINT : int = 1296465089
 			const STAND : int = 1214700371
 
+	class BARRICADEDESTROYED:
+		const GROUP : int = 325374427
+	
+		class STATE:
+			const INTACT : int = 3094168564
+			const NONE : int = 748895195
+			const PUDBARRICADE : int = 1446863089
+
+	class DIEGETICAMOUNT:
+		const GROUP : int = 2580242767
+	
+		class STATE:
+			const DIEGETIC : int = 1316532907
+			const EXTRADIEGETIC : int = 2795865631
+			const NONE : int = 748895195
+
+	class ENDCHOICE:
+		const GROUP : int = 3063237949
+	
+		class STATE:
+			const ASKCHOICE : int = 388904761
+			const DIALOGUE : int = 3930136735
+			const FRANCOIS : int = 3484216754
+			const LOUISE : int = 2926082704
+			const NONE : int = 748895195
+
+	class MUSICVOICEPLAYING:
+		const GROUP : int = 2714575814
+	
+		class STATE:
+			const NONE : int = 748895195
+			const P1_1_OB : int = 2230943412
+			const P1_2_OB_END : int = 684047543
+			const P1_3_PLAYERDEATH : int = 1343838104
+			const P2_1_CANON : int = 4215993583
+			const P2_2_CANNONSHOOT : int = 2703756389
+			const P3_1_RETREAT : int = 2260023866
+			const P3_2_ALLIES : int = 1095445258
+			const P3_3_DISCUSSION : int = 1519708847
+			const P4_1_FIGHT : int = 2179381074
+			const P4_2_END : int = 2334832916
+
 	class MUSIC_STATE:
 		const GROUP : int = 3826569560
 	
 		class STATE:
 			const NONE : int = 748895195
 			const PHASE1 : int = 3630028971
+			const PHASE1_1 : int = 3356867611
 			const PHASE2 : int = 3630028968
 			const PHASE3 : int = 3630028969
+			const PHASE4 : int = 3630028974
+			const PHASE5 : int = 3630028975
 
 
 class SWITCHES:
@@ -165,7 +241,11 @@ class SWITCHES:
 			const FRANCOIS : int = 3484216754
 			const GEORGES : int = 2519917785
 			const JULES : int = 652153290
+			const LOUISE : int = 2926082704
+			const MARIE : int = 1274621345
+			const MICHEL : int = 918100373
 			const NULL : int = 784127654
+			const OFFICIER : int = 3942830996
 
 	class CHARACTER_TYPE:
 		const GROUP : int = 1117085073
@@ -228,6 +308,8 @@ class SWITCHES:
 	
 		class SWITCH:
 			const ACCORDEON : int = 840291561
+			const CLARINETTE : int = 411987026
+			const CONCERTINA : int = 2440095465
 			const G1 : int = 1786192857
 			const G2 : int = 1786192858
 			const G3 : int = 1786192859
@@ -240,6 +322,7 @@ class SWITCHES:
 			const SOLO_YDRIS : int = 3476834350
 			const TAMBOUR : int = 3360712845
 			const VIELE : int = 3603862282
+			const VXLEAD : int = 2994619065
 
 
 class GAME_PARAMETERS:
@@ -254,7 +337,14 @@ class GAME_PARAMETERS:
 	const PLAYER_VELOCITY : int = 1833811084
 	const POETIC_LEVEL : int = 3680281974
 	const SIDECHAIN : int = 1883033791
+	const SIDECHAIN_DIALOGUE : int = 2647762268
+	const AMB : int = 1117531639
+	const MSC : int = 746452412
+	const MASTER : int = 4056684167
+	const SFX : int = 393239870
+	const VX : int = 1534528563
 	const CHOIR_VOLUME : int = 2909751391
+	const DIEGETICAMOUNT : int = 2580242767
 	const ISPLAYING : int = 728654205
 
 class TRIGGERS:
@@ -267,19 +357,25 @@ class BANKS:
 	const JULES : int = 652153290
 	const LOUISE : int = 2926082704
 	const MARIE : int = 1274621345
+	const MICHEL : int = 918100373
+	const OFFICIER : int = 3942830996
 	const SB_AMB : int = 925885567
 	const SB_CANNON : int = 2061449278
+	const SB_MENU : int = 135602584
 	const SB_NPC : int = 1278759826
 	const SB_PLAYER : int = 2103316850
 	const SB_MUSIC : int = 779753582
 
 class AUX_BUSSES:
 
-	const WWISE_MOTION_SEND : int = 214837138
 	const SFX_GUNSHOT_SEND : int = 3189108374
-	const REFLECT : int = 243379636
+	const LFE_SEND : int = 3766993829
 	const STREET_REVERB : int = 2635253023
-	const MUSIC_REV : int = 2415077256
+	const WWISE_MOTION_SEND : int = 214837138
+	const MUSIC_DISTANT_REV : int = 1250284926
+	const MUSIC_END_REV : int = 4084836994
+	const MUSIC_REV_BARRICADE : int = 2726320112
+	const MUSIC_MIX_REV : int = 3099563223
 
 class ACOUSTIC_TEXTURES:
 

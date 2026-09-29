@@ -41,6 +41,9 @@ func _on_options_pressed() -> void:
 	option.show()
 	references.hide()
 	credit.hide()
+	
+	Wwise.post_event("Open", self)
+	Wwise.post_event("Clic", self)
 
 
 func _process(delta: float) -> void:
@@ -82,6 +85,9 @@ func _on_referecences_pressed() -> void:
 	option.hide()
 	credit.hide()
 	references_scroll.grab_focus()
+	
+	Wwise.post_event("Open", self)
+	Wwise.post_event("Clic", self)
 
 
 func _on_credits_pressed() -> void:
@@ -90,6 +96,9 @@ func _on_credits_pressed() -> void:
 	option.hide()
 	references.hide()
 	credit_scroll.grab_focus()
+	
+	Wwise.post_event("Open", self)
+	Wwise.post_event("Clic", self)
 
 
 func _on_quit_pressed() -> void:
@@ -117,6 +126,9 @@ func _close_panel(focus_target: Control) -> void:
 	option.hide()
 	menu.show()
 	focus_target.grab_focus()
+	
+	Wwise.post_event("Close", self)
+	Wwise.post_event("Clic", self)
 
 
 func _reload_option_sub_manager(tab_path: NodePath, method_name: String) -> void:
