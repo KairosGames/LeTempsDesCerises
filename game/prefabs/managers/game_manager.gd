@@ -84,6 +84,7 @@ func _process(_delta: float) -> void:
 
 
 func reset_game_for_new_game() -> void:
+	KuwaharaCompositorEffect.set_dynamic_da(0.5)
 	all_states[0].reset_static_values_for_new_game()
 	Wwise.set_state("MusicVoicePLaying","None") ############# MUSIC
 	Wwise.set_state("Music_State", "None") ############# MUSIC

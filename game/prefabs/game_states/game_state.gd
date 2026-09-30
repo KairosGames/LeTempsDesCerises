@@ -431,7 +431,8 @@ func set_visible_all_agents(is_visible: bool) -> void:
 	for agent: Agent in agents: agent.visible = is_visible
 
 
-func set_dynamic_da(from: float, to: float, time: float) -> void:
+func set_dynamic_da(to: float, time: float) -> void:
+	var from: float = KuwaharaCompositorEffect._get_dynamic_da()
 	create_tween().tween_method(KuwaharaCompositorEffect.set_dynamic_da, from, to, time)
 
 
