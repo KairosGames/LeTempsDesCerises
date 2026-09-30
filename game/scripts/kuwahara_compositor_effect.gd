@@ -6,7 +6,7 @@ const BUFFER_CONTEXT: StringName = &"kuwahara"
 const INTERMEDIATE_TEXTURE: StringName = &"intermediate"
 const WORKGROUP_SIZE: int = 8
 
-static var _dynamic_da: float = 0.0
+static var _dynamic_da: float = 0.5
 static var _dynamic_da_mutex: Mutex = Mutex.new()
 
 @export_range(0.0, 1000.0, 0.1, "or_greater", "suffix:m") var distance_fade_start: float = 25.0
