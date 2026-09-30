@@ -432,16 +432,7 @@ func set_visible_all_agents(is_visible: bool) -> void:
 
 
 func set_dynamic_da(from: float, to: float, time: float) -> void:
-	var adder: float = 0.2 if to - from > 0 else -0.2
-	var steps: int = abs(to - from) / 0.2
-	var t: float = time / steps
-	var cursor: float = from
-	for i: int in range(steps):
-		await wait(t)
-		cursor += adder
-		KuwaharaCompositorEffect.set_dynamic_da(cursor)
-	if cursor != to: printerr("INCONSISTENCY ON SET DYNAMIC DA !")
-	KuwaharaCompositorEffect.set_dynamic_da(to)
+	create_tween().tween_method(KuwaharaCompositorEffect.set_dynamic_da, from, to, time)
 
 
 func delay_null_objective_target() -> void:
