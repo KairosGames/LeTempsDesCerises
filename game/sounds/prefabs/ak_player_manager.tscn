@@ -23,7 +23,13 @@ radius = 0.1
 default_font = ExtResource("15_cerox")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cerox"]
+content_margin_left = 16.0
+content_margin_right = 16.0
 bg_color = Color(0, 0, 0, 0.49019608)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_cerox"]
 font_size = 36
@@ -32,7 +38,7 @@ outline_color = Color(0.056291588, 0.056291603, 0.056291595, 1)
 
 [node name="ak_player_manager" type="Node3D" unique_id=1168469569 node_paths=PackedStringArray("subtitles", "shoot", "steps", "reload", "death", "alive", "up", "crouch", "prone", "sprint", "line")]
 script = ExtResource("1_g1o18")
-subtitles = NodePath("CanvasLayer/VBoxContainer")
+subtitles = NodePath("CanvasLayer/Subtitles")
 shoot = NodePath("Shoot")
 steps = NodePath("Steps")
 reload = NodePath("Reload")
@@ -43,7 +49,7 @@ crouch = NodePath("Crouch")
 prone = NodePath("Prone")
 sprint = NodePath("Sprint")
 bullet_prefab = ExtResource("2_g1o18")
-line = NodePath("CanvasLayer/VBoxContainer/Label")
+line = NodePath("CanvasLayer/Subtitles/Label")
 
 [node name="AkListener3D" type="AkListener3D" parent="." unique_id=1427046769]
 
@@ -163,7 +169,7 @@ trigger_on = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1102447426]
 follow_viewport_enabled = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=103734438]
+[node name="Subtitles" type="VBoxContainer" parent="CanvasLayer" unique_id=103734438]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -176,7 +182,7 @@ offset_bottom = -83.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1443971855]
+[node name="Label" type="Label" parent="CanvasLayer/Subtitles" unique_id=1443971855]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
