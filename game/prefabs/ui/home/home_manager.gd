@@ -9,7 +9,7 @@ const MAIN_SCENE_PATH: String = "uid://bqw181keq72d"
 @onready var black_screen: ColorRect = %BlackScreen
 @onready var menu: PanelContainer = $Menu
 
-@onready var play: ButtonBehavior = menu.get_node(^"Buttons/Play")
+@onready var play_button: ButtonBehavior = menu.get_node(^"Buttons/Play")
 @onready var options_button: ButtonBehavior = menu.get_node(^"Buttons/Options")
 @onready var references_button: ButtonBehavior = menu.get_node(^"Buttons/Referecences")
 @onready var credits_button: ButtonBehavior = menu.get_node(^"Buttons/Credits")
@@ -62,10 +62,9 @@ func fade_black_sceen(time: float, fade_out: bool) -> void:
 	await black_screen_twn.tween_property(black_screen, "color:a", targ, time).finished
 
 func _on_play_pressed() -> void:
-	if _main_scene:
-		close_home()
-		play.disabled = true
-		get_tree().change_scene_to_packed(_main_scene)
+	play_button.disabled = true
+	while not _main_scene: await get_tree().process_frame
+	get_tree().change_scene_to_packed(_main_scene)
 
 
 func _on_options_pressed() -> void: _go_to(option)
@@ -89,8 +88,6 @@ func _go_to(section: Control) -> void:
 
 
 func _load_game() -> void:
-	play.disabled = true
-
 	ResourceLoader.load_threaded_request(MAIN_SCENE_PATH, "PackedScene")
 
 	var load_status: ResourceLoader.ThreadLoadStatus = ResourceLoader.load_threaded_get_status(MAIN_SCENE_PATH)
@@ -107,7 +104,6 @@ func _load_game() -> void:
 			push_error("Failed to load the main scene: still in progress")
 		ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
 			_main_scene = ResourceLoader.load_threaded_get(MAIN_SCENE_PATH)
-			play.disabled = false
 
 
 func _get_visible_scroll_container() -> ScrollContainer:
