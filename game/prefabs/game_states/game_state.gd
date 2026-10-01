@@ -180,23 +180,23 @@ func set_player_move(dir: Vector2) -> void:
 	player.p_inputs.move_vec = dir.normalized()
 
 
-func rotate_yaw_player_to_pos(pos: Vector3, speed: float, is_physic: bool = false) -> void:
+func rotate_yaw_player_to_pos(pos: Vector3, speed: float, is_physic_delta_t: bool = false) -> void:
 	var dir: Vector3 = player.global_position - pos
 	var target_angle: float = atan2(-dir.x, -dir.z)
 	var arg1: float = deg_to_rad(player.aim_target.y)
-	player.aim_target.y = rad_to_deg(rotate_toward(arg1, target_angle, speed * (delta_ph if is_physic else delta_t)))
+	player.aim_target.y = rad_to_deg(rotate_toward(arg1, target_angle, speed * (delta_ph if is_physic_delta_t else delta_t)))
 
 
-func yaw_player_look_dest(destination: Node3D, speed: float, delta: float) -> void:
+func yaw_player_look_dest(destination: Node3D, speed: float, is_physic_delta_t: bool = false) -> void:
 	var dir: Vector3 = player.global_position - destination.global_position
 	var target_angle: float = atan2(-dir.x, -dir.z)
 	var arg1: float = deg_to_rad(player.aim_target.y)
-	player.aim_target.y = rad_to_deg(rotate_toward(arg1, target_angle, speed * delta))
+	player.aim_target.y = rad_to_deg(rotate_toward(arg1, target_angle, speed * (delta_ph if is_physic_delta_t else delta_t)))
 
 
-func rotate_player_to_yaw(yaw: float, speed: float, delta: float) -> void:
+func rotate_player_to_yaw(yaw: float, speed: float, is_physic_delta_t: bool = false) -> void:
 	var arg1: float = deg_to_rad(player.aim_target.y)
-	player.aim_target.y = rad_to_deg(rotate_toward(arg1, yaw, speed * delta))
+	player.aim_target.y = rad_to_deg(rotate_toward(arg1, yaw, speed * (delta_ph if is_physic_delta_t else delta_t)))
 
 
 func tween_rotate_player_to_pos(pos: Vector3, time: float) -> void:

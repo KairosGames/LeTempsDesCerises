@@ -103,7 +103,7 @@ func go_for_georges() -> void:
 
 func take_weapon() -> void:
 	take_player_view_control(true)
-	add_on_process(rotate_player_to_yaw.bind(georges_rdv.rotation.y, PI/1.5, delta_t))
+	add_on_process(rotate_player_to_yaw.bind(georges_rdv.rotation.y, PI/1.5))
 	await wait(0.5)
 	Wwise.set_state("MusicVoicePLaying","P1_1_OB") ############# MUSIC
 	Wwise.set_state("Music_State", "Phase1") ############# MUSIC
