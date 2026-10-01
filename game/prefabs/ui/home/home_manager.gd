@@ -6,6 +6,7 @@ const MAIN_SCENE_PATH: String = "uid://bqw181keq72d"
 @onready var references: PanelContainer = %References
 @onready var credit: PanelContainer = %Credit
 @onready var option: Control = %Option
+@onready var black_screen: ColorRect = %BlackScreen
 @onready var menu: PanelContainer = $Menu
 
 @onready var play: ButtonBehavior = $Menu/Buttons/Play
@@ -18,6 +19,8 @@ const MAIN_SCENE_PATH: String = "uid://bqw181keq72d"
 @onready var credit_quit_button: Button = credit.get_node(^"Quit")
 
 var is_main_scene_loaded: bool = false
+var black_screen_twn: Tween
+
 
 func _ready() -> void:
 	play.disabled = true
@@ -25,13 +28,13 @@ func _ready() -> void:
 	options_button.grab_focus()
 	references_quit_button.pressed.connect(_close_panel.bind(references_button))
 	credit_quit_button.pressed.connect(_close_panel.bind(credits_button))
+	open_home()
 
 
 func _on_play_pressed() -> void:
 	if not is_main_scene_loaded: return
 	play.disabled = true
-	var main_scene: PackedScene = ResourceLoader.load_threaded_get(MAIN_SCENE_PATH) as PackedScene
-	get_tree().change_scene_to_packed(main_scene)
+	close_home()
 
 
 func _on_options_pressed() -> void:
@@ -41,7 +44,6 @@ func _on_options_pressed() -> void:
 	option.show()
 	references.hide()
 	credit.hide()
-	
 	Wwise.post_event("Open", self)
 	Wwise.post_event("Clic", self)
 
@@ -62,6 +64,26 @@ func _process(delta: float) -> void:
 		scroll_bar.min_value,
 		scroll_bar.max_value
 	)
+
+
+func open_home() -> void:
+	fade_black_sceen(2.0, true)
+
+
+func close_home() -> void:
+	black_screen.mouse_filter = Control.MOUSE_FILTER_STOP
+	await fade_black_sceen(0.38, false)
+	await get_tree().create_timer(1.5).timeout
+	play.disabled = true
+	var main_scene: PackedScene = ResourceLoader.load_threaded_get(MAIN_SCENE_PATH) as PackedScene
+	get_tree().change_scene_to_packed(main_scene)
+
+
+func fade_black_sceen(time: float, fade_out: bool) -> void:
+	var targ: float = 0.0 if fade_out else 1.0
+	if black_screen_twn: black_screen_twn.kill()
+	black_screen_twn = create_tween()
+	await black_screen_twn.tween_property(black_screen, "color:a", targ, time).finished
 
 
 func _update_main_scene_load_state() -> void:
