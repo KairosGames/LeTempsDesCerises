@@ -19,6 +19,7 @@ signal ending_music_choice_scene #Debug Music
 @onready var execution_point: CustomMarker = %ExecutionPoint
 @onready var francois_death: CustomMarker = $FrancoisDeath
 @onready var georges: Npc = %Georges
+@onready var second_barricade_npc: Npc = %SecondBarricadeNPC
 
 var is_surrending: bool = false
 var is_time_to_die: bool = false
@@ -63,6 +64,8 @@ func set_game_for_debug() -> void:
 	set_debug_applied = true
 	set_dynamic_da(1.0, 0.0)################### KUWAHARA
 	game_manager.lighting_animator.advance(999.0)
+	second_barricade_npc.queue_free()
+	second_barricade_npc = null
 
 
 func set_short_timers() -> void:

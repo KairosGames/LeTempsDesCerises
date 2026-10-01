@@ -13,6 +13,7 @@ signal player_passed_behind_second_barricade
 @onready var discussion_area: EventArea = %DiscussionArea
 @onready var barricade_point: CustomMarker = %BarricadePoint
 @onready var secure_respawn: CustomMarker = %SecureRespawn
+@onready var second_barricade_npc: Npc = %SecondBarricadeNPC
 
 var first_battle_phase_time: float = 60.0
 
@@ -49,6 +50,8 @@ func set_game_for_debug() -> void:
 		for i: int in range(0,3): game_manager.handle_cannon_shoot()
 	set_debug_applied = true
 	set_dynamic_da(0.9, 0.0)################### KUWAHARA
+	second_barricade_npc.queue_free()
+	second_barricade_npc = null
 
 
 
