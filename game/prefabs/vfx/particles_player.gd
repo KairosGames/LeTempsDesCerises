@@ -44,3 +44,4 @@ func play_animation() -> void:
 
 func free_animation():
 	is_free = true
+	global_position = Vector3(0.0, -100.0, 0.0)

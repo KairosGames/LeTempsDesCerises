@@ -33,7 +33,7 @@ func _ready() -> void:
 		effects_list_dic[effect_type] = []
 		for i in range(0, instances_per_pool):
 			var new_vfx: ParticlesPlayer = EFFECT_PREFABS[effect_type].instantiate()
-			new_vfx.position = Vector3(0.0, -10.0, 0.0)
+			new_vfx.position = Vector3(0.0, -100.0, 0.0)
 			add_child(new_vfx, true)
 			effects_list_dic[effect_type].push_back(new_vfx)
 		effects_list_dic[effect_type][0].play_effect()

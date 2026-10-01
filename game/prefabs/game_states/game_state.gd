@@ -180,11 +180,11 @@ func set_player_move(dir: Vector2) -> void:
 	player.p_inputs.move_vec = dir.normalized()
 
 
-func rotate_yaw_player_to_pos(pos: Vector3, speed: float, delta: float) -> void:
+func rotate_yaw_player_to_pos(pos: Vector3, speed: float, is_physic: bool = false) -> void:
 	var dir: Vector3 = player.global_position - pos
 	var target_angle: float = atan2(-dir.x, -dir.z)
 	var arg1: float = deg_to_rad(player.aim_target.y)
-	player.aim_target.y = rad_to_deg(rotate_toward(arg1, target_angle, speed * delta))
+	player.aim_target.y = rad_to_deg(rotate_toward(arg1, target_angle, speed * (delta_ph if is_physic else delta_t)))
 
 
 func yaw_player_look_dest(destination: Node3D, speed: float, delta: float) -> void:
@@ -341,7 +341,7 @@ func go_to_nav_destination(run: bool = true) -> void:
 		is_nav_finished = true
 		return
 	var next_pos: Vector3 = player.nav.get_next_path_position()
-	rotate_yaw_player_to_pos(next_pos, PI * 2, delta_ph)
+	rotate_yaw_player_to_pos(next_pos, PI * 2, true)
 	var dir: Vector3 = player.global_position - next_pos
 	var target_angle: float = atan2(-dir.x, -dir.z)
 	if abs(wrapf(player.global_rotation.y - target_angle, -PI, PI)) < PI * 0.1:
