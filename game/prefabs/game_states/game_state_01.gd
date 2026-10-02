@@ -251,7 +251,7 @@ func launch_first_cannon_shoot() -> void:
 func lauch_second_battle_phase() -> void:
 	ui_manager.set_objective(true, null, "Defend the barricade alongside your comrades")
 	player.can_die = true
-	battle_director.go_next_covers_activation() ############################################## Premier tir canon
+	battle_director.go_next_covers_activation() ############################################## Après premier tir canon
 
 
 func wait_francois_move() -> void:

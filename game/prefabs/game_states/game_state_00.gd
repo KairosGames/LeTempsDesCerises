@@ -91,14 +91,22 @@ func go_for_georges() -> void:
 	take_player_view_control(true)
 	set_player_move(Vector2(0.0, 0.5))
 	add_on_process(rotate_yaw_player_to_pos.bind(georges_rdv.global_position, PI/10.0))
+	add_on_debug_process(increment_debug_timer)
 	await wait(3.0)
 	clean_process()
-	await wait_until(func(): return player.global_position.distance_squared_to(georges_rdv.global_position) <= 0.1)
+	await wait_until(is_on_georges_rdv_pos)
+	clean_debug_process()
 	take_player_move_control(false)
 	add_on_process(rotate_yaw_player_to_pos.bind(georges.global_position, PI))
 	await wait(0.25)
 	clean_process()
 	take_player_view_control(false)
+
+
+func is_on_georges_rdv_pos() -> bool:
+	var cond: bool = player.global_position.distance_squared_to(georges_rdv.global_position) <= 0.1 or debug_timer >= 10.0
+	if debug_timer >= 10.0: player.global_position = Vector3(georges_rdv.global_position.x, player.global_position.y, georges_rdv.global_position.z)
+	return cond
 
 
 func take_weapon() -> void:

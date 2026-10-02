@@ -30,6 +30,7 @@ var on_ui_process: Array[Callable]
 var on_debug_process: Array[Callable]
 var delta_t: float
 var delta_ph: float
+var debug_timer: float
 var local_bool: bool
 var was_gpad: bool
 var is_nav_finished: bool = false
@@ -125,6 +126,7 @@ func clean_ui_process() -> void:
 
 func clean_debug_process() -> void:
 	on_debug_process.clear()
+	debug_timer = 0.0
 
 
 func wait(seconds: float) -> void:
@@ -147,6 +149,10 @@ func wait_until_or_signal(condition: Callable, signal_to_wait: Signal) -> void:
 		local_bool = condition.call() and game_manager.is_game_playing()
 		await wait_frame
 	signal_to_wait.disconnect(set_local_bool)
+
+
+func increment_debug_timer() -> void:
+	debug_timer += delta_t
 
 
 func set_local_bool() -> void:
@@ -275,17 +281,18 @@ func run_to_destination(destination: Node3D) -> void:
 	await place_player_in_navmesh_secure_zone()
 	player.is_in_cinematic = true
 	player.high_collider.disabled = true
-	add_on_debug_process(use_nav_debug) ## FOR DBUG
+	add_on_debug_process(use_nav_debug) ## FOR DEBUG
+	add_on_debug_process(increment_debug_timer) ## FOR DEBUG
 	player.nav.target_position = destination.global_position
 	add_on_physics_process(go_to_nav_destination)
 	await wait_until(is_player_on_nav_destination)
+	clean_debug_process() ## FOR DBUG
 	var input_dir: Vector2 = get_input_dir_to_pos(destination.global_position)
 	set_player_move(input_dir)
 	await wait_until(is_player_on_position.bind(destination))
 	set_player_move(Vector2.ZERO)
 	player.is_in_cinematic = false
 	player.high_collider.disabled = false
-	clean_debug_process() ## FOR DBUG
 
 
 func place_player_in_navmesh_secure_zone() -> void:
@@ -334,11 +341,12 @@ func go_to_nav_destination(run: bool = true) -> void:
 		set_player_move(Vector2(0.0, 0.0))
 		player.is_running = false
 		return
-	if player.nav.is_navigation_finished():
+	if player.nav.is_navigation_finished() or debug_timer >= 10.0:
 		set_player_move(Vector2(0.0, 0.0))
 		player.is_running = false
 		clean_physics_process()
 		is_nav_finished = true
+		if debug_timer >= 10.0: player.global_position = Vector3(player.nav.target_position.x, player.global_position.y, player.nav.target_position.z)
 		return
 	var next_pos: Vector3 = player.nav.get_next_path_position()
 	rotate_yaw_player_to_pos(next_pos, PI * 2, true)
