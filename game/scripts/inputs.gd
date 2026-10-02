@@ -1,4 +1,4 @@
-class_name Inputs extends Node
+extends Node
 
 const KEYBOARD_A: Texture2D = preload("uid://b7hqrp7h3vvkw")
 const KEYBOARD_B: Texture2D = preload("uid://bdn4cyx3x4uu")
@@ -67,7 +67,24 @@ const GAMEPAD_RIGHT_STICK_DOWN: Texture2D = preload("uid://cigg6sg0qe0fs")
 const GAMEPAD_RIGHT_STICK_LEFT: Texture2D = preload("uid://bxmeuu0wig0nr")
 const GAMEPAD_RIGHT_STICK_RIGHT: Texture2D = preload("uid://c5wo84r78wied")
 
-static func get_icon(event: InputEvent) -> Texture2D:
+enum Platform { None = 0, Desktop = 1, Console = 2, All = 3 }
+
+signal platform_changed(platform : Platform)
+var current_platform: Platform = Platform.Desktop:
+	set(value):
+		if current_platform != value:
+			current_platform = value
+			platform_changed.emit(current_platform)
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouse or event is InputEventKey:
+		current_platform = Platform.Desktop
+	elif event is InputEventJoypadButton \
+	or (event is InputEventJoypadMotion and abs((event as InputEventJoypadMotion).axis_value) > 0.5):
+		current_platform = Platform.Console
+
+func get_icon(event: InputEvent) -> Texture2D:
 	if event is InputEventJoypadButton:
 		return _get_gamepad_button_icon((event as InputEventJoypadButton).button_index)
 	if event is InputEventJoypadMotion:
@@ -77,7 +94,7 @@ static func get_icon(event: InputEvent) -> Texture2D:
 		return _get_keyboard_icon(_get_display_key(event as InputEventKey))
 	return null
 
-static func _get_display_key(event: InputEventKey) -> Key:
+func _get_display_key(event: InputEventKey) -> Key:
 	if event.key_label != KEY_NONE: return event.key_label
 	if event.keycode != KEY_NONE: return event.keycode
 	if event.physical_keycode != KEY_NONE:
@@ -86,7 +103,7 @@ static func _get_display_key(event: InputEventKey) -> Key:
 		return DisplayServer.keyboard_get_keycode_from_physical(event.physical_keycode)
 	return KEY_NONE
 
-static func _get_keyboard_icon(key: Key) -> Texture2D:
+func _get_keyboard_icon(key: Key) -> Texture2D:
 	match key:
 		KEY_A: return KEYBOARD_A
 		KEY_B: return KEYBOARD_B
@@ -125,7 +142,7 @@ static func _get_keyboard_icon(key: Key) -> Texture2D:
 		KEY_F9: return KEYBOARD_F9
 	return null
 
-static func _get_gamepad_button_icon(button_index: JoyButton) -> Texture2D:
+func _get_gamepad_button_icon(button_index: JoyButton) -> Texture2D:
 	match button_index:
 		JOY_BUTTON_A: return GAMEPAD_A
 		JOY_BUTTON_B: return GAMEPAD_B
@@ -150,7 +167,7 @@ static func _get_gamepad_button_icon(button_index: JoyButton) -> Texture2D:
 		JOY_BUTTON_TOUCHPAD: return GAMEPAD_MISC
 	return null
 
-static func _get_gamepad_motion_icon(axis: JoyAxis, axis_value: float) -> Texture2D:
+func _get_gamepad_motion_icon(axis: JoyAxis, axis_value: float) -> Texture2D:
 	match axis:
 		JOY_AXIS_LEFT_X:
 			return GAMEPAD_LEFT_STICK_RIGHT if axis_value > 0.0 else GAMEPAD_LEFT_STICK_LEFT

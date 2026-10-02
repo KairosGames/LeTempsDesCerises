@@ -50,7 +50,7 @@ func close_home() -> void:
 	black_screen.mouse_filter = Control.MOUSE_FILTER_STOP
 	await fade_black_sceen(0.38, false)
 	await get_tree().create_timer(1.5).timeout
-	play.disabled = true
+	play_button.disabled = true
 	var main_scene: PackedScene = ResourceLoader.load_threaded_get(MAIN_SCENE_PATH) as PackedScene
 	get_tree().change_scene_to_packed(main_scene)
 
