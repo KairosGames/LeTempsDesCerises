@@ -145,6 +145,7 @@ func launch_francois_replique_on_women_arrival() -> void:
 
 
 func launch_dialogue_preparation() -> void:
+	Wwise.set_state("MusicVoicePlaying", "P3_3_Discussion") ################ MUSIC
 	francois.is_fighting = false
 	for woman: Npc in woman_points.women: woman.is_fighting = false
 	await wait_voice() #"On les a rétamés !"
@@ -166,7 +167,7 @@ func launch_women_dialogue() -> void:
 		woman.rotate_yaw_to_pos_tween(discussion_point.global_position, t)
 	ui_manager.objective_target.target = null
 	discussion_area.set_deferred("monitoring", false)
-	Wwise.set_state("MusicVoicePlaying", "P3_3_Discussion") ################ MUSIC
+	##Wwise.set_state("MusicVoicePlaying", "P3_3_Discussion") ################ MUSIC
 	ui_manager.objective_target.target = null
 	delay_null_objective_target()
 	await wait_voice() # "Vous arrivez d'où comme ça ?"
@@ -202,7 +203,7 @@ func launch_last_battle_phase() -> void:
 	await wait_until(is_barricade_damaged)
 	set_dynamic_da(0.8, 0.0)################### KUWAHARA
 
-	############ FOR DEBUG#########################
+	############ FOR DEBUG #########################
 	add_on_process(add_worker_on_cannon)
 
 	battle_director.go_next_covers_activation() ################################### Barricade 2 endommagée
@@ -212,7 +213,7 @@ func launch_last_battle_phase() -> void:
 	await wait_signal(game_manager.second_barricade.just_destroyed)
 	set_dynamic_da(1.0, 0.0)################### KUWAHARA
 	
-	############ FOR DEBUG#########################
+	############ FOR DEBUG #########################
 	clean_process()
 
 	game_manager.cannon.enabled = false
