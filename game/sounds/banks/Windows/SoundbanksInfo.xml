@@ -9,7 +9,7 @@
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="135602584" Type="User" GUID="{C848A44F-4C9D-44A4-8FFE-F4CBA703BC3F}" Language="SFX" Hash="{F6F2E39B-0F30-59B6-921E-913A71024961}">
+		<SoundBank Id="135602584" Type="User" GUID="{C848A44F-4C9D-44A4-8FFE-F4CBA703BC3F}" Language="SFX" Hash="{0E81D0B2-12FD-2845-149C-C5C1BFF3AABD}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Menu</ObjectPath>
 			<ShortName>Sb_Menu</ShortName>
 			<Path>Sb_Menu.bnk</Path>
@@ -187,7 +187,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="652153290" Type="User" GUID="{64522E9F-E4F4-45D9-B335-28CF9E07510E}" Language="French(France)" Hash="{40149CD5-FC3D-D6AA-7CB1-A27674D08630}">
+		<SoundBank Id="652153290" Type="User" GUID="{64522E9F-E4F4-45D9-B335-28CF9E07510E}" Language="French(France)" Hash="{562EB477-7D88-32BF-9C2F-5C94CFF4B8F7}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Jules</ObjectPath>
 			<ShortName>Jules</ShortName>
 			<Path>French(France)/Jules.bnk</Path>
@@ -391,7 +391,7 @@
 				</File>
 				<File Id="951478521" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Officer\VX_Amb_M_Vers_Military_Game_End_1_Officer.wav</ShortName>
-					<CachePath>94/{941CA387-52CC-60D1-A366-A51E4A12119F}.wem</CachePath>
+					<CachePath>21/{21DE05B9-7F9C-A3D1-AE11-5506E9114E06}.wem</CachePath>
 				</File>
 				<File Id="975225380" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Francois\VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris.wav</ShortName>
@@ -405,9 +405,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.81898" DurationMax="41.307457">
@@ -520,9 +526,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -1016,7 +1026,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="652153290" Type="User" GUID="{64522E9F-E4F4-45D9-B335-28CF9E07510E}" Language="English(US)" Hash="{9A9881D5-B1CF-F9AE-3BB0-C789C1C3E0E5}">
+		<SoundBank Id="652153290" Type="User" GUID="{64522E9F-E4F4-45D9-B335-28CF9E07510E}" Language="English(US)" Hash="{2FB2CB46-671B-B87D-0051-3044BF16F841}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Jules</ObjectPath>
 			<ShortName>Jules</ShortName>
 			<Path>English(US)/Jules.bnk</Path>
@@ -1234,9 +1244,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.81898" DurationMax="41.307457">
@@ -1349,9 +1365,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -2774,7 +2794,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="918100373" Type="User" GUID="{90C03101-8D2A-4225-AD52-272CB4650D83}" Language="French(France)" Hash="{0BF9BFDB-90CB-02EB-FD74-C2AAEC2B8A2D}">
+		<SoundBank Id="918100373" Type="User" GUID="{90C03101-8D2A-4225-AD52-272CB4650D83}" Language="French(France)" Hash="{E37D7370-8C2D-F0F2-9592-1CFC43F0CE35}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Michel</ObjectPath>
 			<ShortName>Michel</ShortName>
 			<Path>French(France)/Michel.bnk</Path>
@@ -2978,7 +2998,7 @@
 				</File>
 				<File Id="951478521" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Officer\VX_Amb_M_Vers_Military_Game_End_1_Officer.wav</ShortName>
-					<CachePath>94/{941CA387-52CC-60D1-A366-A51E4A12119F}.wem</CachePath>
+					<CachePath>21/{21DE05B9-7F9C-A3D1-AE11-5506E9114E06}.wem</CachePath>
 				</File>
 				<File Id="975225380" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Francois\VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris.wav</ShortName>
@@ -2992,9 +3012,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.81898" DurationMax="41.307457">
@@ -3107,9 +3133,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -3603,7 +3633,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="918100373" Type="User" GUID="{90C03101-8D2A-4225-AD52-272CB4650D83}" Language="English(US)" Hash="{2EEC8E43-08CE-05FB-BFA2-E9B4285C441D}">
+		<SoundBank Id="918100373" Type="User" GUID="{90C03101-8D2A-4225-AD52-272CB4650D83}" Language="English(US)" Hash="{B958C71C-BF42-B952-38AE-07125F3BD269}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Michel</ObjectPath>
 			<ShortName>Michel</ShortName>
 			<Path>English(US)/Michel.bnk</Path>
@@ -3821,9 +3851,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.81898" DurationMax="41.307457">
@@ -3936,9 +3972,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -4432,7 +4472,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{7F46C98F-9FF9-7966-D11D-B908F90E0686}">
+		<SoundBank Id="925885567" Type="User" GUID="{C4BD5D4A-555B-45AA-8CA2-4A754192FCBC}" Language="SFX" Hash="{07C4B2C5-0B5A-F111-8A89-7196595380C8}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Amb</ObjectPath>
 			<ShortName>Sb_Amb</ShortName>
 			<Path>Sb_Amb.bnk</Path>
@@ -4458,7 +4498,7 @@
 					<ShortName>AMB\Enviro\LTDC_AMB_Street_WindBirds_Loop.wav</ShortName>
 					<Path>Media/245803413.wem</Path>
 					<CachePath>22/{22858F1F-D011-DB92-5A95-D8D1142B7E43}.wem</CachePath>
-					<PrefetchSize>0</PrefetchSize>
+					<PrefetchSize>7498</PrefetchSize>
 					<ContainsPrefetch>true</ContainsPrefetch>
 				</File>
 				<File Id="289258374" Language="SFX" Streaming="false" Location="Memory">
@@ -4609,7 +4649,7 @@
 				</Event>
 			</Events>
 		</SoundBank>
-		<SoundBank Id="1274621345" Type="User" GUID="{2C45C894-BF70-4A2B-8027-71121EABF743}" Language="French(France)" Hash="{035FA0A3-B3DA-D442-8298-7D39403E5038}">
+		<SoundBank Id="1274621345" Type="User" GUID="{2C45C894-BF70-4A2B-8027-71121EABF743}" Language="French(France)" Hash="{166B83F6-73E9-944D-761E-1D2AA6085F3B}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Marie</ObjectPath>
 			<ShortName>Marie</ShortName>
 			<Path>French(France)/Marie.bnk</Path>
@@ -4813,7 +4853,7 @@
 				</File>
 				<File Id="951478521" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Officer\VX_Amb_M_Vers_Military_Game_End_1_Officer.wav</ShortName>
-					<CachePath>94/{941CA387-52CC-60D1-A366-A51E4A12119F}.wem</CachePath>
+					<CachePath>21/{21DE05B9-7F9C-A3D1-AE11-5506E9114E06}.wem</CachePath>
 				</File>
 				<File Id="975225380" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Francois\VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris.wav</ShortName>
@@ -4827,9 +4867,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.81898" DurationMax="41.307457">
@@ -4942,9 +4988,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -5438,7 +5488,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1274621345" Type="User" GUID="{2C45C894-BF70-4A2B-8027-71121EABF743}" Language="English(US)" Hash="{1C3EC389-BDD4-6925-3BF7-E45AFF2E9C3D}">
+		<SoundBank Id="1274621345" Type="User" GUID="{2C45C894-BF70-4A2B-8027-71121EABF743}" Language="English(US)" Hash="{5CEBA291-144E-514F-ADBF-9BC84ECA99CD}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Marie</ObjectPath>
 			<ShortName>Marie</ShortName>
 			<Path>English(US)/Marie.bnk</Path>
@@ -5656,9 +5706,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.81898" DurationMax="41.307457">
@@ -5771,9 +5827,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -6267,7 +6327,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="French(France)" Hash="{CACC5FE2-FBFC-86F8-AC30-8C109E700C1E}">
+		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="French(France)" Hash="{54FD4AA1-D326-1883-1DB6-E2B0B9F47168}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_NPC</ObjectPath>
 			<ShortName>Sb_NPC</ShortName>
 			<Path>French(France)/Sb_NPC.bnk</Path>
@@ -6524,6 +6584,10 @@
 					<ShortName>Generic_AI\Atéa\VX_Bar_F_Comm_Worker_Cannon_Fired_Atéa-004.wav</ShortName>
 					<CachePath>F4/{F4922241-D390-AD94-4FCD-55DB61CADCAA}.wem</CachePath>
 				</File>
+				<File Id="269899231" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</ShortName>
+					<CachePath>2A/{2AEBB31C-D27E-2026-2677-9FF0C366451E}.wem</CachePath>
+				</File>
 				<File Id="285971837" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Worker_Cannon_Incoming_Yuna-004.wav</ShortName>
 					<CachePath>9C/{9C1A6F67-141E-8242-64C8-FE58D4B9291C}.wem</CachePath>
@@ -6576,6 +6640,10 @@
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Ally_Death_Thomas-002.wav</ShortName>
 					<CachePath>E2/{E2BA983E-3902-A660-99CB-45A82E0E0B68}.wem</CachePath>
 				</File>
+				<File Id="332513162" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_004.wav</ShortName>
+					<CachePath>19/{19BF5347-16BD-E212-5A55-BBF938DD2057}.wem</CachePath>
+				</File>
 				<File Id="332647603" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Atéa\VX_Bar_F_Comm_Worker_Player_Far_Atéa-001.wav</ShortName>
 					<CachePath>0A/{0A193B56-DFD9-AAFF-F1A9-CEDACB511DFF}.wem</CachePath>
@@ -6624,10 +6692,6 @@
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerGlass_Random_2.wav</ShortName>
 					<CachePath>56/{56884EB0-3B65-63D9-3397-2DA04AE45057}.wem</CachePath>
 				</File>
-				<File Id="376843141" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_004.wav</ShortName>
-					<CachePath>19/{19BF5347-16BD-E212-5A55-BBF938DD2057}.wem</CachePath>
-				</File>
 				<File Id="378647219" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Player_Hidden_Thomas-001.wav</ShortName>
 					<CachePath>1D/{1D30FA91-9F00-9797-6C25-AA3F1F2CEE65}.wem</CachePath>
@@ -6647,6 +6711,10 @@
 				<File Id="381436516" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Cannon_Incoming_Thomas-001.wav</ShortName>
 					<CachePath>B5/{B5438EF5-0CE6-8864-70A1-6197FE930DD5}.wem</CachePath>
+				</File>
+				<File Id="382705976" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random.wav</ShortName>
+					<CachePath>6A/{6A81A874-2B18-CB4E-CE32-D7048FFA6A4F}.wem</CachePath>
 				</File>
 				<File Id="392662394" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Zoé\VX_Bar_F_Comm_Worker_Ally_Death_Zoé-002.wav</ShortName>
@@ -6707,6 +6775,10 @@
 				<File Id="443853012" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Military_Barricade_Destroyed_Thomas-002.wav</ShortName>
 					<CachePath>B8/{B8254D21-BD92-3775-99AA-0164CCAFB418}.wem</CachePath>
+				</File>
+				<File Id="452880230" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_003.wav</ShortName>
+					<CachePath>55/{555852CB-3755-4DAD-E557-CB2A8C560212}.wem</CachePath>
 				</File>
 				<File Id="460059239" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Worker_Cannon_Advance_Yuna-001.wav</ShortName>
@@ -6792,6 +6864,10 @@
 					<ShortName>Generic_AI\Armand\VX_Bar_M_Vers_Military_Barricade_Low_Armand-004.wav</ShortName>
 					<CachePath>D6/{D649C9BC-C357-4170-B48B-EF5963B9FE3A}.wem</CachePath>
 				</File>
+				<File Id="526873019" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_002.wav</ShortName>
+					<CachePath>BF/{BF87EFB3-6633-EDD9-4563-A07024592C42}.wem</CachePath>
+				</File>
 				<File Id="528433247" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Barricade_Low_Thomas-003.wav</ShortName>
 					<CachePath>A5/{A5E4EBA8-D623-3920-2842-48BB718127B8}.wem</CachePath>
@@ -6832,6 +6908,10 @@
 					<ShortName>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Fired_Severin-002.wav</ShortName>
 					<CachePath>98/{98D15234-142A-1960-7374-0F953DFC17B1}.wem</CachePath>
 				</File>
+				<File Id="547761077" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_001.wav</ShortName>
+					<CachePath>A1/{A123A2B2-7AA7-5C66-08A4-A7553F692EAC}.wem</CachePath>
+				</File>
 				<File Id="548867567" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Atéa\VX_Bar_F_Comm_Worker_Barricade_Low_Atéa-003.wav</ShortName>
 					<CachePath>C5/{C5728C9F-A41F-B085-243C-C6C64C963EA0}.wem</CachePath>
@@ -6839,10 +6919,6 @@
 				<File Id="554315864" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Tom\VX_Bar_M_Vers_Military_Cannon_Fired_Tom-002.wav</ShortName>
 					<CachePath>BB/{BB3A7989-CB39-B117-D78D-A3837B85282D}.wem</CachePath>
-				</File>
-				<File Id="558518109" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_002.wav</ShortName>
-					<CachePath>BF/{BF87EFB3-6633-EDD9-4563-A07024592C42}.wem</CachePath>
 				</File>
 				<File Id="560501186" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Zoé\VX_Bar_F_Comm_Worker_Player_Hidden_Zoé-001.wav</ShortName>
@@ -6928,10 +7004,6 @@
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Military_Barricade_Destroyed_Yuna-004.wav</ShortName>
 					<CachePath>EF/{EFA8589A-D09F-39C9-7B55-343DEEE7FA78}.wem</CachePath>
 				</File>
-				<File Id="612558186" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_003.wav</ShortName>
-					<CachePath>55/{555852CB-3755-4DAD-E557-CB2A8C560212}.wem</CachePath>
-				</File>
 				<File Id="613483839" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Cannon_Incoming_Thomas-005.wav</ShortName>
 					<CachePath>2E/{2EB4F48C-CD8A-CAE4-F61D-B645EFEB32F4}.wem</CachePath>
@@ -6999,6 +7071,14 @@
 				<File Id="680321517" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Worker_Player_Hidden_Yuna-002.wav</ShortName>
 					<CachePath>6F/{6FBD3D78-419A-B5F8-3C82-89AB60C2B352}.wem</CachePath>
+				</File>
+				<File Id="682199737" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</ShortName>
+					<CachePath>3C/{3CF590BC-BA8D-9690-7B12-6BCAE56E5490}.wem</CachePath>
+				</File>
+				<File Id="683256367" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</ShortName>
+					<CachePath>B1/{B1B3CF0F-1C24-6E34-9578-18289DB95315}.wem</CachePath>
 				</File>
 				<File Id="688592605" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Armand\VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-003.wav</ShortName>
@@ -7132,10 +7212,6 @@
 					<ShortName>Generic_AI\Zoé\VX_Bar_F_Comm_Worker_Kill_voice_cancel_Zoé-003.wav</ShortName>
 					<CachePath>DF/{DF306A73-C058-5DD7-A9AC-DE636DA8E942}.wem</CachePath>
 				</File>
-				<File Id="803409758" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_001.wav</ShortName>
-					<CachePath>A1/{A123A2B2-7AA7-5C66-08A4-A7553F692EAC}.wem</CachePath>
-				</File>
 				<File Id="808397673" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Worker_Ally_Death_Yuna-003.wav</ShortName>
 					<CachePath>A8/{A8EB51D8-5F63-18D6-92FF-D9AA2EF26690}.wem</CachePath>
@@ -7232,10 +7308,6 @@
 					<ShortName>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-002.wav</ShortName>
 					<CachePath>08/{08261F71-F7A4-FDE8-80AC-8F9F0C633B08}.wem</CachePath>
 				</File>
-				<File Id="916788496" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</ShortName>
-					<CachePath>2A/{2AEBB31C-D27E-2026-2677-9FF0C366451E}.wem</CachePath>
-				</File>
 				<File Id="917246979" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerMetal_Random_2.wav</ShortName>
 					<CachePath>30/{3046B50A-FBE6-B54E-4BCA-08BC59EFE390}.wem</CachePath>
@@ -7276,10 +7348,6 @@
 					<ShortName>Generic_AI\Atéa\VX_Bar_F_Comm_Worker_Player_Kill_Atéa-004.wav</ShortName>
 					<CachePath>49/{49CF8D34-7938-2455-152E-480483D9F05B}.wem</CachePath>
 				</File>
-				<File Id="948386357" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</ShortName>
-					<CachePath>B1/{B1B3CF0F-1C24-6E34-9578-18289DB95315}.wem</CachePath>
-				</File>
 				<File Id="951565387" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Atéa\VX_Bar_F_Comm_Worker_Cannon_Fired_Atéa-002.wav</ShortName>
 					<CachePath>74/{7492EF97-DD55-7F92-CB93-876CE6B60C4E}.wem</CachePath>
@@ -7316,10 +7384,6 @@
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Player_Kill_Thomas-004.wav</ShortName>
 					<CachePath>BC/{BCD0716B-AC58-5B8B-85A0-8E25AF18C806}.wem</CachePath>
 				</File>
-				<File Id="1018639944" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random.wav</ShortName>
-					<CachePath>6A/{6A81A874-2B18-CB4E-CE32-D7048FFA6A4F}.wem</CachePath>
-				</File>
 				<File Id="1019684064" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Loris\VX_Bar_M_Comm_Worker_Barricade_Low_Loris-004.wav</ShortName>
 					<CachePath>38/{383C12A5-BA26-4DA5-DD7E-51904A2FBAC7}.wem</CachePath>
@@ -7335,10 +7399,6 @@
 				<File Id="1026294786" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Loris\VX_Bar_M_Comm_Worker_Cannon_Advance_Loris-002.wav</ShortName>
 					<CachePath>17/{17E5DC7E-819A-0A1E-4B4E-5C0452BE3903}.wem</CachePath>
-				</File>
-				<File Id="1026693139" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</ShortName>
-					<CachePath>3C/{3CF590BC-BA8D-9690-7B12-6BCAE56E5490}.wem</CachePath>
 				</File>
 				<File Id="1032160991" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Zoé\VX_Bar_F_Comm_Worker_Cannon_Fired_Zoé-004.wav</ShortName>
@@ -8061,18 +8121,18 @@
 				<Event Id="3252427803" Name="Ally_Shoot" ObjectPath="\Events\SFX\Ally\Ally_Shoot" GUID="{0758294E-77B6-49B7-9D4C-4F0A410A33B6}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.5039684" DurationMax="1.7817974">
 					<MediaRefs>
 						<MediaRef Id="162843046"/>
-						<MediaRef Id="376843141"/>
+						<MediaRef Id="269899231"/>
+						<MediaRef Id="332513162"/>
+						<MediaRef Id="382705976"/>
+						<MediaRef Id="452880230"/>
 						<MediaRef Id="487796999"/>
 						<MediaRef Id="512603057"/>
-						<MediaRef Id="558518109"/>
-						<MediaRef Id="612558186"/>
+						<MediaRef Id="526873019"/>
+						<MediaRef Id="547761077"/>
 						<MediaRef Id="629537322"/>
+						<MediaRef Id="682199737"/>
+						<MediaRef Id="683256367"/>
 						<MediaRef Id="767180969"/>
-						<MediaRef Id="803409758"/>
-						<MediaRef Id="916788496"/>
-						<MediaRef Id="948386357"/>
-						<MediaRef Id="1018639944"/>
-						<MediaRef Id="1026693139"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10"/>
@@ -8365,18 +8425,18 @@
 				<Event Id="1050776119" Name="Enemy_Shoot" ObjectPath="\Events\SFX\Enemy\Enemy_Shoot" GUID="{3FDD584B-7295-4A08-9570-8775D7B756E9}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.5039684" DurationMax="1.7817974">
 					<MediaRefs>
 						<MediaRef Id="162843046"/>
-						<MediaRef Id="376843141"/>
+						<MediaRef Id="269899231"/>
+						<MediaRef Id="332513162"/>
+						<MediaRef Id="382705976"/>
+						<MediaRef Id="452880230"/>
 						<MediaRef Id="487796999"/>
 						<MediaRef Id="512603057"/>
-						<MediaRef Id="558518109"/>
-						<MediaRef Id="612558186"/>
+						<MediaRef Id="526873019"/>
+						<MediaRef Id="547761077"/>
 						<MediaRef Id="629537322"/>
+						<MediaRef Id="682199737"/>
+						<MediaRef Id="683256367"/>
 						<MediaRef Id="767180969"/>
-						<MediaRef Id="803409758"/>
-						<MediaRef Id="916788496"/>
-						<MediaRef Id="948386357"/>
-						<MediaRef Id="1018639944"/>
-						<MediaRef Id="1026693139"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10"/>
@@ -8419,6 +8479,7 @@
 			<GameParameters>
 				<GameParameter Id="1240670792" Name="Distance" ObjectPath="\Game Parameters\Default Work Unit\Distance" GUID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"/>
 				<GameParameter Id="2103536148" Name="Bark_Volume" ObjectPath="\Game Parameters\Default Work Unit\Bark_Volume" GUID="{310D6C14-6344-45E9-8379-034A9EEF5868}"/>
+				<GameParameter Id="2647762268" Name="Sidechain_Dialogue" ObjectPath="\Game Parameters\Default Work Unit\Sidechain_Dialogue" GUID="{E3D15146-7A9C-49E2-BF9F-F7D655BB9188}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="212893962" Name="narrative_step" ObjectPath="\States\Default Work Unit\narrative_step" GUID="{DC7D94F8-F1CD-4344-8D78-703A4905E20A}">
@@ -8504,7 +8565,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="English(US)" Hash="{2397237B-3E53-80B2-205D-C78187E382E0}">
+		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="English(US)" Hash="{694F4075-5562-5328-52D1-25F9B2568CC7}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_NPC</ObjectPath>
 			<ShortName>Sb_NPC</ShortName>
 			<Path>English(US)/Sb_NPC.bnk</Path>
@@ -8757,6 +8818,10 @@
 					<ShortName>Generic_AI\Atéa\VX_Bar_F_Comm_Worker_Cannon_Fired_Atéa-004.wav</ShortName>
 					<CachePath>F4/{F4922241-D390-AD94-4FCD-55DB61CADCAA}.wem</CachePath>
 				</File>
+				<File Id="269899231" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</ShortName>
+					<CachePath>2A/{2AEBB31C-D27E-2026-2677-9FF0C366451E}.wem</CachePath>
+				</File>
 				<File Id="285971837" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Worker_Cannon_Incoming_Yuna-004.wav</ShortName>
 					<CachePath>9C/{9C1A6F67-141E-8242-64C8-FE58D4B9291C}.wem</CachePath>
@@ -8809,6 +8874,10 @@
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Ally_Death_Thomas-002.wav</ShortName>
 					<CachePath>E2/{E2BA983E-3902-A660-99CB-45A82E0E0B68}.wem</CachePath>
 				</File>
+				<File Id="332513162" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_004.wav</ShortName>
+					<CachePath>19/{19BF5347-16BD-E212-5A55-BBF938DD2057}.wem</CachePath>
+				</File>
 				<File Id="332647603" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Atéa\VX_Bar_F_Comm_Worker_Player_Far_Atéa-001.wav</ShortName>
 					<CachePath>0A/{0A193B56-DFD9-AAFF-F1A9-CEDACB511DFF}.wem</CachePath>
@@ -8857,10 +8926,6 @@
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerGlass_Random_2.wav</ShortName>
 					<CachePath>56/{56884EB0-3B65-63D9-3397-2DA04AE45057}.wem</CachePath>
 				</File>
-				<File Id="376843141" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_004.wav</ShortName>
-					<CachePath>19/{19BF5347-16BD-E212-5A55-BBF938DD2057}.wem</CachePath>
-				</File>
 				<File Id="378647219" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Player_Hidden_Thomas-001.wav</ShortName>
 					<CachePath>1D/{1D30FA91-9F00-9797-6C25-AA3F1F2CEE65}.wem</CachePath>
@@ -8880,6 +8945,10 @@
 				<File Id="381436516" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Cannon_Incoming_Thomas-001.wav</ShortName>
 					<CachePath>B5/{B5438EF5-0CE6-8864-70A1-6197FE930DD5}.wem</CachePath>
+				</File>
+				<File Id="382705976" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random.wav</ShortName>
+					<CachePath>6A/{6A81A874-2B18-CB4E-CE32-D7048FFA6A4F}.wem</CachePath>
 				</File>
 				<File Id="392662394" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Zoé\VX_Bar_F_Comm_Worker_Ally_Death_Zoé-002.wav</ShortName>
@@ -8940,6 +9009,10 @@
 				<File Id="443853012" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Military_Barricade_Destroyed_Thomas-002.wav</ShortName>
 					<CachePath>B8/{B8254D21-BD92-3775-99AA-0164CCAFB418}.wem</CachePath>
+				</File>
+				<File Id="452880230" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_003.wav</ShortName>
+					<CachePath>55/{555852CB-3755-4DAD-E557-CB2A8C560212}.wem</CachePath>
 				</File>
 				<File Id="460059239" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Worker_Cannon_Advance_Yuna-001.wav</ShortName>
@@ -9025,6 +9098,10 @@
 					<ShortName>Generic_AI\Armand\VX_Bar_M_Vers_Military_Barricade_Low_Armand-004.wav</ShortName>
 					<CachePath>D6/{D649C9BC-C357-4170-B48B-EF5963B9FE3A}.wem</CachePath>
 				</File>
+				<File Id="526873019" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_002.wav</ShortName>
+					<CachePath>BF/{BF87EFB3-6633-EDD9-4563-A07024592C42}.wem</CachePath>
+				</File>
 				<File Id="528433247" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Barricade_Low_Thomas-003.wav</ShortName>
 					<CachePath>A5/{A5E4EBA8-D623-3920-2842-48BB718127B8}.wem</CachePath>
@@ -9065,6 +9142,10 @@
 					<ShortName>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Cannon_Fired_Severin-002.wav</ShortName>
 					<CachePath>98/{98D15234-142A-1960-7374-0F953DFC17B1}.wem</CachePath>
 				</File>
+				<File Id="547761077" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_001.wav</ShortName>
+					<CachePath>A1/{A123A2B2-7AA7-5C66-08A4-A7553F692EAC}.wem</CachePath>
+				</File>
 				<File Id="548867567" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Atéa\VX_Bar_F_Comm_Worker_Barricade_Low_Atéa-003.wav</ShortName>
 					<CachePath>C5/{C5728C9F-A41F-B085-243C-C6C64C963EA0}.wem</CachePath>
@@ -9072,10 +9153,6 @@
 				<File Id="554315864" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Tom\VX_Bar_M_Vers_Military_Cannon_Fired_Tom-002.wav</ShortName>
 					<CachePath>BB/{BB3A7989-CB39-B117-D78D-A3837B85282D}.wem</CachePath>
-				</File>
-				<File Id="558518109" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_002.wav</ShortName>
-					<CachePath>BF/{BF87EFB3-6633-EDD9-4563-A07024592C42}.wem</CachePath>
 				</File>
 				<File Id="560501186" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Zoé\VX_Bar_F_Comm_Worker_Player_Hidden_Zoé-001.wav</ShortName>
@@ -9161,10 +9238,6 @@
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Military_Barricade_Destroyed_Yuna-004.wav</ShortName>
 					<CachePath>EF/{EFA8589A-D09F-39C9-7B55-343DEEE7FA78}.wem</CachePath>
 				</File>
-				<File Id="612558186" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_003.wav</ShortName>
-					<CachePath>55/{555852CB-3755-4DAD-E557-CB2A8C560212}.wem</CachePath>
-				</File>
 				<File Id="613483839" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Cannon_Incoming_Thomas-005.wav</ShortName>
 					<CachePath>2E/{2EB4F48C-CD8A-CAE4-F61D-B645EFEB32F4}.wem</CachePath>
@@ -9232,6 +9305,14 @@
 				<File Id="680321517" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Worker_Player_Hidden_Yuna-002.wav</ShortName>
 					<CachePath>6F/{6FBD3D78-419A-B5F8-3C82-89AB60C2B352}.wem</CachePath>
+				</File>
+				<File Id="682199737" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</ShortName>
+					<CachePath>3C/{3CF590BC-BA8D-9690-7B12-6BCAE56E5490}.wem</CachePath>
+				</File>
+				<File Id="683256367" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</ShortName>
+					<CachePath>B1/{B1B3CF0F-1C24-6E34-9578-18289DB95315}.wem</CachePath>
 				</File>
 				<File Id="688592605" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Armand\VX_Bar_M_Vers_Military_Kill_voice_cancel_Armand-003.wav</ShortName>
@@ -9365,10 +9446,6 @@
 					<ShortName>Generic_AI\Zoé\VX_Bar_F_Comm_Worker_Kill_voice_cancel_Zoé-003.wav</ShortName>
 					<CachePath>DF/{DF306A73-C058-5DD7-A9AC-DE636DA8E942}.wem</CachePath>
 				</File>
-				<File Id="803409758" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_001.wav</ShortName>
-					<CachePath>A1/{A123A2B2-7AA7-5C66-08A4-A7553F692EAC}.wem</CachePath>
-				</File>
 				<File Id="808397673" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Yuna\VX_Bar_F_Comm_Worker_Ally_Death_Yuna-003.wav</ShortName>
 					<CachePath>A8/{A8EB51D8-5F63-18D6-92FF-D9AA2EF26690}.wem</CachePath>
@@ -9465,10 +9542,6 @@
 					<ShortName>Generic_AI\Séverin\VX_Bar_M_Vers_Military_Barricade_Destroyed_Severin-002.wav</ShortName>
 					<CachePath>08/{08261F71-F7A4-FDE8-80AC-8F9F0C633B08}.wem</CachePath>
 				</File>
-				<File Id="916788496" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</ShortName>
-					<CachePath>2A/{2AEBB31C-D27E-2026-2677-9FF0C366451E}.wem</CachePath>
-				</File>
 				<File Id="917246979" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerMetal_Random_2.wav</ShortName>
 					<CachePath>30/{3046B50A-FBE6-B54E-4BCA-08BC59EFE390}.wem</CachePath>
@@ -9509,10 +9582,6 @@
 					<ShortName>Generic_AI\Atéa\VX_Bar_F_Comm_Worker_Player_Kill_Atéa-004.wav</ShortName>
 					<CachePath>49/{49CF8D34-7938-2455-152E-480483D9F05B}.wem</CachePath>
 				</File>
-				<File Id="948386357" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</ShortName>
-					<CachePath>B1/{B1B3CF0F-1C24-6E34-9578-18289DB95315}.wem</CachePath>
-				</File>
 				<File Id="951565387" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Atéa\VX_Bar_F_Comm_Worker_Cannon_Fired_Atéa-002.wav</ShortName>
 					<CachePath>74/{7492EF97-DD55-7F92-CB93-876CE6B60C4E}.wem</CachePath>
@@ -9549,10 +9618,6 @@
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Player_Kill_Thomas-004.wav</ShortName>
 					<CachePath>BC/{BCD0716B-AC58-5B8B-85A0-8E25AF18C806}.wem</CachePath>
 				</File>
-				<File Id="1018639944" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random.wav</ShortName>
-					<CachePath>6A/{6A81A874-2B18-CB4E-CE32-D7048FFA6A4F}.wem</CachePath>
-				</File>
 				<File Id="1019684064" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Loris\VX_Bar_M_Comm_Worker_Barricade_Low_Loris-004.wav</ShortName>
 					<CachePath>38/{383C12A5-BA26-4DA5-DD7E-51904A2FBAC7}.wem</CachePath>
@@ -9568,10 +9633,6 @@
 				<File Id="1026294786" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Loris\VX_Bar_M_Comm_Worker_Cannon_Advance_Loris-002.wav</ShortName>
 					<CachePath>17/{17E5DC7E-819A-0A1E-4B4E-5C0452BE3903}.wem</CachePath>
-				</File>
-				<File Id="1026693139" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</ShortName>
-					<CachePath>3C/{3CF590BC-BA8D-9690-7B12-6BCAE56E5490}.wem</CachePath>
 				</File>
 				<File Id="1032160991" Language="English(US)" Streaming="false" Location="Memory" UsingReferenceLanguage="true">
 					<ShortName>Generic_AI\Zoé\VX_Bar_F_Comm_Worker_Cannon_Fired_Zoé-004.wav</ShortName>
@@ -10298,18 +10359,18 @@
 				<Event Id="3252427803" Name="Ally_Shoot" ObjectPath="\Events\SFX\Ally\Ally_Shoot" GUID="{0758294E-77B6-49B7-9D4C-4F0A410A33B6}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.5039684" DurationMax="1.7817974">
 					<MediaRefs>
 						<MediaRef Id="162843046"/>
-						<MediaRef Id="376843141"/>
+						<MediaRef Id="269899231"/>
+						<MediaRef Id="332513162"/>
+						<MediaRef Id="382705976"/>
+						<MediaRef Id="452880230"/>
 						<MediaRef Id="487796999"/>
 						<MediaRef Id="512603057"/>
-						<MediaRef Id="558518109"/>
-						<MediaRef Id="612558186"/>
+						<MediaRef Id="526873019"/>
+						<MediaRef Id="547761077"/>
 						<MediaRef Id="629537322"/>
+						<MediaRef Id="682199737"/>
+						<MediaRef Id="683256367"/>
 						<MediaRef Id="767180969"/>
-						<MediaRef Id="803409758"/>
-						<MediaRef Id="916788496"/>
-						<MediaRef Id="948386357"/>
-						<MediaRef Id="1018639944"/>
-						<MediaRef Id="1026693139"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10"/>
@@ -10602,18 +10663,18 @@
 				<Event Id="1050776119" Name="Enemy_Shoot" ObjectPath="\Events\SFX\Enemy\Enemy_Shoot" GUID="{3FDD584B-7295-4A08-9570-8775D7B756E9}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.5039684" DurationMax="1.7817974">
 					<MediaRefs>
 						<MediaRef Id="162843046"/>
-						<MediaRef Id="376843141"/>
+						<MediaRef Id="269899231"/>
+						<MediaRef Id="332513162"/>
+						<MediaRef Id="382705976"/>
+						<MediaRef Id="452880230"/>
 						<MediaRef Id="487796999"/>
 						<MediaRef Id="512603057"/>
-						<MediaRef Id="558518109"/>
-						<MediaRef Id="612558186"/>
+						<MediaRef Id="526873019"/>
+						<MediaRef Id="547761077"/>
 						<MediaRef Id="629537322"/>
+						<MediaRef Id="682199737"/>
+						<MediaRef Id="683256367"/>
 						<MediaRef Id="767180969"/>
-						<MediaRef Id="803409758"/>
-						<MediaRef Id="916788496"/>
-						<MediaRef Id="948386357"/>
-						<MediaRef Id="1018639944"/>
-						<MediaRef Id="1026693139"/>
 					</MediaRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10"/>
@@ -10656,6 +10717,7 @@
 			<GameParameters>
 				<GameParameter Id="1240670792" Name="Distance" ObjectPath="\Game Parameters\Default Work Unit\Distance" GUID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}"/>
 				<GameParameter Id="2103536148" Name="Bark_Volume" ObjectPath="\Game Parameters\Default Work Unit\Bark_Volume" GUID="{310D6C14-6344-45E9-8379-034A9EEF5868}"/>
+				<GameParameter Id="2647762268" Name="Sidechain_Dialogue" ObjectPath="\Game Parameters\Default Work Unit\Sidechain_Dialogue" GUID="{E3D15146-7A9C-49E2-BF9F-F7D655BB9188}"/>
 			</GameParameters>
 			<StateGroups>
 				<StateGroup Id="212893962" Name="narrative_step" ObjectPath="\States\Default Work Unit\narrative_step" GUID="{DC7D94F8-F1CD-4344-8D78-703A4905E20A}">
@@ -10741,7 +10803,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{CE333F09-FD63-A166-545E-345002784791}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{972EE409-A2D7-CBB1-54A0-8FEE418DD5A5}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -10753,6 +10815,7 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="40604342" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{3EC1B190-2BC5-4B27-8F9C-1424AF74CE66}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="64045502" Name="Gain (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send\[Effect Slot [1]: (Gain)]\Gain (Custom)" GUID="{7FEA6803-5F2F-4DC7-9B38-F57620C75B4B}" LibName="Wwise Gain" LibId="9109507"/>
 					<Plugin Id="75143502" Name="Compressor (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\[Effect Slot [0]: (Compressor)]\Compressor (Custom)" GUID="{A26D26DC-6631-4E48-AA7C-BFF94ADEBECE}" LibName="Wwise Compressor" LibId="7077891"/>
 					<Plugin Id="80258421" Name="Meter (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{8908185C-5E26-46E0-AFC3-C890C86B4246}" LibName="Wwise Meter" LibId="8454147"/>
@@ -10761,6 +10824,7 @@
 					<Plugin Id="491144356" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_NPC\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{AFAB6BA1-7AD1-4438-9430-79801E451DBC}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="677203020" Name="Pitch Shifter (Custom)" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send\[Effect Slot [0]: (Pitch Shifter)]\Pitch Shifter (Custom)" GUID="{E1388689-6B51-40C1-B6CC-61D3D1660DA2}" LibName="Wwise Pitch Shifter" LibId="8912899"/>
 					<Plugin Id="709122841" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{A3028C14-CC80-4EB1-8BBC-A7DFF27E2768}" LibName="Wwise Parametric EQ" LibId="6881283"/>
+					<Plugin Id="722476435" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Music_Bus\Music_Bus\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{7396CCE5-6F46-4D9C-8C6D-9B8E1141E89F}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="756484234" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_Characters\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{6E305924-9336-480C-998E-A9BE51616ED9}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="781058597" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_Player\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{0C25AD9E-4355-4060-B199-A712931C05E7}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="805464425" Name="Caught_in_a_loop (Custom)" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Rev_Barricade\[Effect Slot [0]: (Stereo Delay)]\Caught_in_a_loop (Custom)" GUID="{EE8512F0-1D4C-4F9E-87FC-26DBFFB03C4A}" LibName="Wwise Stereo Delay" LibId="8847363"/>
@@ -10803,7 +10867,13 @@
 						</Custom>
 					</PluginRefs>
 				</Bus>
-				<Bus Id="393239870" Name="SFX" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX" GUID="{8FE46C9B-4641-43D1-B739-F2D46260CC7F}" Color="10"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX" GUID="{8FE46C9B-4641-43D1-B739-F2D46260CC7F}" Color="10">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="40604342"/>
+						</Custom>
+					</PluginRefs>
+				</Bus>
 				<Bus Id="411987026" Name="Clarinette" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Clarinette" GUID="{F2C3B679-DB9A-4E2C-8D2D-26D071919451}" Color="3"/>
 				<Bus Id="569003821" Name="LeadVx" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\LeadVx" GUID="{B88F5454-4A6B-4B14-82FD-40365B36686C}" Color="3"/>
 				<Bus Id="697539359" Name="Guimbarde" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Guimbarde" GUID="{BB1CDC90-BBEF-42A5-A2AB-95E526B90C70}" Color="3"/>
@@ -10877,7 +10947,13 @@
 						<AuxBusRef Id="4084836994" Name="Music_End_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_End_Rev" GUID="{7CE652AA-1D2A-4019-A958-EA85F43ED44C}" Color="2"/>
 					</AuxBusRefs>
 				</Bus>
-				<Bus Id="2680856269" Name="Music_Bus" ObjectPath="\Busses\Music_Bus\Music_Bus" GUID="{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}" Color="2"/>
+				<Bus Id="2680856269" Name="Music_Bus" ObjectPath="\Busses\Music_Bus\Music_Bus" GUID="{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}" Color="2">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="722476435"/>
+						</Custom>
+					</PluginRefs>
+				</Bus>
 				<Bus Id="3009393514" Name="Hugo" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Hugo" GUID="{9B158B8B-1296-4EC4-9488-C5CF405E14EF}" Color="3"/>
 				<Bus Id="3217351932" Name="Atea" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Atea" GUID="{B2C34D4A-D78C-44C0-96FB-F2FD48E42B90}" Color="3">
 					<AuxBusRefs>
@@ -10963,6 +11039,7 @@
 				<GameParameter Id="2580242767" Name="DiegeticAmount" ObjectPath="\Game Parameters\MUSIC_RTPC\DiegeticAmount" GUID="{16D56ABA-E648-4755-84DA-92772451D748}" Color="2"/>
 				<GameParameter Id="2647762268" Name="Sidechain_Dialogue" ObjectPath="\Game Parameters\Default Work Unit\Sidechain_Dialogue" GUID="{E3D15146-7A9C-49E2-BF9F-F7D655BB9188}"/>
 				<GameParameter Id="2909751391" Name="Choir_Volume" ObjectPath="\Game Parameters\MUSIC_RTPC\Choir_Volume" GUID="{B964DDEA-0965-4408-B8D1-10C1D71136BB}" Color="2"/>
+				<GameParameter Id="2951528245" Name="Player_Chassepot" ObjectPath="\Game Parameters\Default Work Unit\Player_Chassepot" GUID="{0B6F97FF-8AFE-43BF-9B38-4AE8CBD398CB}"/>
 				<GameParameter Id="3680281974" Name="Poetic_Level" ObjectPath="\Game Parameters\Default Work Unit\Poetic_Level" GUID="{FB93CEA7-2418-4DE2-8C31-999E6239D31F}"/>
 				<GameParameter Id="4056684167" Name="Master" ObjectPath="\Game Parameters\Game_Menu\Master" GUID="{6C99D459-7B11-4003-993D-29CE5FF12571}"/>
 				<GameParameter Id="4205136178" Name="Death_Filter" ObjectPath="\Game Parameters\Default Work Unit\Death_Filter" GUID="{C73A6915-BB76-4746-95CC-A87CCED79E78}"/>
@@ -11337,7 +11414,7 @@
 				</AcousticTexture>
 			</AcousticTextures>
 		</SoundBank>
-		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{30CDA395-AA15-8A26-DB2E-22C5A5A40400}">
+		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{2A2BCC18-7F28-5EDB-BBF8-BE2641108595}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Cannon</ObjectPath>
 			<ShortName>Sb_Cannon</ShortName>
 			<Path>Sb_Cannon.bnk</Path>
@@ -11502,7 +11579,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{64E1A0E7-D05A-38C5-B608-776C5E9972C9}">
+		<SoundBank Id="2103316850" Type="User" GUID="{49827AFC-1442-4066-AF70-C2B0B3B40C86}" Language="SFX" Hash="{3DED4BCE-F075-2C71-D2F8-944840D0940F}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Player</ObjectPath>
 			<ShortName>Sb_Player</ShortName>
 			<Path>Sb_Player.bnk</Path>
@@ -11659,6 +11736,10 @@
 					<ShortName>SFX_Player_Accessories\Bandolier\LTDC_SFX_Player_Access_Bandolier_Move_Random_02.wav</ShortName>
 					<CachePath>16/{162C9FEC-807C-C9EE-006B-A72544E6011D}.wem</CachePath>
 				</File>
+				<File Id="269899231" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</ShortName>
+					<CachePath>2A/{2AEBB31C-D27E-2026-2677-9FF0C366451E}.wem</CachePath>
+				</File>
 				<File Id="301802129" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerBrick_Random_3.wav</ShortName>
 					<CachePath>A9/{A9D3E216-C20D-1C29-9DEF-2024004EE356}.wem</CachePath>
@@ -11670,6 +11751,10 @@
 				<File Id="322647281" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Female\VX_Player_Breath_Idle_In_F-001.wav</ShortName>
 					<CachePath>BE/{BECAB1B6-6A76-1E0B-1090-D880ADC1DE86}.wem</CachePath>
+				</File>
+				<File Id="332513162" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_004.wav</ShortName>
+					<CachePath>19/{19BF5347-16BD-E212-5A55-BBF938DD2057}.wem</CachePath>
 				</File>
 				<File Id="345847656" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerWood_Random_1.wav</ShortName>
@@ -11687,9 +11772,9 @@
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerGlass_Random_2.wav</ShortName>
 					<CachePath>56/{56884EB0-3B65-63D9-3397-2DA04AE45057}.wem</CachePath>
 				</File>
-				<File Id="376843141" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_004.wav</ShortName>
-					<CachePath>19/{19BF5347-16BD-E212-5A55-BBF938DD2057}.wem</CachePath>
+				<File Id="382705976" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random.wav</ShortName>
+					<CachePath>6A/{6A81A874-2B18-CB4E-CE32-D7048FFA6A4F}.wem</CachePath>
 				</File>
 				<File Id="395081999" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerBrick_Random_2.wav</ShortName>
@@ -11723,6 +11808,10 @@
 					<ShortName>Chassepot\Reload\New\LTDC_SFX_Player_Reload_5_LayerGun_Oneshot_04.wav</ShortName>
 					<CachePath>00/{00A081F6-B738-9530-A4BA-BF91A8ABA77F}.wem</CachePath>
 				</File>
+				<File Id="452880230" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_003.wav</ShortName>
+					<CachePath>55/{555852CB-3755-4DAD-E557-CB2A8C560212}.wem</CachePath>
+				</File>
 				<File Id="463745797" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_08.wav</ShortName>
 					<CachePath>3B/{3B3DDADF-96B6-A9E0-E1D7-4A35FB9B1D81}.wem</CachePath>
@@ -11751,13 +11840,13 @@
 					<ShortName>Chassepot\Reload\New\LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_04.wav</ShortName>
 					<CachePath>BD/{BD2E334B-0D1F-F020-39A5-A293ED7CDA2D}.wem</CachePath>
 				</File>
-				<File Id="509153447" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Reload\New\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_01.wav</ShortName>
-					<CachePath>C7/{C7DCB21C-148E-6781-A5CC-96C98C4A40D1}.wem</CachePath>
-				</File>
 				<File Id="512603057" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_05.wav</ShortName>
 					<CachePath>90/{9069CED1-A130-030A-538C-46DD0A6C46F8}.wem</CachePath>
+				</File>
+				<File Id="526873019" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_002.wav</ShortName>
+					<CachePath>BF/{BF87EFB3-6633-EDD9-4563-A07024592C42}.wem</CachePath>
 				</File>
 				<File Id="533567872" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Reload\New\LTDC_SFX_Player_Reload_2_LayerGun_Oneshot_04.wav</ShortName>
@@ -11771,13 +11860,13 @@
 					<ShortName>Chassepot\LTDC_SFX_Player_DryShot_Oneshot_02.wav</ShortName>
 					<CachePath>C5/{C5697408-BD33-0C07-189C-E12E00F076F7}.wem</CachePath>
 				</File>
+				<File Id="547761077" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_001.wav</ShortName>
+					<CachePath>A1/{A123A2B2-7AA7-5C66-08A4-A7553F692EAC}.wem</CachePath>
+				</File>
 				<File Id="551929001" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Male\VX_Player_Breath_Aim_Out_M_01.wav</ShortName>
 					<CachePath>FC/{FC16A5B9-0A85-6C54-AD9F-B084F6306F9A}.wem</CachePath>
-				</File>
-				<File Id="558518109" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_002.wav</ShortName>
-					<CachePath>BF/{BF87EFB3-6633-EDD9-4563-A07024592C42}.wem</CachePath>
 				</File>
 				<File Id="560147033" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\LTDC_SFX_Player_DryShot_Oneshot_03.wav</ShortName>
@@ -11814,10 +11903,6 @@
 				<File Id="610176216" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_ClogShoes_LayerSurface_Brick_Random_10.wav</ShortName>
 					<CachePath>0F/{0FEFD324-0E2C-ABB0-9BE1-40DDA4F2F16B}.wem</CachePath>
-				</File>
-				<File Id="612558186" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_003.wav</ShortName>
-					<CachePath>55/{555852CB-3755-4DAD-E557-CB2A8C560212}.wem</CachePath>
 				</File>
 				<File Id="628560875" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Reload\New\LTDC_SFX_Player_Reload_4_LayerGun_Oneshot_03.wav</ShortName>
@@ -11858,6 +11943,14 @@
 				<File Id="680673829" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Female\VX_Player_Breath_Idle_In_F-002.wav</ShortName>
 					<CachePath>E3/{E35BB256-E33A-FF45-7239-0227F1E93F7B}.wem</CachePath>
+				</File>
+				<File Id="682199737" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</ShortName>
+					<CachePath>3C/{3CF590BC-BA8D-9690-7B12-6BCAE56E5490}.wem</CachePath>
+				</File>
+				<File Id="683256367" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</ShortName>
+					<CachePath>B1/{B1B3CF0F-1C24-6E34-9578-18289DB95315}.wem</CachePath>
 				</File>
 				<File Id="699768196" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>VX_Player_Breath\Male\VX_Player_Breath_Idle_Out_M_03.wav</ShortName>
@@ -11935,10 +12028,6 @@
 					<ShortName>VX_Player_Breath\Female\VX_Player_Breath_Aim_In_F-003.wav</ShortName>
 					<CachePath>7B/{7B76C722-792C-2477-3A7A-64F9AB278A1A}.wem</CachePath>
 				</File>
-				<File Id="803409758" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_001.wav</ShortName>
-					<CachePath>A1/{A123A2B2-7AA7-5C66-08A4-A7553F692EAC}.wem</CachePath>
-				</File>
 				<File Id="812248446" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_07.wav</ShortName>
 					<CachePath>75/{757171F2-47C1-98F3-5A03-0A4D4801285C}.wem</CachePath>
@@ -11987,17 +12076,9 @@
 					<ShortName>SFX_Player_Steps\Surface\LTDC_SFX_Player_Steps_Heels_LayerSurface_Brick_Random_04.wav</ShortName>
 					<CachePath>9B/{9BD6B348-9668-D130-B08D-6B580F6A82CB}.wem</CachePath>
 				</File>
-				<File Id="916788496" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</ShortName>
-					<CachePath>2A/{2AEBB31C-D27E-2026-2677-9FF0C366451E}.wem</CachePath>
-				</File>
 				<File Id="917246979" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Chassepot\Bullet_Impact\SFX_Bullet_Impact\LTDC_SFX_Bullet_Hit_LayerMetal_Random_2.wav</ShortName>
 					<CachePath>30/{3046B50A-FBE6-B54E-4BCA-08BC59EFE390}.wem</CachePath>
-				</File>
-				<File Id="948386357" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</ShortName>
-					<CachePath>B1/{B1B3CF0F-1C24-6E34-9578-18289DB95315}.wem</CachePath>
 				</File>
 				<File Id="955352295" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Cloth\Coat\LTDC_SFX_Player_Cloth_Coat_Move_Random_05.wav</ShortName>
@@ -12031,18 +12112,6 @@
 					<ShortName>VX_Player_Breath\Female\VX_Player_Breath_Aim_In_F-001.wav</ShortName>
 					<CachePath>C5/{C59F6806-34FD-F58D-5C13-6ACC99A81FDB}.wem</CachePath>
 				</File>
-				<File Id="1017154576" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Chassepot\Reload\New\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03.wav</ShortName>
-					<CachePath>7C/{7C0D646F-0CAF-6F39-552B-B96668CD0295}.wem</CachePath>
-				</File>
-				<File Id="1018639944" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random.wav</ShortName>
-					<CachePath>6A/{6A81A874-2B18-CB4E-CE32-D7048FFA6A4F}.wem</CachePath>
-				</File>
-				<File Id="1026693139" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</ShortName>
-					<CachePath>3C/{3CF590BC-BA8D-9690-7B12-6BCAE56E5490}.wem</CachePath>
-				</File>
 				<File Id="1026796877" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>SFX_Player_Accessories\Bandolier\LTDC_SFX_Player_Access_Bandolier_Move_Random_06.wav</ShortName>
 					<CachePath>CB/{CBDC1194-D8BC-2E6F-5C6E-FCED313029E3}.wem</CachePath>
@@ -12070,18 +12139,26 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="40604342" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{3EC1B190-2BC5-4B27-8F9C-1424AF74CE66}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="64045502" Name="Gain (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send\[Effect Slot [1]: (Gain)]\Gain (Custom)" GUID="{7FEA6803-5F2F-4DC7-9B38-F57620C75B4B}" LibName="Wwise Gain" LibId="9109507"/>
 					<Plugin Id="75143502" Name="Compressor (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\[Effect Slot [0]: (Compressor)]\Compressor (Custom)" GUID="{A26D26DC-6631-4E48-AA7C-BFF94ADEBECE}" LibName="Wwise Compressor" LibId="7077891"/>
 					<Plugin Id="80258421" Name="Meter (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{8908185C-5E26-46E0-AFC3-C890C86B4246}" LibName="Wwise Meter" LibId="8454147"/>
-					<Plugin Id="251558646" Name="Parametric EQ (Custom)" ObjectPath="\Containers\SFX\Characters\Player\Chassepot\Chassepot_Gunshot\Chassepot_Core\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{38C53F2E-1972-4646-8CC8-F05AE9026171}" LibName="Wwise Parametric EQ" LibId="6881283"/>
+					<Plugin Id="251558646" Name="Parametric EQ (Custom)" ObjectPath="\Containers\SFX\Characters\Player\Chassepot\Chassepot_Gunshot\Chassepot_Core\[Effect Slot [1]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{38C53F2E-1972-4646-8CC8-F05AE9026171}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="288099940" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_NPC\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{2789B10C-C119-4E55-ADC9-22734A929676}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="292293286" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\AMB\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{0A47A387-8368-497D-A884-F854DF248E43}" LibName="Wwise Parametric EQ" LibId="6881283"/>
+					<Plugin Id="328571260" Name="Parametric EQ (Custom)" ObjectPath="\Containers\SFX\Characters\NPC\First_Shoot\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{A77BC323-E055-437F-B9FA-D7BB09EDBE06}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="491144356" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_NPC\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{AFAB6BA1-7AD1-4438-9430-79801E451DBC}" LibName="Wwise Parametric EQ" LibId="6881283"/>
+					<Plugin Id="545382081" Name="Peak Limiter (Custom)" ObjectPath="\Containers\SFX\Characters\Player\Chassepot\Chassepot_Gunshot\Chassepot_DryFire\[Effect Slot [0]: (Peak Limiter)]\Peak Limiter (Custom)" GUID="{4DBFE31E-EC1D-4D18-80E2-F37E4D599835}" LibName="Wwise Peak Limiter" LibId="7208963"/>
+					<Plugin Id="594998967" Name="Guitar Distortion (Custom)" ObjectPath="\Containers\SFX\Characters\Player\Chassepot\Chassepot_Gunshot\Chassepot_DryFire\[Effect Slot [1]: (Guitar Distortion)]\Guitar Distortion (Custom)" GUID="{4CCDF02B-A312-43EC-95A8-7A9976768A0B}" LibName="Wwise Guitar Distortion" LibId="8257539"/>
+					<Plugin Id="645104633" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Containers\SFX\Characters\NPC\First_Shoot\[Effect Slot [1]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{B8CF2385-14CA-4C72-9BA7-550845ACF0D9}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="677203020" Name="Pitch Shifter (Custom)" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send\[Effect Slot [0]: (Pitch Shifter)]\Pitch Shifter (Custom)" GUID="{E1388689-6B51-40C1-B6CC-61D3D1660DA2}" LibName="Wwise Pitch Shifter" LibId="8912899"/>
 					<Plugin Id="709122841" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{A3028C14-CC80-4EB1-8BBC-A7DFF27E2768}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="756484234" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_Characters\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{6E305924-9336-480C-998E-A9BE51616ED9}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="781058597" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_Player\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{0C25AD9E-4355-4060-B199-A712931C05E7}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="822713401" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Player\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{7B3679D9-8791-4078-B349-B04B1359B269}" LibName="Wwise Parametric EQ" LibId="6881283"/>
+					<Plugin Id="857386844" Name="Meter (Custom)" ObjectPath="\Containers\SFX\Characters\Player\Chassepot\Chassepot_Gunshot\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{AC1FA814-253F-4A0B-BB52-5CF21BB92ABE}" LibName="Wwise Meter" LibId="8454147"/>
+					<Plugin Id="858960987" Name="Compressor (Custom)" ObjectPath="\Containers\SFX\Characters\Player\Chassepot\Chassepot_Gunshot\Chassepot_Core\[Effect Slot [0]: (Compressor)]\Compressor (Custom)" GUID="{EAE60BF6-C16C-4FC1-A9A9-C6EE21E31505}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="898292693" Name="Meter (Custom)" ObjectPath="\Containers\SFX\Characters\Player\Chassepot\Reload\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{F5823CF4-F0FA-4155-946E-192150291D90}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1012444785" Name="High_Pass_60Hz (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb\[Effect Slot [1]: (Parametric EQ)]\High_Pass_60Hz (Custom)" GUID="{0A41C22E-12E9-4E35-B138-1CD4852233C0}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="1026399686" Name="Meter (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{F71FC67B-11E7-40D0-888F-EA74552BBC0A}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1050210851" Name="NarrowShortAlley (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb\[Effect Slot [0]: (AK Convolution Reverb)]\NarrowShortAlley (Custom)" GUID="{288C8CE6-FABA-47A3-886F-D9C36902B037}" LibName="Wwise Convolution Reverb" LibId="8323075">
@@ -12137,35 +12214,32 @@
 				</Event>
 				<Event Id="3687575925" Name="Deafening_Recover" ObjectPath="\Events\SFX\Player\Deafening_Recover" GUID="{466AAC6A-68B8-4005-A1D9-6E44A18E8793}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
 				<Event Id="529726532" Name="End" ObjectPath="\Events\SFX\End" GUID="{72B738EE-DA6A-4347-B025-D7D4A68FE1AD}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0"/>
-				<Event Id="174670969" Name="First_Shoot" ObjectPath="\Events\SFX\First_Shoot" GUID="{DF80161A-5CAE-4318-8870-07D075BDD036}" Color="10" MaxAttenuation="200" DurationType="OneShot" DurationMin="0.71271896" DurationMax="2.0586045">
+				<Event Id="174670969" Name="First_Shoot" ObjectPath="\Events\SFX\First_Shoot" GUID="{DF80161A-5CAE-4318-8870-07D075BDD036}" Color="10" MaxAttenuation="200" DurationType="OneShot" DurationMin="1.187865" DurationMax="1.372403">
 					<MediaRefs>
-						<MediaRef Id="376843141"/>
-						<MediaRef Id="512603057"/>
-						<MediaRef Id="558518109"/>
-						<MediaRef Id="612558186"/>
-						<MediaRef Id="629537322"/>
-						<MediaRef Id="803409758"/>
-						<MediaRef Id="916788496"/>
-						<MediaRef Id="948386357"/>
-						<MediaRef Id="1018639944"/>
-						<MediaRef Id="1026693139"/>
+						<MediaRef Id="332513162"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="328571260"/>
+							<PluginRef Id="645104633"/>
+						</Custom>
+					</PluginRefs>
 				</Event>
 				<Event Id="1192162266" Name="Npc_Shoot" ObjectPath="\Events\SFX\Npc_Shoot" GUID="{7650D5C3-0FE3-4EB0-8986-5DB3F54D48A3}" Color="10" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.71271896" DurationMax="2.0586045">
 					<MediaRefs>
 						<MediaRef Id="162843046"/>
-						<MediaRef Id="376843141"/>
+						<MediaRef Id="269899231"/>
+						<MediaRef Id="332513162"/>
+						<MediaRef Id="382705976"/>
+						<MediaRef Id="452880230"/>
 						<MediaRef Id="487796999"/>
 						<MediaRef Id="512603057"/>
-						<MediaRef Id="558518109"/>
-						<MediaRef Id="612558186"/>
+						<MediaRef Id="526873019"/>
+						<MediaRef Id="547761077"/>
 						<MediaRef Id="629537322"/>
+						<MediaRef Id="682199737"/>
+						<MediaRef Id="683256367"/>
 						<MediaRef Id="767180969"/>
-						<MediaRef Id="803409758"/>
-						<MediaRef Id="916788496"/>
-						<MediaRef Id="948386357"/>
-						<MediaRef Id="1018639944"/>
-						<MediaRef Id="1026693139"/>
 					</MediaRefs>
 				</Event>
 				<Event Id="3092587493" Name="Pause" ObjectPath="\Events\SFX\Pause" GUID="{21248D07-4D4A-441F-AA69-D40EACF392C2}" Color="10" MaxAttenuation="0" DurationType="OneShot" DurationMin="0" DurationMax="0">
@@ -12287,6 +12361,12 @@
 						<MediaRef Id="541183654"/>
 						<MediaRef Id="560147033"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="545382081"/>
+							<PluginRef Id="594998967"/>
+						</Custom>
+					</PluginRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
 						<AuxBusRef Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10"/>
@@ -12313,7 +12393,7 @@
 						<ActionSetStateEntry GroupId="1343755517" Id="1270007533" Name="prone" ObjectPath="\States\Default Work Unit\player_stance\prone" GUID="{60F99E8D-B8AD-4A6C-921D-50A9CC92B00F}"/>
 					</ActionSetState>
 				</Event>
-				<Event Id="1650679582" Name="Player_Reload" ObjectPath="\Events\SFX\Player\Player_Reload" GUID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}" Color="10" DurationType="OneShot" DurationMin="0.109" DurationMax="1.1282291">
+				<Event Id="1650679582" Name="Player_Reload" ObjectPath="\Events\SFX\Player\Player_Reload" GUID="{72E0C3BE-2CA8-4C92-ADA1-0DC6A0ACE242}" Color="10" DurationType="OneShot" DurationMin="0.110270835" DurationMax="1.1282291">
 					<MediaRefs>
 						<MediaRef Id="1383483"/>
 						<MediaRef Id="18155998"/>
@@ -12325,7 +12405,6 @@
 						<MediaRef Id="444887343"/>
 						<MediaRef Id="502651267"/>
 						<MediaRef Id="505734138"/>
-						<MediaRef Id="509153447"/>
 						<MediaRef Id="533567872"/>
 						<MediaRef Id="628560875"/>
 						<MediaRef Id="656421790"/>
@@ -12334,8 +12413,12 @@
 						<MediaRef Id="861982477"/>
 						<MediaRef Id="974935944"/>
 						<MediaRef Id="1015424545"/>
-						<MediaRef Id="1017154576"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="898292693"/>
+						</Custom>
+					</PluginRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="214837138" Name="Wwise_Motion_Send" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send" GUID="{B6ABEE14-8AAD-461E-90BE-D3723AC12671}"/>
 						<AuxBusRef Id="2635253023" Name="Street_Reverb" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\Street_Reverb" GUID="{BB8EA9AA-1DE3-42FF-959C-F5DC2DA3CEA7}"/>
@@ -12360,6 +12443,9 @@
 					<PluginRefs>
 						<Custom>
 							<PluginRef Id="251558646"/>
+							<PluginRef Id="545382081"/>
+							<PluginRef Id="594998967"/>
+							<PluginRef Id="858960987"/>
 						</Custom>
 					</PluginRefs>
 					<AuxBusRefs>
@@ -12486,7 +12572,13 @@
 						</Custom>
 					</PluginRefs>
 				</Bus>
-				<Bus Id="393239870" Name="SFX" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX" GUID="{8FE46C9B-4641-43D1-B739-F2D46260CC7F}" Color="10"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX" GUID="{8FE46C9B-4641-43D1-B739-F2D46260CC7F}" Color="10">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="40604342"/>
+						</Custom>
+					</PluginRefs>
+				</Bus>
 				<Bus Id="1117531639" Name="AMB" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\AMB" GUID="{3C49B583-C63B-4CCB-A1B9-D71E082D055E}" Color="4">
 					<PluginRefs>
 						<Custom>
@@ -12572,6 +12664,7 @@
 				<GameParameter Id="1833811084" Name="Player_Velocity" ObjectPath="\Game Parameters\Default Work Unit\Player_Velocity" GUID="{C608E447-1D9D-4717-B429-A50B1CC84984}"/>
 				<GameParameter Id="1883033791" Name="Sidechain" ObjectPath="\Game Parameters\Default Work Unit\Sidechain" GUID="{85DB9D89-EF22-4542-95A6-10D2B8BE9341}"/>
 				<GameParameter Id="2647762268" Name="Sidechain_Dialogue" ObjectPath="\Game Parameters\Default Work Unit\Sidechain_Dialogue" GUID="{E3D15146-7A9C-49E2-BF9F-F7D655BB9188}"/>
+				<GameParameter Id="2951528245" Name="Player_Chassepot" ObjectPath="\Game Parameters\Default Work Unit\Player_Chassepot" GUID="{0B6F97FF-8AFE-43BF-9B38-4AE8CBD398CB}"/>
 				<GameParameter Id="4056684167" Name="Master" ObjectPath="\Game Parameters\Game_Menu\Master" GUID="{6C99D459-7B11-4003-993D-29CE5FF12571}"/>
 				<GameParameter Id="4205136178" Name="Death_Filter" ObjectPath="\Game Parameters\Default Work Unit\Death_Filter" GUID="{C73A6915-BB76-4746-95CC-A87CCED79E78}"/>
 			</GameParameters>
@@ -12629,7 +12722,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2519917785" Type="User" GUID="{2EC33D6E-768B-4BDE-BFF0-F36421A7E2FE}" Language="French(France)" Hash="{612A0FBF-CBB3-5EB2-523C-C6C4FB59E352}">
+		<SoundBank Id="2519917785" Type="User" GUID="{2EC33D6E-768B-4BDE-BFF0-F36421A7E2FE}" Language="French(France)" Hash="{D209461A-7584-069F-6C9D-0B34FF189C92}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Georges</ObjectPath>
 			<ShortName>Georges</ShortName>
 			<Path>French(France)/Georges.bnk</Path>
@@ -12833,7 +12926,7 @@
 				</File>
 				<File Id="951478521" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Officer\VX_Amb_M_Vers_Military_Game_End_1_Officer.wav</ShortName>
-					<CachePath>94/{941CA387-52CC-60D1-A366-A51E4A12119F}.wem</CachePath>
+					<CachePath>21/{21DE05B9-7F9C-A3D1-AE11-5506E9114E06}.wem</CachePath>
 				</File>
 				<File Id="975225380" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Francois\VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris.wav</ShortName>
@@ -12847,9 +12940,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.81898" DurationMax="41.307457">
@@ -12962,9 +13061,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -13458,7 +13561,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2519917785" Type="User" GUID="{2EC33D6E-768B-4BDE-BFF0-F36421A7E2FE}" Language="English(US)" Hash="{79449669-BDFC-1C62-42AA-D519CFC4C1A4}">
+		<SoundBank Id="2519917785" Type="User" GUID="{2EC33D6E-768B-4BDE-BFF0-F36421A7E2FE}" Language="English(US)" Hash="{A0EA7894-96E0-96A1-7781-9777DFFC6F81}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Georges</ObjectPath>
 			<ShortName>Georges</ShortName>
 			<Path>English(US)/Georges.bnk</Path>
@@ -13676,9 +13779,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.81898" DurationMax="41.307457">
@@ -13791,9 +13900,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -14287,7 +14400,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2926082704" Type="User" GUID="{563F803F-BC92-419B-80E0-A86A0C0F6296}" Language="French(France)" Hash="{FA4B07A3-7B7C-D1A0-4B94-BA89E5148F93}">
+		<SoundBank Id="2926082704" Type="User" GUID="{563F803F-BC92-419B-80E0-A86A0C0F6296}" Language="French(France)" Hash="{A8B21813-6BBD-C86D-2AF6-DA316500FAB5}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Louise</ObjectPath>
 			<ShortName>Louise</ShortName>
 			<Path>French(France)/Louise.bnk</Path>
@@ -14491,7 +14604,7 @@
 				</File>
 				<File Id="951478521" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Officer\VX_Amb_M_Vers_Military_Game_End_1_Officer.wav</ShortName>
-					<CachePath>94/{941CA387-52CC-60D1-A366-A51E4A12119F}.wem</CachePath>
+					<CachePath>21/{21DE05B9-7F9C-A3D1-AE11-5506E9114E06}.wem</CachePath>
 				</File>
 				<File Id="975225380" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Francois\VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris.wav</ShortName>
@@ -14505,9 +14618,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="1218331013" Name="Choose_Fight" ObjectPath="\Events\VX\Ally\Choose_Fight" GUID="{942B9A28-9902-4AB4-8844-671F2F8C55A0}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="3.608354" DurationMax="3.608354">
@@ -14631,9 +14750,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -15127,7 +15250,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="2926082704" Type="User" GUID="{563F803F-BC92-419B-80E0-A86A0C0F6296}" Language="English(US)" Hash="{7AC5EFA9-E3A1-CB57-E995-29DF59B88092}">
+		<SoundBank Id="2926082704" Type="User" GUID="{563F803F-BC92-419B-80E0-A86A0C0F6296}" Language="English(US)" Hash="{D1D2CF0F-0EA6-CF9D-E5F0-5740CD8D32B1}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Louise</ObjectPath>
 			<ShortName>Louise</ShortName>
 			<Path>English(US)/Louise.bnk</Path>
@@ -15345,9 +15468,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="1218331013" Name="Choose_Fight" ObjectPath="\Events\VX\Ally\Choose_Fight" GUID="{942B9A28-9902-4AB4-8844-671F2F8C55A0}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="3.608354" DurationMax="3.608354">
@@ -15471,9 +15600,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -15967,7 +16100,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3484216754" Type="User" GUID="{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}" Language="French(France)" Hash="{5C4CDB95-A42A-8B17-F8EF-13BE97328AF6}">
+		<SoundBank Id="3484216754" Type="User" GUID="{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}" Language="French(France)" Hash="{78830BB8-791E-5F1E-088E-81D9BD9D261B}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Francois</ObjectPath>
 			<ShortName>Francois</ShortName>
 			<Path>French(France)/Francois.bnk</Path>
@@ -16171,7 +16304,7 @@
 				</File>
 				<File Id="951478521" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Officer\VX_Amb_M_Vers_Military_Game_End_1_Officer.wav</ShortName>
-					<CachePath>94/{941CA387-52CC-60D1-A366-A51E4A12119F}.wem</CachePath>
+					<CachePath>21/{21DE05B9-7F9C-A3D1-AE11-5506E9114E06}.wem</CachePath>
 				</File>
 				<File Id="975225380" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Characters\Francois\VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris.wav</ShortName>
@@ -16185,9 +16318,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="2467968637" Name="Choose_Surrender" ObjectPath="\Events\VX\Ally\Choose_Surrender" GUID="{21D54443-F2A6-4D2C-A1EE-BEF015429488}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="3.0075624" DurationMax="3.0075624">
@@ -16311,9 +16450,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -16807,7 +16950,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3484216754" Type="User" GUID="{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}" Language="English(US)" Hash="{E5406DB6-EBF0-284D-1D6C-10EE461C4A9E}">
+		<SoundBank Id="3484216754" Type="User" GUID="{CFD2E338-ABD6-4E2D-8892-8B4250BA6C96}" Language="English(US)" Hash="{D4908F24-0B1E-3B94-E313-49917807F7EB}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Francois</ObjectPath>
 			<ShortName>Francois</ShortName>
 			<Path>English(US)/Francois.bnk</Path>
@@ -17025,9 +17168,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="2467968637" Name="Choose_Surrender" ObjectPath="\Events\VX\Ally\Choose_Surrender" GUID="{21D54443-F2A6-4D2C-A1EE-BEF015429488}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="3.0075624" DurationMax="3.0075624">
@@ -17151,9 +17300,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -17647,7 +17800,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3942830996" Type="User" GUID="{C91B5605-C60C-4A28-A072-6F8DEB39E271}" Language="French(France)" Hash="{7FD3C9D0-BD1A-9A38-6FE0-57F287809F45}">
+		<SoundBank Id="3942830996" Type="User" GUID="{C91B5605-C60C-4A28-A072-6F8DEB39E271}" Language="French(France)" Hash="{4C3128B3-E354-50DB-CA79-7AEB096FBD8B}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Officier</ObjectPath>
 			<ShortName>Officier</ShortName>
 			<Path>French(France)/Officier.bnk</Path>
@@ -17851,7 +18004,7 @@
 				</File>
 				<File Id="951478521" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Characters\Officer\VX_Amb_M_Vers_Military_Game_End_1_Officer.wav</ShortName>
-					<CachePath>94/{941CA387-52CC-60D1-A366-A51E4A12119F}.wem</CachePath>
+					<CachePath>21/{21DE05B9-7F9C-A3D1-AE11-5506E9114E06}.wem</CachePath>
 				</File>
 				<File Id="975225380" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Francois\VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris.wav</ShortName>
@@ -17865,9 +18018,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.81898" DurationMax="41.307457">
@@ -17980,9 +18139,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -18476,7 +18639,7 @@
 				</SwitchGroup>
 			</SwitchGroups>
 		</SoundBank>
-		<SoundBank Id="3942830996" Type="User" GUID="{C91B5605-C60C-4A28-A072-6F8DEB39E271}" Language="English(US)" Hash="{7870CC38-BDEA-D8AA-D03B-AC2F91F8F774}">
+		<SoundBank Id="3942830996" Type="User" GUID="{C91B5605-C60C-4A28-A072-6F8DEB39E271}" Language="English(US)" Hash="{EF0F6FCB-6A97-09AC-F5DE-C547E1A4F807}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Officier</ObjectPath>
 			<ShortName>Officier</ShortName>
 			<Path>English(US)/Officier.bnk</Path>
@@ -18694,9 +18857,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="3930136735" Name="Dialogue" ObjectPath="\Events\VX\Dialogue" GUID="{DFB54F67-7210-40B2-AE10-0680DD5AD124}" Color="11" MaxAttenuation="100" DurationType="OneShot" DurationMin="0.81898" DurationMax="41.307457">
@@ -18809,9 +18978,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -19306,5 +19479,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0F9EE00A-686A-662D-219A-313B607FABCD}</FileHash>
+	<FileHash>{A0D42166-4B4A-ED81-249F-FEB83E754162}</FileHash>
 </SoundBanksInfo>

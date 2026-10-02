@@ -913,12 +913,20 @@
 							</ChildrenList>
 						</PropertyContainer>
 						<PropertyContainer Name="Main_Menu" ID="{C5EFD10C-3AE3-4941-8ACF-46155B406D4E}" ShortID="57652426">
+							<PropertyList>
+								<Property Name="MakeUpGain" Type="Real64">
+									<ValueList>
+										<Value>12</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+									<ObjectRef Name="AMB" ID="{3C49B583-C63B-4CCB-A1B9-D71E082D055E}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
@@ -1501,13 +1509,14 @@
 								<Sound Name="LTDC_MSC_MainMenu_Loop" ID="{1141E1DD-4683-45E4-BE51-5C6D781385FF}" ShortID="559738267">
 									<PropertyList>
 										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Main Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+											<ObjectRef Name="Music_Bus" ID="{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}" WorkUnitID="{3EE695F8-7F6E-4BE8-B1D1-D1CCBEC0C323}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>

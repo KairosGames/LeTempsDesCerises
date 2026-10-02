@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="2926082704" Type="User" GUID="{563F803F-BC92-419B-80E0-A86A0C0F6296}" Language="French(France)" Hash="{FA4B07A3-7B7C-D1A0-4B94-BA89E5148F93}">
+		<SoundBank Id="2926082704" Type="User" GUID="{563F803F-BC92-419B-80E0-A86A0C0F6296}" Language="French(France)" Hash="{A8B21813-6BBD-C86D-2AF6-DA316500FAB5}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Narrative\Louise</ObjectPath>
 			<ShortName>Louise</ShortName>
 			<Path>French(France)/Louise.bnk</Path>
@@ -205,7 +205,7 @@
 				</File>
 				<File Id="951478521" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Officer\VX_Amb_M_Vers_Military_Game_End_1_Officer.wav</ShortName>
-					<CachePath>94/{941CA387-52CC-60D1-A366-A51E4A12119F}.wem</CachePath>
+					<CachePath>21/{21DE05B9-7F9C-A3D1-AE11-5506E9114E06}.wem</CachePath>
 				</File>
 				<File Id="975225380" Language="French(France)" Streaming="false" Location="OtherBank">
 					<ShortName>Characters\Francois\VX_Amb_M_Comm_Francois_Enemy_Arrival_1_Ydris.wav</ShortName>
@@ -219,9 +219,15 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="179327483" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{280090C8-5763-4E24-BB2E-C338BF09EF70}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="354378670" Name="Parametric EQ (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [2]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="806555383" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\Georges\VX_Ob_M_Comm_Georges_Start_1\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{184403DB-4B22-486F-B87D-E0ABA9E9279C}" LibName="Wwise Meter" LibId="8454147"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
+				<ShareSets>
+					<Plugin Id="48620415" Name="Have_U_Ever_Been_Outside" ObjectPath="\Effects\Factory Effects\RoomVerb\Exteriors\Have_U_Ever_Been_Outside" GUID="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}" LibName="Wwise RoomVerb" LibId="7733251"/>
+				</ShareSets>
 			</Plugins>
 			<Events>
 				<Event Id="1218331013" Name="Choose_Fight" ObjectPath="\Events\VX\Ally\Choose_Fight" GUID="{942B9A28-9902-4AB4-8844-671F2F8C55A0}" Color="11" MaxAttenuation="25" DurationType="OneShot" DurationMin="3.608354" DurationMax="3.608354">
@@ -345,9 +351,13 @@
 									</MediaRefs>
 									<PluginRefs>
 										<Custom>
-											<PluginRef Id="537703978"/>
-											<PluginRef Id="1065011977"/>
+											<PluginRef Id="179327483"/>
+											<PluginRef Id="354378670"/>
+											<PluginRef Id="806555383"/>
 										</Custom>
+										<ShareSets>
+											<PluginRef Id="48620415"/>
+										</ShareSets>
 									</PluginRefs>
 								</SwitchContainer>
 								<SwitchContainer>
@@ -842,5 +852,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{0AA9991C-2D90-F595-32D5-DFC17A8785D3}</FileHash>
+	<FileHash>{C4E79998-A736-CC22-C95C-D1F5ABEDC6D4}</FileHash>
 </SoundBanksInfo>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{CE333F09-FD63-A166-545E-345002784791}">
+		<SoundBank Id="1355168291" Type="User" GUID="{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}" Language="SFX" Hash="{972EE409-A2D7-CBB1-54A0-8FEE418DD5A5}">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -13,6 +13,7 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="40604342" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{3EC1B190-2BC5-4B27-8F9C-1424AF74CE66}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="64045502" Name="Gain (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send\[Effect Slot [1]: (Gain)]\Gain (Custom)" GUID="{7FEA6803-5F2F-4DC7-9B38-F57620C75B4B}" LibName="Wwise Gain" LibId="9109507"/>
 					<Plugin Id="75143502" Name="Compressor (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\[Effect Slot [0]: (Compressor)]\Compressor (Custom)" GUID="{A26D26DC-6631-4E48-AA7C-BFF94ADEBECE}" LibName="Wwise Compressor" LibId="7077891"/>
 					<Plugin Id="80258421" Name="Meter (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{8908185C-5E26-46E0-AFC3-C890C86B4246}" LibName="Wwise Meter" LibId="8454147"/>
@@ -21,6 +22,7 @@
 					<Plugin Id="491144356" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_NPC\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{AFAB6BA1-7AD1-4438-9430-79801E451DBC}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="677203020" Name="Pitch Shifter (Custom)" ObjectPath="\Busses\Default Work Unit\Wwise_Motion\Wwise_Motion_Send\[Effect Slot [0]: (Pitch Shifter)]\Pitch Shifter (Custom)" GUID="{E1388689-6B51-40C1-B6CC-61D3D1660DA2}" LibName="Wwise Pitch Shifter" LibId="8912899"/>
 					<Plugin Id="709122841" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{A3028C14-CC80-4EB1-8BBC-A7DFF27E2768}" LibName="Wwise Parametric EQ" LibId="6881283"/>
+					<Plugin Id="722476435" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Music_Bus\Music_Bus\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{7396CCE5-6F46-4D9C-8C6D-9B8E1141E89F}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="756484234" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_Characters\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{6E305924-9336-480C-998E-A9BE51616ED9}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="781058597" Name="Parametric EQ (Custom)" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\VX\VX_Player\[Effect Slot [0]: (Parametric EQ)]\Parametric EQ (Custom)" GUID="{0C25AD9E-4355-4060-B199-A712931C05E7}" LibName="Wwise Parametric EQ" LibId="6881283"/>
 					<Plugin Id="805464425" Name="Caught_in_a_loop (Custom)" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Rev_Barricade\[Effect Slot [0]: (Stereo Delay)]\Caught_in_a_loop (Custom)" GUID="{EE8512F0-1D4C-4F9E-87FC-26DBFFB03C4A}" LibName="Wwise Stereo Delay" LibId="8847363"/>
@@ -63,7 +65,13 @@
 						</Custom>
 					</PluginRefs>
 				</Bus>
-				<Bus Id="393239870" Name="SFX" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX" GUID="{8FE46C9B-4641-43D1-B739-F2D46260CC7F}" Color="10"/>
+				<Bus Id="393239870" Name="SFX" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX" GUID="{8FE46C9B-4641-43D1-B739-F2D46260CC7F}" Color="10">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="40604342"/>
+						</Custom>
+					</PluginRefs>
+				</Bus>
 				<Bus Id="411987026" Name="Clarinette" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Clarinette" GUID="{F2C3B679-DB9A-4E2C-8D2D-26D071919451}" Color="3"/>
 				<Bus Id="569003821" Name="LeadVx" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\LeadVx" GUID="{B88F5454-4A6B-4B14-82FD-40365B36686C}" Color="3"/>
 				<Bus Id="697539359" Name="Guimbarde" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Instruments3D\Guimbarde" GUID="{BB1CDC90-BBEF-42A5-A2AB-95E526B90C70}" Color="3"/>
@@ -137,7 +145,13 @@
 						<AuxBusRef Id="4084836994" Name="Music_End_Rev" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_End_Rev" GUID="{7CE652AA-1D2A-4019-A958-EA85F43ED44C}" Color="2"/>
 					</AuxBusRefs>
 				</Bus>
-				<Bus Id="2680856269" Name="Music_Bus" ObjectPath="\Busses\Music_Bus\Music_Bus" GUID="{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}" Color="2"/>
+				<Bus Id="2680856269" Name="Music_Bus" ObjectPath="\Busses\Music_Bus\Music_Bus" GUID="{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}" Color="2">
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="722476435"/>
+						</Custom>
+					</PluginRefs>
+				</Bus>
 				<Bus Id="3009393514" Name="Hugo" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Hugo" GUID="{9B158B8B-1296-4EC4-9488-C5CF405E14EF}" Color="3"/>
 				<Bus Id="3217351932" Name="Atea" ObjectPath="\Busses\Music_Bus\Music_Bus\Music_Dry\Vocals\Solistes\Atea" GUID="{B2C34D4A-D78C-44C0-96FB-F2FD48E42B90}" Color="3">
 					<AuxBusRefs>
@@ -223,6 +237,7 @@
 				<GameParameter Id="2580242767" Name="DiegeticAmount" ObjectPath="\Game Parameters\MUSIC_RTPC\DiegeticAmount" GUID="{16D56ABA-E648-4755-84DA-92772451D748}" Color="2"/>
 				<GameParameter Id="2647762268" Name="Sidechain_Dialogue" ObjectPath="\Game Parameters\Default Work Unit\Sidechain_Dialogue" GUID="{E3D15146-7A9C-49E2-BF9F-F7D655BB9188}"/>
 				<GameParameter Id="2909751391" Name="Choir_Volume" ObjectPath="\Game Parameters\MUSIC_RTPC\Choir_Volume" GUID="{B964DDEA-0965-4408-B8D1-10C1D71136BB}" Color="2"/>
+				<GameParameter Id="2951528245" Name="Player_Chassepot" ObjectPath="\Game Parameters\Default Work Unit\Player_Chassepot" GUID="{0B6F97FF-8AFE-43BF-9B38-4AE8CBD398CB}"/>
 				<GameParameter Id="3680281974" Name="Poetic_Level" ObjectPath="\Game Parameters\Default Work Unit\Poetic_Level" GUID="{FB93CEA7-2418-4DE2-8C31-999E6239D31F}"/>
 				<GameParameter Id="4056684167" Name="Master" ObjectPath="\Game Parameters\Game_Menu\Master" GUID="{6C99D459-7B11-4003-993D-29CE5FF12571}"/>
 				<GameParameter Id="4205136178" Name="Death_Filter" ObjectPath="\Game Parameters\Default Work Unit\Death_Filter" GUID="{C73A6915-BB76-4746-95CC-A87CCED79E78}"/>
@@ -598,5 +613,5 @@
 			</AcousticTextures>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{41557E46-1B6C-380A-585C-F5821989B391}</FileHash>
+	<FileHash>{86DD2F36-C7C4-3681-AE40-8B913BD0A077}</FileHash>
 </SoundBanksInfo>

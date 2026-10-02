@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{701ECBBD-9C7B-4030-8CDB-749EE5D1C7B9}",
     "Language": "SFX",
-    "Hash": "{CE333F09-FD63-A166-545E-345002784791}",
+    "Hash": "{972EE409-A2D7-CBB1-54A0-8FEE418DD5A5}",
     "ObjectPath": "Init",
     "ShortName": "Init",
     "Path": "Init.bnk",
@@ -26,6 +26,14 @@
     ],
     "Plugins": {
      "Custom": [
+      {
+       "Id": "40604342",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{3EC1B190-2BC5-4B27-8F9C-1424AF74CE66}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
       {
        "Id": "64045502",
        "Name": "Gain (Custom)",
@@ -87,6 +95,14 @@
        "Name": "Parametric EQ (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
        "GUID": "{A3028C14-CC80-4EB1-8BBC-A7DFF27E2768}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
+      {
+       "Id": "722476435",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Music_Bus\\Music_Bus\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{7396CCE5-6F46-4D9C-8C6D-9B8E1141E89F}",
        "LibName": "Wwise Parametric EQ",
        "LibId": "6881283"
       },
@@ -254,7 +270,14 @@
       "Name": "SFX",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX",
       "GUID": "{8FE46C9B-4641-43D1-B739-F2D46260CC7F}",
-      "Color": "10"
+      "Color": "10",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "40604342"
+        }
+       ]
+      }
      },
      {
       "Id": "411987026",
@@ -518,7 +541,14 @@
       "Name": "Music_Bus",
       "ObjectPath": "\\Busses\\Music_Bus\\Music_Bus",
       "GUID": "{90479E0E-8EA9-4DB9-B6F1-D630114FE30C}",
-      "Color": "2"
+      "Color": "2",
+      "PluginRefs": {
+       "Custom": [
+        {
+         "Id": "722476435"
+        }
+       ]
+      }
      },
      {
       "Id": "3009393514",
@@ -789,6 +819,12 @@
       "ObjectPath": "\\Game Parameters\\MUSIC_RTPC\\Choir_Volume",
       "GUID": "{B964DDEA-0965-4408-B8D1-10C1D71136BB}",
       "Color": "2"
+     },
+     {
+      "Id": "2951528245",
+      "Name": "Player_Chassepot",
+      "ObjectPath": "\\Game Parameters\\Default Work Unit\\Player_Chassepot",
+      "GUID": "{0B6F97FF-8AFE-43BF-9B38-4AE8CBD398CB}"
      },
      {
       "Id": "3680281974",
@@ -2378,6 +2414,6 @@
     ]
    }
   ],
-  "FileHash": "{1A804F71-CFB8-7C12-358A-AB31F322529D}"
+  "FileHash": "{C13480AE-44C0-145C-467E-932BA1ADD39B}"
  }
 }

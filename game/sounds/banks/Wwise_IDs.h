@@ -449,6 +449,7 @@ namespace AK
         static const AkUniqueID ISPLAYING = 728654205U;
         static const AkUniqueID MASTER = 4056684167U;
         static const AkUniqueID MSC = 746452412U;
+        static const AkUniqueID PLAYER_CHASSEPOT = 2951528245U;
         static const AkUniqueID PLAYER_POSITION = 2221031936U;
         static const AkUniqueID PLAYER_VELOCITY = 1833811084U;
         static const AkUniqueID POETIC_LEVEL = 3680281974U;

@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{90C03101-8D2A-4225-AD52-272CB4650D83}",
     "Language": "French(France)",
-    "Hash": "{0BF9BFDB-90CB-02EB-FD74-C2AAEC2B8A2D}",
+    "Hash": "{E37D7370-8C2D-F0F2-9592-1CFC43F0CE35}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Narrative\\Michel",
     "ShortName": "Michel",
     "Path": "French(France)/Michel.bnk",
@@ -398,7 +398,7 @@
       "Streaming": "false",
       "Location": "OtherBank",
       "ShortName": "Characters\\Officer\\VX_Amb_M_Vers_Military_Game_End_1_Officer.wav",
-      "CachePath": "94/{941CA387-52CC-60D1-A366-A51E4A12119F}.wem"
+      "CachePath": "21/{21DE05B9-7F9C-A3D1-AE11-5506E9114E06}.wem"
      },
      {
       "Id": "975225380",
@@ -421,6 +421,22 @@
     "Plugins": {
      "Custom": [
       {
+       "Id": "179327483",
+       "Name": "Dialog_Leveler_Hard (Custom)",
+       "ObjectPath": "\\Containers\\VX\\Scripted\\Character\\Georges\\VX_Ob_M_Comm_Georges_Start_1\\[Effect Slot [0]: (Compressor)]\\Dialog_Leveler_Hard (Custom)",
+       "GUID": "{280090C8-5763-4E24-BB2E-C338BF09EF70}",
+       "LibName": "Wwise Compressor",
+       "LibId": "7077891"
+      },
+      {
+       "Id": "354378670",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Containers\\VX\\Scripted\\Character\\Georges\\VX_Ob_M_Comm_Georges_Start_1\\[Effect Slot [2]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{922510B3-A3DB-4EF1-9FC6-F255F688D8A2}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
+      {
        "Id": "537703978",
        "Name": "Dialog_Leveler_Hard (Custom)",
        "ObjectPath": "\\Containers\\VX\\Scripted\\Character\\[Effect Slot [0]: (Compressor)]\\Dialog_Leveler_Hard (Custom)",
@@ -429,12 +445,30 @@
        "LibId": "7077891"
       },
       {
+       "Id": "806555383",
+       "Name": "Meter (Custom)",
+       "ObjectPath": "\\Containers\\VX\\Scripted\\Character\\Georges\\VX_Ob_M_Comm_Georges_Start_1\\[Effect Slot [1]: (Meter)]\\Meter (Custom)",
+       "GUID": "{184403DB-4B22-486F-B87D-E0ABA9E9279C}",
+       "LibName": "Wwise Meter",
+       "LibId": "8454147"
+      },
+      {
        "Id": "1065011977",
        "Name": "Meter (Custom)",
        "ObjectPath": "\\Containers\\VX\\Scripted\\Character\\[Effect Slot [1]: (Meter)]\\Meter (Custom)",
        "GUID": "{97BCCC38-DCA1-422F-8651-8C66DC566703}",
        "LibName": "Wwise Meter",
        "LibId": "8454147"
+      }
+     ],
+     "ShareSets": [
+      {
+       "Id": "48620415",
+       "Name": "Have_U_Ever_Been_Outside",
+       "ObjectPath": "\\Effects\\Factory Effects\\RoomVerb\\Exteriors\\Have_U_Ever_Been_Outside",
+       "GUID": "{FE29AE8D-FD86-4652-A95D-68D32F5760EC}",
+       "LibName": "Wwise RoomVerb",
+       "LibId": "7733251"
       }
      ]
     },
@@ -666,10 +700,18 @@
           "PluginRefs": {
            "Custom": [
             {
-             "Id": "537703978"
+             "Id": "179327483"
             },
             {
-             "Id": "1065011977"
+             "Id": "354378670"
+            },
+            {
+             "Id": "806555383"
+            }
+           ],
+           "ShareSets": [
+            {
+             "Id": "48620415"
             }
            ]
           }
@@ -1797,6 +1839,6 @@
     ]
    }
   ],
-  "FileHash": "{4F887997-1EA4-A6E4-A116-AA13B511517A}"
+  "FileHash": "{0E38D68E-8380-401F-C5AC-E9D620D88D74}"
  }
 }

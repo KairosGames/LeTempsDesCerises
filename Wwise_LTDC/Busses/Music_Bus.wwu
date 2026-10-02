@@ -2237,6 +2237,143 @@
 						</CustomStateList>
 					</StateInfo>
 					<ObjectLists>
+						<ObjectList Name="Effects">
+							<EffectSlot Name="" ID="{4D934B1F-B83A-4851-9E40-A36D93360197}" ShortID="59787969">
+								<ReferenceList>
+									<Reference Name="Effect">
+										<Custom>
+											<Effect Name="Parametric EQ (Custom)" ID="{7396CCE5-6F46-4D9C-8C6D-9B8E1141E89F}" ShortID="722476435" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+												<PropertyList>
+													<Property Name="FilterTypeBand2" Type="int32" Value="0"/>
+													<Property Name="FrequencyBand2" Type="Real32" Value="20000"/>
+													<Property Name="FrequencyBand3" Type="Real32" Value="1000"/>
+													<Property Name="OnOffBand3" Type="bool" Value="True"/>
+												</PropertyList>
+												<ObjectLists>
+													<ObjectList Name="RTPC">
+														<RTPC Name="" ID="{FF8AE0E6-B21C-4688-A4EB-9B9DE0373188}" ShortID="844152391">
+															<PropertyList>
+																<Property Name="PropertyName" Type="string" Value="GainBand3"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Sidechain_Dialogue" ID="{E3D15146-7A9C-49E2-BF9F-F7D655BB9188}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																</Reference>
+																<Reference Name="Curve">
+																	<Custom>
+																		<Curve Name="" ID="{CADCD4C2-4AD1-4605-9524-87AE1F5E6C9A}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="3"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>-48</XPos>
+																					<YPos>0</YPos>
+																					<Flags>5</Flags>
+																				</Point>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>-12</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</Custom>
+																</Reference>
+															</ReferenceList>
+														</RTPC>
+														<RTPC Name="" ID="{314D83E3-0CFD-4695-94F5-60E1BE1F564B}" ShortID="733925560">
+															<PropertyList>
+																<Property Name="PropertyName" Type="string" Value="FrequencyBand2"/>
+															</PropertyList>
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Cannon_Sidechain" ID="{79978E96-EE44-4536-A821-0932926129B4}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																</Reference>
+																<Reference Name="Curve">
+																	<Custom>
+																		<Curve Name="" ID="{221254E0-1C21-49C3-BF02-C1DE801DBA27}">
+																			<PropertyList>
+																				<Property Name="Flags" Type="int32" Value="5"/>
+																			</PropertyList>
+																			<PointList>
+																				<Point>
+																					<XPos>-48</XPos>
+																					<YPos>20000</YPos>
+																					<Flags>5</Flags>
+																					<SegmentShape>SCurve</SegmentShape>
+																				</Point>
+																				<Point>
+																					<XPos>0</XPos>
+																					<YPos>90</YPos>
+																					<Flags>37</Flags>
+																				</Point>
+																			</PointList>
+																		</Curve>
+																	</Custom>
+																</Reference>
+															</ReferenceList>
+														</RTPC>
+													</ObjectList>
+												</ObjectLists>
+											</Effect>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+								<StateInfo>
+									<CustomStateList>
+										<CustomState>
+											<StateRef Name="None" ID="{3208AAD9-A1DA-4140-A012-772480E8C410}"/>
+											<CustomState Name="" ID="{CC6F2C8D-921D-435D-89DE-7E8F1709828C}" ShortID="617780643"/>
+										</CustomState>
+										<CustomState>
+											<StateRef Name="Phase5" ID="{C073EC58-12D2-41B6-B4A0-9D848F2980DA}"/>
+											<CustomState Name="" ID="{01714D9B-2E4B-4FD0-82DF-B009BF471906}" ShortID="859369816"/>
+										</CustomState>
+										<CustomState>
+											<StateRef Name="Dialogue" ID="{5ED0BEB8-8263-440D-9679-9593F067F61B}"/>
+											<CustomState Name="" ID="{0D4A015A-9AD9-4312-B89D-1853E88681D9}" ShortID="763823251"/>
+										</CustomState>
+										<CustomState>
+											<StateRef Name="Louise" ID="{2A8B1D07-53FE-4458-BC8C-2EAAD175FE4D}"/>
+											<CustomState Name="" ID="{12CC17A7-C0CA-402C-89AD-AFE25257A30E}" ShortID="934367924"/>
+										</CustomState>
+										<CustomState>
+											<StateRef Name="Phase2" ID="{65AF7CF1-BA0E-4474-94C0-BD24BC7E9746}"/>
+											<CustomState Name="" ID="{6B5AA82C-71E1-49B3-8355-57DD8518ADC9}" ShortID="569662561"/>
+										</CustomState>
+										<CustomState>
+											<StateRef Name="None" ID="{1048217B-BF09-4548-8B4B-9E0FACC9BBAF}"/>
+											<CustomState Name="" ID="{00F100D7-5A79-45D7-B57D-E7523E33E41D}" ShortID="895490081"/>
+										</CustomState>
+										<CustomState>
+											<StateRef Name="AskChoice" ID="{4EAD2C59-63BF-4739-8913-C811215BA1E2}"/>
+											<CustomState Name="" ID="{FA3BF0FC-284F-4BCA-9E72-92F2C63F155A}" ShortID="317575767"/>
+										</CustomState>
+										<CustomState>
+											<StateRef Name="Francois" ID="{BD14E529-07FB-4854-8CAC-DA402B6DAAC7}"/>
+											<CustomState Name="" ID="{F4FE7A2A-81A3-47FE-B21A-DD68E8506CBE}" ShortID="992981190"/>
+										</CustomState>
+										<CustomState>
+											<StateRef Name="Phase1" ID="{31C19E01-B376-48C1-9CA2-CF46B0246B1E}"/>
+											<CustomState Name="" ID="{EEB3D214-F30A-4C21-A9D2-D21C7CC90392}" ShortID="260847211"/>
+										</CustomState>
+										<CustomState>
+											<StateRef Name="Phase4" ID="{D6B75424-CE64-49EA-B857-6098F2BA0B19}"/>
+											<CustomState Name="" ID="{89218331-B11C-48A3-8D9B-E2A221FCB56F}" ShortID="880775102"/>
+										</CustomState>
+										<CustomState>
+											<StateRef Name="Phase1_1" ID="{423A81A5-4DDD-49F6-A2B1-EF6DD536A656}"/>
+											<CustomState Name="" ID="{BB9DC9D6-C2EC-4D1B-8E93-45DC5E9993EC}" ShortID="1071237240"/>
+										</CustomState>
+										<CustomState>
+											<StateRef Name="Phase3" ID="{97F554C9-80CB-4C13-A0BA-32BA139D5768}"/>
+											<CustomState Name="" ID="{C253EAFB-2D81-40E0-9DF7-5AFB3BF9B6FA}" ShortID="525090373"/>
+										</CustomState>
+									</CustomStateList>
+								</StateInfo>
+							</EffectSlot>
+						</ObjectList>
 						<ObjectList Name="RTPC">
 							<RTPC Name="" ID="{42DEA8E5-92D4-4F81-B477-436677CEB517}" ShortID="776058575">
 								<PropertyList>
@@ -2302,7 +2439,7 @@
 							</RTPC>
 							<RTPC Name="" ID="{776CB40E-FFDF-4EC8-953C-AD1997DC9F6C}" ShortID="610172334">
 								<PropertyList>
-									<Property Name="PropertyName" Type="string" Value="BusVolume"/>
+									<Property Name="PropertyName" Type="string" Value="Volume"/>
 								</PropertyList>
 								<ReferenceList>
 									<Reference Name="ControlInput">
@@ -2319,10 +2456,43 @@
 														<XPos>-48</XPos>
 														<YPos>0</YPos>
 														<Flags>5</Flags>
+														<SegmentShape>SCurve</SegmentShape>
 													</Point>
 													<Point>
 														<XPos>0</XPos>
 														<YPos>-24</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</RTPC>
+							<RTPC Name="" ID="{5DE9AF83-4339-405D-93D6-D1FB01EAFF8D}" ShortID="864383050">
+								<PropertyList>
+									<Property Name="PropertyName" Type="string" Value="Volume"/>
+								</PropertyList>
+								<ReferenceList>
+									<Reference Name="ControlInput">
+										<ObjectRef Name="Player_Chassepot" ID="{0B6F97FF-8AFE-43BF-9B38-4AE8CBD398CB}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+									</Reference>
+									<Reference Name="Curve">
+										<Custom>
+											<Curve Name="" ID="{22A14B36-F924-49BA-A7A7-DD642A20BCAD}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>-48</XPos>
+														<YPos>0</YPos>
+														<Flags>5</Flags>
+														<SegmentShape>Exp2</SegmentShape>
+													</Point>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-12</YPos>
 														<Flags>37</Flags>
 													</Point>
 												</PointList>

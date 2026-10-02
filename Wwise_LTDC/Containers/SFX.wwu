@@ -50,6 +50,7 @@
 								<PropertyContainer Name="Chassepot" ID="{2C7E86A7-AE31-4B62-932A-3CE2293EFE73}" ShortID="711613522">
 									<PropertyList>
 										<Property Name="ListenerRelativeRouting" Type="bool" Value="False"/>
+										<Property Name="OverrideEffect" Type="bool" Value="True"/>
 										<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 									</PropertyList>
@@ -70,11 +71,7 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="Reload" ID="{4A012FB1-B8C0-4113-8824-13C41B4C8EE6}" ShortID="443224131">
 											<PropertyList>
-												<Property Name="MakeUpGain" Type="Real64">
-													<ValueList>
-														<Value>3</Value>
-													</ValueList>
-												</Property>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
 												<Property Name="RandomOrSequence" Type="int16" Value="0"/>
 											</PropertyList>
 											<ReferenceList>
@@ -99,9 +96,19 @@
 														<Sound Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_01" ID="{6F556C41-DC44-4654-94D6-B5F6427BC360}" ShortID="145465449">
 															<PropertyList>
 																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="Inclusion" Type="bool">
+																	<ValueList>
+																		<Value>False</Value>
+																	</ValueList>
+																</Property>
 																<Property Name="MakeUpGain" Type="Real64">
 																	<ValueList>
-																		<Value>1</Value>
+																		<Value>3</Value>
+																	</ValueList>
+																</Property>
+																<Property Name="Pitch" Type="int32">
+																	<ValueList>
+																		<Value>-200</Value>
 																	</ValueList>
 																</Property>
 																<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
@@ -164,6 +171,16 @@
 														<Sound Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03" ID="{9312E453-F93D-475C-9607-FD8053E6E9C1}" ShortID="741534855">
 															<PropertyList>
 																<Property Name="3DSpatialization" Type="int16" Value="2"/>
+																<Property Name="Inclusion" Type="bool">
+																	<ValueList>
+																		<Value>False</Value>
+																	</ValueList>
+																</Property>
+																<Property Name="Pitch" Type="int32">
+																	<ValueList>
+																		<Value>-200</Value>
+																	</ValueList>
+																</Property>
 																<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 																<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 															</PropertyList>
@@ -180,6 +197,13 @@
 															</ReferenceList>
 															<ChildrenList>
 																<AudioFileSource Name="LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03" ID="{F67914C2-B1A5-42AA-9048-6DA1A4952F0F}">
+																	<PropertyList>
+																		<Property Name="VolumeOffset" Type="Real64">
+																			<ValueList>
+																				<Value>3</Value>
+																			</ValueList>
+																		</Property>
+																	</PropertyList>
 																	<Language>SFX</Language>
 																	<AudioFile>Chassepot\Reload\New\LTDC_SFX_Player_Reload_1_LayerGun_Oneshot_03.wav</AudioFile>
 																	<MediaIDList>
@@ -840,15 +864,20 @@
 											</ChildrenList>
 											<ObjectLists>
 												<ObjectList Name="Effects">
-													<EffectSlot Name="" ID="{3DEF1311-50B8-4C42-9F95-C29829A60587}" ShortID="1062563672">
+													<EffectSlot Name="" ID="{AAD1F5FE-C0FC-4222-84CD-7D1A40F7750C}" ShortID="968257098">
 														<ReferenceList>
 															<Reference Name="Effect">
 																<Custom>
-																	<Effect Name="Parametric EQ (Custom)" ID="{2CD4E17A-B2D9-4519-931B-377B911ABCE0}" ShortID="325735127" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																	<Effect Name="Meter (Custom)" ID="{F5823CF4-F0FA-4155-946E-192150291D90}" ShortID="898292693" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 																		<PropertyList>
-																			<Property Name="FrequencyBand2" Type="Real32" Value="660.6287"/>
-																			<Property Name="GainBand2" Type="Real32" Value="-0.4965517"/>
+																			<Property Name="Max" Type="Real32" Value="-24"/>
+																			<Property Name="ReleaseTime" Type="Real32" Value="0"/>
 																		</PropertyList>
+																		<ReferenceList>
+																			<Reference Name="GameParameter">
+																				<ObjectRef Name="Player_Chassepot" ID="{0B6F97FF-8AFE-43BF-9B38-4AE8CBD398CB}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																			</Reference>
+																		</ReferenceList>
 																	</Effect>
 																</Custom>
 															</Reference>
@@ -892,10 +921,51 @@
 														</ReferenceList>
 													</PluginInnerObject>
 												</ObjectList>
+												<ObjectList Name="RTPC">
+													<RTPC Name="" ID="{5CBAA75A-2E4B-4FC1-AB35-EA5691072B89}" ShortID="372364282">
+														<PropertyList>
+															<Property Name="PropertyName" Type="string" Value="Volume"/>
+														</PropertyList>
+														<ReferenceList>
+															<Reference Name="ControlInput">
+																<ObjectRef Name="Sidechain_Dialogue" ID="{E3D15146-7A9C-49E2-BF9F-F7D655BB9188}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+															</Reference>
+															<Reference Name="Curve">
+																<Custom>
+																	<Curve Name="" ID="{CCC381AE-C638-438A-AFB5-66EB656EBA98}">
+																		<PropertyList>
+																			<Property Name="Flags" Type="int32" Value="3"/>
+																		</PropertyList>
+																		<PointList>
+																			<Point>
+																				<XPos>-48</XPos>
+																				<YPos>0</YPos>
+																				<Flags>5</Flags>
+																				<SegmentShape>SCurve</SegmentShape>
+																			</Point>
+																			<Point>
+																				<XPos>-25</XPos>
+																				<YPos>0</YPos>
+																				<Flags>0</Flags>
+																				<SegmentShape>SCurve</SegmentShape>
+																			</Point>
+																			<Point>
+																				<XPos>0</XPos>
+																				<YPos>-30</YPos>
+																				<Flags>37</Flags>
+																			</Point>
+																		</PointList>
+																	</Curve>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</RTPC>
+												</ObjectList>
 											</ObjectLists>
 										</RandomSequenceContainer>
 										<PropertyContainer Name="Chassepot_Gunshot" ID="{9EF17397-3747-48A0-A85E-5FD14E654F45}" ShortID="76595978">
 											<PropertyList>
+												<Property Name="OverrideEffect" Type="bool" Value="True"/>
 												<Property Name="OverridePositioning" Type="bool" Value="True"/>
 												<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 											</PropertyList>
@@ -1264,11 +1334,7 @@
 												</Sound>
 												<RandomSequenceContainer Name="Chassepot_DryFire" ID="{9A34029C-231E-4F7B-BD9A-BC807D2CB65A}" ShortID="672480713">
 													<PropertyList>
-														<Property Name="MakeUpGain" Type="Real64">
-															<ValueList>
-																<Value>3</Value>
-															</ValueList>
-														</Property>
+														<Property Name="OverrideEffect" Type="bool" Value="True"/>
 														<Property Name="OverridePositioning" Type="bool" Value="True"/>
 													</PropertyList>
 													<ReferenceList>
@@ -1347,14 +1413,43 @@
 															</ActiveSourceList>
 														</Sound>
 													</ChildrenList>
+													<ObjectLists>
+														<ObjectList Name="Effects">
+															<EffectSlot Name="" ID="{F9BF6DB2-9368-4B62-8BFE-9ABBE73AA059}" ShortID="6232582">
+																<ReferenceList>
+																	<Reference Name="Effect">
+																		<Custom>
+																			<Effect Name="Peak Limiter (Custom)" ID="{4DBFE31E-EC1D-4D18-80E2-F37E4D599835}" ShortID="545382081" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+																				<PropertyList>
+																					<Property Name="LookAhead" Type="Real32" Value="0.02"/>
+																					<Property Name="OutputGain" Type="Real32" Value="6"/>
+																					<Property Name="Ratio" Type="Real32" Value="50"/>
+																					<Property Name="Threshold" Type="Real32" Value="-20"/>
+																				</PropertyList>
+																			</Effect>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</EffectSlot>
+															<EffectSlot Name="" ID="{6E46CB7C-0404-4EC7-AFDF-E076F52CB9A1}" ShortID="1054750199">
+																<ReferenceList>
+																	<Reference Name="Effect">
+																		<Custom>
+																			<Effect Name="Guitar Distortion (Custom)" ID="{4CCDF02B-A312-43EC-95A8-7A9976768A0B}" ShortID="594998967" PluginName="Wwise Guitar Distortion" CompanyID="0" PluginID="126" PluginType="3">
+																				<PropertyList>
+																					<Property Name="DistortionDrive" Type="Real32" Value="10"/>
+																					<Property Name="DistortionType" Type="int32" Value="1"/>
+																				</PropertyList>
+																			</Effect>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</EffectSlot>
+														</ObjectList>
+													</ObjectLists>
 												</RandomSequenceContainer>
 												<RandomSequenceContainer Name="Chassepot_Core" ID="{96A89D31-334C-4948-8B4E-7692CE778834}" ShortID="486041543">
 													<PropertyList>
-														<Property Name="MakeUpGain" Type="Real64">
-															<ValueList>
-																<Value>3</Value>
-															</ValueList>
-														</Property>
 														<Property Name="OverrideEffect" Type="bool" Value="True"/>
 														<Property Name="OverrideUserAuxSends" Type="bool" Value="True"/>
 														<Property Name="UserAuxSendVolume0" Type="Real64">
@@ -1526,6 +1621,39 @@
 													</StateInfo>
 													<ObjectLists>
 														<ObjectList Name="Effects">
+															<EffectSlot Name="" ID="{8BDCBE2E-733D-4423-9FE3-F63D103C7ECD}" ShortID="942838960">
+																<PropertyList>
+																	<Property Name="Bypass" Type="bool" Value="True"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="Effect">
+																		<Custom>
+																			<Effect Name="Compressor (Custom)" ID="{EAE60BF6-C16C-4FC1-A9A9-C6EE21E31505}" ShortID="858960987" PluginName="Wwise Compressor" CompanyID="0" PluginID="108" PluginType="3">
+																				<PropertyList>
+																					<Property Name="Ratio" Type="Real32" Value="10"/>
+																					<Property Name="Threshold" Type="Real32" Value="-20"/>
+																				</PropertyList>
+																			</Effect>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+																<StateInfo>
+																	<CustomStateList>
+																		<CustomState>
+																			<StateRef Name="false" ID="{52DF5189-E217-4078-800D-004BD7764C75}"/>
+																			<CustomState Name="" ID="{40FC42D8-1FB0-45F2-A271-6DC670D25F88}" ShortID="622353373"/>
+																		</CustomState>
+																		<CustomState>
+																			<StateRef Name="None" ID="{3F4E19DC-A92B-410B-A80A-BE5560C10551}"/>
+																			<CustomState Name="" ID="{A62A52C3-F2C3-4E8B-A2A0-FE870E97CD7E}" ShortID="910649551"/>
+																		</CustomState>
+																		<CustomState>
+																			<StateRef Name="true" ID="{70CC75B8-1662-466B-9357-884CFAE6C01A}"/>
+																			<CustomState Name="" ID="{CEF3062A-53C1-4042-A5D7-39D1FD3F6FBD}" ShortID="381937877"/>
+																		</CustomState>
+																	</CustomStateList>
+																</StateInfo>
+															</EffectSlot>
 															<EffectSlot Name="" ID="{132B8F8D-05A7-4E70-BD7E-7E2E207E1BB1}" ShortID="73362673">
 																<ReferenceList>
 																	<Reference Name="Effect">
@@ -1587,6 +1715,46 @@
 																	</CustomStateList>
 																</StateInfo>
 															</EffectSlot>
+														</ObjectList>
+														<ObjectList Name="RTPC">
+															<RTPC Name="" ID="{613FE2B9-FCF0-412A-9983-DC3F951BEF91}" ShortID="261398295">
+																<PropertyList>
+																	<Property Name="PropertyName" Type="string" Value="Volume"/>
+																</PropertyList>
+																<ReferenceList>
+																	<Reference Name="ControlInput">
+																		<ObjectRef Name="Sidechain_Dialogue" ID="{E3D15146-7A9C-49E2-BF9F-F7D655BB9188}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																	</Reference>
+																	<Reference Name="Curve">
+																		<Custom>
+																			<Curve Name="" ID="{AFA7DD17-BE7F-47A5-9746-41F2E8358FD3}">
+																				<PropertyList>
+																					<Property Name="Flags" Type="int32" Value="3"/>
+																				</PropertyList>
+																				<PointList>
+																					<Point>
+																						<XPos>-48</XPos>
+																						<YPos>0</YPos>
+																						<Flags>5</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>-25</XPos>
+																						<YPos>0</YPos>
+																						<Flags>0</Flags>
+																						<SegmentShape>SCurve</SegmentShape>
+																					</Point>
+																					<Point>
+																						<XPos>0</XPos>
+																						<YPos>-30</YPos>
+																						<Flags>37</Flags>
+																					</Point>
+																				</PointList>
+																			</Curve>
+																		</Custom>
+																	</Reference>
+																</ReferenceList>
+															</RTPC>
 														</ObjectList>
 													</ObjectLists>
 												</RandomSequenceContainer>
@@ -1733,6 +1901,28 @@
 													</ChildrenList>
 												</RandomSequenceContainer>
 											</ChildrenList>
+											<ObjectLists>
+												<ObjectList Name="Effects">
+													<EffectSlot Name="" ID="{A24C546C-44DE-459B-B433-0B378EE15BD9}" ShortID="1029046319">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom>
+																	<Effect Name="Meter (Custom)" ID="{AC1FA814-253F-4A0B-BB52-5CF21BB92ABE}" ShortID="857386844" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+																		<PropertyList>
+																			<Property Name="ReleaseTime" Type="Real32" Value="0.25"/>
+																		</PropertyList>
+																		<ReferenceList>
+																			<Reference Name="GameParameter">
+																				<ObjectRef Name="Player_Chassepot" ID="{0B6F97FF-8AFE-43BF-9B38-4AE8CBD398CB}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																			</Reference>
+																		</ReferenceList>
+																	</Effect>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+												</ObjectList>
+											</ObjectLists>
 										</PropertyContainer>
 										<Sound Name="LTDC_SFX_Chassepot_Equip_Oneshot" ID="{C07FB325-5CAE-4699-9163-584B10C2C3A9}" ShortID="546451457">
 											<ReferenceList>
@@ -1745,6 +1935,13 @@
 											</ReferenceList>
 											<ChildrenList>
 												<AudioFileSource Name="LTDC_SFX_Chassepot_Equip_Oneshot" ID="{4FAF21A3-B58F-4757-9982-21C17FAC3728}">
+													<PropertyList>
+														<Property Name="VolumeOffset" Type="Real64">
+															<ValueList>
+																<Value>-4</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
 													<Language>SFX</Language>
 													<AudioFile>AMB\LTDC_SFX_Chassepot_Equip_Oneshot.wav</AudioFile>
 													<MediaIDList>
@@ -6452,6 +6649,168 @@
 											</GroupingInfo>
 										</SwitchContainer>
 									</ChildrenList>
+									<StateInfo>
+										<StateGroupList>
+											<StateGroupInfo>
+												<StateGroupRef Name="narrative_step" ID="{DC7D94F8-F1CD-4344-8D78-703A4905E20A}"/>
+												<StateGroupInfo Name="" ID="{09F51C85-D82E-4330-B9DD-79B491DB3643}" ShortID="88560660"/>
+											</StateGroupInfo>
+										</StateGroupList>
+										<CustomStateList>
+											<CustomState>
+												<StateRef Name="_15" ID="{2569554C-6795-40E0-9FFB-0D136E3FA202}"/>
+												<CustomState Name="" ID="{E69CF2D9-7447-4EBB-9453-BE575FE79253}" ShortID="749514505"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_33" ID="{8F782DC0-7438-40E9-98A7-29B907C98532}"/>
+												<CustomState Name="" ID="{8790FAAC-9D0C-4D1C-8483-1D3C542C28D5}" ShortID="770240708"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_29" ID="{761FE8A0-8F81-4158-89D3-3A9B496C6088}"/>
+												<CustomState Name="" ID="{BDC0E553-7ED6-41CE-9049-AD4EFB74E2BE}" ShortID="515922134"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_20" ID="{FB6739D1-8E6F-41F3-9D67-21B693E9AB8E}"/>
+												<CustomState Name="" ID="{13863C25-2774-4434-8D09-30DBB067BA05}" ShortID="1067216992"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_3" ID="{C457F9CA-271E-4272-942C-51EEAEE06664}"/>
+												<CustomState Name="" ID="{6863894C-6C61-42BC-B34E-B1A446669BF3}" ShortID="544669923"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_19" ID="{121B9630-5326-42F1-BF9F-65F72A1E70F5}"/>
+												<CustomState Name="" ID="{CF91FCC5-B8DC-44A6-8FFE-12822CAFF5BA}" ShortID="513896054"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_22" ID="{CE318E2C-EA96-431A-8A4B-B1B5056DDD2B}"/>
+												<CustomState Name="" ID="{0F6D0431-6181-47DE-9E42-E65B5405A3D1}" ShortID="1065520272"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_24" ID="{9A34572D-A19A-4325-B3F4-8085ED5A7E52}"/>
+												<CustomState Name="" ID="{A8B1A972-3D5D-49F4-9C5B-CD7C67F0B827}" ShortID="632954141"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_31" ID="{D86BD04B-BE03-4378-814E-339E39BB26A7}"/>
+												<CustomState Name="" ID="{5BAE0A92-4127-470B-A48E-8064DC7C95E5}" ShortID="131583871"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_21" ID="{34988295-5A1A-4399-8815-9E73F372259F}"/>
+												<CustomState Name="" ID="{2F4937DF-EB27-4CB6-B0C1-4E55F73C9BF0}" ShortID="164327564"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_25" ID="{824DCEFA-E12E-4422-826D-22B6C2DD5B8E}"/>
+												<CustomState Name="" ID="{C5577C64-B070-462E-BBD2-BDAA63F7A151}" ShortID="827183816"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_30" ID="{FF656502-C138-4446-8F53-A91D0AA1BCA6}"/>
+												<CustomState Name="" ID="{BA0094A4-C226-4642-9952-7E9C8A937FFE}" ShortID="979824519"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_6" ID="{BB0BF348-3AAC-445F-9377-A559B5D27FFE}"/>
+												<CustomState Name="" ID="{F63C2675-FDCC-4D53-9B3C-C249DDCB4EB3}" ShortID="611845866"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_34" ID="{41C7B8E9-EED8-44E8-B6FC-E151DAC1125F}"/>
+												<CustomState Name="" ID="{EE880724-00ED-40D3-8ABC-6A6A8BC484EF}" ShortID="757606643"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_2" ID="{09BF8DFE-6A5A-44EE-A0D7-571B4C8B3627}"/>
+												<CustomState Name="" ID="{F69E7A50-62D8-4D69-91DE-E0F3BCD6D4B2}" ShortID="84446181"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_23" ID="{C085F0E1-6DA2-44F8-A32A-D5FFB146DD83}"/>
+												<CustomState Name="" ID="{FE684495-E48F-4B66-97F0-7E22C83A3C28}" ShortID="525912062"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_28" ID="{70D21AD5-9F52-44F9-84F3-47A5E9C66795}"/>
+												<CustomState Name="" ID="{D7B223ED-5962-4195-B14A-B92AA5B7CF8F}" ShortID="840706595"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_14" ID="{B521747E-93BF-44FD-B742-F21EA58755E8}"/>
+												<CustomState Name="" ID="{5E1B2017-9028-490C-8BE3-E89B81752A55}" ShortID="771022661"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_5" ID="{57D83889-9A1E-463F-B503-43B0F186EC42}"/>
+												<CustomState Name="" ID="{9619DFBD-CFE0-4FF3-A0FC-B1DF3E41F23F}" ShortID="1036191238"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_1" ID="{031667A8-7D99-4644-A81A-526A9C11C7CD}"/>
+												<CustomState Name="" ID="{903B1F42-2420-456D-8832-2F7CADBCA44E}" ShortID="879899001"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_32" ID="{E17796CE-3C20-4685-B482-01C992F0F8FF}"/>
+												<CustomState Name="" ID="{CAF23BB1-F6E0-4CDE-BC45-A404E236F77D}" ShortID="118595868"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_7" ID="{BEEF9ABF-6A8B-4693-91ED-6D3976B6BB29}"/>
+												<CustomState Name="" ID="{AB579707-C74E-4404-82F2-F4A221FB35A1}" ShortID="186254481"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_11" ID="{8991F709-169E-47F3-9D7E-E56C9BA35C8A}"/>
+												<CustomState Name="" ID="{DB3820DF-1EF0-4C01-9E26-DD87F08B9D5B}" ShortID="549537910"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_18" ID="{9AA66387-91BA-480C-B781-3DC8A2741CCF}"/>
+												<CustomState Name="" ID="{AE137A66-BC07-40A5-ABDB-4AD0110CD86D}" ShortID="184837320"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_12" ID="{1D8EE38A-7EDD-486C-BF91-4B6B081569A3}"/>
+												<CustomState Name="" ID="{0F780639-1972-47AC-8967-6A402CDE2A08}" ShortID="329424965"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_26" ID="{783FCA77-785C-488C-89DF-8A0527C007D8}"/>
+												<CustomState Name="" ID="{03794192-3624-4296-89F0-CF3632571AAC}" ShortID="626479201"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_13" ID="{9C0D0D06-12EC-4967-A323-91A8D97A5BF0}"/>
+												<CustomState Name="" ID="{A2E8DC4B-85D7-4A42-AC49-04C5C13C55C1}" ShortID="272975021"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_27" ID="{E778DD83-01DB-4A7B-8CFF-AE3F4DA7D1B3}"/>
+												<CustomState Name="" ID="{E7A3C480-F515-49EA-8CF5-C43685439129}" ShortID="758409097"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_9" ID="{6C822E1A-4489-4B5D-84C3-AC69987C7C58}"/>
+												<CustomState Name="" ID="{38D8937E-FD70-4728-AAFA-B335901E0706}" ShortID="950787272"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_4" ID="{DB51FE53-D417-4C2D-B0AD-AF7D47A428F6}"/>
+												<CustomState Name="" ID="{1C2ED5BA-D784-4ED2-9C2E-C277B16A3C52}" ShortID="667651787"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_17" ID="{99C9ED05-BF72-4D56-BF70-329AF168F02A}"/>
+												<CustomState Name="" ID="{F94619CC-4533-4A0C-9B94-BFF655FD69FC}" ShortID="660247099"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_0" ID="{EB35525B-54B9-4D6A-B167-53471942451F}"/>
+												<CustomState Name="" ID="{56822D28-127B-4CAF-B723-E6481A02CBE3}" ShortID="170264807">
+													<PropertyList>
+														<Property Name="Volume" Type="Real64" Value="-6"/>
+													</PropertyList>
+												</CustomState>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_10" ID="{C35534AB-DCD5-4E4A-B929-F1B3F9550035}"/>
+												<CustomState Name="" ID="{362C950F-B130-4FA7-B42F-37B15F91D112}" ShortID="184301904"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_16" ID="{6714C414-A328-4E80-AE94-8DAECAED293B}"/>
+												<CustomState Name="" ID="{6C925803-A18B-4095-BA7C-606A64A7B29A}" ShortID="383367216"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_35" ID="{22A96738-0D4E-4ED4-A513-808CDD2255E9}"/>
+												<CustomState Name="" ID="{63F5E8CF-2391-4DE6-A79D-EB4FC2575114}" ShortID="682286004"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="None" ID="{C943CC8C-1A44-4F78-BDDC-B3D3EC95F41D}"/>
+												<CustomState Name="" ID="{85903342-9D40-4972-8426-0EB3A86E467B}" ShortID="426525130"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="_8" ID="{77FB47BE-8100-4FB2-BB6B-27312CD1E536}"/>
+												<CustomState Name="" ID="{FA12CD7D-56E8-461A-8406-69FA1FDF9891}" ShortID="704611244"/>
+											</CustomState>
+										</CustomStateList>
+									</StateInfo>
 									<BlendTrackList>
 										<BlendTrack Name="New Blend Track" ID="{34160D4B-968D-48B1-92A4-FC267C8240C7}" ShortID="1067439987"/>
 										<BlendTrack Name="New Blend Track_01" ID="{D03504D3-37EB-4E99-8781-C89BDB230799}" ShortID="745889144">
@@ -8915,15 +9274,18 @@
 											<ObjectLists>
 												<ObjectList Name="Effects">
 													<EffectSlot Name="" ID="{D9A0D2AC-F8A2-4C6D-AC07-D54F8D5CF295}" ShortID="281400786">
+														<PropertyList>
+															<Property Name="Bypass" Type="bool" Value="True"/>
+														</PropertyList>
 														<ReferenceList>
 															<Reference Name="Effect">
 																<Custom>
 																	<Effect Name="Meter (Custom)" ID="{CC7B7A5A-8054-435A-B7CD-14B599EBA377}" ShortID="508389284" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
-																		<ReferenceList>
-																			<Reference Name="GameParameter">
-																				<ObjectRef Name="Cannon_Sidechain" ID="{79978E96-EE44-4536-A821-0932926129B4}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
-																			</Reference>
-																		</ReferenceList>
+																		<PropertyList>
+																			<Property Name="AttackTime" Type="Real32" Value="1"/>
+																			<Property Name="Hold" Type="Real32" Value="1"/>
+																			<Property Name="ReleaseTime" Type="Real32" Value="2.5"/>
+																		</PropertyList>
 																	</Effect>
 																</Custom>
 															</Reference>
@@ -9045,21 +9407,21 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="948386357"/>
+														<MediaID ID="683256367"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{435DFC42-C2BA-4F28-94FA-656C245FBAF4}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="948386357"/>
+														<MediaID ID="683256367"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{00C6968A-60A5-4026-932B-FEB614EFFAD6}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="948386357"/>
+														<MediaID ID="683256367"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9081,21 +9443,21 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="916788496"/>
+														<MediaID ID="269899231"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{E8049408-BBCB-4A7C-AA13-63708AA6E7F0}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="916788496"/>
+														<MediaID ID="269899231"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{A6F7D173-6E64-4A1F-B009-CADB60CC6F8D}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="916788496"/>
+														<MediaID ID="269899231"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9117,21 +9479,21 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="682199737"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{FB6E6BEE-9EE2-44D6-ABBC-A9A3EE549AC1}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="682199737"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{3B77EBC9-3935-4FA4-994D-202BF5A1184C}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="682199737"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9189,7 +9551,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1018639944"/>
+														<MediaID ID="382705976"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9211,7 +9573,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_001.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="803409758"/>
+														<MediaID ID="547761077"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9233,7 +9595,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_002.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="558518109"/>
+														<MediaID ID="526873019"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9255,7 +9617,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_003.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="612558186"/>
+														<MediaID ID="452880230"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9277,7 +9639,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_004.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="376843141"/>
+														<MediaID ID="332513162"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9350,7 +9712,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1018639944"/>
+														<MediaID ID="382705976"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9372,7 +9734,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_001.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="803409758"/>
+														<MediaID ID="547761077"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9430,7 +9792,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_002.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="558518109"/>
+														<MediaID ID="526873019"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9452,21 +9814,21 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="948386357"/>
+														<MediaID ID="683256367"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{D617D5B7-0087-4B2B-806A-65315E795CCE}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="948386357"/>
+														<MediaID ID="683256367"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{48A13D73-A2A3-4181-BAA2-9EC0923192B8}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="948386357"/>
+														<MediaID ID="683256367"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9488,7 +9850,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_003.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="612558186"/>
+														<MediaID ID="452880230"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9510,21 +9872,21 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="916788496"/>
+														<MediaID ID="269899231"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{B2D2F1C9-4975-4448-9C79-2200A5F6281E}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="916788496"/>
+														<MediaID ID="269899231"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{039117F4-6FAF-4C26-97F4-362ED0CD7D2D}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="916788496"/>
+														<MediaID ID="269899231"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9546,7 +9908,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_004.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="376843141"/>
+														<MediaID ID="332513162"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9568,21 +9930,21 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="682199737"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{5F626CBE-A76F-4CA7-9119-A767EF0A7B59}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="682199737"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{784B9552-6D91-4AEA-AE23-5E7E55BE7DC5}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="682199737"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9740,7 +10102,7 @@
 										<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
 										<Property Name="MakeUpGain" Type="Real64">
 											<ValueList>
-												<Value>12</Value>
+												<Value>6</Value>
 											</ValueList>
 										</Property>
 										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
@@ -9788,6 +10150,13 @@
 									</ReferenceList>
 									<ChildrenList>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random" ID="{43F933B2-2B3F-47B7-9601-B7AA2821572C}" ShortID="948531860">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -9801,7 +10170,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1018639944"/>
+														<MediaID ID="382705976"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9810,6 +10179,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_001" ID="{9A6C92C2-66FC-46C7-AD85-3F817EE87EA6}" ShortID="1044595285">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -9823,7 +10199,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_001.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="803409758"/>
+														<MediaID ID="547761077"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9832,6 +10208,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{9B0AB6E6-A6D6-46C1-B121-ECCF5EFFE4D8}" ShortID="150597826">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -9868,6 +10251,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_002" ID="{8B094753-A142-456D-9CC8-1CCC626E4A6F}" ShortID="1071519303">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -9881,7 +10271,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_002.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="558518109"/>
+														<MediaID ID="526873019"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9890,6 +10280,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{9DFC21BB-BD40-4678-808C-DD27953FE854}" ShortID="800068311">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -9903,21 +10300,21 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="948386357"/>
+														<MediaID ID="683256367"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{40174B72-755D-4339-8142-77F4A53CC848}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="948386357"/>
+														<MediaID ID="683256367"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{F724949B-8142-44E9-9618-F4090E38A3BA}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_02.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="948386357"/>
+														<MediaID ID="683256367"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9926,6 +10323,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_003" ID="{1D9DD78B-EEA4-4889-B44A-F9FDC2ABF789}" ShortID="226630949">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -9939,7 +10343,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_003.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="612558186"/>
+														<MediaID ID="452880230"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9948,6 +10352,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_03" ID="{6E0122D0-B8B8-40F3-8F53-F7E90933F988}" ShortID="100923897">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -9961,21 +10372,21 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="916788496"/>
+														<MediaID ID="269899231"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{E15B1138-A229-4BDC-93F4-4579E02F0F99}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="916788496"/>
+														<MediaID ID="269899231"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{FB7B381C-15C1-4AA5-AE3A-E03EC4784946}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_03.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="916788496"/>
+														<MediaID ID="269899231"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -9997,7 +10408,7 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_004.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="376843141"/>
+														<MediaID ID="332513162"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -10006,6 +10417,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_04" ID="{C091FC7E-E14F-405B-9003-F6C7A507C4AF}" ShortID="541117295">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -10019,21 +10437,21 @@
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="682199737"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_01" ID="{3997AF5E-40D9-4E90-9722-D188472BCEFF}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="682199737"/>
 													</MediaIDList>
 												</AudioFileSource>
 												<AudioFileSource Name="LTDC_SFX_NPC_Shoot_Random_02" ID="{1517084E-2281-4393-8C5D-69B0B5629915}">
 													<Language>SFX</Language>
 													<AudioFile>SFX_NPC\LTDC_SFX_NPC_Shoot_Random_04.wav</AudioFile>
 													<MediaIDList>
-														<MediaID ID="1026693139"/>
+														<MediaID ID="682199737"/>
 													</MediaIDList>
 												</AudioFileSource>
 											</ChildrenList>
@@ -10042,6 +10460,13 @@
 											</ActiveSourceList>
 										</Sound>
 										<Sound Name="LTDC_SFX_NPC_Shoot_Random_05" ID="{E12B2843-9457-4978-A88B-233562F45160}" ShortID="773737108">
+											<PropertyList>
+												<Property Name="Inclusion" Type="bool">
+													<ValueList>
+														<Value>False</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Conversion">
 													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
@@ -10078,6 +10503,59 @@
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{EF54DA46-B67A-46FC-BB8A-A7410B52AC57}" ShortID="524616550">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom>
+															<Effect Name="Parametric EQ (Custom)" ID="{A77BC323-E055-437F-B9FA-D7BB09EDBE06}" ShortID="328571260" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+																<PropertyList>
+																	<Property Name="FrequencyBand2" Type="Real32" Value="4133.761"/>
+																	<Property Name="FrequencyBand3" Type="Real32" Value="389.3016"/>
+																	<Property Name="GainBand2" Type="Real32" Value="4.864865"/>
+																	<Property Name="GainBand3" Type="Real32" Value="5.027027"/>
+																	<Property Name="OnOffBand3" Type="bool" Value="True"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+											<EffectSlot Name="" ID="{DAD9E473-AB5F-4CF2-9237-0EC86CF0EBB3}" ShortID="618801527">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}">
+															<Effect Name="Have_U_Ever_Been_Outside (Custom)" ID="{B8CF2385-14CA-4C72-9BA7-550845ACF0D9}" ShortID="645104633" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<PropertyList>
+																	<Property Name="DecayTime" Type="Real32" Value="1"/>
+																	<Property Name="Density" Type="Real32" Value="50"/>
+																	<Property Name="DryLevel" Type="Real32" Value="0"/>
+																	<Property Name="ERLevel" Type="Real32" Value="-12"/>
+																	<Property Name="ERPattern" Type="int32" Value="5"/>
+																	<Property Name="EnableToneControls" Type="bool" Value="True"/>
+																	<Property Name="Filter1Curve" Type="int32" Value="2"/>
+																	<Property Name="Filter1Freq" Type="Real32" Value="80"/>
+																	<Property Name="Filter1Gain" Type="Real32" Value="-6"/>
+																	<Property Name="Filter2Freq" Type="Real32" Value="6830"/>
+																	<Property Name="Filter2Gain" Type="Real32" Value="-7.5"/>
+																	<Property Name="Filter2Q" Type="Real32" Value="0.65"/>
+																	<Property Name="Filter3Freq" Type="Real32" Value="8440"/>
+																	<Property Name="Filter3Gain" Type="Real32" Value="-4"/>
+																	<Property Name="HFDamping" Type="Real32" Value="5.05"/>
+																	<Property Name="PreDelay" Type="Real32" Value="145"/>
+																	<Property Name="Quality" Type="int32" Value="12"/>
+																	<Property Name="ReverbLevel" Type="Real32" Value="-24"/>
+																	<Property Name="RoomSize" Type="Real32" Value="100"/>
+																	<Property Name="StereoWidth" Type="Real32" Value="18"/>
+																</PropertyList>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+									</ObjectLists>
 								</RandomSequenceContainer>
 							</ChildrenList>
 						</PropertyContainer>
@@ -10092,7 +10570,7 @@
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{F1F96620-B0A2-469E-9D6F-CC2D3D90DD30}"/>
 						</Reference>
 						<Reference Name="OutputBus">
-							<ObjectRef Name="SFX" ID="{8FE46C9B-4641-43D1-B739-F2D46260CC7F}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
+							<ObjectRef Name="SFX_Cannon" ID="{A00DBD55-36EA-44AA-ADF0-55DEE40480F9}" WorkUnitID="{BE10E262-983E-4FA8-A7AF-86C27DCD0A73}"/>
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
