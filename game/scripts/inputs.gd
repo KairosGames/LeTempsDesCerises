@@ -84,6 +84,7 @@ func _input(event: InputEvent) -> void:
 	or (event is InputEventJoypadMotion and abs((event as InputEventJoypadMotion).axis_value) > 0.5):
 		current_platform = Platform.Console
 
+
 func get_icon(event: InputEvent) -> Texture2D:
 	if event is InputEventJoypadButton:
 		return _get_gamepad_button_icon((event as InputEventJoypadButton).button_index)
@@ -94,6 +95,7 @@ func get_icon(event: InputEvent) -> Texture2D:
 		return _get_keyboard_icon(_get_display_key(event as InputEventKey))
 	return null
 
+
 func _get_display_key(event: InputEventKey) -> Key:
 	if event.key_label != KEY_NONE: return event.key_label
 	if event.keycode != KEY_NONE: return event.keycode
@@ -102,6 +104,7 @@ func _get_display_key(event: InputEventKey) -> Key:
 			return event.physical_keycode
 		return DisplayServer.keyboard_get_keycode_from_physical(event.physical_keycode)
 	return KEY_NONE
+
 
 func _get_keyboard_icon(key: Key) -> Texture2D:
 	match key:
@@ -142,6 +145,7 @@ func _get_keyboard_icon(key: Key) -> Texture2D:
 		KEY_F9: return KEYBOARD_F9
 	return null
 
+# TODO add option to get dark, light, colored icon
 func _get_gamepad_button_icon(button_index: JoyButton) -> Texture2D:
 	match button_index:
 		JOY_BUTTON_A: return GAMEPAD_A
@@ -166,6 +170,7 @@ func _get_gamepad_button_icon(button_index: JoyButton) -> Texture2D:
 		JOY_BUTTON_PADDLE4: return GAMEPAD_PADDLE_TOP_LEFT
 		JOY_BUTTON_TOUCHPAD: return GAMEPAD_MISC
 	return null
+
 
 func _get_gamepad_motion_icon(axis: JoyAxis, axis_value: float) -> Texture2D:
 	match axis:
