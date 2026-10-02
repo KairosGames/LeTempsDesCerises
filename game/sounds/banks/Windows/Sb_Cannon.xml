@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{2A2BCC18-7F28-5EDB-BBF8-BE2641108595}">
+		<SoundBank Id="2061449278" Type="User" GUID="{F30CA5DB-76B1-41EE-8C0B-3A08DC690C15}" Language="SFX" Hash="{3CCB86FB-22B4-6B5F-64C7-180C8328DE4F}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_Cannon</ObjectPath>
 			<ShortName>Sb_Cannon</ShortName>
 			<Path>Sb_Cannon.bnk</Path>
@@ -89,6 +89,8 @@
 			</Media>
 			<Plugins>
 				<Custom>
+					<Plugin Id="97221452" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Containers\SFX\Characters\NPC\Cannon\LTDC_Cannon_Shot_Oneshot\[Effect Slot [1]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{81B54C3F-052B-46CC-8C7D-E240D9984732}" LibName="Wwise RoomVerb" LibId="7733251"/>
+					<Plugin Id="186833168" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Containers\SFX\Barricade\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{2EED6FDE-4501-4D84-902F-5640BF3CBE59}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="508389284" Name="Meter (Custom)" ObjectPath="\Containers\SFX\Characters\NPC\Cannon\LTDC_Cannon_Shot_Oneshot\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{CC7B7A5A-8054-435A-B7CD-14B599EBA377}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
 			</Plugins>
@@ -97,6 +99,11 @@
 					<MediaRefs>
 						<MediaRef Id="1021233491"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="186833168"/>
+						</Custom>
+					</PluginRefs>
 					<ActionPostEvent>
 						<ActionPostEventEntry Id="1055531900" Name="Brick_Fall_Group" ObjectPath="\Events\SFX\Barricade\Brick_Fall_Group" GUID="{F081660D-EA6F-4934-A40D-84D54F31538E}" Color="10"/>
 					</ActionPostEvent>
@@ -113,6 +120,11 @@
 								<MediaRef Id="770928260"/>
 								<MediaRef Id="831039896"/>
 							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="186833168"/>
+								</Custom>
+							</PluginRefs>
 						</SwitchContainer>
 						<SwitchContainer>
 							<SwitchValue GroupType="Switch" GroupId="459611840" Id="3476314365" GUID="{462AC773-1076-4E41-8643-F3EBA6E5A5B0}" Default="true"/>
@@ -130,6 +142,11 @@
 								<MediaRef Id="1041905271"/>
 								<MediaRef Id="1043901543"/>
 							</MediaRefs>
+							<PluginRefs>
+								<Custom>
+									<PluginRef Id="186833168"/>
+								</Custom>
+							</PluginRefs>
 						</SwitchContainer>
 					</SwitchContainers>
 				</Event>
@@ -144,6 +161,7 @@
 					</MediaRefs>
 					<PluginRefs>
 						<Custom>
+							<PluginRef Id="97221452"/>
 							<PluginRef Id="508389284"/>
 						</Custom>
 					</PluginRefs>
@@ -167,5 +185,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{A0B6735D-13F2-38D6-F733-2AE5E80BB04C}</FileHash>
+	<FileHash>{5B9FB292-AAF9-66E7-F8BE-FF45A3B65D06}</FileHash>
 </SoundBanksInfo>

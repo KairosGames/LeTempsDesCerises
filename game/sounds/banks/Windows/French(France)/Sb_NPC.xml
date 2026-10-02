@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="172">
 	<SoundBanks>
-		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="French(France)" Hash="{54FD4AA1-D326-1883-1DB6-E2B0B9F47168}">
+		<SoundBank Id="1278759826" Type="User" GUID="{80B6C2B5-386F-40ED-B4C9-2D54AEC1F026}" Language="French(France)" Hash="{B1CCE3B5-5A54-898C-787A-0002C5664EA4}">
 			<ObjectPath>\SoundBanks\Default Work Unit\Sb_NPC</ObjectPath>
 			<ShortName>Sb_NPC</ShortName>
 			<Path>French(France)/Sb_NPC.bnk</Path>
@@ -425,6 +425,10 @@
 				<File Id="417143216" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Tom\VX_Bar_M_Vers_Military_Kill_voice_cancel_Tom-001.wav</ShortName>
 					<CachePath>58/{587B54DE-5787-0C0E-9169-C116298EF4E8}.wem</CachePath>
+				</File>
+				<File Id="418482646" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>AudioEase\Altiverb - Outdoor and More\Outdoor\Alley\AE_LongDeepAlley.wav</ShortName>
+					<CachePath>DD/{DD35EB18-C6CA-4B60-44F0-B3200B27A3F5}.wem</CachePath>
 				</File>
 				<File Id="419946601" Language="French(France)" Streaming="false" Location="Memory">
 					<ShortName>Generic_AI\Thomas\VX_Bar_M_Comm_Worker_Cannon_Fired_Thomas-004.wav</ShortName>
@@ -1126,7 +1130,13 @@
 			<Plugins>
 				<Custom>
 					<Plugin Id="537703978" Name="Dialog_Leveler_Hard (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [0]: (Compressor)]\Dialog_Leveler_Hard (Custom)" GUID="{7F0238A1-2C13-4125-A103-3EE19E749B91}" LibName="Wwise Compressor" LibId="7077891"/>
+					<Plugin Id="538263780" Name="LongDeepAlley (Custom)" ObjectPath="\Containers\SFX\Characters\NPC\NPC_Shoot\[Effect Slot [1]: (AK Convolution Reverb)]\LongDeepAlley (Custom)" GUID="{66119B66-E0EF-4ED2-A36B-625E62C0FB01}" LibName="Wwise Convolution Reverb" LibId="8323075">
+						<MediaRefs>
+							<MediaRef Id="418482646"/>
+						</MediaRefs>
+					</Plugin>
 					<Plugin Id="807526038" Name="Meter (Custom)" ObjectPath="\Containers\VX\NPC\Communard\[Effect Slot [0]: (Meter)]\Meter (Custom)" GUID="{2855D257-F711-4259-8A16-CCC31E5A8F21}" LibName="Wwise Meter" LibId="8454147"/>
+					<Plugin Id="873812219" Name="Have_U_Ever_Been_Outside (Custom)" ObjectPath="\Containers\SFX\Characters\NPC\NPC_Shoot\[Effect Slot [0]: (RoomVerb)]\Have_U_Ever_Been_Outside (Custom)" GUID="{54ACD6B0-9472-4EE6-8A59-C8E2F9BB8DD3}" LibName="Wwise RoomVerb" LibId="7733251"/>
 					<Plugin Id="1065011977" Name="Meter (Custom)" ObjectPath="\Containers\VX\Scripted\Character\[Effect Slot [1]: (Meter)]\Meter (Custom)" GUID="{97BCCC38-DCA1-422F-8651-8C66DC566703}" LibName="Wwise Meter" LibId="8454147"/>
 				</Custom>
 			</Plugins>
@@ -1808,6 +1818,12 @@
 						<MediaRef Id="683256367"/>
 						<MediaRef Id="767180969"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="538263780"/>
+							<PluginRef Id="873812219"/>
+						</Custom>
+					</PluginRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10"/>
 					</AuxBusRefs>
@@ -2112,6 +2128,12 @@
 						<MediaRef Id="683256367"/>
 						<MediaRef Id="767180969"/>
 					</MediaRefs>
+					<PluginRefs>
+						<Custom>
+							<PluginRef Id="538263780"/>
+							<PluginRef Id="873812219"/>
+						</Custom>
+					</PluginRefs>
 					<AuxBusRefs>
 						<AuxBusRef Id="3189108374" Name="SFX_Gunshot_Send" ObjectPath="\Busses\Default Work Unit\Main Audio Bus\SFX\SFX_Gunshot_Send" GUID="{DE5FF445-1300-4435-9172-64B1CB7B0816}" Color="10"/>
 					</AuxBusRefs>
@@ -2240,5 +2262,5 @@
 			</SwitchGroups>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{F6418EAA-79C6-9E8B-880F-EA0D0173DEA2}</FileHash>
+	<FileHash>{5CFFBE91-A99A-D1E1-99DF-37A74800754D}</FileHash>
 </SoundBanksInfo>

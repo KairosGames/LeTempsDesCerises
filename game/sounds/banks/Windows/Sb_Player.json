@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{49827AFC-1442-4066-AF70-C2B0B3B40C86}",
     "Language": "SFX",
-    "Hash": "{3DED4BCE-F075-2C71-D2F8-944840D0940F}",
+    "Hash": "{843DFD30-3966-E5F1-4403-7058F8E0F8D7}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Sb_Player",
     "ShortName": "Sb_Player",
     "Path": "Sb_Player.bnk",
@@ -1123,14 +1123,6 @@
     "Plugins": {
      "Custom": [
       {
-       "Id": "40604342",
-       "Name": "Parametric EQ (Custom)",
-       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
-       "GUID": "{3EC1B190-2BC5-4B27-8F9C-1424AF74CE66}",
-       "LibName": "Wwise Parametric EQ",
-       "LibId": "6881283"
-      },
-      {
        "Id": "64045502",
        "Name": "Gain (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Gunshot_Send\\[Effect Slot [1]: (Gain)]\\Gain (Custom)",
@@ -1187,6 +1179,22 @@
        "LibId": "6881283"
       },
       {
+       "Id": "407100344",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC\\[Effect Slot [1]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{C37DD79D-8309-4825-9186-D0FF0241DE03}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
+      {
+       "Id": "420640940",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_Player\\[Effect Slot [1]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{EE8C5C88-23E3-4EA4-B7A6-B5BC82AE9CB6}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
+      },
+      {
        "Id": "491144356",
        "Name": "Parametric EQ (Custom)",
        "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\VX\\VX_NPC\\[Effect Slot [0]: (Parametric EQ)]\\Parametric EQ (Custom)",
@@ -1209,6 +1217,14 @@
        "GUID": "{4CCDF02B-A312-43EC-95A8-7A9976768A0B}",
        "LibName": "Wwise Guitar Distortion",
        "LibId": "8257539"
+      },
+      {
+       "Id": "616493628",
+       "Name": "Parametric EQ (Custom)",
+       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX\\SFX_NPC\\[Effect Slot [1]: (Parametric EQ)]\\Parametric EQ (Custom)",
+       "GUID": "{0A3B217B-37A3-4EA8-B7D3-F03C50E21134}",
+       "LibName": "Wwise Parametric EQ",
+       "LibId": "6881283"
       },
       {
        "Id": "645104633",
@@ -2410,6 +2426,9 @@
        "Custom": [
         {
          "Id": "288099940"
+        },
+        {
+         "Id": "616493628"
         }
        ]
       },
@@ -2431,6 +2450,9 @@
       "PluginRefs": {
        "Custom": [
         {
+         "Id": "420640940"
+        },
+        {
          "Id": "822713401"
         }
        ]
@@ -2441,14 +2463,7 @@
       "Name": "SFX",
       "ObjectPath": "\\Busses\\Default Work Unit\\Main Audio Bus\\SFX",
       "GUID": "{8FE46C9B-4641-43D1-B739-F2D46260CC7F}",
-      "Color": "10",
-      "PluginRefs": {
-       "Custom": [
-        {
-         "Id": "40604342"
-        }
-       ]
-      }
+      "Color": "10"
      },
      {
       "Id": "1117531639",
@@ -2478,6 +2493,9 @@
       "Color": "11",
       "PluginRefs": {
        "Custom": [
+        {
+         "Id": "407100344"
+        },
         {
          "Id": "491144356"
         }
@@ -2753,6 +2771,50 @@
       ]
      },
      {
+      "Id": "3063237949",
+      "Name": "EndChoice",
+      "ObjectPath": "\\States\\MUSIC_STATE\\EndChoice",
+      "GUID": "{F1E4CC31-DA38-49B5-B2A8-53D524E5D48A}",
+      "Color": "2",
+      "States": [
+       {
+        "Id": "388904761",
+        "Name": "AskChoice",
+        "ObjectPath": "\\States\\MUSIC_STATE\\EndChoice\\AskChoice",
+        "GUID": "{4EAD2C59-63BF-4739-8913-C811215BA1E2}",
+        "Color": "2"
+       },
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\MUSIC_STATE\\EndChoice\\None",
+        "GUID": "{1048217B-BF09-4548-8B4B-9E0FACC9BBAF}",
+        "Color": "2"
+       },
+       {
+        "Id": "2926082704",
+        "Name": "Louise",
+        "ObjectPath": "\\States\\MUSIC_STATE\\EndChoice\\Louise",
+        "GUID": "{2A8B1D07-53FE-4458-BC8C-2EAAD175FE4D}",
+        "Color": "2"
+       },
+       {
+        "Id": "3484216754",
+        "Name": "Francois",
+        "ObjectPath": "\\States\\MUSIC_STATE\\EndChoice\\Francois",
+        "GUID": "{BD14E529-07FB-4854-8CAC-DA402B6DAAC7}",
+        "Color": "2"
+       },
+       {
+        "Id": "3930136735",
+        "Name": "Dialogue",
+        "ObjectPath": "\\States\\MUSIC_STATE\\EndChoice\\Dialogue",
+        "GUID": "{5ED0BEB8-8263-440D-9679-9593F067F61B}",
+        "Color": "2"
+       }
+      ]
+     },
+     {
       "Id": "3092587493",
       "Name": "pause",
       "ObjectPath": "\\States\\Default Work Unit\\pause",
@@ -2775,6 +2837,64 @@
         "Name": "true",
         "ObjectPath": "\\States\\Default Work Unit\\pause\\true",
         "GUID": "{F10AE6B6-53AA-4DEE-9357-56B30B74CD05}"
+       }
+      ]
+     },
+     {
+      "Id": "3826569560",
+      "Name": "Music_State",
+      "ObjectPath": "\\States\\MUSIC_STATE\\Music_State",
+      "GUID": "{E0527FB2-A14D-4624-BF74-6B4556D6DDD9}",
+      "Color": "2",
+      "States": [
+       {
+        "Id": "748895195",
+        "Name": "None",
+        "ObjectPath": "\\States\\MUSIC_STATE\\Music_State\\None",
+        "GUID": "{3208AAD9-A1DA-4140-A012-772480E8C410}",
+        "Color": "2"
+       },
+       {
+        "Id": "3356867611",
+        "Name": "Phase1_1",
+        "ObjectPath": "\\States\\MUSIC_STATE\\Music_State\\Phase1_1",
+        "GUID": "{423A81A5-4DDD-49F6-A2B1-EF6DD536A656}",
+        "Color": "2"
+       },
+       {
+        "Id": "3630028968",
+        "Name": "Phase2",
+        "ObjectPath": "\\States\\MUSIC_STATE\\Music_State\\Phase2",
+        "GUID": "{65AF7CF1-BA0E-4474-94C0-BD24BC7E9746}",
+        "Color": "2"
+       },
+       {
+        "Id": "3630028969",
+        "Name": "Phase3",
+        "ObjectPath": "\\States\\MUSIC_STATE\\Music_State\\Phase3",
+        "GUID": "{97F554C9-80CB-4C13-A0BA-32BA139D5768}",
+        "Color": "2"
+       },
+       {
+        "Id": "3630028971",
+        "Name": "Phase1",
+        "ObjectPath": "\\States\\MUSIC_STATE\\Music_State\\Phase1",
+        "GUID": "{31C19E01-B376-48C1-9CA2-CF46B0246B1E}",
+        "Color": "2"
+       },
+       {
+        "Id": "3630028974",
+        "Name": "Phase4",
+        "ObjectPath": "\\States\\MUSIC_STATE\\Music_State\\Phase4",
+        "GUID": "{D6B75424-CE64-49EA-B857-6098F2BA0B19}",
+        "Color": "2"
+       },
+       {
+        "Id": "3630028975",
+        "Name": "Phase5",
+        "ObjectPath": "\\States\\MUSIC_STATE\\Music_State\\Phase5",
+        "GUID": "{C073EC58-12D2-41B6-B4A0-9D848F2980DA}",
+        "Color": "2"
        }
       ]
      }
@@ -2875,6 +2995,6 @@
     ]
    }
   ],
-  "FileHash": "{0DFA04DB-B8B3-6173-BADF-4E858383A99E}"
+  "FileHash": "{131EABAC-5BC6-59A2-1E9C-615067294649}"
  }
 }

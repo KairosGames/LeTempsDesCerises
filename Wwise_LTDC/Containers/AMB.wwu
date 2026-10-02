@@ -284,21 +284,20 @@
 										</Property>
 										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3">
+										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0">
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{86802A60-C329-4064-AD0E-17AF65C457CF}">
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
-															<Property Name="Min" Type="Real64" Value="-3"/>
+															<Property Name="Max" Type="Real64" Value="1"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-										<Property Name="SpeakerPanning3DSpatializationMix" Type="int32" Value="0"/>
 										<Property Name="UserAuxSendVolume0" Type="Real64">
 											<ValueList>
 												<Value>-6</Value>
@@ -586,6 +585,41 @@
 											</ChildrenList>
 										</Position>
 									</PositioningInfo>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<RTPC Name="" ID="{0B34B8BE-9CC9-4D41-8B66-B84F1B480E68}" ShortID="314398150">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="PlayMechanismSpecialTransitionsValue"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="Cannons_Probability" ID="{44235752-3ED7-4F8D-ABCB-15BA17B653AB}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{3419C55C-0E86-4C7B-A766-35CF2AA2B955}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="1"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>6</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>10</XPos>
+																		<YPos>1</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</ObjectList>
+									</ObjectLists>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="Cannons_Heavy" ID="{AFA4CAE5-B7DA-4996-BD00-7E1362AC1F4E}" ShortID="795401110">
 									<PropertyList>
@@ -608,13 +642,14 @@
 										</Property>
 										<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
 										<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="3">
+										<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="3"/>
+										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0">
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{724F0173-3DB2-4FEF-91B4-3D4FEB036620}">
 														<PropertyList>
 															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="1"/>
 															<Property Name="Min" Type="Real64" Value="-3"/>
 														</PropertyList>
 													</Modifier>
@@ -909,6 +944,41 @@
 											</ChildrenList>
 										</Position>
 									</PositioningInfo>
+									<ObjectLists>
+										<ObjectList Name="RTPC">
+											<RTPC Name="" ID="{600FFA46-B712-4AB6-AC53-1D446BE73BB9}" ShortID="343616867">
+												<PropertyList>
+													<Property Name="PropertyName" Type="string" Value="PlayMechanismSpecialTransitionsValue"/>
+												</PropertyList>
+												<ReferenceList>
+													<Reference Name="ControlInput">
+														<ObjectRef Name="Cannons_Probability" ID="{44235752-3ED7-4F8D-ABCB-15BA17B653AB}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+													</Reference>
+													<Reference Name="Curve">
+														<Custom>
+															<Curve Name="" ID="{74C31613-F17D-4669-A306-EFFFA9559FDD}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="1"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>6</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>10</XPos>
+																		<YPos>1</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</RTPC>
+										</ObjectList>
+									</ObjectLists>
 								</RandomSequenceContainer>
 							</ChildrenList>
 						</PropertyContainer>

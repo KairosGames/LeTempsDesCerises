@@ -1746,7 +1746,7 @@
 																					</Point>
 																					<Point>
 																						<XPos>0</XPos>
-																						<YPos>-30</YPos>
+																						<YPos>-12</YPos>
 																						<Flags>37</Flags>
 																					</Point>
 																				</PointList>
@@ -9274,17 +9274,50 @@
 											<ObjectLists>
 												<ObjectList Name="Effects">
 													<EffectSlot Name="" ID="{D9A0D2AC-F8A2-4C6D-AC07-D54F8D5CF295}" ShortID="281400786">
-														<PropertyList>
-															<Property Name="Bypass" Type="bool" Value="True"/>
-														</PropertyList>
 														<ReferenceList>
 															<Reference Name="Effect">
 																<Custom>
 																	<Effect Name="Meter (Custom)" ID="{CC7B7A5A-8054-435A-B7CD-14B599EBA377}" ShortID="508389284" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 																		<PropertyList>
-																			<Property Name="AttackTime" Type="Real32" Value="1"/>
-																			<Property Name="Hold" Type="Real32" Value="1"/>
-																			<Property Name="ReleaseTime" Type="Real32" Value="2.5"/>
+																			<Property Name="Hold" Type="Real32" Value="2"/>
+																			<Property Name="ReleaseTime" Type="Real32" Value="0.5"/>
+																		</PropertyList>
+																		<ReferenceList>
+																			<Reference Name="GameParameter">
+																				<ObjectRef Name="Cannon_Sidechain" ID="{79978E96-EE44-4536-A821-0932926129B4}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																			</Reference>
+																		</ReferenceList>
+																	</Effect>
+																</Custom>
+															</Reference>
+														</ReferenceList>
+													</EffectSlot>
+													<EffectSlot Name="" ID="{E60CE103-7F61-4943-ABC0-D267843F4E0F}" ShortID="194140390">
+														<ReferenceList>
+															<Reference Name="Effect">
+																<Custom CreatedFrom="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}">
+																	<Effect Name="Have_U_Ever_Been_Outside (Custom)" ID="{81B54C3F-052B-46CC-8C7D-E240D9984732}" ShortID="97221452" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																		<PropertyList>
+																			<Property Name="DecayTime" Type="Real32" Value="1"/>
+																			<Property Name="Density" Type="Real32" Value="50"/>
+																			<Property Name="DryLevel" Type="Real32" Value="0"/>
+																			<Property Name="ERLevel" Type="Real32" Value="-6"/>
+																			<Property Name="ERPattern" Type="int32" Value="5"/>
+																			<Property Name="EnableToneControls" Type="bool" Value="True"/>
+																			<Property Name="Filter1Curve" Type="int32" Value="2"/>
+																			<Property Name="Filter1Freq" Type="Real32" Value="80"/>
+																			<Property Name="Filter1Gain" Type="Real32" Value="-6"/>
+																			<Property Name="Filter2Freq" Type="Real32" Value="6830"/>
+																			<Property Name="Filter2Gain" Type="Real32" Value="-7.5"/>
+																			<Property Name="Filter2Q" Type="Real32" Value="0.65"/>
+																			<Property Name="Filter3Freq" Type="Real32" Value="8440"/>
+																			<Property Name="Filter3Gain" Type="Real32" Value="-4"/>
+																			<Property Name="HFDamping" Type="Real32" Value="5.05"/>
+																			<Property Name="PreDelay" Type="Real32" Value="145"/>
+																			<Property Name="Quality" Type="int32" Value="12"/>
+																			<Property Name="ReverbLevel" Type="Real32" Value="-12"/>
+																			<Property Name="RoomSize" Type="Real32" Value="100"/>
+																			<Property Name="StereoWidth" Type="Real32" Value="18"/>
 																		</PropertyList>
 																	</Effect>
 																</Custom>
@@ -9309,6 +9342,17 @@
 											</ValueList>
 										</Property>
 										<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+										<Property Name="Lowpass" Type="int16">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{894B2CF6-D4BC-48BB-B42A-22BD49E7EC7F}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
 										<Property Name="MaxSoundPerInstance" Type="int16">
 											<ValueList>
@@ -9648,6 +9692,321 @@
 											</ActiveSourceList>
 										</Sound>
 									</ChildrenList>
+									<ObjectLists>
+										<ObjectList Name="Effects">
+											<EffectSlot Name="" ID="{7BFFC76C-9CDE-407C-85E9-311ABAAFC9F8}" ShortID="426094864">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}">
+															<Effect Name="Have_U_Ever_Been_Outside (Custom)" ID="{54ACD6B0-9472-4EE6-8A59-C8E2F9BB8DD3}" ShortID="873812219" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+																<PropertyList>
+																	<Property Name="DecayTime" Type="Real32" Value="1"/>
+																	<Property Name="Density" Type="Real32" Value="50"/>
+																	<Property Name="DryLevel" Type="Real32" Value="0"/>
+																	<Property Name="ERLevel" Type="Real32" Value="-12"/>
+																	<Property Name="ERPattern" Type="int32" Value="5"/>
+																	<Property Name="EnableToneControls" Type="bool" Value="True"/>
+																	<Property Name="Filter1Curve" Type="int32" Value="2"/>
+																	<Property Name="Filter1Freq" Type="Real32" Value="80"/>
+																	<Property Name="Filter1Gain" Type="Real32" Value="-6"/>
+																	<Property Name="Filter2Freq" Type="Real32" Value="6830"/>
+																	<Property Name="Filter2Gain" Type="Real32" Value="-7.5"/>
+																	<Property Name="Filter2Q" Type="Real32" Value="0.65"/>
+																	<Property Name="Filter3Freq" Type="Real32" Value="8440"/>
+																	<Property Name="Filter3Gain" Type="Real32" Value="-4"/>
+																	<Property Name="HFDamping" Type="Real32" Value="5.05"/>
+																	<Property Name="PreDelay" Type="Real32" Value="145"/>
+																	<Property Name="Quality" Type="int32" Value="12"/>
+																	<Property Name="ReverbLevel" Type="Real32" Value="-24"/>
+																	<Property Name="RoomSize" Type="Real32" Value="100"/>
+																	<Property Name="StereoWidth" Type="Real32" Value="18"/>
+																</PropertyList>
+																<ObjectLists>
+																	<ObjectList Name="RTPC">
+																		<RTPC Name="" ID="{1EB7230F-10ED-4AA1-9F0F-824EB2D36240}" ShortID="715759642">
+																			<PropertyList>
+																				<Property Name="PropertyName" Type="string" Value="ERLevel"/>
+																			</PropertyList>
+																			<ReferenceList>
+																				<Reference Name="ControlInput">
+																					<ObjectRef Name="Distance" ID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																				</Reference>
+																				<Reference Name="Curve">
+																					<Custom>
+																						<Curve Name="" ID="{79C83E9B-0AE1-44C7-B404-3443F73CAFE9}">
+																							<PropertyList>
+																								<Property Name="Flags" Type="int32" Value="3"/>
+																							</PropertyList>
+																							<PointList>
+																								<Point>
+																									<XPos>0</XPos>
+																									<YPos>-96.3000030517578</YPos>
+																									<Flags>5</Flags>
+																								</Point>
+																								<Point>
+																									<XPos>25</XPos>
+																									<YPos>-12</YPos>
+																									<Flags>0</Flags>
+																								</Point>
+																								<Point>
+																									<XPos>100</XPos>
+																									<YPos>-12</YPos>
+																									<Flags>37</Flags>
+																								</Point>
+																							</PointList>
+																						</Curve>
+																					</Custom>
+																				</Reference>
+																			</ReferenceList>
+																		</RTPC>
+																		<RTPC Name="" ID="{404F8059-EA11-4438-8775-D7576F2AE543}" ShortID="40761772">
+																			<PropertyList>
+																				<Property Name="PropertyName" Type="string" Value="ReverbLevel"/>
+																			</PropertyList>
+																			<ReferenceList>
+																				<Reference Name="ControlInput">
+																					<ObjectRef Name="Distance" ID="{B0B263B0-B658-4447-AF81-69A7BB8D9EE1}" WorkUnitID="{1E703E4F-3412-438C-966C-823D76F9EB51}"/>
+																				</Reference>
+																				<Reference Name="Curve">
+																					<Custom>
+																						<Curve Name="" ID="{556AFC72-2FAC-4BA9-839D-990BAC5049BD}">
+																							<PropertyList>
+																								<Property Name="Flags" Type="int32" Value="3"/>
+																							</PropertyList>
+																							<PointList>
+																								<Point>
+																									<XPos>0</XPos>
+																									<YPos>-96.3000030517578</YPos>
+																									<Flags>5</Flags>
+																								</Point>
+																								<Point>
+																									<XPos>25</XPos>
+																									<YPos>-24</YPos>
+																									<Flags>0</Flags>
+																								</Point>
+																								<Point>
+																									<XPos>100</XPos>
+																									<YPos>-24</YPos>
+																									<Flags>37</Flags>
+																								</Point>
+																							</PointList>
+																						</Curve>
+																					</Custom>
+																				</Reference>
+																			</ReferenceList>
+																		</RTPC>
+																	</ObjectList>
+																</ObjectLists>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+											<EffectSlot Name="" ID="{DAC36D6A-F3B3-42E1-AA52-203442E74F3C}" ShortID="498255954">
+												<ReferenceList>
+													<Reference Name="Effect">
+														<Custom CreatedFrom="{C1DFB6E9-5626-4094-BC45-97997340CBE6}">
+															<Effect Name="LongDeepAlley (Custom)" ID="{66119B66-E0EF-4ED2-A36B-625E62C0FB01}" ShortID="538263780" PluginName="Wwise Convolution Reverb" CompanyID="0" PluginID="127" PluginType="3">
+																<Comment>Impulse response created by AudioEase.
+© 2011 AudioEase.  All rights reserved.</Comment>
+																<PropertyList>
+																	<Property Name="CenterLevel" Type="Real32" Value="-12"/>
+																	<Property Name="DryLevel" Type="Real32" Value="0"/>
+																	<Property Name="HardwareAcceleration" Type="bool">
+																		<ValueList>
+																			<Value>True</Value>
+																		</ValueList>
+																	</Property>
+																	<Property Name="IRConvolutionSmooth" Type="Real32" Value="100"/>
+																	<Property Name="IRConvolutionStop" Type="Real64" Value="1.46922554347826"/>
+																	<Property Name="IRConvolutionThreshold" Type="Real32">
+																		<ValueList>
+																			<Value>-60</Value>
+																		</ValueList>
+																	</Property>
+																	<Property Name="IRLRMix" Type="Real32">
+																		<ValueList>
+																			<Value>11</Value>
+																		</ValueList>
+																	</Property>
+																	<Property Name="IRLevel" Type="Real32" Value="-12"/>
+																	<Property Name="PreDelay" Type="Real32" Value="31"/>
+																</PropertyList>
+																<ChildrenList>
+																	<PluginMediaSource Name="AE_LongDeepAlley" ID="{C8BC2C1D-2C38-440E-BF0F-3D9B83BD1DF2}">
+																		<ParentPluginID>8323075</ParentPluginID>
+																		<PropertyList>
+																			<Property Name="DataFileName" Type="string" Value="AudioEase\Altiverb - Outdoor and More\Outdoor\Alley\AE_LongDeepAlley.wav"/>
+																		</PropertyList>
+																		<MediaIDList>
+																			<MediaID ID="418482646"/>
+																		</MediaIDList>
+																	</PluginMediaSource>
+																</ChildrenList>
+																<ObjectLists>
+																	<ObjectList Name="RTPC">
+																		<RTPC Name="" ID="{5968A975-F5AD-4BBE-91DD-BA179870D723}" ShortID="693353223">
+																			<PropertyList>
+																				<Property Name="PropertyName" Type="string" Value="DryLevel"/>
+																			</PropertyList>
+																			<ReferenceList>
+																				<Reference Name="ControlInput">
+																					<Custom>
+																						<ModulatorTime Name="Modulator Time (Custom)" ID="{B5A001C9-1891-436E-A782-16BD90AAD1C4}" ShortID="979266531">
+																							<PropertyList>
+																								<Property Name="EnvelopeStopPlayback" Type="bool" Value="False"/>
+																								<Property Name="TimeModDuration" Type="Real64" Value="1.5"/>
+																							</PropertyList>
+																						</ModulatorTime>
+																					</Custom>
+																				</Reference>
+																				<Reference Name="Curve">
+																					<Custom>
+																						<Curve Name="" ID="{91D547E5-52B2-42EC-9892-5D08646244B1}">
+																							<PropertyList>
+																								<Property Name="Flags" Type="int32" Value="3"/>
+																							</PropertyList>
+																							<PointList>
+																								<Point>
+																									<XPos>0</XPos>
+																									<YPos>-0</YPos>
+																									<Flags>5</Flags>
+																									<SegmentShape>SCurve</SegmentShape>
+																								</Point>
+																								<Point>
+																									<XPos>0.75</XPos>
+																									<YPos>0</YPos>
+																									<Flags>0</Flags>
+																									<SegmentShape>SCurve</SegmentShape>
+																								</Point>
+																								<Point>
+																									<XPos>1.5</XPos>
+																									<YPos>-120.3</YPos>
+																									<Flags>37</Flags>
+																								</Point>
+																							</PointList>
+																						</Curve>
+																					</Custom>
+																				</Reference>
+																			</ReferenceList>
+																		</RTPC>
+																		<RTPC Name="" ID="{DD752905-D9F2-4F4F-A2DE-685065F28F82}" ShortID="522974800">
+																			<PropertyList>
+																				<Property Name="PropertyName" Type="string" Value="WetLevel"/>
+																			</PropertyList>
+																			<ReferenceList>
+																				<Reference Name="ControlInput">
+																					<Custom>
+																						<ModulatorTime Name="Modulator Time (Custom)" ID="{CE3E7062-1872-4A67-9D67-4D3F6D660FF2}" ShortID="120019741">
+																							<PropertyList>
+																								<Property Name="EnvelopeStopPlayback" Type="bool" Value="False"/>
+																								<Property Name="TimeModDuration" Type="Real64" Value="1.5"/>
+																							</PropertyList>
+																						</ModulatorTime>
+																					</Custom>
+																				</Reference>
+																				<Reference Name="Curve">
+																					<Custom>
+																						<Curve Name="" ID="{3AE0780E-94BF-44B8-9F2F-F5357E99F0BF}">
+																							<PropertyList>
+																								<Property Name="Flags" Type="int32" Value="3"/>
+																							</PropertyList>
+																							<PointList>
+																								<Point>
+																									<XPos>0</XPos>
+																									<YPos>-120.3</YPos>
+																									<Flags>5</Flags>
+																									<SegmentShape>SCurve</SegmentShape>
+																								</Point>
+																								<Point>
+																									<XPos>0.001</XPos>
+																									<YPos>-120.3</YPos>
+																									<Flags>0</Flags>
+																									<SegmentShape>SCurve</SegmentShape>
+																								</Point>
+																								<Point>
+																									<XPos>1.5</XPos>
+																									<YPos>0</YPos>
+																									<Flags>37</Flags>
+																								</Point>
+																							</PointList>
+																						</Curve>
+																					</Custom>
+																				</Reference>
+																			</ReferenceList>
+																		</RTPC>
+																	</ObjectList>
+																</ObjectLists>
+																<PluginData>
+	<ConvolutionData>
+		<CurveList Version="1">
+			<CurveInfo Name="IRGraphicEQ">
+				<Curve Name="">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="19"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>20</XPos>
+							<YPos>0</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>20000</XPos>
+							<YPos>0</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+			<CurveInfo Name="IRLPF">
+				<Curve Name="">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="5"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>20000</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>2.503125</XPos>
+							<YPos>20000</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+			<CurveInfo Name="IRLevel">
+				<Curve Name="">
+					<PropertyList>
+						<Property Name="Flags" Type="int32" Value="1"/>
+					</PropertyList>
+					<PointList>
+						<Point>
+							<XPos>0</XPos>
+							<YPos>0</YPos>
+							<Flags>5</Flags>
+						</Point>
+						<Point>
+							<XPos>2.503125</XPos>
+							<YPos>0</YPos>
+							<Flags>37</Flags>
+						</Point>
+					</PointList>
+				</Curve>
+			</CurveInfo>
+		</CurveList>
+	</ConvolutionData>
+</PluginData>
+															</Effect>
+														</Custom>
+													</Reference>
+												</ReferenceList>
+											</EffectSlot>
+										</ObjectList>
+									</ObjectLists>
 								</RandomSequenceContainer>
 								<RandomSequenceContainer Name="NPC_Shoot_no_sidechain" ID="{9C3AD0FF-F2F0-4810-9838-E94466788838}" ShortID="520398858">
 									<PropertyList>
@@ -11368,6 +11727,42 @@
 							</GroupingInfo>
 						</SwitchContainer>
 					</ChildrenList>
+					<ObjectLists>
+						<ObjectList Name="Effects">
+							<EffectSlot Name="" ID="{B6218F59-638F-4E93-8AF2-4A92A7AB5E72}" ShortID="666326507">
+								<ReferenceList>
+									<Reference Name="Effect">
+										<Custom CreatedFrom="{FE29AE8D-FD86-4652-A95D-68D32F5760EC}">
+											<Effect Name="Have_U_Ever_Been_Outside (Custom)" ID="{2EED6FDE-4501-4D84-902F-5640BF3CBE59}" ShortID="186833168" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+												<PropertyList>
+													<Property Name="DecayTime" Type="Real32" Value="1"/>
+													<Property Name="Density" Type="Real32" Value="50"/>
+													<Property Name="DryLevel" Type="Real32" Value="0"/>
+													<Property Name="ERLevel" Type="Real32" Value="-6"/>
+													<Property Name="ERPattern" Type="int32" Value="5"/>
+													<Property Name="EnableToneControls" Type="bool" Value="True"/>
+													<Property Name="Filter1Curve" Type="int32" Value="2"/>
+													<Property Name="Filter1Freq" Type="Real32" Value="80"/>
+													<Property Name="Filter1Gain" Type="Real32" Value="-6"/>
+													<Property Name="Filter2Freq" Type="Real32" Value="6830"/>
+													<Property Name="Filter2Gain" Type="Real32" Value="-7.5"/>
+													<Property Name="Filter2Q" Type="Real32" Value="0.65"/>
+													<Property Name="Filter3Freq" Type="Real32" Value="8440"/>
+													<Property Name="Filter3Gain" Type="Real32" Value="-4"/>
+													<Property Name="HFDamping" Type="Real32" Value="5.05"/>
+													<Property Name="PreDelay" Type="Real32" Value="145"/>
+													<Property Name="Quality" Type="int32" Value="12"/>
+													<Property Name="ReverbLevel" Type="Real32" Value="-12"/>
+													<Property Name="RoomSize" Type="Real32" Value="100"/>
+													<Property Name="StereoWidth" Type="Real32" Value="18"/>
+												</PropertyList>
+											</Effect>
+										</Custom>
+									</Reference>
+								</ReferenceList>
+							</EffectSlot>
+						</ObjectList>
+					</ObjectLists>
 				</PropertyContainer>
 			</ChildrenList>
 		</WorkUnit>
